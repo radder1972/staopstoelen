@@ -42,15 +42,22 @@
   <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container navbar-container">
-      <!-- Beautiful Tapered Green Swoosh under the logo -->
-      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+      <!-- Beautiful Tapered Dual Swooshes behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" preserveAspectRatio="none">
         <defs>
-          <linearGradient id="swooshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="greenSwooshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="var(--color-forest)" stop-opacity="0.9" />
-            <stop offset="100%" stop-color="var(--color-sage)" stop-opacity="0.95" />
+            <stop offset="100%" stop-color="var(--color-sage)" stop-opacity="0.9" />
+          </linearGradient>
+          <linearGradient id="orangeSwooshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="var(--color-terracotta)" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="var(--color-gold)" stop-opacity="0.95" />
           </linearGradient>
         </defs>
-        <path d="M 50,160 C 300,170 600,120 950,50 C 650,230 300,220 50,160 Z" fill="url(#swooshGrad)"></path>
+        <!-- Orange/Gold Accent Swoosh (sits slightly lower/offset) -->
+        <path d="M 80,180 C 320,195 580,165 920,105 C 680,230 320,235 80,180 Z" fill="url(#orangeSwooshGrad)"></path>
+        <!-- Green/Sage Main Swoosh -->
+        <path d="M 50,150 C 300,170 600,120 950,50 C 650,230 300,220 50,150 Z" fill="url(#greenSwooshGrad)"></path>
       </svg>
       <a href="index.html" class="logo" id="navLogo">
         <img src="assets/logo.png" alt="Staopstoelen.nl">
