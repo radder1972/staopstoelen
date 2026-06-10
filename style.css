@@ -277,6 +277,25 @@ section {
   color: var(--color-forest);
 }
 
+/* Navigation Appointment Button Positioned at Top Right */
+.btn-nav-appointment {
+  position: absolute;
+  right: 24px; /* Align with container padding */
+  top: 90px; /* Vertically centered relative to the 220px tall logo area */
+  padding: 10px 24px;
+  min-height: auto;
+}
+
+@media (max-width: 768px) {
+  .btn-nav-appointment {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 12px 0 0 0;
+    width: fit-content;
+  }
+}
+
 /* Hero Section */
 .hero {
   padding: 60px 0 100px 0;
