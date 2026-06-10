@@ -287,6 +287,25 @@ section {
   z-index: 10;
 }
 
+/* Navigation Text Logo Positioned at Top Left */
+.nav-text-logo {
+  position: absolute;
+  left: 24px;
+  top: 28px;
+  font-family: var(--font-header);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-forest);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  z-index: 10;
+  transition: color var(--transition-fast);
+}
+
+.nav-text-logo:hover {
+  color: var(--color-terracotta);
+}
+
 @media (max-width: 768px) {
   .btn-nav-appointment {
     position: relative;
@@ -294,6 +313,15 @@ section {
     top: auto;
     margin: 12px 0 0 0;
     width: fit-content;
+  }
+  
+  .nav-text-logo {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 8px 0 0 0;
+    font-size: 1.15rem;
+    text-align: center;
   }
 }
 
