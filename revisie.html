@@ -42,22 +42,16 @@
   <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container navbar-container">
-      <!-- Beautiful Tapered Dual Swooshes behind the logo -->
-      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="greenSwooshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="var(--color-forest)" stop-opacity="0.9" />
-            <stop offset="100%" stop-color="var(--color-sage)" stop-opacity="0.9" />
-          </linearGradient>
-          <linearGradient id="orangeSwooshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="var(--color-terracotta)" stop-opacity="0.85" />
-            <stop offset="100%" stop-color="var(--color-gold)" stop-opacity="0.95" />
-          </linearGradient>
-        </defs>
-        <!-- Orange/Gold Accent Swoosh (sits slightly lower/offset) -->
-        <path d="M 80,180 C 320,195 580,165 920,105 C 680,230 320,235 80,180 Z" fill="url(#orangeSwooshGrad)"></path>
-        <!-- Green/Sage Main Swoosh -->
-        <path d="M 50,150 C 300,170 600,120 950,50 C 650,230 300,220 50,150 Z" fill="url(#greenSwooshGrad)"></path>
+      <!-- Beautiful Overlapping Liquid Waves behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <!-- Wave 1: Sky Blue -->
+        <path d="M 0,90 Q 250,160 500,100 T 1000,110" fill="none" stroke="var(--color-sky)" stroke-width="8" stroke-linecap="round" opacity="0.6"></path>
+        <!-- Wave 2: Terracotta Orange -->
+        <path d="M 0,110 Q 250,70 500,120 T 1000,130" fill="none" stroke="var(--color-terracotta)" stroke-width="6" stroke-linecap="round" opacity="0.75"></path>
+        <!-- Wave 3: Sage Green -->
+        <path d="M 0,125 Q 250,170 500,115 T 1000,140" fill="none" stroke="var(--color-sage)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>
+        <!-- Wave 4: Forest Green -->
+        <path d="M 0,140 Q 250,100 500,145 T 1000,150" fill="none" stroke="var(--color-forest)" stroke-width="10" stroke-linecap="round" opacity="0.95"></path>
       </svg>
       <a href="index.html" class="logo" id="navLogo">
         <img src="assets/logo.png" alt="Staopstoelen.nl">
