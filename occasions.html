@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Occasions | Staopstoelen.nl Tweedehands & Gereviseerd</title>
+  <meta name="description" content="Bekijk onze huidige voorraad gereviseerde occasion sta-op stoelen. Topkwaliteit A-merken zoals Fitform, volledig op uw maat afgesteld met garantie.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .occasions-header {
+      background-color: var(--color-forest);
+      color: var(--color-light);
+      padding: 60px 0;
+      text-align: center;
+    }
+    .occasions-header h1 {
+      color: var(--color-light);
+      font-size: 2.75rem;
+      margin-bottom: 12px;
+    }
+    .occasions-header p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .catalog-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    @media (min-width: 992px) {
+      .catalog-layout {
+        grid-template-columns: 260px 1fr;
+      }
+    }
+    .filter-sidebar {
+      background-color: var(--color-light);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      height: fit-content;
+      position: sticky;
+      top: 130px;
+    }
+    .filter-group {
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--color-gray-light);
+      padding-bottom: 20px;
+    }
+    .filter-group:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .filter-group-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .checkbox-label input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .sort-select {
+      width: 100%;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--color-gray-light);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      background-color: var(--color-light);
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 600px) {
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1200px) {
+      .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .badge-sale {
+      background-color: var(--color-terracotta);
+    }
+    .badge-reco {
+      background-color: var(--color-sage);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo" id="navLogo">
+        <img src="assets/logo.png" alt="Staopstoelen.nl">
+      </a>
+      <div class="navbar-row-2">
+        <nav class="nav-links">
+          <a href="index.html#keuzehulp">Keuzehulp</a>
+          <a href="occasions.html" class="active">Occasions</a>
+          <a href="index.html#revisie">Revisieproces</a>
+          <a href="index.html#klantverhalen">Ervaringen</a>
+          <a href="index.html#afspraak-planner">Afspraak Maken</a>
+          <a href="articles.html">Advies Hub</a>
+        </nav>
+        <a href="index.html#afspraak-planner" class="btn btn-primary" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Header -->
+  <section class="occasions-header">
+    <div class="container">
+      <span class="section-tag" style="color: var(--color-gold);">Huidig Aanbod</span>
+      <h1>Occasion Sta-op Stoelen</h1>
+      <p>A-merk Fitform & Doge stoelen. Volledig gedesinfecteerd, mechanisch gereviseerd en geleverd met garantie.</p>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <section style="padding: 50px 0 80px 0;">
+    <div class="container">
+      <a href="index.html" class="back-link">← Terug naar Home</a>
+
+      <div class="catalog-layout">
+        <!-- Sidebar filters -->
+        <aside class="filter-sidebar">
+          <div class="filter-group">
+            <h4 class="filter-group-title">Sorteer Op</h4>
+            <select class="sort-select" id="sortSelect">
+              <option value="default">Standaard</option>
+              <option value="price-asc">Prijs: Laag naar Hoog</option>
+              <option value="price-desc">Prijs: Hoog naar Laag</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h4 class="filter-group-title">Formaat / Maat</h4>
+            <label class="checkbox-label">
+              <input type="checkbox" class="size-filter" value="mini">
+              <span>Mini / Klein</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="size-filter" value="smal">
+              <span>Smal / Slank</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="size-filter" value="vario">
+              <span>Vario (Standaard)</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="size-filter" value="xl">
+              <span>XL (Breed/Zwaar)</span>
+            </label>
+          </div>
+
+          <div class="filter-group" style="border-bottom:none; padding-bottom:0;">
+            <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.85rem; color:var(--color-dark);">
+              <strong>🌿 Altijd op maat:</strong> Al onze occasions worden bij aflevering door onze experts exact ingesteld op uw zithoogte en zitdiepte.
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <main>
+          <div class="catalog-grid" id="catalogGrid">
+            <!-- Rendered dynamically via JavaScript -->
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="color: var(--color-light);">Staopstoelen.nl</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Snelle Links</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="index.html#keuzehulp">Keuzehulp Wizard</a></li>
+          <li><a href="occasions.html">Occasions</a></li>
+          <li><a href="index.html#revisie">Revisieproces</a></li>
+          <li><a href="index.html#klantverhalen">Klantverhalen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kennisbank</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="articles.html">Hoe meet je de zithoogte?</a></li>
+          <li><a href="articles.html">Voordelen 3-motorige stoel</a></li>
+          <li><a href="articles.html">Veelgestelde Vragen (FAQ)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact & Showroom</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Voorstraat 123<br>
+          3311 EP Dordrecht<br>
+          <span style="display: block; margin-top: 8px;">
+            📞 078 123 4567<br>
+            ✉️ info@staopstoelen.nl
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2026 Staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scraped occasions dataset
+    const OCCASIONS_DATA = [
+      {
+        id: "fitform-570-reco",
+        name: "Voorraad Sta-op stoel Fitform 570 Vario III RECO",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/10/Sta-op-stoel-Fitform-570-Vario-RECO-0-300x300.jpg",
+        price: 1500,
+        oldPrice: null,
+        sizes: ["vario"],
+        description: "Deze Voorraad Sta-op stoel Fitform 570 Vario III RECO heeft een heerlijke relaxfunctie. De handige sta-op voorziening zorgt er voor dat u zelf makkelijk uit uw fauteuil kunt komen. Deze stoel hebben wij altijd op voorraad en is nieuw GERECONDITIONEERD.",
+        badge: "Altijd op voorraad",
+        badgeType: "reco"
+      },
+      {
+        id: "fitform-570-reco-smal",
+        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/02/Sta-op-stoel-Fitform-570-Vario-Smal-RECO-1-Copy-300x300.jpg",
+        price: 1600,
+        oldPrice: 1700,
+        sizes: ["smal"],
+        description: "Deze Sta-op stoel Fitform 570 Vario III RECO Smal is aan de buitenkant niet te onderscheiden van een nieuw exemplaar. Gebouwd op een volledig gereviseerd A-merk frame. Alle mechanische componenten en schuimdelen zijn gecontroleerd en vernieuwd.",
+        badge: "Smal model",
+        badgeType: "sale"
+      },
+      {
+        id: "fitform-570-reco-smal-board",
+        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal Board",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2019/11/Sta-op-stoel-RECO-Fitform-570-Vario-smal-Board-1-Copy-300x300.jpg",
+        price: 1600,
+        oldPrice: 1700,
+        sizes: ["smal"],
+        description: "Voorzien van een smalle zitbreedte en stevige ergonomische ondersteuningsplaten (board) in de rugleuning. Ideaal voor langdurig en comfortabel zitten zonder verzakking.",
+        badge: "Stevige rug",
+        badgeType: "sale"
+      },
+      {
+        id: "fitform-570-reco-xl",
+        name: "Voorraad Sta-op stoel Fitform 570 Vario III XL RECO",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2018/02/Sta-op-stoel-Fitform-570-Vario-XL-zand-1-Copy-300x300.jpg",
+        price: 1700,
+        oldPrice: null,
+        sizes: ["xl"],
+        description: "De XL-uitvoering van de populaire Fitform 570. Biedt een bredere zit en extra verstevigde motoren. Deze stoel is volledig gereviseerd en direct uit voorraad leverbaar.",
+        badge: "XL Formaat",
+        badgeType: "reco"
+      },
+      {
+        id: "fitform-580-vario-mini",
+        name: "Voorraad Sta op stoel Fitform 580 Vario Mini",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2018/04/Sta-op-stoel-Fitform-581-Vario-klein-1-Copy-Copy-300x300.jpg",
+        price: 1898,
+        oldPrice: 2248,
+        sizes: ["mini"],
+        description: "Deze Vario Mini heeft een heerlijke relaxfunctie en is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
+        badge: "10 Jaar Garantie",
+        badgeType: "sale"
+      },
+      {
+        id: "fitform-571-mini-ilp",
+        name: "RECO Sta-op stoel Fitform 571 Vario III Mini ILP",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/04/Sta-op-stoel-Fitform-571-MINI-ILP-rugleuning-scaled.jpg",
+        price: 2400,
+        oldPrice: null,
+        sizes: ["mini"],
+        description: "Gereviseerd frame met compleet NIEUWE bekleding. Uitgerust met het gepatenteerde ILP (Intelligent Lig- & Zit-systeem) voor ultieme ondersteuning bij rugklachten. Let op: kleine uitvoering met lage rugleuning.",
+        badge: "Nieuwe Bekleding",
+        badgeType: "reco"
+      },
+      {
+        id: "fitform-570-ilp",
+        name: "Voorraad Sta op stoel Fitform 570 Vario ILP",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/04/Sta-op-stoel-Fitform-570-ILP-rugleuning-scaled.jpg",
+        price: 2400,
+        oldPrice: 4600,
+        sizes: ["vario"],
+        description: "Een zo goed als ongebruikte stoel (teruggekocht wegens omstandigheden). Beschikt over de gepatenteerde Fitform ILP rug- en zittingopbouw. Werkelijk als nieuw.",
+        badge: "Kans: Als Nieuw",
+        badgeType: "sale"
+      }
+    ];
+
+    // Prefill helper
+    function prefillBooking(name) {
+      // Store in localStorage to prefill when returning to homepage afspraak-planner
+      localStorage.setItem("prefilledChair", name);
+      window.location.href = "index.html#afspraak-planner";
+    }
+
+    // Render Logic
+    function renderCatalog() {
+      const grid = document.getElementById("catalogGrid");
+      grid.innerHTML = "";
+
+      // Get filter states
+      const sortVal = document.getElementById("sortSelect").value;
+      const checkedSizes = Array.from(document.querySelectorAll(".size-filter:checked")).map(cb => cb.value);
+
+      // Filter
+      let filtered = [...OCCASIONS_DATA];
+      if (checkedSizes.length > 0) {
+        filtered = filtered.filter(item => item.sizes.some(size => checkedSizes.includes(size)));
+      }
+
+      // Sort
+      if (sortVal === "price-asc") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortVal === "price-desc") {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="no-results" style="grid-column: 1/-1;">
+            <h3>Geen resultaten gevonden</h3>
+            <p style="margin-top: 8px;">Probeer uw filters aan te passen of neem direct contact op met onze BewegingsTechnologen.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        const priceHtml = item.oldPrice
+          ? `<span class="price-value" style="color:var(--color-dark); font-size:0.95rem; text-decoration:line-through; font-weight:normal; margin-right:8px;">€ ${item.oldPrice.toLocaleString("nl-NL")},-</span>
+             <span class="price-value" style="color:var(--color-terracotta);">€ ${item.price.toLocaleString("nl-NL")},-</span>`
+          : `<span class="price-value">€ ${item.price.toLocaleString("nl-NL")},-</span>`;
+
+        card.innerHTML = `
+          <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
+            <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            ${item.badge ? `<span class="badge ${item.badgeType === "sale" ? "badge-sale" : "badge-reco"}">${item.badge}</span>` : ""}
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
+            <p style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
+              ${item.description}
+            </p>
+            <div class="product-price-row">
+              <div>
+                <span class="price-label">Occasionprijs</span>
+                <div style="display: flex; align-items: center; margin-top: 2px;">
+                  ${priceHtml}
+                </div>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="prefillBooking('${item.name}')" style="padding: 10px 16px; font-size: 0.85rem; min-height: auto;">
+                Thuis Testen
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Event Listeners
+    document.getElementById("sortSelect").addEventListener("change", renderCatalog);
+    document.querySelectorAll(".size-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+
+    // Initial render
+    window.addEventListener("DOMContentLoaded", renderCatalog);
+  </script>
+</body>
+</html>

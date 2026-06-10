@@ -108,6 +108,24 @@ document.addEventListener("DOMContentLoaded", () => {
   initSlider();
   initCalendar();
   initFloatingMenu();
+
+  // Check for prefilled occasion chair selection from occasions page
+  const prefilled = localStorage.getItem("prefilledChair");
+  if (prefilled) {
+    const notesField = document.getElementById("bookingNotes");
+    if (notesField) {
+      notesField.value = `Ik heb interesse in een passing aan huis voor de occasion: ${prefilled}. Graag afstemmen op mijn lichaamslengte en voorkeuren.`;
+      localStorage.removeItem("prefilledChair");
+      
+      // Smooth scroll to the appointment planner
+      const planner = document.getElementById("afspraak-planner");
+      if (planner) {
+        setTimeout(() => {
+          planner.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+    }
+  }
 });
 
 /* ==========================================================================
