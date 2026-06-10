@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goedkope sta op stoelen | Nieuw, Gebruikt en Geconditioneerd</title>
+  <meta name="description" content="Wij hebben voor iedereen een oplossing op maat, sta op stoelen voor elk budget. Wij leveren Nieuw, gebruikt en gereconditioneerd. Ontdek het nu!">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .occasions-header {
+      background-color: var(--color-forest);
+      color: var(--color-light);
+      padding: 60px 0;
+      text-align: center;
+    }
+    .occasions-header h1 {
+      color: var(--color-light);
+      font-size: 2.75rem;
+      margin-bottom: 12px;
+    }
+    .occasions-header p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .catalog-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    @media (min-width: 992px) {
+      .catalog-layout {
+        grid-template-columns: 260px 1fr;
+      }
+    }
+    .filter-sidebar {
+      background-color: var(--color-light);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      height: fit-content;
+      position: sticky;
+      top: 130px;
+    }
+    .filter-group {
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--color-gray-light);
+      padding-bottom: 20px;
+    }
+    .filter-group:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .filter-group-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .checkbox-label input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .sort-select {
+      width: 100%;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--color-gray-light);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      background-color: var(--color-light);
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 600px) {
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1200px) {
+      .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .badge-reco {
+      background-color: var(--color-sage);
+    }
+    .badge-new {
+      background-color: var(--color-terracotta);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31612345678" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">💬</div>
+      </a>
+      <a href="tel:+31781234567" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">📞</div>
+      </a>
+      <a href="afspraak.html" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">📅</div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <span>💬</span>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <!-- Beautiful Overlapping Liquid Waves behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <!-- Wave 1: Sky Blue -->
+        <path d="M 0,90 Q 250,160 500,100 T 1000,110" fill="none" stroke="var(--color-sky)" stroke-width="8" stroke-linecap="round" opacity="0.6"></path>
+        <!-- Wave 2: Terracotta Orange -->
+        <path d="M 0,110 Q 250,70 500,120 T 1000,130" fill="none" stroke="var(--color-terracotta)" stroke-width="6" stroke-linecap="round" opacity="0.75"></path>
+        <!-- Wave 3: Sage Green -->
+        <path d="M 0,125 Q 250,170 500,115 T 1000,140" fill="none" stroke="var(--color-sage)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>
+        <!-- Wave 4: Forest Green -->
+        <path d="M 0,140 Q 250,100 500,145 T 1000,150" fill="none" stroke="var(--color-forest)" stroke-width="10" stroke-linecap="round" opacity="0.95"></path>
+      </svg>
+      <a href="index.html" class="logo" id="navLogo">
+        <img src="assets/logo.png" alt="Staopstoelen.nl">
+      </a>
+      <div class="navbar-row-2">
+                <nav class="nav-links" id="navLinks">
+          <a href="keuzehulp.html" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="occasions.html" id="linkOccasions">Occasions</a>
+          <a href="seniorenstoelen.html" id="linkSeniorenstoelen">Seniorenstoelen</a>
+          <a href="goedkope-sta-op-stoelen.html" class="active" id="linkGoedkopeStaopstoelen">Goedkope Sta-op Stoelen</a>
+          <a href="revisie.html" id="linkRevisie">Revisieproces</a>
+          <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
+          <a href="afspraak.html" id="linkAfspraak">Afspraak Maken</a>
+          <a href="articles.html" id="linkArticles">Advies Hub</a>
+        </nav>
+        <a href="afspraak.html" class="btn btn-primary" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Header -->
+  <section class="occasions-header">
+    <div class="container banner-flex-container">
+      <img src="assets/cheap_chair_icon.png" alt="Goedkope Sta-op Stoelen Icoon" class="banner-icon">
+      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Voor Elk Budget</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Goedkope sta-op stoelen</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Wij hebben voor iedereen een oplossing op maat. Ontdek ons ruime assortiment sta-op stoelen voor elk budget—nieuw, gebruikt en geconditioneerd.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <section style="padding: 50px 0 80px 0;">
+    <div class="container">
+      <a href="index.html" class="back-link">← Terug naar Home</a>
+
+      <div class="catalog-layout">
+        <!-- Sidebar filters -->
+        <aside class="filter-sidebar">
+          <div class="filter-group">
+            <h4 class="filter-group-title">Sorteer Op</h4>
+            <select class="sort-select" id="sortSelect">
+              <option value="default">Standaard</option>
+              <option value="price-asc">Prijs: Laag naar Hoog</option>
+              <option value="price-desc">Prijs: Hoog naar Laag</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h4 class="filter-group-title">Merk</h4>
+            <label class="checkbox-label">
+              <input type="checkbox" class="brand-filter" value="Fitform">
+              <span>Fitform</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="brand-filter" value="Mecam">
+              <span>Mecam</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="brand-filter" value="Doge">
+              <span>Doge</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="brand-filter" value="De Toekomst">
+              <span>De Toekomst</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="brand-filter" value="Overig">
+              <span>Overig / Huismerk</span>
+            </label>
+          </div>
+
+          <div class="filter-group">
+            <h4 class="filter-group-title">Prijsklasse</h4>
+            <label class="checkbox-label">
+              <input type="checkbox" class="price-filter" value="under-1500">
+              <span>Onder € 1.500</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="price-filter" value="1500-2500">
+              <span>€ 1.500 - € 2.500</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="price-filter" value="over-2500">
+              <span>Boven € 2.500</span>
+            </label>
+          </div>
+
+          <div class="filter-group" style="border-bottom:none; padding-bottom:0;">
+            <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.85rem; color:var(--color-dark);">
+              <strong>🌿 Optimaal op maat:</strong> Al onze sta-op stoelen (nieuw, gebruikt én geconditioneerd) worden door onze BewegingsTechnologen exact ingesteld op uw lichaamsmaten voor optimaal comfort.
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <main>
+          <div class="catalog-grid" id="catalogGrid">
+            <!-- Rendered dynamically via JavaScript -->
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="color: var(--color-light);">Staopstoelen.nl</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen en ergonomische seniorenstoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Snelle Links</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="keuzehulp.html">Keuzehulp Wizard</a></li>
+          <li><a href="occasions.html">Occasions</a></li>
+          <li><a href="seniorenstoelen.html">Seniorenstoelen</a></li>
+          <li><a href="goedkope-sta-op-stoelen.html">Goedkope Sta-op Stoelen</a></li>
+          <li><a href="revisie.html">Revisieproces</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
+          <li><a href="afspraak.html">Afspraak Inplannen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kennisbank</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="articles.html">Hoe meet je de zithoogte?</a></li>
+          <li><a href="articles.html">Voordelen 3-motorige stoel</a></li>
+          <li><a href="articles.html">Veelgestelde Vragen (FAQ)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact & Showroom</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Voorstraat 123<br>
+          3311 EP Dordrecht<br>
+          <span style="display: block; margin-top: 8px;">
+            📞 078 123 4567<br>
+            ✉️ info@staopstoelen.nl
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2026 Staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Scraped cheap lift chairs dataset
+    const GOEDKOPE_STAOPSTOELEN_DATA = [
+      {
+        id: "sta-op-stoel-dordrecht",
+        name: "Sta-op stoel Dordrecht",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/02/Sta-op-stoel-DORDRECHT-1.jpg",
+        price: 700,
+        brand: "Overig",
+        description: "De sta-op stoel Dordrecht is een sta-op / relax fauteuil welke zeer eenvoudig te bedienen is. Dit komt doordat er maar 2 knopjes op de handbediening zitten. De stoel is bekleed met een prachtige antraciet luxe microvezel stof welke zeer sterk en eenvoudig te reinigen is.",
+        badge: "Budget Vriendelijk",
+        badgeType: "new"
+      },
+      {
+        id: "senioren-sta-op-stoel-hk-dordt",
+        name: "Senioren sta-op stoel HK Dordt",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/05/Senioren-sta-op-stoel-HK-Dordt-1-300x300.jpg",
+        price: 995,
+        brand: "Overig",
+        description: "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
+        badge: "Hoge Kwaliteit",
+        badgeType: "reco"
+      },
+      {
+        id: "senioren-sta-op-stoel-mecam-athena",
+        name: "Senioren sta-op stoel Mecam Athena",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-Mecam-Athena-1-300x300.jpg",
+        price: 1045,
+        brand: "Mecam",
+        description: "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
+        badge: "Geen Snoeren",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-draaibaar-zwijndrecht",
+        name: "Sta-op stoel draaibaar Zwijndrecht",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/02/Sta-op-stoel-ZWIJNDRECHT-1-e1772115887824.jpg",
+        price: 1350,
+        brand: "Overig",
+        description: "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel is van alle gemakken voorzien en heeft door het houten draaiplateau een klassieke maar toch moderne uitstraling.",
+        badge: "Modern & Draaibaar",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-draaibaar-sliedrecht",
+        name: "Sta-op stoel draaibaar Sliedrecht",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2023/03/Sta-op-stoel-draaibaar-Sliedrecht-1.jpg",
+        price: 1395,
+        brand: "Overig",
+        description: "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel voorziet in alle gemakken. Door de geborstelde stalen voet heeft hij een strakke, moderne uitstraling.",
+        badge: "Luxe Uitstraling",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-rotterdam",
+        name: "Sta-op stoel Rotterdam",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2025/10/Staop-stoel-ROTTERDAM-1-min-scaled.jpg",
+        price: 1485,
+        brand: "Overig",
+        description: "Prachtige 4-motorige relax fauteuil met sta-op verstelling. Elegant, klassiek en luxe. Geheel in leer bekleed met 4 afzonderlijke motoren voor onafhankelijke afstelling.",
+        badge: "4-Motorig Leder",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-ridderkerk",
+        name: "Sta-op stoel Ridderkerk",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/01/Sta-op-stoel-HK-Ridderkerk-1-scaled.jpg",
+        price: 1495,
+        brand: "Overig",
+        description: "Heerlijke 2-motorige relax fauteuil met sta-op verstelling. De Ridderkerk is elektrisch verstelbaar en voorzien van een fijne relaxfunctie waarmee u comfortabel zit met de benen omhoog.",
+        badge: "2 Motoren",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-570-vario-reco",
+        name: "Sta-op stoel Fitform 570 Vario RECO",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/02/Fitform-570-Vario-sta-op-stoel-GERECONDITIONEERD-1-300x300.jpg",
+        price: 1500,
+        brand: "Fitform",
+        description: "Volledig gereconditioneerd Fitform-model. Gebouwd op een gereviseerd frame, voorzien van een nieuwe handbediening en compleet nieuwe bekleding in stof/leder naar keuze.",
+        badge: "Gereconditioneerd",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-barendrecht",
+        name: "Sta-op stoel Barendrecht",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2025/10/Sta-op-stoel-BARENDRECHT-1-min-scaled-e1760613493995.jpg",
+        price: 1565,
+        brand: "Overig",
+        description: "Heerlijke 2-motorige relax fauteuil met sta-op verstelling en standaard ingebouwde accu! Geen kabels over de vloer, waardoor u de stoel vrij in de kamer kunt plaatsen.",
+        badge: "Ingebouwde Accu",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-alfred",
+        name: "Sta-op stoel ALFRED",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/04/Sta-op-stoel-ALFRED-1-scaled.jpg",
+        price: 1775,
+        brand: "Overig",
+        description: "Prachtige 2-motorige relax fauteuil met sta-op verstelling. Geheel in soepel leder bekleed, met een verborgen voetenbank die onder de stoel wegdraait.",
+        badge: "Luxe Leder",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-mecam-movie",
+        name: "Sta-op stoel Mecam Movie",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-Mecam-MOVIE-4-300x300.png",
+        price: 1925,
+        brand: "Mecam",
+        description: "Klassieke en degelijke uitstraling van Mecam. De fauteuil is in verschillende maatvoeringen te leveren, biedt heerlijk zitcomfort en is leverbaar in vele stoffen and leersoorten.",
+        badge: "Klassiek Comfort",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-ravi",
+        name: "Sta-op stoel Ravi",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2022/03/Sta-op-stoel-RAVI-1-kopie-300x300.jpg",
+        price: 1945,
+        brand: "Overig",
+        description: "Elegante, draaibare relaxfauteuil met sta-op hulp. Verkrijgbaar in 3 verschillende maten (s/m/l) voor een perfecte ergonomische match.",
+        badge: "Draaibaar Model",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-dfm-bentley-dicht",
+        name: "Sta-op stoel DFM Bentley (dicht)",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2018/04/Sta-op-stoel-DFM-Bentley-dicht-1-Copy-300x300.jpg",
+        price: 1945,
+        brand: "Overig",
+        description: "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
+        badge: "Luxe Design",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-dfm-bentley-open",
+        name: "Sta-op stoel DFM Bentley (open)",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2018/04/Sta-op-stoel-DFM-Bentley-open-1-Copy-300x300.jpg",
+        price: 1945,
+        brand: "Overig",
+        description: "Bentley model getoond in geopende relaxstand met de voetensteun omhoog geklapt voor optimale ondersteuning van uw benen.",
+        badge: "Optimale Relaxstand",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-mecam-barney",
+        name: "Sta-op stoel Mecam Barney",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-draaibaar-Barney-1-300x300.jpg",
+        price: 2045,
+        brand: "Mecam",
+        description: "Elegante draaibare fauteuil. De 2 motoren zijn bijna onzichtbaar onder de fauteuil weggewerkt. Voorzien van een automatische beveiliging in de draaivoet.",
+        badge: "Slimme Draaivoet",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-mecam-degas",
+        name: "Sta-op stoel Mecam Degas",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/06/Sta-op-stoel-Mecam-DEGAS-1-300x300.jpg",
+        price: 2155,
+        brand: "Mecam",
+        description: "Huiselijke uitstraling en zeer comfortabel ergonomisch zitcomfort van Belgisch fabricaat. Wordt met veel passie exact op uw maat gemaakt.",
+        badge: "Ergonomisch Maatwerk",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-580-elevo",
+        name: "Sta-op stoel Fitform 580 Elevo",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/01/Sta-op-stoel-Fitform-580-Elevo-III-5-300x300.jpg",
+        price: 2300,
+        brand: "Fitform",
+        description: "Hoogwaardige Fitform zorgstoel. Ontworpen door specialisten voor langdurig zitcomfort. Standaard voorzien van het Fitform 10 jaar Garantie Waarborg.",
+        badge: "10 Jaar Garantie",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-refitto",
+        name: "Sta-op stoel Refitto",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2025/09/Sta-op-stoel-Refitto-EA-326-e1757503359302.png",
+        price: 2345,
+        brand: "Overig",
+        description: "Moderne sta-op relaxfauteuil. Blokkeert automatisch bij het opstaan zodat de stoel niet kan wegdraaien. Veiligheid en comfort hand in hand.",
+        badge: "Extra Beveiligd",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-doge-bellino",
+        name: "Sta-op stoel Doge Bellino",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/02/Sta-op-stoel-Doge-Bellino-3-300x300.jpg",
+        price: 2395,
+        brand: "Doge",
+        description: "Voorzien van drie motoren om de stoel geheel naar wens in te stellen. Uniek: de zithouding wordt behouden wanneer de kantelfunctie wordt gebruikt.",
+        badge: "3-Motorig Comfort",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-de-toekomst-fiji",
+        name: "Sta-op stoel De Toekomst Fiji",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-Fiji-draaibaar-2-300x300.jpg",
+        price: 2445,
+        brand: "De Toekomst",
+        description: "Elegante en moderne draaibare fauteuil. Voorzien van een onzichtbare sta-op motor onder het frame en een veilige rem in de draaivoet.",
+        badge: "Draaibaar & Veilig",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-552-elevo",
+        name: "Sta-op stoel Fitform 552 Elevo",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2023/03/Sta-op-stoel-Fitform-552-Elevo.jpg",
+        price: 2500,
+        brand: "Fitform",
+        description: "Volledig verstelbare sta-op en relax fauteuil met 3 afzonderlijke motoren voor voetenbank, rugleuning en kanteling. Optimaal ondersteund wonen.",
+        badge: "Optimale Zithouding",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-industro",
+        name: "Sta-op stoel Industro",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2025/09/Sta-op-stoel-Industro-CV-120-e1757503299967.png",
+        price: 2845,
+        brand: "Overig",
+        description: "Stoere, industriële relaxfauteuil met karakter. Volledig naar lichaamsmaten opgemeten en te voorzien van lumbaalsteun of nekverwarming.",
+        badge: "Stoer & Industrieel",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-570-vario",
+        name: "Sta-op stoel Fitform 570 Vario",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/01/Sta-op-stoel-Fitform-570-Vario-III-5-300x300.jpg",
+        price: 3450,
+        brand: "Fitform",
+        description: "De Fitform Vario zorgfauteuil kan volledig worden aangepast aan uw persoonlijke situatie. Uitstekend zitsysteem dat klachten voorkomt.",
+        badge: "Zorgfauteuil",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-fitform-574-vario",
+        name: "Sta-op stoel Fitform 574 Vario",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/02/Sta-op-stoel-Fitform-574-Vario-2-300x300.jpg",
+        price: 3450,
+        brand: "Fitform",
+        description: "Ranke, slanke en elegante zorgfauteuil. Zithoogte, zitdiepte en armleggers zijn na levering binnen 10 minuten volledig nastelbaar.",
+        badge: "Elegante Pasvorm",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-doge-modulair",
+        name: "Sta-op stoel Doge Modulair",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/01/sta-op-stoel-Doge-Modulair-4-300x300.jpg",
+        price: 3995,
+        brand: "Doge",
+        description: "Nederlands kwaliteitsproduct met 3 motoren. Optimaal zitcomfort door individuele instelbaarheid. Uitstekend te combineren met orthopedische aanpassingen.",
+        badge: "Modulair Systeem",
+        badgeType: "reco"
+      }
+    ];
+
+    // Prefill helper
+    function prefillBooking(name) {
+      localStorage.setItem("prefilledChair", name);
+      window.location.href = "afspraak.html";
+    }
+
+    // Render Logic
+    function renderCatalog() {
+      const grid = document.getElementById("catalogGrid");
+      grid.innerHTML = "";
+
+      // Get filter states
+      const sortVal = document.getElementById("sortSelect").value;
+      const checkedBrands = Array.from(document.querySelectorAll(".brand-filter:checked")).map(cb => cb.value);
+      const checkedPrices = Array.from(document.querySelectorAll(".price-filter:checked")).map(cb => cb.value);
+
+      // Filter
+      let filtered = [...GOEDKOPE_STAOPSTOELEN_DATA];
+      
+      if (checkedBrands.length > 0) {
+        filtered = filtered.filter(item => checkedBrands.includes(item.brand));
+      }
+      
+      if (checkedPrices.length > 0) {
+        filtered = filtered.filter(item => {
+          if (checkedPrices.includes("under-1500") && item.price < 1500) return true;
+          if (checkedPrices.includes("1500-2500") && item.price >= 1500 && item.price <= 2500) return true;
+          if (checkedPrices.includes("over-2500") && item.price > 2500) return true;
+          return false;
+        });
+      }
+
+      // Sort
+      if (sortVal === "price-asc") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortVal === "price-desc") {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="no-results" style="grid-column: 1/-1;">
+            <h3>Geen resultaten gevonden</h3>
+            <p style="margin-top: 8px;">Probeer uw filters aan te passen of neem direct contact op met onze BewegingsTechnologen.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        card.innerHTML = `
+          <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
+            <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
+          </div>
+          <div class="product-info" style="display: flex; flex-direction: column;">
+            <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
+            <p style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
+              ${item.description}
+            </p>
+            <div class="product-price-row">
+              <div>
+                <span class="price-label">Prijs vanaf</span>
+                <div style="display: flex; align-items: center; margin-top: 2px;">
+                  <span class="price-value">€ ${item.price.toLocaleString("nl-NL")},-</span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="prefillBooking('${item.name}')" style="padding: 10px 16px; font-size: 0.85rem; min-height: auto;">
+                Thuis Testen
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Event Listeners
+    document.getElementById("sortSelect").addEventListener("change", renderCatalog);
+    document.querySelectorAll(".brand-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+    document.querySelectorAll(".price-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+
+    // Initial render
+    window.addEventListener("DOMContentLoaded", renderCatalog);
+  </script>
+</body>
+</html>
