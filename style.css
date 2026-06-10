@@ -1432,3 +1432,25 @@ footer h3, footer h4 {
   font-size: 0.875rem;
   color: rgba(255,255,255,0.5);
 }
+
+/* Page Banner Headers (Shared across subpages) */
+.occasions-header {
+  background-color: var(--color-forest);
+  color: var(--color-light);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.occasions-header h1 {
+  color: var(--color-light);
+  font-size: 2.75rem;
+  margin-bottom: 12px;
+}
+
+.occasions-header p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
