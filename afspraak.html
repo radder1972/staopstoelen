@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan een Adviesgesprek of Passing aan Huis | Staopstoelen.nl</title>
+  <meta name="description" content="Plan direct online uw gratis en vrijblijvende passessie aan huis of maak een afspraak voor onze showroom in Dordrecht. Persoonlijk zitadvies op maat.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31612345678" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">💬</div>
+      </a>
+      <a href="tel:+31781234567" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">📞</div>
+      </a>
+      <a href="afspraak.html" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">📅</div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <span>💬</span>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo" id="navLogo">
+        <img src="assets/logo.png" alt="Staopstoelen.nl">
+      </a>
+      <div class="navbar-row-2">
+        <nav class="nav-links" id="navLinks">
+          <a href="keuzehulp.html" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="occasions.html" id="linkOccasions">Occasions</a>
+          <a href="revisie.html" id="linkRevisie">Revisieproces</a>
+          <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
+          <a href="afspraak.html" class="active" id="linkAfspraak">Afspraak Maken</a>
+          <a href="articles.html" id="linkArticles">Advies Hub</a>
+        </nav>
+        <a href="afspraak.html" class="btn btn-primary" id="btnNavAppointment" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Header -->
+  <section class="occasions-header" style="background-color: var(--color-forest); color: var(--color-light); padding: 60px 0; text-align: center;">
+    <div class="container">
+      <span class="section-tag" style="color: var(--color-gold);">Direct Boeken</span>
+      <h1 style="color: var(--color-light); font-size: 2.75rem; margin-bottom: 12px;">Plan een Adviesgesprek</h1>
+      <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">Kies de optie die u het beste uitkomt. Boek direct een passessie bij u thuis of plan een bezoek aan onze gezellige showroom.</p>
+    </div>
+  </section>
+
+  <!-- Live appointment scheduler -->
+  <section id="afspraak-planner" style="padding: 60px 0 80px 0;">
+    <div class="container">
+      <div class="booking-card" id="bookingCard">
+        <div class="booking-header">
+          <h3>Boek uw Adviesgesprek</h3>
+          <p>Geheel vrijblijvend, inclusief professionele meting door een BewegingsTechnoloog</p>
+        </div>
+
+        <div class="booking-body">
+          <!-- Type selector -->
+          <div class="booking-type-select">
+            <label class="booking-type-card selected" id="typeHome">
+              <input type="radio" name="appointmentType" value="home" checked>
+              <div class="booking-type-info">
+                <h4>Passing aan Huis (Aanbevolen)</h4>
+                <p>Wij nemen 3 geschikte stoelen mee naar uw woning. U probeert ze in uw eigen rustige omgeving.</p>
+              </div>
+            </label>
+            <label class="booking-type-card" id="typeShowroom">
+              <input type="radio" name="appointmentType" value="showroom">
+              <div class="booking-type-info">
+                <h4>Bezoek onze Showroom</h4>
+                <p>Bezoek ons in Dordrecht. Probeer meer dan 20 verschillende modellen onder het genot van een kopje koffie.</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Form elements container -->
+          <div id="bookingInteractiveArea">
+            <div class="calendar-grid">
+              <!-- Calendar Panel -->
+              <div class="calendar-selector-container">
+                <div class="calendar-month-header">
+                  <button type="button" class="calendar-nav-btn" id="btnPrevMonth">◀</button>
+                  <span class="calendar-month-name" id="currentMonthName">Juni 2026</span>
+                  <button type="button" class="calendar-nav-btn" id="btnNextMonth">▶</button>
+                </div>
+                <div class="calendar-days-grid" id="calendarDays">
+                  <!-- Generated via JS -->
+                </div>
+              </div>
+
+              <!-- Time Slot Panel -->
+              <div class="time-slots-container">
+                <h4 id="timeSlotsTitle">Beschikbare tijden voor <span id="selectedDateText">kies een datum</span>:</h4>
+                <div class="time-slots-grid" id="timeSlotsGrid">
+                  <!-- Generated via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Customer Details Form -->
+            <div class="booking-form">
+              <h4 style="margin-bottom: 20px;">Uw Contactgegevens</h4>
+              <div class="booking-form-grid">
+                <div class="form-group">
+                  <label for="bookingName">Naam *</label>
+                  <input type="text" id="bookingName" required placeholder="Bijv. Mevrouw Jansen">
+                </div>
+                <div class="form-group">
+                  <label for="bookingPhone">Telefoonnummer *</label>
+                  <input type="tel" id="bookingPhone" required placeholder="Bijv. 06 12345678">
+                </div>
+                <div class="form-group">
+                  <label for="bookingEmail">E-mailadres</label>
+                  <input type="email" id="bookingEmail" placeholder="Bijv. naam@domein.nl">
+                </div>
+                <div class="form-group">
+                  <label for="bookingAddress" id="addressLabel">Adres voor passing aan huis *</label>
+                  <input type="text" id="bookingAddress" required placeholder="Straatnaam, huisnummer & woonplaats">
+                </div>
+                <div class="form-group form-group-full">
+                  <label for="bookingNotes">Aanvullende opmerkingen (bijv. specifieke klachten of stoelvoorkeur)</label>
+                  <textarea id="bookingNotes" rows="3" placeholder="Laat ons weten waar we eventueel rekening mee kunnen houden..."></textarea>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary" id="btnSubmitBooking" style="width: 100%; max-width: 300px;">Bevestig Afspraak</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success Screen (Initially hidden) -->
+          <div id="bookingSuccessScreen" style="display: none;" class="booking-success-message">
+            <div class="booking-success-icon">✓</div>
+            <h3 style="margin-bottom: 12px; font-size: 1.75rem;">Uw afspraak staat gepland!</h3>
+            <p style="color: var(--color-gray); max-width: 500px; margin: 0 auto 24px auto;" id="successSummary">
+              We hebben uw aanvraag ontvangen. Een van onze BewegingsTechnologen neemt binnen 2 uur telefonisch contact met u op om de afspraak te bevestigen.
+            </p>
+            <button type="button" class="btn btn-outline" id="btnResetBooking">Nog een afspraak maken</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local SEO / Info Section -->
+  <section class="bg-alt" style="padding: 60px 0;">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Probeer een sta-op stoel in de regio Dordrecht & Rotterdam</h3>
+      <p style="color: var(--color-gray); font-size: 1rem; line-height: 1.7;">
+        Woont u in Dordrecht, Rotterdam, Zwijndrecht, Papendrecht of omstreken? Onze adviseurs komen kosteloos en vrijblijvend bij u thuis langs met een selectie stoelen. Zo kunt u de stoel rustig testen in uw eigen huiskamer. Bezoekt u liever de showroom? U bent van harte welkom in onze vestiging in Dordrecht voor deskundig advies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="color: var(--color-light);">Staopstoelen.nl</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Snelle Links</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="keuzehulp.html">Keuzehulp Wizard</a></li>
+          <li><a href="revisie.html">Revisieproces</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
+          <li><a href="afspraak.html">Afspraak Inplannen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kennisbank</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="articles.html">Hoe meet je de zithoogte?</a></li>
+          <li><a href="articles.html">Voordelen 3-motorige stoel</a></li>
+          <li><a href="articles.html">Veelgestelde Vragen (FAQ)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact & Showroom</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Voorstraat 123<br>
+          3311 EP Dordrecht<br>
+          <span style="display: block; margin-top: 8px;">
+            📞 078 123 4567<br>
+            ✉️ info@staopstoelen.nl
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2026 Staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

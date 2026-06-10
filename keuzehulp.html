@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keuzehulp Wizard | Staopstoelen.nl</title>
+  <meta name="description" content="Vind in 3 stappen de perfecte sta-op stoel die past bij uw lichaam en wensen met onze interactieve keuzehulp. Direct online passend advies.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31612345678" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">💬</div>
+      </a>
+      <a href="tel:+31781234567" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">📞</div>
+      </a>
+      <a href="afspraak.html" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">📅</div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <span>💬</span>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo" id="navLogo">
+        <img src="assets/logo.png" alt="Staopstoelen.nl">
+      </a>
+      <div class="navbar-row-2">
+        <nav class="nav-links" id="navLinks">
+          <a href="keuzehulp.html" class="active" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="occasions.html" id="linkOccasions">Occasions</a>
+          <a href="revisie.html" id="linkRevisie">Revisieproces</a>
+          <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
+          <a href="afspraak.html" id="linkAfspraak">Afspraak Maken</a>
+          <a href="articles.html" id="linkArticles">Advies Hub</a>
+        </nav>
+        <a href="afspraak.html" class="btn btn-primary" id="btnNavAppointment" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Header -->
+  <section class="occasions-header" style="background-color: var(--color-forest); color: var(--color-light); padding: 60px 0; text-align: center;">
+    <div class="container">
+      <span class="section-tag" style="color: var(--color-gold);">Persoonlijk Zitadvies</span>
+      <h1 style="color: var(--color-light); font-size: 2.75rem; margin-bottom: 12px;">De Keuzehulp Wizard</h1>
+      <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en fysieke behoeftes.</p>
+    </div>
+  </section>
+
+  <!-- Keuzehulp Wizard Section -->
+  <section id="keuzehulp" style="padding: 60px 0 100px 0;">
+    <div class="container">
+      <div class="wizard-card" id="wizardCard">
+        <div class="wizard-progress">
+          <div class="wizard-progress-bar" id="progressBar"></div>
+          <div class="progress-step active" id="stepIndicator1">1</div>
+          <div class="progress-step" id="stepIndicator2">2</div>
+          <div class="progress-step" id="stepIndicator3">3</div>
+          <div class="progress-step" id="stepIndicator4">🏁</div>
+        </div>
+
+        <form id="wizardForm">
+          <!-- Step 1: Lichaamslengte -->
+          <div class="wizard-step active" id="step1">
+            <h3 class="wizard-step-title">Stap 1: Wat is de lichaamslengte van de gebruiker?</h3>
+            <div class="options-grid">
+              <label class="option-card" id="optHeightS">
+                <input type="radio" name="height" value="small">
+                <span class="option-icon">📏</span>
+                <span class="option-title">Minder dan 1.65m</span>
+                <span class="option-desc">Geschikt voor compactere zithoogtes (Maat S)</span>
+              </label>
+              <label class="option-card" id="optHeightM">
+                <input type="radio" name="height" value="medium" checked>
+                <span class="option-icon">📏</span>
+                <span class="option-title">1.65m tot 1.80m</span>
+                <span class="option-desc">Geschikt voor gemiddelde zithoogtes (Maat M)</span>
+              </label>
+              <label class="option-card" id="optHeightL">
+                <input type="radio" name="height" value="large">
+                <span class="option-icon">📏</span>
+                <span class="option-title">Langer dan 1.80m</span>
+                <span class="option-desc">Geschikt voor diepere en hogere zithoogtes (Maat L)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Fysieke Klachten -->
+          <div class="wizard-step" id="step2">
+            <h3 class="wizard-step-title">Stap 2: Zijn er specifieke fysieke klachten?</h3>
+            <p style="margin-bottom: 24px; color: var(--color-gray);">Selecteer alle opties die van toepassing zijn.</p>
+            <div class="options-grid">
+              <label class="option-card" id="optComplaintBack">
+                <input type="checkbox" name="complaints" value="back">
+                <span class="option-icon">⚡</span>
+                <span class="option-title">Lage Rugpijn</span>
+                <span class="option-desc">Vereist goede lendensteun (lumbaalsteun)</span>
+              </label>
+              <label class="option-card" id="optComplaintNeck">
+                <input type="checkbox" name="complaints" value="neck">
+                <span class="option-icon">🤕</span>
+                <span class="option-title">Nek- & Schouderklachten</span>
+                <span class="option-desc">Vereist een verstelbare topswing hoofdondersteuning</span>
+              </label>
+              <label class="option-card" id="optComplaintLegs">
+                <input type="checkbox" name="complaints" value="legs">
+                <span class="option-icon">👣</span>
+                <span class="option-title">Vochtophoping in benen</span>
+                <span class="option-desc">Vereist een 'hart-lig-stand' (kantelfunctie)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 3: Wensen / Functies -->
+          <div class="wizard-step" id="step3">
+            <h3 class="wizard-step-title">Stap 3: Wat zijn uw aanvullende voorkeuren?</h3>
+            <div class="options-grid">
+              <label class="option-card" id="optOptionMotors">
+                <input type="radio" name="motors" value="3" checked>
+                <span class="option-icon">⚙️</span>
+                <span class="option-title">Maximaal instelbaar</span>
+                <span class="option-desc">3 motoren (onafhankelijke rug, voeten en kanteling)</span>
+              </label>
+              <label class="option-card" id="optOptionBasic">
+                <input type="radio" name="motors" value="1">
+                <span class="option-icon">🔌</span>
+                <span class="option-title">Eenvoudig & functioneel</span>
+                <span class="option-desc">1 motor (voetenbank en rug bewegen samen)</span>
+              </label>
+              <label class="option-card" id="optOptionModernDesign">
+                <input type="checkbox" name="modern" value="true">
+                <span class="option-icon">🌿</span>
+                <span class="option-title">Moderne uitstraling</span>
+                <span class="option-desc">Past bij actuele woontrends (stof of modern leder)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Resultaten -->
+          <div class="wizard-step" id="step4">
+            <h3 class="wizard-step-title" id="resultsTitle">Onze aanbevelingen op basis van uw antwoorden:</h3>
+            <div id="wizardResults" class="results-container">
+              <!-- Rendered via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Navigation controls -->
+          <div class="wizard-nav">
+            <button type="button" class="btn btn-outline" id="btnWizardBack" style="display: none;">Vorige</button>
+            <button type="button" class="btn btn-primary" id="btnWizardNext" style="margin-left: auto;">Volgende</button>
+            <button type="button" class="btn btn-secondary" id="btnWizardReset" style="display: none; margin-left: auto;">Opnieuw Beginnen</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="color: var(--color-light);">Staopstoelen.nl</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Snelle Links</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="keuzehulp.html">Keuzehulp Wizard</a></li>
+          <li><a href="revisie.html">Revisieproces</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
+          <li><a href="afspraak.html">Afspraak Inplannen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kennisbank</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="articles.html">Hoe meet je de zithoogte?</a></li>
+          <li><a href="articles.html">Voordelen 3-motorige stoel</a></li>
+          <li><a href="articles.html">Veelgestelde Vragen (FAQ)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact & Showroom</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Voorstraat 123<br>
+          3311 EP Dordrecht<br>
+          <span style="display: block; margin-top: 8px;">
+            📞 078 123 4567<br>
+            ✉️ info@staopstoelen.nl
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2026 Staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Overriding prefillBooking from app.js to send to the dedicated afspraak page
+    window.prefillBooking = function(chairName) {
+      localStorage.setItem("prefilledChair", chairName);
+      window.location.href = "afspraak.html";
+    };
+  </script>
+</body>
+</html>

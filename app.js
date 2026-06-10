@@ -137,6 +137,8 @@ function initWizard() {
   const resetBtn = document.getElementById("btnWizardReset");
   const form = document.getElementById("wizardForm");
   
+  if (!nextBtn || !backBtn || !resetBtn || !form) return;
+  
   // Track Option Card Selection
   const optionCards = document.querySelectorAll(".option-card");
   optionCards.forEach(card => {

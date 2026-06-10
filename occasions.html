@@ -117,14 +117,14 @@
       </a>
       <div class="navbar-row-2">
         <nav class="nav-links">
-          <a href="index.html#keuzehulp">Keuzehulp</a>
+          <a href="keuzehulp.html">Keuzehulp</a>
           <a href="occasions.html" class="active">Occasions</a>
-          <a href="index.html#revisie">Revisieproces</a>
-          <a href="index.html#klantverhalen">Ervaringen</a>
-          <a href="index.html#afspraak-planner">Afspraak Maken</a>
+          <a href="revisie.html">Revisieproces</a>
+          <a href="ervaringen.html">Ervaringen</a>
+          <a href="afspraak.html">Afspraak Maken</a>
           <a href="articles.html">Advies Hub</a>
         </nav>
-        <a href="index.html#afspraak-planner" class="btn btn-primary" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
+        <a href="afspraak.html" class="btn btn-primary" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
       </div>
     </div>
   </header>
@@ -204,10 +204,10 @@
       <div class="footer-col">
         <h4>Snelle Links</h4>
         <ul style="margin-top: 16px;">
-          <li><a href="index.html#keuzehulp">Keuzehulp Wizard</a></li>
+          <li><a href="keuzehulp.html">Keuzehulp Wizard</a></li>
           <li><a href="occasions.html">Occasions</a></li>
-          <li><a href="index.html#revisie">Revisieproces</a></li>
-          <li><a href="index.html#klantverhalen">Klantverhalen</a></li>
+          <li><a href="revisie.html">Revisieproces</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -295,7 +295,7 @@
         price: 1898,
         oldPrice: 2248,
         sizes: ["mini"],
-        description: "Deze Vario Mini heeft een heerlijke relaxfunctie en is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
+        description: "Deze Vario Mini heeft een heerlijke relaxfunctie and is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
         badge: "10 Jaar Garantie",
         badgeType: "sale"
       },
@@ -327,7 +327,7 @@
     function prefillBooking(name) {
       // Store in localStorage to prefill when returning to homepage afspraak-planner
       localStorage.setItem("prefilledChair", name);
-      window.location.href = "index.html#afspraak-planner";
+      window.location.href = "afspraak.html";
     }
 
     // Render Logic
@@ -376,7 +376,7 @@
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
             ${item.badge ? `<span class="badge ${item.badgeType === "sale" ? "badge-sale" : "badge-reco"}">${item.badge}</span>` : ""}
           </div>
-          <div class="product-info">
+          <div class="product-info" style="display: flex; flex-direction: column;">
             <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
             <p style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
               ${item.description}

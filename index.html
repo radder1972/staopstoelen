@@ -26,7 +26,7 @@
         </div>
         <div class="icon">📞</div>
       </a>
-      <a href="#afspraak-planner" class="floating-menu-item floating-chat" id="btnCalendarLink">
+      <a href="afspraak.html" class="floating-menu-item floating-chat" id="btnCalendarLink">
         <div>
           <span class="floating-menu-item-text">Plan Adviesgesprek</span>
           <span class="floating-menu-item-desc">Thuis of in showroom</span>
@@ -47,14 +47,14 @@
       </a>
       <div class="navbar-row-2">
         <nav class="nav-links" id="navLinks">
-          <a href="index.html#keuzehulp" class="active" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="keuzehulp.html" id="linkKeuzehulp">Keuzehulp</a>
           <a href="occasions.html" id="linkOccasions">Occasions</a>
-          <a href="index.html#revisie" id="linkRevisie">Revisieproces</a>
-          <a href="index.html#klantverhalen" id="linkKlantverhalen">Ervaringen</a>
-          <a href="index.html#afspraak-planner" id="linkAfspraak">Afspraak Maken</a>
+          <a href="revisie.html" id="linkRevisie">Revisieproces</a>
+          <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
+          <a href="afspraak.html" id="linkAfspraak">Afspraak Maken</a>
           <a href="articles.html" id="linkArticles">Advies Hub</a>
         </nav>
-        <a href="#afspraak-planner" class="btn btn-primary" id="btnNavAppointment" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
+        <a href="afspraak.html" class="btn btn-primary" id="btnNavAppointment" style="padding: 8px 20px; min-height: auto;">Plan Bezoek</a>
       </div>
     </div>
   </header>
@@ -74,8 +74,8 @@
           Ontdek onze prachtige selectie sta-op stoelen die naadloos opgaan in uw moderne interieur. Op maat afgesteld door onze BewegingsTechnologen voor uw ultieme ontspanning en mobiliteit.
         </p>
         <div class="hero-buttons" id="heroButtons">
-          <a href="#keuzehulp" class="btn btn-secondary" id="btnHeroWizard">Start de Keuzehulp</a>
-          <a href="#afspraak-planner" class="btn btn-outline" id="btnHeroAppointment">Thuispassing Boeken</a>
+          <a href="keuzehulp.html" class="btn btn-secondary" id="btnHeroWizard">Start de Keuzehulp</a>
+          <a href="afspraak.html" class="btn btn-outline" id="btnHeroAppointment">Thuispassing Boeken</a>
         </div>
         <div class="hero-stats" id="heroStats">
           <div class="stat-item">
@@ -99,321 +99,67 @@
   </section>
 
   <!-- Keuzehulp Wizard Section -->
-  <section id="keuzehulp" class="bg-alt">
+  <section id="keuzehulp" class="bg-alt" style="padding: 80px 0;">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
         <span class="section-tag">Vind Uw Match</span>
         <h2 class="section-title">De Keuzehulp Wizard</h2>
-        <p class="section-subtitle">Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en fysieke behoeftes.</p>
+        <p class="section-subtitle" style="margin-bottom: 32px;">Beantwoord 3 eenvoudige vragen over uw lichaamsbouw en wensen. Onze interactieve Keuzehulp adviseert direct welke gereviseerde sta-op stoel het beste bij u past.</p>
+        <a href="keuzehulp.html" class="btn btn-secondary">Start de Keuzehulp →</a>
       </div>
+    </div>
+  </section>
 
-      <div class="wizard-card" id="wizardCard">
-        <div class="wizard-progress">
-          <div class="wizard-progress-bar" id="progressBar"></div>
-          <div class="progress-step active" id="stepIndicator1">1</div>
-          <div class="progress-step" id="stepIndicator2">2</div>
-          <div class="progress-step" id="stepIndicator3">3</div>
-          <div class="progress-step" id="stepIndicator4">🏁</div>
-        </div>
-
-        <form id="wizardForm">
-          <!-- Step 1: Lichaamslengte -->
-          <div class="wizard-step active" id="step1">
-            <h3 class="wizard-step-title">Stap 1: Wat is de lichaamslengte van de gebruiker?</h3>
-            <div class="options-grid">
-              <label class="option-card" id="optHeightS">
-                <input type="radio" name="height" value="small">
-                <span class="option-icon">📏</span>
-                <span class="option-title">Minder dan 1.65m</span>
-                <span class="option-desc">Geschikt voor compactere zithoogtes (Maat S)</span>
-              </label>
-              <label class="option-card" id="optHeightM">
-                <input type="radio" name="height" value="medium" checked>
-                <span class="option-icon">📏</span>
-                <span class="option-title">1.65m tot 1.80m</span>
-                <span class="option-desc">Geschikt voor gemiddelde zithoogtes (Maat M)</span>
-              </label>
-              <label class="option-card" id="optHeightL">
-                <input type="radio" name="height" value="large">
-                <span class="option-icon">📏</span>
-                <span class="option-title">Langer dan 1.80m</span>
-                <span class="option-desc">Geschikt voor diepere en hogere zithoogtes (Maat L)</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Step 2: Fysieke Klachten -->
-          <div class="wizard-step" id="step2">
-            <h3 class="wizard-step-title">Stap 2: Zijn er specifieke fysieke klachten?</h3>
-            <p style="margin-bottom: 24px; color: var(--color-gray);">Selecteer alle opties die van toepassing zijn.</p>
-            <div class="options-grid">
-              <label class="option-card" id="optComplaintBack">
-                <input type="checkbox" name="complaints" value="back">
-                <span class="option-icon">⚡</span>
-                <span class="option-title">Lage Rugpijn</span>
-                <span class="option-desc">Vereist goede lendensteun (lumbaalsteun)</span>
-              </label>
-              <label class="option-card" id="optComplaintNeck">
-                <input type="checkbox" name="complaints" value="neck">
-                <span class="option-icon">🤕</span>
-                <span class="option-title">Nek- & Schouderklachten</span>
-                <span class="option-desc">Vereist een verstelbare topswing hoofdondersteuning</span>
-              </label>
-              <label class="option-card" id="optComplaintLegs">
-                <input type="checkbox" name="complaints" value="legs">
-                <span class="option-icon">👣</span>
-                <span class="option-title">Vochtophoping in benen</span>
-                <span class="option-desc">Vereist een 'hart-lig-stand' (kantelfunctie)</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Step 3: Wensen / Functies -->
-          <div class="wizard-step" id="step3">
-            <h3 class="wizard-step-title">Stap 3: Wat zijn uw aanvullende voorkeuren?</h3>
-            <div class="options-grid">
-              <label class="option-card" id="optOptionMotors">
-                <input type="radio" name="motors" value="3" checked>
-                <span class="option-icon">⚙️</span>
-                <span class="option-title">Maximaal instelbaar</span>
-                <span class="option-desc">3 motoren (onafhankelijke rug, voeten en kanteling)</span>
-              </label>
-              <label class="option-card" id="optOptionBasic">
-                <input type="radio" name="motors" value="1">
-                <span class="option-icon">🔌</span>
-                <span class="option-title">Eenvoudig & functioneel</span>
-                <span class="option-desc">1 motor (voetenbank en rug bewegen samen)</span>
-              </label>
-              <label class="option-card" id="optOptionModernDesign">
-                <input type="checkbox" name="modern" value="true">
-                <span class="option-icon">🌿</span>
-                <span class="option-title">Moderne uitstraling</span>
-                <span class="option-desc">Past bij actuele woontrends (stof of modern leder)</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Step 4: Resultaten -->
-          <div class="wizard-step" id="step4">
-            <h3 class="wizard-step-title" id="resultsTitle">Onze aanbevelingen op basis van uw antwoorden:</h3>
-            <div id="wizardResults" class="results-container">
-              <!-- Rendered via JavaScript -->
-            </div>
-          </div>
-
-          <!-- Navigation controls -->
-          <div class="wizard-nav">
-            <button type="button" class="btn btn-outline" id="btnWizardBack" style="display: none;">Vorige</button>
-            <button type="button" class="btn btn-primary" id="btnWizardNext" style="margin-left: auto;">Volgende</button>
-            <button type="button" class="btn btn-secondary" id="btnWizardReset" style="display: none; margin-left: auto;">Opnieuw Beginnen</button>
-          </div>
-        </form>
+  <!-- Occasions Catalog Section -->
+  <section id="occasions" style="padding: 80px 0;">
+    <div class="container">
+      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
+        <span class="section-tag">Huidig Aanbod</span>
+        <h2 class="section-title">Occasion Sta-op Stoelen</h2>
+        <p class="section-subtitle" style="margin-bottom: 32px;">Bekijk onze wisselende voorraad van A-merk occasions (zoals Fitform en Doge). Stuk voor stuk professioneel gereviseerd en direct leverbaar met garantie.</p>
+        <a href="occasions.html" class="btn btn-primary">Bekijk onze Occasions →</a>
       </div>
     </div>
   </section>
 
   <!-- Revisieproces Before/After Slider Section -->
-  <section id="revisie" class="slider-section">
+  <section id="revisie" class="bg-alt" style="padding: 80px 0;">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
         <span class="section-tag">Als Nieuw</span>
         <h2 class="section-title">Het Unieke Revisieproces</h2>
-        <p class="section-subtitle">Wij transformeren kwalitatieve A-merk sta-op stoelen tot prachtige, als-nieuwe exemplaren. Versleep de slider om het voor-en-na resultaat te bekijken.</p>
-      </div>
-
-      <!-- Before / After Interactive Slider -->
-      <div class="slider-wrapper" id="sliderWrapper">
-        <!-- Before slide (Old state) -->
-        <div class="slider-img slider-before">
-          <div class="slider-content-inner">
-            <span class="slider-text-badge">Voor revisie (Oud model)</span>
-            <div class="slider-chair-visual">🪑</div>
-            <div class="slider-chair-spec">Versleten bekleding, verouderde motoriek</div>
-            <p style="margin-top: 8px; font-size: 0.9rem;">Sleets uiterlijk, niet meer ergonomisch betrouwbaar</p>
-          </div>
-        </div>
-
-        <!-- After slide (New state) -->
-        <div class="slider-img slider-after" id="sliderAfterImage">
-          <div class="slider-content-inner">
-            <span class="slider-text-badge" style="background-color: var(--color-terracotta);">Na Revisie (Als Nieuw)</span>
-            <div class="slider-chair-visual" style="color: var(--color-gold);">🛋️</div>
-            <div class="slider-chair-spec" style="color: var(--color-gold);">Luxe Leder, Stille Motoren, Perfecte Demping</div>
-            <p style="margin-top: 8px; font-size: 0.9rem; color: var(--color-sage-light);">100% gedesinfecteerd, nieuwe vulling, 2 jaar garantie</p>
-          </div>
-        </div>
-
-        <!-- Slider Bar and Control Handle -->
-        <div class="slider-handle" id="sliderHandle">
-          <div class="slider-handle-button">↔</div>
-        </div>
-      </div>
-
-      <!-- Timeline explaining the process steps -->
-      <div class="timeline">
-        <div class="timeline-card">
-          <div class="timeline-number">1</div>
-          <h3 class="timeline-title">Grondige Inspectie</h3>
-          <p class="timeline-desc">Het frame, de motoren en de mechanische delen van A-merk stoelen (zoals Fitform en Doge) worden volledig doorgemeten en getest.</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-number">2</div>
-          <h3 class="timeline-title">Complete Vernieuwing</h3>
-          <p class="timeline-desc">Alle schuimdelen en de bekleding worden volledig vervangen door gecertificeerde, hoogwaardige en makkelijk te reinigen materialen.</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-number">3</div>
-          <h3 class="timeline-title">Ergonomische Afstelling</h3>
-          <p class="timeline-desc">Onze BewegingsTechnologen stellen de stoel bij aflevering exact in op uw zithoogte, zitdiepte en armleggerhoogte.</p>
-        </div>
+        <p class="section-subtitle" style="margin-bottom: 32px;">Wij transformeren gebruikte A-merk sta-op stoelen tot prachtige, als-nieuwe exemplaren. Bekijk het proces en ontdek hoe we vulling, bekleding en motoren volledig vernieuwen.</p>
+        <a href="revisie.html" class="btn btn-secondary">Bekijk het Revisieproces →</a>
       </div>
     </div>
   </section>
 
   <!-- Social Proof / Customer Stories -->
-  <section id="klantverhalen" class="bg-alt">
+  <section id="klantverhalen" style="padding: 80px 0;">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
         <span class="section-tag">Klantverhalen</span>
         <h2 class="section-title">Wat Onze Klanten Zeggen</h2>
-        <p class="section-subtitle">Wij helpen dagelijks mensen hun zelfstandigheid en comfort terug te krijgen. Lees hier hun persoonlijke ervaringen.</p>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-text">
-            "Sinds ik mijn 3-motorige Fitform stoel van Staopstoelen.nl heb, heb ik veel minder last van mijn onderrug. De service aan huis was fantastisch; de BewegingsTechnoloog heeft de stoel ter plekke exact op mijn maat ingesteld. Mijn kinderen waren blij dat het model zo mooi past in ons interieur."
-          </p>
-          <div class="testimonial-user">
-            <div class="user-avatar">👵</div>
-            <div>
-              <div class="user-name">Mevrouw de Vries</div>
-              <div class="user-location">Dordrecht</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <p class="testimonial-text">
-            "Ik zocht een kwalitatieve stoel voor mijn vader die moeite had met opstaan. We wilden liever geen oubollig model. Het gereviseerde model dat we hier kochten ziet er werkelijk als nieuw uit en past uitstekend in zijn moderne huiskamer. Het revisieproces gaf ons direct veel vertrouwen."
-          </p>
-          <div class="testimonial-user">
-            <div class="user-avatar">👨</div>
-            <div>
-              <div class="user-name">F. Hensen (zoon van)</div>
-              <div class="user-location">Rotterdam</div>
-            </div>
-          </div>
-        </div>
+        <p class="section-subtitle" style="margin-bottom: 32px;">Wij helpen dagelijks mensen hun zelfstandigheid en comfort terug te krijgen. Lees hier de ervaringen van onze klanten met passingen aan huis en maatwerkafstellingen.</p>
+        <a href="ervaringen.html" class="btn btn-primary">Lees alle Ervaringen →</a>
       </div>
     </div>
   </section>
 
-  <!-- Live appointment scheduler (Hybrid lead generation) -->
-  <section id="afspraak-planner">
+  <!-- Live appointment scheduler -->
+  <section id="afspraak-planner" class="bg-alt" style="padding: 80px 0;">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
         <span class="section-tag">Direct Boeken</span>
         <h2 class="section-title">Plan een Adviesgesprek</h2>
-        <p class="section-subtitle">Kies de optie die u het beste uitkomt. Boek direct een passessie bij u thuis of plan een bezoek aan onze gezellige showroom.</p>
-      </div>
-
-      <div class="booking-card" id="bookingCard">
-        <div class="booking-header">
-          <h3>Boek uw Adviesgesprek</h3>
-          <p>Geheel vrijblijvend, inclusief professionele meting door een BewegingsTechnoloog</p>
-        </div>
-
-        <div class="booking-body">
-          <!-- Type selector -->
-          <div class="booking-type-select">
-            <label class="booking-type-card selected" id="typeHome">
-              <input type="radio" name="appointmentType" value="home" checked>
-              <div class="booking-type-info">
-                <h4>Passing aan Huis (Aanbevolen)</h4>
-                <p>Wij nemen 3 geschikte stoelen mee naar uw woning. U probeert ze in uw eigen rustige omgeving.</p>
-              </div>
-            </label>
-            <label class="booking-type-card" id="typeShowroom">
-              <input type="radio" name="appointmentType" value="showroom">
-              <div class="booking-type-info">
-                <h4>Bezoek onze Showroom</h4>
-                <p>Bezoek ons in Dordrecht. Probeer meer dan 20 verschillende modellen onder het genot van een kopje koffie.</p>
-              </div>
-            </label>
-          </div>
-
-          <!-- Form elements container -->
-          <div id="bookingInteractiveArea">
-            <div class="calendar-grid">
-              <!-- Calendar Panel -->
-              <div class="calendar-selector-container">
-                <div class="calendar-month-header">
-                  <button type="button" class="calendar-nav-btn" id="btnPrevMonth">◀</button>
-                  <span class="calendar-month-name" id="currentMonthName">Juni 2026</span>
-                  <button type="button" class="calendar-nav-btn" id="btnNextMonth">▶</button>
-                </div>
-                <div class="calendar-days-grid" id="calendarDays">
-                  <!-- Generated via JS -->
-                </div>
-              </div>
-
-              <!-- Time Slot Panel -->
-              <div class="time-slots-container">
-                <h4 id="timeSlotsTitle">Beschikbare tijden voor <span id="selectedDateText">kies een datum</span>:</h4>
-                <div class="time-slots-grid" id="timeSlotsGrid">
-                  <!-- Generated via JS -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Customer Details Form -->
-            <div class="booking-form">
-              <h4 style="margin-bottom: 20px;">Uw Contactgegevens</h4>
-              <div class="booking-form-grid">
-                <div class="form-group">
-                  <label for="bookingName">Naam *</label>
-                  <input type="text" id="bookingName" required placeholder="Bijv. Mevrouw Jansen">
-                </div>
-                <div class="form-group">
-                  <label for="bookingPhone">Telefoonnummer *</label>
-                  <input type="tel" id="bookingPhone" required placeholder="Bijv. 06 12345678">
-                </div>
-                <div class="form-group">
-                  <label for="bookingEmail">E-mailadres</label>
-                  <input type="email" id="bookingEmail" placeholder="Bijv. naam@domein.nl">
-                </div>
-                <div class="form-group">
-                  <label for="bookingAddress" id="addressLabel">Adres voor passing aan huis *</label>
-                  <input type="text" id="bookingAddress" required placeholder="Straatnaam, huisnummer & woonplaats">
-                </div>
-                <div class="form-group form-group-full">
-                  <label for="bookingNotes">Aanvullende opmerkingen (bijv. specifieke klachten of stoelvoorkeur)</label>
-                  <textarea id="bookingNotes" rows="3" placeholder="Laat ons weten waar we eventueel rekening mee kunnen houden..."></textarea>
-                </div>
-              </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-primary" id="btnSubmitBooking" style="width: 100%; max-width: 300px;">Bevestig Afspraak</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Success Screen (Initially hidden) -->
-          <div id="bookingSuccessScreen" style="display: none;" class="booking-success-message">
-            <div class="booking-success-icon">✓</div>
-            <h3 style="margin-bottom: 12px; font-size: 1.75rem;">Uw afspraak staat gepland!</h3>
-            <p style="color: var(--color-gray); max-width: 500px; margin: 0 auto 24px auto;" id="successSummary">
-              We hebben uw aanvraag ontvangen. Een van onze BewegingsTechnologen neemt binnen 2 uur telefonisch contact met u op om de afspraak te bevestigen.
-            </p>
-            <button type="button" class="btn btn-outline" id="btnResetBooking">Nog een afspraak maken</button>
-          </div>
-        </div>
+        <p class="section-subtitle" style="margin-bottom: 32px;">Kies voor een gratis passing bij u thuis met 3 verschillende modellen, of breng een bezoek aan onze showroom in Dordrecht. Plan uw afspraak direct online in.</p>
+        <a href="afspraak.html" class="btn btn-secondary">Maak een Afspraak →</a>
       </div>
     </div>
   </section>
 
   <!-- Local SEO / Info Section -->
-  <section class="bg-alt" style="padding: 60px 0;">
+  <section style="padding: 60px 0;">
     <div class="container" style="max-width: 800px; text-align: center;">
       <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Probeer een sta-op stoel in de regio Dordrecht & Rotterdam</h3>
       <p style="color: var(--color-gray); font-size: 1rem; line-height: 1.7;">
@@ -434,10 +180,10 @@
       <div class="footer-col">
         <h4>Snelle Links</h4>
         <ul style="margin-top: 16px;">
-          <li><a href="#keuzehulp">Keuzehulp Wizard</a></li>
-          <li><a href="#revisie">Revisieproces</a></li>
-          <li><a href="#klantverhalen">Klantverhalen</a></li>
-          <li><a href="#afspraak-planner">Afspraak Inplannen</a></li>
+          <li><a href="keuzehulp.html">Keuzehulp Wizard</a></li>
+          <li><a href="revisie.html">Revisieproces</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
+          <li><a href="afspraak.html">Afspraak Inplannen</a></li>
         </ul>
       </div>
       <div class="footer-col">
