@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Occasions | Staopstoelen.nl Tweedehands & Gereviseerd</title>
-  <meta name="description" content="Bekijk onze huidige voorraad gereviseerde occasion sta-op stoelen. Topkwaliteit A-merken zoals Fitform, volledig op uw maat afgesteld met garantie.">
+  <title>Senioren stoelen | Comfortabele, ergonomische stoelen op maat gemaakt</title>
+  <meta name="description" content="De naam senioren stoel is misschien niet helemaal goed gekozen. Senioren stoelen zijn geschikt voor iedereen die hoge eisen aan zijn/haar zitcomfort stelt.">
   <link rel="stylesheet" href="style.css">
   <style>
     .occasions-header {
@@ -99,15 +99,45 @@
         grid-template-columns: repeat(3, 1fr);
       }
     }
-    .badge-sale {
-      background-color: var(--color-terracotta);
-    }
     .badge-reco {
       background-color: var(--color-sage);
+    }
+    .badge-new {
+      background-color: var(--color-terracotta);
     }
   </style>
 </head>
 <body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31612345678" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">💬</div>
+      </a>
+      <a href="tel:+31781234567" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">📞</div>
+      </a>
+      <a href="afspraak.html" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">📅</div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <span>💬</span>
+    </button>
+  </div>
 
   <!-- Navigation Bar -->
   <header class="navbar">
@@ -129,8 +159,8 @@
       <div class="navbar-row-2">
                 <nav class="nav-links" id="navLinks">
           <a href="keuzehulp.html" id="linkKeuzehulp">Keuzehulp</a>
-          <a href="occasions.html" class="active" id="linkOccasions">Occasions</a>
-          <a href="seniorenstoelen.html" id="linkSeniorenstoelen">Seniorenstoelen</a>
+          <a href="occasions.html" id="linkOccasions">Occasions</a>
+          <a href="seniorenstoelen.html" class="active" id="linkSeniorenstoelen">Seniorenstoelen</a>
           <a href="revisie.html" id="linkRevisie">Revisieproces</a>
           <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
           <a href="afspraak.html" id="linkAfspraak">Afspraak Maken</a>
@@ -144,16 +174,14 @@
   <!-- Header -->
   <section class="occasions-header">
     <div class="container banner-flex-container">
-      <img src="assets/chair_icon.png" alt="Occasions Icoon" class="banner-icon">
+      <img src="assets/senior_chair_icon.png" alt="Seniorenstoelen Icoon" class="banner-icon">
       <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
-        <span class="section-tag" style="color: var(--color-gold);">Huidig Aanbod</span>
-        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Occasion Sta-op Stoelen</h1>
-        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">A-merk Fitform & Doge stoelen. Volledig gedesinfecteerd, mechanisch gereviseerd en geleverd met garantie.</p>
+        <span class="section-tag" style="color: var(--color-gold);">Nieuw & Op Maat</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Senioren stoelen</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Comfortabele, ergonomische stoelen die voldoen aan de hoogste eisen voor uw zitcomfort.</p>
       </div>
     </div>
   </section>
-
-
 
   <!-- Catalog Section -->
   <section style="padding: 50px 0 80px 0;">
@@ -173,28 +201,44 @@
           </div>
 
           <div class="filter-group">
-            <h4 class="filter-group-title">Formaat / Maat</h4>
+            <h4 class="filter-group-title">Merk</h4>
             <label class="checkbox-label">
-              <input type="checkbox" class="size-filter" value="mini">
-              <span>Mini / Klein</span>
+              <input type="checkbox" class="brand-filter" value="Farstrup">
+              <span>Farstrup</span>
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" class="size-filter" value="smal">
-              <span>Smal / Slank</span>
+              <input type="checkbox" class="brand-filter" value="Hjort Knudsen">
+              <span>Hjort Knudsen</span>
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" class="size-filter" value="vario">
-              <span>Vario (Standaard)</span>
+              <input type="checkbox" class="brand-filter" value="Mecam">
+              <span>Mecam</span>
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" class="size-filter" value="xl">
-              <span>XL (Breed/Zwaar)</span>
+              <input type="checkbox" class="brand-filter" value="Overig">
+              <span>Overig</span>
+            </label>
+          </div>
+
+          <div class="filter-group">
+            <h4 class="filter-group-title">Type Verstelling</h4>
+            <label class="checkbox-label">
+              <input type="checkbox" class="adjust-filter" value="Handmatig">
+              <span>Handmatig / Hendel</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="adjust-filter" value="Sta-op">
+              <span>Sta-op / Elektrisch</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="adjust-filter" value="Zonder Motoren">
+              <span>Zonder motoren / Gasveer</span>
             </label>
           </div>
 
           <div class="filter-group" style="border-bottom:none; padding-bottom:0;">
             <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.85rem; color:var(--color-dark);">
-              <strong>🌿 Altijd op maat:</strong> Al onze occasions worden bij aflevering door onze experts exact ingesteld op uw zithoogte en zitdiepte.
+              <strong>🌿 Zitcomfort op maat:</strong> Al onze seniorenstoelen worden exact op uw lichaamsmaten (zithoogte, zitdiepte en armleggerhoogte) ingesteld door onze BewegingsTechnologen.
             </div>
           </div>
         </aside>
@@ -215,7 +259,7 @@
       <div class="footer-col">
         <h4 style="color: var(--color-light);">Staopstoelen.nl</h4>
         <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
-          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+          Specialist in premium gereviseerde A-merk sta-op stoelen en ergonomische seniorenstoelen op maat. Duurzaam, comfortabel en betaalbaar.
         </p>
       </div>
       <div class="footer-col">
@@ -260,91 +304,102 @@
     </div>
   </footer>
 
+  <script src="app.js"></script>
   <script>
-    // Scraped occasions dataset
-    const OCCASIONS_DATA = [
+    // Scraped senior chairs dataset
+    const SENIORENSTOELEN_DATA = [
       {
-        id: "fitform-570-reco",
-        name: "Voorraad Sta-op stoel Fitform 570 Vario III RECO",
-        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/10/Sta-op-stoel-Fitform-570-Vario-RECO-0-300x300.jpg",
-        price: 1500,
-        oldPrice: null,
-        sizes: ["vario"],
-        description: "Deze Voorraad Sta-op stoel Fitform 570 Vario III RECO heeft een heerlijke relaxfunctie. De handige sta-op voorziening zorgt er voor dat u zelf makkelijk uit uw fauteuil kunt komen. Deze stoel hebben wij altijd op voorraad en is nieuw GERECONDITIONEERD.",
-        badge: "Altijd op voorraad",
+        id: "seniorenstoel-hk-zwolle",
+        name: "Seniorenstoel HK Zwolle",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/02/Seniorenstoel-HjortKnudsen-Zwolle-NW-1-300x300.jpg",
+        price: 695,
+        brand: "Hjort Knudsen",
+        adjustment: "Handmatig",
+        description: "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
+        badge: "Op maat gemaakt",
         badgeType: "reco"
       },
       {
-        id: "fitform-570-reco-smal",
-        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal",
-        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/02/Sta-op-stoel-Fitform-570-Vario-Smal-RECO-1-Copy-300x300.jpg",
-        price: 1600,
-        oldPrice: 1700,
-        sizes: ["smal"],
-        description: "Deze Sta-op stoel Fitform 570 Vario III RECO Smal is aan de buitenkant niet te onderscheiden van een nieuw exemplaar. Gebouwd op een volledig gereviseerd A-merk frame. Alle mechanische componenten en schuimdelen zijn gecontroleerd en vernieuwd.",
-        badge: "Smal model",
-        badgeType: "sale"
+        id: "seniorenstoel-dylan",
+        name: "Seniorenstoel Dylan",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2020/03/Seniorenstoel-Dylan-2-300x300.jpg",
+        price: 775,
+        brand: "Overig",
+        adjustment: "Handmatig",
+        description: "Seniorenstoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
+        badge: "Hygiënisch & Robuust",
+        badgeType: "new"
       },
       {
-        id: "fitform-570-reco-smal-board",
-        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal Board",
-        image: "https://www.staopstoelen.nl/wp-content/uploads/2019/11/Sta-op-stoel-RECO-Fitform-570-Vario-smal-Board-1-Copy-300x300.jpg",
-        price: 1600,
-        oldPrice: 1700,
-        sizes: ["smal"],
-        description: "Voorzien van een smalle zitbreedte en stevige ergonomische ondersteuningsplaten (board) in de rugleuning. Ideaal voor langdurig en comfortabel zitten zonder verzakking.",
-        badge: "Stevige rug",
-        badgeType: "sale"
-      },
-      {
-        id: "fitform-570-reco-xl",
-        name: "Voorraad Sta-op stoel Fitform 570 Vario III XL RECO",
-        image: "https://www.staopstoelen.nl/wp-content/uploads/2018/02/Sta-op-stoel-Fitform-570-Vario-XL-zand-1-Copy-300x300.jpg",
-        price: 1700,
-        oldPrice: null,
-        sizes: ["xl"],
-        description: "De XL-uitvoering van de populaire Fitform 570. Biedt een bredere zit en extra verstevigde motoren. Deze stoel is volledig gereviseerd en direct uit voorraad leverbaar.",
-        badge: "XL Formaat",
-        badgeType: "reco"
-      },
-      {
-        id: "fitform-580-vario-mini",
-        name: "Voorraad Sta op stoel Fitform 580 Vario Mini",
-        image: "https://www.staopstoelen.nl/wp-content/uploads/2018/04/Sta-op-stoel-Fitform-581-Vario-klein-1-Copy-Copy-300x300.jpg",
-        price: 1898,
-        oldPrice: 2248,
-        sizes: ["mini"],
-        description: "Deze Vario Mini heeft een heerlijke relaxfunctie and is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
+        id: "seniorenstoel-farstrup-applaus",
+        name: "Seniorenstoel Farstrup Applaus",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2022/01/Senioren-fauteuil-Farstrup-APPLAUS-300x300.jpg",
+        price: 945,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "Elke Seniorenstoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
         badge: "10 Jaar Garantie",
-        badgeType: "sale"
-      },
-      {
-        id: "fitform-571-mini-ilp",
-        name: "RECO Sta-op stoel Fitform 571 Vario III Mini ILP",
-        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/04/Sta-op-stoel-Fitform-571-MINI-ILP-rugleuning-scaled.jpg",
-        price: 2400,
-        oldPrice: null,
-        sizes: ["mini"],
-        description: "Gereviseerd frame met compleet NIEUWE bekleding. Uitgerust met het gepatenteerde ILP (Intelligent Lig- & Zit-systeem) voor ultieme ondersteuning bij rugklachten. Let op: kleine uitvoering met lage rugleuning.",
-        badge: "Nieuwe Bekleding",
         badgeType: "reco"
       },
       {
-        id: "fitform-570-ilp",
-        name: "Voorraad Sta op stoel Fitform 570 Vario ILP",
-        image: "https://www.staopstoelen.nl/wp-content/uploads/2026/04/Sta-op-stoel-Fitform-570-ILP-rugleuning-scaled.jpg",
-        price: 2400,
-        oldPrice: 4600,
-        sizes: ["vario"],
-        description: "Een zo goed als ongebruikte stoel (teruggekocht wegens omstandigheden). Beschikt over de gepatenteerde Fitform ILP rug- en zittingopbouw. Werkelijk als nieuw.",
-        badge: "Kans: Als Nieuw",
-        badgeType: "sale"
+        id: "senioren-sta-op-stoel-hk-dordt",
+        name: "Senioren sta-op stoel HK Dordt",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/05/Senioren-sta-op-stoel-HK-Dordt-1-300x300.jpg",
+        price: 995,
+        brand: "Hjort Knudsen",
+        adjustment: "Sta-op",
+        description: "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
+        badge: "Sta-op Hulp",
+        badgeType: "new"
+      },
+      {
+        id: "senioren-sta-op-stoel-mecam-athena",
+        name: "Senioren sta-op stoel Mecam Athena",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-Mecam-Athena-1-300x300.jpg",
+        price: 1045,
+        brand: "Mecam",
+        adjustment: "Zonder Motoren",
+        description: "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
+        badge: "Geen Snoeren",
+        badgeType: "new"
+      },
+      {
+        id: "seniorenstoel-farstrup-plus",
+        name: "Seniorenstoel Farstrup Plus",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2020/03/Ergonomische-Senioren-fauteuil-Plus-7-300x300.jpg",
+        price: 1395,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
+        badge: "10 Jaar Garantie",
+        badgeType: "reco"
+      },
+      {
+        id: "seniorenstoel-farstrup-casa",
+        name: "Seniorenstoel Farstrup Casa",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/03/Ergonomische-Senioren-fauteuil-Casa-1-300x300.jpg",
+        price: 1495,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
+        badge: "Deens Handwerk",
+        badgeType: "reco"
+      },
+      {
+        id: "seniorenstoel-farstrup-cantate",
+        name: "Seniorenstoel Farstrup Cantate",
+        image: "https://www.staopstoelen.nl/wp-content/uploads/2017/03/Ergonomische-Senioren-fauteuil-Cantate-1-300x300.jpg",
+        price: 1595,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "De Cantate is het paradepaardje onder de seniorenstoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
+        badge: "Top Comfort",
+        badgeType: "reco"
       }
     ];
 
     // Prefill helper
     function prefillBooking(name) {
-      // Store in localStorage to prefill when returning to homepage afspraak-planner
       localStorage.setItem("prefilledChair", name);
       window.location.href = "afspraak.html";
     }
@@ -356,12 +411,18 @@
 
       // Get filter states
       const sortVal = document.getElementById("sortSelect").value;
-      const checkedSizes = Array.from(document.querySelectorAll(".size-filter:checked")).map(cb => cb.value);
+      const checkedBrands = Array.from(document.querySelectorAll(".brand-filter:checked")).map(cb => cb.value);
+      const checkedAdjustments = Array.from(document.querySelectorAll(".adjust-filter:checked")).map(cb => cb.value);
 
       // Filter
-      let filtered = [...OCCASIONS_DATA];
-      if (checkedSizes.length > 0) {
-        filtered = filtered.filter(item => item.sizes.some(size => checkedSizes.includes(size)));
+      let filtered = [...SENIORENSTOELEN_DATA];
+      
+      if (checkedBrands.length > 0) {
+        filtered = filtered.filter(item => checkedBrands.includes(item.brand));
+      }
+      
+      if (checkedAdjustments.length > 0) {
+        filtered = filtered.filter(item => checkedAdjustments.includes(item.adjustment));
       }
 
       // Sort
@@ -385,15 +446,10 @@
         const card = document.createElement("div");
         card.className = "product-card";
 
-        const priceHtml = item.oldPrice
-          ? `<span class="price-value" style="color:var(--color-dark); font-size:0.95rem; text-decoration:line-through; font-weight:normal; margin-right:8px;">€ ${item.oldPrice.toLocaleString("nl-NL")},-</span>
-             <span class="price-value" style="color:var(--color-terracotta);">€ ${item.price.toLocaleString("nl-NL")},-</span>`
-          : `<span class="price-value">€ ${item.price.toLocaleString("nl-NL")},-</span>`;
-
         card.innerHTML = `
           <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            ${item.badge ? `<span class="badge ${item.badgeType === "sale" ? "badge-sale" : "badge-reco"}">${item.badge}</span>` : ""}
+            ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
           </div>
           <div class="product-info" style="display: flex; flex-direction: column;">
             <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
@@ -402,9 +458,9 @@
             </p>
             <div class="product-price-row">
               <div>
-                <span class="price-label">Occasionprijs</span>
+                <span class="price-label">Prijs vanaf</span>
                 <div style="display: flex; align-items: center; margin-top: 2px;">
-                  ${priceHtml}
+                  <span class="price-value">€ ${item.price.toLocaleString("nl-NL")},-</span>
                 </div>
               </div>
               <button type="button" class="btn btn-secondary" onclick="prefillBooking('${item.name}')" style="padding: 10px 16px; font-size: 0.85rem; min-height: auto;">
@@ -419,7 +475,8 @@
 
     // Event Listeners
     document.getElementById("sortSelect").addEventListener("change", renderCatalog);
-    document.querySelectorAll(".size-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+    document.querySelectorAll(".brand-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+    document.querySelectorAll(".adjust-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
 
     // Initial render
     window.addEventListener("DOMContentLoaded", renderCatalog);
