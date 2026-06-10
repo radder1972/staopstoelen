@@ -178,6 +178,7 @@ section {
 /* Navigation Bar */
 .navbar {
   background-color: rgba(251, 249, 245, 0.98);
+  border-bottom: 1px solid var(--color-gray-light);
   padding: 16px 0 12px 0;
   position: sticky;
   top: 0;
@@ -185,21 +186,12 @@ section {
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
-.nav-swoosh {
-  position: absolute;
-  bottom: -28px;
-  left: 0;
-  width: 100%;
-  height: 30px;
-  z-index: 101;
-  pointer-events: none;
-}
-
 .navbar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  position: relative;
 }
 
 .logo {
@@ -207,7 +199,30 @@ section {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  position: relative;
+  z-index: 2;
 }
+
+.logo-swoosh {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 160px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .logo-swoosh {
+    top: 15px;
+    max-width: 500px;
+    height: 110px;
+  }
+}
+
 
 .logo img {
   height: 220px; /* 4x the original 55px height */
