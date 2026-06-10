@@ -4,10 +4,11 @@
   --color-forest: #4b8f24; /* Brand Green from logo, optimized for legibility */
   --color-forest-rgb: 75, 143, 36;
   --color-sage: #6ab13c; /* Brand Green accent */
-  --color-sage-light: #f0f7eb;
+  --color-sage-light: #e3f4f9; /* Light blue sky accent from new logo cushions */
+  --color-sky: #bce4f2; /* Sky Blue from new logo */
   --color-terracotta: #f39223; /* Brand Orange from logo */
   --color-terracotta-hover: #dc8019;
-  --color-gold: #fed857; /* Chair cushions yellow from logo */
+  --color-gold: #fed857; /* Chair cushions yellow/gold */
   --color-cream: #fbf9f5;
   --color-cream-dark: #f3efe6;
   --color-dark: #1d2024;
