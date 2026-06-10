@@ -101,8 +101,8 @@ const state = {
   timeSlots: ["09:00 - 11:00", "11:00 - 13:00", "13:00 - 15:00", "15:00 - 17:00"]
 };
 
-// DOM Elements
-document.addEventListener("DOMContentLoaded", () => {
+// DOM Elements Initialization Helper
+function initializeApp() {
   // Initialize Components
   initWizard();
   initSlider();
@@ -126,7 +126,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
-});
+}
+
+// Robust DOM check
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeApp);
+} else {
+  initializeApp();
+}
+
 
 /* ==========================================================================
    WIZARD COMPONENT LOGIC
