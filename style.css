@@ -291,19 +291,23 @@ section {
 .nav-text-logo {
   position: absolute;
   left: 24px;
-  top: 28px;
+  top: 22px; /* Adjusted to align with larger font */
   font-family: var(--font-header);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.85rem; /* Larger heading font size */
+  font-weight: 800; /* Extra bold heading style */
   color: var(--color-forest);
   text-decoration: none;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.8px;
   z-index: 10;
-  transition: color var(--transition-fast);
+  transition: opacity var(--transition-fast);
+}
+
+.nav-text-logo span {
+  color: var(--color-terracotta); /* Make .nl orange */
 }
 
 .nav-text-logo:hover {
-  color: var(--color-terracotta);
+  opacity: 0.85;
 }
 
 @media (max-width: 768px) {
@@ -320,7 +324,7 @@ section {
     left: auto;
     top: auto;
     margin: 8px 0 0 0;
-    font-size: 1.15rem;
+    font-size: 1.5rem;
     text-align: center;
   }
 }
