@@ -37,6 +37,7 @@ const CHAIR_DATABASE = [
     ],
     suitability: "Aanbevolen bij vochtophoping in de benen en zware mobiliteitsklachten.",
     emoji: "💺",
+    image: "assets/doge_belluno_royal.png",
     badge: "Extra Comfort"
   },
   {
@@ -56,6 +57,7 @@ const CHAIR_DATABASE = [
     ],
     suitability: "Uitstekend budgetvriendelijk model voor algemene ondersteuning bij opstaan.",
     emoji: "🛋️",
+    image: "assets/prominent_classic.png",
     badge: "Beste Prijs"
   },
   {
@@ -75,6 +77,7 @@ const CHAIR_DATABASE = [
     ],
     suitability: "De perfecte combinatie van modern interieurdesign en maximale ergonomie.",
     emoji: "🌿",
+    image: "assets/fitform_582_cozy.png",
     badge: "Design Trend"
   }
 ];
