@@ -581,7 +581,7 @@ function initCalendar() {
       });
       
       const typeText = state.appointmentType === "home" ? "Passing aan Huis" : "Showroombezoek in Dordrecht";
-      const locationDetail = state.appointmentType === "home" ? `op uw adres (${address})` : "op onze locatie (Voorstraat 123, Dordrecht)";
+      const locationDetail = state.appointmentType === "home" ? `op uw adres (${address})` : "op onze locatie (Merwedestraat 239, Dordrecht)";
       
       document.getElementById("successSummary").innerHTML = `
         Er is een afspraak gepland voor een <strong>${typeText}</strong> ${locationDetail}. <br>
