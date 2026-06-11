@@ -17,6 +17,7 @@ const CHAIR_DATABASE = [
     ],
     suitability: "Ideaal bij rug- en nekklachten door de onafhankelijke motorische sturing.",
     emoji: "🛋️",
+    image: "assets/fitform_570_elegance.png",
     badge: "Populairste Keuze"
   },
   {
@@ -348,7 +349,7 @@ function renderWizardResults() {
       
     card.innerHTML = `
       <div class="product-image">
-        <span>${chair.emoji}</span>
+        ${chair.image ? `<img src="${chair.image}" alt="${chair.name}">` : `<span>${chair.emoji}</span>`}
         ${chair.badge ? `<span class="badge">${chair.badge}</span>` : ""}
       </div>
       <div class="product-info">
