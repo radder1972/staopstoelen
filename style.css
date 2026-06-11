@@ -757,13 +757,19 @@ section {
 }
 
 .slider-before {
-  background-color: #5c5043; /* Warm brown-gray for "old" */
+  background-color: #5c5043;
+  background-image: url('assets/revisie_voor.png');
+  background-size: cover;
+  background-position: center;
   color: rgba(255,255,255,0.7);
   z-index: 1;
 }
 
 .slider-after {
-  background-color: var(--color-forest); /* Emerald/forest green upholstery */
+  background-color: var(--color-forest);
+  background-image: url('assets/revisie_na.png');
+  background-size: cover;
+  background-position: center;
   color: var(--color-light);
   z-index: 2;
   width: 50%; /* Initial width */
@@ -791,16 +797,29 @@ section {
 }
 
 .slider-text-badge {
-  background-color: rgba(0,0,0,0.5);
-  backdrop-filter: blur(4px);
-  color: var(--color-light);
+  position: absolute;
+  top: 20px;
   padding: 8px 16px;
   border-radius: var(--radius-full);
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.slider-before .slider-text-badge {
+  left: 20px;
+  background-color: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  color: var(--color-light);
+}
+
+.slider-after .slider-text-badge {
+  right: 20px;
+  background-color: var(--color-terracotta);
+  color: var(--color-light);
 }
 
 .slider-chair-visual {
