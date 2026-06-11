@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over Ons | Staopstoelen.nl</title>
+  <meta name="description" content="Dé specialist in seniorenstoelen en sta-op stoelen op maat. Lees meer over de organisatie achter Staopstoelen.nl, onze voordelen en ons aanbod.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .info-content-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .info-section-title {
+      font-size: 2rem;
+      color: var(--color-forest-dark);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--color-sage-light);
+      padding-bottom: 8px;
+    }
+    .info-section-subtitle {
+      font-size: 1.5rem;
+      color: var(--color-forest);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .info-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-dark);
+      margin-bottom: 20px;
+    }
+    .info-list {
+      margin-bottom: 24px;
+      padding-left: 20px;
+    }
+    .info-list li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-dark);
+      margin-bottom: 12px;
+    }
+    .brand-highlight {
+      font-weight: 700;
+      color: var(--color-forest);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31612345678" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">💬</div>
+      </a>
+      <a href="tel:+31781234567" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">📞</div>
+      </a>
+      <a href="afspraak.html" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">📅</div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <span>💬</span>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <!-- Beautiful Overlapping Liquid Waves behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <!-- Wave 1: Sky Blue -->
+        <path d="M 0,90 Q 250,160 500,100 T 1000,110" fill="none" stroke="var(--color-sky)" stroke-width="8" stroke-linecap="round" opacity="0.6"></path>
+        <!-- Wave 2: Terracotta Orange -->
+        <path d="M 0,110 Q 250,70 500,120 T 1000,130" fill="none" stroke="var(--color-terracotta)" stroke-width="6" stroke-linecap="round" opacity="0.75"></path>
+        <!-- Wave 3: Sage Green -->
+        <path d="M 0,125 Q 250,170 500,115 T 1000,140" fill="none" stroke="var(--color-sage)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>
+        <!-- Wave 4: Forest Green -->
+        <path d="M 0,140 Q 250,100 500,145 T 1000,150" fill="none" stroke="var(--color-forest)" stroke-width="10" stroke-linecap="round" opacity="0.95"></path>
+      </svg>
+      <a href="index.html" class="nav-text-logo" id="navTextLogo">staopstoelen<span>.nl</span></a>
+      <a href="index.html" class="logo" id="navLogo">
+        <img src="assets/logo.png" alt="Staopstoelen.nl">
+      </a>
+      <a href="afspraak.html" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment">Plan Bezoek</a>
+      <div class="navbar-row-2">
+        <nav class="nav-links" id="navLinks">
+          <a href="goedkope-sta-op-stoelen.html" id="linkGoedkopeStaopstoelen">Goedkope Sta-op Stoelen</a>
+          <a href="seniorenstoelen.html" id="linkSeniorenstoelen">Seniorenstoelen</a>
+          <a href="occasions.html" id="linkOccasions">Occasions</a>
+          <a href="keuzehulp.html" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="revisie.html" id="linkRevisie">Revisieproces</a>
+          <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
+          <a href="afspraak.html" id="linkAfspraak">Afspraak Maken</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Header -->
+  <section class="occasions-header">
+    <div class="container banner-flex-container">
+      <img src="assets/logo.png" alt="Staopstoelen.nl Logo" class="banner-icon" style="border-radius: 50%; object-fit: contain; padding: 10px;">
+      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Over Ons</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Over Staopstoelen.nl</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Maak kennis met onze organisatie, onze voordelen en onze passie voor zithulpmiddelen op maat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page Content -->
+  <section style="padding: 60px 0 100px 0;">
+    <div class="info-content-container">
+      
+      <h2 class="info-section-title">DÉ SPECIALIST IN seniorenstoelen EN sta-op STOELEN OP MAAT</h2>
+      <p class="info-text">
+        Merkt u dat opstaan uit uw favoriete stoel steeds moeizamer gaat? Of krijgt u na een uurtje zitten last van uw rug of benen? Bij staopstoelen.nl begrijpen we dat een goede stoel niet alleen mooi moet zijn, maar vooral <span class="brand-highlight">uw lichaam goed moet ondersteunen</span>.
+      </p>
+      <p class="info-text">
+        Als dé erkende <span class="brand-highlight">zitspecialist</span> van de regio Dordrecht en omstreken, helpen wij u de regie over uw eigen comfort terug te krijgen.
+      </p>
+      
+      <p class="info-text">
+        <span class="brand-highlight">Maatwerk</span>: Geen stoel gaat bij ons de deur uit zonder dat deze perfect is afgesteld. Wij meten uw ideale zithoogte, zitdiepte en armleggerhoogte tot op de centimeter nauwkeurig. Onze adviseurs kijken verder dan alleen het design. Met kennis van <span class="brand-highlight">Bewegingstechnologie</span> zorgen we dat uw bloedsomloop optimaal blijft en uw rug de rust krijgt die hij verdient.
+      </p>
+      
+      <p class="info-text">
+        Topmerken onder één dak: Wij zijn trotse dealer van de <span class="brand-highlight">beste ergonomische merken</span>, waaronder Fitform, Doge en Releazz. Kwaliteit die u voelt.
+      </p>
+
+      <h3 class="info-section-subtitle">De voordelen van een sta op stoel</h3>
+      <p class="info-text">
+        Er zitten veel voordelen aan het gebruik van een sta op stoel. Wij zetten deze pluspunten graag voor u op een rijtje, zodat u er een beter overzicht van heeft.
+      </p>
+      <p class="info-text">
+        De voordelen van een sta op stoel:
+      </p>
+      <ul class="info-list">
+        <li>De stoel zorgt ervoor dat u gemakkelijker kunt opstaan.</li>
+        <li>De stoel kan geheel naar uw wensen en maten worden geleverd.</li>
+        <li>Niet alleen zit u heerlijk in deze stoel, ook kunt u er eventueel in slapen.</li>
+        <li>De stoel vermindert de druk op uw billen en rug.</li>
+        <li>De stoel zorgt voor een goede vochtafvoer uit de benen.</li>
+      </ul>
+
+      <h3 class="info-section-subtitle">Occasion sta-op stoelen</h3>
+      <p class="info-text">
+        Als <strong>geautoriseerd Fitform en Doge dealer</strong> heeft u bij ons gegarandeerd het beste comfort, goede garanties en uiteindelijk het langst <strong>plezier van uw aankoop</strong>.
+      </p>
+      <p class="info-text">
+        Ook Fitform en Doge adviseren om enkel met geautoriseerde dealers in zee te gaan.
+      </p>
+      <p class="info-text">
+        Wij adviseren om een sta-op stoel eerst <strong>te voelen en uitproberen</strong> voordat u deze koopt, daarom hebben wij een goed gevulde winkel waar u van harte welkom bent om vrijblijvend langs te komen.
+      </p>
+      <p class="info-text">
+        Naast nieuwe sta-op stoelen hebben we een assortiment aan <strong>gebruikte sta-op stoelen</strong> uit het topsegment staan. Dit zijn meestal kwaliteitsstoelen van Fitform of Doge.
+      </p>
+      <p class="info-text">
+        Mocht er een reparatie nodig zijn dan kunnen we u snel en vakkundig uit de nood helpen. Wij beschikken over technisch personeel, werkplaats en een servicewagen.
+      </p>
+      <p class="info-text">
+        Een sta-op stoel moet u helpen met opstaan zodat u minder afhankelijk bent van anderen. Verder moet u er natuurlijk ook goed in zitten en liggen. Wij hebben veel ervaring met gecompliceerde zitproblemen. <strong>Bij ons zit u dus wel goed!</strong>
+      </p>
+      <p class="info-text">
+        Bij onze sta-op stoelen voldoet de kwaliteit van interieur, romp en stoffering aan de hoogste normen. U verdient persoonlijke aandacht, niet bij wijze van uitzondering, maar elke dag. Uw stoel wordt op den duur een kostbaar persoonlijk bezit. Een sta-op stoel die helemaal op uw persoonlijke zitcomfort is afgestemd, geeft u weer nieuwe energie. Zitten is alleen een ontspannende activiteit als de stoel aansluit op het lichaam en voldoende verstel- en instel mogelijkheden heeft.
+      </p>
+      <p class="info-text">
+        Uiteraard kunt u onze sta-op stoelen in onze winkel komen <strong>bekijken en uitproberen</strong>. Wij kunnen u helpen bij het maken van een goede keuze waar u nog jarenlang plezier van zal hebben. Onze ervaren medewerkers geven u graag vrijblijvend advies.
+      </p>
+      <p class="info-text">
+        Wij leveren al bijna 30 jaar sta-op stoelen (en andere zorghulpmiddelen) voor onder andere zorgverzekeraars, zorginstellingen en particulieren. Hierdoor hebben wij zeer veel ervaring en worden in de regio '<strong>de zit-specialist</strong>' of '<strong>sta-op stoel specialist</strong>' genoemd.
+      </p>
+
+      <p class="info-text" style="margin-top: 40px; padding: 24px; background-color: var(--color-sage-light); border-radius: var(--radius-md); border-left: 5px solid var(--color-forest);">
+        <em>Let op: u maakt de advies afspraak op de website van Schipper Compact Wonen!</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4 style="color: var(--color-light);">Staopstoelen.nl</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Snelle Links</h4>
+        <ul style="margin-top: 16px;">
+          <li><a href="keuzehulp.html">Keuzehulp Wizard</a></li>
+          <li><a href="occasions.html">Occasions</a></li>
+          <li><a href="seniorenstoelen.html">Seniorenstoelen</a></li>
+          <li><a href="goedkope-sta-op-stoelen.html">Goedkope Sta-op Stoelen</a></li>
+          <li><a href="revisie.html">Revisieproces</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
+          <li><a href="afspraak.html">Afspraak Inplannen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact & Showroom</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Voorstraat 123<br>
+          3311 EP Dordrecht<br>
+          <span style="display: block; margin-top: 8px;">
+            📞 078 123 4567<br>
+            ✉️ info@staopstoelen.nl
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2026 Staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
