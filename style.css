@@ -1574,6 +1574,9 @@ footer h3, footer h4 {
   background-color: var(--color-light);
   flex-shrink: 0;
   margin-top: 28px; /* Align top of icon with the top of the h1 heading line */
+  object-fit: contain;
+  box-sizing: border-box;
+  padding: 8px;
 }
 
 @media (max-width: 768px) {
