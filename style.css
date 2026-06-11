@@ -3,6 +3,7 @@
 :root {
   --color-forest: #4b8f24; /* Brand Green from logo, optimized for legibility */
   --color-forest-rgb: 75, 143, 36;
+  --color-forest-dark: #122b07; /* Very dark green for main navigation text */
   --color-sage: #6ab13c; /* Brand Green accent */
   --color-sage-light: #e3f4f9; /* Light blue sky accent from new logo cushions */
   --color-sky: #bce4f2; /* Sky Blue from new logo */
@@ -269,7 +270,7 @@ section {
 
 .nav-links a {
   font-weight: 500;
-  color: var(--color-dark);
+  color: var(--color-forest-dark);
 }
 
 .nav-links a:hover,
