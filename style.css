@@ -2000,3 +2000,25 @@ footer h3, footer h4 {
     padding-bottom: 0;
   }
 }
+
+/* Uniform sizing and styling for recommended chair images on the Keuzehulp results page */
+.results-container .product-image {
+  height: 240px;
+  aspect-ratio: auto;
+  background-color: var(--color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 16px;
+  position: relative;
+}
+
+.results-container .product-image img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  padding: 0;
+}
