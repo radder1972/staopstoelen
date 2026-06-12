@@ -276,12 +276,13 @@ section {
 
 .nav-links a {
   font-weight: 600;
-  color: var(--color-forest);
+  color: var(--color-forest-dark);
+  transition: color var(--transition-smooth);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--color-forest-dark);
+  color: var(--color-forest);
 }
 
 .btn-nav-appointment {
