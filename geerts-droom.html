@@ -22,14 +22,15 @@
       position: relative;
       width: 100%;
       max-width: 480px;
-      height: 480px;
+      height: auto;
+      aspect-ratio: 170 / 159;
       margin: 0 auto;
       border-radius: var(--radius-md);
       overflow: hidden;
       background-color: #f7f3e7; /* Match generated image cream background */
       box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
       border: 2px solid var(--color-light);
-      cursor: pointer;
+      cursor: ew-resize; /* Show horizontal resize cursor to suggest left-to-right motion */
     }
 
     .chair-image {
@@ -38,9 +39,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0s;
     }
 
     .chair-image.active {
@@ -177,11 +178,14 @@
 
       <div class="interactive-chair-container">
         <div class="chair-image-wrapper" id="chairWrapper">
-          <img src="assets/geert_dream_sit.png" alt="Geerts Droom Sta-opstoel in standaard zitstand" class="chair-image sit-image active" id="sitImg">
-          <img src="assets/geert_dream_mid.png" alt="Geerts Droom Sta-opstoel halverwege opgestaan" class="chair-image mid-image" id="midImg">
-          <img src="assets/geert_dream_lift.png" alt="Geerts Droom Sta-opstoel in volledig omhooggestuurde upstand" class="chair-image lift-image" id="liftImg">
+          <img src="assets/geert_dream_frame_1.png" alt="Geerts Droom Sta-opstoel frame 1" class="chair-image active" id="frame1">
+          <img src="assets/geert_dream_frame_2.png" alt="Geerts Droom Sta-opstoel frame 2" class="chair-image" id="frame2">
+          <img src="assets/geert_dream_frame_3.png" alt="Geerts Droom Sta-opstoel frame 3" class="chair-image" id="frame3">
+          <img src="assets/geert_dream_frame_4.png" alt="Geerts Droom Sta-opstoel frame 4" class="chair-image" id="frame4">
+          <img src="assets/geert_dream_frame_5.png" alt="Geerts Droom Sta-opstoel frame 5" class="chair-image" id="frame5">
+          <img src="assets/geert_dream_frame_6.png" alt="Geerts Droom Sta-opstoel frame 6" class="chair-image" id="frame6">
         </div>
-        <div class="interactive-hint">Beweeg uw muis over de foto om op te staan</div>
+        <div class="interactive-hint">Beweeg uw muis van links naar rechts over de foto om op te staan</div>
       </div>
     </div>
   </section>
@@ -249,53 +253,44 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const wrapper = document.getElementById('chairWrapper');
-      const sitImg = document.getElementById('sitImg');
-      const midImg = document.getElementById('midImg');
-      const liftImg = document.getElementById('liftImg');
+      const frames = [
+        document.getElementById('frame1'),
+        document.getElementById('frame2'),
+        document.getElementById('frame3'),
+        document.getElementById('frame4'),
+        document.getElementById('frame5'),
+        document.getElementById('frame6')
+      ];
 
-      let hoverTimeout1 = null;
-      let hoverTimeout2 = null;
-
-      wrapper.addEventListener('mouseenter', () => {
-        clearTimeouts();
+      wrapper.addEventListener('mousemove', (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        // Calculate horizontal hover percentage (0.0 to 1.0)
+        let percent = (e.clientX - rect.left) / rect.width;
         
-        // Transition to mid after 200ms
-        hoverTimeout1 = setTimeout(() => {
-          setImageActive(midImg);
-          
-          // Transition to lift after another 200ms
-          hoverTimeout2 = setTimeout(() => {
-            setImageActive(liftImg);
-          }, 200);
-        }, 200);
+        // Clamp percentage between 0 and 1
+        percent = Math.max(0, Math.min(1, percent));
+        
+        // Determine frame index (0 to 5) based on percentage
+        // Dividing 0-1 range into 6 sub-ranges
+        let frameIndex = Math.floor(percent * 6);
+        if (frameIndex > 5) frameIndex = 5;
+        
+        setActiveFrame(frameIndex);
       });
 
       wrapper.addEventListener('mouseleave', () => {
-        clearTimeouts();
-        
-        // If we are at lift, go back to mid first
-        if (liftImg.classList.contains('active')) {
-          setImageActive(midImg);
-          hoverTimeout1 = setTimeout(() => {
-            setImageActive(sitImg);
-          }, 200);
-        } else if (midImg.classList.contains('active')) {
-          setImageActive(sitImg);
-        } else {
-          setImageActive(sitImg);
-        }
+        // Smoothly return or snap to frame 1 when leaving
+        setActiveFrame(0);
       });
 
-      function setImageActive(activeImg) {
-        [sitImg, midImg, liftImg].forEach(img => {
-          img.classList.remove('active');
+      function setActiveFrame(index) {
+        frames.forEach((frame, idx) => {
+          if (idx === index) {
+            frame.classList.add('active');
+          } else {
+            frame.classList.remove('active');
+          }
         });
-        activeImg.classList.add('active');
-      }
-
-      function clearTimeouts() {
-        if (hoverTimeout1) clearTimeout(hoverTimeout1);
-        if (hoverTimeout2) clearTimeout(hoverTimeout2);
       }
     });
   </script>
