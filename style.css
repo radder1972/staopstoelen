@@ -1596,3 +1596,32 @@ footer h3, footer h4 {
   }
 }
 
+/* Contact & Footer SVG Icons */
+.contact-icon {
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.15em;
+  display: inline-block;
+  margin-right: 8px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.floating-menu-item .icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-light);
+  fill: none;
+  stroke-width: 2.5;
+  display: block;
+}
+
+.floating-btn-main svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--color-light);
+  fill: none;
+  stroke-width: 2.5;
+  display: block;
+}
