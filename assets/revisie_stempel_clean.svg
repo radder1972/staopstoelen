@@ -11,20 +11,20 @@
   <!-- Inner thin dark green border -->
   <circle cx="150" cy="150" r="76" fill="none" stroke="#122b07" stroke-width="3" />
   
-  <!-- Text paths optimized for vertical alignment -->
-  <!-- Top text path (clockwise, R=95) -->
-  <path id="text-path-top" d="M 55,150 A 95,95 0 0,1 245,150" fill="none" />
-  <!-- Bottom text path (counter-clockwise, R=108) -->
-  <path id="text-path-bottom" d="M 42,150 A 108,108 0 0,0 258,150" fill="none" />
+  <!-- Text paths optimized to center the text and avoid borders -->
+  <!-- Top text path (clockwise, R=82, centers text of size 22.5) -->
+  <path id="text-path-top" d="M 68,150 A 82,82 0 0,1 232,150" fill="none" />
+  <!-- Bottom text path (counter-clockwise, R=106, centers text of size 22.5) -->
+  <path id="text-path-bottom" d="M 44,150 A 106,106 0 0,0 256,150" fill="none" />
   
-  <!-- Text elements -->
-  <text fill="#122b07" font-family="'Montserrat', sans-serif" font-weight="900" font-size="20.5" letter-spacing="1.8">
+  <!-- Text elements (larger font size, weight 900 for legibility) -->
+  <text fill="#122b07" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="1.2">
     <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">
       100% GEREVISEERD
     </textPath>
   </text>
   
-  <text fill="#122b07" font-family="'Montserrat', sans-serif" font-weight="900" font-size="21" letter-spacing="3.2">
+  <text fill="#122b07" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="4.5">
     <textPath href="#text-path-bottom" startOffset="50%" text-anchor="middle">
       ALS NIEUW
     </textPath>
