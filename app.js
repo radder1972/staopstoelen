@@ -357,7 +357,7 @@ function renderWizardResults() {
         ${chair.badge ? `<span class="badge">${chair.badge}</span>` : ""}
       </div>
       <div class="product-info">
-        <h4 class="product-title">${chair.name}</h4>
+        <h3 class="product-title">${chair.name}</h3>
         <p style="font-size: 0.85rem; color: var(--color-terracotta); font-weight:600; margin-bottom: 12px;">
           ${chair.suitability}
         </p>
