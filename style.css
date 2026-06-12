@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap');
 
 :root {
   --color-forest: #4b8f24; /* Brand Green from logo, optimized for legibility */
@@ -980,6 +980,70 @@ section {
   font-size: 5rem;
   color: var(--color-sage-light);
   line-height: 1;
+  z-index: 1;
+}
+
+.testimonial-body-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 600px) {
+  .testimonial-body-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+  }
+}
+
+.testimonial-content {
+  flex: 1;
+}
+
+.polaroid-frame {
+  background-color: #ffffff;
+  padding: 8px 8px 20px 8px;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  border: 1px solid #e8e8e8;
+  transform: rotate(-2.5deg);
+  max-width: 140px;
+  margin: 0 auto;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.polaroid-frame:hover {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+}
+
+.testimonial-card:nth-child(even) .polaroid-frame {
+  transform: rotate(2.5deg);
+}
+
+.testimonial-card:nth-child(even) .polaroid-frame:hover {
+  transform: scale(1.05) rotate(0deg);
+}
+
+.polaroid-frame img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 1px solid #ececec;
+  display: block;
+}
+
+.polaroid-caption {
+  font-family: 'Kalam', 'Caveat', cursive, 'Georgia', serif;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 8px;
+  color: var(--color-forest-dark);
+  font-weight: bold;
 }
 
 .testimonial-text {
