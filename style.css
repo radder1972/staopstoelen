@@ -1567,9 +1567,9 @@ footer h3, footer h4 {
 .occasions-header {
   background-color: var(--color-forest);
   color: var(--color-light);
-  padding: 40px 0;
+  padding: 25px 0;
   text-align: center;
-  min-height: 230px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: center;
