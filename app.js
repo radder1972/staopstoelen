@@ -110,7 +110,7 @@ const state = {
   currentDate: new Date(), // Live current date
   selectedDate: null,
   selectedTimeSlot: null,
-  timeSlots: ["09:00 - 11:00", "11:00 - 13:00", "13:00 - 15:00", "15:00 - 17:00"]
+  timeSlots: ["10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00"]
 };
 
 // DOM Elements Initialization Helper
