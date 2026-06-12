@@ -806,6 +806,8 @@ function renderTimeSlots() {
   
   const day = state.selectedDate.getDate();
   const isSaturday = state.selectedDate.getDay() === 6;
+  const today = new Date();
+  const isToday = state.selectedDate.toDateString() === today.toDateString();
   
   // Helper to render the actual buttons
   const drawSlots = (busySlots) => {
@@ -825,10 +827,22 @@ function renderTimeSlots() {
       const isBusy = busySlots 
         ? busySlots.includes(slot) 
         : (day + idx) % 3 === 0;
+
+      // Disable slots that started in the past if selectedDate is today
+      let isPastSlot = false;
+      if (isToday) {
+        const startStr = slot.split(" - ")[0];
+        const [slotH, slotM] = startStr.split(":").map(Number);
+        const currentH = today.getHours();
+        const currentM = today.getMinutes();
+        if (currentH > slotH || (currentH === slotH && currentM >= slotM)) {
+          isPastSlot = true;
+        }
+      }
       
-      if (satDisabled || isBusy) {
+      if (satDisabled || isBusy || isPastSlot) {
         btn.disabled = true;
-        btn.textContent = `${slot} (Vol)`;
+        btn.textContent = `${slot} (${isPastSlot ? "Voorbij" : "Vol"})`;
       }
       
       if (state.selectedTimeSlot === slot && !btn.disabled) {
