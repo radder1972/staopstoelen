@@ -4,7 +4,7 @@ const GOOGLE_CALENDAR_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/279246
 
 // Google Calendar Live Availability Get URL (Google Apps Script Web App)
 // Configure this with your deployed Apps Script Web App URL to retrieve real-time busy slots.
-const GOOGLE_CALENDAR_GET_SLOTS_URL = "";
+const GOOGLE_CALENDAR_GET_SLOTS_URL = "https://script.google.com/macros/s/AKfycbxIPs1J8fVUquyzIq_gZ4WTjsTBRgMGazeq58EbOZmF9yNfObr25NvCOBUWkit665y-OQ/exec";
 
 // Database of available lift chairs (revised premium models)
 const CHAIR_DATABASE = [
