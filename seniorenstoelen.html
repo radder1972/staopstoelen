@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ergonomische Seniorenstoelen op Maat | Comfortabel Zitten</title>
   <meta name="description" content="Ontdek onze collectie ergonomische seniorenstoelen op maat. Volledig instelbare relaxstoelen en sta-op stoelen voor optimaal zitcomfort en rugondersteuning.">
-  <link rel="stylesheet" href="style.css?v=1.0.24">
+  <link rel="stylesheet" href="style.css?v=1.0.25">
   <style>
 
     .catalog-layout {
@@ -460,8 +460,9 @@
         card.className = "product-card";
 
         card.innerHTML = `
-          <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
+          <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            ${item.badgeType === "reco" ? `<img src="assets/revisie_stempel_clean.svg?v=1.0.5" alt="100% gereviseerd als nieuw" class="quality-stamp">` : ""}
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
           </div>
           <div class="product-info" style="display: flex; flex-direction: column;">
