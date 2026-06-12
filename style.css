@@ -274,14 +274,17 @@ section {
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--color-forest-dark); /* Donkergroen */
+  color: var(--color-terracotta); /* Oranje */
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
-.nav-top-link:hover,
+.nav-top-link:hover {
+  color: var(--color-terracotta-hover);
+}
+
 .nav-top-link.active {
-  color: var(--color-forest);
+  color: var(--color-terracotta);
 }
 
 .btn-nav-appointment {
