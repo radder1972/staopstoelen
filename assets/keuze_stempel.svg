@@ -34,13 +34,7 @@
   <circle cx="56.1" cy="153.7" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   <circle cx="243.9" cy="153.7" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   
-  <!-- Center choice question mark (bold outlined style matching checkmark/hand) -->
-  <!-- Outer dark green stroke for outline -->
-  <path d="M 125,120 C 125,85 175,85 175,120 C 175,142 150,142 150,165" fill="none" stroke="#122b07" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
-  <!-- Inner green stroke for body -->
-  <path d="M 125,120 C 125,85 175,85 175,120 C 175,142 150,142 150,165" fill="none" stroke="#4b8f24" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-  
-  <!-- Question mark dot with matching outline and body -->
-  <circle cx="150" cy="200" r="11" fill="#122b07" />
-  <circle cx="150" cy="200" r="6" fill="#4b8f24" />
+  <!-- Center choice question mark (clean bold green, no outline, matching checkmark style) -->
+  <path d="M 125,120 C 125,85 175,85 175,120 C 175,142 150,142 150,165" fill="none" stroke="#4b8f24" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="150" cy="200" r="12" fill="#4b8f24" />
 </svg>
