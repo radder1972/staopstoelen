@@ -39,21 +39,12 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .chair-image.lift-image {
-      opacity: 0;
-    }
-    .chair-image.sit-image {
+    .chair-image.active {
       opacity: 1;
-    }
-
-    .chair-image-wrapper:hover .chair-image.lift-image {
-      opacity: 1;
-    }
-    .chair-image-wrapper:hover .chair-image.sit-image {
-      opacity: 0;
     }
 
     .interactive-hint {
@@ -185,9 +176,10 @@
       </p>
 
       <div class="interactive-chair-container">
-        <div class="chair-image-wrapper">
-          <img src="assets/geert_dream_sit.png" alt="Geerts Droom Sta-opstoel in standaard zitstand" class="chair-image sit-image">
-          <img src="assets/geert_dream_lift.png" alt="Geerts Droom Sta-opstoel in volledig omhooggestuurde upstand" class="chair-image lift-image">
+        <div class="chair-image-wrapper" id="chairWrapper">
+          <img src="assets/geert_dream_sit.png" alt="Geerts Droom Sta-opstoel in standaard zitstand" class="chair-image sit-image active" id="sitImg">
+          <img src="assets/geert_dream_mid.png" alt="Geerts Droom Sta-opstoel halverwege opgestaan" class="chair-image mid-image" id="midImg">
+          <img src="assets/geert_dream_lift.png" alt="Geerts Droom Sta-opstoel in volledig omhooggestuurde upstand" class="chair-image lift-image" id="liftImg">
         </div>
         <div class="interactive-hint">Beweeg uw muis over de foto om op te staan</div>
       </div>
@@ -254,5 +246,58 @@
   </footer>
 
   <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.getElementById('chairWrapper');
+      const sitImg = document.getElementById('sitImg');
+      const midImg = document.getElementById('midImg');
+      const liftImg = document.getElementById('liftImg');
+
+      let hoverTimeout1 = null;
+      let hoverTimeout2 = null;
+
+      wrapper.addEventListener('mouseenter', () => {
+        clearTimeouts();
+        
+        // Transition to mid after 200ms
+        hoverTimeout1 = setTimeout(() => {
+          setImageActive(midImg);
+          
+          // Transition to lift after another 200ms
+          hoverTimeout2 = setTimeout(() => {
+            setImageActive(liftImg);
+          }, 200);
+        }, 200);
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        clearTimeouts();
+        
+        // If we are at lift, go back to mid first
+        if (liftImg.classList.contains('active')) {
+          setImageActive(midImg);
+          hoverTimeout1 = setTimeout(() => {
+            setImageActive(sitImg);
+          }, 200);
+        } else if (midImg.classList.contains('active')) {
+          setImageActive(sitImg);
+        } else {
+          setImageActive(sitImg);
+        }
+      });
+
+      function setImageActive(activeImg) {
+        [sitImg, midImg, liftImg].forEach(img => {
+          img.classList.remove('active');
+        });
+        activeImg.classList.add('active');
+      }
+
+      function clearTimeouts() {
+        if (hoverTimeout1) clearTimeout(hoverTimeout1);
+        if (hoverTimeout2) clearTimeout(hoverTimeout2);
+      }
+    });
+  </script>
 </body>
 </html>
