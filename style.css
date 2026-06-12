@@ -1631,6 +1631,8 @@ footer h3, footer h4 {
   gap: 24px;
   flex-wrap: wrap;
   text-align: left !important;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .banner-icon {
