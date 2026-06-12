@@ -1991,6 +1991,14 @@ footer h3, footer h4 {
     width: 100% !important;
     max-width: 140px !important;
   }
+
+  /* Prevent the hero image from growing too large on tablet and mobile viewports */
+  .hero-image-container {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 1/1; /* Show the full square image without cropping on smaller screens */
+  }
 }
 
 @media (min-width: 576px) and (max-width: 991px) {
