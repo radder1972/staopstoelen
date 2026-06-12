@@ -112,6 +112,7 @@ function initializeApp() {
   initSlider();
   initCalendar();
   initFloatingMenu();
+  initMobileMenu();
 
   // Check for prefilled occasion chair selection from occasions page
   const prefilled = localStorage.getItem("prefilledChair");
@@ -757,5 +758,26 @@ function initFloatingMenu() {
     link.addEventListener("click", () => {
       menu.classList.remove("active");
     });
+  });
+}
+
+function initMobileMenu() {
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+  
+  if (!menuToggle || !navLinks) return;
+  
+  menuToggle.addEventListener("click", (e) => {
+    menuToggle.classList.toggle("active");
+    navLinks.classList.toggle("active");
+    e.stopPropagation();
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!navLinks.contains(e.target) && e.target !== menuToggle && !menuToggle.contains(e.target)) {
+      menuToggle.classList.remove("active");
+      navLinks.classList.remove("active");
+    }
   });
 }
