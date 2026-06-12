@@ -1620,7 +1620,8 @@ footer h3, footer h4 {
 
 @media (max-width: 768px) {
   .banner-flex-container {
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
   .banner-icon {
     margin-top: 0;
