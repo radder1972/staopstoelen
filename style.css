@@ -699,7 +699,23 @@ section {
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
+}
+
+
+.quality-stamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 70px;
+  height: 70px;
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.product-card:hover .quality-stamp {
+  transform: scale(1.08) rotate(8deg);
 }
 
 .product-info {
@@ -1846,6 +1862,13 @@ footer h3, footer h4 {
 }
 
 @media (max-width: 480px) {
+  .quality-stamp {
+    width: 55px;
+    height: 55px;
+    top: 12px;
+    right: 12px;
+  }
+
   .navbar-container {
     padding-top: 115px !important;
   }
