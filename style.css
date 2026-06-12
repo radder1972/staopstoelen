@@ -1750,6 +1750,15 @@ footer h3, footer h4 {
   padding: 8px;
 }
 
+.banner-stamp {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-top: 8px; /* Align visually with h1 text */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
 @media (max-width: 768px) {
   .banner-flex-container {
     align-items: flex-start;
@@ -1757,6 +1766,11 @@ footer h3, footer h4 {
   }
   .banner-icon {
     margin-top: 0;
+  }
+  .banner-stamp {
+    margin: 16px auto 0 auto;
+    width: 90px;
+    height: 90px;
   }
 }
 
