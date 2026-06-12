@@ -34,7 +34,13 @@
   <circle cx="56.1" cy="153.7" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   <circle cx="243.9" cy="153.7" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   
-  <!-- Center choice pointing finger hand (thick green borders and fill, matches other icons) -->
-  <path d="M 125,185 L 125,120 A 14,14 0 0,1 153,120 L 153,148 A 11,11 0 0,1 175,148 L 175,152 A 11,11 0 0,1 197,152 L 197,156 A 11,11 0 0,1 219,156 L 219,185 A 35,35 0 0,1 184,220 L 170,220 A 35,35 0 0,1 125,185 Z" fill="#4b8f24" stroke="#122b07" stroke-width="6" stroke-linejoin="round" />
-  <path d="M 125,170 C 105,170 95,160 95,150 C 95,140 108,135 118,143 C 125,148 125,155 125,160" fill="#4b8f24" stroke="#122b07" stroke-width="6" stroke-linejoin="round" />
+  <!-- Center choice question mark (bold outlined style matching checkmark/hand) -->
+  <!-- Outer dark green stroke for outline -->
+  <path d="M 125,120 C 125,85 175,85 175,120 C 175,142 150,142 150,165" fill="none" stroke="#122b07" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Inner green stroke for body -->
+  <path d="M 125,120 C 125,85 175,85 175,120 C 175,142 150,142 150,165" fill="none" stroke="#4b8f24" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Question mark dot with matching outline and body -->
+  <circle cx="150" cy="200" r="11" fill="#122b07" />
+  <circle cx="150" cy="200" r="6" fill="#4b8f24" />
 </svg>
