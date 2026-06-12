@@ -25,8 +25,12 @@
       border-radius: var(--radius-md);
       padding: 24px;
       height: fit-content;
-      position: sticky;
-      top: 130px;
+    }
+    @media (min-width: 992px) {
+      .filter-sidebar {
+        position: sticky;
+        top: 130px;
+      }
     }
     .filter-group {
       margin-bottom: 24px;
@@ -223,7 +227,7 @@
           </div>
 
           <div class="filter-group" style="border-bottom:none; padding-bottom:0;">
-            <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.85rem; color:var(--color-dark);">
+            <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.95rem; line-height:1.6; color:var(--color-dark);">
               <strong>🌿 Altijd op maat:</strong> Al onze occasions worden bij aflevering door onze experts exact ingesteld op uw zithoogte en zitdiepte.
             </div>
           </div>
