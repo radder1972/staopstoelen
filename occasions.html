@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tweedehands Sta-op Stoelen & Occasions | Fitform & Doge</title>
   <meta name="description" content="Bekijk ons actuele aanbod tweedehands sta-op stoel occasions. Kwalitatieve, gereviseerde Fitform, Doge en Prominent stoelen op maat afgesteld met 2 jaar garantie.">
-  <link rel="stylesheet" href="style.css?v=1.0.30">
+  <link rel="stylesheet" href="style.css?v=1.0.31">
   <style>
 
     .catalog-layout {
@@ -431,8 +431,10 @@
         card.className = "product-card";
 
         const priceHtml = item.oldPrice
-          ? `<span class="price-value" style="color:var(--color-dark); font-size:0.95rem; text-decoration:line-through; font-weight:normal; margin-right:8px;">€ ${item.oldPrice.toLocaleString("nl-NL")},-</span>
-             <span class="price-value" style="color:var(--color-terracotta);">€ ${item.price.toLocaleString("nl-NL")},-</span>`
+          ? `<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+               <span class="price-value" style="color:var(--color-dark); font-size:0.95rem; text-decoration:line-through; font-weight:normal; line-height: 1.2;">€ ${item.oldPrice.toLocaleString("nl-NL")},-</span>
+               <span class="price-value" style="color:var(--color-terracotta); line-height: 1.2;">€ ${item.price.toLocaleString("nl-NL")},-</span>
+             </div>`
           : `<span class="price-value">€ ${item.price.toLocaleString("nl-NL")},-</span>`;
 
         card.innerHTML = `

@@ -144,6 +144,8 @@ section {
   gap: 8px;
   font-size: 1rem;
   min-height: 48px; /* Senior friendly */
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-primary {
