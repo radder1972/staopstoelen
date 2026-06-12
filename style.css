@@ -452,6 +452,37 @@ section {
   justify-content: center;
 }
 
+.hero-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-img-1 {
+  z-index: 1;
+}
+
+.hero-img-2 {
+  z-index: 2;
+  animation: hero-fade-alt 12s infinite ease-in-out;
+}
+
+@keyframes hero-fade-alt {
+  0%, 40% {
+    opacity: 0;
+  }
+  50%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 /* Floating leaves/Boho organic design background accents */
 .bg-accent-blob {
   position: absolute;
