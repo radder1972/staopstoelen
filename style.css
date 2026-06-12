@@ -1571,7 +1571,8 @@ footer h3, footer h4 {
   text-align: center;
   min-height: 230px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   box-sizing: border-box;
   width: 100%;
 }
