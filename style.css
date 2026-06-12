@@ -314,14 +314,14 @@ section {
 
 @media (max-width: 768px) {
   .navbar-container {
-    padding-top: 0;
+    padding-top: 130px;
+    align-items: center;
   }
 
   .logo {
-    position: relative;
-    left: auto;
-    top: auto;
-    margin-top: 16px;
+    position: absolute;
+    left: 24px;
+    top: 10px;
   }
 
   .logo img {
@@ -340,12 +340,12 @@ section {
   }
   
   .nav-text-logo {
-    position: relative;
-    left: auto;
-    top: auto;
-    margin: 8px 0 0 0;
+    position: absolute;
+    left: 150px; /* 24px + 110px + 16px */
+    top: 22px;
+    margin: 0;
     font-size: 1.4rem;
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -1750,6 +1750,15 @@ footer h3, footer h4 {
 }
 
 @media (max-width: 480px) {
+  .navbar-container {
+    padding-top: 110px !important;
+  }
+
+  .logo {
+    left: 16px !important;
+    top: 10px !important;
+  }
+
   /* Logo and layout adjustments for mobile viewports */
   .logo img {
     height: 90px !important;
@@ -1764,7 +1773,14 @@ footer h3, footer h4 {
 
   .nav-text-logo {
     font-size: 1.2rem !important;
-    margin-top: 6px !important;
+    left: 118px !important; /* 16px + 90px + 12px */
+    top: 22px !important;
+    margin-top: 0 !important;
+  }
+
+  .menu-toggle {
+    right: 16px !important;
+    top: 22px !important;
   }
 
   .banner-icon {
