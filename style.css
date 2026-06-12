@@ -1605,8 +1605,8 @@ footer h3, footer h4 {
 }
 
 .banner-icon {
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   border: 3px solid var(--color-light);
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -1810,8 +1810,8 @@ footer h3, footer h4 {
   }
 
   .banner-icon {
-    width: 65px !important;
-    height: 65px !important;
+    width: 80px !important;
+    height: 80px !important;
     margin-top: 0 !important;
     padding: 6px !important;
   }
