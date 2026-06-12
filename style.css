@@ -467,14 +467,31 @@ section {
 
 .hero-img-2 {
   z-index: 2;
-  animation: hero-fade-alt 12s infinite ease-in-out;
+  animation: hero-fade-three-2 18s infinite ease-in-out;
 }
 
-@keyframes hero-fade-alt {
-  0%, 40% {
+.hero-img-3 {
+  z-index: 3;
+  animation: hero-fade-three-3 18s infinite ease-in-out;
+}
+
+@keyframes hero-fade-three-2 {
+  0%, 26.67% {
     opacity: 0;
   }
-  50%, 90% {
+  33.33%, 66.67% {
+    opacity: 1;
+  }
+  73.33%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-three-3 {
+  0%, 60.00% {
+    opacity: 0;
+  }
+  66.67%, 93.33% {
     opacity: 1;
   }
   100% {
