@@ -1975,6 +1975,22 @@ footer h3, footer h4 {
   .catalog-layout .filter-sidebar .filter-group:last-child {
     grid-column: 1 / -1;
   }
+
+  /* Stack testimonial contents vertically to prevent polaroid photos from overflowing narrow cards */
+  .testimonial-body-wrapper {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  
+  .testimonial-card {
+    padding: 24px !important;
+  }
+
+  .polaroid-frame {
+    width: 100% !important;
+    max-width: 140px !important;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 991px) {
