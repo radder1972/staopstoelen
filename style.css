@@ -251,11 +251,6 @@ section {
 }
 
 @media (max-width: 768px) {
-  .logo img {
-    height: 150px; /* Scaled down slightly on mobile to fit nicely */
-    width: 150px;
-  }
-  
   .navbar-row-2 {
     justify-content: center;
     border-top: none;
@@ -330,10 +325,10 @@ section {
   }
 
   .logo img {
-    height: 150px;
-    width: 150px;
-    border-width: 4px;
-    padding: 12px;
+    height: 110px;
+    width: 110px;
+    border-width: 3px;
+    padding: 8px;
   }
 
   .btn-nav-appointment {
@@ -349,7 +344,7 @@ section {
     left: auto;
     top: auto;
     margin: 8px 0 0 0;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
   }
 }
@@ -1726,5 +1721,105 @@ footer h3, footer h4 {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments for headings and logos on smaller screen sizes */
+@media (max-width: 768px) {
+  /* Logo waves height adjustment */
+  .logo-swoosh {
+    height: 100px !important;
+  }
+
+  /* Heading adjustments for tablet viewports */
+  .occasions-header h1 {
+    font-size: 2rem !important;
+  }
+  
+  .articles-hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .article-body h2 {
+    font-size: 1.5rem;
+  }
+
+  .booking-header h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Logo and layout adjustments for mobile viewports */
+  .logo img {
+    height: 90px !important;
+    width: 90px !important;
+    border-width: 2px !important;
+    padding: 6px !important;
+  }
+
+  .logo-swoosh {
+    height: 75px !important;
+  }
+
+  .nav-text-logo {
+    font-size: 1.2rem !important;
+    margin-top: 6px !important;
+  }
+
+  .banner-icon {
+    width: 65px !important;
+    height: 65px !important;
+    margin-top: 0 !important;
+    padding: 6px !important;
+  }
+
+  /* Heading scaling for mobile viewports */
+  .hero-title {
+    font-size: 2.1rem !important;
+  }
+
+  .section-title {
+    font-size: 1.85rem !important;
+  }
+
+  .occasions-header h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .articles-hero h1 {
+    font-size: 1.75rem !important;
+  }
+
+  .article-body h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .booking-header h3 {
+    font-size: 1.4rem !important;
+  }
+
+  .stat-item h3 {
+    font-size: 1.4rem !important;
+  }
+
+  .wizard-step-title {
+    font-size: 1.25rem !important;
+  }
+
+  .timeline-title {
+    font-size: 1.15rem !important;
+  }
+
+  .option-title {
+    font-size: 1rem !important;
+  }
+
+  .slider-chair-visual {
+    font-size: 3.5rem !important;
+  }
+
+  .slider-chair-spec {
+    font-size: 1rem !important;
   }
 }
