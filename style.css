@@ -197,7 +197,7 @@ section {
   align-items: center;
   gap: 16px;
   position: relative;
-  padding-top: 140px; /* Space for absolute logo, text logo, and Maak een afspraak button */
+  padding-top: 170px; /* Space for absolute logo, text logo, and Maak een afspraak button */
 }
 
 .logo {
@@ -213,7 +213,7 @@ section {
   top: 10px;
   left: 0;
   width: 100%;
-  height: 160px;
+  height: 190px;
   z-index: 1;
   pointer-events: none;
 }
@@ -227,8 +227,8 @@ section {
 }
 
 .logo img {
-  height: 120px; /* Elegant left-aligned size */
-  width: 120px;
+  height: 150px; /* Elegant left-aligned size */
+  width: 150px;
   display: block;
   object-fit: contain;
   border-radius: 50%;
@@ -236,7 +236,7 @@ section {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   background-color: var(--color-light);
   box-sizing: border-box;
-  padding: 6px;
+  padding: 2px;
   transition: var(--transition-bounce);
 }
 
@@ -297,7 +297,7 @@ section {
 /* Navigation Text Logo Positioned Next to Logo Image */
 .nav-text-logo {
   position: absolute;
-  left: 160px; /* 24px + 120px logo + 16px gap */
+  left: 190px; /* 24px + 150px logo + 16px gap */
   top: 20px; /* Aligned at the top next to the logo */
   font-family: var(--font-header);
   font-size: 1.85rem; /* Larger heading font size */
@@ -319,7 +319,7 @@ section {
 
 @media (max-width: 768px) {
   .navbar-container {
-    padding-top: 150px;
+    padding-top: 180px;
     align-items: center;
   }
 
@@ -330,10 +330,10 @@ section {
   }
 
   .logo img {
-    height: 130px;
-    width: 130px;
+    height: 160px;
+    width: 160px;
     border-width: 3px;
-    padding: 8px;
+    padding: 3px;
   }
 
   .btn-nav-appointment {
@@ -346,7 +346,7 @@ section {
   
   .nav-text-logo {
     position: absolute;
-    left: 170px; /* 24px + 130px + 16px */
+    left: 200px; /* 24px + 160px + 16px */
     top: 22px;
     margin: 0;
     font-size: 1.4rem;
@@ -1755,7 +1755,7 @@ footer h3, footer h4 {
 
   /* Logo waves height adjustment */
   .logo-swoosh {
-    height: 140px !important;
+    height: 170px !important;
   }
 
   /* Heading adjustments for tablet viewports */
@@ -1778,7 +1778,7 @@ footer h3, footer h4 {
 
 @media (max-width: 480px) {
   .navbar-container {
-    padding-top: 125px !important;
+    padding-top: 155px !important;
   }
 
   .logo {
@@ -1788,19 +1788,19 @@ footer h3, footer h4 {
 
   /* Logo and layout adjustments for mobile viewports */
   .logo img {
-    height: 105px !important;
-    width: 105px !important;
+    height: 130px !important;
+    width: 130px !important;
     border-width: 2px !important;
-    padding: 6px !important;
+    padding: 2px !important;
   }
 
   .logo-swoosh {
-    height: 90px !important;
+    height: 115px !important;
   }
 
   .nav-text-logo {
     font-size: 1.2rem !important;
-    left: 133px !important; /* 16px + 105px + 12px */
+    left: 158px !important; /* 16px + 130px + 12px */
     top: 22px !important;
     margin-top: 0 !important;
   }
