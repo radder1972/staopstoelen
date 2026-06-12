@@ -11,11 +11,11 @@
   <!-- Inner thin dark green border -->
   <circle cx="150" cy="150" r="76" fill="none" stroke="#122b07" stroke-width="3" />
   
-  <!-- Text paths optimized to center the text and avoid borders -->
-  <!-- Top text path (clockwise, R=82, centers text of size 22.5) -->
-  <path id="text-path-top" d="M 68,150 A 82,82 0 0,1 232,150" fill="none" />
-  <!-- Bottom text path (counter-clockwise, R=106, centers text of size 22.5) -->
-  <path id="text-path-bottom" d="M 44,150 A 106,106 0 0,0 256,150" fill="none" />
+  <!-- Text paths optimized to center the text exactly between the inner (R=76) and outer (R=112) borders -->
+  <!-- Top text path (clockwise, R=86) -->
+  <path id="text-path-top" d="M 64,150 A 86,86 0 0,1 236,150" fill="none" />
+  <!-- Bottom text path (counter-clockwise, R=102) -->
+  <path id="text-path-bottom" d="M 48,150 A 102,102 0 0,0 252,150" fill="none" />
   
   <!-- Text elements (larger font size, weight 900 for legibility, with stroke for extra boldness) -->
   <text fill="#122b07" stroke="#122b07" stroke-width="1.2" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="1.2">
