@@ -34,8 +34,6 @@
   <circle cx="56.3" cy="157.5" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   <circle cx="243.7" cy="157.5" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   
-  <!-- 3 Stars in the center (gold review stars with dark outlines) -->
-  <path d="M 110.0,132.0 L 115.0,143.1 L 127.1,144.4 L 118.1,152.6 L 120.6,164.6 L 110.0,158.5 L 99.4,164.6 L 101.9,152.6 L 92.9,144.4 L 105.0,143.1 Z" fill="#f39223" stroke="#122b07" stroke-width="2" stroke-linejoin="round" />
-  <path d="M 150.0,128.0 L 156.2,141.5 L 170.9,143.2 L 160.0,153.2 L 162.9,167.8 L 150.0,160.5 L 137.1,167.8 L 140.0,153.2 L 129.1,143.2 L 143.8,141.5 Z" fill="#f39223" stroke="#122b07" stroke-width="2" stroke-linejoin="round" />
-  <path d="M 190.0,132.0 L 195.0,143.1 L 207.1,144.4 L 198.1,152.6 L 200.6,164.6 L 190.0,158.5 L 179.4,164.6 L 181.9,152.6 L 172.9,144.4 L 185.0,143.1 Z" fill="#f39223" stroke="#122b07" stroke-width="2" stroke-linejoin="round" />
+  <!-- Center green review star (clean solid green, no outline, matching checkmark/question mark style) -->
+  <path d="M 150.0,114.0 L 160.0,136.2 L 184.2,138.9 L 166.2,155.3 L 171.2,179.1 L 150.0,167.0 L 128.8,179.1 L 133.8,155.3 L 115.8,138.9 L 140.0,136.2 Z" fill="#4b8f24" stroke="#4b8f24" stroke-width="8" stroke-linejoin="round" />
 </svg>
