@@ -113,6 +113,7 @@ function initializeApp() {
   initCalendar();
   initFloatingMenu();
   initMobileMenu();
+  initHeroSecretImage();
 
   // Check for prefilled occasion chair selection from occasions page
   const prefilled = localStorage.getItem("prefilledChair");
@@ -131,6 +132,23 @@ function initializeApp() {
       }
     }
   }
+}
+
+function initHeroSecretImage() {
+  const container = document.getElementById("heroImageContainer");
+  if (!container) return;
+  const img = container.querySelector("img");
+  if (!img) return;
+  
+  img.addEventListener("dblclick", () => {
+    if (img.src.includes("chair_cozy.png")) {
+      img.src = "assets/geert_secret.jpg";
+      img.alt = "Geert zittend in een comfortabele sta-op stoel";
+    } else {
+      img.src = "assets/chair_cozy.png";
+      img.alt = "Modern sfeervol interieur met een luxe groene sta-op stoel";
+    }
+  });
 }
 
 // Robust DOM check
