@@ -1573,7 +1573,7 @@ footer h3, footer h4 {
   background-color: var(--color-forest);
   color: var(--color-light);
   padding: 45px 0 25px 0;
-  text-align: center;
+  text-align: left;
   height: 240px;
   display: flex;
   flex-direction: column;
@@ -1592,7 +1592,7 @@ footer h3, footer h4 {
   color: rgba(255, 255, 255, 0.85);
   font-size: 1.15rem;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* Banner Header Flex Alignment to Heading Top */
