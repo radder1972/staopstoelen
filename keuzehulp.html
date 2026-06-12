@@ -101,6 +101,9 @@
   <!-- Keuzehulp Wizard Section -->
   <section id="keuzehulp" style="padding: 60px 0 100px 0;">
     <div class="container">
+      <a href="index.html" class="back-link">← Terug naar Home</a>
+      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Zitspecialist Keuzehulp</h2>
+
       <div class="wizard-card" id="wizardCard">
         <div class="wizard-progress">
           <div class="wizard-progress-bar" id="progressBar"></div>
@@ -113,7 +116,7 @@
         <form id="wizardForm">
           <!-- Step 1: Lichaamslengte -->
           <div class="wizard-step active" id="step1">
-            <h2 class="wizard-step-title">Stap 1: Wat is de lichaamslengte van de gebruiker?</h2>
+            <h3 class="wizard-step-title">Stap 1: Wat is de lichaamslengte van de gebruiker?</h3>
             <div class="options-grid">
               <label class="option-card" id="optHeightS">
                 <input type="radio" name="height" value="small">
@@ -138,7 +141,7 @@
 
           <!-- Step 2: Fysieke Klachten -->
           <div class="wizard-step" id="step2">
-            <h2 class="wizard-step-title">Stap 2: Zijn er specifieke fysieke klachten?</h2>
+            <h3 class="wizard-step-title">Stap 2: Zijn er specifieke fysieke klachten?</h3>
             <p style="margin-bottom: 24px; color: var(--color-gray);">Selecteer alle opties die van toepassing zijn.</p>
             <div class="options-grid">
               <label class="option-card" id="optComplaintBack">
@@ -164,7 +167,7 @@
 
           <!-- Step 3: Wensen / Functies -->
           <div class="wizard-step" id="step3">
-            <h2 class="wizard-step-title">Stap 3: Wat zijn uw aanvullende voorkeuren?</h2>
+            <h3 class="wizard-step-title">Stap 3: Wat zijn uw aanvullende voorkeuren?</h3>
             <div class="options-grid">
               <label class="option-card" id="optOptionMotors">
                 <input type="radio" name="motors" value="3" checked>
@@ -189,7 +192,7 @@
 
           <!-- Step 4: Resultaten -->
           <div class="wizard-step" id="step4">
-            <h2 class="wizard-step-title" id="resultsTitle">Onze aanbevelingen op basis van uw antwoorden:</h2>
+            <h3 class="wizard-step-title" id="resultsTitle">Onze aanbevelingen op basis van uw antwoorden:</h3>
             <div id="wizardResults" class="results-container">
               <!-- Rendered via JavaScript -->
             </div>
