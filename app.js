@@ -2,6 +2,10 @@
 // Configure this with your Make/Zapier Webhook URL to automatically push bookings to Google Calendar.
 const GOOGLE_CALENDAR_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/27924694/439zjqx/";
 
+// Google Calendar Live Availability Get URL (Google Apps Script Web App)
+// Configure this with your deployed Apps Script Web App URL to retrieve real-time busy slots.
+const GOOGLE_CALENDAR_GET_SLOTS_URL = "";
+
 // Database of available lift chairs (revised premium models)
 const CHAIR_DATABASE = [
   {
@@ -800,39 +804,71 @@ function renderTimeSlots() {
     return;
   }
   
-  // Deterministic fake busy slots based on chosen day
-  // Some slots are disabled on Saturdays, or odd/even days
   const day = state.selectedDate.getDate();
   const isSaturday = state.selectedDate.getDay() === 6;
   
-  state.timeSlots.forEach((slot, idx) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "time-slot-btn";
-    btn.textContent = slot;
+  // Helper to render the actual buttons
+  const drawSlots = (busySlots) => {
+    grid.innerHTML = "";
     
-    // Saturday afternoon is closed (e.g. index 2 and 3)
-    const satDisabled = isSaturday && idx >= 2;
-    // Alternate slots busy to look real
-    const busyMatch = (day + idx) % 3 === 0;
-    
-    if (satDisabled || busyMatch) {
-      btn.disabled = true;
-      btn.textContent = `${slot} (Vol)`;
-    }
-    
-    if (state.selectedTimeSlot === slot && !btn.disabled) {
-      btn.classList.add("selected");
-    }
-    
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".time-slot-btn").forEach(b => b.classList.remove("selected"));
-      state.selectedTimeSlot = slot;
-      btn.classList.add("selected");
+    state.timeSlots.forEach((slot, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "time-slot-btn";
+      btn.textContent = slot;
+      
+      // Saturday afternoon is closed (e.g. index 2 and 3)
+      const satDisabled = isSaturday && idx >= 2;
+      
+      // If we have live data, check if the slot is in busySlots.
+      // Otherwise, fall back to the deterministic math formula.
+      const isBusy = busySlots 
+        ? busySlots.includes(slot) 
+        : (day + idx) % 3 === 0;
+      
+      if (satDisabled || isBusy) {
+        btn.disabled = true;
+        btn.textContent = `${slot} (Vol)`;
+      }
+      
+      if (state.selectedTimeSlot === slot && !btn.disabled) {
+        btn.classList.add("selected");
+      }
+      
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".time-slot-btn").forEach(b => b.classList.remove("selected"));
+        state.selectedTimeSlot = slot;
+        btn.classList.add("selected");
+      });
+      
+      grid.appendChild(btn);
     });
+  };
+
+  if (GOOGLE_CALENDAR_GET_SLOTS_URL) {
+    // Show loading state while fetching live data
+    grid.innerHTML = `<p style="grid-column:1/-1; color: var(--color-gray); font-size:0.875rem; text-align:center;">Tijden laden...</p>`;
     
-    grid.appendChild(btn);
-  });
+    const localDateString = state.selectedDate.getFullYear() + "-" +
+      String(state.selectedDate.getMonth() + 1).padStart(2, "0") + "-" +
+      String(state.selectedDate.getDate()).padStart(2, "0");
+      
+    fetch(`${GOOGLE_CALENDAR_GET_SLOTS_URL}?date=${localDateString}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data && Array.isArray(data.busySlots)) {
+          drawSlots(data.busySlots);
+        } else {
+          drawSlots(null); // Fallback to simulated busy slots
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching live slots:", error);
+        drawSlots(null); // Fallback to simulated busy slots
+      });
+  } else {
+    drawSlots(null); // Fallback to simulated busy slots
+  }
 }
 
 
