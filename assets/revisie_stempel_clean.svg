@@ -17,22 +17,22 @@
   <!-- Bottom text path (counter-clockwise, R=106, centers text of size 22.5) -->
   <path id="text-path-bottom" d="M 44,150 A 106,106 0 0,0 256,150" fill="none" />
   
-  <!-- Text elements (larger font size, weight 900 for legibility) -->
-  <text fill="#122b07" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="1.2">
+  <!-- Text elements (larger font size, weight 900 for legibility, with stroke for extra boldness) -->
+  <text fill="#122b07" stroke="#122b07" stroke-width="1.2" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="1.2">
     <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">
       100% GEREVISEERD
     </textPath>
   </text>
   
-  <text fill="#122b07" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="4.5">
+  <text fill="#122b07" stroke="#122b07" stroke-width="1.2" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="4.5">
     <textPath href="#text-path-bottom" startOffset="50%" text-anchor="middle">
       ALS NIEUW
     </textPath>
   </text>
   
-  <!-- Bullets/Dots separating top and bottom text (at 9 o'clock and 3 o'clock) -->
-  <circle cx="50" cy="150" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
-  <circle cx="250" cy="150" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
+  <!-- Bullets/Dots separating top and bottom text (centered at 15 degrees below horizontal line to balance top/bottom gaps) -->
+  <circle cx="59.2" cy="174.3" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
+  <circle cx="240.8" cy="174.3" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   
   <!-- Center green checkmark -->
   <path d="M 98 150 L 134 186 L 206 114" fill="none" stroke="#4b8f24" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
