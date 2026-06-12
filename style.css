@@ -197,6 +197,8 @@ section {
   align-items: center;
   gap: 16px;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
   padding-top: 80px; /* Space for absolute text logo and Maak een afspraak button */
 }
 
