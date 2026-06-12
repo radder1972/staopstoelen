@@ -1701,7 +1701,8 @@ footer h3, footer h4 {
   color: var(--color-light);
   padding: 45px 0 25px 0;
   text-align: left !important;
-  height: 240px;
+  height: auto;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1751,12 +1752,13 @@ footer h3, footer h4 {
 }
 
 .banner-stamp {
-  width: 110px;
-  height: 110px;
+  width: 220px;
+  height: 220px;
   flex-shrink: 0;
   margin-left: auto;
-  margin-top: 8px; /* Align visually with h1 text */
+  margin-top: -30px; /* Offset large size slightly upwards for optical alignment */
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+  transform: rotate(15deg);
 }
 
 @media (max-width: 768px) {
@@ -1768,9 +1770,10 @@ footer h3, footer h4 {
     margin-top: 0;
   }
   .banner-stamp {
-    margin: 16px auto 0 auto;
-    width: 90px;
-    height: 90px;
+    margin: 24px auto 0 auto;
+    width: 180px;
+    height: 180px;
+    transform: rotate(15deg);
   }
 }
 
