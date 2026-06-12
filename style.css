@@ -466,7 +466,7 @@ section {
   border-radius: var(--radius-lg);
   box-shadow: 0 10px 30px var(--color-shadow);
   padding: 32px;
-  margin-top: -40px;
+  margin-top: 20px;
   position: relative;
   z-index: 10;
   border: 1px solid rgba(255,255,255,0.8);
