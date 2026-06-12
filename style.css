@@ -1599,7 +1599,7 @@ footer h3, footer h4 {
   background-color: var(--color-forest);
   color: var(--color-light);
   padding: 45px 0 25px 0;
-  text-align: left;
+  text-align: left !important;
   height: 240px;
   display: flex;
   flex-direction: column;
@@ -1612,6 +1612,7 @@ footer h3, footer h4 {
   color: var(--color-light);
   font-size: 2.75rem;
   margin-bottom: 12px;
+  text-align: left !important;
 }
 
 .occasions-header p {
@@ -1619,15 +1620,17 @@ footer h3, footer h4 {
   font-size: 1.15rem;
   max-width: 600px;
   margin: 0;
+  text-align: left !important;
 }
 
 /* Banner Header Flex Alignment to Heading Top */
 .banner-flex-container {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
   gap: 24px;
   flex-wrap: wrap;
+  text-align: left !important;
 }
 
 .banner-icon {
@@ -1781,7 +1784,8 @@ footer h3, footer h4 {
 
   /* Logo waves height adjustment */
   .logo-swoosh {
-    height: 170px !important;
+    top: 50px;
+    height: 55px !important;
   }
 
   /* Heading adjustments for tablet viewports */
