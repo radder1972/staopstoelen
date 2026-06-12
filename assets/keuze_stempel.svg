@@ -35,6 +35,6 @@
   <circle cx="243.9" cy="153.7" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   
   <!-- Center choice question mark (clean bold green, no outline, matching checkmark style) -->
-  <path d="M 125,120 C 125,85 175,85 175,120 C 175,142 150,142 150,165" fill="none" stroke="#4b8f24" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="150" cy="200" r="12" fill="#4b8f24" />
+  <path d="M 134,130 C 134,108 166,108 166,130 C 166,145 150,145 150,160" fill="none" stroke="#4b8f24" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="150" cy="183" r="8" fill="#4b8f24" />
 </svg>
