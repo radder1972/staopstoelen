@@ -1,6 +1,6 @@
 // Google Calendar Webhook URL Configuration (Integromat/Make/Zapier)
 // Configure this with your Make/Zapier Webhook URL to automatically push bookings to Google Calendar.
-const GOOGLE_CALENDAR_WEBHOOK_URL = "";
+const GOOGLE_CALENDAR_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/27924694/439zjqx/";
 
 // Database of available lift chairs (revised premium models)
 const CHAIR_DATABASE = [
