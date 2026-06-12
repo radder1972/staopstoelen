@@ -275,13 +275,13 @@ section {
 }
 
 .nav-links a {
-  font-weight: 500;
-  color: var(--color-forest-dark);
+  font-weight: 600;
+  color: var(--color-forest);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--color-forest);
+  color: var(--color-forest-dark);
 }
 
 .btn-nav-appointment {
