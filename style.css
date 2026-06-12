@@ -1994,7 +1994,7 @@ footer h3, footer h4 {
 
   /* Prevent the hero image from growing too large on tablet and mobile viewports */
   .hero-image-container {
-    max-width: 480px;
+    max-width: 400px;
     width: 100%;
     margin: 0 auto;
     aspect-ratio: 1/1; /* Show the full square image without cropping on smaller screens */
