@@ -1,3 +1,7 @@
+// Google Calendar Webhook URL Configuration (Integromat/Make/Zapier)
+// Configure this with your Make/Zapier Webhook URL to automatically push bookings to Google Calendar.
+const GOOGLE_CALENDAR_WEBHOOK_URL = "";
+
 // Database of available lift chairs (revised premium models)
 const CHAIR_DATABASE = [
   {
@@ -559,7 +563,9 @@ function initCalendar() {
     
     const name = document.getElementById("bookingName").value.trim();
     const phone = document.getElementById("bookingPhone").value.trim();
+    const email = document.getElementById("bookingEmail").value.trim();
     const address = addressField.value.trim();
+    const notes = document.getElementById("bookingNotes").value.trim();
     
     // Validation
     if (!state.selectedDate) {
@@ -586,8 +592,21 @@ function initCalendar() {
     // Show Loading state
     submitBookingBtn.textContent = "Verwerken...";
     submitBookingBtn.disabled = true;
-    
-    setTimeout(() => {
+
+    // Assemble the payload for Google Calendar webhook
+    const bookingPayload = {
+      name: name,
+      phone: phone,
+      email: email,
+      date: state.selectedDate.toISOString().split('T')[0], // YYYY-MM-DD
+      timeSlot: state.selectedTimeSlot,
+      appointmentType: state.appointmentType,
+      address: state.appointmentType === "home" ? address : "Merwedestraat 239, Dordrecht (Showroom)",
+      notes: notes,
+      timestamp: new Date().toISOString()
+    };
+
+    const transitionToSuccess = () => {
       // Transition to success screen
       interactiveArea.style.display = "none";
       successScreen.style.display = "block";
@@ -610,7 +629,28 @@ function initCalendar() {
       
       submitBookingBtn.textContent = "Bevestig Afspraak";
       submitBookingBtn.disabled = false;
-    }, 1000);
+    };
+
+    if (GOOGLE_CALENDAR_WEBHOOK_URL) {
+      fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(bookingPayload)
+      })
+      .then(response => {
+        console.log("Google Calendar Webhook success:", response);
+        transitionToSuccess();
+      })
+      .catch(error => {
+        console.error("Google Calendar Webhook failure:", error);
+        transitionToSuccess();
+      });
+    } else {
+      // Fallback: wait a brief moment to simulate processing
+      setTimeout(transitionToSuccess, 1000);
+    }
   });
   
   // Render Initial View
