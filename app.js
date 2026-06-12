@@ -107,7 +107,7 @@ const state = {
   
   // Booking Calendar State
   appointmentType: "home", // "home" or "showroom"
-  currentDate: new Date(2026, 5, 10), // June 10, 2026 (based on current metadata context)
+  currentDate: new Date(), // Live current date
   selectedDate: null,
   selectedTimeSlot: null,
   timeSlots: ["09:00 - 11:00", "11:00 - 13:00", "13:00 - 15:00", "15:00 - 17:00"]
@@ -746,7 +746,7 @@ function renderCalendar() {
   
   // Total days in month
   const totalDays = new Date(year, month + 1, 0).getDate();
-  const today = new Date(2026, 5, 10); // Mock current date Context: June 10, 2026
+  const today = new Date(); // Live current date
   
   for (let day = 1; day <= totalDays; day++) {
     const dateCell = document.createElement("button");
