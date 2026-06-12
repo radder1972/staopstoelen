@@ -40,7 +40,7 @@
       height: 100%;
       object-fit: contain;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .chair-image.active {
@@ -177,9 +177,11 @@
 
       <div class="interactive-chair-container">
         <div class="chair-image-wrapper" id="chairWrapper">
-          <img src="assets/geert_dream_sit.png" alt="Geerts Droom Sta-opstoel in standaard zitstand" class="chair-image sit-image active" id="sitImg">
-          <img src="assets/geert_dream_mid.png" alt="Geerts Droom Sta-opstoel halverwege opgestaan" class="chair-image mid-image" id="midImg">
-          <img src="assets/geert_dream_lift.png" alt="Geerts Droom Sta-opstoel in volledig omhooggestuurde upstand" class="chair-image lift-image" id="liftImg">
+          <img src="assets/geert_dream_sit.png" alt="Geerts Droom Sta-opstoel in standaard zitstand" class="chair-image active" id="sitImg">
+          <img src="assets/geert_dream_step2.png" alt="Geerts Droom Sta-opstoel stap 2" class="chair-image" id="step2Img">
+          <img src="assets/geert_dream_mid.png" alt="Geerts Droom Sta-opstoel halverwege opgestaan" class="chair-image" id="midImg">
+          <img src="assets/geert_dream_step4.png" alt="Geerts Droom Sta-opstoel stap 4" class="chair-image" id="step4Img">
+          <img src="assets/geert_dream_lift.png" alt="Geerts Droom Sta-opstoel in volledig omhooggestuurde upstand" class="chair-image" id="liftImg">
         </div>
         <div class="interactive-hint">Beweeg uw muis over de foto om op te staan</div>
       </div>
@@ -249,53 +251,52 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const wrapper = document.getElementById('chairWrapper');
+      
       const sitImg = document.getElementById('sitImg');
+      const step2Img = document.getElementById('step2Img');
       const midImg = document.getElementById('midImg');
+      const step4Img = document.getElementById('step4Img');
       const liftImg = document.getElementById('liftImg');
 
-      let hoverTimeout1 = null;
-      let hoverTimeout2 = null;
+      const frames = [sitImg, step2Img, midImg, step4Img, liftImg];
+      let currentFrameIndex = 0; // Starts at 0 (sitImg)
+      let animationInterval = null;
 
       wrapper.addEventListener('mouseenter', () => {
-        clearTimeouts();
-        
-        // Transition to mid after 200ms
-        hoverTimeout1 = setTimeout(() => {
-          setImageActive(midImg);
-          
-          // Transition to lift after another 200ms
-          hoverTimeout2 = setTimeout(() => {
-            setImageActive(liftImg);
-          }, 200);
-        }, 200);
+        animateToFrame(4); // Target index 4 (liftImg)
       });
 
       wrapper.addEventListener('mouseleave', () => {
-        clearTimeouts();
-        
-        // If we are at lift, go back to mid first
-        if (liftImg.classList.contains('active')) {
-          setImageActive(midImg);
-          hoverTimeout1 = setTimeout(() => {
-            setImageActive(sitImg);
-          }, 200);
-        } else if (midImg.classList.contains('active')) {
-          setImageActive(sitImg);
-        } else {
-          setImageActive(sitImg);
-        }
+        animateToFrame(0); // Target index 0 (sitImg)
       });
 
-      function setImageActive(activeImg) {
-        [sitImg, midImg, liftImg].forEach(img => {
-          img.classList.remove('active');
-        });
-        activeImg.classList.add('active');
+      function animateToFrame(targetIndex) {
+        clearInterval(animationInterval);
+        
+        animationInterval = setInterval(() => {
+          if (currentFrameIndex === targetIndex) {
+            clearInterval(animationInterval);
+            return;
+          }
+          
+          if (currentFrameIndex < targetIndex) {
+            currentFrameIndex++;
+          } else {
+            currentFrameIndex--;
+          }
+          
+          setActiveFrame(currentFrameIndex);
+        }, 130); // 130ms between steps for a seamless, gradual animation
       }
 
-      function clearTimeouts() {
-        if (hoverTimeout1) clearTimeout(hoverTimeout1);
-        if (hoverTimeout2) clearTimeout(hoverTimeout2);
+      function setActiveFrame(index) {
+        frames.forEach((frame, idx) => {
+          if (idx === index) {
+            frame.classList.add('active');
+          } else {
+            frame.classList.remove('active');
+          }
+        });
       }
     });
   </script>
