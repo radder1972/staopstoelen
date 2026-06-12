@@ -1740,7 +1740,7 @@ footer h3, footer h4 {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--color-light);
+    background-color: var(--color-sage-light);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-radius: var(--radius-md);
     padding: 24px;
