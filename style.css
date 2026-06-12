@@ -1166,7 +1166,7 @@ section {
   cursor: not-allowed;
 }
 
-.time-slots-container h4 {
+.time-slots-container h3 {
   margin-bottom: 16px;
   font-size: 1.1rem;
 }
