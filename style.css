@@ -1701,8 +1701,7 @@ footer h3, footer h4 {
   color: var(--color-light);
   padding: 45px 0 25px 0;
   text-align: left !important;
-  height: auto;
-  min-height: 240px;
+  height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1752,11 +1751,11 @@ footer h3, footer h4 {
 }
 
 .banner-stamp {
-  width: 220px;
-  height: 220px;
+  width: 165px;
+  height: 165px;
   flex-shrink: 0;
   margin-left: auto;
-  margin-top: -30px; /* Offset large size slightly upwards for optical alignment */
+  margin-top: 0;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
   transform: rotate(15deg);
 }
@@ -1771,8 +1770,8 @@ footer h3, footer h4 {
   }
   .banner-stamp {
     margin: 24px auto 0 auto;
-    width: 180px;
-    height: 180px;
+    width: 135px;
+    height: 135px;
     transform: rotate(15deg);
   }
 }
