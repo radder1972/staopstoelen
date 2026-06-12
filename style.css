@@ -197,7 +197,7 @@ section {
   align-items: center;
   gap: 16px;
   position: relative;
-  padding-top: 110px; /* Space for absolute logo, text logo, and Plan Bezoek button */
+  padding-top: 110px; /* Space for absolute logo, text logo, and Maak een afspraak button */
 }
 
 .logo {
