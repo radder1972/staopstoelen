@@ -596,10 +596,43 @@ function initCalendar() {
     // Parse start and end times from timeSlot range (e.g. "11:00 - 13:00")
     let startTime = "";
     let endTime = "";
+    let startISO = "";
+    let endISO = "";
     if (state.selectedTimeSlot && state.selectedTimeSlot.includes(" - ")) {
       const timeParts = state.selectedTimeSlot.split(" - ");
       startTime = timeParts[0].trim();
       endTime = timeParts[1].trim();
+
+      try {
+        const year = state.selectedDate.getFullYear();
+        const month = state.selectedDate.getMonth();
+        const day = state.selectedDate.getDate();
+        
+        const [startH, startM] = startTime.split(":").map(Number);
+        const [endH, endM] = endTime.split(":").map(Number);
+        
+        const startDateObj = new Date(year, month, day, startH, startM, 0);
+        const endDateObj = new Date(year, month, day, endH, endM, 0);
+        
+        const toLocalISO = (d) => {
+          const offset = -d.getTimezoneOffset();
+          const sign = offset >= 0 ? "+" : "-";
+          const pad = (num) => String(num).padStart(2, "0");
+          return d.getFullYear() + "-" +
+                 pad(d.getMonth() + 1) + "-" +
+                 pad(d.getDate()) + "T" +
+                 pad(d.getHours()) + ":" +
+                 pad(d.getMinutes()) + ":" +
+                 pad(d.getSeconds()) + sign +
+                 pad(Math.floor(Math.abs(offset) / 60)) + ":" +
+                 pad(Math.abs(offset) % 60);
+        };
+        
+        startISO = toLocalISO(startDateObj);
+        endISO = toLocalISO(endDateObj);
+      } catch (err) {
+        console.error("Error formatting ISO dates:", err);
+      }
     }
 
     // Assemble the payload for Google Calendar webhook
@@ -611,6 +644,8 @@ function initCalendar() {
       timeSlot: state.selectedTimeSlot,
       startTime: startTime,
       endTime: endTime,
+      startISO: startISO,
+      endISO: endISO,
       appointmentType: state.appointmentType,
       address: state.appointmentType === "home" ? address : "Merwedestraat 239, Dordrecht (Showroom)",
       notes: notes,
