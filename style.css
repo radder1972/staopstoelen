@@ -1923,3 +1923,64 @@ footer h3, footer h4 {
     font-size: 1rem !important;
   }
 }
+
+/* ==========================================================================
+   Tablet Optimization Adjustments (768px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Prevent navigation links overflow and wrapping */
+  .nav-links {
+    gap: 16px !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem !important;
+  }
+
+  /* Prevent top-right header elements overflow */
+  .navbar-top-right {
+    gap: 16px !important;
+  }
+
+  .nav-top-link {
+    font-size: 0.85rem !important;
+  }
+
+  .btn-nav-appointment {
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Brand text logo font size scaling for tablets */
+  .nav-text-logo {
+    font-size: 1.5rem !important;
+  }
+
+  /* Hero title font size scaling for tablets */
+  .hero-title {
+    font-size: 2.8rem !important;
+  }
+}
+
+/* Catalog Filter Sidebar grid layout for mobile/tablet screen sizes (< 992px) */
+@media (max-width: 991px) {
+  .catalog-layout .filter-sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .catalog-layout .filter-sidebar .filter-group:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  .catalog-layout .filter-sidebar .filter-group {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
