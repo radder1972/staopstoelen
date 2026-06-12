@@ -260,13 +260,41 @@ section {
   color: var(--color-forest);
 }
 
-.btn-nav-appointment {
+.navbar-top-right {
   position: absolute;
-  right: 24px; /* Align with container padding */
-  top: 15px; /* Aligned at the top of the header */
+  right: 24px;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  z-index: 10;
+}
+
+.nav-top-link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-forest-dark); /* Donkergroen */
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-top-link:hover,
+.nav-top-link.active {
+  color: var(--color-forest);
+}
+
+.btn-nav-appointment {
+  position: relative;
   padding: 10px 24px;
   min-height: auto;
-  z-index: 10;
+}
+
+/* Hide specific desktop menu items from the second row menu on desktop */
+@media (min-width: 768px) {
+  .nav-desktop-hide {
+    display: none !important;
+  }
 }
 
 /* Navigation Text Logo */
@@ -298,12 +326,18 @@ section {
     align-items: center;
   }
 
-  .btn-nav-appointment {
+  .navbar-top-right {
     position: relative;
     right: auto;
     top: auto;
     margin: 12px 0 0 0;
     width: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-top-right .nav-top-link {
+    display: none !important;
   }
   
   .nav-text-logo {
