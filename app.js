@@ -593,6 +593,15 @@ function initCalendar() {
     submitBookingBtn.textContent = "Verwerken...";
     submitBookingBtn.disabled = true;
 
+    // Parse start and end times from timeSlot range (e.g. "11:00 - 13:00")
+    let startTime = "";
+    let endTime = "";
+    if (state.selectedTimeSlot && state.selectedTimeSlot.includes(" - ")) {
+      const timeParts = state.selectedTimeSlot.split(" - ");
+      startTime = timeParts[0].trim();
+      endTime = timeParts[1].trim();
+    }
+
     // Assemble the payload for Google Calendar webhook
     const bookingPayload = {
       name: name,
@@ -600,6 +609,8 @@ function initCalendar() {
       email: email,
       date: state.selectedDate.toISOString().split('T')[0], // YYYY-MM-DD
       timeSlot: state.selectedTimeSlot,
+      startTime: startTime,
+      endTime: endTime,
       appointmentType: state.appointmentType,
       address: state.appointmentType === "home" ? address : "Merwedestraat 239, Dordrecht (Showroom)",
       notes: notes,
