@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Goedkope Sta-op Stoelen | Nieuw, Gebruikt & Gereviseerd</title>
   <meta name="description" content="Vind een goedkope sta-op stoel die past bij uw budget. Ruime voorraad nieuwe, gebruikte en gereconditioneerde sta-op stoelen van topmerken met garantie.">
-  <link rel="stylesheet" href="style.css?v=1.0.25">
+  <link rel="stylesheet" href="style.css?v=1.0.26">
   <style>
 
     .catalog-layout {
@@ -183,7 +183,6 @@
         <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Sta-op Stoelen</h1>
         <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Een oplossing op maat voor elk budget. Ontdek onze nieuwe, gebruikte en geconditioneerde sta-op stoelen.</p>
       </div>
-      <img src="assets/revisie_stempel_clean.svg?v=1.0.5" alt="100% gereviseerd als nieuw" class="banner-stamp">
     </div>
   </section>
 
@@ -633,9 +632,8 @@
         card.className = "product-card";
 
         card.innerHTML = `
-          <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
+          <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            ${item.badgeType === "reco" ? `<img src="assets/revisie_stempel_clean.svg?v=1.0.5" alt="100% gereviseerd als nieuw" class="quality-stamp">` : ""}
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
           </div>
           <div class="product-info" style="display: flex; flex-direction: column;">
