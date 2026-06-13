@@ -225,6 +225,28 @@
       color: var(--color-terracotta-hover);
     }
     
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .status-beschikbaar {
+      background-color: #d1ebd1;
+      color: #0c430c;
+    }
+    .status-gereserveerd {
+      background-color: #fff2cc;
+      color: #b25900;
+    }
+    .status-verkocht {
+      background-color: #fce8e6;
+      color: #c53929;
+    }
+    
     .action-btn-group {
       display: flex;
       gap: 8px;
@@ -546,6 +568,14 @@
                 </select>
               </div>
               <div class="form-group">
+                <label class="form-label" for="chairStatus">Status</label>
+                <select class="form-control" id="chairStatus">
+                  <option value="beschikbaar">Beschikbaar</option>
+                  <option value="gereserveerd">Gereserveerd</option>
+                  <option value="verkocht">Verkocht</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <label class="form-label" for="chairType">Type stoel</label>
                 <select class="form-control" id="chairType">
                   <option value="staop">Sta-opstoel</option>
@@ -657,22 +687,24 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Dordrecht"
+    "model": "Dordrecht",
+    "status": "beschikbaar"
   },
   {
     "id": "senioren-sta-op-stoel-hk-dordt",
     "name": "Senioren sta-op stoel HK Dordt",
-    "image": "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
-    "ambientImage": "assets/chair_hk_dordt_cozy.png",
+    "brand": "Hjort Knudsen",
+    "model": "Senioren HK Dordt",
     "price": 995,
-    "brand": "Overig",
-    "description": "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
-    "badge": "Hoge Kwaliteit",
-    "badgeType": "reco",
+    "image": "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
     "condition": "occasion",
     "type": "relax",
     "material": "stof",
-    "model": "Senioren HK Dordt"
+    "description": "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
+    "ambientImage": "assets/chair_hk_dordt_cozy.png",
+    "badge": "Hoge Kwaliteit",
+    "badgeType": "reco",
+    "status": "beschikbaar"
   },
   {
     "id": "senioren-sta-op-stoel-mecam-athena",
@@ -687,7 +719,8 @@
     "condition": "nieuw",
     "type": "relax",
     "material": "stof",
-    "model": "Senioren Athena"
+    "model": "Senioren Athena",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-draaibaar-zwijndrecht",
@@ -702,7 +735,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Zwijndrecht"
+    "model": "Zwijndrecht",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-draaibaar-sliedrecht",
@@ -717,7 +751,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Sliedrecht"
+    "model": "Sliedrecht",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-rotterdam",
@@ -732,7 +767,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "leer",
-    "model": "Rotterdam"
+    "model": "Rotterdam",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-ridderkerk",
@@ -747,7 +783,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Ridderkerk"
+    "model": "Ridderkerk",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-fitform-570-vario-reco",
@@ -762,7 +799,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "570 Vario RECO"
+    "model": "570 Vario RECO",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-geert",
@@ -777,7 +815,8 @@
     "badge": "Oranje Editie",
     "badgeType": "reco",
     "material": "stof",
-    "model": "Geert"
+    "model": "Geert",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-barendrecht",
@@ -792,7 +831,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Barendrecht"
+    "model": "Barendrecht",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-alfred",
@@ -807,7 +847,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "leer",
-    "model": "ALFRED"
+    "model": "ALFRED",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-mecam-movie",
@@ -822,7 +863,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "Movie"
+    "model": "Movie",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-ravi",
@@ -837,37 +879,40 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Ravi"
+    "model": "Ravi",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-dfm-bentley-dicht",
-    "name": "Sta-op stoel DFM Bentley (dicht)",
-    "image": "assets/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
-    "ambientImage": "assets/chair_bentley_dicht_cozy.png",
+    "name": "Bentley (dicht)",
+    "brand": "DFM",
+    "model": "Bentley (dicht)",
     "price": 1945,
-    "brand": "Overig",
-    "description": "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
-    "badge": "Luxe Design",
-    "badgeType": "reco",
-    "condition": "occasion",
+    "image": "assets/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
+    "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "DFM Bentley (dicht)"
+    "description": "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
+    "ambientImage": "assets/chair_bentley_dicht_cozy.png",
+    "badge": "Luxe Design",
+    "badgeType": "reco",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-dfm-bentley-open",
     "name": "Sta-op stoel DFM Bentley (open)",
-    "image": "assets/chair_sta-op-stoel-dfm-bentley-open-1-copy-300x300.png",
-    "ambientImage": "assets/chair_bentley_open_cozy.png",
+    "brand": "DFM",
+    "model": "DFM Bentley (open)",
     "price": 1945,
-    "brand": "Overig",
-    "description": "Bentley model getoond in geopende relaxstand met de voetensteun omhoog geklapt voor optimale ondersteuning van uw benen.",
-    "badge": "Optimale Relaxstand",
-    "badgeType": "reco",
+    "image": "assets/chair_sta-op-stoel-dfm-bentley-open-1-copy-300x300.png",
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "DFM Bentley (open)"
+    "description": "Bentley model getoond in geopende relaxstand met de voetensteun omhoog geklapt voor optimale ondersteuning van uw benen.",
+    "ambientImage": "assets/chair_bentley_open_cozy.png",
+    "badge": "Optimale Relaxstand",
+    "badgeType": "reco",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-mecam-barney",
@@ -882,7 +927,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Barney"
+    "model": "Barney",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-mecam-degas",
@@ -897,7 +943,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Degas"
+    "model": "Degas",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-fitform-580-elevo",
@@ -912,7 +959,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "580 Elevo"
+    "model": "580 Elevo",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-refitto",
@@ -927,7 +975,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Refitto"
+    "model": "Refitto",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-doge-bellino",
@@ -942,7 +991,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "Bellino"
+    "model": "Bellino",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-de-toekomst-fiji",
@@ -957,7 +1007,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Fiji"
+    "model": "Fiji",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-fitform-552-elevo",
@@ -972,7 +1023,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "552 Elevo"
+    "model": "552 Elevo",
+    "status": "verkocht"
   },
   {
     "id": "sta-op-stoel-industro",
@@ -987,7 +1039,8 @@
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
-    "model": "Industro"
+    "model": "Industro",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-fitform-570-vario",
@@ -1002,7 +1055,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "570 Vario"
+    "model": "570 Vario",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-fitform-574-vario",
@@ -1017,7 +1071,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "574 Vario"
+    "model": "574 Vario",
+    "status": "beschikbaar"
   },
   {
     "id": "sta-op-stoel-doge-modulair",
@@ -1032,7 +1087,8 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "model": "Modulair"
+    "model": "Modulair",
+    "status": "beschikbaar"
   },
   {
     "id": "geert-relax",
@@ -1047,7 +1103,8 @@
     "badge": "Relax Functie",
     "badgeType": "sale",
     "material": "stof",
-    "model": "Geert Relax"
+    "model": "Geert Relax",
+    "status": "beschikbaar"
   },
   {
     "id": "seniorenstoel-hk-zwolle",
@@ -1061,7 +1118,8 @@
     "badge": "Op maat gemaakt",
     "badgeType": "reco",
     "material": "stof",
-    "model": "HK Zwolle"
+    "model": "HK Zwolle",
+    "status": "beschikbaar"
   },
   {
     "id": "seniorenstoel-dylan",
@@ -1075,7 +1133,8 @@
     "badge": "Hygiënisch & Robuust",
     "badgeType": "new",
     "material": "stof",
-    "model": "Dylan"
+    "model": "Dylan",
+    "status": "beschikbaar"
   },
   {
     "id": "seniorenstoel-farstrup-applaus",
@@ -1089,7 +1148,8 @@
     "badge": "10 Jaar Garantie",
     "badgeType": "reco",
     "material": "stof",
-    "model": "Applaus"
+    "model": "Applaus",
+    "status": "beschikbaar"
   },
   {
     "id": "seniorenstoel-farstrup-plus",
@@ -1103,7 +1163,8 @@
     "badge": "10 Jaar Garantie",
     "badgeType": "reco",
     "material": "stof",
-    "model": "Plus"
+    "model": "Plus",
+    "status": "beschikbaar"
   },
   {
     "id": "seniorenstoel-farstrup-casa",
@@ -1117,7 +1178,8 @@
     "badge": "Deens Handwerk",
     "badgeType": "reco",
     "material": "stof",
-    "model": "Casa"
+    "model": "Casa",
+    "status": "beschikbaar"
   },
   {
     "id": "seniorenstoel-farstrup-cantate",
@@ -1131,7 +1193,25 @@
     "badge": "Top Comfort",
     "badgeType": "reco",
     "material": "stof",
-    "model": "Cantate"
+    "model": "Cantate",
+    "status": "beschikbaar"
+  },
+  {
+    "id": "geerts-droom",
+    "name": "Geerts Droom",
+    "brand": "Huismerk",
+    "model": "D1",
+    "price": 1190,
+    "image": "assets/geert_dream_sit.png",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof",
+    "description": "Als gediplomeerd BewegingsTechnoloog droomt Geert al jaren van de perfecte sta-opstoel: een model dat niet alleen ergonomisch perfect aansluit op uw lichaam, maar ook met een vloeiende, stabiele beweging opstaat. Hieronder kunt u deze upstand-beweging zelf ervaren door simpelweg uw cursor op de stoel te plaatsen.",
+    "imageUp": "assets/geert_dream_lift.png",
+    "ambientImage": "assets/Sta-op-stoel-DORDRECHT-interior.png",
+    "badge": "Een droom",
+    "badgeType": "reco",
+    "status": "beschikbaar"
   }
 ]
 ;
@@ -1266,6 +1346,7 @@
         'Model': 'model',
         'Prijs': 'price',
         'Conditie': 'condition',
+        'Status': 'status',
         'Type': 'type',
         'Materiaal': 'material',
         'Badge': 'badge',
@@ -1321,6 +1402,16 @@
         const typeText = item.type === "relax" ? "Relaxstoel" : "Sta-opstoel";
         const materialText = item.material === "leer" ? "Leer" : "Stof";
         
+        let statusBadgeClass = "status-beschikbaar";
+        let statusLabel = "Beschikbaar";
+        if (item.status === "gereserveerd") {
+          statusBadgeClass = "status-gereserveerd";
+          statusLabel = "Gereserveerd";
+        } else if (item.status === "verkocht") {
+          statusBadgeClass = "status-verkocht";
+          statusLabel = "Verkocht";
+        }
+        
         let tdContent = `
           <td><img class="row-img" src="${item.image || 'assets/chair.png'}" alt="${item.name}"></td>
           <td style="font-weight:600; color:var(--color-forest-dark);">${item.name}</td>
@@ -1328,6 +1419,7 @@
           <td>${item.model || '-'}</td>
           <td style="font-weight:700;">€ ${item.price.toLocaleString("nl-NL")},-</td>
           <td>${conditionText}</td>
+          <td><span class="status-badge ${statusBadgeClass}">${statusLabel}</span></td>
           <td>${typeText}</td>
           <td>${materialText}</td>
           <td>
@@ -1393,6 +1485,7 @@
       document.getElementById("formChairIndex").value = "";
       document.getElementById("formTitle").textContent = "Nieuwe Stoel Toevoegen";
       document.getElementById("chairCondition").value = "nieuw";
+      document.getElementById("chairStatus").value = "beschikbaar";
       document.getElementById("chairType").value = "staop";
       document.getElementById("chairMaterial").value = "stof";
       
@@ -1441,6 +1534,7 @@
       document.getElementById("chairImageUp").value = item.imageUp || "";
       document.getElementById("chairAmbientImage").value = item.ambientImage || "";
       document.getElementById("chairCondition").value = item.condition || "nieuw";
+      document.getElementById("chairStatus").value = item.status || "beschikbaar";
       document.getElementById("chairType").value = item.type || "staop";
       document.getElementById("chairMaterial").value = item.material || "stof";
       document.getElementById("chairBadge").value = item.badge || "";
@@ -1482,6 +1576,7 @@
         price: parseInt(document.getElementById("chairPrice").value),
         image: document.getElementById("chairImage").value,
         condition: document.getElementById("chairCondition").value,
+        status: document.getElementById("chairStatus").value,
         type: document.getElementById("chairType").value,
         material: document.getElementById("chairMaterial").value,
         description: document.getElementById("chairDesc").value
