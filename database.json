@@ -132,17 +132,17 @@
       "id": "sta-op-stoel-geert",
       "name": "Sta-opstoel Geert",
       "brand": "Huismerk",
+      "model": "Geert",
       "price": 1550,
       "image": "assets/sta_opstoel_geerts_studio.png",
       "condition": "occasion",
+      "status": "gereserveerd",
       "type": "staop",
+      "material": "stof",
       "description": "De Sta-opstoel Geerts is een modern vormgegeven sta-op fauteuil bekleed met een trendy en uiterst comfortabele oranje structuurstof. Perfect instelbaar voor een actieve zit, heerlijke relaxstand en moeiteloos opstaan.",
       "ambientImage": "assets/sta_opstoel_geerts_interior.png",
       "badge": "Oranje Editie",
-      "badgeType": "reco",
-      "material": "stof",
-      "model": "Geert",
-      "status": "beschikbaar"
+      "badgeType": "reco"
     },
     {
       "id": "sta-op-stoel-barendrecht",

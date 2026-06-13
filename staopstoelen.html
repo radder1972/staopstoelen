@@ -1075,9 +1075,9 @@
 
         let stampHtml = "";
         if (item.status === "verkocht") {
-          stampHtml = `<img src="assets/verkocht_stempel.svg?v=1.0.51" alt="Verkocht" class="quality-stamp">`;
+          stampHtml = `<img src="assets/verkocht_stempel.svg?v=1.0.51" alt="Verkocht" class="quality-stamp stamp-bottom-left">`;
         } else if (item.status === "gereserveerd") {
-          stampHtml = `<img src="assets/gereserveerd_stempel.svg?v=1.0.51" alt="Gereserveerd" class="quality-stamp">`;
+          stampHtml = `<img src="assets/gereserveerd_stempel.svg?v=1.0.51" alt="Gereserveerd" class="quality-stamp stamp-bottom-left">`;
         } else if (item.condition === "occasion") {
           stampHtml = `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">`;
         }
@@ -1171,14 +1171,17 @@
       if (item.status === "verkocht") {
         modalStamp.src = "assets/verkocht_stempel.svg?v=1.0.51";
         modalStamp.alt = "Verkocht";
+        modalStamp.className = "quality-stamp stamp-bottom-left";
         modalStamp.style.display = "block";
       } else if (item.status === "gereserveerd") {
         modalStamp.src = "assets/gereserveerd_stempel.svg?v=1.0.51";
         modalStamp.alt = "Gereserveerd";
+        modalStamp.className = "quality-stamp stamp-bottom-left";
         modalStamp.style.display = "block";
       } else if (item.condition === "occasion") {
         modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.0.48";
         modalStamp.alt = "Gereviseerd";
+        modalStamp.className = "quality-stamp";
         modalStamp.style.display = "block";
       } else {
         modalStamp.style.display = "none";

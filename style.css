@@ -781,6 +781,13 @@ section {
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.quality-stamp.stamp-bottom-left {
+  top: auto;
+  right: auto;
+  bottom: 12px;
+  left: 12px;
+}
+
 .product-card:hover .quality-stamp {
   transform: scale(1.08) rotate(8deg);
 }
