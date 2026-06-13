@@ -1,0 +1,473 @@
+{
+  "staopstoelen": [
+    {
+      "id": "sta-op-stoel-dordrecht",
+      "name": "Sta-op stoel Dordrecht",
+      "image": "assets/chair_sta-op-stoel-dordrecht-1.png",
+      "ambientImage": "assets/chair_dordrecht_cozy.png",
+      "price": 700,
+      "brand": "Overig",
+      "description": "De sta-op stoel Dordrecht is een sta-op / relax fauteuil welke zeer eenvoudig te bedienen is. Dit komt doordat er maar 2 knopjes op de handbediening zitten. De stoel is bekleed met een prachtige antraciet luxe microvezel stof welke zeer sterk en eenvoudig te reinigen is.",
+      "badge": "Budget Vriendelijk",
+      "badgeType": "new"
+    },
+    {
+      "id": "senioren-sta-op-stoel-hk-dordt",
+      "name": "Senioren sta-op stoel HK Dordt",
+      "image": "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
+      "ambientImage": "assets/chair_hk_dordt_cozy.png",
+      "price": 995,
+      "brand": "Overig",
+      "description": "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
+      "badge": "Hoge Kwaliteit",
+      "badgeType": "reco"
+    },
+    {
+      "id": "senioren-sta-op-stoel-mecam-athena",
+      "name": "Senioren sta-op stoel Mecam Athena",
+      "image": "assets/chair_sta-op-stoel-mecam-athena-1-300x300.png",
+      "ambientImage": "assets/chair_athena_cozy.png",
+      "price": 1045,
+      "brand": "Mecam",
+      "description": "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
+      "badge": "Geen Snoeren",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-draaibaar-zwijndrecht",
+      "name": "Sta-op stoel draaibaar Zwijndrecht",
+      "image": "assets/chair_sta-op-stoel-zwijndrecht-1-e1772115887824.png",
+      "ambientImage": "assets/chair_zwijndrecht_cozy.png",
+      "price": 1350,
+      "brand": "Overig",
+      "description": "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel is van alle gemakken voorzien en heeft door het houten draaiplateau een klassieke maar toch moderne uitstraling.",
+      "badge": "Modern & Draaibaar",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-draaibaar-sliedrecht",
+      "name": "Sta-op stoel draaibaar Sliedrecht",
+      "image": "assets/chair_sta-op-stoel-draaibaar-sliedrecht-1.png",
+      "ambientImage": "assets/chair_sliedrecht_cozy.png",
+      "price": 1395,
+      "brand": "Overig",
+      "description": "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel voorziet in alle gemakken. Door de geborstelde stalen voet heeft hij een strakke, moderne uitstraling.",
+      "badge": "Luxe Uitstraling",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-rotterdam",
+      "name": "Sta-op stoel Rotterdam",
+      "image": "assets/chair_staop-stoel-rotterdam-1-min-scaled.png",
+      "ambientImage": "assets/chair_rotterdam_cozy.png",
+      "price": 1485,
+      "brand": "Overig",
+      "description": "Prachtige 4-motorige relax fauteuil met sta-op verstelling. Elegant, klassiek en luxe. Geheel in leer bekleed met 4 afzonderlijke motoren voor onafhankelijke afstelling.",
+      "badge": "4-Motorig Leder",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-ridderkerk",
+      "name": "Sta-op stoel Ridderkerk",
+      "image": "assets/chair_sta-op-stoel-hk-ridderkerk-1-scaled.png",
+      "ambientImage": "assets/chair_ridderkerk_cozy.png",
+      "price": 1495,
+      "brand": "Overig",
+      "description": "Heerlijke 2-motorige relax fauteuil met sta-op verstelling. De Ridderkerk is elektrisch verstelbaar en voorzien van een fijne relaxfunctie waarmee u comfortabel zit met de benen omhoog.",
+      "badge": "2 Motoren",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-fitform-570-vario-reco",
+      "name": "Sta-op stoel Fitform 570 Vario RECO",
+      "image": "assets/chair_fitform-570-vario-sta-op-stoel-gereconditioneerd-1-300x300.png",
+      "ambientImage": "assets/chair_fitform_570_reco_cozy.png",
+      "price": 1500,
+      "brand": "Fitform",
+      "description": "Volledig gereconditioneerd Fitform-model. Gebouwd op een gereviseerd frame, voorzien van een nieuwe handbediening en compleet nieuwe bekleding in stof/leder naar keuze.",
+      "badge": "Gereconditioneerd",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-geerts",
+      "name": "Sta-opstoel Geerts",
+      "image": "assets/sta_opstoel_geerts_studio.png",
+      "ambientImage": "assets/sta_opstoel_geerts_interior.png",
+      "price": 1550,
+      "brand": "Overig",
+      "description": "De Sta-opstoel Geerts is een modern vormgegeven sta-op fauteuil bekleed met een trendy en uiterst comfortabele oranje structuurstof. Perfect instelbaar voor een actieve zit, heerlijke relaxstand en moeiteloos opstaan.",
+      "badge": "Oranje Editie",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-barendrecht",
+      "name": "Sta-op stoel Barendrecht",
+      "image": "assets/chair_sta-op-stoel-barendrecht-1-min-scaled-e1760613493995.png",
+      "ambientImage": "assets/chair_barendrecht_cozy.png",
+      "price": 1565,
+      "brand": "Overig",
+      "description": "Heerlijke 2-motorige relax fauteuil met sta-op verstelling en standaard ingebouwde accu! Geen kabels over de vloer, waardoor u de stoel vrij in de kamer kunt plaatsen.",
+      "badge": "Ingebouwde Accu",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-alfred",
+      "name": "Sta-op stoel ALFRED",
+      "image": "assets/chair_sta-op-stoel-alfred-1-scaled.png",
+      "ambientImage": "assets/chair_alfred_cozy.png",
+      "price": 1775,
+      "brand": "Overig",
+      "description": "Prachtige 2-motorige relax fauteuil met sta-op verstelling. Geheel in soepel leder bekleed, met een verborgen voetenbank die onder de stoel wegdraait.",
+      "badge": "Luxe Leder",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-mecam-movie",
+      "name": "Sta-op stoel Mecam Movie",
+      "image": "assets/chair_sta-op-stoel-mecam-movie-4-300x300.png",
+      "ambientImage": "assets/chair_movie_cozy.png",
+      "price": 1925,
+      "brand": "Mecam",
+      "description": "Klassieke en degelijke uitstraling van Mecam. De fauteuil is in verschillende maatvoeringen te leveren, biedt heerlijk zitcomfort en is leverbaar in vele stoffen en leersoorten.",
+      "badge": "Klassiek Comfort",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-ravi",
+      "name": "Sta-op stoel Ravi",
+      "image": "assets/chair_sta-op-stoel-ravi-1-kopie-300x300.png",
+      "ambientImage": "assets/chair_ravi_cozy.png",
+      "price": 1945,
+      "brand": "Overig",
+      "description": "Elegante, draaibare relaxfauteuil met sta-op hulp. Verkrijgbaar in 3 verschillende maten (s/m/l) voor een perfecte ergonomische match.",
+      "badge": "Draaibaar Model",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-dfm-bentley-dicht",
+      "name": "Sta-op stoel DFM Bentley (dicht)",
+      "image": "assets/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
+      "ambientImage": "assets/chair_bentley_dicht_cozy.png",
+      "price": 1945,
+      "brand": "Overig",
+      "description": "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
+      "badge": "Luxe Design",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-dfm-bentley-open",
+      "name": "Sta-op stoel DFM Bentley (open)",
+      "image": "assets/chair_sta-op-stoel-dfm-bentley-open-1-copy-300x300.png",
+      "ambientImage": "assets/chair_bentley_open_cozy.png",
+      "price": 1945,
+      "brand": "Overig",
+      "description": "Bentley model getoond in geopende relaxstand met de voetensteun omhoog geklapt voor optimale ondersteuning van uw benen.",
+      "badge": "Optimale Relaxstand",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-mecam-barney",
+      "name": "Sta-op stoel Mecam Barney",
+      "image": "assets/chair_sta-op-stoel-draaibaar-barney-1-300x300.png",
+      "ambientImage": "assets/chair_barney_cozy.png",
+      "price": 2045,
+      "brand": "Mecam",
+      "description": "Elegante draaibare fauteuil. De 2 motoren zijn bijna onzichtbaar onder de fauteuil weggewerkt. Voorzien van een automatische beveiliging in de draaivoet.",
+      "badge": "Slimme Draaivoet",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-mecam-degas",
+      "name": "Sta-op stoel Mecam Degas",
+      "image": "assets/chair_sta-op-stoel-mecam-degas-1-300x300.png",
+      "ambientImage": "assets/chair_degas_cozy.png",
+      "price": 2155,
+      "brand": "Mecam",
+      "description": "Huiselijke uitstraling en zeer comfortabel ergonomisch zitcomfort van Belgisch fabricaat. Wordt met veel passie exact op uw maat gemaakt.",
+      "badge": "Ergonomisch Maatwerk",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-fitform-580-elevo",
+      "name": "Sta-op stoel Fitform 580 Elevo",
+      "image": "assets/chair_sta-op-stoel-fitform-580-elevo-iii-5-300x300.png",
+      "ambientImage": "assets/chair_fitform_580_cozy.png",
+      "price": 2300,
+      "brand": "Fitform",
+      "description": "Hoogwaardige Fitform zorgstoel. Ontworpen door specialisten voor langdurig zitcomfort. Standaard voorzien van het Fitform 10 jaar Garantie Waarborg.",
+      "badge": "10 Jaar Garantie",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-refitto",
+      "name": "Sta-op stoel Refitto",
+      "image": "assets/chair_sta-op-stoel-refitto-ea-326-e1757503359302.png",
+      "ambientImage": "assets/chair_refitto_cozy.png",
+      "price": 2345,
+      "brand": "Overig",
+      "description": "Moderne sta-op relaxfauteuil. Blokkeert automatisch bij het opstaan zodat de stoel niet kan wegdraaien. Veiligheid en comfort hand in hand.",
+      "badge": "Extra Beveiligd",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-doge-bellino",
+      "name": "Sta-op stoel Doge Bellino",
+      "image": "assets/chair_sta-op-stoel-doge-bellino-3-300x300.png",
+      "ambientImage": "assets/chair_bellino_cozy.png",
+      "price": 2395,
+      "brand": "Doge",
+      "description": "Voorzien van drie motoren om de stoel geheel naar wens in te stellen. Uniek: de zithouding wordt behouden wanneer de kantelfunctie wordt gebruikt.",
+      "badge": "3-Motorig Comfort",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-de-toekomst-fiji",
+      "name": "Sta-op stoel De Toekomst Fiji",
+      "image": "assets/chair_sta-op-stoel-fiji-draaibaar-2-300x300.png",
+      "ambientImage": "assets/chair_fiji_cozy.png",
+      "price": 2445,
+      "brand": "De Toekomst",
+      "description": "Elegante en moderne draaibare fauteuil. Voorzien van een onzichtbare sta-op motor onder het frame en een veilige rem in de draaivoet.",
+      "badge": "Draaibaar & Veilig",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-fitform-552-elevo",
+      "name": "Sta-op stoel Fitform 552 Elevo",
+      "image": "assets/fitform_552_verkocht.png",
+      "ambientImage": "assets/chair_fitform_552_cozy.png",
+      "price": 2500,
+      "brand": "Fitform",
+      "description": "Volledig verstelbare sta-op en relax fauteuil met 3 afzonderlijke motoren voor voetenbank, rugleuning en kanteling. Optimaal ondersteund wonen.",
+      "badge": "Verkocht",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-industro",
+      "name": "Sta-op stoel Industro",
+      "image": "assets/chair_sta-op-stoel-industro-cv-120-e1757503299967.png",
+      "ambientImage": "assets/chair_industro_cozy.png",
+      "price": 2845,
+      "brand": "Overig",
+      "description": "Stoere, industriële relaxfauteuil met karakter. Volledig naar lichaamsmaten opgemeten en te voorzien van lumbaalsteun of nekverwarming.",
+      "badge": "Stoer & Industrieel",
+      "badgeType": "new"
+    },
+    {
+      "id": "sta-op-stoel-fitform-570-vario",
+      "name": "Sta-op stoel Fitform 570 Vario",
+      "image": "assets/chair_sta-op-stoel-fitform-570-vario-iii-5-300x300.png",
+      "ambientImage": "assets/chair_fitform_570_cozy.png",
+      "price": 3450,
+      "brand": "Fitform",
+      "description": "De Fitform Vario zorgfauteuil kan volledig worden aangepast aan uw persoonlijke situatie. Uitstekend zitsysteem dat klachten voorkomt.",
+      "badge": "Zorgfauteuil",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-fitform-574-vario",
+      "name": "Sta-op stoel Fitform 574 Vario",
+      "image": "assets/chair_sta-op-stoel-fitform-574-vario-2-300x300.png",
+      "ambientImage": "assets/chair_fitform_574_cozy.png",
+      "price": 3450,
+      "brand": "Fitform",
+      "description": "Ranke, slanke en elegante zorgfauteuil. Zithoogte, zitdiepte en armleggers zijn na levering binnen 10 minuten volledig nastelbaar.",
+      "badge": "Elegante Pasvorm",
+      "badgeType": "reco"
+    },
+    {
+      "id": "sta-op-stoel-doge-modulair",
+      "name": "Sta-op stoel Doge Modulair",
+      "image": "assets/chair_sta-op-stoel-doge-modulair-4-300x300.png",
+      "ambientImage": "assets/chair_doge_modulair_cozy.png",
+      "price": 3995,
+      "brand": "Doge",
+      "description": "Nederlands kwaliteitsproduct met 3 motoren. Optimaal zitcomfort door individuele instelbaarheid. Uitstekend te combineren met orthopedische aanpassingen.",
+      "badge": "Modulair Systeem",
+      "badgeType": "reco"
+    }
+  ],
+  "seniorenstoelen": [
+    {
+      "id": "seniorenstoel-hk-zwolle",
+      "name": "Seniorenstoel HK Zwolle",
+      "image": "assets/chair_seniorenstoel-hjortknudsen-zwolle-nw-1-300x300.png",
+      "price": 695,
+      "brand": "Hjort Knudsen",
+      "adjustment": "Handmatig",
+      "description": "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
+      "badge": "Op maat gemaakt",
+      "badgeType": "reco"
+    },
+    {
+      "id": "seniorenstoel-dylan",
+      "name": "Seniorenstoel Dylan",
+      "image": "assets/chair_seniorenstoel-dylan-2-300x300.png",
+      "price": 775,
+      "brand": "Overig",
+      "adjustment": "Handmatig",
+      "description": "Seniorenstoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
+      "badge": "Hygiënisch & Robuust",
+      "badgeType": "new"
+    },
+    {
+      "id": "seniorenstoel-farstrup-applaus",
+      "name": "Seniorenstoel Farstrup Applaus",
+      "image": "assets/chair_senioren-fauteuil-farstrup-applaus-300x300.png",
+      "price": 945,
+      "brand": "Farstrup",
+      "adjustment": "Handmatig",
+      "description": "Elke Seniorenstoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
+      "badge": "10 Jaar Garantie",
+      "badgeType": "reco"
+    },
+    {
+      "id": "senioren-sta-op-stoel-hk-dordt",
+      "name": "Senioren sta-op stoel HK Dordt",
+      "image": "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
+      "price": 995,
+      "brand": "Hjort Knudsen",
+      "adjustment": "Sta-op",
+      "description": "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
+      "badge": "Sta-op Hulp",
+      "badgeType": "new"
+    },
+    {
+      "id": "senioren-sta-op-stoel-mecam-athena",
+      "name": "Senioren sta-op stoel Mecam Athena",
+      "image": "assets/chair_sta-op-stoel-mecam-athena-1-300x300.png",
+      "price": 1045,
+      "brand": "Mecam",
+      "adjustment": "Zonder Motoren",
+      "description": "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
+      "badge": "Geen Snoeren",
+      "badgeType": "new"
+    },
+    {
+      "id": "seniorenstoel-farstrup-plus",
+      "name": "Seniorenstoel Farstrup Plus",
+      "image": "assets/chair_ergonomische-senioren-fauteuil-plus-7-300x300.png",
+      "price": 1395,
+      "brand": "Farstrup",
+      "adjustment": "Handmatig",
+      "description": "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
+      "badge": "10 Jaar Garantie",
+      "badgeType": "reco"
+    },
+    {
+      "id": "seniorenstoel-farstrup-casa",
+      "name": "Seniorenstoel Farstrup Casa",
+      "image": "assets/chair_ergonomische-senioren-fauteuil-casa-1-300x300.png",
+      "price": 1495,
+      "brand": "Farstrup",
+      "adjustment": "Handmatig",
+      "description": "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
+      "badge": "Deens Handwerk",
+      "badgeType": "reco"
+    },
+    {
+      "id": "seniorenstoel-farstrup-cantate",
+      "name": "Seniorenstoel Farstrup Cantate",
+      "image": "assets/chair_ergonomische-senioren-fauteuil-cantate-1-300x300.png",
+      "price": 1595,
+      "brand": "Farstrup",
+      "adjustment": "Handmatig",
+      "description": "De Cantate is het paradepaardje onder de seniorenstoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
+      "badge": "Top Comfort",
+      "badgeType": "reco"
+    }
+  ],
+  "occasions": [
+    {
+      "id": "fitform-570-reco",
+      "name": "Voorraad Sta-op stoel Fitform 570 Vario III RECO",
+      "image": "assets/chair_sta-op-stoel-fitform-570-vario-reco-0-300x300.png",
+      "price": 1500,
+      "oldPrice": null,
+      "sizes": [
+        "vario"
+      ],
+      "description": "Deze Voorraad Sta-op stoel Fitform 570 Vario III RECO heeft een heerlijke relaxfunctie. De handige sta-op voorziening zorgt er voor dat u zelf makkelijk uit uw fauteuil kunt komen. Deze stoel hebben wij altijd op voorraad en is nieuw GERECONDITIONEERD.",
+      "badge": "Altijd op voorraad",
+      "badgeType": "reco"
+    },
+    {
+      "id": "fitform-570-reco-smal",
+      "name": "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal",
+      "image": "assets/chair_sta-op-stoel-fitform-570-vario-smal-reco-1-copy-300x300.png",
+      "price": 1600,
+      "oldPrice": 1700,
+      "sizes": [
+        "smal"
+      ],
+      "description": "Deze Sta-op stoel Fitform 570 Vario III RECO Smal is aan de buitenkant niet te onderscheiden van een nieuw exemplaar. Gebouwd op een volledig gereviseerd A-merk frame. Alle mechanische componenten en schuimdelen zijn gecontroleerd en vernieuwd.",
+      "badge": "Smal model",
+      "badgeType": "sale"
+    },
+    {
+      "id": "fitform-570-reco-smal-board",
+      "name": "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal Board",
+      "image": "assets/chair_sta-op-stoel-reco-fitform-570-vario-smal-board-1-copy-300x300.png",
+      "price": 1600,
+      "oldPrice": 1700,
+      "sizes": [
+        "smal"
+      ],
+      "description": "Voorzien van een smalle zitbreedte en stevige ergonomische ondersteuningsplaten (board) in de rugleuning. Ideaal voor langdurig en comfortabel zitten zonder verzakking.",
+      "badge": "Stevige rug",
+      "badgeType": "sale"
+    },
+    {
+      "id": "fitform-570-reco-xl",
+      "name": "Voorraad Sta-op stoel Fitform 570 Vario III XL RECO",
+      "image": "assets/chair_sta-op-stoel-fitform-570-vario-xl-zand-1-copy-300x300.png",
+      "price": 1700,
+      "oldPrice": null,
+      "sizes": [
+        "xl"
+      ],
+      "description": "De XL-uitvoering van de populaire Fitform 570. Biedt een bredere zit en extra verstevigde motoren. Deze stoel is volledig gereviseerd en direct uit voorraad leverbaar.",
+      "badge": "XL Formaat",
+      "badgeType": "reco"
+    },
+    {
+      "id": "fitform-580-vario-mini",
+      "name": "Voorraad Sta op stoel Fitform 580 Vario Mini",
+      "image": "assets/fitform_580_vario_mini_verkocht.png",
+      "price": 1898,
+      "oldPrice": 2248,
+      "sizes": [
+        "mini"
+      ],
+      "description": "Deze Vario Mini heeft een heerlijke relaxfunctie and is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
+      "badge": "Verkocht",
+      "badgeType": "reco"
+    },
+    {
+      "id": "fitform-571-mini-ilp",
+      "name": "RECO Sta-op stoel Fitform 571 Vario III Mini ILP",
+      "image": "assets/chair_sta-op-stoel-fitform-571-mini-ilp-rugleuning-scaled.png",
+      "price": 2400,
+      "oldPrice": null,
+      "sizes": [
+        "mini"
+      ],
+      "description": "Gereviseerd frame met compleet NIEUWE bekleding. Uitgerust met het gepatenteerde ILP (Intelligent Lig- & Zit-systeem) voor ultieme ondersteuning bij rugklachten. Let op: kleine uitvoering met lage rugleuning.",
+      "badge": "Nieuwe Bekleding",
+      "badgeType": "reco"
+    },
+    {
+      "id": "fitform-570-ilp",
+      "name": "Voorraad Sta op stoel Fitform 570 Vario ILP",
+      "image": "assets/chair_sta-op-stoel-fitform-570-ilp-rugleuning-scaled.png",
+      "price": 2400,
+      "oldPrice": 4600,
+      "sizes": [
+        "vario"
+      ],
+      "description": "Een zo goed als ongebruikte stoel (teruggekocht wegens omstandigheden). Beschikt over de gepatenteerde Fitform ILP rug- en zittingopbouw. Werkelijk als nieuw.",
+      "badge": "Kans: Als Nieuw",
+      "badgeType": "sale"
+    }
+  ]
+}

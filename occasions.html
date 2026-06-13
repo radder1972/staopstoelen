@@ -6,7 +6,7 @@
   <title>Tweedehands Sta-op Stoelen & Occasions | Fitform & Doge</title>
   <meta name="description" content="Bekijk ons actuele aanbod tweedehands sta-op stoel occasions. Kwalitatieve, gereviseerde Fitform, Doge en Prominent stoelen op maat afgesteld met 2 jaar garantie.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.49">
+  <link rel="stylesheet" href="style.css?v=1.0.50">
   <style>
 
     .catalog-layout {
@@ -308,7 +308,7 @@
 
   <script>
     // Scraped occasions dataset
-    const OCCASIONS_DATA = JSON.parse(localStorage.getItem("admin_occasions")) || [
+    let OCCASIONS_DATA = JSON.parse(localStorage.getItem("admin_occasions")) || [
       {
         id: "fitform-570-reco",
         name: "Voorraad Sta-op stoel Fitform 570 Vario III RECO",
@@ -470,8 +470,22 @@
     document.getElementById("sortSelect").addEventListener("change", renderCatalog);
     document.querySelectorAll(".size-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
 
-    // Initial render
-    window.addEventListener("DOMContentLoaded", renderCatalog);
+    // Initial render with API fetch fallback
+    window.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/chairs");
+        if (response.ok) {
+          const dbData = await response.json();
+          if (dbData && dbData.occasions) {
+            OCCASIONS_DATA = dbData.occasions;
+            console.log("Loaded data from local API database server!");
+          }
+        }
+      } catch (e) {
+        console.warn("Could not connect to database server. Using localStorage/static fallback.");
+      }
+      renderCatalog();
+    });
   </script>
 </body>
 </html>

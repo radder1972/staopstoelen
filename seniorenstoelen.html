@@ -6,7 +6,7 @@
   <title>Ergonomische Seniorenstoelen op Maat | Comfortabel Zitten</title>
   <meta name="description" content="Ontdek onze collectie ergonomische seniorenstoelen op maat. Volledig instelbare relaxstoelen en sta-op stoelen voor optimaal zitcomfort en rugondersteuning.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.49">
+  <link rel="stylesheet" href="style.css?v=1.0.50">
   <style>
 
     .catalog-layout {
@@ -321,7 +321,7 @@
   <script src="app.js"></script>
   <script>
     // Scraped senior chairs dataset
-    const SENIORENSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_seniorenstoelen")) || [
+    let SENIORENSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_seniorenstoelen")) || [
       {
         id: "seniorenstoel-hk-zwolle",
         name: "Seniorenstoel HK Zwolle",
@@ -493,8 +493,22 @@
     document.querySelectorAll(".brand-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".adjust-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
 
-    // Initial render
-    window.addEventListener("DOMContentLoaded", renderCatalog);
+    // Initial render with API fetch fallback
+    window.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/chairs");
+        if (response.ok) {
+          const dbData = await response.json();
+          if (dbData && dbData.seniorenstoelen) {
+            SENIORENSTOELEN_DATA = dbData.seniorenstoelen;
+            console.log("Loaded data from local API database server!");
+          }
+        }
+      } catch (e) {
+        console.warn("Could not connect to database server. Using localStorage/static fallback.");
+      }
+      renderCatalog();
+    });
   </script>
 </body>
 </html>

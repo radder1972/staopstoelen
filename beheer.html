@@ -6,7 +6,7 @@
   <title>Beheer Dashboard | Staopstoelen.nl</title>
   <meta name="description" content="Beheer dashboard voor de stoelen catalogus van Staopstoelen.nl.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.49">
+  <link rel="stylesheet" href="style.css?v=1.0.50">
   <style>
     /* Admin Dashboard Specific Styles */
     body {
@@ -1082,6 +1082,11 @@
     // State Variables
     let currentTab = "staopstoelen";
     let activeData = [];
+    
+    // API Configuration for local database integration
+    const API_URL = "http://localhost:3000/api/chairs";
+    let isApiConnected = false;
+    let fullDbData = null;
 
     // Simple passcode check
     const PASSWORD = "staopstoeladmin";
@@ -1147,14 +1152,51 @@
       return [...getDefaultData(tab)];
     }
 
-    function saveData(tab, data) {
+    async function saveData(tab, data) {
       const key = getStorageKey(tab);
       localStorage.setItem(key, JSON.stringify(data));
       updateCodeExport();
+      
+      if (isApiConnected && fullDbData) {
+        const dbKey = tab === "staopstoelen" ? "staopstoelen" : (tab === "seniorenstoelen" ? "seniorenstoelen" : "occasions");
+        fullDbData[dbKey] = data;
+        
+        try {
+          const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(fullDbData)
+          });
+          if (!response.ok) {
+            throw new Error("Failed to post data to server");
+          }
+          console.log("Saved data to local API database server!");
+        } catch (e) {
+          console.error("Error saving to database server:", e);
+          alert("Database server kon niet worden bijgewerkt. Wijziging is wel lokaal opgeslagen.");
+        }
+      }
     }
 
-    function initDashboard() {
-      activeData = loadData(currentTab);
+    async function initDashboard() {
+      try {
+        const response = await fetch(API_URL);
+        if (response.ok) {
+          fullDbData = await response.json();
+          isApiConnected = true;
+          const dbKey = currentTab === "staopstoelen" ? "staopstoelen" : (currentTab === "seniorenstoelen" ? "seniorenstoelen" : "occasions");
+          activeData = fullDbData[dbKey];
+          console.log("Loaded data from local API database server!");
+        } else {
+          throw new Error("API responded with error");
+        }
+      } catch (e) {
+        console.warn("Could not connect to database server. Falling back to localStorage.", e);
+        isApiConnected = false;
+        activeData = loadData(currentTab);
+      }
       renderTable();
       updateCodeExport();
       resetForm();
@@ -1323,11 +1365,11 @@
     }
 
     // Delete button handler
-    function deleteChair(index) {
+    async function deleteChair(index) {
       const item = activeData[index];
       if (confirm(`Weet u zeker dat u "${item.name}" wilt verwijderen uit de lijst?`)) {
         activeData.splice(index, 1);
-        saveData(currentTab, activeData);
+        await saveData(currentTab, activeData);
         renderTable();
         if (document.getElementById("formChairIndex").value === String(index)) {
           resetForm();
@@ -1336,7 +1378,7 @@
     }
 
     // Save form handler
-    chairForm.addEventListener("submit", (e) => {
+    chairForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       
       const indexStr = document.getElementById("formChairIndex").value;
@@ -1378,17 +1420,36 @@
         activeData[index] = item;
       }
       
-      saveData(currentTab, activeData);
+      await saveData(currentTab, activeData);
       renderTable();
       resetForm();
     });
 
     // Reset data handler
-    document.getElementById("btnResetData").addEventListener("click", () => {
+    document.getElementById("btnResetData").addEventListener("click", async () => {
       if (confirm("Weet u zeker dat u alle wijzigingen in deze categorie wilt wissen en terugkeren naar de standaard datalijst?")) {
         const key = getStorageKey(currentTab);
         localStorage.removeItem(key);
-        initDashboard();
+        
+        if (isApiConnected && fullDbData) {
+          const dbKey = currentTab === "staopstoelen" ? "staopstoelen" : (currentTab === "seniorenstoelen" ? "seniorenstoelen" : "occasions");
+          fullDbData[dbKey] = getDefaultData(currentTab);
+          
+          try {
+            await fetch(API_URL, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(fullDbData)
+            });
+            console.log("Reset database server table to default.");
+          } catch (e) {
+            console.error("Error resetting database server:", e);
+          }
+        }
+        
+        await initDashboard();
       }
     });
 

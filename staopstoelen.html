@@ -6,7 +6,7 @@
   <title>Sta-op Stoelen | Nieuw, Gebruikt & Gereviseerd</title>
   <meta name="description" content="Vind een goedkope sta-op stoel die past bij uw budget. Ruime voorraad nieuwe, gebruikte en gereconditioneerde sta-op stoelen van topmerken met garantie.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.49">
+  <link rel="stylesheet" href="style.css?v=1.0.50">
   <style>
 
     .catalog-layout {
@@ -362,7 +362,7 @@
   <script src="app.js"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
-    const GOEDKOPE_STAOPSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_staopstoelen")) || [
+    let GOEDKOPE_STAOPSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_staopstoelen")) || [
       {
         id: "sta-op-stoel-dordrecht",
         name: "Sta-op stoel Dordrecht",
@@ -861,8 +861,22 @@
     document.querySelectorAll(".brand-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".price-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
 
-    // Initial render
-    window.addEventListener("DOMContentLoaded", renderCatalog);
+    // Initial render with API fetch fallback
+    window.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/chairs");
+        if (response.ok) {
+          const dbData = await response.json();
+          if (dbData && dbData.staopstoelen) {
+            GOEDKOPE_STAOPSTOELEN_DATA = dbData.staopstoelen;
+            console.log("Loaded data from local API database server!");
+          }
+        }
+      } catch (e) {
+        console.warn("Could not connect to database server. Using localStorage/static fallback.");
+      }
+      renderCatalog();
+    });
   </script>
 </body>
 </html>
