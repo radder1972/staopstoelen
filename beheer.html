@@ -19,8 +19,8 @@
     }
     
     .container {
-      max-width: 1600px !important;
-      width: 100%;
+      max-width: 100% !important;
+      width: 100% !important;
     }
     
     .admin-header {
@@ -174,7 +174,7 @@
     }
     
     th, td {
-      padding: 14px 12px;
+      padding: 12px 10px;
       border-bottom: 1px solid var(--color-gray-light);
       vertical-align: middle;
     }
@@ -1301,7 +1301,7 @@
           <td>
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : (item.badgeType === "sale" ? "badge-sale" : "badge-reco")}">${item.badge}</span>` : "-"}
           </td>
-          <td>
+          <td style="white-space: nowrap;">
             <div class="action-btn-group">
               <button class="btn-action btn-edit" data-index="${index}">Bewerken</button>
               <button class="btn-action btn-delete" data-index="${index}">Verwijderen</button>
