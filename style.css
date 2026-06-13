@@ -491,14 +491,31 @@ section {
 
 .hero-img-2 {
   z-index: 2;
-  animation: hero-fade-two 12s infinite ease-in-out;
+  animation: hero-fade-three-2 18s infinite ease-in-out;
 }
 
-@keyframes hero-fade-two {
-  0%, 45% {
+.hero-img-3 {
+  z-index: 3;
+  animation: hero-fade-three-3 18s infinite ease-in-out;
+}
+
+@keyframes hero-fade-three-2 {
+  0%, 27% {
     opacity: 0;
   }
-  50%, 95% {
+  33%, 60% {
+    opacity: 1;
+  }
+  66%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-three-3 {
+  0%, 60% {
+    opacity: 0;
+  }
+  66%, 93% {
     opacity: 1;
   }
   100% {
