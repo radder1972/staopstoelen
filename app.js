@@ -689,7 +689,7 @@ function initCalendar() {
       fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "text/plain"
         },
         body: JSON.stringify(bookingPayload)
       })
