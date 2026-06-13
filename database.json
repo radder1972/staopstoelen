@@ -323,18 +323,19 @@
     {
       "id": "sta-op-stoel-de-toekomst-fiji",
       "name": "Sta-op stoel De Toekomst Fiji",
-      "image": "assets/chair_sta-op-stoel-fiji-draaibaar-2-300x300.png",
-      "ambientImage": "assets/chair_fiji_cozy.png",
-      "price": 2445,
       "brand": "De Toekomst",
-      "description": "Elegante en moderne draaibare fauteuil. Voorzien van een onzichtbare sta-op motor onder het frame en een veilige rem in de draaivoet.",
-      "badge": "Draaibaar & Veilig",
-      "badgeType": "new",
+      "model": "Fiji",
+      "price": 2445,
+      "image": "assets/chair_downstand.png",
       "condition": "nieuw",
+      "status": "beschikbaar",
       "type": "staop",
       "material": "stof",
-      "model": "Fiji",
-      "status": "beschikbaar"
+      "description": "Elegante en moderne draaibare fauteuil. Voorzien van een onzichtbare sta-op motor onder het frame en een veilige rem in de draaivoet.",
+      "imageUp": "assets/chair_upstand.png",
+      "ambientImage": "assets/chair_fiji_cozy.png",
+      "badge": "Draaibaar & Veilig",
+      "badgeType": "new"
     },
     {
       "id": "sta-op-stoel-fitform-552-elevo",
