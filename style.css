@@ -2400,7 +2400,7 @@ footer h3, footer h4 {
 
 .faq-accordion {
   max-width: 800px;
-  margin: 40px auto 0 auto;
+  margin: 40px 0 0 0;
 }
 
 .faq-item {
