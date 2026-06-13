@@ -6,7 +6,7 @@
   <title>Sta-op Stoelen | Nieuw, Gebruikt & Gereviseerd</title>
   <meta name="description" content="Vind een goedkope sta-op stoel die past bij uw budget. Ruime voorraad nieuwe, gebruikte en gereconditioneerde sta-op stoelen van topmerken met garantie.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.50">
+  <link rel="stylesheet" href="style.css?v=1.0.51">
   <style>
 
     .catalog-layout {
@@ -225,8 +225,12 @@
               <span>De Toekomst</span>
             </label>
             <label class="checkbox-label">
+              <input type="checkbox" class="brand-filter" value="Huismerk">
+              <span>Huismerk</span>
+            </label>
+            <label class="checkbox-label">
               <input type="checkbox" class="brand-filter" value="Overig">
-              <span>Overig / Huismerk</span>
+              <span>Overig</span>
             </label>
           </div>
 
@@ -671,7 +675,15 @@
       let filtered = [...GOEDKOPE_STAOPSTOELEN_DATA];
       
       if (checkedBrands.length > 0) {
-        filtered = filtered.filter(item => checkedBrands.includes(item.brand));
+        filtered = filtered.filter(item => {
+          const itemBrandLower = (item.brand || "").toLowerCase();
+          const standardBrands = ['fitform', 'mecam', 'doge', 'de toekomst', 'huismerk'];
+          
+          const matchesDirect = checkedBrands.some(b => b.toLowerCase() === itemBrandLower);
+          const matchesOverig = checkedBrands.some(b => b.toLowerCase() === 'overig') && !standardBrands.includes(itemBrandLower);
+          
+          return matchesDirect || matchesOverig;
+        });
       }
       
       if (checkedPrices.length > 0) {

@@ -1,5 +1,17 @@
 {
-  "staopstoelen": [],
+  "staopstoelen": [
+    {
+      "id": "sta-op-stoel-geert",
+      "name": "Sta-op Stoel Geert",
+      "brand": "Huismerk",
+      "price": 1250,
+      "image": "assets/sta_opstoel_geerts_studio.png",
+      "description": "Test 12345",
+      "ambientImage": "assets/sta_opstoel_geerts_interior.png",
+      "badge": "Ons Huismerk",
+      "badgeType": "new"
+    }
+  ],
   "seniorenstoelen": [
     {
       "id": "seniorenstoel-hk-zwolle",

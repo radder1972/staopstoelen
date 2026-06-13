@@ -6,7 +6,7 @@
   <title>Ergonomische Seniorenstoelen op Maat | Comfortabel Zitten</title>
   <meta name="description" content="Ontdek onze collectie ergonomische seniorenstoelen op maat. Volledig instelbare relaxstoelen en sta-op stoelen voor optimaal zitcomfort en rugondersteuning.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.50">
+  <link rel="stylesheet" href="style.css?v=1.0.51">
   <style>
 
     .catalog-layout {
@@ -218,6 +218,10 @@
             <label class="checkbox-label">
               <input type="checkbox" class="brand-filter" value="Mecam">
               <span>Mecam</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="brand-filter" value="Huismerk">
+              <span>Huismerk</span>
             </label>
             <label class="checkbox-label">
               <input type="checkbox" class="brand-filter" value="Overig">
@@ -432,7 +436,15 @@
       let filtered = [...SENIORENSTOELEN_DATA];
       
       if (checkedBrands.length > 0) {
-        filtered = filtered.filter(item => checkedBrands.includes(item.brand));
+        filtered = filtered.filter(item => {
+          const itemBrandLower = (item.brand || "").toLowerCase();
+          const standardBrands = ['farstrup', 'hjort knudsen', 'mecam', 'huismerk'];
+          
+          const matchesDirect = checkedBrands.some(b => b.toLowerCase() === itemBrandLower);
+          const matchesOverig = checkedBrands.some(b => b.toLowerCase() === 'overig') && !standardBrands.includes(itemBrandLower);
+          
+          return matchesDirect || matchesOverig;
+        });
       }
       
       if (checkedAdjustments.length > 0) {
