@@ -1,6 +1,6 @@
-// Google Calendar Webhook URL Configuration (Integromat/Make/Zapier)
-// Configure this with your Make/Zapier Webhook URL to automatically push bookings to Google Calendar.
-const GOOGLE_CALENDAR_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/27924694/439zjqx/";
+// Google Calendar Webhook URL Configuration (Google Apps Script Web App)
+// Configure this with your deployed Apps Script Web App URL to automatically push bookings to Google Calendar.
+const GOOGLE_CALENDAR_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxIPs1J8fVUquyzIq_gZ4WTjsTBRgMGazeq58EbOZmF9yNfObr25NvCOBUWkit665y-OQ/exec";
 
 // Google Calendar Live Availability Get URL (Google Apps Script Web App)
 // Configure this with your deployed Apps Script Web App URL to retrieve real-time busy slots.
