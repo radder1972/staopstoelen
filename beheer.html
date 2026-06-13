@@ -182,6 +182,10 @@
       font-size: 0.95rem;
     }
     
+    th.sortable-header:hover {
+      background-color: var(--color-gray-light);
+    }
+    
     tr:last-child td {
       border-bottom: none;
     }
@@ -1061,6 +1065,8 @@
     // State Variables
     const currentTab = "staopstoelen";
     let activeData = [];
+    let currentSortField = null;
+    let currentSortAsc = true;
     
     // API Configuration for local database integration
     const API_URL = "http://localhost:3000/api/chairs";
@@ -1179,15 +1185,61 @@
       body.innerHTML = "";
       
       // Setup headers
-      let headers = ['Foto', 'Naam', 'Merk', 'Prijs', 'Conditie', 'Type', 'Materiaal', 'Badge', 'Acties'];
-      headerRow.innerHTML = headers.map(h => `<th>${h}</th>`).join("");
+      const headerMap = {
+        'Foto': null,
+        'Naam': 'name',
+        'Merk': 'brand',
+        'Prijs': 'price',
+        'Conditie': 'condition',
+        'Type': 'type',
+        'Materiaal': 'material',
+        'Badge': 'badge',
+        'Acties': null
+      };
+      
+      headerRow.innerHTML = Object.keys(headerMap).map(h => {
+        const field = headerMap[h];
+        if (field) {
+          const isSorted = currentSortField === field;
+          const arrow = isSorted ? (currentSortAsc ? "▲" : "▼") : "↕";
+          const arrowColor = isSorted ? "var(--color-terracotta)" : "var(--color-gray)";
+          return `<th class="sortable-header" data-field="${field}" style="cursor: pointer; user-select: none;">
+            ${h}<span style="font-size:0.7rem; margin-left:6px; color:${arrowColor}; vertical-align:middle;">${arrow}</span>
+          </th>`;
+        }
+        return `<th>${h}</th>`;
+      }).join("");
       
       if (activeData.length === 0) {
-        body.innerHTML = `<tr><td colspan="${headers.length}" style="text-align:center; padding: 40px; color:var(--color-gray);">Geen stoelen gevonden. Voeg een nieuwe toe!</td></tr>`;
+        body.innerHTML = `<tr><td colspan="${Object.keys(headerMap).length}" style="text-align:center; padding: 40px; color:var(--color-gray);">Geen stoelen gevonden. Voeg een nieuwe toe!</td></tr>`;
         return;
       }
       
-      activeData.forEach((item, index) => {
+      // Prepare sorted list with original indices
+      let itemsToShow = activeData.map((item, index) => ({ item, index }));
+      
+      if (currentSortField) {
+        itemsToShow.sort((a, b) => {
+          let valA = a.item[currentSortField];
+          let valB = b.item[currentSortField];
+          
+          if (valA === undefined || valA === null) valA = "";
+          if (valB === undefined || valB === null) valB = "";
+          
+          if (typeof valA === "number" && typeof valB === "number") {
+            return currentSortAsc ? valA - valB : valB - valA;
+          }
+          
+          let strA = String(valA).toLowerCase();
+          let strB = String(valB).toLowerCase();
+          
+          if (strA < strB) return currentSortAsc ? -1 : 1;
+          if (strA > strB) return currentSortAsc ? 1 : -1;
+          return 0;
+        });
+      }
+      
+      itemsToShow.forEach(({ item, index }) => {
         const tr = document.createElement("tr");
         
         const conditionText = item.condition === "occasion" ? "Occasion" : "Nieuw";
@@ -1229,6 +1281,22 @@
       } else if (btn.classList.contains("btn-delete")) {
         deleteChair(index);
       }
+    });
+
+    // Sort table rows when clicking headers
+    document.getElementById("tableHeader").addEventListener("click", (e) => {
+      const th = e.target.closest(".sortable-header");
+      if (!th) return;
+      
+      const field = th.dataset.field;
+      if (currentSortField === field) {
+        currentSortAsc = !currentSortAsc;
+      } else {
+        currentSortField = field;
+        currentSortAsc = true;
+      }
+      
+      renderTable();
     });
 
     // Export Javascript Code
