@@ -2136,3 +2136,244 @@ footer h3, footer h4 {
   object-fit: contain;
   padding: 0;
 }
+
+/* Product Details Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 43, 7, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background-color: var(--color-light);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--color-gray-light);
+}
+
+.modal-overlay.active .modal-card {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gray);
+  transition: color 0.2s;
+  z-index: 10;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--color-terracotta);
+}
+
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 30px;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .modal-content-grid {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+    gap: 20px;
+  }
+}
+
+.modal-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image-wrapper {
+  width: 100%;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fcfbfa;
+  border-radius: var(--radius-md);
+  padding: 15px;
+  border: 1px solid var(--color-gray-light);
+}
+
+@media (max-width: 768px) {
+  .modal-image-wrapper {
+    height: 240px;
+  }
+}
+
+.modal-image-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.2s ease;
+}
+
+.modal-gallery-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  background: rgba(75, 143, 36, 0.08);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(75, 143, 36, 0.15);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gallery-tab {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-gray);
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.gallery-tab:hover {
+  color: var(--color-forest);
+  background: rgba(75, 143, 36, 0.05);
+}
+
+.gallery-tab.active {
+  background-color: var(--color-forest);
+  color: var(--color-light);
+}
+
+.modal-info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.modal-info-section .badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  width: max-content;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.modal-title {
+  font-size: 1.65rem;
+  color: var(--color-forest);
+  margin: 0 0 6px 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.modal-brand {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-terracotta);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.modal-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-gray);
+  margin-bottom: 20px;
+}
+
+.modal-price-box {
+  background-color: rgba(75, 143, 36, 0.04);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(75, 143, 36, 0.1);
+  margin-bottom: 25px;
+  width: max-content;
+}
+
+.modal-price-box .price-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  display: block;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.modal-price-box .price-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-forest);
+  display: block;
+  margin-top: 2px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .modal-actions {
+    flex-direction: column;
+  }
+}
+
+.btn-secondary-outline {
+  border: 2px solid var(--color-gray-light);
+  background: none;
+  color: var(--color-gray);
+  padding: 12px 20px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.btn-secondary-outline:hover {
+  background-color: var(--color-gray-light);
+  color: var(--color-dark);
+}
