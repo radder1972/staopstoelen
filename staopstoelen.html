@@ -353,8 +353,9 @@
       <button class="modal-close" id="modalClose" aria-label="Sluit pop-up">&times;</button>
       <div class="modal-content-grid">
         <div class="modal-image-section">
-          <div class="modal-image-wrapper">
+          <div class="modal-image-wrapper" style="position: relative;">
             <img id="modalProductImage" src="" alt="" style="opacity: 1;">
+            <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" style="display: none;">
           </div>
           <!-- Gallery tabs if ambientImage exists -->
           <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
@@ -757,9 +758,13 @@
         card.setAttribute("role", "button");
         card.setAttribute("aria-label", `${item.name}, bekijk details`);
 
+        const isOccasion = item.condition === "occasion" || (item.badgeType === "reco");
+        const stampHtml = isOccasion ? `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">` : "";
+
         card.innerHTML = `
           <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            ${stampHtml}
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
           </div>
           <div class="product-info" style="display: flex; flex-direction: column;">
@@ -806,6 +811,7 @@
       activeItem = item;
       const modal = document.getElementById("productModal");
       const modalImg = document.getElementById("modalProductImage");
+      const modalStamp = document.getElementById("modalProductStamp");
       const modalTitle = document.getElementById("modalTitle");
       const modalBrand = document.getElementById("modalBrand");
       const modalDesc = document.getElementById("modalDescription");
@@ -824,6 +830,13 @@
       modalDesc.textContent = item.description;
       modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
       
+      const isOccasion = item.condition === "occasion" || (item.badgeType === "reco");
+      if (isOccasion) {
+        modalStamp.style.display = "block";
+      } else {
+        modalStamp.style.display = "none";
+      }
+
       if (item.badge) {
         modalBadge.textContent = item.badge;
         modalBadge.className = `badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}`;
