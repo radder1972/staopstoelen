@@ -430,17 +430,10 @@
       
       <div class="admin-title-row">
         <div>
-          <h1 class="admin-title">Stoelen Beheer Dashboard</h1>
-          <p style="color: var(--color-gray); margin-top: 4px;">Beheer de stoelen catalogus en exporteer de updates naar de html code.</p>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard</h1>
+          <p style="color: var(--color-gray); margin-top: 4px;">Beheer de sta-op stoelen catalogus en exporteer de updates naar de html code.</p>
         </div>
         <button class="btn btn-primary" id="addChairBtn">+ Nieuwe Stoel Toevoegen</button>
-      </div>
-
-      <!-- Dataset Tab Selectors -->
-      <div class="tabs-wrapper">
-        <button class="tab-btn active" data-tab="staopstoelen">Sta-op Stoelen</button>
-        <button class="tab-btn" data-tab="seniorenstoelen">Senioren Stoelen</button>
-        <button class="tab-btn" data-tab="occasions">Occasions</button>
       </div>
 
       <!-- Table of chairs (Full-width to ensure all columns & action buttons fit) -->
@@ -499,34 +492,7 @@
               <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/chair_naam_cozy.png">
             </div>
 
-            <!-- Tab Specific Fields -->
-            <div id="fieldSeniorenAdjustment" class="form-group" style="display: none;">
-              <label class="form-label" for="chairAdjustment">Type Verstelling (Alleen Senioren)</label>
-              <input type="text" class="form-control" id="chairAdjustment" placeholder="bijv. Handmatig, Elektrisch, Sta-op">
-            </div>
 
-            <div id="fieldsOccasions" style="display: none;">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="chairOldPrice">Oorspronkelijke Prijs (€, optioneel)</label>
-                  <input type="number" class="form-control" id="chairOldPrice" placeholder="bijv. 2250">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Maten (Alleen Occasions)</label>
-                  <div class="checkbox-group">
-                    <label class="checkbox-label">
-                      <input type="checkbox" class="size-checkbox" value="mini"> Mini
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" class="size-checkbox" value="vario"> Vario
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" class="size-checkbox" value="XL"> XL
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div class="form-row">
               <div class="form-group">
@@ -895,192 +861,9 @@
         badgeType: "reco"
       }
     ];
-    const DEFAULT_SENIORENSTOELEN = [
-      {
-        id: "seniorenstoel-hk-zwolle",
-        name: "Seniorenstoel HK Zwolle",
-        image: "assets/chair_seniorenstoel-hjortknudsen-zwolle-nw-1-300x300.png",
-        price: 695,
-        brand: "Hjort Knudsen",
-        adjustment: "Handmatig",
-        description: "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
-        badge: "Op maat gemaakt",
-        badgeType: "reco"
-      },
-      {
-        id: "seniorenstoel-dylan",
-        name: "Seniorenstoel Dylan",
-        image: "assets/chair_seniorenstoel-dylan-2-300x300.png",
-        price: 775,
-        brand: "Overig",
-        adjustment: "Handmatig",
-        description: "Seniorenstoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
-        badge: "Hygiënisch & Robuust",
-        badgeType: "new"
-      },
-      {
-        id: "seniorenstoel-farstrup-applaus",
-        name: "Seniorenstoel Farstrup Applaus",
-        image: "assets/chair_senioren-fauteuil-farstrup-applaus-300x300.png",
-        price: 945,
-        brand: "Farstrup",
-        adjustment: "Handmatig",
-        description: "Elke Seniorenstoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
-        badge: "10 Jaar Garantie",
-        badgeType: "reco"
-      },
-      {
-        id: "senioren-sta-op-stoel-hk-dordt",
-        name: "Senioren sta-op stoel HK Dordt",
-        image: "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
-        ambientImage: "assets/chair_hk_dordt_cozy.png",
-        price: 995,
-        brand: "Hjort Knudsen",
-        adjustment: "Sta-op",
-        description: "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
-        badge: "Sta-op Hulp",
-        badgeType: "new"
-      },
-      {
-        id: "senioren-sta-op-stoel-mecam-athena",
-        name: "Senioren sta-op stoel Mecam Athena",
-        image: "assets/chair_sta-op-stoel-mecam-athena-1-300x300.png",
-        ambientImage: "assets/chair_athena_cozy.png",
-        price: 1045,
-        brand: "Mecam",
-        adjustment: "Zonder Motoren",
-        description: "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
-        badge: "Geen Snoeren",
-        badgeType: "new"
-      },
-      {
-        id: "seniorenstoel-farstrup-plus",
-        name: "Seniorenstoel Farstrup Plus",
-        image: "assets/chair_ergonomische-senioren-fauteuil-plus-7-300x300.png",
-        price: 1395,
-        brand: "Farstrup",
-        adjustment: "Handmatig",
-        description: "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
-        badge: "10 Jaar Garantie",
-        badgeType: "reco"
-      },
-      {
-        id: "seniorenstoel-farstrup-casa",
-        name: "Seniorenstoel Farstrup Casa",
-        image: "assets/chair_ergonomische-senioren-fauteuil-casa-1-300x300.png",
-        price: 1495,
-        brand: "Farstrup",
-        adjustment: "Handmatig",
-        description: "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
-        badge: "Deens Handwerk",
-        badgeType: "reco"
-      },
-      {
-        id: "seniorenstoel-farstrup-cantate",
-        name: "Seniorenstoel Farstrup Cantate",
-        image: "assets/chair_ergonomische-senioren-fauteuil-cantate-1-300x300.png",
-        price: 1595,
-        brand: "Farstrup",
-        adjustment: "Handmatig",
-        description: "De Cantate is het paradepaardje onder de seniorenstoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
-        badge: "Top Comfort",
-        badgeType: "reco"
-      },
-      {
-        id: "geert-senior",
-        name: "Geert Senior",
-        brand: "Huismerk",
-        price: 900,
-        image: "assets/seniorenstoel_oude_geert_studio.png",
-        description: "Ontmoet de Geert Senior: een meesterwerk waarin klassiek Deens vakmanschap en modern ergonomisch comfort samenkomen. Deze premium seniorenstoel straalt warmte en karakter uit dankzij de uiterst comfortabele, oranje structuurstof in combinatie met het elegant gevormde donkerhouten frame en de massief houten armleuningen.\n\nDe Geert Senior is speciaal ontworpen voor een actieve en gezonde zithouding. Dankzij de subtiele lendensteun en de perfecte hoek van de rugleuning geniet u van optimale ondersteuning bij uw rug en nek. De stevige houten armleuningen bieden bovendien een betrouwbare grip bij het opstaan. Een sfeervolle, comfortabele en tijdloze toevoeging aan elk interieur.",
-        ambientImage: "assets/seniorenstoel_oude_geert_interior.png",
-        badge: "Onze keuze",
-        badgeType: "sale",
-        adjustment: "Geen"
-      }
-    ];
-    const DEFAULT_OCCASIONS = [
-      {
-        id: "fitform-570-reco",
-        name: "Voorraad Sta-op stoel Fitform 570 Vario III RECO",
-        image: "assets/chair_sta-op-stoel-fitform-570-vario-reco-0-300x300.png",
-        price: 1500,
-        oldPrice: null,
-        sizes: ["vario"],
-        description: "Deze Voorraad Sta-op stoel Fitform 570 Vario III RECO heeft een heerlijke relaxfunctie. De handige sta-op voorziening zorgt er voor dat u zelf makkelijk uit uw fauteuil kunt komen. Deze stoel hebben wij altijd op voorraad en is nieuw GERECONDITIONEERD.",
-        badge: "Altijd op voorraad",
-        badgeType: "reco"
-      },
-      {
-        id: "fitform-570-reco-smal",
-        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal",
-        image: "assets/chair_sta-op-stoel-fitform-570-vario-smal-reco-1-copy-300x300.png",
-        price: 1600,
-        oldPrice: 1700,
-        sizes: ["smal"],
-        description: "Deze Sta-op stoel Fitform 570 Vario III RECO Smal is aan de buitenkant niet te onderscheiden van een nieuw exemplaar. Gebouwd op een volledig gereviseerd A-merk frame. Alle mechanische componenten en schuimdelen zijn gecontroleerd en vernieuwd.",
-        badge: "Smal model",
-        badgeType: "sale"
-      },
-      {
-        id: "fitform-570-reco-smal-board",
-        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal Board",
-        image: "assets/chair_sta-op-stoel-reco-fitform-570-vario-smal-board-1-copy-300x300.png",
-        price: 1600,
-        oldPrice: 1700,
-        sizes: ["smal"],
-        description: "Voorzien van een smalle zitbreedte en stevige ergonomische ondersteuningsplaten (board) in de rugleuning. Ideaal voor langdurig en comfortabel zitten zonder verzakking.",
-        badge: "Stevige rug",
-        badgeType: "sale"
-      },
-      {
-        id: "fitform-570-reco-xl",
-        name: "Voorraad Sta-op stoel Fitform 570 Vario III XL RECO",
-        image: "assets/chair_sta-op-stoel-fitform-570-vario-xl-zand-1-copy-300x300.png",
-        price: 1700,
-        oldPrice: null,
-        sizes: ["xl"],
-        description: "De XL-uitvoering van de populaire Fitform 570. Biedt een bredere zit en extra verstevigde motoren. Deze stoel is volledig gereviseerd en direct uit voorraad leverbaar.",
-        badge: "XL Formaat",
-        badgeType: "reco"
-      },
-      {
-        id: "fitform-580-vario-mini",
-        name: "Voorraad Sta op stoel Fitform 580 Vario Mini",
-        image: "assets/fitform_580_vario_mini_verkocht.png",
-        price: 1898,
-        oldPrice: 2248,
-        sizes: ["mini"],
-        description: "Deze Vario Mini heeft een heerlijke relaxfunctie and is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
-        badge: "Verkocht",
-        badgeType: "reco"
-      },
-      {
-        id: "fitform-571-mini-ilp",
-        name: "RECO Sta-op stoel Fitform 571 Vario III Mini ILP",
-        image: "assets/chair_sta-op-stoel-fitform-571-mini-ilp-rugleuning-scaled.png",
-        price: 2400,
-        oldPrice: null,
-        sizes: ["mini"],
-        description: "Gereviseerd frame met compleet NIEUWE bekleding. Uitgerust met het gepatenteerde ILP (Intelligent Lig- & Zit-systeem) voor ultieme ondersteuning bij rugklachten. Let op: kleine uitvoering met lage rugleuning.",
-        badge: "Nieuwe Bekleding",
-        badgeType: "reco"
-      },
-      {
-        id: "fitform-570-ilp",
-        name: "Voorraad Sta op stoel Fitform 570 Vario ILP",
-        image: "assets/chair_sta-op-stoel-fitform-570-ilp-rugleuning-scaled.png",
-        price: 2400,
-        oldPrice: 4600,
-        sizes: ["vario"],
-        description: "Een zo goed als ongebruikte stoel (teruggekocht wegens omstandigheden). Beschikt over de gepatenteerde Fitform ILP rug- en zittingopbouw. Werkelijk als nieuw.",
-        badge: "Kans: Als Nieuw",
-        badgeType: "sale"
-      }
-    ];
 
     // State Variables
-    let currentTab = "staopstoelen";
+    const currentTab = "staopstoelen";
     let activeData = [];
     
     // API Configuration for local database integration
@@ -1118,25 +901,17 @@
 
     // LocalStorage keys
     const KEY_STAOP = "admin_staopstoelen";
-    const KEY_SENIOREN = "admin_seniorenstoelen";
-    const KEY_OCCASIONS = "admin_occasions";
 
     function getStorageKey(tab) {
-      if (tab === "staopstoelen") return KEY_STAOP;
-      if (tab === "seniorenstoelen") return KEY_SENIOREN;
-      return KEY_OCCASIONS;
+      return KEY_STAOP;
     }
 
     function getDefaultData(tab) {
-      if (tab === "staopstoelen") return DEFAULT_STAOPSTOELEN;
-      if (tab === "seniorenstoelen") return DEFAULT_SENIORENSTOELEN;
-      return DEFAULT_OCCASIONS;
+      return DEFAULT_STAOPSTOELEN;
     }
 
     function getVarName(tab) {
-      if (tab === "staopstoelen") return "GOEDKOPE_STAOPSTOELEN_DATA";
-      if (tab === "seniorenstoelen") return "SENIORENSTOELEN_DATA";
-      return "OCCASIONS_DATA";
+      return "GOEDKOPE_STAOPSTOELEN_DATA";
     }
 
     function loadData(tab) {
@@ -1158,8 +933,7 @@
       updateCodeExport();
       
       if (isApiConnected && fullDbData) {
-        const dbKey = tab === "staopstoelen" ? "staopstoelen" : (tab === "seniorenstoelen" ? "seniorenstoelen" : "occasions");
-        fullDbData[dbKey] = data;
+        fullDbData.staopstoelen = data;
         
         try {
           const response = await fetch(API_URL, {
@@ -1186,8 +960,7 @@
         if (response.ok) {
           fullDbData = await response.json();
           isApiConnected = true;
-          const dbKey = currentTab === "staopstoelen" ? "staopstoelen" : (currentTab === "seniorenstoelen" ? "seniorenstoelen" : "occasions");
-          activeData = fullDbData[dbKey];
+          activeData = fullDbData.staopstoelen || [];
           console.log("Loaded data from local API database server!");
         } else {
           throw new Error("API responded with error");
@@ -1209,19 +982,12 @@
       
       body.innerHTML = "";
       
-      // Setup headers based on tab
-      let headers = ['Foto', 'Naam', 'Merk', 'Prijs', 'Badge'];
-      if (currentTab === "seniorenstoelen") {
-        headers.push('Verstelling');
-      } else if (currentTab === "occasions") {
-        headers.push('Maten');
-      }
-      headers.push('Acties');
-      
+      // Setup headers
+      let headers = ['Foto', 'Naam', 'Merk', 'Prijs', 'Badge', 'Acties'];
       headerRow.innerHTML = headers.map(h => `<th>${h}</th>`).join("");
       
       if (activeData.length === 0) {
-        body.innerHTML = `<tr><td colspan="${headers.length}" style="text-align:center; padding: 40px; color:var(--color-gray);">Geen stoelen gevonden in deze categorie. Voeg een nieuwe toe!</td></tr>`;
+        body.innerHTML = `<tr><td colspan="${headers.length}" style="text-align:center; padding: 40px; color:var(--color-gray);">Geen stoelen gevonden. Voeg een nieuwe toe!</td></tr>`;
         return;
       }
       
@@ -1236,15 +1002,6 @@
           <td>
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : (item.badgeType === "sale" ? "badge-sale" : "badge-reco")}">${item.badge}</span>` : "-"}
           </td>
-        `;
-        
-        if (currentTab === "seniorenstoelen") {
-          tdContent += `<td>${item.adjustment || "-"}</td>`;
-        } else if (currentTab === "occasions") {
-          tdContent += `<td>${item.sizes ? item.sizes.join(", ") : "-"}</td>`;
-        }
-        
-        tdContent += `
           <td>
             <div class="action-btn-group">
               <button class="btn-action btn-edit" data-index="${index}">Bewerken</button>
@@ -1279,16 +1036,6 @@
       document.getElementById("codeExportBox").value = jsCode;
     }
 
-    // Tab switcher
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-        e.target.classList.add("active");
-        currentTab = e.target.getAttribute("data-tab");
-        initDashboard();
-      });
-    });
-
     // Form element helpers
     const chairForm = document.getElementById("chairForm");
     const nameInput = document.getElementById("chairName");
@@ -1306,8 +1053,6 @@
           .replace(/[^a-z0-9]+/g, "-")
           .replace(/(^-|-$)/g, "");
       };
-      
-      showTabFields();
     }
 
     document.getElementById("addChairBtn").addEventListener("click", () => {
@@ -1317,19 +1062,6 @@
     });
 
     document.getElementById("btnCancelForm").addEventListener("click", resetForm);
-
-    function showTabFields() {
-      if (currentTab === "seniorenstoelen") {
-        document.getElementById("fieldSeniorenAdjustment").style.display = "block";
-        document.getElementById("fieldsOccasions").style.display = "none";
-      } else if (currentTab === "occasions") {
-        document.getElementById("fieldSeniorenAdjustment").style.display = "none";
-        document.getElementById("fieldsOccasions").style.display = "block";
-      } else {
-        document.getElementById("fieldSeniorenAdjustment").style.display = "none";
-        document.getElementById("fieldsOccasions").style.display = "none";
-      }
-    }
 
     // Edit button handler
     function editChair(index) {
@@ -1347,19 +1079,6 @@
       document.getElementById("chairBadge").value = item.badge || "";
       document.getElementById("chairBadgeType").value = item.badgeType || "new";
       document.getElementById("chairDesc").value = item.description || "";
-      
-      showTabFields();
-      
-      if (currentTab === "seniorenstoelen") {
-        document.getElementById("chairAdjustment").value = item.adjustment || "";
-      } else if (currentTab === "occasions") {
-        document.getElementById("chairOldPrice").value = item.oldPrice || "";
-        
-        const sizes = item.sizes || [];
-        document.querySelectorAll(".size-checkbox").forEach(cb => {
-          cb.checked = sizes.includes(cb.value);
-        });
-      }
       
       document.getElementById("formPanelCard").scrollIntoView({ behavior: "smooth" });
     }
@@ -1401,16 +1120,6 @@
         item.badgeType = document.getElementById("chairBadgeType").value;
       }
       
-      if (currentTab === "seniorenstoelen") {
-        item.adjustment = document.getElementById("chairAdjustment").value;
-      } else if (currentTab === "occasions") {
-        const oldPrice = document.getElementById("chairOldPrice").value;
-        if (oldPrice) item.oldPrice = parseInt(oldPrice);
-        
-        const checkedSizes = Array.from(document.querySelectorAll(".size-checkbox:checked")).map(cb => cb.value);
-        item.sizes = checkedSizes;
-      }
-      
       if (indexStr === "") {
         // Add new
         activeData.push(item);
@@ -1427,13 +1136,12 @@
 
     // Reset data handler
     document.getElementById("btnResetData").addEventListener("click", async () => {
-      if (confirm("Weet u zeker dat u alle wijzigingen in deze categorie wilt wissen en terugkeren naar de standaard datalijst?")) {
+      if (confirm("Weet u zeker dat u alle wijzigingen wilt wissen en terugkeren naar de standaard datalijst?")) {
         const key = getStorageKey(currentTab);
         localStorage.removeItem(key);
         
         if (isApiConnected && fullDbData) {
-          const dbKey = currentTab === "staopstoelen" ? "staopstoelen" : (currentTab === "seniorenstoelen" ? "seniorenstoelen" : "occasions");
-          fullDbData[dbKey] = getDefaultData(currentTab);
+          fullDbData.staopstoelen = getDefaultData(currentTab);
           
           try {
             await fetch(API_URL, {

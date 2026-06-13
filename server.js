@@ -58,17 +58,13 @@ function initDatabase() {
     const htmlContent = fs.readFileSync(BEHEER_FILE, 'utf8');
     
     const staop = extractJSArray(htmlContent, 'DEFAULT_STAOPSTOELEN');
-    const senioren = extractJSArray(htmlContent, 'DEFAULT_SENIORENSTOELEN');
-    const occasions = extractJSArray(htmlContent, 'DEFAULT_OCCASIONS');
     
-    if (!staop || !senioren || !occasions) {
-      throw new Error('Failed to extract default datasets from beheer.html');
+    if (!staop) {
+      throw new Error('Failed to extract default staopstoelen dataset from beheer.html');
     }
     
     const dbData = {
-      staopstoelen: staop,
-      seniorenstoelen: senioren,
-      occasions: occasions
+      staopstoelen: staop
     };
     
     fs.writeFileSync(DB_FILE, JSON.stringify(dbData, null, 2), 'utf8');
@@ -124,10 +120,10 @@ const server = http.createServer((req, res) => {
       try {
         const payload = JSON.parse(body);
         
-        // Basic validation: must have the three arrays
-        if (!payload.staopstoelen || !payload.seniorenstoelen || !payload.occasions) {
+        // Basic validation: must have the staopstoelen array
+        if (!payload.staopstoelen) {
           res.writeHead(400, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ error: 'Invalid payload structure. Requires staopstoelen, seniorenstoelen, and occasions.' }));
+          res.end(JSON.stringify({ error: 'Invalid payload structure. Requires staopstoelen.' }));
           return;
         }
         

@@ -123,12 +123,12 @@ function initializeApp() {
   initMobileMenu();
   initHeroSecretImage();
 
-  // Check for prefilled occasion chair selection from occasions page
+  // Check for prefilled chair selection
   const prefilled = localStorage.getItem("prefilledChair");
   if (prefilled) {
     const notesField = document.getElementById("bookingNotes");
     if (notesField) {
-      notesField.value = `Ik heb interesse in een passing aan huis voor de occasion: ${prefilled}. Graag afstemmen op mijn lichaamslengte en voorkeuren.`;
+      notesField.value = `Ik heb interesse in een passing aan huis voor de stoel: ${prefilled}. Graag afstemmen op mijn lichaamslengte en voorkeuren.`;
       localStorage.removeItem("prefilledChair");
       
       // Smooth scroll to the appointment planner
