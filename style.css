@@ -2489,3 +2489,19 @@ footer h3, footer h4 {
   margin-bottom: 0;
 }
 
+.faq-answer ul {
+  margin: 0 0 16px 20px;
+  padding: 0;
+}
+
+.faq-answer li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+  color: var(--color-dark);
+  font-size: 1rem;
+}
+
+.faq-answer li:last-child {
+  margin-bottom: 0;
+}
+
