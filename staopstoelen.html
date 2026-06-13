@@ -1027,7 +1027,7 @@
         card.setAttribute("role", "button");
         card.setAttribute("aria-label", `${item.name}, bekijk details`);
 
-        const isOccasion = item.condition === "occasion" || (item.badgeType === "reco");
+        const isOccasion = item.condition === "occasion";
         const stampHtml = isOccasion ? `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">` : "";
 
         card.innerHTML = `
@@ -1101,7 +1101,7 @@
       modalDesc.textContent = item.description;
       modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
       
-      const isOccasion = item.condition === "occasion" || (item.badgeType === "reco");
+      const isOccasion = item.condition === "occasion";
       if (isOccasion) {
         modalStamp.style.display = "block";
       } else {
