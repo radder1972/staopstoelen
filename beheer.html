@@ -507,6 +507,13 @@
                   <option value="relax">Relaxstoel</option>
                 </select>
               </div>
+              <div class="form-group">
+                <label class="form-label" for="chairMaterial">Materiaal</label>
+                <select class="form-control" id="chairMaterial">
+                  <option value="stof">Stof</option>
+                  <option value="leer">Leer</option>
+                </select>
+              </div>
             </div>
 
 
@@ -590,7 +597,8 @@
 
   <script>
     // Embedded original datasets
-    const DEFAULT_STAOPSTOELEN = [
+    const DEFAULT_STAOPSTOELEN =
+[
   {
     "id": "sta-op-stoel-dordrecht",
     "name": "Sta-op stoel Dordrecht",
@@ -602,7 +610,8 @@
     "badge": "Budget Vriendelijk",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "senioren-sta-op-stoel-hk-dordt",
@@ -615,7 +624,8 @@
     "badge": "Hoge Kwaliteit",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "relax"
+    "type": "relax",
+    "material": "stof"
   },
   {
     "id": "senioren-sta-op-stoel-mecam-athena",
@@ -628,7 +638,8 @@
     "badge": "Geen Snoeren",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "relax"
+    "type": "relax",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-draaibaar-zwijndrecht",
@@ -641,7 +652,8 @@
     "badge": "Modern & Draaibaar",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-draaibaar-sliedrecht",
@@ -654,7 +666,8 @@
     "badge": "Luxe Uitstraling",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-rotterdam",
@@ -667,7 +680,8 @@
     "badge": "4-Motorig Leder",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "leer"
   },
   {
     "id": "sta-op-stoel-ridderkerk",
@@ -680,7 +694,8 @@
     "badge": "2 Motoren",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-570-vario-reco",
@@ -693,20 +708,22 @@
     "badge": "Gereconditioneerd",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
-    "id": "sta-op-stoel-geerts",
-    "name": "Sta-opstoel Geerts",
-    "image": "assets/sta_opstoel_geerts_studio.png",
-    "ambientImage": "assets/sta_opstoel_geerts_interior.png",
+    "id": "sta-op-stoel-geert",
+    "name": "Sta-opstoel Geert",
+    "brand": "Huismerk",
     "price": 1550,
-    "brand": "Overig",
+    "image": "assets/sta_opstoel_geerts_studio.png",
+    "condition": "occasion",
+    "type": "staop",
     "description": "De Sta-opstoel Geerts is een modern vormgegeven sta-op fauteuil bekleed met een trendy en uiterst comfortabele oranje structuurstof. Perfect instelbaar voor een actieve zit, heerlijke relaxstand en moeiteloos opstaan.",
+    "ambientImage": "assets/sta_opstoel_geerts_interior.png",
     "badge": "Oranje Editie",
-    "badgeType": "new",
-    "condition": "nieuw",
-    "type": "staop"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-barendrecht",
@@ -719,7 +736,8 @@
     "badge": "Ingebouwde Accu",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-alfred",
@@ -732,7 +750,8 @@
     "badge": "Luxe Leder",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "leer"
   },
   {
     "id": "sta-op-stoel-mecam-movie",
@@ -745,7 +764,8 @@
     "badge": "Klassiek Comfort",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-ravi",
@@ -758,7 +778,8 @@
     "badge": "Draaibaar Model",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-dfm-bentley-dicht",
@@ -771,7 +792,8 @@
     "badge": "Luxe Design",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-dfm-bentley-open",
@@ -784,7 +806,8 @@
     "badge": "Optimale Relaxstand",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-mecam-barney",
@@ -797,7 +820,8 @@
     "badge": "Slimme Draaivoet",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-mecam-degas",
@@ -810,7 +834,8 @@
     "badge": "Ergonomisch Maatwerk",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-580-elevo",
@@ -823,7 +848,8 @@
     "badge": "10 Jaar Garantie",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-refitto",
@@ -836,7 +862,8 @@
     "badge": "Extra Beveiligd",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-doge-bellino",
@@ -849,7 +876,8 @@
     "badge": "3-Motorig Comfort",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-de-toekomst-fiji",
@@ -862,7 +890,8 @@
     "badge": "Draaibaar & Veilig",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-552-elevo",
@@ -875,7 +904,8 @@
     "badge": "Verkocht",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-industro",
@@ -888,7 +918,8 @@
     "badge": "Stoer & Industrieel",
     "badgeType": "new",
     "condition": "nieuw",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-570-vario",
@@ -901,7 +932,8 @@
     "badge": "Zorgfauteuil",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-574-vario",
@@ -914,7 +946,8 @@
     "badge": "Elegante Pasvorm",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-doge-modulair",
@@ -927,20 +960,22 @@
     "badge": "Modulair Systeem",
     "badgeType": "reco",
     "condition": "occasion",
-    "type": "staop"
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "geert-relax",
-    "name": "Geert Relax",
+    "name": "Relax-stoel Geert",
     "brand": "Huismerk",
     "price": 950,
     "image": "assets/seniorenstoel_oude_geert_studio.png",
-    "ambientImage": "assets/seniorenstoel_oude_geert_interior.png",
     "condition": "occasion",
     "type": "relax",
     "description": "Ontmoet de Geert Relax: een prachtige klassieke relaxfauteuil bekleed met een comfortabele oranje structuurstof. Met zijn massief houten armleuningen en ergonomisch gevormde rugleuning biedt deze stoel de perfecte ondersteuning om heerlijk in te ontspannen. Een tijdloze toevoeging aan uw interieur.",
+    "ambientImage": "assets/seniorenstoel_oude_geert_interior.png",
     "badge": "Relax Functie",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-hk-zwolle",
@@ -952,7 +987,8 @@
     "type": "relax",
     "description": "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
     "badge": "Op maat gemaakt",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-dylan",
@@ -964,7 +1000,8 @@
     "type": "relax",
     "description": "Seniorenstoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
     "badge": "Hygiënisch & Robuust",
-    "badgeType": "new"
+    "badgeType": "new",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-applaus",
@@ -976,7 +1013,8 @@
     "type": "relax",
     "description": "Elke Seniorenstoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
     "badge": "10 Jaar Garantie",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-plus",
@@ -988,7 +1026,8 @@
     "type": "relax",
     "description": "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
     "badge": "10 Jaar Garantie",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-casa",
@@ -1000,7 +1039,8 @@
     "type": "relax",
     "description": "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
     "badge": "Deens Handwerk",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-cantate",
@@ -1012,9 +1052,11 @@
     "type": "relax",
     "description": "De Cantate is het paradepaardje onder de seniorenstoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
     "badge": "Top Comfort",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   }
-];
+]
+;
 
     // State Variables
     const currentTab = "staopstoelen";
@@ -1137,7 +1179,7 @@
       body.innerHTML = "";
       
       // Setup headers
-      let headers = ['Foto', 'Naam', 'Merk', 'Prijs', 'Conditie', 'Type', 'Badge', 'Acties'];
+      let headers = ['Foto', 'Naam', 'Merk', 'Prijs', 'Conditie', 'Type', 'Materiaal', 'Badge', 'Acties'];
       headerRow.innerHTML = headers.map(h => `<th>${h}</th>`).join("");
       
       if (activeData.length === 0) {
@@ -1150,6 +1192,7 @@
         
         const conditionText = item.condition === "occasion" ? "Occasion" : "Nieuw";
         const typeText = item.type === "relax" ? "Relaxstoel" : "Sta-opstoel";
+        const materialText = item.material === "leer" ? "Leer" : "Stof";
         
         let tdContent = `
           <td><img class="row-img" src="${item.image || 'assets/chair.png'}" alt="${item.name}"></td>
@@ -1158,6 +1201,7 @@
           <td style="font-weight:700;">€ ${item.price.toLocaleString("nl-NL")},-</td>
           <td>${conditionText}</td>
           <td>${typeText}</td>
+          <td>${materialText}</td>
           <td>
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : (item.badgeType === "sale" ? "badge-sale" : "badge-reco")}">${item.badge}</span>` : "-"}
           </td>
@@ -1206,6 +1250,7 @@
       document.getElementById("formTitle").textContent = "Nieuwe Stoel Toevoegen";
       document.getElementById("chairCondition").value = "nieuw";
       document.getElementById("chairType").value = "staop";
+      document.getElementById("chairMaterial").value = "stof";
       
       // Setup slug auto-generator
       nameInput.oninput = () => {
@@ -1239,6 +1284,7 @@
       document.getElementById("chairAmbientImage").value = item.ambientImage || "";
       document.getElementById("chairCondition").value = item.condition || "nieuw";
       document.getElementById("chairType").value = item.type || "staop";
+      document.getElementById("chairMaterial").value = item.material || "stof";
       document.getElementById("chairBadge").value = item.badge || "";
       document.getElementById("chairBadgeType").value = item.badgeType || "new";
       document.getElementById("chairDesc").value = item.description || "";
@@ -1273,6 +1319,7 @@
         image: document.getElementById("chairImage").value,
         condition: document.getElementById("chairCondition").value,
         type: document.getElementById("chairType").value,
+        material: document.getElementById("chairMaterial").value,
         description: document.getElementById("chairDesc").value
       };
       

@@ -231,6 +231,18 @@
           </div>
 
           <div class="filter-group">
+            <h3 class="filter-group-title">Materiaal</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" class="material-filter" value="stof">
+              <span>Stof</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="material-filter" value="leer">
+              <span>Leer</span>
+            </label>
+          </div>
+
+          <div class="filter-group">
             <h3 class="filter-group-title">Merk</h3>
             <label class="checkbox-label">
               <input type="checkbox" class="brand-filter" value="Fitform">
@@ -399,6 +411,7 @@
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
     let GOEDKOPE_STAOPSTOELEN_DATA = (storedStaopData && storedStaopData.length > 0) ? storedStaopData : [
+[
   {
     "id": "sta-op-stoel-dordrecht",
     "name": "Sta-op stoel Dordrecht",
@@ -408,7 +421,10 @@
     "brand": "Overig",
     "description": "De sta-op stoel Dordrecht is een sta-op / relax fauteuil welke zeer eenvoudig te bedienen is. Dit komt doordat er maar 2 knopjes op de handbediening zitten. De stoel is bekleed met een prachtige antraciet luxe microvezel stof welke zeer sterk en eenvoudig te reinigen is.",
     "badge": "Budget Vriendelijk",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "senioren-sta-op-stoel-hk-dordt",
@@ -420,7 +436,9 @@
     "description": "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
     "badge": "Hoge Kwaliteit",
     "badgeType": "reco",
-    "type": "relax"
+    "condition": "occasion",
+    "type": "relax",
+    "material": "stof"
   },
   {
     "id": "senioren-sta-op-stoel-mecam-athena",
@@ -432,7 +450,9 @@
     "description": "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
     "badge": "Geen Snoeren",
     "badgeType": "new",
-    "type": "relax"
+    "condition": "nieuw",
+    "type": "relax",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-draaibaar-zwijndrecht",
@@ -443,7 +463,10 @@
     "brand": "Overig",
     "description": "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel is van alle gemakken voorzien en heeft door het houten draaiplateau een klassieke maar toch moderne uitstraling.",
     "badge": "Modern & Draaibaar",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-draaibaar-sliedrecht",
@@ -454,7 +477,10 @@
     "brand": "Overig",
     "description": "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel voorziet in alle gemakken. Door de geborstelde stalen voet heeft hij een strakke, moderne uitstraling.",
     "badge": "Luxe Uitstraling",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-rotterdam",
@@ -465,7 +491,10 @@
     "brand": "Overig",
     "description": "Prachtige 4-motorige relax fauteuil met sta-op verstelling. Elegant, klassiek en luxe. Geheel in leer bekleed met 4 afzonderlijke motoren voor onafhankelijke afstelling.",
     "badge": "4-Motorig Leder",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "leer"
   },
   {
     "id": "sta-op-stoel-ridderkerk",
@@ -476,7 +505,10 @@
     "brand": "Overig",
     "description": "Heerlijke 2-motorige relax fauteuil met sta-op verstelling. De Ridderkerk is elektrisch verstelbaar en voorzien van een fijne relaxfunctie waarmee u comfortabel zit met de benen omhoog.",
     "badge": "2 Motoren",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-570-vario-reco",
@@ -487,18 +519,24 @@
     "brand": "Fitform",
     "description": "Volledig gereconditioneerd Fitform-model. Gebouwd op een gereviseerd frame, voorzien van een nieuwe handbediening en compleet nieuwe bekleding in stof/leder naar keuze.",
     "badge": "Gereconditioneerd",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
-    "id": "sta-op-stoel-geerts",
-    "name": "Sta-opstoel Geerts",
-    "image": "assets/sta_opstoel_geerts_studio.png",
-    "ambientImage": "assets/sta_opstoel_geerts_interior.png",
+    "id": "sta-op-stoel-geert",
+    "name": "Sta-opstoel Geert",
+    "brand": "Huismerk",
     "price": 1550,
-    "brand": "Overig",
+    "image": "assets/sta_opstoel_geerts_studio.png",
+    "condition": "occasion",
+    "type": "staop",
     "description": "De Sta-opstoel Geerts is een modern vormgegeven sta-op fauteuil bekleed met een trendy en uiterst comfortabele oranje structuurstof. Perfect instelbaar voor een actieve zit, heerlijke relaxstand en moeiteloos opstaan.",
+    "ambientImage": "assets/sta_opstoel_geerts_interior.png",
     "badge": "Oranje Editie",
-    "badgeType": "new"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-barendrecht",
@@ -509,7 +547,10 @@
     "brand": "Overig",
     "description": "Heerlijke 2-motorige relax fauteuil met sta-op verstelling en standaard ingebouwde accu! Geen kabels over de vloer, waardoor u de stoel vrij in de kamer kunt plaatsen.",
     "badge": "Ingebouwde Accu",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-alfred",
@@ -520,7 +561,10 @@
     "brand": "Overig",
     "description": "Prachtige 2-motorige relax fauteuil met sta-op verstelling. Geheel in soepel leder bekleed, met een verborgen voetenbank die onder de stoel wegdraait.",
     "badge": "Luxe Leder",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "leer"
   },
   {
     "id": "sta-op-stoel-mecam-movie",
@@ -531,7 +575,10 @@
     "brand": "Mecam",
     "description": "Klassieke en degelijke uitstraling van Mecam. De fauteuil is in verschillende maatvoeringen te leveren, biedt heerlijk zitcomfort en is leverbaar in vele stoffen en leersoorten.",
     "badge": "Klassiek Comfort",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-ravi",
@@ -542,7 +589,10 @@
     "brand": "Overig",
     "description": "Elegante, draaibare relaxfauteuil met sta-op hulp. Verkrijgbaar in 3 verschillende maten (s/m/l) voor een perfecte ergonomische match.",
     "badge": "Draaibaar Model",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-dfm-bentley-dicht",
@@ -553,7 +603,10 @@
     "brand": "Overig",
     "description": "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
     "badge": "Luxe Design",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-dfm-bentley-open",
@@ -564,7 +617,10 @@
     "brand": "Overig",
     "description": "Bentley model getoond in geopende relaxstand met de voetensteun omhoog geklapt voor optimale ondersteuning van uw benen.",
     "badge": "Optimale Relaxstand",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-mecam-barney",
@@ -575,7 +631,10 @@
     "brand": "Mecam",
     "description": "Elegante draaibare fauteuil. De 2 motoren zijn bijna onzichtbaar onder de fauteuil weggewerkt. Voorzien van een automatische beveiliging in de draaivoet.",
     "badge": "Slimme Draaivoet",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-mecam-degas",
@@ -586,7 +645,10 @@
     "brand": "Mecam",
     "description": "Huiselijke uitstraling en zeer comfortabel ergonomisch zitcomfort van Belgisch fabricaat. Wordt met veel passie exact op uw maat gemaakt.",
     "badge": "Ergonomisch Maatwerk",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-580-elevo",
@@ -597,7 +659,10 @@
     "brand": "Fitform",
     "description": "Hoogwaardige Fitform zorgstoel. Ontworpen door specialisten voor langdurig zitcomfort. Standaard voorzien van het Fitform 10 jaar Garantie Waarborg.",
     "badge": "10 Jaar Garantie",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-refitto",
@@ -608,7 +673,10 @@
     "brand": "Overig",
     "description": "Moderne sta-op relaxfauteuil. Blokkeert automatisch bij het opstaan zodat de stoel niet kan wegdraaien. Veiligheid en comfort hand in hand.",
     "badge": "Extra Beveiligd",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-doge-bellino",
@@ -619,7 +687,10 @@
     "brand": "Doge",
     "description": "Voorzien van drie motoren om de stoel geheel naar wens in te stellen. Uniek: de zithouding wordt behouden wanneer de kantelfunctie wordt gebruikt.",
     "badge": "3-Motorig Comfort",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-de-toekomst-fiji",
@@ -630,7 +701,10 @@
     "brand": "De Toekomst",
     "description": "Elegante en moderne draaibare fauteuil. Voorzien van een onzichtbare sta-op motor onder het frame en een veilige rem in de draaivoet.",
     "badge": "Draaibaar & Veilig",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-552-elevo",
@@ -641,7 +715,10 @@
     "brand": "Fitform",
     "description": "Volledig verstelbare sta-op en relax fauteuil met 3 afzonderlijke motoren voor voetenbank, rugleuning en kanteling. Optimaal ondersteund wonen.",
     "badge": "Verkocht",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-industro",
@@ -652,7 +729,10 @@
     "brand": "Overig",
     "description": "Stoere, industriële relaxfauteuil met karakter. Volledig naar lichaamsmaten opgemeten en te voorzien van lumbaalsteun of nekverwarming.",
     "badge": "Stoer & Industrieel",
-    "badgeType": "new"
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-570-vario",
@@ -663,7 +743,10 @@
     "brand": "Fitform",
     "description": "De Fitform Vario zorgfauteuil kan volledig worden aangepast aan uw persoonlijke situatie. Uitstekend zitsysteem dat klachten voorkomt.",
     "badge": "Zorgfauteuil",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-fitform-574-vario",
@@ -674,7 +757,10 @@
     "brand": "Fitform",
     "description": "Ranke, slanke en elegante zorgfauteuil. Zithoogte, zitdiepte en armleggers zijn na levering binnen 10 minuten volledig nastelbaar.",
     "badge": "Elegante Pasvorm",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "sta-op-stoel-doge-modulair",
@@ -685,20 +771,24 @@
     "brand": "Doge",
     "description": "Nederlands kwaliteitsproduct met 3 motoren. Optimaal zitcomfort door individuele instelbaarheid. Uitstekend te combineren met orthopedische aanpassingen.",
     "badge": "Modulair Systeem",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "condition": "occasion",
+    "type": "staop",
+    "material": "stof"
   },
   {
     "id": "geert-relax",
-    "name": "Geert Relax",
+    "name": "Relax-stoel Geert",
     "brand": "Huismerk",
     "price": 950,
     "image": "assets/seniorenstoel_oude_geert_studio.png",
-    "ambientImage": "assets/seniorenstoel_oude_geert_interior.png",
     "condition": "occasion",
     "type": "relax",
     "description": "Ontmoet de Geert Relax: een prachtige klassieke relaxfauteuil bekleed met een comfortabele oranje structuurstof. Met zijn massief houten armleuningen en ergonomisch gevormde rugleuning biedt deze stoel de perfecte ondersteuning om heerlijk in te ontspannen. Een tijdloze toevoeging aan uw interieur.",
+    "ambientImage": "assets/seniorenstoel_oude_geert_interior.png",
     "badge": "Relax Functie",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-hk-zwolle",
@@ -710,7 +800,8 @@
     "type": "relax",
     "description": "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
     "badge": "Op maat gemaakt",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-dylan",
@@ -722,7 +813,8 @@
     "type": "relax",
     "description": "Seniorenstoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
     "badge": "Hygiënisch & Robuust",
-    "badgeType": "new"
+    "badgeType": "new",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-applaus",
@@ -734,7 +826,8 @@
     "type": "relax",
     "description": "Elke Seniorenstoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
     "badge": "10 Jaar Garantie",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-plus",
@@ -746,7 +839,8 @@
     "type": "relax",
     "description": "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
     "badge": "10 Jaar Garantie",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-casa",
@@ -758,7 +852,8 @@
     "type": "relax",
     "description": "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
     "badge": "Deens Handwerk",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   },
   {
     "id": "seniorenstoel-farstrup-cantate",
@@ -770,8 +865,10 @@
     "type": "relax",
     "description": "De Cantate is het paradepaardje onder de seniorenstoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
     "badge": "Top Comfort",
-    "badgeType": "reco"
+    "badgeType": "reco",
+    "material": "stof"
   }
+]
 ];
 
     // Prefill helper
@@ -791,6 +888,7 @@
       const checkedPrices = Array.from(document.querySelectorAll(".price-filter:checked")).map(cb => cb.value);
       const checkedConditions = Array.from(document.querySelectorAll(".condition-filter:checked")).map(cb => cb.value);
       const checkedTypes = Array.from(document.querySelectorAll(".type-filter:checked")).map(cb => cb.value);
+      const checkedMaterials = Array.from(document.querySelectorAll(".material-filter:checked")).map(cb => cb.value);
 
       // Filter
       let filtered = [...GOEDKOPE_STAOPSTOELEN_DATA];
@@ -827,6 +925,13 @@
         filtered = filtered.filter(item => {
           const itemType = item.type || 'staop';
           return checkedTypes.includes(itemType);
+        });
+      }
+
+      if (checkedMaterials.length > 0) {
+        filtered = filtered.filter(item => {
+          const itemMaterial = item.material || 'stof';
+          return checkedMaterials.includes(itemMaterial);
         });
       }
 
@@ -937,7 +1042,8 @@
       modalImg.src = item.image;
       modalImg.alt = item.name;
       modalTitle.textContent = item.name;
-      modalBrand.textContent = `Merk: ${item.brand}`;
+      const materialText = item.material === "leer" ? "Leer" : "Stof";
+      modalBrand.textContent = `Merk: ${item.brand} | Materiaal: ${materialText}`;
       modalDesc.textContent = item.description;
       modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
       
@@ -1035,6 +1141,7 @@
     document.querySelectorAll(".price-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".condition-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".type-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+    document.querySelectorAll(".material-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
 
     // Initial render with API fetch fallback
     window.addEventListener("DOMContentLoaded", async () => {
