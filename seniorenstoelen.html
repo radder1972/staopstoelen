@@ -471,11 +471,15 @@
       filtered.forEach(item => {
         const card = document.createElement("div");
         card.className = "product-card";
+        card.style.cursor = "pointer";
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `${item.name}, bekijk details`);
 
         card.innerHTML = `
           <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            ${item.badgeType === "reco" ? `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="100% gereviseerd als nieuw" class="quality-stamp">` : ""}
+            ${item.badgeType === "reco" ? `<img src="assets/revisie_stempel_clean.svg?v=1.0.51" alt="100% gereviseerd als nieuw" class="quality-stamp">` : ""}
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
           </div>
           <div class="product-info" style="display: flex; flex-direction: column;">
@@ -490,15 +494,136 @@
                   <span class="price-value">€ ${item.price.toLocaleString("nl-NL")},-</span>
                 </div>
               </div>
-              <button type="button" class="btn btn-secondary" onclick="prefillBooking('${item.name}')" style="padding: 10px 16px; font-size: 0.85rem; min-height: auto;">
+              <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); prefillBooking('${item.name}')" style="padding: 10px 16px; font-size: 0.85rem; min-height: auto;">
                 Thuis Testen
               </button>
             </div>
           </div>
         `;
+
+        // Click handler to open popup details modal
+        card.addEventListener("click", (e) => {
+          if (e.target.tagName === "BUTTON") return;
+          openProductModal(item);
+        });
+
+        // Keydown handler for accessibility
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openProductModal(item);
+          }
+        });
+
         grid.appendChild(card);
       });
     }
+
+    // Modal logic
+    let activeItem = null;
+
+    function openProductModal(item) {
+      activeItem = item;
+      const modal = document.getElementById("productModal");
+      const modalImg = document.getElementById("modalProductImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBrand = document.getElementById("modalBrand");
+      const modalDesc = document.getElementById("modalDescription");
+      const modalPrice = document.getElementById("modalPrice");
+      const modalBadge = document.getElementById("modalBadge");
+      const modalTabs = document.getElementById("modalGalleryTabs");
+      const tabStudio = document.getElementById("tabStudio");
+      const tabAmbient = document.getElementById("tabAmbient");
+      const bookBtn = document.getElementById("modalBookBtn");
+
+      // Set content
+      modalImg.src = item.image;
+      modalImg.alt = item.name;
+      modalTitle.textContent = item.name;
+      modalBrand.textContent = `Merk: ${item.brand} | Verstelling: ${item.adjustment || 'Handmatig'}`;
+      modalDesc.textContent = item.description;
+      modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
+      
+      if (item.badge) {
+        modalBadge.textContent = item.badge;
+        modalBadge.className = `badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}`;
+        modalBadge.style.display = "block";
+      } else {
+        modalBadge.style.display = "none";
+      }
+
+      // Handle ambient/in-interior image tabs
+      if (item.ambientImage) {
+        modalTabs.style.display = "flex";
+        
+        // Reset tab states
+        tabStudio.classList.add("active");
+        tabAmbient.classList.remove("active");
+        
+        // Remove old event listeners
+        const newTabStudio = tabStudio.cloneNode(true);
+        const newTabAmbient = tabAmbient.cloneNode(true);
+        tabStudio.parentNode.replaceChild(newTabStudio, tabStudio);
+        tabAmbient.parentNode.replaceChild(newTabAmbient, tabAmbient);
+        
+        newTabStudio.addEventListener("click", () => {
+          newTabStudio.classList.add("active");
+          newTabAmbient.classList.remove("active");
+          modalImg.style.opacity = 0;
+          setTimeout(() => {
+            modalImg.src = item.image;
+            modalImg.style.opacity = 1;
+          }, 150);
+        });
+
+        newTabAmbient.addEventListener("click", () => {
+          newTabAmbient.classList.add("active");
+          newTabStudio.classList.remove("active");
+          modalImg.style.opacity = 0;
+          setTimeout(() => {
+            modalImg.src = item.ambientImage;
+            modalImg.style.opacity = 1;
+          }, 150);
+        });
+      } else {
+        modalTabs.style.display = "none";
+      }
+
+      // Configure booking action button
+      const newBookBtn = bookBtn.cloneNode(true);
+      bookBtn.parentNode.replaceChild(newBookBtn, bookBtn);
+      newBookBtn.addEventListener("click", () => {
+        closeProductModal();
+        prefillBooking(item.name);
+      });
+
+      // Show modal
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+      
+      // Accessibility focus
+      modal.focus();
+    }
+
+    function closeProductModal() {
+      const modal = document.getElementById("productModal");
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    // Modal Event Listeners
+    document.getElementById("modalClose").addEventListener("click", closeProductModal);
+    document.getElementById("productModal").addEventListener("click", (e) => {
+      if (e.target.id === "productModal") {
+        closeProductModal();
+      }
+    });
+    
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeProductModal();
+      }
+    });
 
     // Event Listeners
     document.getElementById("sortSelect").addEventListener("change", renderCatalog);
@@ -522,5 +647,41 @@
       renderCatalog();
     });
   </script>
+
+  <!-- Product Details Modal -->
+  <div class="modal-overlay" id="productModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Sluit pop-up">&times;</button>
+      <div class="modal-content-grid">
+        <div class="modal-image-section">
+          <div class="modal-image-wrapper">
+            <img id="modalProductImage" src="" alt="" style="opacity: 1;">
+          </div>
+          <!-- Gallery tabs if ambientImage exists -->
+          <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
+            <button type="button" class="gallery-tab active" id="tabStudio">Productfoto</button>
+            <button type="button" class="gallery-tab" id="tabAmbient">In Interieur</button>
+          </div>
+        </div>
+        <div class="modal-info-section">
+          <span class="badge" id="modalBadge"></span>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <span class="modal-brand" id="modalBrand"></span>
+          <p class="modal-description" id="modalDescription"></p>
+          
+          <div class="modal-price-box">
+            <span class="price-label">Prijs vanaf</span>
+            <span class="price-value" id="modalPrice"></span>
+          </div>
+          
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%;">
+              Vrijblijvend Thuis Testen
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

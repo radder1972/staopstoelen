@@ -14,147 +14,19 @@
   ],
   "seniorenstoelen": [
     {
-      "id": "seniorenstoel-hk-zwolle",
-      "name": "Seniorenstoel HK Zwolle",
-      "image": "assets/chair_seniorenstoel-hjortknudsen-zwolle-nw-1-300x300.png",
-      "price": 695,
-      "brand": "Hjort Knudsen",
-      "adjustment": "Handmatig",
-      "description": "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
-      "badge": "Op maat gemaakt",
-      "badgeType": "reco"
-    },
-    {
-      "id": "seniorenstoel-dylan",
-      "name": "Seniorenstoel Dylan",
-      "image": "assets/chair_seniorenstoel-dylan-2-300x300.png",
-      "price": 775,
-      "brand": "Overig",
-      "adjustment": "Handmatig",
-      "description": "Seniorenstoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
-      "badge": "Hygiënisch & Robuust",
-      "badgeType": "new"
-    },
-    {
-      "id": "seniorenstoel-farstrup-applaus",
-      "name": "Seniorenstoel Farstrup Applaus",
-      "image": "assets/chair_senioren-fauteuil-farstrup-applaus-300x300.png",
-      "price": 945,
-      "brand": "Farstrup",
-      "adjustment": "Handmatig",
-      "description": "Elke Seniorenstoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
-      "badge": "10 Jaar Garantie",
-      "badgeType": "reco"
-    },
-    {
-      "id": "senioren-sta-op-stoel-hk-dordt",
-      "name": "Senioren sta-op stoel HK Dordt",
-      "image": "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
-      "price": 995,
-      "brand": "Hjort Knudsen",
-      "adjustment": "Sta-op",
-      "description": "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
-      "badge": "Sta-op Hulp",
-      "badgeType": "new"
-    },
-    {
-      "id": "senioren-sta-op-stoel-mecam-athena",
-      "name": "Senioren sta-op stoel Mecam Athena",
-      "image": "assets/chair_sta-op-stoel-mecam-athena-1-300x300.png",
-      "price": 1045,
-      "brand": "Mecam",
-      "adjustment": "Zonder Motoren",
-      "description": "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
-      "badge": "Geen Snoeren",
-      "badgeType": "new"
-    },
-    {
-      "id": "seniorenstoel-farstrup-plus",
-      "name": "Seniorenstoel Farstrup Plus",
-      "image": "assets/chair_ergonomische-senioren-fauteuil-plus-7-300x300.png",
-      "price": 1395,
-      "brand": "Farstrup",
-      "adjustment": "Handmatig",
-      "description": "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
-      "badge": "10 Jaar Garantie",
-      "badgeType": "reco"
-    },
-    {
-      "id": "seniorenstoel-farstrup-casa",
-      "name": "Seniorenstoel Farstrup Casa",
-      "image": "assets/chair_ergonomische-senioren-fauteuil-casa-1-300x300.png",
-      "price": 1495,
-      "brand": "Farstrup",
-      "adjustment": "Handmatig",
-      "description": "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
-      "badge": "Deens Handwerk",
-      "badgeType": "reco"
-    },
-    {
-      "id": "seniorenstoel-farstrup-cantate",
-      "name": "Seniorenstoel Farstrup Cantate",
-      "image": "assets/chair_ergonomische-senioren-fauteuil-cantate-1-300x300.png",
-      "price": 1595,
-      "brand": "Farstrup",
-      "adjustment": "Handmatig",
-      "description": "De Cantate is het paradepaardje onder de seniorenstoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
-      "badge": "Top Comfort",
-      "badgeType": "reco"
+      "id": "geert-senior",
+      "name": "Geert Senior",
+      "brand": "Huismerk",
+      "price": 900,
+      "image": "assets/seniorenstoel_oude_geert_studio.png",
+      "description": "Ontmoet de Geert Senior: een meesterwerk waarin klassiek Deens vakmanschap en modern ergonomisch comfort samenkomen. Deze premium seniorenstoel straalt warmte en karakter uit dankzij de uiterst comfortabele, oranje structuurstof in combinatie met het elegant gevormde donkerhouten frame en de massief houten armleuningen.\n\nDe Geert Senior is speciaal ontworpen voor een actieve en gezonde zithouding. Dankzij de subtiele lendensteun en de perfecte hoek van de rugleuning geniet u van optimale ondersteuning bij uw rug en nek. De stevige houten armleuningen bieden bovendien een betrouwbare grip bij het opstaan. Een sfeervolle, comfortabele en tijdloze toevoeging aan elk interieur.\"",
+      "ambientImage": "assets/seniorenstoel_oude_geert_interior.png",
+      "badge": "Onze keuze",
+      "badgeType": "sale",
+      "adjustment": "Geen"
     }
   ],
   "occasions": [
-    {
-      "id": "fitform-570-reco",
-      "name": "Voorraad Sta-op stoel Fitform 570 Vario III RECO",
-      "image": "assets/chair_sta-op-stoel-fitform-570-vario-reco-0-300x300.png",
-      "price": 1500,
-      "oldPrice": null,
-      "sizes": [
-        "vario"
-      ],
-      "description": "Deze Voorraad Sta-op stoel Fitform 570 Vario III RECO heeft een heerlijke relaxfunctie. De handige sta-op voorziening zorgt er voor dat u zelf makkelijk uit uw fauteuil kunt komen. Deze stoel hebben wij altijd op voorraad en is nieuw GERECONDITIONEERD.",
-      "badge": "Altijd op voorraad",
-      "badgeType": "reco"
-    },
-    {
-      "id": "fitform-570-reco-smal",
-      "name": "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal",
-      "image": "assets/chair_sta-op-stoel-fitform-570-vario-smal-reco-1-copy-300x300.png",
-      "price": 1600,
-      "oldPrice": 1700,
-      "sizes": [
-        "smal"
-      ],
-      "description": "Deze Sta-op stoel Fitform 570 Vario III RECO Smal is aan de buitenkant niet te onderscheiden van een nieuw exemplaar. Gebouwd op een volledig gereviseerd A-merk frame. Alle mechanische componenten en schuimdelen zijn gecontroleerd en vernieuwd.",
-      "badge": "Smal model",
-      "badgeType": "sale"
-    },
-    {
-      "id": "fitform-570-reco-smal-board",
-      "name": "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal Board",
-      "image": "assets/chair_sta-op-stoel-reco-fitform-570-vario-smal-board-1-copy-300x300.png",
-      "price": 1600,
-      "oldPrice": 1700,
-      "sizes": [
-        "smal"
-      ],
-      "description": "Voorzien van een smalle zitbreedte en stevige ergonomische ondersteuningsplaten (board) in de rugleuning. Ideaal voor langdurig en comfortabel zitten zonder verzakking.",
-      "badge": "Stevige rug",
-      "badgeType": "sale"
-    },
-    {
-      "id": "fitform-570-reco-xl",
-      "name": "Voorraad Sta-op stoel Fitform 570 Vario III XL RECO",
-      "image": "assets/chair_sta-op-stoel-fitform-570-vario-xl-zand-1-copy-300x300.png",
-      "price": 1700,
-      "oldPrice": null,
-      "sizes": [
-        "xl"
-      ],
-      "description": "De XL-uitvoering van de populaire Fitform 570. Biedt een bredere zit en extra verstevigde motoren. Deze stoel is volledig gereviseerd en direct uit voorraad leverbaar.",
-      "badge": "XL Formaat",
-      "badgeType": "reco"
-    },
     {
       "id": "fitform-580-vario-mini",
       "name": "Voorraad Sta op stoel Fitform 580 Vario Mini",
@@ -167,32 +39,6 @@
       "description": "Deze Vario Mini heeft een heerlijke relaxfunctie and is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
       "badge": "Verkocht",
       "badgeType": "reco"
-    },
-    {
-      "id": "fitform-571-mini-ilp",
-      "name": "RECO Sta-op stoel Fitform 571 Vario III Mini ILP",
-      "image": "assets/chair_sta-op-stoel-fitform-571-mini-ilp-rugleuning-scaled.png",
-      "price": 2400,
-      "oldPrice": null,
-      "sizes": [
-        "mini"
-      ],
-      "description": "Gereviseerd frame met compleet NIEUWE bekleding. Uitgerust met het gepatenteerde ILP (Intelligent Lig- & Zit-systeem) voor ultieme ondersteuning bij rugklachten. Let op: kleine uitvoering met lage rugleuning.",
-      "badge": "Nieuwe Bekleding",
-      "badgeType": "reco"
-    },
-    {
-      "id": "fitform-570-ilp",
-      "name": "Voorraad Sta op stoel Fitform 570 Vario ILP",
-      "image": "assets/chair_sta-op-stoel-fitform-570-ilp-rugleuning-scaled.png",
-      "price": 2400,
-      "oldPrice": 4600,
-      "sizes": [
-        "vario"
-      ],
-      "description": "Een zo goed als ongebruikte stoel (teruggekocht wegens omstandigheden). Beschikt over de gepatenteerde Fitform ILP rug- en zittingopbouw. Werkelijk als nieuw.",
-      "badge": "Kans: Als Nieuw",
-      "badgeType": "sale"
     }
   ]
 }
