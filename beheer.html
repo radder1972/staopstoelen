@@ -25,7 +25,7 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.02);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
     }
     
     .admin-header-container {
@@ -74,7 +74,7 @@
       height: 100%;
       background-color: rgba(18, 43, 7, 0.98);
       backdrop-filter: blur(12px);
-      z-index: 1000;
+      z-index: 12000;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -134,6 +134,11 @@
       border-bottom: 3px solid transparent;
       margin-bottom: -2px;
       transition: var(--transition-smooth);
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      cursor: pointer;
     }
     
     .tab-btn:hover {
@@ -145,25 +150,38 @@
       border-bottom-color: var(--color-forest);
     }
     
-    /* Dashboard Table / Cards Grid */
+    /* Grid Layout for Table and Form */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 32px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+    
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     .table-container {
       background-color: var(--color-light);
       border-radius: var(--radius-lg);
       box-shadow: 0 4px 25px rgba(0,0,0,0.03);
       border: 1px solid var(--color-gray-light);
       overflow-x: auto;
-      margin-bottom: 40px;
     }
     
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      min-width: 800px;
+      min-width: 650px;
     }
     
     th, td {
-      padding: 18px 24px;
+      padding: 16px 20px;
       border-bottom: 1px solid var(--color-gray-light);
       vertical-align: middle;
     }
@@ -181,8 +199,8 @@
     }
     
     .row-img {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       object-fit: contain;
       border-radius: var(--radius-sm);
       background-color: var(--color-cream);
@@ -191,9 +209,9 @@
     
     .badge {
       display: inline-block;
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: var(--radius-full);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -212,16 +230,18 @@
     
     .action-btn-group {
       display: flex;
-      gap: 12px;
+      gap: 8px;
     }
     
     .btn-action {
-      padding: 8px 16px;
-      font-size: 0.85rem;
+      padding: 6px 12px;
+      font-size: 0.8rem;
       border-radius: var(--radius-full);
-      min-height: auto;
       cursor: pointer;
       font-weight: 600;
+      background: none;
+      transition: var(--transition-smooth);
+      min-height: auto;
     }
     
     .btn-edit {
@@ -240,6 +260,77 @@
     .btn-delete:hover {
       background-color: var(--color-terracotta);
       color: var(--color-light);
+    }
+    
+    /* Panel Form Card */
+    .form-panel-card {
+      background-color: var(--color-light);
+      border-radius: var(--radius-lg);
+      border: 3px solid var(--color-sky);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+      padding: 24px;
+      position: sticky;
+      top: 96px;
+    }
+    
+    .form-title {
+      font-family: var(--font-heading);
+      color: var(--color-forest-dark);
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--color-cream-dark);
+      padding-bottom: 10px;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--color-forest-dark);
+      font-size: 0.9rem;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--color-gray-light);
+      outline: none;
+      font-family: inherit;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+      transition: var(--transition-smooth);
+    }
+    
+    .form-control:focus {
+      border-color: var(--color-forest);
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 12px;
+    }
+    .form-row > div {
+      flex: 1;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 0.9rem;
     }
     
     /* Code Export Container */
@@ -268,7 +359,7 @@
       color: #d4d4d4;
     }
     
-    /* Modal Form Styles */
+    /* Import Modal Overlay */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -277,7 +368,7 @@
       height: 100%;
       background-color: rgba(18, 43, 7, 0.4);
       backdrop-filter: blur(8px);
-      z-index: 100;
+      z-index: 20000;
       display: none;
       justify-content: center;
       align-items: center;
@@ -301,7 +392,7 @@
     }
     
     .modal-header {
-      padding: 24px;
+      padding: 20px 24px;
       background-color: var(--color-cream-dark);
       border-bottom: 1px solid var(--color-gray-light);
       display: flex;
@@ -314,60 +405,12 @@
     }
     
     .modal-footer {
-      padding: 24px;
+      padding: 20px 24px;
       border-top: 1px solid var(--color-gray-light);
       background-color: var(--color-cream-dark);
       display: flex;
       justify-content: flex-end;
       gap: 16px;
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--color-forest-dark);
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      border: 2px solid var(--color-gray-light);
-      outline: none;
-      font-family: inherit;
-      font-size: 1rem;
-      box-sizing: border-box;
-      transition: var(--transition-smooth);
-    }
-    
-    .form-control:focus {
-      border-color: var(--color-forest);
-    }
-    
-    .form-row {
-      display: flex;
-      gap: 16px;
-    }
-    .form-row > div {
-      flex: 1;
-    }
-    
-    .checkbox-group {
-      display: flex;
-      gap: 16px;
-      margin-top: 8px;
-    }
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
-      cursor: pointer;
     }
   </style>
 </head>
@@ -412,18 +455,118 @@
         <button class="tab-btn" data-tab="occasions">Occasions</button>
       </div>
 
-      <!-- Dashboard Table -->
-      <div class="table-container">
-        <table id="chairTable">
-          <thead>
-            <tr id="tableHeader">
+      <div class="dashboard-grid">
+        <!-- Left Column: Table of chairs -->
+        <div class="table-container">
+          <table id="chairTable">
+            <thead>
+              <tr id="tableHeader">
+                <!-- Dynamically populated -->
+              </tr>
+            </thead>
+            <tbody id="tableBody">
               <!-- Dynamically populated -->
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <!-- Dynamically populated -->
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Right Column: Inline Edit/Add Form Panel -->
+        <div class="form-panel-card" id="formPanelCard">
+          <h2 class="form-title" id="formTitle">Nieuwe Stoel Toevoegen</h2>
+          
+          <form id="chairForm">
+            <input type="hidden" id="formChairIndex">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="chairName">Stoel Naam</label>
+                <input type="text" class="form-control" id="chairName" required placeholder="bijv. Sta-op stoel Fitform 580 Vario">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="chairId">Unieke ID (URL-slug)</label>
+                <input type="text" class="form-control" id="chairId" required placeholder="bijv. fitform-580-vario">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="chairBrand">Merk</label>
+                <input type="text" class="form-control" id="chairBrand" required placeholder="bijv. Fitform, Doge, Mecam, Overig">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="chairPrice">Prijs (€)</label>
+                <input type="number" class="form-control" id="chairPrice" required placeholder="bijv. 1500">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="chairImage">Productafbeelding URL (Transparante PNG)</label>
+              <input type="text" class="form-control" id="chairImage" required placeholder="assets/chair_naam.png">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="chairAmbientImage">Sfeerfoto URL (Interieur)</label>
+              <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/chair_naam_cozy.png">
+            </div>
+
+            <!-- Tab Specific Fields -->
+            <div id="fieldSeniorenAdjustment" class="form-group" style="display: none;">
+              <label class="form-label" for="chairAdjustment">Type Verstelling (Alleen Senioren)</label>
+              <input type="text" class="form-control" id="chairAdjustment" placeholder="bijv. Handmatig, Elektrisch, Sta-op">
+            </div>
+
+            <div id="fieldsOccasions" style="display: none;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="chairOldPrice">Oorspronkelijke Prijs (€, optioneel)</label>
+                  <input type="number" class="form-control" id="chairOldPrice" placeholder="bijv. 2250">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Maten (Alleen Occasions)</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" class="size-checkbox" value="mini"> Mini
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" class="size-checkbox" value="vario"> Vario
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" class="size-checkbox" value="XL"> XL
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="chairBadge">Badge Tekst</label>
+                <input type="text" class="form-control" id="chairBadge" placeholder="bijv. Luxe Leder, Badge Tip">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="chairBadgeType">Badge Kleur / Type</label>
+                <select class="form-control" id="chairBadgeType">
+                  <option value="new">Nieuw (Lichtblauw)</option>
+                  <option value="reco">Reconditioneerd (Groen)</option>
+                  <option value="sale">Sale (Oranje)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="chairDesc">Productbeschrijving</label>
+              <textarea class="form-control" id="chairDesc" rows="3" required placeholder="Uitgebreide omschrijving van de stoel..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 24px;">
+              <button type="button" class="btn btn-outline" id="btnCancelForm" style="flex: 1; padding: 10px 14px; min-height: auto;">Formulier Leegmaken</button>
+              <button type="submit" class="btn btn-primary" style="flex: 1.2; padding: 10px 14px; min-height: auto;">Opslaan</button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <!-- Export / Import Code Box -->
@@ -449,114 +592,12 @@
     </div>
   </main>
 
-  <!-- Edit/Add Chair Modal -->
-  <div class="modal-overlay" id="editModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 id="modalFormTitle" style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0;">Stoel Bewerken</h3>
-        <button style="font-size: 1.5rem; font-weight: bold; color: var(--color-gray);" id="modalCloseBtn">&times;</button>
-      </div>
-      <form id="chairForm">
-        <div class="modal-body">
-          <input type="hidden" id="formChairIndex">
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="chairId">Unieke ID (URL-slug)</label>
-              <input type="text" class="form-control" id="chairId" required placeholder="bijv. fitform-580-vario">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="chairName">Stoel Naam</label>
-              <input type="text" class="form-control" id="chairName" required placeholder="bijv. Sta-op stoel Fitform 580 Vario">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="chairBrand">Merk</label>
-              <input type="text" class="form-control" id="chairBrand" required placeholder="bijv. Fitform, Doge, Mecam, Overig">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="chairPrice">Prijs (€)</label>
-              <input type="number" class="form-control" id="chairPrice" required placeholder="bijv. 1500">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="chairImage">Productafbeelding URL (Transparante PNG)</label>
-              <input type="text" class="form-control" id="chairImage" required placeholder="assets/chair_naam.png">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="chairAmbientImage">Sfeerfoto URL (Interieur)</label>
-              <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/chair_naam_cozy.png">
-            </div>
-          </div>
-
-          <!-- Tab Specific Fields -->
-          <div id="fieldSeniorenAdjustment" class="form-group" style="display: none;">
-            <label class="form-label" for="chairAdjustment">Type Verstelling (Alleen Senioren)</label>
-            <input type="text" class="form-control" id="chairAdjustment" placeholder="bijv. Handmatig, Elektrisch, Sta-op">
-          </div>
-
-          <div id="fieldsOccasions" style="display: none;">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="chairOldPrice">Oorspronkelijke Prijs (€, optioneel)</label>
-                <input type="number" class="form-control" id="chairOldPrice" placeholder="bijv. 2250">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Maten (Checkboxes, Alleen Occasions)</label>
-                <div class="checkbox-group">
-                  <label class="checkbox-label">
-                    <input type="checkbox" class="size-checkbox" value="mini"> Mini
-                  </label>
-                  <label class="checkbox-label">
-                    <input type="checkbox" class="size-checkbox" value="vario"> Vario
-                  </label>
-                  <label class="checkbox-label">
-                    <input type="checkbox" class="size-checkbox" value="XL"> XL
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="chairBadge">Badge Tekst</label>
-              <input type="text" class="form-control" id="chairBadge" placeholder="bijv. Luxe Leder, Badge Tip">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="chairBadgeType">Badge Kleur / Type</label>
-              <select class="form-control" id="chairBadgeType">
-                <option value="new">Nieuw (Lichtblauw)</option>
-                <option value="reco">Reconditioneerd (Groen)</option>
-                <option value="sale">Sale (Oranje)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="chairDesc">Productbeschrijving</label>
-            <textarea class="form-control" id="chairDesc" rows="4" required placeholder="Uitgebreide omschrijving van de stoel..."></textarea>
-          </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline" id="btnCancelForm" style="padding: 10px 24px; min-height: auto;">Annuleren</button>
-          <button type="submit" class="btn btn-primary" style="padding: 10px 24px; min-height: auto;">Opslaan</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- Import Modal Overlay -->
   <div class="modal-overlay" id="importModal">
     <div class="modal-card">
       <div class="modal-header">
         <h3 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0;">Code Importeren</h3>
-        <button style="font-size: 1.5rem; font-weight: bold; color: var(--color-gray);" id="importModalCloseBtn">&times;</button>
+        <button style="font-size: 1.5rem; font-weight: bold; color: var(--color-gray); background: none; border: none; cursor: pointer;" id="importModalCloseBtn">&times;</button>
       </div>
       <div class="modal-body">
         <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 12px;">
@@ -1105,6 +1146,7 @@
       activeData = loadData(currentTab);
       renderTable();
       updateCodeExport();
+      resetForm();
     }
 
     // Render Table based on active data and tab
@@ -1152,8 +1194,8 @@
         tdContent += `
           <td>
             <div class="action-btn-group">
-              <button class="btn-action btn-edit" onclick="editChair(${index})">Bewerken</button>
-              <button class="btn-action btn-delete" onclick="deleteChair(${index})">Verwijderen</button>
+              <button class="btn-action btn-edit" data-index="${index}">Bewerken</button>
+              <button class="btn-action btn-delete" data-index="${index}">Verwijderen</button>
             </div>
           </td>
         `;
@@ -1163,16 +1205,24 @@
       });
     }
 
+    // Event delegation on table body for Edit & Delete buttons (guarantees click actions are active)
+    document.getElementById("tableBody").addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn-action");
+      if (!btn) return;
+      
+      const index = parseInt(btn.getAttribute("data-index"));
+      if (btn.classList.contains("btn-edit")) {
+        editChair(index);
+      } else if (btn.classList.contains("btn-delete")) {
+        deleteChair(index);
+      }
+    });
+
     // Export Javascript Code
     function updateCodeExport() {
       const varName = getVarName(currentTab);
-      
-      // Formatting code nicely
       const jsonStr = JSON.stringify(activeData, null, 2);
-      
-      // Construct JS code
       const jsCode = `// Opgeslagen data voor ${currentTab}\nconst ${varName} = ${jsonStr};`;
-      
       document.getElementById("codeExportBox").value = jsCode;
     }
 
@@ -1186,19 +1236,17 @@
       });
     });
 
-    // Form modal controls
-    const modal = document.getElementById("editModal");
+    // Form element helpers
     const chairForm = document.getElementById("chairForm");
+    const nameInput = document.getElementById("chairName");
+    const idInput = document.getElementById("chairId");
     
-    document.getElementById("addChairBtn").addEventListener("click", () => {
-      document.getElementById("modalFormTitle").textContent = "Nieuwe Stoel Toevoegen";
+    function resetForm() {
       chairForm.reset();
       document.getElementById("formChairIndex").value = "";
+      document.getElementById("formTitle").textContent = "Nieuwe Stoel Toevoegen";
       
-      // Auto-generate ID slug as user types name
-      const nameInput = document.getElementById("chairName");
-      const idInput = document.getElementById("chairId");
-      
+      // Setup slug auto-generator
       nameInput.oninput = () => {
         idInput.value = nameInput.value
           .toLowerCase()
@@ -1207,18 +1255,17 @@
       };
       
       showTabFields();
-      modal.style.display = "flex";
-    });
-
-    document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
-    document.getElementById("btnCancelForm").addEventListener("click", closeModal);
-
-    function closeModal() {
-      modal.style.display = "none";
     }
 
+    document.getElementById("addChairBtn").addEventListener("click", () => {
+      resetForm();
+      document.getElementById("formPanelCard").scrollIntoView({ behavior: "smooth" });
+      nameInput.focus();
+    });
+
+    document.getElementById("btnCancelForm").addEventListener("click", resetForm);
+
     function showTabFields() {
-      // Adjust form inputs based on current tab
       if (currentTab === "seniorenstoelen") {
         document.getElementById("fieldSeniorenAdjustment").style.display = "block";
         document.getElementById("fieldsOccasions").style.display = "none";
@@ -1232,15 +1279,14 @@
     }
 
     // Edit button handler
-    window.editChair = function(index) {
-      document.getElementById("modalFormTitle").textContent = "Stoel Bewerken";
-      chairForm.reset();
-      document.getElementById("chairName").oninput = null; // Disable auto-slug on edit
+    function editChair(index) {
+      nameInput.oninput = null; // Disable auto-slug on edit
       
       const item = activeData[index];
+      document.getElementById("formTitle").textContent = `Stoel Bewerken: ${item.name}`;
       document.getElementById("formChairIndex").value = index;
-      document.getElementById("chairId").value = item.id || "";
-      document.getElementById("chairName").value = item.name || "";
+      idInput.value = item.id || "";
+      nameInput.value = item.name || "";
       document.getElementById("chairBrand").value = item.brand || "";
       document.getElementById("chairPrice").value = item.price || 0;
       document.getElementById("chairImage").value = item.image || "";
@@ -1256,25 +1302,27 @@
       } else if (currentTab === "occasions") {
         document.getElementById("chairOldPrice").value = item.oldPrice || "";
         
-        // Checkboxes
         const sizes = item.sizes || [];
         document.querySelectorAll(".size-checkbox").forEach(cb => {
           cb.checked = sizes.includes(cb.value);
         });
       }
       
-      modal.style.display = "flex";
-    };
+      document.getElementById("formPanelCard").scrollIntoView({ behavior: "smooth" });
+    }
 
     // Delete button handler
-    window.deleteChair = function(index) {
+    function deleteChair(index) {
       const item = activeData[index];
       if (confirm(`Weet u zeker dat u "${item.name}" wilt verwijderen uit de lijst?`)) {
         activeData.splice(index, 1);
         saveData(currentTab, activeData);
         renderTable();
+        if (document.getElementById("formChairIndex").value === String(index)) {
+          resetForm();
+        }
       }
-    };
+    }
 
     // Save form handler
     chairForm.addEventListener("submit", (e) => {
@@ -1283,8 +1331,8 @@
       const indexStr = document.getElementById("formChairIndex").value;
       
       const item = {
-        id: document.getElementById("chairId").value,
-        name: document.getElementById("chairName").value,
+        id: idInput.value,
+        name: nameInput.value,
         brand: document.getElementById("chairBrand").value,
         price: parseInt(document.getElementById("chairPrice").value),
         image: document.getElementById("chairImage").value,
@@ -1306,7 +1354,6 @@
         const oldPrice = document.getElementById("chairOldPrice").value;
         if (oldPrice) item.oldPrice = parseInt(oldPrice);
         
-        // Sizes checkboxes
         const checkedSizes = Array.from(document.querySelectorAll(".size-checkbox:checked")).map(cb => cb.value);
         item.sizes = checkedSizes;
       }
@@ -1322,7 +1369,7 @@
       
       saveData(currentTab, activeData);
       renderTable();
-      closeModal();
+      resetForm();
     });
 
     // Reset data handler
@@ -1375,19 +1422,12 @@
       document.getElementById("importError").style.display = "none";
       
       try {
-        // Extract array from the input code using regex
         let arrayStr = rawCode;
-        
-        // If it looks like 'const VAR = [ ... ];'
         const arrayMatch = rawCode.match(/\[[\s\S]*\]/);
         if (arrayMatch) {
           arrayStr = arrayMatch[0];
         }
         
-        // Try parsing as JSON.
-        // JS array definitions might not have double quotes on keys, so we evaluate it safely in a sandbox using Function
-        // or simple JSON parse. Since it's local in admin browser, evaluating it as a JS expression is common.
-        // We will evaluate it safely using Function("return " + arrayStr)();
         const parsed = Function("return " + arrayStr)();
         
         if (Array.isArray(parsed)) {
