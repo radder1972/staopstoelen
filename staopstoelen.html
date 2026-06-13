@@ -345,6 +345,7 @@
           <div class="modal-image-wrapper" style="position: relative;">
             <img id="modalProductImage" src="" alt="" style="opacity: 1;">
             <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" style="display: none;">
+            <img id="modalProductStatusStamp" src="" alt="" class="quality-stamp stamp-bottom-left" style="display: none;">
           </div>
           <!-- Gallery tabs if images exist -->
           <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
@@ -1075,12 +1076,13 @@
         card.setAttribute("aria-label", `${item.name}, bekijk details`);
 
         let stampHtml = "";
+        if (item.condition === "occasion") {
+          stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">`;
+        }
         if (item.status === "verkocht") {
-          stampHtml = `<img src="assets/verkocht_stempel.svg?v=1.0.51" alt="Verkocht" class="quality-stamp stamp-bottom-left">`;
+          stampHtml += `<img src="assets/verkocht_stempel.svg?v=1.0.51" alt="Verkocht" class="quality-stamp stamp-bottom-left">`;
         } else if (item.status === "gereserveerd") {
-          stampHtml = `<img src="assets/gereserveerd_stempel.svg?v=1.0.51" alt="Gereserveerd" class="quality-stamp stamp-bottom-left">`;
-        } else if (item.condition === "occasion") {
-          stampHtml = `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">`;
+          stampHtml += `<img src="assets/gereserveerd_stempel.svg?v=1.0.51" alt="Gereserveerd" class="quality-stamp stamp-bottom-left">`;
         }
 
         card.innerHTML = `
@@ -1151,6 +1153,7 @@
       const modal = document.getElementById("productModal");
       const modalImg = document.getElementById("modalProductImage");
       const modalStamp = document.getElementById("modalProductStamp");
+      const modalStatusStamp = document.getElementById("modalProductStatusStamp");
       const modalTitle = document.getElementById("modalTitle");
       const modalBrand = document.getElementById("modalBrand");
       const modalDesc = document.getElementById("modalDescription");
@@ -1169,23 +1172,27 @@
       modalDesc.textContent = item.description;
       modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
       
-      if (item.status === "verkocht") {
-        modalStamp.src = "assets/verkocht_stempel.svg?v=1.0.51";
-        modalStamp.alt = "Verkocht";
-        modalStamp.className = "quality-stamp stamp-bottom-left";
-        modalStamp.style.display = "block";
-      } else if (item.status === "gereserveerd") {
-        modalStamp.src = "assets/gereserveerd_stempel.svg?v=1.0.51";
-        modalStamp.alt = "Gereserveerd";
-        modalStamp.className = "quality-stamp stamp-bottom-left";
-        modalStamp.style.display = "block";
-      } else if (item.condition === "occasion") {
+      // Render condition stamp (revisie / occasion)
+      if (item.condition === "occasion") {
         modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.0.48";
         modalStamp.alt = "Gereviseerd";
         modalStamp.className = "quality-stamp";
         modalStamp.style.display = "block";
       } else {
         modalStamp.style.display = "none";
+      }
+
+      // Render status stamp (verkocht / gereserveerd)
+      if (item.status === "verkocht") {
+        modalStatusStamp.src = "assets/verkocht_stempel.svg?v=1.0.51";
+        modalStatusStamp.alt = "Verkocht";
+        modalStatusStamp.style.display = "block";
+      } else if (item.status === "gereserveerd") {
+        modalStatusStamp.src = "assets/gereserveerd_stempel.svg?v=1.0.51";
+        modalStatusStamp.alt = "Gereserveerd";
+        modalStatusStamp.style.display = "block";
+      } else {
+        modalStatusStamp.style.display = "none";
       }
 
       if (item.badge) {
