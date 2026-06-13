@@ -272,6 +272,38 @@ section {
   z-index: 10;
 }
 
+.navbar-top-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  display: flex;
+  gap: 24px;
+  z-index: 10;
+}
+
+.navbar-top-center a {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-forest-dark);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--transition-fast);
+}
+
+.navbar-top-center a:hover {
+  color: var(--color-terracotta);
+}
+
+@media (max-width: 1024px) {
+  .navbar-top-center {
+    display: none !important;
+  }
+}
+
 .nav-top-link {
   font-family: var(--font-body);
   font-weight: 600;
