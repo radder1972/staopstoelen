@@ -233,6 +233,30 @@
           </div>
 
           <div class="filter-group">
+            <h3 class="filter-group-title">Conditie</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" class="condition-filter" value="nieuw">
+              <span>Nieuw</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="condition-filter" value="occasion">
+              <span>Occasion</span>
+            </label>
+          </div>
+
+          <div class="filter-group">
+            <h3 class="filter-group-title">Type stoel</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" class="type-filter" value="staop">
+              <span>Sta-opstoel</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="type-filter" value="relax">
+              <span>Relaxstoel</span>
+            </label>
+          </div>
+
+          <div class="filter-group">
             <h3 class="filter-group-title">Prijsklasse</h3>
             <label class="checkbox-label">
               <input type="checkbox" class="price-filter" value="under-1500">
@@ -667,6 +691,8 @@
       const sortVal = document.getElementById("sortSelect").value;
       const checkedBrands = Array.from(document.querySelectorAll(".brand-filter:checked")).map(cb => cb.value);
       const checkedPrices = Array.from(document.querySelectorAll(".price-filter:checked")).map(cb => cb.value);
+      const checkedConditions = Array.from(document.querySelectorAll(".condition-filter:checked")).map(cb => cb.value);
+      const checkedTypes = Array.from(document.querySelectorAll(".type-filter:checked")).map(cb => cb.value);
 
       // Filter
       let filtered = [...GOEDKOPE_STAOPSTOELEN_DATA];
@@ -689,6 +715,20 @@
           if (checkedPrices.includes("1500-2500") && item.price >= 1500 && item.price <= 2500) return true;
           if (checkedPrices.includes("over-2500") && item.price > 2500) return true;
           return false;
+        });
+      }
+
+      if (checkedConditions.length > 0) {
+        filtered = filtered.filter(item => {
+          const itemCondition = item.condition || (item.badgeType === 'reco' ? 'occasion' : 'nieuw');
+          return checkedConditions.includes(itemCondition);
+        });
+      }
+
+      if (checkedTypes.length > 0) {
+        filtered = filtered.filter(item => {
+          const itemType = item.type || 'staop';
+          return checkedTypes.includes(itemType);
         });
       }
 
@@ -869,6 +909,8 @@
     document.getElementById("sortSelect").addEventListener("change", renderCatalog);
     document.querySelectorAll(".brand-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".price-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+    document.querySelectorAll(".condition-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+    document.querySelectorAll(".type-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
 
     // Initial render with API fetch fallback
     window.addEventListener("DOMContentLoaded", async () => {
