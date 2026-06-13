@@ -678,6 +678,7 @@ function initCalendar() {
       document.getElementById("successSummary").innerHTML = `
         Er is een afspraak gepland voor een <strong>${typeText}</strong> ${locationDetail}. <br>
         Datum: <strong>${formattedDate}</strong> om <strong>${state.selectedTimeSlot}</strong>.<br><br>
+        De bevestiging is zojuist naar uw e-mailadres (<strong>${email}</strong>) verzonden. Check eventueel uw spamfolder als u deze niet direct ziet.<br><br>
         Onze BewegingsTechnoloog zal de afspraak binnen 2 uur telefonisch met u bevestigen via <strong>${phone}</strong>.
       `;
       
