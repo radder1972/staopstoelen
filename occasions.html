@@ -308,7 +308,8 @@
 
   <script>
     // Scraped occasions dataset
-    let OCCASIONS_DATA = JSON.parse(localStorage.getItem("admin_occasions")) || [
+    let storedOccasionsData = null; try { storedOccasionsData = JSON.parse(localStorage.getItem("admin_occasions")); } catch(e){}
+    let OCCASIONS_DATA = (storedOccasionsData && storedOccasionsData.length > 0) ? storedOccasionsData : [
       {
         id: "fitform-570-reco",
         name: "Voorraad Sta-op stoel Fitform 570 Vario III RECO",

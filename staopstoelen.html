@@ -366,7 +366,8 @@
   <script src="app.js"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
-    let GOEDKOPE_STAOPSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_staopstoelen")) || [
+    let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
+    let GOEDKOPE_STAOPSTOELEN_DATA = (storedStaopData && storedStaopData.length > 0) ? storedStaopData : [
       {
         id: "sta-op-stoel-dordrecht",
         name: "Sta-op stoel Dordrecht",

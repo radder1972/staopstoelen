@@ -325,7 +325,8 @@
   <script src="app.js"></script>
   <script>
     // Scraped senior chairs dataset
-    let SENIORENSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_seniorenstoelen")) || [
+    let storedSeniorenData = null; try { storedSeniorenData = JSON.parse(localStorage.getItem("admin_seniorenstoelen")); } catch(e){}
+    let SENIORENSTOELEN_DATA = (storedSeniorenData && storedSeniorenData.length > 0) ? storedSeniorenData : [
       {
         id: "seniorenstoel-hk-zwolle",
         name: "Seniorenstoel HK Zwolle",
