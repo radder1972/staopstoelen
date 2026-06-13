@@ -2,36 +2,15 @@
   <!-- Inner circular background -->
   <circle cx="150" cy="150" r="120" fill="#ffffff" fill-opacity="0.95" />
   
-  <!-- Outer thin terracotta border -->
-  <circle cx="150" cy="150" r="112" fill="none" stroke="#f39223" stroke-width="5" />
+  <!-- Thick outer border -->
+  <circle cx="150" cy="150" r="112" fill="none" stroke="#f39223" stroke-width="6" />
   
-  <!-- Inner thin terracotta border -->
-  <circle cx="150" cy="150" r="76" fill="none" stroke="#f39223" stroke-width="5" />
-  
-  <!-- Text paths R=86 and R=102 -->
-  <path id="text-path-top" d="M 64,150 A 86,86 0 0,1 236,150" fill="none" />
-  <path id="text-path-bottom" d="M 48,150 A 102,102 0 0,0 252,150" fill="none" />
-  
-  <!-- Outer text GERESERVEERD -->
-  <text fill="#f39223" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="19" letter-spacing="3.0">
-    <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">
-      GERESERVEERD
-    </textPath>
-  </text>
-  
-  <text fill="#f39223" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="19" letter-spacing="3.0">
-    <textPath href="#text-path-bottom" startOffset="50%" text-anchor="middle">
-      GERESERVEERD
-    </textPath>
-  </text>
-  
-  <!-- Bullets/Dots separating top and bottom text (green) -->
-  <circle cx="59.2" cy="174.3" r="6" fill="#4b8f24" stroke="#f39223" stroke-width="1.5" />
-  <circle cx="240.8" cy="174.3" r="6" fill="#4b8f24" stroke="#f39223" stroke-width="1.5" />
+  <!-- Thin inner border -->
+  <circle cx="150" cy="150" r="102" fill="none" stroke="#f39223" stroke-width="2" />
   
   <!-- Center banner with GERESERVEERD -->
   <g transform="rotate(-15 150 150)">
     <rect x="25" y="115" width="250" height="70" rx="8" fill="#f39223" />
-    <text x="150" y="165" fill="#ffffff" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="28" text-anchor="middle" letter-spacing="1.5">GERESERVEERD</text>
+    <text x="150" y="159" fill="#ffffff" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="22" text-anchor="middle" letter-spacing="1">GERESERVEERD</text>
   </g>
 </svg>
