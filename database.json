@@ -495,12 +495,13 @@
       "brand": "Huismerk",
       "model": "D1",
       "price": 1190,
-      "image": "assets/Sta-op-stoel-DORDRECHT-1__1_.jpg",
+      "image": "assets/geert_dream_sit.png",
       "condition": "occasion",
-      "type": "relax",
+      "type": "staop",
       "material": "stof",
       "description": "Als gediplomeerd BewegingsTechnoloog droomt Geert al jaren van de perfecte sta-opstoel: een model dat niet alleen ergonomisch perfect aansluit op uw lichaam, maar ook met een vloeiende, stabiele beweging opstaat. Hieronder kunt u deze upstand-beweging zelf ervaren door simpelweg uw cursor op de stoel te plaatsen.",
-      "ambientImage": "assets/chair_dordrecht_cozy.png",
+      "imageUp": "assets/geert_dream_lift.png",
+      "ambientImage": "assets/Sta-op-stoel-DORDRECHT-interior.png",
       "badge": "Een droom",
       "badgeType": "reco"
     }

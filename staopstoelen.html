@@ -1056,6 +1056,23 @@
           </div>
         `;
 
+        // Hover effect to swap image between downstand and upstand (if imageUp is present)
+        if (item.imageUp) {
+          const imgElement = card.querySelector(".product-image img");
+          if (imgElement) {
+            // Preload the upstand image to prevent flicker
+            const preloadImg = new Image();
+            preloadImg.src = item.imageUp;
+            
+            card.addEventListener("mouseenter", () => {
+              imgElement.src = item.imageUp;
+            });
+            card.addEventListener("mouseleave", () => {
+              imgElement.src = item.image;
+            });
+          }
+        }
+
         // Click handler to open popup details modal
         card.addEventListener("click", (e) => {
           if (e.target.tagName === "BUTTON") return;
