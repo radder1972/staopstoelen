@@ -350,10 +350,11 @@
             <img id="modalProductImage" src="" alt="" style="opacity: 1;">
             <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" style="display: none;">
           </div>
-          <!-- Gallery tabs if ambientImage exists -->
+          <!-- Gallery tabs if images exist -->
           <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
-            <button type="button" class="gallery-tab active" id="tabStudio">Productfoto</button>
-            <button type="button" class="gallery-tab" id="tabAmbient">In Interieur</button>
+            <button type="button" class="gallery-tab active" id="tabDown">Zitstand</button>
+            <button type="button" class="gallery-tab" id="tabUp" style="display: none;">Sta-opstand</button>
+            <button type="button" class="gallery-tab" id="tabAmbient" style="display: none;">In Interieur</button>
           </div>
         </div>
         <div class="modal-info-section">
@@ -1087,8 +1088,6 @@
       const modalPrice = document.getElementById("modalPrice");
       const modalBadge = document.getElementById("modalBadge");
       const modalTabs = document.getElementById("modalGalleryTabs");
-      const tabStudio = document.getElementById("tabStudio");
-      const tabAmbient = document.getElementById("tabAmbient");
       const bookBtn = document.getElementById("modalBookBtn");
 
       // Set content
@@ -1116,39 +1115,65 @@
         modalBadge.style.display = "none";
       }
 
-      // Handle ambient/in-interior image tabs
-      if (item.ambientImage) {
+      // Handle gallery tabs dynamically depending on which images are present
+      const hasUp = !!item.imageUp;
+      const hasAmbient = !!item.ambientImage;
+      
+      const tabDown = document.getElementById("tabDown");
+      const tabUp = document.getElementById("tabUp");
+      const tabAmbient = document.getElementById("tabAmbient");
+      
+      // Reset tab states
+      tabDown.classList.add("active");
+      tabUp.classList.remove("active");
+      tabAmbient.classList.remove("active");
+      
+      if (hasUp || hasAmbient) {
         modalTabs.style.display = "flex";
         
-        // Reset tab states
-        tabStudio.classList.add("active");
-        tabAmbient.classList.remove("active");
+        // Show/hide relevant tab buttons
+        tabUp.style.display = hasUp ? "block" : "none";
+        tabAmbient.style.display = hasAmbient ? "block" : "none";
         
-        // Remove old event listeners
-        const newTabStudio = tabStudio.cloneNode(true);
+        // Remove old event listeners via cloning
+        const newTabDown = tabDown.cloneNode(true);
+        const newTabUp = tabUp.cloneNode(true);
         const newTabAmbient = tabAmbient.cloneNode(true);
-        tabStudio.parentNode.replaceChild(newTabStudio, tabStudio);
+        
+        tabDown.parentNode.replaceChild(newTabDown, tabDown);
+        tabUp.parentNode.replaceChild(newTabUp, tabUp);
         tabAmbient.parentNode.replaceChild(newTabAmbient, tabAmbient);
         
-        newTabStudio.addEventListener("click", () => {
-          newTabStudio.classList.add("active");
-          newTabAmbient.classList.remove("active");
+        const tabs = [newTabDown, newTabUp, newTabAmbient];
+        const setImg = (src) => {
           modalImg.style.opacity = 0;
           setTimeout(() => {
-            modalImg.src = item.image;
+            modalImg.src = src;
             modalImg.style.opacity = 1;
           }, 150);
+        };
+        
+        newTabDown.addEventListener("click", () => {
+          tabs.forEach(t => t.classList.remove("active"));
+          newTabDown.classList.add("active");
+          setImg(item.image);
         });
-
-        newTabAmbient.addEventListener("click", () => {
-          newTabAmbient.classList.add("active");
-          newTabStudio.classList.remove("active");
-          modalImg.style.opacity = 0;
-          setTimeout(() => {
-            modalImg.src = item.ambientImage;
-            modalImg.style.opacity = 1;
-          }, 150);
-        });
+        
+        if (hasUp) {
+          newTabUp.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            newTabUp.classList.add("active");
+            setImg(item.imageUp);
+          });
+        }
+        
+        if (hasAmbient) {
+          newTabAmbient.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            newTabAmbient.classList.add("active");
+            setImg(item.ambientImage);
+          });
+        }
       } else {
         modalTabs.style.display = "none";
       }

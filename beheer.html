@@ -496,7 +496,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="chairImage">Productafbeelding (Transparante PNG)</label>
+              <label class="form-label" for="chairImage">Productafbeelding (Zitstand / Downstand)</label>
               <div style="display: flex; gap: 12px; align-items: center;">
                 <input type="text" class="form-control" id="chairImage" required placeholder="assets/chair_naam.png" style="flex: 1;">
                 <input type="file" id="chairImageFile" accept="image/*" style="display: none;">
@@ -505,6 +505,20 @@
                 </button>
               </div>
               <div id="chairImagePreview" style="margin-top: 10px; display: none;">
+                <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="chairImageUp">Productafbeelding (Sta-opstand / Upstand)</label>
+              <div style="display: flex; gap: 12px; align-items: center;">
+                <input type="text" class="form-control" id="chairImageUp" placeholder="assets/chair_naam_lift.png" style="flex: 1;">
+                <input type="file" id="chairImageUpFile" accept="image/*" style="display: none;">
+                <button type="button" class="btn btn-outline" id="btnUploadImageUp" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
+                  📁 Kies Bestand
+                </button>
+              </div>
+              <div id="chairImageUpPreview" style="margin-top: 10px; display: none;">
                 <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
               </div>
             </div>
@@ -1386,6 +1400,10 @@
       if (typeof chairImagePreview !== 'undefined') {
         chairImagePreview.style.display = "none";
         chairImagePreview.querySelector("img").src = "";
+        if (typeof chairImageUpPreview !== 'undefined') {
+          chairImageUpPreview.style.display = "none";
+          chairImageUpPreview.querySelector("img").src = "";
+        }
         chairAmbientImagePreview.style.display = "none";
         chairAmbientImagePreview.querySelector("img").src = "";
       }
@@ -1420,6 +1438,7 @@
       document.getElementById("chairModel").value = item.model || "";
       document.getElementById("chairPrice").value = item.price || 0;
       document.getElementById("chairImage").value = item.image || "";
+      document.getElementById("chairImageUp").value = item.imageUp || "";
       document.getElementById("chairAmbientImage").value = item.ambientImage || "";
       document.getElementById("chairCondition").value = item.condition || "nieuw";
       document.getElementById("chairType").value = item.type || "staop";
@@ -1430,6 +1449,7 @@
       
       // Load previews
       updatePreview(document.getElementById("chairImage"), chairImagePreview);
+      updatePreview(document.getElementById("chairImageUp"), chairImageUpPreview);
       updatePreview(document.getElementById("chairAmbientImage"), chairAmbientImagePreview);
       
       document.getElementById("formPanelCard").scrollIntoView({ behavior: "smooth" });
@@ -1466,6 +1486,9 @@
         material: document.getElementById("chairMaterial").value,
         description: document.getElementById("chairDesc").value
       };
+      
+      const imageUp = document.getElementById("chairImageUp").value;
+      if (imageUp) item.imageUp = imageUp;
       
       const ambient = document.getElementById("chairAmbientImage").value;
       if (ambient) item.ambientImage = ambient;
@@ -1587,6 +1610,11 @@
     const chairImagePreview = document.getElementById("chairImagePreview");
     const btnUploadImage = document.getElementById("btnUploadImage");
 
+    const chairImageUp = document.getElementById("chairImageUp");
+    const chairImageUpFile = document.getElementById("chairImageUpFile");
+    const chairImageUpPreview = document.getElementById("chairImageUpPreview");
+    const btnUploadImageUp = document.getElementById("btnUploadImageUp");
+
     const chairAmbientImage = document.getElementById("chairAmbientImage");
     const chairAmbientImageFile = document.getElementById("chairAmbientImageFile");
     const chairAmbientImagePreview = document.getElementById("chairAmbientImagePreview");
@@ -1594,6 +1622,7 @@
 
     // Click handlers for file inputs
     btnUploadImage.addEventListener("click", () => chairImageFile.click());
+    btnUploadImageUp.addEventListener("click", () => chairImageUpFile.click());
     btnUploadAmbientImage.addEventListener("click", () => chairAmbientImageFile.click());
 
     // Update preview helper function
@@ -1610,6 +1639,7 @@
 
     // Input event listeners for manual URLs typing/pasting
     chairImage.addEventListener("input", () => updatePreview(chairImage, chairImagePreview));
+    chairImageUp.addEventListener("input", () => updatePreview(chairImageUp, chairImageUpPreview));
     chairAmbientImage.addEventListener("input", () => updatePreview(chairAmbientImage, chairAmbientImagePreview));
 
     // File upload logic
@@ -1668,6 +1698,10 @@
     // Change listeners for file inputs
     chairImageFile.addEventListener("change", () => {
       handleFileUpload(chairImageFile, chairImage, chairImagePreview, btnUploadImage);
+    });
+
+    chairImageUpFile.addEventListener("change", () => {
+      handleFileUpload(chairImageUpFile, chairImageUp, chairImageUpPreview, btnUploadImageUp);
     });
 
     chairAmbientImageFile.addEventListener("change", () => {
