@@ -138,6 +138,62 @@ const server = http.createServer((req, res) => {
     return;
   }
   
+  // POST /api/upload - handles base64 image uploading and saves to assets/
+  if (req.url === '/api/upload' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+    
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body);
+        
+        if (!payload.filename || !payload.fileData) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Missing filename or fileData in payload' }));
+          return;
+        }
+
+        // Validate base64 format
+        const matches = payload.fileData.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+        if (!matches || matches.length !== 3) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Invalid fileData format. Must be a base64 Data URL.' }));
+          return;
+        }
+
+        const base64Data = matches[2];
+        const buffer = Buffer.from(base64Data, 'base64');
+
+        // Sanitize filename to prevent directory traversal
+        const sanitizedFilename = path.basename(payload.filename).replace(/[^a-zA-Z0-9.\-_]/g, '_');
+        
+        // Ensure assets directory exists
+        const assetsDir = path.join(__dirname, 'assets');
+        if (!fs.existsSync(assetsDir)) {
+          fs.mkdirSync(assetsDir, { recursive: true });
+        }
+
+        const savePath = path.join(assetsDir, sanitizedFilename);
+        fs.writeFileSync(savePath, buffer);
+
+        console.log(`Uploaded and saved image: ${sanitizedFilename}`);
+        
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ 
+          message: 'Image uploaded successfully',
+          url: `assets/${sanitizedFilename}`
+        }));
+      } catch (e) {
+        console.error('Upload handler error:', e);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Internal server error during upload' }));
+      }
+    });
+    return;
+  }
+  
   // Serve static files for everything else
   let urlPath = req.url.split('?')[0];
   if (urlPath === '/') {
