@@ -469,31 +469,48 @@ section {
 
 .hero-img-2 {
   z-index: 2;
-  animation: hero-fade-three-2 18s infinite ease-in-out;
+  animation: hero-fade-four-2 24s infinite ease-in-out;
 }
 
 .hero-img-3 {
   z-index: 3;
-  animation: hero-fade-three-3 18s infinite ease-in-out;
+  animation: hero-fade-four-3 24s infinite ease-in-out;
 }
 
-@keyframes hero-fade-three-2 {
-  0%, 26.67% {
+.hero-img-4 {
+  z-index: 4;
+  animation: hero-fade-four-4 24s infinite ease-in-out;
+}
+
+@keyframes hero-fade-four-2 {
+  0%, 20% {
     opacity: 0;
   }
-  33.33%, 66.67% {
+  25%, 45% {
     opacity: 1;
   }
-  73.33%, 100% {
+  50%, 100% {
     opacity: 0;
   }
 }
 
-@keyframes hero-fade-three-3 {
-  0%, 60.00% {
+@keyframes hero-fade-four-3 {
+  0%, 45% {
     opacity: 0;
   }
-  66.67%, 93.33% {
+  50%, 70% {
+    opacity: 1;
+  }
+  75%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-four-4 {
+  0%, 70% {
+    opacity: 0;
+  }
+  75%, 95% {
     opacity: 1;
   }
   100% {
