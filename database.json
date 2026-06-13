@@ -197,18 +197,18 @@
     },
     {
       "id": "sta-op-stoel-dfm-bentley-dicht",
-      "name": "Sta-op stoel DFM Bentley (dicht)",
-      "image": "assets/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
-      "ambientImage": "assets/chair_bentley_dicht_cozy.png",
+      "name": "Bentley (dicht)",
+      "brand": "DFM",
+      "model": "Bentley (dicht)",
       "price": 1945,
-      "brand": "Overig",
-      "description": "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
-      "badge": "Luxe Design",
-      "badgeType": "reco",
-      "condition": "occasion",
+      "image": "assets/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
+      "condition": "nieuw",
       "type": "staop",
       "material": "stof",
-      "model": "DFM Bentley (dicht)"
+      "description": "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
+      "ambientImage": "assets/chair_bentley_dicht_cozy.png",
+      "badge": "Luxe Design",
+      "badgeType": "reco"
     },
     {
       "id": "sta-op-stoel-dfm-bentley-open",
