@@ -2468,7 +2468,7 @@ footer h3, footer h4 {
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-smooth) ease-in-out, padding var(--transition-smooth) ease-in-out;
+  transition: max-height var(--transition-smooth) ease-in-out, padding var(--transition-smooth) ease-in-out, background-color var(--transition-smooth) ease-in-out;
   padding: 0 24px;
 }
 
@@ -2476,6 +2476,7 @@ footer h3, footer h4 {
   padding-bottom: 24px;
   border-top: 1px solid rgba(141, 169, 140, 0.1);
   padding-top: 20px;
+  background-color: var(--color-sage-light);
 }
 
 .faq-answer p {
