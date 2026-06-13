@@ -603,6 +603,17 @@ function initCalendar() {
       alert("Vul a.u.b. een geldig telefoonnummer in (10 cijfers, of 12 tekens beginnend met +31).");
       return;
     }
+    
+    // E-mailadres validatie
+    if (!email) {
+      alert("Vul a.u.b. uw e-mailadres in.");
+      return;
+    }
+    if (!email.includes("@")) {
+      alert("Vul a.u.b. een geldig e-mailadres in.");
+      return;
+    }
+    
     if (state.appointmentType === "home" && !address) {
       alert("Vul a.u.b. het adres in voor de passing aan huis.");
       return;
