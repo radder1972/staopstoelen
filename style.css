@@ -2506,3 +2506,34 @@ footer h3, footer h4 {
   margin-bottom: 0;
 }
 
+/* Showroom link styling in Over Ons */
+.showroom-link-container {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--color-light);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: var(--transition-smooth);
+  width: 240px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+.showroom-link-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: var(--color-sage);
+}
+
+.showroom-link-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.showroom-link-container:hover .showroom-link-img {
+  transform: scale(1.08);
+}
+
+
