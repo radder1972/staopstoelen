@@ -6,7 +6,7 @@
   <title>Tweedehands Sta-op Stoelen & Occasions | Fitform & Doge</title>
   <meta name="description" content="Bekijk ons actuele aanbod tweedehands sta-op stoel occasions. Kwalitatieve, gereviseerde Fitform, Doge en Prominent stoelen op maat afgesteld met 2 jaar garantie.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.48">
+  <link rel="stylesheet" href="style.css?v=1.0.49">
   <style>
 
     .catalog-layout {
@@ -308,7 +308,7 @@
 
   <script>
     // Scraped occasions dataset
-    const OCCASIONS_DATA = [
+    const OCCASIONS_DATA = JSON.parse(localStorage.getItem("admin_occasions")) || [
       {
         id: "fitform-570-reco",
         name: "Voorraad Sta-op stoel Fitform 570 Vario III RECO",

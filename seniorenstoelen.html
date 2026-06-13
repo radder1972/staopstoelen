@@ -6,7 +6,7 @@
   <title>Ergonomische Seniorenstoelen op Maat | Comfortabel Zitten</title>
   <meta name="description" content="Ontdek onze collectie ergonomische seniorenstoelen op maat. Volledig instelbare relaxstoelen en sta-op stoelen voor optimaal zitcomfort en rugondersteuning.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.48">
+  <link rel="stylesheet" href="style.css?v=1.0.49">
   <style>
 
     .catalog-layout {
@@ -321,7 +321,7 @@
   <script src="app.js"></script>
   <script>
     // Scraped senior chairs dataset
-    const SENIORENSTOELEN_DATA = [
+    const SENIORENSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_seniorenstoelen")) || [
       {
         id: "seniorenstoel-hk-zwolle",
         name: "Seniorenstoel HK Zwolle",

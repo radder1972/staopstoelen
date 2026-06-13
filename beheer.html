@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beheer Dashboard | Staopstoelen.nl</title>
+  <meta name="description" content="Beheer dashboard voor de stoelen catalogus van Staopstoelen.nl.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css?v=1.0.49">
+  <style>
+    /* Admin Dashboard Specific Styles */
+    body {
+      background-color: var(--color-cream);
+      color: var(--color-dark);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .admin-header {
+      background-color: var(--color-light);
+      border-bottom: 1px solid var(--color-gray-light);
+      padding: 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .admin-header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .admin-logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--color-forest-dark);
+      text-decoration: none;
+    }
+    .admin-logo span {
+      color: var(--color-terracotta);
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 40px 0;
+    }
+    
+    .admin-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .admin-title {
+      font-size: 2rem;
+      color: var(--color-forest-dark);
+      margin: 0;
+    }
+    
+    /* Login Screen Overlay */
+    .login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 43, 7, 0.98);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.4s ease;
+    }
+    
+    .login-card {
+      background: var(--color-light);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      text-align: center;
+      border: 4px solid var(--color-sky);
+    }
+    
+    .login-input {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--color-gray-light);
+      font-size: 1.1rem;
+      margin: 20px 0;
+      box-sizing: border-box;
+      outline: none;
+      text-align: center;
+      font-family: inherit;
+    }
+    
+    .login-input:focus {
+      border-color: var(--color-forest);
+      box-shadow: 0 0 0 4px rgba(75, 143, 36, 0.1);
+    }
+    
+    .login-error {
+      color: var(--color-terracotta);
+      font-weight: 600;
+      display: none;
+      margin-bottom: 16px;
+    }
+    
+    /* Dataset Selection Tabs */
+    .tabs-wrapper {
+      display: flex;
+      border-bottom: 2px solid var(--color-gray-light);
+      margin-bottom: 32px;
+      gap: 8px;
+    }
+    
+    .tab-btn {
+      padding: 12px 24px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--color-gray);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: var(--transition-smooth);
+    }
+    
+    .tab-btn:hover {
+      color: var(--color-forest);
+    }
+    
+    .tab-btn.active {
+      color: var(--color-forest);
+      border-bottom-color: var(--color-forest);
+    }
+    
+    /* Dashboard Table / Cards Grid */
+    .table-container {
+      background-color: var(--color-light);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+      border: 1px solid var(--color-gray-light);
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 800px;
+    }
+    
+    th, td {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--color-gray-light);
+      vertical-align: middle;
+    }
+    
+    th {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      background-color: var(--color-cream-dark);
+      font-size: 0.95rem;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .row-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-cream);
+      border: 1px solid var(--color-gray-light);
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-new {
+      background-color: var(--color-sky);
+      color: var(--color-forest-dark);
+    }
+    .badge-reco {
+      background-color: #d1ebd1;
+      color: #0c430c;
+    }
+    .badge-sale {
+      background-color: #ffe8d1;
+      color: var(--color-terracotta-hover);
+    }
+    
+    .action-btn-group {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .btn-action {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      border-radius: var(--radius-full);
+      min-height: auto;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    
+    .btn-edit {
+      border: 2px solid var(--color-forest);
+      color: var(--color-forest);
+    }
+    .btn-edit:hover {
+      background-color: var(--color-forest);
+      color: var(--color-light);
+    }
+    
+    .btn-delete {
+      border: 2px solid var(--color-terracotta);
+      color: var(--color-terracotta);
+    }
+    .btn-delete:hover {
+      background-color: var(--color-terracotta);
+      color: var(--color-light);
+    }
+    
+    /* Code Export Container */
+    .export-box {
+      background-color: var(--color-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--color-gray-light);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+      margin-bottom: 60px;
+    }
+    
+    .code-textarea {
+      width: 100%;
+      height: 300px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      border: 2px solid var(--color-gray-light);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      box-sizing: border-box;
+      outline: none;
+      resize: vertical;
+      margin: 16px 0;
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+    }
+    
+    /* Modal Form Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 43, 7, 0.4);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-card {
+      background-color: var(--color-light);
+      width: 90%;
+      max-width: 600px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: var(--radius-lg);
+      border: 4px solid var(--color-sky);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+      animation: modalEntrance 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    @keyframes modalEntrance {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    .modal-header {
+      padding: 24px;
+      background-color: var(--color-cream-dark);
+      border-bottom: 1px solid var(--color-gray-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-body {
+      padding: 24px;
+    }
+    
+    .modal-footer {
+      padding: 24px;
+      border-top: 1px solid var(--color-gray-light);
+      background-color: var(--color-cream-dark);
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--color-forest-dark);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--color-gray-light);
+      outline: none;
+      font-family: inherit;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: var(--transition-smooth);
+    }
+    
+    .form-control:focus {
+      border-color: var(--color-forest);
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 16px;
+    }
+    .form-row > div {
+      flex: 1;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form overlay -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+      <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin-bottom: 8px;">Beheer Login</h2>
+      <p style="color: var(--color-gray); font-size: 0.95rem;">Voer het beheerwachtwoord in om toegang te krijgen.</p>
+      <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
+      <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
+      <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="admin-header">
+    <div class="container admin-header-container">
+      <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
+      <a href="index.html" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem; min-height: auto;">
+        ← Terug naar Website
+      </a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <div class="admin-title-row">
+        <div>
+          <h1 class="admin-title">Stoelen Beheer Dashboard</h1>
+          <p style="color: var(--color-gray); margin-top: 4px;">Beheer de stoelen catalogus en exporteer de updates naar de html code.</p>
+        </div>
+        <button class="btn btn-primary" id="addChairBtn">+ Nieuwe Stoel Toevoegen</button>
+      </div>
+
+      <!-- Dataset Tab Selectors -->
+      <div class="tabs-wrapper">
+        <button class="tab-btn active" data-tab="staopstoelen">Sta-op Stoelen</button>
+        <button class="tab-btn" data-tab="seniorenstoelen">Senioren Stoelen</button>
+        <button class="tab-btn" data-tab="occasions">Occasions</button>
+      </div>
+
+      <!-- Dashboard Table -->
+      <div class="table-container">
+        <table id="chairTable">
+          <thead>
+            <tr id="tableHeader">
+              <!-- Dynamically populated -->
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Export / Import Code Box -->
+      <div class="export-box">
+        <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin-bottom: 8px;">Code Exporteren & Publiceren</h2>
+        <p style="color: var(--color-gray); font-size: 0.95rem; line-height: 1.6;">
+          Kopieer de onderstaande JavaScript-code en vervang hiermee de datalijst in het bijbehorende HTML-bestand om uw wijzigingen definitief te publiceren op de website.
+        </p>
+        <textarea class="code-textarea" id="codeExportBox" readonly></textarea>
+        
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <button class="btn btn-secondary" id="btnCopyCode">Kopieer Code</button>
+          <button class="btn btn-outline" id="btnDownloadCode">Download Bestand</button>
+          <button class="btn btn-outline" id="btnImportPrompt" style="margin-left: auto; border-color: var(--color-gray); color: var(--color-gray);">
+            Code Importeren
+          </button>
+          <button class="btn btn-delete" id="btnResetData" style="border-color: var(--color-terracotta); color: var(--color-terracotta);">
+            Herstel naar Standaard
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Edit/Add Chair Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalFormTitle" style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0;">Stoel Bewerken</h3>
+        <button style="font-size: 1.5rem; font-weight: bold; color: var(--color-gray);" id="modalCloseBtn">&times;</button>
+      </div>
+      <form id="chairForm">
+        <div class="modal-body">
+          <input type="hidden" id="formChairIndex">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="chairId">Unieke ID (URL-slug)</label>
+              <input type="text" class="form-control" id="chairId" required placeholder="bijv. fitform-580-vario">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="chairName">Stoel Naam</label>
+              <input type="text" class="form-control" id="chairName" required placeholder="bijv. Sta-op stoel Fitform 580 Vario">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="chairBrand">Merk</label>
+              <input type="text" class="form-control" id="chairBrand" required placeholder="bijv. Fitform, Doge, Mecam, Overig">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="chairPrice">Prijs (€)</label>
+              <input type="number" class="form-control" id="chairPrice" required placeholder="bijv. 1500">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="chairImage">Productafbeelding URL (Transparante PNG)</label>
+              <input type="text" class="form-control" id="chairImage" required placeholder="assets/chair_naam.png">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="chairAmbientImage">Sfeerfoto URL (Interieur)</label>
+              <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/chair_naam_cozy.png">
+            </div>
+          </div>
+
+          <!-- Tab Specific Fields -->
+          <div id="fieldSeniorenAdjustment" class="form-group" style="display: none;">
+            <label class="form-label" for="chairAdjustment">Type Verstelling (Alleen Senioren)</label>
+            <input type="text" class="form-control" id="chairAdjustment" placeholder="bijv. Handmatig, Elektrisch, Sta-op">
+          </div>
+
+          <div id="fieldsOccasions" style="display: none;">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="chairOldPrice">Oorspronkelijke Prijs (€, optioneel)</label>
+                <input type="number" class="form-control" id="chairOldPrice" placeholder="bijv. 2250">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Maten (Checkboxes, Alleen Occasions)</label>
+                <div class="checkbox-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="size-checkbox" value="mini"> Mini
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="size-checkbox" value="vario"> Vario
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="size-checkbox" value="XL"> XL
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="chairBadge">Badge Tekst</label>
+              <input type="text" class="form-control" id="chairBadge" placeholder="bijv. Luxe Leder, Badge Tip">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="chairBadgeType">Badge Kleur / Type</label>
+              <select class="form-control" id="chairBadgeType">
+                <option value="new">Nieuw (Lichtblauw)</option>
+                <option value="reco">Reconditioneerd (Groen)</option>
+                <option value="sale">Sale (Oranje)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="chairDesc">Productbeschrijving</label>
+            <textarea class="form-control" id="chairDesc" rows="4" required placeholder="Uitgebreide omschrijving van de stoel..."></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="btnCancelForm" style="padding: 10px 24px; min-height: auto;">Annuleren</button>
+          <button type="submit" class="btn btn-primary" style="padding: 10px 24px; min-height: auto;">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Import Modal Overlay -->
+  <div class="modal-overlay" id="importModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0;">Code Importeren</h3>
+        <button style="font-size: 1.5rem; font-weight: bold; color: var(--color-gray);" id="importModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--color-gray); font-size: 0.95rem; margin-bottom: 12px;">
+          Plak hieronder de volledige JavaScript-code van de array (bijvoorbeeld: <code>const GOEDKOPE_STAOPSTOELEN_DATA = [ ... ];</code> of simpelweg de ruwe JSON array <code>[ ... ]</code>) om de beheerpagina bij te werken.
+        </p>
+        <textarea class="code-textarea" id="importCodeArea" placeholder="Plak hier de JavaScript code..." style="height: 250px; background-color: #1e1e1e; color: #d4d4d4;"></textarea>
+        <div class="login-error" id="importError" style="margin-top: 10px;">Fout bij het importeren. Zorg ervoor dat de code een geldige JSON-indeling heeft of correct is gekopieerd.</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="btnCancelImport" style="padding: 10px 24px; min-height: auto;">Annuleren</button>
+        <button type="button" class="btn btn-primary" id="btnApplyImport" style="padding: 10px 24px; min-height: auto;">Import Toepassen</button>
+      </div>
+    </div>
+  </div>
+
+  <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
+    <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+      &copy; 2026 Staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving.
+    </div>
+  </footer>
+
+  <script>
+    // Embedded original datasets
+    const DEFAULT_STAOPSTOELEN = [
+      {
+        id: "sta-op-stoel-dordrecht",
+        name: "Sta-op stoel Dordrecht",
+        image: "assets/chair_sta-op-stoel-dordrecht-1.png",
+        ambientImage: "assets/chair_dordrecht_cozy.png",
+        price: 700,
+        brand: "Overig",
+        description: "De sta-op stoel Dordrecht is een sta-op / relax fauteuil welke zeer eenvoudig te bedienen is. Dit komt doordat er maar 2 knopjes op de handbediening zitten. De stoel is bekleed met een prachtige antraciet luxe microvezel stof welke zeer sterk en eenvoudig te reinigen is.",
+        badge: "Budget Vriendelijk",
+        badgeType: "new"
+      },
+      {
+        id: "senioren-sta-op-stoel-hk-dordt",
+        name: "Senioren sta-op stoel HK Dordt",
+        image: "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
+        ambientImage: "assets/chair_hk_dordt_cozy.png",
+        price: 995,
+        brand: "Overig",
+        description: "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
+        badge: "Hoge Kwaliteit",
+        badgeType: "reco"
+      },
+      {
+        id: "senioren-sta-op-stoel-mecam-athena",
+        name: "Senioren sta-op stoel Mecam Athena",
+        image: "assets/chair_sta-op-stoel-mecam-athena-1-300x300.png",
+        ambientImage: "assets/chair_athena_cozy.png",
+        price: 1045,
+        brand: "Mecam",
+        description: "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
+        badge: "Geen Snoeren",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-draaibaar-zwijndrecht",
+        name: "Sta-op stoel draaibaar Zwijndrecht",
+        image: "assets/chair_sta-op-stoel-zwijndrecht-1-e1772115887824.png",
+        ambientImage: "assets/chair_zwijndrecht_cozy.png",
+        price: 1350,
+        brand: "Overig",
+        description: "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel is van alle gemakken voorzien en heeft door het houten draaiplateau een klassieke maar toch moderne uitstraling.",
+        badge: "Modern & Draaibaar",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-draaibaar-sliedrecht",
+        name: "Sta-op stoel draaibaar Sliedrecht",
+        image: "assets/chair_sta-op-stoel-draaibaar-sliedrecht-1.png",
+        ambientImage: "assets/chair_sliedrecht_cozy.png",
+        price: 1395,
+        brand: "Overig",
+        description: "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel voorziet in alle gemakken. Door de geborstelde stalen voet heeft hij een strakke, moderne uitstraling.",
+        badge: "Luxe Uitstraling",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-rotterdam",
+        name: "Sta-op stoel Rotterdam",
+        image: "assets/chair_staop-stoel-rotterdam-1-min-scaled.png",
+        ambientImage: "assets/chair_rotterdam_cozy.png",
+        price: 1485,
+        brand: "Overig",
+        description: "Prachtige 4-motorige relax fauteuil met sta-op verstelling. Elegant, klassiek en luxe. Geheel in leer bekleed met 4 afzonderlijke motoren voor onafhankelijke afstelling.",
+        badge: "4-Motorig Leder",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-ridderkerk",
+        name: "Sta-op stoel Ridderkerk",
+        image: "assets/chair_sta-op-stoel-hk-ridderkerk-1-scaled.png",
+        ambientImage: "assets/chair_ridderkerk_cozy.png",
+        price: 1495,
+        brand: "Overig",
+        description: "Heerlijke 2-motorige relax fauteuil met sta-op verstelling. De Ridderkerk is elektrisch verstelbaar en voorzien van een fijne relaxfunctie waarmee u comfortabel zit met de benen omhoog.",
+        badge: "2 Motoren",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-570-vario-reco",
+        name: "Sta-op stoel Fitform 570 Vario RECO",
+        image: "assets/chair_fitform-570-vario-sta-op-stoel-gereconditioneerd-1-300x300.png",
+        ambientImage: "assets/chair_fitform_570_reco_cozy.png",
+        price: 1500,
+        brand: "Fitform",
+        description: "Volledig gereconditioneerd Fitform-model. Gebouwd op een gereviseerd frame, voorzien van een nieuwe handbediening en compleet nieuwe bekleding in stof/leder naar keuze.",
+        badge: "Gereconditioneerd",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-barendrecht",
+        name: "Sta-op stoel Barendrecht",
+        image: "assets/chair_sta-op-stoel-barendrecht-1-min-scaled-e1760613493995.png",
+        ambientImage: "assets/chair_barendrecht_cozy.png",
+        price: 1565,
+        brand: "Overig",
+        description: "Heerlijke 2-motorige relax fauteuil met sta-op verstelling en standaard ingebouwde accu! Geen kabels over de vloer, waardoor u de stoel vrij in de kamer kunt plaatsen.",
+        badge: "Ingebouwde Accu",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-alfred",
+        name: "Sta-op stoel ALFRED",
+        image: "assets/chair_sta-op-stoel-alfred-1-scaled.png",
+        ambientImage: "assets/chair_alfred_cozy.png",
+        price: 1775,
+        brand: "Overig",
+        description: "Prachtige 2-motorige relax fauteuil met sta-op verstelling. Geheel in soepel leder bekleed, met een verborgen voetenbank die onder de stoel wegdraait.",
+        badge: "Luxe Leder",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-mecam-movie",
+        name: "Sta-op stoel Mecam Movie",
+        image: "assets/chair_sta-op-stoel-mecam-movie-4-300x300.png",
+        ambientImage: "assets/chair_movie_cozy.png",
+        price: 1925,
+        brand: "Mecam",
+        description: "Klassieke en degelijke uitstraling van Mecam. De fauteuil is in verschillende maatvoeringen te leveren, biedt heerlijk zitcomfort en is leverbaar in vele stoffen en leersoorten.",
+        badge: "Klassiek Comfort",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-ravi",
+        name: "Sta-op stoel Ravi",
+        image: "assets/chair_sta-op-stoel-ravi-1-kopie-300x300.png",
+        ambientImage: "assets/chair_ravi_cozy.png",
+        price: 1945,
+        brand: "Overig",
+        description: "Elegante, draaibare relaxfauteuil met sta-op hulp. Verkrijgbaar in 3 verschillende maten (s/m/l) voor een perfecte ergonomische match.",
+        badge: "Draaibaar Model",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-dfm-bentley-dicht",
+        name: "Sta-op stoel DFM Bentley (dicht)",
+        image: "assets/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
+        ambientImage: "assets/chair_bentley_dicht_cozy.png",
+        price: 1945,
+        brand: "Overig",
+        description: "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
+        badge: "Luxe Design",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-dfm-bentley-open",
+        name: "Sta-op stoel DFM Bentley (open)",
+        image: "assets/chair_sta-op-stoel-dfm-bentley-open-1-copy-300x300.png",
+        ambientImage: "assets/chair_bentley_open_cozy.png",
+        price: 1945,
+        brand: "Overig",
+        description: "Bentley model getoond in geopende relaxstand met de voetensteun omhoog geklapt voor optimale ondersteuning van uw benen.",
+        badge: "Optimale Relaxstand",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-mecam-barney",
+        name: "Sta-op stoel Mecam Barney",
+        image: "assets/chair_sta-op-stoel-draaibaar-barney-1-300x300.png",
+        ambientImage: "assets/chair_barney_cozy.png",
+        price: 2045,
+        brand: "Mecam",
+        description: "Elegante draaibare fauteuil. De 2 motoren zijn bijna onzichtbaar onder de fauteuil weggewerkt. Voorzien van een automatische beveiliging in de draaivoet.",
+        badge: "Slimme Draaivoet",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-mecam-degas",
+        name: "Sta-op stoel Mecam Degas",
+        image: "assets/chair_sta-op-stoel-mecam-degas-1-300x300.png",
+        ambientImage: "assets/chair_degas_cozy.png",
+        price: 2155,
+        brand: "Mecam",
+        description: "Huiselijke uitstraling en zeer comfortabel ergonomisch zitcomfort van Belgisch fabricaat. Wordt met veel passie exact op uw maat gemaakt.",
+        badge: "Ergonomisch Maatwerk",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-580-elevo",
+        name: "Sta-op stoel Fitform 580 Elevo",
+        image: "assets/chair_sta-op-stoel-fitform-580-elevo-iii-5-300x300.png",
+        ambientImage: "assets/chair_fitform_580_cozy.png",
+        price: 2300,
+        brand: "Fitform",
+        description: "Hoogwaardige Fitform zorgstoel. Ontworpen door specialisten voor langdurig zitcomfort. Standaard voorzien van het Fitform 10 jaar Garantie Waarborg.",
+        badge: "10 Jaar Garantie",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-refitto",
+        name: "Sta-op stoel Refitto",
+        image: "assets/chair_sta-op-stoel-refitto-ea-326-e1757503359302.png",
+        ambientImage: "assets/chair_refitto_cozy.png",
+        price: 2345,
+        brand: "Overig",
+        description: "Moderne sta-op relaxfauteuil. Blokkeert automatisch bij het opstaan zodat de stoel niet kan wegdraaien. Veiligheid en comfort hand in hand.",
+        badge: "Extra Beveiligd",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-doge-bellino",
+        name: "Sta-op stoel Doge Bellino",
+        image: "assets/chair_sta-op-stoel-doge-bellino-3-300x300.png",
+        ambientImage: "assets/chair_bellino_cozy.png",
+        price: 2395,
+        brand: "Doge",
+        description: "Voorzien van drie motoren om de stoel geheel naar wens in te stellen. Uniek: de zithouding wordt behouden wanneer de kantelfunctie wordt gebruikt.",
+        badge: "3-Motorig Comfort",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-de-toekomst-fiji",
+        name: "Sta-op stoel De Toekomst Fiji",
+        image: "assets/chair_sta-op-stoel-fiji-draaibaar-2-300x300.png",
+        ambientImage: "assets/chair_fiji_cozy.png",
+        price: 2445,
+        brand: "De Toekomst",
+        description: "Elegante en moderne draaibare fauteuil. Voorzien van een onzichtbare sta-op motor onder het frame en een veilige rem in de draaivoet.",
+        badge: "Draaibaar & Veilig",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-552-elevo",
+        name: "Sta-op stoel Fitform 552 Elevo",
+        image: "assets/fitform_552_verkocht.png",
+        ambientImage: "assets/chair_fitform_552_cozy.png",
+        price: 2500,
+        brand: "Fitform",
+        description: "Volledig verstelbare sta-op en relax fauteuil met 3 afzonderlijke motoren voor voetenbank, rugleuning en kanteling. Optimaal ondersteund wonen.",
+        badge: "Verkocht",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-industro",
+        name: "Sta-op stoel Industro",
+        image: "assets/chair_sta-op-stoel-industro-cv-120-e1757503299967.png",
+        ambientImage: "assets/chair_industro_cozy.png",
+        price: 2845,
+        brand: "Overig",
+        description: "Stoere, industriële relaxfauteuil met karakter. Volledig naar lichaamsmaten opgemeten en te voorzien van lumbaalsteun of nekverwarming.",
+        badge: "Stoer & Industrieel",
+        badgeType: "new"
+      },
+      {
+        id: "sta-op-stoel-fitform-570-vario",
+        name: "Sta-op stoel Fitform 570 Vario",
+        image: "assets/chair_sta-op-stoel-fitform-570-vario-iii-5-300x300.png",
+        ambientImage: "assets/chair_fitform_570_cozy.png",
+        price: 3450,
+        brand: "Fitform",
+        description: "De Fitform Vario zorgfauteuil kan volledig worden aangepast aan uw persoonlijke situatie. Uitstekend zitsysteem dat klachten voorkomt.",
+        badge: "Zorgfauteuil",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-fitform-574-vario",
+        name: "Sta-op stoel Fitform 574 Vario",
+        image: "assets/chair_sta-op-stoel-fitform-574-vario-2-300x300.png",
+        ambientImage: "assets/chair_fitform_574_cozy.png",
+        price: 3450,
+        brand: "Fitform",
+        description: "Ranke, slanke en elegante zorgfauteuil. Zithoogte, zitdiepte en armleggers zijn na levering binnen 10 minuten volledig nastelbaar.",
+        badge: "Elegante Pasvorm",
+        badgeType: "reco"
+      },
+      {
+        id: "sta-op-stoel-doge-modulair",
+        name: "Sta-op stoel Doge Modulair",
+        image: "assets/chair_sta-op-stoel-doge-modulair-4-300x300.png",
+        ambientImage: "assets/chair_doge_modulair_cozy.png",
+        price: 3995,
+        brand: "Doge",
+        description: "Nederlands kwaliteitsproduct met 3 motoren. Optimaal zitcomfort door individuele instelbaarheid. Uitstekend te combineren met orthopedische aanpassingen.",
+        badge: "Modulair Systeem",
+        badgeType: "reco"
+      }
+    ];
+    const DEFAULT_SENIORENSTOELEN = [
+      {
+        id: "seniorenstoel-hk-zwolle",
+        name: "Seniorenstoel HK Zwolle",
+        image: "assets/chair_seniorenstoel-hjortknudsen-zwolle-nw-1-300x300.png",
+        price: 695,
+        brand: "Hjort Knudsen",
+        adjustment: "Handmatig",
+        description: "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
+        badge: "Op maat gemaakt",
+        badgeType: "reco"
+      },
+      {
+        id: "seniorenstoel-dylan",
+        name: "Seniorenstoel Dylan",
+        image: "assets/chair_seniorenstoel-dylan-2-300x300.png",
+        price: 775,
+        brand: "Overig",
+        adjustment: "Handmatig",
+        description: "Seniorenstoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
+        badge: "Hygiënisch & Robuust",
+        badgeType: "new"
+      },
+      {
+        id: "seniorenstoel-farstrup-applaus",
+        name: "Seniorenstoel Farstrup Applaus",
+        image: "assets/chair_senioren-fauteuil-farstrup-applaus-300x300.png",
+        price: 945,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "Elke Seniorenstoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
+        badge: "10 Jaar Garantie",
+        badgeType: "reco"
+      },
+      {
+        id: "senioren-sta-op-stoel-hk-dordt",
+        name: "Senioren sta-op stoel HK Dordt",
+        image: "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
+        price: 995,
+        brand: "Hjort Knudsen",
+        adjustment: "Sta-op",
+        description: "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
+        badge: "Sta-op Hulp",
+        badgeType: "new"
+      },
+      {
+        id: "senioren-sta-op-stoel-mecam-athena",
+        name: "Senioren sta-op stoel Mecam Athena",
+        image: "assets/chair_sta-op-stoel-mecam-athena-1-300x300.png",
+        price: 1045,
+        brand: "Mecam",
+        adjustment: "Zonder Motoren",
+        description: "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
+        badge: "Geen Snoeren",
+        badgeType: "new"
+      },
+      {
+        id: "seniorenstoel-farstrup-plus",
+        name: "Seniorenstoel Farstrup Plus",
+        image: "assets/chair_ergonomische-senioren-fauteuil-plus-7-300x300.png",
+        price: 1395,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
+        badge: "10 Jaar Garantie",
+        badgeType: "reco"
+      },
+      {
+        id: "seniorenstoel-farstrup-casa",
+        name: "Seniorenstoel Farstrup Casa",
+        image: "assets/chair_ergonomische-senioren-fauteuil-casa-1-300x300.png",
+        price: 1495,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
+        badge: "Deens Handwerk",
+        badgeType: "reco"
+      },
+      {
+        id: "seniorenstoel-farstrup-cantate",
+        name: "Seniorenstoel Farstrup Cantate",
+        image: "assets/chair_ergonomische-senioren-fauteuil-cantate-1-300x300.png",
+        price: 1595,
+        brand: "Farstrup",
+        adjustment: "Handmatig",
+        description: "De Cantate is het paradepaardje onder de seniorenstoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
+        badge: "Top Comfort",
+        badgeType: "reco"
+      }
+    ];
+    const DEFAULT_OCCASIONS = [
+      {
+        id: "fitform-570-reco",
+        name: "Voorraad Sta-op stoel Fitform 570 Vario III RECO",
+        image: "assets/chair_sta-op-stoel-fitform-570-vario-reco-0-300x300.png",
+        price: 1500,
+        oldPrice: null,
+        sizes: ["vario"],
+        description: "Deze Voorraad Sta-op stoel Fitform 570 Vario III RECO heeft een heerlijke relaxfunctie. De handige sta-op voorziening zorgt er voor dat u zelf makkelijk uit uw fauteuil kunt komen. Deze stoel hebben wij altijd op voorraad en is nieuw GERECONDITIONEERD.",
+        badge: "Altijd op voorraad",
+        badgeType: "reco"
+      },
+      {
+        id: "fitform-570-reco-smal",
+        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal",
+        image: "assets/chair_sta-op-stoel-fitform-570-vario-smal-reco-1-copy-300x300.png",
+        price: 1600,
+        oldPrice: 1700,
+        sizes: ["smal"],
+        description: "Deze Sta-op stoel Fitform 570 Vario III RECO Smal is aan de buitenkant niet te onderscheiden van een nieuw exemplaar. Gebouwd op een volledig gereviseerd A-merk frame. Alle mechanische componenten en schuimdelen zijn gecontroleerd en vernieuwd.",
+        badge: "Smal model",
+        badgeType: "sale"
+      },
+      {
+        id: "fitform-570-reco-smal-board",
+        name: "Voorraad Sta op stoel Fitform 570 Vario III RECO Smal Board",
+        image: "assets/chair_sta-op-stoel-reco-fitform-570-vario-smal-board-1-copy-300x300.png",
+        price: 1600,
+        oldPrice: 1700,
+        sizes: ["smal"],
+        description: "Voorzien van een smalle zitbreedte en stevige ergonomische ondersteuningsplaten (board) in de rugleuning. Ideaal voor langdurig en comfortabel zitten zonder verzakking.",
+        badge: "Stevige rug",
+        badgeType: "sale"
+      },
+      {
+        id: "fitform-570-reco-xl",
+        name: "Voorraad Sta-op stoel Fitform 570 Vario III XL RECO",
+        image: "assets/chair_sta-op-stoel-fitform-570-vario-xl-zand-1-copy-300x300.png",
+        price: 1700,
+        oldPrice: null,
+        sizes: ["xl"],
+        description: "De XL-uitvoering van de populaire Fitform 570. Biedt een bredere zit en extra verstevigde motoren. Deze stoel is volledig gereviseerd en direct uit voorraad leverbaar.",
+        badge: "XL Formaat",
+        badgeType: "reco"
+      },
+      {
+        id: "fitform-580-vario-mini",
+        name: "Voorraad Sta op stoel Fitform 580 Vario Mini",
+        image: "assets/fitform_580_vario_mini_verkocht.png",
+        price: 1898,
+        oldPrice: 2248,
+        sizes: ["mini"],
+        description: "Deze Vario Mini heeft een heerlijke relaxfunctie and is uit coulance teruggekocht wegens omstandigheden. Stoel is zo goed als ongebruikt. Wordt geleverd met 10 jaar garantie!",
+        badge: "Verkocht",
+        badgeType: "reco"
+      },
+      {
+        id: "fitform-571-mini-ilp",
+        name: "RECO Sta-op stoel Fitform 571 Vario III Mini ILP",
+        image: "assets/chair_sta-op-stoel-fitform-571-mini-ilp-rugleuning-scaled.png",
+        price: 2400,
+        oldPrice: null,
+        sizes: ["mini"],
+        description: "Gereviseerd frame met compleet NIEUWE bekleding. Uitgerust met het gepatenteerde ILP (Intelligent Lig- & Zit-systeem) voor ultieme ondersteuning bij rugklachten. Let op: kleine uitvoering met lage rugleuning.",
+        badge: "Nieuwe Bekleding",
+        badgeType: "reco"
+      },
+      {
+        id: "fitform-570-ilp",
+        name: "Voorraad Sta op stoel Fitform 570 Vario ILP",
+        image: "assets/chair_sta-op-stoel-fitform-570-ilp-rugleuning-scaled.png",
+        price: 2400,
+        oldPrice: 4600,
+        sizes: ["vario"],
+        description: "Een zo goed als ongebruikte stoel (teruggekocht wegens omstandigheden). Beschikt over de gepatenteerde Fitform ILP rug- en zittingopbouw. Werkelijk als nieuw.",
+        badge: "Kans: Als Nieuw",
+        badgeType: "sale"
+      }
+    ];
+
+    // State Variables
+    let currentTab = "staopstoelen";
+    let activeData = [];
+
+    // Simple passcode check
+    const PASSWORD = "staopstoeladmin";
+    
+    function checkLogin() {
+      const loggedIn = sessionStorage.getItem("adminLoggedIn");
+      if (loggedIn === "true") {
+        document.getElementById("loginOverlay").style.display = "none";
+        initDashboard();
+      }
+    }
+
+    document.getElementById("loginBtn").addEventListener("click", () => {
+      const enteredPass = document.getElementById("passwordInput").value;
+      if (enteredPass === PASSWORD) {
+        sessionStorage.setItem("adminLoggedIn", "true");
+        document.getElementById("loginOverlay").style.display = "none";
+        initDashboard();
+      } else {
+        document.getElementById("loginError").style.display = "block";
+      }
+    });
+
+    document.getElementById("passwordInput").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        document.getElementById("loginBtn").click();
+      }
+    });
+
+    // LocalStorage keys
+    const KEY_STAOP = "admin_staopstoelen";
+    const KEY_SENIOREN = "admin_seniorenstoelen";
+    const KEY_OCCASIONS = "admin_occasions";
+
+    function getStorageKey(tab) {
+      if (tab === "staopstoelen") return KEY_STAOP;
+      if (tab === "seniorenstoelen") return KEY_SENIOREN;
+      return KEY_OCCASIONS;
+    }
+
+    function getDefaultData(tab) {
+      if (tab === "staopstoelen") return DEFAULT_STAOPSTOELEN;
+      if (tab === "seniorenstoelen") return DEFAULT_SENIORENSTOELEN;
+      return DEFAULT_OCCASIONS;
+    }
+
+    function getVarName(tab) {
+      if (tab === "staopstoelen") return "GOEDKOPE_STAOPSTOELEN_DATA";
+      if (tab === "seniorenstoelen") return "SENIORENSTOELEN_DATA";
+      return "OCCASIONS_DATA";
+    }
+
+    function loadData(tab) {
+      const key = getStorageKey(tab);
+      const stored = localStorage.getItem(key);
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch (e) {
+          console.error("Error parsing stored data", e);
+        }
+      }
+      return [...getDefaultData(tab)];
+    }
+
+    function saveData(tab, data) {
+      const key = getStorageKey(tab);
+      localStorage.setItem(key, JSON.stringify(data));
+      updateCodeExport();
+    }
+
+    function initDashboard() {
+      activeData = loadData(currentTab);
+      renderTable();
+      updateCodeExport();
+    }
+
+    // Render Table based on active data and tab
+    function renderTable() {
+      const headerRow = document.getElementById("tableHeader");
+      const body = document.getElementById("tableBody");
+      
+      body.innerHTML = "";
+      
+      // Setup headers based on tab
+      let headers = ['Foto', 'Naam', 'Merk', 'Prijs', 'Badge'];
+      if (currentTab === "seniorenstoelen") {
+        headers.push('Verstelling');
+      } else if (currentTab === "occasions") {
+        headers.push('Maten');
+      }
+      headers.push('Acties');
+      
+      headerRow.innerHTML = headers.map(h => `<th>${h}</th>`).join("");
+      
+      if (activeData.length === 0) {
+        body.innerHTML = `<tr><td colspan="${headers.length}" style="text-align:center; padding: 40px; color:var(--color-gray);">Geen stoelen gevonden in deze categorie. Voeg een nieuwe toe!</td></tr>`;
+        return;
+      }
+      
+      activeData.forEach((item, index) => {
+        const tr = document.createElement("tr");
+        
+        let tdContent = `
+          <td><img class="row-img" src="${item.image || 'assets/chair.png'}" alt="${item.name}"></td>
+          <td style="font-weight:600; color:var(--color-forest-dark);">${item.name}</td>
+          <td>${item.brand}</td>
+          <td style="font-weight:700;">€ ${item.price.toLocaleString("nl-NL")},-</td>
+          <td>
+            ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : (item.badgeType === "sale" ? "badge-sale" : "badge-reco")}">${item.badge}</span>` : "-"}
+          </td>
+        `;
+        
+        if (currentTab === "seniorenstoelen") {
+          tdContent += `<td>${item.adjustment || "-"}</td>`;
+        } else if (currentTab === "occasions") {
+          tdContent += `<td>${item.sizes ? item.sizes.join(", ") : "-"}</td>`;
+        }
+        
+        tdContent += `
+          <td>
+            <div class="action-btn-group">
+              <button class="btn-action btn-edit" onclick="editChair(${index})">Bewerken</button>
+              <button class="btn-action btn-delete" onclick="deleteChair(${index})">Verwijderen</button>
+            </div>
+          </td>
+        `;
+        
+        tr.innerHTML = tdContent;
+        body.appendChild(tr);
+      });
+    }
+
+    // Export Javascript Code
+    function updateCodeExport() {
+      const varName = getVarName(currentTab);
+      
+      // Formatting code nicely
+      const jsonStr = JSON.stringify(activeData, null, 2);
+      
+      // Construct JS code
+      const jsCode = `// Opgeslagen data voor ${currentTab}\nconst ${varName} = ${jsonStr};`;
+      
+      document.getElementById("codeExportBox").value = jsCode;
+    }
+
+    // Tab switcher
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        e.target.classList.add("active");
+        currentTab = e.target.getAttribute("data-tab");
+        initDashboard();
+      });
+    });
+
+    // Form modal controls
+    const modal = document.getElementById("editModal");
+    const chairForm = document.getElementById("chairForm");
+    
+    document.getElementById("addChairBtn").addEventListener("click", () => {
+      document.getElementById("modalFormTitle").textContent = "Nieuwe Stoel Toevoegen";
+      chairForm.reset();
+      document.getElementById("formChairIndex").value = "";
+      
+      // Auto-generate ID slug as user types name
+      const nameInput = document.getElementById("chairName");
+      const idInput = document.getElementById("chairId");
+      
+      nameInput.oninput = () => {
+        idInput.value = nameInput.value
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      };
+      
+      showTabFields();
+      modal.style.display = "flex";
+    });
+
+    document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
+    document.getElementById("btnCancelForm").addEventListener("click", closeModal);
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function showTabFields() {
+      // Adjust form inputs based on current tab
+      if (currentTab === "seniorenstoelen") {
+        document.getElementById("fieldSeniorenAdjustment").style.display = "block";
+        document.getElementById("fieldsOccasions").style.display = "none";
+      } else if (currentTab === "occasions") {
+        document.getElementById("fieldSeniorenAdjustment").style.display = "none";
+        document.getElementById("fieldsOccasions").style.display = "block";
+      } else {
+        document.getElementById("fieldSeniorenAdjustment").style.display = "none";
+        document.getElementById("fieldsOccasions").style.display = "none";
+      }
+    }
+
+    // Edit button handler
+    window.editChair = function(index) {
+      document.getElementById("modalFormTitle").textContent = "Stoel Bewerken";
+      chairForm.reset();
+      document.getElementById("chairName").oninput = null; // Disable auto-slug on edit
+      
+      const item = activeData[index];
+      document.getElementById("formChairIndex").value = index;
+      document.getElementById("chairId").value = item.id || "";
+      document.getElementById("chairName").value = item.name || "";
+      document.getElementById("chairBrand").value = item.brand || "";
+      document.getElementById("chairPrice").value = item.price || 0;
+      document.getElementById("chairImage").value = item.image || "";
+      document.getElementById("chairAmbientImage").value = item.ambientImage || "";
+      document.getElementById("chairBadge").value = item.badge || "";
+      document.getElementById("chairBadgeType").value = item.badgeType || "new";
+      document.getElementById("chairDesc").value = item.description || "";
+      
+      showTabFields();
+      
+      if (currentTab === "seniorenstoelen") {
+        document.getElementById("chairAdjustment").value = item.adjustment || "";
+      } else if (currentTab === "occasions") {
+        document.getElementById("chairOldPrice").value = item.oldPrice || "";
+        
+        // Checkboxes
+        const sizes = item.sizes || [];
+        document.querySelectorAll(".size-checkbox").forEach(cb => {
+          cb.checked = sizes.includes(cb.value);
+        });
+      }
+      
+      modal.style.display = "flex";
+    };
+
+    // Delete button handler
+    window.deleteChair = function(index) {
+      const item = activeData[index];
+      if (confirm(`Weet u zeker dat u "${item.name}" wilt verwijderen uit de lijst?`)) {
+        activeData.splice(index, 1);
+        saveData(currentTab, activeData);
+        renderTable();
+      }
+    };
+
+    // Save form handler
+    chairForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      const indexStr = document.getElementById("formChairIndex").value;
+      
+      const item = {
+        id: document.getElementById("chairId").value,
+        name: document.getElementById("chairName").value,
+        brand: document.getElementById("chairBrand").value,
+        price: parseInt(document.getElementById("chairPrice").value),
+        image: document.getElementById("chairImage").value,
+        description: document.getElementById("chairDesc").value
+      };
+      
+      const ambient = document.getElementById("chairAmbientImage").value;
+      if (ambient) item.ambientImage = ambient;
+      
+      const badge = document.getElementById("chairBadge").value;
+      if (badge) {
+        item.badge = badge;
+        item.badgeType = document.getElementById("chairBadgeType").value;
+      }
+      
+      if (currentTab === "seniorenstoelen") {
+        item.adjustment = document.getElementById("chairAdjustment").value;
+      } else if (currentTab === "occasions") {
+        const oldPrice = document.getElementById("chairOldPrice").value;
+        if (oldPrice) item.oldPrice = parseInt(oldPrice);
+        
+        // Sizes checkboxes
+        const checkedSizes = Array.from(document.querySelectorAll(".size-checkbox:checked")).map(cb => cb.value);
+        item.sizes = checkedSizes;
+      }
+      
+      if (indexStr === "") {
+        // Add new
+        activeData.push(item);
+      } else {
+        // Update existing
+        const index = parseInt(indexStr);
+        activeData[index] = item;
+      }
+      
+      saveData(currentTab, activeData);
+      renderTable();
+      closeModal();
+    });
+
+    // Reset data handler
+    document.getElementById("btnResetData").addEventListener("click", () => {
+      if (confirm("Weet u zeker dat u alle wijzigingen in deze categorie wilt wissen en terugkeren naar de standaard datalijst?")) {
+        const key = getStorageKey(currentTab);
+        localStorage.removeItem(key);
+        initDashboard();
+      }
+    });
+
+    // Copy to clipboard
+    document.getElementById("btnCopyCode").addEventListener("click", () => {
+      const exportBox = document.getElementById("codeExportBox");
+      exportBox.select();
+      document.execCommand("copy");
+      alert("JavaScript code gekopieerd naar klembord!");
+    });
+
+    // Download code file
+    document.getElementById("btnDownloadCode").addEventListener("click", () => {
+      const code = document.getElementById("codeExportBox").value;
+      const blob = new Blob([code], {type: "text/javascript;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `data_${currentTab}.js`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Import modal controls
+    const importModal = document.getElementById("importModal");
+    
+    document.getElementById("btnImportPrompt").addEventListener("click", () => {
+      document.getElementById("importCodeArea").value = "";
+      document.getElementById("importError").style.display = "none";
+      importModal.style.display = "flex";
+    });
+    
+    document.getElementById("importModalCloseBtn").addEventListener("click", closeImportModal);
+    document.getElementById("btnCancelImport").addEventListener("click", closeImportModal);
+    
+    function closeImportModal() {
+      importModal.style.display = "none";
+    }
+    
+    document.getElementById("btnApplyImport").addEventListener("click", () => {
+      const rawCode = document.getElementById("importCodeArea").value.trim();
+      document.getElementById("importError").style.display = "none";
+      
+      try {
+        // Extract array from the input code using regex
+        let arrayStr = rawCode;
+        
+        // If it looks like 'const VAR = [ ... ];'
+        const arrayMatch = rawCode.match(/\[[\s\S]*\]/);
+        if (arrayMatch) {
+          arrayStr = arrayMatch[0];
+        }
+        
+        // Try parsing as JSON.
+        // JS array definitions might not have double quotes on keys, so we evaluate it safely in a sandbox using Function
+        // or simple JSON parse. Since it's local in admin browser, evaluating it as a JS expression is common.
+        // We will evaluate it safely using Function("return " + arrayStr)();
+        const parsed = Function("return " + arrayStr)();
+        
+        if (Array.isArray(parsed)) {
+          activeData = parsed;
+          saveData(currentTab, activeData);
+          renderTable();
+          closeImportModal();
+          alert("Code succesvol geïmporteerd!");
+        } else {
+          document.getElementById("importError").style.display = "block";
+        }
+      } catch (e) {
+        console.error(e);
+        document.getElementById("importError").style.display = "block";
+      }
+    });
+
+    // Initialize check
+    checkLogin();
+  </script>
+</body>
+</html>

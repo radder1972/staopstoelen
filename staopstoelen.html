@@ -6,7 +6,7 @@
   <title>Sta-op Stoelen | Nieuw, Gebruikt & Gereviseerd</title>
   <meta name="description" content="Vind een goedkope sta-op stoel die past bij uw budget. Ruime voorraad nieuwe, gebruikte en gereconditioneerde sta-op stoelen van topmerken met garantie.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css?v=1.0.48">
+  <link rel="stylesheet" href="style.css?v=1.0.49">
   <style>
 
     .catalog-layout {
@@ -362,7 +362,7 @@
   <script src="app.js"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
-    const GOEDKOPE_STAOPSTOELEN_DATA = [
+    const GOEDKOPE_STAOPSTOELEN_DATA = JSON.parse(localStorage.getItem("admin_staopstoelen")) || [
       {
         id: "sta-op-stoel-dordrecht",
         name: "Sta-op stoel Dordrecht",
