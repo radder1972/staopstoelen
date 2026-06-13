@@ -588,6 +588,21 @@ function initCalendar() {
       alert("Vul a.u.b. een telefoonnummer in.");
       return;
     }
+    
+    const cleanPhone = phone.replace(/\s+/g, "");
+    const startsWithPlus31 = cleanPhone.startsWith("+31");
+    let isPhoneValid = false;
+    
+    if (startsWithPlus31) {
+      isPhoneValid = /^\+31\d{9}$/.test(cleanPhone);
+    } else {
+      isPhoneValid = /^\d{10}$/.test(cleanPhone);
+    }
+    
+    if (!isPhoneValid) {
+      alert("Vul a.u.b. een geldig telefoonnummer in (10 cijfers, of 12 tekens beginnend met +31).");
+      return;
+    }
     if (state.appointmentType === "home" && !address) {
       alert("Vul a.u.b. het adres in voor de passing aan huis.");
       return;
