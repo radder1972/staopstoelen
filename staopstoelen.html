@@ -201,6 +201,8 @@
               <option value="default">Standaard</option>
               <option value="price-asc">Prijs: Laag naar Hoog</option>
               <option value="price-desc">Prijs: Hoog naar Laag</option>
+              <option value="type-relax">Type: Relaxstoel eerst</option>
+              <option value="type-staop">Type: Sta-opstoel eerst</option>
             </select>
           </div>
 
@@ -833,6 +835,20 @@
         filtered.sort((a, b) => a.price - b.price);
       } else if (sortVal === "price-desc") {
         filtered.sort((a, b) => b.price - a.price);
+      } else if (sortVal === "type-relax") {
+        filtered.sort((a, b) => {
+          const typeA = a.type || 'staop';
+          const typeB = b.type || 'staop';
+          if (typeA === typeB) return 0;
+          return typeA === 'relax' ? -1 : 1;
+        });
+      } else if (sortVal === "type-staop") {
+        filtered.sort((a, b) => {
+          const typeA = a.type || 'staop';
+          const typeB = b.type || 'staop';
+          if (typeA === typeB) return 0;
+          return typeA === 'staop' ? -1 : 1;
+        });
       }
 
       if (filtered.length === 0) {
