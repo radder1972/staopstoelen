@@ -17,22 +17,17 @@
   <!-- Bottom text path (counter-clockwise, R=102) -->
   <path id="text-path-bottom" d="M 48,150 A 102,102 0 0,0 252,150" fill="none" />
   
-  <!-- Text elements (Montserrat, bold 900, with stroke for extra boldness) -->
   <text fill="#122b07" stroke="#122b07" stroke-width="1.2" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="20.5" letter-spacing="1.0">
-    <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">
-      KLANTEN ERVARINGEN
-    </textPath>
+    <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">KLANTERVARINGEN</textPath>
   </text>
   
   <text fill="#122b07" stroke="#122b07" stroke-width="1.2" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="21.5" letter-spacing="4.0">
-    <textPath href="#text-path-bottom" startOffset="50%" text-anchor="middle">
-      STAOPSTOELEN.NL
-    </textPath>
+    <textPath href="#text-path-bottom" startOffset="50%" text-anchor="middle">STAOPSTOELEN.NL</textPath>
   </text>
   
-  <!-- Bullets/Dots separating top and bottom text -->
-  <circle cx="56.3" cy="157.5" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
-  <circle cx="243.7" cy="157.5" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
+  <!-- Bullets/Dots separating top and bottom text (visually balanced) -->
+  <circle cx="56.2" cy="156.0" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
+  <circle cx="243.8" cy="156.0" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
   
   <!-- Center green review star (clean solid green, no outline, matching checkmark/question mark style) -->
   <path d="M 150.0,114.0 L 160.0,136.2 L 184.2,138.9 L 166.2,155.3 L 171.2,179.1 L 150.0,167.0 L 128.8,179.1 L 133.8,155.3 L 115.8,138.9 L 140.0,136.2 Z" fill="#4b8f24" stroke="#4b8f24" stroke-width="8" stroke-linejoin="round" />

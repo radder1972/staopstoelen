@@ -793,6 +793,45 @@ section {
   left: 12px;
 }
 
+/* Rectangular Status Labels for Sold & Reserved */
+.product-status-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 18px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.product-status-label.status-verkocht {
+  background-color: var(--color-terracotta);
+  color: var(--color-light);
+  border: 2px solid var(--color-light);
+}
+
+.product-status-label.status-gereserveerd {
+  background-color: #ffcc00;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+}
+
+/* Dimming images for sold/reserved status */
+.product-image.is-unavailable img:not(.quality-stamp),
+.modal-image-wrapper.is-unavailable img:not(.quality-stamp) {
+  opacity: 0.55;
+  filter: grayscale(35%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
 .product-card:hover .quality-stamp {
   transform: scale(1.08) rotate(8deg);
 }
@@ -1788,7 +1827,19 @@ footer h3, footer h4 {
   margin-left: auto;
   margin-top: 0;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
-  transform: rotate(15deg);
+  animation: rock-banner-stamp 10s ease-in-out infinite;
+}
+
+@keyframes rock-banner-stamp {
+  0% {
+    transform: rotate(11deg);
+  }
+  50% {
+    transform: rotate(19deg);
+  }
+  100% {
+    transform: rotate(11deg);
+  }
 }
 
 @media (max-width: 768px) {
@@ -1803,7 +1854,6 @@ footer h3, footer h4 {
     margin: 24px auto 0 auto;
     width: 135px;
     height: 135px;
-    transform: rotate(15deg);
   }
 }
 
@@ -2320,11 +2370,13 @@ footer h3, footer h4 {
 }
 
 .modal-brand {
+  display: block;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--color-terracotta);
   font-weight: 700;
+  line-height: 1.6;
   margin-bottom: 15px;
 }
 

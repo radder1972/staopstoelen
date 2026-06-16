@@ -352,10 +352,10 @@
       <button class="modal-close" id="modalClose" aria-label="Sluit pop-up">&times;</button>
       <div class="modal-content-grid">
         <div class="modal-image-section">
-          <div class="modal-image-wrapper" style="position: relative;">
+          <div class="modal-image-wrapper" id="modalImageWrapper" style="position: relative;">
             <img id="modalProductImage" src="" alt="" style="opacity: 1;">
             <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" style="display: none;">
-            <img id="modalProductStatusStamp" src="" alt="" class="quality-stamp stamp-bottom-left" style="display: none;">
+            <div id="modalProductStatusLabel" class="product-status-label" style="display: none;"></div>
           </div>
           <!-- Gallery tabs if images exist -->
           <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
@@ -1091,13 +1091,15 @@
           stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">`;
         }
         if (item.status === "verkocht") {
-          stampHtml += `<img src="assets/verkocht_stempel.svg?v=1.0.52" alt="Verkocht" class="quality-stamp stamp-bottom-left">`;
+          stampHtml += `<div class="product-status-label status-verkocht">Verkocht</div>`;
         } else if (item.status === "gereserveerd") {
-          stampHtml += `<img src="assets/gereserveerd_stempel.svg?v=1.0.52" alt="Gereserveerd" class="quality-stamp stamp-bottom-left">`;
+          stampHtml += `<div class="product-status-label status-gereserveerd">Gereserveerd</div>`;
         }
 
+        const isUnavailable = item.status && item.status !== "beschikbaar";
+
         card.innerHTML = `
-          <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
+          <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
             ${stampHtml}
             ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
@@ -1164,7 +1166,6 @@
       const modal = document.getElementById("productModal");
       const modalImg = document.getElementById("modalProductImage");
       const modalStamp = document.getElementById("modalProductStamp");
-      const modalStatusStamp = document.getElementById("modalProductStatusStamp");
       const modalTitle = document.getElementById("modalTitle");
       const modalBrand = document.getElementById("modalBrand");
       const modalDesc = document.getElementById("modalDescription");
@@ -1178,8 +1179,8 @@
       modalImg.alt = item.name;
       modalTitle.textContent = item.name;
       const materialText = item.material === "leer" ? "Leer" : "Stof";
-      const modelText = item.model ? ` | Model: ${item.model}` : "";
-      modalBrand.textContent = `Merk: ${item.brand}${modelText} | Materiaal: ${materialText}`;
+      const modelText = item.model ? `<br>Model: ${item.model}` : "";
+      modalBrand.innerHTML = `Merk: ${item.brand}${modelText}<br>Materiaal: ${materialText}`;
       modalDesc.textContent = item.description;
       modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
       
@@ -1193,17 +1194,23 @@
         modalStamp.style.display = "none";
       }
 
-      // Render status stamp (verkocht / gereserveerd)
+      // Render status label (verkocht / gereserveerd)
+      const modalStatusLabel = document.getElementById("modalProductStatusLabel");
+      const modalImgWrapper = document.getElementById("modalImageWrapper");
+      
       if (item.status === "verkocht") {
-        modalStatusStamp.src = "assets/verkocht_stempel.svg?v=1.0.52";
-        modalStatusStamp.alt = "Verkocht";
-        modalStatusStamp.style.display = "block";
+        modalStatusLabel.textContent = "Verkocht";
+        modalStatusLabel.className = "product-status-label status-verkocht";
+        modalStatusLabel.style.display = "block";
+        if (modalImgWrapper) modalImgWrapper.classList.add("is-unavailable");
       } else if (item.status === "gereserveerd") {
-        modalStatusStamp.src = "assets/gereserveerd_stempel.svg?v=1.0.52";
-        modalStatusStamp.alt = "Gereserveerd";
-        modalStatusStamp.style.display = "block";
+        modalStatusLabel.textContent = "Gereserveerd";
+        modalStatusLabel.className = "product-status-label status-gereserveerd";
+        modalStatusLabel.style.display = "block";
+        if (modalImgWrapper) modalImgWrapper.classList.add("is-unavailable");
       } else {
-        modalStatusStamp.style.display = "none";
+        modalStatusLabel.style.display = "none";
+        if (modalImgWrapper) modalImgWrapper.classList.remove("is-unavailable");
       }
 
       if (item.badge) {

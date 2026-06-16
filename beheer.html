@@ -9,6 +9,15 @@
   <link rel="stylesheet" href="style.css?v=1.0.51">
   <style>
     /* Admin Dashboard Specific Styles */
+    /* Reset fonts to match website styles */
+    input, select, textarea, button {
+      font-family: var(--font-body);
+    }
+    
+    h1, h2, h3, h4, h5, h6, .admin-title, .tab-btn {
+      font-family: var(--font-heading);
+    }
+
     body {
       background-color: var(--color-cream);
       color: var(--color-dark);
@@ -65,7 +74,7 @@
     }
     
     .admin-title {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: var(--color-forest);
       margin: 0;
     }
@@ -133,8 +142,10 @@
     .tab-btn {
       padding: 12px 24px;
       font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 1.05rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
       color: var(--color-gray);
       border-bottom: 3px solid transparent;
       margin-bottom: -2px;
@@ -144,6 +155,7 @@
       border-left: none;
       border-right: none;
       cursor: pointer;
+      outline: none;
     }
     
     .tab-btn:hover {
@@ -151,7 +163,7 @@
     }
     
     .tab-btn.active {
-      color: var(--color-forest);
+      color: var(--color-forest-dark);
       border-bottom-color: var(--color-forest);
     }
     
@@ -195,6 +207,15 @@
       border-bottom: none;
     }
     
+    tbody tr:nth-child(even) {
+      background-color: rgba(75, 143, 36, 0.035);
+    }
+    
+    tbody tr:hover {
+      background-color: rgba(75, 143, 36, 0.07);
+      transition: background-color 0.15s ease;
+    }
+    
     .row-img {
       width: 50px;
       height: 50px;
@@ -205,6 +226,9 @@
     }
     
     .badge {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
       display: inline-block;
       padding: 4px 10px;
       border-radius: var(--radius-full);
@@ -253,14 +277,17 @@
     }
     
     .btn-action {
-      padding: 6px 12px;
-      font-size: 0.8rem;
-      border-radius: var(--radius-full);
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      padding: 0;
       cursor: pointer;
-      font-weight: 600;
       background: none;
       transition: var(--transition-smooth);
-      min-height: auto;
+      flex-shrink: 0;
     }
     
     .btn-edit {
@@ -270,6 +297,7 @@
     .btn-edit:hover {
       background-color: var(--color-forest);
       color: var(--color-light);
+      transform: scale(1.08);
     }
     
     .btn-delete {
@@ -279,6 +307,7 @@
     .btn-delete:hover {
       background-color: var(--color-terracotta);
       color: var(--color-light);
+      transform: scale(1.08);
     }
     
     /* Panel Form Card (Centred and stacked below table to avoid collision) */
@@ -391,6 +420,8 @@
       display: none;
       justify-content: center;
       align-items: center;
+      opacity: 1 !important;
+      pointer-events: auto !important;
     }
     
     .modal-card {
@@ -459,16 +490,30 @@
   <main class="main-content">
     <div class="container">
       
-      <div class="admin-title-row">
+      <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
           <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard</h1>
-          <p style="color: var(--color-gray); margin-top: 4px;">Beheer de sta-op stoelen catalogus en exporteer de updates naar de html code.</p>
+          <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
-        <button class="btn btn-primary" id="addChairBtn">+ Nieuwe Stoel Toevoegen</button>
       </div>
 
-      <!-- Table of chairs (Full-width to ensure all columns & action buttons fit) -->
-      <div class="table-container">
+      <!-- Tab Navigation -->
+      <div class="admin-tabs" style="display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid var(--color-gray-light); padding-bottom: 0;">
+        <button class="tab-btn active" id="tabChairs">Stoelen Beheer</button>
+        <button class="tab-btn" id="tabBrands">Merken Beheer</button>
+      </div>
+
+      <div id="chairsSection">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 24px;">
+          <div>
+            <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Stoelen Beheer</h2>
+            <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Beheer de sta-op stoelen catalogus en exporteer de updates naar de html code.</p>
+          </div>
+          <button class="btn btn-primary" id="addChairBtn">+ Nieuwe Stoel Toevoegen</button>
+        </div>
+        
+        <!-- Table of chairs (Full-width to ensure all columns & action buttons fit) -->
+        <div class="table-container">
           <table id="chairTable">
             <thead>
               <tr id="tableHeader">
@@ -481,11 +526,15 @@
           </table>
         </div>
 
-        <!-- Right Column: Inline Edit/Add Form Panel -->
-        <div class="form-panel-card" id="formPanelCard">
-          <h2 class="form-title" id="formTitle">Nieuwe Stoel Toevoegen</h2>
-          
-          <form id="chairForm">
+  <!-- Chair Form Modal Overlay -->
+  <div class="modal-overlay" id="chairModal">
+    <div class="modal-card" style="max-width: 800px;">
+      <div class="modal-header">
+        <h3 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0;" id="formTitle">Nieuwe Stoel Toevoegen</h3>
+        <button style="font-size: 1.5rem; font-weight: bold; color: var(--color-gray); background: none; border: none; cursor: pointer;" id="chairModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="chairForm">
             <input type="hidden" id="formChairIndex">
             
             <div class="form-row">
@@ -504,8 +553,10 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="chairBrand">Merk</label>
-                <input type="text" class="form-control" id="chairBrand" required placeholder="bijv. Fitform, Doge, Mecam, Overig">
+                <label class="form-label" for="chairBrand">Merk *</label>
+                <select class="form-control" id="chairBrand" required>
+                  <!-- Dynamically populated -->
+                </select>
               </div>
               <div class="form-group">
                 <label class="form-label" for="chairModel">Model</label>
@@ -614,14 +665,17 @@
             </div>
 
             <div style="display: flex; gap: 12px; margin-top: 24px;">
-              <button type="button" class="btn btn-outline" id="btnCancelForm" style="flex: 1; padding: 10px 14px; min-height: auto;">Formulier Leegmaken</button>
+              <button type="button" class="btn btn-outline" id="btnCancelForm" style="flex: 1; padding: 10px 14px; min-height: auto;">Annuleren</button>
               <button type="submit" class="btn btn-primary" style="flex: 1.2; padding: 10px 14px; min-height: auto;">Opslaan</button>
             </div>
           </form>
         </div>
+      </div>
+    </div>
+  </div>
 
       <!-- Export / Import Code Box -->
-      <div class="export-box">
+      <div class="export-box" style="display: none;">
         <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin-bottom: 8px;">Code Exporteren & Publiceren</h2>
         <p style="color: var(--color-gray); font-size: 0.95rem; line-height: 1.6;">
           Kopieer de onderstaande JavaScript-code en vervang hiermee de datalijst in het bijbehorende HTML-bestand om uw wijzigingen definitief te publiceren op de website.
@@ -637,6 +691,58 @@
           <button class="btn btn-delete" id="btnResetData" style="border-color: var(--color-terracotta); color: var(--color-terracotta);">
             Herstel naar Standaard
           </button>
+        </div>
+      </div>
+      
+      </div> <!-- End #chairsSection -->
+
+      <!-- Section: Brands Management (initially hidden) -->
+      <div id="brandsSection" style="display: none; max-width: 800px; margin: 0 auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 24px;">
+          <div>
+            <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Merken Beheer</h2>
+            <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Beheer de merknamen die kunnen worden geselecteerd bij het invoeren van stoelen.</p>
+          </div>
+          <button class="btn btn-primary" id="addBrandBtn">+ Nieuw Merk Toevoegen</button>
+        </div>
+
+        <!-- Table of Brands -->
+        <div class="table-container" style="margin-bottom: 60px;">
+          <table id="brandTable" style="table-layout: fixed; width: 100%;">
+            <thead>
+              <tr>
+                <th style="text-align: left; width: 35%;">ID (Slug)</th>
+                <th style="text-align: left; width: 45%;">Merk Naam</th>
+                <th style="text-align: right; width: 20%; padding-right: 24px;">Acties</th>
+              </tr>
+            </thead>
+            <tbody id="brandTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div> <!-- End #brandsSection -->
+
+      <!-- Brand Form Modal Overlay -->
+      <div class="modal-overlay" id="brandModal">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h3 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0;" id="brandFormTitle">Nieuw Merk Toevoegen</h3>
+            <button style="font-size: 1.5rem; font-weight: bold; color: var(--color-gray); background: none; border: none; cursor: pointer;" id="brandModalCloseBtn">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="brandForm">
+              <input type="hidden" id="formBrandId">
+              <div class="form-group">
+                <label class="form-label" for="brandName">Merk Naam *</label>
+                <input type="text" class="form-control" id="brandName" required placeholder="bijv. Prominent, Velder">
+              </div>
+              <div style="display: flex; gap: 12px; margin-top: 24px;">
+                <button type="button" class="btn btn-outline" id="btnCancelBrandForm" style="flex: 1; padding: 10px 14px; min-height: auto;">Annuleren</button>
+                <button type="submit" class="btn btn-primary" id="brandSubmitBtn" style="flex: 1.2; padding: 10px 14px; min-height: auto;">Voeg Merk Toe</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -1328,6 +1434,7 @@
         isApiConnected = false;
         activeData = loadData(currentTab);
       }
+      await fetchBrands();
       renderTable();
       updateCodeExport();
       resetForm();
@@ -1429,8 +1536,12 @@
           </td>
           <td style="white-space: nowrap;">
             <div class="action-btn-group">
-              <button class="btn-action btn-edit" data-index="${index}">Bewerken</button>
-              <button class="btn-action btn-delete" data-index="${index}">Verwijderen</button>
+              <button class="btn-action btn-edit" data-index="${index}" title="Bewerken">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+              <button class="btn-action btn-delete" data-index="${index}" title="Verwijderen">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
             </div>
           </td>
         `;
@@ -1481,8 +1592,25 @@
     const chairForm = document.getElementById("chairForm");
     const nameInput = document.getElementById("chairName");
     const idInput = document.getElementById("chairId");
+
+    // Image Uploading and Previews
+    const chairImage = document.getElementById("chairImage");
+    const chairImageFile = document.getElementById("chairImageFile");
+    const chairImagePreview = document.getElementById("chairImagePreview");
+    const btnUploadImage = document.getElementById("btnUploadImage");
+
+    const chairImageUp = document.getElementById("chairImageUp");
+    const chairImageUpFile = document.getElementById("chairImageUpFile");
+    const chairImageUpPreview = document.getElementById("chairImageUpPreview");
+    const btnUploadImageUp = document.getElementById("btnUploadImageUp");
+
+    const chairAmbientImage = document.getElementById("chairAmbientImage");
+    const chairAmbientImageFile = document.getElementById("chairAmbientImageFile");
+    const chairAmbientImagePreview = document.getElementById("chairAmbientImagePreview");
+    const btnUploadAmbientImage = document.getElementById("btnUploadAmbientImage");
     
     function resetForm() {
+      if (typeof populateBrandSelect === 'function') populateBrandSelect();
       chairForm.reset();
       document.getElementById("formChairIndex").value = "";
       document.getElementById("formTitle").textContent = "Nieuwe Stoel Toevoegen";
@@ -1512,13 +1640,21 @@
       };
     }
 
+    const chairModal = document.getElementById("chairModal");
+
+    function closeChairModal() {
+      chairModal.style.display = "none";
+      resetForm();
+    }
+
     document.getElementById("addChairBtn").addEventListener("click", () => {
       resetForm();
-      document.getElementById("formPanelCard").scrollIntoView({ behavior: "smooth" });
+      chairModal.style.display = "flex";
       nameInput.focus();
     });
 
-    document.getElementById("btnCancelForm").addEventListener("click", resetForm);
+    document.getElementById("chairModalCloseBtn").addEventListener("click", closeChairModal);
+    document.getElementById("btnCancelForm").addEventListener("click", closeChairModal);
 
     // Edit button handler
     function editChair(index) {
@@ -1529,6 +1665,7 @@
       document.getElementById("formChairIndex").value = index;
       idInput.value = item.id || "";
       nameInput.value = item.name || "";
+      if (typeof populateBrandSelect === 'function') populateBrandSelect(item.brand);
       document.getElementById("chairBrand").value = item.brand || "";
       document.getElementById("chairModel").value = item.model || "";
       document.getElementById("chairPrice").value = item.price || 0;
@@ -1548,7 +1685,7 @@
       updatePreview(document.getElementById("chairImageUp"), chairImageUpPreview);
       updatePreview(document.getElementById("chairAmbientImage"), chairAmbientImagePreview);
       
-      document.getElementById("formPanelCard").scrollIntoView({ behavior: "smooth" });
+      chairModal.style.display = "flex";
     }
 
     // Delete button handler
@@ -1559,7 +1696,7 @@
         await saveData(currentTab, activeData);
         renderTable();
         if (document.getElementById("formChairIndex").value === String(index)) {
-          resetForm();
+          closeChairModal();
         }
       }
     }
@@ -1607,7 +1744,7 @@
       
       await saveData(currentTab, activeData);
       renderTable();
-      resetForm();
+      closeChairModal();
     });
 
     // Reset data handler
@@ -1701,22 +1838,6 @@
       }
     });
 
-    // Image Uploading and Previews
-    const chairImage = document.getElementById("chairImage");
-    const chairImageFile = document.getElementById("chairImageFile");
-    const chairImagePreview = document.getElementById("chairImagePreview");
-    const btnUploadImage = document.getElementById("btnUploadImage");
-
-    const chairImageUp = document.getElementById("chairImageUp");
-    const chairImageUpFile = document.getElementById("chairImageUpFile");
-    const chairImageUpPreview = document.getElementById("chairImageUpPreview");
-    const btnUploadImageUp = document.getElementById("btnUploadImageUp");
-
-    const chairAmbientImage = document.getElementById("chairAmbientImage");
-    const chairAmbientImageFile = document.getElementById("chairAmbientImageFile");
-    const chairAmbientImagePreview = document.getElementById("chairAmbientImagePreview");
-    const btnUploadAmbientImage = document.getElementById("btnUploadAmbientImage");
-
     // Click handlers for file inputs
     btnUploadImage.addEventListener("click", () => chairImageFile.click());
     btnUploadImageUp.addEventListener("click", () => chairImageUpFile.click());
@@ -1804,6 +1925,232 @@
     chairAmbientImageFile.addEventListener("change", () => {
       handleFileUpload(chairAmbientImageFile, chairAmbientImage, chairAmbientImagePreview, btnUploadAmbientImage);
     });
+
+    // ==========================================
+    // BRANDS MANAGEMENT SYSTEM INTEGRATION
+    // ==========================================
+    const BRANDS_API_URL = "http://localhost:3000/api/brands";
+    let brandsData = [];
+
+    async function fetchBrands() {
+      try {
+        const response = await fetch(BRANDS_API_URL);
+        if (response.ok) {
+          const res = await response.json();
+          brandsData = res.brands || [];
+          console.log("Loaded brands successfully from API!");
+        }
+      } catch (e) {
+        console.warn("Could not connect to brands API. Using fallback.", e);
+        brandsData = [
+          { id: 'fitform', name: 'Fitform' },
+          { id: 'doge', name: 'Doge' },
+          { id: 'mecam', name: 'Mecam' },
+          { id: 'hjort-knudsen', name: 'Hjort Knudsen' },
+          { id: 'dfm', name: 'DFM' },
+          { id: 'de-toekomst', name: 'De Toekomst' },
+          { id: 'farstrup', name: 'Farstrup' },
+          { id: 'huismerk', name: 'Huismerk' },
+          { id: 'overig', name: 'Overig' }
+        ];
+      }
+      populateBrandSelect();
+      renderBrandsTable();
+    }
+    
+    function populateBrandSelect(selectedBrand = null) {
+      const select = document.getElementById("chairBrand");
+      if (!select) return;
+      select.innerHTML = "";
+      
+      const allBrands = [...brandsData];
+      if (selectedBrand && !allBrands.some(b => b.name === selectedBrand)) {
+        allBrands.push({ id: selectedBrand.toLowerCase().replace(/[^a-z0-9]+/g, '-'), name: selectedBrand });
+      }
+      
+      allBrands.forEach(brand => {
+        const opt = document.createElement("option");
+        opt.value = brand.name;
+        opt.textContent = brand.name;
+        select.appendChild(opt);
+      });
+      
+      if (selectedBrand) {
+        select.value = selectedBrand;
+      }
+    }
+    
+    function renderBrandsTable() {
+      const tbody = document.getElementById("brandTableBody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+      
+      brandsData.forEach((brand) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="font-family: monospace; font-size: 0.9rem;">${brand.id}</td>
+          <td style="font-weight: 600; color: var(--color-forest-dark);">${brand.name}</td>
+          <td style="text-align: right; padding-right: 24px;">
+            <div class="action-btn-group" style="justify-content: flex-end;">
+              <button class="btn-action btn-edit" onclick="editBrand('${brand.id}')" title="Bewerken">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+              <button class="btn-action btn-delete" onclick="deleteBrand('${brand.id}')" title="Verwijderen">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    
+    window.deleteBrand = async function(id) {
+      if (confirm("Weet u zeker dat u dit merk wilt verwijderen? Stoelen die dit merk gebruiken zullen nog steeds getoond worden, maar u kunt dit merk niet meer kiezen voor nieuwe stoelen.")) {
+        brandsData = brandsData.filter(b => b.id !== id);
+        await saveBrands();
+        populateBrandSelect();
+        renderBrandsTable();
+      }
+    };
+    
+    async function saveBrands() {
+      try {
+        const response = await fetch(BRANDS_API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ brands: brandsData })
+        });
+        if (!response.ok) {
+          throw new Error("Failed to save brands to server");
+        }
+        console.log("Saved brands successfully to API!");
+      } catch (e) {
+        console.error("Error saving brands:", e);
+        alert("Kon de merkenlijst niet opslaan op de server.");
+      }
+    }
+    
+    const brandModal = document.getElementById("brandModal");
+    
+    function closeBrandModal() {
+      brandModal.style.display = "none";
+      document.getElementById("brandForm").reset();
+      document.getElementById("formBrandId").value = "";
+      document.getElementById("brandFormTitle").textContent = "Nieuw Merk Toevoegen";
+      document.getElementById("brandSubmitBtn").textContent = "Voeg Merk Toe";
+    }
+    
+    document.getElementById("addBrandBtn").addEventListener("click", () => {
+      brandModal.style.display = "flex";
+      document.getElementById("brandName").focus();
+    });
+    
+    document.getElementById("brandModalCloseBtn").addEventListener("click", closeBrandModal);
+    document.getElementById("btnCancelBrandForm").addEventListener("click", closeBrandModal);
+    
+    window.editBrand = function(id) {
+      const brand = brandsData.find(b => b.id === id);
+      if (!brand) return;
+      
+      document.getElementById("brandFormTitle").textContent = `Merk Bewerken: ${brand.name}`;
+      document.getElementById("formBrandId").value = brand.id;
+      document.getElementById("brandName").value = brand.name;
+      document.getElementById("brandSubmitBtn").textContent = "Opslaan";
+      brandModal.style.display = "flex";
+      document.getElementById("brandName").focus();
+    };
+
+    document.getElementById("brandForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("brandName").value.trim();
+      if (!name) return;
+      
+      const formBrandId = document.getElementById("formBrandId").value;
+      const newId = name.toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+        
+      if (formBrandId === "") {
+        // ADD NEW MODE
+        if (brandsData.some(b => b.id === newId || b.name.toLowerCase() === name.toLowerCase())) {
+          alert("Dit merk bestaat al.");
+          return;
+        }
+        
+        brandsData.push({ id: newId, name });
+        await saveBrands();
+        alert(`Merk "${name}" succesvol toegevoegd!`);
+      } else {
+        // EDIT MODE
+        const index = brandsData.findIndex(b => b.id === formBrandId);
+        if (index === -1) return;
+        
+        // Check if new name conflicts with another brand
+        if (brandsData.some((b, i) => i !== index && (b.id === newId || b.name.toLowerCase() === name.toLowerCase()))) {
+          alert("Er bestaat al een ander merk met deze naam.");
+          return;
+        }
+        
+        const oldName = brandsData[index].name;
+        
+        // Update brand in brandsData
+        brandsData[index] = { id: newId, name };
+        await saveBrands();
+        
+        // Also update any chairs referencing the old brand name
+        let chairsUpdated = 0;
+        activeData.forEach(chair => {
+          if (chair.brand === oldName) {
+            chair.brand = name;
+            chairsUpdated++;
+          }
+        });
+        
+        if (chairsUpdated > 0) {
+          console.log(`Updated brand name for ${chairsUpdated} chairs in memory.`);
+          await saveData(currentTab, activeData);
+        }
+        
+        alert(`Merk "${name}" succesvol bijgewerkt!`);
+      }
+      
+      populateBrandSelect();
+      renderBrandsTable();
+      closeBrandModal();
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === chairModal) closeChairModal();
+      if (e.target === brandModal) closeBrandModal();
+      if (e.target === importModal) closeImportModal();
+    });
+
+    // Tab Navigation Logic
+    const tabChairs = document.getElementById("tabChairs");
+    const tabBrands = document.getElementById("tabBrands");
+    const chairsSection = document.getElementById("chairsSection");
+    const brandsSection = document.getElementById("brandsSection");
+    
+    if (tabChairs && tabBrands && chairsSection && brandsSection) {
+      tabChairs.addEventListener("click", () => {
+        tabChairs.classList.add("active");
+        tabBrands.classList.remove("active");
+        
+        chairsSection.style.display = "block";
+        brandsSection.style.display = "none";
+      });
+      
+      tabBrands.addEventListener("click", () => {
+        tabBrands.classList.add("active");
+        tabChairs.classList.remove("active");
+        
+        chairsSection.style.display = "none";
+        brandsSection.style.display = "block";
+      });
+    }
 
     // Initialize check
     checkLogin();

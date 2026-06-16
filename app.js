@@ -490,7 +490,6 @@ function initCalendar() {
   const typeHome = document.getElementById("typeHome");
   const typeShowroom = document.getElementById("typeShowroom");
   const addressField = document.getElementById("bookingAddress");
-  const addressLabel = document.getElementById("addressLabel");
   
   const prevMonth = document.getElementById("btnPrevMonth");
   const nextMonth = document.getElementById("btnNextMonth");
@@ -499,6 +498,12 @@ function initCalendar() {
   
   const interactiveArea = document.getElementById("bookingInteractiveArea");
   const successScreen = document.getElementById("bookingSuccessScreen");
+  
+  const homeAddressWrapper = document.getElementById("homeAddressWrapper");
+  const postcodeField = document.getElementById("bookingPostcode");
+  const houseNumberField = document.getElementById("bookingHouseNumber");
+  const addressFeedback = document.getElementById("addressFeedback");
+  const btnManualAddress = document.getElementById("btnManualAddress");
   
   if (!typeHome || !typeShowroom || !interactiveArea || !successScreen) return;
   
@@ -511,10 +516,10 @@ function initCalendar() {
     state.appointmentType = "home";
     
     // Show address inputs and mark required
-    addressField.style.display = "block";
-    addressField.required = true;
-    addressLabel.style.display = "block";
-    addressField.placeholder = "Straatnaam, huisnummer & woonplaats";
+    if (homeAddressWrapper) homeAddressWrapper.style.display = "block";
+    if (postcodeField) postcodeField.required = true;
+    if (houseNumberField) houseNumberField.required = true;
+    if (addressField) addressField.required = true;
   });
   
   typeShowroom.addEventListener("click", () => {
@@ -525,11 +530,95 @@ function initCalendar() {
     state.appointmentType = "showroom";
     
     // Hide address since visit is in Dordrecht
-    addressField.style.display = "none";
-    addressField.required = false;
-    addressField.value = "";
-    addressLabel.style.display = "none";
+    if (homeAddressWrapper) homeAddressWrapper.style.display = "none";
+    if (postcodeField) {
+      postcodeField.required = false;
+      postcodeField.value = "";
+    }
+    if (houseNumberField) {
+      houseNumberField.required = false;
+      houseNumberField.value = "";
+    }
+    if (addressField) {
+      addressField.required = false;
+      addressField.value = "";
+    }
+    if (addressFeedback) addressFeedback.textContent = "";
   });
+  
+  // Address Checker via PDOK Locatieserver (BAG) API
+  if (postcodeField && houseNumberField && addressField) {
+    const lookupAddress = async () => {
+      const postcode = postcodeField.value.trim().replace(/\s+/g, "").toUpperCase();
+      const houseNumber = houseNumberField.value.trim();
+      
+      // Dutch postcode pattern: 4 digits followed by 2 letters
+      const postcodeRegex = /^[1-9][0-9]{3}[A-Z]{2}$/;
+      
+      if (postcodeRegex.test(postcode) && houseNumber !== "") {
+        if (addressFeedback) {
+          addressFeedback.textContent = "Adres zoeken...";
+          addressFeedback.style.color = "var(--color-gray)";
+        }
+        
+        try {
+          const response = await fetch(`https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?fq=postcode:${postcode}&fq=huisnummer:${houseNumber}`);
+          const data = await response.json();
+          
+          if (data.response && data.response.docs && data.response.docs.length > 0) {
+            const doc = data.response.docs[0];
+            addressField.value = doc.weergavenaam;
+            addressField.readOnly = true;
+            addressField.style.backgroundColor = "var(--color-light)";
+            addressField.style.cursor = "not-allowed";
+            if (addressFeedback) {
+              addressFeedback.textContent = "✓ Adres gevonden!";
+              addressFeedback.style.color = "var(--color-forest)";
+            }
+          } else {
+            addressField.value = "";
+            if (addressFeedback) {
+              addressFeedback.textContent = "Adres niet gevonden. Controleer invoer of typ handmatig.";
+              addressFeedback.style.color = "var(--color-terracotta)";
+            }
+          }
+        } catch (error) {
+          console.error("PDOK Locatieserver error:", error);
+          if (addressFeedback) {
+            addressFeedback.textContent = "Fout bij laden adres. Vul uw adres handmatig in.";
+            addressFeedback.style.color = "var(--color-terracotta)";
+          }
+          // Enable manual typing on API error
+          addressField.readOnly = false;
+          addressField.style.backgroundColor = "";
+          addressField.style.cursor = "";
+          addressField.placeholder = "Straatnaam, huisnummer & woonplaats";
+        }
+      } else {
+        if (addressField.readOnly) {
+          addressField.value = "";
+          if (addressFeedback) addressFeedback.textContent = "";
+        }
+      }
+    };
+    
+    postcodeField.addEventListener("input", lookupAddress);
+    houseNumberField.addEventListener("input", lookupAddress);
+  }
+  
+  if (btnManualAddress && addressField) {
+    btnManualAddress.addEventListener("click", () => {
+      addressField.readOnly = false;
+      addressField.style.backgroundColor = "";
+      addressField.style.cursor = "";
+      addressField.placeholder = "Straatnaam, huisnummer & woonplaats";
+      addressField.focus();
+      if (addressFeedback) {
+        addressFeedback.textContent = "Handmatige invoer geactiveerd.";
+        addressFeedback.style.color = "var(--color-gray)";
+      }
+    });
+  }
   
   // Month toggles
   prevMonth.addEventListener("click", () => {
@@ -556,6 +645,21 @@ function initCalendar() {
     document.getElementById("bookingEmail").value = "";
     document.getElementById("bookingAddress").value = "";
     document.getElementById("bookingNotes").value = "";
+    
+    if (postcodeField) postcodeField.value = "";
+    if (houseNumberField) houseNumberField.value = "";
+    if (addressFeedback) addressFeedback.textContent = "";
+    if (addressField) {
+      addressField.readOnly = true;
+      addressField.style.backgroundColor = "var(--color-light)";
+      addressField.style.cursor = "not-allowed";
+      addressField.placeholder = "Voer postcode en huisnummer in voor automatische controle...";
+    }
+    
+    const successMapIframe = document.getElementById("successMapIframe");
+    if (successMapIframe) successMapIframe.src = "";
+    const successRouteInfo = document.getElementById("successRouteInfo");
+    if (successRouteInfo) successRouteInfo.style.display = "none";
     
     renderCalendar();
     renderTimeSlots();
@@ -707,6 +811,19 @@ function initCalendar() {
         De bevestiging is zojuist naar uw e-mailadres (<strong>${email}</strong>) verzonden. Check eventueel uw spamfolder als u deze niet direct ziet.<br><br>
         Onze BewegingsTechnoloog zal de afspraak binnen 2 uur telefonisch met u bevestigen via <strong>${phone}</strong>.
       `;
+
+      // Show Google Maps and route description if visiting the showroom
+      const successRouteInfo = document.getElementById("successRouteInfo");
+      const successMapIframe = document.getElementById("successMapIframe");
+      if (successRouteInfo && successMapIframe) {
+        if (state.appointmentType === "showroom") {
+          successRouteInfo.style.display = "block";
+          successMapIframe.src = "https://maps.google.com/maps?q=Merwedestraat%20239,%20Dordrecht&t=&z=15&ie=UTF8&iwloc=&output=embed";
+        } else {
+          successRouteInfo.style.display = "none";
+          successMapIframe.src = "";
+        }
+      }
       
       submitBookingBtn.textContent = "Bevestig Afspraak";
       submitBookingBtn.disabled = false;
