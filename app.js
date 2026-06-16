@@ -106,7 +106,7 @@ const state = {
   sliderPct: 50,
   
   // Booking Calendar State
-  appointmentType: "home", // "home" or "showroom"
+  appointmentType: "showroom", // "home" or "showroom"
   currentDate: new Date(), // Live current date
   selectedDate: null,
   selectedTimeSlot: null,
@@ -130,6 +130,10 @@ function initializeApp() {
     if (notesField) {
       notesField.value = `Ik heb interesse in een passing aan huis voor de stoel: ${prefilled}. Graag afstemmen op mijn lichaamslengte en voorkeuren.`;
       localStorage.removeItem("prefilledChair");
+      
+      // Auto-select Home Passing since the prefill is for home passing
+      const typeHome = document.getElementById("typeHome");
+      if (typeHome) typeHome.click();
       
       // Smooth scroll to the appointment planner
       const planner = document.getElementById("afspraak-planner");
@@ -511,6 +515,10 @@ window.prefillBooking = function(chairName) {
     notesField.value = `Ik heb interesse in een passing aan huis voor de: ${chairName}. Graag afstemmen op mijn lichaamslengte en voorkeuren.`;
   }
   
+  // Auto-select Home Passing since the prefill is for home passing
+  const typeHome = document.getElementById("typeHome");
+  if (typeHome) typeHome.click();
+  
   // Jump smoothly to scheduling section
   const section = document.getElementById("afspraak-planner");
   if (section) {
@@ -605,6 +613,29 @@ function initCalendar() {
   const btnManualAddress = document.getElementById("btnManualAddress");
   
   if (!typeHome || !typeShowroom || !interactiveArea || !successScreen) return;
+  
+  // Initialize form options state based on default appointmentType
+  if (state.appointmentType === "showroom") {
+    typeShowroom.classList.add("selected");
+    typeHome.classList.remove("selected");
+    const showroomInput = typeShowroom.querySelector("input");
+    if (showroomInput) showroomInput.checked = true;
+    
+    if (homeAddressWrapper) homeAddressWrapper.style.display = "none";
+    if (postcodeField) postcodeField.required = false;
+    if (houseNumberField) houseNumberField.required = false;
+    if (addressField) addressField.required = false;
+  } else {
+    typeHome.classList.add("selected");
+    typeShowroom.classList.remove("selected");
+    const homeInput = typeHome.querySelector("input");
+    if (homeInput) homeInput.checked = true;
+    
+    if (homeAddressWrapper) homeAddressWrapper.style.display = "block";
+    if (postcodeField) postcodeField.required = true;
+    if (houseNumberField) houseNumberField.required = true;
+    if (addressField) addressField.required = true;
+  }
   
   // Appointment Type Selection
   typeHome.addEventListener("click", () => {

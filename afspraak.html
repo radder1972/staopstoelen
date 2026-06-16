@@ -117,15 +117,15 @@
         <div class="booking-body">
           <!-- Type selector -->
           <div class="booking-type-select">
-            <label class="booking-type-card selected" id="typeHome">
-              <input type="radio" name="appointmentType" value="home" checked>
+            <label class="booking-type-card" id="typeHome">
+              <input type="radio" name="appointmentType" value="home">
               <div class="booking-type-info">
                 <h3>Passing aan Huis (Aanbevolen)</h3>
                 <p>Wij nemen 3 geschikte stoelen mee naar uw woning. U probeert ze in uw eigen rustige omgeving.</p>
               </div>
             </label>
-            <label class="booking-type-card" id="typeShowroom">
-              <input type="radio" name="appointmentType" value="showroom">
+            <label class="booking-type-card selected" id="typeShowroom">
+              <input type="radio" name="appointmentType" value="showroom" checked>
               <div class="booking-type-info">
                 <h3>Bezoek onze Showroom</h3>
                 <p>U bent van harte welkom in onze vestiging in Dordrecht voor deskundig advies en ruime keuze.</p>
@@ -174,7 +174,7 @@
                   <input type="email" id="bookingEmail" placeholder="Bijv. naam@domein.nl">
                 </div>
                 <!-- Address Section (only shown/required for home visits) -->
-                <div class="form-group form-group-full" id="homeAddressWrapper">
+                <div class="form-group form-group-full" id="homeAddressWrapper" style="display: none;">
                   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                     <div class="form-group">
                       <label for="bookingPostcode">Postcode *</label>
