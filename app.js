@@ -121,7 +121,7 @@ function initializeApp() {
   initCalendar();
   initFloatingMenu();
   initMobileMenu();
-  initHeroSecretImage();
+  initHeroSlideshow();
 
   // Check for prefilled chair selection
   const prefilled = localStorage.getItem("prefilledChair");
@@ -142,21 +142,120 @@ function initializeApp() {
   }
 }
 
-function initHeroSecretImage() {
+function initHeroSlideshow() {
   const container = document.getElementById("heroImageContainer");
   if (!container) return;
-  const img = container.querySelector("img");
-  if (!img) return;
-  
-  img.addEventListener("dblclick", () => {
-    if (img.src.includes("chair_cozy.png")) {
-      img.src = "assets/geert_secret.jpg";
-      img.alt = "Geert zittend in een comfortabele sta-op stoel";
+
+  const slides = container.querySelectorAll(".hero-slide");
+  const prevBtn = document.getElementById("slideshowPrev");
+  const nextBtn = document.getElementById("slideshowNext");
+  const dots = container.querySelectorAll(".slide-dot");
+
+  if (slides.length === 0) return;
+
+  let currentSlide = 0;
+  let slideInterval = null;
+  const slideDuration = 5000; // 5 seconds
+
+  function showSlide(index) {
+    // Wrap index
+    if (index >= slides.length) {
+      currentSlide = 0;
+    } else if (index < 0) {
+      currentSlide = slides.length - 1;
     } else {
-      img.src = "assets/chair_cozy.png";
-      img.alt = "Modern sfeervol interieur met een luxe groene sta-op stoel";
+      currentSlide = index;
+    }
+
+    // Update slides visibility
+    slides.forEach((slide, i) => {
+      if (i === currentSlide) {
+        slide.classList.add("active");
+      } else {
+        slide.classList.remove("active");
+      }
+    });
+
+    // Update dots status
+    dots.forEach((dot, i) => {
+      if (i === currentSlide) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  }
+
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  function startTimer() {
+    stopTimer();
+    slideInterval = setInterval(nextSlide, slideDuration);
+  }
+
+  function stopTimer() {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+      slideInterval = null;
+    }
+  }
+
+  // Event Listeners for Controls
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      startTimer(); // Reset timer on interaction
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      startTimer(); // Reset timer on interaction
+    });
+  }
+
+  // Event Listeners for Dots
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const slideIndex = parseInt(dot.getAttribute("data-slide"));
+      if (!isNaN(slideIndex)) {
+        showSlide(slideIndex);
+        startTimer(); // Reset timer on interaction
+      }
+    });
+  });
+
+  // Pause on hover
+  container.addEventListener("mouseenter", stopTimer);
+  container.addEventListener("mouseleave", startTimer);
+
+  // Secret Easter Egg for Geert's secret picture on double click
+  slides.forEach(slide => {
+    const img = slide.querySelector("img");
+    if (img) {
+      const originalSrc = img.src;
+      const originalAlt = img.alt;
+      img.addEventListener("dblclick", () => {
+        if (img.src.includes("geert_secret.jpg")) {
+          img.src = originalSrc;
+          img.alt = originalAlt;
+        } else {
+          img.src = "assets/geert_secret.jpg";
+          img.alt = "Geert zittend in een comfortabele sta-op stoel";
+        }
+      });
     }
   });
+
+  // Start the slideshow auto-advance
+  startTimer();
 }
 
 // Robust DOM check
