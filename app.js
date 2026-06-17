@@ -101,6 +101,9 @@ const state = {
     modern: false
   },
   
+  // Dynamic chairs list loaded from database/fallback
+  chairs: [],
+
   // Before/After Slider State
   isDraggingSlider: false,
   sliderPct: 50,
@@ -112,6 +115,52 @@ const state = {
   selectedTimeSlot: null,
   timeSlots: ["10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00"]
 };
+
+// Initialize state.chairs with a translation of CHAIR_DATABASE to database schema directly as a fallback
+state.chairs = CHAIR_DATABASE.map(c => ({
+  id: c.id,
+  name: c.name,
+  brand: c.brand,
+  price: parseInt(c.price.replace(/[^\d]/g, "")) || c.basePrice || 995,
+  description: c.suitability + " " + c.features.join(" "),
+  badge: c.badge,
+  image: c.image,
+  condition: "occasion",
+  type: "staop",
+  status: "beschikbaar"
+}));
+
+// Load chairs dynamically from localStorage and API
+async function loadWizardChairs() {
+  // 1. Try localStorage
+  let storedData = null;
+  try {
+    storedData = JSON.parse(localStorage.getItem("admin_staopstoelen"));
+  } catch (e) {
+    console.warn("Fout bij het laden van stoelen uit localStorage:", e);
+  }
+  
+  if (storedData && storedData.length > 0) {
+    state.chairs = storedData;
+    console.log("Dynamische stoelen geladen uit localStorage:", state.chairs.length);
+  }
+  
+  // 2. Try API
+  try {
+    const response = await fetch("http://localhost:3000/api/chairs");
+    if (response.ok) {
+      const dbData = await response.json();
+      if (dbData && dbData.staopstoelen) {
+        state.chairs = dbData.staopstoelen;
+        console.log("Dynamische stoelen geladen van API server:", state.chairs.length);
+        // Sync to localStorage
+        localStorage.setItem("admin_staopstoelen", JSON.stringify(dbData.staopstoelen));
+      }
+    }
+  } catch (e) {
+    console.warn("Fout bij verbinden met API server. Teruggevallen op offline stoelgegevens.", e);
+  }
+}
 
 // DOM Elements Initialization Helper
 function initializeApp() {
@@ -281,6 +330,9 @@ function initWizard() {
   
   if (!nextBtn || !backBtn || !resetBtn || !form) return;
   
+  // Load chairs dynamically when wizard is initialized
+  loadWizardChairs();
+  
   // Track Option Card Selection
   const optionCards = document.querySelectorAll(".option-card");
   optionCards.forEach(card => {
@@ -411,52 +463,192 @@ function goToWizardStep(step) {
   }
 }
 
+// Helper to construct dynamic features/bullets for database chairs
+function getChairFeatures(chair) {
+  const features = [];
+  const descLower = (chair.description || "").toLowerCase();
+  const nameLower = (chair.name || "").toLowerCase();
+  
+  // 1. Brand, Model & Condition
+  const conditionStr = chair.condition === "nieuw" ? "Nieuw" : "Gereviseerde occasion";
+  features.push(`<strong>Merk:</strong> ${chair.brand} (${conditionStr})`);
+  
+  // 2. Material
+  const materialStr = chair.material === "leer" ? "Luxe rundleder" : "Comfortabele meubelstof";
+  features.push(`<strong>Bekleding:</strong> ${materialStr}`);
+  
+  // 3. Motors detection
+  if (descLower.includes("4-motorig") || descLower.includes("4 motoren") || descLower.includes("4 afzonderlijke motoren") || nameLower.includes("4-motorig")) {
+    features.push("4 motoren voor onafhankelijke rug-, voeten- en kantelbediening");
+  } else if (descLower.includes("3-motorig") || descLower.includes("3 motoren") || descLower.includes("drie motoren") || nameLower.includes("3-motorig")) {
+    features.push("3 motoren voor onafhankelijke rug-, voeten- en kantelbediening");
+  } else if (descLower.includes("2-motorig") || descLower.includes("2 motoren") || descLower.includes("twee motoren") || nameLower.includes("2-motorig")) {
+    features.push("2 motoren voor elektrische relax- en sta-op ondersteuning");
+  } else if (descLower.includes("1-motorig") || descLower.includes("1 motor") || descLower.includes("één motor") || nameLower.includes("1-motorig")) {
+    features.push("1 motor voor gecombineerde relax- en sta-op bediening");
+  } else if (descLower.includes("zonder motoren") || descLower.includes("mechanische") || descLower.includes("geen motoren")) {
+    features.push("Mechanische sta-op ondersteuning zonder snoeren");
+  } else if (chair.brand === "Fitform" || chair.brand === "Doge") {
+    features.push("3 motoren voor onafhankelijke rug-, voeten- en kantelbediening");
+  } else {
+    features.push("Elektrische sta-op ondersteuning en relaxverstelling");
+  }
+  
+  // 4. Special features detection
+  if (descLower.includes("lendensteun") || descLower.includes("lumbaalsteun") || descLower.includes("rugklacht") || descLower.includes("rugsteun")) {
+    features.push("Ergonomische lendensteun ter preventie van rugpijn");
+  } else if (descLower.includes("topswing") || descLower.includes("nekondersteuning") || descLower.includes("nekklacht") || descLower.includes("hoofdondersteuning")) {
+    features.push("Inclusief verstelbare topswing hoofdondersteuning");
+  } else if (descLower.includes("hart-lig") || descLower.includes("vocht") || descLower.includes("benen hoger")) {
+    features.push("Hart-lig-stand ter voorkoming van vochtophoping in benen");
+  } else if (descLower.includes("kantel") || descLower.includes("ligstand") || descLower.includes("relaxstand")) {
+    features.push("Comfortabele relax- en ligstand (kantelfunctie)");
+  } else if (descLower.includes("accu") || descLower.includes("batterij")) {
+    features.push("Ingebouwde accu: draadloos overal in de kamer te plaatsen");
+  } else if (descLower.includes("draaibaar") || descLower.includes("draaivoet")) {
+    features.push("Draaibare voet met automatische beveiliging bij opstaan");
+  }
+  
+  // Fallback if we have fewer than 3 features
+  if (features.length < 3 && chair.description) {
+    const sentences = chair.description.split(/[.!?]+/);
+    if (sentences[0] && sentences[0].trim().length > 10) {
+      features.push(sentences[0].trim() + ".");
+    }
+  }
+  
+  return features.slice(0, 4); // return max 4 features
+}
+
+// Helper to construct dynamic suitability description based on answers
+function getChairSuitability(chair, height, complaints) {
+  const parts = [];
+  const brand = chair.brand;
+  const descLower = (chair.description || "").toLowerCase();
+  
+  if (brand === "Fitform") {
+    parts.push("Uiterst geschikt bij specifieke fysieke klachten dankzij de exacte instelbaarheid.");
+  } else if (brand === "Doge") {
+    parts.push("Aanbevolen bij mobiliteitsklachten door de extreem stabiele sta-op ondersteuning.");
+  } else {
+    parts.push("Comfortabele fauteuil die uitstekende algemene ondersteuning biedt bij het opstaan.");
+  }
+  
+  // Size match comment
+  if (height === "small" && (descLower.includes("maat s") || descLower.includes("small"))) {
+    parts.push("Perfecte ergonomische zithoogte voor kleinere lichaamslengtes.");
+  } else if (height === "large" && (descLower.includes("maat l") || descLower.includes("large"))) {
+    parts.push("Uitstekende zitdiepte en rugondersteuning voor langere personen.");
+  }
+  
+  // Complaint match comment
+  if (complaints.includes("legs") && (descLower.includes("benen") || descLower.includes("hart-lig") || descLower.includes("vocht"))) {
+    parts.push("Ideaal bij vochtophoping door de speciale relaxstand.");
+  }
+  
+  return parts.join(" ");
+}
+
+// Helper to format price as localized Dutch currency (e.g. 1250 to € 1.250,-)
+function formatPrice(priceVal) {
+  if (typeof priceVal === 'string') return priceVal;
+  const numPrice = parseInt(priceVal);
+  if (isNaN(numPrice)) return `€ ${priceVal}`;
+  return `€ ${numPrice.toLocaleString('nl-NL')},-`;
+}
+
 function renderWizardResults() {
   const resultsContainer = document.getElementById("wizardResults");
   resultsContainer.innerHTML = "";
   
-  // Filtering logic
+  // Filtering variables
   const height = state.wizardAnswers.height;
   const complaints = state.wizardAnswers.complaints;
   const motorsWanted = parseInt(state.wizardAnswers.motors);
   const modernWanted = state.wizardAnswers.modern;
   
-  // Score and filter models
-  const scoredChairs = CHAIR_DATABASE.map(chair => {
-    let score = 0;
-    
-    // Check height suitability (crucial)
-    if (chair.sizes.includes(height)) {
-      score += 5; // highly compatible size
-    } else {
-      score -= 2;
-    }
-    
-    // Check motor config matches
-    if (chair.motors.includes(motorsWanted)) {
-      score += 3;
-    }
-    
-    // Check style match
-    if (modernWanted && chair.modern) {
-      score += 2;
-    }
-    
-    // Check complaint alignment
-    if (complaints.includes("back") && chair.features.some(f => f.toLowerCase().includes("rug") || f.toLowerCase().includes("lendensteun"))) {
-      score += 2;
-    }
-    if (complaints.includes("neck") && chair.features.some(f => f.toLowerCase().includes("nek") || f.toLowerCase().includes("topswing"))) {
-      score += 2;
-    }
-    if (complaints.includes("legs") && chair.features.some(f => f.toLowerCase().includes("hart-lig") || f.toLowerCase().includes("kantel"))) {
-      score += 2;
-    }
-    
-    return { ...chair, score };
-  });
+  // Score and filter models from dynamic state.chairs
+  const scoredChairs = state.chairs
+    .filter(chair => {
+      // Exclude sold or reserved chairs
+      if (chair.status === "verkocht" || chair.status === "gereserveerd") {
+        return false;
+      }
+      return true;
+    })
+    .map(chair => {
+      let score = 0;
+      const descLower = (chair.description || "").toLowerCase();
+      const nameLower = (chair.name || "").toLowerCase();
+      const brandLower = (chair.brand || "").toLowerCase();
+      const badgeLower = (chair.badge || "").toLowerCase();
+      
+      // 1. Check height suitability
+      if (brandLower.includes("fitform") || brandLower.includes("doge") || descLower.includes("vario") || descLower.includes("modulair") || descLower.includes("instelbaar") || descLower.includes("s/m/l") || descLower.includes("maatvoeringen")) {
+        score += 5; // fully customizable sizing fits everyone
+      } else {
+        const hasSmall = descLower.includes("maat s") || descLower.includes("small") || nameLower.includes(" s ") || nameLower.endsWith(" s");
+        const hasMedium = descLower.includes("maat m") || descLower.includes("medium") || nameLower.includes(" m ") || nameLower.endsWith(" m");
+        const hasLarge = descLower.includes("maat l") || descLower.includes("large") || nameLower.includes(" l ") || nameLower.endsWith(" l");
+        
+        if (height === "small") {
+          if (hasSmall) score += 5;
+          else if (!hasMedium && !hasLarge) score += 3; // default neutral
+        } else if (height === "medium") {
+          if (hasMedium) score += 5;
+          else if (!hasSmall && !hasLarge) score += 4; // standard fit
+        } else if (height === "large") {
+          if (hasLarge) score += 5;
+          else if (!hasSmall && !hasMedium) score += 3; // default neutral
+        }
+      }
+      
+      // 2. Check motor config
+      const isFourMotor = descLower.includes("4-motorig") || descLower.includes("4 motoren") || nameLower.includes("4-motorig");
+      const isThreeMotor = descLower.includes("3-motorig") || descLower.includes("3 motoren") || nameLower.includes("3-motorig") || brandLower.includes("fitform") || brandLower.includes("doge");
+      const isTwoMotor = descLower.includes("2-motorig") || descLower.includes("2 motoren") || nameLower.includes("2-motorig");
+      const isOneMotor = descLower.includes("1-motorig") || descLower.includes("1 motor") || nameLower.includes("1-motorig") || descLower.includes("2 knopjes");
+      const isManual = descLower.includes("zonder motoren") || descLower.includes("mechanische");
+      
+      if (motorsWanted === 3) {
+        if (isFourMotor || isThreeMotor) {
+          score += 4;
+        } else if (isTwoMotor) {
+          score += 2; // partial match
+        } else if (isOneMotor || isManual) {
+          score -= 1; // negative match
+        }
+      } else if (motorsWanted === 1) {
+        if (isOneMotor || isManual) {
+          score += 4;
+        } else if (isTwoMotor) {
+          score += 2; // close enough
+        } else if (isThreeMotor || isFourMotor) {
+          score += 1; // can work but is more complex than wanted
+        }
+      }
+      
+      // 3. Check style match (modern)
+      const isModern = descLower.includes("modern") || descLower.includes("design") || descLower.includes("strak") || descLower.includes("trendy") || descLower.includes("industrieel") || descLower.includes("draaibaar") || descLower.includes("draaivoet") || brandLower.includes("dfm") || brandLower.includes("mecam") || badgeLower.includes("modern") || badgeLower.includes("design") || badgeLower.includes("luxe");
+      if (modernWanted && isModern) {
+        score += 2;
+      }
+      
+      // 4. Check complaint alignment
+      if (complaints.includes("back") && (descLower.includes("rug") || descLower.includes("lendensteun") || descLower.includes("lumbaal") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
+        score += 2;
+      }
+      if (complaints.includes("neck") && (descLower.includes("nek") || descLower.includes("schouder") || descLower.includes("topswing") || descLower.includes("hoofd") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
+        score += 2;
+      }
+      if (complaints.includes("legs") && (descLower.includes("benen") || descLower.includes("hart-lig") || descLower.includes("vocht") || descLower.includes("kantel") || descLower.includes("ligstand") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
+        score += 2;
+      }
+      
+      return { ...chair, score };
+    });
   
-  // Sort by score descending and take top matches (must have score > 0)
+  // Sort by score descending and take top matches (must have score >= 3)
   const matches = scoredChairs
     .filter(chair => chair.score >= 3)
     .sort((a, b) => b.score - a.score);
@@ -465,7 +657,7 @@ function renderWizardResults() {
     resultsContainer.innerHTML = `
       <div class="no-results" style="grid-column: 1 / -1;">
         <h3>Geen exacte match gevonden</h3>
-        <p style="margin-top: 8px;">Onze excuses, op basis van uw antwoorden hebben we geen standaard model dat 100% past. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Plan een passing aan huis voor een gratis meting.</p>
+        <p style="margin-top: 8px;">Onze excuses, op basis van uw antwoorden hebben we momenteel geen standaard model in de database dat 100% past. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Plan een passing aan huis voor een gratis meting en advies.</p>
         <a href="#afspraak-planner" class="btn btn-secondary" style="margin-top: 16px;">Vrijblijvend Advies Inplannen</a>
       </div>
     `;
@@ -476,27 +668,31 @@ function renderWizardResults() {
     const card = document.createElement("div");
     card.className = "product-card";
     
-    const featuresHtml = chair.features
+    // Generate dynamic features & suitability
+    const dynamicFeatures = getChairFeatures(chair);
+    const dynamicSuitability = getChairSuitability(chair, height, complaints);
+    
+    const featuresHtml = dynamicFeatures
       .map(feat => `<li>${feat}</li>`)
       .join("");
       
     card.innerHTML = `
-      <div class="product-image">
-        ${chair.image ? `<img src="${chair.image}" alt="${chair.name}">` : `<span>${chair.emoji}</span>`}
-        ${chair.badge ? `<span class="badge">${chair.badge}</span>` : ""}
+      <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 200px; padding: 10px;">
+        ${chair.image ? `<img src="${chair.image}" alt="${chair.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">` : `<span style="font-size: 3rem;">🛋️</span>`}
+        ${chair.badge ? `<span class="badge ${chair.badgeType === "new" ? "badge-new" : "badge-reco"}">${chair.badge}</span>` : ""}
       </div>
       <div class="product-info">
         <h3 class="product-title">${chair.name}</h3>
         <p style="font-size: 0.85rem; color: var(--color-terracotta); font-weight:600; margin-bottom: 12px;">
-          ${chair.suitability}
+          ${dynamicSuitability}
         </p>
         <ul class="product-features">
           ${featuresHtml}
         </ul>
         <div class="product-price-row">
           <div>
-            <span class="price-label">Revisieprijs vanaf</span>
-            <span class="price-value" style="display: block;">${chair.price}</span>
+            <span class="price-label">Prijs vanaf</span>
+            <span class="price-value" style="display: block;">${formatPrice(chair.price)}</span>
           </div>
           <button type="button" class="btn btn-secondary" onclick="prefillBooking('${chair.name}')" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
             Gratis Thuispassen
