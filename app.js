@@ -842,13 +842,21 @@ function initCalendar() {
     state.appointmentType = "home";
     state.selectedTimeSlot = null; // Reset selection on type change
     
+    // Reset selected date if it is a Monday (since home visits are never on Mondays)
+    if (state.selectedDate && state.selectedDate.getDay() === 1) {
+      state.selectedDate = null;
+      const selectedDateText = document.getElementById("selectedDateText");
+      if (selectedDateText) selectedDateText.textContent = "Geen datum geselecteerd";
+    }
+    
     // Show address inputs and mark required
     if (homeAddressWrapper) homeAddressWrapper.style.display = "block";
     if (postcodeField) postcodeField.required = true;
     if (houseNumberField) houseNumberField.required = true;
     if (addressField) addressField.required = true;
 
-    // Refresh time slots grid
+    // Redraw calendar and time slots
+    renderCalendar();
     renderTimeSlots();
   });
   
@@ -876,7 +884,8 @@ function initCalendar() {
     }
     if (addressFeedback) addressFeedback.textContent = "";
 
-    // Refresh time slots grid
+    // Redraw calendar and time slots
+    renderCalendar();
     renderTimeSlots();
   });
   
@@ -1244,7 +1253,10 @@ function renderCalendar() {
     // Disable Sundays (closed)
     const isSunday = thisDate.getDay() === 0;
     
-    if (isPast || isSunday) {
+    // Disable Mondays for Home passing (Maandag kan ik nooit thuispassen)
+    const isMondayHome = thisDate.getDay() === 1 && state.appointmentType === "home";
+    
+    if (isPast || isSunday || isMondayHome) {
       dateCell.disabled = true;
     }
     
