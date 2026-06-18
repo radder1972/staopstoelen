@@ -840,12 +840,16 @@ function initCalendar() {
     typeHome.querySelector("input").checked = true;
     
     state.appointmentType = "home";
+    state.selectedTimeSlot = null; // Reset selection on type change
     
     // Show address inputs and mark required
     if (homeAddressWrapper) homeAddressWrapper.style.display = "block";
     if (postcodeField) postcodeField.required = true;
     if (houseNumberField) houseNumberField.required = true;
     if (addressField) addressField.required = true;
+
+    // Refresh time slots grid
+    renderTimeSlots();
   });
   
   typeShowroom.addEventListener("click", () => {
@@ -854,6 +858,7 @@ function initCalendar() {
     typeShowroom.querySelector("input").checked = true;
     
     state.appointmentType = "showroom";
+    state.selectedTimeSlot = null; // Reset selection on type change
     
     // Hide address since visit is in Dordrecht
     if (homeAddressWrapper) homeAddressWrapper.style.display = "none";
@@ -870,6 +875,9 @@ function initCalendar() {
       addressField.value = "";
     }
     if (addressFeedback) addressFeedback.textContent = "";
+
+    // Refresh time slots grid
+    renderTimeSlots();
   });
   
   // Address Checker via PDOK Locatieserver (BAG) API
@@ -1283,18 +1291,25 @@ function renderTimeSlots() {
   const today = new Date();
   const isToday = state.selectedDate.toDateString() === today.toDateString();
   
+  // Dynamic time slots depending on appointment type
+  const slots = state.appointmentType === "home"
+    ? ["16:00 - 18:00", "18:00 - 20:00"]
+    : ["10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00"];
+  
   // Helper to render the actual buttons
   const drawSlots = (busySlots) => {
     grid.innerHTML = "";
     
-    state.timeSlots.forEach((slot, idx) => {
+    slots.forEach((slot, idx) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "time-slot-btn";
       btn.textContent = slot;
       
-      // Saturday afternoon is closed (e.g. index 2 and 3)
-      const satDisabled = isSaturday && idx >= 2;
+      // Saturday afternoon is closed:
+      // - Showroom: after 14:00 (index 2) is closed
+      // - Home: after 18:00 (index 1) is closed
+      const satDisabled = isSaturday && (state.appointmentType === "showroom" ? idx >= 2 : idx >= 1);
       
       // If we have live data, check if the slot is in busySlots.
       // Otherwise, fall back to the deterministic math formula.
