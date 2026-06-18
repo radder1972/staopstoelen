@@ -147,7 +147,7 @@ async function loadWizardChairs() {
   
   // 2. Try API
   try {
-    const response = await fetch("http://localhost:3000/api/chairs");
+    const response = await fetch("/api/chairs");
     if (response.ok) {
       const dbData = await response.json();
       if (dbData && dbData.staopstoelen) {
