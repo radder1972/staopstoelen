@@ -1334,7 +1334,8 @@
     let currentSortAsc = true;
     
     // API Configuration for local database integration
-    const API_URL = "/api/chairs";
+    const API_BASE = (window.location.protocol === "file:") ? "http://localhost:3000" : "";
+    const API_URL = API_BASE + "/api/chairs";
     let isApiConnected = false;
     let fullDbData = null;
 
@@ -1880,7 +1881,7 @@
             fileData: e.target.result
           };
 
-          const response = await fetch("/api/upload", {
+          const response = await fetch(API_BASE + "/api/upload", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -1932,7 +1933,7 @@
     // ==========================================
     // BRANDS MANAGEMENT SYSTEM INTEGRATION
     // ==========================================
-    const BRANDS_API_URL = "/api/brands";
+    const BRANDS_API_URL = API_BASE + "/api/brands";
     let brandsData = [];
 
     async function fetchBrands() {
