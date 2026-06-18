@@ -1613,8 +1613,8 @@
     const btnUploadAmbientImage = document.getElementById("btnUploadAmbientImage");
     
     function resetForm() {
-      if (typeof populateBrandSelect === 'function') populateBrandSelect();
       chairForm.reset();
+      if (typeof populateBrandSelect === 'function') populateBrandSelect();
       document.getElementById("formChairIndex").value = "";
       document.getElementById("formTitle").textContent = "Nieuwe Stoel Toevoegen";
       document.getElementById("chairCondition").value = "nieuw";
@@ -1942,6 +1942,8 @@
           const res = await response.json();
           brandsData = res.brands || [];
           console.log("Loaded brands successfully from API!");
+        } else {
+          throw new Error("Brands API responded with error " + response.status);
         }
       } catch (e) {
         console.warn("Could not connect to brands API. Using fallback.", e);
@@ -1980,6 +1982,8 @@
       
       if (selectedBrand) {
         select.value = selectedBrand;
+      } else if (allBrands.length > 0) {
+        select.value = allBrands[0].name;
       }
     }
     
