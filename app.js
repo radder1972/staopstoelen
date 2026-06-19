@@ -1250,6 +1250,12 @@ function renderCalendar() {
   const totalDays = new Date(year, month + 1, 0).getDate();
   const today = new Date(); // Live current date
   
+  // Calculate today at 00:00:00
+  const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  // Calculate minimum allowed booking date (today + 2 days)
+  const minAllowedDate = new Date(todayStart.getTime());
+  minAllowedDate.setDate(minAllowedDate.getDate() + 2);
+  
   for (let day = 1; day <= totalDays; day++) {
     const dateCell = document.createElement("button");
     dateCell.type = "button";
@@ -1258,8 +1264,8 @@ function renderCalendar() {
     
     const thisDate = new Date(year, month, day);
     
-    // Disable past dates
-    const isPast = thisDate < today && thisDate.toDateString() !== today.toDateString();
+    // Disable past dates and dates less than 2 days in advance (today and tomorrow)
+    const isPastOrTooSoon = thisDate < minAllowedDate;
     
     // Disable Sundays (closed)
     const isSunday = thisDate.getDay() === 0;
@@ -1267,7 +1273,7 @@ function renderCalendar() {
     // Disable Mondays for Home passing (Maandag kan ik nooit thuispassen)
     const isMondayHome = thisDate.getDay() === 1 && state.appointmentType === "home";
     
-    if (isPast || isSunday || isMondayHome) {
+    if (isPastOrTooSoon || isSunday || isMondayHome) {
       dateCell.disabled = true;
     }
     
