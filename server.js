@@ -511,6 +511,10 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Local Database API Server running at http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  server.listen(PORT, () => {
+    console.log(`Local Database API Server running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = server;
