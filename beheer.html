@@ -465,6 +465,47 @@
       justify-content: flex-end;
       gap: 16px;
     }
+    
+    /* Upload Section and Box Styles */
+    .upload-section-card {
+      border: 2px dashed var(--color-sky);
+      background-color: rgba(188, 228, 242, 0.12); /* light translucent sky blue */
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .upload-section-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      margin-top: 0;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .upload-box {
+      background-color: var(--color-light);
+      border: 1.5px solid var(--color-gray-light);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 16px;
+      transition: var(--transition-smooth);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .upload-box:hover {
+      border-color: var(--color-forest);
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.08);
+    }
+    .upload-box:last-child {
+      margin-bottom: 0;
+    }
+    .upload-box .form-label {
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--color-forest);
+    }
   </style>
 </head>
 <body>
@@ -571,59 +612,65 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="chairImage">Productafbeelding (Zitstand / Downstand)</label>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <input type="text" class="form-control" id="chairImage" required placeholder="assets/chair_naam.png" style="flex: 1;">
-                <input type="file" id="chairImageFile" accept="image/*" style="display: none;">
-                <button type="button" class="btn btn-outline" id="btnUploadImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
-                  📁 Kies Bestand
-                </button>
+            <div class="upload-section-card">
+              <div class="upload-section-title">
+                🖼️ Stoelafbeeldingen & Sfeerfoto's
               </div>
-              <div id="chairImagePreview" style="margin-top: 10px; display: none;">
-                <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+              
+              <div class="upload-box">
+                <label class="form-label" for="chairImage">Productafbeelding (Zitstand / Downstand)</label>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                  <input type="text" class="form-control" id="chairImage" required placeholder="assets/chair_naam.png" style="flex: 1;">
+                  <input type="file" id="chairImageFile" accept="image/*" style="display: none;">
+                  <button type="button" class="btn btn-outline" id="btnUploadImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
+                    📁 Kies Bestand
+                  </button>
+                </div>
+                <div id="chairImagePreview" style="margin-top: 10px; display: none;">
+                  <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="chairImageUp">Productafbeelding (Sta-opstand / Upstand)</label>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <input type="text" class="form-control" id="chairImageUp" placeholder="assets/chair_naam_lift.png" style="flex: 1;">
-                <input type="file" id="chairImageUpFile" accept="image/*" style="display: none;">
-                <button type="button" class="btn btn-outline" id="btnUploadImageUp" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
-                  📁 Kies Bestand
-                </button>
+              <div class="upload-box">
+                <label class="form-label" for="chairImageUp">Productafbeelding (Sta-opstand / Upstand)</label>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                  <input type="text" class="form-control" id="chairImageUp" placeholder="assets/chair_naam_lift.png" style="flex: 1;">
+                  <input type="file" id="chairImageUpFile" accept="image/*" style="display: none;">
+                  <button type="button" class="btn btn-outline" id="btnUploadImageUp" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
+                    📁 Kies Bestand
+                  </button>
+                </div>
+                <div id="chairImageUpPreview" style="margin-top: 10px; display: none;">
+                  <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+                </div>
               </div>
-              <div id="chairImageUpPreview" style="margin-top: 10px; display: none;">
-                <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
-              </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="chairImageLie">Productafbeelding (Ligstand / Lay-flat)</label>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <input type="text" class="form-control" id="chairImageLie" placeholder="assets/chair_naam_lig.png" style="flex: 1;">
-                <input type="file" id="chairImageLieFile" accept="image/*" style="display: none;">
-                <button type="button" class="btn btn-outline" id="btnUploadImageLie" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
-                  📁 Kies Bestand
-                </button>
+              <div class="upload-box">
+                <label class="form-label" for="chairImageLie">Productafbeelding (Ligstand / Lay-flat)</label>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                  <input type="text" class="form-control" id="chairImageLie" placeholder="assets/chair_naam_lig.png" style="flex: 1;">
+                  <input type="file" id="chairImageLieFile" accept="image/*" style="display: none;">
+                  <button type="button" class="btn btn-outline" id="btnUploadImageLie" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
+                    📁 Kies Bestand
+                  </button>
+                </div>
+                <div id="chairImageLiePreview" style="margin-top: 10px; display: none;">
+                  <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+                </div>
               </div>
-              <div id="chairImageLiePreview" style="margin-top: 10px; display: none;">
-                <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
-              </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="chairAmbientImage">Sfeerfoto (Interieur)</label>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/chair_naam_cozy.png" style="flex: 1;">
-                <input type="file" id="chairAmbientImageFile" accept="image/*" style="display: none;">
-                <button type="button" class="btn btn-outline" id="btnUploadAmbientImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
-                  📁 Kies Bestand
-                </button>
-              </div>
-              <div id="chairAmbientImagePreview" style="margin-top: 10px; display: none;">
-                <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+              <div class="upload-box">
+                <label class="form-label" for="chairAmbientImage">Sfeerfoto (Interieur)</label>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                  <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/chair_naam_cozy.png" style="flex: 1;">
+                  <input type="file" id="chairAmbientImageFile" accept="image/*" style="display: none;">
+                  <button type="button" class="btn btn-outline" id="btnUploadAmbientImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap;">
+                    📁 Kies Bestand
+                  </button>
+                </div>
+                <div id="chairAmbientImagePreview" style="margin-top: 10px; display: none;">
+                  <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+                </div>
               </div>
             </div>
 
