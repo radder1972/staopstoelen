@@ -4,7 +4,6 @@ const path = require('path');
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
-const imageProvider = process.env.IMAGE_STORAGE_PROVIDER || 'local';
 
 let supabase = null;
 if (supabaseUrl && supabaseKey) {
@@ -14,6 +13,8 @@ if (supabaseUrl && supabaseKey) {
     console.error('Error initializing Supabase client:', e);
   }
 }
+
+const imageProvider = process.env.IMAGE_STORAGE_PROVIDER || (supabase ? 'supabase' : 'local');
 
 module.exports = async (req, res) => {
   // CORS headers
