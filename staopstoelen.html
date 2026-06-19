@@ -366,6 +366,7 @@
           <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
             <button type="button" class="gallery-tab active" id="tabDown">Zitstand</button>
             <button type="button" class="gallery-tab" id="tabUp" style="display: none;">Sta-opstand</button>
+            <button type="button" class="gallery-tab" id="tabLie" style="display: none;">Ligstand</button>
             <button type="button" class="gallery-tab" id="tabAmbient" style="display: none;">In Interieur</button>
           </div>
         </div>
@@ -1228,34 +1229,40 @@
 
       // Handle gallery tabs dynamically depending on which images are present
       const hasUp = !!item.imageUp;
+      const hasLie = !!item.imageLie;
       const hasAmbient = !!item.ambientImage;
       
       const tabDown = document.getElementById("tabDown");
       const tabUp = document.getElementById("tabUp");
+      const tabLie = document.getElementById("tabLie");
       const tabAmbient = document.getElementById("tabAmbient");
       
       // Reset tab states
       tabDown.classList.add("active");
       tabUp.classList.remove("active");
+      tabLie.classList.remove("active");
       tabAmbient.classList.remove("active");
       
-      if (hasUp || hasAmbient) {
+      if (hasUp || hasLie || hasAmbient) {
         modalTabs.style.display = "flex";
         
         // Show/hide relevant tab buttons
         tabUp.style.display = hasUp ? "block" : "none";
+        tabLie.style.display = hasLie ? "block" : "none";
         tabAmbient.style.display = hasAmbient ? "block" : "none";
         
         // Remove old event listeners via cloning
         const newTabDown = tabDown.cloneNode(true);
         const newTabUp = tabUp.cloneNode(true);
+        const newTabLie = tabLie.cloneNode(true);
         const newTabAmbient = tabAmbient.cloneNode(true);
         
         tabDown.parentNode.replaceChild(newTabDown, tabDown);
         tabUp.parentNode.replaceChild(newTabUp, tabUp);
+        tabLie.parentNode.replaceChild(newTabLie, tabLie);
         tabAmbient.parentNode.replaceChild(newTabAmbient, tabAmbient);
         
-        const tabs = [newTabDown, newTabUp, newTabAmbient];
+        const tabs = [newTabDown, newTabUp, newTabLie, newTabAmbient];
         const setImg = (src) => {
           modalImg.style.opacity = 0;
           setTimeout(() => {
@@ -1275,6 +1282,14 @@
             tabs.forEach(t => t.classList.remove("active"));
             newTabUp.classList.add("active");
             setImg(item.imageUp);
+          });
+        }
+        
+        if (hasLie) {
+          newTabLie.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            newTabLie.classList.add("active");
+            setImg(item.imageLie);
           });
         }
         
