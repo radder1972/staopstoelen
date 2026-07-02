@@ -199,102 +199,18 @@
   </section>
 
   <!-- Catalog Section -->
-  <section class="subpage-section">
+
+  <main class="main-content subpage-section">
     <div class="container">
-      <a href="<?php echo home_url('/'); ?>" class="back-link">← Terug naar Home</a>
-
-      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Senioren Stoelen</h2>
-
-      <div class="catalog-layout">
-        <!-- Sidebar filters -->
-        <aside class="filter-sidebar">
-          <div class="filter-group">
-            <h3 class="filter-group-title">Sorteer Op</h3>
-            <select class="sort-select" id="sortSelect">
-              <option value="default">Standaard</option>
-              <option value="price-asc">Prijs: Laag naar Hoog</option>
-              <option value="price-desc">Prijs: Hoog naar Laag</option>
-              <option value="type-relax">Type: Senioren Stoel eerst</option>
-              <option value="type-staop">Type: Sta-op Stoel eerst</option>
-              <option value="material-stof">Materiaal: Stof eerst</option>
-              <option value="material-leer">Materiaal: Leer eerst</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Type stoel</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="type-filter" value="staop">
-              <span>Sta-op Stoel</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="type-filter" value="relax" checked>
-              <span>Senioren Stoel</span>
-            </label>
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Conditie</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="condition-filter" value="nieuw">
-              <span>Nieuw</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="condition-filter" value="occasion">
-              <span>Occasion</span>
-            </label>
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Materiaal</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="material-filter" value="stof">
-              <span>Stof</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="material-filter" value="leer">
-              <span>Leer</span>
-            </label>
-          </div>
-
-          <div class="filter-group" id="brandFilterGroup">
-            <h3 class="filter-group-title">Merk</h3>
-            <!-- Dynamisch ingeladen op basis van merken in de database -->
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Prijsklasse</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="price-filter" value="under-1500">
-              <span>Onder € 1.500</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="price-filter" value="1500-2500">
-              <span>€ 1.500 - € 2.500</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="price-filter" value="over-2500">
-              <span>Boven € 2.500</span>
-            </label>
-          </div>
-
-          <div class="filter-group" style="border-bottom:none; padding-bottom:0;">
-            <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.95rem; line-height:1.6; color:var(--color-dark);">
-              <strong>🌿 Optimaal op maat:</strong> Al onze sta-op stoelen (nieuw, gebruikt én geconditioneerd) worden door onze BewegingsTechnologen exact ingesteld op uw lichaamsmaten voor optimaal comfort.
-            </div>
-          </div>
-        </aside>
-
-        <!-- Product Grid -->
-        <main>
-          <div class="catalog-grid" id="catalogGrid">
-            <!-- Rendered dynamically via JavaScript -->
-          </div>
-        </main>
-      </div>
+      <?php
+      while ( have_posts() ) :
+          the_post();
+          the_content();
+      endwhile;
+      ?>
     </div>
-  </section>
-
+  </main>
+  
   <!-- Footer Section -->
   <footer>
     <div class="container footer-grid">

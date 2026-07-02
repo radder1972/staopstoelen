@@ -113,99 +113,18 @@
 
 
   <!-- Revisieproces Before/After Slider Section -->
-  <section id="revisie" class="slider-section subpage-section">
+
+  <main class="main-content subpage-section">
     <div class="container">
-      <a href="<?php echo home_url('/'); ?>" class="back-link">← Terug naar Home</a>
-      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Het Unieke Revisieproces</h2>
-      
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
-        Bij staopstoelen.nl geloven we in duurzaamheid en topkwaliteit. Onze gediplomeerde BewegingsTechnologen reviseren premium A-merk sta-op stoelen (zoals Fitform en Doge) tot in het kleinste detail. Van het volledig reinigen en controleren van de motoren tot het vernieuwen van de vulling en de bekleding: elke stoel verlaat onze werkplaats als nieuw. Bekijk hieronder hoe wij stap voor stap te werk gaan, en vergelijk zelf het verschil met de interactieve voor-en-na-slider.
-      </p>
-
-      <!-- Interactive Slideshow Section (Revisie stappen) -->
-      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 32px; border-radius: var(--radius-lg); margin: 32px 0 50px 0; flex-wrap: wrap;">
-        <!-- Left Side: Interactive Slideshow -->
-        <div style="position: relative; width: 180px; height: 240px; flex-shrink: 0; margin: 0 auto;">
-          <img id="revisieSlideImg" src="<?php echo get_theme_asset_url('revisie_stap3.jpg'); ?>" alt="Revisieproces stap 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); border: 3px solid var(--color-light); box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; transition: opacity 0.2s ease;">
-          <div style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; background-color: rgba(0,0,0,0.65); padding: 6px 12px; border-radius: var(--radius-full); backdrop-filter: blur(4px); color: var(--color-light); font-size: 0.8rem; z-index: 10; user-select: none;">
-            <button id="prevSlideBtn" style="color: white; font-weight: bold; padding: 0 4px; background: none; border: none; cursor: pointer; font-size: 0.9rem;">❮</button>
-            <span id="revisieSlideCounter" style="font-weight: 600; min-width: 32px; text-align: center;">1 / 4</span>
-            <button id="nextSlideBtn" style="color: white; font-weight: bold; padding: 0 4px; background: none; border: none; cursor: pointer; font-size: 0.9rem;">❯</button>
-          </div>
-        </div>
-
-        <!-- Right Side: Content Details -->
-        <div style="flex: 1; min-width: 280px;">
-          <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 8px; font-size: 0.8rem; display: inline-block;">Revisie in beeld</span>
-          <h3 id="revisieSlideTitle" style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 0 0 4px 0; font-family: var(--font-heading);">Stap 1: Volledig strippen van het frame</h3>
-          <p id="revisieSlideSub" style="font-size: 0.95rem; font-weight: 600; color: var(--color-forest); margin-bottom: 12px;">Grondige reiniging en controle van mechaniek</p>
-          <p id="revisieSlideDesc" style="font-size: 0.95rem; line-height: 1.7; color: var(--color-dark); margin: 0;">
-            We strippen de stoel volledig tot op het metalen basisframe. De motoren, kabels en de elektronische besturing worden grondig gecontroleerd, gereinigd en getest. Eventuele versleten bedrading of zwakke componenten worden direct vervangen.
-          </p>
-        </div>
-      </div>
-
-      <!-- Before / After Interactive Slider Section -->
-      <div style="margin-bottom: 50px;">
-        <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 12px; font-size: 0.8rem; display: inline-block;">Vergelijk Oud & Nieuw</span>
-        <h3 style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 0 0 16px 0; font-family: var(--font-heading);">Interactieve Voor- en Na-vergelijking</h3>
-        <p style="margin-bottom: 24px; color: var(--color-gray); font-size: 0.95rem; line-height: 1.6;">
-          Versleep de hendel in het midden van de afbeelding om het verschil te zien tussen een gebruikte stoel en het volledig gereviseerde eindresultaat.
-        </p>
-        <div class="slider-wrapper" id="sliderWrapper">
-          <!-- Before slide (Old state) -->
-          <div class="slider-img slider-before">
-            <div class="slider-content-inner">
-              <span class="slider-text-badge">Voor revisie (Oud model)</span>
-            </div>
-          </div>
-
-          <!-- After slide (New state) -->
-          <div class="slider-img slider-after" id="sliderAfterImage">
-            <div class="slider-content-inner">
-              <span class="slider-text-badge">Na Revisie (Als Nieuw)</span>
-            </div>
-          </div>
-
-          <!-- Slider Bar and Control Handle -->
-          <div class="slider-handle" id="sliderHandle">
-            <div class="slider-handle-button">↔</div>
-          </div>
-        </div>
-      </div>
-
-      <h2 class="section-title text-center" style="font-size: 1.85rem; margin-top: 40px; margin-bottom: 40px; color: var(--color-forest);">Hoe wij A-merken reviseren</h2>
-
-      <!-- Timeline explaining the process steps -->
-      <div class="timeline">
-        <div class="timeline-card">
-          <div class="timeline-number">1</div>
-          <h3 class="timeline-title">Grondige Inspectie</h3>
-          <p class="timeline-desc">Het frame, de motoren en de mechanische delen van A-merk stoelen (zoals Fitform en Doge) worden volledig doorgemeten en getest.</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-number">2</div>
-          <h3 class="timeline-title">Complete Vernieuwing</h3>
-          <p class="timeline-desc">Alle schuimdelen en de bekleding worden volledig vervangen door gecertificeerde, hoogwaardige en makkelijk te reinigen materialen.</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-number">3</div>
-          <h3 class="timeline-title">Ergonomische Afstelling</h3>
-          <p class="timeline-desc">Onze BewegingsTechnologen stellen de stoel bij aflevering exact in op uw zithoogte, zitdiepte en armleggerhoogte.</p>
-        </div>
-      </div>
-
-      <!-- CTA block -->
-      <div style="margin-top: 60px; background-color: var(--color-forest); color: var(--color-light); padding: 48px; border-radius: var(--radius-lg); text-align: center;">
-        <h2 style="color: var(--color-light); font-size: 1.75rem; margin-top: 0; margin-bottom: 16px;">Wilt u het comfort zelf ervaren?</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 32px auto;">
-          U bent van harte welkom in onze showroom in Dordrecht om onze stoelen te proberen. Bent u minder mobiel? Dan komen onze adviseurs ook graag bij u langs voor een passing aan huis.
-        </p>
-        <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-secondary">Plan een Adviesgesprek</a>
-      </div>
+      <?php
+      while ( have_posts() ) :
+          the_post();
+          the_content();
+      endwhile;
+      ?>
     </div>
-  </section>
-
+  </main>
+  
   <!-- Footer Section -->
   <footer>
     <div class="container footer-grid">

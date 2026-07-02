@@ -110,120 +110,18 @@
   </section>
 
   <!-- Keuzehulp Wizard Section -->
-  <section id="keuzehulp" class="subpage-section">
+
+  <main class="main-content subpage-section">
     <div class="container">
-      <a href="<?php echo home_url('/'); ?>" class="back-link">← Terug naar Home</a>
-      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">De Keuzehulp Wizard</h2>
-
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
-        Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en fysieke behoeftes. Onze BewegingsTechnologen hebben deze keuzehulp ontwikkeld om u te voorzien van een passend advies op maat. Beantwoord de vragen over uw lengte, eventuele fysieke klachten en voorkeuren, en ontdek direct welke ergonomische stoelen het beste bij uw situatie passen.
-      </p>
-
-      <div class="wizard-card" id="wizardCard">
-        <div class="wizard-progress">
-          <div class="wizard-progress-bar" id="progressBar"></div>
-          <div class="progress-step active" id="stepIndicator1">1</div>
-          <div class="progress-step" id="stepIndicator2">2</div>
-          <div class="progress-step" id="stepIndicator3">3</div>
-          <div class="progress-step" id="stepIndicator4">🏁</div>
-        </div>
-
-        <form id="wizardForm">
-          <!-- Step 1: Lichaamslengte -->
-          <div class="wizard-step active" id="step1">
-            <h3 class="wizard-step-title">Stap 1: Wat is de lichaamslengte van de gebruiker?</h3>
-            <div class="options-grid">
-              <label class="option-card" id="optHeightS">
-                <input type="radio" name="height" value="small">
-                <span class="option-icon">📏</span>
-                <span class="option-title">Minder dan 1.65m</span>
-                <span class="option-desc">Geschikt voor compactere zithoogtes (Maat S)</span>
-              </label>
-              <label class="option-card" id="optHeightM">
-                <input type="radio" name="height" value="medium" checked>
-                <span class="option-icon">📏</span>
-                <span class="option-title">1.65m tot 1.80m</span>
-                <span class="option-desc">Geschikt voor gemiddelde zithoogtes (Maat M)</span>
-              </label>
-              <label class="option-card" id="optHeightL">
-                <input type="radio" name="height" value="large">
-                <span class="option-icon">📏</span>
-                <span class="option-title">Langer dan 1.80m</span>
-                <span class="option-desc">Geschikt voor diepere en hogere zithoogtes (Maat L)</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Step 2: Fysieke Klachten -->
-          <div class="wizard-step" id="step2">
-            <h3 class="wizard-step-title">Stap 2: Zijn er specifieke fysieke klachten?</h3>
-            <p style="margin-bottom: 24px; color: var(--color-gray);">Selecteer alle opties die van toepassing zijn.</p>
-            <div class="options-grid">
-              <label class="option-card" id="optComplaintBack">
-                <input type="checkbox" name="complaints" value="back">
-                <span class="option-icon">⚡</span>
-                <span class="option-title">Lage Rugpijn</span>
-                <span class="option-desc">Vereist goede lendensteun (lumbaalsteun)</span>
-              </label>
-              <label class="option-card" id="optComplaintNeck">
-                <input type="checkbox" name="complaints" value="neck">
-                <span class="option-icon">🤕</span>
-                <span class="option-title">Nek- & Schouderklachten</span>
-                <span class="option-desc">Vereist een verstelbare topswing hoofdondersteuning</span>
-              </label>
-              <label class="option-card" id="optComplaintLegs">
-                <input type="checkbox" name="complaints" value="legs">
-                <span class="option-icon">👣</span>
-                <span class="option-title">Vochtophoping in benen</span>
-                <span class="option-desc">Vereist een 'hart-lig-stand' (kantelfunctie)</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Step 3: Wensen / Functies -->
-          <div class="wizard-step" id="step3">
-            <h3 class="wizard-step-title">Stap 3: Wat zijn uw aanvullende voorkeuren?</h3>
-            <div class="options-grid">
-              <label class="option-card" id="optOptionMotors">
-                <input type="radio" name="motors" value="3" checked>
-                <span class="option-icon">⚙️</span>
-                <span class="option-title">Maximaal instelbaar</span>
-                <span class="option-desc">3 motoren (onafhankelijke rug, voeten en kanteling)</span>
-              </label>
-              <label class="option-card" id="optOptionBasic">
-                <input type="radio" name="motors" value="1">
-                <span class="option-icon">🔌</span>
-                <span class="option-title">Eenvoudig & functioneel</span>
-                <span class="option-desc">1 motor (voetenbank en rug bewegen samen)</span>
-              </label>
-              <label class="option-card" id="optOptionModernDesign">
-                <input type="checkbox" name="modern" value="true">
-                <span class="option-icon">🌿</span>
-                <span class="option-title">Moderne uitstraling</span>
-                <span class="option-desc">Past bij actuele woontrends (stof of modern leder)</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Step 4: Resultaten -->
-          <div class="wizard-step" id="step4">
-            <h3 class="wizard-step-title" id="resultsTitle">Onze aanbevelingen op basis van uw antwoorden:</h3>
-            <div id="wizardResults" class="results-container">
-              <!-- Rendered via JavaScript -->
-            </div>
-          </div>
-
-          <!-- Navigation controls -->
-          <div class="wizard-nav">
-            <button type="button" class="btn btn-outline" id="btnWizardBack" style="display: none;">Vorige</button>
-            <button type="button" class="btn btn-primary" id="btnWizardNext" style="margin-left: auto;">Volgende</button>
-            <button type="button" class="btn btn-secondary" id="btnWizardReset" style="display: none; margin-left: auto;">Opnieuw Beginnen</button>
-          </div>
-        </form>
-      </div>
+      <?php
+      while ( have_posts() ) :
+          the_post();
+          the_content();
+      endwhile;
+      ?>
     </div>
-  </section>
-
+  </main>
+  
   <!-- Footer Section -->
   <footer>
     <div class="container footer-grid">

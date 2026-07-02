@@ -112,108 +112,18 @@
   </section>
 
   <!-- Social Proof / Customer Stories Section -->
-  <section id="klantverhalen" class="subpage-section">
+
+  <main class="main-content subpage-section">
     <div class="container">
-      <a href="<?php echo home_url('/'); ?>" class="back-link">← Terug naar Home</a>
-      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Klantverhalen & Ervaringen</h2>
-
-      <div class="testimonials-grid" style="margin-bottom: 50px;">
-        <div class="testimonial-card">
-          <div class="testimonial-body-wrapper">
-            <div class="testimonial-content">
-              <p class="testimonial-text">
-                "Sinds ik mijn 3-motorige Fitform stoel van staopstoelen.nl heb, heb ik veel minder last van mijn onderrug. De service aan huis was fantastisch; de BewegingsTechnoloog heeft de stoel ter plekke exact op mijn maat ingesteld. Mijn kinderen waren blij dat het model zo mooi past in ons interieur."
-              </p>
-              <div class="testimonial-user">
-                <div class="user-avatar">👵</div>
-                <div>
-                  <div class="user-name">Mevrouw de Vries</div>
-                  <div class="user-location">Dordrecht</div>
-                </div>
-              </div>
-            </div>
-            <div class="polaroid-frame">
-              <img src="<?php echo get_theme_asset_url('review_devries.png'); ?>" alt="Foto van Mevrouw de Vries in haar Fitform stoel">
-              <div class="polaroid-caption">Mevrouw de Vries</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-body-wrapper">
-            <div class="testimonial-content">
-              <p class="testimonial-text">
-                "Ik zocht een kwalitatieve stoel voor mijn vader die moeite had met opstaan. We wilden liever geen oubollig model. Het gereviseerde model dat we hier kochten ziet er werkelijk als nieuw uit en past uitstekend in zijn moderne huiskamer. Het revisieproces gaf ons direct veel vertrouwen."
-              </p>
-              <div class="testimonial-user">
-                <div class="user-avatar">👨</div>
-                <div>
-                  <div class="user-name">F. Hensen (zoon van)</div>
-                  <div class="user-location">Rotterdam</div>
-                </div>
-              </div>
-            </div>
-            <div class="polaroid-frame">
-              <img src="<?php echo get_theme_asset_url('review_hensen.png'); ?>" alt="Foto van de vader van heer Hensen in zijn Prominent stoel">
-              <div class="polaroid-caption">Vader Hensen</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-body-wrapper">
-            <div class="testimonial-content">
-              <p class="testimonial-text">
-                "Ik ben uiterst tevreden met de Doge Royal die ik heb aangeschaft. De stoel is met mooi rundleder bekleed en heeft een perfect werkende kantelfunctie (hart-lig-stand) waardoor het vocht in mijn benen heel snel wegtrekt. Zeker een aanrader en een fractie van de nieuwprijs."
-              </p>
-              <div class="testimonial-user">
-                <div class="user-avatar">👴</div>
-                <div>
-                  <div class="user-name">De heer Van Dam</div>
-                  <div class="user-location">Zwijndrecht</div>
-                </div>
-              </div>
-            </div>
-            <div class="polaroid-frame">
-              <img src="<?php echo get_theme_asset_url('review_vandam.png'); ?>" alt="Foto van de heer Van Dam in zijn Doge Royal stoel">
-              <div class="polaroid-caption">Dhr. van Dam</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-body-wrapper">
-            <div class="testimonial-content">
-              <p class="testimonial-text">
-                "Super geholpen door Geert. Hij kwam met drie stoelen bij ons in Zwijndrecht langs. We konden rustig proberen in de eigen kamer. Na een deskundige meting is de stoel direct perfect afgesteld. Wat een verademing, top service!"
-              </p>
-              <div class="testimonial-user">
-                <div class="user-avatar">👵</div>
-                <div>
-                  <div class="user-name">Familie Bakker</div>
-                  <div class="user-location">Zwijndrecht</div>
-                </div>
-              </div>
-            </div>
-            <div class="polaroid-frame">
-              <img src="<?php echo get_theme_asset_url('review_bakker.png'); ?>" alt="Foto van Familie Bakker in hun comfortabele stoel">
-              <div class="polaroid-caption">Fam. Bakker</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Call to Action block -->
-      <div style="background-color: var(--color-forest); color: var(--color-light); padding: 48px; border-radius: var(--radius-lg); text-align: center;">
-        <h2 style="color: var(--color-light); font-size: 1.75rem; margin-top: 0; margin-bottom: 16px;">Sluit u aan bij onze tevreden klanten</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 32px auto;">
-          Plan direct een gratis en vrijblijvende passing aan huis. Wij nemen tot 3 modellen mee zodat u zelf het comfort kunt ervaren.
-        </p>
-        <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-secondary">Direct Passen aan Huis Boeken</a>
-      </div>
+      <?php
+      while ( have_posts() ) :
+          the_post();
+          the_content();
+      endwhile;
+      ?>
     </div>
-  </section>
-
+  </main>
+  
   <!-- Footer Section -->
   <footer>
     <div class="container footer-grid">

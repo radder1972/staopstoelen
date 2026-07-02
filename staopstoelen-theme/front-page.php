@@ -138,174 +138,18 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="bg-accent-blob"></div>
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-tag" id="heroTag">
-          <span>🌿</span> 100% Duurzaam Gereviseerd & Op Maat
-        </div>
-        <h1 class="hero-title" id="heroTitle">
-          Sta-op Stoelen<br><span>op Maat</span>
-        </h1>
-        <p class="hero-subtitle" style="font-size: 1.25rem; font-weight: 600; color: var(--color-forest-dark); margin-bottom: 16px;">Vindt u goed zitcomfort belangrijk? Wij ook!</p>
-        <p class="hero-description" id="heroDesc">
-          Goed zitten is een vaak onderschatte factor die bijdraagt aan uw gezondheid. Als u intensief gebruik maakt van uw stoel, dan moet de stoel u ook goed passen. 
-          Net zoals bij schoenen of een maatkostuum, kunnen wij een stoel helemaal aanpassen aan uw persoonlijke maten en wensen.
-        </p>
-        <div class="hero-buttons" id="heroButtons">
-          <a href="<?php echo home_url('/keuzehulp/'); ?>" class="btn btn-secondary" id="btnHeroWizard">Start de Keuzehulp</a>
-          <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-outline" id="btnHeroAppointment">Adviesgesprek Plannen</a>
-        </div>
-        <div class="hero-stats" id="heroStats">
-          <div class="stat-item">
-            <div class="stat-number">4.8/5</div>
-            <p>Klanttevredenheid</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <p>Gereviseerd & Duurzaam</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">2 Jaar</div>
-            <p>Volledige Garantie</p>
-          </div>
-        </div>
-      </div>
-      <div class="hero-image-container" id="heroImageContainer">
-        <div class="hero-slideshow" id="heroSlideshow">
-          <div class="hero-slide active">
-            <img src="<?php echo get_theme_asset_url('chair_dordrecht_cozy.png'); ?>" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht">
-            <div class="slide-caption">Sta-op Stoel Dordrecht</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_zwijndrecht_cozy.png'); ?>" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht">
-            <div class="slide-caption">Draaibare Sta-op Stoel Zwijndrecht</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_rotterdam_cozy.png'); ?>" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam">
-            <div class="slide-caption">Lederen Sta-op Stoel Rotterdam</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_fitform_570_reco_cozy.png'); ?>" alt="Stijlvol interieur met de ergonomische Fitform 570 Vario">
-            <div class="slide-caption">Fitform 570 Vario (Gereviseerd)</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('sta_opstoel_geerts_interior.png'); ?>" alt="Cozy huiskamer met de moderne Sta-op Stoel Geert">
-            <div class="slide-caption">Sta-op Stoel Geert</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_movie_cozy.png'); ?>" alt="Klassiek interieur met de comfortabele Senioren Stoel Movie">
-            <div class="slide-caption">Senioren Stoel Movie</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_alfred_cozy.png'); ?>" alt="Luxe lederen interieur met de moderne Sta-op Stoel Alfred">
-            <div class="slide-caption">Lederen Sta-op Stoel Alfred</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_athena_cozy.png'); ?>" alt="Warm interieur met de snoerloze Senioren Stoel Athena">
-            <div class="slide-caption">Senioren Stoel Athena</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_fiji_cozy.png'); ?>" alt="Modern interieur met de draaibare Sta-op Stoel Fiji">
-            <div class="slide-caption">Draaibare Sta-op Stoel Fiji</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_industro_cozy.png'); ?>" alt="Stoer industrieel interieur met de Sta-op Stoel Industro">
-            <div class="slide-caption">Sta-op Stoel Industro</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_bellino_cozy.png'); ?>" alt="Elegant interieur met de comfortabele Doge Bellino Royal">
-            <div class="slide-caption">Doge Bellino Royal</div>
-          </div>
-          <div class="hero-slide">
-            <img src="<?php echo get_theme_asset_url('chair_doge_modulair_cozy.png'); ?>" alt="Comfortabele zithoek met de Doge Modulair Zorgstoel">
-            <div class="slide-caption">Doge Modulair Zorgstoel</div>
-          </div>
-        </div>
-        
-        <!-- Slideshow Controls -->
-        <button class="slideshow-ctrl ctrl-prev" id="slideshowPrev" aria-label="Vorige afbeelding">&#10094;</button>
-        <button class="slideshow-ctrl ctrl-next" id="slideshowNext" aria-label="Volgende afbeelding">&#10095;</button>
-        
-        <!-- Slideshow Dots Indicator -->
-        <div class="slideshow-dots" id="slideshowDots">
-          <span class="slide-dot active" data-slide="0"></span>
-          <span class="slide-dot" data-slide="1"></span>
-          <span class="slide-dot" data-slide="2"></span>
-          <span class="slide-dot" data-slide="3"></span>
-          <span class="slide-dot" data-slide="4"></span>
-          <span class="slide-dot" data-slide="5"></span>
-          <span class="slide-dot" data-slide="6"></span>
-          <span class="slide-dot" data-slide="7"></span>
-          <span class="slide-dot" data-slide="8"></span>
-          <span class="slide-dot" data-slide="9"></span>
-          <span class="slide-dot" data-slide="10"></span>
-          <span class="slide-dot" data-slide="11"></span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Keuzehulp Wizard Section -->
-  <section id="keuzehulp" class="bg-alt" style="padding: 80px 0;">
+  <main class="main-content subpage-section">
     <div class="container">
-      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
-        <span class="section-tag">Vind Uw Match</span>
-        <h2 class="section-title">Ontdek Welke Sta-op Stoel Bij U Past</h2>
-        <p class="section-subtitle" style="margin-bottom: 32px;">Beantwoord 3 eenvoudige vragen over uw lichaamsbouw en wensen. Onze interactieve Keuzehulp adviseert direct welke gereviseerde sta-op stoel het beste bij u past.</p>
-        <a href="<?php echo home_url('/keuzehulp/'); ?>" class="btn btn-secondary">Start de Keuzehulp →</a>
-      </div>
+      <?php
+      while ( have_posts() ) :
+          the_post();
+          the_content();
+      endwhile;
+      ?>
     </div>
-  </section>
-
-  <!-- Revisieproces Before/After Slider Section -->
-  <section id="revisie" style="padding: 80px 0;">
-    <div class="container">
-      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
-        <span class="section-tag">Als Nieuw</span>
-        <h2 class="section-title">Het Unieke Revisieproces</h2>
-        <p class="section-subtitle" style="margin-bottom: 32px;">Wij transformeren gebruikte A-merk sta-op stoelen tot prachtige, als-nieuwe exemplaren. Bekijk het proces en ontdek hoe we vulling, bekleding en motoren volledig vernieuwen.</p>
-        <a href="<?php echo home_url('/revisieproces/'); ?>" class="btn btn-primary">Bekijk het Revisieproces →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Proof / Customer Stories -->
-  <section id="klantverhalen" class="bg-alt" style="padding: 80px 0;">
-    <div class="container">
-      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
-        <span class="section-tag">Klantverhalen</span>
-        <h2 class="section-title">Ervaringen met Onze Seniorenstoelen</h2>
-        <p class="section-subtitle" style="margin-bottom: 32px;">Wij helpen dagelijks mensen hun zelfstandigheid en comfort terug te krijgen. Lees hier de ervaringen van onze klanten met passingen aan huis en maatwerkafstellingen.</p>
-        <a href="<?php echo home_url('/klantverhalen/'); ?>" class="btn btn-secondary">Lees alle Ervaringen →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Live appointment scheduler -->
-  <section id="afspraak-planner" style="padding: 80px 0;">
-    <div class="container">
-      <div class="text-center" style="max-width: 750px; margin: 0 auto;">
-        <span class="section-tag">Direct Boeken</span>
-        <h2 class="section-title">Plan een Adviesgesprek</h2>
-        <p class="section-subtitle" style="margin-bottom: 32px;">Breng een bezoek aan onze showroom in Dordrecht of kies voor een gratis passing bij u thuis met 3 verschillende modellen. Plan uw afspraak direct online in.</p>
-        <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-primary">Maak een Afspraak →</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Local SEO / Info Section -->
-  <section style="padding: 60px 0;">
-    <div class="container" style="max-width: 800px; text-align: center;">
-      <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Probeer een sta-op stoel in de regio Dordrecht & Rotterdam</h3>
-      <p style="color: var(--color-gray); font-size: 1rem; line-height: 1.7;">
-        U bent van harte welkom in onze showroom in Dordrecht voor deskundig zitadvies en het testen van onze sta-op stoelen. Woont u in de regio Dordrecht, Rotterdam of omstreken en bent u minder mobiel? Dan komen onze adviseurs kosteloos en vrijblijvend bij u thuis langs met een selectie stoelen om rustig in uw eigen huiskamer te testen.
-      </p>
-    </div>
-  </section>
-
+  </main>
+  
   <!-- Footer Section -->
   <footer>
     <div class="container footer-grid">
