@@ -1,0 +1,330 @@
+<?php
+/* Template Name: Afspraak Inplannen */
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gratis Passing aan Huis & Zitadvies | staopstoelen.nl</title>
+  <meta name="description" content="Maak een afspraak in onze showroom in Dordrecht of plan online een gratis passing aan huis. Persoonlijk zitadvies voor uw ideale sta-op stoel.">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-16x16.png">
+  <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/site.webmanifest">
+  <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css?v=1.0.51">
+</head>
+<body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31622232964" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="tel:+31786314858" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="2" x2="16" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="2" x2="8" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="10" x2="21" y2="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <!-- Beautiful Overlapping Liquid Waves behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <!-- Wave 1: Sky Blue -->
+        <path d="M 0,90 Q 250,160 500,100 T 1000,110" fill="none" stroke="var(--color-sky)" stroke-width="8" stroke-linecap="round" opacity="0.6"></path>
+        <!-- Wave 2: Terracotta Orange -->
+        <path d="M 0,110 Q 250,70 500,120 T 1000,130" fill="none" stroke="var(--color-terracotta)" stroke-width="6" stroke-linecap="round" opacity="0.75"></path>
+        <!-- Wave 3: Sage Green -->
+        <path d="M 0,125 Q 250,170 500,115 T 1000,140" fill="none" stroke="var(--color-sage)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>
+        <!-- Wave 4: Forest Green -->
+        <path d="M 0,140 Q 250,100 500,145 T 1000,150" fill="none" stroke="var(--color-forest)" stroke-width="10" stroke-linecap="round" opacity="0.95"></path>
+      </svg>
+      <a href="<?php echo home_url('/'); ?>" class="nav-text-logo" id="navTextLogo">staopstoelen<span>.nl</span></a>
+      <div class="navbar-top-right" id="navbarTopRight">
+        <a href="tel:+31786314858" class="nav-top-contact-link">
+          <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          078 - 631 4858
+        </a>
+        <a href="mailto:info@schippercompactwonen.nl" class="nav-top-contact-link">
+          <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@schippercompactwonen.nl
+        </a>
+        <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment">Maak een afspraak</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-row-2">
+        <nav class="nav-links" id="navLinks">
+          <a href="<?php echo home_url('/sta-op-stoelen/'); ?>" id="linkGoedkopeStaopstoelen">Sta-op Stoelen</a>
+          <a href="<?php echo home_url('/senioren-stoelen/'); ?>" id="linkSeniorenstoelen">Senioren Stoelen</a>
+          <a href="<?php echo home_url('/keuzehulp/'); ?>" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="<?php echo home_url('/revisieproces/'); ?>" id="linkRevisie">Revisieproces</a>
+          <a href="<?php echo home_url('/klantverhalen/'); ?>" id="linkKlantverhalen">Ervaringen</a>
+          <a href="<?php echo home_url('/faq/'); ?>" id="linkFaq">FAQ</a>
+          <a href="<?php echo home_url('/over-ons/'); ?>" id="linkOverOns">Over Ons</a>
+          <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="nav-desktop-hide active" id="linkAfspraak">Afspraak Maken</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Header -->
+  <section class="occasions-header" style="text-align: left;">
+    <div class="container banner-flex-container" style="justify-content: flex-start; align-items: flex-start;">
+      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Direct Boeken</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Plan een Adviesgesprek</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Kies de optie die u het beste uitkomt. Plan een bezoek aan onze gezellige showroom of boek direct een gratis passessie bij u thuis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="afspraak-planner" class="subpage-section">
+    <div class="container">
+      <a href="<?php echo home_url('/'); ?>" class="back-link">← Terug naar Home</a>
+      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Zitadvies inplannen</h2>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
+        Breng een bezoek aan onze showroom of maak eenvoudig een afspraak voor een gratis passing aan huis. Onze gediplomeerde BewegingsTechnologen adviseren u geheel vrijblijvend over de perfecte sta-op stoel op uw maten. Kies hieronder de gewenste optie, selecteer een datum en tijdstip, en vul uw contactgegevens in.
+      </p>
+
+      <div class="booking-card" id="bookingCard">
+        <div class="booking-body">
+          <!-- Type selector -->
+          <div class="booking-type-select">
+            <label class="booking-type-card selected" id="typeShowroom">
+              <input type="radio" name="appointmentType" value="showroom" checked>
+              <div class="booking-type-info">
+                <h3>Bezoek onze Showroom</h3>
+                <p>U bent van harte welkom in onze vestiging in Dordrecht voor deskundig advies en ruime keuze.</p>
+              </div>
+            </label>
+            <label class="booking-type-card" id="typeHome">
+              <input type="radio" name="appointmentType" value="home">
+              <div class="booking-type-info">
+                <h3>Passing aan Huis</h3>
+                <p>Wij nemen 3 geschikte stoelen mee naar uw woning. U probeert ze in uw eigen rustige omgeving.</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Form elements container -->
+          <div id="bookingInteractiveArea">
+            <div class="calendar-grid">
+              <!-- Calendar Panel -->
+              <div class="calendar-selector-container">
+                <div class="calendar-month-header">
+                  <button type="button" class="calendar-nav-btn" id="btnPrevMonth">◀</button>
+                  <span class="calendar-month-name" id="currentMonthName">Juni 2026</span>
+                  <button type="button" class="calendar-nav-btn" id="btnNextMonth">▶</button>
+                </div>
+                <div class="calendar-days-grid" id="calendarDays">
+                  <!-- Generated via JS -->
+                </div>
+              </div>
+
+              <!-- Time Slot Panel -->
+              <div class="time-slots-container">
+                <h3 id="timeSlotsTitle">Beschikbare tijden voor <span id="selectedDateText">kies een datum</span>:</h3>
+                <div class="time-slots-grid" id="timeSlotsGrid">
+                  <!-- Generated via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Customer Details Form -->
+            <div class="booking-form">
+              <h3 style="margin-bottom: 20px; font-size: 1.15rem;">Uw Contactgegevens</h3>
+              <div class="booking-form-grid">
+                <div class="form-group">
+                  <label for="bookingName">Naam *</label>
+                  <input type="text" id="bookingName" required placeholder="Bijv. Mevrouw Jansen">
+                </div>
+                <div class="form-group">
+                  <label for="bookingPhone">Telefoonnummer *</label>
+                  <input type="tel" id="bookingPhone" required placeholder="Bijv. 06 12345678">
+                </div>
+                <div class="form-group">
+                  <label for="bookingEmail">E-mailadres</label>
+                  <input type="email" id="bookingEmail" placeholder="Bijv. naam@domein.nl">
+                </div>
+                <!-- Address Section (only shown/required for home visits) -->
+                <div class="form-group form-group-full" id="homeAddressWrapper" style="display: none;">
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div class="form-group">
+                      <label for="bookingPostcode">Postcode *</label>
+                      <input type="text" id="bookingPostcode" placeholder="Bijv. 1234AB" maxlength="7" style="width: 100%;">
+                    </div>
+                    <div class="form-group">
+                      <label for="bookingHouseNumber">Huisnummer *</label>
+                      <input type="text" id="bookingHouseNumber" placeholder="Bijv. 239" style="width: 100%;">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <label for="bookingAddress" id="addressLabel" style="font-weight: 600; font-size: 0.9rem;">Adres *</label>
+                      <button type="button" id="btnManualAddress" style="background: none; border: none; color: var(--color-terracotta); font-size: 0.85rem; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0;">Handmatig invoeren</button>
+                    </div>
+                    <input type="text" id="bookingAddress" required placeholder="Voer postcode en huisnummer in voor automatische controle..." readonly style="background-color: var(--color-light); cursor: not-allowed; width: 100%;">
+                    <span id="addressFeedback" style="font-size: 0.85rem; font-weight: 500; min-height: 20px; display: block; margin-top: 4px;"></span>
+                  </div>
+                </div>
+                <div class="form-group form-group-full">
+                  <label for="bookingNotes">Aanvullende opmerkingen (bijv. specifieke klachten of stoelvoorkeur)</label>
+                  <textarea id="bookingNotes" rows="3" placeholder="Laat ons weten waar we eventueel rekening mee kunnen houden..."></textarea>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary" id="btnSubmitBooking" style="width: 100%; max-width: 300px;">Bevestig Afspraak</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success Screen (Initially hidden) -->
+          <div id="bookingSuccessScreen" style="display: none;" class="booking-success-message">
+            <div class="booking-success-icon">✓</div>
+            <h3 style="margin-bottom: 12px; font-size: 1.75rem;">Uw afspraak staat gepland!</h3>
+            <p style="color: var(--color-gray); max-width: 500px; margin: 0 auto 24px auto;" id="successSummary">
+              We hebben uw aanvraag ontvangen. Een van onze BewegingsTechnologen neemt binnen 2 uur telefonisch contact met u op om de afspraak te bevestigen.
+            </p>
+            
+            <!-- Route details and map for showroom appointments (dynamically shown/hidden) -->
+            <div id="successRouteInfo" style="display: none; max-width: 550px; margin: 24px auto; text-align: left; background-color: var(--color-cream-dark); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--color-sage-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+              <h4 style="margin-top: 0; color: var(--color-forest-dark); font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <svg style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Winkel &amp; Routebeschrijving
+              </h4>
+              <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0 0 16px 0;">
+                <strong>Adres showroom:</strong> Merwedestraat 239, 3313 GT Dordrecht.<br>
+                U kunt gratis direct voor de deur parkeren. Onze showroom is rolstoeltoegankelijk en er staat een vers kopje koffie of thee voor u klaar!
+              </p>
+              <div style="border-radius: var(--radius-sm); overflow: hidden; height: 250px; border: 2px solid var(--color-light); margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <iframe 
+                  id="successMapIframe"
+                  src="" 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0; display: block;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Google Maps Locatie van Schipper Compact Wonen / staopstoelen.nl">
+                </iframe>
+              </div>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="btn btn-primary" style="text-decoration: none; padding: 10px 18px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; box-shadow: none;">
+                  <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24"><path d="M22.43 10.43L13.57 1.57c-.78-.78-2.05-.78-2.83 0L1.57 11.57c-.78.78-.78 2.05 0 2.83l8.86 8.86c.78.78 2.05.78 2.83 0l8.86-8.86c.78-.78.78-2.05 0-2.83zM14 15v-3H9v4H7v-5c0-.55.45-1 1-1h6V8l5 4-5 4z"/></svg>
+                  Plan Route in Google Maps
+                </a>
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-outline" id="btnResetBooking">Nog een afspraak maken</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local SEO / Info Section -->
+  <section class="bg-alt" style="padding: 60px 0;">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 12px;">Probeer een sta-op stoel in de regio Dordrecht & Rotterdam</h2>
+      <p style="color: var(--color-gray); font-size: 1rem; line-height: 1.7;">
+        U bent van harte welkom in onze showroom in Dordrecht voor deskundig zitadvies en het testen van onze sta-op stoelen. Woont u in de regio Dordrecht, Rotterdam of omstreken en bent u minder mobiel? Dan komen onze adviseurs kosteloos en vrijblijvend bij u thuis langs met een selectie stoelen om rustig in uw eigen huiskamer te testen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3 style="color: var(--color-light);">staopstoelen.nl</h3>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Snelle Links</h3>
+        <ul style="margin-top: 16px;">
+          <li><a href="<?php echo home_url('/sta-op-stoelen/'); ?>">Sta-op Stoelen</a></li>
+          <li><a href="<?php echo home_url('/senioren-stoelen/'); ?>">Senioren Stoelen</a></li>
+          <li><a href="<?php echo home_url('/keuzehulp/'); ?>">Keuzehulp Wizard</a></li>
+          <li><a href="<?php echo home_url('/revisieproces/'); ?>">Revisieproces</a></li>
+          <li><a href="<?php echo home_url('/klantverhalen/'); ?>">Klantverhalen</a></li>
+          <li><a href="<?php echo home_url('/faq/'); ?>">Veelgestelde vragen (FAQ)</a></li>
+          <li><a href="<?php echo home_url('/afspraak-inplannen/'); ?>">Afspraak Inplannen</a></li>
+          <li><a href="<?php echo home_url('/over-ons/'); ?>">Over Ons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact & Showroom</h3>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Merwedestraat 239<br>
+          3313 GT Dordrecht<br>
+          <span style="display: block; margin-top: 8px; margin-bottom: 12px;">
+            <a href="tel:+31786314858" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 6px;">
+              <svg class="contact-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              078 - 631 4858
+            </a><br>
+            <a href="mailto:info@schippercompactwonen.nl" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+              <svg class="contact-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              info@schippercompactwonen.nl
+            </a>
+          </span>
+          <strong>Openingstijden:</strong><br>
+          Maandag: Op afspraak<br>
+          Dinsdag t/m Vrijdag: 10:00 - 16:00<br>
+          Zaterdag: Op afspraak<br>
+          <br>
+          <span style="display: block; line-height: 1.4; font-weight: bold;">
+            Buiten onze openingstijden ontvangen óf bezoeken we u graag op afspraak.
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; <?php echo date('Y'); ?> staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen. | Versie 110
+      </div>
+    </div>
+  </footer>
+
+  <script src="<?php echo get_stylesheet_directory_uri(); ?>/app.js?v=1.0.49"></script>
+</body>
+</html>

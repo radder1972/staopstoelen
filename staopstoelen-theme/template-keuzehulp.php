@@ -1,0 +1,295 @@
+<?php
+/* Template Name: Keuzehulp Wizard */
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welke Sta-op Stoel Kopen? Doe de Online Keuzehulp</title>
+  <meta name="description" content="Hulp nodig bij een sta-op stoel kopen? Vind in 3 eenvoudige stappen welke senioren stoel of sta-op stoel perfect past bij uw lichaamsmaat en fysieke rugklachten.">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-16x16.png">
+  <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/site.webmanifest">
+  <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css?v=1.0.51">
+</head>
+<body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31622232964" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="tel:+31786314858" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="2" x2="16" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="2" x2="8" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="10" x2="21" y2="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <!-- Beautiful Overlapping Liquid Waves behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <!-- Wave 1: Sky Blue -->
+        <path d="M 0,90 Q 250,160 500,100 T 1000,110" fill="none" stroke="var(--color-sky)" stroke-width="8" stroke-linecap="round" opacity="0.6"></path>
+        <!-- Wave 2: Terracotta Orange -->
+        <path d="M 0,110 Q 250,70 500,120 T 1000,130" fill="none" stroke="var(--color-terracotta)" stroke-width="6" stroke-linecap="round" opacity="0.75"></path>
+        <!-- Wave 3: Sage Green -->
+        <path d="M 0,125 Q 250,170 500,115 T 1000,140" fill="none" stroke="var(--color-sage)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>
+        <!-- Wave 4: Forest Green -->
+        <path d="M 0,140 Q 250,100 500,145 T 1000,150" fill="none" stroke="var(--color-forest)" stroke-width="10" stroke-linecap="round" opacity="0.95"></path>
+      </svg>
+      <a href="<?php echo home_url('/'); ?>" class="nav-text-logo" id="navTextLogo">staopstoelen<span>.nl</span></a>
+      <div class="navbar-top-right" id="navbarTopRight">
+        <a href="tel:+31786314858" class="nav-top-contact-link">
+          <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          078 - 631 4858
+        </a>
+        <a href="mailto:info@schippercompactwonen.nl" class="nav-top-contact-link">
+          <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@schippercompactwonen.nl
+        </a>
+        <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment">Maak een afspraak</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-row-2">
+        <nav class="nav-links" id="navLinks">
+          <a href="<?php echo home_url('/sta-op-stoelen/'); ?>" id="linkGoedkopeStaopstoelen">Sta-op Stoelen</a>
+          <a href="<?php echo home_url('/senioren-stoelen/'); ?>" id="linkSeniorenstoelen">Senioren Stoelen</a>
+          <a href="<?php echo home_url('/keuzehulp/'); ?>" class="active" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="<?php echo home_url('/revisieproces/'); ?>" id="linkRevisie">Revisieproces</a>
+          <a href="<?php echo home_url('/klantverhalen/'); ?>" id="linkKlantverhalen">Ervaringen</a>
+          <a href="<?php echo home_url('/faq/'); ?>" id="linkFaq">FAQ</a>
+          <a href="<?php echo home_url('/over-ons/'); ?>" id="linkOverOns">Over Ons</a>
+          <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="nav-desktop-hide" id="linkAfspraak">Afspraak Maken</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="occasions-header" style="text-align: left;">
+    <div class="container banner-flex-container" style="justify-content: flex-start; align-items: flex-start;">
+      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Persoonlijk Zitadvies</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">De Keuzehulp Wizard</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en fysieke behoeftes.</p>
+      </div>
+      <img src="<?php echo get_theme_asset_url('keuze_stempel.svg'); ?>?v=1.0.48" alt="Persoonlijke keuzehulp" class="banner-stamp">
+    </div>
+  </section>
+
+  <!-- Keuzehulp Wizard Section -->
+  <section id="keuzehulp" class="subpage-section">
+    <div class="container">
+      <a href="<?php echo home_url('/'); ?>" class="back-link">← Terug naar Home</a>
+      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">De Keuzehulp Wizard</h2>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
+        Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en fysieke behoeftes. Onze BewegingsTechnologen hebben deze keuzehulp ontwikkeld om u te voorzien van een passend advies op maat. Beantwoord de vragen over uw lengte, eventuele fysieke klachten en voorkeuren, en ontdek direct welke ergonomische stoelen het beste bij uw situatie passen.
+      </p>
+
+      <div class="wizard-card" id="wizardCard">
+        <div class="wizard-progress">
+          <div class="wizard-progress-bar" id="progressBar"></div>
+          <div class="progress-step active" id="stepIndicator1">1</div>
+          <div class="progress-step" id="stepIndicator2">2</div>
+          <div class="progress-step" id="stepIndicator3">3</div>
+          <div class="progress-step" id="stepIndicator4">🏁</div>
+        </div>
+
+        <form id="wizardForm">
+          <!-- Step 1: Lichaamslengte -->
+          <div class="wizard-step active" id="step1">
+            <h3 class="wizard-step-title">Stap 1: Wat is de lichaamslengte van de gebruiker?</h3>
+            <div class="options-grid">
+              <label class="option-card" id="optHeightS">
+                <input type="radio" name="height" value="small">
+                <span class="option-icon">📏</span>
+                <span class="option-title">Minder dan 1.65m</span>
+                <span class="option-desc">Geschikt voor compactere zithoogtes (Maat S)</span>
+              </label>
+              <label class="option-card" id="optHeightM">
+                <input type="radio" name="height" value="medium" checked>
+                <span class="option-icon">📏</span>
+                <span class="option-title">1.65m tot 1.80m</span>
+                <span class="option-desc">Geschikt voor gemiddelde zithoogtes (Maat M)</span>
+              </label>
+              <label class="option-card" id="optHeightL">
+                <input type="radio" name="height" value="large">
+                <span class="option-icon">📏</span>
+                <span class="option-title">Langer dan 1.80m</span>
+                <span class="option-desc">Geschikt voor diepere en hogere zithoogtes (Maat L)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Fysieke Klachten -->
+          <div class="wizard-step" id="step2">
+            <h3 class="wizard-step-title">Stap 2: Zijn er specifieke fysieke klachten?</h3>
+            <p style="margin-bottom: 24px; color: var(--color-gray);">Selecteer alle opties die van toepassing zijn.</p>
+            <div class="options-grid">
+              <label class="option-card" id="optComplaintBack">
+                <input type="checkbox" name="complaints" value="back">
+                <span class="option-icon">⚡</span>
+                <span class="option-title">Lage Rugpijn</span>
+                <span class="option-desc">Vereist goede lendensteun (lumbaalsteun)</span>
+              </label>
+              <label class="option-card" id="optComplaintNeck">
+                <input type="checkbox" name="complaints" value="neck">
+                <span class="option-icon">🤕</span>
+                <span class="option-title">Nek- & Schouderklachten</span>
+                <span class="option-desc">Vereist een verstelbare topswing hoofdondersteuning</span>
+              </label>
+              <label class="option-card" id="optComplaintLegs">
+                <input type="checkbox" name="complaints" value="legs">
+                <span class="option-icon">👣</span>
+                <span class="option-title">Vochtophoping in benen</span>
+                <span class="option-desc">Vereist een 'hart-lig-stand' (kantelfunctie)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 3: Wensen / Functies -->
+          <div class="wizard-step" id="step3">
+            <h3 class="wizard-step-title">Stap 3: Wat zijn uw aanvullende voorkeuren?</h3>
+            <div class="options-grid">
+              <label class="option-card" id="optOptionMotors">
+                <input type="radio" name="motors" value="3" checked>
+                <span class="option-icon">⚙️</span>
+                <span class="option-title">Maximaal instelbaar</span>
+                <span class="option-desc">3 motoren (onafhankelijke rug, voeten en kanteling)</span>
+              </label>
+              <label class="option-card" id="optOptionBasic">
+                <input type="radio" name="motors" value="1">
+                <span class="option-icon">🔌</span>
+                <span class="option-title">Eenvoudig & functioneel</span>
+                <span class="option-desc">1 motor (voetenbank en rug bewegen samen)</span>
+              </label>
+              <label class="option-card" id="optOptionModernDesign">
+                <input type="checkbox" name="modern" value="true">
+                <span class="option-icon">🌿</span>
+                <span class="option-title">Moderne uitstraling</span>
+                <span class="option-desc">Past bij actuele woontrends (stof of modern leder)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Resultaten -->
+          <div class="wizard-step" id="step4">
+            <h3 class="wizard-step-title" id="resultsTitle">Onze aanbevelingen op basis van uw antwoorden:</h3>
+            <div id="wizardResults" class="results-container">
+              <!-- Rendered via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Navigation controls -->
+          <div class="wizard-nav">
+            <button type="button" class="btn btn-outline" id="btnWizardBack" style="display: none;">Vorige</button>
+            <button type="button" class="btn btn-primary" id="btnWizardNext" style="margin-left: auto;">Volgende</button>
+            <button type="button" class="btn btn-secondary" id="btnWizardReset" style="display: none; margin-left: auto;">Opnieuw Beginnen</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3 style="color: var(--color-light);">staopstoelen.nl</h3>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Snelle Links</h3>
+        <ul style="margin-top: 16px;">
+          <li><a href="<?php echo home_url('/sta-op-stoelen/'); ?>">Sta-op Stoelen</a></li>
+          <li><a href="<?php echo home_url('/senioren-stoelen/'); ?>">Senioren Stoelen</a></li>
+          <li><a href="<?php echo home_url('/keuzehulp/'); ?>">Keuzehulp Wizard</a></li>
+          <li><a href="<?php echo home_url('/revisieproces/'); ?>">Revisieproces</a></li>
+          <li><a href="<?php echo home_url('/klantverhalen/'); ?>">Klantverhalen</a></li>
+          <li><a href="<?php echo home_url('/faq/'); ?>">Veelgestelde vragen (FAQ)</a></li>
+          <li><a href="<?php echo home_url('/afspraak-inplannen/'); ?>">Afspraak Inplannen</a></li>
+          <li><a href="<?php echo home_url('/over-ons/'); ?>">Over Ons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact & Showroom</h3>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Merwedestraat 239<br>
+          3313 GT Dordrecht<br>
+          <span style="display: block; margin-top: 8px; margin-bottom: 12px;">
+            <a href="tel:+31786314858" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 6px;">
+              <svg class="contact-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              078 - 631 4858
+            </a><br>
+            <a href="mailto:info@schippercompactwonen.nl" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+              <svg class="contact-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              info@schippercompactwonen.nl
+            </a>
+          </span>
+          <strong>Openingstijden:</strong><br>
+          Maandag: Op afspraak<br>
+          Dinsdag t/m Vrijdag: 10:00 - 16:00<br>
+          Zaterdag: Op afspraak<br>
+          <br>
+          <span style="display: block; line-height: 1.4; font-weight: bold;">
+            Buiten onze openingstijden ontvangen óf bezoeken we u graag op afspraak.
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; <?php echo date('Y'); ?> staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen. | Versie 110
+      </div>
+    </div>
+  </footer>
+
+  <script src="<?php echo get_stylesheet_directory_uri(); ?>/app.js"></script>
+  <script>
+    // Overriding prefillBooking from app.js to send to the dedicated afspraak page
+    window.prefillBooking = function(chairName) {
+      localStorage.setItem("prefilledChair", chairName);
+      window.location.href = "<?php echo home_url('/afspraak-inplannen/'); ?>";
+    };
+  </script>
+</body>
+</html>

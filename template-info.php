@@ -1,0 +1,394 @@
+<?php
+/* Template Name: Over Ons Template */
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over staopstoelen.nl | Specialist in Ergonomische Stoelen</title>
+  <meta name="description" content="Maak kennis met staopstoelen.nl en Bewegingstechnoloog Geert. Leer over onze missie om betaalbare, ergonomische sta-op stoelen van topkwaliteit te leveren.">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon-16x16.png">
+  <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/site.webmanifest">
+  <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css?v=1.0.51">
+  <!-- Schema.org LocalBusiness Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "staopstoelen.nl",
+    "image": "https://staopstoelen.nl/assets/showroom.jpg",
+    "@id": "https://staopstoelen.nl/#localbusiness",
+    "url": "https://staopstoelen.nl/",
+    "telephone": "+31786314858",
+    "email": "info@schippercompactwonen.nl",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Merwedestraat 239",
+      "addressLocality": "Dordrecht",
+      "postalCode": "3313 GT",
+      "addressCountry": "NL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.8184,
+      "longitude": 4.6990
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "16:00"
+      }
+    ]
+  }
+  </script>
+  <style>
+    .info-section-title {
+      font-size: 2rem;
+      color: var(--color-forest-dark);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--color-sage-light);
+      padding-bottom: 8px;
+    }
+    .info-section-subtitle {
+      font-size: 1.5rem;
+      color: var(--color-forest);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .info-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-dark);
+      margin-bottom: 20px;
+    }
+    .info-list {
+      margin-bottom: 24px;
+      padding-left: 20px;
+    }
+    .info-list li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-dark);
+      margin-bottom: 12px;
+    }
+    .brand-highlight {
+      font-weight: 700;
+      color: var(--color-forest);
+    }
+    .subpage-section strong, .subpage-section b {
+      color: var(--color-forest);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31622232964" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="tel:+31786314858" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Thuis of in showroom</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="2" x2="16" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="2" x2="8" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="10" x2="21" y2="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <!-- Beautiful Overlapping Liquid Waves behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <!-- Wave 1: Sky Blue -->
+        <path d="M 0,90 Q 250,160 500,100 T 1000,110" fill="none" stroke="var(--color-sky)" stroke-width="8" stroke-linecap="round" opacity="0.6"></path>
+        <!-- Wave 2: Terracotta Orange -->
+        <path d="M 0,110 Q 250,70 500,120 T 1000,130" fill="none" stroke="var(--color-terracotta)" stroke-width="6" stroke-linecap="round" opacity="0.75"></path>
+        <!-- Wave 3: Sage Green -->
+        <path d="M 0,125 Q 250,170 500,115 T 1000,140" fill="none" stroke="var(--color-sage)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>
+        <!-- Wave 4: Forest Green -->
+        <path d="M 0,140 Q 250,100 500,145 T 1000,150" fill="none" stroke="var(--color-forest)" stroke-width="10" stroke-linecap="round" opacity="0.95"></path>
+      </svg>
+      <a href="<?php echo home_url('/'); ?>" class="nav-text-logo" id="navTextLogo">staopstoelen<span>.nl</span></a>
+      <div class="navbar-top-right" id="navbarTopRight">
+        <a href="tel:+31786314858" class="nav-top-contact-link">
+          <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          078 - 631 4858
+        </a>
+        <a href="mailto:info@schippercompactwonen.nl" class="nav-top-contact-link">
+          <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@schippercompactwonen.nl
+        </a>
+        <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment">Maak een afspraak</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-row-2">
+        <nav class="nav-links" id="navLinks">
+          <a href="<?php echo home_url('/sta-op-stoelen/'); ?>" id="linkGoedkopeStaopstoelen">Sta-op Stoelen</a>
+          <a href="<?php echo home_url('/senioren-stoelen/'); ?>" id="linkSeniorenstoelen">Senioren Stoelen</a>
+          <a href="<?php echo home_url('/keuzehulp/'); ?>" id="linkKeuzehulp">Keuzehulp</a>
+          <a href="<?php echo home_url('/revisieproces/'); ?>" id="linkRevisie">Revisieproces</a>
+          <a href="<?php echo home_url('/klantverhalen/'); ?>" id="linkKlantverhalen">Ervaringen</a>
+          <a href="<?php echo home_url('/faq/'); ?>" id="linkFaq">FAQ</a>
+          <a href="<?php echo home_url('/over-ons/'); ?>" class="active" id="linkOverOns">Over Ons</a>
+          <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="nav-desktop-hide" id="linkAfspraak">Afspraak Maken</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Header -->
+  <section class="occasions-header" style="text-align: left;">
+    <div class="container banner-flex-container" style="justify-content: flex-start; align-items: flex-start;">
+      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Over Ons</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Over staopstoelen.nl</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Maak kennis met onze organisatie, onze voordelen en onze passie voor zithulpmiddelen op maat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page Content -->
+  <section class="subpage-section">
+    <div class="container">
+      <a href="<?php echo home_url('/'); ?>" class="back-link">← Terug naar Home</a>
+      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Over staopstoelen.nl</h2>
+      
+      <p class="info-text">
+        Merkt u dat opstaan uit uw favoriete stoel steeds moeizamer gaat? Of krijgt u na verloop van tijd last van uw rug of benen? Bij <span class="brand-highlight">staopstoelen.nl</span> (onderdeel van Schipper Compact Wonen) begrijpen we dat een goede stoel niet alleen mooi moet zijn, maar uw lichaam vooral optimaal moet ondersteunen.
+      </p>
+      <p class="info-text">
+        Als dé erkende <span class="brand-highlight">zitspecialist</span> van de regio Dordrecht en omstreken helpen we u graag uw mobiliteit en zelfstandigheid terug te krijgen. Met al bijna 30 jaar ervaring leveren we topkwaliteit zitcomfort aan particulieren, zorginstellingen en zorgverzekeraars.
+      </p>
+
+      <!-- Ontmoet Geert Section -->
+      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 32px; border-radius: var(--radius-lg); margin: 32px 0; flex-wrap: wrap;">
+        <img src="<?php echo get_theme_asset_url('geert.png'); ?>" alt="Geert - Bewegingstechnoloog bij staopstoelen.nl" style="width: 180px; height: 240px; object-fit: cover; border-radius: var(--radius-md); border: 3px solid var(--color-light); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <div style="flex: 1; min-width: 280px;">
+          <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 8px; font-size: 0.8rem; display: inline-block;">Onze Expert</span>
+          <h3 style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 0 0 4px 0; font-family: var(--font-heading);">Geert</h3>
+          <p style="font-size: 0.95rem; font-weight: 600; color: var(--color-forest); margin-bottom: 12px;">Gediplomeerd Bewegingstechnoloog</p>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-dark); margin: 0;">
+            Geert is onze vaste bewegingstechnoloog en expert op het gebied van ergonomie en gezond zitten. Geen stoel verlaat onze showroom zonder dat deze door Geert tot op de centimeter nauwkeurig is ingesteld op uw ideale zithoogte, zitdiepte en armleggerhoogte. Zo bent u verzekerd van een stoel die als gegoten zit.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="info-section-subtitle">Waarom kiezen voor staopstoelen.nl?</h3>
+      <ul class="info-list" style="list-style-type: none; padding-left: 0;">
+        <li style="position: relative; padding-left: 32px; margin-bottom: 16px;">
+          <span style="position: absolute; left: 0; color: var(--color-forest); font-weight: bold; font-size: 1.2rem;">✓</span>
+          <strong>Volledig Maatwerk:</strong> Elke stoel wordt door onze bewegingstechnoloog exact afgesteld op uw lichaamsmaten om uw rug en gewrichten optimaal te ontlasten.
+        </li>
+        <li style="position: relative; padding-left: 32px; margin-bottom: 16px;">
+          <span style="position: absolute; left: 0; color: var(--color-forest); font-weight: bold; font-size: 1.2rem;">✓</span>
+          <strong>Topmerken onder één dak:</strong> Wij zijn officieel dealer van gerenommeerde A-merken zoals <em>Fitform</em>, <em>Doge</em> en <em>Releazz</em>.
+        </li>
+        <li style="position: relative; padding-left: 32px; margin-bottom: 16px;">
+          <span style="position: absolute; left: 0; color: var(--color-forest); font-weight: bold; font-size: 1.2rem;">✓</span>
+          <strong>Zowel Nieuw als Occasions:</strong> Naast nieuwe modellen bieden wij een ruim, snel wisselend assortiment gereviseerde tweedehands stoelen aan voor elk budget.
+        </li>
+        <li style="position: relative; padding-left: 32px; margin-bottom: 16px;">
+          <span style="position: absolute; left: 0; color: var(--color-forest); font-weight: bold; font-size: 1.2rem;">✓</span>
+          <strong>Eigen Technische Dienst:</strong> Dankzij onze eigen werkplaats, servicewagen en vakkundige medewerkers kunnen we u altijd snel en adequaat helpen bij eventuele reparaties of aanpassingen.
+        </li>
+      </ul>
+
+
+      <!-- Thuisbezorging & Proefzitten Section -->
+      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 32px; border-radius: var(--radius-lg); margin: 32px 0; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 280px;">
+          <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 8px; font-size: 0.8rem; display: inline-block;">Service Aan Huis</span>
+          <h3 style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 0 0 4px 0; font-family: var(--font-heading);">Thuisbezorging met onze bus</h3>
+          <p style="font-size: 0.95rem; font-weight: 600; color: var(--color-forest); margin-bottom: 12px;">Gratis en vakkundig bij u thuis geleverd</p>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-dark); margin: 0;">
+            Wij bezorgen uw sta-op stoel netjes en gratis thuis met onze eigen bezorgbus. Onze bezorger stelt de stoel ter plekke direct op maat af en legt de werking rustig aan u uit. Bent u niet in de gelegenheid om onze winkel te bezoeken? Maak dan gebruik van onze passing aan huis: onze adviseur komt met een selectie stoelen bij u langs, zodat u in uw eigen vertrouwde huiskamer kunt proefzitten.
+          </p>
+        </div>
+        <img src="<?php echo get_theme_asset_url('bezorging.png'); ?>" alt="Thuisbezorging met onze bezorgbus - staopstoelen.nl" style="width: 240px; height: 180px; object-fit: cover; border-radius: var(--radius-md); border: 3px solid var(--color-light); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+      </div>
+
+      <h3 class="info-section-subtitle">De voordelen van een ergonomische sta-op stoel</h3>
+      <p class="info-text">
+        Een goede sta-op stoel is meer dan alleen een comfortabel meubelstuk; het is een investering in uw dagelijkse zelfstandigheid en gezondheid:
+      </p>
+      <ul class="info-list" style="list-style-type: none; padding-left: 0;">
+        <li style="position: relative; padding-left: 32px; margin-bottom: 12px;">
+          <span style="position: absolute; left: 0; color: var(--color-terracotta); font-weight: bold; font-size: 1.2rem;">•</span>
+          <strong>Veilig opstaan en gaan zitten:</strong> De motorische liftfunctie helpt u moeiteloos en zonder fysieke belasting omhoog.
+        </li>
+        <li style="position: relative; padding-left: 32px; margin-bottom: 12px;">
+          <span style="position: absolute; left: 0; color: var(--color-terracotta); font-weight: bold; font-size: 1.2rem;">•</span>
+          <strong>Uitstekende drukontlasting:</strong> Voorkomt klachten aan uw billen en rug bij langdurig zitten.
+        </li>
+        <li style="position: relative; padding-left: 32px; margin-bottom: 12px;">
+          <span style="position: absolute; left: 0; color: var(--color-terracotta); font-weight: bold; font-size: 1.2rem;">•</span>
+          <strong>Optimale bloedsomloop:</strong> De kantel- en relaxstanden bevorderen de vochtafvoer uit uw benen.
+        </li>
+        <li style="position: relative; padding-left: 32px; margin-bottom: 12px;">
+          <span style="position: absolute; left: 0; color: var(--color-terracotta); font-weight: bold; font-size: 1.2rem;">•</span>
+          <strong>Zitten, relaxen en slapen:</strong> De stoel past zich naadloos aan uw behoeften van dat moment aan.
+        </li>
+      </ul>
+
+      <h3 class="info-section-subtitle">Kom proefzitten of plan een passing aan huis</h3>
+      <p class="info-text">
+        Omdat zithulpmiddelen persoonlijk zijn, adviseren wij altijd om een stoel eerst te voelen en uit te proberen. U bent van harte welkom in onze goed gevulde winkel in Dordrecht om ons aanbod vrijblijvend te bekijken en deskundig advies te ontvangen.
+      </p>
+      <p class="info-text" style="margin-bottom: 32px;">
+        Bent u niet in de gelegenheid om naar ons toe te komen? Geen probleem! Onze adviseurs komen met plezier <strong>gratis en geheel vrijblijvend bij u thuis langs</strong> met een selectie stoelen, zodat u deze in uw eigen vertrouwde omgeving kunt testen.
+      </p>
+
+
+      <div class="info-text" style="margin-top: 40px; padding: 24px; background-color: var(--color-sage-light); border-radius: var(--radius-md); border-left: 5px solid var(--color-forest); font-size: 1rem;">
+        <strong>Tip:</strong> Plan vooraf eenvoudig een adviesafspraak in via onze website om er zeker van te zijn dat we alle tijd voor u hebben.
+        <div style="margin-top: 16px;">
+          <a href="<?php echo home_url('/afspraak-inplannen/'); ?>" class="btn btn-primary" id="btnInfoAppointment">Maak een afspraak</a>
+        </div>
+      </div>
+
+      <!-- Onze Winkel Section -->
+      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 32px; border-radius: var(--radius-lg); margin: 32px 0; flex-wrap: wrap;">
+        <a href="winkel.html" class="showroom-link-container" title="Klik voor een sfeerimpressie van onze gezellige winkel">
+          <img src="<?php echo get_theme_asset_url('pand.jpg'); ?>?v=1.0.55" alt="Onze Winkel Showroom - Schipper Compact Wonen" class="showroom-link-img">
+        </a>
+        <div style="flex: 1; min-width: 280px;">
+
+          <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 8px; font-size: 0.8rem; display: inline-block;">Onze Showroom</span>
+          <h3 style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 0 0 4px 0; font-family: var(--font-heading);">Onze Winkel</h3>
+          <p style="font-size: 0.95rem; font-weight: 600; color: var(--color-forest); margin-bottom: 12px;">Schipper Compact Wonen aan de Merwedestraat 239</p>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-dark); margin: 0;">
+            Alweer vele jaren is Schipper Compact Wonen te vinden aan de Merwedestraat 239. 'Vroeger' zat de zaak aan de overkant, weten velen zich nog te herinneren. Al een kleine tien jaar zit de winkel aan de 'kant' van de woningen. Parkeren kan voor de deur.
+          </p>
+        </div>
+      </div>
+
+      <!-- Google Maps Locatiepin & Kaart -->
+      <div style="margin: 32px 0;">
+        <h3 class="info-section-subtitle" style="margin-top: 0;">Plan uw route naar onze winkel</h3>
+        <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.06); border: 4px solid var(--color-light); height: 400px; position: relative; margin-bottom: 20px;">
+          <iframe 
+            src="https://maps.google.com/maps?q=Merwedestraat%20239,%20Dordrecht&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0; display: block;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Google Maps Locatie van Schipper Compact Wonen / staopstoelen.nl">
+          </iframe>
+        </div>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Merwedestraat+239,+Dordrecht" target="_blank" class="btn btn-secondary" style="text-decoration: none;">
+            <svg style="width: 20px; height: 20px; fill: currentColor; margin-right: 4px;" viewBox="0 0 24 24"><path d="M22.43 10.43L13.57 1.57c-.78-.78-2.05-.78-2.83 0L1.57 11.57c-.78.78-.78 2.05 0 2.83l8.86 8.86c.78.78 2.05.78 2.83 0l8.86-8.86c.78-.78.78-2.05 0-2.83zM14 15v-3H9v4H7v-5c0-.55.45-1 1-1h6V8l5 4-5 4z"/></svg>
+            Plan Routebeschrijving
+          </a>
+          <a href="https://maps.google.com/?q=Merwedestraat+239,+Dordrecht" target="_blank" class="btn btn-outline" style="text-decoration: none;">
+            <svg style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-right: 4px;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bekijk op grote kaart
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3 style="color: var(--color-light);">staopstoelen.nl</h3>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Snelle Links</h3>
+        <ul style="margin-top: 16px;">
+          <li><a href="<?php echo home_url('/sta-op-stoelen/'); ?>">Sta-op Stoelen</a></li>
+          <li><a href="<?php echo home_url('/senioren-stoelen/'); ?>">Senioren Stoelen</a></li>
+          <li><a href="<?php echo home_url('/keuzehulp/'); ?>">Keuzehulp Wizard</a></li>
+          <li><a href="<?php echo home_url('/revisieproces/'); ?>">Revisieproces</a></li>
+          <li><a href="<?php echo home_url('/klantverhalen/'); ?>">Klantverhalen</a></li>
+          <li><a href="<?php echo home_url('/faq/'); ?>">Veelgestelde vragen (FAQ)</a></li>
+          <li><a href="<?php echo home_url('/afspraak-inplannen/'); ?>">Afspraak Inplannen</a></li>
+          <li><a href="<?php echo home_url('/over-ons/'); ?>">Over Ons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact & Showroom</h3>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
+          <strong>Showroom Dordrecht:</strong><br>
+          Merwedestraat 239<br>
+          3313 GT Dordrecht<br>
+          <span style="display: block; margin-top: 8px; margin-bottom: 12px;">
+            <a href="tel:+31786314858" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 6px;">
+              <svg class="contact-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              078 - 631 4858
+            </a><br>
+            <a href="mailto:info@schippercompactwonen.nl" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">
+              <svg class="contact-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              info@schippercompactwonen.nl
+            </a>
+          </span>
+          <strong>Openingstijden:</strong><br>
+          Maandag: Op afspraak<br>
+          Dinsdag t/m Vrijdag: 10:00 - 16:00<br>
+          Zaterdag: Op afspraak<br>
+          <br>
+          <span style="display: block; line-height: 1.4; font-weight: bold;">
+            Buiten onze openingstijden ontvangen óf bezoeken we u graag op afspraak.
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen. | Versie 110
+      </div>
+    </div>
+  </footer>
+
+  <script src="<?php echo get_stylesheet_directory_uri(); ?>/app.js"></script>
+</body>
+</html>

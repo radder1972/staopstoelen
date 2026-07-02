@@ -346,7 +346,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen.
+        Gerealiseerd door BewegingsTechnologen. | Versie 110
       </div>
     </div>
   </footer>
@@ -1350,8 +1350,8 @@
     // Initial render with API fetch fallback
     window.addEventListener("DOMContentLoaded", async () => {
       try {
-        const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:") ? "http://localhost:3000" : "";
-        const response = await fetch(API_BASE + "/api/chairs");
+        const API_URL = "https://sweetstory.s6-tastewp.com/wp-json/custom/v1/stoelen";
+        const response = await fetch(API_URL);
         if (response.ok) {
           const dbData = await response.json();
           if (dbData && dbData.staopstoelen) {

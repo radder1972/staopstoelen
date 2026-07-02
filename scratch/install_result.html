@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html class="wp-toolbar"
+	lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Plugin Installation &lsaquo; Counsel View &#8212; WordPress</title>
+<script>
+addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(function(){func();});else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+var ajaxurl = '/wp-admin/admin-ajax.php',
+	pagenow = 'update',
+	typenow = '',
+	adminpage = 'update-php',
+	thousandsSeparator = ',',
+	decimalPoint = '.',
+	isRtl = 0;
+</script>
+<link rel='dns-prefetch' href='//tastewp.com' />
+<link rel='stylesheet' href='https://counselview.s6-tastewp.com/wp-admin/load-styles.php?c=1&amp;dir=ltr&amp;load%5Bchunk_0%5D=dashicons,admin-bar,common,forms,admin-menu,dashboard,list-tables,edit,revisions,media,themes,about,nav-menus,wp-pointer,widgets&amp;load%5Bchunk_1%5D=,site-icon,l10n,wp-base-styles,buttons,wp-components,wp-commands&amp;ver=7.0' media='all' />
+<style>
+@media print { #wpadminbar { display:none; } }
+/*# sourceURL=css-inline-concat-dashicons%2Cadmin-bar%2Ccommon%2Cforms%2Cadmin-menu%2Cdashboard%2Clist-tables%2Cedit%2Crevisions%2Cmedia%2Cthemes%2Cabout%2Cnav-menus%2Cwp-pointer%2Cwidgets%2Csite-icon%2Cl10n%2Cwp-base-styles%2Cbuttons%2Cwp-components%2Cwp-commands */
+</style>
+<link rel='stylesheet' id='colors-css' href='https://counselview.s6-tastewp.com/wp-admin/css/colors/modern/colors.min.css?ver=7.0' media='all' />
+<style id="wp-view-transitions-admin-inline-css">
+/*! This file is auto-generated */
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}#adminmenu>.menu-top{view-transition-name:attr(id type(<custom-ident>),none)}}
+</style>
+<link rel='stylesheet' id='wp_mypopups_icon_css-css' href='https://counselview.s6-tastewp.com/wp-content/plugins/pop-up-pop-up/css/MPU-icon-style.css?ver=1.2.8' media='all' />
+<link rel='stylesheet' id='tastewp-intro-css-css' href='https://tastewp.com/intro/style.css?ver=5.5.7' media='all' />
+<link rel='stylesheet' id='backup-migration-style-icon-css' href='https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/admin/css/bmi-plugin-icon.min.css?ver=2.1.6' media='all' />
+<link rel='stylesheet' id='analyst_custom-css' href='https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/analyst/assets/css/customize.css?ver=7.0' media='all' />
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='cdp-css-global-css' href='https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/css/cdp-global.min.css?ver=154' media='all' />
+<link rel='stylesheet' id='cdp-css-select-css' href='https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/css/cdp-select.min.css?ver=154' media='all' />
+<link rel='stylesheet' id='cdp-tooltips-css-css' href='https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/css/cdp.tooltip.min.css?ver=154' media='all' />
+<style class="wp-fonts-local">
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:fallback;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/dm-sans/DMSans-Regular.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"DM Sans";font-style:italic;font-weight:400;font-display:fallback;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/dm-sans/DMSans-Regular-Italic.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:fallback;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/dm-sans/DMSans-Bold.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"DM Sans";font-style:italic;font-weight:700;font-display:fallback;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/dm-sans/DMSans-Bold-Italic.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:300;font-display:block;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/ibm-plex-mono/IBMPlexMono-Light.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:block;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"IBM Plex Mono";font-style:italic;font-weight:400;font-display:block;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/ibm-plex-mono/IBMPlexMono-Italic.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:700;font-display:block;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:Inter;font-style:normal;font-weight:200 900;font-display:fallback;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');font-stretch:normal;}
+@font-face{font-family:"Source Serif Pro";font-style:normal;font-weight:200 900;font-display:fallback;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/source-serif-pro/SourceSerif4Variable-Roman.ttf.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"Source Serif Pro";font-style:italic;font-weight:200 900;font-display:fallback;src:url('https://counselview.s6-tastewp.com/wp-content/themes/twentytwentythree/assets/fonts/source-serif-pro/SourceSerif4Variable-Italic.ttf.woff2') format('woff2');font-stretch:normal;}
+</style>
+<script id="analyst_custom-js-extra">
+var analyst_opt_localize = {"analyst_nonce":"8704c53548"};
+</script>
+
+<script>
+var userSettings = {"url":"/","uid":"1","time":"1782825120","secure":"1"};
+//# sourceURL=js-inline-concat-jquery-core%2Cjquery-migrate%2Cutils
+</script>
+<script src='https://counselview.s6-tastewp.com/wp-admin/load-scripts.php?c=1&amp;load%5Bchunk_0%5D=jquery-core,jquery-migrate,utils&amp;ver=7.0'></script>
+<script id="analyst_custom-js" src="https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/analyst/assets/js/customize.js?ver=7.0"></script>
+    <script type="text/javascript">
+      const TSWP_EXPIRE = 1782997740000;
+            window.tastewpForcedUpdate = false;
+          </script>
+    <script>var _wpColorScheme = {"icons":{"base":"#f3f1f1","focus":"#fff","current":"#fff"}};</script>
+	<link id="wp-admin-canonical" rel="canonical" href="https://counselview.s6-tastewp.com/wp-admin/update.php?action=install-plugin&#038;plugin=woocommerce-gateway-stripe&#038;_wpnonce=59159c5c3c" />
+	<script>
+		if ( window.history.replaceState ) {
+			window.history.replaceState( null, null, document.getElementById( 'wp-admin-canonical' ).href + window.location.hash );
+		}
+	</script>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body class="wp-admin wp-core-ui no-js update-php auto-fold admin-bar branch-7 version-7-0 admin-color-modern locale-en-us no-customize-support svg wp-theme-twentytwentythree">
+<script>
+	document.body.className = document.body.className.replace('no-js','js');
+</script>
+
+<script>
+		(function() {
+			var request, b = document.body, c = 'className', cs = 'customize-support', rcs = new RegExp('(^|\\s+)(no-)?'+cs+'(\\s+|$)');
+
+				request = true;
+	
+			b[c] = b[c].replace( rcs, ' ' );
+			// The customizer requires postMessage and CORS (if the site is cross domain).
+			b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
+		}());
+	
+//# sourceURL=wp_customize_support_script
+</script>
+
+<div id="wpwrap">
+
+<div id="adminmenumain" role="navigation" aria-label="Main menu">
+<a href="#wpbody-content" class="screen-reader-shortcut">Skip to main content</a>
+<a href="#wp-toolbar" class="screen-reader-shortcut">Skip to toolbar</a>
+<div id="adminmenuback"></div>
+<div id="adminmenuwrap">
+<ul id="adminmenu">
+
+
+	<li class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-last" id="menu-dashboard">
+	<a href='index.php' class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-last" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-dashboard' aria-hidden='true'><br /></div><div class='wp-menu-name'>Dashboard</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Dashboard</li><li class="wp-first-item"><a href='index.php' class="wp-first-item">Home</a></li><li><a href='update-core.php'>Updates <span class="update-plugins count-0"><span class="update-count">0</span></span></a></li></ul></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
+	<a href='edit.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-admin-post' aria-hidden='true'><br /></div><div class='wp-menu-name'>Posts</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Posts</li><li class="wp-first-item"><a href='edit.php' class="wp-first-item">All Posts</a></li><li><a href='post-new.php'>Add Post</a></li><li><a href='edit-tags.php?taxonomy=category'>Categories</a></li><li><a href='edit-tags.php?taxonomy=post_tag'>Tags</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" id="menu-media">
+	<a href='upload.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-admin-media' aria-hidden='true'><br /></div><div class='wp-menu-name'>Media</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Media</li><li class="wp-first-item"><a href='upload.php' class="wp-first-item">Library</a></li><li><a href='media-new.php'>Add Media File</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" id="menu-pages">
+	<a href='edit.php?post_type=page' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-admin-page' aria-hidden='true'><br /></div><div class='wp-menu-name'>Pages</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Pages</li><li class="wp-first-item"><a href='edit.php?post_type=page' class="wp-first-item">All Pages</a></li><li><a href='post-new.php?post_type=page'>Add Page</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" id="menu-comments">
+	<a href='edit-comments.php' class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" ><div class='wp-menu-image dashicons-before dashicons-admin-comments' aria-hidden='true'><br /></div><div class='wp-menu-name'>Comments <span class="awaiting-mod count-0"><span class="pending-count" aria-hidden="true">0</span><span class="comments-in-moderation-text screen-reader-text">0 Comments in moderation</span></span></div></a></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" id="menu-appearance">
+	<a href='themes.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-admin-appearance' aria-hidden='true'><br /></div><div class='wp-menu-name'>Appearance</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Appearance</li><li class="wp-first-item"><a href='themes.php' class="wp-first-item">Themes <span class="update-plugins count-0"><span class="theme-count">0</span></span></a></li><li><a href='site-editor.php'>Editor</a></li><li><a href='font-library.php'>Fonts</a></li></ul></li>
+	<li class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-icon-plugins" id="menu-plugins">
+	<a href='plugins.php' class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-icon-plugins" ><div class='wp-menu-image dashicons-before dashicons-admin-plugins' aria-hidden='true'><br /></div><div class='wp-menu-name'>Plugins <span class="update-plugins count-0"><span class="plugin-count">0</span></span></div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Plugins <span class="update-plugins count-0"><span class="plugin-count">0</span></span></li><li class="wp-first-item"><a href='plugins.php' class="wp-first-item">Installed Plugins</a></li><li class="current"><a href='plugin-install.php' class="current" aria-current="page">Add Plugin</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" id="menu-users">
+	<a href='users.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-admin-users' aria-hidden='true'><br /></div><div class='wp-menu-name'>Users</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Users</li><li class="wp-first-item"><a href='users.php' class="wp-first-item">All Users</a></li><li><a href='user-new.php'>Add User</a></li><li><a href='profile.php'>Profile</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" id="menu-tools">
+	<a href='tools.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-admin-tools' aria-hidden='true'><br /></div><div class='wp-menu-name'>Tools</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Tools</li><li class="wp-first-item"><a href='tools.php' class="wp-first-item">Available Tools</a></li><li><a href='import.php'>Import</a></li><li><a href='export.php'>Export</a></li><li><a href='site-health.php'>Site Health <span class="menu-counter site-health-counter count-1"><span class="count">1</span></span></a></li><li><a href='export-personal-data.php'>Export Personal Data</a></li><li><a href='erase-personal-data.php'>Erase Personal Data</a></li><li><a href='theme-editor.php'>Theme File Editor</a></li><li><a href='plugin-editor.php'>Plugin File Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings" id="menu-settings">
+	<a href='options-general.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings" data-ariahaspopup><div class='wp-menu-image dashicons-before dashicons-admin-settings' aria-hidden='true'><br /></div><div class='wp-menu-name'>Settings</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head' aria-hidden='true'>Settings</li><li class="wp-first-item"><a href='options-general.php' class="wp-first-item">General</a></li><li><a href='options-connectors.php'>Connectors</a></li><li><a href='options-writing.php'>Writing</a></li><li><a href='options-reading.php'>Reading</a></li><li><a href='options-discussion.php'>Discussion</a></li><li><a href='options-media.php'>Media</a></li><li><a href='options-permalink.php'>Permalinks</a></li><li><a href='options-privacy.php'>Privacy</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top toplevel_page_irrp-redirection" id="toplevel_page_irrp-redirection">
+	<a href='admin.php?page=irrp-redirection' class="wp-not-current-submenu menu-top toplevel_page_irrp-redirection" ><div class='wp-menu-image dashicons-before dashicons-controls-repeat' aria-hidden='true'><br /></div><div class='wp-menu-name'>Redirection</div></a></li>
+	<li class="wp-not-current-submenu menu-top toplevel_page_copy-delete-posts" id="toplevel_page_copy-delete-posts">
+	<a href='admin.php?page=copy-delete-posts' class="wp-not-current-submenu menu-top toplevel_page_copy-delete-posts" ><div class='wp-menu-image dashicons-before' aria-hidden='true'><img src="https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/imgs/icon.png" alt="" /></div><div class='wp-menu-name'><span id="cdp-menu">Copy & Delete Posts</span></div></a></li>
+	<li class="wp-not-current-submenu menu-top toplevel_page_backup-migration menu-top-last" id="toplevel_page_backup-migration">
+	<a href='admin.php?page=backup-migration' class="wp-not-current-submenu menu-top toplevel_page_backup-migration menu-top-last" ><div class='wp-menu-image dashicons-before' aria-hidden='true'><img src="https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/admin/images/logo-min.png" alt="" /></div><div class='wp-menu-name'><span id="bmi-menu">Backup Migration</span></div></a></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-generic toplevel_page_wp-mypopups menu-top-first menu-top-last" id="toplevel_page_wp-mypopups">
+	<a href='admin.php?page=wp-mypopups' class="wp-not-current-submenu menu-top menu-icon-generic toplevel_page_wp-mypopups menu-top-first menu-top-last" ><div class='wp-menu-image dashicons-before dashicons-admin-generic' aria-hidden='true'><br /></div><div class='wp-menu-name'>MyPopUps</div></a></li><li id="collapse-menu" class="hide-if-no-js"><button type="button" id="collapse-button" aria-label="Collapse Main Menu" aria-expanded="true"><span class="collapse-button-icon" aria-hidden="true"></span><span class="collapse-button-label">Collapse Menu</span></button></li></ul>
+</div>
+</div>
+<div id="wpcontent">
+
+		<div id="wpadminbar" class="nojq nojs">
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar">
+				<ul role='menu' id='wp-admin-bar-root-default' class="ab-top-menu"><li role='group' id='wp-admin-bar-menu-toggle'><a class='ab-item' role="menuitem" href='#'><span class="ab-icon" aria-hidden="true"></span><span class="screen-reader-text">Menu</span></a></li><li role='group' id='wp-admin-bar-wp-logo' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://counselview.s6-tastewp.com/wp-admin/about.php'><span class="ab-icon" aria-hidden="true"></span><span class="screen-reader-text">About WordPress</span></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-default' class="ab-submenu"><li role='group' id='wp-admin-bar-about'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/about.php'>About WordPress</a></li><li role='group' id='wp-admin-bar-contribute'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/contribute.php'>Get Involved</a></li></ul><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-external' class="ab-sub-secondary ab-submenu"><li role='group' id='wp-admin-bar-wporg'><a class='ab-item' role="menuitem" href='https://wordpress.org/'>WordPress.org</a></li><li role='group' id='wp-admin-bar-documentation'><a class='ab-item' role="menuitem" href='https://wordpress.org/documentation/'>Documentation</a></li><li role='group' id='wp-admin-bar-learn'><a class='ab-item' role="menuitem" href='https://learn.wordpress.org/'>Learn WordPress</a></li><li role='group' id='wp-admin-bar-support-forums'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forums/'>Support</a></li><li role='group' id='wp-admin-bar-feedback'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forum/requests-and-feedback'>Feedback</a></li></ul></div></li><li role='group' id='wp-admin-bar-site-name' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://counselview.s6-tastewp.com/'>Counsel View</a><div class="ab-sub-wrapper"><ul role='menu' aria-label='Counsel View' id='wp-admin-bar-site-name-default' class="ab-submenu"><li role='group' id='wp-admin-bar-view-site'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/'>Visit Site</a></li></ul></div></li><li role='group' id='wp-admin-bar-command-palette' class="hide-if-no-js"><a class='ab-item' role="menuitem" href='#' onclick='wp.data.dispatch( &quot;core/commands&quot; ).open(); return false;'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label"><kbd>Ctrl+K</kbd><span class="screen-reader-text"> Open command palette</span></span></a><script>
+( 	( applePattern, appleOSLabel ) => {
+		if ( ! ( new RegExp( applePattern, 'i' ) ).test( navigator.userAgent ) ) {
+			return;
+		}
+		const kbd = document.querySelector( '#wp-admin-bar-command-palette .ab-label kbd' );
+		if ( kbd ) {
+			kbd.textContent = appleOSLabel;
+		}
+	} )( "Macintosh|Mac OS X|Mac_PowerPC", "\u2318K" );
+//# sourceURL=wp_admin_bar_command_palette_menu
+</script>
+</li><li role='group' id='wp-admin-bar-comments'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/edit-comments.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label awaiting-mod pending-count count-0" aria-hidden="true">0</span><span class="screen-reader-text comments-in-moderation-text">0 Comments in moderation</span></a></li><li role='group' id='wp-admin-bar-new-content' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://counselview.s6-tastewp.com/wp-admin/post-new.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label">New</span></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='New' id='wp-admin-bar-new-content-default' class="ab-submenu"><li role='group' id='wp-admin-bar-new-post'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/post-new.php'>Post</a></li><li role='group' id='wp-admin-bar-new-media'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/media-new.php'>Media</a></li><li role='group' id='wp-admin-bar-new-page'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/post-new.php?post_type=page'>Page</a></li><li role='group' id='wp-admin-bar-new-user'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/user-new.php'>User</a></li></ul></div></li><li role='group' id='wp-admin-bar-wp-admin-copy-and-delete-posts' class="cdp-admin-bar-noti menupop cdp-noti-hide"><a class='ab-item' role="menuitem" href='#' target='_self'><span class="cdp-admin-bar-icon-noti"></span>Copy & Delete [<span class="cdp-notis-counter">0</span>]<div class="ab-sub-wrapper cdp-ab-sub">
+      <ul class="ab-submenu cdp-dropdown-submenu"><li class="cdp-undone-notis" style="display: none;">
+          <a class="ab-item cdp-dropdown-menu">
+            <div style="display: block;">
+              <div class="cdp-dropdown-left-header">In progress:</div>
+            </div>
+          </a>
+        </li>
+      <li class="cdp-dd-undone-list"></li>
+        <hr class="cdp-dropdown-hr cdp-undone-hr" style="display: none;"><li class="cdp-done-notis" style="display: none;">
+          <a class="ab-item cdp-dropdown-menu">
+            <div style="display: block;">
+              <div class="cdp-dropdown-left-header">Done:</div>
+            </div>
+          </a>
+        </li>
+      <li class="cdp-dd-done-list"></li>
+        <hr class="cdp-dropdown-hr cdp-done-hr" style="display: none;"><li><a class="ab-item cdp-dropdown-clear-all-notis" href="#">Clear notifiactions</a></li>
+      </ul>
+    </div></a></li></ul><ul role='menu' id='wp-admin-bar-top-secondary' class="ab-top-secondary ab-top-menu"><li role='group' id='wp-admin-bar-tastewp_toggle'><a class='ab-item' role="menuitem" href='#'>Show Intro – TasteWP</a></li><li role='group' id='wp-admin-bar-my-account' class="menupop with-avatar"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://counselview.s6-tastewp.com/wp-admin/profile.php'>Howdy, <span class="display-name">admin</span><img alt='' src='https://secure.gravatar.com/avatar/14d2494aee5a74e689039353c704b59376320333370e026ecf1b59d9a89fd92a?s=26&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/14d2494aee5a74e689039353c704b59376320333370e026ecf1b59d9a89fd92a?s=52&#038;d=mm&#038;r=g 2x' class='avatar avatar-26 photo' height='26' width='26' loading='lazy' decoding='async'/></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='Howdy, admin' id='wp-admin-bar-user-actions' class="ab-submenu"><li role='group' id='wp-admin-bar-user-info'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-admin/profile.php'><img alt='' src='https://secure.gravatar.com/avatar/14d2494aee5a74e689039353c704b59376320333370e026ecf1b59d9a89fd92a?s=64&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/14d2494aee5a74e689039353c704b59376320333370e026ecf1b59d9a89fd92a?s=128&#038;d=mm&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async'/><span class='display-name'>admin</span><span class='display-name edit-profile'>Edit Profile</span></a></li><li role='group' id='wp-admin-bar-logout'><a class='ab-item' role="menuitem" href='https://counselview.s6-tastewp.com/wp-login.php?action=logout&#038;_wpnonce=5ec5740a9f'>Log Out</a></li></ul></div></li></ul>			</div>
+		</div>
+
+		
+<div id="wpbody" role="main">
+
+<div id="wpbody-content">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden no-sidebar" tabindex="-1" aria-label="Contextual Help Tab">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+												</ul>
+					</div>
+
+					
+					<div class="contextual-help-tabs-wrap">
+											</div>
+				</div>
+			</div>
+				</div>
+		
+  <script>
+    if (typeof ajaxurl === 'undefined') ajaxurl = 'https://counselview.s6-tastewp.com/wp-admin/admin-ajax.php';
+  </script>
+  <div class="cdp-copy-alert-success" style="top: -28px; opacity: 0; display: none;">
+    <img src="https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/imgs/copy.png" alt="Successfull copy image">
+  </div>
+    <div class="cdp-copy-loader-overlay" style="opacity: 0">
+    <div class="cdp-text-overlay">
+      <h1 style="color: white; font-size: 25px;">Please wait, copying in progress...</h1>
+      <p>
+        If you’re making a lot of copies it can take a while
+        <br>(up to 5 minutes if you’re on a slow server).      </p>
+      <span>Average time is 8 copies per second.</span>
+    </div>
+    <div class="cdp-spinner"></div>
+  </div>
+  <input type="text" hidden id="cdp-purl" style="display: none; visibility: hidden;" value="https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts">
+  
+  
+  
+    <div class="cdp-tooltip-content">
+
+    <div class="cdp-tooltip-before-options cdp-checkboxes">
+      <div class="cdp-tooltip-before">
+
+        <div class="cdp-button cdp-tooltip-btn-copy cdp-low-round cdp-copy-now-btn-tooltip cdp-center" data-cdp-btn="copy-quick">Copy now!</div>
+
+        <div class="cdp-modal-copy-times-tooltip">
+          <div class="cdp-modal-copy-times-content-tooltip">
+
+            <div class="cdp-cf" style="line-height: 32px; margin-top: 13px; margin-bottom: 12px;">
+
+              <div class="cdp-left">
+                <input class="cdp-input-border cdp-input-dynamic cdp-number-field-styled cdp-modal-input-times-tooltip" style="width: 42px !important; padding: 0 1px;" value="1" placeholder="1" min="1" max="10000" type="number" name="tooltip-times-first">
+              </div>
+
+              <div class="cdp-left">&nbsp;time(s)</div>
+
+              <div class="cdp-left">&nbsp;to&nbsp;</div>
+              <div class="cdp-left" style="max-height: 32px;">
+                <div class="cdp-inline cdp-tooltip-premium-spc-2  cdp-tooltip-premium-spc-3">
+                  <select disabled="disabled" class="cdp-input-dynamic cdp-tooltip-top cdp-premiu cdp-tooltip-select cdp-select cdp-sel-separat cdp-m-l-9-d" style="max-width: 98px !important" name="tooltip-which-site-first">
+                    <option value="-1">this site</option>
+                                      </select>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="cdp-cf" style="line-height: 32px; margin-top: 3px; margin-bottom: 5px;">
+              <div class="cdp-left">Settings:&nbsp;&nbsp;</div>
+
+              <div class="cdp-left" style="line-height: 10px;">
+                <select class="cdp-input-dynamic cdp-select cdp-tooltip-select cdp-sel-separat cdp-m-l-9-d cdp-sizes-profile-tooltip" name="tooltip-which-profile-first">
+                                    <option value="custom" disabled>–– Select ––</option>
+                                    <option value="default">Default</option>
+                                  </select>
+              </div>
+
+              <div class="cdp-left cdp-relative">
+                <span class="cdp-info-icon cdp-tooltip-info-intt" style="top: calc(50% + 8px); margin-left: 9px;"></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="cdp-center cdp-f-s-12 cdp-padding-5-h">
+          Or <span class="cdp-green cdp-pointer cdp-clickable cdp-tooltip-before-button">define it for this case</span>
+        </div>
+        <div class="cdp-center cdp-below-tooltip-before">
+          <!-- Define the possible settings <span class="cdp-green">on the plugin page</span>.<br /> -->
+          <span class="cdp-error-span-tooltip">Making more than 50 copies will take some time. – depending on your server.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cdp-tooltip-full-options cdp-checkboxes" style="display: none; min-height: 360px; min-width: 602px; padding: 10px;">
+      <div class="cdp-cf">
+        <div class="cdp-left">
+          <h2 class="cdp-f-s-16 cdp-f-w-semi-bold" style="margin: 0; line-height: 40px;">Elements to copy:</h2>
+        </div>
+        <div class="cdp-right" style="width: calc(100% - 200px); text-align: right;">
+          <div class="cdp-cf cdp-inline" style="line-height: 40px">
+            <div class="cdp-left cdp-f-s-16">Use as basis settings</div>
+            <select class="cdp-left cdp-modal-select cdp-ow-border cdp-input-dynamic cdp-modal-input-profiles-r cdp-select cdp-m-l-9-d" name="tooltip-which-profile-second">
+              <option value="custom" selected disabled>–– Select ––</option>
+              <option value="alloptions">Select all</option>
+              <option value="clear">Clean slate</option>
+              <optgroup label="–– Profiles ––"></optgroup>
+              <option value="custom_named" disabled>Custom</option>
+                                <option value="default">Default</option>
+                            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="cdp-modal-checkboxes">
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="title">
+          <span>Title</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="date">
+          <span>Date</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="status">
+          <span>Status</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="slug">
+          <span>Slug</span>
+        </label>
+      </div>
+      <div class="cdp-modal-checkboxes">
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="excerpt">
+          <span>Excerpt</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="content">
+          <span>Content</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="f_image">
+          <span>Feat. image</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="template">
+          <span>Template</span>
+        </label>
+      </div>
+      <div class="cdp-modal-checkboxes">
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="format">
+          <span>Format</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="author">
+          <span>Author</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="password">
+          <span>Password</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="children">
+          <span>Children</span>
+        </label>
+      </div>
+      <div class="cdp-modal-checkboxes">
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="comments">
+          <span>Comments</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="menu_order">
+          <span>Menu order</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="attachments">
+          <span>Attachments</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="category">
+          <span>Categories</span>
+        </label>
+      </div>
+      <div class="cdp-modal-checkboxes">
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="post_tag">
+          <span>Tags</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="cdp_taxonomy">
+          <span>Taxonomies</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="nav_menu">
+          <span>Nav Menus</span>
+        </label>
+        <label>
+          <input class="cdp-input-dynamic" type="checkbox" name="link_category">
+          <span>Link cats</span>
+        </label>
+      </div>
+            <div class="cdp-modal-checkboxes cdp-modal-checkboxes-three">
+        <label class="cdp-relative"><span class="cdp-premium-icon" style="margin-left: 0"></span><b style="padding-left: 21px;" class="cdp-f-s-15 cdp-f-w-medium">Plugin options:</b></label>
+        <br>
+                                <label>
+          <div class="cdp-inline cdp-tooltip-premium-spc">
+            <input class="cdp-input-dynamic" type="checkbox" name="all_metadata">
+            <span>All post meta</span>
+          </div>
+        </label>
+      </div>
+      
+      <div class="cdp-relative">
+        <div class="cdp-modal-copy-times cdp-tooltip-c-t cdp-f-s-15">
+          <div class="cdp-modal-copy-times-content">
+                        <div class="cdp-cf cdp-inline">
+              <div class="cdp-left" style="line-height: 40px;">Copy&nbsp;</div>
+              <div class="cdp-left" style="line-height: 40px;">
+                <input class="cdp-modal-input-times cdp-input-border" name="tooltip-which-times-second" style="border-width: 1px !important;" placeholder="1" type="number" value="1">
+              </div>
+              <div class="cdp-left" style="line-height: 40px;">
+                &nbsp;time(s)              </div>
+              <div class="cdp-left" style="line-height: 40px;">&nbsp;to</div>
+              <div class="cdp-left">
+                <div class="cdp-tooltip-premium-spc-2 cdp-inline cdp-tooltip-premium-spc-3">
+                  <select disabled="disabled" class="cdp-input-dynamic cdp-modal-select cdp-modal-select-2 cdp-ow-border cdp-modal-input-site cdp-select cdp-m-l-9-d" name="tooltip-which-site-second">
+                    <option value="-1">this site</option>
+                                      </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cdp-center">
+        <span class="cdp-error-span-tooltip">Making more than 50 copies will take some time. – depending on your server.</span>
+      </div>
+
+      <div class="cdp-center cdp-padding" style="min-width: 420px; padding-bottom: 10px;">
+        <button class="cdp-button cdp-tooltip-btn-copy cdp-f-s-15 cdp-f-s-regular" data-cdp-btn="copy-custom" style="height:44px; width:211px;padding:0 20px;line-height: 44px;border-radius: 3px;">Copy it!</button>
+              </div>
+
+    </div>
+
+  </div>
+  <div id="cdp-copy-modal-global" class="cdp-modal cdp-copy-modal" style="display:none;">
+
+    <div class="cdp-modal-content" style="padding-bottom: 15px; max-height: 90vh;">
+
+      <div class="cdp-modal-times"></div>
+
+      <div class="cdp-cf cdp-cp-pad" style="margin-top: 50px; padding-top: 0; padding-bottom: 10px;">
+        <div class="cdp-left">
+            <h2 class="cdp-f-s-16 cdp-f-w-semi-bold" style="margin: 0; line-height: 40px;">Elements to copy:</h2>
+        </div>
+        <div class="cdp-right" style="width: calc(100% - 200px) !important; text-align: right !important;">
+          <div class="cdp-cf cdp-inline" style="line-height: 40px">
+              <div class="cdp-left cdp-f-s-16">Use as basis settings</div>
+                        <select class="cdp-left cdp-modal-select cdp-ow-border cdp-input-dynamic cdp-modal-input-profiles-r cdp-select cdp-m-l-9-d" name="tooltip-which-profile-second-modal">
+                <option value="custom" disabled>–– Select ––</option>
+                <option value="alloptions">Select all</option>
+                <option value="clear">Clean slate</option>
+                <optgroup label="–– Profiles ––"></optgroup>
+                <option value="custom_named" disabled>Custom</option>
+                                <option value="default">Default</option>
+                            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="cdp-cp-pad">
+        <div class="cdp-modal-checkboxes cdp-checkboxes">
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="title">
+            <span>Title</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="date">
+            <span>Date</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="status">
+            <span>Status</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="slug">
+            <span>Slug</span>
+          </label>
+        </div>
+        <div class="cdp-modal-checkboxes cdp-checkboxes">
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="excerpt">
+            <span>Excerpt</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="content">
+            <span>Content</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="f_image">
+            <span>Feat. image</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="template">
+            <span>Template</span>
+          </label>
+        </div>
+        <div class="cdp-modal-checkboxes cdp-checkboxes">
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="format">
+            <span>Format</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="author">
+            <span>Author</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="password">
+            <span>Password</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="children">
+            <span>Children</span>
+          </label>
+        </div>
+        <div class="cdp-modal-checkboxes cdp-checkboxes">
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="comments">
+            <span>Comments</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="menu_order">
+            <span>Menu order</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="attachments">
+            <span>Attachments</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="category">
+            <span>Categories</span>
+          </label>
+        </div>
+        <div class="cdp-modal-checkboxes cdp-checkboxes">
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="post_tag">
+            <span>Tags</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="cdp_taxonomy">
+            <span>Taxonomies</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="nav_menu">
+            <span>Navigation Menus</span>
+          </label>
+          <label>
+            <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="link_category">
+            <span>Link categories</span>
+          </label>
+        </div>
+                  <div class="cdp-modal-checkboxes cdp-checkboxes cdp-modal-checkboxes-three">
+            <label class="cdp-relative"><span class="cdp-premium-icon" style="margin-left: 0"></span><b style="padding-left: 21px;" class="cdp-f-s-15 cdp-f-w-medium">Plugin options:</b></label>
+            <br>
+                                                <label>
+              <div class="cdp-inline cdp-tooltip-premium-spc">
+                <input class="cdp-modal-option-r cdp-input-dynamic" type="checkbox" name="all_metadata">
+                <span>All post meta</span>
+              </div>
+            </label>
+          </div>
+              </div>
+
+      <div class="cdp-modal-copy-times cdp-f-s-15">
+        <div class="cdp-modal-copy-times-content">
+                    <div class="cdp-cf cdp-inline">
+            <div class="cdp-left" style="line-height: 40px;">Copy&nbsp;</div>
+            <div class="cdp-left" style="line-height: 40px;">
+              <input class="cdp-modal-input-times cdp-input-border" style="border-width: 1px !important;" placeholder="1" type="number" value="1">
+            </div>
+            <div class="cdp-left" style="line-height: 40px;">
+              &nbsp;time(s)            </div>
+            <div class="cdp-left" style="line-height: 40px;">&nbsp;to</div>
+            <div class="cdp-left">
+              <div class="cdp-inline cdp-tooltip-premium-spc-2  cdp-tooltip-premium-spc-3">
+                <select class="cdp-input-dynamic cdp-modal-select cdp-modal-select-2 cdp-ow-border cdp-modal-input-site cdp-select cdp-m-l-9-d" name="tooltip-which-site-second-modal"  disabled="disabled">
+                  <option value="-1">this site</option>
+                                  </select>
+              </div>
+            </div>
+          </div>
+                  </div>
+      </div>
+
+      <div class="cdp-center">
+        <span class="cdp-error-span-tooltip">Making more than 50 copies will take some time. – depending on your server.</span>
+      </div>
+
+      <div class="cdp-center cdp-p-25-h">
+        <button class="cdp-button cdp-copy-modal-button cdp-f-s-15 cdp-f-w-regular" data-cdp-btn="copy-custom" style="height:44px; width:211px;padding:0 20px;line-height: 44px;">Copy it!</button>
+              </div>
+    </div>
+
+  </div>
+
+    <input type="text" id="TSW_COPY" style="display: none;" hidden value="Copy">
+    <input type="text" id="TSW_COPIED" style="display: none;" hidden value="Copied">
+    <input type="text" id="TSW_COPYFAIL" style="display: none;" hidden value="Failed to copy">
+    <input type="text" id="TSW_FAILED" style="display: none;" hidden value="Failed">
+    <input type="text" id="TSW_DONTWANT" style="display: none;" hidden value="Don&#39;t want it to expire?">
+    <input type="text" id="TSW_WANTMORE" style="display: none;" hidden value="Want more non-expiring sites?">
+        <input type="text" id="TSW_SHIDE_IN" style="display: none;" hidden value="true">
+    
+    <div id="tastewp_intro" style="display: none;">
+      <div class="tastewp_container">
+        <div class="tastewp_header">Your site was set up successfully <img width="60px" src="https://tastewp.com/intro/emoji.svg" /></div>
+        <div class="tastewp_centred tastewp_flex tastewp__pr-login">
+          <div class="tastewp_righted tastewp_relative tastewp_width_1">
+            <img width="110px" class="tastewp_green_bg" src="https://tastewp.com/intro/bg-small-shape.png" />
+            <img width="75px" class="tastewp_on_green" src="https://tastewp.com/intro/computer.svg" />
+          </div>
+          <div class="tastewp_lefted tastewp_width_2" id="tastewp_details">
+            <div>
+              <b class="tastewp_w600">Login details:</b> <span id="tastewp_copy_btn" class="tastewp_copy">Copy</span>
+            </div>
+            <div>
+              <img width="18px" class="tastewp_icon" src="https://tastewp.com/intro/link.png" />
+              Admin area URL: <span class="tastewp_a" data-copy="https://counselview.s6-tastewp.com/wp-admin">https://counselview.s6-tastewp.com/wp-admin</span>
+            </div>
+            <div>
+              <img width="16px" class="tastewp_icon" src="https://tastewp.com/intro/user.png" />
+              Username: <span class="tastewp_a" data-copy="admin">admin</span>
+            </div>
+            <div>
+              <img width="16px" class="tastewp_icon" src="https://tastewp.com/intro/password.png" />
+              Password: <span class="tastewp_a" data-copy="xYf3vt6Xvqw">xYf3vt6Xvqw</span>
+            </div>
+          </div>
+        </div>
+        <div class="tastewp_flex tastewp_centred tastewp__pr-expiry">
+          <div class="tastewp_righted tastewp_relative tastewp_width_1">
+            <img width="110px" class="tastewp_green_bg" src="https://tastewp.com/intro/bg-small-shape.png" />
+            <img width="75px" class="tastewp_on_green" src="https://tastewp.com/intro/stoper.svg" />
+          </div>
+          <div class="tastewp_lefted tastewp_width_2">
+            <div>
+              <div class="tastewp_lh10">
+                <b class="tastewp_w600">Expiry:</b>
+              </div>
+              <div class="tastewp_relative tastewp_inline">
+                <div class="tastewp_flex tastewp_time-wrap">
+                  <div class="tastewp_width_4">Your site will be automatically deleted in</div>
+                  <div class="tastewp_clock">
+                    <div class="tastewp_flex">
+                      <span>&nbsp;&nbsp;</span>
+                      <div id="tastewp_days" class="tastewp_time"><span class="above">00</span><br><span class="tastewp_undermute">Days</span></div>
+                      <div class="tastewp_colon">:<br>&nbsp;</div>
+                      <div id="tastewp_hours" class="tastewp_time"><span class="above">00</span><br><span class="tastewp_undermute">Hours</span></div>
+                      <div class="tastewp_colon">:<br>&nbsp;</div>
+                      <div id="tastewp_minutes" class="tastewp_time"><span class="above">00</span><br><span class="tastewp_undermute">Minutes</span></div>
+                      <div class="tastewp_colon">:<br>&nbsp;</div>
+                      <div id="tastewp_seconds" class="tastewp_time"><span class="above">00</span><br><span class="tastewp_undermute">Seconds</span></div>
+                    </div>
+                    <img class="tastewp_arrow tastewp_popped_div" src="https://tastewp.com/intro/arrow.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tastewp_relative tastewp_popped_div" id="tastewp_green_outbox">
+          <div class="tastewp_popped">
+            <div class="tastewp_centred">
+
+              <div class="tastewp_header_green">
+                Don&#39;t want it to expire?
+              </div>
+              <div class="tastewp_flex_2">
+                <div class="tastewp_green_subbox">
+                  <div class="tastewp_subbox_header tastewp_header_share">
+                    <div class="tastewp_non_circle_icon_share"></div>
+                    Share TasteWP
+                  </div>
+                                    <div class="tastewp_share_muted">
+                    <a href="https://tastewp.com/?open=login" target="_blank" class="tastewp_w600">Login to TasteWP</a> and then create a new site – you&#39;ll then see a link you
+                    can share with your followers &amp; friends. For every 3 people who sign up,
+                    you get one non-expiring site (up to 3)!
+                  </div>
+                                  </div>
+                <div class="tastewp_middle_side tastewp_middle_side_v4">
+                  and / or
+                </div>
+                <div class="tastewp_green_subbox">
+                  <div class="tastewp_subbox_header tastewp_go_pro_header">
+                    <div class="tastewp_non_circle_icon"></div>
+                    Go Premium
+                  </div>
+                  <div class="tastewp_flex_3 tastewp_flex_4 tastewp_pro_featured_list">
+                    <div class="tastewp_pro_featured">
+                      <div class="tastewp_circle_icon tastewp_pro_web"></div>
+                      No expiry
+                    </div>
+                    <div class="tastewp_pro_featured">
+                      <div class="tastewp_circle_icon tastewp_pro_space"></div>
+                      More space
+                    </div>
+                    <div class="tastewp_pro_featured">
+                      <div class="tastewp_circle_icon tastewp_pro_support"></div>
+                      Top support
+                    </div>
+                    <div class="tastewp_pro_featured">
+                      <div class="tastewp_circle_icon tastewp_pro_own_domain"></div>
+                      Own domain
+                    </div>
+                  </div>
+                  <a href="https://tastewp.com/premium-show-checkout" target="_blank" class="tastewp_buy_now">
+                    Buy now
+                  </a>
+                  <div class="tastewp_small">
+                    From 2.98 USD/month only – cancel anytime
+                  </div>
+                  <a href="https://tastewp.com/premium-show" target="_blank" class="tastewp_pro_learn_more">
+                    Learn more
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="tastewp_centred">
+          <div id="tastewp_close_btn" class="tastewp_close tastewp_w600">
+            Ok, got it!
+          </div>
+        </div>
+        <div class="tastewp_powered_big">
+          Powered by&nbsp;<a href="https://tastewp.com" target="_blank">TasteWP.com</a>
+        </div>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="wrap"><h1>Installing Plugin: WooCommerce Stripe Payment Gateway 10.8.3</h1><p>Downloading installation package from <span class="code pre">https://downloads.wordpress.org/plugin/woocommerce-gateway-stripe.10.8.3.zip</span>&#8230;</p>
+<p>Unpacking the package&#8230;</p>
+<p>Installing the plugin&#8230;</p>
+<p>Successfully installed the plugin <strong>WooCommerce Stripe Payment Gateway 10.8.3</strong>.</p>
+<p><a class="button button-primary" href="plugins.php?action=activate&amp;plugin=woocommerce-gateway-stripe%2Fwoocommerce-gateway-stripe.php&amp;_wpnonce=f7612e04ce" target="_parent">Activate Plugin</a> <a href="https://counselview.s6-tastewp.com/wp-admin/plugin-install.php" target="_parent">Go to Plugin Installer</a></p>
+</div>
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div></div><!-- wpbody -->
+<div class="clear"></div></div><!-- wpcontent -->
+
+<div id="wpfooter" role="contentinfo">
+		<p id="footer-left" class="alignleft">
+		<span id="footer-thankyou">Thank you for creating with <a href="https://wordpress.org/">WordPress</a>.</span>	</p>
+	<p id="footer-upgrade" class="alignright">
+		Version 7.0	</p>
+	<div class="clear"></div>
+</div>
+      <style media="screen">
+        .php-error #adminmenuback, .php-error #adminmenuwrap {
+          margin-top: 0 !important;
+        }
+      </style>
+      <div id="analyst-opt-out-modal" class="analyst-modal" style="display: none">
+	<div class="analyst-modal-content" style="width: 600px">
+		<div class="analyst-disable-modal-mask" id="analyst-disable-opt-out-modal-mask" style="display: none"></div>
+		<div style="display: flex">
+			<div class="analyst-install-image-block" style="width: 120px">
+				<img src="https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/analyst/assets/img/shield_question.png"/>
+			</div>
+			<div class="analyst-install-description-block">
+				<strong class="analyst-modal-header">By opting out, we cannot alert you anymore  in case of important security updates.</strong>
+				<p class="analyst-install-description-text">
+					In addition, we won’t get pointers how to further improve the plugin based on your integration with our plugin.
+				</p>
+			</div>
+		</div>
+		<div class="analyst-modal-def-top-padding">
+			<button class="analyst-btn-success opt-out-modal-close">Ok, don't opt out</button>
+		</div>
+		<div class="analyst-modal-def-top-padding" style="text-align: center;">
+			<button class="analyst-btn-secondary-ghost" id="opt-out-action">Opt out</button>
+		</div>
+		<div id="analyst-opt-out-error" class="analyst-modal-def-top-padding" style="display: none;">
+			<span style="color: #dc3232; font-size: 16px">Service unavailable. Please try again later</span>
+		</div>
+	</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	(function ($) {
+	  var isOptingOut = false
+
+	  $('#analyst-opt-out-modal').appendTo($('body'))
+
+      $(document).on('click', '.analyst-opt-out', function() {
+        var pluginId = $(this).attr('analyst-plugin-id')
+
+        $('#analyst-opt-out-modal')
+		  .attr({'analyst-plugin-id': pluginId})
+		  .show()
+      })
+
+	  $('.opt-out-modal-close').click(function () {
+        $('#analyst-opt-out-modal').hide()
+      })
+
+	  $('#opt-out-action').click(function () {
+		if (isOptingOut) return
+
+        var $mask = $('#analyst-disable-opt-out-modal-mask')
+        var $error = $('#analyst-opt-out-error')
+
+		var pluginId = $('#analyst-opt-out-modal').attr('analyst-plugin-id')
+
+    $mask.show()
+		$error.hide()
+
+		var self = this
+
+	    isOptingOut = true
+
+        $(self).text('Opting out...')
+
+        $.ajax({
+          url: ajaxurl,
+          method: 'POST',
+          data: {
+            action: 'analyst_opt_out_' + pluginId,
+            analyst_nonce: analyst_opt_localize.analyst_nonce
+          },
+          success: function (data) {
+            $(self).text('Opt out')
+
+			if (data && !data.success) {
+			    $('#analyst-opt-out-modal').hide()
+
+			    return
+			}
+
+            $error.hide()
+
+            $('#analyst-opt-out-modal').hide()
+
+			isOptingOut = false
+
+            var optInAction = $('<a />').attr({
+			          class: 'analyst-action-opt analyst-opt-in',
+			          'analyst-plugin-id': pluginId,
+                'analyst-plugin-signed': '1'
+            })
+			  .text('Opt In')
+            $('.analyst-opt-out[analyst-plugin-id="'+ pluginId +'"').replaceWith(optInAction)
+
+            $('[analyst-plugin-id="' + pluginId + '"').attr('analyst-plugin-opted-in', 0)
+
+            $mask.hide()
+          },
+		  error: function () {
+            $('#analyst-opt-out-error').show()
+
+            $(self).text('Opt out')
+          }
+        }).done(function () {
+		  $mask.hide()
+
+          isOptingOut = false
+        })
+      })
+    })(jQuery)
+</script>
+<script type="text/javascript">
+
+  (function ($) {
+    var isOptingIn = false
+
+    $('#analyst-opt-in-modal').appendTo($('body'))
+
+	var makeOptIn = function (pluginId) {
+      if (isOptingIn) return
+
+      isOptingIn = true
+
+      $.ajax({
+        url: ajaxurl,
+        method: 'POST',
+        data: {
+          action: 'analyst_opt_in_' + pluginId,
+          analyst_nonce: analyst_opt_localize.analyst_nonce
+        },
+        success: function () {
+          $('#analyst-opt-in-modal').hide()
+
+          isOptingIn = false
+
+          var optOutAction = $('<a />').attr({
+              class: 'analyst-action-opt analyst-opt-out',
+              'analyst-plugin-id': pluginId,
+              'analyst-plugin-signed': '1'
+            })
+            .text('Opt Out')
+          $('.analyst-opt-in[analyst-plugin-id="'+ pluginId +'"').replaceWith(optOutAction)
+
+          $('[analyst-plugin-id="' + pluginId + '"').attr('analyst-plugin-opted-in', 1)
+        }
+      })
+	}
+
+    $(document).on('click', '.analyst-opt-in:not([loading])', function() {
+	  var pluginId = $(this).attr('analyst-plugin-id')
+	  var isSigned = $(this).attr('analyst-plugin-signed') === '1'
+
+	  if (!isSigned) {
+		$('#analyst-install-modal')
+		  .attr('analyst-plugin-id', pluginId)
+		  .show()
+
+	    return;
+	  }
+
+      $('#analyst-install-modal').attr({'analyst-plugin-id': pluginId})
+
+	  $(this).attr('loading', true).text('Opting In...')
+
+	  makeOptIn(pluginId);
+    })
+
+    $('.opt-in-modal-close').click(function () {
+      $('#analyst-opt-in-modal').hide()
+    })
+  })(jQuery)
+</script>
+<div id="analyst-deactivate-modal" class="analyst-modal" style="display: none">
+	<div class="analyst-modal-content" style="width: 500px">
+		<div class="analyst-disable-modal-mask" id="analyst-disable-deactivate-modal-mask" style="display: none"></div>
+		<div style="display: flex">
+			<div class="analyst-install-image-block" style="width: 80px">
+				<img src="https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/analyst/assets/img/pencil.png"/>
+			</div>
+			<div class="analyst-install-description-block" style="padding-left: 20px">
+				<strong class="analyst-modal-header">Why do you deactivate?</strong>
+				<div class="analyst-install-description-text" style="padding-top: 2px">
+					Please let us know, so we can improve it! Thank you <img class="analyst-smile-image" src="https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/analyst/assets/img/smile.png" alt="">
+				</div>
+			</div>
+		</div>
+		<div>
+			<ul id="analyst-deactivation-reasons">
+				<li>
+					<label>
+						<span>
+							<input type="radio" name="deactivation-reason">
+						</span>
+						<span class="question" data-question="I couldn't understand how to make it work">I couldn't understand how to make it work</span>
+					</label>
+				</li>
+				<li data-input-type="textarea" data-input-placeholder="What should have worked, but didn’t?">
+					<label>
+						<span>
+							<input type="radio" name="deactivation-reason">
+						</span>
+						<span class="question" data-question="The plugin didn't work as expected">The plugin didn't work as expected</span>
+					</label>
+					<div class="question-answer"></div>
+				</li>
+				<li data-input-type="input" data-input-placeholder="What is the plugin name?">
+					<label>
+						<span>
+							<input type="radio" name="deactivation-reason">
+						</span>
+						<span class="question" data-question="I found a better plugin">I found a better plugin</span>
+					</label>
+					<div class="question-answer"></div>
+				</li>
+				<li>
+					<label>
+						<span>
+							<input type="radio" name="deactivation-reason">
+						</span>
+						<span class="question" data-question="It's a temporary deactivation">It's a temporary deactivation</span>
+					</label>
+					<div class="question-answer"></div>
+				</li>
+				<li data-input-type="textarea" data-input-placeholder="Please provide the reason of deactivation">
+					<label>
+						<span>
+							<input type="radio" name="deactivation-reason">
+						</span>
+						<span class="question" data-question="Other">Other</span>
+					</label>
+					<div class="question-answer"></div>
+				</li>
+			</ul>
+			<p id="analyst-deactivation-error" style="color: #dc3232; font-size: 16px; display: none">Please let us know the reason for de-activation. Thank you!</p>
+		</div>
+		<div>
+			<button class="analyst-btn-grey" id="analyst-disabled-plugin-action">Deactivate</button>
+		</div>
+		<div class="" style="text-align: center; font-size: 18px; padding-top: 10px">
+			<button class="analyst-btn-secondary-ghost analyst-deactivate-modal-close" style="color: #cccccc">Cancel</button>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  (function ($) {
+	$('.deactivate').click(function (e) {
+      var anchor = $(this).find('[analyst-plugin-id]')
+	  var pluginId = anchor.attr('analyst-plugin-id')
+	  var isOptedIn = anchor.attr('analyst-plugin-opted-in') === '1'
+
+	  // Do not ask for reason if not opted in
+	  if (!isOptedIn) {
+	    return
+	  }
+
+	  e.preventDefault()
+
+	  $('#analyst-deactivate-modal')
+		.attr({
+		  'analyst-plugin-id': pluginId,
+		  'analyst-redirect-url': $(this).find('a').attr('href')
+		})
+		.show()
+    })
+
+	$('.analyst-deactivate-modal-close').click(function () {
+	  $('#analyst-deactivate-modal').hide()
+    })
+
+    $('#analyst-deactivation-reasons input[name="deactivation-reason"]').change(function () {
+	  $('.question-answer').empty()
+
+      var root = $('#analyst-deactivation-reasons input[name="deactivation-reason"]:checked').parents('li')
+
+      $('#analyst-deactivation-error').hide()
+
+	  if (!root.attr('data-input-type')) return
+
+	  var reasonInput = $('<' + root.attr('data-input-type') + '/>').attr({placeholder: root.attr('data-input-placeholder'), class: 'reason-answer'})
+
+	  root.find('.question-answer').append(reasonInput)
+    })
+
+	$('#analyst-disabled-plugin-action').click(function () {
+	  var pluginId = $('#analyst-deactivate-modal').attr('analyst-plugin-id')
+	  var pluginDeactivationUrl = $('#analyst-deactivate-modal').attr('analyst-redirect-url')
+
+	  var root = $('#analyst-deactivation-reasons input[name="deactivation-reason"]:checked').parents('li');
+
+      var reason = root.find('.question-answer .reason-answer').val();
+
+      var question = root.find('.question').attr('data-question').trim()
+
+	  var $errorBlock = $('#analyst-deactivation-error')
+
+      if (!question) {
+		return $errorBlock.show()
+	  }
+
+      $errorBlock.hide()
+
+      var data = {
+        action: 'analyst_plugin_deactivate_' + pluginId,
+		    question: question,
+        analyst_nonce: analyst_opt_localize.analyst_nonce
+      }
+
+	  if (reason) {
+	    data['reason'] = reason.trim();
+	  }
+
+      $(this).attr('disabled', true).text('Deactivating...');
+
+      $('#analyst-disable-deactivate-modal-mask').show();
+
+      $.ajax({
+        url: ajaxurl,
+        method: 'POST',
+        data: data
+      }).done(function () {
+        window.location.href = pluginDeactivationUrl
+
+        $('#analyst-disable-deactivate-modal-mask').hide();
+      })
+    })
+
+  })(jQuery)
+</script>
+<div id="analyst-install-modal" class="analyst-modal" style="display: none" analyst-plugin-id="">
+	<div class="analyst-modal-content" style="width: 450px">
+		<div class="analyst-disable-modal-mask" id="analyst-disable-install-modal-mask" style="display: none"></div>
+		<div style="display: flex">
+			<div class="analyst-install-image-block">
+				<img src="https://counselview.s6-tastewp.com/wp-content/plugins/backup-backup/analyst/assets/img/shield_success.png"/>
+			</div>
+			<div class="analyst-install-description-block">
+				<strong class="analyst-modal-header">Stay on the safe side</strong>
+				<p class="analyst-install-description-text">Receive our plugin’s alerts in
+					case of <strong>critical security</strong>, feature & special deal
+					updates and allow non-sensitive
+					diagnostic tracking.</p>
+			</div>
+		</div>
+		<div class="analyst-modal-def-top-padding">
+			<button class="analyst-btn-success" id="analyst-install-action">Allow & Continue &gt;</button>
+		</div>
+		<div class="analyst-modal-def-top-padding" id="analyst-permissions-block" style="display: none">
+			<span>You’re granting these permissions:</span>
+			<ul class="analyst-install-permissions-list">
+				<li><strong>Your profile information</strong> (name and email) </li>
+				<li><strong>Your site information</strong> (URL, WP version, PHP info, plugins & themes)</li>
+				<li><strong>Plugin notices</strong> (updates, announcements, marketing, no spam)</li>
+				<li><strong>Plugin events</strong> (activation, deactivation and uninstall)</li>
+			</ul>
+		</div>
+		<div class="analyst-install-footer analyst-modal-def-top-padding">
+			<span class="analyst-action-text" id="analyst-permissions-toggle">Learn more</span>
+			<span id="analyst-powered-by" style="display: none;">Powered by <a href="https://sellcodes.com/blog/wordpress-feedback-system-for-plugin-creators/?utm_source=optin_screen" target="_blank" class="analyst-link">Sellcodes.com</a></span>
+			<span class="analyst-action-text analyst-install-modal-close" id="analyst-install-skip">Skip</span>
+		</div>
+		<div id="analyst-install-error" class="analyst-modal-def-top-padding" style="display: none; text-align: center">
+			<span style="color: #dc3232; font-size: 16px">Service unavailable. Please try again later</span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  (function ($) {
+
+    var installPlugin = function (pluginId) {
+      var $error = $('#analyst-install-error')
+
+	  $error.hide()
+
+      $.ajax({
+        url: ajaxurl,
+        method: 'POST',
+        data: {
+          action: 'analyst_install_' + pluginId,
+          analyst_nonce: analyst_opt_localize.analyst_nonce
+        },
+        success: function (data) {
+		  if (data && !data.success) {
+		    //error
+            $('#analyst-install-modal').hide()
+
+			return
+		  }
+
+          window.location.reload()
+        },
+		error: function () {
+		  $('#analyst-install-modal').hide()
+        }
+      }).done(function () {
+        $('#analyst-disable-install-modal-mask').hide()
+
+        $('#analyst-install-action')
+          .attr('disabled', false)
+          .text('Allow & Continue >')
+      })
+	}
+
+	if ($('#analyst-install-modal').attr('analyst-plugin-id')) {
+	  $('#analyst-install-modal').show()
+	}
+
+
+	$('.analyst-install-modal-close').click(function () {
+      $('#analyst-install-modal').hide()
+    })
+
+	$('#analyst-install-action').click(function () {
+	  var pluginId = $('#analyst-install-modal').attr('analyst-plugin-id')
+
+      $('#analyst-install-action')
+		.attr('disabled', true)
+		.text('Please wait...')
+
+	  $('#analyst-disable-install-modal-mask').show()
+
+      installPlugin(pluginId)
+    })
+
+	$('#analyst-permissions-toggle').click(function () {
+	  var isVisible = $('#analyst-permissions-block').toggle().is(':visible')
+
+	  isVisible ? $(this).text('Close section') : $(this).text('Learn more')
+
+	  var poweredBy = $('#analyst-powered-by')
+	  isVisible ? poweredBy.show() : poweredBy.hide()
+    })
+
+	$('#analyst-install-skip').click(function () {
+    var pluginId = $('#analyst-install-modal').attr('analyst-plugin-id')
+
+	  $.post(ajaxurl, {
+      action: 'analyst_skip_install_' + pluginId,
+      analyst_nonce: analyst_opt_localize.analyst_nonce
+    }).done(function () {
+		  $('#analyst-install-modal').hide()
+    })
+    })
+  })(jQuery)
+</script>
+      <script defer type="text/javascript" id="bmip-js-inline-remove-js">
+        function objectToQueryString(obj){
+          return Object.keys(obj).map(key => key + '=' + obj[key]).join('&');
+        }
+
+        function globalBMIKeepAlive() {
+          let xhr = new XMLHttpRequest();
+          let data = { action: "bmip_keepalive", token: "bmip", f: "refresh", nonce: "4c33563ef4" };
+          let url = 'https://counselview.s6-tastewp.com/wp-admin/admin-ajax.php' + '?' + objectToQueryString(data);
+          xhr.open('POST', url, true);
+          xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              let response;
+              if (response = JSON.parse(xhr.responseText)) {
+                if (typeof response.status != 'undefined' && response.status === 'success') {
+                  //setTimeout(globalBMIKeepAlive, 3000);
+                } else {
+                  //setTimeout(globalBMIKeepAlive, 20000);
+                }
+              }
+            }
+          };
+
+          xhr.send(JSON.stringify(data));
+        }
+
+        document.querySelector('#bmip-js-inline-remove-js').remove();
+      </script>
+      <script src='https://counselview.s6-tastewp.com/wp-admin/load-scripts.php?c=1&amp;load%5Bchunk_0%5D=hoverIntent,wp-dom-ready,wp-hooks&amp;ver=7.0'></script>
+<script id="wp-i18n-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/i18n.min.js?ver=781d11515ad3d91786ec"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="wp-a11y-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/a11y.min.js?ver=af934e5259bc51b8718e"></script>
+<script id="common-js-extra">
+var bulkActionObserverIds = {"bulk_action":"action","changeit":"new_role"};
+//# sourceURL=common-js-extra
+</script>
+<script id="common-js" src="https://counselview.s6-tastewp.com/wp-admin/js/common.min.js?ver=7.0"></script>
+<script id="hoverintent-js-js" src="https://counselview.s6-tastewp.com/wp-includes/js/hoverintent-js.min.js?ver=2.2.1"></script>
+<script id="admin-bar-js" src="https://counselview.s6-tastewp.com/wp-includes/js/admin-bar.min.js?ver=7.0"></script>
+<script id="svg-painter-js" src="https://counselview.s6-tastewp.com/wp-admin/js/svg-painter.js?ver=7.0"></script>
+<script id="react-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/vendor/react.min.js?ver=18.3.1.1"></script>
+<script id="react-dom-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/vendor/react-dom.min.js?ver=18.3.1.1"></script>
+<script id="react-jsx-runtime-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/vendor/react-jsx-runtime.min.js?ver=18.3.1"></script>
+<script id="wp-deprecated-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/deprecated.min.js?ver=990e85f234fee8f7d446"></script>
+<script id="wp-dom-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/dom.min.js?ver=66a6cf58e0c4cd128af0"></script>
+<script id="wp-escape-html-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/escape-html.min.js?ver=3f093e5cca67aa0f8b56"></script>
+<script id="wp-element-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/element.min.js?ver=15ba804677f72a8db97b"></script>
+<script id="wp-is-shallow-equal-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/is-shallow-equal.min.js?ver=5d84b9f3cb50d2ce7d04"></script>
+<script id="wp-keycodes-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/keycodes.min.js?ver=aa1a141e3468afe7f852"></script>
+<script id="wp-priority-queue-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/priority-queue.min.js?ver=1f0e89e247bc0bd3f9b9"></script>
+<script id="wp-undo-manager-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/undo-manager.min.js?ver=27bb0ae036a2c9d4a1b5"></script>
+<script id="wp-compose-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/compose.min.js?ver=edb5a8c0b5bf71686403"></script>
+<script id="moment-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/vendor/moment.min.js?ver=2.30.1"></script>
+<script id="moment-js-after">
+moment.updateLocale( 'en_US', {"months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"week":{"dow":1},"longDateFormat":{"LT":"g:i a","LTS":null,"L":null,"LL":"F j, Y","LLL":"F j, Y g:i a","LLLL":null}} );
+//# sourceURL=moment-js-after
+</script>
+<script id="wp-date-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/date.min.js?ver=c9f8e7dd3232716f34e9"></script>
+<script id="wp-date-js-after">
+wp.date.setSettings( {"l10n":{"locale":"en_US","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"meridiem":{"am":"am","pm":"pm","AM":"AM","PM":"PM"},"relative":{"future":"%s from now","past":"%s ago","s":"a second","ss":"%d seconds","m":"a minute","mm":"%d minutes","h":"an hour","hh":"%d hours","d":"a day","dd":"%d days","M":"a month","MM":"%d months","y":"a year","yy":"%d years"},"startOfWeek":1},"formats":{"time":"g:i a","date":"F j, Y","datetime":"F j, Y g:i a","datetimeAbbreviated":"M j, Y g:i a"},"timezone":{"offset":0,"offsetFormatted":"0","string":"","abbr":""}} );
+//# sourceURL=wp-date-js-after
+</script>
+<script id="wp-html-entities-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/html-entities.min.js?ver=8c6fa5b869dfeadc4af2"></script>
+<script id="wp-primitives-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/primitives.min.js?ver=a5c905ec27bcd76ef287"></script>
+<script id="wp-private-apis-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/private-apis.min.js?ver=835912f0086b9e59aed4"></script>
+<script id="wp-redux-routine-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/redux-routine.min.js?ver=64f9f5001aabc046c605"></script>
+<script id="wp-data-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/data.min.js?ver=1756b6a2676c1b3369ab"></script>
+<script id="wp-data-js-after">
+( function() {
+	var userId = 1;
+	var storageKey = "WP_DATA_USER_" + userId;
+	wp.data
+		.use( wp.data.plugins.persistence, { storageKey: storageKey } );
+} )();
+//# sourceURL=wp-data-js-after
+</script>
+<script id="wp-rich-text-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/rich-text.min.js?ver=16449e6108f48327f368"></script>
+<script id="wp-warning-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/warning.min.js?ver=36fdbdc984d93aee8a97"></script>
+<script id="wp-components-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/components.min.js?ver=5dedfe13f08880193a28"></script>
+<script id="wp-keyboard-shortcuts-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/keyboard-shortcuts.min.js?ver=2ed78d3b4c23f38804e0"></script>
+<script id="wp-commands-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/commands.min.js?ver=e3d8bba53f4ffea4fcd2"></script>
+<script id="wp-url-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/url.min.js?ver=bb0f766c3d2efe497871"></script>
+<script id="wp-api-fetch-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/api-fetch.min.js?ver=d7efe4dc1468d36c39b8"></script>
+<script id="wp-api-fetch-js-after">
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://counselview.s6-tastewp.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "6f54053181" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://counselview.s6-tastewp.com/wp-admin/admin-ajax.php?action=rest-nonce";
+//# sourceURL=wp-api-fetch-js-after
+</script>
+<script id="wp-blob-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/blob.min.js?ver=198af75fe06d924090d8"></script>
+<script id="wp-block-serialization-default-parser-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/block-serialization-default-parser.min.js?ver=bff55bd3f1ce9df0c99c"></script>
+<script id="wp-autop-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/autop.min.js?ver=9d0d0901b46f0a9027c9"></script>
+<script id="wp-shortcode-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/shortcode.min.js?ver=11742fe18cc215d3d5ab"></script>
+<script id="wp-blocks-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/blocks.min.js?ver=ef38e42500165bfda301"></script>
+<script id="wp-notices-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/notices.min.js?ver=218d0173a31ae7269246"></script>
+<script id="wp-preferences-persistence-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/preferences-persistence.min.js?ver=e8033be98338d1861bca"></script>
+<script id="wp-preferences-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/preferences.min.js?ver=035813168e404aa30193"></script>
+<script id="wp-preferences-js-after">
+( function() {
+				var serverData = "";
+				var userId = "1";
+				var persistenceLayer = wp.preferencesPersistence.__unstableCreatePersistenceLayer( serverData, userId );
+				var preferencesStore = wp.preferences.store;
+				wp.data.dispatch( preferencesStore ).setPersistenceLayer( persistenceLayer );
+			} ) ();
+//# sourceURL=wp-preferences-js-after
+</script>
+<script id="wp-style-engine-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/style-engine.min.js?ver=faa37ce61b7ec8394b2a"></script>
+<script id="wp-theme-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/theme.min.js?ver=e22ce547a4420507b323"></script>
+<script id="wp-token-list-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/token-list.min.js?ver=16f0aebdd39d87c2a84b"></script>
+<script id="wp-upload-media-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/upload-media.min.js?ver=d359c2cccf866d7082d2"></script>
+<script id="wp-block-editor-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/block-editor.min.js?ver=93c3566b7f24c15b7e17"></script>
+<script id="wp-core-data-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/core-data.min.js?ver=89931f90e4df5eb5f8a3"></script>
+<script id="wp-router-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/router.min.js?ver=0249e6724784b1c2583b"></script>
+<script id="wp-core-commands-js" src="https://counselview.s6-tastewp.com/wp-includes/js/dist/core-commands.min.js?ver=b209152e7e51279d7c28"></script>
+<script id="wp-core-commands-js-after">
+wp.coreCommands.initializeCommandPalette( {"is_network_admin":false,"menu_commands":[{"label":"Dashboard","url":"index.php","name":"index.php"},{"label":"Dashboard \u003E Home","url":"index.php","name":"index.php-index.php"},{"label":"Dashboard \u003E Updates","url":"update-core.php","name":"index.php-update-core.php"},{"label":"Posts","url":"edit.php","name":"edit.php"},{"label":"Posts \u003E All Posts","url":"edit.php","name":"edit.php-edit.php"},{"label":"Posts \u003E Add Post","url":"post-new.php","name":"edit.php-post-new.php"},{"label":"Posts \u003E Categories","url":"edit-tags.php?taxonomy=category","name":"edit.php-edit-tags.php?taxonomy=category"},{"label":"Posts \u003E Tags","url":"edit-tags.php?taxonomy=post_tag","name":"edit.php-edit-tags.php?taxonomy=post_tag"},{"label":"Media","url":"upload.php","name":"upload.php"},{"label":"Media \u003E Library","url":"upload.php","name":"upload.php-upload.php"},{"label":"Media \u003E Add Media File","url":"media-new.php","name":"upload.php-media-new.php"},{"label":"Pages","url":"edit.php?post_type=page","name":"edit.php?post_type=page"},{"label":"Pages \u003E All Pages","url":"edit.php?post_type=page","name":"edit.php?post_type=page-edit.php?post_type=page"},{"label":"Pages \u003E Add Page","url":"post-new.php?post_type=page","name":"edit.php?post_type=page-post-new.php?post_type=page"},{"label":"Comments","url":"edit-comments.php","name":"edit-comments.php"},{"label":"Appearance","url":"themes.php","name":"themes.php"},{"label":"Appearance \u003E Themes","url":"themes.php","name":"themes.php-themes.php"},{"label":"Appearance \u003E Editor","url":"site-editor.php","name":"themes.php-site-editor.php"},{"label":"Appearance \u003E Fonts","url":"font-library.php","name":"themes.php-font-library.php"},{"label":"Plugins","url":"plugins.php","name":"plugins.php"},{"label":"Plugins \u003E Installed Plugins","url":"plugins.php","name":"plugins.php-plugins.php"},{"label":"Plugins \u003E Add Plugin","url":"plugin-install.php","name":"plugins.php-plugin-install.php"},{"label":"Users","url":"users.php","name":"users.php"},{"label":"Users \u003E All Users","url":"users.php","name":"users.php-users.php"},{"label":"Users \u003E Add User","url":"user-new.php","name":"users.php-user-new.php"},{"label":"Users \u003E Profile","url":"profile.php","name":"users.php-profile.php"},{"label":"Tools","url":"tools.php","name":"tools.php"},{"label":"Tools \u003E Available Tools","url":"tools.php","name":"tools.php-tools.php"},{"label":"Tools \u003E Import","url":"import.php","name":"tools.php-import.php"},{"label":"Tools \u003E Export","url":"export.php","name":"tools.php-export.php"},{"label":"Tools \u003E Site Health","url":"site-health.php","name":"tools.php-site-health.php"},{"label":"Tools \u003E Export Personal Data","url":"export-personal-data.php","name":"tools.php-export-personal-data.php"},{"label":"Tools \u003E Erase Personal Data","url":"erase-personal-data.php","name":"tools.php-erase-personal-data.php"},{"label":"Tools \u003E Theme File Editor","url":"theme-editor.php","name":"tools.php-theme-editor.php"},{"label":"Tools \u003E Plugin File Editor","url":"plugin-editor.php","name":"tools.php-plugin-editor.php"},{"label":"Settings","url":"options-general.php","name":"options-general.php"},{"label":"Settings \u003E General","url":"options-general.php","name":"options-general.php-options-general.php"},{"label":"Settings \u003E Connectors","url":"options-connectors.php","name":"options-general.php-options-connectors.php"},{"label":"Settings \u003E Writing","url":"options-writing.php","name":"options-general.php-options-writing.php"},{"label":"Settings \u003E Reading","url":"options-reading.php","name":"options-general.php-options-reading.php"},{"label":"Settings \u003E Discussion","url":"options-discussion.php","name":"options-general.php-options-discussion.php"},{"label":"Settings \u003E Media","url":"options-media.php","name":"options-general.php-options-media.php"},{"label":"Settings \u003E Permalinks","url":"options-permalink.php","name":"options-general.php-options-permalink.php"},{"label":"Settings \u003E Privacy","url":"options-privacy.php","name":"options-general.php-options-privacy.php"},{"label":"Redirection","url":"https://counselview.s6-tastewp.com/wp-admin/admin.php?page=irrp-redirection","name":"irrp-redirection"},{"label":"","url":"https://counselview.s6-tastewp.com/wp-admin/admin.php?page=copy-delete-posts","name":"copy-delete-posts"},{"label":"","url":"https://counselview.s6-tastewp.com/wp-admin/admin.php?page=backup-migration","name":"backup-migration"},{"label":"MyPopUps","url":"https://counselview.s6-tastewp.com/wp-admin/admin.php?page=wp-mypopups","name":"wp-mypopups"}]} );
+//# sourceURL=wp-core-commands-js-after
+</script>
+<script id="jquery-ui-core-js" src="https://counselview.s6-tastewp.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3"></script>
+<script id="jquery-ui-mouse-js" src="https://counselview.s6-tastewp.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.13.3"></script>
+<script id="jquery-ui-draggable-js" src="https://counselview.s6-tastewp.com/wp-includes/js/jquery/ui/draggable.min.js?ver=1.13.3"></script>
+<script id="jquery-ui-droppable-js" src="https://counselview.s6-tastewp.com/wp-includes/js/jquery/ui/droppable.min.js?ver=1.13.3"></script>
+<script id="jquery-ui-sortable-js" src="https://counselview.s6-tastewp.com/wp-includes/js/jquery/ui/sortable.min.js?ver=1.13.3"></script>
+<script id="tastewp-intro-js-js" src="https://tastewp.com/intro/script.js?ver=5.5.7"></script>
+<script id="cdp-js-global-js-extra">
+var cdpGlobalJS = {"strDissmisIssue":"There was an issue while dismissing banner, please do it next time again.","strDissmisRequestIssue":"Cannot send dismiss request. Are you connected to the internet?","strReviewReview":"Thank you very much for the review, this banner will not appear again!","strReviewAlready":"Thank you very much for the review, this banner will not appear again!","strReviewLater":"Alright! We will ask you again in 14 days!","strReviewDefault":"This banner will not appear again, if any feature is missing you can ask for it on our support forum!","strTasksCleared":"Tasks cleared!","strTasksUpdateIssue":"We couldn't update task list, please try again later or kill tasks individualy.","strTasksUpdateIssue2":"We couldn't update task list, please try again later or kill tasks individualy.","strTaskHide":"The task has been hidden","strTaskHideIssue":"There was an error and we couldn't hide the task.","strTaskHideIssue2":"There was an error and we couldn't hide the task.","strTaskKill":"The task has been killed","strTaskKillIssue":"There was an error and we couldn't kill the task.","strTaskKillIssue2":"There was an error and we couldn't kill the task.","strCDPInstallSuccess":"Plugin has been installed successfully, feel free to check those awesome features!","strCDPInfo":"Copy & Delete Posts","strCDPInfoPremium":"Premium","strHideBannerNow":"It will hide this banner just for now.","strErrWithNotif":"There was an error with this notification.","strCDPInfo2":"Copy & Delete Posts","ajaxNonce":"716fc9f44e"};
+//# sourceURL=cdp-js-global-js-extra
+</script>
+<script id="cdp-js-global-js" src="https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/js/cdp-global.min.js?ver=154"></script>
+<script id="cdp-js-select-js" src="https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/js/cdp-select.min.js?ver=154"></script>
+<script id="cdp-tooltips-js" src="https://counselview.s6-tastewp.com/wp-content/plugins/copy-delete-posts/assets/js/cdp.tooltip.min.js?ver=154"></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script>if(typeof wpOnload==='function')wpOnload();</script>
+</body>
+</html>
