@@ -810,7 +810,6 @@ section {
   padding-top: 24px;
 }
 
-/* Wizard Results Page */
 .results-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -820,7 +819,7 @@ section {
 
 @media (min-width: 768px) {
   .results-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
