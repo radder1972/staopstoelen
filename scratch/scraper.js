@@ -182,11 +182,21 @@ async function run() {
                 else brand = "Overig";
             }
 
-            // Extract type
+            // Extract type (staop or relax) based on page metadata category if available, otherwise name matching
             let type = "staop";
             const nameSlugLower = (name + " " + id).toLowerCase();
-            if (nameSlugLower.includes("seniorenstoel") || nameSlugLower.includes("senioren-") || nameSlugLower.includes("relax")) {
-                type = "relax";
+            const postedInMatch = html.match(/<span\s+class="posted_in">([\s\S]*?)<\/span>/i);
+            if (postedInMatch) {
+                const postedInHtml = postedInMatch[1].toLowerCase();
+                if (postedInHtml.includes('senioren-stoelen') || postedInHtml.includes('relax')) {
+                    type = "relax";
+                } else if (postedInHtml.includes('sta-op') || postedInHtml.includes('staop')) {
+                    type = "staop";
+                }
+            } else {
+                if (nameSlugLower.includes("seniorenstoel") || nameSlugLower.includes("senioren-") || nameSlugLower.includes("relax")) {
+                    type = "relax";
+                }
             }
 
             // Extract material
