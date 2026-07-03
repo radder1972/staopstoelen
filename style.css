@@ -2746,37 +2746,38 @@ footer h3, footer h4 {
 
 /* Technical Specs Grid */
 .modal-specs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #e8e5e0;
+  border-radius: 8px;
+  overflow: hidden;
   margin-top: 15px;
-}
-
-@media (max-width: 576px) {
-  .modal-specs-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
 }
 
 .modal-spec-item {
   background-color: #faf9f6; /* soft warm beige */
-  border: 1px solid #e8e5e0;
-  border-radius: 8px;
+  border-bottom: 1px solid #e8e5e0;
   padding: 10px 14px;
   display: flex;
-  flex-direction: column; /* Category on top of value */
-  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   transition: all 0.2s ease;
 }
 
+.modal-spec-item:last-child {
+  border-bottom: none;
+}
+
 .modal-spec-item:hover {
-  border-color: rgba(75, 143, 36, 0.3);
-  background-color: rgba(75, 143, 36, 0.02);
+  background-color: #f7f5f0;
 }
 
 .modal-spec-label {
-  font-size: 0.8rem;
+  width: 45%;
+  flex-shrink: 0;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--color-forest); /* Groene tekst voor categorieën */
@@ -2784,7 +2785,8 @@ footer h3, footer h4 {
 }
 
 .modal-spec-value {
-  font-size: 0.92rem;
+  width: 55%;
+  font-size: 0.875rem;
   color: #333; /* Lichtzwarte tekst */
   font-weight: 400; /* Niet vet */
 }
