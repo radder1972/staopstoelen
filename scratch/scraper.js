@@ -150,21 +150,9 @@ async function run() {
             const priceHtmlMatch = html.match(/<p\s+class="price">([\s\S]*?)<\/p>/i);
             if (priceHtmlMatch) {
                 const rawPriceHtml = priceHtmlMatch[1];
-                let targetHtml = "";
-                
-                const insMatch = rawPriceHtml.match(/<ins[^>]*>([\s\S]*?)<\/ins>/i);
-                if (insMatch) {
-                    targetHtml = insMatch[1];
-                } else {
-                    const amountMatch = rawPriceHtml.match(/<span[^>]*class="[^"]*amount[^"]*"[^>]*>([\s\S]*?)<\/span>/i);
-                    if (amountMatch) {
-                        targetHtml = amountMatch[1];
-                    } else {
-                        targetHtml = rawPriceHtml;
-                    }
-                }
-                
-                let priceText = targetHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                let priceText = rawPriceHtml.replace(/<del[\s\S]*?<\/del>/gi, ''); 
+                priceText = priceText.replace(/<span[^>]*class="[^"]*screen-reader-text[^"]*"[^>]*>([\s\S]*?)<\/span>/gi, '');
+                priceText = priceText.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
                 priceText = priceText.replace(/[^0-9.,]/g, '').trim();
                 
                 if (priceText.endsWith(',00') || priceText.endsWith(',-')) {
