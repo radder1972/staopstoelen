@@ -2481,6 +2481,23 @@ footer h3, footer h4 {
   line-height: 1.6;
   color: var(--color-gray);
   margin-bottom: 20px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.modal-description::-webkit-scrollbar {
+  width: 5px;
+}
+.modal-description::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-description::-webkit-scrollbar-thumb {
+  background: #e1dfdc;
+  border-radius: 4px;
+}
+.modal-description::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray);
 }
 
 .modal-price-box {
