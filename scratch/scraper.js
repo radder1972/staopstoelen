@@ -136,12 +136,22 @@ async function run() {
             let price = 0;
             const priceHtmlMatch = html.match(/<p\s+class="price">([\s\S]*?)<\/p>/i);
             if (priceHtmlMatch) {
-                // Look for numbers like 3.450,00 or 700 or 1,500
-                const priceCleanText = priceHtmlMatch[1].replace(/<del[\s\S]*?<\/del>/gi, ''); // Ignore original price if discounted
-                const numberMatch = priceCleanText.replace(/&euro;/g, '').replace(/,/g, '').match(/\d+[\.\d]*/);
-                if (numberMatch) {
-                    price = Math.round(parseFloat(numberMatch[0].replace(/\./g, '')));
+                let priceText = priceHtmlMatch[1].replace(/<del[\s\S]*?<\/del>/gi, ''); // Ignore original price if discounted
+                priceText = priceText.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); // Strip HTML tags
+                
+                // Keep only numbers, dots, and commas
+                priceText = priceText.replace(/[^0-9.,]/g, '').trim();
+                
+                // Remove decimal .00, ,00 or ,- at the end
+                if (priceText.endsWith(',00') || priceText.endsWith(',-')) {
+                    priceText = priceText.slice(0, -3);
+                } else if (priceText.endsWith('.00')) {
+                    priceText = priceText.slice(0, -3);
                 }
+                
+                // Remove all remaining dots and commas (thousands separators)
+                const cleanPrice = priceText.replace(/[.,]/g, '');
+                price = parseInt(cleanPrice, 10);
             }
             if (!price || price < 100) {
                 price = 1450; // reasonable fallback
