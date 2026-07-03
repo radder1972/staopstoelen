@@ -93,9 +93,28 @@ async function run() {
                 }
             }
 
+            // Extract gallery images
+            const galleryImages = [];
+            const largeImageMatches = html.match(/data-large_image="([^"]+)"/gi) || [];
+            largeImageMatches.forEach(m => {
+                const match = m.match(/data-large_image="([^"]+)"/i);
+                if (match && !galleryImages.includes(match[1])) {
+                    galleryImages.push(match[1]);
+                }
+            });
+
             // Extract main image
             const imgMatch = html.match(/<meta\s+property="og:image"\s+content="([^"]+)"/i);
-            const image = imgMatch ? imgMatch[1] : "assets/chair_downstand.png";
+            const mainImg = imgMatch ? imgMatch[1] : (galleryImages[0] || "assets/chair_downstand.png");
+            
+            // Filter unique gallery images starting with the main image
+            const uniqueGallery = [];
+            if (mainImg) uniqueGallery.push(mainImg);
+            galleryImages.forEach(img => {
+                if (!uniqueGallery.includes(img)) {
+                    uniqueGallery.push(img);
+                }
+            });
 
             // Extract description
             let description = "";
@@ -264,6 +283,22 @@ async function run() {
                 }
             }
 
+            let image = mainImg;
+            let imageUp = null;
+            let imageLie = null;
+            let ambientImage = null;
+
+            if (type === 'relax') {
+                image = uniqueGallery[0] || mainImg;
+                // For seniorenstoelen, we need exactly two photos: normal and ambient
+                ambientImage = uniqueGallery[1] || "assets/chair_ravi_cozy.png"; // fallback if only 1 image
+            } else {
+                image = uniqueGallery[0] || mainImg;
+                if (uniqueGallery[1]) imageUp = uniqueGallery[1];
+                if (uniqueGallery[2]) imageLie = uniqueGallery[2];
+                if (uniqueGallery[3]) ambientImage = uniqueGallery[3];
+            }
+
             chairs.push({
                 id,
                 name,
@@ -271,6 +306,9 @@ async function run() {
                 model,
                 price,
                 image,
+                imageUp,
+                imageLie,
+                ambientImage,
                 condition,
                 status: "beschikbaar",
                 type,
