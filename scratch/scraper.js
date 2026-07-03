@@ -206,10 +206,17 @@ async function run() {
                 material = "leer";
             }
 
-            // Extract condition
+            // Extract condition (nieuw or occasion) based on page metadata category if available, otherwise name matching
             let condition = "nieuw";
-            if (nameSlugLower.includes("occasion") || nameSlugLower.includes("gebruikt") || nameSlugLower.includes("reco") || nameSlugLower.includes("gereconditioneerd")) {
-                condition = "occasion";
+            if (postedInMatch) {
+                const postedInHtml = postedInMatch[1].toLowerCase();
+                if (postedInHtml.includes('occasion') || postedInHtml.includes('gebruikt') || postedInHtml.includes('reco')) {
+                    condition = "occasion";
+                }
+            } else {
+                if (nameSlugLower.includes("occasion") || nameSlugLower.includes("gebruikt") || nameSlugLower.includes("reco") || nameSlugLower.includes("gereconditioneerd")) {
+                    condition = "occasion";
+                }
             }
 
             // Extract model
