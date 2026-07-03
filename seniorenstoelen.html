@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=1.7">
+  <link rel="stylesheet" href="style.css?v=1.8">
   <style>
 
     .catalog-layout {
@@ -346,7 +346,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 1.7
+        Gerealiseerd door BewegingsTechnologen. | Versie 1.8
       </div>
     </div>
   </footer>
@@ -1016,6 +1016,41 @@
       });
     }
 
+    // Helper to get grid description preview (first heading in green + first paragraph snippet in gray)
+    function getGridDescriptionPreview(htmlStr) {
+      if (!htmlStr) return "";
+      
+      let headingText = "";
+      const headingMatch = htmlStr.match(/<(h3|h4|h5)[^>]*>([\s\S]*?)<\/\1>/i);
+      if (headingMatch) {
+        headingText = headingMatch[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      }
+      
+      let paragraphText = "";
+      const pMatch = htmlStr.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+      if (pMatch) {
+        paragraphText = pMatch[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      } else {
+        const cleanAll = htmlStr.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+        paragraphText = cleanAll.replace(headingText, '').trim();
+      }
+      
+      let paragraphSnippet = paragraphText;
+      if (paragraphSnippet.length > 120) {
+        paragraphSnippet = paragraphSnippet.substring(0, 117).trim() + "...";
+      }
+      
+      let previewHtml = "";
+      if (headingText) {
+        previewHtml += `<h4 style="font-size: 0.95rem; color: var(--color-forest); margin-bottom: 6px; font-weight: bold; line-height: 1.4;">${headingText}</h4>`;
+      }
+      if (paragraphSnippet) {
+        previewHtml += `<p style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.5; margin: 0;">${paragraphSnippet}</p>`;
+      }
+      
+      return previewHtml || paragraphText;
+    }
+
     // Render Logic
     function renderCatalog() {
       const grid = document.getElementById("catalogGrid");
@@ -1143,7 +1178,7 @@
           <div class="product-info" style="display: flex; flex-direction: column;">
             <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
             <div style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
-              ${item.description || ""}
+              ${getGridDescriptionPreview(item.description)}
             </div>
             <div class="product-price-row">
               <div>
