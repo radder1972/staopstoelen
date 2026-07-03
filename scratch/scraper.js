@@ -26,6 +26,28 @@ function fetchUrl(url) {
 // Helper to delay execution
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function cleanHtmlDescription(rawHtml) {
+    if (!rawHtml) return "";
+    
+    // Remove description heading
+    let clean = rawHtml.replace(/<h2>Beschrijving<\/h2>/i, '');
+    
+    // Remove unwanted attributes/classes from tags
+    clean = clean.replace(/<([a-z1-6]+)\s+[^>]*>/gi, '<$1>');
+    
+    // Remove script and style blocks
+    clean = clean.replace(/<script[\s\S]*?<\/script>/gi, '');
+    clean = clean.replace(/<style[\s\S]*?<\/style>/gi, '');
+    
+    // Remove tags that are not in whitelist
+    clean = clean.replace(/<\/?(?!p|br|ul|li|strong|b|em|i|u|h3|h4|h5)[a-z1-6]+[^>]*>/gi, '');
+    
+    // Normalize spaces and newlines
+    clean = clean.replace(/\s+/g, ' ').trim();
+    
+    return clean;
+}
+
 async function run() {
     console.log("=== STAOPSTOELEN.NL CATALOG SCRAPER ===");
     console.log(`Fetching sitemap from ${SITEMAP_URL}...`);
@@ -77,21 +99,13 @@ async function run() {
 
             // Extract description
             let description = "";
+            const descTabMatch = html.match(/<div[^>]*id="tab-description"[^>]*>([\s\S]*?)<\/div>/i);
             const descMatch = html.match(/<div[^>]*class="[^"]*woocommerce-product-details__short-description[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
-            if (descMatch) {
-                description = descMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-            } else {
-                // Try description tab
-                const descTabMatch = html.match(/<div[^>]*id="tab-description"[^>]*>([\s\S]*?)<\/div>/i);
-                if (descTabMatch) {
-                    description = descTabMatch[1].replace(/<h2>Beschrijving<\/h2>/i, '')
-                                                .replace(/<[^>]+>/g, ' ')
-                                                .replace(/\s+/g, ' ')
-                                                .trim();
-                }
-            }
-            if (description.length > 300) {
-                description = description.substring(0, 297) + "...";
+            
+            if (descTabMatch) {
+                description = cleanHtmlDescription(descTabMatch[1]);
+            } else if (descMatch) {
+                description = cleanHtmlDescription(descMatch[1]);
             }
 
             // Extract specifications table
@@ -112,7 +126,6 @@ async function run() {
 
             // Extract key features/highlights from list items in the main description/description tab
             const features = [];
-            const descTabMatch = html.match(/<div[^>]*id="tab-description"[^>]*>([\s\S]*?)<\/div>/i);
             const searchHtmlForFeatures = (descMatch ? descMatch[1] : "") + " " + (descTabMatch ? descTabMatch[1] : "");
             
             const listItemsMatch = searchHtmlForFeatures.match(/<li>([\s\S]*?)<\/li>/gi) || [];
