@@ -376,7 +376,23 @@
           <span class="modal-brand" id="modalBrand"></span>
           <p class="modal-description" id="modalDescription"></p>
           
-          <div class="modal-price-box">
+          <!-- Key Features / Highlights -->
+          <div class="modal-highlights-box" id="modalHighlightsBox" style="margin-top: 20px; display: none;">
+            <h4 style="color: var(--color-forest-dark); margin-bottom: 10px; font-family: var(--font-heading); font-size: 1.05rem;">Belangrijkste kenmerken:</h4>
+            <ul class="modal-highlights-list" id="modalHighlightsList">
+              <!-- Dynamically populated <li> elements -->
+            </ul>
+          </div>
+          
+          <!-- Specs / Specificaties -->
+          <div class="modal-specs-box" id="modalSpecsBox" style="margin-top: 24px; border-top: 1px solid var(--color-gray-light); padding-top: 16px; display: none;">
+            <h4 style="color: var(--color-forest-dark); margin-bottom: 12px; font-family: var(--font-heading); font-size: 1.05rem;">Technische specificaties:</h4>
+            <div class="modal-specs-grid" id="modalSpecsGrid">
+              <!-- Dynamically populated spec items -->
+            </div>
+          </div>
+          
+          <div class="modal-price-box" style="margin-top: 24px;">
             <span class="price-label">Prijs vanaf</span>
             <span class="price-value" id="modalPrice"></span>
           </div>
@@ -807,6 +823,20 @@
     "price": 3995,
     "brand": "Doge",
     "description": "Nederlands kwaliteitsproduct met 3 motoren. Optimaal zitcomfort door individuele instelbaarheid. Uitstekend te combineren met orthopedische aanpassingen.",
+    "features": [
+      "100% Nederlands kwaliteitsproduct",
+      "Voorzien van 3 krachtige motoren",
+      "Volledig onafhankelijk verstelbaar",
+      "Uitstekend geschikt voor orthopedische aanpassingen"
+    ],
+    "specifications": {
+      "Zithoogte": "40 - 56 cm (instelbaar)",
+      "Zitbreedte": "45 / 50 / 55 cm",
+      "Zitdiepte": "43 - 53 cm",
+      "Aantal motoren": "3 motoren",
+      "Bediening": "Handbediening met snoer",
+      "Garantie": "2 Jaar"
+    },
     "badge": "Modulair Systeem",
     "badgeType": "reco",
     "condition": "occasion",
@@ -1189,6 +1219,31 @@
       modalBrand.innerHTML = `Merk: ${item.brand}${modelText}<br>Materiaal: ${materialText}`;
       modalDesc.textContent = item.description;
       modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
+      
+      // Render Highlights/Kenmerken
+      const highlightsBox = document.getElementById("modalHighlightsBox");
+      const highlightsList = document.getElementById("modalHighlightsList");
+      if (item.features && Array.isArray(item.features) && item.features.length > 0) {
+        highlightsList.innerHTML = item.features.map(f => `<li>${f}</li>`).join("");
+        highlightsBox.style.display = "block";
+      } else {
+        highlightsBox.style.display = "none";
+      }
+
+      // Render Specs/Specificaties
+      const specsBox = document.getElementById("modalSpecsBox");
+      const specsGrid = document.getElementById("modalSpecsGrid");
+      if (item.specifications && typeof item.specifications === 'object' && Object.keys(item.specifications).length > 0) {
+        specsGrid.innerHTML = Object.entries(item.specifications).map(([key, val]) => `
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">${key}</span>
+            <span class="modal-spec-value">${val}</span>
+          </div>
+        `).join("");
+        specsBox.style.display = "block";
+      } else {
+        specsBox.style.display = "none";
+      }
       
       // Render condition stamp (revisie / occasion)
       if (item.condition === "occasion") {

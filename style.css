@@ -2684,4 +2684,65 @@ footer h3, footer h4 {
   transform: scale(1.08);
 }
 
+/* Highlights / Kenmerken List */
+.modal-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-highlights-list li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-dark);
+  font-weight: 500;
+}
+
+.modal-highlights-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-forest);
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+/* Technical Specs Grid */
+.modal-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+
+@media (max-width: 480px) {
+  .modal-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.modal-spec-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-gray-light);
+  font-size: 0.9rem;
+}
+
+.modal-spec-label {
+  font-weight: 600;
+  color: var(--color-gray);
+}
+
+.modal-spec-value {
+  font-weight: 500;
+  color: var(--color-dark);
+  text-align: right;
+}
+
+
 
