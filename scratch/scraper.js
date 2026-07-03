@@ -232,8 +232,36 @@ async function run() {
                 badge = "Gereviseerd";
                 badgeType = "reco";
             } else {
-                badge = "Nieuw Model";
                 badgeType = "new";
+                const descLower = (description || "").toLowerCase();
+                const nameLower = name.toLowerCase();
+                
+                if (nameLower.includes("draaibaar") || descLower.includes("draaibaar") || descLower.includes("draaivoet")) {
+                    badge = "Draaibaar";
+                } else if (nameLower.includes("accu") || descLower.includes("accu")) {
+                    badge = "Met Accu";
+                } else if (descLower.includes("verwarming") || descLower.includes("massage")) {
+                    badge = "Stoelverwarming";
+                } else if (nameLower.includes("kantel") || descLower.includes("kantel") || descLower.includes("hart-lig")) {
+                    badge = "Hart-ligstand";
+                } else if (nameLower.includes("vario") || descLower.includes("vario") || descLower.includes("ilp")) {
+                    badge = "Maatinstelbaar";
+                } else if (nameLower.includes("xl") || descLower.includes(" xl") || descLower.includes("extra breed")) {
+                    badge = "XL Model";
+                } else if (nameLower.includes("smal") || nameLower.includes("mini") || descLower.includes("maat s") || descLower.includes("small")) {
+                    badge = "Maat S / Mini";
+                } else if (nameLower.includes("leer") || nameLower.includes("leder") || descLower.includes("leder") || descLower.includes("leer")) {
+                    badge = "Premium Leer";
+                } else if (nameLower.includes("modern") || descLower.includes("modern") || nameLower.includes("bentley") || nameLower.includes("ravi")) {
+                    badge = "Modern Design";
+                } else if (nameLower.includes("voorraad") || descLower.includes("voorraad") || descLower.includes("direct leverbaar")) {
+                    badge = "Snel Leverbaar";
+                } else {
+                    // Fallback to playful general terms based on some features or index
+                    const alternates = ["Ergonomisch", "Top Comfort", "Luxe Model", "Premium Keuze", "Maatwerk"];
+                    const index = (name.length + price) % alternates.length;
+                    badge = alternates[index];
+                }
             }
 
             chairs.push({
