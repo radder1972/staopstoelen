@@ -110,12 +110,17 @@ async function run() {
                 });
             }
 
-            // Extract key features/highlights from list items in the main description
+            // Extract key features/highlights from list items in the main description/description tab
             const features = [];
-            const listItemsMatch = html.match(/<li>([\s\S]*?)<\/li>/gi) || [];
+            const descTabMatch = html.match(/<div[^>]*id="tab-description"[^>]*>([\s\S]*?)<\/div>/i);
+            const searchHtmlForFeatures = (descMatch ? descMatch[1] : "") + " " + (descTabMatch ? descTabMatch[1] : "");
+            
+            const listItemsMatch = searchHtmlForFeatures.match(/<li>([\s\S]*?)<\/li>/gi) || [];
             listItemsMatch.forEach(li => {
                 const cleanText = li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-                if (cleanText.length > 5 && cleanText.length < 100 && !cleanText.includes('{') && !cleanText.includes('}') && features.length < 5) {
+                const forbidden = ["english", "french", "russian", "deutsch", "nederlands", "winkelwagen", "inloggen", "afrekenen"];
+                const isForbidden = forbidden.some(word => cleanText.toLowerCase().includes(word));
+                if (cleanText.length > 5 && cleanText.length < 100 && !cleanText.includes('{') && !cleanText.includes('}') && !isForbidden && features.length < 5) {
                     features.push(cleanText);
                 }
             });
