@@ -149,20 +149,30 @@ async function run() {
             let price = 0;
             const priceHtmlMatch = html.match(/<p\s+class="price">([\s\S]*?)<\/p>/i);
             if (priceHtmlMatch) {
-                let priceText = priceHtmlMatch[1].replace(/<del[\s\S]*?<\/del>/gi, ''); // Ignore original price if discounted
-                priceText = priceText.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); // Strip HTML tags
+                const rawPriceHtml = priceHtmlMatch[1];
+                let targetHtml = "";
                 
-                // Keep only numbers, dots, and commas
+                const insMatch = rawPriceHtml.match(/<ins[^>]*>([\s\S]*?)<\/ins>/i);
+                if (insMatch) {
+                    targetHtml = insMatch[1];
+                } else {
+                    const amountMatch = rawPriceHtml.match(/<span[^>]*class="[^"]*amount[^"]*"[^>]*>([\s\S]*?)<\/span>/i);
+                    if (amountMatch) {
+                        targetHtml = amountMatch[1];
+                    } else {
+                        targetHtml = rawPriceHtml;
+                    }
+                }
+                
+                let priceText = targetHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
                 priceText = priceText.replace(/[^0-9.,]/g, '').trim();
                 
-                // Remove decimal .00, ,00 or ,- at the end
                 if (priceText.endsWith(',00') || priceText.endsWith(',-')) {
                     priceText = priceText.slice(0, -3);
                 } else if (priceText.endsWith('.00')) {
                     priceText = priceText.slice(0, -3);
                 }
                 
-                // Remove all remaining dots and commas (thousands separators)
                 const cleanPrice = priceText.replace(/[.,]/g, '');
                 price = parseInt(cleanPrice, 10);
             }
