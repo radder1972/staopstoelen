@@ -677,6 +677,12 @@ function renderWizardResults() {
   topMatches.forEach(chair => {
     const card = document.createElement("div");
     card.className = "product-card";
+    card.style.cursor = "pointer";
+    card.addEventListener("click", () => {
+      if (typeof openProductModal === "function") {
+        openProductModal(chair);
+      }
+    });
     
     // Generate dynamic features & suitability
     const dynamicFeatures = getChairFeatures(chair);
@@ -708,7 +714,7 @@ function renderWizardResults() {
             <span class="price-label">Prijs vanaf</span>
             <span class="price-value" style="display: block;">${formatPrice(chair.price)}</span>
           </div>
-          <button type="button" class="btn btn-secondary" onclick="prefillBooking('${chair.name}')" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
+          <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); prefillBooking('${chair.name}')" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
             Gratis Thuispassen
           </button>
         </div>

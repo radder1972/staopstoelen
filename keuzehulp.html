@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=2.9">
+  <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
 
@@ -223,6 +223,62 @@
     </div>
   </section>
 
+  <!-- Product Details Modal -->
+  <div class="modal-overlay" id="productModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Sluit pop-up">&times;</button>
+      <div class="modal-content-grid">
+        <div class="modal-image-section">
+          <div class="modal-image-wrapper" id="modalImageWrapper" style="position: relative;">
+            <img id="modalProductImage" src="" alt="" style="opacity: 1;">
+            <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" style="display: none;">
+            <div id="modalProductStatusLabel" class="product-status-label" style="display: none;"></div>
+            <span class="badge" id="modalBadge" style="display: none;"></span>
+          </div>
+          <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
+            <button type="button" class="gallery-tab active" id="tabDown">Zit stand</button>
+            <button type="button" class="gallery-tab" id="tabUp" style="display: none;">Sta-op stand</button>
+            <button type="button" class="gallery-tab" id="tabLie" style="display: none;">Lig stand</button>
+            <button type="button" class="gallery-tab" id="tabAmbient" style="display: none;">In Interieur</button>
+          </div>
+          
+          <!-- Price and Action moved below the photo/gallery tabs -->
+          <div class="modal-price-box" style="margin-top: 20px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 12px;">
+            <span class="price-label">Prijs vanaf</span>
+            <span class="price-value" id="modalPrice"></span>
+          </div>
+          
+          <div class="modal-actions" style="width: 100%; box-sizing: border-box;">
+            <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%;">
+              Vrijblijvend Thuis Testen
+            </button>
+          </div>
+        </div>
+        <div class="modal-info-section">
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <span class="modal-brand" id="modalBrand"></span>
+          <div class="modal-description" id="modalDescription"></div>
+          
+          <!-- Key Features / Highlights -->
+          <div class="modal-highlights-box" id="modalHighlightsBox" style="margin-top: 20px; display: none;">
+            <h4 style="color: var(--color-forest-dark); margin-bottom: 10px; font-family: var(--font-heading); font-size: 1.05rem;">Belangrijkste kenmerken:</h4>
+            <ul class="modal-highlights-list" id="modalHighlightsList">
+              <!-- Dynamically populated <li> elements -->
+            </ul>
+          </div>
+          
+          <!-- Specs / Specificaties -->
+          <div class="modal-specs-box" id="modalSpecsBox" style="margin-top: 24px; border-top: 1px solid var(--color-gray-light); padding-top: 16px; display: none;">
+            <h4 style="color: var(--color-forest-dark); margin-bottom: 12px; font-family: var(--font-heading); font-size: 1.05rem;">Technische specificaties:</h4>
+            <div class="modal-specs-grid" id="modalSpecsGrid">
+              <!-- Dynamically populated spec items -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer Section -->
   <footer>
     <div class="container footer-grid">
@@ -277,7 +333,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 2.9
+        Gerealiseerd door BewegingsTechnologen. | Versie 3.0
       </div>
     </div>
   </footer>
@@ -289,6 +345,207 @@
       localStorage.setItem("prefilledChair", chairName);
       window.location.href = "afspraak.html";
     };
+
+    // Modal logic
+    let activeItem = null;
+
+    window.openProductModal = function(item) {
+      activeItem = item;
+      const modal = document.getElementById("productModal");
+      const modalImg = document.getElementById("modalProductImage");
+      const modalStamp = document.getElementById("modalProductStamp");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBrand = document.getElementById("modalBrand");
+      const modalDesc = document.getElementById("modalDescription");
+      const modalPrice = document.getElementById("modalPrice");
+      const modalBadge = document.getElementById("modalBadge");
+      const modalTabs = document.getElementById("modalGalleryTabs");
+      const bookBtn = document.getElementById("modalBookBtn");
+
+      // Set content
+      modalImg.src = item.image;
+      modalImg.alt = item.name;
+      modalTitle.textContent = item.name;
+      const materialText = item.material === "leer" ? "Leer" : "Stof";
+      const modelText = item.model ? `<br>Model: ${item.model}` : "";
+      modalBrand.innerHTML = `Merk: ${item.brand}${modelText}<br>Materiaal: ${materialText}`;
+      modalDesc.innerHTML = item.description || "";
+      modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
+      
+      // Render Highlights/Kenmerken
+      const highlightsBox = document.getElementById("modalHighlightsBox");
+      const highlightsList = document.getElementById("modalHighlightsList");
+      if (item.features && Array.isArray(item.features) && item.features.length > 0) {
+        highlightsList.innerHTML = item.features.map(f => `<li>${f}</li>`).join("");
+        highlightsBox.style.display = "block";
+      } else {
+        highlightsBox.style.display = "none";
+      }
+
+      // Render Specs/Specificaties
+      const specsBox = document.getElementById("modalSpecsBox");
+      const specsGrid = document.getElementById("modalSpecsGrid");
+      if (item.specifications && typeof item.specifications === 'object' && Object.keys(item.specifications).length > 0) {
+        specsGrid.innerHTML = Object.entries(item.specifications).map(([key, val]) => `
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">${key}</span>
+            <span class="modal-spec-value">${val}</span>
+          </div>
+        `).join("");
+        specsBox.style.display = "block";
+      } else {
+        specsBox.style.display = "none";
+      }
+      
+      // Render condition stamp (revisie / occasion)
+      if (item.condition === "occasion") {
+        modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.0.48";
+        modalStamp.alt = "Gereviseerd";
+        modalStamp.className = "quality-stamp";
+        modalStamp.style.display = "block";
+      } else {
+        modalStamp.style.display = "none";
+      }
+
+      // Render status label (verkocht / gereserveerd)
+      const modalStatusLabel = document.getElementById("modalProductStatusLabel");
+      const modalImgWrapper = document.getElementById("modalImageWrapper");
+      
+      if (item.status === "verkocht") {
+        modalStatusLabel.textContent = "Verkocht";
+        modalStatusLabel.className = "product-status-label status-verkocht";
+        modalStatusLabel.style.display = "block";
+        if (modalImgWrapper) modalImgWrapper.classList.add("is-unavailable");
+      } else if (item.status === "gereserveerd") {
+        modalStatusLabel.textContent = "Gereserveerd";
+        modalStatusLabel.className = "product-status-label status-gereserveerd";
+        modalStatusLabel.style.display = "block";
+        if (modalImgWrapper) modalImgWrapper.classList.add("is-unavailable");
+      } else {
+        modalStatusLabel.style.display = "none";
+        if (modalImgWrapper) modalImgWrapper.classList.remove("is-unavailable");
+      }
+
+      if (item.badge) {
+        modalBadge.textContent = item.badge;
+        modalBadge.className = `badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}`;
+        modalBadge.style.display = "block";
+      } else {
+        modalBadge.style.display = "none";
+      }
+
+      // Handle gallery tabs dynamically depending on which images are present
+      const hasUp = !!item.imageUp;
+      const hasLie = !!item.imageLie;
+      const hasAmbient = !!item.ambientImage;
+      
+      const tabDown = document.getElementById("tabDown");
+      const tabUp = document.getElementById("tabUp");
+      const tabLie = document.getElementById("tabLie");
+      const tabAmbient = document.getElementById("tabAmbient");
+      
+      // Reset tab states
+      tabDown.classList.add("active");
+      tabUp.classList.remove("active");
+      tabLie.classList.remove("active");
+      tabAmbient.classList.remove("active");
+      
+      if (hasUp || hasLie || hasAmbient) {
+        modalTabs.style.display = "flex";
+        
+        // Show/hide relevant tab buttons
+        tabUp.style.display = hasUp ? "block" : "none";
+        tabLie.style.display = hasLie ? "block" : "none";
+        tabAmbient.style.display = hasAmbient ? "block" : "none";
+        
+        // Remove old event listeners via cloning
+        const newTabDown = tabDown.cloneNode(true);
+        const newTabUp = tabUp.cloneNode(true);
+        const newTabLie = tabLie.cloneNode(true);
+        const newTabAmbient = tabAmbient.cloneNode(true);
+        
+        tabDown.parentNode.replaceChild(newTabDown, tabDown);
+        tabUp.parentNode.replaceChild(newTabUp, tabUp);
+        tabLie.parentNode.replaceChild(newTabLie, tabLie);
+        tabAmbient.parentNode.replaceChild(newTabAmbient, tabAmbient);
+        
+        const tabs = [newTabDown, newTabUp, newTabLie, newTabAmbient];
+        const setImg = (src) => {
+          modalImg.style.opacity = 0;
+          setTimeout(() => {
+            modalImg.src = src;
+            modalImg.style.opacity = 1;
+          }, 150);
+        };
+        
+        newTabDown.addEventListener("click", () => {
+          tabs.forEach(t => t.classList.remove("active"));
+          newTabDown.classList.add("active");
+          setImg(item.image);
+        });
+        
+        if (hasUp) {
+          newTabUp.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            newTabUp.classList.add("active");
+            setImg(item.imageUp);
+          });
+        }
+        
+        if (hasLie) {
+          newTabLie.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            newTabLie.classList.add("active");
+            setImg(item.imageLie);
+          });
+        }
+        
+        if (hasAmbient) {
+          newTabAmbient.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            newTabAmbient.classList.add("active");
+            setImg(item.ambientImage);
+          });
+        }
+      } else {
+        modalTabs.style.display = "none";
+      }
+
+      // Configure booking action button
+      const newBookBtn = bookBtn.cloneNode(true);
+      bookBtn.parentNode.replaceChild(newBookBtn, bookBtn);
+      newBookBtn.addEventListener("click", () => {
+        closeProductModal();
+        prefillBooking(item.name);
+      });
+
+      // Show modal
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+      
+      // Accessibility focus
+      modal.focus();
+    };
+
+    window.closeProductModal = function() {
+      const modal = document.getElementById("productModal");
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    };
+
+    // Modal Event Listeners
+    document.getElementById("modalClose").addEventListener("click", closeProductModal);
+    document.getElementById("productModal").addEventListener("click", (e) => {
+      if (e.target.id === "productModal") {
+        closeProductModal();
+      }
+    });
+    
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeProductModal();
+      }
+    });
   </script>
 </body>
 </html>
