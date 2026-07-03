@@ -2483,6 +2483,44 @@ footer h3, footer h4 {
   margin-bottom: 20px;
 }
 
+.modal-description h3,
+.modal-description h4,
+.modal-description h5 {
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--color-forest);
+}
+
+.modal-description h3:first-child,
+.modal-description h4:first-child,
+.modal-description h5:first-child {
+  margin-top: 0;
+}
+
+.modal-description p {
+  margin-bottom: 12px;
+  color: var(--color-gray);
+  line-height: 1.6;
+}
+
+.modal-description p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-description ul,
+.modal-description ol {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding-left: 20px;
+}
+
+.modal-description li {
+  margin-bottom: 6px;
+  color: var(--color-gray);
+}
+
 .modal-price-box {
   background-color: rgba(75, 143, 36, 0.04);
   padding: 12px 18px;
