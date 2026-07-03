@@ -2446,14 +2446,10 @@ footer h3, footer h4 {
   text-align: left;
 }
 
-.modal-info-section .badge {
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-weight: 700;
-  width: max-content;
-  margin-bottom: 8px;
+.modal-image-wrapper .badge {
+  z-index: 5;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .modal-title {
