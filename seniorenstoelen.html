@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=1.9">
+  <link rel="stylesheet" href="style.css?v=2.0">
   <style>
 
     .catalog-layout {
@@ -346,7 +346,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 1.9
+        Gerealiseerd door BewegingsTechnologen. | Versie 2.0
       </div>
     </div>
   </footer>
@@ -369,6 +369,18 @@
             <button type="button" class="gallery-tab" id="tabLie" style="display: none;">Ligstand</button>
             <button type="button" class="gallery-tab" id="tabAmbient" style="display: none;">In Interieur</button>
           </div>
+          
+          <!-- Price and Action moved below the photo/gallery tabs -->
+          <div class="modal-price-box" style="margin-top: 20px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 12px;">
+            <span class="price-label">Prijs vanaf</span>
+            <span class="price-value" id="modalPrice"></span>
+          </div>
+          
+          <div class="modal-actions" style="width: 100%; box-sizing: border-box;">
+            <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%;">
+              Vrijblijvend Thuis Testen
+            </button>
+          </div>
         </div>
         <div class="modal-info-section">
           <span class="badge" id="modalBadge"></span>
@@ -390,17 +402,6 @@
             <div class="modal-specs-grid" id="modalSpecsGrid">
               <!-- Dynamically populated spec items -->
             </div>
-          </div>
-          
-          <div class="modal-price-box" style="margin-top: 24px;">
-            <span class="price-label">Prijs vanaf</span>
-            <span class="price-value" id="modalPrice"></span>
-          </div>
-          
-          <div class="modal-actions">
-            <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%;">
-              Vrijblijvend Thuis Testen
-            </button>
           </div>
         </div>
       </div>
