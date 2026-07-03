@@ -147,10 +147,7 @@ async function loadWizardChairs() {
   
   // 2. Try API
   try {
-    let API_URL = window.location.origin + "/wp-json/custom/v1/stoelen";
-    if (window.location.port === "3000" || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      API_URL = window.location.origin + "/api/chairs";
-    }
+    const API_URL = "/api/chairs";
     const response = await fetch(API_URL);
     if (response.ok) {
       const dbData = await response.json();
