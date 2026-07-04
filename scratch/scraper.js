@@ -340,6 +340,7 @@ async function run() {
                 imageUp,
                 imageLie,
                 ambientImage,
+                gallery: uniqueGallery,
                 condition,
                 status: "beschikbaar",
                 type,

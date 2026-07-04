@@ -2458,6 +2458,50 @@ footer h3, footer h4 {
   color: var(--color-light);
 }
 
+.modal-gallery-thumbnails {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.modal-gallery-thumbnails::-webkit-scrollbar {
+  height: 4px;
+}
+
+.modal-gallery-thumbnails::-webkit-scrollbar-thumb {
+  background-color: var(--color-gray-light);
+  border-radius: 2px;
+}
+
+.gallery-thumbnail {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border: 2px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background-color: var(--color-light);
+  transition: var(--transition-smooth);
+  padding: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px var(--color-shadow);
+}
+
+.gallery-thumbnail:hover {
+  border-color: var(--color-terracotta);
+  transform: translateY(-2px);
+}
+
+.gallery-thumbnail.active {
+  border-color: var(--color-forest);
+  box-shadow: 0 0 0 2px rgba(75, 143, 36, 0.2);
+}
+
 .modal-info-section {
   display: flex;
   flex-direction: column;

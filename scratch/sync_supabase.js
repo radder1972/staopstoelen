@@ -39,10 +39,12 @@ async function sync() {
         
         const hasFeatures = availableColumns.has('features');
         const hasSpecifications = availableColumns.has('specifications');
+        const hasGallery = availableColumns.has('gallery');
         
         console.log("Schema check results:");
         console.log(`- Column 'features' exists: ${hasFeatures}`);
         console.log(`- Column 'specifications' exists: ${hasSpecifications}`);
+        console.log(`- Column 'gallery' exists: ${hasGallery}`);
         
         // 2. Prepare payload
         const chairsToUpsert = chairs.map(c => {
@@ -51,6 +53,7 @@ async function sync() {
             // Strip fields if they are not in the database schema yet
             if (!hasFeatures) delete item.features;
             if (!hasSpecifications) delete item.specifications;
+            if (!hasGallery) delete item.gallery;
             
             // Set timestamps
             if (!item.created_at) {
@@ -80,12 +83,13 @@ async function sync() {
         
         console.log("SUCCESS: Database synced successfully!");
         
-        if (!hasFeatures || !hasSpecifications) {
-            console.log("\n[ACTION REQUIRED] Features and specifications columns are currently missing in Supabase.");
-            console.log("To fully display features and specs on the live site, please execute the following SQL in your Supabase SQL Editor:");
+        if (!hasFeatures || !hasSpecifications || !hasGallery) {
+            console.log("\n[ACTION REQUIRED] Some columns are currently missing in Supabase.");
+            console.log("To fully display all product features, specs, and image galleries on the live site, please execute the following SQL in your Supabase SQL Editor:");
             console.log("--------------------------------------------------");
-            console.log("ALTER TABLE chairs ADD COLUMN IF NOT EXISTS features jsonb;");
-            console.log("ALTER TABLE chairs ADD COLUMN IF NOT EXISTS specifications jsonb;");
+            if (!hasFeatures) console.log("ALTER TABLE chairs ADD COLUMN IF NOT EXISTS features jsonb;");
+            if (!hasSpecifications) console.log("ALTER TABLE chairs ADD COLUMN IF NOT EXISTS specifications jsonb;");
+            if (!hasGallery) console.log("ALTER TABLE chairs ADD COLUMN IF NOT EXISTS gallery jsonb;");
             console.log("--------------------------------------------------");
             console.log("Once done, run this sync script again to upload the missing details!");
         }

@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=3.7">
+  <link rel="stylesheet" href="style.css?v=3.8">
   <style>
 
     .catalog-layout {
@@ -346,7 +346,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 3.7
+        Gerealiseerd door BewegingsTechnologen. | Versie 3.8
       </div>
     </div>
   </footer>
@@ -369,6 +369,7 @@
             <button type="button" class="gallery-tab" id="tabLie" style="display: none;">Lig stand</button>
             <button type="button" class="gallery-tab" id="tabAmbient" style="display: none;">In Interieur</button>
           </div>
+          <div class="modal-gallery-thumbnails" id="modalGalleryThumbnails" style="display: none;"></div>
           
           <!-- Price and Action moved below the photo/gallery tabs -->
           <div class="modal-price-box" style="margin-top: 20px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 12px;">
@@ -1317,80 +1318,42 @@
         modalBadge.style.display = "none";
       }
 
-      // Handle gallery tabs dynamically depending on which images are present
-      const hasUp = !!item.imageUp;
-      const hasLie = !!item.imageLie;
-      const hasAmbient = !!item.ambientImage;
+      // Handle dynamic thumbnail gallery rendering
+      const gallery = item.gallery && item.gallery.length > 0
+        ? item.gallery
+        : [item.image, item.imageUp, item.imageLie, item.ambientImage].filter(Boolean);
+
+      const thumbnailContainer = document.getElementById("modalGalleryThumbnails");
+      thumbnailContainer.innerHTML = "";
       
-      const tabDown = document.getElementById("tabDown");
-      const tabUp = document.getElementById("tabUp");
-      const tabLie = document.getElementById("tabLie");
-      const tabAmbient = document.getElementById("tabAmbient");
+      const setImg = (src) => {
+        modalImg.style.opacity = 0;
+        setTimeout(() => {
+          modalImg.src = src;
+          modalImg.style.opacity = 1;
+        }, 150);
+      };
       
-      // Reset tab states
-      tabDown.classList.add("active");
-      tabUp.classList.remove("active");
-      tabLie.classList.remove("active");
-      tabAmbient.classList.remove("active");
-      
-      if (hasUp || hasLie || hasAmbient) {
-        modalTabs.style.display = "flex";
+      if (gallery.length > 1) {
+        thumbnailContainer.style.display = "flex";
+        modalTabs.style.display = "none"; // Hide legacy text tabs
         
-        // Show/hide relevant tab buttons
-        tabUp.style.display = hasUp ? "block" : "none";
-        tabLie.style.display = hasLie ? "block" : "none";
-        tabAmbient.style.display = hasAmbient ? "block" : "none";
-        
-        // Remove old event listeners via cloning
-        const newTabDown = tabDown.cloneNode(true);
-        const newTabUp = tabUp.cloneNode(true);
-        const newTabLie = tabLie.cloneNode(true);
-        const newTabAmbient = tabAmbient.cloneNode(true);
-        
-        tabDown.parentNode.replaceChild(newTabDown, tabDown);
-        tabUp.parentNode.replaceChild(newTabUp, tabUp);
-        tabLie.parentNode.replaceChild(newTabLie, tabLie);
-        tabAmbient.parentNode.replaceChild(newTabAmbient, tabAmbient);
-        
-        const tabs = [newTabDown, newTabUp, newTabLie, newTabAmbient];
-        const setImg = (src) => {
-          modalImg.style.opacity = 0;
-          setTimeout(() => {
-            modalImg.src = src;
-            modalImg.style.opacity = 1;
-          }, 150);
-        };
-        
-        newTabDown.addEventListener("click", () => {
-          tabs.forEach(t => t.classList.remove("active"));
-          newTabDown.classList.add("active");
-          setImg(item.image);
+        gallery.forEach((imgUrl, index) => {
+          const thumb = document.createElement("img");
+          thumb.src = imgUrl;
+          thumb.alt = `${item.name} foto ${index + 1}`;
+          thumb.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+          
+          thumb.addEventListener("click", () => {
+            setImg(imgUrl);
+            thumbnailContainer.querySelectorAll(".gallery-thumbnail").forEach(t => t.classList.remove("active"));
+            thumb.classList.add("active");
+          });
+          
+          thumbnailContainer.appendChild(thumb);
         });
-        
-        if (hasUp) {
-          newTabUp.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            newTabUp.classList.add("active");
-            setImg(item.imageUp);
-          });
-        }
-        
-        if (hasLie) {
-          newTabLie.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            newTabLie.classList.add("active");
-            setImg(item.imageLie);
-          });
-        }
-        
-        if (hasAmbient) {
-          newTabAmbient.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            newTabAmbient.classList.add("active");
-            setImg(item.ambientImage);
-          });
-        }
       } else {
+        thumbnailContainer.style.display = "none";
         modalTabs.style.display = "none";
       }
 
