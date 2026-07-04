@@ -868,6 +868,26 @@ section {
   font-weight: 600;
 }
 
+.badge.badge-new {
+  background-color: var(--color-sky);
+  color: var(--color-dark);
+}
+
+.badge.badge-reco {
+  background-color: var(--color-forest);
+  color: var(--color-light);
+}
+
+.badge.badge-sale {
+  background-color: var(--color-terracotta);
+  color: var(--color-light);
+}
+
+.badge.badge-luxury {
+  background-color: var(--color-gold);
+  color: var(--color-dark);
+}
+
 
 .quality-stamp {
   position: absolute;

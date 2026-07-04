@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=3.6">
+  <link rel="stylesheet" href="style.css?v=3.7">
   <style>
 
     .catalog-layout {
@@ -346,7 +346,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 3.6
+        Gerealiseerd door BewegingsTechnologen. | Versie 3.7
       </div>
     </div>
   </footer>
@@ -1173,7 +1173,7 @@
           <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
             <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
             ${stampHtml}
-            ${item.badge ? `<span class="badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}">${item.badge}</span>` : ""}
+            ${item.badge ? `<span class="badge badge-${item.badgeType || 'new'}">${item.badge}</span>` : ""}
           </div>
           <div class="product-info" style="display: flex; flex-direction: column;">
             <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
@@ -1311,7 +1311,7 @@
 
       if (item.badge) {
         modalBadge.textContent = item.badge;
-        modalBadge.className = `badge ${item.badgeType === "new" ? "badge-new" : "badge-reco"}`;
+        modalBadge.className = `badge badge-${item.badgeType || 'new'}`;
         modalBadge.style.display = "block";
       } else {
         modalBadge.style.display = "none";

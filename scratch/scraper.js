@@ -301,6 +301,17 @@ async function run() {
                 } else {
                     badge = "Nieuw Model";
                 }
+
+                // Map dynamic badgeType color schemes based on the assigned badge text
+                if (badge === "Zwaluwstaart" || badge === "Ambachtelijk" || badge.includes("Garantie")) {
+                    badgeType = "luxury"; // Gold
+                } else if (badge === "Stoelverwarming" || badge === "Met Accu") {
+                    badgeType = "accent"; // Blue
+                } else if (badge === "Draaibaar" || badge === "Modern Design" || badge === "Snel Leverbaar" || badge === "Nieuw Model") {
+                    badgeType = "new"; // Sky Blue
+                } else {
+                    badgeType = "sale"; // Orange
+                }
             }
 
             let image = mainImg;

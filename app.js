@@ -695,7 +695,7 @@ function renderWizardResults() {
     card.innerHTML = `
       <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 200px; padding: 10px;">
         ${chair.image ? `<img src="${chair.image}" alt="${chair.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">` : `<span style="font-size: 3rem;">🛋️</span>`}
-        ${chair.badge ? `<span class="badge ${chair.badgeType === "new" ? "badge-new" : "badge-reco"}">${chair.badge}</span>` : ""}
+        ${chair.badge ? `<span class="badge badge-${chair.badgeType || 'new'}">${chair.badge}</span>` : ""}
         <span class="badge badge-relevance" style="left: auto; right: 16px; background-color: var(--color-forest); color: var(--color-light); font-weight: 700; border: 2px solid var(--color-light); box-shadow: 0 2px 6px rgba(0,0,0,0.1);">${percentage}% Match</span>
       </div>
       <div class="product-info">
