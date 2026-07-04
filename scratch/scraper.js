@@ -255,16 +255,39 @@ async function run() {
                 const descLower = (description || "").toLowerCase();
                 const nameLower = name.toLowerCase();
                 
-                if (nameLower.includes("draaibaar") || descLower.includes("draaibaar") || descLower.includes("draaivoet")) {
+                // Prioritized list of specific product characteristics mentioned in the description itself
+                if (descLower.includes("zwaluwstaart")) {
+                    badge = "Zwaluwstaart";
+                } else if (descLower.includes("meubelmakershandwerk")) {
+                    badge = "Ambachtelijk";
+                } else if (descLower.includes("nostalgische")) {
+                    badge = "Klassieke Stijl";
+                } else if (descLower.includes("eenvoudigste")) {
+                    badge = "Eenvoudig Model";
+                } else if (descLower.includes("zonder motoren") || descLower.includes("veer mechaniek")) {
+                    badge = "Zonder Motoren";
+                } else if (nameLower.includes("draaibaar") || descLower.includes("draaibaar") || descLower.includes("draaivoet")) {
                     badge = "Draaibaar";
-                } else if (nameLower.includes("accu") || descLower.includes("accu")) {
-                    badge = "Met Accu";
-                } else if (descLower.includes("verwarming") || descLower.includes("massage")) {
+                } else if (descLower.includes("10 jaar garantie")) {
+                    badge = "10 Jaar Garantie";
+                } else if (descLower.includes("5 jaar garantie")) {
+                    badge = "5 Jaar Garantie";
+                } else if (descLower.includes("stoelverwarming") || descLower.includes("verwarming")) {
                     badge = "Stoelverwarming";
-                } else if (nameLower.includes("kantel") || descLower.includes("kantel") || descLower.includes("hart-lig")) {
+                } else if (descLower.includes("accu") && !descLower.includes("geen accu") && !descLower.includes("optioneel")) {
+                    badge = "Met Accu";
+                } else if (descLower.includes("4-motorig") || descLower.includes("4 motoren")) {
+                    badge = "4-motorig";
+                } else if (descLower.includes("3-motorig") || descLower.includes("3 motoren")) {
+                    badge = "3-motorig";
+                } else if (descLower.includes("2-motorig") || descLower.includes("2 motoren")) {
+                    badge = "2-motorig";
+                } else if (descLower.includes("1-motorig") || descLower.includes("1 motor")) {
+                    badge = "1-motorig";
+                } else if (descLower.includes("hart-lig") || descLower.includes("kantel")) {
                     badge = "Hart-ligstand";
-                } else if (nameLower.includes("vario") || descLower.includes("vario") || descLower.includes("ilp")) {
-                    badge = "Maatinstelbaar";
+                } else if (descLower.includes("accu") && !descLower.includes("geen accu")) {
+                    badge = "Met Accu";
                 } else if (nameLower.includes("xl") || descLower.includes(" xl") || descLower.includes("extra breed")) {
                     badge = "XL Model";
                 } else if (nameLower.includes("smal") || nameLower.includes("mini") || descLower.includes("maat s") || descLower.includes("small")) {
@@ -276,10 +299,7 @@ async function run() {
                 } else if (nameLower.includes("voorraad") || descLower.includes("voorraad") || descLower.includes("direct leverbaar")) {
                     badge = "Snel Leverbaar";
                 } else {
-                    // Fallback to playful general terms based on some features or index
-                    const alternates = ["Ergonomisch", "Top Comfort", "Luxe Model", "Premium Keuze", "Maatwerk"];
-                    const index = (name.length + price) % alternates.length;
-                    badge = alternates[index];
+                    badge = "Nieuw Model";
                 }
             }
 
