@@ -1432,14 +1432,41 @@ section {
 
 .calendar-month-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 24px; /* Space arrows closely next to the month name */
   margin-bottom: 16px;
 }
 
 .calendar-month-name {
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-forest-dark);
+  min-width: 120px; /* Prevent text shift when month length changes */
+  text-align: center;
+}
+
+.calendar-nav-btn {
+  background: var(--color-light);
+  border: 1px solid var(--color-gray-light);
+  color: var(--color-forest);
+  font-size: 0.85rem;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  box-shadow: 0 1px 3px var(--color-shadow);
+}
+
+.calendar-nav-btn:hover {
+  background-color: var(--color-cream-dark);
+  color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  transform: scale(1.05);
 }
 
 .calendar-days-grid {
