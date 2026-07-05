@@ -2932,6 +2932,10 @@ footer h3, footer h4 {
 }
 
 /* Status label text content transition */
+.animation-status-label {
+  color: var(--color-terracotta) !important;
+}
+
 .animation-status-label::after {
   content: "Zitstand";
   animation: status-label-anim 12s infinite;
@@ -2940,19 +2944,15 @@ footer h3, footer h4 {
 @keyframes status-label-anim {
   0%, 20%, 95%, 100% {
     content: "Zitstand (benen gesloten)";
-    color: var(--color-forest);
   }
   25%, 45% {
     content: "Zitstand (benen omhoog)";
-    color: var(--color-sky);
   }
   50%, 70% {
     content: "Ligstand (alles vlak)";
-    color: var(--color-sage);
   }
   75%, 95% {
     content: "Sta-opstand (geëleveerd)";
-    color: var(--color-terracotta);
   }
 }
 
