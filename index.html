@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=5.7">
+  <link rel="stylesheet" href="style.css?v=5.8">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -249,8 +249,8 @@
     <div class="container">
       <div class="text-center" style="max-width: 750px; margin: 0 auto 40px auto; text-align: center;">
         <span class="section-tag">Direct Leverbaar</span>
-        <h2 class="section-title">Onze Aanbiedingen</h2>
-        <p class="section-subtitle">Bekijk een selectie van onze populaire gereviseerde sta-op stoelen die direct leverbaar zijn uit onze showroom of voor een passing aan huis.</p>
+        <h2 class="section-title">Top 3 Aanbiedingen</h2>
+        <p class="section-subtitle">Bekijk onze drie meest populaire gereviseerde sta-op stoelen die direct leverbaar zijn uit onze showroom of voor een passing aan huis.</p>
       </div>
       
       <!-- Catalog Grid for Offers -->
@@ -377,7 +377,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 5.7
+        Gerealiseerd door BewegingsTechnologen. | Versie 5.8
       </div>
     </div>
   </footer>
@@ -625,7 +625,7 @@
         if (response.ok) {
           const dbData = await response.json();
           if (dbData && dbData.staopstoelen) {
-            const offers = dbData.staopstoelen.slice(0, 5);
+            const offers = dbData.staopstoelen.slice(0, 3);
             const grid = document.getElementById("offersGrid");
             if (grid && offers.length > 0) {
               grid.innerHTML = "";
