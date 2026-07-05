@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=5.6">
+  <link rel="stylesheet" href="style.css?v=5.7">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -244,6 +244,26 @@
     </div>
   </section>
 
+  <!-- Aanbiedingen Section -->
+  <section id="aanbiedingen" style="padding: 80px 0; background-color: var(--color-light);">
+    <div class="container">
+      <div class="text-center" style="max-width: 750px; margin: 0 auto 40px auto; text-align: center;">
+        <span class="section-tag">Direct Leverbaar</span>
+        <h2 class="section-title">Onze Aanbiedingen</h2>
+        <p class="section-subtitle">Bekijk een selectie van onze populaire gereviseerde sta-op stoelen die direct leverbaar zijn uit onze showroom of voor een passing aan huis.</p>
+      </div>
+      
+      <!-- Catalog Grid for Offers -->
+      <div class="catalog-grid" id="offersGrid" style="margin-bottom: 40px;">
+        <!-- Loaded dynamically via JavaScript -->
+      </div>
+      
+      <div class="text-center" style="text-align: center;">
+        <a href="staopstoelen.html" class="btn btn-primary">Bekijk Alle Stoelen →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Keuzehulp Wizard Section -->
   <section id="keuzehulp" class="bg-alt" style="padding: 80px 0;">
     <div class="container">
@@ -357,11 +377,331 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 5.6
+        Gerealiseerd door BewegingsTechnologen. | Versie 5.7
       </div>
     </div>
   </footer>
 
+  <!-- Product Details Modal -->
+  <div class="modal-overlay" id="productModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Sluit pop-up">&times;</button>
+      <div class="modal-content-grid">
+        <div class="modal-image-section">
+          <div class="modal-image-wrapper" id="modalImageWrapper" style="position: relative;">
+            <img id="modalProductImage" src="" alt="" style="opacity: 1;">
+            <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" style="display: none;">
+            <div id="modalProductStatusLabel" class="product-status-label" style="display: none;"></div>
+            <span class="badge" id="modalBadge" style="display: none;"></span>
+          </div>
+          <div class="modal-gallery-tabs" id="modalGalleryTabs" style="display: none;">
+            <button type="button" class="gallery-tab active" id="tabDown">Zit stand</button>
+            <button type="button" class="gallery-tab" id="tabUp" style="display: none;">Sta-op stand</button>
+            <button type="button" class="gallery-tab" id="tabLie" style="display: none;">Lig stand</button>
+            <button type="button" class="gallery-tab" id="tabAmbient" style="display: none;">In Interieur</button>
+          </div>
+          <div class="modal-gallery-thumbnails" id="modalGalleryThumbnails" style="display: none;"></div>
+          
+          <div class="modal-price-box" style="margin-top: 20px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 12px;">
+            <span class="price-label">Prijs vanaf</span>
+            <span class="price-value" id="modalPrice"></span>
+          </div>
+          
+          <div class="modal-actions" style="width: 100%; box-sizing: border-box;">
+            <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%;">
+              Vrijblijvend Thuis Testen
+            </button>
+          </div>
+          
+          <div class="modal-highlights-box" id="modalHighlightsBox" style="margin-top: 24px; display: none; width: 100%; box-sizing: border-box;">
+            <h4 style="color: var(--color-forest-dark); margin-bottom: 10px; font-family: var(--font-heading); font-size: 1.05rem;">Belangrijkste kenmerken:</h4>
+            <ul class="modal-highlights-list" id="modalHighlightsList">
+              <!-- Dynamically populated <li> elements -->
+            </ul>
+          </div>
+          
+          <div class="modal-specs-box" id="modalSpecsBox" style="margin-top: 24px; border-top: 1px solid var(--color-gray-light); padding-top: 16px; display: none; width: 100%; box-sizing: border-box;">
+            <h4 style="color: var(--color-forest-dark); margin-bottom: 12px; font-family: var(--font-heading); font-size: 1.05rem;">Technische specificaties:</h4>
+            <div class="modal-specs-grid" id="modalSpecsGrid">
+              <!-- Dynamically populated spec items -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-info-section">
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <span class="modal-brand" id="modalBrand"></span>
+          <div class="modal-description" id="modalDescription"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+  <script>
+    // Load and render top 5 offers on home page
+    function getGridDescriptionPreview(htmlStr) {
+      if (!htmlStr) return "";
+      let headingText = "";
+      const headingMatch = htmlStr.match(/<(h3|h4|h5)[^>]*>([\s\S]*?)<\/\1>/i);
+      if (headingMatch) {
+        headingText = headingMatch[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      }
+      let paragraphText = "";
+      const pMatch = htmlStr.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+      if (pMatch) {
+        paragraphText = pMatch[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      } else {
+        const cleanAll = htmlStr.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+        paragraphText = cleanAll.replace(headingText, '').trim();
+      }
+      let paragraphSnippet = paragraphText;
+      if (paragraphSnippet.length > 120) {
+        paragraphSnippet = paragraphSnippet.substring(0, 117).trim() + "...";
+      }
+      let previewHtml = "";
+      if (headingText) {
+        previewHtml += `<h4 style="font-size: 0.95rem; color: var(--color-forest); margin-bottom: 6px; font-weight: bold; line-height: 1.4;">${headingText}</h4>`;
+      }
+      if (paragraphSnippet) {
+        previewHtml += `<p style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.5; margin: 0;">${paragraphSnippet}</p>`;
+      }
+      return previewHtml;
+    }
+
+    let activeItem = null;
+
+    function openProductModal(item) {
+      activeItem = item;
+      const modal = document.getElementById("productModal");
+      const modalImg = document.getElementById("modalProductImage");
+      const modalStamp = document.getElementById("modalProductStamp");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBrand = document.getElementById("modalBrand");
+      const modalDesc = document.getElementById("modalDescription");
+      const modalPrice = document.getElementById("modalPrice");
+      const modalBadge = document.getElementById("modalBadge");
+      const modalTabs = document.getElementById("modalGalleryTabs");
+      const bookBtn = document.getElementById("modalBookBtn");
+
+      modalImg.src = item.image;
+      modalImg.alt = item.name;
+      modalTitle.textContent = item.name;
+      const materialText = item.material === "leer" ? "Leer" : "Stof";
+      const modelText = item.model ? `<br>Model: ${item.model}` : "";
+      modalBrand.innerHTML = `Merk: ${item.brand}${modelText}<br>Materiaal: ${materialText}`;
+      modalDesc.innerHTML = item.description || "";
+      modalPrice.textContent = `€ ${item.price.toLocaleString("nl-NL")},-`;
+      
+      const highlightsBox = document.getElementById("modalHighlightsBox");
+      const highlightsList = document.getElementById("modalHighlightsList");
+      if (item.features && Array.isArray(item.features) && item.features.length > 0) {
+        highlightsList.innerHTML = item.features.map(f => `<li>${f}</li>`).join("");
+        highlightsBox.style.display = "block";
+      } else {
+        highlightsBox.style.display = "none";
+      }
+
+      const specsBox = document.getElementById("modalSpecsBox");
+      const specsGrid = document.getElementById("modalSpecsGrid");
+      if (item.specifications && typeof item.specifications === 'object' && Object.keys(item.specifications).length > 0) {
+        specsGrid.innerHTML = Object.entries(item.specifications).map(([key, val]) => `
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">${key}</span>
+            <span class="modal-spec-value">${val}</span>
+          </div>
+        `).join("");
+        specsBox.style.display = "block";
+      } else {
+        specsBox.style.display = "none";
+      }
+      
+      if (item.condition === "occasion") {
+        modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.0.48";
+        modalStamp.alt = "Gereviseerd";
+        modalStamp.className = "quality-stamp";
+        modalStamp.style.display = "block";
+      } else {
+        modalStamp.style.display = "none";
+      }
+
+      const modalStatusLabel = document.getElementById("modalProductStatusLabel");
+      const modalImgWrapper = document.getElementById("modalImageWrapper");
+      
+      if (item.status === "verkocht") {
+        modalStatusLabel.textContent = "Verkocht";
+        modalStatusLabel.className = "product-status-label status-verkocht";
+        modalStatusLabel.style.display = "block";
+        if (modalImgWrapper) modalImgWrapper.classList.add("is-unavailable");
+      } else if (item.status === "gereserveerd") {
+        modalStatusLabel.textContent = "Gereserveerd";
+        modalStatusLabel.className = "product-status-label status-gereserveerd";
+        modalStatusLabel.style.display = "block";
+        if (modalImgWrapper) modalImgWrapper.classList.add("is-unavailable");
+      } else {
+        modalStatusLabel.style.display = "none";
+        if (modalImgWrapper) modalImgWrapper.classList.remove("is-unavailable");
+      }
+
+      if (item.badge) {
+        modalBadge.textContent = item.badge;
+        modalBadge.className = `badge badge-${item.badgeType || 'new'}`;
+        modalBadge.style.display = "block";
+      } else {
+        modalBadge.style.display = "none";
+      }
+
+      const gallery = item.gallery && item.gallery.length > 0
+        ? item.gallery
+        : [item.image, item.imageUp, item.imageLie, item.ambientImage].filter(Boolean);
+
+      const thumbnailContainer = document.getElementById("modalGalleryThumbnails");
+      thumbnailContainer.innerHTML = "";
+      
+      const setImg = (src) => {
+        modalImg.style.opacity = 0;
+        setTimeout(() => {
+          modalImg.src = src;
+          modalImg.style.opacity = 1;
+        }, 150);
+      };
+      
+      if (gallery.length > 1) {
+        thumbnailContainer.style.display = "flex";
+        modalTabs.style.display = "none";
+        
+        gallery.forEach((imgUrl, index) => {
+          const thumb = document.createElement("img");
+          thumb.src = imgUrl;
+          thumb.alt = `${item.name} foto ${index + 1}`;
+          thumb.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+          
+          thumb.addEventListener("click", () => {
+            setImg(imgUrl);
+            thumbnailContainer.querySelectorAll(".gallery-thumbnail").forEach(t => t.classList.remove("active"));
+            thumb.classList.add("active");
+          });
+          
+          thumbnailContainer.appendChild(thumb);
+        });
+      } else {
+        thumbnailContainer.style.display = "none";
+        modalTabs.style.display = "none";
+      }
+
+      const newBookBtn = bookBtn.cloneNode(true);
+      bookBtn.parentNode.replaceChild(newBookBtn, bookBtn);
+      newBookBtn.addEventListener("click", () => {
+        closeProductModal();
+        prefillBooking(item.name);
+      });
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+      modal.focus();
+    }
+
+    function closeProductModal() {
+      const modal = document.getElementById("productModal");
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("modalClose").addEventListener("click", closeProductModal);
+    document.getElementById("productModal").addEventListener("click", (e) => {
+      if (e.target.id === "productModal") {
+        closeProductModal();
+      }
+    });
+    
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeProductModal();
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("/api/chairs");
+        if (response.ok) {
+          const dbData = await response.json();
+          if (dbData && dbData.staopstoelen) {
+            const offers = dbData.staopstoelen.slice(0, 5);
+            const grid = document.getElementById("offersGrid");
+            if (grid && offers.length > 0) {
+              grid.innerHTML = "";
+              offers.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.setAttribute("tabindex", "0");
+
+                let stampHtml = "";
+                if (item.condition === "occasion") {
+                  stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">`;
+                }
+                if (item.status === "verkocht") {
+                  stampHtml += `<div class="product-status-label status-verkocht">Verkocht</div>`;
+                } else if (item.status === "gereserveerd") {
+                  stampHtml += `<div class="product-status-label status-gereserveerd">Gereserveerd</div>`;
+                }
+
+                const isUnavailable = item.status && item.status !== "beschikbaar";
+
+                card.innerHTML = `
+                  <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px;">
+                    <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                    ${stampHtml}
+                    ${item.badge ? `<span class="badge badge-${item.badgeType || 'new'}">${item.badge}</span>` : ""}
+                  </div>
+                  <div class="product-info" style="display: flex; flex-direction: column;">
+                    <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
+                    <div style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
+                      ${getGridDescriptionPreview(item.description)}
+                    </div>
+                    <div class="product-price-row">
+                      <div>
+                        <span class="price-label">Prijs vanaf</span>
+                        <div style="display: flex; align-items: center; margin-top: 2px;">
+                          <span class="price-value">€ ${item.price.toLocaleString("nl-NL")},-</span>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); prefillBooking('${item.name}')" style="padding: 10px 16px; font-size: 0.85rem; min-height: auto;">
+                        Thuis Testen
+                      </button>
+                    </div>
+                  </div>
+                `;
+
+                if (item.imageUp) {
+                  const imgElement = card.querySelector(".product-image img");
+                  if (imgElement) {
+                    const preloadImg = new Image();
+                    preloadImg.src = item.imageUp;
+                    card.addEventListener("mouseenter", () => { imgElement.src = item.imageUp; });
+                    card.addEventListener("mouseleave", () => { imgElement.src = item.image; });
+                  }
+                }
+
+                card.addEventListener("click", (e) => {
+                  if (e.target.tagName === "BUTTON") return;
+                  openProductModal(item);
+                });
+
+                card.addEventListener("keydown", (e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openProductModal(item);
+                  }
+                });
+
+                grid.appendChild(card);
+              });
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("Error loading offers:", e);
+      }
+    });
+  </script>
 </body>
 </html>
