@@ -2884,7 +2884,7 @@ footer h3, footer h4 {
   font-weight: 400; /* Niet vet */
 }
 
-/* FAQ Chair Animation Styling (Photorealistic Crossfade) */
+/* FAQ Chair Animation Styling (Photorealistic Crossfade - 4 States) */
 .faq-chair-img {
   position: absolute;
   top: 15px;
@@ -2895,56 +2895,64 @@ footer h3, footer h4 {
   transition: opacity 0.5s ease-in-out;
 }
 
-/* Image 1 (Zitstand) keyframes */
+/* Image 1 (Zitstand gesloten) keyframes */
 .chair-img-sit {
-  animation: img-sit-anim 9s infinite ease-in-out;
+  animation: img-sit-anim 12s infinite ease-in-out;
 }
 @keyframes img-sit-anim {
-  0%, 22.2% { opacity: 1; z-index: 3; } /* Active (Sit) */
-  33.3%, 44.4% { opacity: 0; z-index: 1; } /* Inactive (Lift) */
-  55.6% { opacity: 1; z-index: 3; } /* Active (Sit) */
-  66.7%, 77.8% { opacity: 0; z-index: 1; } /* Inactive (Lie) */
-  88.9%, 100% { opacity: 1; z-index: 3; } /* Active (Sit) */
+  0%, 20%, 95%, 100% { opacity: 1; z-index: 3; }
+  25%, 90% { opacity: 0; z-index: 1; }
 }
 
-/* Image 2 (Sta-opstand) keyframes */
-.chair-img-lift {
-  animation: img-lift-anim 9s infinite ease-in-out;
+/* Image 2 (Relaxstand - benen omhoog) keyframes */
+.chair-img-legs {
+  animation: img-legs-anim 12s infinite ease-in-out;
 }
-@keyframes img-lift-anim {
-  0%, 22.2% { opacity: 0; z-index: 1; }
-  33.3%, 44.4% { opacity: 1; z-index: 3; } /* Active (Lift) */
-  55.6%, 100% { opacity: 0; z-index: 1; }
+@keyframes img-legs-anim {
+  0%, 20%, 50%, 100% { opacity: 0; z-index: 1; }
+  25%, 45% { opacity: 1; z-index: 3; }
 }
 
-/* Image 3 (Ligstand) keyframes */
+/* Image 3 (Ligstand - alles vlak) keyframes */
 .chair-img-lie {
-  animation: img-lie-anim 9s infinite ease-in-out;
+  animation: img-lie-anim 12s infinite ease-in-out;
 }
 @keyframes img-lie-anim {
-  0%, 55.6% { opacity: 0; z-index: 1; }
-  66.7%, 77.8% { opacity: 1; z-index: 3; } /* Active (Lie) */
-  88.9%, 100% { opacity: 0; z-index: 1; }
+  0%, 45%, 75%, 100% { opacity: 0; z-index: 1; }
+  50%, 70% { opacity: 1; z-index: 3; }
+}
+
+/* Image 4 (Sta-opstand - geëleveerd) keyframes */
+.chair-img-lift {
+  animation: img-lift-anim 12s infinite ease-in-out;
+}
+@keyframes img-lift-anim {
+  0%, 70%, 100% { opacity: 0; z-index: 1; }
+  75%, 95% { opacity: 1; z-index: 3; }
 }
 
 /* Status label text content transition */
 .animation-status-label::after {
   content: "Zitstand";
-  animation: status-label-anim 9s infinite;
+  animation: status-label-anim 12s infinite;
 }
 
 @keyframes status-label-anim {
-  0%, 22.2%, 55.6%, 88.9%, 100% {
-    content: "Zitstand";
+  0%, 20%, 95%, 100% {
+    content: "Zitstand (benen gesloten)";
     color: var(--color-forest);
   }
-  33.3%, 44.4% {
-    content: "Sta-opstand";
-    color: var(--color-terracotta);
+  25%, 45% {
+    content: "Zitstand (benen omhoog)";
+    color: var(--color-sky);
   }
-  66.7%, 77.8% {
-    content: "Ligstand";
+  50%, 70% {
+    content: "Ligstand (alles vlak)";
     color: var(--color-sage);
+  }
+  75%, 95% {
+    content: "Sta-opstand (geëleveerd)";
+    color: var(--color-terracotta);
   }
 }
 
