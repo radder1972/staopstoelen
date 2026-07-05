@@ -335,9 +335,23 @@ const server = http.createServer((req, res) => {
               return item;
             });
 
-            const { error: upsertError } = await supabase
+            let { error: upsertError } = await supabase
               .from('chairs')
               .upsert(chairsToUpsert);
+            
+            // Self-healing fallback if is_offer is not yet in Supabase schema
+            if (upsertError && (upsertError.message.includes('is_offer') || (upsertError.details && upsertError.details.includes('is_offer')))) {
+              console.warn("WARNING: 'is_offer' column not found in Supabase schema cache. Retrying upsert without 'is_offer'...");
+              const fallbackChairs = chairsToUpsert.map(c => {
+                const item = { ...c };
+                delete item.is_offer;
+                return item;
+              });
+              const { error: retryError } = await supabase
+                .from('chairs')
+                .upsert(fallbackChairs);
+              upsertError = retryError;
+            }
             
             if (upsertError) throw upsertError;
             

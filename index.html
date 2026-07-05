@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=6.0">
+  <link rel="stylesheet" href="style.css?v=6.1">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -377,7 +377,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 6.0
+        Gerealiseerd door BewegingsTechnologen. | Versie 6.1
       </div>
     </div>
   </footer>
@@ -625,12 +625,15 @@
         if (response.ok) {
           const dbData = await response.json();
           if (dbData && dbData.staopstoelen) {
-            const newChairs = dbData.staopstoelen.filter(c => c.condition === "nieuw");
-            const occasionChairs = dbData.staopstoelen.filter(c => c.condition === "occasion");
-            const offers = [
-              ...newChairs.slice(0, 2),
-              ...occasionChairs.slice(0, 1)
-            ];
+            let offers = dbData.staopstoelen.filter(c => c.is_offer === true);
+            if (offers.length === 0) {
+              const newChairs = dbData.staopstoelen.filter(c => c.condition === "nieuw");
+              const occasionChairs = dbData.staopstoelen.filter(c => c.condition === "occasion");
+              offers = [
+                ...newChairs.slice(0, 2),
+                ...occasionChairs.slice(0, 1)
+              ];
+            }
             const grid = document.getElementById("offersGrid");
             if (grid && offers.length > 0) {
               grid.innerHTML = "";
