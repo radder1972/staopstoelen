@@ -2884,5 +2884,103 @@ footer h3, footer h4 {
   font-weight: 400; /* Niet vet */
 }
 
+/* FAQ Chair Animation Styling */
+.faq-animation-container svg {
+  display: block;
+}
+
+/* Moving group containing seat, back, footrest, armrest */
+.chair-moving-group {
+  transform-origin: 100px 90px;
+  animation: chair-group-anim 9s infinite ease-in-out;
+}
+
+@keyframes chair-group-anim {
+  0%, 22.2%, 55.6%, 88.9%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33.3%, 44.4% {
+    transform: translate(14px, -20px) rotate(16deg);
+  }
+  66.7%, 77.8% {
+    transform: translate(-4px, 2px) rotate(0deg);
+  }
+}
+
+/* Backrest rotating back on pivot */
+.chair-backrest {
+  transform-origin: 75px 82px;
+  animation: chair-backrest-anim 9s infinite ease-in-out;
+}
+
+@keyframes chair-backrest-anim {
+  0%, 22.2%, 55.6%, 88.9%, 100% {
+    transform: rotate(0deg);
+  }
+  33.3%, 44.4% {
+    transform: rotate(0deg);
+  }
+  66.7%, 77.8% {
+    transform: rotate(-40deg);
+  }
+}
+
+/* Footrest extending out */
+.chair-footrest {
+  transform-origin: 120px 90px;
+  animation: chair-footrest-anim 9s infinite ease-in-out;
+}
+
+@keyframes chair-footrest-anim {
+  0%, 22.2%, 55.6%, 88.9%, 100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  33.3%, 44.4% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  66.7%, 77.8% {
+    transform: rotate(-75deg) translate(6px, -4px);
+  }
+}
+
+/* Linkage line connecting base to moving seat */
+.chair-linkage {
+  transform-origin: 100px 110px;
+  animation: chair-linkage-anim 9s infinite ease-in-out;
+}
+
+@keyframes chair-linkage-anim {
+  0%, 22.2%, 55.6%, 88.9%, 100% {
+    transform: scaleY(1) rotate(0deg);
+  }
+  33.3%, 44.4% {
+    transform: scaleY(1.4) rotate(10deg);
+  }
+  66.7%, 77.8% {
+    transform: scaleY(0.95) rotate(0deg);
+  }
+}
+
+/* Status label text content transition */
+.animation-status-label::after {
+  content: "Zitstand";
+  animation: status-label-anim 9s infinite;
+}
+
+@keyframes status-label-anim {
+  0%, 22.2%, 55.6%, 88.9%, 100% {
+    content: "Zitstand";
+    color: var(--color-forest);
+  }
+  33.3%, 44.4% {
+    content: "Sta-opstand";
+    color: var(--color-terracotta);
+  }
+  66.7%, 77.8% {
+    content: "Ligstand";
+    color: var(--color-sage);
+  }
+}
+
 
 
