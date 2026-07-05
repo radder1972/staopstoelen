@@ -1506,7 +1506,9 @@ section {
 }
 
 .calendar-day-btn:disabled {
-  opacity: 0.3;
+  background-color: #faf9f8;
+  border: 1px solid var(--color-gray-light);
+  color: #aeb4b8; /* Readable grey text (improved contrast) */
   cursor: not-allowed;
 }
 
