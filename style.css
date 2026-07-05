@@ -2933,13 +2933,13 @@ footer h3, footer h4 {
 
 @keyframes chair-footrest-anim {
   0%, 22.2%, 55.6%, 88.9%, 100% {
-    transform: rotate(0deg) translate(0, 0);
+    transform: rotate(0deg);
   }
   33.3%, 44.4% {
-    transform: rotate(0deg) translate(0, 0);
+    transform: rotate(0deg);
   }
   66.7%, 77.8% {
-    transform: rotate(-75deg) translate(6px, -4px);
+    transform: rotate(-90deg);
   }
 }
 
