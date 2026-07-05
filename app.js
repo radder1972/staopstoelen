@@ -712,7 +712,7 @@ function renderWizardResults() {
             <span class="price-value" style="display: block;">${formatPrice(chair.price)}</span>
           </div>
           <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); prefillBooking('${chair.name}')" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
-            Gratis Thuispassen
+            Afspraak maken
           </button>
         </div>
       </div>
