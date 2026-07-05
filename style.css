@@ -2884,81 +2884,47 @@ footer h3, footer h4 {
   font-weight: 400; /* Niet vet */
 }
 
-/* FAQ Chair Animation Styling */
-.faq-animation-container svg {
-  display: block;
+/* FAQ Chair Animation Styling (Photorealistic Crossfade) */
+.faq-chair-img {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: calc(100% - 45px);
+  object-fit: contain;
+  transition: opacity 0.5s ease-in-out;
 }
 
-/* Moving group containing seat, back, footrest, armrest */
-.chair-moving-group {
-  transform-origin: 100px 90px;
-  animation: chair-group-anim 9s infinite ease-in-out;
+/* Image 1 (Zitstand) keyframes */
+.chair-img-sit {
+  animation: img-sit-anim 9s infinite ease-in-out;
+}
+@keyframes img-sit-anim {
+  0%, 22.2% { opacity: 1; z-index: 3; } /* Active (Sit) */
+  33.3%, 44.4% { opacity: 0; z-index: 1; } /* Inactive (Lift) */
+  55.6% { opacity: 1; z-index: 3; } /* Active (Sit) */
+  66.7%, 77.8% { opacity: 0; z-index: 1; } /* Inactive (Lie) */
+  88.9%, 100% { opacity: 1; z-index: 3; } /* Active (Sit) */
 }
 
-@keyframes chair-group-anim {
-  0%, 22.2%, 55.6%, 88.9%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  33.3%, 44.4% {
-    transform: translate(14px, -20px) rotate(16deg);
-  }
-  66.7%, 77.8% {
-    transform: translate(-4px, 2px) rotate(0deg);
-  }
+/* Image 2 (Sta-opstand) keyframes */
+.chair-img-lift {
+  animation: img-lift-anim 9s infinite ease-in-out;
+}
+@keyframes img-lift-anim {
+  0%, 22.2% { opacity: 0; z-index: 1; }
+  33.3%, 44.4% { opacity: 1; z-index: 3; } /* Active (Lift) */
+  55.6%, 100% { opacity: 0; z-index: 1; }
 }
 
-/* Backrest rotating back on pivot */
-.chair-backrest {
-  transform-origin: 75px 82px;
-  animation: chair-backrest-anim 9s infinite ease-in-out;
+/* Image 3 (Ligstand) keyframes */
+.chair-img-lie {
+  animation: img-lie-anim 9s infinite ease-in-out;
 }
-
-@keyframes chair-backrest-anim {
-  0%, 22.2%, 55.6%, 88.9%, 100% {
-    transform: rotate(0deg);
-  }
-  33.3%, 44.4% {
-    transform: rotate(0deg);
-  }
-  66.7%, 77.8% {
-    transform: rotate(-40deg);
-  }
-}
-
-/* Footrest extending out */
-.chair-footrest {
-  transform-origin: 120px 90px;
-  animation: chair-footrest-anim 9s infinite ease-in-out;
-}
-
-@keyframes chair-footrest-anim {
-  0%, 22.2%, 55.6%, 88.9%, 100% {
-    transform: rotate(0deg);
-  }
-  33.3%, 44.4% {
-    transform: rotate(0deg);
-  }
-  66.7%, 77.8% {
-    transform: rotate(-90deg);
-  }
-}
-
-/* Linkage line connecting base to moving seat */
-.chair-linkage {
-  transform-origin: 100px 110px;
-  animation: chair-linkage-anim 9s infinite ease-in-out;
-}
-
-@keyframes chair-linkage-anim {
-  0%, 22.2%, 55.6%, 88.9%, 100% {
-    transform: scaleY(1) rotate(0deg);
-  }
-  33.3%, 44.4% {
-    transform: scaleY(1.4) rotate(10deg);
-  }
-  66.7%, 77.8% {
-    transform: scaleY(0.95) rotate(0deg);
-  }
+@keyframes img-lie-anim {
+  0%, 55.6% { opacity: 0; z-index: 1; }
+  66.7%, 77.8% { opacity: 1; z-index: 3; } /* Active (Lie) */
+  88.9%, 100% { opacity: 0; z-index: 1; }
 }
 
 /* Status label text content transition */

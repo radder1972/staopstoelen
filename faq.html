@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=4.3">
+  <link rel="stylesheet" href="style.css?v=4.4">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -159,47 +159,14 @@
             Bekijk in de animatie hiernaast hoe de stoel eenvoudig wisselt tussen de comfortabele <strong>zitstand</strong>, de veilige <strong>sta-opstand</strong> en de ergonomische <strong>ligstand</strong>.
           </p>
         </div>
-        <div class="faq-animation-container" style="flex: 0 0 240px; height: 180px; display: flex; align-items: center; justify-content: center; background-color: var(--color-light); border-radius: var(--radius-md); border: 1px solid var(--color-gray-light); box-shadow: 0 4px 12px var(--color-shadow); padding: 16px; overflow: hidden; position: relative; margin: 0 auto;">
-          <!-- Animated SVG Chair -->
-          <svg viewBox="0 0 200 150" width="100%" height="100%">
-            <!-- Base / Ground -->
-            <line x1="20" y1="130" x2="180" y2="130" stroke="var(--color-gray-light)" stroke-width="3" stroke-linecap="round" />
-            
-            <!-- Chair Base Pedestal (fixed) -->
-            <path d="M 90,130 L 90,110 L 110,110 L 110,130" stroke="var(--color-gray)" stroke-width="4" stroke-linejoin="round" fill="none" />
-            
-            <!-- Interactive animated chair parts -->
-            <g class="chair-moving-group">
-              <!-- Metal mechanism linkage -->
-              <path class="chair-linkage" d="M 100,110 L 100,90" stroke="var(--color-gray)" stroke-width="4" stroke-linecap="round" />
-              
-              <!-- Footrest (retracts / extends) -->
-              <g class="chair-footrest">
-                <!-- Footrest support arm (vertical in zitstand) -->
-                <line x1="120" y1="90" x2="120" y2="115" stroke="var(--color-gray)" stroke-width="3" />
-                <!-- Footrest pad (horizontal at bottom) -->
-                <rect x="112" y="115" width="16" height="5" rx="1" fill="var(--color-terracotta)" />
-              </g>
-              
-              <!-- Seat cushion -->
-              <rect class="chair-seat" x="75" y="80" width="50" height="12" rx="4" fill="var(--color-forest)" />
-              
-              <!-- Backrest cushion -->
-              <g class="chair-backrest">
-                <rect x="65" y="30" width="12" height="52" rx="4" fill="var(--color-forest)" />
-                <!-- Headrest pillow -->
-                <rect x="63" y="24" width="16" height="10" rx="3" fill="var(--color-sage)" />
-              </g>
-              
-              <!-- Armrest -->
-              <rect class="chair-armrest" x="85" y="70" width="35" height="8" rx="3" fill="var(--color-sage)" />
-              <line class="chair-armrest-post" x1="90" y1="78" x2="90" y2="85" stroke="var(--color-gray)" stroke-width="3" />
-              <line class="chair-armrest-post" x1="115" y1="78" x2="115" y2="85" stroke="var(--color-gray)" stroke-width="3" />
-            </g>
-          </svg>
+        <div class="faq-animation-container" style="flex: 0 0 240px; height: 210px; display: flex; align-items: center; justify-content: center; background-color: var(--color-light); border-radius: var(--radius-md); border: 1px solid var(--color-gray-light); box-shadow: 0 4px 12px var(--color-shadow); padding: 16px; overflow: hidden; position: relative; margin: 0 auto;">
+          <!-- Photorealistic Chair Images (layered for crossfade) -->
+          <img src="https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-Mecam-MOVIE-4.png" class="faq-chair-img chair-img-sit" alt="Zitstand" style="position: absolute; width: 85%; height: 80%; object-fit: contain; top: 12px;">
+          <img src="https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-Mecam-MOVIE-6.png" class="faq-chair-img chair-img-lift" alt="Sta-opstand" style="position: absolute; width: 85%; height: 80%; object-fit: contain; top: 12px; opacity: 0;">
+          <img src="https://www.staopstoelen.nl/wp-content/uploads/2017/03/Sta-op-stoel-Mecam-MOVIE-5.png" class="faq-chair-img chair-img-lie" alt="Ligstand" style="position: absolute; width: 85%; height: 80%; object-fit: contain; top: 12px; opacity: 0;">
           
           <!-- Label for current status -->
-          <div class="animation-status-label" style="position: absolute; bottom: 8px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;"></div>
+          <div class="animation-status-label" style="position: absolute; bottom: 8px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;"></div>
         </div>
       </div>
 
@@ -481,7 +448,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 4.3
+        Gerealiseerd door BewegingsTechnologen. | Versie 4.4
       </div>
     </div>
   </footer>
