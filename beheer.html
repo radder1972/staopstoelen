@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=6.8.51">
+  <link rel="stylesheet" href="style.css?v=6.9.51">
   <style>
     /* Admin Dashboard Specific Styles */
     /* Reset fonts to match website styles */
@@ -536,7 +536,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v6.8</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v6.9</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -548,12 +548,21 @@
       </div>
 
       <div id="chairsSection">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 24px; gap: 16px; flex-wrap: wrap;">
           <div>
             <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Stoelen Beheer</h2>
             <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Beheer de sta-op stoelen catalogus en exporteer de updates naar de html code.</p>
           </div>
-          <button class="btn btn-primary" id="addChairBtn">+ Nieuwe Stoel Toevoegen</button>
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <div style="position: relative; width: 300px;">
+              <input type="text" id="chairSearchInput" class="form-control" placeholder="Zoek stoel..." style="padding-left: 36px; min-height: 42px; margin: 0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gray)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <button class="btn btn-primary" id="addChairBtn" style="margin: 0;">+ Nieuwe Stoel Toevoegen</button>
+          </div>
         </div>
         
         <!-- Table of chairs (Full-width to ensure all columns & action buttons fit) -->
@@ -1525,6 +1534,11 @@
         activeData = loadData(currentTab);
       }
       await fetchBrands();
+      const searchInput = document.getElementById("chairSearchInput");
+      if (searchInput) {
+        searchInput.removeEventListener("input", renderTable);
+        searchInput.addEventListener("input", renderTable);
+      }
       renderTable();
       updateCodeExport();
       resetForm();
@@ -1565,13 +1579,25 @@
         return `<th>${h}</th>`;
       }).join("");
       
-      if (activeData.length === 0) {
-        body.innerHTML = `<tr><td colspan="${Object.keys(headerMap).length}" style="text-align:center; padding: 40px; color:var(--color-gray);">Geen stoelen gevonden. Voeg een nieuwe toe!</td></tr>`;
-        return;
-      }
-      
       // Prepare sorted list with original indices
       let itemsToShow = activeData.map((item, index) => ({ item, index }));
+
+      // Filter by search query
+      const searchQuery = document.getElementById("chairSearchInput") ? document.getElementById("chairSearchInput").value.trim().toLowerCase() : "";
+      if (searchQuery) {
+        itemsToShow = itemsToShow.filter(({ item }) => {
+          const name = (item.name || "").toLowerCase();
+          const brand = (item.brand || "").toLowerCase();
+          const model = (item.model || "").toLowerCase();
+          const condition = (item.condition || "").toLowerCase() === "occasion" ? "occasion gereviseerd" : "nieuw";
+          return name.includes(searchQuery) || brand.includes(searchQuery) || model.includes(searchQuery) || condition.includes(searchQuery);
+        });
+      }
+      
+      if (itemsToShow.length === 0) {
+        body.innerHTML = `<tr><td colspan="${Object.keys(headerMap).length}" style="text-align:center; padding: 40px; color:var(--color-gray);">${searchQuery ? 'Geen zoekresultaten gevonden.' : 'Geen stoelen gevonden. Voeg een nieuwe toe!'}</td></tr>`;
+        return;
+      }
       
       if (currentSortField) {
         itemsToShow.sort((a, b) => {
@@ -2296,6 +2322,12 @@
         
         chairsSection.style.display = "block";
         brandsSection.style.display = "none";
+        
+        const searchInput = document.getElementById("chairSearchInput");
+        if (searchInput) {
+          searchInput.value = "";
+          renderTable();
+        }
       });
       
       tabBrands.addEventListener("click", () => {
