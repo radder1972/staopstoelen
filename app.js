@@ -147,7 +147,7 @@ async function loadWizardChairs() {
   
   // 2. Try API
   try {
-    const API_URL = "/api/chairs";
+    const API_URL = "api/chairs.php";
     const response = await fetch(API_URL);
     if (response.ok) {
       const dbData = await response.json();

@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=7.1.51">
+  <link rel="stylesheet" href="style.css?v=8.0.51">
   <style>
     /* Admin Dashboard Specific Styles */
     /* Reset fonts to match website styles */
@@ -536,7 +536,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v7.1</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v8.0</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -1430,7 +1430,7 @@
     
     // API Configuration for local database integration
     const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:") ? "http://localhost:3000" : "";
-    const API_URL = API_BASE + "/api/chairs";
+    const API_URL = API_BASE + "api/chairs.php";
     let isApiConnected = false;
     let fullDbData = null;
 
@@ -2040,7 +2040,7 @@
             fileData: e.target.result
           };
 
-          const response = await fetch(API_BASE + "/api/upload", {
+          const response = await fetch(API_BASE + "api/upload.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -2106,7 +2106,7 @@
     // ==========================================
     // BRANDS MANAGEMENT SYSTEM INTEGRATION
     // ==========================================
-    const BRANDS_API_URL = API_BASE + "/api/brands";
+    const BRANDS_API_URL = API_BASE + "api/brands.php";
     let brandsData = [];
 
     async function fetchBrands() {
