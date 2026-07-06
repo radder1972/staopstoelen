@@ -2421,7 +2421,7 @@ footer h3, footer h4 {
 
 .modal-content-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: 30px;
   padding: 40px;
 }
