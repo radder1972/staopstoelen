@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.10.51">
+  <link rel="stylesheet" href="style.css?v=9.11.51">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     /* Admin Dashboard Specific Styles */
@@ -34,6 +34,18 @@
     .container {
       max-width: 100% !important;
       width: 100% !important;
+    }
+
+    .stats-charts-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    @media (min-width: 768px) {
+      .stats-charts-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
     
     .admin-header {
@@ -549,7 +561,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v9.10</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v9.11</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -945,63 +957,63 @@
       </div> <!-- End #brandsSection -->
 
       <!-- Section: Statistics Dashboard (initially hidden) -->
-      <div id="statsSection" style="display: none; margin-bottom: 60px;">
-        <div style="margin-top: 16px; margin-bottom: 24px;">
-          <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Bezoekersstatistieken</h2>
-          <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Visueel overzicht van de websitebezoeken, apparaattypen en afspraakconversies (laatste 30 dagen).</p>
+      <div id="statsSection" style="display: none; margin-bottom: 60px; max-width: 1000px; margin: 0 auto; padding: 0 16px;">
+        <div style="margin-top: 16px; margin-bottom: 24px; text-align: center;">
+          <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.6rem; font-weight: 700;">Bezoekersstatistieken</h2>
+          <p style="color: var(--color-gray); margin-top: 6px; font-size: 0.95rem;">Visueel overzicht van de websitebezoeken, apparaattypen en afspraakconversies (laatste 30 dagen).</p>
         </div>
         
-        <!-- KPI Cards Grid 2 -->
-        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
+        <!-- KPI Cards Grid (Compact & Centered) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 32px;">
           <!-- Card 4: Totaal Paginabezoeken -->
-          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #1976d2;">
-            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Totaal Paginabezoeken</div>
-            <div style="font-size: 1.8rem; font-weight: 800; color: #1976d2; margin: 10px 0 5px 0;" id="kpiTotalPageviews">0</div>
-            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiTotalPageviewsSub">Totale weergaven over afgelopen 30 dagen</div>
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #1976d2; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Totaal Paginabezoeken</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #1976d2; margin: 8px 0 4px 0;" id="kpiTotalPageviews">0</div>
+            <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiTotalPageviewsSub">Totale weergaven</div>
           </div>
           <!-- Card 5: Unieke Bezoekers -->
-          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #2e7d32;">
-            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Unieke Bezoekers</div>
-            <div style="font-size: 1.8rem; font-weight: 800; color: #2e7d32; margin: 10px 0 5px 0;" id="kpiUniqueVisitors">0</div>
-            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiUniqueVisitorsSub">Op basis van geanonimiseerde IP hashes</div>
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #2e7d32; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Unieke Bezoekers</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #2e7d32; margin: 8px 0 4px 0;" id="kpiUniqueVisitors">0</div>
+            <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiUniqueVisitorsSub">Unieke sessies</div>
           </div>
           <!-- Card 6: Conversies (Boekingen) -->
-          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #d32f2f;">
-            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Conversie Ratio (Boekingen)</div>
-            <div style="font-size: 1.8rem; font-weight: 800; color: #d32f2f; margin: 10px 0 5px 0;" id="kpiConversionRate">0%</div>
-            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiConversionRateSub">Procentueel aandeel unieke boekingen</div>
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #d32f2f; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Conversie Ratio (Boekingen)</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #d32f2f; margin: 8px 0 4px 0;" id="kpiConversionRate">0%</div>
+            <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiConversionRateSub">Aandeel boekingen</div>
           </div>
         </div>
 
-        <!-- Charts Grid 2 (2x2) -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px;">
+        <!-- Charts Grid 2 (Strict 2x2 Layout on Desktop) -->
+        <div class="stats-charts-grid">
           <!-- Chart 5: Bezoekers Trend (Lijn) -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Dagelijkse Bezoeken Trend</h3>
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); min-height: 340px; display: flex; flex-direction: column;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; font-family: var(--font-heading);">Dagelijkse Bezoeken Trend</h3>
             <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
               <canvas id="chartVisitsTrend"></canvas>
             </div>
           </div>
           
           <!-- Chart 6: Conversies Trend (Bar) -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Interacties & Conversies</h3>
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); min-height: 340px; display: flex; flex-direction: column;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; font-family: var(--font-heading);">Interacties & Conversies</h3>
             <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
               <canvas id="chartConversionsTrend"></canvas>
             </div>
           </div>
 
           <!-- Chart 7: Apparaten (Doughnut) -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 320px;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px; align-self: flex-start;">Verdeling Apparaten</h3>
-            <div style="position: relative; width: 100%; max-width: 260px; height: 260px;">
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 340px;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 20px; align-self: flex-start; font-weight: 700; font-family: var(--font-heading);">Verdeling Apparaten</h3>
+            <div style="position: relative; width: 100%; max-width: 250px; height: 250px;">
               <canvas id="chartDevices"></canvas>
             </div>
           </div>
 
           <!-- Chart 8: Top Paginabezoeken (Horizontal Bar) -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Meest Bekeken Pagina's</h3>
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); min-height: 340px; display: flex; flex-direction: column;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; font-family: var(--font-heading);">Meest Bekeken Pagina's</h3>
             <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
               <canvas id="chartTopPages"></canvas>
             </div>
