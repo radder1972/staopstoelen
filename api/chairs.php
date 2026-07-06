@@ -115,7 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         $pdo->commit();
-        echo json_encode(["message" => "Database updated successfully in MySQL"]);
+        
+        // Save to database.json to keep it in sync for future reloads/deployments
+        $json_file = __DIR__ . '/../database.json';
+        file_put_contents($json_file, json_encode(["staopstoelen" => $input['staopstoelen']], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        
+        echo json_encode(["message" => "Database updated successfully in MySQL and database.json"]);
         
     } catch (Exception $e) {
         if ($pdo->inTransaction()) {

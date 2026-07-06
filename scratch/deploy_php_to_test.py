@@ -36,12 +36,21 @@ def main():
     ensure_remote_dir(ftp, f"{base_remote_path}/assets/stoelen")
     ensure_remote_dir(ftp, f"{base_remote_path}/api")
     
-    # 2. Upload database.json
-    print("Uploading database.json...")
+    # 2. Upload database.json (only if it doesn't exist on remote server to protect remote edits)
     ftp.cwd(base_remote_path)
-    if os.path.exists("database.json"):
-        with open("database.json", "rb") as f:
-            ftp.storbinary("STOR database.json", f)
+    remote_files = []
+    try:
+        remote_files = ftp.nlst()
+    except Exception:
+        pass
+        
+    if "database.json" not in remote_files:
+        print("Uploading database.json (fresh setup)...")
+        if os.path.exists("database.json"):
+            with open("database.json", "rb") as f:
+                ftp.storbinary("STOR database.json", f)
+    else:
+        print("database.json already exists on the server. Skipping upload to protect remote edits.")
             
     # 3. Upload HTML, JS, CSS files directly
     files_to_deploy = [
