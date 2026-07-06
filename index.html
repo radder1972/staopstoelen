@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.3">
+  <link rel="stylesheet" href="style.css?v=9.5">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -363,7 +363,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 9.3
+        Gerealiseerd door BewegingsTechnologen. | Versie 9.5
       </div>
     </div>
   </footer>
@@ -627,13 +627,45 @@
           const dbData = await response.json();
           if (dbData && dbData.staopstoelen) {
             let offers = dbData.staopstoelen.filter(c => c.is_offer === true);
-            if (offers.length === 0) {
-              const newChairs = dbData.staopstoelen.filter(c => c.condition === "nieuw");
-              const occasionChairs = dbData.staopstoelen.filter(c => c.condition === "occasion");
-              offers = [
-                ...newChairs.slice(0, 2),
-                ...occasionChairs.slice(0, 1)
-              ];
+            
+            // Limit to max 3 offers
+            if (offers.length > 3) {
+              offers = offers.slice(0, 3);
+            }
+            
+            // If less than 3 offers, fill up to 3
+            if (offers.length < 3) {
+              const existingIds = new Set(offers.map(c => c.id));
+              
+              // Split candidates into occasions and new
+              const occasionCandidates = dbData.staopstoelen.filter(c => c.condition === "occasion" && !existingIds.has(c.id));
+              const newCandidates = dbData.staopstoelen.filter(c => c.condition !== "occasion" && !existingIds.has(c.id));
+              
+              const hasOccasion = offers.some(c => c.condition === "occasion");
+              
+              let fillList = [];
+              if (!hasOccasion && occasionCandidates.length > 0) {
+                // Must add at least one occasion
+                fillList.push(occasionCandidates.shift());
+              }
+              
+              // Pool of all remaining candidates (occasions and new mixed)
+              const remainingCandidates = [...occasionCandidates, ...newCandidates];
+              
+              const neededMore = 3 - (offers.length + fillList.length);
+              if (neededMore > 0) {
+                fillList = fillList.concat(remainingCandidates.slice(0, neededMore));
+              }
+              
+              offers = offers.concat(fillList);
+            }
+            
+            // Ensure there is always at least one occasion in the final 3 offers
+            if (!offers.some(c => c.condition === "occasion")) {
+              const occasionCandidate = dbData.staopstoelen.find(c => c.condition === "occasion" && !offers.some(o => o.id === c.id));
+              if (occasionCandidate && offers.length > 0) {
+                offers[offers.length - 1] = occasionCandidate;
+              }
             }
             const grid = document.getElementById("offersGrid");
             if (grid && offers.length > 0) {
