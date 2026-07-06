@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=8.5.51">
+  <link rel="stylesheet" href="style.css?v=8.6.51">
   <style>
     /* Admin Dashboard Specific Styles */
     /* Reset fonts to match website styles */
@@ -536,7 +536,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v8.5</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v8.6</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -819,6 +819,43 @@
           <button class="btn btn-delete" id="btnResetData" style="border-color: var(--color-terracotta); color: var(--color-terracotta);">
             Herstel naar Standaard
           </button>
+        </div>
+      </div>
+
+      <!-- Media Library Modal -->
+      <div id="mediaLibraryModal" class="modal-overlay" style="display: none; align-items: center; justify-content: center; z-index: 2000; background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); position: fixed; top: 0; left: 0; right: 0; bottom: 0;">
+        <div class="modal-card" style="max-width: 800px; width: 90%; max-height: 85vh; display: flex; flex-direction: column; background-color: white; border-radius: var(--radius-lg); box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--color-gray-light); background-color: #fbf9f6;">
+            <h3 style="margin: 0; font-family: var(--font-heading); color: var(--color-forest-dark); font-size: 1.25rem; font-weight: bold;">Afbeelding Selecteren</h3>
+            <button type="button" id="mediaLibraryCloseBtn" style="background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--color-gray); line-height: 1; padding: 0;">&times;</button>
+          </div>
+          
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1; overflow: hidden; min-height: 350px;">
+            <!-- Top controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-primary" id="btnMediaLibraryLocal" style="margin: 0; display: inline-flex; align-items: center; gap: 8px;">
+                📁 Upload Vanaf Computer
+              </button>
+              
+              <div style="position: relative; flex: 1; min-width: 250px;">
+                <input type="text" id="mediaLibrarySearch" class="form-control" placeholder="Zoek serverafbeelding..." style="padding-left: 36px; min-height: 42px; margin: 0; width: 100%; box-sizing: border-box;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gray)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Grid container -->
+            <div style="font-weight: 600; font-size: 0.9rem; color: var(--color-gray-dark); margin-top: 8px;">Afbeeldingen op de server:</div>
+            <div id="mediaLibraryGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; overflow-y: auto; flex: 1; padding: 12px; background-color: var(--color-cream); border-radius: var(--radius-md); border: 1px solid var(--color-gray-light); box-sizing: border-box; max-height: 45vh;">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+          
+          <div style="padding: 16px 24px; border-top: 1px solid var(--color-gray-light); display: flex; justify-content: flex-end; background-color: #fbf9f6;">
+            <button type="button" class="btn btn-secondary" id="btnMediaLibraryCancel" style="margin: 0;">Annuleren</button>
+          </div>
         </div>
       </div>
       
@@ -2133,11 +2170,161 @@
       }
     });
 
-    // Click handlers for file inputs
-    btnUploadImage.addEventListener("click", () => chairImageFile.click());
-    btnUploadImageUp.addEventListener("click", () => chairImageUpFile.click());
-    btnUploadImageLie.addEventListener("click", () => chairImageLieFile.click());
-    btnUploadAmbientImage.addEventListener("click", () => chairAmbientImageFile.click());
+    // Media Library Integration
+    let currentMediaTarget = null;
+    let serverAssetsList = [];
+
+    const mediaLibraryModal = document.getElementById("mediaLibraryModal");
+    const mediaLibraryGrid = document.getElementById("mediaLibraryGrid");
+    const mediaLibrarySearch = document.getElementById("mediaLibrarySearch");
+
+    async function openMediaLibrary(target) {
+      currentMediaTarget = target;
+      mediaLibraryModal.style.display = "flex";
+      mediaLibrarySearch.value = "";
+      
+      // Render loading
+      mediaLibraryGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--color-gray); padding: 32px;">⏳ Laden van afbeeldingen op server...</div>`;
+      
+      try {
+        const response = await fetch(API_BASE + "api/list_assets.php");
+        if (response.ok) {
+          serverAssetsList = await response.json();
+          renderMediaLibraryGrid();
+        } else {
+          throw new Error("Could not list server assets");
+        }
+      } catch (e) {
+        console.error("Error loading server assets:", e);
+        mediaLibraryGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--color-terracotta); padding: 32px;">⚠️ Laden van server-afbeeldingen mislukt.</div>`;
+      }
+    }
+
+    function renderMediaLibraryGrid(filterText = "") {
+      mediaLibraryGrid.innerHTML = "";
+      
+      const filtered = serverAssetsList.filter(url => {
+        const filename = url.split("/").pop().toLowerCase();
+        return filename.includes(filterText.toLowerCase());
+      });
+      
+      if (filtered.length === 0) {
+        mediaLibraryGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--color-gray); padding: 32px;">Geen afbeeldingen gevonden.</div>`;
+        return;
+      }
+      
+      filtered.forEach(url => {
+        const card = document.createElement("div");
+        card.style.display = "flex";
+        card.style.flexDirection = "column";
+        card.style.alignItems = "center";
+        card.style.padding = "10px";
+        card.style.border = "1px solid var(--color-gray-light)";
+        card.style.borderRadius = "var(--radius-sm)";
+        card.style.backgroundColor = "white";
+        card.style.cursor = "pointer";
+        card.style.transition = "transform 0.15s, border-color 0.15s";
+        card.style.boxShadow = "0 1px 3px rgba(0,0,0,0.03)";
+        card.style.boxSizing = "border-box";
+        
+        card.onmouseover = () => {
+          card.style.borderColor = "var(--color-forest)";
+          card.style.transform = "translateY(-2px)";
+        };
+        card.onmouseout = () => {
+          card.style.borderColor = "var(--color-gray-light)";
+          card.style.transform = "none";
+        };
+        
+        const img = document.createElement("img");
+        img.src = url;
+        img.style.width = "90px";
+        img.style.height = "90px";
+        img.style.objectFit = "contain";
+        img.style.marginBottom = "6px";
+        img.style.backgroundColor = "var(--color-cream)";
+        img.style.borderRadius = "4px";
+        img.style.padding = "4px";
+        
+        const label = document.createElement("span");
+        label.textContent = url.split("/").pop();
+        label.style.fontSize = "0.75rem";
+        label.style.color = "var(--color-gray-dark)";
+        label.style.wordBreak = "break-all";
+        label.style.textAlign = "center";
+        label.style.maxHeight = "32px";
+        label.style.overflow = "hidden";
+        label.style.textOverflow = "ellipsis";
+        
+        card.appendChild(img);
+        card.appendChild(label);
+        
+        card.addEventListener("click", () => {
+          selectMediaUrl(url);
+        });
+        
+        mediaLibraryGrid.appendChild(card);
+      });
+    }
+
+    function selectMediaUrl(url) {
+      if (currentMediaTarget.type === "gallery") {
+        currentGalleryImages.push(url);
+        renderGalleryManager();
+      } else {
+        currentMediaTarget.textInput.value = url;
+        updatePreview(currentMediaTarget.textInput, currentMediaTarget.previewDiv);
+      }
+      closeMediaLibrary();
+    }
+
+    function closeMediaLibrary() {
+      mediaLibraryModal.style.display = "none";
+    }
+
+    // Set up search filter listener
+    mediaLibrarySearch.addEventListener("input", () => {
+      renderMediaLibraryGrid(mediaLibrarySearch.value);
+    });
+
+    // Close button listeners
+    document.getElementById("mediaLibraryCloseBtn").addEventListener("click", closeMediaLibrary);
+    document.getElementById("btnMediaLibraryCancel").addEventListener("click", closeMediaLibrary);
+    
+    // Choose local file listener inside Media Library Modal
+    document.getElementById("btnMediaLibraryLocal").addEventListener("click", () => {
+      closeMediaLibrary();
+      currentMediaTarget.fileInput.click();
+    });
+
+    // Click handlers for file inputs (now opening Media Library modal)
+    btnUploadImage.addEventListener("click", () => openMediaLibrary({
+      fileInput: chairImageFile,
+      textInput: chairImage,
+      previewDiv: chairImagePreview,
+      uploadButton: btnUploadImage
+    }));
+    
+    btnUploadImageUp.addEventListener("click", () => openMediaLibrary({
+      fileInput: chairImageUpFile,
+      textInput: chairImageUp,
+      previewDiv: chairImageUpPreview,
+      uploadButton: btnUploadImageUp
+    }));
+    
+    btnUploadImageLie.addEventListener("click", () => openMediaLibrary({
+      fileInput: chairImageLieFile,
+      textInput: chairImageLie,
+      previewDiv: chairImageLiePreview,
+      uploadButton: btnUploadImageLie
+    }));
+    
+    btnUploadAmbientImage.addEventListener("click", () => openMediaLibrary({
+      fileInput: chairAmbientImageFile,
+      textInput: chairAmbientImage,
+      previewDiv: chairAmbientImagePreview,
+      uploadButton: btnUploadAmbientImage
+    }));
 
     // Update preview helper function
     function updatePreview(input, previewDiv) {
@@ -2238,9 +2425,10 @@
     });
 
     // Gallery Manager Event Listeners
-    document.getElementById("btnUploadGalleryImage").addEventListener("click", () => {
-      document.getElementById("galleryImageFileInput").click();
-    });
+    document.getElementById("btnUploadGalleryImage").addEventListener("click", () => openMediaLibrary({
+      fileInput: document.getElementById("galleryImageFileInput"),
+      type: "gallery"
+    }));
     
     document.getElementById("galleryImageFileInput").addEventListener("change", async () => {
       const fileInput = document.getElementById("galleryImageFileInput");
