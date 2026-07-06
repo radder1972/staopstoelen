@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=8.2.51">
+  <link rel="stylesheet" href="style.css?v=8.5.51">
   <style>
     /* Admin Dashboard Specific Styles */
     /* Reset fonts to match website styles */
@@ -536,7 +536,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v8.2</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v8.5</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -692,6 +692,31 @@
                 </div>
                 <div id="chairAmbientImagePreview" style="margin-top: 10px; display: none;">
                   <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+                </div>
+              </div>
+
+              <!-- Gallery Manager -->
+              <div class="upload-box" style="margin-top: 20px; border-top: 1px solid var(--color-gray-light); padding-top: 20px;">
+                <label class="form-label" style="font-weight: 600; color: var(--color-forest-dark);">Product Galerij (Extra pop-up foto's)</label>
+                <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 12px; margin-top: 4px;">Voeg extra afbeeldingen toe die in de pop-up galerij getoond worden.</p>
+                
+                <!-- Thumbnails grid -->
+                <div id="galleryManagerGrid" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+                  <!-- Dynamically populated -->
+                </div>
+                
+                <!-- Upload / Add row -->
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                  <button type="button" class="btn btn-outline" id="btnUploadGalleryImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; margin: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    + Foto Uploaden
+                  </button>
+                  <input type="file" id="galleryImageFileInput" accept="image/*" style="display: none;">
+                  
+                  <span style="font-size: 0.85rem; color: var(--color-gray);">of</span>
+                  
+                  <input type="text" id="galleryExternalUrlInput" class="form-control" placeholder="Voer externe URL in... (bijv. https://...)" style="flex: 1; margin: 0; min-height: 42px;">
+                  <button type="button" class="btn btn-secondary" id="btnLinkGalleryUrl" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; margin: 0;">Linken</button>
                 </div>
               </div>
             </div>
@@ -1559,8 +1584,8 @@
       // Calculate and render stats summary
       if (activeData) {
         const totalChairs = activeData.length;
-        const riseAndReclineCount = activeData.filter(item => item.type === "sta-op-stoel").length;
-        const seniorCount = activeData.filter(item => item.type === "seniorenstoel").length;
+        const riseAndReclineCount = activeData.filter(item => item.type === "staop").length;
+        const seniorCount = activeData.filter(item => item.type === "relax").length;
         const occasionCount = activeData.filter(item => item.condition === "occasion").length;
 
         const statsBar = document.getElementById("statsSummaryBar");
@@ -1765,6 +1790,73 @@
     const chairAmbientImagePreview = document.getElementById("chairAmbientImagePreview");
     const btnUploadAmbientImage = document.getElementById("btnUploadAmbientImage");
     
+    // Gallery Manager State
+    let currentGalleryImages = [];
+
+    function renderGalleryManager() {
+      const grid = document.getElementById("galleryManagerGrid");
+      if (!grid) return;
+      
+      grid.innerHTML = "";
+      
+      if (currentGalleryImages.length === 0) {
+        grid.innerHTML = `<div style="font-size: 0.875rem; color: var(--color-gray); padding: 12px 0;">Nog geen galerij-afbeeldingen toegevoegd.</div>`;
+        return;
+      }
+      
+      currentGalleryImages.forEach((imgUrl, idx) => {
+        const itemContainer = document.createElement("div");
+        itemContainer.style.position = "relative";
+        itemContainer.style.width = "70px";
+        itemContainer.style.height = "70px";
+        itemContainer.style.border = "2px solid var(--color-gray-light)";
+        itemContainer.style.borderRadius = "var(--radius-sm)";
+        itemContainer.style.overflow = "hidden";
+        itemContainer.style.backgroundColor = "var(--color-cream)";
+        itemContainer.style.display = "flex";
+        itemContainer.style.alignItems = "center";
+        itemContainer.style.justifyContent = "center";
+        itemContainer.style.padding = "4px";
+        
+        const img = document.createElement("img");
+        img.src = imgUrl;
+        img.style.maxWidth = "100%";
+        img.style.maxHeight = "100%";
+        img.style.objectFit = "contain";
+        
+        // Remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.innerHTML = "&times;";
+        removeBtn.style.position = "absolute";
+        removeBtn.style.top = "2px";
+        removeBtn.style.right = "2px";
+        removeBtn.style.width = "18px";
+        removeBtn.style.height = "18px";
+        removeBtn.style.borderRadius = "50%";
+        removeBtn.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
+        removeBtn.style.color = "white";
+        removeBtn.style.border = "none";
+        removeBtn.style.display = "flex";
+        removeBtn.style.alignItems = "center";
+        removeBtn.style.justifyContent = "center";
+        removeBtn.style.fontSize = "12px";
+        removeBtn.style.fontWeight = "bold";
+        removeBtn.style.cursor = "pointer";
+        removeBtn.style.padding = "0 0 2px 0";
+        removeBtn.style.boxShadow = "0 1px 3px rgba(0,0,0,0.2)";
+        
+        removeBtn.addEventListener("click", () => {
+          currentGalleryImages.splice(idx, 1);
+          renderGalleryManager();
+        });
+        
+        itemContainer.appendChild(img);
+        itemContainer.appendChild(removeBtn);
+        grid.appendChild(itemContainer);
+      });
+    }
+    
     function resetForm() {
       chairForm.reset();
       if (typeof populateBrandSelect === 'function') populateBrandSelect();
@@ -1800,6 +1892,9 @@
           .replace(/[^a-z0-9]+/g, "-")
           .replace(/(^-|-$)/g, "");
       };
+      
+      currentGalleryImages = [];
+      renderGalleryManager();
     }
 
     const chairModal = document.getElementById("chairModal");
@@ -1855,6 +1950,9 @@
       updatePreview(document.getElementById("chairImageLie"), chairImageLiePreview);
       updatePreview(document.getElementById("chairAmbientImage"), chairAmbientImagePreview);
       
+      currentGalleryImages = Array.isArray(item.gallery) ? [...item.gallery] : [];
+      renderGalleryManager();
+      
       chairModal.style.display = "flex";
     }
 
@@ -1890,7 +1988,8 @@
         type: document.getElementById("chairType").value,
         material: document.getElementById("chairMaterial").value,
         is_offer: document.getElementById("chairIsOffer").checked,
-        description: document.getElementById("chairDesc").value
+        description: document.getElementById("chairDesc").value,
+        gallery: currentGalleryImages.length > 0 ? currentGalleryImages : null
       };
       
       const imageUp = document.getElementById("chairImageUp").value;
@@ -2136,6 +2235,71 @@
 
     chairAmbientImageFile.addEventListener("change", () => {
       handleFileUpload(chairAmbientImageFile, chairAmbientImage, chairAmbientImagePreview, btnUploadAmbientImage);
+    });
+
+    // Gallery Manager Event Listeners
+    document.getElementById("btnUploadGalleryImage").addEventListener("click", () => {
+      document.getElementById("galleryImageFileInput").click();
+    });
+    
+    document.getElementById("galleryImageFileInput").addEventListener("change", async () => {
+      const fileInput = document.getElementById("galleryImageFileInput");
+      const file = fileInput.files[0];
+      if (!file) return;
+      
+      const uploadButton = document.getElementById("btnUploadGalleryImage");
+      const originalText = uploadButton.textContent;
+      uploadButton.disabled = true;
+      uploadButton.textContent = "⏳ Uploaden...";
+      
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        try {
+          const payload = {
+            filename: file.name,
+            fileData: e.target.result
+          };
+          
+          const response = await fetch(API_BASE + "api/upload.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+          
+          if (!response.ok) {
+            throw new Error("Upload mislukt");
+          }
+          
+          const resData = await response.json();
+          currentGalleryImages.push(resData.url);
+          renderGalleryManager();
+          alert("Afbeelding succesvol toegevoegd aan de galerij!");
+        } catch (err) {
+          console.error("Gallery upload error:", err);
+          alert("Fout bij uploaden: " + err.message);
+        } finally {
+          uploadButton.disabled = false;
+          uploadButton.textContent = originalText;
+          fileInput.value = "";
+        }
+      };
+      
+      reader.readAsDataURL(file);
+    });
+    
+    document.getElementById("btnLinkGalleryUrl").addEventListener("click", () => {
+      const urlInput = document.getElementById("galleryExternalUrlInput");
+      const url = urlInput.value.trim();
+      if (!url) {
+        alert("Voer een geldige URL of pad in.");
+        return;
+      }
+      currentGalleryImages.push(url);
+      renderGalleryManager();
+      urlInput.value = "";
+      alert("Link succesvol toegevoegd aan de galerij!");
     });
 
     // ==========================================
