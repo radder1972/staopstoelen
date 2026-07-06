@@ -53,10 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Prepare queries
         $upsert_stmt = $pdo->prepare("INSERT INTO chairs (
             id, name, brand, model, price, old_price, `condition`, status, type, material,
-            badge, badgeType, image, imageUp, gallery, features, specifications, is_offer
+            badge, badgeType, image, imageUp, gallery, features, specifications, is_offer, description
         ) VALUES (
             :id, :name, :brand, :model, :price, :old_price, :condition, :status, :type, :material,
-            :badge, :badgeType, :image, :imageUp, :gallery, :features, :specifications, :is_offer
+            :badge, :badgeType, :image, :imageUp, :gallery, :features, :specifications, :is_offer, :description
         ) ON DUPLICATE KEY UPDATE 
             name = VALUES(name),
             brand = VALUES(brand),
@@ -74,7 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             gallery = VALUES(gallery),
             features = VALUES(features),
             specifications = VALUES(specifications),
-            is_offer = VALUES(is_offer)");
+            is_offer = VALUES(is_offer),
+            description = VALUES(description)");
             
         $payload_ids = [];
         foreach ($input['staopstoelen'] as $chair) {
@@ -99,7 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':gallery' => isset($chair['gallery']) ? json_encode($chair['gallery']) : null,
                 ':features' => isset($chair['features']) ? json_encode($chair['features']) : null,
                 ':specifications' => isset($chair['specifications']) ? json_encode($chair['specifications']) : null,
-                ':is_offer' => !empty($chair['is_offer']) ? 1 : 0
+                ':is_offer' => !empty($chair['is_offer']) ? 1 : 0,
+                ':description' => $chair['description'] ?? null
             ]);
         }
         

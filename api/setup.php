@@ -31,8 +31,15 @@ try {
         features TEXT NULL,
         specifications TEXT NULL,
         is_offer TINYINT(1) DEFAULT 0,
+        description TEXT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+    
+    // Ensure description column exists in existing tables
+    $checkDesc = $pdo->query("SHOW COLUMNS FROM chairs LIKE 'description'")->fetch();
+    if (!$checkDesc) {
+        $pdo->exec("ALTER TABLE chairs ADD COLUMN description TEXT NULL AFTER is_offer;");
+    }
     
     $messages = ["Database tables verified/created successfully."];
     
@@ -69,10 +76,10 @@ try {
             if (isset($json_data['staopstoelen']) && is_array($json_data['staopstoelen'])) {
                 $insert_chair = $pdo->prepare("INSERT INTO chairs (
                     id, name, brand, model, price, old_price, `condition`, status, type, material,
-                    badge, badgeType, image, imageUp, gallery, features, specifications, is_offer
+                    badge, badgeType, image, imageUp, gallery, features, specifications, is_offer, description
                 ) VALUES (
                     :id, :name, :brand, :model, :price, :old_price, :condition, :status, :type, :material,
-                    :badge, :badgeType, :image, :imageUp, :gallery, :features, :specifications, :is_offer
+                    :badge, :badgeType, :image, :imageUp, :gallery, :features, :specifications, :is_offer, :description
                 )");
                 
                 $imported = 0;
@@ -95,7 +102,8 @@ try {
                         ':gallery' => isset($chair['gallery']) ? json_encode($chair['gallery']) : null,
                         ':features' => isset($chair['features']) ? json_encode($chair['features']) : null,
                         ':specifications' => isset($chair['specifications']) ? json_encode($chair['specifications']) : null,
-                        ':is_offer' => !empty($chair['is_offer']) ? 1 : 0
+                        ':is_offer' => !empty($chair['is_offer']) ? 1 : 0,
+                        ':description' => $chair['description'] ?? null
                     ]);
                     $imported++;
                 }
