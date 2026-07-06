@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=8.0.51">
+  <link rel="stylesheet" href="style.css?v=8.2.51">
   <style>
     /* Admin Dashboard Specific Styles */
     /* Reset fonts to match website styles */
@@ -536,7 +536,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v8.0</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v8.2</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -563,6 +563,11 @@
             </div>
             <button class="btn btn-primary" id="addChairBtn" style="margin: 0;">+ Nieuwe Stoel Toevoegen</button>
           </div>
+        </div>
+
+        <!-- Stats Summary Bar -->
+        <div id="statsSummaryBar" style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
+          <!-- Dynamically populated -->
         </div>
         
         <!-- Table of chairs (Full-width to ensure all columns & action buttons fit) -->
@@ -1550,6 +1555,36 @@
       const body = document.getElementById("tableBody");
       
       body.innerHTML = "";
+
+      // Calculate and render stats summary
+      if (activeData) {
+        const totalChairs = activeData.length;
+        const riseAndReclineCount = activeData.filter(item => item.type === "sta-op-stoel").length;
+        const seniorCount = activeData.filter(item => item.type === "seniorenstoel").length;
+        const occasionCount = activeData.filter(item => item.condition === "occasion").length;
+
+        const statsBar = document.getElementById("statsSummaryBar");
+        if (statsBar) {
+          statsBar.innerHTML = `
+            <div style="flex: 1; min-width: 150px; background-color: var(--color-light); border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+              <span style="font-size: 0.85rem; color: var(--color-gray); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">Totaal</span>
+              <span style="font-size: 1.75rem; font-weight: 700; color: var(--color-forest-dark);">${totalChairs}</span>
+            </div>
+            <div style="flex: 1; min-width: 150px; background-color: var(--color-light); border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+              <span style="font-size: 0.85rem; color: var(--color-gray); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">Sta-opstoelen</span>
+              <span style="font-size: 1.75rem; font-weight: 700; color: var(--color-forest-dark);">${riseAndReclineCount}</span>
+            </div>
+            <div style="flex: 1; min-width: 150px; background-color: var(--color-light); border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+              <span style="font-size: 0.85rem; color: var(--color-gray); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">Seniorenstoelen</span>
+              <span style="font-size: 1.75rem; font-weight: 700; color: var(--color-forest-dark);">${seniorCount}</span>
+            </div>
+            <div style="flex: 1; min-width: 150px; background-color: var(--color-light); border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+              <span style="font-size: 0.85rem; color: var(--color-gray); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">Occasions</span>
+              <span style="font-size: 1.75rem; font-weight: 700; color: var(--color-terracotta);">${occasionCount}</span>
+            </div>
+          `;
+        }
+      }
       
       // Setup headers
       const headerMap = {
