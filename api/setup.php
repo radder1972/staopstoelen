@@ -31,8 +31,23 @@ try {
         features TEXT NULL,
         specifications TEXT NULL,
         is_offer TINYINT(1) DEFAULT 0,
-        description TEXT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        description TEXT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+    
+    // 2b. Create visits table
+    $pdo->exec("CREATE TABLE IF NOT EXISTS visits (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        ip_hash VARCHAR(64) NOT NULL,
+        page_url VARCHAR(255) NOT NULL,
+        referrer_url VARCHAR(255) NULL,
+        utm_source VARCHAR(50) NULL,
+        utm_medium VARCHAR(50) NULL,
+        utm_campaign VARCHAR(50) NULL,
+        device_type VARCHAR(20) NOT NULL,
+        event_name VARCHAR(50) DEFAULT 'pageview',
+        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        INDEX idx_timestamp (timestamp),
+        INDEX idx_event (event_name)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
     
     // Ensure description column exists in existing tables

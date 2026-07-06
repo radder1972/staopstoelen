@@ -6,6 +6,45 @@ const GOOGLE_CALENDAR_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxI
 // Configure this with your deployed Apps Script Web App URL to retrieve real-time busy slots.
 const GOOGLE_CALENDAR_GET_SLOTS_URL = "https://script.google.com/macros/s/AKfycbxIPs1J8fVUquyzIq_gZ4WTjsTBRgMGazeq58EbOZmF9yNfObr25NvCOBUWkit665y-OQ/exec";
 
+// Local Visit & Event Tracking Logger
+function logCustomVisitEvent(eventName = 'pageview') {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const logData = {
+      page_url: window.location.pathname + window.location.hash,
+      referrer_url: document.referrer || '',
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      device_type: window.innerWidth < 768 ? 'mobile' : (window.innerWidth < 1024 ? 'tablet' : 'desktop'),
+      event_name: eventName
+    };
+    
+    // Ignore logging admin dashboard views
+    if (logData.page_url.includes('beheer.html')) {
+      return;
+    }
+    
+    fetch('api/log_visit.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(logData)
+    }).catch(err => console.warn('Logging error:', err));
+  } catch (e) {
+    console.warn('Logging failed:', e);
+  }
+}
+
+// Log pageview on DOMContentLoaded
+window.addEventListener('DOMContentLoaded', () => {
+  logCustomVisitEvent('pageview');
+  
+  // If page is keuzehulp, log wizard start
+  if (window.location.pathname.includes('keuzehulp.html')) {
+    logCustomVisitEvent('keuzehulp_start');
+  }
+});
+
 // Database of available lift chairs (revised premium models)
 const CHAIR_DATABASE = [
   {
@@ -1154,6 +1193,11 @@ function initCalendar() {
       // Transition to success screen
       interactiveArea.style.display = "none";
       successScreen.style.display = "block";
+      
+      // Log custom database conversion event
+      if (typeof logCustomVisitEvent === 'function') {
+        logCustomVisitEvent('booking_conversion');
+      }
       
       const formattedDate = state.selectedDate.toLocaleDateString("nl-NL", {
         weekday: 'long',

@@ -1007,6 +1007,66 @@
             </div>
           </div>
         </div>
+
+        <!-- Section header: Web Analytics -->
+        <h3 style="color: var(--color-forest-dark); font-size: 1.2rem; border-bottom: 2px solid var(--color-gray-light); padding-bottom: 8px; margin-top: 40px; margin-bottom: 16px;">📈 Bezoekers & Conversies (Laatste 30 dagen)</h3>
+        
+        <!-- KPI Cards Grid 2 -->
+        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
+          <!-- Card 4: Totaal Paginabezoeken -->
+          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #1976d2;">
+            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Totaal Paginabezoeken</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #1976d2; margin: 10px 0 5px 0;" id="kpiTotalPageviews">0</div>
+            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiTotalPageviewsSub">Totale weergaven over afgelopen 30 dagen</div>
+          </div>
+          <!-- Card 5: Unieke Bezoekers -->
+          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #2e7d32;">
+            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Unieke Bezoekers</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #2e7d32; margin: 10px 0 5px 0;" id="kpiUniqueVisitors">0</div>
+            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiUniqueVisitorsSub">Op basis van geanonimiseerde IP hashes</div>
+          </div>
+          <!-- Card 6: Conversies (Boekingen) -->
+          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #d32f2f;">
+            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Conversie Ratio (Boekingen)</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #d32f2f; margin: 10px 0 5px 0;" id="kpiConversionRate">0%</div>
+            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiConversionRateSub">Procentueel aandeel unieke boekingen</div>
+          </div>
+        </div>
+
+        <!-- Charts Grid 2 (2x2) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px;">
+          <!-- Chart 5: Bezoekers Trend (Lijn) -->
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Dagelijkse Bezoeken Trend</h3>
+            <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
+              <canvas id="chartVisitsTrend"></canvas>
+            </div>
+          </div>
+          
+          <!-- Chart 6: Conversies Trend (Bar) -->
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Interacties & Conversies</h3>
+            <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
+              <canvas id="chartConversionsTrend"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 7: Apparaten (Doughnut) -->
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 320px;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px; align-self: flex-start;">Verdeling Apparaten</h3>
+            <div style="position: relative; width: 100%; max-width: 260px; height: 260px;">
+              <canvas id="chartDevices"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 8: Top Paginabezoeken (Horizontal Bar) -->
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Meest Bekeken Pagina's</h3>
+            <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
+              <canvas id="chartTopPages"></canvas>
+            </div>
+          </div>
+        </div>
       </div> <!-- End #statsSection -->
 
       <!-- Brand Form Modal Overlay -->
@@ -3119,6 +3179,224 @@
           }
         }
       });
+
+      // Fetch visit stats asynchronously
+      fetch('api/get_visit_stats.php')
+        .then(response => response.json())
+        .then(res => {
+          if (res.status !== 'success') return;
+          
+          // 1. Populate KPI Cards
+          const overview = res.overview || { total_views: 0, unique_visitors: 0 };
+          document.getElementById("kpiTotalPageviews").textContent = parseInt(overview.total_views).toLocaleString("nl-NL");
+          document.getElementById("kpiUniqueVisitors").textContent = parseInt(overview.unique_visitors).toLocaleString("nl-NL");
+          
+          // Count total conversions
+          const conversionEvents = res.conversions || [];
+          const totalBookings = conversionEvents
+            .filter(e => e.event_name === 'booking_conversion')
+            .reduce((acc, curr) => acc + parseInt(curr.count), 0);
+            
+          const uniques = parseInt(overview.unique_visitors) || 1;
+          const convRate = Math.round((totalBookings / uniques) * 100);
+          document.getElementById("kpiConversionRate").textContent = `${convRate}% (${totalBookings})`;
+          
+          // 2. Chart 5: Daily Visits Trend (Line Chart)
+          const dailyData = res.daily || [];
+          const dates = dailyData.map(d => {
+            const dateObj = new Date(d.date);
+            return dateObj.toLocaleDateString("nl-NL", { day: 'numeric', month: 'short' });
+          });
+          const views = dailyData.map(d => parseInt(d.views));
+          const uniqueVis = dailyData.map(d => parseInt(d.uniques));
+          
+          const visitsTrendCtx = document.getElementById('chartVisitsTrend').getContext('2d');
+          if (activeCharts['visitsTrend']) activeCharts['visitsTrend'].destroy();
+          activeCharts['visitsTrend'] = new Chart(visitsTrendCtx, {
+            type: 'line',
+            data: {
+              labels: dates,
+              datasets: [
+                {
+                  label: 'Paginabezoeken',
+                  data: views,
+                  borderColor: '#1976d2',
+                  backgroundColor: 'rgba(25, 118, 210, 0.1)',
+                  borderWidth: 2,
+                  fill: true,
+                  tension: 0.3
+                },
+                {
+                  label: 'Unieke Bezoekers',
+                  data: uniqueVis,
+                  borderColor: '#2e7d32',
+                  backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                  borderWidth: 2,
+                  fill: true,
+                  tension: 0.3
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: 'top' }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  ticks: { stepSize: 5, precision: 0 }
+                }
+              }
+            }
+          });
+          
+          // 3. Chart 6: Conversions (Booking vs Keuzehulp)
+          const dateMap = {};
+          dailyData.forEach(d => {
+            dateMap[d.date] = { date: d.date, bookings: 0, wizardStarts: 0 };
+          });
+          
+          conversionEvents.forEach(e => {
+            if (!dateMap[e.date]) {
+              dateMap[e.date] = { date: e.date, bookings: 0, wizardStarts: 0 };
+            }
+            if (e.event_name === 'booking_conversion') {
+              dateMap[e.date].bookings += parseInt(e.count);
+            } else if (e.event_name === 'keuzehulp_start') {
+              dateMap[e.date].wizardStarts += parseInt(e.count);
+            }
+          });
+          
+          const sortedConvData = Object.values(dateMap).sort((a, b) => new Date(a.date) - new Date(b.date));
+          const convDates = sortedConvData.map(d => {
+            const dateObj = new Date(d.date);
+            return dateObj.toLocaleDateString("nl-NL", { day: 'numeric', month: 'short' });
+          });
+          const bookings = sortedConvData.map(d => d.bookings);
+          const wizardStarts = sortedConvData.map(d => d.wizardStarts);
+          
+          const conversionsTrendCtx = document.getElementById('chartConversionsTrend').getContext('2d');
+          if (activeCharts['conversionsTrend']) activeCharts['conversionsTrend'].destroy();
+          activeCharts['conversionsTrend'] = new Chart(conversionsTrendCtx, {
+            type: 'bar',
+            data: {
+              labels: convDates,
+              datasets: [
+                {
+                  label: 'Keuzehulp gestart',
+                  data: wizardStarts,
+                  backgroundColor: 'rgba(242, 169, 0, 0.75)',
+                  borderColor: '#f2a900',
+                  borderWidth: 1.5,
+                  borderRadius: 4
+                },
+                {
+                  label: 'Afspraak geboekt',
+                  data: bookings,
+                  backgroundColor: 'rgba(211, 47, 47, 0.75)',
+                  borderColor: '#d32f2f',
+                  borderWidth: 1.5,
+                  borderRadius: 4
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: 'top' }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  ticks: { stepSize: 1, precision: 0 }
+                }
+              }
+            }
+          });
+          
+          // 4. Chart 7: Devices Breakdown (Doughnut)
+          const deviceData = res.devices || [];
+          const deviceLabels = [];
+          const deviceCounts = [];
+          deviceData.forEach(d => {
+            deviceLabels.push(d.device_type.charAt(0).toUpperCase() + d.device_type.slice(1));
+            deviceCounts.push(parseInt(d.count));
+          });
+          
+          const devicesCtx = document.getElementById('chartDevices').getContext('2d');
+          if (activeCharts['devices']) activeCharts['devices'].destroy();
+          activeCharts['devices'] = new Chart(devicesCtx, {
+            type: 'doughnut',
+            data: {
+              labels: deviceLabels,
+              datasets: [{
+                data: deviceCounts,
+                backgroundColor: [
+                  'rgba(18, 43, 7, 0.75)',
+                  'rgba(214, 90, 49, 0.75)',
+                  'rgba(25, 118, 210, 0.75)'
+                ],
+                borderColor: [
+                  '#122b07',
+                  '#d65a31',
+                  '#1976d2'
+                ],
+                borderWidth: 1.5
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: 'bottom' }
+              }
+            }
+          });
+          
+          // 5. Chart 8: Meest Bekeken Pagina's (Horizontal Bar)
+          const topPagesData = res.top_pages || [];
+          const pageLabels = topPagesData.map(p => {
+            let name = p.page_url.split('/').pop() || 'Homepage';
+            if (name === '' || name.includes('index.html')) name = 'Home';
+            return name.split('?')[0];
+          });
+          const pageCounts = topPagesData.map(p => parseInt(p.count));
+          
+          const topPagesCtx = document.getElementById('chartTopPages').getContext('2d');
+          if (activeCharts['topPages']) activeCharts['topPages'].destroy();
+          activeCharts['topPages'] = new Chart(topPagesCtx, {
+            type: 'bar',
+            data: {
+              labels: pageLabels,
+              datasets: [{
+                label: 'Weergaven',
+                data: pageCounts,
+                backgroundColor: 'rgba(46, 125, 50, 0.75)',
+                borderColor: '#2e7d32',
+                borderWidth: 1.5,
+                borderRadius: 4
+              }]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false }
+              },
+              scales: {
+                x: {
+                  beginAtZero: true,
+                  ticks: { stepSize: 5, precision: 0 }
+                }
+              }
+            }
+          });
+        })
+        .catch(err => console.warn('Error fetching visit stats:', err));
     }
 
     // Tab Navigation Logic
