@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.5.51">
+  <link rel="stylesheet" href="style.css?v=9.6.51">
   <style>
     /* Admin Dashboard Specific Styles */
     /* Reset fonts to match website styles */
@@ -548,7 +548,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v9.5</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v9.6</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -594,12 +594,11 @@
               <!-- Dynamically populated -->
             </select>
             
-            <!-- Aanbieding Filter Dropdown -->
-            <select id="filterOffer" class="form-control" style="min-height: 42px; margin: 0; width: 150px; padding: 0 10px;">
-              <option value="">Alle aanbiedingen</option>
-              <option value="1">Alleen aanbiedingen</option>
-              <option value="0">Geen aanbieding</option>
-            </select>
+            <!-- Aanbieding Filter Checkbox -->
+            <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; color: var(--color-forest-dark); font-weight: 600; font-size: 0.95rem; margin: 0; user-select: none;">
+              <input type="checkbox" id="filterOffer" style="width: 18px; height: 18px; cursor: pointer;">
+              Alleen aanbiedingen
+            </label>
 
             <button class="btn btn-primary" id="addChairBtn" style="margin: 0;">+ Nieuwe Stoel Toevoegen</button>
           </div>
@@ -1787,11 +1786,11 @@
         itemsToShow = itemsToShow.filter(({ item }) => item.brand === filterBrandVal);
       }
       
-      // Filter by Offer Select
-      const filterOfferVal = document.getElementById("filterOffer") ? document.getElementById("filterOffer").value : "";
-      if (filterOfferVal) {
-        const wantOffer = filterOfferVal === "1";
-        itemsToShow = itemsToShow.filter(({ item }) => !!item.is_offer === wantOffer);
+      // Filter by Offer Checkbox
+      const filterOffer = document.getElementById("filterOffer");
+      const showOnlyOffers = filterOffer ? filterOffer.checked : false;
+      if (showOnlyOffers) {
+        itemsToShow = itemsToShow.filter(({ item }) => !!item.is_offer);
       }
       
       if (itemsToShow.length === 0) {
@@ -2899,7 +2898,7 @@
         if (filterBrand) filterBrand.value = "";
         
         const filterOffer = document.getElementById("filterOffer");
-        if (filterOffer) filterOffer.value = "";
+        if (filterOffer) filterOffer.checked = false;
         
         renderTable();
       });
