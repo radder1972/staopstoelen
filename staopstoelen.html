@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.1">
+  <link rel="stylesheet" href="style.css?v=9.3">
   <style>
 
     .catalog-layout {
@@ -344,7 +344,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 9.1
+        Gerealiseerd door BewegingsTechnologen. | Versie 9.3
       </div>
     </div>
   </footer>
@@ -1022,10 +1022,33 @@
       const pMatch = noHeadings.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
       let text = pMatch ? pMatch[1] : noHeadings;
       text = text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-      if (text.length > 130) {
-        text = text.substring(0, 127).trim() + "...";
+      
+      // Split into sentences ending with . ! or ?
+      const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+      
+      let previewText = "";
+      let currentLength = 0;
+      const maxLength = 130;
+      
+      for (let i = 0; i < sentences.length; i++) {
+        const sentence = sentences[i].trim();
+        if (previewText === "") {
+          previewText = sentence;
+          currentLength = sentence.length;
+        } else if (currentLength + 1 + sentence.length <= maxLength) {
+          previewText += " " + sentence;
+          currentLength += 1 + sentence.length;
+        } else {
+          break;
+        }
       }
-      return `<p style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.5; margin: 0;">${text}</p>`;
+      
+      const hasMore = text.length > previewText.length + 5;
+      if (hasMore) {
+        previewText += " ...";
+      }
+      
+      return `<p style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.5; margin: 0;">${previewText}</p>`;
     }
 
     // Render Logic
