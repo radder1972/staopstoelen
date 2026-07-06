@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.9.51">
+  <link rel="stylesheet" href="style.css?v=9.10.51">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     /* Admin Dashboard Specific Styles */
@@ -549,7 +549,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v9.9</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v9.10</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -947,69 +947,9 @@
       <!-- Section: Statistics Dashboard (initially hidden) -->
       <div id="statsSection" style="display: none; margin-bottom: 60px;">
         <div style="margin-top: 16px; margin-bottom: 24px;">
-          <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Statistieken Dashboard</h2>
-          <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Visueel overzicht van de stoelen catalogus en database statistieken.</p>
+          <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Bezoekersstatistieken</h2>
+          <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Visueel overzicht van de websitebezoeken, apparaattypen en afspraakconversies (laatste 30 dagen).</p>
         </div>
-
-        <!-- KPI Cards Grid -->
-        <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
-          <!-- Card 1: Totale Catalogus Waarde -->
-          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid var(--color-forest-dark);">
-            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Totale Catalogus Waarde</div>
-            <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-forest-dark); margin: 10px 0 5px 0;" id="kpiTotalValue">€ 0,-</div>
-            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiTotalValueSub">Gebaseerd op alle actieve stoelen</div>
-          </div>
-          <!-- Card 2: Gemiddelde Stoelprijs -->
-          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid var(--color-terracotta);">
-            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Gemiddelde Stoelprijs</div>
-            <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-terracotta); margin: 10px 0 5px 0;" id="kpiAveragePrice">€ 0,-</div>
-            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiAveragePriceSub">Gemiddelde per individueel product</div>
-          </div>
-          <!-- Card 3: Aanbiedingen homepage -->
-          <div style="flex: 1; min-width: 220px; background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #f2a900;">
-            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Homepage Aanbiedingen</div>
-            <div style="font-size: 1.8rem; font-weight: 800; color: #f2a900; margin: 10px 0 5px 0;" id="kpiOffersCount">0 / 3</div>
-            <div style="font-size: 0.82rem; color: var(--color-gray);" id="kpiOffersCountSub">Stoelen met homepage aanbieding vinkje</div>
-          </div>
-        </div>
-
-        <!-- Charts Grid (2x2) -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px;">
-          <!-- Chart 1: Type & Conditie verhouding -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 320px;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px; align-self: flex-start;">Verhouding Type & Conditie</h3>
-            <div style="position: relative; width: 100%; max-width: 260px; height: 260px;">
-              <canvas id="chartTypeCondition"></canvas>
-            </div>
-          </div>
-          
-          <!-- Chart 2: Status verdeling -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 320px;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px; align-self: flex-start;">Beschikbaarheid / Status</h3>
-            <div style="position: relative; width: 100%; max-width: 260px; height: 260px;">
-              <canvas id="chartStatus"></canvas>
-            </div>
-          </div>
-          
-          <!-- Chart 3: Prijssegmenten -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Prijsklassen (Aantal)</h3>
-            <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
-              <canvas id="chartPriceSegments"></canvas>
-            </div>
-          </div>
-
-          <!-- Chart 4: Top Merken -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-md); padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-height: 320px; display: flex; flex-direction: column;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 16px;">Top Merken in de Catalogus</h3>
-            <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
-              <canvas id="chartTopBrands"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section header: Web Analytics -->
-        <h3 style="color: var(--color-forest-dark); font-size: 1.2rem; border-bottom: 2px solid var(--color-gray-light); padding-bottom: 8px; margin-top: 40px; margin-bottom: 16px;">📈 Bezoekers & Conversies (Laatste 30 dagen)</h3>
         
         <!-- KPI Cards Grid 2 -->
         <div style="display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
@@ -3007,179 +2947,6 @@
     let activeCharts = {};
 
     function renderStatsDashboard() {
-      if (!activeData || activeData.length === 0) return;
-
-      // 1. Calculate KPI Metrics
-      const totalVal = activeData.reduce((acc, item) => acc + (parseInt(item.price) || 0), 0);
-      document.getElementById("kpiTotalValue").textContent = `€ ${totalVal.toLocaleString("nl-NL")},-`;
-
-      const avgPrice = activeData.length > 0 ? Math.round(totalVal / activeData.length) : 0;
-      document.getElementById("kpiAveragePrice").textContent = `€ ${avgPrice.toLocaleString("nl-NL")},-`;
-
-      const offersCount = activeData.filter(item => !!item.is_offer).length;
-      document.getElementById("kpiOffersCount").textContent = `${offersCount} / 3`;
-
-      // 2. Aggregate counts for Type & Conditie
-      const staopCount = activeData.filter(item => item.type === "staop").length;
-      const relaxCount = activeData.filter(item => item.type === "relax").length;
-      const nieuwCount = activeData.filter(item => item.condition === "nieuw").length;
-      const occasionCount = activeData.filter(item => item.condition === "occasion").length;
-
-      const typeConditionCtx = document.getElementById('chartTypeCondition').getContext('2d');
-      if (activeCharts['typeCondition']) activeCharts['typeCondition'].destroy();
-      activeCharts['typeCondition'] = new Chart(typeConditionCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Sta-opstoelen', 'Seniorenstoelen', 'Nieuw', 'Occasions'],
-          datasets: [{
-            label: 'Aantal',
-            data: [staopCount, relaxCount, nieuwCount, occasionCount],
-            backgroundColor: [
-              'rgba(18, 43, 7, 0.75)', // forest
-              'rgba(46, 125, 50, 0.75)', // forest-light
-              'rgba(25, 118, 210, 0.75)', // blue
-              'rgba(242, 169, 0, 0.75)' // orange/terracotta
-            ],
-            borderColor: [
-              '#122b07',
-              '#2e7d32',
-              '#1976d2',
-              '#f2a900'
-            ],
-            borderWidth: 1.5,
-            borderRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { stepSize: 1, precision: 0 }
-            }
-          }
-        }
-      });
-
-      // 3. Aggregate counts for Status
-      const statusAvailable = activeData.filter(item => item.status === "beschikbaar" || !item.status).length;
-      const statusReserved = activeData.filter(item => item.status === "gereserveerd").length;
-      const statusSold = activeData.filter(item => item.status === "verkocht").length;
-
-      const statusCtx = document.getElementById('chartStatus').getContext('2d');
-      if (activeCharts['status']) activeCharts['status'].destroy();
-      activeCharts['status'] = new Chart(statusCtx, {
-        type: 'doughnut',
-        data: {
-          labels: ['Beschikbaar', 'Gereserveerd', 'Verkocht'],
-          datasets: [{
-            data: [statusAvailable, statusReserved, statusSold],
-            backgroundColor: [
-              'rgba(46, 125, 50, 0.75)', // Groen
-              'rgba(242, 169, 0, 0.75)', // Oranje
-              'rgba(211, 47, 47, 0.75)'  // Rood
-            ],
-            borderColor: [
-              '#2e7d32',
-              '#f2a900',
-              '#d32f2f'
-            ],
-            borderWidth: 1.5
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'bottom' }
-          }
-        }
-      });
-
-      // 4. Aggregate counts for Price Segments
-      const priceBudget = activeData.filter(item => (parseInt(item.price) || 0) < 1500).length;
-      const priceMedium = activeData.filter(item => (parseInt(item.price) || 0) >= 1500 && (parseInt(item.price) || 0) <= 2500).length;
-      const pricePremium = activeData.filter(item => (parseInt(item.price) || 0) > 2500).length;
-
-      const priceCtx = document.getElementById('chartPriceSegments').getContext('2d');
-      if (activeCharts['price']) activeCharts['price'].destroy();
-      activeCharts['price'] = new Chart(priceCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Instap (< €1.500)', 'Middenklasse (€1.500 - €2.500)', 'Premium (> €2.500)'],
-          datasets: [{
-            label: 'Aantal stoelen',
-            data: [priceBudget, priceMedium, pricePremium],
-            backgroundColor: 'rgba(214, 90, 49, 0.75)', // terracotta
-            borderColor: 'var(--color-terracotta)',
-            borderWidth: 1.5,
-            borderRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { stepSize: 1, precision: 0 }
-            }
-          }
-        }
-      });
-
-      // 5. Aggregate counts for Brands
-      const brandMap = {};
-      activeData.forEach(item => {
-        const brand = item.brand || 'Overig';
-        brandMap[brand] = (brandMap[brand] || 0) + 1;
-      });
-      
-      const sortedBrands = Object.entries(brandMap)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 6);
-        
-      const brandLabels = sortedBrands.map(b => b[0]);
-      const brandCounts = sortedBrands.map(b => b[1]);
-
-      const brandsCtx = document.getElementById('chartTopBrands').getContext('2d');
-      if (activeCharts['brands']) activeCharts['brands'].destroy();
-      activeCharts['brands'] = new Chart(brandsCtx, {
-        type: 'bar',
-        data: {
-          labels: brandLabels,
-          datasets: [{
-            label: 'Aantal stoelen',
-            data: brandCounts,
-            backgroundColor: 'rgba(18, 43, 7, 0.75)', // forest
-            borderColor: 'var(--color-forest-dark)',
-            borderWidth: 1.5,
-            borderRadius: 4
-          }]
-        },
-        options: {
-          indexAxis: 'y', // horizontal bar chart
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            x: {
-              beginAtZero: true,
-              ticks: { stepSize: 1, precision: 0 }
-            }
-          }
-        }
-      });
-
       // Fetch visit stats asynchronously
       fetch('api/get_visit_stats.php')
         .then(response => response.json())
