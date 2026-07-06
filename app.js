@@ -711,8 +711,8 @@ function renderWizardResults() {
             <span class="price-label">Prijs vanaf</span>
             <span class="price-value" style="display: block;">${formatPrice(chair.price)}</span>
           </div>
-          <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); prefillBooking('${chair.name}')" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
-            Afspraak maken
+          <button type="button" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
+            Meer info
           </button>
         </div>
       </div>
