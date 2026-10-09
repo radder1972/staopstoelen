@@ -22,6 +22,7 @@ jobs:
           username: matthias@schippercompactwonen.nl
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /domains/staopstoelen.nl/public_html/
+          protocol: ftp
           exclude: |
             **/.git*
             **/.git*/**
@@ -29,3 +30,4 @@ jobs:
             **/scratch/**
             **/.env*
             package*.json
+            database.json
