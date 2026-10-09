@@ -1,0 +1,29 @@
+# Force Anti-Cache for HTML, CSS, JS and API responses
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|htm|js|css|php|json)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# 301 SEO Redirects for old Google search links -> staopstoelen.html
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Exclude existing valid files and directories
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Exclude API folder and static assets from redirecting
+    RewriteRule ^api/ - [L]
+    RewriteRule ^assets/ - [L]
+
+    # Redirect all non-existent old page URLs (404s / old Google search links) permanently to staopstoelen.html
+    RewriteRule ^.*$ /staopstoelen.html [R=301,L]
+</IfModule>
+
+# Fallback 404 handler
+ErrorDocument 404 /staopstoelen.html

@@ -41,6 +41,30 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 102, 22, 0.35) #f8fafc;
+}
+
+/* Global WebKit scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  border: 2px solid #f8fafc;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-forest, #256616);
 }
 
 body {
@@ -193,6 +217,16 @@ section {
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
+/* Prevent sticky navbar from covering section titles when navigating to anchors */
+section[id], section {
+  scroll-margin-top: 140px;
+}
+@media (max-width: 768px) {
+  section[id], section {
+    scroll-margin-top: 160px;
+  }
+}
+
 .navbar-container {
   display: flex;
   flex-direction: column;
@@ -329,9 +363,11 @@ section {
   position: absolute;
   left: 24px;
   top: 12px; /* Aligned at the top */
-  font-family: var(--font-header);
+  font-family: var(--font-heading), 'Montserrat', sans-serif;
   font-size: 2.65rem; /* Larger heading font size */
   font-weight: 800; /* Extra bold heading style */
+  line-height: 1.2;
+  display: inline-block;
   color: var(--color-forest);
   text-decoration: none;
   letter-spacing: -0.8px;
@@ -379,9 +415,17 @@ section {
 
 /* Hero Section */
 .hero {
-  padding: 60px 0 100px 0;
+  padding: 60px 0 90px 0;
   position: relative;
   overflow: hidden;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: 24px;
+  margin-bottom: 30px;
 }
 
 .hero-grid {
@@ -450,6 +494,7 @@ section {
   gap: 32px;
   border-top: 1px solid var(--color-gray-light);
   padding-top: 24px;
+  margin-bottom: 40px;
 }
 
 .stat-item h3,
@@ -904,6 +949,37 @@ section {
   color: var(--color-dark);
 }
 
+/* Najaarsactie Pill Badge op Stoelen */
+.actie-sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(115deg, #ea580c 0%, #e68a00 42%, #256616 100%);
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  box-shadow: 0 3px 12px rgba(37, 102, 22, 0.35), 0 2px 6px rgba(234, 88, 12, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  transform: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.product-card:hover .actie-sticker {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 5px 16px rgba(37, 102, 22, 0.45), 0 3px 8px rgba(234, 88, 12, 0.35);
+}
+
+.actie-sticker-badge:hover,
+.rode-actie-sticker:hover {
+  transform: rotate(0deg) scale(1.08) !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5) !important;
+}
 
 .quality-stamp {
   position: absolute;
@@ -998,10 +1074,11 @@ section {
 .product-price-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  gap: 10px;
   margin-top: auto;
   border-top: 1px solid var(--color-gray-light);
-  padding-top: 16px;
+  padding-top: 14px;
 }
 
 .price-label {
@@ -1437,7 +1514,7 @@ section {
 
 @media (min-width: 768px) {
   .calendar-grid {
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -1929,12 +2006,13 @@ footer h3, footer h4 {
 .occasions-header {
   background-color: var(--color-forest);
   color: var(--color-light);
-  padding: 45px 0 25px 0;
+  padding: 35px 0;
   text-align: left !important;
-  height: 240px;
+  min-height: 240px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   box-sizing: border-box;
   width: 100%;
 }
@@ -1980,6 +2058,25 @@ footer h3, footer h4 {
   padding: 8px;
 }
 
+.banner-stamp-link {
+  display: inline-block;
+  margin-left: auto;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.banner-stamp-link .banner-stamp {
+  height: 165px;
+  width: auto;
+  max-width: 205px;
+}
+
+.banner-stamp-link:hover .banner-stamp {
+  transform: scale(1.08) rotate(16deg) !important;
+  filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.35));
+}
+
 .banner-stamp {
   width: 165px;
   height: 165px;
@@ -1988,6 +2085,112 @@ footer h3, footer h4 {
   margin-top: 0;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
   animation: rock-banner-stamp 10s ease-in-out infinite;
+}
+
+.banner-ground-leaves {
+  position: absolute;
+  bottom: -4px;
+  right: max(3%, calc(50% - 580px));
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.btn-najaarsactie-red {
+  background: linear-gradient(115deg, #ea580c 0%, #e68a00 42%, #256616 100%) !important;
+  box-shadow: 0 5px 18px rgba(37, 102, 22, 0.35), 0 2px 8px rgba(234, 88, 12, 0.3) !important;
+}
+
+.btn-najaarsactie-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(37, 102, 22, 0.45), 0 3px 12px rgba(234, 88, 12, 0.4) !important;
+}
+
+/* Slideshow Action Button / Badge (appears only for Fitform slides) */
+.slideshow-actie-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px) scale(0.92);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slideshow-actie-badge.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.hero-slideshow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.65) !important;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(37, 102, 22, 0.45), 0 2px 8px rgba(234, 88, 12, 0.35) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-slideshow-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37, 102, 22, 0.55), 0 4px 14px rgba(234, 88, 12, 0.45) !important;
+}
+
+@media (max-width: 576px) {
+  .slideshow-actie-badge {
+    top: 12px;
+    right: 12px;
+  }
+  .hero-slideshow-btn {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    letter-spacing: 0.3px;
+    gap: 6px;
+  }
+  .hero-slideshow-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Groene selectievakjes voor filters en formulieren */
+input[type="checkbox"] {
+  accent-color: var(--color-forest, #256616);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.checkbox-label:hover {
+  color: var(--color-forest, #256616);
+}
+
+.checkbox-label input[type="checkbox"],
+.checkbox-label input {
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
+  accent-color: var(--color-forest, #256616);
 }
 
 @keyframes rock-banner-stamp {
@@ -1999,6 +2202,31 @@ footer h3, footer h4 {
   }
   100% {
     transform: rotate(11deg);
+  }
+}
+
+/* Najaarsactie Catalog Banner Layout */
+.najaarsactie-catalog-banner {
+  position: relative;
+  overflow: visible;
+  background: linear-gradient(135deg, #fdf8f3 0%, #faede1 100%);
+  border: 1.5px solid rgba(214, 90, 49, 0.3);
+  border-radius: 18px;
+  padding: 42px 40px;
+  min-height: 400px;
+  margin-bottom: 38px;
+  box-shadow: 0 12px 36px rgba(18, 43, 7, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  scroll-margin-top: 165px;
+}
+@media (max-width: 991px) {
+  .najaarsactie-catalog-banner {
+    padding: 28px 22px;
+    gap: 20px;
+    min-height: auto;
+    scroll-margin-top: 180px;
   }
 }
 
@@ -2014,6 +2242,18 @@ footer h3, footer h4 {
     margin: 24px auto 0 auto;
     width: 135px;
     height: 135px;
+  }
+  .banner-stamp-link .banner-stamp {
+    height: 135px;
+    width: auto;
+    max-width: 170px;
+    margin: 24px auto 0 auto;
+  }
+  .banner-ground-leaves {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: -6px;
+    max-width: 290px;
   }
 }
 
@@ -2285,6 +2525,15 @@ footer h3, footer h4 {
     font-size: 1.85rem !important;
   }
 
+  /* Najaarsactie Campaign Grid Mobile Styling */
+  .najaarsactie-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  .najaarsactie-image-col {
+    order: -1;
+  }
+
   /* Hero title font size scaling for tablets */
   .hero-title {
     font-size: 2.8rem !important;
@@ -2386,8 +2635,8 @@ footer h3, footer h4 {
 .modal-card {
   background-color: var(--color-light);
   border-radius: var(--radius-lg);
-  width: 90%;
-  max-width: 800px;
+  width: 92%;
+  max-width: 940px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
@@ -2395,6 +2644,29 @@ footer h3, footer h4 {
   transform: scale(0.92);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--color-gray-light);
+  /* Firefox custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 102, 22, 0.4) transparent;
+}
+
+/* Custom WebKit floating scrollbar for .modal-card */
+.modal-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-card::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 16px 0;
+}
+
+.modal-card::-webkit-scrollbar-thumb {
+  background-color: rgba(37, 102, 22, 0.35);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.modal-card::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-forest, #256616);
 }
 
 .modal-overlay.active .modal-card {
@@ -2442,6 +2714,7 @@ footer h3, footer h4 {
 }
 
 .modal-image-wrapper {
+  position: relative;
   width: 100%;
   height: 320px;
   display: flex;
@@ -2506,21 +2779,32 @@ footer h3, footer h4 {
 .modal-gallery-thumbnails {
   display: flex;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 24px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding: 8px 4px;
   width: 100%;
   justify-content: center;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 102, 22, 0.3) transparent;
 }
 
 .modal-gallery-thumbnails::-webkit-scrollbar {
-  height: 4px;
+  height: 7px;
+}
+
+.modal-gallery-thumbnails::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .modal-gallery-thumbnails::-webkit-scrollbar-thumb {
-  background-color: var(--color-gray-light);
-  border-radius: 2px;
+  background-color: rgba(37, 102, 22, 0.28);
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.modal-gallery-thumbnails::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-forest, #256616);
 }
 
 .gallery-thumbnail {
@@ -2539,12 +2823,55 @@ footer h3, footer h4 {
 
 .gallery-thumbnail:hover {
   border-color: var(--color-terracotta);
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .gallery-thumbnail.active {
   border-color: var(--color-forest);
-  box-shadow: 0 0 0 2px rgba(75, 143, 36, 0.2);
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 4px 8px rgba(75, 143, 36, 0.25);
+  z-index: 2;
+}
+
+/* Modal Gallery Arrows */
+.modal-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  background-color: var(--color-light);
+  border: 2px solid var(--color-forest);
+  border-radius: var(--radius-full);
+  color: var(--color-forest);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  outline: none;
+}
+
+.modal-gallery-arrow:hover {
+  background-color: var(--color-forest);
+  color: var(--color-light);
+  border-color: var(--color-forest);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 4px 10px rgba(75, 143, 36, 0.3);
+}
+
+.modal-gallery-arrow.prev-arrow {
+  left: -19px;
+}
+
+.modal-gallery-arrow.next-arrow {
+  right: -19px;
 }
 
 .modal-info-section {
@@ -2972,5 +3299,75 @@ footer h3, footer h4 {
   }
 }
 
+/* Najaarsactie campaign section styles */
+@media (max-width: 900px) {
+  .najaarsactie-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+}
 
+/* Najaarsactie Autumn Leaves Animation & Stacking Effect */
+.najaarsactie-leaves-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
 
+#najaarsactie .container {
+  position: relative;
+  z-index: 2;
+}
+
+.falling-leaf {
+  position: absolute;
+  top: -35px;
+  pointer-events: none;
+  opacity: 0;
+  animation-name: fallAndStack;
+  animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+}
+
+@keyframes fallAndStack {
+  0% {
+    top: -55px;
+    transform: translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.95;
+  }
+  25% {
+    transform: translateX(45px) rotate(80deg);
+  }
+  48% {
+    transform: translateX(-35px) rotate(170deg);
+  }
+  68% {
+    transform: translateX(30px) rotate(260deg);
+    opacity: 0.95;
+  }
+  80% {
+    top: calc(100% - 24px + var(--land-y, 0px));
+    transform: translateX(0px) rotate(var(--land-rotate, 35deg));
+    opacity: 0.95;
+  }
+  98% {
+    top: calc(100% - 24px + var(--land-y, 0px));
+    transform: translateX(0px) rotate(var(--land-rotate, 35deg));
+    opacity: 0.95;
+  }
+  100% {
+    top: calc(100% - 24px + var(--land-y, 0px));
+    transform: translateX(0px) rotate(var(--land-rotate, 35deg));
+    opacity: 0;
+  }
+}

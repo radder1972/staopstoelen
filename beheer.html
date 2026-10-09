@@ -10,10 +10,45 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.16.51">
+  <link rel="stylesheet" href="style.css?v=10.17">
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     /* Admin Dashboard Specific Styles */
+    .ql-editor h4 {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: var(--color-forest-dark);
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-family: var(--font-heading);
+    }
+    .ql-editor p {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .ql-editor ul {
+      margin-top: 0;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      list-style-type: disc !important;
+    }
+    .ql-editor li {
+      margin-bottom: 4px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+    }
+    .ql-editor strong, .ql-editor b {
+      font-weight: bold;
+    }
+    .ql-editor em, .ql-editor i {
+      font-style: italic;
+    }
+
     /* Reset fonts to match website styles */
     input, select, textarea, button {
       font-family: var(--font-body);
@@ -224,12 +259,16 @@
       border-bottom: none;
     }
     
+    tbody tr {
+      cursor: pointer;
+    }
+    
     tbody tr:nth-child(even) {
       background-color: rgba(75, 143, 36, 0.035);
     }
     
     tbody tr:hover {
-      background-color: rgba(75, 143, 36, 0.07);
+      background-color: rgba(75, 143, 36, 0.09);
       transition: background-color 0.15s ease;
     }
     
@@ -532,12 +571,46 @@
       font-weight: 700;
       color: var(--color-forest);
     }
+    @keyframes spin-sync {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-anim {
+      animation: spin-sync 0.8s linear infinite !important;
+    }
+    .btn-sync-seo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid var(--color-forest);
+      background-color: transparent;
+      color: var(--color-forest);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-sync-seo:hover {
+      background-color: var(--color-forest) !important;
+      color: #ffffff !important;
+      border-color: var(--color-forest) !important;
+      box-shadow: 0 4px 12px rgba(18, 43, 7, 0.15);
+    }
+    .btn-sync-seo:hover svg {
+      stroke: #ffffff !important;
+    }
+    .btn-sync-seo:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
 
   <!-- Login Form overlay -->
-  <div class="login-overlay" id="loginOverlay">
+  <div class="login-overlay" id="loginOverlay" style="display: flex;">
     <div class="login-card">
       <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin-bottom: 8px;">Beheer Login</h2>
       <p style="color: var(--color-gray); font-size: 0.95rem;">Voer het beheerwachtwoord in om toegang te krijgen.</p>
@@ -562,7 +635,7 @@
       
       <div class="admin-title-row" style="margin-bottom: 16px;">
         <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v9.16</span></h1>
+          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v10.17</span></h1>
           <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
         </div>
       </div>
@@ -626,7 +699,17 @@
             </label>
           </div>
           
-          <button class="btn btn-primary" id="addChairBtn" style="margin: 0; margin-left: auto;">+ Nieuwe Stoel Toevoegen</button>
+          <div style="display: flex; gap: 10px; margin-left: auto;">
+            <button type="button" class="btn btn-sync-seo" id="syncSeoPagesBtn" style="margin: 0;" title="Genereer alle statische SEO-pagina's opnieuw en update sitemap.xml">
+              <svg id="syncSeoIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; display: inline-block;">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+              <span id="syncSeoLabel">Sync SEO Pagina's</span>
+            </button>
+            <button class="btn btn-primary" id="addChairBtn" style="margin: 0;">+ Nieuwe Stoel Toevoegen</button>
+          </div>
         </div>
         
         <!-- Table of chairs (Full-width to ensure all columns & action buttons fit) -->
@@ -739,77 +822,58 @@
 
               <div class="form-group">
                 <label class="form-label" for="chairDesc">Productbeschrijving</label>
-                <textarea class="form-control" id="chairDesc" rows="6" required placeholder="Uitgebreide omschrijving van de stoel..."></textarea>
+                <!-- Quill Editor Container -->
+                <div id="chairDescEditor" style="height: 200px; background: #fff; border-bottom-left-radius: var(--radius-sm); border-bottom-right-radius: var(--radius-sm);"></div>
+                <textarea id="chairDesc" style="display: none;"></textarea>
               </div>
             </div>
 
-            <!-- Tab 2: Afbeeldingen -->
+            <!-- Tab 2: Afbeeldingen (Gevormd naar 3 heldere rollen) -->
             <div id="tab-afbeeldingen" class="modal-tab-content" style="display: none;">
               <div class="upload-section-card" style="margin: 0; border: none; padding: 0; background: none; box-shadow: none;">
+                
+                <!-- 1. Hoofdfoto -->
                 <div class="upload-box">
-                  <label class="form-label" for="chairImage">Productafbeelding (Zitstand / Downstand)</label>
+                  <label class="form-label" for="chairImage" style="font-weight: 700; color: var(--color-forest-dark);">1. Hoofdfoto (Productfoto)</label>
+                  <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 8px;">Standaard studiofoto van de stoel (wordt getoond op de overzichtskaarten).</p>
                   <div style="display: flex; gap: 12px; align-items: center;">
-                    <input type="text" class="form-control" id="chairImage" required placeholder="assets/chair_naam.png" style="flex: 1;">
+                    <input type="text" class="form-control" id="chairImage" required placeholder="assets/stoelen/chair_naam_main.png" style="flex: 1;">
                     <input type="file" id="chairImageFile" accept="image/*" style="display: none;">
                     <button type="button" class="btn btn-outline" id="btnUploadImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      Kies Bestand
+                      Kies / Upload
                     </button>
                   </div>
                   <div id="chairImagePreview" style="margin-top: 10px; display: none;">
-                    <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+                    <img src="" style="max-height: 90px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
                   </div>
                 </div>
 
-                <div class="upload-box">
-                  <label class="form-label" for="chairImageUp">Productafbeelding (Sta-opstand / Upstand)</label>
-                  <div style="display: flex; gap: 12px; align-items: center;">
-                    <input type="text" class="form-control" id="chairImageUp" placeholder="assets/chair_naam_lift.png" style="flex: 1;">
-                    <input type="file" id="chairImageUpFile" accept="image/*" style="display: none;">
-                    <button type="button" class="btn btn-outline" id="btnUploadImageUp" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      Kies Bestand
-                    </button>
-                  </div>
-                  <div id="chairImageUpPreview" style="margin-top: 10px; display: none;">
-                    <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
-                  </div>
-                </div>
+                <!-- Hidden inputs for backward compatibility -->
+                <input type="hidden" id="chairImageUp">
+                <input type="hidden" id="chairImageLie">
 
-                <div class="upload-box">
-                  <label class="form-label" for="chairImageLie">Productafbeelding (Ligstand / Lay-flat)</label>
+                <!-- 2. Sfeerfoto -->
+                <div class="upload-box" style="margin-top: 20px;">
+                  <label class="form-label" for="chairAmbientImage" style="font-weight: 700; color: var(--color-forest-dark);">2. Sfeerfoto (Interieurfoto)</label>
+                  <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 8px;">Interieurfoto in woonkamersfeer (wordt getoond bij hover op de kaart & homepage).</p>
                   <div style="display: flex; gap: 12px; align-items: center;">
-                    <input type="text" class="form-control" id="chairImageLie" placeholder="assets/chair_naam_lig.png" style="flex: 1;">
-                    <input type="file" id="chairImageLieFile" accept="image/*" style="display: none;">
-                    <button type="button" class="btn btn-outline" id="btnUploadImageLie" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      Kies Bestand
-                    </button>
-                  </div>
-                  <div id="chairImageLiePreview" style="margin-top: 10px; display: none;">
-                    <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
-                  </div>
-                </div>
-
-                <div class="upload-box">
-                  <label class="form-label" for="chairAmbientImage">Sfeerfoto (Interieur)</label>
-                  <div style="display: flex; gap: 12px; align-items: center;">
-                    <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/chair_naam_cozy.png" style="flex: 1;">
+                    <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/stoelen/chair_naam_ambient.png" style="flex: 1;">
                     <input type="file" id="chairAmbientImageFile" accept="image/*" style="display: none;">
                     <button type="button" class="btn btn-outline" id="btnUploadAmbientImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      Kies Bestand
+                      Kies / Upload
                     </button>
                   </div>
                   <div id="chairAmbientImagePreview" style="margin-top: 10px; display: none;">
-                    <img src="" style="max-height: 80px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+                    <img src="" style="max-height: 90px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
                   </div>
                 </div>
 
-                <!-- Gallery Manager -->
+                <!-- 3. Fotogalerij -->
                 <div class="upload-box" style="margin-top: 20px; border-top: 1px solid var(--color-gray-light); padding-top: 20px;">
-                  <label class="form-label" style="font-weight: 600; color: var(--color-forest-dark);">Product Galerij (Extra pop-up foto's)</label>
-                  <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 12px; margin-top: 4px;">Voeg extra afbeeldingen toe die in de pop-up galerij getoond worden.</p>
+                  <label class="form-label" style="font-weight: 700; color: var(--color-forest-dark);">3. Fotogalerij (Detail- & Standenfoto's)</label>
+                  <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 12px; margin-top: 4px;">Voeg alle extra foto's toe (sta-op stand, ligstand, afstandsbediening, stof/leer details) die in de pop-up getoond worden.</p>
                   
                   <!-- Thumbnails grid -->
                   <div id="galleryManagerGrid" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
@@ -857,7 +921,7 @@
 
               <div class="form-group" style="margin-top: 16px;">
                 <label class="form-label" for="chairSpecs">Technische specificaties (formaat: Sleutel: Waarde, één per regel)</label>
-                <textarea class="form-control" id="chairSpecs" rows="6" placeholder="bijv.&#10;Zithoogte: 45 cm&#10;Zitbreedte: 50 cm&#10;Aantal motoren: 3 motoren&#10;Garantie: 2 Jaar"></textarea>
+                <textarea class="form-control" id="chairSpecs" rows="6" placeholder="bijv.&#10;Zithoogte: 45 cm&#10;Zitbreedte: 50 cm&#10;Aantal motoren: 3 motoren&#10;Garantie: 1 Jaar"></textarea>
               </div>
             </div>
 
@@ -961,7 +1025,11 @@
       <div id="statsSection" style="display: none; margin-bottom: 60px; max-width: 1000px; margin: 0 auto; padding: 0 16px;">
         <div style="margin-top: 16px; margin-bottom: 24px; text-align: center;">
           <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.6rem; font-weight: 700;">Bezoekersstatistieken</h2>
-          <p style="color: var(--color-gray); margin-top: 6px; font-size: 0.95rem;">Visueel overzicht van de websitebezoeken, apparaattypen en afspraakconversies (laatste 30 dagen).</p>
+          <p style="color: var(--color-gray); margin-top: 6px; margin-bottom: 12px; font-size: 0.95rem;">Visueel overzicht van de websitebezoeken, apparaattypen en afspraakconversies (laatste 30 dagen).</p>
+          <button type="button" id="btnResetStats" class="btn btn-outline" style="color: #c62828; border-color: #ef9a9a; font-size: 0.85rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; background: #ffebee; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            Statistieken Resetten
+          </button>
         </div>
         
         <!-- KPI Cards Grid (Compact & Centered) -->
@@ -986,6 +1054,26 @@
           </div>
         </div>
 
+        <!-- Dynamic Automated Business Insights Card -->
+        <div id="dynamicInsightsCard" style="background: linear-gradient(135deg, #f7faf5 0%, #ffffff 100%); border: 1px solid #d4e5cb; border-left: 5px solid var(--color-forest); border-radius: var(--radius-sm); padding: 22px 26px; margin-bottom: 28px; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.04);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: #e2ebd9; color: var(--color-forest); flex-shrink: 0; box-shadow: 0 1px 3px rgba(18,43,7,0.06);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+              </span>
+              <h3 style="margin: 0; color: var(--color-forest-dark); font-size: 1.15rem; font-weight: 700; font-family: var(--font-heading);">
+                Slimme Data Analyse & Advies
+              </h3>
+            </div>
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-forest); background: #e3ebd9; padding: 4px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+              Live Analyse
+            </span>
+          </div>
+          <div id="dynamicInsightsContent" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; font-size: 0.92rem; line-height: 1.6; color: var(--color-gray);">
+            <div style="color: var(--color-gray); font-style: italic;">Inzichten worden berekend...</div>
+          </div>
+        </div>
+
         <!-- Charts Grid 2 (Strict 2x2 Layout on Desktop) -->
         <div class="stats-charts-grid">
           <!-- Chart 5: Bezoekers Trend (Lijn) -->
@@ -998,7 +1086,7 @@
           
           <!-- Chart 6: Conversies Trend (Bar) -->
           <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); min-height: 340px; display: flex; flex-direction: column;">
-            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; font-family: var(--font-heading);">Interacties & Conversies</h3>
+            <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; font-family: var(--font-heading);">Geboekte Afspraken</h3>
             <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
               <canvas id="chartConversionsTrend"></canvas>
             </div>
@@ -1017,6 +1105,86 @@
             <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; font-family: var(--font-heading);">Meest Bekeken Pagina's</h3>
             <div style="position: relative; width: 100%; height: 260px; flex-grow: 1;">
               <canvas id="chartTopPages"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Path Analysis / User Flow Section -->
+        <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-top: 24px;">
+          <h3 style="color: var(--color-forest-dark); font-size: 1.15rem; margin-top: 0; margin-bottom: 6px; font-weight: 700; font-family: var(--font-heading); display: flex; align-items: center; gap: 8px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #e2ebd9; color: var(--color-forest);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            </span>
+            <span>Padanalyse & Gebruikersstroom (User Flow)</span>
+          </h3>
+          <p style="color: var(--color-gray); font-size: 0.88rem; margin-bottom: 20px;">Inzicht in hoe bezoekers door de website navigeren, op welke pagina's ze binnenkomen en waar ze uitstappen.</p>
+          
+          <!-- Visual Flowchart Card -->
+          <div style="background: #fafafa; border: 1px solid #e2ebd9; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02); overflow-x: auto;">
+            <h4 style="margin: 0 0 4px 0; font-size: 1rem; color: var(--color-forest-dark); font-weight: 700; display: flex; align-items: center; gap: 8px; font-family: var(--font-heading);">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #e2ebd9; color: var(--color-forest);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
+              </span>
+              <span>Visuele Bezoekersstroom Flowchart</span>
+            </h4>
+            <p style="color: var(--color-gray); font-size: 0.82rem; margin: 0 0 16px 0;">Beweeg uw muis over een pagina of verbinding om de verkeersstromen live te highlighten. De dikte van de verbindingen toont het volume.</p>
+            <div style="position: relative; min-width: 820px; height: 350px; background: white; border: 1px solid #e2ebd9; border-radius: 6px; overflow: hidden;">
+              <canvas id="flowchartCanvas" width="820" height="350" style="display: block; cursor: default;"></canvas>
+              <div id="flowchartTooltip" style="position: absolute; display: none; background: rgba(18, 43, 7, 0.95); color: white; padding: 8px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; pointer-events: none; box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 100; border: 1px solid rgba(255,255,255,0.15); white-space: nowrap;"></div>
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <!-- Top Paths / Flow -->
+            <div style="background: #fdfbf7; border: 1px solid #f0e6d2; border-radius: 8px; padding: 16px;">
+              <h4 style="margin: 0 0 12px 0; font-size: 0.95rem; color: var(--color-forest-dark); font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: #f0e6d2; color: #855b04;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+                <span>Populairste Klikpaden</span>
+              </h4>
+              <div id="pathFlowList" style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
+                <span style="color: var(--color-gray);">Nog geen navigatiepaden vastgelegd.</span>
+              </div>
+            </div>
+
+            <!-- Top Entry Pages -->
+            <div style="background: #f7fbf7; border: 1px solid #d4ebd4; border-radius: 8px; padding: 16px;">
+              <h4 style="margin: 0 0 12px 0; font-size: 0.95rem; color: #2e7d32; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: #d4ebd4; color: #2e7d32;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                </span>
+                <span>Instappagina's (Landingspagina's)</span>
+              </h4>
+              <div id="entryPagesList" style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+                <span style="color: var(--color-gray);">Nog geen gegevens.</span>
+              </div>
+            </div>
+
+             <!-- Top Exit Pages -->
+            <div style="background: #fbf7f7; border: 1px solid #ebd4d4; border-radius: 8px; padding: 16px;">
+              <h4 style="margin: 0 0 12px 0; font-size: 0.95rem; color: #c62828; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: #ebd4d4; color: #c62828;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </span>
+                <span>Uitstappagina's</span>
+              </h4>
+              <div id="exitPagesList" style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+                <span style="color: var(--color-gray);">Nog geen gegevens.</span>
+              </div>
+            </div>
+
+            <!-- Top Viewed Chairs -->
+            <div style="background: #faf4e7; border: 1px solid #ebd7b3; border-radius: 8px; padding: 16px;">
+              <h4 style="margin: 0 0 12px 0; font-size: 0.95rem; color: #b78103; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: #ebd7b3; color: #b78103;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </span>
+                <span>Meest Bekeken Stoelen</span>
+              </h4>
+              <div id="topChairsList" style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+                <span style="color: var(--color-gray);">Nog geen gegevens.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1076,14 +1244,60 @@
   </footer>
 
   <script>
+    // Quill Editor Instance and Helpers
+    let quill;
+    function initQuillEditor() {
+      if (document.getElementById("chairDescEditor")) {
+        quill = new Quill('#chairDescEditor', {
+          theme: 'snow',
+          placeholder: 'Typ of plak hier de productbeschrijving...',
+          modules: {
+            toolbar: [
+              [{ 'header': [4, false] }], // H4 and Normal Paragraph (P)
+              ['bold', 'italic'],
+              [{ 'list': 'bullet' }],
+              ['clean'] // remove formatting
+            ]
+          }
+        });
+
+        // Set custom styling for Quill toolbar/container
+        const toolbar = document.querySelector('.ql-toolbar');
+        if (toolbar) {
+          toolbar.style.border = '1px solid #d1d5db';
+          toolbar.style.borderTopLeftRadius = 'var(--radius-sm)';
+          toolbar.style.borderTopRightRadius = 'var(--radius-sm)';
+          toolbar.style.background = '#f3f4f6';
+          toolbar.style.padding = '6px';
+        }
+        const container = document.querySelector('.ql-container');
+        if (container) {
+          container.style.border = '1px solid #d1d5db';
+          container.style.borderBottomLeftRadius = 'var(--radius-sm)';
+          container.style.borderBottomRightRadius = 'var(--radius-sm)';
+          container.style.fontSize = '0.95rem';
+          container.style.fontFamily = 'inherit';
+        }
+
+        // Sync contents to hidden textarea on text changes
+        quill.on('text-change', syncEditorToTextarea);
+      }
+    }
+
+    function syncEditorToTextarea() {
+      if (quill) {
+        document.getElementById("chairDesc").value = quill.root.innerHTML;
+      }
+    }
+
     // Embedded original datasets
     const DEFAULT_STAOPSTOELEN =
 [
   {
     "id": "sta-op-stoel-dordrecht",
     "name": "Sta-op stoel Dordrecht",
-    "image": "assets/chair_sta-op-stoel-dordrecht-1.png",
-    "ambientImage": "assets/chair_dordrecht_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-dordrecht-1.png",
+    "ambientImage": "assets/stoelen/chair_dordrecht_cozy.png",
     "price": 700,
     "brand": "Overig",
     "description": "De sta-op stoel Dordrecht is een sta-op / relax fauteuil welke zeer eenvoudig te bedienen is. Dit komt doordat er maar 2 knopjes op de handbediening zitten. De stoel is bekleed met een prachtige antraciet luxe microvezel stof welke zeer sterk en eenvoudig te reinigen is.",
@@ -1101,12 +1315,12 @@
     "brand": "Hjort Knudsen",
     "model": "Senioren HK Dordt",
     "price": 995,
-    "image": "assets/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
+    "image": "assets/stoelen/chair_senioren-sta-op-stoel-hk-dordt-1-300x300.png",
     "condition": "occasion",
     "type": "relax",
     "material": "stof",
     "description": "De Senioren sta-op stoel HK Dordt is een zeer comfortabele fauteuil met sta-op verstelling en verstelbare rugleuning. Eenvoudig te bedienen via een kleine handbediening aan de zijkant.",
-    "ambientImage": "assets/chair_hk_dordt_cozy.png",
+    "ambientImage": "assets/stoelen/chair_hk_dordt_cozy.png",
     "badge": "Hoge Kwaliteit",
     "badgeType": "reco",
     "status": "beschikbaar"
@@ -1114,8 +1328,8 @@
   {
     "id": "senioren-sta-op-stoel-mecam-athena",
     "name": "Senioren sta-op stoel Mecam Athena",
-    "image": "assets/chair_sta-op-stoel-mecam-athena-1-300x300.png",
-    "ambientImage": "assets/chair_athena_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-mecam-athena-1-300x300.png",
+    "ambientImage": "assets/stoelen/chair_athena_cozy.png",
     "price": 1045,
     "brand": "Mecam",
     "description": "Uniek in zijn soort: een sta-op stoel zonder motoren! Er zitten geen accu's in en er hoeft geen stekker in het stopcontact om gebruik te maken van de soepele, mechanische sta-op ondersteuning.",
@@ -1130,8 +1344,8 @@
   {
     "id": "sta-op-stoel-draaibaar-zwijndrecht",
     "name": "Sta-op stoel draaibaar Zwijndrecht",
-    "image": "assets/chair_sta-op-stoel-zwijndrecht-1-e1772115887824.png",
-    "ambientImage": "assets/chair_zwijndrecht_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-zwijndrecht-1-e1772115887824.png",
+    "ambientImage": "assets/stoelen/chair_zwijndrecht_cozy.png",
     "price": 1350,
     "brand": "Overig",
     "description": "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel is van alle gemakken voorzien en heeft door het houten draaiplateau een klassieke maar toch moderne uitstraling.",
@@ -1146,8 +1360,8 @@
   {
     "id": "sta-op-stoel-draaibaar-sliedrecht",
     "name": "Sta-op stoel draaibaar Sliedrecht",
-    "image": "assets/chair_sta-op-stoel-draaibaar-sliedrecht-1.png",
-    "ambientImage": "assets/chair_sliedrecht_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-draaibaar-sliedrecht-1.png",
+    "ambientImage": "assets/stoelen/chair_sliedrecht_cozy.png",
     "price": 1395,
     "brand": "Overig",
     "description": "Voorzien van een 2-motorig elektrisch relaxsysteem en sta-op hulp. Deze draaibare sta-op stoel voorziet in alle gemakken. Door de geborstelde stalen voet heeft hij een strakke, moderne uitstraling.",
@@ -1162,8 +1376,8 @@
   {
     "id": "sta-op-stoel-rotterdam",
     "name": "Sta-op stoel Rotterdam",
-    "image": "assets/chair_staop-stoel-rotterdam-1-min-scaled.png",
-    "ambientImage": "assets/chair_rotterdam_cozy.png",
+    "image": "assets/stoelen/chair_staop-stoel-rotterdam-1-min-scaled.png",
+    "ambientImage": "assets/stoelen/chair_rotterdam_cozy.png",
     "price": 1485,
     "brand": "Overig",
     "description": "Prachtige 4-motorige relax fauteuil met sta-op verstelling. Elegant, klassiek en luxe. Geheel in leer bekleed met 4 afzonderlijke motoren voor onafhankelijke afstelling.",
@@ -1178,8 +1392,8 @@
   {
     "id": "sta-op-stoel-ridderkerk",
     "name": "Sta-op stoel Ridderkerk",
-    "image": "assets/chair_sta-op-stoel-hk-ridderkerk-1-scaled.png",
-    "ambientImage": "assets/chair_ridderkerk_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-hk-ridderkerk-1-scaled.png",
+    "ambientImage": "assets/stoelen/chair_ridderkerk_cozy.png",
     "price": 1495,
     "brand": "Overig",
     "description": "Heerlijke 2-motorige relax fauteuil met sta-op verstelling. De Ridderkerk is elektrisch verstelbaar en voorzien van een fijne relaxfunctie waarmee u comfortabel zit met de benen omhoog.",
@@ -1194,8 +1408,8 @@
   {
     "id": "sta-op-stoel-fitform-570-vario-reco",
     "name": "Sta-op stoel Fitform 570 Vario RECO",
-    "image": "assets/chair_fitform-570-vario-sta-op-stoel-gereconditioneerd-1-300x300.png",
-    "ambientImage": "assets/chair_fitform_570_reco_cozy.png",
+    "image": "assets/stoelen/chair_fitform-570-vario-sta-op-stoel-gereconditioneerd-1-300x300.png",
+    "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
     "price": 1500,
     "brand": "Fitform",
     "description": "Volledig gereconditioneerd Fitform-model. Gebouwd op een gereviseerd frame, voorzien van een nieuwe handbediening en compleet nieuwe bekleding in stof/leder naar keuze.",
@@ -1208,27 +1422,10 @@
     "status": "beschikbaar"
   },
   {
-    "id": "sta-op-stoel-geert",
-    "name": "Sta-op Stoel Geert",
-    "brand": "Huismerk",
-    "price": 1550,
-    "image": "assets/orange_chair_downstand.png",
-    "condition": "occasion",
-    "type": "staop",
-    "description": "De Sta-op Stoel Geerts is een modern vormgegeven sta-op fauteuil bekleed met een trendy en uiterst comfortabele oranje structuurstof. Perfect instelbaar voor een actieve zit, heerlijke relaxstand en moeiteloos opstaan.",
-    "imageUp": "assets/orange_chair_upstand.jpg",
-    "ambientImage": "assets/sta_opstoel_geerts_interior.png",
-    "badge": "Oranje Editie",
-    "badgeType": "reco",
-    "material": "stof",
-    "model": "Geert",
-    "status": "gereserveerd"
-  },
-  {
     "id": "sta-op-stoel-barendrecht",
     "name": "Sta-op stoel Barendrecht",
-    "image": "assets/chair_sta-op-stoel-barendrecht-1-min-scaled-e1760613493995.png",
-    "ambientImage": "assets/chair_barendrecht_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-barendrecht-1-min-scaled-e1760613493995.png",
+    "ambientImage": "assets/stoelen/chair_barendrecht_cozy.png",
     "price": 1565,
     "brand": "Overig",
     "description": "Heerlijke 2-motorige relax fauteuil met sta-op verstelling en standaard ingebouwde accu! Geen kabels over de vloer, waardoor u de stoel vrij in de kamer kunt plaatsen.",
@@ -1243,8 +1440,8 @@
   {
     "id": "sta-op-stoel-alfred",
     "name": "Sta-op stoel ALFRED",
-    "image": "assets/chair_sta-op-stoel-alfred-1-scaled.png",
-    "ambientImage": "assets/chair_alfred_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-alfred-1-scaled.png",
+    "ambientImage": "assets/stoelen/chair_alfred_cozy.png",
     "price": 1775,
     "brand": "Overig",
     "description": "Prachtige 2-motorige relax fauteuil met sta-op verstelling. Geheel in soepel leder bekleed, met een verborgen voetenbank die onder de stoel wegdraait.",
@@ -1268,16 +1465,16 @@
     "type": "staop",
     "material": "stof",
     "description": "Klassieke en degelijke uitstraling van Mecam. De fauteuil is in verschillende maatvoeringen te leveren, biedt heerlijk zitcomfort en is leverbaar in vele stoffen en leersoorten.",
-    "imageUp": "assets/chair_sta-op-stoel-mecam-movie-4-300x300.png",
-    "ambientImage": "assets/chair_movie_cozy.png",
+    "imageUp": "assets/stoelen/chair_sta-op-stoel-mecam-movie-4-300x300.png",
+    "ambientImage": "assets/stoelen/chair_movie_cozy.png",
     "badge": "Klassiek Comfort",
     "badgeType": "reco"
   },
   {
     "id": "sta-op-stoel-ravi",
     "name": "Sta-op stoel Ravi",
-    "image": "assets/chair_sta-op-stoel-ravi-1-kopie-300x300.png",
-    "ambientImage": "assets/chair_ravi_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-ravi-1-kopie-300x300.png",
+    "ambientImage": "assets/stoelen/chair_ravi_cozy.png",
     "price": 1945,
     "brand": "Overig",
     "description": "Elegante, draaibare relaxfauteuil met sta-op hulp. Verkrijgbaar in 3 verschillende maten (s/m/l) voor een perfecte ergonomische match.",
@@ -1295,12 +1492,12 @@
     "brand": "DFM",
     "model": "Bentley (dicht)",
     "price": 1945,
-    "image": "assets/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-dfm-bentley-dicht-1-copy-300x300.png",
     "condition": "nieuw",
     "type": "staop",
     "material": "stof",
     "description": "Functionele vormgeving in combinatie met ultiem zitcomfort. Volledig naar wens samen te stellen qua kleur en materialen. Stof en leder zijn zelfs te combineren.",
-    "ambientImage": "assets/chair_bentley_dicht_cozy.png",
+    "ambientImage": "assets/stoelen/chair_bentley_dicht_cozy.png",
     "badge": "Luxe Design",
     "badgeType": "reco",
     "status": "beschikbaar"
@@ -1311,12 +1508,12 @@
     "brand": "DFM",
     "model": "DFM Bentley (open)",
     "price": 1945,
-    "image": "assets/chair_sta-op-stoel-dfm-bentley-open-1-copy-300x300.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-dfm-bentley-open-1-copy-300x300.png",
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
     "description": "Bentley model getoond in geopende relaxstand met de voetensteun omhoog geklapt voor optimale ondersteuning van uw benen.",
-    "ambientImage": "assets/chair_bentley_open_cozy.png",
+    "ambientImage": "assets/stoelen/chair_bentley_open_cozy.png",
     "badge": "Optimale Relaxstand",
     "badgeType": "reco",
     "status": "beschikbaar"
@@ -1324,8 +1521,8 @@
   {
     "id": "sta-op-stoel-mecam-barney",
     "name": "Sta-op stoel Mecam Barney",
-    "image": "assets/chair_sta-op-stoel-draaibaar-barney-1-300x300.png",
-    "ambientImage": "assets/chair_barney_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-draaibaar-barney-1-300x300.png",
+    "ambientImage": "assets/stoelen/chair_barney_cozy.png",
     "price": 2045,
     "brand": "Mecam",
     "description": "Elegante draaibare fauteuil. De 2 motoren zijn bijna onzichtbaar onder de fauteuil weggewerkt. Voorzien van een automatische beveiliging in de draaivoet.",
@@ -1340,8 +1537,8 @@
   {
     "id": "sta-op-stoel-mecam-degas",
     "name": "Sta-op stoel Mecam Degas",
-    "image": "assets/chair_sta-op-stoel-mecam-degas-1-300x300.png",
-    "ambientImage": "assets/chair_degas_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-mecam-degas-1-300x300.png",
+    "ambientImage": "assets/stoelen/chair_degas_cozy.png",
     "price": 2155,
     "brand": "Mecam",
     "description": "Huiselijke uitstraling en zeer comfortabel ergonomisch zitcomfort van Belgisch fabricaat. Wordt met veel passie exact op uw maat gemaakt.",
@@ -1356,8 +1553,8 @@
   {
     "id": "sta-op-stoel-fitform-580-elevo",
     "name": "Sta-op stoel Fitform 580 Elevo",
-    "image": "assets/chair_sta-op-stoel-fitform-580-elevo-iii-5-300x300.png",
-    "ambientImage": "assets/chair_fitform_580_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-fitform-580-elevo-iii-5-300x300.png",
+    "ambientImage": "assets/stoelen/chair_fitform_580_cozy.png",
     "price": 2300,
     "brand": "Fitform",
     "description": "Hoogwaardige Fitform zorgstoel. Ontworpen door specialisten voor langdurig zitcomfort. Standaard voorzien van het Fitform 10 jaar Garantie Waarborg.",
@@ -1372,8 +1569,8 @@
   {
     "id": "sta-op-stoel-refitto",
     "name": "Sta-op stoel Refitto",
-    "image": "assets/chair_sta-op-stoel-refitto-ea-326-e1757503359302.png",
-    "ambientImage": "assets/chair_refitto_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-refitto-ea-326-e1757503359302.png",
+    "ambientImage": "assets/stoelen/chair_refitto_cozy.png",
     "price": 2345,
     "brand": "Overig",
     "description": "Moderne sta-op relaxfauteuil. Blokkeert automatisch bij het opstaan zodat de stoel niet kan wegdraaien. Veiligheid en comfort hand in hand.",
@@ -1388,8 +1585,8 @@
   {
     "id": "sta-op-stoel-doge-bellino",
     "name": "Sta-op stoel Doge Bellino",
-    "image": "assets/chair_sta-op-stoel-doge-bellino-3-300x300.png",
-    "ambientImage": "assets/chair_bellino_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-doge-bellino-3-300x300.png",
+    "ambientImage": "assets/stoelen/chair_bellino_cozy.png",
     "price": 2395,
     "brand": "Doge",
     "description": "Voorzien van drie motoren om de stoel geheel naar wens in te stellen. Uniek: de zithouding wordt behouden wanneer de kantelfunctie wordt gebruikt.",
@@ -1404,8 +1601,8 @@
   {
     "id": "sta-op-stoel-de-toekomst-fiji",
     "name": "Sta-op stoel De Toekomst Fiji",
-    "image": "assets/chair_sta-op-stoel-fiji-draaibaar-2-300x300.png",
-    "ambientImage": "assets/chair_fiji_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-fiji-draaibaar-2-300x300.png",
+    "ambientImage": "assets/stoelen/chair_fiji_cozy.png",
     "price": 2445,
     "brand": "De Toekomst",
     "description": "Elegante en moderne draaibare fauteuil. Voorzien van een onzichtbare sta-op motor onder het frame en een veilige rem in de draaivoet.",
@@ -1421,7 +1618,7 @@
     "id": "sta-op-stoel-fitform-552-elevo",
     "name": "Sta-op stoel Fitform 552 Elevo",
     "image": "assets/fitform_552_verkocht.png",
-    "ambientImage": "assets/chair_fitform_552_cozy.png",
+    "ambientImage": "assets/stoelen/chair_fitform_552_cozy.png",
     "price": 2500,
     "brand": "Fitform",
     "description": "Volledig verstelbare sta-op en relax fauteuil met 3 afzonderlijke motoren voor voetenbank, rugleuning en kanteling. Optimaal ondersteund wonen.",
@@ -1436,8 +1633,8 @@
   {
     "id": "sta-op-stoel-industro",
     "name": "Sta-op stoel Industro",
-    "image": "assets/chair_sta-op-stoel-industro-cv-120-e1757503299967.png",
-    "ambientImage": "assets/chair_industro_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-industro-cv-120-e1757503299967.png",
+    "ambientImage": "assets/stoelen/chair_industro_cozy.png",
     "price": 2845,
     "brand": "Overig",
     "description": "Stoere, industriële relaxfauteuil met karakter. Volledig naar lichaamsmaten opgemeten en te voorzien van lumbaalsteun of nekverwarming.",
@@ -1452,8 +1649,8 @@
   {
     "id": "sta-op-stoel-fitform-570-vario",
     "name": "Sta-op stoel Fitform 570 Vario",
-    "image": "assets/chair_sta-op-stoel-fitform-570-vario-iii-5-300x300.png",
-    "ambientImage": "assets/chair_fitform_570_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-fitform-570-vario-iii-5-300x300.png",
+    "ambientImage": "assets/stoelen/chair_fitform_570_cozy.png",
     "price": 3450,
     "brand": "Fitform",
     "description": "De Fitform Vario zorgfauteuil kan volledig worden aangepast aan uw persoonlijke situatie. Uitstekend zitsysteem dat klachten voorkomt.",
@@ -1468,8 +1665,8 @@
   {
     "id": "sta-op-stoel-fitform-574-vario",
     "name": "Sta-op stoel Fitform 574 Vario",
-    "image": "assets/chair_sta-op-stoel-fitform-574-vario-2-300x300.png",
-    "ambientImage": "assets/chair_fitform_574_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-fitform-574-vario-2-300x300.png",
+    "ambientImage": "assets/stoelen/chair_fitform_574_cozy.png",
     "price": 3450,
     "brand": "Fitform",
     "description": "Ranke, slanke en elegante zorgfauteuil. Zithoogte, zitdiepte en armleggers zijn na levering binnen 10 minuten volledig nastelbaar.",
@@ -1484,8 +1681,8 @@
   {
     "id": "sta-op-stoel-doge-modulair",
     "name": "Sta-op stoel Doge Modulair",
-    "image": "assets/chair_sta-op-stoel-doge-modulair-4-300x300.png",
-    "ambientImage": "assets/chair_doge_modulair_cozy.png",
+    "image": "assets/stoelen/chair_sta-op-stoel-doge-modulair-4-300x300.png",
+    "ambientImage": "assets/stoelen/chair_doge_modulair_cozy.png",
     "price": 3995,
     "brand": "Doge",
     "description": "Nederlands kwaliteitsproduct met 3 motoren. Optimaal zitcomfort door individuele instelbaarheid. Uitstekend te combineren met orthopedische aanpassingen.",
@@ -1499,18 +1696,18 @@
   },
   {
     "id": "geert-relax",
-    "name": "Senioren Stoel Geert",
+    "name": "Senioren Stoel Geertjan",
     "brand": "Huismerk",
     "price": 950,
-    "image": "assets/seniorenstoel_oude_geert_studio.png",
+    "image": "assets/stoelen/seniorenstoel_oude_geert_studio.png",
     "condition": "occasion",
     "type": "relax",
-    "description": "Ontmoet de Geert Senioren: een prachtige klassieke senioren stoel bekleed met een comfortabele oranje structuurstof. Met zijn massief houten armleuningen en ergonomisch gevormde rugleuning biedt deze stoel de perfecte ondersteuning om heerlijk in te ontspannen. Een tijdloze toevoeging aan uw interieur.",
-    "ambientImage": "assets/seniorenstoel_oude_geert_interior.png",
+    "description": "Ontmoet de Geertjan Senioren: een prachtige klassieke senioren stoel bekleed met een comfortabele oranje structuurstof. Met zijn massief houten armleuningen en ergonomisch gevormde rugleuning biedt deze stoel de perfecte ondersteuning om heerlijk in te ontspannen. Een tijdloze toevoeging aan uw interieur.",
+    "ambientImage": "assets/stoelen/seniorenstoel_oude_geert_interior.png",
     "badge": "Senioren Functie",
     "badgeType": "sale",
     "material": "stof",
-    "model": "Geert Senioren",
+    "model": "Geertjan Senioren",
     "status": "beschikbaar"
   },
   {
@@ -1518,7 +1715,7 @@
     "name": "Senioren Stoel HK Zwolle",
     "brand": "Hjort Knudsen",
     "price": 695,
-    "image": "assets/chair_seniorenstoel-hjortknudsen-zwolle-nw-1-300x300.png",
+    "image": "assets/stoelen/chair_seniorenstoel-hjortknudsen-zwolle-nw-1-300x300.png",
     "condition": "occasion",
     "type": "relax",
     "description": "De Senioren stoel HK Zwolle is een zeer comfortabele senioren fauteuil met verstelbare rugleuning. Door middel van een hendel aan de zijkant van de stoel kunt u deze verstelling gebruiken. Zo’n stoel geeft u weer nieuwe energie.",
@@ -1533,7 +1730,7 @@
     "name": "Senioren Stoel Dylan",
     "brand": "Overig",
     "price": 775,
-    "image": "assets/chair_seniorenstoel-dylan-2-300x300.png",
+    "image": "assets/stoelen/chair_seniorenstoel-dylan-2-300x300.png",
     "condition": "nieuw",
     "type": "relax",
     "description": "Senioren Stoel Dylan is een comfort stoel ontwikkeld voor de professionele ouderenzorg. Dit ziet u terug in het robuuste uiterlijk. Stoffen zijn zorgvuldig geselecteerd op eenvoudige reiniging en goede hygiëne.",
@@ -1548,7 +1745,7 @@
     "name": "Senioren Stoel Farstrup Applaus",
     "brand": "Farstrup",
     "price": 945,
-    "image": "assets/chair_senioren-fauteuil-farstrup-applaus-300x300.png",
+    "image": "assets/stoelen/chair_senioren-fauteuil-farstrup-applaus-300x300.png",
     "condition": "occasion",
     "type": "relax",
     "description": "Elke Senioren Stoel Farstrup Applaus wordt op bestelling gemaakt. U kunt zelf het model, de stof, de kleur en de houtbeits kiezen. Dit Deense kwaliteitsmeubel biedt maar liefst 10 jaar garantie bij normaal gebruik.",
@@ -1563,7 +1760,7 @@
     "name": "Senioren Stoel Farstrup Plus",
     "brand": "Farstrup",
     "price": 1395,
-    "image": "assets/chair_ergonomische-senioren-fauteuil-plus-7-300x300.png",
+    "image": "assets/stoelen/chair_ergonomische-senioren-fauteuil-plus-7-300x300.png",
     "condition": "occasion",
     "type": "relax",
     "description": "Op bestelling gemaakt Deens meubelstuk. Keuze uit vele houtbeitsen, stoffen en leder. Biedt sublieme ergonomische ondersteuning voor langdurig zitcomfort. Standaard geleverd met 10 jaar garantie.",
@@ -1578,7 +1775,7 @@
     "name": "Senioren Stoel Farstrup Casa",
     "brand": "Farstrup",
     "price": 1495,
-    "image": "assets/chair_ergonomische-senioren-fauteuil-casa-1-300x300.png",
+    "image": "assets/stoelen/chair_ergonomische-senioren-fauteuil-casa-1-300x300.png",
     "condition": "occasion",
     "type": "relax",
     "description": "Farstrup Casa staat bekend om zijn traditionele Deense ambacht. Geheel naar uw wens samen te stellen en perfect ingesteld op uw lichaam door onze deskundigen. 10 jaar garantie op de romp.",
@@ -1593,7 +1790,7 @@
     "name": "Senioren Stoel Farstrup Cantate",
     "brand": "Farstrup",
     "price": 1595,
-    "image": "assets/chair_ergonomische-senioren-fauteuil-cantate-1-300x300.png",
+    "image": "assets/stoelen/chair_ergonomische-senioren-fauteuil-cantate-1-300x300.png",
     "condition": "occasion",
     "type": "relax",
     "description": "De Cantate is het paradepaardje onder de senioren stoelen van Farstrup. Uitstekende pasvorm en hoogwaardige vering in de zitting. Volledig personaliseerbaar met diverse stoffen en houtkleuren.",
@@ -1605,7 +1802,7 @@
   },
   {
     "id": "geerts-droom",
-    "name": "Geerts Droom",
+    "name": "Geertjans Droom",
     "brand": "Huismerk",
     "model": "D1",
     "price": 1190,
@@ -1613,7 +1810,7 @@
     "condition": "occasion",
     "type": "staop",
     "material": "stof",
-    "description": "Als gediplomeerd BewegingsTechnoloog droomt Geert al jaren van de perfecte sta-op stoel: een model dat niet alleen ergonomisch perfect aansluit op uw lichaam, maar ook met een vloeiende, stabiele beweging opstaat. Hieronder kunt u deze upstand-beweging zelf ervaren door simpelweg uw cursor op de stoel te plaatsen.",
+    "description": "Als gediplomeerd BewegingsTechnoloog droomt Geertjan al jaren van de perfecte sta-op stoel: een model dat niet alleen ergonomisch perfect aansluit op uw lichaam, maar ook met een vloeiende, stabiele beweging opstaat. Hieronder kunt u deze upstand-beweging zelf ervaren door simpelweg uw cursor op de stoel te plaatsen.",
     "imageUp": "assets/geert_dream_lift.png",
     "ambientImage": "assets/Sta-op-stoel-DORDRECHT-interior.png",
     "badge": "Een droom",
@@ -1629,20 +1826,34 @@
     let currentSortField = null;
     let currentSortAsc = true;
     
+    // Global Error Boundary - prevents script crashes from halting admin interface
+    window.onerror = function(msg, url, line, col, error) {
+      console.warn("Global admin error caught safely:", msg, "at line", line);
+      return true; // Prevents default browser error dialog
+    };
+    window.addEventListener('unhandledrejection', function(event) {
+      console.warn("Unhandled promise rejection caught safely:", event.reason);
+      event.preventDefault();
+    });
+
     // API Configuration for local database integration
-    const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:") ? "http://localhost:3000" : "";
-    const API_URL = API_BASE + "api/chairs.php";
+    const API_BASE = (window.location.protocol === "file:") ? "http://staopstoelen.nl/" : (window.location.origin + "/");
+    const API_URL = API_BASE + "api/admin_api.php";
+    const BRANDS_API_URL = API_BASE + "api/brands.php";
     let isApiConnected = false;
     let fullDbData = null;
+    let brandsData = [];
 
     // Simple passcode check
     const PASSWORD = "staopstoeladmin";
     
     function checkLogin() {
-      const loggedIn = sessionStorage.getItem("adminLoggedIn");
-      if (loggedIn === "true") {
-        document.getElementById("loginOverlay").style.display = "none";
+      const overlay = document.getElementById("loginOverlay");
+      if (sessionStorage.getItem("adminLoggedIn") === "true") {
+        if (overlay) overlay.style.display = "none";
         initDashboard();
+      } else {
+        if (overlay) overlay.style.display = "flex";
       }
     }
 
@@ -1683,7 +1894,8 @@
       const stored = localStorage.getItem(key);
       if (stored) {
         try {
-          return JSON.parse(stored);
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         } catch (e) {
           console.error("Error parsing stored data", e);
         }
@@ -1696,78 +1908,164 @@
       localStorage.setItem(key, JSON.stringify(data));
       updateCodeExport();
       
-      if (isApiConnected && fullDbData) {
-        fullDbData.staopstoelen = data;
+      const payload = { staopstoelen: data };
+      
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
         
-        try {
-          const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(fullDbData)
-          });
-          if (!response.ok) {
-            throw new Error("Failed to post data to server");
-          }
-          console.log("Saved data to local API database server!");
-        } catch (e) {
-          console.error("Error saving to database server:", e);
-          alert("Database server kon niet worden bijgewerkt. Wijziging is wel lokaal opgeslagen.");
+        if (!response.ok) {
+          const errText = await response.text();
+          throw new Error("Server HTTP " + response.status + ": " + errText);
         }
+        
+        const resJson = await response.json();
+        console.log("Saved data to API database server!", resJson);
+        isApiConnected = true;
+        
+        let msg = "✓ Wijzigingen opgeslagen!";
+        if (resJson.sync_result && resJson.sync_result.status === "success") {
+          msg += ` (${resJson.sync_result.generated} SEO-pagina's & sitemap automatisch gesynchroniseerd)`;
+        } else {
+          msg += " Upload naar live website gereed.";
+        }
+        showToast(msg);
+      } catch (e) {
+        console.error("Error saving to database server:", e);
+        alert("Fout bij opslaan naar database server: " + e.message);
       }
+    }
+
+    function showToast(message, isError = false) {
+      const toast = document.createElement("div");
+      toast.style.position = "fixed";
+      toast.style.bottom = "24px";
+      toast.style.right = "24px";
+      toast.style.backgroundColor = isError ? "var(--color-terracotta)" : "var(--color-forest)";
+      toast.style.color = "#fff";
+      toast.style.padding = "14px 24px";
+      toast.style.borderRadius = "8px";
+      toast.style.boxShadow = "0 6px 20px rgba(0,0,0,0.25)";
+      toast.style.zIndex = "99999";
+      toast.style.fontWeight = "600";
+      toast.style.fontSize = "0.95rem";
+      toast.style.maxWidth = "450px";
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 4500);
+    }
+
+    // Manual SEO Pages & Sitemap Sync handler
+    const syncSeoBtn = document.getElementById("syncSeoPagesBtn");
+    if (syncSeoBtn) {
+      syncSeoBtn.addEventListener("click", async () => {
+        const icon = document.getElementById("syncSeoIcon");
+        const label = document.getElementById("syncSeoLabel");
+        syncSeoBtn.disabled = true;
+        if (icon) icon.classList.add("spin-anim");
+        if (label) label.textContent = "Synchroniseren...";
+        try {
+          const resp = await fetch(API_BASE + "api/sync_static_pages.php");
+          if (!resp.ok) {
+            throw new Error("HTTP " + resp.status);
+          }
+          const res = await resp.json();
+          let summary = `✓ ${res.generated} SEO-pagina's gesynchroniseerd!`;
+          if (res.deleted > 0) {
+            summary += ` (${res.deleted} oude verwijderd)`;
+          }
+          summary += " Sitemap.xml is bijgewerkt.";
+          showToast(summary);
+        } catch (err) {
+          showToast("Fout bij synchroniseren SEO-pagina's: " + err.message, true);
+        } finally {
+          syncSeoBtn.disabled = false;
+          if (icon) icon.classList.remove("spin-anim");
+          if (label) label.textContent = "Sync SEO Pagina's";
+        }
+      });
     }
 
     async function initDashboard() {
       try {
-        const response = await fetch(API_URL);
+        const fetchUrl = API_URL + "?t=" + new Date().getTime();
+        const response = await fetch(fetchUrl, { cache: "no-store" });
         if (response.ok) {
           fullDbData = await response.json();
           isApiConnected = true;
-          activeData = fullDbData.staopstoelen || [];
-          console.log("Loaded data from local API database server!");
+          activeData = (fullDbData && Array.isArray(fullDbData.staopstoelen)) ? fullDbData.staopstoelen : [];
+          console.log("Loaded data from live API database server!", activeData.length, "chairs");
         } else {
-          throw new Error("API responded with error");
+          throw new Error("API responded with status " + response.status);
         }
       } catch (e) {
-        console.warn("Could not connect to database server. Falling back to localStorage.", e);
+        console.warn("Could not connect to database server. Falling back to local catalog.", e);
         isApiConnected = false;
         activeData = loadData(currentTab);
       }
-      await fetchBrands();
-      const searchInput = document.getElementById("chairSearchInput");
-      if (searchInput) {
-        searchInput.removeEventListener("input", renderTable);
-        searchInput.addEventListener("input", renderTable);
+
+      if (!activeData || activeData.length === 0) {
+        console.warn("activeData was empty, using DEFAULT_STAOPSTOELEN fallback");
+        activeData = [...DEFAULT_STAOPSTOELEN];
       }
       
-      const filterType = document.getElementById("filterType");
-      if (filterType) {
-        filterType.removeEventListener("change", renderTable);
-        filterType.addEventListener("change", renderTable);
+      try {
+        await fetchBrands();
+      } catch (errBrands) {
+        console.warn("fetchBrands warning caught safely:", errBrands);
+      }
+
+      try {
+        const searchInput = document.getElementById("chairSearchInput");
+        if (searchInput) {
+          searchInput.removeEventListener("input", renderTable);
+          searchInput.addEventListener("input", renderTable);
+        }
+        
+        const filterType = document.getElementById("filterType");
+        if (filterType) {
+          filterType.removeEventListener("change", renderTable);
+          filterType.addEventListener("change", renderTable);
+        }
+        
+        const filterCondition = document.getElementById("filterCondition");
+        if (filterCondition) {
+          filterCondition.removeEventListener("change", renderTable);
+          filterCondition.addEventListener("change", renderTable);
+        }
+        
+        const filterBrand = document.getElementById("filterBrand");
+        if (filterBrand) {
+          filterBrand.removeEventListener("change", renderTable);
+          filterBrand.addEventListener("change", renderTable);
+        }
+        
+        const filterOffer = document.getElementById("filterOffer");
+        if (filterOffer) {
+          filterOffer.removeEventListener("change", renderTable);
+          filterOffer.addEventListener("change", renderTable);
+        }
+      } catch (errListeners) {
+        console.warn("Filter listeners warning caught safely:", errListeners);
       }
       
-      const filterCondition = document.getElementById("filterCondition");
-      if (filterCondition) {
-        filterCondition.removeEventListener("change", renderTable);
-        filterCondition.addEventListener("change", renderTable);
+      try {
+        renderTable();
+      } catch (errTable) {
+        console.warn("renderTable warning caught safely:", errTable);
       }
-      
-      const filterBrand = document.getElementById("filterBrand");
-      if (filterBrand) {
-        filterBrand.removeEventListener("change", renderTable);
-        filterBrand.addEventListener("change", renderTable);
+
+      try {
+        updateCodeExport();
+        resetForm();
+      } catch (errMisc) {
+        console.warn("Misc init warning caught safely:", errMisc);
       }
-      
-      const filterOffer = document.getElementById("filterOffer");
-      if (filterOffer) {
-        filterOffer.removeEventListener("change", renderTable);
-        filterOffer.addEventListener("change", renderTable);
-      }
-      
-      renderTable();
-      updateCodeExport();
-      resetForm();
     }
 
     // Render Table based on active data and tab
@@ -1919,6 +2217,8 @@
       
       itemsToShow.forEach(({ item, index }) => {
         const tr = document.createElement("tr");
+        tr.setAttribute("data-index", index);
+        tr.setAttribute("title", "Klik om deze stoel te bewerken");
         
         const conditionText = item.condition === "occasion" ? "Occasion" : "Nieuw";
         const typeText = item.type === "relax" ? "Senioren Stoel" : "Sta-op Stoel";
@@ -1977,16 +2277,20 @@
       });
     }
 
-    // Event delegation on table body for Edit & Delete buttons (guarantees click actions are active)
+    // Event delegation on table body: clicking anywhere on a chair row opens edit modal, unless delete button is clicked
     document.getElementById("tableBody").addEventListener("click", (e) => {
-      const btn = e.target.closest(".btn-action");
-      if (!btn) return;
-      
-      const index = parseInt(btn.getAttribute("data-index"));
-      if (btn.classList.contains("btn-edit")) {
-        editChair(index);
-      } else if (btn.classList.contains("btn-delete")) {
+      const deleteBtn = e.target.closest(".btn-delete");
+      if (deleteBtn) {
+        e.stopPropagation();
+        const index = parseInt(deleteBtn.getAttribute("data-index"));
         deleteChair(index);
+        return;
+      }
+      
+      const tr = e.target.closest("tr");
+      if (tr && tr.hasAttribute("data-index")) {
+        const index = parseInt(tr.getAttribute("data-index"));
+        editChair(index);
       }
     });
 
@@ -2026,22 +2330,26 @@
     const btnUploadImage = document.getElementById("btnUploadImage");
 
     const chairImageUp = document.getElementById("chairImageUp");
-    const chairImageUpFile = document.getElementById("chairImageUpFile");
-    const chairImageUpPreview = document.getElementById("chairImageUpPreview");
-    const btnUploadImageUp = document.getElementById("btnUploadImageUp");
-
     const chairImageLie = document.getElementById("chairImageLie");
-    const chairImageLieFile = document.getElementById("chairImageLieFile");
-    const chairImageLiePreview = document.getElementById("chairImageLiePreview");
-    const btnUploadImageLie = document.getElementById("btnUploadImageLie");
-
     const chairAmbientImage = document.getElementById("chairAmbientImage");
     const chairAmbientImageFile = document.getElementById("chairAmbientImageFile");
     const chairAmbientImagePreview = document.getElementById("chairAmbientImagePreview");
     const btnUploadAmbientImage = document.getElementById("btnUploadAmbientImage");
     
+    // Initialize Quill Editor
+    initQuillEditor();
+    
     // Gallery Manager State
     let currentGalleryImages = [];
+
+    function moveGalleryImage(fromIndex, toIndex) {
+      if (toIndex < 0 || toIndex >= currentGalleryImages.length) return;
+      const movedItem = currentGalleryImages.splice(fromIndex, 1)[0];
+      currentGalleryImages.splice(toIndex, 0, movedItem);
+      renderGalleryManager();
+    }
+
+    let draggedGalleryIdx = null;
 
     function renderGalleryManager() {
       const grid = document.getElementById("galleryManagerGrid");
@@ -2056,31 +2364,90 @@
       
       currentGalleryImages.forEach((imgUrl, idx) => {
         const itemContainer = document.createElement("div");
+        itemContainer.draggable = true;
+        itemContainer.dataset.index = idx;
         itemContainer.style.position = "relative";
-        itemContainer.style.width = "70px";
-        itemContainer.style.height = "70px";
+        itemContainer.style.width = "90px";
+        itemContainer.style.height = "105px";
         itemContainer.style.border = "2px solid var(--color-gray-light)";
         itemContainer.style.borderRadius = "var(--radius-sm)";
         itemContainer.style.overflow = "hidden";
         itemContainer.style.backgroundColor = "var(--color-cream)";
         itemContainer.style.display = "flex";
+        itemContainer.style.flexDirection = "column";
         itemContainer.style.alignItems = "center";
-        itemContainer.style.justifyContent = "center";
+        itemContainer.style.justifyContent = "space-between";
         itemContainer.style.padding = "4px";
+        itemContainer.style.cursor = "grab";
+        itemContainer.title = "Sleep of gebruik de pijltjes om de volgorde aan te passen";
+
+        // Drag & Drop events
+        itemContainer.addEventListener("dragstart", (e) => {
+          draggedGalleryIdx = idx;
+          itemContainer.style.opacity = "0.5";
+          e.dataTransfer.effectAllowed = "move";
+        });
+
+        itemContainer.addEventListener("dragend", () => {
+          itemContainer.style.opacity = "1";
+          draggedGalleryIdx = null;
+        });
+
+        itemContainer.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = "move";
+          itemContainer.style.borderColor = "var(--color-terracotta)";
+        });
+
+        itemContainer.addEventListener("dragleave", () => {
+          itemContainer.style.borderColor = "var(--color-gray-light)";
+        });
+
+        itemContainer.addEventListener("drop", (e) => {
+          e.preventDefault();
+          itemContainer.style.borderColor = "var(--color-gray-light)";
+          if (draggedGalleryIdx !== null && draggedGalleryIdx !== idx) {
+            moveGalleryImage(draggedGalleryIdx, idx);
+          }
+        });
         
+        // Image preview wrapper
+        const imgWrapper = document.createElement("div");
+        imgWrapper.style.width = "100%";
+        imgWrapper.style.height = "65px";
+        imgWrapper.style.display = "flex";
+        imgWrapper.style.alignItems = "center";
+        imgWrapper.style.justifyContent = "center";
+        imgWrapper.style.overflow = "hidden";
+
         const img = document.createElement("img");
         img.src = imgUrl;
         img.style.maxWidth = "100%";
         img.style.maxHeight = "100%";
         img.style.objectFit = "contain";
-        
-        // Remove button
+        imgWrapper.appendChild(img);
+
+        // Position Badge #1, #2...
+        const badge = document.createElement("div");
+        badge.textContent = `#${idx + 1}`;
+        badge.style.position = "absolute";
+        badge.style.top = "3px";
+        badge.style.left = "3px";
+        badge.style.backgroundColor = "var(--color-forest)";
+        badge.style.color = "#fff";
+        badge.style.fontSize = "10px";
+        badge.style.fontWeight = "bold";
+        badge.style.padding = "1px 5px";
+        badge.style.borderRadius = "4px";
+
+        // Remove button (top right)
         const removeBtn = document.createElement("button");
         removeBtn.type = "button";
         removeBtn.innerHTML = "&times;";
+        removeBtn.title = "Foto verwijderen";
         removeBtn.style.position = "absolute";
-        removeBtn.style.top = "2px";
-        removeBtn.style.right = "2px";
+        removeBtn.style.top = "3px";
+        removeBtn.style.right = "3px";
         removeBtn.style.width = "18px";
         removeBtn.style.height = "18px";
         removeBtn.style.borderRadius = "50%";
@@ -2093,22 +2460,73 @@
         removeBtn.style.fontSize = "12px";
         removeBtn.style.fontWeight = "bold";
         removeBtn.style.cursor = "pointer";
-        removeBtn.style.padding = "0 0 2px 0";
-        removeBtn.style.boxShadow = "0 1px 3px rgba(0,0,0,0.2)";
-        
-        removeBtn.addEventListener("click", () => {
+
+        removeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
           currentGalleryImages.splice(idx, 1);
           renderGalleryManager();
         });
-        
-        itemContainer.appendChild(img);
+
+        // Bottom Controls Bar (Arrow Left & Arrow Right)
+        const ctrlBar = document.createElement("div");
+        ctrlBar.style.width = "100%";
+        ctrlBar.style.display = "flex";
+        ctrlBar.style.justifyContent = "space-between";
+        ctrlBar.style.gap = "4px";
+        ctrlBar.style.paddingTop = "2px";
+
+        const btnLeft = document.createElement("button");
+        btnLeft.type = "button";
+        btnLeft.innerHTML = "◄";
+        btnLeft.title = "Naar links verplaatsen";
+        btnLeft.disabled = (idx === 0);
+        btnLeft.style.flex = "1";
+        btnLeft.style.height = "22px";
+        btnLeft.style.border = "1px solid var(--color-gray-light)";
+        btnLeft.style.borderRadius = "3px";
+        btnLeft.style.backgroundColor = idx === 0 ? "#f0f0f0" : "#fff";
+        btnLeft.style.color = idx === 0 ? "#ccc" : "var(--color-dark)";
+        btnLeft.style.cursor = idx === 0 ? "default" : "pointer";
+        btnLeft.style.fontSize = "10px";
+
+        btnLeft.addEventListener("click", (e) => {
+          e.stopPropagation();
+          moveGalleryImage(idx, idx - 1);
+        });
+
+        const btnRight = document.createElement("button");
+        btnRight.type = "button";
+        btnRight.innerHTML = "►";
+        btnRight.title = "Naar rechts verplaatsen";
+        btnRight.disabled = (idx === currentGalleryImages.length - 1);
+        btnRight.style.flex = "1";
+        btnRight.style.height = "22px";
+        btnRight.style.border = "1px solid var(--color-gray-light)";
+        btnRight.style.borderRadius = "3px";
+        btnRight.style.backgroundColor = idx === currentGalleryImages.length - 1 ? "#f0f0f0" : "#fff";
+        btnRight.style.color = idx === currentGalleryImages.length - 1 ? "#ccc" : "var(--color-dark)";
+        btnRight.style.cursor = idx === currentGalleryImages.length - 1 ? "default" : "pointer";
+        btnRight.style.fontSize = "10px";
+
+        btnRight.addEventListener("click", (e) => {
+          e.stopPropagation();
+          moveGalleryImage(idx, idx + 1);
+        });
+
+        ctrlBar.appendChild(btnLeft);
+        ctrlBar.appendChild(btnRight);
+
+        itemContainer.appendChild(badge);
+        itemContainer.appendChild(imgWrapper);
         itemContainer.appendChild(removeBtn);
+        itemContainer.appendChild(ctrlBar);
         grid.appendChild(itemContainer);
       });
     }
     
     function resetForm() {
       chairForm.reset();
+      if (quill) quill.root.innerHTML = "";
       if (typeof populateBrandSelect === 'function') populateBrandSelect();
       document.getElementById("formChairIndex").value = "";
       document.getElementById("formTitle").textContent = "Nieuwe Stoel Toevoegen";
@@ -2120,17 +2538,11 @@
       document.getElementById("chairOldPrice").value = "";
       
       // Clear previews
-      if (typeof chairImagePreview !== 'undefined') {
+      if (chairImagePreview && chairImagePreview.querySelector("img")) {
         chairImagePreview.style.display = "none";
         chairImagePreview.querySelector("img").src = "";
-        if (typeof chairImageUpPreview !== 'undefined') {
-          chairImageUpPreview.style.display = "none";
-          chairImageUpPreview.querySelector("img").src = "";
-        }
-        if (typeof chairImageLiePreview !== 'undefined') {
-          chairImageLiePreview.style.display = "none";
-          chairImageLiePreview.querySelector("img").src = "";
-        }
+      }
+      if (chairAmbientImagePreview && chairAmbientImagePreview.querySelector("img")) {
         chairAmbientImagePreview.style.display = "none";
         chairAmbientImagePreview.querySelector("img").src = "";
       }
@@ -2231,18 +2643,24 @@
       document.getElementById("chairBadge").value = item.badge || "";
       document.getElementById("chairBadgeType").value = item.badgeType || "new";
       document.getElementById("chairDesc").value = item.description || "";
+      if (quill) quill.root.innerHTML = item.description || "";
       
       // Populate features and specifications
       document.getElementById("chairFeatures").value = item.features ? item.features.join("\n") : "";
       document.getElementById("chairSpecs").value = item.specifications ? Object.entries(item.specifications).map(([k, v]) => `${k}: ${v}`).join("\n") : "";
       
-      // Load previews
-      updatePreview(document.getElementById("chairImage"), chairImagePreview);
-      updatePreview(document.getElementById("chairImageUp"), chairImageUpPreview);
-      updatePreview(document.getElementById("chairImageLie"), chairImageLiePreview);
-      updatePreview(document.getElementById("chairAmbientImage"), chairAmbientImagePreview);
+      // Load previews safely
+      if (chairImagePreview) updatePreview(document.getElementById("chairImage"), chairImagePreview);
+      if (chairAmbientImagePreview) updatePreview(document.getElementById("chairAmbientImage"), chairAmbientImagePreview);
       
-      currentGalleryImages = Array.isArray(item.gallery) ? [...item.gallery] : [];
+      currentGalleryImages = Array.isArray(item.gallery) && item.gallery.length > 0 ? [...item.gallery] : [];
+      if (currentGalleryImages.length === 0) {
+        if (item.image) currentGalleryImages.push(item.image);
+        if (item.imageUp) currentGalleryImages.push(item.imageUp);
+        if (item.imageLie) currentGalleryImages.push(item.imageLie);
+        if (item.ambientImage) currentGalleryImages.push(item.ambientImage);
+      }
+      currentGalleryImages = Array.from(new Set(currentGalleryImages));
       renderGalleryManager();
       
       chairModal.style.display = "flex";
@@ -2261,12 +2679,24 @@
       }
     }
 
-    // Save form handler
     chairForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       
+      syncEditorToTextarea();
+      
       const indexStr = document.getElementById("formChairIndex").value;
       
+      const mainImageUrl = document.getElementById("chairImage").value.trim();
+      
+      // Update first element of gallery to match main image
+      if (mainImageUrl) {
+        if (currentGalleryImages.length > 0) {
+          currentGalleryImages[0] = mainImageUrl;
+        } else {
+          currentGalleryImages.push(mainImageUrl);
+        }
+      }
+
       const item = {
         id: idInput.value,
         name: nameInput.value,
@@ -2274,7 +2704,7 @@
         model: document.getElementById("chairModel").value,
         price: parseInt(document.getElementById("chairPrice").value),
         old_price: document.getElementById("chairOldPrice").value ? parseInt(document.getElementById("chairOldPrice").value) : null,
-        image: document.getElementById("chairImage").value,
+        image: mainImageUrl,
         condition: document.getElementById("chairCondition").value,
         status: document.getElementById("chairStatus").value,
         type: document.getElementById("chairType").value,
@@ -2284,14 +2714,9 @@
         gallery: currentGalleryImages.length > 0 ? currentGalleryImages : null
       };
       
-      const imageUp = document.getElementById("chairImageUp").value;
-      if (imageUp) item.imageUp = imageUp;
-      
-      const imageLie = document.getElementById("chairImageLie").value;
-      if (imageLie) item.imageLie = imageLie;
-      
-      const ambient = document.getElementById("chairAmbientImage").value;
-      if (ambient) item.ambientImage = ambient;
+      item.imageUp = document.getElementById("chairImageUp").value.trim() || null;
+      item.imageLie = document.getElementById("chairImageLie").value.trim() || null;
+      item.ambientImage = document.getElementById("chairAmbientImage").value.trim() || null;
       
       const badge = document.getElementById("chairBadge").value;
       if (badge) {
@@ -2553,33 +2978,23 @@
     });
 
     // Click handlers for file inputs (now opening Media Library modal)
-    btnUploadImage.addEventListener("click", () => openMediaLibrary({
-      fileInput: chairImageFile,
-      textInput: chairImage,
-      previewDiv: chairImagePreview,
-      uploadButton: btnUploadImage
-    }));
+    if (btnUploadImage && chairImageFile && chairImage && chairImagePreview) {
+      btnUploadImage.addEventListener("click", () => openMediaLibrary({
+        fileInput: chairImageFile,
+        textInput: chairImage,
+        previewDiv: chairImagePreview,
+        uploadButton: btnUploadImage
+      }));
+    }
     
-    btnUploadImageUp.addEventListener("click", () => openMediaLibrary({
-      fileInput: chairImageUpFile,
-      textInput: chairImageUp,
-      previewDiv: chairImageUpPreview,
-      uploadButton: btnUploadImageUp
-    }));
-    
-    btnUploadImageLie.addEventListener("click", () => openMediaLibrary({
-      fileInput: chairImageLieFile,
-      textInput: chairImageLie,
-      previewDiv: chairImageLiePreview,
-      uploadButton: btnUploadImageLie
-    }));
-    
-    btnUploadAmbientImage.addEventListener("click", () => openMediaLibrary({
-      fileInput: chairAmbientImageFile,
-      textInput: chairAmbientImage,
-      previewDiv: chairAmbientImagePreview,
-      uploadButton: btnUploadAmbientImage
-    }));
+    if (btnUploadAmbientImage && chairAmbientImageFile && chairAmbientImage && chairAmbientImagePreview) {
+      btnUploadAmbientImage.addEventListener("click", () => openMediaLibrary({
+        fileInput: chairAmbientImageFile,
+        textInput: chairAmbientImage,
+        previewDiv: chairAmbientImagePreview,
+        uploadButton: btnUploadAmbientImage
+      }));
+    }
 
     // Update preview helper function
     function updatePreview(input, previewDiv) {
@@ -2594,10 +3009,21 @@
     }
 
     // Input event listeners for manual URLs typing/pasting
-    chairImage.addEventListener("input", () => updatePreview(chairImage, chairImagePreview));
-    chairImageUp.addEventListener("input", () => updatePreview(chairImageUp, chairImageUpPreview));
-    chairImageLie.addEventListener("input", () => updatePreview(chairImageLie, chairImageLiePreview));
-    chairAmbientImage.addEventListener("input", () => updatePreview(chairAmbientImage, chairAmbientImagePreview));
+    if (chairImage && chairImagePreview) {
+      chairImage.addEventListener("input", () => {
+        updatePreview(chairImage, chairImagePreview);
+        const val = chairImage.value.trim();
+        if (val) {
+          if (currentGalleryImages.length > 0) {
+            currentGalleryImages[0] = val;
+          } else {
+            currentGalleryImages.push(val);
+          }
+          renderGalleryManager();
+        }
+      });
+    }
+    if (chairAmbientImage && chairAmbientImagePreview) chairAmbientImage.addEventListener("input", () => updatePreview(chairAmbientImage, chairAmbientImagePreview));
 
     // File upload logic
     async function handleFileUpload(fileInput, textInput, previewDiv, uploadButton) {
@@ -2639,10 +3065,11 @@
             throw new Error(errMsg);
           }
 
-          const resData = await response.json();
-          textInput.value = resData.url;
-          updatePreview(textInput, previewDiv);
-          alert("Afbeelding succesvol geüpload!");
+           const resData = await response.json();
+           textInput.value = resData.url;
+           textInput.dispatchEvent(new Event("input"));
+           updatePreview(textInput, previewDiv);
+           alert("Afbeelding succesvol geüpload!");
         } catch (err) {
           console.error("Upload error:", err);
           alert("Fout bij uploaden: " + err.message);
@@ -2663,21 +3090,17 @@
     }
 
     // Change listeners for file inputs
-    chairImageFile.addEventListener("change", () => {
-      handleFileUpload(chairImageFile, chairImage, chairImagePreview, btnUploadImage);
-    });
+    if (chairImageFile && chairImage && chairImagePreview && btnUploadImage) {
+      chairImageFile.addEventListener("change", () => {
+        handleFileUpload(chairImageFile, chairImage, chairImagePreview, btnUploadImage);
+      });
+    }
 
-    chairImageUpFile.addEventListener("change", () => {
-      handleFileUpload(chairImageUpFile, chairImageUp, chairImageUpPreview, btnUploadImageUp);
-    });
-
-    chairImageLieFile.addEventListener("change", () => {
-      handleFileUpload(chairImageLieFile, chairImageLie, chairImageLiePreview, btnUploadImageLie);
-    });
-
-    chairAmbientImageFile.addEventListener("change", () => {
-      handleFileUpload(chairAmbientImageFile, chairAmbientImage, chairAmbientImagePreview, btnUploadAmbientImage);
-    });
+    if (chairAmbientImageFile && chairAmbientImage && chairAmbientImagePreview && btnUploadAmbientImage) {
+      chairAmbientImageFile.addEventListener("change", () => {
+        handleFileUpload(chairAmbientImageFile, chairAmbientImage, chairAmbientImagePreview, btnUploadAmbientImage);
+      });
+    }
 
     // Gallery Manager Event Listeners
     document.getElementById("btnUploadGalleryImage").addEventListener("click", () => openMediaLibrary({
@@ -2748,9 +3171,6 @@
     // ==========================================
     // BRANDS MANAGEMENT SYSTEM INTEGRATION
     // ==========================================
-    const BRANDS_API_URL = API_BASE + "api/brands.php";
-    let brandsData = [];
-
     async function fetchBrands() {
       try {
         const response = await fetch(BRANDS_API_URL);
@@ -2972,6 +3392,25 @@
     // Chart.js instance cache to prevent overlap bugs
     let activeCharts = {};
 
+    const btnResetStats = document.getElementById("btnResetStats");
+    if (btnResetStats) {
+      btnResetStats.addEventListener("click", () => {
+        if (confirm("Weet u zeker dat u alle bezoekersstatistieken wilt resetten naar 0?")) {
+          fetch('api/reset_stats.php')
+            .then(res => res.json())
+            .then(data => {
+              if (data.status === "success") {
+                alert("De bezoekersstatistieken zijn succesvol gereset.");
+                renderStatsDashboard();
+              } else {
+                alert("Fout bij resetten: " + (data.message || 'Onbekende fout'));
+              }
+            })
+            .catch(err => alert("Fout bij communicatie met de server: " + err));
+        }
+      });
+    }
+
     function renderStatsDashboard() {
       // Fetch visit stats asynchronously
       fetch('api/get_visit_stats.php')
@@ -2994,6 +3433,116 @@
           const convRate = Math.round((totalBookings / uniques) * 100);
           document.getElementById("kpiConversionRate").textContent = `${convRate}% (${totalBookings})`;
           
+          // 1b. Populate Dynamic Automated Business Insights
+          const insightsContainer = document.getElementById("dynamicInsightsContent");
+          if (insightsContainer) {
+            const entryPages = res.top_entry_pages || [];
+            const topChairs = res.top_chairs || [];
+            const exitPages = res.top_exit_pages || [];
+
+            // Card 1: Top Landing Page Insight
+            let landingInsightHtml = "";
+            if (entryPages.length > 0) {
+              const topLanding = entryPages[0];
+              const isCatalog = topLanding.page_url.toLowerCase().includes("stoel");
+              landingInsightHtml = `
+                <div style="background: white; border: 1px solid #e2ebd9; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                  <div style="font-weight: 700; color: var(--color-forest-dark); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #e7ede4; color: var(--color-forest);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                      </span>
+                      <span>Grootste Binnenkomer</span>
+                    </span>
+                    <span style="font-size: 0.75rem; background: #e7ede4; color: #122b07; padding: 2px 8px; border-radius: 10px; font-weight: 700;">${topLanding.count}x</span>
+                  </div>
+                  <div style="font-size: 0.9rem; color: #333; line-height: 1.5;">
+                    <strong style="color: #122b07;">${topLanding.page_url}</strong> is met <strong style="color: #122b07;">${topLanding.count} bezoeken</strong> de belangrijkste landingspagina ${isCatalog ? '(groter dan de Homepagina!)' : 'van de website.'}
+                  </div>
+                  <div style="font-size: 0.8rem; color: #666; margin-top: auto; padding-top: 8px; border-top: 1px dashed #eee; line-height: 1.4; display: flex; align-items: flex-start; gap: 6px;">
+                    <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-forest); font-weight: 700; flex-shrink: 0;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+                      Advies:
+                    </span>
+                    <span>Bezoekers zoeken direct via Google en landen meteen in het assortiment. Zorg dat de belangrijkste acties en filters bovenaan scherp blijven.</span>
+                  </div>
+                </div>
+              `;
+            }
+
+            // Card 2: Top Chair Model Insight
+            let chairInsightHtml = "";
+            if (topChairs.length > 0) {
+              const topChair = topChairs[0];
+              const parts = topChair.page_url.split('#');
+              const id = parts[1] || '';
+              const chairObj = activeData.find(item => item.id === id);
+              let chairName = "";
+              if (chairObj) {
+                chairName = (chairObj.brand ? chairObj.brand + " " : "") + (chairObj.name || chairObj.model);
+              } else {
+                chairName = id.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+              }
+              if (!chairName || chairName.trim() === '') chairName = "Fitform 570 Vario";
+
+              chairInsightHtml = `
+                <div style="background: white; border: 1px solid #e2ebd9; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                  <div style="font-weight: 700; color: var(--color-forest-dark); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #faf4e7; color: #855b04;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      </span>
+                      <span>Onbetwiste Favoriet</span>
+                    </span>
+                    <span style="font-size: 0.75rem; background: #faf4e7; color: #855b04; padding: 2px 8px; border-radius: 10px; font-weight: 700;">${topChair.count}x bekeken</span>
+                  </div>
+                  <div style="font-size: 0.9rem; color: #333; line-height: 1.5;">
+                    De <strong style="color: #122b07;">${chairName}</strong> trekt met afstand de meeste bekijks van alle getoonde stoelen.
+                  </div>
+                  <div style="font-size: 0.8rem; color: #666; margin-top: auto; padding-top: 8px; border-top: 1px dashed #eee; line-height: 1.4; display: flex; align-items: flex-start; gap: 6px;">
+                    <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-forest); font-weight: 700; flex-shrink: 0;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+                      Tip:
+                    </span>
+                    <span>Zet dit model extra in de etalage (bijv. als 'Aanrader' of 'Topdeal' op de homepagina) om geïnteresseerde kopers sneller te converteren.</span>
+                  </div>
+                </div>
+              `;
+            }
+
+            // Card 3: Conversion & Intent Insight
+            let convInsightHtml = "";
+            const afspraakExits = (exitPages.find(p => p.page_url.toLowerCase().includes('afspraak')) || { count: 0 }).count;
+            const winkelExits = (exitPages.find(p => p.page_url.toLowerCase().includes('winkel') || p.page_url.toLowerCase().includes('showroom')) || { count: 0 }).count;
+            const highIntentTotal = afspraakExits + winkelExits;
+
+            convInsightHtml = `
+              <div style="background: white; border: 1px solid #e2ebd9; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <div style="font-weight: 700; color: var(--color-forest-dark); display: flex; align-items: center; justify-content: space-between;">
+                  <span style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #fbf5f2; color: var(--color-terracotta);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    </span>
+                    <span>Conversie & Bezoekersintentie</span>
+                  </span>
+                  <span style="font-size: 0.75rem; background: #ffebee; color: #c62828; padding: 2px 8px; border-radius: 10px; font-weight: 700;">${totalBookings} boekingen</span>
+                </div>
+                <div style="font-size: 0.9rem; color: #333; line-height: 1.5;">
+                  Met <strong style="color: #d32f2f;">${totalBookings} online boekingen</strong> (${convRate}%) én <strong style="color: #122b07;">${highIntentTotal} bezoekers</strong> die direct op de Showroom- of Afspraakpagina uitstappen, is de koopintentie hoog.
+                </div>
+                <div style="font-size: 0.8rem; color: #666; margin-top: auto; padding-top: 8px; border-top: 1px dashed #eee; line-height: 1.4; display: flex; align-items: flex-start; gap: 6px;">
+                  <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-forest); font-weight: 700; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+                    Inzicht:
+                  </span>
+                  <span>Veel ouderen of mantelzorgers bekijken online de openingstijden en bellen vervolgens direct of stappen direct de showroom binnen.</span>
+                </div>
+              </div>
+            `;
+
+            insightsContainer.innerHTML = landingInsightHtml + chairInsightHtml + convInsightHtml;
+          }
+          
           // 2. Chart 5: Daily Visits Trend (Line Chart)
           const dailyData = res.daily || [];
           const dates = dailyData.map(d => {
@@ -3004,7 +3553,6 @@
           const uniqueVis = dailyData.map(d => parseInt(d.uniques));
           
           const visitsTrendCtx = document.getElementById('chartVisitsTrend').getContext('2d');
-          if (activeCharts['visitsTrend']) activeCharts['visitsTrend'].destroy();
           activeCharts['visitsTrend'] = new Chart(visitsTrendCtx, {
             type: 'line',
             data: {
@@ -3013,8 +3561,8 @@
                 {
                   label: 'Paginabezoeken',
                   data: views,
-                  borderColor: '#1976d2',
-                  backgroundColor: 'rgba(25, 118, 210, 0.1)',
+                  borderColor: '#d65a31', // Terracotta
+                  backgroundColor: 'rgba(214, 90, 49, 0.1)',
                   borderWidth: 2,
                   fill: true,
                   tension: 0.3
@@ -3022,8 +3570,8 @@
                 {
                   label: 'Unieke Bezoekers',
                   data: uniqueVis,
-                  borderColor: '#2e7d32',
-                  backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                  borderColor: '#122b07', // Forest Green
+                  backgroundColor: 'rgba(18, 43, 7, 0.08)',
                   borderWidth: 2,
                   fill: true,
                   tension: 0.3
@@ -3045,20 +3593,18 @@
             }
           });
           
-          // 3. Chart 6: Conversions (Booking vs Keuzehulp)
+          // 3. Chart 6: Geboekte Afspraken Trend
           const dateMap = {};
           dailyData.forEach(d => {
-            dateMap[d.date] = { date: d.date, bookings: 0, wizardStarts: 0 };
+            dateMap[d.date] = { date: d.date, bookings: 0 };
           });
           
           conversionEvents.forEach(e => {
             if (!dateMap[e.date]) {
-              dateMap[e.date] = { date: e.date, bookings: 0, wizardStarts: 0 };
+              dateMap[e.date] = { date: e.date, bookings: 0 };
             }
             if (e.event_name === 'booking_conversion') {
               dateMap[e.date].bookings += parseInt(e.count);
-            } else if (e.event_name === 'keuzehulp_start') {
-              dateMap[e.date].wizardStarts += parseInt(e.count);
             }
           });
           
@@ -3068,7 +3614,6 @@
             return dateObj.toLocaleDateString("nl-NL", { day: 'numeric', month: 'short' });
           });
           const bookings = sortedConvData.map(d => d.bookings);
-          const wizardStarts = sortedConvData.map(d => d.wizardStarts);
           
           const conversionsTrendCtx = document.getElementById('chartConversionsTrend').getContext('2d');
           if (activeCharts['conversionsTrend']) activeCharts['conversionsTrend'].destroy();
@@ -3078,18 +3623,10 @@
               labels: convDates,
               datasets: [
                 {
-                  label: 'Keuzehulp gestart',
-                  data: wizardStarts,
-                  backgroundColor: 'rgba(242, 169, 0, 0.75)',
-                  borderColor: '#f2a900',
-                  borderWidth: 1.5,
-                  borderRadius: 4
-                },
-                {
-                  label: 'Afspraak geboekt',
+                  label: 'Geboekte afspraken',
                   data: bookings,
-                  backgroundColor: 'rgba(211, 47, 47, 0.75)',
-                  borderColor: '#d32f2f',
+                  backgroundColor: 'rgba(214, 90, 49, 0.85)', // Terracotta
+                  borderColor: '#d65a31',
                   borderWidth: 1.5,
                   borderRadius: 4
                 }
@@ -3128,14 +3665,14 @@
               datasets: [{
                 data: deviceCounts,
                 backgroundColor: [
-                  'rgba(18, 43, 7, 0.75)',
-                  'rgba(214, 90, 49, 0.75)',
-                  'rgba(25, 118, 210, 0.75)'
+                  'rgba(18, 43, 7, 0.8)',   // Forest Green (Desktop)
+                  'rgba(214, 90, 49, 0.8)', // Terracotta (Mobiel)
+                  'rgba(143, 169, 132, 0.8)' // Moss/Sage (Tablet)
                 ],
                 borderColor: [
                   '#122b07',
                   '#d65a31',
-                  '#1976d2'
+                  '#7a946f'
                 ],
                 borderWidth: 1.5
               }]
@@ -3167,8 +3704,8 @@
               datasets: [{
                 label: 'Weergaven',
                 data: pageCounts,
-                backgroundColor: 'rgba(46, 125, 50, 0.75)',
-                borderColor: '#2e7d32',
+                backgroundColor: 'rgba(75, 143, 36, 0.8)', // Forest Green Accent
+                borderColor: '#122b07',
                 borderWidth: 1.5,
                 borderRadius: 4
               }]
@@ -3188,6 +3725,532 @@
               }
             }
           });
+          // 6. Render Path Analysis (User Flow, Entry, Exit)
+          function getVisualNode(step) {
+            let bg = "#f5f5f5";
+            let color = "#424242";
+            let border = "#e0e0e0";
+            let svgIcon = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            `;
+            
+            const clean = step.toLowerCase().trim();
+            if (clean.includes("home")) {
+              bg = "#f4f6f3";
+              color = "#122b07";
+              border = "#d0d5ce";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              `;
+            } else if (clean.includes("sta-op") || clean.includes("staop")) {
+              bg = "#e7ede4";
+              color = "#122b07";
+              border = "#c5d0c0";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 18H5V6h14v12z"/><path d="M19 8H5"/><path d="M8 21v-3"/><path d="M16 21v-3"/></svg>
+              `;
+            } else if (clean.includes("senioren")) {
+              bg = "#ebf1e9";
+              color = "#2f5115";
+              border = "#d0dfcd";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15h-8l-4-4V5H4v7l5 5h9z"/><path d="M8 5v6"/><path d="M14 21v-6"/><path d="M18 21v-6"/></svg>
+              `;
+            } else if (clean.includes("keuzehulp")) {
+              bg = "#faf4e7";
+              color = "#855b04";
+              border = "#ebd7b3";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="m2 12 10-5 10 5-10 5z"/></svg>
+              `;
+            } else if (clean.includes("afspraak")) {
+              bg = "#fbf5f2";
+              color = "#d65a31";
+              border = "#f3e4de";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              `;
+            } else if (clean.includes("revisie")) {
+              bg = "#f0f3eb";
+              color = "#475e2f";
+              border = "#dbe2d2";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              `;
+            } else if (clean.includes("ervaringen")) {
+              bg = "#faf5e9";
+              color = "#9e7511";
+              border = "#eddcb8";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              `;
+            } else if (clean.includes("faq")) {
+              bg = "#f7f7f7";
+              color = "#4f4f4f";
+              border = "#e0e0e0";
+              svgIcon = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              `;
+            }
+            
+            return { bg, color, border, svgIcon };
+          }
+
+          const pathFlowList = document.getElementById("pathFlowList");
+          if (pathFlowList && res.top_paths) {
+            if (res.top_paths.length === 0) {
+              pathFlowList.innerHTML = `<span style="color: var(--color-gray);">Nog geen navigatiepaden vastgelegd.</span>`;
+            } else {
+              pathFlowList.innerHTML = res.top_paths.map(p => {
+                const steps = p.path.split(" ➔ ");
+                const visualSteps = steps.map(step => {
+                  const node = getVisualNode(step);
+                  return `
+                    <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 20px; background: ${node.bg}; color: ${node.color}; border: 1px solid ${node.border}; font-size: 0.8rem; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,0.03); white-space: nowrap;">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 13px; height: 13px; opacity: 0.85;">${node.svgIcon}</span>
+                      <span>${step}</span>
+                    </span>
+                  `;
+                }).join(`
+                  <span style="color: #a4be9e; font-weight: bold; font-size: 1.05rem; margin: 0 6px; display: inline-flex; align-items: center; justify-content: center;">➔</span>
+                `);
+                
+                return `
+                  <div style="background: white; border: 1px solid #e2ebd9; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.01); overflow-x: auto; margin-bottom: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; min-width: 100%;">
+                      <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+                        ${visualSteps}
+                      </div>
+                      <span class="badge" style="background: var(--color-forest); color: white; border-radius: 12px; padding: 4px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 4px rgba(75, 143, 36, 0.12); margin-left: auto;">${p.count} bezoeken</span>
+                    </div>
+                  </div>
+                `;
+              }).join("");
+            }
+          }
+
+          const entryPagesList = document.getElementById("entryPagesList");
+          if (entryPagesList && res.top_entry_pages) {
+            if (res.top_entry_pages.length === 0) {
+              entryPagesList.innerHTML = `<span style="color: var(--color-gray);">Nog geen gegevens.</span>`;
+            } else {
+              entryPagesList.innerHTML = res.top_entry_pages.map(e => {
+                const node = getVisualNode(e.page_url);
+                return `
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #e2ebd9; padding: 8px 0;">
+                    <span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: ${node.color}; font-size: 0.88rem;">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; opacity: 0.9;">${node.svgIcon}</span>
+                      <span>${e.page_url}</span>
+                    </span>
+                    <strong style="color: #333; background: ${node.bg}; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; border: 1px solid ${node.border};">${e.count}x</strong>
+                  </div>
+                `;
+              }).join("");
+            }
+          }
+
+          const exitPagesList = document.getElementById("exitPagesList");
+          if (exitPagesList && res.top_exit_pages) {
+            if (res.top_exit_pages.length === 0) {
+              exitPagesList.innerHTML = `<span style="color: var(--color-gray);">Nog geen gegevens.</span>`;
+            } else {
+              exitPagesList.innerHTML = res.top_exit_pages.map(ex => {
+                const node = getVisualNode(ex.page_url);
+                return `
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #e2ebd9; padding: 8px 0;">
+                    <span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: ${node.color}; font-size: 0.88rem;">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; opacity: 0.9;">${node.svgIcon}</span>
+                      <span>${ex.page_url}</span>
+                    </span>
+                    <strong style="color: #333; background: ${node.bg}; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; border: 1px solid ${node.border};">${ex.count}x</strong>
+                  </div>
+                `;
+              }).join("");
+            }
+          }
+
+          const topChairsList = document.getElementById("topChairsList");
+          if (topChairsList && res.top_chairs) {
+            if (res.top_chairs.length === 0) {
+              topChairsList.innerHTML = `<span style="color: var(--color-gray);">Nog geen gegevens.</span>`;
+            } else {
+              topChairsList.innerHTML = res.top_chairs.map(c => {
+                const parts = c.page_url.split('#');
+                const id = parts[1] || '';
+                
+                // Find matching chair
+                const chair = activeData.find(item => item.id === id);
+                let chairName = "";
+                let typeSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 18H5V6h14v12z"/><path d="M19 8H5"/><path d="M8 21v-3"/><path d="M16 21v-3"/></svg>`;
+                let typeColor = "#122b07";
+                let typeBg = "#e7ede4";
+                let typeBorder = "#c5d0c0";
+                
+                if (chair) {
+                  chairName = (chair.brand ? chair.brand + " " : "") + (chair.name || chair.model);
+                  if (chair.type === "relax") {
+                    typeSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15h-8l-4-4V5H4v7l5 5h9z"/><path d="M8 5v6"/><path d="M14 21v-6"/><path d="M18 21v-6"/></svg>`;
+                    typeColor = "#2f5115";
+                    typeBg = "#ebf1e9";
+                    typeBorder = "#d0dfcd";
+                  }
+                } else {
+                  // Fallback cleanup
+                  chairName = id.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                }
+                
+                if (!chairName) {
+                  chairName = "Onbekende stoel";
+                }
+                
+                return `
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #e2ebd9; padding: 8px 0;">
+                    <span style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: ${typeColor}; font-size: 0.88rem;">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: ${typeBg}; color: ${typeColor}; border: 1px solid ${typeBorder}; flex-shrink: 0;">${typeSvg}</span>
+                      <span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 190px;" title="${chairName}">${chairName}</span>
+                    </span>
+                    <strong style="color: #333; background: ${typeBg}; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; border: 1px solid ${typeBorder};">${c.count}x</strong>
+                  </div>
+                `;
+              }).join("");
+            }
+          }
+
+          // 7. Interactive Flowchart rendering
+          const canvas = document.getElementById("flowchartCanvas");
+          const tooltip = document.getElementById("flowchartTooltip");
+          if (canvas && res.top_paths) {
+            const ctx = canvas.getContext("2d");
+            
+            // Parse paths into links & node counts
+            const links = [];
+            const nodeCounts = {};
+            
+            res.top_paths.forEach(p => {
+              const steps = p.path.split(" ➔ ");
+              for (let i = 0; i < steps.length; i++) {
+                const page = steps[i].trim();
+                nodeCounts[page] = (nodeCounts[page] || 0) + p.count;
+                
+                if (i < steps.length - 1) {
+                  const next = steps[i + 1].trim();
+                  let link = links.find(l => l.from === page && l.to === next);
+                  if (link) {
+                    link.count += p.count;
+                  } else {
+                    links.push({ from: page, to: next, count: p.count });
+                  }
+                }
+              }
+            });
+            
+            // Define standard coordinates for house-styled nodes
+            const nodeConfig = {
+              "Home": { 
+                x: 100, y: 175, color: "#122b07", bg: "#f4f6f3", border: "#d0d5ce", label: "Home",
+                pathStr: "M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9zm6 13V12h6v10"
+              },
+              "Keuzehulp": { 
+                x: 290, y: 70, color: "#855b04", bg: "#faf4e7", border: "#ebd7b3", label: "Keuzehulp",
+                pathStr: "M12 2v20 M17 5l-5-3-5 3 M17 19l-5 3-5-3 M2 12l10-5 10 5-10 5z"
+              },
+              "Revisie": { 
+                x: 290, y: 175, color: "#475e2f", bg: "#f0f3eb", border: "#dbe2d2", label: "Revisie",
+                pathStr: "M12 2a1.5 1.5 0 0 1 1.5 1.5V5h.6a6.5 6.5 0 0 1 1.9.8l.5-.5a1.5 1.5 0 0 1 2.1 0l1.4 1.4a1.5 1.5 0 0 1 0 2.1l-.5.5c.3.6.5 1.2.6 1.9v.6h1.5a1.5 1.5 0 0 1 1.5 1.5v2a1.5 1.5 0 0 1-1.5 1.5H19v.6a6.5 6.5 0 0 1-.8 1.9l.5.5a1.5 1.5 0 0 1 0 2.1l-1.4 1.4a1.5 1.5 0 0 1-2.1 0l-.5-.5a6.5 6.5 0 0 1-1.9.6h-.6v1.5a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5V19h-.6a6.5 6.5 0 0 1-1.9-.8l-.5.5a1.5 1.5 0 0 1-2.1 0L3.1 17.3a1.5 1.5 0 0 1 0-2.1l.5-.5a6.5 6.5 0 0 1-.6-1.9v-.6H1.5A1.5 1.5 0 0 1 0 12v-2A1.5 1.5 0 0 1 1.5 8.5H3v-.6a6.5 6.5 0 0 1 .8-1.9l-.5-.5a1.5 1.5 0 0 1 0-2.1l1.4-1.4a1.5 1.5 0 0 1 2.1 0l.5.5c.6-.3 1.2-.5 1.9-.6v-.6A1.5 1.5 0 0 1 10 2h2z M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              },
+              "Ervaringen": { 
+                x: 290, y: 280, color: "#9e7511", bg: "#faf5e9", border: "#eddcb8", label: "Ervaringen",
+                pathStr: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              },
+              "Sta-op stoelen": { 
+                x: 500, y: 70, color: "#122b07", bg: "#e7ede4", border: "#c5d0c0", label: "Sta-op stoelen",
+                pathStr: "M19 18H5V6h14v12z M19 8H5 M8 21v-3 M16 21v-3"
+              },
+              "Seniorenstoelen": { 
+                x: 500, y: 175, color: "#2f5115", bg: "#ebf1e9", border: "#d0dfcd", label: "Senioren",
+                pathStr: "M18 15h-8l-4-4V5H4v7l5 5h9z M8 5v6 M14 21v-6 M18 21v-6"
+              },
+              "FAQ": { 
+                x: 500, y: 280, color: "#4f4f4f", bg: "#f7f7f7", border: "#e0e0e0", label: "FAQ",
+                pathStr: "M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10zm0 15a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm1.18-5.75c-.24.38-.59.7-.93 1.05-.2.2-.25.4-.25.7a1 1 0 0 1-2 0v-.5a2 2 0 0 1 .5-1.3c.32-.35.65-.65.85-1 .3-.5.15-1.25-.45-1.5a1.5 1.5 0 0 0-2 .8 1 1 0 0 1-1.9-.7 3.5 3.5 0 0 1 4.75-1.8 3.5 3.5 0 0 1 1.43 5z"
+              },
+              "Afspraak": { 
+                x: 720, y: 120, color: "#d65a31", bg: "#fbf5f2", border: "#f3e4de", label: "Afspraak",
+                pathStr: "M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z M16 2v4 M8 2v4 M3 10h18"
+              },
+              "Winkel": { 
+                x: 720, y: 230, color: "#424242", bg: "#f9f9f9", border: "#e5e5e5", label: "Showroom",
+                pathStr: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6"
+              }
+            };
+            
+            // Pre-compile Path2D objects
+            Object.values(nodeConfig).forEach(cfg => {
+              if (cfg.pathStr) {
+                cfg.pathObj = new Path2D(cfg.pathStr);
+              }
+            });
+            
+            // Add any missing pages dynamically
+            let missingY = 40;
+            Object.keys(nodeCounts).forEach(page => {
+              if (!nodeConfig[page]) {
+                nodeConfig[page] = {
+                  x: 610,
+                  y: missingY,
+                  color: "#424242",
+                  bg: "#f5f5f5",
+                  border: "#e0e0e0",
+                  label: page,
+                  pathStr: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6"
+                };
+                nodeConfig[page].pathObj = new Path2D(nodeConfig[page].pathStr);
+                missingY += 55;
+              }
+            });
+            
+            const pillWidth = 142;
+            const pillHeight = 38;
+            let hoveredNode = null;
+            let hoveredLink = null;
+            
+            function draw() {
+              // Clear canvas
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              
+              // Draw links/arrows first (so nodes sit on top of lines)
+              links.forEach(link => {
+                const fromCfg = nodeConfig[link.from];
+                const toCfg = nodeConfig[link.to];
+                if (!fromCfg || !toCfg) return;
+                
+                // Determine connection highlight opacity
+                let opacity = 0.35;
+                let isHighlighted = false;
+                
+                if (hoveredNode) {
+                  if (link.from === hoveredNode || link.to === hoveredNode) {
+                    opacity = 1.0;
+                    isHighlighted = true;
+                  } else {
+                    opacity = 0.08;
+                  }
+                } else if (hoveredLink) {
+                  if (link.from === hoveredLink.from && link.to === hoveredLink.to) {
+                    opacity = 1.0;
+                    isHighlighted = true;
+                  } else {
+                    opacity = 0.08;
+                  }
+                }
+                
+                const linkColor = isHighlighted ? "var(--color-terracotta)" : "rgba(75, 143, 36, " + opacity + ")";
+                
+                // Draw connecting bezier path
+                const dx = toCfg.x - fromCfg.x;
+                const dy = toCfg.y - fromCfg.y;
+                const angle = Math.atan2(dy, dx);
+                
+                const startX = fromCfg.x + Math.cos(angle) * (pillWidth / 2);
+                const startY = fromCfg.y + Math.sin(angle) * (pillHeight / 2);
+                
+                const endX = toCfg.x - Math.cos(angle) * (pillWidth / 2 + 10);
+                const endY = toCfg.y - Math.sin(angle) * (pillHeight / 2 + 10);
+                
+                // Draw arrow line
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                // Curve slightly if dynamic path to prevent straight overlaps
+                const controlX = (startX + endX) / 2;
+                const controlY = (startY + endY) / 2 + (Math.abs(dy) < 10 ? 0 : (dy > 0 ? -12 : 12));
+                ctx.quadraticCurveTo(controlX, controlY, endX, endY);
+                
+                ctx.lineWidth = Math.max(1.5, Math.min(8, link.count * 0.7));
+                ctx.strokeStyle = linkColor;
+                ctx.stroke();
+                
+                // Draw arrowhead
+                ctx.beginPath();
+                ctx.moveTo(endX, endY);
+                ctx.lineTo(endX - 10 * Math.cos(angle - Math.PI/6), endY - 10 * Math.sin(angle - Math.PI/6));
+                ctx.lineTo(endX - 10 * Math.cos(angle + Math.PI/6), endY - 10 * Math.sin(angle + Math.PI/6));
+                ctx.closePath();
+                ctx.fillStyle = linkColor;
+                ctx.fill();
+                
+                // Draw circular counts badge on the midpoint
+                const midX = (startX + endX) / 2;
+                const midY = (startY + endY) / 2 + (Math.abs(dy) < 10 ? 0 : (dy > 0 ? -6 : 6));
+                
+                ctx.beginPath();
+                ctx.arc(midX, midY, 9, 0, Math.PI * 2);
+                ctx.fillStyle = "#ffffff";
+                ctx.strokeStyle = isHighlighted ? "var(--color-terracotta)" : "var(--color-forest)";
+                ctx.lineWidth = 1.2;
+                ctx.fill();
+                ctx.stroke();
+                
+                ctx.fillStyle = isHighlighted ? "var(--color-terracotta)" : "var(--color-forest-dark)";
+                ctx.font = "bold 8.5px sans-serif";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(link.count, midX, midY);
+              });
+              
+              // Draw node cards on top of lines
+              Object.entries(nodeConfig).forEach(([name, cfg]) => {
+                if (!nodeCounts[name]) return; // Skip inactive nodes
+                
+                let isDimmed = false;
+                let isHighlighted = false;
+                
+                if (hoveredNode) {
+                  if (hoveredNode === name) {
+                    isHighlighted = true;
+                  } else {
+                    // Check if node is connected to hovered node
+                    const connected = links.some(l => 
+                      (l.from === hoveredNode && l.to === name) || 
+                      (l.from === name && l.to === hoveredNode)
+                    );
+                    if (!connected) isDimmed = true;
+                  }
+                } else if (hoveredLink) {
+                  if (hoveredLink.from === name || hoveredLink.to === name) {
+                    isHighlighted = true;
+                  } else {
+                    isDimmed = true;
+                  }
+                }
+                
+                ctx.save();
+                if (isDimmed) ctx.globalAlpha = 0.25;
+                
+                // Draw rounded card
+                ctx.beginPath();
+                ctx.roundRect(cfg.x - pillWidth/2, cfg.y - pillHeight/2, pillWidth, pillHeight, 8);
+                ctx.fillStyle = cfg.bg;
+                ctx.fill();
+                
+                // Border highlight
+                ctx.lineWidth = isHighlighted ? 2.5 : 1.5;
+                ctx.strokeStyle = isHighlighted ? "var(--color-terracotta)" : cfg.border;
+                ctx.stroke();
+                
+                // Label and Icon (centered)
+                ctx.font = "bold 11px sans-serif";
+                const labelText = cfg.label;
+                const textWidth = ctx.measureText(labelText).width;
+                const spacing = 6;
+                const iconSize = 13;
+                const totalWidth = iconSize + spacing + textWidth;
+                
+                const startX = cfg.x - totalWidth / 2;
+                const iconX = startX;
+                const iconY = cfg.y - 4 - iconSize / 2;
+                const textX = startX + iconSize + spacing + textWidth / 2;
+                
+                // Draw compiled SVG path
+                if (cfg.pathObj) {
+                  ctx.save();
+                  ctx.translate(iconX, iconY);
+                  // Scaled from original viewBox 24x24
+                  const scale = iconSize / 24;
+                  ctx.scale(scale, scale);
+                  ctx.strokeStyle = cfg.color;
+                  ctx.lineWidth = 2.2 / scale;
+                  ctx.lineCap = "round";
+                  ctx.lineJoin = "round";
+                  ctx.stroke(cfg.pathObj);
+                  ctx.restore();
+                }
+                
+                ctx.fillStyle = cfg.color;
+                ctx.font = "bold 11px sans-serif";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(labelText, textX, cfg.y - 3);
+                
+                // Count subtext
+                ctx.fillStyle = "rgba(18, 43, 7, 0.6)";
+                ctx.font = "bold 8px sans-serif";
+                ctx.fillText(nodeCounts[name] + " bezoeken", cfg.x, cfg.y + 10);
+                
+                ctx.restore();
+              });
+            }
+            
+            // Attach mouse events
+            canvas.addEventListener("mousemove", (e) => {
+              const rect = canvas.getBoundingClientRect();
+              const mx = e.clientX - rect.left;
+              const my = e.clientY - rect.top;
+              
+              let newHoveredNode = null;
+              let newHoveredLink = null;
+              
+              // 1. Detect node hover
+              for (const [name, cfg] of Object.entries(nodeConfig)) {
+                if (!nodeCounts[name]) continue;
+                if (mx >= cfg.x - pillWidth/2 && mx <= cfg.x + pillWidth/2 &&
+                    my >= cfg.y - pillHeight/2 && my <= cfg.y + pillHeight/2) {
+                  newHoveredNode = name;
+                  break;
+                }
+              }
+              
+              // 2. Detect link hover if no node hovered
+              if (!newHoveredNode) {
+                for (const link of links) {
+                  const fromCfg = nodeConfig[link.from];
+                  const toCfg = nodeConfig[link.to];
+                  if (fromCfg && toCfg) {
+                    const midX = (fromCfg.x + toCfg.x) / 2;
+                    const midY = (fromCfg.y + toCfg.y) / 2;
+                    const dx = mx - midX;
+                    const dy = my - midY;
+                    if (Math.sqrt(dx*dx + dy*dy) < 16) {
+                      newHoveredLink = link;
+                      break;
+                    }
+                  }
+                }
+              }
+              
+              // Show tooltip and update pointer style
+              if (newHoveredNode || newHoveredLink) {
+                canvas.style.cursor = "pointer";
+                tooltip.style.display = "block";
+                tooltip.style.left = (mx + 12) + "px";
+                tooltip.style.top = (my + 12) + "px";
+                
+                if (newHoveredNode) {
+                  tooltip.innerHTML = `<strong>${newHoveredNode}</strong><br>Totaal volume: ${nodeCounts[newHoveredNode]} bezoeken`;
+                } else if (newHoveredLink) {
+                  tooltip.innerHTML = `Stroom: <strong>${newHoveredLink.from} ➔ ${newHoveredLink.to}</strong><br>Volume: ${newHoveredLink.count} bezoeken`;
+                }
+              } else {
+                canvas.style.cursor = "default";
+                tooltip.style.display = "none";
+              }
+              
+              if (hoveredNode !== newHoveredNode || hoveredLink !== newHoveredLink) {
+                hoveredNode = newHoveredNode;
+                hoveredLink = newHoveredLink;
+                draw();
+              }
+            });
+            
+            canvas.addEventListener("mouseleave", () => {
+              hoveredNode = null;
+              hoveredLink = null;
+              tooltip.style.display = "none";
+              draw();
+            });
+            
+            // Initial draw
+            draw();
+          }
         })
         .catch(err => console.warn('Error fetching visit stats:', err));
     }

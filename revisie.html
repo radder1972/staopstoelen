@@ -9,7 +9,78 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.16">
+  <link rel="stylesheet" href="style.css?v=9.32">
+  <style>
+    .revisie-stappen-container {
+      margin-top: 40px;
+      margin-bottom: 60px;
+    }
+    .revisie-stap-row {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+      flex-direction: column;
+    }
+    .revisie-stap-image {
+      width: 100%;
+      max-width: 480px;
+      height: 320px;
+      box-sizing: border-box;
+    }
+    .revisie-stap-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 4px solid var(--color-light);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+    .revisie-stap-text {
+      flex: 1;
+      min-width: 280px;
+    }
+    .revisie-stap-number {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-terracotta);
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .revisie-stap-title {
+      color: var(--color-forest-dark);
+      font-size: 1.35rem;
+      margin: 0 0 4px 0;
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+    .revisie-stap-subtitle {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-forest);
+      margin-bottom: 12px;
+    }
+    .revisie-stap-desc {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-dark);
+      margin: 0;
+    }
+    
+    @media (min-width: 768px) {
+      .revisie-stap-row {
+        flex-direction: row;
+      }
+      .revisie-stap-row:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+      .revisie-stap-image {
+        flex: 0 0 380px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -112,62 +183,74 @@
   <section id="revisie" class="slider-section subpage-section">
     <div class="container">
       <a href="index.html" class="back-link">← Terug naar Home</a>
-      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Het Unieke Revisieproces</h2>
       
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
-        Bij staopstoelen.nl geloven we in duurzaamheid en topkwaliteit. Onze gediplomeerde BewegingsTechnologen reviseren premium A-merk sta-op stoelen (zoals Fitform en Doge) tot in het kleinste detail. Van het volledig reinigen en controleren van de motoren tot het vernieuwen van de vulling en de bekleding: elke stoel verlaat onze werkplaats als nieuw. Bekijk hieronder hoe wij stap voor stap te werk gaan, en vergelijk zelf het verschil met de interactieve voor-en-na-slider.
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 48px; max-width: 800px;">
+        Bij staopstoelen.nl geloven we in duurzaamheid en topkwaliteit. Onze gediplomeerde BewegingsTechnologen reviseren premium A-merk sta-op stoelen (zoals Fitform en Doge) tot in het kleinste detail. Van het volledig reinigen en controleren van de motoren tot het vernieuwen van de vulling en de bekleding: elke stoel verlaat onze werkplaats als nieuw. Bekijk hieronder stap voor stap hoe ons zorgvuldige revisieproces verloopt.
       </p>
 
-      <!-- Interactive Slideshow Section (Revisie stappen) -->
-      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 32px; border-radius: var(--radius-lg); margin: 32px 0 50px 0; flex-wrap: wrap;">
-        <!-- Left Side: Interactive Slideshow -->
-        <div style="position: relative; width: 180px; height: 240px; flex-shrink: 0; margin: 0 auto;">
-          <img id="revisieSlideImg" src="assets/revisie_stap3.jpg" alt="Revisieproces stap 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); border: 3px solid var(--color-light); box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; transition: opacity 0.2s ease;">
-          <div style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; background-color: rgba(0,0,0,0.65); padding: 6px 12px; border-radius: var(--radius-full); backdrop-filter: blur(4px); color: var(--color-light); font-size: 0.8rem; z-index: 10; user-select: none;">
-            <button id="prevSlideBtn" style="color: white; font-weight: bold; padding: 0 4px; background: none; border: none; cursor: pointer; font-size: 0.9rem;">❮</button>
-            <span id="revisieSlideCounter" style="font-weight: 600; min-width: 32px; text-align: center;">1 / 4</span>
-            <button id="nextSlideBtn" style="color: white; font-weight: bold; padding: 0 4px; background: none; border: none; cursor: pointer; font-size: 0.9rem;">❯</button>
+      <!-- Revisieproces Stappen in Blokken -->
+      <div class="revisie-stappen-container">
+        
+        <!-- Stap 1 -->
+        <div class="revisie-stap-row">
+          <div class="revisie-stap-image">
+            <img src="assets/revisie_stap3.jpg" alt="Revisieproces stap 1: Volledig strippen van het frame">
+          </div>
+          <div class="revisie-stap-text">
+            <span class="revisie-stap-number">Stap 1</span>
+            <h3 class="revisie-stap-title">Volledig strippen van het frame</h3>
+            <p class="revisie-stap-subtitle">Grondige reiniging en controle van mechaniek</p>
+            <p class="revisie-stap-desc">
+              We strippen de stoel volledig tot op het metalen basisframe. De motoren, kabels en de elektronische besturing worden grondig gecontroleerd, gereinigd en getest. Eventuele versleten bedrading of zwakke componenten worden direct vervangen.
+            </p>
           </div>
         </div>
 
-        <!-- Right Side: Content Details -->
-        <div style="flex: 1; min-width: 280px;">
-          <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 8px; font-size: 0.8rem; display: inline-block;">Revisie in beeld</span>
-          <h3 id="revisieSlideTitle" style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 0 0 4px 0; font-family: var(--font-heading);">Stap 1: Volledig strippen van het frame</h3>
-          <p id="revisieSlideSub" style="font-size: 0.95rem; font-weight: 600; color: var(--color-forest); margin-bottom: 12px;">Grondige reiniging en controle van mechaniek</p>
-          <p id="revisieSlideDesc" style="font-size: 0.95rem; line-height: 1.7; color: var(--color-dark); margin: 0;">
-            We strippen de stoel volledig tot op het metalen basisframe. De motoren, kabels en de elektronische besturing worden grondig gecontroleerd, gereinigd en getest. Eventuele versleten bedrading of zwakke componenten worden direct vervangen.
-          </p>
-        </div>
-      </div>
-
-      <!-- Before / After Interactive Slider Section -->
-      <div style="margin-bottom: 50px;">
-        <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 12px; font-size: 0.8rem; display: inline-block;">Vergelijk Oud & Nieuw</span>
-        <h3 style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 0 0 16px 0; font-family: var(--font-heading);">Interactieve Voor- en Na-vergelijking</h3>
-        <p style="margin-bottom: 24px; color: var(--color-gray); font-size: 0.95rem; line-height: 1.6;">
-          Versleep de hendel in het midden van de afbeelding om het verschil te zien tussen een gebruikte stoel en het volledig gereviseerde eindresultaat.
-        </p>
-        <div class="slider-wrapper" id="sliderWrapper">
-          <!-- Before slide (Old state) -->
-          <div class="slider-img slider-before">
-            <div class="slider-content-inner">
-              <span class="slider-text-badge">Voor revisie (Oud model)</span>
-            </div>
+        <!-- Stap 2 -->
+        <div class="revisie-stap-row">
+          <div class="revisie-stap-image">
+            <img src="assets/revisie_stap2.jpg" alt="Revisieproces stap 2: Nieuwe bekleding & Kussens">
           </div>
-
-          <!-- After slide (New state) -->
-          <div class="slider-img slider-after" id="sliderAfterImage">
-            <div class="slider-content-inner">
-              <span class="slider-text-badge">Na Revisie (Als Nieuw)</span>
-            </div>
-          </div>
-
-          <!-- Slider Bar and Control Handle -->
-          <div class="slider-handle" id="sliderHandle">
-            <div class="slider-handle-button">↔</div>
+          <div class="revisie-stap-text">
+            <span class="revisie-stap-number">Stap 2</span>
+            <h3 class="revisie-stap-title">Nieuwe bekleding &amp; Kussens</h3>
+            <p class="revisie-stap-subtitle">Hernieuwde opbouw voor optimaal comfort</p>
+            <p class="revisie-stap-desc">
+              De gedemonteerde armleuningen en zitkussens worden voorzien van nieuw, hoogwaardig koudschuim en volledig opnieuw bekleed. De stoel is na deze opbouw weer hygiënisch schoon en biedt het comfort van een splinternieuw exemplaar.
+            </p>
           </div>
         </div>
+
+        <!-- Stap 3 -->
+        <div class="revisie-stap-row">
+          <div class="revisie-stap-image">
+            <img src="assets/revisie_stap1.jpg" alt="Revisieproces stap 3: Kwaliteitscontrole & Motor-tests">
+          </div>
+          <div class="revisie-stap-text">
+            <span class="revisie-stap-number">Stap 3</span>
+            <h3 class="revisie-stap-title">Kwaliteitscontrole &amp; Motor-tests</h3>
+            <p class="revisie-stap-subtitle">Zware inspectie onder belasting</p>
+            <p class="revisie-stap-desc">
+              Alle mechanische en elektrische functies van de stoel ondergaan een strenge testcyclus onder belasting. De motoren voor de rugleuning, voetensteun en liftfunctie worden gecontroleerd op stille en soepele werking.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stap 4 -->
+        <div class="revisie-stap-row">
+          <div class="revisie-stap-image">
+            <img src="assets/revisie_stap4.jpg" alt="Revisieproces stap 4: Het eindresultaat">
+          </div>
+          <div class="revisie-stap-text">
+            <span class="revisie-stap-number">Stap 4</span>
+            <h3 class="revisie-stap-title">Het eindresultaat</h3>
+            <p class="revisie-stap-subtitle">Als nieuw geleverd met garantie</p>
+            <p class="revisie-stap-desc">
+              Het resultaat is een prachtige sta-op stoel die zowel optisch als technisch in absolute nieuwstaat verkeert. Volledig gedesinfecteerd, ergonomisch afgesteld en klaar om weer jarenlang comfortabel en veilig zitplezier te bieden.
+            </p>
+          </div>
+        </div>
+
       </div>
 
       <h2 class="section-title text-center" style="font-size: 1.85rem; margin-top: 40px; margin-bottom: 40px; color: var(--color-forest);">Hoe wij A-merken reviseren</h2>
@@ -208,7 +291,7 @@
       <div class="footer-col">
         <h3 style="color: var(--color-light);">staopstoelen.nl</h3>
         <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
-          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+          Specialist in premium A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
         </p>
       </div>
       <div class="footer-col">
@@ -255,81 +338,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 9.16
+        Gerealiseerd door BewegingsTechnologen. | Versie 9.33
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const slides = [
-        {
-          img: 'assets/revisie_stap3.jpg',
-          title: 'Stap 1: Volledig strippen van het frame',
-          sub: 'Grondige reiniging en controle van mechaniek',
-          desc: 'We strippen de stoel volledig tot op het metalen basisframe. De motoren, kabels en de elektronische besturing worden grondig gecontroleerd, gereinigd en getest. Eventuele versleten bedrading of zwakke componenten worden direct vervangen.'
-        },
-        {
-          img: 'assets/revisie_stap2.jpg',
-          title: 'Stap 2: Nieuwe bekleding & Kussens',
-          sub: 'Hernieuwde opbouw voor optimaal comfort',
-          desc: 'De gedemonteerde armleuningen en zitkussens worden voorzien van nieuw, hoogwaardig koudschuim en volledig opnieuw bekleed. De stoel is na deze opbouw weer hygiënisch schoon en biedt het comfort van een splinternieuw exemplaar.'
-        },
-        {
-          img: 'assets/revisie_stap1.jpg',
-          title: 'Stap 3: Kwaliteitscontrole & Motor-tests',
-          sub: 'Zware inspectie onder belasting',
-          desc: 'Alle mechanische en elektrische functies van de stoel ondergaan een strenge testcyclus onder belasting. De motoren voor de rugleuning, voetensteun en liftfunctie worden gecontroleerd op stille en soepele werking.'
-        },
-        {
-          img: 'assets/revisie_stap4.jpg',
-          title: 'Stap 4: Het eindresultaat',
-          sub: 'Als nieuw geleverd met garantie',
-          desc: 'Het resultaat is een prachtige sta-op stoel die zowel optisch als technisch in absolute nieuwstaat verkeert. Volledig gedesinfecteerd, ergonomisch afgesteld en klaar om weer jarenlang comfortabel en veilig zitplezier te bieden.'
-        }
-      ];
-
-      let currentSlide = 0;
-      const slideImg = document.getElementById('revisieSlideImg');
-      const slideCounter = document.getElementById('revisieSlideCounter');
-      const slideTitle = document.getElementById('revisieSlideTitle');
-      const slideSub = document.getElementById('revisieSlideSub');
-      const slideDesc = document.getElementById('revisieSlideDesc');
-      const prevBtn = document.getElementById('prevSlideBtn');
-      const nextBtn = document.getElementById('nextSlideBtn');
-
-      // Initialize counter dynamically on load
-      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
-
-      function updateSlide(index) {
-        slideImg.style.opacity = 0;
-        
-        setTimeout(() => {
-          currentSlide = index;
-          slideImg.src = slides[currentSlide].img;
-          slideImg.alt = `Revisieproces stap ${currentSlide + 1}`;
-          slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
-          slideTitle.textContent = slides[currentSlide].title;
-          slideSub.textContent = slides[currentSlide].sub;
-          slideDesc.textContent = slides[currentSlide].desc;
-          
-          slideImg.style.opacity = 1;
-        }, 200);
-      }
-
-      prevBtn.addEventListener('click', () => {
-        let index = currentSlide - 1;
-        if (index < 0) index = slides.length - 1;
-        updateSlide(index);
-      });
-
-      nextBtn.addEventListener('click', () => {
-        let index = currentSlide + 1;
-        if (index >= slides.length) index = 0;
-        updateSlide(index);
-      });
-    });
-  </script>
+  <script src="app.js?v=9.33"></script>
 </body>
 </html>

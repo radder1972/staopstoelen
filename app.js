@@ -1,10 +1,20 @@
 // Google Calendar Webhook URL Configuration (Google Apps Script Web App)
 // Configure this with your deployed Apps Script Web App URL to automatically push bookings to Google Calendar.
-const GOOGLE_CALENDAR_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxIPs1J8fVUquyzIq_gZ4WTjsTBRgMGazeq58EbOZmF9yNfObr25NvCOBUWkit665y-OQ/exec";
+const GOOGLE_CALENDAR_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwLHBpUUVOG4HxtMvtLlChaTU_4nx822y8JhZSUvlMTXS7TljfACFQ02hg9SUbljW0m/exec";
 
 // Google Calendar Live Availability Get URL (Google Apps Script Web App)
 // Configure this with your deployed Apps Script Web App URL to retrieve real-time busy slots.
-const GOOGLE_CALENDAR_GET_SLOTS_URL = "https://script.google.com/macros/s/AKfycbxIPs1J8fVUquyzIq_gZ4WTjsTBRgMGazeq58EbOZmF9yNfObr25NvCOBUWkit665y-OQ/exec";
+const GOOGLE_CALENDAR_GET_SLOTS_URL = "https://script.google.com/macros/s/AKfycbwLHBpUUVOG4HxtMvtLlChaTU_4nx822y8JhZSUvlMTXS7TljfACFQ02hg9SUbljW0m/exec";
+
+// Global Image Fit & Visibility Helper
+window.adjustImageFit = function(img) {
+  if (img) {
+    img.style.opacity = '1';
+    img.style.maxHeight = '100%';
+    img.style.maxWidth = '100%';
+    img.style.objectFit = 'contain';
+  }
+};
 
 // Local Visit & Event Tracking Logger
 function logCustomVisitEvent(eventName = 'pageview') {
@@ -38,11 +48,6 @@ function logCustomVisitEvent(eventName = 'pageview') {
 // Log pageview on DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {
   logCustomVisitEvent('pageview');
-  
-  // If page is keuzehulp, log wizard start
-  if (window.location.pathname.includes('keuzehulp.html')) {
-    logCustomVisitEvent('keuzehulp_start');
-  }
 });
 
 // Database of available lift chairs (revised premium models)
@@ -217,12 +222,8 @@ function initializeApp() {
   if (prefilled) {
     const notesField = document.getElementById("bookingNotes");
     if (notesField) {
-      notesField.value = `Ik heb interesse in een passing aan huis voor de stoel: ${prefilled}. Graag afstemmen op mijn lichaamslengte en voorkeuren.`;
+      notesField.value = `Ik wil deze stoel graag uitproberen tijdens mijn afspraak: ${prefilled}.`;
       localStorage.removeItem("prefilledChair");
-      
-      // Auto-select Home Passing since the prefill is for home passing
-      const typeHome = document.getElementById("typeHome");
-      if (typeHome) typeHome.click();
       
       // Smooth scroll to the appointment planner
       const planner = document.getElementById("afspraak-planner");
@@ -249,6 +250,29 @@ function initHeroSlideshow() {
   let currentSlide = 0;
   let slideInterval = null;
   const slideDuration = 5000; // 5 seconds
+
+  function updateSlideshowActieBadge(activeSlide) {
+    const badge = document.querySelector(".slideshow-actie-badge");
+    if (!badge) return;
+
+    let isFitform = false;
+    if (activeSlide) {
+      const captionText = activeSlide.querySelector(".slide-caption")?.textContent || "";
+      const imgAlt = activeSlide.querySelector("img")?.alt || "";
+      const brandAttr = activeSlide.getAttribute("data-brand") || "";
+      const fullText = `${captionText} ${imgAlt} ${brandAttr}`.toLowerCase();
+      if (fullText.includes("fitform")) {
+        isFitform = true;
+      }
+    }
+
+    if (isFitform) {
+      badge.classList.add("is-visible");
+    } else {
+      badge.classList.remove("is-visible");
+    }
+  }
+  window.updateSlideshowActieBadge = updateSlideshowActieBadge;
 
   function showSlide(index) {
     // Wrap index
@@ -277,6 +301,9 @@ function initHeroSlideshow() {
         dot.classList.remove("active");
       }
     });
+
+    // Update Actie Badge visibility: only appear when active slide is a Fitform chair!
+    updateSlideshowActieBadge(slides[currentSlide]);
   }
 
   function nextSlide() {
@@ -341,7 +368,7 @@ function initHeroSlideshow() {
           img.alt = originalAlt;
         } else {
           img.src = "assets/geert_secret.jpg";
-          img.alt = "Geert zittend in een comfortabele sta-op stoel";
+          img.alt = "Geertjan zittend in een comfortabele sta-op stoel";
         }
       });
     }
@@ -349,6 +376,7 @@ function initHeroSlideshow() {
 
   // Start the slideshow auto-advance
   startTimer();
+  updateSlideshowActieBadge(slides[currentSlide]);
 }
 
 // Robust DOM check
@@ -745,10 +773,18 @@ function renderWizardResults() {
         <ul class="product-features">
           ${featuresHtml}
         </ul>
-        <div class="product-price-row">
+        <div class="product-price-row" style="align-items: flex-end;">
           <div>
-            <span class="price-label">Prijs vanaf</span>
-            <span class="price-value" style="display: block;">${formatPrice(chair.price)}</span>
+            ${(chair.old_price && chair.old_price > chair.price) ? `
+              <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-height: 44px;">
+                <span style="text-decoration: line-through; color: var(--color-terracotta); font-size: 0.85rem; font-weight: 600; line-height: 1.2; margin-bottom: 2px;">${formatPrice(chair.old_price)}</span>
+                <span class="price-value" style="color: var(--color-forest); font-weight: bold; font-size: 1.3rem; line-height: 1.2;">${formatPrice(chair.price)}</span>
+              </div>
+            ` : `
+              <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-height: 44px;">
+                <span class="price-value" style="color: var(--color-forest); font-weight: bold; font-size: 1.3rem; line-height: 1.2;">${formatPrice(chair.price)}</span>
+              </div>
+            `}
           </div>
           <button type="button" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
             Meer info
@@ -764,12 +800,8 @@ function renderWizardResults() {
 window.prefillBooking = function(chairName) {
   const notesField = document.getElementById("bookingNotes");
   if (notesField) {
-    notesField.value = `Ik heb interesse in een passing aan huis voor de: ${chairName}. Graag afstemmen op mijn lichaamslengte en voorkeuren.`;
+    notesField.value = `Ik wil deze stoel graag uitproberen tijdens mijn afspraak: ${chairName}.`;
   }
-  
-  // Auto-select Home Passing since the prefill is for home passing
-  const typeHome = document.getElementById("typeHome");
-  if (typeHome) typeHome.click();
   
   // Jump smoothly to scheduling section
   const section = document.getElementById("afspraak-planner");
@@ -1173,7 +1205,7 @@ function initCalendar() {
       name: name,
       phone: phone,
       email: email,
-      date: state.selectedDate.toISOString().split('T')[0], // YYYY-MM-DD
+      date: state.selectedDate.getFullYear() + "-" + String(state.selectedDate.getMonth() + 1).padStart(2, "0") + "-" + String(state.selectedDate.getDate()).padStart(2, "0"), // YYYY-MM-DD in local time
       timeSlot: state.selectedTimeSlot,
       startTime: startTime,
       endTime: endTime,
@@ -1213,7 +1245,7 @@ function initCalendar() {
         Er is een afspraak gepland voor een <strong>${typeText}</strong> ${locationDetail}. <br>
         Datum: <strong>${formattedDate}</strong> om <strong>${state.selectedTimeSlot}</strong>.<br><br>
         De bevestiging is zojuist naar uw e-mailadres (<strong>${email}</strong>) verzonden. Check eventueel uw spamfolder als u deze niet direct ziet.<br><br>
-        Onze BewegingsTechnoloog zal de afspraak binnen 2 uur telefonisch met u bevestigen via <strong>${phone}</strong>.
+        Onze BewegingsTechnoloog zal de afspraak zo spoedig mogelijk telefonisch met u bevestigen via <strong>${phone}</strong>.
       `;
 
       // Show Google Maps and route description if visiting the showroom
@@ -1233,7 +1265,7 @@ function initCalendar() {
       submitBookingBtn.disabled = false;
     };
 
-    if (GOOGLE_CALENDAR_WEBHOOK_URL) {
+    if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
       fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
         method: "POST",
         headers: {
@@ -1317,13 +1349,11 @@ function renderCalendar() {
     // Disable past dates and dates less than 2 days in advance (today and tomorrow)
     const isPastOrTooSoon = thisDate < minAllowedDate;
     
-    // Disable Sundays (closed)
+    // Disable Sundays and Mondays (closed)
     const isSunday = thisDate.getDay() === 0;
+    const isMonday = thisDate.getDay() === 1;
     
-    // Disable Mondays for Home passing (Maandag kan ik nooit thuispassen)
-    const isMondayHome = thisDate.getDay() === 1 && state.appointmentType === "home";
-    
-    if (isPastOrTooSoon || isSunday || isMondayHome) {
+    if (isPastOrTooSoon || isSunday || isMonday) {
       dateCell.disabled = true;
     }
     
@@ -1427,7 +1457,7 @@ function renderTimeSlots() {
     });
   };
 
-  if (GOOGLE_CALENDAR_GET_SLOTS_URL) {
+  if (typeof GOOGLE_CALENDAR_GET_SLOTS_URL !== "undefined" && GOOGLE_CALENDAR_GET_SLOTS_URL) {
     // Show loading state while fetching live data
     grid.innerHTML = `<p style="grid-column:1/-1; color: var(--color-gray); font-size:0.875rem; text-align:center;">Tijden laden...</p>`;
     

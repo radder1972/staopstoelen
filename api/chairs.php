@@ -120,7 +120,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $json_file = __DIR__ . '/../database.json';
         file_put_contents($json_file, json_encode(["staopstoelen" => $input['staopstoelen']], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         
-        echo json_encode(["message" => "Database updated successfully in MySQL and database.json"]);
+        // Automatically sync static chair SEO pages, clean up obsolete models, and update sitemap.xml
+        $sync_result = null;
+        if (file_exists(__DIR__ . '/sync_static_pages.php')) {
+            require_once __DIR__ . '/sync_static_pages.php';
+            try {
+                $sync_result = sync_static_chair_pages($input['staopstoelen']);
+            } catch (Exception $sync_err) {
+                error_log("Static pages sync error: " . $sync_err->getMessage());
+            }
+        }
+        
+        echo json_encode([
+            "message" => "Database updated successfully in MySQL and database.json",
+            "sync_result" => $sync_result
+        ]);
         
     } catch (Exception $e) {
         if ($pdo->inTransaction()) {

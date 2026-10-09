@@ -4,6 +4,15 @@ header("Access-Control-Allow-Origin: *");
 require_once __DIR__ . '/db.php';
 
 try {
+    // Safety check: online database is leading. Prevent accidental truncation/overwrite.
+    if (!isset($_GET['allow_overwrite']) || $_GET['allow_overwrite'] !== 'true') {
+        echo json_encode([
+            "status" => "protected",
+            "message" => "De online database is leidend. Automatische reload vanaf database.json is uitgeschakeld om de live database te beschermen."
+        ]);
+        exit;
+    }
+
     $pdo = getDBConnection();
     
     // Ensure description column exists in existing tables

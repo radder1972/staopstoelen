@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.16">
+  <link rel="stylesheet" href="style.css?v=9.32">
 </head>
 <body>
 
@@ -109,7 +109,6 @@
   <section id="afspraak-planner" class="subpage-section">
     <div class="container">
       <a href="index.html" class="back-link">← Terug naar Home</a>
-      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.85rem; border-bottom: 2px solid var(--color-sage); padding-bottom: 8px;">Zitadvies inplannen</h2>
 
       <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
         Breng een bezoek aan onze showroom of maak eenvoudig een afspraak voor een gratis passing aan huis. Onze gediplomeerde BewegingsTechnologen adviseren u geheel vrijblijvend over de perfecte sta-op stoel op uw maten. Kies hieronder de gewenste optie, selecteer een datum en tijdstip, en vul uw contactgegevens in.
@@ -130,7 +129,7 @@
               <input type="radio" name="appointmentType" value="home">
               <div class="booking-type-info">
                 <h3>Passing aan Huis</h3>
-                <p>Wij nemen 3 geschikte stoelen mee naar uw woning. U probeert ze in uw eigen rustige omgeving.</p>
+                <p>Bent u minder mobiel? Wij komen graag vrijblijvend met een geschikte stoel bij u thuis langs.</p>
               </div>
             </label>
           </div>
@@ -212,13 +211,13 @@
             <div class="booking-success-icon">✓</div>
             <h3 style="margin-bottom: 12px; font-size: 1.75rem;">Uw afspraak staat gepland!</h3>
             <p style="color: var(--color-gray); max-width: 500px; margin: 0 auto 24px auto;" id="successSummary">
-              We hebben uw aanvraag ontvangen. Een van onze BewegingsTechnologen neemt binnen 2 uur telefonisch contact met u op om de afspraak te bevestigen.
+              We hebben uw aanvraag ontvangen. Een van onze BewegingsTechnologen neemt zo spoedig mogelijk telefonisch contact met u op om de afspraak te bevestigen.
             </p>
             
             <!-- Route details and map for showroom appointments (dynamically shown/hidden) -->
             <div id="successRouteInfo" style="display: none; max-width: 550px; margin: 24px auto; text-align: left; background-color: var(--color-cream-dark); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--color-sage-light); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
               <h4 style="margin-top: 0; color: var(--color-forest-dark); font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                <svg style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <svg style="width: 20px; height: 20px; fill: none; stroke: var(--color-terracotta); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 Winkel &amp; Routebeschrijving
               </h4>
               <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0 0 16px 0;">
@@ -238,8 +237,8 @@
                   title="Google Maps Locatie van Schipper Compact Wonen / staopstoelen.nl">
                 </iframe>
               </div>
-              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="btn btn-primary" style="text-decoration: none; padding: 10px 18px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; box-shadow: none;">
+              <div style="display: flex; justify-content: center; width: 100%; margin-top: 16px;">
+                <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="btn btn-primary" style="text-decoration: none; padding: 10px 18px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; box-shadow: none; justify-content: center;">
                   <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24"><path d="M22.43 10.43L13.57 1.57c-.78-.78-2.05-.78-2.83 0L1.57 11.57c-.78.78-.78 2.05 0 2.83l8.86 8.86c.78.78 2.05.78 2.83 0l8.86-8.86c.78-.78.78-2.05 0-2.83zM14 15v-3H9v4H7v-5c0-.55.45-1 1-1h6V8l5 4-5 4z"/></svg>
                   Plan Route in Google Maps
                 </a>
@@ -269,7 +268,7 @@
       <div class="footer-col">
         <h3 style="color: var(--color-light);">staopstoelen.nl</h3>
         <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
-          Specialist in premium gereviseerde A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
+          Specialist in premium A-merk sta-op stoelen op maat. Duurzaam, comfortabel en betaalbaar.
         </p>
       </div>
       <div class="footer-col">
@@ -316,11 +315,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 9.16
+        Gerealiseerd door BewegingsTechnologen. | Versie 9.33
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=1.0.49"></script>
+  <script src="app.js?v=9.33"></script>
 </body>
 </html>
