@@ -1,0 +1,31 @@
+name: Deploy naar Live Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: FTP Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Code ophalen
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: 📂 Bestanden synchroniseren naar live server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.schippercompactwonen.nl
+          username: matthias@schippercompactwonen.nl
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /domains/staopstoelen.nl/public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/scratch/**
+            **/.env*
+            package*.json
