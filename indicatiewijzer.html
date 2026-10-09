@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indicatiewijzer Zithouding & Mobiliteit | Staopstoelen.nl</title>
+  <meta name="description" content="Klinische sneltoets voor ergotherapeuten en wijkverpleging. Evalueer de ergonomische basishouding en medische indicaties van cliënten.">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <style>
+    :root {
+      --color-forest: #2d3c4d;
+      --color-terracotta: #e07a5f;
+      --color-sage: #81b29a;
+      --color-sky: #3d5a80;
+      --color-light: #fbfbfa;
+      --color-dark: #1f2937;
+      --color-gray: #6b7280;
+      --color-border: #e2e8f0;
+      --color-bg-light: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--color-dark);
+      background-color: #f1f5f9;
+      line-height: 1.45;
+      font-size: 13.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Top Action Bar (on screen only) */
+    .top-toolbar {
+      background-color: var(--color-forest);
+      color: #ffffff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .top-toolbar a.btn-back {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .top-toolbar a.btn-back:hover {
+      opacity: 0.8;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-action {
+      background-color: var(--color-terracotta);
+      color: #ffffff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btn-action:hover {
+      background-color: #cb6b51;
+    }
+
+    .btn-action:active {
+      transform: scale(0.98);
+    }
+
+    .btn-action-outline {
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-action-outline:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    /* A4 Paper Sheet Wrapper */
+    .document-wrapper {
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 24px auto 40px auto;
+      background: #ffffff;
+      padding: 16mm 18mm;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Header Section */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-forest);
+      margin-bottom: 12px;
+    }
+
+    .doc-title-box h1 {
+      color: var(--color-forest);
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+
+    .doc-title-box h2 {
+      color: var(--color-sky);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .doc-title-box p.subtitle {
+      color: var(--color-gray);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .doc-logo-box {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .doc-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--color-forest);
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.3px;
+    }
+
+    .doc-logo-badge span {
+      color: var(--color-terracotta);
+    }
+
+    .doc-logo-tagline {
+      font-size: 0.72rem;
+      color: var(--color-gray);
+      margin-top: 4px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Client & Visit Metadata Box */
+    .client-meta-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      background-color: var(--color-bg-light);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 12px;
+    }
+
+    .meta-field {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+    }
+
+    .meta-field label {
+      font-weight: 700;
+      color: var(--color-forest);
+      white-space: nowrap;
+    }
+
+    .meta-field input {
+      border: none;
+      border-bottom: 1px dashed #94a3b8;
+      background: transparent;
+      padding: 2px 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      width: 100%;
+      outline: none;
+    }
+
+    /* Intro Instruction */
+    .doc-intro {
+      font-size: 0.82rem;
+      color: var(--color-gray);
+      line-height: 1.4;
+      margin-bottom: 14px;
+      background-color: #fff;
+      padding-left: 2px;
+    }
+
+    /* Section Styling */
+    .eval-section {
+      margin-bottom: 14px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #f1f5f9;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--color-forest);
+      margin-bottom: 8px;
+      border-left: 4px solid var(--color-forest);
+    }
+
+    .section-heading.red-flag-heading {
+      background-color: rgba(224, 122, 95, 0.08);
+      color: #c2410c;
+      border-left-color: var(--color-terracotta);
+    }
+
+    /* Checklist Items */
+    .check-item {
+      padding: 8px 10px;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      margin-bottom: 8px;
+      background-color: #ffffff;
+      transition: background-color 0.15s;
+    }
+
+    .check-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .check-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .custom-checkbox {
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--color-forest);
+      flex-shrink: 0;
+    }
+
+    .check-title-group {
+      flex: 1;
+    }
+
+    .check-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--color-forest);
+      line-height: 1.25;
+    }
+
+    .check-item.red-flag .check-title {
+      color: #9a3412;
+    }
+
+    .check-risk {
+      font-size: 0.76rem;
+      color: #dc2626;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    .check-risk strong {
+      color: #991b1b;
+    }
+
+    .check-risk.clinical-note {
+      color: var(--color-gray);
+    }
+
+    .check-risk.clinical-note strong {
+      color: var(--color-forest);
+    }
+
+    /* Measurement / Dotted Lines Box */
+    .observation-row {
+      margin-top: 5px;
+      padding-top: 5px;
+      border-top: 1px dotted #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--color-gray);
+    }
+
+    .observation-row label {
+      font-weight: 600;
+      color: var(--color-forest);
+      white-space: nowrap;
+    }
+
+    .observation-row input.obs-input {
+      border: none;
+      border-bottom: 1px dotted #94a3b8;
+      background: transparent;
+      padding: 1px 4px;
+      font-size: 0.78rem;
+      width: 100%;
+      outline: none;
+      color: var(--color-dark);
+    }
+
+    /* Call to Action Box (Exact copy from PDF) */
+    .doc-cta-box {
+      border-left: 5px solid var(--color-terracotta);
+      background-color: rgba(224, 122, 95, 0.08);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin-top: 10px;
+      margin-bottom: 12px;
+    }
+
+    .doc-cta-title {
+      color: var(--color-terracotta);
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .doc-cta-text {
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--color-dark);
+    }
+
+    .doc-cta-text strong {
+      color: var(--color-forest);
+    }
+
+    .doc-contacts-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(224, 122, 95, 0.2);
+      font-size: 0.75rem;
+      color: var(--color-forest);
+      font-weight: 600;
+    }
+
+    /* Document Footer */
+    .doc-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--color-border);
+      padding-top: 8px;
+      font-size: 0.72rem;
+      color: var(--color-gray);
+    }
+
+    /* ==========================================================================
+       PRINT SPECIFIC STYLES (A4 Portrait Vector Export)
+       ========================================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 10mm 14mm 10mm 14mm;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        font-size: 12px !important;
+      }
+
+      .top-toolbar {
+        display: none !important;
+      }
+
+      .document-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        border-radius: 0 !important;
+      }
+
+      .doc-title-box h1 {
+        font-size: 1.5rem !important;
+      }
+
+      .doc-title-box h2 {
+        font-size: 0.95rem !important;
+      }
+
+      .section-heading {
+        padding: 4px 8px !important;
+        font-size: 0.88rem !important;
+        margin-bottom: 6px !important;
+      }
+
+      .check-item {
+        padding: 5px 8px !important;
+        margin-bottom: 6px !important;
+        border-color: #cbd5e1 !important;
+      }
+
+      .check-title {
+        font-size: 0.82rem !important;
+      }
+
+      .check-risk {
+        font-size: 0.72rem !important;
+      }
+
+      .observation-row {
+        margin-top: 3px !important;
+        padding-top: 3px !important;
+        font-size: 0.72rem !important;
+      }
+
+      .doc-cta-box {
+        padding: 8px 12px !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .doc-cta-title {
+        font-size: 0.88rem !important;
+      }
+
+      .doc-cta-text {
+        font-size: 0.76rem !important;
+      }
+
+      .doc-footer {
+        padding-top: 6px !important;
+        font-size: 0.68rem !important;
+      }
+
+      input[type="text"], input[type="date"] {
+        border-bottom: 1px dotted #64748b !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar (Screen Only) -->
+  <div class="top-toolbar">
+    <a href="keuzehulp.html" class="btn-back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Terug naar Keuzehulp
+    </a>
+    <div class="toolbar-actions">
+      <button type="button" class="btn-action-outline" id="btnClearForm">
+        Wissen
+      </button>
+      <button type="button" class="btn-action" id="btnPrintPdf">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Opslaan als PDF / Afdrukken
+      </button>
+    </div>
+  </div>
+
+  <!-- A4 Printable Sheet -->
+  <main class="document-wrapper" id="printableDocument">
+    
+    <div>
+      <!-- Document Header -->
+      <header class="doc-header">
+        <div class="doc-title-box">
+          <h1>Indicatiewijzer Zithouding & Mobiliteit</h1>
+          <h2>Klinische Sneltoets voor Ergotherapeuten & Wijkverpleging</h2>
+          <p class="subtitle">Medisch en ergonomisch beoordelingsprotocol voor functionele zitsystemen</p>
+        </div>
+        <div class="doc-logo-box">
+          <div class="doc-logo-badge">
+            staopstoelen<span>.nl</span>
+          </div>
+          <div class="doc-logo-tagline">Zorg & Mobiliteit</div>
+        </div>
+      </header>
+
+      <!-- Client Metadata Grid -->
+      <section class="client-meta-grid">
+        <div class="meta-field">
+          <label for="clientName">Cliënt / Naam:</label>
+          <input type="text" id="clientName" placeholder="bijv. Dhr. / Mevr. ..." autocomplete="off">
+        </div>
+        <div class="meta-field">
+          <label for="visitDate">Datum:</label>
+          <input type="text" id="visitDate" placeholder="dd-mm-jjjj" autocomplete="off">
+        </div>
+        <div class="meta-field">
+          <label for="therapistName">Beoordelaar / Organisatie:</label>
+          <input type="text" id="therapistName" placeholder="Ergotherapeut / Wijkverpleegkundige" autocomplete="off">
+        </div>
+        <div class="meta-field">
+          <label for="clientDob">Geboortedatum:</label>
+          <input type="text" id="clientDob" placeholder="dd-mm-jjjj" autocomplete="off">
+        </div>
+      </section>
+
+      <!-- Intro Text -->
+      <p class="doc-intro">
+        Gebruik dit formulier tijdens het huisbezoek om de fysieke zithouding van de cliënt te evalueren. Vink de stellingen aan die actueel van toepassing zijn. Gebruik de stippellijnen voor uw observaties of specifieke meetwaarden.
+      </p>
+
+      <!-- Section 1: Ergonomische Basishouding -->
+      <section class="eval-section">
+        <div class="section-heading">
+          <span>👤</span>
+          <span>1. Ergonomische Basishouding</span>
+        </div>
+
+        <!-- Item 1.1: Voeten plat -->
+        <article class="check-item">
+          <div class="check-header">
+            <input type="checkbox" id="checkFeet" class="custom-checkbox">
+            <div class="check-title-group">
+              <label for="checkFeet" class="check-title">Voeten rusten plat op de vloer (knieën en heupen in 90 graden)</label>
+              <div class="check-risk">
+                <strong>Risico bij afwijking:</strong> Afknellen van bloedvaten (te hoog) of moeite met opstaan (te laag).
+              </div>
+            </div>
+          </div>
+          <div class="observation-row">
+            <label for="obsHeight">Meting zithoogte & observatie:</label>
+            <input type="text" id="obsHeight" class="obs-input" placeholder="cm / bijzonderheden...">
+          </div>
+        </article>
+
+        <!-- Item 1.2: Handbreedte zitting -->
+        <article class="check-item">
+          <div class="check-header">
+            <input type="checkbox" id="checkDepth" class="custom-checkbox">
+            <div class="check-title-group">
+              <label for="checkDepth" class="check-title">Er past een platte hand tussen de voorkant van de zitting en de knieholte</label>
+              <div class="check-risk">
+                <strong>Risico bij afwijking:</strong> Onderuitzakken, bolle rug (te diep) of onvoldoende steun (te ondiep).
+              </div>
+            </div>
+          </div>
+          <div class="observation-row">
+            <label for="obsDepth">Meting zitdiepte & observatie:</label>
+            <input type="text" id="obsDepth" class="obs-input" placeholder="cm / bijzonderheden...">
+          </div>
+        </article>
+
+        <!-- Item 1.3: S-curve wervelkolom -->
+        <article class="check-item">
+          <div class="check-header">
+            <input type="checkbox" id="checkSpine" class="custom-checkbox">
+            <div class="check-title-group">
+              <label for="checkSpine" class="check-title">De natuurlijke S-curve van de wervelkolom wordt volledig ondersteund</label>
+              <div class="check-risk clinical-note">
+                <strong>Aandachtspunt:</strong> Let met name op lumbale ondersteuning (onderrug) en cervicale topswing (hoofd/nek).
+              </div>
+            </div>
+          </div>
+          <div class="observation-row">
+            <label for="obsSpine">Rughoogte / lendensteun:</label>
+            <input type="text" id="obsSpine" class="obs-input" placeholder="observaties kyfose / scoliose / lumbaalsteun...">
+          </div>
+        </article>
+      </section>
+
+      <!-- Section 2: Medische Indicaties (Rode Vlaggen) -->
+      <section class="eval-section">
+        <div class="section-heading red-flag-heading">
+          <span>⚠️</span>
+          <span>2. Medische Indicaties (Klinische Rode Vlaggen)</span>
+        </div>
+
+        <!-- Item 2.1: Zelfstandig opstaan -->
+        <article class="check-item red-flag">
+          <div class="check-header">
+            <input type="checkbox" id="checkStand" class="custom-checkbox">
+            <div class="check-title-group">
+              <label for="checkStand" class="check-title">Cliënt kan zelfstandig, vloeiend en zonder pijn opstaan</label>
+              <div class="check-risk clinical-note">
+                <strong>Aandachtspunt:</strong> Let op meervoudige pogingen of benodigde fysieke trekkracht van de mantelzorger.
+              </div>
+            </div>
+          </div>
+          <div class="observation-row">
+            <label for="obsStand">Observatie mobiliteit:</label>
+            <input type="text" id="obsStand" class="obs-input" placeholder="sta-op mechaniek noodzakelijk (ja/nee)...">
+          </div>
+        </article>
+
+        <!-- Item 2.2: Oedeem -->
+        <article class="check-item red-flag">
+          <div class="check-header">
+            <input type="checkbox" id="checkEdema" class="custom-checkbox">
+            <div class="check-title-group">
+              <label for="checkEdema" class="check-title">Er is géén sprake van oedeem (vochtophoping) in de benen</label>
+              <div class="check-risk">
+                <strong>Klinische indicatie:</strong> Bij oedeem is een onafhankelijke motor voor hoogligging (boven harthoogte) vereist.
+              </div>
+            </div>
+          </div>
+          <div class="observation-row">
+            <label for="obsEdema">Observatie oedeem:</label>
+            <input type="text" id="obsEdema" class="obs-input" placeholder="ernst vocht / hart-lig-stand gewenst...">
+          </div>
+        </article>
+
+        <!-- Item 2.3: Decubitus -->
+        <article class="check-item red-flag">
+          <div class="check-header">
+            <input type="checkbox" id="checkDecubitus" class="custom-checkbox">
+            <div class="check-title-group">
+              <label for="checkDecubitus" class="check-title">Er is géén verhoogd risico op decubitus (doorliggen)</label>
+              <div class="check-risk">
+                <strong>Klinische indicatie:</strong> Bij langdurig zitten (>3 uur aaneengesloten) is een kantelverstelling vereist voor drukverdeling.
+              </div>
+            </div>
+          </div>
+          <div class="observation-row">
+            <label for="obsDecubitus">Zitduur per dag & huidstatus:</label>
+            <input type="text" id="obsDecubitus" class="obs-input" placeholder="aantal uren / eerdere decubitus...">
+          </div>
+        </article>
+      </section>
+
+      <!-- Call to Action Box (Exact copy from PDF) -->
+      <aside class="doc-cta-box">
+        <h3 class="doc-cta-title">Zijn één of meerdere punten NIET afgevinkt?</h3>
+        <p class="doc-cta-text">
+          <strong>Wacht niet op een langdurig Wmo-traject.</strong> Gemeentelijke aanvraagprocedures duren gemiddeld 12 tot 20 weken, met risico op functieverlies of overbelasting van de mantelzorger. Wij leveren een ergonomische oplossing op maat, passend bij elk budget — snel geleverd inclusief gratis meting en passing aan huis.
+        </p>
+        <div class="doc-contacts-row">
+          <span>📞 078 - 631 4858</span>
+          <span>✉️ info@staopstoelen.nl</span>
+          <span>📍 Showroom: Merwedestraat 239, Dordrecht</span>
+          <span>🌐 www.staopstoelen.nl</span>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Document Footer -->
+    <footer class="doc-footer">
+      <span>Staopstoelen.nl — Zorg, Ergonomie & Mobiliteit</span>
+      <span>Klinische Indicatiewijzer | Pagina 1 van 1</span>
+    </footer>
+  </main>
+
+  <script>
+    // Set today's date if empty
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateField = document.getElementById("visitDate");
+      if (dateField && !dateField.value) {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        dateField.value = `${dd}-${mm}-${yyyy}`;
+      }
+
+      // Check URL parameters for pre-filling
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("edema") === "1" || params.get("edema") === "true") {
+        document.getElementById("checkEdema").checked = false; // in the PDF, checking means NO edema
+        document.getElementById("obsEdema").value = "Oedeem vastgesteld: 3-motorig met hart-lig-stand vereist.";
+      }
+      if (params.get("decubitus") === "1" || params.get("decubitus") === "true") {
+        document.getElementById("checkDecubitus").checked = false;
+        document.getElementById("obsDecubitus").value = "Verhoogd decubitusrisico (>3 uur zitten): kantelverstelling vereist.";
+      }
+      if (params.get("standing") === "1" || params.get("standing") === "true") {
+        document.getElementById("checkStand").checked = false;
+        document.getElementById("obsStand").value = "Moeite met opstaan: elektrische sta-op ondersteuning vereist.";
+      }
+      if (params.get("height")) {
+        const h = params.get("height");
+        if (h === "small") {
+          document.getElementById("obsHeight").value = "Kleine maat (S / Mini) zithoogte < 45cm vereist.";
+        } else if (h === "large") {
+          document.getElementById("obsHeight").value = "Grote maat (L / XL) zithoogte > 48cm vereist.";
+        }
+      }
+
+      // Auto-trigger print if requested
+      if (params.get("print") === "1" || params.get("print") === "true") {
+        setTimeout(() => {
+          window.print();
+        }, 500);
+      }
+    });
+
+    // Print Button
+    document.getElementById("btnPrintPdf").addEventListener("click", () => {
+      window.print();
+    });
+
+    // Clear Form Button
+    document.getElementById("btnClearForm").addEventListener("click", () => {
+      if (confirm("Wilt u alle ingevulde velden wissen?")) {
+        document.querySelectorAll("input").forEach(i => {
+          if (i.type === "checkbox") i.checked = false;
+          else i.value = "";
+        });
+      }
+    });
+  </script>
+</body>
+</html>

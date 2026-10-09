@@ -476,6 +476,7 @@ function updateWizardAnswersFromForm() {
   state.wizardAnswers.height = formData.get("height");
   state.wizardAnswers.motors = formData.get("motors");
   state.wizardAnswers.modern = formData.get("modern") === "true";
+  state.wizardAnswers.wireless = formData.get("wireless") === "true";
   
   // Get all checked complaints
   state.wizardAnswers.complaints = [];
@@ -595,23 +596,29 @@ function getChairSuitability(chair, height, complaints) {
   const descLower = (chair.description || "").toLowerCase();
   
   if (brand === "Fitform") {
-    parts.push("Uiterst geschikt bij specifieke fysieke klachten dankzij de exacte instelbaarheid.");
+    parts.push("Uiterst geschikt bij specifieke fysieke klachten dankzij de exacte instelbaarheid op maat.");
   } else if (brand === "Doge") {
     parts.push("Aanbevolen bij mobiliteitsklachten door de extreem stabiele sta-op ondersteuning.");
   } else {
-    parts.push("Comfortabele fauteuil die uitstekende algemene ondersteuning biedt bij het opstaan.");
+    parts.push("Comfortabele fauteuil die uitstekende ergonomische ondersteuning biedt bij het opstaan.");
   }
   
   // Size match comment
   if (height === "small" && (descLower.includes("maat s") || descLower.includes("small"))) {
-    parts.push("Perfecte ergonomische zithoogte voor kleinere lichaamslengtes.");
+    parts.push("Ergonomische zithoogte & zitdiepte ter voorkoming van afknelling in de knieholtes.");
   } else if (height === "large" && (descLower.includes("maat l") || descLower.includes("large"))) {
-    parts.push("Uitstekende zitdiepte en rugondersteuning voor langere personen.");
+    parts.push("Ruime zithoogte en rugondersteuning ter ondersteuning van een gezonde 90-graden zithouding.");
   }
   
-  // Complaint match comment
-  if (complaints.includes("legs") && (descLower.includes("benen") || descLower.includes("hart-lig") || descLower.includes("vocht"))) {
-    parts.push("Ideaal bij vochtophoping door de speciale relaxstand.");
+  // Clinical red flags comments
+  if (complaints.includes("edema") || complaints.includes("legs")) {
+    parts.push("Ideaal bij oedeem en gezwollen benen door de hoogligging boven harthoogte.");
+  }
+  if (complaints.includes("decubitus")) {
+    parts.push("Optimale drukverdeling ter preventie van decubitus bij langdurig zitten (>3 uur).");
+  }
+  if (complaints.includes("standing")) {
+    parts.push("Krachtige en vloeiende sta-op ondersteuning zonder pijn of trekkracht van mantelzorger.");
   }
   
   return parts.join(" ");
@@ -631,9 +638,10 @@ function renderWizardResults() {
   
   // Filtering variables
   const height = state.wizardAnswers.height;
-  const complaints = state.wizardAnswers.complaints;
+  const complaints = state.wizardAnswers.complaints || [];
   const motorsWanted = parseInt(state.wizardAnswers.motors);
   const modernWanted = state.wizardAnswers.modern;
+  const wirelessWanted = state.wizardAnswers.wireless;
   
   // Score and filter models from dynamic state.chairs
   const scoredChairs = state.chairs
@@ -696,25 +704,102 @@ function renderWizardResults() {
         }
       }
       
-      // 3. Check style match (modern)
+      // 3. Check style match (modern) & wireless
       const isModern = descLower.includes("modern") || descLower.includes("design") || descLower.includes("strak") || descLower.includes("trendy") || descLower.includes("industrieel") || descLower.includes("draaibaar") || descLower.includes("draaivoet") || brandLower.includes("dfm") || brandLower.includes("mecam") || badgeLower.includes("modern") || badgeLower.includes("design") || badgeLower.includes("luxe");
       if (modernWanted && isModern) {
         score += 2;
       }
+      if (wirelessWanted && (descLower.includes("accu") || descLower.includes("batterij") || descLower.includes("draadloos") || isManual)) {
+        score += 3;
+      }
       
-      // 4. Check complaint alignment
+      // 4. Check clinical complaint alignment (Indicatiewijzer criteria)
+      if (complaints.includes("standing") && (chair.type === "staop" || descLower.includes("sta-op") || nameLower.includes("sta-op") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
+        score += 3;
+      }
+      if ((complaints.includes("edema") || complaints.includes("legs")) && (isThreeMotor || isFourMotor || descLower.includes("hart-lig") || descLower.includes("benen") || descLower.includes("kantel") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
+        score += 4;
+      }
+      if (complaints.includes("decubitus") && (isThreeMotor || isFourMotor || descLower.includes("kantel") || descLower.includes("drukverdeling") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
+        score += 4;
+      }
       if (complaints.includes("back") && (descLower.includes("rug") || descLower.includes("lendensteun") || descLower.includes("lumbaal") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
         score += 2;
       }
       if (complaints.includes("neck") && (descLower.includes("nek") || descLower.includes("schouder") || descLower.includes("topswing") || descLower.includes("hoofd") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
         score += 2;
       }
-      if (complaints.includes("legs") && (descLower.includes("benen") || descLower.includes("hart-lig") || descLower.includes("vocht") || descLower.includes("kantel") || descLower.includes("ligstand") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
-        score += 2;
-      }
       
       return { ...chair, score };
     });
+  
+  // Build Clinical Indicatiewijzer Evaluation Card
+  if (complaints.length > 0) {
+    const points = [];
+    const hasRedFlags = complaints.includes("standing") || complaints.includes("edema") || complaints.includes("decubitus");
+    
+    if (complaints.includes("standing")) {
+      points.push(`<li><strong>🚶 Moeite met zelfstandig opstaan:</strong> Krachtige elektrische sta-op ondersteuning vereist om heupen en knieën te ontlasten en de mantelzorger fysiek te ontzien.</li>`);
+    }
+    if (complaints.includes("edema") || complaints.includes("legs")) {
+      points.push(`<li><strong>🩺 Oedeem / Vochtophoping:</strong> Een 3-motorige stoel met onafhankelijke beensteun en kantelfunctie (benen boven harthoogte) is medisch geïndiceerd om veneuze terugkeer te stimuleren.</li>`);
+    }
+    if (complaints.includes("decubitus")) {
+      points.push(`<li><strong>🛡️ Decubitusrisico (>3 uur zitten):</strong> Een kantelverstelling (tilt-in-space) is essentieel om drukpieken op de zitbeenknobbels regelmatig weg te nemen zonder schuifkrachten.</li>`);
+    }
+    if (complaints.includes("back")) {
+      points.push(`<li><strong>⚡ Lage Rugpijn:</strong> Exacte lumbaalsteun (lendensteun) vereist om de natuurlijke S-curve van de wervelkolom te behouden en onderuitzakken te voorkomen.</li>`);
+    }
+    if (complaints.includes("neck")) {
+      points.push(`<li><strong>🤕 Nek- & Schouderklachten:</strong> Een instelbare topswing hoofdondersteuning is geïndiceerd ter ontlasting van de nek- en schouderspieren.</li>`);
+    }
+
+    const clinicalCard = document.createElement("div");
+    clinicalCard.className = "clinical-eval-card";
+    clinicalCard.style.cssText = "grid-column: 1 / -1; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);";
+    clinicalCard.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+        <span style="font-size: 1.5rem;">📋</span>
+        <h4 style="margin: 0; color: var(--color-forest); font-size: 1.25rem;">Klinische Evaluatie Zithouding & Mobiliteit</h4>
+      </div>
+      <p style="margin: 0 0 14px 0; color: var(--color-gray); font-size: 0.95rem;">
+        Op basis van de getoetste richtlijnen voor ergotherapie & wijkverpleging gelden de volgende observaties voor uw situatie:
+      </p>
+      <ul style="margin: 0 0 18px 0; padding-left: 20px; line-height: 1.7; color: var(--color-dark); font-size: 0.95rem;">
+        ${points.join("")}
+      </ul>
+      <div style="border-left: 4px solid var(--color-terracotta); background-color: rgba(224, 122, 95, 0.08); padding: 14px 18px; border-radius: 0 8px 8px 0;">
+        <strong style="color: var(--color-terracotta); display: block; font-size: 1rem; margin-bottom: 4px;">
+          ${hasRedFlags ? "Eén of meerdere medische indicaties (rode vlaggen) vastgesteld" : "Ergonomisch zitadvies op maat"}
+        </strong>
+        <span style="color: var(--color-dark); font-size: 0.95rem; line-height: 1.55; display: block;">
+          <strong>Wacht niet op een langdurig Wmo-traject.</strong> Gemeentelijke aanvraagprocedures duren vaak 12 tot 20 weken. Wij leveren een ergonomische oplossing op maat, passend bij elk budget — snel geleverd inclusief gratis meting en passing aan huis.
+        </span>
+      </div>
+      <div style="margin-top: 18px; display: flex; justify-content: flex-end; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <button type="button" class="btn btn-outline" id="btnExportClinicalPdf" style="font-size: 0.88rem; padding: 8px 16px; display: inline-flex; align-items: center; gap: 8px; border-color: var(--color-forest); color: var(--color-forest); background: #ffffff; cursor: pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Exporteer Indicatiewijzer (PDF)
+        </button>
+      </div>
+    `;
+
+    const exportBtn = clinicalCard.querySelector("#btnExportClinicalPdf");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", () => {
+        const query = new URLSearchParams({
+          height: height || "",
+          standing: complaints.includes("standing") ? "1" : "0",
+          edema: (complaints.includes("edema") || complaints.includes("legs")) ? "1" : "0",
+          decubitus: complaints.includes("decubitus") ? "1" : "0",
+          print: "1"
+        });
+        window.open(`indicatiewijzer.html?${query.toString()}`, "_blank");
+      });
+    }
+
+    resultsContainer.appendChild(clinicalCard);
+  }
   
   // Sort by score descending and take top matches (must have score >= 3)
   const matches = scoredChairs
@@ -722,18 +807,20 @@ function renderWizardResults() {
     .sort((a, b) => b.score - a.score);
     
   if (matches.length === 0) {
-    resultsContainer.innerHTML = `
-      <div class="no-results" style="grid-column: 1 / -1;">
-        <h3>Geen exacte match gevonden</h3>
-        <p style="margin-top: 8px;">Onze excuses, op basis van uw antwoorden hebben we momenteel geen standaard model in de database dat 100% past. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Plan een passing aan huis voor een gratis meting en advies.</p>
-        <a href="#afspraak-planner" class="btn btn-secondary" style="margin-top: 16px;">Vrijblijvend Advies Inplannen</a>
-      </div>
+    const noResults = document.createElement("div");
+    noResults.className = "no-results";
+    noResults.style.cssText = "grid-column: 1 / -1;";
+    noResults.innerHTML = `
+      <h3>Geen standaard match gevonden</h3>
+      <p style="margin-top: 8px;">Op basis van uw antwoorden hebben we momenteel geen standaard model in de database dat direct 100% aansluit. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Plan een passing aan huis voor een gratis opmeting en passend advies.</p>
+      <a href="afspraak.html" class="btn btn-secondary" style="margin-top: 16px;">Vrijblijvend Advies Inplannen</a>
     `;
+    resultsContainer.appendChild(noResults);
     return;
   }
   
   // Calculate max possible score to compute percentage
-  const maxScore = 5 + 4 + (modernWanted ? 2 : 0) + ((complaints || []).length * 2);
+  const maxScore = 5 + 4 + (modernWanted ? 2 : 0) + (wirelessWanted ? 3 : 0) + Math.max(2, (complaints || []).length * 3);
   
   // Limit results to top 3 matches
   const topMatches = matches.slice(0, 3);

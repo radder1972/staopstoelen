@@ -97,10 +97,10 @@
 
   <section class="occasions-header" style="text-align: left;">
     <div class="container banner-flex-container" style="justify-content: flex-start; align-items: flex-start;">
-      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
-        <span class="section-tag" style="color: var(--color-terracotta);">Persoonlijk Zitadvies</span>
-        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">De Keuzehulp Wizard</h1>
-        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en fysieke behoeftes.</p>
+      <div style="text-align: left; max-width: 650px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Klinische Sneltoets & Ergonomisch Advies</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.3rem;">Indicatiewijzer Zithouding & Mobiliteit</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 1.05rem;">Evalueer de fysieke zithouding en medische indicaties aan de hand van de klinische richtlijnen voor ergotherapeuten, wijkverpleging en mantelzorgers.</p>
       </div>
       <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Persoonlijke keuzehulp" class="banner-stamp">
     </div>
@@ -110,10 +110,22 @@
   <!-- Keuzehulp Wizard Section -->
   <section id="keuzehulp" class="subpage-section">
     <div class="container">
-      <a href="index.html" class="back-link">← Terug naar Home</a>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+        <a href="index.html" class="back-link" style="margin-bottom: 0;">← Terug naar Home</a>
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(59, 130, 246, 0.1); color: #1d4ed8; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Klinische Sneltoets voor Ergotherapeuten & Zorgprofessionals
+          </span>
+          <a href="indicatiewijzer.html" target="_blank" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            PDF Afvinkformulier
+          </a>
+        </div>
+      </div>
 
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
-        Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en fysieke behoeftes. Onze BewegingsTechnologen hebben deze keuzehulp ontwikkeld om u te voorzien van een passend advies op maat. Beantwoord de vragen over uw lengte, eventuele fysieke klachten en voorkeuren, en ontdek direct welke ergonomische stoelen het beste bij uw situatie passen.
+      <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 28px; max-width: 850px;">
+        Gebruik deze interactieve indicatiewijzer om de fysieke zithouding en mobiliteit te evalueren. Onze BewegingsTechnologen toetsen uw invoer direct aan de ergonomische criteria (zithoogte, zitdiepte en lumbaalsteun) en medische indicaties (zoals oedeem en decubitusrisico). Binnen 2 minuten ontvangt u een gefundeerd advies op maat.
       </p>
 
       <div class="wizard-card" id="wizardCard">
@@ -126,85 +138,120 @@
         </div>
 
         <form id="wizardForm">
-          <!-- Step 1: Lichaamslengte -->
+          <!-- Step 1: Ergonomische Basishouding & Lichaamslengte -->
           <div class="wizard-step active" id="step1">
-            <h3 class="wizard-step-title">Stap 1: Wat is de lichaamslengte van de gebruiker?</h3>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <span style="font-size: 1.4rem;">👤</span>
+              <h3 class="wizard-step-title" style="margin: 0;">1. Ergonomische Basishouding & Lichaamslengte</h3>
+            </div>
+            <p style="margin-bottom: 20px; color: var(--color-gray); font-size: 0.95rem;">
+              Voor een gezonde zithouding moeten de voeten plat op de vloer rusten (knieën en heupen in 90 graden) en past er een platte hand tussen zitting en knieholte. Wat is de lengte van de gebruiker?
+            </p>
             <div class="options-grid">
               <label class="option-card" id="optHeightS">
                 <input type="radio" name="height" value="small">
                 <span class="option-icon">📏</span>
-                <span class="option-title">Minder dan 1.65m</span>
-                <span class="option-desc">Geschikt voor compactere zithoogtes (Maat S)</span>
+                <span class="option-title">Minder dan 1.65m (Maat S)</span>
+                <span class="option-desc">Lagere zithoogte en ondiepe zitting. Voorkomt afknellen van bloedvaten in de knieholte.</span>
               </label>
               <label class="option-card" id="optHeightM">
                 <input type="radio" name="height" value="medium" checked>
                 <span class="option-icon">📏</span>
-                <span class="option-title">1.65m tot 1.80m</span>
-                <span class="option-desc">Geschikt voor gemiddelde zithoogtes (Maat M)</span>
+                <span class="option-title">1.65m tot 1.80m (Maat M)</span>
+                <span class="option-desc">Standaard zithoogte en zitdiepte. Optimale ondersteuning voor gemiddelde lichaamslengte.</span>
               </label>
               <label class="option-card" id="optHeightL">
                 <input type="radio" name="height" value="large">
                 <span class="option-icon">📏</span>
-                <span class="option-title">Langer dan 1.80m</span>
-                <span class="option-desc">Geschikt voor diepere en hogere zithoogtes (Maat L)</span>
+                <span class="option-title">Langer dan 1.80m (Maat L/XL)</span>
+                <span class="option-desc">Verhoogde zithoogte en extra diepe zitting. Voorkomt onderuitzakken en een bolle rug.</span>
               </label>
             </div>
           </div>
 
-          <!-- Step 2: Fysieke Klachten -->
+          <!-- Step 2: Medische Indicaties (Klinische Rode Vlaggen) -->
           <div class="wizard-step" id="step2">
-            <h3 class="wizard-step-title">Stap 2: Zijn er specifieke fysieke klachten?</h3>
-            <p style="margin-bottom: 24px; color: var(--color-gray);">Selecteer alle opties die van toepassing zijn.</p>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <span style="font-size: 1.4rem;">⚠️</span>
+              <h3 class="wizard-step-title" style="margin: 0;">2. Medische Indicaties (Klinische Rode Vlaggen)</h3>
+            </div>
+            <p style="margin-bottom: 20px; color: var(--color-gray); font-size: 0.95rem;">
+              Selecteer alle stellingen of klachten die actueel van toepassing zijn op de cliënt of uzelf:
+            </p>
             <div class="options-grid">
+              <label class="option-card" id="optComplaintStanding">
+                <input type="checkbox" name="complaints" value="standing">
+                <span class="option-icon">🚶</span>
+                <span class="option-title">Moeite met zelfstandig opstaan</span>
+                <span class="option-desc">Meervoudige pogingen nodig of fysieke trekkracht van mantelzorger vereist.</span>
+              </label>
+              <label class="option-card" id="optComplaintEdema">
+                <input type="checkbox" name="complaints" value="edema">
+                <span class="option-icon">🩺</span>
+                <span class="option-title">Oedeem (Vochtophoping in benen)</span>
+                <span class="option-desc">Vereist een onafhankelijke motor voor hoogligging boven harthoogte (kantelfunctie).</span>
+              </label>
+              <label class="option-card" id="optComplaintDecubitus">
+                <input type="checkbox" name="complaints" value="decubitus">
+                <span class="option-icon">🛡️</span>
+                <span class="option-title">Langdurig zitten (>3 uur) / Decubitusrisico</span>
+                <span class="option-desc">Verhoogd risico op doorligplekken. Vereist kantelverstelling (tilt-in-space) voor drukverdeling.</span>
+              </label>
               <label class="option-card" id="optComplaintBack">
                 <input type="checkbox" name="complaints" value="back">
                 <span class="option-icon">⚡</span>
-                <span class="option-title">Lage Rugpijn</span>
-                <span class="option-desc">Vereist goede lendensteun (lumbaalsteun)</span>
+                <span class="option-title">Lage Rugpijn / Hernia</span>
+                <span class="option-desc">De natuurlijke S-curve van de wervelkolom moet volledig ondersteund worden met lendensteun.</span>
               </label>
               <label class="option-card" id="optComplaintNeck">
                 <input type="checkbox" name="complaints" value="neck">
                 <span class="option-icon">🤕</span>
                 <span class="option-title">Nek- & Schouderklachten</span>
-                <span class="option-desc">Vereist een verstelbare topswing hoofdondersteuning</span>
-              </label>
-              <label class="option-card" id="optComplaintLegs">
-                <input type="checkbox" name="complaints" value="legs">
-                <span class="option-icon">👣</span>
-                <span class="option-title">Vochtophoping in benen</span>
-                <span class="option-desc">Vereist een 'hart-lig-stand' (kantelfunctie)</span>
+                <span class="option-desc">Vereist een instelbare topswing hoofdondersteuning om overbelasting te voorkomen.</span>
               </label>
             </div>
           </div>
 
           <!-- Step 3: Wensen / Functies -->
           <div class="wizard-step" id="step3">
-            <h3 class="wizard-step-title">Stap 3: Wat zijn uw aanvullende voorkeuren?</h3>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <span style="font-size: 1.4rem;">⚙️</span>
+              <h3 class="wizard-step-title" style="margin: 0;">3. Technische Functies & Wensen</h3>
+            </div>
+            <p style="margin-bottom: 20px; color: var(--color-gray); font-size: 0.95rem;">
+              Welk type bediening en motoruitvoering sluit het beste aan bij uw wensen?
+            </p>
             <div class="options-grid">
               <label class="option-card" id="optOptionMotors">
                 <input type="radio" name="motors" value="3" checked>
                 <span class="option-icon">⚙️</span>
-                <span class="option-title">Maximaal instelbaar</span>
-                <span class="option-desc">3 motoren (onafhankelijke rug, voeten en kanteling)</span>
+                <span class="option-title">3 motoren (Maximaal instelbaar)</span>
+                <span class="option-desc">Onafhankelijke bediening van rug, beensteun en kanteling (hart-lig-stand). Aanbevolen bij medische indicaties.</span>
               </label>
               <label class="option-card" id="optOptionBasic">
                 <input type="radio" name="motors" value="1">
                 <span class="option-icon">🔌</span>
-                <span class="option-title">Eenvoudig & functioneel</span>
-                <span class="option-desc">1 motor (voetenbank en rug bewegen samen)</span>
+                <span class="option-title">1 motor (Eenvoudig & functioneel)</span>
+                <span class="option-desc">Voetenbank en rug bewegen synchroon met een eenvoudige 2-knops handbediening.</span>
+              </label>
+              <label class="option-card" id="optOptionWireless">
+                <input type="checkbox" name="wireless" value="true">
+                <span class="option-icon">🔋</span>
+                <span class="option-title">Draadloos / Accu</span>
+                <span class="option-desc">Vrij in de woonkamer te plaatsen zonder gevaarlijke struikelkabels over de vloer.</span>
               </label>
               <label class="option-card" id="optOptionModernDesign">
                 <input type="checkbox" name="modern" value="true">
                 <span class="option-icon">🌿</span>
-                <span class="option-title">Moderne uitstraling</span>
-                <span class="option-desc">Past bij actuele woontrends (stof of modern leder)</span>
+                <span class="option-title">Moderne uitstraling / Draaivoet</span>
+                <span class="option-desc">Eigentijdse stoffering of leder met optionele draaivoet die past bij moderne interieurs.</span>
               </label>
             </div>
           </div>
 
           <!-- Step 4: Resultaten -->
           <div class="wizard-step" id="step4">
-            <h3 class="wizard-step-title" id="resultsTitle">Onze aanbevelingen op basis van uw antwoorden:</h3>
+            <h3 class="wizard-step-title" id="resultsTitle">Uw Klinisch Ergonomisch Advies & Passende Stoelen:</h3>
             <div id="wizardResults" class="results-container">
               <!-- Rendered via JavaScript -->
             </div>
@@ -214,7 +261,7 @@
           <div class="wizard-nav">
             <button type="button" class="btn btn-outline" id="btnWizardBack" style="display: none;">Vorige</button>
             <button type="button" class="btn btn-primary" id="btnWizardNext" style="margin-left: auto;">Volgende</button>
-            <button type="button" class="btn btn-secondary" id="btnWizardReset" style="display: none; margin-left: auto;">Opnieuw Beginnen</button>
+            <button type="button" class="btn btn-secondary" id="btnWizardReset" style="display: none; margin-left: auto;">Opnieuw Evalueren</button>
           </div>
         </form>
       </div>
