@@ -514,26 +514,27 @@
     }
 
     /* --------------------------------------------------------------------------
-       FLYER BACK (Achterzijde - Luxe Diepgroene Uitstraling)
+       FLYER BACK (Achterzijde - Luxe Saliegroene Uitstraling)
        -------------------------------------------------------------------------- */
     .flyer-back {
-      background: linear-gradient(155deg, #132d08 0%, #0d1e05 100%);
+      background: linear-gradient(155deg, #64a937 0%, #468820 100%);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .flyer-back::before {
-      border-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     .flyer-back .flyer-logo {
-      color: var(--color-sage);
+      color: #ffffff;
     }
     .flyer-back .flyer-logo span {
-      color: var(--color-terracotta);
+      color: #ffd8a8;
     }
     .flyer-back .flyer-tagline {
-      color: #d1dfc7;
+      color: #ffffff;
+      opacity: 0.92;
     }
 
     .flyer-back-badge-stamp {
@@ -541,7 +542,7 @@
       height: 28mm;
       flex-shrink: 0;
       display: block;
-      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.25));
     }
 
     .flyer-back-intro {
@@ -562,13 +563,14 @@
       letter-spacing: -0.15px;
     }
     .flyer-back-title span {
-      color: var(--color-terracotta);
+      color: #ffd8a8;
     }
 
     .flyer-back-desc {
       font-size: 2.85mm;
       line-height: 1.5;
-      color: #e4eee0;
+      color: #ffffff;
+      opacity: 0.95;
       font-weight: 400;
     }
 
@@ -583,20 +585,21 @@
     }
 
     .flyer-step-card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 0.25mm solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.16);
+      border: 0.25mm solid rgba(255, 255, 255, 0.32);
       padding: 3.2mm 3.8mm;
       border-radius: 2mm;
       display: flex;
       flex-direction: column;
       gap: 1mm;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
 
     .step-number {
       font-family: var(--font-heading);
       font-size: 2.2mm;
-      font-weight: 800;
-      color: var(--color-terracotta);
+      font-weight: 900;
+      color: #ffd8a8;
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
@@ -611,7 +614,8 @@
     .step-desc {
       font-size: 2.35mm;
       line-height: 1.4;
-      color: #d6e2cf;
+      color: #ffffff;
+      opacity: 0.95;
     }
 
     /* Voordelenstrook */
@@ -621,8 +625,8 @@
       display: flex;
       justify-content: space-between;
       gap: 2mm;
-      background: rgba(75, 143, 36, 0.25);
-      border: 0.25mm solid rgba(75, 143, 36, 0.4);
+      background: rgba(255, 255, 255, 0.2);
+      border: 0.25mm solid rgba(255, 255, 255, 0.38);
       padding: 2.5mm 3.5mm;
       border-radius: 2mm;
     }
@@ -633,10 +637,10 @@
       gap: 1.6mm;
       font-size: 2.35mm;
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
     }
     .benefit-bullet span.check {
-      color: var(--color-terracotta);
+      color: #ffd8a8;
       font-weight: 900;
     }
 
@@ -648,7 +652,7 @@
       justify-content: space-between;
       align-items: center;
       padding-top: 1mm;
-      border-top: 0.3mm solid rgba(255, 255, 255, 0.16);
+      border-top: 0.3mm solid rgba(255, 255, 255, 0.22);
     }
 
     .back-footer-left {
@@ -664,8 +668,9 @@
     }
     .back-footer-contact {
       font-size: 2.35mm;
-      color: #e4eee0;
+      color: #ffffff;
       font-weight: 500;
+      opacity: 0.95;
     }
     .back-footer-contact strong {
       color: #ffd8a8;
@@ -683,7 +688,7 @@
       background: #ffffff;
       padding: 0.7mm;
       border-radius: 1mm;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
       display: block;
     }
     .back-qr-labels {
@@ -695,7 +700,7 @@
       font-family: var(--font-heading);
       font-size: 1.9mm;
       font-weight: 800;
-      color: var(--color-terracotta);
+      color: #ffd8a8;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -703,11 +708,11 @@
       font-family: var(--font-heading);
       font-size: 2.4mm;
       font-weight: 800;
-      color: var(--color-sage);
+      color: #ffffff;
       letter-spacing: -0.1px;
     }
     .back-qr-url span {
-      color: var(--color-terracotta);
+      color: #ffd8a8;
     }
 
     /* --------------------------------------------------------------------------
@@ -1009,7 +1014,7 @@
            2. ACHTERZIJDE (BACK)
            ====================================================================== -->
       <div class="flyer-preview-item" id="flyerBackWrap">
-        <div class="flyer-label">Achterzijde (Luxe Forest Green &amp; Stappenplan)</div>
+        <div class="flyer-label">Achterzijde (Saliegroen &amp; Stappenplan)</div>
 
         <article class="flyer-container flyer-back" id="flyerBack">
           
