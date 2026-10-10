@@ -476,7 +476,7 @@
       outline: none;
     }
 
-    /* Bottom Brand Details: Pill over ~82% width */
+    /* Bottom Brand Details: Pill with generous breathing room */
     .sheet-footer {
       margin-top: 12px;
       padding-top: 4px;
@@ -486,45 +486,42 @@
       width: 100%;
     }
     .footer-pill {
-      width: 82%;
-      max-width: 630px;
+      width: 84%;
+      max-width: 650px;
       background: rgba(75, 143, 36, 0.08);
       border: 1.5px solid rgba(75, 143, 36, 0.28);
       border-radius: 9999px;
-      padding: 8px 24px;
+      padding: 8px 36px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
-      font-size: 11.5px;
-      color: var(--color-forest-dark);
-      box-sizing: border-box;
-      box-shadow: 0 1px 6px rgba(18, 43, 7, 0.06);
-    }
-    .footer-pill .pill-web {
+      gap: 18px;
       font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 12px;
-      color: #111827; /* Zwart conform wens */
-      letter-spacing: 0.1px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #111827;
+      box-sizing: border-box;
+      box-shadow: 0 1px 4px rgba(18, 43, 7, 0.04);
       white-space: nowrap;
+    }
+    .footer-pill span,
+    .footer-pill strong {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: 600;
+      color: #111827;
+      letter-spacing: 0.1px;
     }
     .footer-pill .pill-dot {
       color: var(--color-forest);
-      font-size: 12px;
-      opacity: 0.6;
+      font-size: 11px;
+      opacity: 0.5;
     }
     .footer-pill .pill-item {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-weight: 500;
-      color: var(--color-forest-dark);
       white-space: nowrap;
-    }
-    .footer-pill .pill-item strong {
-      font-weight: 700;
-      color: var(--color-forest-dark);
     }
     .footer-pill .pill-icon {
       color: var(--color-forest);
@@ -577,17 +574,19 @@
         padding-top: 2px !important;
       }
       .footer-pill {
-        width: 82% !important;
-        max-width: 630px !important;
-        padding: 7px 20px !important;
-        font-size: 11px !important;
+        width: 84% !important;
+        max-width: 650px !important;
+        padding: 7px 30px !important;
+        font-size: 10.5px !important;
+        color: #000000 !important;
         background: #f4f8f1 !important;
         border: 1px solid #b7d5ae !important;
         box-shadow: none !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-      .footer-pill .pill-web {
+      .footer-pill span,
+      .footer-pill strong {
         color: #000000 !important;
       }
     }
@@ -887,16 +886,14 @@
     <!-- 8. Footer Pill met contact & vestiging -->
     <footer class="sheet-footer">
       <div class="footer-pill">
-        <span class="pill-web">www.staopstoelen.nl</span>
+        <span>www.staopstoelen.nl</span>
         <span class="pill-dot">&bull;</span>
         <span class="pill-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="pill-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <strong>078 - 631 4858</strong>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="pill-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          078 - 631 4858
         </span>
         <span class="pill-dot">&bull;</span>
-        <span class="pill-item">info@staopstoelen.nl</span>
-        <span class="pill-dot">&bull;</span>
-        <span class="pill-item">Merwedestraat 239, Dordrecht</span>
+        <span>Merwedestraat 239, Dordrecht</span>
       </div>
     </footer>
 
