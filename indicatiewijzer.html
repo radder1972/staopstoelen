@@ -43,9 +43,10 @@
     body {
       font-family: var(--font-body);
       color: var(--color-dark);
-      background-color: #eef1f4;
-      line-height: 1.4;
-      font-size: 13.5px;
+      background-color: #f1f3f5;
+      padding: 24px;
+      line-height: 1.35;
+      font-size: 13px;
       -webkit-font-smoothing: antialiased;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -56,52 +57,29 @@
       font-family: var(--font-body);
     }
 
-    /* Screen Top Toolbar */
-    .top-toolbar {
-      background-color: var(--color-forest-dark);
-      color: #ffffff;
-      padding: 12px 32px;
+    /* Print toolbar (only visible on screen) */
+    .no-print-bar {
+      max-width: 820px;
+      margin: 0 auto 20px auto;
+      background: #ffffff;
+      padding: 14px 22px;
+      border-radius: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(18, 43, 7, 0.25);
-      border-bottom: 2px solid var(--color-forest);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     }
-
-    .top-toolbar a.btn-back {
-      color: #ffffff;
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 0.9rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      padding: 7px 14px;
-      border-radius: var(--radius-sm);
+    .no-print-bar .info-text {
+      color: var(--color-forest-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
     }
-
-    .top-toolbar a.btn-back:hover {
-      background-color: rgba(255, 255, 255, 0.12);
-      color: var(--color-sky);
-    }
-
-    .toolbar-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .btn-action {
-      background: linear-gradient(135deg, var(--color-terracotta) 0%, #e07f12 100%);
+    .btn-print {
+      background: var(--color-forest);
       color: #ffffff;
       border: none;
-      padding: 9px 22px;
-      border-radius: var(--radius-full);
+      padding: 10px 22px;
+      border-radius: 9999px;
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: 0.9rem;
@@ -110,45 +88,38 @@
       align-items: center;
       gap: 8px;
       transition: all 0.2s ease;
-      box-shadow: 0 3px 12px rgba(243, 146, 35, 0.35);
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.25);
     }
-
-    .btn-action:hover {
+    .btn-print:hover {
+      background: #3d751d;
       transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(243, 146, 35, 0.5);
     }
-
-    .btn-action:active {
-      transform: scale(0.98);
-    }
-
-    .btn-action-outline {
-      background-color: transparent;
-      color: #ffffff;
-      border: 1.5px solid rgba(255,255,255,0.4);
-      padding: 8px 16px;
-      border-radius: var(--radius-full);
+    .btn-clear {
+      background: transparent;
+      color: var(--color-gray);
+      border: 1px solid var(--color-gray-light);
+      padding: 9px 18px;
+      border-radius: 9999px;
       font-family: var(--font-heading);
-      font-size: 0.85rem;
       font-weight: 700;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.2s ease;
     }
-
-    .btn-action-outline:hover {
-      background-color: rgba(255,255,255,0.15);
-      border-color: #ffffff;
+    .btn-clear:hover {
+      background: #f8fafc;
+      color: var(--color-dark);
+      border-color: #cbd5e1;
     }
 
-    /* A4 Paper Sheet (210mm x 297mm) */
-    .document-wrapper {
+    /* The A4 Sheet Canvas */
+    .sheet {
       width: 210mm;
       min-height: 297mm;
-      margin: 24px auto 40px auto;
+      margin: 0 auto;
       background: #ffffff;
       padding: 14mm 16mm 12mm 16mm;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      border-radius: 4px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -156,21 +127,23 @@
       box-sizing: border-box;
     }
 
-    /* Header Section in Website Huisstijl (Navbar + Unified Header Box + Swooshes) */
-    .doc-header-site-style {
-      margin-bottom: 2px;
-    }
-
-    /* 1. Top Brand Bar: staopstoelen.nl op een witte omgeving met forse witruimte, zonder subtekst of telefoon */
-    .site-brand-bar {
+    /* Header Styling */
+    .sheet-header {
       display: flex;
-      align-items: center;
-      margin-bottom: 26px; /* Forse witruimte tussen Staopstoelen.nl en de groene box */
-      padding-top: 2px;
-      padding-bottom: 2px;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-forest);
+      position: relative;
     }
 
-    .site-brand-logo {
+    .brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .logo-text {
       font-family: var(--font-heading);
       font-size: 28px;
       font-weight: 900;
@@ -179,162 +152,134 @@
       letter-spacing: -0.5px;
       line-height: 1;
     }
-    .site-brand-logo span {
+    .logo-text span {
       color: var(--color-terracotta);
     }
 
-    /* 2. Gecombineerde Hoofdbox: Titelbanner + Cliëntgegevens + Instructie */
-    .unified-header-box {
-      border: 1px solid #d4dec9;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      box-shadow: 0 3px 12px rgba(18, 43, 7, 0.08);
-      margin-bottom: 2px;
-      background-color: #ffffff;
-    }
-
-    /* Groene Banner bovenzijde (Grotere titel Indicatiewijzer Zithouding & Mobiliteit) */
-    .site-banner-box {
-      background: linear-gradient(135deg, var(--color-forest) 0%, #3a751c 100%);
-      color: #ffffff;
-      padding: 10px 18px 11px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .site-banner-text {
-      flex: 1;
-      text-align: left;
-    }
-
-    .site-section-tag {
-      display: inline-block;
-      font-family: var(--font-heading);
-      font-size: 0.72rem;
-      font-weight: 800;
+    .logo-subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #ffc480; /* Warme terracotta goud */
-      margin-bottom: 2px;
     }
 
-    .site-banner-title {
-      color: #ffffff;
-      font-family: var(--font-heading);
-      font-size: 1.42rem;
-      font-weight: 900;
-      letter-spacing: -0.3px;
-      line-height: 1.18;
-      margin: 1px 0 3px 0;
-      white-space: nowrap;
+    /* Overlapping swoosh waves */
+    .swoosh-bar {
+      margin-top: 4px;
+      width: 240px;
+      height: 6px;
     }
 
-    .site-banner-subtitle {
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 0.82rem;
-      font-weight: 400;
-      line-height: 1.3;
-      margin: 0;
-    }
-
-    .site-banner-stamp {
-      flex-shrink: 0;
+    .header-badge {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 12px;
     }
 
-    .doc-stamp-large {
-      width: 90px;
-      height: 90px;
-      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.22));
-      display: block;
+    .doc-title-box {
+      text-align: right;
+    }
+    .doc-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .doc-subtitle {
+      font-size: 11px;
+      color: var(--color-terracotta);
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
-    /* Geïntegreerde Cliëntsectie */
-    .banner-client-section {
-      background-color: var(--color-cream);
-      padding: 10px 18px 8px 18px;
-      border-top: 2px solid var(--color-terracotta);
+    .mini-stamp {
+      width: 58px;
+      height: 58px;
     }
 
-    .client-meta-grid {
+    /* Top Grid: Client Details & Date */
+    .client-details-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 8px 20px;
-      margin-bottom: 6px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 12px;
+      margin-top: 10px;
+      background-color: var(--color-cream);
+      border: 1px solid var(--color-cream-dark);
+      border-radius: 8px;
+      padding: 10px 14px;
     }
 
-    .meta-field {
+    .input-line {
       display: flex;
       align-items: flex-end;
-      gap: 8px;
-      font-size: 0.88rem;
+      gap: 6px;
+      margin-bottom: 6px;
     }
-
-    .meta-field label {
-      font-family: var(--font-heading);
+    .input-line:last-child {
+      margin-bottom: 0;
+    }
+    .input-label {
+      font-size: 11px;
       font-weight: 700;
       color: var(--color-forest-dark);
       white-space: nowrap;
-      font-size: 0.82rem;
+      min-width: 96px;
     }
-
-    .meta-field input {
+    .input-fill {
+      flex: 1;
+      border-bottom: 1px dotted #8c939c;
+      height: 18px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .input-fill input {
+      width: 100%;
       border: none;
-      border-bottom: 1.5px dotted #9aa2ab;
       background: transparent;
-      padding: 1px 4px;
-      font-size: 0.9rem;
       font-family: var(--font-body);
+      font-size: 12px;
       font-weight: 500;
       color: var(--color-dark);
-      width: 100%;
+      padding: 0 2px 1px 2px;
       outline: none;
+      line-height: 1;
     }
 
     .doc-intro-compact {
-      font-size: 0.77rem;
+      font-size: 11px;
       color: var(--color-gray);
       line-height: 1.35;
-      margin: 0;
-      padding-top: 4px;
-      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 6px;
+      margin-bottom: 2px;
+      padding: 0 4px;
     }
-
-    /* 3. FULL WIDTH SWOOSHES als scheidingslijn direct onder de gecombineerde box */
-    .header-swoosh-fullwidth {
-      width: 100%;
-      height: 16px;
-      display: block;
-      margin-top: 4px;
-      margin-bottom: 8px;
-      overflow: visible;
+    .doc-intro-compact strong {
+      color: var(--color-forest-dark);
     }
 
     /* Section Styling */
     .eval-section {
-      margin-bottom: 12px;
-      border: 1.5px solid var(--color-border);
-      border-radius: var(--radius-sm);
+      margin-top: 10px;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 8px;
       overflow: hidden;
       background: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
 
     .section-heading {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: linear-gradient(90deg, var(--color-forest) 0%, var(--color-sage) 100%);
       color: #ffffff;
-      padding: 7px 14px;
+      padding: 5px 12px;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
     }
 
@@ -343,15 +288,15 @@
     }
 
     .eval-section-body {
-      padding: 8px 12px;
+      padding: 7px 12px;
     }
 
     /* Checklist Items */
     .check-item {
-      padding: 7px 10px;
+      padding: 6px 10px;
       border: 1px solid #edf0f2;
       border-radius: 6px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       background-color: #ffffff;
       transition: background-color 0.15s;
     }
@@ -387,7 +332,7 @@
     .check-title {
       font-family: var(--font-heading);
       font-weight: 700;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       color: var(--color-forest-dark);
       line-height: 1.35;
       cursor: pointer;
@@ -398,7 +343,7 @@
     }
 
     .check-risk {
-      font-size: 0.77rem;
+      font-size: 0.74rem;
       color: #b91c1c;
       margin-top: 2px;
       line-height: 1.35;
@@ -420,13 +365,13 @@
 
     /* Measurement / Dotted Lines Box */
     .observation-row {
-      margin-top: 5px;
-      padding-top: 5px;
+      margin-top: 4px;
+      padding-top: 4px;
       border-top: 1px dotted #cbd5e1;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--color-gray);
     }
 
@@ -435,7 +380,7 @@
       font-weight: 700;
       color: var(--color-forest-dark);
       white-space: nowrap;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
     }
 
     .observation-row input.obs-input {
@@ -453,29 +398,28 @@
 
     /* Call to Action Box - Contains all primary contact details */
     .doc-cta-box {
-      border-left: 5px solid var(--color-terracotta);
+      border: 1px solid var(--color-gray-light);
+      border-left: 4px solid var(--color-terracotta);
       background-color: var(--color-cream);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      padding: 12px 18px;
-      margin-top: 12px;
-      margin-bottom: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-top: 10px;
     }
 
     .doc-cta-title {
       color: var(--color-forest-dark);
       font-family: var(--font-heading);
-      font-size: 0.96rem;
+      font-size: 11.5px;
       font-weight: 800;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .doc-cta-title span {
       color: var(--color-terracotta);
     }
 
     .doc-cta-text {
-      font-size: 0.82rem;
-      line-height: 1.5;
+      font-size: 10.5px;
+      line-height: 1.4;
       color: var(--color-dark);
     }
 
@@ -484,76 +428,43 @@
       font-weight: 700;
     }
 
-    /* Document Footer - Strapline + Contactinformatie gecentreerd, verder leeg gehouden */
-    .doc-footer {
+    /* Bottom Brand Details */
+    .sheet-footer {
+      margin-top: 10px;
+      padding-top: 8px;
       border-top: 1.5px solid var(--color-forest);
-      padding-top: 9px;
-      margin-top: 6px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      gap: 4px;
-      font-size: 0.78rem;
+      font-size: 10px;
       color: var(--color-gray);
-      text-align: center;
     }
-
-    .doc-footer-strapline {
-      font-size: 0.84rem;
-      font-weight: 600;
+    .sheet-footer strong {
       color: var(--color-forest-dark);
     }
-    .doc-footer-strapline strong {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      color: var(--color-forest);
-    }
 
-    .doc-footer-contacts {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.77rem;
-      color: var(--color-dark);
-    }
-    .doc-footer-contacts span strong {
-      color: var(--color-forest-dark);
-      font-weight: 700;
-    }
-    .doc-footer-contacts .footer-dot {
-      color: var(--color-terracotta);
-      font-weight: 900;
-    }
-
-    /* ==========================================================================
-       PRINT SPECIFIC STYLES (A4 Portrait Vector Export)
-       ========================================================================== */
-    @page {
-      size: A4 portrait;
-      margin: 10mm 14mm 10mm 14mm;
-    }
-
+    /* Print optimizations */
     @media print {
       body {
-        background-color: #ffffff !important;
-        font-size: 12px !important;
+        background: #ffffff !important;
         padding: 0 !important;
+        margin: 0 !important;
       }
-
-      .top-toolbar {
+      .no-print-bar {
         display: none !important;
       }
-
-      .document-wrapper {
-        margin: 0 !important;
-        padding: 0 !important;
+      .sheet {
         box-shadow: none !important;
+        margin: 0 !important;
         width: 100% !important;
-        max-width: 100% !important;
         min-height: 100vh !important;
-        border-radius: 0 !important;
+        padding: 10mm 14mm 10mm 14mm !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
       }
 
       /* Clean handwriting lines: no grey placeholder texts */
@@ -564,186 +475,162 @@
         color: transparent !important;
       }
 
-      .site-brand-bar {
-        margin-bottom: 20px !important;
-        padding-top: 0 !important;
+      .sheet-header {
+        padding-bottom: 8px !important;
       }
 
-      .site-brand-logo {
-        font-size: 26px !important;
+      .mini-stamp {
+        width: 52px !important;
+        height: 52px !important;
       }
 
-      .site-banner-box {
-        padding: 7px 14px 8px 14px !important;
+      .client-details-grid {
+        padding: 6px 10px !important;
+        gap: 8px !important;
+        margin-top: 6px !important;
       }
 
-      .site-banner-title {
-        font-size: 1.32rem !important;
-        white-space: nowrap !important;
-      }
-
-      .doc-stamp-large {
-        width: 80px !important;
-        height: 80px !important;
-      }
-
-      .banner-client-section {
-        padding: 7px 14px 5px 14px !important;
-      }
-
-      .client-meta-grid {
-        gap: 5px 16px !important;
+      .input-line {
         margin-bottom: 3px !important;
       }
 
-      .header-swoosh-fullwidth {
-        height: 13px !important;
-        margin-top: 2px !important;
-        margin-bottom: 6px !important;
+      .input-fill input {
+        border-bottom: 1.5px dotted #666666 !important;
+      }
+
+      .eval-section {
+        margin-top: 6px !important;
       }
 
       .section-heading {
+        padding: 4px 10px !important;
+        font-size: 11px !important;
+      }
+
+      .eval-section-body {
         padding: 5px 10px !important;
-        font-size: 0.84rem !important;
       }
 
       .check-item {
-        padding: 5px 10px !important;
-        margin-bottom: 5px !important;
-      }
-
-      .check-title {
-        font-size: 0.83rem !important;
-      }
-
-      .check-risk {
-        font-size: 0.73rem !important;
-      }
-
-      .observation-row {
-        margin-top: 3px !important;
-        padding-top: 3px !important;
-        font-size: 0.73rem !important;
-      }
-
-      .doc-cta-box {
-        padding: 7px 12px !important;
-        margin-top: 6px !important;
+        padding: 4px 8px !important;
         margin-bottom: 4px !important;
       }
 
+      .check-title {
+        font-size: 0.80rem !important;
+      }
+
+      .check-risk {
+        font-size: 0.70rem !important;
+      }
+
+      .observation-row {
+        margin-top: 2px !important;
+        padding-top: 2px !important;
+        font-size: 0.70rem !important;
+      }
+
+      .doc-cta-box {
+        padding: 6px 10px !important;
+        margin-top: 6px !important;
+      }
+
       .doc-cta-title {
-        font-size: 0.88rem !important;
+        font-size: 11px !important;
       }
 
       .doc-cta-text {
-        font-size: 0.76rem !important;
-        line-height: 1.35 !important;
+        font-size: 10px !important;
+        line-height: 1.3 !important;
       }
 
-      .doc-footer {
+      .sheet-footer {
         padding-top: 6px !important;
-        margin-top: 4px !important;
-        gap: 3px !important;
-      }
-
-      .doc-footer-strapline {
-        font-size: 0.78rem !important;
-      }
-
-      .doc-footer-contacts {
-        font-size: 0.72rem !important;
-        gap: 8px !important;
-      }
-
-      input[type="text"] {
-        border-bottom: 1.5px dotted #666666 !important;
+        margin-top: 6px !important;
+        font-size: 9.5px !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Action Bar (Screen Only) -->
-  <div class="top-toolbar">
-    <a href="keuzehulp.html" class="btn-back" id="indicatiewijzerBackBtn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Terug naar Keuzehulp
-    </a>
-    <div class="toolbar-actions">
-      <button type="button" class="btn-action-outline" id="btnClearForm">
+  <!-- Screen Top Control Bar (Niet zichtbaar bij printen) -->
+  <div class="no-print-bar">
+    <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+      <a href="beheer.html#huisstijl" class="btn-back" id="indicatiewijzerBackBtn" style="color: var(--color-forest); text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: rgba(75, 143, 36, 0.08); border: 1px solid rgba(75, 143, 36, 0.2);">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Terug naar Beheer Portaal
+      </a>
+      <div class="info-text">
+        ✓ Officiële A4 Indicatiewijzer Zithouding &amp; Mobiliteit
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button type="button" class="btn-clear" id="btnClearForm">
         Wissen
       </button>
-      <button type="button" class="btn-action" id="btnPrintPdf">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        Opslaan als PDF / Afdrukken
+      <button class="btn-print" id="btnPrintPdf" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Afdrukken / Opslaan als PDF
       </button>
     </div>
   </div>
 
   <!-- A4 Printable Sheet -->
-  <main class="document-wrapper" id="printableDocument">
+  <div class="sheet" id="printableDocument">
     
     <div>
-      <!-- Document Header in Website Huisstijl (Brand Logo + Forse Witruimte + Unified Header Box + Swooshes) -->
-      <header class="doc-header-site-style">
-        <!-- 1. Top Brand Bar: Enkel staopstoelen.nl logo op witte achtergrond, zonder subtekst of telefoonnummer -->
-        <div class="site-brand-bar">
-          <div class="site-brand-logo">staopstoelen<span>.nl</span></div>
+      <!-- 1. Header met Logo & Swoosh & Documenttitel -->
+      <div class="sheet-header">
+        <div class="brand-col">
+          <div class="logo-text">staopstoelen<span>.nl</span></div>
+          <div class="logo-subtitle">Specialist in ergonomische maatwerk stoelen</div>
+          <!-- Overlapping Swoosh waves -->
+          <svg class="swoosh-bar" viewBox="0 0 300 20" preserveAspectRatio="none">
+            <path d="M 0,6 Q 75,18 150,8 T 300,10" fill="none" stroke="var(--color-sky)" stroke-width="3" stroke-linecap="round" opacity="0.7"></path>
+            <path d="M 0,10 Q 75,2 150,12 T 300,14" fill="none" stroke="var(--color-terracotta)" stroke-width="3" stroke-linecap="round" opacity="0.85"></path>
+            <path d="M 0,13 Q 75,20 150,10 T 300,16" fill="none" stroke="var(--color-sage)" stroke-width="3.5" stroke-linecap="round" opacity="0.9"></path>
+            <path d="M 0,16 Q 75,10 150,17 T 300,18" fill="none" stroke="var(--color-forest)" stroke-width="4.5" stroke-linecap="round"></path>
+          </svg>
         </div>
 
-        <!-- 2. Gecombineerde Hoofdbox: Titelbanner + Cliëntgegevens + Instructie -->
-        <div class="unified-header-box">
-          <!-- Bovenkant: Groene Banner (grotere titel Indicatiewijzer Zithouding & Mobiliteit) -->
-          <div class="site-banner-box">
-            <div class="site-banner-text">
-              <span class="site-section-tag">Ergonomische Sneltoets &amp; Advies</span>
-              <h1 class="site-banner-title">Indicatiewijzer Zithouding &amp; Mobiliteit</h1>
-              <p class="site-banner-subtitle">Medisch en ergonomisch beoordelingsprotocol voor functionele zitsystemen</p>
-            </div>
-            <div class="site-banner-stamp">
-              <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Online Keuzehulp" class="doc-stamp-large">
-            </div>
+        <div class="header-badge">
+          <div class="doc-title-box">
+            <div class="doc-title">Indicatiewijzer Zithouding</div>
+            <div class="doc-subtitle">Medisch &amp; Ergonomisch Beoordelingsprotocol</div>
           </div>
+          <!-- Keurmerk / Stempel clean vector in huisstijl -->
+          <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Kwaliteitskeurmerk" class="mini-stamp">
+        </div>
+      </div>
 
-          <!-- Onderkant: Cliëntgegevens & Protocol Instructie direct geïntegreerd -->
-          <div class="banner-client-section">
-            <div class="client-meta-grid">
-              <div class="meta-field">
-                <label for="clientName">Cliënt / Naam:</label>
-                <input type="text" id="clientName" autocomplete="off">
-              </div>
-              <div class="meta-field">
-                <label for="visitDate">Datum:</label>
-                <input type="text" id="visitDate" autocomplete="off">
-              </div>
-              <div class="meta-field">
-                <label for="therapistName">Beoordelaar / Organisatie:</label>
-                <input type="text" id="therapistName" autocomplete="off">
-              </div>
-              <div class="meta-field">
-                <label for="clientDob">Geboortedatum:</label>
-                <input type="text" id="clientDob" autocomplete="off">
-              </div>
-            </div>
-            <p class="doc-intro-compact">
-              Gebruik dit protocol tijdens het huisbezoek om de fysieke zithouding en medische indicaties te evalueren. Vink de stellingen aan die actueel van toepassing zijn.
-            </p>
+      <!-- 2. Klant- & Beoordelaar Gegevens -->
+      <div class="client-details-grid">
+        <div>
+          <div class="input-line">
+            <label for="clientName" class="input-label">Cliënt / Naam:</label>
+            <div class="input-fill"><input type="text" id="clientName" autocomplete="off"></div>
+          </div>
+          <div class="input-line">
+            <label for="clientDob" class="input-label">Geboortedatum:</label>
+            <div class="input-fill"><input type="text" id="clientDob" autocomplete="off"></div>
           </div>
         </div>
+        <div>
+          <div class="input-line">
+            <label for="visitDate" class="input-label">Datum passing:</label>
+            <div class="input-fill"><input type="text" id="visitDate" autocomplete="off"></div>
+          </div>
+          <div class="input-line">
+            <label for="therapistName" class="input-label">Beoordelaar / Org.:</label>
+            <div class="input-fill"><input type="text" id="therapistName" autocomplete="off"></div>
+          </div>
+        </div>
+      </div>
 
-        <!-- 3. De 4 Vloeibare Huisstijl Swooshes over de VOLLE BREEDTE direct onder de gecombineerde box -->
-        <svg class="header-swoosh-fullwidth" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 60" preserveAspectRatio="none">
-          <!-- Wave 1: Sky Blue -->
-          <path d="M 0,22 Q 250,50 500,20 T 1000,25" fill="none" stroke="var(--color-sky)" stroke-width="4.5" stroke-linecap="round" opacity="0.75"></path>
-          <!-- Wave 2: Terracotta Orange -->
-          <path d="M 0,30 Q 250,10 500,32 T 1000,34" fill="none" stroke="var(--color-terracotta)" stroke-width="4" stroke-linecap="round" opacity="0.85"></path>
-          <!-- Wave 3: Sage Green -->
-          <path d="M 0,37 Q 250,54 500,30 T 1000,40" fill="none" stroke="var(--color-sage)" stroke-width="4.5" stroke-linecap="round" opacity="0.9"></path>
-          <!-- Wave 4: Forest Green -->
-          <path d="M 0,44 Q 250,26 500,44 T 1000,46" fill="none" stroke="var(--color-forest)" stroke-width="6" stroke-linecap="round"></path>
-        </svg>
-      </header>
+      <p class="doc-intro-compact">
+        <strong>Gebruik:</strong> Evalueer tijdens het huisbezoek de ergonomische basishouding en medische indicaties. Vink de stellingen aan die actueel van toepassing zijn.
+      </p>
 
       <!-- Section 1: Ergonomische Basishouding -->
       <section class="eval-section">
@@ -874,22 +761,19 @@
       </aside>
     </div>
 
-    <!-- Document Footer met strapline en contactinformatie, verder leeg gehouden -->
-    <footer class="doc-footer">
-      <div class="doc-footer-strapline">
-        <strong>Staopstoelen</strong>, specialist in ergonomische staopstoelen op maat
+    <!-- Footer met contactgegevens & vestiging -->
+    <div class="sheet-footer">
+      <div>
+        <strong>staopstoelen.nl</strong> &bull; Merwedestraat 239, 3313 GT Dordrecht
       </div>
-      <div class="doc-footer-contacts">
-        <span>Telefoon: <strong>078 - 631 4858</strong></span>
-        <span class="footer-dot">&bull;</span>
-        <span>E-mail: <strong>info@staopstoelen.nl</strong></span>
-        <span class="footer-dot">&bull;</span>
-        <span>Showroom: <strong>Merwedestraat 239, Dordrecht</strong></span>
-        <span class="footer-dot">&bull;</span>
-        <span>Website: <strong>www.staopstoelen.nl</strong></span>
+      <div>
+        Tel: <strong>078 - 631 4858</strong> &bull; E-mail: <strong>info@staopstoelen.nl</strong>
       </div>
-    </footer>
-  </main>
+      <div>
+        Gerealiseerd door BewegingsTechnologen &bull; Protocol Versie 1.0
+      </div>
+    </div>
+  </div>
 
   <script>
     // Print Button
@@ -907,12 +791,12 @@
       }
     });
 
-    // Check if opened from beheer or huisstijl portal
+    // Check if opened from keuzehulp
     (function() {
       var backBtn = document.getElementById('indicatiewijzerBackBtn');
-      if (backBtn && (document.referrer.indexOf('huisstijl') !== -1 || document.referrer.indexOf('beheer') !== -1 || window.location.search.indexOf('from=huisstijl') !== -1 || window.location.search.indexOf('from=beheer') !== -1)) {
-        backBtn.href = 'beheer.html#huisstijl';
-        backBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Terug naar Beheer Portaal';
+      if (backBtn && (document.referrer.indexOf('keuzehulp') !== -1 || window.location.search.indexOf('from=keuzehulp') !== -1)) {
+        backBtn.href = 'keuzehulp.html';
+        backBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Terug naar Keuzehulp';
       }
     })();
   </script>
