@@ -517,10 +517,12 @@
     /* 1. Badge Header */
     .badge-header {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       height: 14mm;
       margin-bottom: 2mm;
+      padding-top: 1mm;
+      position: relative;
     }
 
     .badge-brand-col {
@@ -530,30 +532,38 @@
 
     .badge-logo-text {
       font-family: var(--font-heading);
-      font-size: 14px;
+      font-size: 22.5px;
       font-weight: 900;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.6px;
       color: var(--color-forest);
-      line-height: 1.1;
+      line-height: 1.05;
+      display: inline-block;
     }
     .badge-logo-text span {
       color: var(--color-terracotta);
     }
 
     .badge-logo-subtitle {
-      font-size: 7px;
-      font-weight: 600;
+      font-size: 7.8px;
+      font-weight: 800;
       color: var(--color-forest-dark);
-      letter-spacing: 0.2px;
+      letter-spacing: 0.65px;
       text-transform: uppercase;
-      margin-top: 1px;
+      margin-top: 2.5px;
     }
 
+    /* Kwaliteitssticker zegel (prominent & hangt half over de stoelfoto) */
     .badge-quality-stamp {
-      width: 48px;
-      height: 48px;
+      position: absolute;
+      top: 8.5mm;
+      right: 6mm;
+      width: 24mm;
+      height: 24mm;
       object-fit: contain;
-      flex-shrink: 0;
+      z-index: 10;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.22));
+      pointer-events: none;
+      transition: all 0.2s ease;
     }
 
     /* 2. Stoel Foto Container */
@@ -891,11 +901,11 @@
         min-height: auto !important;
       }
 
-      /* Single A6 print mode */
-      body.mode-single @page {
-        size: 105mm 148mm portrait;
+      @page {
         margin: 0;
       }
+
+      /* Single A6 print mode */
       body.mode-single .badge-a6 {
         box-shadow: none !important;
         margin: 0 !important;
@@ -908,10 +918,6 @@
       }
 
       /* A4 Drukvel (4x A6) mode */
-      body.mode-a4 @page {
-        size: A4 portrait;
-        margin: 0;
-      }
       body.mode-a4 .badge-single-wrap {
         display: none !important;
       }
@@ -1018,6 +1024,9 @@
         <div class="quick-input-group">
           <label><input type="checkbox" id="chkPunchHole" checked> Ophanggat</label>
         </div>
+        <div class="quick-input-group">
+          <label><input type="checkbox" id="chkQualitySticker" checked> Sticker</label>
+        </div>
       </div>
     </div>
   </header>
@@ -1033,14 +1042,15 @@
         <!-- Subtiel ophanggat richtpunt -->
         <div class="punch-hole-guide" id="punchHoleGuide"></div>
 
+        <!-- Kwaliteitssticker (prominent, hangt half over de stoelfoto) -->
+        <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Officiële Kwaliteitszegel" class="badge-quality-stamp" id="badgeQualityStamp">
+
         <!-- 1. Header -->
         <header class="badge-header">
           <div class="badge-brand-col">
             <div class="badge-logo-text">staopstoelen<span>.nl</span></div>
             <div class="badge-logo-subtitle">Specialist in ergonomisch maatwerk</div>
           </div>
-          <!-- Kwaliteitssticker -->
-          <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Officiële Kwaliteitszegel" class="badge-quality-stamp" id="badgeQualityStamp">
         </header>
 
         <!-- 2. Stoel Foto Container -->
@@ -1166,6 +1176,7 @@
     const inputCustomPrice = document.getElementById("inputCustomPrice");
     const inputCustomTag = document.getElementById("inputCustomTag");
     const chkPunchHole = document.getElementById("chkPunchHole");
+    const chkQualitySticker = document.getElementById("chkQualitySticker");
 
     // Known Cosy / Ambient Image Mappings
     const KNOWN_COSY_IMAGES = {
@@ -1556,6 +1567,12 @@
 
     chkPunchHole.addEventListener("change", (e) => {
       punchHoleGuide.style.display = e.target.checked ? "block" : "none";
+      if (currentPrintMode === 'a4') renderA4Grid();
+    });
+
+    chkQualitySticker.addEventListener("change", (e) => {
+      badgeQualityStamp.style.display = e.target.checked ? "block" : "none";
+      if (currentPrintMode === 'a4') renderA4Grid();
     });
 
     // Print Mode Switcher
@@ -1563,17 +1580,25 @@
       currentPrintMode = mode;
       document.body.className = `mode-${mode}`;
 
-      btnModeSingle.classList.toggle("active", mode === 'single');
-      btnModeA4.classList.toggle("active", mode === 'a4');
-
+      let dynamicStyle = document.getElementById("dynamicPageRule");
+      if (!dynamicStyle) {
+        dynamicStyle = document.createElement("style");
+        dynamicStyle.id = "dynamicPageRule";
+        document.head.appendChild(dynamicStyle);
+      }
       if (mode === 'single') {
+        dynamicStyle.textContent = `@page { size: 105mm 148mm portrait; margin: 0; }`;
         badgeSingleWrap.style.display = 'block';
         a4SheetContainer.style.display = 'none';
       } else {
+        dynamicStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
         badgeSingleWrap.style.display = 'none';
         a4SheetContainer.style.display = 'block';
         renderA4Grid();
       }
+
+      btnModeSingle.classList.toggle("active", mode === 'single');
+      btnModeA4.classList.toggle("active", mode === 'a4');
     }
 
     btnModeSingle.addEventListener("click", () => setPrintMode('single'));
@@ -1588,6 +1613,7 @@
     });
 
     // Initial load
+    setPrintMode('single');
     loadChairs();
   </script>
 </body>
