@@ -1456,11 +1456,11 @@ section[id], section {
 .summary-chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background: #ffffff;
   border: 1px solid rgba(75, 143, 36, 0.25);
   color: var(--color-forest);
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   font-weight: 600;
   cursor: pointer;
@@ -1473,9 +1473,97 @@ section[id], section {
   border-color: var(--color-forest);
 }
 
+.summary-chip .chip-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summary-chip .chip-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .summary-chip .chip-edit {
-  font-size: 0.72rem;
-  opacity: 0.75;
+  width: 12px;
+  height: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+.summary-chip .chip-edit svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Clinical Evaluation List Items & Icons */
+.clinical-header-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--color-sage-light);
+  color: var(--color-forest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.clinical-eval-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.clinical-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-dark);
+}
+
+.clinical-bullet-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--color-sage-light);
+  color: var(--color-forest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.clinical-bullet-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2.3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Compact Results Layout */

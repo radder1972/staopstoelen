@@ -747,6 +747,21 @@ function renderWizardResults() {
   summaryStrip.className = "results-summary-strip";
   summaryStrip.style.cssText = "grid-column: 1 / -1;";
 
+  const editPencilSvg = `<span class="chip-edit" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>`;
+
+  const chipIcons = {
+    height: `<span class="chip-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>`,
+    standing: `<span class="chip-icon"><svg viewBox="0 0 24 24"><path d="M13 4a2 2 0 1 0-4 0 2 2 0 0 0 4 0zM7 21l3-9 2 2v7M15 11l-3-3-2 1v4"/></svg></span>`,
+    edema: `<span class="chip-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>`,
+    decubitus: `<span class="chip-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>`,
+    back: `<span class="chip-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>`,
+    neck: `<span class="chip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></span>`,
+    none: `<span class="chip-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>`,
+    motors: `<span class="chip-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg></span>`,
+    wireless: `<span class="chip-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><path d="M23 13v-2"/></svg></span>`,
+    modern: `<span class="chip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></svg></span>`
+  };
+
   let heightLabel = "Maat M (1.65 - 1.80 m)";
   if (height === "small") heightLabel = "Maat S (< 1.65 m)";
   else if (height === "large") heightLabel = "Maat L (> 1.80 m)";
@@ -754,7 +769,7 @@ function renderWizardResults() {
   let chipsHtml = `
     <span class="summary-strip-label">Uw keuzes:</span>
     <button type="button" class="summary-chip" onclick="goToWizardStep(1)" title="Klik om maat te wijzigen">
-      👤 ${heightLabel} <span class="chip-edit">✏️</span>
+      ${chipIcons.height} <span>${heightLabel}</span> ${editPencilSvg}
     </button>
   `;
 
@@ -768,16 +783,17 @@ function renderWizardResults() {
     };
     complaints.forEach(c => {
       const cName = complaintNames[c] || c;
+      const cIcon = chipIcons[c] || chipIcons.standing;
       chipsHtml += `
         <button type="button" class="summary-chip" onclick="goToWizardStep(2)" title="Klik om klacht te wijzigen">
-          🩺 ${cName} <span class="chip-edit">✏️</span>
+          ${cIcon} <span>${cName}</span> ${editPencilSvg}
         </button>
       `;
     });
   } else {
     chipsHtml += `
       <button type="button" class="summary-chip" onclick="goToWizardStep(2)" title="Klik om klachten toe te voegen">
-        ✨ Geen fysieke klachten <span class="chip-edit">✏️</span>
+        ${chipIcons.none} <span>Geen fysieke klachten</span> ${editPencilSvg}
       </button>
     `;
   }
@@ -785,21 +801,21 @@ function renderWizardResults() {
   const motorLabel = motorsWanted === 1 ? "1 Motor" : "3 Motoren";
   chipsHtml += `
     <button type="button" class="summary-chip" onclick="goToWizardStep(3)" title="Klik om motortype te wijzigen">
-      ⚙️ ${motorLabel} <span class="chip-edit">✏️</span>
+      ${chipIcons.motors} <span>${motorLabel}</span> ${editPencilSvg}
     </button>
   `;
 
   if (wirelessWanted) {
     chipsHtml += `
-      <button type="button" class="summary-chip" onclick="goToWizardStep(3)">
-        🔋 Accu <span class="chip-edit">✏️</span>
+      <button type="button" class="summary-chip" onclick="goToWizardStep(3)" title="Klik om te wijzigen">
+        ${chipIcons.wireless} <span>Accu</span> ${editPencilSvg}
       </button>
     `;
   }
   if (modernWanted) {
     chipsHtml += `
-      <button type="button" class="summary-chip" onclick="goToWizardStep(3)">
-        🌿 Draaivoet / Design <span class="chip-edit">✏️</span>
+      <button type="button" class="summary-chip" onclick="goToWizardStep(3)" title="Klik om te wijzigen">
+        ${chipIcons.modern} <span>Draaivoet / Design</span> ${editPencilSvg}
       </button>
     `;
   }
@@ -903,36 +919,87 @@ function renderWizardResults() {
     const hasRedFlags = complaints.includes("standing") || complaints.includes("edema") || complaints.includes("decubitus");
     
     if (complaints.includes("standing")) {
-      points.push(`<li><strong>🚶 Moeite met zelfstandig opstaan:</strong> Krachtige elektrische sta-op ondersteuning vereist om heupen en knieën te ontlasten en de mantelzorger fysiek te ontzien.</li>`);
+      points.push(`
+        <li class="clinical-point-item">
+          <span class="clinical-bullet-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 4a2 2 0 1 0-4 0 2 2 0 0 0 4 0zM7 21l3-9 2 2v7M15 11l-3-3-2 1v4"/></svg>
+          </span>
+          <div>
+            <strong>Moeite met zelfstandig opstaan:</strong> Krachtige elektrische sta-op ondersteuning vereist om heupen en knieën te ontlasten en de mantelzorger fysiek te ontzien.
+          </div>
+        </li>
+      `);
     }
     if (complaints.includes("edema") || complaints.includes("legs")) {
-      points.push(`<li><strong>🩺 Oedeem / Vochtophoping:</strong> Een 3-motorige stoel met onafhankelijke beensteun en kantelfunctie (benen boven harthoogte) is medisch geïndiceerd om veneuze terugkeer te stimuleren.</li>`);
+      points.push(`
+        <li class="clinical-point-item">
+          <span class="clinical-bullet-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </span>
+          <div>
+            <strong>Oedeem / Vochtophoping:</strong> Een 3-motorige stoel met onafhankelijke beensteun en kantelfunctie (benen boven harthoogte) is medisch geïndiceerd om veneuze terugkeer te stimuleren.
+          </div>
+        </li>
+      `);
     }
     if (complaints.includes("decubitus")) {
-      points.push(`<li><strong>🛡️ Decubitusrisico (>3 uur zitten):</strong> Een kantelverstelling (tilt-in-space) is essentieel om drukpieken op de zitbeenknobbels regelmatig weg te nemen zonder schuifkrachten.</li>`);
+      points.push(`
+        <li class="clinical-point-item">
+          <span class="clinical-bullet-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </span>
+          <div>
+            <strong>Decubitusrisico (>3 uur zitten):</strong> Een kantelverstelling (tilt-in-space) is essentieel om drukpieken op de zitbeenknobbels regelmatig weg te nemen zonder schuifkrachten.
+          </div>
+        </li>
+      `);
     }
     if (complaints.includes("back")) {
-      points.push(`<li><strong>⚡ Lage Rugpijn:</strong> Exacte lumbaalsteun (lendensteun) vereist om de natuurlijke S-curve van de wervelkolom te behouden en onderuitzakken te voorkomen.</li>`);
+      points.push(`
+        <li class="clinical-point-item">
+          <span class="clinical-bullet-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </span>
+          <div>
+            <strong>Lage Rugpijn:</strong> Exacte lumbaalsteun (lendensteun) vereist om de natuurlijke S-curve van de wervelkolom te behouden en onderuitzakken te voorkomen.
+          </div>
+        </li>
+      `);
     }
     if (complaints.includes("neck")) {
-      points.push(`<li><strong>🤕 Nek- & Schouderklachten:</strong> Een instelbare topswing hoofdondersteuning is geïndiceerd ter ontlasting van de nek- en schouderspieren.</li>`);
+      points.push(`
+        <li class="clinical-point-item">
+          <span class="clinical-bullet-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+          </span>
+          <div>
+            <strong>Nek- &amp; Schouderklachten:</strong> Een instelbare topswing hoofdondersteuning is geïndiceerd ter ontlasting van de nek- en schouderspieren.
+          </div>
+        </li>
+      `);
     }
 
     const clinicalCard = document.createElement("div");
     clinicalCard.className = "clinical-eval-card";
     clinicalCard.style.cssText = "grid-column: 1 / -1; background: #ffffff; border: 1.5px solid rgba(75, 143, 36, 0.25); border-radius: 14px; padding: 18px 20px; margin-bottom: 8px; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.05);";
     clinicalCard.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 1.25rem;">📋</span>
-          <h4 style="margin: 0; color: var(--color-forest); font-size: 1.12rem; font-family: var(--font-heading);">Ergonomische Evaluatie Zithouding &amp; Mobiliteit</h4>
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="clinical-header-icon-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+              <path d="M9 14l2 2 4-4"/>
+            </svg>
+          </div>
+          <h4 style="margin: 0; color: var(--color-forest); font-size: 1.12rem; font-family: var(--font-heading); font-weight: 700;">Ergonomische Evaluatie Zithouding &amp; Mobiliteit</h4>
         </div>
         <button type="button" class="btn btn-outline" id="btnExportClinicalPdf" style="font-size: 0.82rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; border-color: var(--color-forest); color: var(--color-forest); background: #ffffff; cursor: pointer; border-radius: var(--radius-full);">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           Exporteer Indicatiewijzer (PDF)
         </button>
       </div>
-      <ul style="margin: 0 0 12px 0; padding-left: 20px; line-height: 1.6; color: var(--color-dark); font-size: 0.88rem;">
+      <ul style="margin: 0 0 14px 0;">
         ${points.join("")}
       </ul>
       <div style="border-left: 4px solid var(--color-terracotta); background-color: rgba(243, 146, 35, 0.08); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: var(--color-dark); line-height: 1.5;">
