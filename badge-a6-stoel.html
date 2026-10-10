@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A6 Stoelbadge &amp; Showroom Prijskaart | staopstoelen.nl</title>
+  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v1.4) | staopstoelen.nl</title>
+  <meta name="version" content="1.4">
   <meta name="description" content="A6 stoelbadge en prijskaart generator voor in de showroom met sfeerfoto of standaardfoto, specificaties, prijzen en kwaliteitszegel van staopstoelen.nl.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -113,6 +114,17 @@
       padding: 2px 8px;
       border-radius: 9999px;
       font-weight: 700;
+    }
+
+    .toolbar-version-badge {
+      font-size: 0.7rem;
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest-dark);
+      border: 1px solid rgba(75, 143, 36, 0.3);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
     }
 
     .toolbar-right {
@@ -847,6 +859,26 @@
       margin-top: 1px;
     }
 
+    /* Zeer subtiele footer onderaan de A6 kaart (versienummer & afzender) */
+    .badge-subtle-footer {
+      position: absolute;
+      bottom: 2mm;
+      left: 7.5mm;
+      right: 7.5mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 5.6px;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.85;
+      line-height: 1;
+    }
+
     /* ==========================================================================
        ACHTERKANT SPECIFIEKE STYLES (Productspecificaties & Pasrapport)
        ========================================================================== */
@@ -1250,6 +1282,7 @@
         <div class="toolbar-title">
           <span>A6 Stoelbadge &amp; Prijskaart</span>
           <span class="toolbar-title-badge">A6 &bull; 105 × 148 mm</span>
+          <span class="toolbar-version-badge" title="Versie 1.4">v1.4</span>
         </div>
       </div>
 
@@ -1469,6 +1502,12 @@
               </div>
             </div>
           </div>
+
+          <!-- Subtiele footer met versienummer -->
+          <footer class="badge-subtle-footer">
+            <span>staopstoelen.nl</span>
+            <span>v1.4</span>
+          </footer>
         </article>
       </div>
 
@@ -1544,6 +1583,12 @@
               <div><strong>Inruil Mogelijk</strong><br>Inruilpremie op uw stoel</div>
             </div>
           </div>
+
+          <!-- Subtiele footer met versienummer -->
+          <footer class="badge-subtle-footer">
+            <span>staopstoelen.nl &bull; Productinformatie</span>
+            <span>v1.4</span>
+          </footer>
         </article>
       </div>
 
