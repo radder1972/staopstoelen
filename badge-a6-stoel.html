@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v1.4) | staopstoelen.nl</title>
-  <meta name="version" content="1.4">
+  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v1.5) | staopstoelen.nl</title>
+  <meta name="version" content="1.5">
   <meta name="description" content="A6 stoelbadge en prijskaart generator voor in de showroom met sfeerfoto of standaardfoto, specificaties, prijzen en kwaliteitszegel van staopstoelen.nl.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -617,7 +617,7 @@
     .badge-photo-container {
       position: relative;
       width: 100%;
-      height: 44mm;
+      height: 41mm;
       border-radius: 7px;
       overflow: hidden;
       background: #f8fafc;
@@ -661,8 +661,8 @@
 
     /* 3. Product Titel & Type (Ruim & Luchtig onder de foto) */
     .badge-product-title-row {
-      margin-top: 2.4mm;
-      margin-bottom: 2.4mm;
+      margin-top: 2.2mm;
+      margin-bottom: 2.2mm;
     }
 
     .badge-brand-label {
@@ -693,12 +693,12 @@
       margin-top: 1.5px;
     }
 
-    /* 4. Grote Groene Showroom Box (Luchtig, ruim & ademend) */
+    /* 4. Grote Groene Showroom Box (Hoger, ruimer en prominent) */
     .badge-showroom-box {
       background: linear-gradient(145deg, #f4faf1 0%, #e6f4df 100%);
       border: 1.8px solid var(--color-forest);
       border-radius: 8px;
-      padding: 7px 9px 7.5px 9px;
+      padding: 7.5px 10px 8.5px 10px;
       box-shadow: 0 3px 10px rgba(75, 143, 36, 0.14);
       display: flex;
       flex-direction: column;
@@ -710,25 +710,26 @@
     .badge-specs-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2mm;
+      gap: 2.2mm;
     }
 
     .spec-cell {
       background: #ffffff;
       border: 1px solid #d4e5d0;
-      border-radius: 5px;
-      padding: 3.2px 6.5px;
+      border-radius: 6px;
+      padding: 3.8px 7.5px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      min-height: 9.6mm;
+      gap: 6.5px;
+      min-height: 10.4mm;
       box-sizing: border-box;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     .spec-icon-wrap {
-      width: 19px;
-      height: 19px;
-      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 4.5px;
       background: rgba(75, 143, 36, 0.12);
       color: var(--color-forest);
       display: flex;
@@ -737,8 +738,8 @@
       flex-shrink: 0;
     }
     .spec-icon-wrap svg {
-      width: 11.5px;
-      height: 11.5px;
+      width: 12px;
+      height: 12px;
       stroke-width: 2.3;
     }
 
@@ -760,7 +761,7 @@
 
     .spec-cell-value {
       font-family: var(--font-heading);
-      font-size: 8.6px;
+      font-size: 8.8px;
       font-weight: 800;
       color: var(--color-forest-dark);
       white-space: nowrap;
@@ -774,7 +775,7 @@
     .badge-box-divider {
       height: 1px;
       background: rgba(75, 143, 36, 0.25);
-      margin: 3.6mm 0 3.2mm 0;
+      margin: 4mm 0 3.8mm 0;
     }
 
     /* Onderkant van de box: Actie links, Prijs RECHTS */
@@ -793,25 +794,28 @@
       gap: 3px;
     }
 
+    /* Groene actieknop met royale witruimte en witte rand eromheen */
     .action-pill {
       background: var(--color-forest);
       color: #ffffff;
-      padding: 5.5px 11px;
-      border-radius: 5px;
+      padding: 6px 13px;
+      border-radius: 6px;
       font-family: var(--font-heading);
       font-size: 8.8px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.4px;
       white-space: nowrap;
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 3px 8px rgba(75, 143, 36, 0.28);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      margin: 2px 0 3px 0;
     }
 
     .price-subline {
-      font-size: 6.5px;
+      font-size: 6.6px;
       font-weight: 700;
       color: var(--color-forest-dark);
       opacity: 0.85;
@@ -834,7 +838,7 @@
     }
 
     .price-label {
-      font-size: 7.4px;
+      font-size: 7.5px;
       font-weight: 800;
       color: var(--color-forest);
       text-transform: uppercase;
@@ -851,7 +855,7 @@
 
     .price-amount {
       font-family: var(--font-heading);
-      font-size: 27px;
+      font-size: 28px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1;
@@ -1282,7 +1286,7 @@
         <div class="toolbar-title">
           <span>A6 Stoelbadge &amp; Prijskaart</span>
           <span class="toolbar-title-badge">A6 &bull; 105 × 148 mm</span>
-          <span class="toolbar-version-badge" title="Versie 1.4">v1.4</span>
+          <span class="toolbar-version-badge" title="Versie 1.5">v1.5</span>
         </div>
       </div>
 
@@ -1506,7 +1510,7 @@
           <!-- Subtiele footer met versienummer -->
           <footer class="badge-subtle-footer">
             <span>staopstoelen.nl</span>
-            <span>v1.4</span>
+            <span>v1.5</span>
           </footer>
         </article>
       </div>
@@ -1587,7 +1591,7 @@
           <!-- Subtiele footer met versienummer -->
           <footer class="badge-subtle-footer">
             <span>staopstoelen.nl &bull; Productinformatie</span>
-            <span>v1.4</span>
+            <span>v1.5</span>
           </footer>
         </article>
       </div>
