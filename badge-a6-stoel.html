@@ -497,11 +497,16 @@
     /* Flankkaarten (Vorige & Volgende in waaier) */
     .fan-card.side {
       flex: 0 1 230px;
-      min-height: 210px;
+      height: 240px;
+      min-height: 240px;
+      max-height: 240px;
       opacity: 0.72;
       filter: grayscale(12%);
       background: #f8fafc;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .fan-card.side.prev {
       transform: perspective(700px) rotateY(7deg) scale(0.92);
@@ -520,16 +525,21 @@
       box-shadow: 0 8px 22px rgba(75, 143, 36, 0.16);
     }
 
-    /* Middelste Kaart (Actieve Stoel in waaier) */
+    /* Middelste Kaart (Actieve Stoel in waaier - Vaste stabiele hoogte) */
     .fan-card.center {
       flex: 0 0 340px;
-      min-height: 250px;
+      height: 300px;
+      min-height: 300px;
+      max-height: 300px;
       border: 2.5px solid var(--color-forest);
       background: linear-gradient(180deg, #ffffff 0%, #fbfdfa 100%);
       box-shadow: 0 12px 32px rgba(75, 143, 36, 0.22);
       transform: scale(1.03);
       z-index: 5;
       cursor: default;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .fan-card-topbar {
@@ -638,15 +648,18 @@
       font-size: 1.05rem;
     }
 
-    /* Fotokeuze balk binnenin de actieve kaart */
+    /* Fotokeuze balk binnenin de actieve kaart - Vaste hoogte zodat kaart nooit verspringt */
     .fan-card-photos-bar {
-      margin-top: 8px;
-      padding-top: 8px;
+      margin-top: auto;
+      padding-top: 6px;
       border-top: 1px dashed rgba(75, 143, 36, 0.2);
       display: flex;
       align-items: center;
       gap: 6px;
-      flex-wrap: wrap;
+      min-height: 34px;
+      max-height: 34px;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     .fan-card-photos-label {
       font-size: 0.68rem;
@@ -654,6 +667,18 @@
       color: var(--color-forest-dark);
       text-transform: uppercase;
       letter-spacing: 0.3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .fan-card-photos-btns {
+      display: flex;
+      gap: 5px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      max-width: 100%;
+      padding-bottom: 2px;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
     }
 
     @media (max-width: 768px) {
@@ -1088,7 +1113,7 @@
       height: 39mm;
       border-radius: 7px;
       overflow: hidden;
-      background: #f8fafc;
+      background: #ffffff;
       border: 1px solid #e2e8f0;
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
       display: flex;
@@ -1099,7 +1124,7 @@
     .badge-photo-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       transition: object-fit 0.2s ease;
     }
 
@@ -2826,8 +2851,14 @@
       if (centerImages.length > 1) {
         photoButtonsHtml = `
           <div class="fan-card-photos-bar">
-            <span class="fan-card-photos-label">Foto voor badge:</span>
-            <div id="fanPhotoBtns" style="display: inline-flex; gap: 5px; flex-wrap: wrap;"></div>
+            <span class="fan-card-photos-label">Foto:</span>
+            <div id="fanPhotoBtns" class="fan-card-photos-btns"></div>
+          </div>
+        `;
+      } else {
+        photoButtonsHtml = `
+          <div class="fan-card-photos-bar" style="border-top: none; opacity: 0; pointer-events: none;">
+            <span class="fan-card-photos-label">&nbsp;</span>
           </div>
         `;
       }
@@ -2987,6 +3018,7 @@
 
       const chosen = currentImages[currentImageIndex];
       badgePhotoImg.src = chosen.url;
+      badgePhotoImg.style.objectFit = chosen.type === 'cosy' ? 'cover' : 'contain';
       const fanCenterImg = document.getElementById("fanCenterImg");
       if (fanCenterImg) fanCenterImg.src = chosen.url;
 
@@ -3178,7 +3210,9 @@
         const imgEl = frontEl.querySelector('.badge-photo-img');
         if (imgEl) {
           const imgs = getAllImagesForChair(chair);
-          imgEl.src = imgs.length > 0 ? imgs[0].url : (chair.image || '');
+          const firstImg = imgs.length > 0 ? imgs[0] : null;
+          imgEl.src = firstImg ? firstImg.url : (chair.image || '');
+          imgEl.style.objectFit = (firstImg && firstImg.type === 'cosy') ? 'cover' : 'contain';
         }
 
         const priceEl = frontEl.querySelector('#badgePriceAmount');
