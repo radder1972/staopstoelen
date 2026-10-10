@@ -1566,12 +1566,8 @@
     .back-spec-row:last-child, .back-spec-row:nth-last-child(2) {
       border-bottom: none;
     }
+    /* Alle specificatielabels in warm merk-oranje */
     .back-spec-k {
-      color: #64748b;
-      font-weight: 600;
-    }
-    /* Oranje accent voor ergonomische kernspecificaties (maatvoering, motoren, sta-op) */
-    .back-spec-k.accent-orange {
       color: var(--color-terracotta-dark);
       font-weight: 800;
     }
@@ -1607,11 +1603,6 @@
       flex-shrink: 0;
       font-size: 8.8px;
       line-height: 1.2;
-    }
-    /* Oranje accent voor 100% ergonomisch zitcomfort tekst */
-    .feat-text-accent {
-      color: var(--color-terracotta-dark) !important;
-      font-weight: 800 !important;
     }
 
     /* 5. Showroom & Service Zekerheden Box (100% Maatgarantie - Een stuk HOGER & Prominent) */
@@ -2059,18 +2050,13 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-      .back-spec-k.accent-orange {
+      .back-spec-k {
         color: var(--color-terracotta-dark) !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
       .back-features-list li .feat-check {
         color: var(--color-terracotta) !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-      .feat-text-accent {
-        color: var(--color-terracotta-dark) !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -2535,9 +2521,9 @@
               <span>Specificaties &amp; Maatvoering</span>
             </div>
             <div class="back-specs-table" id="backSpecsTable">
-              <div class="back-spec-row"><span class="back-spec-k accent-orange">Maatvoering</span><span class="back-spec-v" contenteditable="true">3 maten, Small / Medium / Large</span></div>
-              <div class="back-spec-row"><span class="back-spec-k accent-orange">Aantal Motoren</span><span class="back-spec-v" contenteditable="true">2 Motoren</span></div>
-              <div class="back-spec-row"><span class="back-spec-k accent-orange">Sta-op Functie</span><span class="back-spec-v" contenteditable="true">Elektrisch ondersteund</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Maatvoering</span><span class="back-spec-v" contenteditable="true">3 maten, Small / Medium / Large</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Aantal Motoren</span><span class="back-spec-v" contenteditable="true">2 Motoren</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Sta-op Functie</span><span class="back-spec-v" contenteditable="true">Elektrisch ondersteund</span></div>
               <div class="back-spec-row"><span class="back-spec-k">Max. Belasting</span><span class="back-spec-v" contenteditable="true">120 kg</span></div>
               <div class="back-spec-row"><span class="back-spec-k">Bekleding</span><span class="back-spec-v" contenteditable="true">Luxe Rundleder</span></div>
               <div class="back-spec-row"><span class="back-spec-k">Bediening</span><span class="back-spec-v" contenteditable="true">Handbediening in armleuning</span></div>
@@ -2553,7 +2539,7 @@
               <span>Ergonomische Kenmerken</span>
             </div>
             <ul class="back-features-list" id="backFeaturesList" contenteditable="true">
-              <li><span class="feat-check">✓</span><span class="feat-text-accent" contenteditable="true">100% Ergonomisch zitcomfort</span></li>
+              <li><span class="feat-check">✓</span><span contenteditable="true">100% Ergonomisch zitcomfort</span></li>
               <li><span class="feat-check">✓</span><span contenteditable="true">Geleverd met kwaliteitsgarantie</span></li>
               <li><span class="feat-check">✓</span><span contenteditable="true">Volledig op uw lichaamsmaat afgesteld</span></li>
               <li><span class="feat-check">✓</span><span contenteditable="true">Vakkundig opgemeten en ingesteld op uw persoonlijke lichaamsmaten</span></li>
@@ -3153,9 +3139,9 @@
       // Maat- en specificatietabel (8 velden in 2 kolommen)
       if (backSpecsTable) {
         const specItems = [
-          { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)', accent: true },
-          { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren', accent: true },
-          { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax', accent: true },
+          { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)' },
+          { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren' },
+          { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax' },
           { k: 'Max. Belasting', v: specs['Maximaal gebruikersgewicht'] || 'Tot 130 kg' },
           { k: 'Bekleding', v: mat },
           { k: 'Bediening', v: specs['Bediening'] || 'Geïntegreerde handbediening' },
@@ -3165,7 +3151,7 @@
 
         backSpecsTable.innerHTML = specItems.map(item => `
           <div class="back-spec-row">
-            <span class="back-spec-k${item.accent ? ' accent-orange' : ''}">${item.k}</span>
+            <span class="back-spec-k">${item.k}</span>
             <span class="back-spec-v" contenteditable="true">${item.v}</span>
           </div>
         `).join('');
@@ -3182,10 +3168,9 @@
             "Vakkundig opgemeten en ingesteld op uw persoonlijke lichaamsmaten"
           ];
         }
-        backFeaturesList.innerHTML = feats.slice(0, 4).map(f => {
-          const isAccent = f && (f.toLowerCase().includes('ergonomisch zitcomfort') || f.includes('100%'));
-          return `<li><span class="feat-check">✓</span><span class="${isAccent ? 'feat-text-accent' : ''}" contenteditable="true">${f}</span></li>`;
-        }).join('');
+        backFeaturesList.innerHTML = feats.slice(0, 4).map(f => `
+          <li><span class="feat-check">✓</span><span contenteditable="true">${f}</span></li>
+        `).join('');
       }
 
       // Image
@@ -3306,9 +3291,9 @@
         const tableEl = backEl.querySelector('#backSpecsTable');
         if (tableEl) {
           const specItems = [
-            { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)', accent: true },
-            { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren', accent: true },
-            { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax', accent: true },
+            { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)' },
+            { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren' },
+            { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax' },
             { k: 'Max. Belasting', v: specs['Maximaal gebruikersgewicht'] || 'Tot 130 kg' },
             { k: 'Bekleding', v: mat },
             { k: 'Bediening', v: specs['Bediening'] || 'Geïntegreerde handbediening' },
@@ -3317,7 +3302,7 @@
           ];
           tableEl.innerHTML = specItems.map(item => `
             <div class="back-spec-row">
-              <span class="back-spec-k${item.accent ? ' accent-orange' : ''}">${item.k}</span>
+              <span class="back-spec-k">${item.k}</span>
               <span class="back-spec-v">${item.v}</span>
             </div>
           `).join('');
@@ -3334,10 +3319,9 @@
               "Vakkundig opgemeten en ingesteld op uw persoonlijke lichaamsmaten"
             ];
           }
-          featList.innerHTML = feats.slice(0, 4).map(f => {
-            const isAccent = f && (f.toLowerCase().includes('ergonomisch zitcomfort') || f.includes('100%'));
-            return `<li><span class="feat-check">✓</span><span class="${isAccent ? 'feat-text-accent' : ''}">${f}</span></li>`;
-          }).join('');
+          featList.innerHTML = feats.slice(0, 4).map(f => `
+            <li><span class="feat-check">✓</span><span>${f}</span></li>
+          `).join('');
         }
       }
     }
