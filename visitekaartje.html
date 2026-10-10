@@ -295,19 +295,17 @@
 
     .card-person-title {
       font-family: var(--font-heading);
-      font-size: 2.5mm;
+      font-size: 2.35mm;
       font-weight: 700;
       color: var(--color-forest);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-top: 0.6mm;
-      display: flex;
-      align-items: center;
-      gap: 1.5mm;
+      letter-spacing: 0.1px;
+      margin-top: 0.8mm;
+      white-space: nowrap;
+      display: block;
     }
     .card-person-title span.badge-spec {
       color: var(--color-terracotta);
-      font-weight: 800;
+      font-weight: 600;
     }
 
     /* Contact Details Grid (Compact, razor sharp) */
@@ -681,8 +679,7 @@
           <div class="card-person">
             <h1 class="card-person-name">Geertjan Klein Haneveld</h1>
             <div class="card-person-title">
-              Gediplomeerd Bewegingstechnoloog
-              <span class="badge-spec">&bull; Zitexpert</span>
+              Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
             </div>
           </div>
 
@@ -746,7 +743,7 @@
           <div class="card-back-usps">
             <div class="card-usp-item">
               <span class="usp-check">✓</span>
-              <span><strong>Gratis zitmeting &amp; passing aan huis</strong> in heel NL</span>
+              <span><strong>Gratis zitmeting &amp; passing aan huis</strong> in regio Dordrecht</span>
             </div>
             <div class="card-usp-item">
               <span class="usp-check">✓</span>
@@ -782,7 +779,11 @@
   <section class="sheet-print-container" id="sheetContainer">
     <div class="sheet-header-info">
       <h2>staopstoelen.nl &mdash; Drukvel Visitekaartjes (10 exemplaren)</h2>
-      <p>Geertjan Klein Haneveld &bull; Gediplomeerd Bewegingstechnoloog &bull; Formaat: 85 &times; 55 mm &bull; Knip of snijd langs de buitenranden</p>
+      <p>Geertjan Klein Haneveld &bull; Gediplomeerd bewegingstechnoloog (zitexpert) &bull; Regio Dordrecht</p>
+      <div style="margin-top: 10px; display: inline-flex; gap: 8px;">
+        <button type="button" class="btn-mode active" id="btnSheetFront" style="background: var(--color-forest); color: #fff; padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Voorzijde (10x)</button>
+        <button type="button" class="btn-mode" id="btnSheetBack" style="background: #e2e4e6; color: var(--color-forest-dark); padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Achterzijde (10x)</button>
+      </div>
     </div>
 
     <div class="grid-10-cards" id="gridCardsSlot">
@@ -802,18 +803,39 @@
     const screenStage = document.getElementById("screenStage");
     const sheetContainer = document.getElementById("sheetContainer");
     const gridCardsSlot = document.getElementById("gridCardsSlot");
+    const btnSheetFront = document.getElementById("btnSheetFront");
+    const btnSheetBack = document.getElementById("btnSheetBack");
 
-    function renderA4Sheet() {
-      if (gridCardsSlot.children.length === 0) {
-        const frontHtml = document.getElementById("cardFront").outerHTML;
-        for (let i = 0; i < 10; i++) {
-          const wrap = document.createElement("div");
-          wrap.className = "grid-card-wrapper";
-          wrap.innerHTML = frontHtml;
-          gridCardsSlot.appendChild(wrap);
-        }
+    let currentSheetSide = 'front';
+
+    function renderA4Sheet(side = currentSheetSide) {
+      currentSheetSide = side;
+      gridCardsSlot.innerHTML = '';
+      const cardEl = side === 'front' ? document.getElementById("cardFront") : document.getElementById("cardBack");
+      const cardHtml = cardEl.outerHTML;
+      for (let i = 0; i < 10; i++) {
+        const wrap = document.createElement("div");
+        wrap.className = "grid-card-wrapper";
+        wrap.innerHTML = cardHtml;
+        gridCardsSlot.appendChild(wrap);
       }
     }
+
+    btnSheetFront.addEventListener("click", () => {
+      btnSheetFront.style.background = "var(--color-forest)";
+      btnSheetFront.style.color = "#fff";
+      btnSheetBack.style.background = "#e2e4e6";
+      btnSheetBack.style.color = "var(--color-forest-dark)";
+      renderA4Sheet('front');
+    });
+
+    btnSheetBack.addEventListener("click", () => {
+      btnSheetBack.style.background = "var(--color-forest)";
+      btnSheetBack.style.color = "#fff";
+      btnSheetFront.style.background = "#e2e4e6";
+      btnSheetFront.style.color = "var(--color-forest-dark)";
+      renderA4Sheet('back');
+    });
 
     btnSingle.addEventListener("click", () => {
       btnSingle.classList.add("active");
@@ -829,7 +851,7 @@
       document.body.className = "mode-sheet";
       screenStage.style.display = "none";
       sheetContainer.style.display = "block";
-      renderA4Sheet();
+      renderA4Sheet(currentSheetSide);
     });
   </script>
 </body>
