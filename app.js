@@ -405,35 +405,15 @@ function initWizard() {
   });
   
   // Track Option Card Selection
-  const optionCards = document.querySelectorAll(".option-card");
-  optionCards.forEach(card => {
-    // Synchronize initial selections
-    const input = card.querySelector("input");
-    if (input && input.checked) {
-      card.classList.add("selected");
-    }
-    
-    card.addEventListener("click", (e) => {
-      const input = card.querySelector("input");
-      if (!input) return;
-      
-      // If clicking outside the actual input element, update input checked state
-      if (e.target.tagName !== "INPUT") {
-        if (input.type === "radio") {
-          input.checked = true;
-        } else if (input.type === "checkbox") {
-          input.checked = !input.checked;
-        }
-      }
-      
-      if (input.type === "radio") {
-        // Uncheck sibling cards
-        const name = input.name;
-        document.querySelectorAll(`input[name="${name}"]`).forEach(sibling => {
-          sibling.closest(".option-card").classList.remove("selected", "auto-selected");
-        });
+  function syncCardState(card, input) {
+    if (!card || !input) return;
+    if (input.type === "radio") {
+      const name = input.name;
+      document.querySelectorAll(`input[name="${name}"]`).forEach(sibling => {
+        sibling.closest(".option-card")?.classList.remove("selected", "auto-selected");
+      });
+      if (input.checked) {
         card.classList.add("selected");
-        
         // AUTO-ADVANCE: On Step 1 (height choice), advance automatically after 220ms
         if (name === "height" && state.wizardStep === 1) {
           card.classList.add("auto-selected");
@@ -442,18 +422,34 @@ function initWizard() {
             goToWizardStep(2);
           }, 220);
         }
-      } else if (input.type === "checkbox") {
-        if (input.checked) {
-          card.classList.add("selected");
-        } else {
-          card.classList.remove("selected");
-        }
       }
-      
-      // Update answers state & dynamic counter
-      updateWizardAnswersFromForm();
-      updateLiveMatchCount();
-    });
+    } else if (input.type === "checkbox") {
+      if (input.checked) {
+        card.classList.add("selected");
+      } else {
+        card.classList.remove("selected");
+      }
+    }
+  }
+
+  // Synchronize initial selections
+  document.querySelectorAll(".option-card").forEach(card => {
+    const input = card.querySelector("input");
+    if (input && input.checked) {
+      card.classList.add("selected");
+    }
+  });
+
+  // Handle changes when inputs are selected or toggled
+  form.addEventListener("change", (e) => {
+    const input = e.target;
+    if (!input || !(input.matches("input[type='radio']") || input.matches("input[type='checkbox']"))) return;
+    const card = input.closest(".option-card");
+    if (card) {
+      syncCardState(card, input);
+    }
+    updateWizardAnswersFromForm();
+    updateLiveMatchCount();
   });
 
   // Step Tabs Navigation
