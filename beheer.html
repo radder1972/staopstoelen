@@ -116,19 +116,112 @@
       padding: 40px 0;
     }
     
-    .admin-title-row {
+    /* Admin Header Card */
+    .admin-header-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f6faf3 55%, #fdfbf7 100%);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      border-left: 4px solid var(--color-forest);
+      border-radius: 16px;
+      padding: 22px 28px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 32px;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 16px;
+      box-shadow: 0 4px 20px rgba(18, 43, 7, 0.04);
+      position: relative;
     }
-    
-    .admin-title {
-      font-size: 1.5rem;
+    .admin-header-main {
+      flex: 1;
+      min-width: 280px;
+    }
+    .admin-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
       color: var(--color-forest);
+      background: rgba(75, 143, 36, 0.09);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      margin-bottom: 10px;
+    }
+    .admin-live-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4b8f24;
+      box-shadow: 0 0 0 2px rgba(75, 143, 36, 0.22);
+      display: inline-block;
+    }
+    .admin-pill-sep {
+      color: rgba(75, 143, 36, 0.35);
+    }
+    .admin-pill-sub {
+      color: var(--color-forest-dark);
+      font-weight: 700;
+    }
+    .admin-version-pill {
+      font-size: 0.72rem;
+      color: #7d8c79;
+      background: #eef4ec;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      border: 1px solid #d8e5d5;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .admin-title {
+      font-family: var(--font-heading);
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
       margin: 0;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+    }
+    .admin-subtitle {
+      color: var(--color-gray);
+      font-size: 0.94rem;
+      margin-top: 6px;
+      margin-bottom: 0;
+      line-height: 1.5;
+      max-width: 680px;
+    }
+    .btn-admin-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 11px 18px;
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--color-forest-dark);
+      border: 1.5px solid var(--color-forest);
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.08);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-admin-action:hover {
+      background: var(--color-forest);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.22);
+    }
+    .btn-admin-action svg {
+      stroke: var(--color-forest);
+      transition: stroke 0.2s ease;
+    }
+    .btn-admin-action:hover svg {
+      stroke: #ffffff;
     }
     
     /* Login Screen Overlay */
@@ -183,40 +276,104 @@
       margin-bottom: 16px;
     }
     
-    /* Dataset Selection Tabs */
-    .tabs-wrapper {
+    /* ==========================================================================
+       ECHTE TABBLADEN IN SALIEGROEN (Geen kapitalen, trapsgewijze diepte)
+       ========================================================================== */
+    .admin-tabs-bar {
       display: flex;
-      border-bottom: 2px solid var(--color-gray-light);
-      margin-bottom: 32px;
-      gap: 8px;
+      align-items: flex-end;
+      gap: 6px;
+      margin-bottom: 26px;
+      border-bottom: 2.5px solid #cfe0cb;
+      padding: 0 4px;
+      position: relative;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
-    
+    .admin-tabs-bar::-webkit-scrollbar {
+      display: none;
+    }
+
     .tab-btn {
-      padding: 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 20px;
       font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--color-gray);
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
-      transition: var(--transition-smooth);
-      background: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
+      font-weight: 600;
+      font-size: 0.94rem;
+      text-transform: none !important; /* GEEN KAPITALEN */
+      letter-spacing: 0;
+      color: #485c44;
+      background: #edf5eb; /* Zachte salie tint */
+      border: 1.5px solid #cfe0cb;
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      margin-bottom: -2.5px;
       cursor: pointer;
+      position: relative;
+      transition: all 0.18s ease;
       outline: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: inset 0 -2px 6px rgba(0,0,0,0.02);
     }
-    
+
+    .tab-btn svg {
+      width: 17px;
+      height: 17px;
+      stroke: #5d7558;
+      stroke-width: 2.2;
+      transition: stroke 0.18s ease;
+      flex-shrink: 0;
+    }
+
     .tab-btn:hover {
-      color: var(--color-forest);
-    }
-    
-    .tab-btn.active {
+      background: #e2ede0;
       color: var(--color-forest-dark);
-      border-bottom-color: var(--color-forest);
+      border-color: #bad3b4;
+      transform: translateY(-2px);
+    }
+    .tab-btn:hover svg {
+      stroke: var(--color-forest);
+    }
+
+    /* Actief tabblad: staat naar voren op de voorgrond in fris wit met groene topstrip */
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--color-forest-dark);
+      font-weight: 800;
+      border: 1.5px solid #cfe0cb;
+      border-top: 3.5px solid var(--color-forest);
+      border-bottom: 3.5px solid #ffffff; /* Doorbreekt de onderlijn voor het echte tabblad effect */
+      margin-bottom: -2.5px;
+      padding-top: 11px;
+      padding-bottom: 13.5px;
+      z-index: 5;
+      box-shadow: 0 -4px 14px rgba(75, 143, 36, 0.08);
+      transform: none;
+    }
+
+    .tab-btn.active svg {
+      stroke: var(--color-forest);
+      stroke-width: 2.4;
+    }
+
+    .tab-badge-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest);
+      margin-left: 2px;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active .tab-badge-pill {
+      background: rgba(243, 146, 35, 0.16);
+      color: var(--color-terracotta-dark);
     }
     
     /* Table Container (Full width layout to prevent overlap) */
@@ -899,23 +1056,71 @@
   <main class="main-content">
     <div class="container">
       
-      <div class="admin-title-row" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-        <div>
-          <h1 class="admin-title">Sta-op Stoelen Beheer Dashboard <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gray); background-color: var(--color-cream-dark); padding: 4px 10px; border-radius: var(--radius-sm); margin-left: 12px; border: 1px solid var(--color-gray-light); vertical-align: middle;">v10.17</span></h1>
-          <p style="color: var(--color-gray); margin-top: 4px;">Beheer de catalogus en merken van staopstoelen.nl</p>
+      <!-- Elegant Admin Header Card in Huisstijl Saliegroen -->
+      <div class="admin-header-card">
+        <div class="admin-header-main">
+          <div class="admin-pill-badge">
+            <span class="admin-live-pulse"></span>
+            <span>Beheersysteem</span>
+            <span class="admin-pill-sep">&bull;</span>
+            <span class="admin-pill-sub">staopstoelen.nl</span>
+            <span class="admin-version-pill">v10.18</span>
+          </div>
+          <h1 class="admin-title">
+            Beheer &amp; Huisstijl Dashboard
+          </h1>
+          <p class="admin-subtitle">
+            Centraal overzicht voor de stoelencatalogus, merken, live bezoekersstatistieken en alle officiële huisstijlmaterialen.
+          </p>
         </div>
-        <a href="afvinklijst.html" target="_blank" class="btn btn-outline" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.9rem; padding: 10px 18px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-forest); color: var(--color-forest);">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          Print Intake &amp; Afvinklijst (A4)
-        </a>
+        <div class="admin-header-actions">
+          <a href="afvinklijst.html" target="_blank" class="btn-admin-action" title="Open en print de intake- en afvinklijst voor passingen op locatie">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>Print Intake &amp; Afvinklijst (A4)</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Tab Navigation -->
-      <div class="admin-tabs" style="display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid var(--color-gray-light); padding-bottom: 0; flex-wrap: wrap;">
-        <button class="tab-btn active" id="tabChairs">Stoelen Beheer</button>
-        <button class="tab-btn" id="tabBrands">Merken Beheer</button>
-        <button class="tab-btn" id="tabStats">Statistieken</button>
-        <button class="tab-btn" id="tabHuisstijl">Huisstijl &amp; Drukwerk</button>
+      <!-- Echte Tabbladen in Zacht Saliegroen (Geen kapitalen) -->
+      <div class="admin-tabs-bar" role="tablist">
+        <button class="tab-btn active" id="tabChairs" role="tab" aria-selected="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"></path>
+            <path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path>
+            <path d="M5 18v3"></path>
+            <path d="M19 18v3"></path>
+          </svg>
+          <span>Stoelen beheer</span>
+        </button>
+
+        <button class="tab-btn" id="tabBrands" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+          </svg>
+          <span>Merken beheer</span>
+        </button>
+
+        <button class="tab-btn" id="tabStats" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span>Statistieken</span>
+        </button>
+
+        <button class="tab-btn" id="tabHuisstijl" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+          </svg>
+          <span>Huisstijl &amp; drukwerk</span>
+          <span class="tab-badge-pill">Portaal</span>
+        </button>
       </div>
 
       <div id="chairsSection">
@@ -4962,21 +5167,28 @@
     function switchAdminTab(targetTab) {
       if (!tabChairs || !tabBrands || !tabStats || !tabHuisstijl) return;
       
-      [tabChairs, tabBrands, tabStats, tabHuisstijl].forEach(btn => btn.classList.remove("active"));
+      [tabChairs, tabBrands, tabStats, tabHuisstijl].forEach(btn => {
+        btn.classList.remove("active");
+        btn.setAttribute("aria-selected", "false");
+      });
       [chairsSection, brandsSection, statsSection, huisstijlSection].forEach(sec => sec && (sec.style.display = "none"));
 
       if (targetTab === "brands") {
         tabBrands.classList.add("active");
+        tabBrands.setAttribute("aria-selected", "true");
         if (brandsSection) brandsSection.style.display = "block";
       } else if (targetTab === "stats") {
         tabStats.classList.add("active");
+        tabStats.setAttribute("aria-selected", "true");
         if (statsSection) statsSection.style.display = "block";
         renderStatsDashboard();
       } else if (targetTab === "huisstijl") {
         tabHuisstijl.classList.add("active");
+        tabHuisstijl.setAttribute("aria-selected", "true");
         if (huisstijlSection) huisstijlSection.style.display = "block";
       } else {
         tabChairs.classList.add("active");
+        tabChairs.setAttribute("aria-selected", "true");
         if (chairsSection) chairsSection.style.display = "block";
         
         const searchInput = document.getElementById("chairSearchInput");
