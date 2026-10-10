@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A6 Stoelbadge &amp; Showroom Prijskaart | staopstoelen.nl</title>
+  <meta name="description" content="A6 stoelbadge en prijskaart generator voor in de showroom met sfeerfoto of standaardfoto, specificaties, prijzen en kwaliteitszegel van staopstoelen.nl.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #163323;
+      --color-forest-light: #f4f8f1;
+      --color-sage: #6ab13c;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #c86908;
+      --color-cream: #faf8f5;
+      --color-dark: #1d2024;
+      --color-gray: #5e6368;
+      --color-gray-light: #e2e8f0;
+      --color-border: #cbd5e1;
+      --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* Exact A6 dimensions (105mm x 148mm) */
+      --badge-w: 105mm;
+      --badge-h: 148mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: #f1f5f0;
+      color: var(--color-dark);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ==========================================================================
+       SCREEN CONTROLS & TOOLBAR (Niet zichtbaar bij printen)
+       ========================================================================== */
+    .screen-header {
+      background: #ffffff;
+      border-bottom: 2px solid var(--color-forest);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .toolbar-main {
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-back {
+      color: var(--color-forest);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.2);
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: rgba(75, 143, 36, 0.16);
+      color: #122b07;
+    }
+
+    .toolbar-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-title-badge {
+      font-size: 0.72rem;
+      background: var(--color-forest);
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: #edf2f7;
+      border-radius: 8px;
+      padding: 3px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mode-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--color-dark);
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-btn.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--color-forest) 0%, #3d791b 100%);
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-print:hover {
+      background: linear-gradient(135deg, #3d791b 0%, #2e5c14 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(75, 143, 36, 0.45);
+    }
+
+    /* ==========================================================================
+       CHAIR SEARCH & VISUAL CAROUSEL BAR
+       ========================================================================== */
+    .browser-bar {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 24px;
+    }
+
+    .browser-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      max-width: 380px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 7px 12px 7px 34px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-box input:focus {
+      border-color: var(--color-forest);
+      box-shadow: 0 0 0 3px rgba(75, 143, 36, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      pointer-events: none;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      padding: 4px 10px;
+      border-radius: 9999px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-pill:hover, .filter-pill.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+    }
+
+    .chair-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-arrow-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: var(--color-forest-dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: all 0.15s ease;
+    }
+    .nav-arrow-btn:hover {
+      background: #eef5ec;
+      border-color: var(--color-forest);
+    }
+
+    .chair-count-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      padding: 0 6px;
+      white-space: nowrap;
+    }
+
+    /* Horizontal scrollable visual carousel */
+    .chair-carousel {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 4px 2px 8px 2px;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+    }
+    .chair-carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+    .chair-carousel::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .chair-thumb-card {
+      flex: 0 0 130px;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+      position: relative;
+    }
+    .chair-thumb-card:hover {
+      border-color: var(--color-sage);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+    .chair-thumb-card.active {
+      border-color: var(--color-forest);
+      background: #f4f8f1;
+      box-shadow: 0 0 0 2px var(--color-forest);
+    }
+
+    .chair-thumb-img-wrap {
+      width: 100%;
+      height: 75px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 5px;
+    }
+    .chair-thumb-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .chair-thumb-name {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .chair-thumb-price {
+      font-size: 0.70rem;
+      font-weight: 800;
+      color: var(--color-forest);
+    }
+
+    .chair-thumb-tag {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      font-size: 0.55rem;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .chair-thumb-tag.nieuw {
+      background: rgba(75, 143, 36, 0.9);
+      color: #fff;
+    }
+    .chair-thumb-tag.occasion {
+      background: rgba(243, 146, 35, 0.95);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       PHOTO SELECTOR (Foto's van de geselecteerde stoel)
+       ========================================================================== */
+    .photo-selection-strip {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .photo-strip-label {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .photo-thumbnails {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      overflow-x: auto;
+      flex: 1;
+    }
+
+    .photo-thumb-btn {
+      flex: 0 0 52px;
+      height: 48px;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: #f8fafc;
+      padding: 0;
+      transition: all 0.15s ease;
+    }
+    .photo-thumb-btn:hover {
+      border-color: var(--color-forest);
+      transform: scale(1.05);
+    }
+    .photo-thumb-btn.active {
+      border-color: var(--color-forest);
+      box-shadow: 0 0 0 2px var(--color-forest);
+    }
+
+    .photo-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-thumb-tag {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(22, 51, 35, 0.85);
+      color: #ffffff;
+      font-size: 0.48rem;
+      text-align: center;
+      padding: 1px 0;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .photo-thumb-tag.cosy {
+      background: rgba(243, 146, 35, 0.95);
+    }
+
+    .badge-quick-customs {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .quick-input-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+
+    .quick-input-group input {
+      padding: 4px 8px;
+      border-radius: 5px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.76rem;
+      font-weight: 600;
+      outline: none;
+    }
+
+    /* ==========================================================================
+       MAIN PREVIEW STAGE
+       ========================================================================== */
+    .preview-stage {
+      padding: 30px 16px 60px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: calc(100vh - 220px);
+    }
+
+    /* ==========================================================================
+       THE A6 BADGE (105mm x 148mm)
+       ========================================================================== */
+    .badge-a6 {
+      width: var(--badge-w);
+      height: var(--badge-h);
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      border-radius: 0;
+      padding: 6mm 7mm 5mm 7mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Optioneel ophanggat richtpunt bovenaan */
+    .punch-hole-guide {
+      position: absolute;
+      top: 2.5mm;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4mm;
+      height: 4mm;
+      border: 1px dashed #94a3b8;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    /* 1. Badge Header */
+    .badge-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 14mm;
+      margin-bottom: 2mm;
+    }
+
+    .badge-brand-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-logo-text {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      color: var(--color-forest);
+      line-height: 1.1;
+    }
+    .badge-logo-text span {
+      color: var(--color-terracotta);
+    }
+
+    .badge-logo-subtitle {
+      font-size: 7px;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    .badge-quality-stamp {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* 2. Stoel Foto Container */
+    .badge-photo-container {
+      position: relative;
+      width: 100%;
+      height: 52mm;
+      border-radius: 7px;
+      overflow: hidden;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: object-fit 0.2s ease;
+    }
+
+    /* Badges op de foto */
+    .badge-photo-tag-topleft {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: rgba(22, 51, 35, 0.9);
+      color: #ffffff;
+      padding: 2.5px 7px;
+      border-radius: 4px;
+      font-family: var(--font-heading);
+      font-size: 7.5px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+    }
+    .badge-photo-tag-topleft.occasion {
+      background: rgba(243, 146, 35, 0.95);
+    }
+
+    .badge-photo-tag-bottomright {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--color-forest-dark);
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-heading);
+      font-size: 7px;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+    }
+
+    /* 3. Product Titel & Type */
+    .badge-product-title-row {
+      margin-top: 2.5mm;
+      margin-bottom: 2mm;
+    }
+
+    .badge-brand-label {
+      font-family: var(--font-heading);
+      font-size: 7.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--color-forest);
+      margin-bottom: 1px;
+    }
+
+    .badge-model-name {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .badge-type-desc {
+      font-size: 8px;
+      color: var(--color-gray);
+      line-height: 1.25;
+      margin-top: 1px;
+    }
+
+    /* 4. Specificaties Grid (4 blokjes) */
+    .badge-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8mm;
+      margin-bottom: 2.5mm;
+    }
+
+    .spec-cell {
+      background: #f8fafc;
+      border: 1px solid #e6ecf2;
+      border-radius: 4px;
+      padding: 2px 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .spec-cell-label {
+      font-size: 6.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #64748b;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .spec-cell-value {
+      font-family: var(--font-heading);
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 1px;
+    }
+
+    /* 5. Prijs & Meeneem Banner */
+    .badge-price-banner {
+      background: #f4f8f1;
+      border: 1px solid #b7d5ae;
+      border-radius: 5px;
+      padding: 3px 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2mm;
+    }
+
+    .price-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-label {
+      font-size: 6.5px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .price-value-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .price-amount {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      line-height: 1;
+    }
+
+    .price-old {
+      font-size: 8.5px;
+      color: #94a3b8;
+      text-decoration: line-through;
+      font-weight: 600;
+    }
+
+    .action-pill {
+      background: var(--color-forest);
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: var(--font-heading);
+      font-size: 7px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    /* 6. Badge Footer */
+    .badge-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 2mm;
+      height: 11mm;
+    }
+
+    .badge-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-qr-img {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .badge-qr-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-qr-scan {
+      font-size: 6.5px;
+      font-weight: 700;
+      color: var(--color-forest);
+      text-transform: uppercase;
+    }
+
+    .badge-qr-url {
+      font-family: var(--font-heading);
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+    .badge-qr-url span {
+      color: var(--color-terracotta);
+    }
+
+    .badge-footer-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .badge-contact-phone {
+      font-family: var(--font-heading);
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+
+    .badge-contact-address {
+      font-size: 6.5px;
+      color: #64748b;
+    }
+
+    /* ==========================================================================
+       A4 DRUKVEL CONTAINER (4x A6 op 1 A4 vel)
+       ========================================================================== */
+    .a4-sheet-container {
+      display: none;
+      width: 210mm;
+      height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      margin: 0 auto;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .a4-grid-4 {
+      display: grid;
+      grid-template-columns: 105mm 105mm;
+      grid-template-rows: 148.5mm 148.5mm;
+      width: 210mm;
+      height: 297mm;
+    }
+
+    .a4-badge-slot {
+      width: 105mm;
+      height: 148.5mm;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      border: 0.5px dashed #cbd5e1;
+    }
+
+    .a4-badge-slot .badge-a6 {
+      box-shadow: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Snijlijnen kruis in het midden */
+    .a4-cutmark-h {
+      position: absolute;
+      top: 148.5mm;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #94a3b8;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .a4-cutmark-v {
+      position: absolute;
+      left: 105mm;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background: #94a3b8;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    /* ==========================================================================
+       PRINT MEDIA STYLES
+       ========================================================================== */
+    @media print {
+      body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .screen-header,
+      .browser-bar,
+      .photo-selection-strip {
+        display: none !important;
+      }
+
+      .preview-stage {
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: auto !important;
+      }
+
+      /* Single A6 print mode */
+      body.mode-single @page {
+        size: 105mm 148mm portrait;
+        margin: 0;
+      }
+      body.mode-single .badge-a6 {
+        box-shadow: none !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      body.mode-single .a4-sheet-container {
+        display: none !important;
+      }
+
+      /* A4 Drukvel (4x A6) mode */
+      body.mode-a4 @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      body.mode-a4 .badge-single-wrap {
+        display: none !important;
+      }
+      body.mode-a4 .a4-sheet-container {
+        display: block !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      body.mode-a4 .a4-badge-slot {
+        border-color: #cbd5e1 !important;
+      }
+    }
+  </style>
+</head>
+<body class="mode-single">
+
+  <!-- ==========================================================================
+       TOP SCREEN TOOLBAR
+       ========================================================================== -->
+  <header class="screen-header">
+    <div class="toolbar-main">
+      <div class="toolbar-left">
+        <a href="beheer.html#huisstijl" class="btn-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          Beheer
+        </a>
+        <div class="toolbar-title">
+          <span>A6 Stoelbadge &amp; Prijskaart</span>
+          <span class="toolbar-title-badge">A6 &bull; 105 × 148 mm</span>
+        </div>
+      </div>
+
+      <div class="toolbar-right">
+        <!-- Print Mode Switcher -->
+        <div class="mode-switch">
+          <button type="button" class="mode-btn active" id="btnModeSingle" title="Direct 1 badge op A6 papier">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
+            1x A6 Badge
+          </button>
+          <button type="button" class="mode-btn" id="btnModeA4" title="4 badges op 1 A4 vel met snijlijnen">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8"></rect><rect x="13" y="3" width="8" height="8"></rect><rect x="3" y="13" width="8" height="8"></rect><rect x="13" y="13" width="8" height="8"></rect></svg>
+            A4 Drukvel (4x A6)
+          </button>
+        </div>
+
+        <!-- Print Button -->
+        <button type="button" class="btn-print" id="btnPrint">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Afdrukken / PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Visual Chair Search & Carousel Bar -->
+    <div class="browser-bar">
+      <div class="browser-controls">
+        <div class="search-box">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="chairSearchInput" placeholder="Zoek stoel op model, merk of type...">
+        </div>
+
+        <div class="filter-pills">
+          <button type="button" class="filter-pill active" data-filter="all">Alle Stoelen (<span id="countAll">0</span>)</button>
+          <button type="button" class="filter-pill" data-filter="nieuw">Nieuw (<span id="countNieuw">0</span>)</button>
+          <button type="button" class="filter-pill" data-filter="occasion">Occasions / Gereviseerd (<span id="countOccasion">0</span>)</button>
+          <button type="button" class="filter-pill" data-filter="cosy">🛋️ Met Sfeerfoto</button>
+        </div>
+
+        <div class="chair-nav-controls">
+          <button type="button" class="nav-arrow-btn" id="btnPrevChair" title="Vorige stoel (Pijl links)">&#9664;</button>
+          <span class="chair-count-badge" id="chairIndexLabel">1 / 40</span>
+          <button type="button" class="nav-arrow-btn" id="btnNextChair" title="Volgende stoel (Pijl rechts)">&#9654;</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Visual Carousel -->
+      <div class="chair-carousel" id="chairCarousel">
+        <!-- Wordt dynamisch gevuld met stoelen -->
+      </div>
+    </div>
+
+    <!-- Foto Kiezer voor de Gekozen Stoel -->
+    <div class="photo-selection-strip">
+      <div class="photo-strip-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <span>Foto voor badge:</span>
+      </div>
+
+      <div class="photo-thumbnails" id="photoThumbnails">
+        <!-- Dynamische foto thumbnails van de stoel -->
+      </div>
+
+      <div class="badge-quick-customs">
+        <div class="quick-input-group">
+          <label for="inputCustomPrice">Prijs:</label>
+          <input type="text" id="inputCustomPrice" style="width: 80px;" placeholder="€ 1.945,-">
+        </div>
+        <div class="quick-input-group">
+          <label for="inputCustomTag">Actie:</label>
+          <input type="text" id="inputCustomTag" style="width: 120px;" placeholder="Direct meenemen">
+        </div>
+        <div class="quick-input-group">
+          <label><input type="checkbox" id="chkPunchHole" checked> Ophanggat</label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       PREVIEW STAGE
+       ========================================================================== -->
+  <main class="preview-stage">
+
+    <!-- 1x A6 Badge Wrapper (Single View) -->
+    <div class="badge-single-wrap" id="badgeSingleWrap">
+      <article class="badge-a6" id="badgeCard">
+        <!-- Subtiel ophanggat richtpunt -->
+        <div class="punch-hole-guide" id="punchHoleGuide"></div>
+
+        <!-- 1. Header -->
+        <header class="badge-header">
+          <div class="badge-brand-col">
+            <div class="badge-logo-text">staopstoelen<span>.nl</span></div>
+            <div class="badge-logo-subtitle">Specialist in ergonomisch maatwerk</div>
+          </div>
+          <!-- Kwaliteitssticker -->
+          <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Officiële Kwaliteitszegel" class="badge-quality-stamp" id="badgeQualityStamp">
+        </header>
+
+        <!-- 2. Stoel Foto Container -->
+        <div class="badge-photo-container">
+          <img src="assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Stoelfoto" class="badge-photo-img" id="badgePhotoImg">
+          <span class="badge-photo-tag-topleft" id="badgePhotoCondition">Nieuw Maatwerk</span>
+          <span class="badge-photo-tag-bottomright" id="badgePhotoSetting">🛋️ Sfeerimpressie</span>
+        </div>
+
+        <!-- 3. Product Titel & Type -->
+        <div class="badge-product-title-row">
+          <div class="badge-brand-label" id="badgeBrandLabel">DFM</div>
+          <h1 class="badge-model-name" id="badgeModelName" contenteditable="true">Sta-op stoel Ravi</h1>
+          <div class="badge-type-desc" id="badgeTypeDesc" contenteditable="true">Luxe ergonomische relax- &amp; sta-op fauteuil</div>
+        </div>
+
+        <!-- 4. Specificaties Grid -->
+        <div class="badge-specs-grid">
+          <div class="spec-cell">
+            <div class="spec-cell-label">📐 Maatvoering</div>
+            <div class="spec-cell-value" id="specSize" contenteditable="true">Op maat (S/M/L)</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-cell-label">⚡ Verstelling</div>
+            <div class="spec-cell-value" id="specMotors" contenteditable="true">2 Motoren &bull; Sta-op</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-cell-label">🛋️ Bekleding</div>
+            <div class="spec-cell-value" id="specCover" contenteditable="true">Leder / Stof</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-cell-label">🛡️ Garantie</div>
+            <div class="spec-cell-value" id="specWarranty" contenteditable="true">3 Jaar &bull; Service aan huis</div>
+          </div>
+        </div>
+
+        <!-- 5. Prijs & Meeneem Banner -->
+        <div class="badge-price-banner">
+          <div class="price-col">
+            <div class="price-label" id="badgePriceLabel">Showroomprijs</div>
+            <div class="price-value-wrap">
+              <span class="price-amount" id="badgePriceAmount" contenteditable="true">&euro; 1.945,-</span>
+              <span class="price-old" id="badgePriceOld" style="display: none;"></span>
+            </div>
+          </div>
+          <div class="action-pill" id="badgeActionPill" contenteditable="true">Direct Meenemen</div>
+        </div>
+
+        <!-- 6. Footer -->
+        <footer class="badge-footer">
+          <div class="badge-footer-left">
+            <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="badge-qr-img">
+            <div class="badge-qr-info">
+              <span class="badge-qr-scan">Scan voor video:</span>
+              <span class="badge-qr-url">staopstoelen<span>.nl</span></span>
+            </div>
+          </div>
+          <div class="badge-footer-right">
+            <span class="badge-contact-phone">📞 078 - 631 4858</span>
+            <span class="badge-contact-address">Merwedestraat 239, Dordrecht</span>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- 4x A6 Drukvel Container (A4 View) -->
+    <div class="a4-sheet-container" id="a4SheetContainer">
+      <div class="a4-cutmark-h"></div>
+      <div class="a4-cutmark-v"></div>
+      <div class="a4-grid-4" id="a4GridSlot">
+        <!-- Wordt dynamisch gevuld met 4 identieke of geselecteerde A6 badges -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGICA
+       ========================================================================== -->
+  <script>
+    // State management
+    let chairsList = [];
+    let filteredChairs = [];
+    let currentChairIndex = 0;
+    let currentChair = null;
+    let currentImages = [];
+    let currentImageIndex = 0;
+    let currentPrintMode = 'single'; // 'single' of 'a4'
+
+    // DOM Elements
+    const chairCarousel = document.getElementById("chairCarousel");
+    const photoThumbnails = document.getElementById("photoThumbnails");
+    const chairSearchInput = document.getElementById("chairSearchInput");
+    const chairIndexLabel = document.getElementById("chairIndexLabel");
+    const btnPrevChair = document.getElementById("btnPrevChair");
+    const btnNextChair = document.getElementById("btnNextChair");
+    const btnPrint = document.getElementById("btnPrint");
+    const btnModeSingle = document.getElementById("btnModeSingle");
+    const btnModeA4 = document.getElementById("btnModeA4");
+    const a4SheetContainer = document.getElementById("a4SheetContainer");
+    const badgeSingleWrap = document.getElementById("badgeSingleWrap");
+    const a4GridSlot = document.getElementById("a4GridSlot");
+
+    // Badge Elements
+    const badgePhotoImg = document.getElementById("badgePhotoImg");
+    const badgePhotoCondition = document.getElementById("badgePhotoCondition");
+    const badgePhotoSetting = document.getElementById("badgePhotoSetting");
+    const badgeBrandLabel = document.getElementById("badgeBrandLabel");
+    const badgeModelName = document.getElementById("badgeModelName");
+    const badgeTypeDesc = document.getElementById("badgeTypeDesc");
+    const specSize = document.getElementById("specSize");
+    const specMotors = document.getElementById("specMotors");
+    const specCover = document.getElementById("specCover");
+    const specWarranty = document.getElementById("specWarranty");
+    const badgePriceLabel = document.getElementById("badgePriceLabel");
+    const badgePriceAmount = document.getElementById("badgePriceAmount");
+    const badgePriceOld = document.getElementById("badgePriceOld");
+    const badgeActionPill = document.getElementById("badgeActionPill");
+    const badgeQualityStamp = document.getElementById("badgeQualityStamp");
+    const punchHoleGuide = document.getElementById("punchHoleGuide");
+
+    // Quick Inputs
+    const inputCustomPrice = document.getElementById("inputCustomPrice");
+    const inputCustomTag = document.getElementById("inputCustomTag");
+    const chkPunchHole = document.getElementById("chkPunchHole");
+
+    // Known Cosy / Ambient Image Mappings
+    const KNOWN_COSY_IMAGES = {
+      'sta-op-stoel-dordrecht': 'assets/stoelen/Sta-op-stoel-DORDRECHT-interior.png',
+      'sta-op-stoel-fitform-580-elevo': 'assets/stoelen/580-neutraal-sfeer-staand-2.jpg',
+      'seniorenstoel-farstrup-applaus': 'assets/stoelen/chair_seniorenstoel-farstrup-applaus_ambient.png',
+      'sta-op-stoel-mecam-movie': 'assets/stoelen/chair_sta-op-stoel-mecam-movie_ambient.png',
+    };
+
+    // Helper: format price
+    function formatPrice(val) {
+      if (!val) return '';
+      return '€ ' + Number(val).toLocaleString('nl-NL') + ',-';
+    }
+
+    // 1. Load chairs from database.json
+    async function loadChairs() {
+      try {
+        const res = await fetch('database.json?v=' + Date.now());
+        const data = await res.json();
+        chairsList = data.staopstoelen || [];
+      } catch (err) {
+        console.warn('Kon database.json niet via fetch laden, gebruik fallback data:', err);
+        // Fallback: simple default fallback
+        chairsList = [
+          {
+            id: "sta-op-stoel-ravi",
+            name: "Sta-op stoel Ravi",
+            brand: "DFM",
+            price: 1945,
+            condition: "nieuw",
+            image: "assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg",
+            gallery: ["assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg", "assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg"],
+            specifications: { "Aantal motoren": "2 motoren", "Maatwerk": "3 maten (S/M/L)", "Bekleding": "Leder / Stof", "Garantie": "3 jaar" }
+          }
+        ];
+      }
+
+      updateFilterCounts();
+      filteredChairs = [...chairsList];
+      renderCarousel();
+      if (filteredChairs.length > 0) {
+        selectChair(0);
+      }
+    }
+
+    // 2. Counts for filter pills
+    function updateFilterCounts() {
+      document.getElementById("countAll").textContent = chairsList.length;
+      document.getElementById("countNieuw").textContent = chairsList.filter(c => c.condition === 'nieuw').length;
+      document.getElementById("countOccasion").textContent = chairsList.filter(c => c.condition === 'occasion' || c.condition === 'refurbished').length;
+    }
+
+    // 3. Render Chair Carousel
+    function renderCarousel() {
+      chairCarousel.innerHTML = '';
+      if (filteredChairs.length === 0) {
+        chairCarousel.innerHTML = '<div style="padding: 12px; font-size: 0.85rem; color: #64748b;">Geen stoelen gevonden voor deze zoekopdracht.</div>';
+        return;
+      }
+
+      filteredChairs.forEach((chair, idx) => {
+        const card = document.createElement("div");
+        card.className = "chair-thumb-card" + (idx === currentChairIndex ? " active" : "");
+        card.setAttribute("data-index", idx);
+
+        const images = getAllImagesForChair(chair);
+        const displayImg = images.length > 0 ? images[0].url : (chair.image || '');
+
+        const isNieuw = chair.condition === 'nieuw';
+        const tagHtml = isNieuw ? '<span class="chair-thumb-tag nieuw">Nieuw</span>' : '<span class="chair-thumb-tag occasion">Occasion</span>';
+
+        card.innerHTML = `
+          ${tagHtml}
+          <div class="chair-thumb-img-wrap">
+            <img src="${displayImg}" alt="${chair.name}" class="chair-thumb-img" onerror="this.src='${chair.image || ''}'">
+          </div>
+          <div class="chair-thumb-name" title="${chair.name}">${chair.name}</div>
+          <div class="chair-thumb-price">${formatPrice(chair.price)}</div>
+        `;
+
+        card.addEventListener("click", () => {
+          selectChair(idx);
+        });
+
+        chairCarousel.appendChild(card);
+      });
+
+      updateIndexLabel();
+    }
+
+    // 4. Extract and rank all images for a chair (Cosy first!)
+    function getAllImagesForChair(chair) {
+      const list = [];
+      const seen = new Set();
+
+      function addImg(url, type, label) {
+        if (!url || seen.has(url)) return;
+        seen.add(url);
+        list.push({ url, type, label });
+      }
+
+      // Check known cosy mapping
+      if (KNOWN_COSY_IMAGES[chair.id]) {
+        addImg(KNOWN_COSY_IMAGES[chair.id], 'cosy', '🛋️ Sfeerfoto');
+      }
+
+      // Check ambientImage field
+      if (chair.ambientImage) {
+        addImg(chair.ambientImage, 'cosy', '🛋️ Sfeerfoto');
+      }
+
+      // Check gallery for cosy keywords
+      const gallery = chair.gallery || [];
+      gallery.forEach(img => {
+        if (/interior|ambient|sfeer|cosy|living|kamer/i.test(img)) {
+          addImg(img, 'cosy', '🛋️ Sfeerfoto');
+        }
+      });
+
+      // Standard photo
+      if (chair.image) {
+        addImg(chair.image, 'standard', '📷 Standaard');
+      }
+
+      // Remaining gallery photos
+      gallery.forEach((img, i) => {
+        addImg(img, 'gallery', `Detail ${i + 1}`);
+      });
+
+      return list;
+    }
+
+    // 5. Select a chair
+    function selectChair(index) {
+      if (index < 0 || index >= filteredChairs.length) return;
+      currentChairIndex = index;
+      currentChair = filteredChairs[index];
+
+      // Update active card in carousel
+      document.querySelectorAll(".chair-thumb-card").forEach((c, idx) => {
+        if (idx === currentChairIndex) {
+          c.classList.add("active");
+          c.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } else {
+          c.classList.remove("active");
+        }
+      });
+
+      updateIndexLabel();
+
+      // Extract all images for this chair
+      currentImages = getAllImagesForChair(currentChair);
+      currentImageIndex = 0; // Automatically select 1st image: cosy if present, else standard!
+
+      renderPhotoThumbnails();
+      populateBadge(currentChair);
+
+      if (currentPrintMode === 'a4') {
+        renderA4Grid();
+      }
+    }
+
+    // 6. Render photo thumbnails for current chair
+    function renderPhotoThumbnails() {
+      photoThumbnails.innerHTML = '';
+      if (currentImages.length === 0) return;
+
+      currentImages.forEach((imgObj, idx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "photo-thumb-btn" + (idx === currentImageIndex ? " active" : "");
+        btn.title = imgObj.label;
+
+        const tagClass = imgObj.type === 'cosy' ? ' cosy' : '';
+        btn.innerHTML = `
+          <img src="${imgObj.url}" alt="${imgObj.label}">
+          <span class="photo-thumb-tag${tagClass}">${imgObj.label}</span>
+        `;
+
+        btn.addEventListener("click", () => {
+          setChairImage(idx);
+        });
+
+        photoThumbnails.appendChild(btn);
+      });
+    }
+
+    // 7. Change active photo for the badge
+    function setChairImage(idx) {
+      if (idx < 0 || idx >= currentImages.length) return;
+      currentImageIndex = idx;
+
+      // Update thumbnail active states
+      document.querySelectorAll(".photo-thumb-btn").forEach((b, i) => {
+        b.classList.toggle("active", i === currentImageIndex);
+      });
+
+      const chosen = currentImages[currentImageIndex];
+      badgePhotoImg.src = chosen.url;
+      badgePhotoSetting.textContent = chosen.type === 'cosy' ? '🛋️ Woonkamer Sfeer' : '📷 Showroom Detail';
+
+      if (currentPrintMode === 'a4') {
+        renderA4Grid();
+      }
+    }
+
+    // 8. Populate Badge with chair data
+    function populateBadge(chair) {
+      if (!chair) return;
+
+      // Brand & Model
+      const brand = chair.brand || 'Specialist';
+      badgeBrandLabel.textContent = brand;
+      badgeModelName.textContent = chair.name || 'Ergonomische Fauteuil';
+
+      // Type description
+      const typeText = chair.type === 'staop' 
+        ? 'Ergonomische sta-op & relaxfauteuil op maat' 
+        : 'Luxe ergonomische senioren- & relaxfauteuil';
+      badgeTypeDesc.textContent = typeText;
+
+      // Specs
+      const specs = chair.specifications || {};
+      specSize.textContent = specs['Maatwerk'] || 'Op lichaamsmaat';
+      specMotors.textContent = specs['Aantal motoren'] || (chair.badge || 'Elektrisch verstelbaar');
+      
+      const mat = chair.material === 'leer' ? 'Luxe Rundleder' : (specs['Bekleding'] || 'Comfortabel Stof / Leer');
+      specCover.textContent = mat;
+      specWarranty.textContent = (specs['Garantie'] || '3 Jaar') + ' • Service aan huis';
+
+      // Condition badge & Quality Stamp
+      const isNieuw = chair.condition === 'nieuw';
+      if (isNieuw) {
+        badgePhotoCondition.textContent = 'Nieuw Maatwerk';
+        badgePhotoCondition.className = 'badge-photo-tag-topleft';
+        badgePriceLabel.textContent = 'Showroomprijs';
+        badgeActionPill.textContent = 'Direct meenemen';
+      } else {
+        badgePhotoCondition.textContent = 'Gecertificeerd Gereviseerd';
+        badgePhotoCondition.className = 'badge-photo-tag-topleft occasion';
+        badgePriceLabel.textContent = 'Occasion Meeneemprijs';
+        badgeActionPill.textContent = 'Direct leverbaar';
+      }
+
+      // Quality stamp
+      badgeQualityStamp.src = 'assets/sticker_nieuw_gereviseerd.svg?v=1.3';
+
+      // Price
+      const formattedPrice = formatPrice(chair.price);
+      badgePriceAmount.textContent = formattedPrice;
+      inputCustomPrice.value = formattedPrice;
+      inputCustomTag.value = badgeActionPill.textContent;
+
+      if (chair.old_price) {
+        badgePriceOld.style.display = 'inline';
+        badgePriceOld.textContent = formatPrice(chair.old_price);
+      } else {
+        badgePriceOld.style.display = 'none';
+      }
+
+      // Image
+      if (currentImages.length > 0) {
+        setChairImage(0);
+      }
+    }
+
+    // 9. Update Index Label
+    function updateIndexLabel() {
+      chairIndexLabel.textContent = `${currentChairIndex + 1} / ${filteredChairs.length}`;
+    }
+
+    // 10. A4 Sheet Render (4x A6 cards)
+    function renderA4Grid() {
+      a4GridSlot.innerHTML = '';
+      const badgeSource = document.getElementById("badgeCard");
+      const badgeHtml = badgeSource.outerHTML;
+
+      for (let i = 0; i < 4; i++) {
+        const slot = document.createElement("div");
+        slot.className = "a4-badge-slot";
+        slot.innerHTML = badgeHtml;
+        a4GridSlot.appendChild(slot);
+      }
+    }
+
+    // Event Listeners: Search & Filters
+    chairSearchInput.addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) {
+        filteredChairs = [...chairsList];
+      } else {
+        filteredChairs = chairsList.filter(c => {
+          return (c.name && c.name.toLowerCase().includes(q)) ||
+                 (c.brand && c.brand.toLowerCase().includes(q)) ||
+                 (c.model && c.model.toLowerCase().includes(q));
+        });
+      }
+      renderCarousel();
+      if (filteredChairs.length > 0) {
+        selectChair(0);
+      }
+    });
+
+    document.querySelectorAll(".filter-pill").forEach(pill => {
+      pill.addEventListener("click", () => {
+        document.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+
+        const filter = pill.getAttribute("data-filter");
+        if (filter === 'all') {
+          filteredChairs = [...chairsList];
+        } else if (filter === 'nieuw') {
+          filteredChairs = chairsList.filter(c => c.condition === 'nieuw');
+        } else if (filter === 'occasion') {
+          filteredChairs = chairsList.filter(c => c.condition === 'occasion' || c.condition === 'refurbished');
+        } else if (filter === 'cosy') {
+          filteredChairs = chairsList.filter(c => {
+            const imgs = getAllImagesForChair(c);
+            return imgs.some(x => x.type === 'cosy');
+          });
+        }
+        renderCarousel();
+        if (filteredChairs.length > 0) {
+          selectChair(0);
+        }
+      });
+    });
+
+    // Navigation buttons
+    btnPrevChair.addEventListener("click", () => {
+      if (currentChairIndex > 0) {
+        selectChair(currentChairIndex - 1);
+      } else {
+        selectChair(filteredChairs.length - 1);
+      }
+    });
+
+    btnNextChair.addEventListener("click", () => {
+      if (currentChairIndex < filteredChairs.length - 1) {
+        selectChair(currentChairIndex + 1);
+      } else {
+        selectChair(0);
+      }
+    });
+
+    // Keyboard navigation: Left/Right to flip chairs, Up/Down to flip photos!
+    window.addEventListener("keydown", (e) => {
+      if (document.activeElement.tagName === 'INPUT' || document.activeElement.isContentEditable) {
+        return; // don't hijack keyboard inside input fields
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        btnPrevChair.click();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        btnNextChair.click();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (currentImageIndex > 0) setChairImage(currentImageIndex - 1);
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (currentImageIndex < currentImages.length - 1) setChairImage(currentImageIndex + 1);
+      }
+    });
+
+    // Quick Custom Inputs Sync
+    inputCustomPrice.addEventListener("input", (e) => {
+      badgePriceAmount.textContent = e.target.value;
+    });
+
+    inputCustomTag.addEventListener("input", (e) => {
+      badgeActionPill.textContent = e.target.value;
+    });
+
+    chkPunchHole.addEventListener("change", (e) => {
+      punchHoleGuide.style.display = e.target.checked ? "block" : "none";
+    });
+
+    // Print Mode Switcher
+    function setPrintMode(mode) {
+      currentPrintMode = mode;
+      document.body.className = `mode-${mode}`;
+
+      btnModeSingle.classList.toggle("active", mode === 'single');
+      btnModeA4.classList.toggle("active", mode === 'a4');
+
+      if (mode === 'single') {
+        badgeSingleWrap.style.display = 'block';
+        a4SheetContainer.style.display = 'none';
+      } else {
+        badgeSingleWrap.style.display = 'none';
+        a4SheetContainer.style.display = 'block';
+        renderA4Grid();
+      }
+    }
+
+    btnModeSingle.addEventListener("click", () => setPrintMode('single'));
+    btnModeA4.addEventListener("click", () => setPrintMode('a4'));
+
+    // Print Button
+    btnPrint.addEventListener("click", () => {
+      if (currentPrintMode === 'a4') {
+        renderA4Grid();
+      }
+      window.print();
+    });
+
+    // Initial load
+    loadChairs();
+  </script>
+</body>
+</html>

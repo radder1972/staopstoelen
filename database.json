@@ -238,7 +238,7 @@
       "image": "assets/stoelen/Sta-op-stoel-DORDRECHT-1.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-DORDRECHT-2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/Sta-op-stoel-DORDRECHT-interior.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-DORDRECHT-1.jpg",
         "assets/stoelen/Sta-op-stoel-DORDRECHT-2.jpg",
@@ -782,7 +782,7 @@
       "image": "assets/stoelen/Senioren-fauteuil-Farstrup-APPLAUS.jpg",
       "imageUp": null,
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_seniorenstoel-farstrup-applaus_ambient.png",
       "gallery": [
         "assets/stoelen/Senioren-fauteuil-Farstrup-APPLAUS.jpg"
       ],
@@ -997,7 +997,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-5.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-1-1.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/580-neutraal-sfeer-staand-2.jpg",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-5.jpg",
         "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-1-1.jpg",
