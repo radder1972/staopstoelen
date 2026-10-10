@@ -605,7 +605,7 @@
     .badge-photo-container {
       position: relative;
       width: 100%;
-      height: 48mm;
+      height: 44mm;
       border-radius: 7px;
       overflow: hidden;
       background: #f8fafc;
@@ -647,10 +647,10 @@
       display: none !important;
     }
 
-    /* 3. Product Titel & Type */
+    /* 3. Product Titel & Type (Ruim & Luchtig onder de foto) */
     .badge-product-title-row {
-      margin-top: 2mm;
-      margin-bottom: 2mm;
+      margin-top: 2.4mm;
+      margin-bottom: 2.4mm;
     }
 
     .badge-brand-label {
@@ -665,7 +665,7 @@
 
     .badge-model-name {
       font-family: var(--font-heading);
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1.15;
@@ -675,18 +675,18 @@
     }
 
     .badge-type-desc {
-      font-size: 8.2px;
+      font-size: 8px;
       color: var(--color-gray);
       line-height: 1.25;
-      margin-top: 1px;
+      margin-top: 1.5px;
     }
 
-    /* 4. Grote Groene Showroom Box (Maatvoering etc. + Prijs rechtsonder) */
+    /* 4. Grote Groene Showroom Box (Luchtig, ruim & ademend) */
     .badge-showroom-box {
       background: linear-gradient(145deg, #f4faf1 0%, #e6f4df 100%);
       border: 1.8px solid var(--color-forest);
       border-radius: 8px;
-      padding: 5.5px 8px;
+      padding: 7px 9px 7.5px 9px;
       box-shadow: 0 3px 10px rgba(75, 143, 36, 0.14);
       display: flex;
       flex-direction: column;
@@ -698,18 +698,18 @@
     .badge-specs-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.6mm;
+      gap: 2mm;
     }
 
     .spec-cell {
       background: #ffffff;
       border: 1px solid #d4e5d0;
       border-radius: 5px;
-      padding: 2.8px 6px;
+      padding: 3.2px 6.5px;
       display: flex;
       align-items: center;
       gap: 6px;
-      min-height: 9.2mm;
+      min-height: 9.6mm;
       box-sizing: border-box;
     }
 
@@ -748,7 +748,7 @@
 
     .spec-cell-value {
       font-family: var(--font-heading);
-      font-size: 8.5px;
+      font-size: 8.6px;
       font-weight: 800;
       color: var(--color-forest-dark);
       white-space: nowrap;
@@ -758,11 +758,11 @@
       margin-top: 1px;
     }
 
-    /* Subtiele scheidingslijn in de box */
+    /* Subtiele scheidingslijn met RUIME lucht tussen specs en prijsvak */
     .badge-box-divider {
       height: 1px;
-      background: rgba(75, 143, 36, 0.22);
-      margin: 2mm 0 2mm 0;
+      background: rgba(75, 143, 36, 0.25);
+      margin: 3.6mm 0 3.2mm 0;
     }
 
     /* Onderkant van de box: Actie links, Prijs RECHTS */
@@ -771,22 +771,23 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: 6px;
+      padding-top: 0.5mm;
     }
 
     .box-bottom-left {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 2.5px;
+      gap: 3px;
     }
 
     .action-pill {
       background: var(--color-forest);
       color: #ffffff;
-      padding: 5px 10px;
+      padding: 5.5px 11px;
       border-radius: 5px;
       font-family: var(--font-heading);
-      font-size: 8.5px;
+      font-size: 8.8px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.4px;
@@ -798,7 +799,7 @@
     }
 
     .price-subline {
-      font-size: 6.4px;
+      font-size: 6.5px;
       font-weight: 700;
       color: var(--color-forest-dark);
       opacity: 0.85;
@@ -817,10 +818,11 @@
       align-items: center;
       gap: 5px;
       justify-content: flex-end;
+      margin-bottom: 1px;
     }
 
     .price-label {
-      font-size: 7.2px;
+      font-size: 7.4px;
       font-weight: 800;
       color: var(--color-forest);
       text-transform: uppercase;
@@ -837,7 +839,7 @@
 
     .price-amount {
       font-family: var(--font-heading);
-      font-size: 26px;
+      font-size: 27px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1;
