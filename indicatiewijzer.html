@@ -907,12 +907,12 @@
       }
     });
 
-    // Check if opened from huisstijl portal
+    // Check if opened from beheer or huisstijl portal
     (function() {
       var backBtn = document.getElementById('indicatiewijzerBackBtn');
-      if (backBtn && (document.referrer.indexOf('huisstijl') !== -1 || window.location.search.indexOf('from=huisstijl') !== -1)) {
-        backBtn.href = 'huisstijl.html';
-        backBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Terug naar Huisstijl';
+      if (backBtn && (document.referrer.indexOf('huisstijl') !== -1 || document.referrer.indexOf('beheer') !== -1 || window.location.search.indexOf('from=huisstijl') !== -1 || window.location.search.indexOf('from=beheer') !== -1)) {
+        backBtn.href = 'beheer.html#huisstijl';
+        backBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Terug naar Beheer Portaal';
       }
     })();
   </script>

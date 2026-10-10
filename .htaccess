@@ -21,7 +21,10 @@
     RewriteRule ^api/ - [L]
     RewriteRule ^assets/ - [L]
 
-    # Rewrite clean URLs without .html extension (e.g. /huisstijl -> /huisstijl.html)
+    # Redirect legacy /huisstijl and /huisstijl.html to beheer.html#huisstijl
+    RewriteRule ^huisstijl(\.html)?/?$ /beheer.html#huisstijl [R=301,NE,L]
+
+    # Rewrite clean URLs without .html extension (e.g. /keuzehulp -> /keuzehulp.html)
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
     RewriteRule ^([^/]+)/?$ $1.html [L]
 
