@@ -690,6 +690,9 @@
       <button type="button" class="btn-person active" id="btnPersonMatthias" onclick="setPerson('matthias')">
         Matthias Radder
       </button>
+      <button type="button" class="btn-person" id="btnPersonSuus" onclick="setPerson('suus')">
+        Suus Klein Haneveld Wiersma
+      </button>
     </div>
 
     <div class="toolbar-actions">
@@ -871,6 +874,16 @@
         phoneDisplay: "06 - 341 99 024",
         phoneRaw: "31634199024",
         sheetSubtitle: "Matthias Radder &bull; Ergonomisch adviseur (zitexpert) &bull; Regio Dordrecht"
+      },
+      suus: {
+        badge: "Suus Klein Haneveld Wiersma",
+        docTitle: "Visitekaartje Suus Klein Haneveld Wiersma | staopstoelen.nl",
+        nameHtml: '<span class="name-first">Suus</span> <span class="name-last">Klein Haneveld Wiersma</span>',
+        titleHtml: 'Ergonomisch adviseur <span class="badge-spec">(zitexpert)</span>',
+        email: "suus@staopstoelen.nl",
+        phoneDisplay: "06 - 22 23 29 64",
+        phoneRaw: "31622232964",
+        sheetSubtitle: "Suus Klein Haneveld Wiersma &bull; Ergonomisch adviseur (zitexpert) &bull; Regio Dordrecht"
       }
     };
 
@@ -889,7 +902,7 @@
       const emailLink = document.getElementById("cardEmailLink");
       if (emailLink) {
         emailLink.href = `mailto:${p.email}`;
-        emailLink.title = `Stuur ${personKey === 'geertjan' ? 'Geertjan' : 'Matthias'} een e-mail`;
+        emailLink.title = `Stuur ${p.badge.split(' ')[0]} een e-mail`;
       }
       const emailText = document.getElementById("cardEmailText");
       if (emailText) {
@@ -909,6 +922,8 @@
 
       document.getElementById("btnPersonGeertjan").classList.toggle("active", personKey === 'geertjan');
       document.getElementById("btnPersonMatthias").classList.toggle("active", personKey === 'matthias');
+      const btnSuus = document.getElementById("btnPersonSuus");
+      if (btnSuus) btnSuus.classList.toggle("active", personKey === 'suus');
 
       // Update URL query parameter without reload
       try {
