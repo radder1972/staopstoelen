@@ -426,68 +426,248 @@
       border-color: var(--color-forest);
     }
 
-    /* Geselecteerde Stoel Samenvattingsstrip */
-    .active-chair-strip {
-      background: #f8faf6;
-      border: 1.5px solid rgba(75, 143, 36, 0.22);
-      border-radius: 10px;
-      padding: 12px 18px;
+    /* ==========================================================================
+       VISUELE WAAIER VAN 3 STOELKAARTEN
+       ========================================================================== */
+    .chair-fan-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0 4px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .fan-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      color: var(--color-forest-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    .fan-nav-arrow:hover {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 18px rgba(75, 143, 36, 0.35);
+    }
+    .fan-nav-arrow.prev { left: 4px; }
+    .fan-nav-arrow.next { right: 4px; }
+
+    .chair-fan-deck {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 920px;
+      min-height: 250px;
+      perspective: 1000px;
+      padding: 10px 48px;
+      box-sizing: border-box;
+    }
+
+    .fan-card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1.5px solid #e2e8f0;
+      padding: 14px 16px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      user-select: none;
+    }
+
+    /* Flankkaarten (Vorige & Volgende in waaier) */
+    .fan-card.side {
+      flex: 0 1 230px;
+      min-height: 210px;
+      opacity: 0.72;
+      filter: grayscale(12%);
+      background: #f8fafc;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+    .fan-card.side.prev {
+      transform: perspective(700px) rotateY(7deg) scale(0.92);
+      transform-origin: right center;
+    }
+    .fan-card.side.next {
+      transform: perspective(700px) rotateY(-7deg) scale(0.92);
+      transform-origin: left center;
+    }
+    .fan-card.side:hover {
+      opacity: 0.98;
+      filter: none;
+      background: #ffffff;
+      border-color: var(--color-forest);
+      transform: scale(0.96);
+      box-shadow: 0 8px 22px rgba(75, 143, 36, 0.16);
+    }
+
+    /* Middelste Kaart (Actieve Stoel in waaier) */
+    .fan-card.center {
+      flex: 0 0 340px;
+      min-height: 250px;
+      border: 2.5px solid var(--color-forest);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdfa 100%);
+      box-shadow: 0 12px 32px rgba(75, 143, 36, 0.22);
+      transform: scale(1.03);
+      z-index: 5;
+      cursor: default;
+    }
+
+    .fan-card-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      margin-bottom: 8px;
+      gap: 6px;
     }
 
-    .active-chair-main-info {
+    .fan-card-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .fan-card-badge.nieuw {
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest-dark);
+      border: 1px solid rgba(75, 143, 36, 0.25);
+    }
+    .fan-card-badge.occasion {
+      background: rgba(243, 146, 35, 0.12);
+      color: var(--color-terracotta-dark);
+      border: 1px solid rgba(243, 146, 35, 0.25);
+    }
+    .fan-card-badge.active-indicator {
+      background: var(--color-forest);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .fan-card-nav-hint {
+      font-size: 0.70rem;
+      font-weight: 700;
+      color: #64748b;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .fan-card-img-wrap {
+      width: 100%;
+      height: 100px;
+      border-radius: 8px;
+      background: #f8fafc;
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 8px;
+      position: relative;
     }
-
-    .active-chair-img-mini {
-      width: 52px;
-      height: 52px;
-      border-radius: 8px;
-      border: 1.5px solid #cbd5e1;
-      object-fit: contain;
+    .fan-card.center .fan-card-img-wrap {
+      height: 115px;
       background: #ffffff;
-      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+    }
+    .fan-card-img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    .fan-card:hover .fan-card-img {
+      transform: scale(1.04);
     }
 
-    .active-chair-titles {
+    .fan-card-info {
       display: flex;
       flex-direction: column;
       gap: 2px;
+      flex: 1;
     }
-
-    .active-chair-name {
+    .fan-card-name {
       font-family: var(--font-heading);
-      font-size: 1.02rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--color-forest-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .fan-card.center .fan-card-name {
+      font-size: 1.02rem;
+    }
+    .fan-card-brand {
+      font-size: 0.74rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .fan-card-price {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--color-forest);
+      margin-top: 3px;
+    }
+    .fan-card.center .fan-card-price {
+      font-size: 1.05rem;
     }
 
-    .active-chair-meta {
-      font-size: 0.82rem;
-      color: #64748b;
+    /* Fotokeuze balk binnenin de actieve kaart */
+    .fan-card-photos-bar {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(75, 143, 36, 0.2);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .fan-card-photos-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
 
-    .active-chair-condition-tag {
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 1px 7px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      background: rgba(75, 143, 36, 0.15);
-      color: var(--color-forest-dark);
-    }
-    .active-chair-condition-tag.occasion {
-      background: rgba(243, 146, 35, 0.15);
-      color: var(--color-terracotta-dark);
+    @media (max-width: 768px) {
+      .chair-fan-deck {
+        padding: 8px;
+        gap: 8px;
+      }
+      .fan-card.side {
+        display: none;
+      }
+      .fan-card.center {
+        flex: 1 1 auto;
+        max-width: 100%;
+      }
     }
 
     .active-chair-photo-selector {
@@ -1941,27 +2121,19 @@
             </div>
           </div>
 
-          <!-- Actieve Stoel Mini Samenvatting met Foto Kiezer -->
-          <div class="active-chair-strip">
-            <div class="active-chair-main-info">
-              <img id="summaryChairImg" src="" alt="Stoelfoto" class="active-chair-img-mini">
-              <div class="active-chair-titles">
-                <div class="active-chair-name" id="summaryChairName">Sta-op stoel Ravi</div>
-                <div class="active-chair-meta">
-                  <span id="summaryChairBrand">DFM</span> &bull;
-                  <span class="active-chair-condition-tag" id="summaryChairTag">Nieuw</span> &bull;
-                  <strong style="color: var(--color-forest);" id="summaryChairPrice">€ 1.945,-</strong>
-                </div>
-              </div>
+          <!-- Visuele Waaier van 3 Kaarten (Vorige, Actieve stoel, Volgende) -->
+          <div class="chair-fan-container">
+            <button type="button" class="fan-nav-arrow prev" id="btnFanPrev" title="Vorige stoel (Pijl links)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+
+            <div class="chair-fan-deck" id="chairFanDeck">
+              <!-- Dynamisch gevuld met 3 kaarten: [Vorige] [Actieve stoel] [Volgende] -->
             </div>
 
-            <!-- Foto Keuze Knoppen (Catalogusfoto / Sfeerfoto) -->
-            <div class="active-chair-photo-selector">
-              <span class="photo-choice-label">Foto voor badge:</span>
-              <div id="summaryPhotoButtons" style="display: inline-flex; gap: 6px; flex-wrap: wrap;">
-                <!-- Wordt dynamisch gevuld met fotokeuzes -->
-              </div>
-            </div>
+            <button type="button" class="fan-nav-arrow next" id="btnFanNext" title="Volgende stoel (Pijl rechts)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
           </div>
         </div>
 
@@ -2409,30 +2581,22 @@
     let currentSideMode = 'both'; // 'both', 'front', of 'back'
 
     // DOM Elements
-    const chairCarousel = document.getElementById("chairCarousel");
-    const photoThumbnails = document.getElementById("photoThumbnails");
     const chairSearchInput = document.getElementById("chairSearchInput");
     const chairIndexLabel = document.getElementById("chairIndexLabel");
+    const chairSelectDropdown = document.getElementById("chairSelectDropdown");
     const btnPrevChair = document.getElementById("btnPrevChair");
     const btnNextChair = document.getElementById("btnNextChair");
+    const btnFanPrev = document.getElementById("btnFanPrev");
+    const btnFanNext = document.getElementById("btnFanNext");
+    const chairFanDeck = document.getElementById("chairFanDeck");
     const btnPrint = document.getElementById("btnPrint");
     const btnPrintTop = document.getElementById("btnPrintTop");
-    const btnModeSingle = document.getElementById("btnModeSingle");
-    const btnModeFold = document.getElementById("btnModeFold");
-    const btnModeA4 = document.getElementById("btnModeA4");
     const cardModeFold = document.getElementById("cardModeFold");
     const cardModeSingle = document.getElementById("cardModeSingle");
     const cardModeA4 = document.getElementById("cardModeA4");
     const foldOptionsRow = document.getElementById("foldOptionsRow");
     const sideOptionsRow = document.getElementById("sideOptionsRow");
     const previewInfoBadge = document.getElementById("previewInfoBadge");
-    const chairSelectDropdown = document.getElementById("chairSelectDropdown");
-    const summaryChairImg = document.getElementById("summaryChairImg");
-    const summaryChairName = document.getElementById("summaryChairName");
-    const summaryChairBrand = document.getElementById("summaryChairBrand");
-    const summaryChairTag = document.getElementById("summaryChairTag");
-    const summaryChairPrice = document.getElementById("summaryChairPrice");
-    const summaryPhotoButtons = document.getElementById("summaryPhotoButtons");
     const sideSwitchGroup = document.getElementById("sideSwitchGroup");
     const btnSideBoth = document.getElementById("btnSideBoth");
     const btnSideFront = document.getElementById("btnSideFront");
@@ -2441,7 +2605,6 @@
     const a4SheetContainerBack = document.getElementById("a4SheetContainerBack");
     const a4FoldContainer = document.getElementById("a4FoldContainer");
     const a4FoldGrid = document.getElementById("a4FoldGrid");
-    const foldConfigBar = document.getElementById("foldConfigBar");
     const foldSecondChairSelect = document.getElementById("foldSecondChairSelect");
     const badgeSingleWrap = document.getElementById("badgeSingleWrap");
     const a4GridSlot = document.getElementById("a4GridSlot");
@@ -2603,43 +2766,143 @@
       chairSelectDropdown.value = currentChairIndex;
     }
 
-    // 3. Render Chair Carousel
-    function renderCarousel() {
-      if (!chairCarousel) return;
-      chairCarousel.innerHTML = '';
+    // 3. Render 3-Card Chair Fan Deck ("Waaier van kaarten")
+    function renderFanDeck() {
+      const deck = document.getElementById("chairFanDeck");
+      if (!deck) return;
+      deck.innerHTML = '';
+
       if (filteredChairs.length === 0) {
-        chairCarousel.innerHTML = '<div style="padding: 12px; font-size: 0.85rem; color: #64748b;">Geen stoelen gevonden voor deze zoekopdracht.</div>';
+        deck.innerHTML = '<div style="padding: 24px; color: #64748b; font-size: 0.9rem; text-align: center;">Geen stoelen gevonden voor deze zoekopdracht.</div>';
         return;
       }
 
-      filteredChairs.forEach((chair, idx) => {
-        const card = document.createElement("div");
-        card.className = "chair-thumb-card" + (idx === currentChairIndex ? " active" : "");
-        card.setAttribute("data-index", idx);
+      const total = filteredChairs.length;
+      const currentIdx = currentChairIndex;
+      const prevIdx = (currentIdx - 1 + total) % total;
+      const nextIdx = (currentIdx + 1) % total;
 
-        const images = getAllImagesForChair(chair);
-        const displayImg = images.length > 0 ? images[0].url : (chair.image || '');
+      // 1. Linker Kaart (Vorige stoel in de waaier)
+      if (total > 1) {
+        const prevChair = filteredChairs[prevIdx];
+        const prevImages = getAllImagesForChair(prevChair);
+        const prevImg = prevImages.length > 0 ? prevImages[0].url : (prevChair.image || '');
+        const isPrevNieuw = prevChair.condition === 'nieuw';
 
-        const isNieuw = chair.condition === 'nieuw';
-        const tagHtml = isNieuw ? '<span class="chair-thumb-tag nieuw">Nieuw</span>' : '<span class="chair-thumb-tag occasion">Occasion</span>';
-
-        card.innerHTML = `
-          ${tagHtml}
-          <div class="chair-thumb-img-wrap">
-            <img src="${displayImg}" alt="${chair.name}" class="chair-thumb-img" onerror="this.src='${chair.image || ''}'">
+        const cardPrev = document.createElement("div");
+        cardPrev.className = "fan-card side prev";
+        cardPrev.title = `Klik om ${prevChair.name} te selecteren`;
+        cardPrev.innerHTML = `
+          <div class="fan-card-topbar">
+            <span class="fan-card-nav-hint">‹ Vorige stoel</span>
+            <span class="fan-card-badge ${isPrevNieuw ? 'nieuw' : 'occasion'}">${isPrevNieuw ? 'Nieuw' : 'Occasion'}</span>
           </div>
-          <div class="chair-thumb-name" title="${chair.name}">${chair.name}</div>
-          <div class="chair-thumb-price">${formatPrice(chair.price)}</div>
+          <div class="fan-card-img-wrap">
+            <img src="${prevImg}" alt="${prevChair.name}" class="fan-card-img" onerror="this.src='${prevChair.image || ''}'">
+          </div>
+          <div class="fan-card-info">
+            <div class="fan-card-brand">${prevChair.brand || ''}</div>
+            <div class="fan-card-name" title="${prevChair.name}">${prevChair.name}</div>
+            <div class="fan-card-price">${formatPrice(prevChair.price)}</div>
+          </div>
         `;
-
-        card.addEventListener("click", () => {
-          selectChair(idx);
+        cardPrev.addEventListener("click", () => {
+          selectChair(prevIdx);
         });
+        deck.appendChild(cardPrev);
+      }
 
-        chairCarousel.appendChild(card);
-      });
+      // 2. Middelste Kaart (Actieve stoel, uitgelicht)
+      const centerChair = filteredChairs[currentIdx];
+      const centerImages = currentImages.length > 0 ? currentImages : getAllImagesForChair(centerChair);
+      const activeImgObj = centerImages[currentImageIndex] || centerImages[0] || { url: centerChair.image || '', label: 'Standaard' };
+      const isCenterNieuw = centerChair.condition === 'nieuw';
+
+      const cardCenter = document.createElement("div");
+      cardCenter.className = "fan-card center active";
+
+      let photoButtonsHtml = '';
+      if (centerImages.length > 1) {
+        photoButtonsHtml = `
+          <div class="fan-card-photos-bar">
+            <span class="fan-card-photos-label">Foto voor badge:</span>
+            <div id="fanPhotoBtns" style="display: inline-flex; gap: 5px; flex-wrap: wrap;"></div>
+          </div>
+        `;
+      }
+
+      cardCenter.innerHTML = `
+        <div class="fan-card-topbar">
+          <span class="fan-card-badge active-indicator">✓ Geselecteerd voor badge</span>
+          <span class="fan-card-badge ${isCenterNieuw ? 'nieuw' : 'occasion'}">${isCenterNieuw ? 'Nieuw Maatwerk' : 'Occasion'}</span>
+        </div>
+        <div class="fan-card-img-wrap">
+          <img src="${activeImgObj.url}" alt="${centerChair.name}" class="fan-card-img" id="fanCenterImg" onerror="this.src='${centerChair.image || ''}'">
+        </div>
+        <div class="fan-card-info">
+          <div class="fan-card-brand">${centerChair.brand ? centerChair.brand + ' • ' : ''}${centerChair.model || 'Ergonomisch maatwerk'}</div>
+          <div class="fan-card-name" title="${centerChair.name}">${centerChair.name}</div>
+          <div class="fan-card-price">${formatPrice(centerChair.price)}</div>
+        </div>
+        ${photoButtonsHtml}
+      `;
+
+      if (centerImages.length > 1) {
+        const photoContainer = cardCenter.querySelector("#fanPhotoBtns");
+        if (photoContainer) {
+          centerImages.forEach((imgObj, i) => {
+            const pBtn = document.createElement("button");
+            pBtn.type = "button";
+            pBtn.className = "photo-choice-btn" + (i === currentImageIndex ? " active" : "");
+            pBtn.innerHTML = imgObj.label;
+            pBtn.title = `Toon ${imgObj.label} op de badge`;
+            pBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              setChairImage(i);
+            });
+            photoContainer.appendChild(pBtn);
+          });
+        }
+      }
+
+      deck.appendChild(cardCenter);
+
+      // 3. Rechter Kaart (Volgende stoel in de waaier)
+      if (total > 2 || (total === 2 && nextIdx !== currentIdx && nextIdx !== prevIdx)) {
+        const nextChair = filteredChairs[nextIdx];
+        const nextImages = getAllImagesForChair(nextChair);
+        const nextImg = nextImages.length > 0 ? nextImages[0].url : (nextChair.image || '');
+        const isNextNieuw = nextChair.condition === 'nieuw';
+
+        const cardNext = document.createElement("div");
+        cardNext.className = "fan-card side next";
+        cardNext.title = `Klik om ${nextChair.name} te selecteren`;
+        cardNext.innerHTML = `
+          <div class="fan-card-topbar">
+            <span class="fan-card-badge ${isNextNieuw ? 'nieuw' : 'occasion'}">${isNextNieuw ? 'Nieuw' : 'Occasion'}</span>
+            <span class="fan-card-nav-hint">Volgende stoel ›</span>
+          </div>
+          <div class="fan-card-img-wrap">
+            <img src="${nextImg}" alt="${nextChair.name}" class="fan-card-img" onerror="this.src='${nextChair.image || ''}'">
+          </div>
+          <div class="fan-card-info">
+            <div class="fan-card-brand">${nextChair.brand || ''}</div>
+            <div class="fan-card-name" title="${nextChair.name}">${nextChair.name}</div>
+            <div class="fan-card-price">${formatPrice(nextChair.price)}</div>
+          </div>
+        `;
+        cardNext.addEventListener("click", () => {
+          selectChair(nextIdx);
+        });
+        deck.appendChild(cardNext);
+      }
 
       updateIndexLabel();
+    }
+
+    // Alias voor compatibiliteit
+    function renderCarousel() {
+      renderFanDeck();
     }
 
     // 4. Extract and rank all images for a chair (Cosy first!)
@@ -2695,36 +2958,13 @@
         chairSelectDropdown.value = index;
       }
 
-      // Update active card in carousel (if present)
-      document.querySelectorAll(".chair-thumb-card").forEach((c, idx) => {
-        if (idx === currentChairIndex) {
-          c.classList.add("active");
-          c.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        } else {
-          c.classList.remove("active");
-        }
-      });
-
       updateIndexLabel();
 
       // Extract all images for this chair
       currentImages = getAllImagesForChair(currentChair);
       currentImageIndex = 0; // Automatically select 1st image: cosy if present, else standard!
 
-      // Update mini summary in config card
-      if (summaryChairImg) {
-        summaryChairImg.src = (currentImages.length > 0 ? currentImages[0].url : currentChair.image) || '';
-      }
-      if (summaryChairName) summaryChairName.textContent = currentChair.name || '';
-      if (summaryChairBrand) summaryChairBrand.textContent = currentChair.brand || '';
-      if (summaryChairPrice) summaryChairPrice.textContent = formatPrice(currentChair.price);
-      if (summaryChairTag) {
-        const isNieuw = currentChair.condition === 'nieuw';
-        summaryChairTag.textContent = isNieuw ? 'Nieuw' : 'Occasion';
-        summaryChairTag.className = 'active-chair-condition-tag' + (isNieuw ? '' : ' occasion');
-      }
-
-      renderPhotoThumbnails();
+      renderFanDeck();
       populateBadge(currentChair);
 
       if (currentPrintMode === 'a4') {
@@ -2732,41 +2972,6 @@
       } else if (currentPrintMode === 'fold') {
         renderA4FoldGrid();
       }
-    }
-
-    // 6. Render photo thumbnails for current chair
-    function renderPhotoThumbnails() {
-      if (photoThumbnails) photoThumbnails.innerHTML = '';
-      if (summaryPhotoButtons) summaryPhotoButtons.innerHTML = '';
-      if (currentImages.length === 0) return;
-
-      currentImages.forEach((imgObj, idx) => {
-        // Option buttons in active chair summary
-        if (summaryPhotoButtons) {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "photo-choice-btn" + (idx === currentImageIndex ? " active" : "");
-          btn.innerHTML = `${imgObj.label}`;
-          btn.title = `Toon ${imgObj.label} op de badge`;
-          btn.addEventListener("click", () => setChairImage(idx));
-          summaryPhotoButtons.appendChild(btn);
-        }
-
-        // Legacy thumbnails if element exists
-        if (photoThumbnails) {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "photo-thumb-btn" + (idx === currentImageIndex ? " active" : "");
-          btn.title = imgObj.label;
-          const tagClass = imgObj.type === 'cosy' ? ' cosy' : '';
-          btn.innerHTML = `
-            <img src="${imgObj.url}" alt="${imgObj.label}">
-            <span class="photo-thumb-tag${tagClass}">${imgObj.label}</span>
-          `;
-          btn.addEventListener("click", () => setChairImage(idx));
-          photoThumbnails.appendChild(btn);
-        }
-      });
     }
 
     // 7. Change active photo for the badge
@@ -2778,13 +2983,12 @@
       document.querySelectorAll(".photo-choice-btn").forEach((b, i) => {
         b.classList.toggle("active", i === currentImageIndex);
       });
-      document.querySelectorAll(".photo-thumb-btn").forEach((b, i) => {
-        b.classList.toggle("active", i === currentImageIndex);
-      });
 
       const chosen = currentImages[currentImageIndex];
       badgePhotoImg.src = chosen.url;
-      if (summaryChairImg) summaryChairImg.src = chosen.url;
+      const fanCenterImg = document.getElementById("fanCenterImg");
+      if (fanCenterImg) fanCenterImg.src = chosen.url;
+
       if (badgePhotoSettingText) {
         badgePhotoSettingText.textContent = chosen.type === 'cosy' ? 'Woonkamer Sfeer' : 'Showroom Detail';
       }
@@ -3104,9 +3308,10 @@
         filteredChairs = chairsList.filter(c => {
           return (c.name && c.name.toLowerCase().includes(q)) ||
                  (c.brand && c.brand.toLowerCase().includes(q)) ||
-                 (c.model && c.model.toLowerCase().includes(q));
+                  (c.model && c.model.toLowerCase().includes(q));
         });
       }
+      populateChairDropdown();
       renderCarousel();
       if (filteredChairs.length > 0) {
         selectChair(0);
@@ -3163,6 +3368,10 @@
         selectChair(0);
       }
     });
+
+    // Fan deck arrows
+    if (btnFanPrev) btnFanPrev.addEventListener("click", () => btnPrevChair.click());
+    if (btnFanNext) btnFanNext.addEventListener("click", () => btnNextChair.click());
 
     // Keyboard navigation
     window.addEventListener("keydown", (e) => {
