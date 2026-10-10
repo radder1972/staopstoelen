@@ -526,7 +526,7 @@
       background: #ffffff;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       border-radius: 0;
-      padding: 6mm 7mm 5mm 7mm;
+      padding: 7mm 7.5mm 9mm 7.5mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -605,7 +605,7 @@
     .badge-photo-container {
       position: relative;
       width: 100%;
-      height: 52mm;
+      height: 48mm;
       border-radius: 7px;
       overflow: hidden;
       background: #f8fafc;
@@ -644,18 +644,7 @@
     }
 
     .badge-photo-tag-bottomright {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--color-forest-dark);
-      border: 1px solid rgba(0,0,0,0.08);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: var(--font-heading);
-      font-size: 7px;
-      font-weight: 700;
-      backdrop-filter: blur(4px);
+      display: none !important;
     }
 
     /* 3. Product Titel & Type */
@@ -762,12 +751,12 @@
       background: linear-gradient(135deg, #f3faef 0%, #e5f4df 100%);
       border: 2px solid var(--color-forest);
       border-radius: 8px;
-      padding: 8px 11px;
+      padding: 6.5px 11px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 3px 10px rgba(75, 143, 36, 0.16);
-      min-height: 25mm;
+      min-height: 22mm;
       box-sizing: border-box;
       margin-bottom: 0;
     }
@@ -775,7 +764,7 @@
     .price-col {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1.5px;
     }
 
     .price-label-row {
@@ -811,7 +800,7 @@
 
     .price-amount {
       font-family: var(--font-heading);
-      font-size: 26px;
+      font-size: 25px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1;
@@ -819,28 +808,28 @@
     }
 
     .price-old {
-      font-size: 11px;
+      font-size: 10.5px;
       color: #94a3b8;
       text-decoration: line-through;
       font-weight: 700;
     }
 
     .price-subline {
-      font-size: 6.6px;
+      font-size: 6.5px;
       font-weight: 700;
       color: var(--color-forest-dark);
       opacity: 0.85;
-      margin-top: 2px;
+      margin-top: 1.5px;
       letter-spacing: 0.2px;
     }
 
     .action-pill {
       background: var(--color-forest);
       color: #ffffff;
-      padding: 7px 12px;
+      padding: 6.5px 11px;
       border-radius: 6px;
       font-family: var(--font-heading);
-      font-size: 9px;
+      font-size: 8.8px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.4px;
@@ -848,7 +837,7 @@
       box-shadow: 0 3px 8px rgba(75, 143, 36, 0.28);
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
 
     /* ==========================================================================
@@ -856,18 +845,18 @@
        ========================================================================== */
     .badge-a6-back {
       background: #ffffff;
-      padding: 6mm 7.5mm 6mm 7.5mm;
+      padding: 7mm 7.5mm 9mm 7.5mm;
     }
 
     .back-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 12mm;
-      margin-bottom: 2.5mm;
-      padding-top: 0.5mm;
+      min-height: 11mm;
+      margin-bottom: 2mm;
+      padding-top: 0;
       border-bottom: 1.5px solid #eef2ed;
-      padding-bottom: 2mm;
+      padding-bottom: 1.8mm;
     }
 
     .back-logo-text {
@@ -1382,10 +1371,6 @@
           <div class="badge-photo-container">
             <img src="assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Stoelfoto" class="badge-photo-img" id="badgePhotoImg">
             <span class="badge-photo-tag-topleft" id="badgePhotoCondition">Nieuw Maatwerk</span>
-            <span class="badge-photo-tag-bottomright" id="badgePhotoSetting">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 3px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-              <span id="badgePhotoSettingText">Woonkamer Sfeer</span>
-            </span>
           </div>
 
           <!-- 3. Product Titel & Type -->
@@ -1890,14 +1875,12 @@
       if (isNieuw) {
         badgePhotoCondition.textContent = 'Nieuw Maatwerk';
         badgePhotoCondition.className = 'badge-photo-tag-topleft';
-        badgePriceLabel.textContent = 'Adviesprijs Maatwerk';
-        if (badgeActionText) badgeActionText.textContent = 'Nieuw Bestellen';
       } else {
         badgePhotoCondition.textContent = 'Gecertificeerd Gereviseerd';
         badgePhotoCondition.className = 'badge-photo-tag-topleft occasion';
-        badgePriceLabel.textContent = 'Showroom Meeneemprijs';
-        if (badgeActionText) badgeActionText.textContent = 'Direct Meenemen';
       }
+      badgePriceLabel.textContent = 'Showroom Meeneemprijs';
+      if (badgeActionText) badgeActionText.textContent = 'Direct Meenemen';
 
       // Quality stamp
       badgeQualityStamp.src = 'assets/sticker_nieuw_gereviseerd.svg?v=1.3';
