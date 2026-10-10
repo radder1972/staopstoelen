@@ -1163,11 +1163,11 @@
 
     /* 4. Grote Groene Showroom Box (Hoger, ruimer en prominent) */
     .badge-showroom-box {
-      background: linear-gradient(145deg, #f4faf1 0%, #e6f4df 100%);
-      border: 1.8px solid var(--color-forest);
+      background: #fafcf9;
+      border: 1.5px solid var(--color-forest);
       border-radius: 8px;
       padding: 6.5px 9.5px 7.5px 9.5px;
-      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.14);
+      box-shadow: none;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
@@ -1197,7 +1197,7 @@
       gap: 5.5px;
       min-height: 9.8mm;
       box-sizing: border-box;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      box-shadow: none;
       min-width: 0;
       max-width: 100%;
       overflow: hidden;
@@ -1367,6 +1367,12 @@
       user-select: none;
       opacity: 0.85;
       line-height: 1;
+      background: transparent !important;
+      background-color: transparent !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     /* ==========================================================================
@@ -1559,8 +1565,8 @@
 
     /* 5. Showroom & Service Zekerheden Box (100% Maatgarantie - Een stuk HOGER & Prominent) */
     .back-service-box {
-      background: linear-gradient(145deg, #f4faf1 0%, #e6f4df 100%);
-      border: 1.8px solid var(--color-forest);
+      background: #fafcf9;
+      border: 1.5px solid var(--color-forest);
       border-radius: 8px;
       padding: 10px 12px;
       display: grid;
@@ -1568,7 +1574,7 @@
       gap: 9px 12px;
       margin-top: auto;
       margin-bottom: 0;
-      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.12);
+      box-shadow: none;
       min-height: 33mm;
       box-sizing: border-box;
       align-content: center;
@@ -1584,7 +1590,7 @@
       border-radius: 6px;
       background: #ffffff;
       border: 1px solid #d4e5d0;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      box-shadow: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1728,14 +1734,14 @@
       border-radius: 0 !important;
     }
 
-    /* Snijlijn Horizontaal (148,5 mm) */
+    /* Snijlijn Horizontaal (148,5 mm) - Zeer subtiele lichte stippellijn zonder groen of schaartjes */
     .a4-fold-cutmark-h {
       position: absolute;
       top: 148.5mm;
       left: 0;
       width: 210mm;
       height: 0;
-      border-top: 1px dashed #94a3b8;
+      border-top: 1px dashed rgba(0, 0, 0, 0.12);
       z-index: 30;
       pointer-events: none;
       display: flex;
@@ -1745,42 +1751,28 @@
 
     .fold-guide-cut-label {
       font-family: var(--font-heading);
-      font-size: 7.8px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
+      font-size: 7.2px;
+      font-weight: 700;
+      letter-spacing: 0.35px;
       text-transform: uppercase;
-      background: #f1f8ee;
-      padding: 2.5px 12px;
+      background: #ffffff;
+      padding: 2.5px 11px;
       border-radius: 9999px;
-      color: var(--color-forest-dark);
-      border: 1px solid #a7d49b;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       position: relative;
       top: -0.5px;
     }
 
-    .cut-edge-mark {
-      position: absolute;
-      top: -7px;
-      font-size: 11px;
-      color: #64748b;
-      line-height: 1;
-    }
-    .cut-edge-mark.left {
-      left: 2mm;
-    }
-    .cut-edge-mark.right {
-      right: 2mm;
-    }
-
-    /* Vouwlijn Verticaal (105 mm) */
+    /* Vouwlijn Verticaal (105 mm) - Zeer subtiele lichte vouwlijn */
     .a4-fold-crease-v {
       position: absolute;
       left: 105mm;
       top: 0;
       width: 0;
       height: 297mm;
-      border-left: 1px dashed #cbd5e1;
+      border-left: 1px dashed rgba(0, 0, 0, 0.10);
       z-index: 30;
       pointer-events: none;
       display: flex;
@@ -1791,36 +1783,22 @@
 
     .fold-guide-crease-label {
       font-family: var(--font-heading);
-      font-size: 7.5px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
+      font-size: 7.2px;
+      font-weight: 700;
+      letter-spacing: 0.35px;
       text-transform: uppercase;
       background: #ffffff;
       padding: 2px 10px;
       border-radius: 9999px;
-      color: #475569;
-      border: 1px solid #cbd5e1;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     .fold-guide-crease-label.top {
       margin-top: 10mm;
     }
     .fold-guide-crease-label.bottom {
       margin-bottom: 10mm;
-    }
-
-    .crease-edge-mark {
-      position: absolute;
-      left: -5.5px;
-      font-size: 10px;
-      color: #94a3b8;
-      line-height: 1;
-    }
-    .crease-edge-mark.top {
-      top: 1.5mm;
-    }
-    .crease-edge-mark.bottom {
-      bottom: 1.5mm;
     }
 
     /* ==========================================================================
@@ -1971,23 +1949,40 @@
       }
 
       body.mode-fold .fold-guide-cut-label,
-      body.mode-fold .fold-guide-crease-label {
+      body.mode-fold .fold-guide-crease-label,
+      body.mode-fold .cut-edge-mark,
+      body.mode-fold .crease-edge-mark {
         display: none !important;
       }
 
       body.mode-fold .a4-fold-cutmark-h {
-        border-top: 1px dashed #94a3b8 !important;
+        border-top: 1px dashed #e2e8f0 !important;
         display: flex !important;
       }
 
       body.mode-fold .a4-fold-crease-v {
-        border-left: 1px dashed #cbd5e1 !important;
+        border-left: 1px dashed #e5e7eb !important;
         display: flex !important;
       }
 
-      body.mode-fold .cut-edge-mark,
-      body.mode-fold .crease-edge-mark {
-        display: block !important;
+      /* Voorkom doordrukken/rasterfouten van boxen en schaduwen bij fysiek printen */
+      .badge-showroom-box,
+      .back-service-box {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        border: 1.5px solid var(--color-forest) !important;
+        box-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .spec-cell,
+      .service-icon-wrap,
+      .action-pill,
+      .badge-a6,
+      .badge-subtle-footer {
+        box-shadow: none !important;
+        background-image: none !important;
       }
     }
   </style>
@@ -2223,7 +2218,7 @@
                 </select>
               </div>
               <div style="font-size: 0.8rem; color: #64748b;">
-                ✂️ <em>Horizontaal doorknippen op 148,5 mm en dubbelvouwen.</em>
+                <em>Horizontaal doorsnijden op 148,5 mm en dubbelvouwen.</em>
               </div>
             </div>
 
@@ -2508,10 +2503,10 @@
           </div>
 
           <!-- Subtiele footer met versienummer (alleen op achterkant) -->
-          <footer class="badge-subtle-footer">
+          <div class="badge-subtle-footer">
             <span>staopstoelen.nl &bull; Productinformatie</span>
             <span>v2.1</span>
-          </footer>
+          </div>
         </article>
       </div>
 
@@ -2543,17 +2538,13 @@
       
       <!-- Snijlijn Horizontaal (148,5 mm) -->
       <div class="a4-fold-cutmark-h">
-        <span class="cut-edge-mark left">✂</span>
-        <span class="fold-guide-cut-label">✂ 1x Horizontaal doormidden snijden (148,5 mm)</span>
-        <span class="cut-edge-mark right">✂</span>
+        <span class="fold-guide-cut-label">Snijlijn (148,5 mm)</span>
       </div>
 
       <!-- Vouwlijn Verticaal (105 mm) -->
       <div class="a4-fold-crease-v">
-        <span class="crease-edge-mark top">⤹</span>
-        <span class="fold-guide-crease-label top">⤹ Vouwlijn</span>
-        <span class="fold-guide-crease-label bottom">⤹ Vouwlijn</span>
-        <span class="crease-edge-mark bottom">⤹</span>
+        <span class="fold-guide-crease-label top">Vouwlijn</span>
+        <span class="fold-guide-crease-label bottom">Vouwlijn</span>
       </div>
 
       <!-- 2x2 Grid -->
