@@ -61,6 +61,8 @@
       z-index: 100;
       box-shadow: 0 4px 18px rgba(18, 43, 7, 0.3);
       border-bottom: 2px solid var(--color-forest);
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .toolbar-left {
@@ -105,6 +107,40 @@
       padding: 3px 10px;
       border-radius: 9999px;
       border: 1px solid rgba(243, 146, 35, 0.4);
+    }
+
+    /* Person Selector in Toolbar */
+    .person-selector {
+      display: flex;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .btn-person {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-person:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .btn-person.active {
+      background: var(--color-terracotta);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     }
 
     .toolbar-actions {
@@ -637,8 +673,18 @@
       </a>
       <div class="toolbar-title">
         Visitekaartje
-        <span>Geertjan Klein Haneveld</span>
+        <span id="toolbarPersonBadge">Geertjan Klein Haneveld</span>
       </div>
+    </div>
+
+    <!-- Keuze Medewerker / Persoon -->
+    <div class="person-selector">
+      <button type="button" class="btn-person active" id="btnPersonGeertjan" onclick="setPerson('geertjan')">
+        Geertjan Klein Haneveld
+      </button>
+      <button type="button" class="btn-person" id="btnPersonMatthias" onclick="setPerson('matthias')">
+        Matthias Radder
+      </button>
     </div>
 
     <div class="toolbar-actions">
@@ -680,12 +726,12 @@
             <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.2" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
           </div>
 
-          <!-- Person info: Geertjan (dik) Klein Haneveld (normaal) & Titel op 1 regel -->
+          <!-- Person info: Geertjan / Matthias & Titel op 1 regel -->
           <div class="card-person">
-            <h1 class="card-person-name">
+            <h1 class="card-person-name" id="cardPersonName">
               <span class="name-first">Geertjan</span> <span class="name-last">Klein Haneveld</span>
             </h1>
-            <div class="card-person-title">
+            <div class="card-person-title" id="cardPersonTitle">
               Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
             </div>
           </div>
@@ -706,10 +752,10 @@
                 <span>078 - 631 4858</span>
               </a>
 
-              <!-- Direct Email Geertjan -->
-              <a href="mailto:geertjan@staopstoelen.nl" class="card-contact-item" title="Stuur Geertjan een e-mail">
+              <!-- Direct Email -->
+              <a href="mailto:geertjan@staopstoelen.nl" class="card-contact-item" id="cardEmailLink" title="Stuur Geertjan een e-mail">
                 <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <span>geertjan@staopstoelen.nl</span>
+                <span id="cardEmailText">geertjan@staopstoelen.nl</span>
               </a>
 
               <!-- Website -->
@@ -786,7 +832,7 @@
   <section class="sheet-print-container" id="sheetContainer">
     <div class="sheet-header-info">
       <h2>staopstoelen.nl &mdash; Drukvel Visitekaartjes (10 exemplaren)</h2>
-      <p>Geertjan Klein Haneveld &bull; Gediplomeerd bewegingstechnoloog (zitexpert) &bull; Regio Dordrecht</p>
+      <p id="sheetSubheading">Geertjan Klein Haneveld &bull; Gediplomeerd bewegingstechnoloog (zitexpert) &bull; Regio Dordrecht</p>
       <div style="margin-top: 10px; display: inline-flex; gap: 8px;">
         <button type="button" class="btn-mode active" id="btnSheetFront" style="background: var(--color-forest); color: #fff; padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Voorzijde (10x)</button>
         <button type="button" class="btn-mode" id="btnSheetBack" style="background: #e2e4e6; color: var(--color-forest-dark); padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Achterzijde (10x)</button>
@@ -799,6 +845,61 @@
   </section>
 
   <script>
+    // Data per medewerker
+    const persons = {
+      geertjan: {
+        badge: "Geertjan Klein Haneveld",
+        docTitle: "Visitekaartje Geertjan Klein Haneveld | staopstoelen.nl",
+        nameHtml: '<span class="name-first">Geertjan</span> <span class="name-last">Klein Haneveld</span>',
+        titleHtml: 'Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>',
+        email: "geertjan@staopstoelen.nl",
+        sheetSubtitle: "Geertjan Klein Haneveld &bull; Gediplomeerd bewegingstechnoloog (zitexpert) &bull; Regio Dordrecht"
+      },
+      matthias: {
+        badge: "Matthias Radder",
+        docTitle: "Visitekaartje Matthias Radder | staopstoelen.nl",
+        nameHtml: '<span class="name-first">Matthias</span> <span class="name-last">Radder</span>',
+        titleHtml: 'Ergonomisch adviseur <span class="badge-spec">(zitexpert)</span>',
+        email: "matthias@staopstoelen.nl",
+        sheetSubtitle: "Matthias Radder &bull; Ergonomisch adviseur (zitexpert) &bull; Regio Dordrecht"
+      }
+    };
+
+    let currentPerson = 'geertjan';
+
+    function setPerson(personKey) {
+      if (!persons[personKey]) return;
+      currentPerson = personKey;
+      const p = persons[personKey];
+
+      document.title = p.docTitle;
+      document.getElementById("toolbarPersonBadge").textContent = p.badge;
+      document.getElementById("cardPersonName").innerHTML = p.nameHtml;
+      document.getElementById("cardPersonTitle").innerHTML = p.titleHtml;
+
+      const emailLink = document.getElementById("cardEmailLink");
+      emailLink.href = `mailto:${p.email}`;
+      emailLink.title = `Stuur ${personKey === 'geertjan' ? 'Geertjan' : 'Matthias'} een e-mail`;
+      document.getElementById("cardEmailText").textContent = p.email;
+
+      document.getElementById("sheetSubheading").innerHTML = p.sheetSubtitle;
+
+      document.getElementById("btnPersonGeertjan").classList.toggle("active", personKey === 'geertjan');
+      document.getElementById("btnPersonMatthias").classList.toggle("active", personKey === 'matthias');
+
+      // Update URL query parameter without reload
+      try {
+        const url = new URL(window.location);
+        url.searchParams.set('persoon', personKey);
+        window.history.replaceState({}, '', url);
+      } catch (e) {}
+
+      // Re-render A4 sheet if currently visible
+      if (document.body.classList.contains("mode-sheet")) {
+        renderA4Sheet(currentSheetSide);
+      }
+    }
+
     // Print Action
     document.getElementById("btnPrintCard").addEventListener("click", () => {
       window.print();
@@ -860,6 +961,13 @@
       sheetContainer.style.display = "block";
       renderA4Sheet(currentSheetSide);
     });
+
+    // Check URL parameter on load (?persoon=matthias of ?persoon=geertjan)
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramPerson = urlParams.get('persoon');
+    if (paramPerson && persons[paramPerson.toLowerCase()]) {
+      setPerson(paramPerson.toLowerCase());
+    }
   </script>
 </body>
 </html>
