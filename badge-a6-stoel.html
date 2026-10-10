@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v2.0) | staopstoelen.nl</title>
-  <meta name="version" content="2.0">
+  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v2.1) | staopstoelen.nl</title>
+  <meta name="version" content="2.1">
   <meta name="description" content="A6 stoelbadge en prijskaart generator voor in de showroom met sfeerfoto of standaardfoto, specificaties, prijzen en kwaliteitszegel van staopstoelen.nl.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -495,8 +495,8 @@
     .preview-stage {
       padding: 30px 16px 60px 16px;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       min-height: calc(100vh - 220px);
     }
 
@@ -506,6 +506,7 @@
       align-items: flex-start;
       justify-content: center;
       flex-wrap: wrap;
+      width: 100%;
     }
 
     .badge-side-col {
@@ -1225,6 +1226,196 @@
     }
 
     /* ==========================================================================
+       A4 VOUWVEL CONTAINER (2x A6 Dubbelzijdig op 1 A4 vel)
+       1x Horizontaal doormidden snijden (148,5 mm), verticaal dubbelvouwen (105 mm)
+       ========================================================================== */
+    .a4-fold-container {
+      display: none;
+      width: 210mm;
+      height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      margin: 0 auto 35px auto;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .a4-fold-grid {
+      display: grid;
+      grid-template-columns: 105mm 105mm;
+      grid-template-rows: 148.5mm 148.5mm;
+      width: 210mm;
+      height: 297mm;
+    }
+
+    .a4-fold-slot {
+      width: 105mm;
+      height: 148.5mm;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .a4-fold-slot .badge-a6 {
+      box-shadow: none !important;
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 0 !important;
+    }
+
+    /* Snijlijn Horizontaal (148,5 mm) */
+    .a4-fold-cutmark-h {
+      position: absolute;
+      top: 148.5mm;
+      left: 0;
+      width: 210mm;
+      height: 0;
+      border-top: 1px dashed #94a3b8;
+      z-index: 30;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fold-guide-cut-label {
+      font-family: var(--font-heading);
+      font-size: 7.8px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      background: #f1f8ee;
+      padding: 2.5px 12px;
+      border-radius: 9999px;
+      color: var(--color-forest-dark);
+      border: 1px solid #a7d49b;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      position: relative;
+      top: -0.5px;
+    }
+
+    .cut-edge-mark {
+      position: absolute;
+      top: -7px;
+      font-size: 11px;
+      color: #64748b;
+      line-height: 1;
+    }
+    .cut-edge-mark.left {
+      left: 2mm;
+    }
+    .cut-edge-mark.right {
+      right: 2mm;
+    }
+
+    /* Vouwlijn Verticaal (105 mm) */
+    .a4-fold-crease-v {
+      position: absolute;
+      left: 105mm;
+      top: 0;
+      width: 0;
+      height: 297mm;
+      border-left: 1px dashed #cbd5e1;
+      z-index: 30;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fold-guide-crease-label {
+      font-family: var(--font-heading);
+      font-size: 7.5px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      background: #ffffff;
+      padding: 2px 10px;
+      border-radius: 9999px;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .fold-guide-crease-label.top {
+      margin-top: 10mm;
+    }
+    .fold-guide-crease-label.bottom {
+      margin-bottom: 10mm;
+    }
+
+    .crease-edge-mark {
+      position: absolute;
+      left: -5.5px;
+      font-size: 10px;
+      color: #94a3b8;
+      line-height: 1;
+    }
+    .crease-edge-mark.top {
+      top: 1.5mm;
+    }
+    .crease-edge-mark.bottom {
+      bottom: 1.5mm;
+    }
+
+    /* Vouwvel Bedieningsbalk (bovenaan scherm in vouwmodus) */
+    .fold-config-bar {
+      display: none;
+      background: #ffffff;
+      border: 1.5px solid #d4e5d0;
+      border-radius: 10px;
+      padding: 10px 18px;
+      margin-bottom: 22px;
+      width: 100%;
+      max-width: 210mm;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+    }
+
+    .fold-config-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #334155;
+      font-size: 0.82rem;
+    }
+
+    .fold-config-info svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
+    }
+
+    .fold-config-select-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+    }
+
+    .fold-config-select-wrap select {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      background: #f8fafc;
+      outline: none;
+      cursor: pointer;
+      max-width: 280px;
+    }
+    .fold-config-select-wrap select:focus {
+      border-color: var(--color-forest);
+    }
+
+    /* ==========================================================================
        PRINT MEDIA STYLES
        ========================================================================== */
     @media print {
@@ -1330,6 +1521,52 @@
       body.mode-a4 .a4-badge-slot {
         border-color: #cbd5e1 !important;
       }
+
+      /* A4 Vouwvel (2x A6 Dubbelzijdig) print mode */
+      body.mode-fold .badge-single-wrap,
+      body.mode-fold #a4SheetContainer,
+      body.mode-fold #a4SheetContainerBack,
+      body.mode-fold .fold-config-bar {
+        display: none !important;
+      }
+
+      body.mode-fold #a4FoldContainer {
+        display: block !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-after: avoid !important;
+        break-inside: avoid !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+      }
+
+      body.mode-fold .a4-fold-slot {
+        border: none !important;
+      }
+
+      body.mode-fold .fold-guide-cut-label,
+      body.mode-fold .fold-guide-crease-label {
+        display: none !important;
+      }
+
+      body.mode-fold .a4-fold-cutmark-h {
+        border-top: 1px dashed #94a3b8 !important;
+        display: flex !important;
+      }
+
+      body.mode-fold .a4-fold-crease-v {
+        border-left: 1px dashed #cbd5e1 !important;
+        display: flex !important;
+      }
+
+      body.mode-fold .cut-edge-mark,
+      body.mode-fold .crease-edge-mark {
+        display: block !important;
+      }
     }
   </style>
 </head>
@@ -1348,13 +1585,13 @@
         <div class="toolbar-title">
           <span>A6 Stoelbadge &amp; Prijskaart</span>
           <span class="toolbar-title-badge">A6 &bull; 105 × 148 mm</span>
-          <span class="toolbar-version-badge" title="Versie 2.0">v2.0</span>
+          <span class="toolbar-version-badge" title="Versie 2.1">v2.1</span>
         </div>
       </div>
 
       <div class="toolbar-right">
         <!-- Zijde Kiezer (Voor / Achter / Dubbelzijdig) -->
-        <div class="side-switch">
+        <div class="side-switch" id="sideSwitchGroup">
           <button type="button" class="side-btn active" id="btnSideBoth" title="Dubbelzijdig printen (Voor- en achterkant)">
             Dubbelzijdig
           </button>
@@ -1371,6 +1608,10 @@
           <button type="button" class="mode-btn active" id="btnModeSingle" title="Direct 1 badge op A6 papier">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
             1x A6 Badge
+          </button>
+          <button type="button" class="mode-btn" id="btnModeFold" title="2 dubbelzijdige badges op 1 A4 vel (1x snijden, dubbelvouwen)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="2 2"></line></svg>
+            A4 Vouwvel (2x A6)
           </button>
           <button type="button" class="mode-btn" id="btnModeA4" title="4 badges op 1 A4 vel met snijlijnen">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8"></rect><rect x="13" y="3" width="8" height="8"></rect><rect x="3" y="13" width="8" height="8"></rect><rect x="13" y="13" width="8" height="8"></rect></svg>
@@ -1448,6 +1689,20 @@
        PREVIEW STAGE
        ========================================================================== -->
   <main class="preview-stage">
+
+    <!-- A4 Vouwvel Hulpbalk (alleen zichtbaar in vouwvel modus) -->
+    <div class="fold-config-bar" id="foldConfigBar">
+      <div class="fold-config-info">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="2 2"></line></svg>
+        <span><strong>A4 Vouwvel:</strong> 1x horizontaal snijden (148,5 mm), beide delen dubbelvouwen &rarr; 2 kant-en-klare dubbelzijdige A6 kaarten!</span>
+      </div>
+      <div class="fold-config-select-wrap">
+        <label for="foldSecondChairSelect">Onderste badge:</label>
+        <select id="foldSecondChairSelect">
+          <option value="same">Zelfde als boven (2x deze stoel)</option>
+        </select>
+      </div>
+    </div>
 
     <!-- 1x A6 Badge Wrapper (Single / Double View) -->
     <div class="badge-single-wrap" id="badgeSingleWrap">
@@ -1668,7 +1923,7 @@
           <!-- Subtiele footer met versienummer (alleen op achterkant) -->
           <footer class="badge-subtle-footer">
             <span>staopstoelen.nl &bull; Productinformatie</span>
-            <span>v2.0</span>
+            <span>v2.1</span>
           </footer>
         </article>
       </div>
@@ -1695,6 +1950,31 @@
       </div>
     </div>
 
+    <!-- A4 Vouwvel Container (2x A6 Dubbelzijdig op 1 A4 vel) -->
+    <div class="a4-sheet-container a4-fold-container" id="a4FoldContainer">
+      <div class="a4-sheet-badge">A4 Vouwvel &bull; 2x Dubbelzijdige A6 Stoelbadge (1x horizontaal snijden, dubbelvouwen)</div>
+      
+      <!-- Snijlijn Horizontaal (148,5 mm) -->
+      <div class="a4-fold-cutmark-h">
+        <span class="cut-edge-mark left">✂</span>
+        <span class="fold-guide-cut-label">✂ 1x Horizontaal doormidden snijden (148,5 mm)</span>
+        <span class="cut-edge-mark right">✂</span>
+      </div>
+
+      <!-- Vouwlijn Verticaal (105 mm) -->
+      <div class="a4-fold-crease-v">
+        <span class="crease-edge-mark top">⤹</span>
+        <span class="fold-guide-crease-label top">⤹ Vouwlijn</span>
+        <span class="fold-guide-crease-label bottom">⤹ Vouwlijn</span>
+        <span class="crease-edge-mark bottom">⤹</span>
+      </div>
+
+      <!-- 2x2 Grid -->
+      <div class="a4-fold-grid" id="a4FoldGrid">
+        <!-- Dynamisch gevuld met 4 slots: [Voor 1] [Achter 1], [Voor 2] [Achter 2] -->
+      </div>
+    </div>
+
   </main>
 
   <!-- ==========================================================================
@@ -1708,7 +1988,7 @@
     let currentChair = null;
     let currentImages = [];
     let currentImageIndex = 0;
-    let currentPrintMode = 'single'; // 'single' of 'a4'
+    let currentPrintMode = 'single'; // 'single', 'fold' of 'a4'
     let currentSideMode = 'both'; // 'both', 'front', of 'back'
 
     // DOM Elements
@@ -1720,12 +2000,18 @@
     const btnNextChair = document.getElementById("btnNextChair");
     const btnPrint = document.getElementById("btnPrint");
     const btnModeSingle = document.getElementById("btnModeSingle");
+    const btnModeFold = document.getElementById("btnModeFold");
     const btnModeA4 = document.getElementById("btnModeA4");
+    const sideSwitchGroup = document.getElementById("sideSwitchGroup");
     const btnSideBoth = document.getElementById("btnSideBoth");
     const btnSideFront = document.getElementById("btnSideFront");
     const btnSideBack = document.getElementById("btnSideBack");
     const a4SheetContainer = document.getElementById("a4SheetContainer");
     const a4SheetContainerBack = document.getElementById("a4SheetContainerBack");
+    const a4FoldContainer = document.getElementById("a4FoldContainer");
+    const a4FoldGrid = document.getElementById("a4FoldGrid");
+    const foldConfigBar = document.getElementById("foldConfigBar");
+    const foldSecondChairSelect = document.getElementById("foldSecondChairSelect");
     const badgeSingleWrap = document.getElementById("badgeSingleWrap");
     const a4GridSlot = document.getElementById("a4GridSlot");
     const a4GridSlotBack = document.getElementById("a4GridSlotBack");
@@ -1781,6 +2067,38 @@
       return '€ ' + Number(val).toLocaleString('nl-NL') + ',-';
     }
 
+    // Helper: format front specification
+    function formatFrontSpec(val, type) {
+      if (!val) return '';
+      let str = String(val).trim();
+      if (type === 'motors') {
+        if (str.includes('1 motor, 2 motoren') || str.includes('1 motor, 2')) return '1, 2 of 3 motoren';
+        if (str.includes('3 motoren (of meer)')) return '3 Motoren (of meer)';
+        if (str.includes('3 motoren')) return '3 Motoren';
+        if (str.includes('2 motoren')) return '2 Motoren';
+        if (str.includes('1 motor')) return '1 Motor';
+        if (str.toLowerCase().includes('geen')) return 'Manueel';
+      }
+      if (type === 'size') {
+        if (str.includes('Geheel op maat')) return 'Op maat gemaakt';
+        if (str.includes('Small / Medium / Large') || str.includes('3 maten')) return 'Maten S / M / L';
+        if (str.includes('1 maat')) return 'Standaardmaat';
+      }
+      if (type === 'cover') {
+        if (str.includes('Stof') && str.includes('Leer')) return 'Stof of Leder';
+        if (str.includes('Leer')) return 'Luxe Leder';
+        if (str.includes('Stof')) return 'Luxe Meubelstof';
+      }
+      if (type === 'warranty') {
+        const years = (str.match(/\d+/) || ['3'])[0];
+        return `${years} Jaar Garantie`;
+      }
+      if (str.length > 22) {
+        return str.slice(0, 20).trim() + '…';
+      }
+      return str;
+    }
+
     // 1. Load chairs from database.json
     async function loadChairs() {
       try {
@@ -1818,6 +2136,11 @@
           (c.name && c.name.toLowerCase().includes(targetParam))
         );
         if (found !== -1) initIndex = found;
+      }
+
+      if (foldSecondChairSelect) {
+        foldSecondChairSelect.innerHTML = '<option value="same">Zelfde als boven (2x deze stoel)</option>' +
+          chairsList.map(c => `<option value="${c.id}">${c.brand ? c.brand + ' ' : ''}${c.name} (${c.condition === 'nieuw' ? 'Nieuw' : 'Occasion'} - € ${c.price})</option>`).join('');
       }
 
       if (filteredChairs.length > 0) {
@@ -1939,6 +2262,8 @@
 
       if (currentPrintMode === 'a4') {
         renderA4Grid();
+      } else if (currentPrintMode === 'fold') {
+        renderA4FoldGrid();
       }
     }
 
@@ -1985,6 +2310,8 @@
 
       if (currentPrintMode === 'a4') {
         renderA4Grid();
+      } else if (currentPrintMode === 'fold') {
+        renderA4FoldGrid();
       }
     }
 
@@ -2001,38 +2328,6 @@
         ? 'Ergonomische sta-op & relaxfauteuil op maat' 
         : 'Luxe ergonomische senioren- & relaxfauteuil';
       badgeTypeDesc.textContent = typeText;
-
-      // Functie om de 4 specs op de voorkant altijd compact en op 1 regel te houden
-      function formatFrontSpec(val, type) {
-        if (!val) return '';
-        let str = String(val).trim();
-        if (type === 'motors') {
-          if (str.includes('1 motor, 2 motoren') || str.includes('1 motor, 2')) return '1, 2 of 3 motoren';
-          if (str.includes('3 motoren (of meer)')) return '3 Motoren (of meer)';
-          if (str.includes('3 motoren')) return '3 Motoren';
-          if (str.includes('2 motoren')) return '2 Motoren';
-          if (str.includes('1 motor')) return '1 Motor';
-          if (str.toLowerCase().includes('geen')) return 'Manueel';
-        }
-        if (type === 'size') {
-          if (str.includes('Geheel op maat')) return 'Op maat gemaakt';
-          if (str.includes('Small / Medium / Large') || str.includes('3 maten')) return 'Maten S / M / L';
-          if (str.includes('1 maat')) return 'Standaardmaat';
-        }
-        if (type === 'cover') {
-          if (str.includes('Stof') && str.includes('Leer')) return 'Stof of Leder';
-          if (str.includes('Leer')) return 'Luxe Leder';
-          if (str.includes('Stof')) return 'Luxe Meubelstof';
-        }
-        if (type === 'warranty') {
-          const years = (str.match(/\d+/) || ['3'])[0];
-          return `${years} Jaar Garantie`;
-        }
-        if (str.length > 22) {
-          return str.slice(0, 20).trim() + '…';
-        }
-        return str;
-      }
 
       const specs = chair.specifications || {};
       specSize.textContent = formatFrontSpec(specs['Maatwerk'] || 'Op lichaamsmaat', 'size');
@@ -2154,6 +2449,171 @@
       }
     }
 
+    // Helper: Fill cloned badge elements with chair data
+    function fillBadgeElement(frontEl, backEl, chair) {
+      if (!chair) return;
+      const brand = chair.brand || 'Specialist';
+      const isNieuw = chair.condition === 'nieuw';
+      const specs = chair.specifications || {};
+
+      if (frontEl) {
+        const brandEl = frontEl.querySelector('.badge-brand-label');
+        if (brandEl) brandEl.textContent = brand;
+
+        const modelEl = frontEl.querySelector('.badge-model-name');
+        if (modelEl) modelEl.textContent = chair.name || 'Ergonomische Fauteuil';
+
+        const typeEl = frontEl.querySelector('.badge-type-desc');
+        if (typeEl) {
+          typeEl.textContent = chair.type === 'staop' 
+            ? 'Ergonomische sta-op & relaxfauteuil op maat' 
+            : 'Luxe ergonomische senioren- & relaxfauteuil';
+        }
+
+        const sizeEl = frontEl.querySelector('#specSize');
+        if (sizeEl) sizeEl.textContent = formatFrontSpec(specs['Maatwerk'] || 'Op lichaamsmaat', 'size');
+
+        const motorsEl = frontEl.querySelector('#specMotors');
+        if (motorsEl) motorsEl.textContent = formatFrontSpec(specs['Aantal motoren'] || (chair.badge || 'Elektrisch'), 'motors');
+
+        const mat = chair.material === 'leer' ? 'Luxe Rundleder' : (specs['Bekleding'] || 'Comfortabel Stof / Leer');
+        const coverEl = frontEl.querySelector('#specCover');
+        if (coverEl) coverEl.textContent = formatFrontSpec(mat, 'cover');
+
+        const warEl = frontEl.querySelector('#specWarranty');
+        if (warEl) warEl.textContent = formatFrontSpec(specs['Garantie'] || '3 Jaar', 'warranty');
+
+        const condEl = frontEl.querySelector('.badge-photo-tag-topleft');
+        if (condEl) {
+          condEl.textContent = isNieuw ? 'Nieuw Maatwerk' : 'Gecertificeerd Gereviseerd';
+          condEl.className = 'badge-photo-tag-topleft' + (isNieuw ? '' : ' occasion');
+        }
+
+        const imgEl = frontEl.querySelector('.badge-photo-img');
+        if (imgEl) {
+          const imgs = getAllImagesForChair(chair);
+          imgEl.src = imgs.length > 0 ? imgs[0].url : (chair.image || '');
+        }
+
+        const priceEl = frontEl.querySelector('#badgePriceAmount');
+        if (priceEl) priceEl.textContent = formatPrice(chair.price);
+
+        const oldPriceEl = frontEl.querySelector('#badgePriceOld');
+        if (oldPriceEl) {
+          if (chair.old_price) {
+            oldPriceEl.style.display = 'inline';
+            oldPriceEl.textContent = formatPrice(chair.old_price);
+          } else {
+            oldPriceEl.style.display = 'none';
+          }
+        }
+      }
+
+      if (backEl) {
+        const mEl = backEl.querySelector('#backModelName');
+        if (mEl) mEl.textContent = chair.name || 'Ergonomische Fauteuil';
+
+        const bEl = backEl.querySelector('#backBrandName');
+        if (bEl) bEl.textContent = brand;
+
+        const cPill = backEl.querySelector('#backConditionPill');
+        if (cPill) {
+          cPill.textContent = isNieuw ? 'Nieuw Maatwerk' : 'Gecertificeerd Gereviseerd';
+          cPill.className = 'back-sku-pill' + (isNieuw ? '' : ' occasion');
+        }
+
+        const skuEl = backEl.querySelector('#backSkuLabel');
+        if (skuEl) skuEl.textContent = 'REF: ' + (chair.id || 'ST-001').toUpperCase().slice(0, 16);
+
+        const tableEl = backEl.querySelector('#backSpecsTable');
+        if (tableEl) {
+          const specItems = [
+            { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)' },
+            { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren' },
+            { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax' },
+            { k: 'Max. Belasting', v: specs['Maximaal gebruikersgewicht'] || 'Tot 130 kg' },
+            { k: 'Bekleding', v: mat },
+            { k: 'Bediening', v: specs['Bediening'] || 'Geïntegreerde handbediening' },
+            { k: 'Garantie', v: specs['Garantie'] || (isNieuw ? '3 Jaar aan huis' : '1 Jaar aan huis') },
+            { k: 'Levertijd', v: chair.status === 'beschikbaar' ? 'Direct leverbaar' : 'Op bestelling' }
+          ];
+          tableEl.innerHTML = specItems.map(item => `
+            <div class="back-spec-row">
+              <span class="back-spec-k">${item.k}</span>
+              <span class="back-spec-v">${item.v}</span>
+            </div>
+          `).join('');
+        }
+
+        const featList = backEl.querySelector('#backFeaturesList');
+        if (featList) {
+          let feats = chair.features || [];
+          if (!feats || feats.length === 0) {
+            feats = [
+              "Ergonomische kantelverstelling (tilt) voor drukverlaging en gezonde zithouding",
+              "Onafhankelijk elektrisch verstelbare beensteun en rugleuning",
+              "Veilige, rustige opstahulp met volledige lichaamsbalans",
+              "Vakkundig opgemeten en ingesteld op uw persoonlijke lichaamsmaten"
+            ];
+          }
+          featList.innerHTML = feats.slice(0, 4).map(f => `
+            <li><span class="feat-check">✓</span><span>${f}</span></li>
+          `).join('');
+        }
+      }
+    }
+
+    // 11. A4 Vouwvel Render (2x A6 Dubbelzijdige kaarten op 1 A4 vel)
+    function renderA4FoldGrid() {
+      if (!a4FoldGrid) return;
+      a4FoldGrid.innerHTML = '';
+
+      const badgeSource = document.getElementById("badgeCard");
+      const badgeSourceBack = document.getElementById("badgeCardBack");
+      if (!badgeSource || !badgeSourceBack) return;
+
+      // Slot 1: Kaart 1 Voorkant (boven links)
+      const slot1 = document.createElement("div");
+      slot1.className = "a4-fold-slot";
+      slot1.appendChild(badgeSource.cloneNode(true));
+      a4FoldGrid.appendChild(slot1);
+
+      // Slot 2: Kaart 1 Achterkant (boven rechts)
+      const slot2 = document.createElement("div");
+      slot2.className = "a4-fold-slot";
+      slot2.appendChild(badgeSourceBack.cloneNode(true));
+      a4FoldGrid.appendChild(slot2);
+
+      // Bepaal stoel voor Kaart 2 (onderste 2 slots)
+      const secondChairVal = foldSecondChairSelect ? foldSecondChairSelect.value : 'same';
+      
+      const slot3 = document.createElement("div");
+      slot3.className = "a4-fold-slot";
+      const slot4 = document.createElement("div");
+      slot4.className = "a4-fold-slot";
+
+      if (secondChairVal === 'same' || !secondChairVal) {
+        // Zelfde als bovenste badge
+        slot3.appendChild(badgeSource.cloneNode(true));
+        slot4.appendChild(badgeSourceBack.cloneNode(true));
+      } else {
+        const chair2 = chairsList.find(c => c.id === secondChairVal);
+        if (chair2) {
+          const frontClone = badgeSource.cloneNode(true);
+          const backClone = badgeSourceBack.cloneNode(true);
+          fillBadgeElement(frontClone, backClone, chair2);
+          slot3.appendChild(frontClone);
+          slot4.appendChild(backClone);
+        } else {
+          slot3.appendChild(badgeSource.cloneNode(true));
+          slot4.appendChild(badgeSourceBack.cloneNode(true));
+        }
+      }
+
+      a4FoldGrid.appendChild(slot3);
+      a4FoldGrid.appendChild(slot4);
+    }
+
     // Event Listeners: Search & Filters
     chairSearchInput.addEventListener("input", (e) => {
       const q = e.target.value.toLowerCase().trim();
@@ -2237,10 +2697,14 @@
     // Quick Custom Inputs Sync
     inputCustomPrice.addEventListener("input", (e) => {
       badgePriceAmount.textContent = e.target.value;
+      if (currentPrintMode === 'a4') renderA4Grid();
+      if (currentPrintMode === 'fold') renderA4FoldGrid();
     });
 
     inputCustomTag.addEventListener("input", (e) => {
       if (badgeActionText) badgeActionText.textContent = e.target.value;
+      if (currentPrintMode === 'a4') renderA4Grid();
+      if (currentPrintMode === 'fold') renderA4FoldGrid();
     });
 
     chkPunchHole.addEventListener("change", (e) => {
@@ -2249,11 +2713,13 @@
         g.style.display = e.target.checked ? "block" : "none";
       });
       if (currentPrintMode === 'a4') renderA4Grid();
+      if (currentPrintMode === 'fold') renderA4FoldGrid();
     });
 
     chkQualitySticker.addEventListener("change", (e) => {
       badgeQualityStamp.style.display = e.target.checked ? "block" : "none";
       if (currentPrintMode === 'a4') renderA4Grid();
+      if (currentPrintMode === 'fold') renderA4FoldGrid();
     });
 
     // Zijde Kiezer (Voor / Achter / Dubbelzijdig)
@@ -2269,12 +2735,9 @@
       if (currentPrintMode === 'single') {
         if (colFront) colFront.style.display = (side === 'back') ? 'none' : 'flex';
         if (colBack) colBack.style.display = (side === 'front') ? 'none' : 'flex';
-      } else {
+      } else if (currentPrintMode === 'a4') {
         if (a4SheetContainer) a4SheetContainer.style.display = (side === 'back') ? 'none' : 'block';
         if (a4SheetContainerBack) a4SheetContainerBack.style.display = (side === 'front') ? 'none' : 'block';
-      }
-
-      if (currentPrintMode === 'a4') {
         renderA4Grid();
       }
     }
@@ -2283,7 +2746,7 @@
     btnSideFront.addEventListener("click", () => setSideMode('front'));
     btnSideBack.addEventListener("click", () => setSideMode('back'));
 
-    // Print Mode Switcher (1x A6 / 4x A6 op A4)
+    // Print Mode Switcher (1x A6 / A4 Vouwvel / 4x A6 Drukvel)
     function setPrintMode(mode) {
       currentPrintMode = mode;
       document.body.className = `mode-${mode} side-${currentSideMode}`;
@@ -2294,29 +2757,57 @@
         dynamicStyle.id = "dynamicPageRule";
         document.head.appendChild(dynamicStyle);
       }
+
+      btnModeSingle.classList.toggle("active", mode === 'single');
+      btnModeFold.classList.toggle("active", mode === 'fold');
+      btnModeA4.classList.toggle("active", mode === 'a4');
+
+      if (sideSwitchGroup) {
+        sideSwitchGroup.style.display = (mode === 'fold') ? 'none' : 'inline-flex';
+      }
+      if (foldConfigBar) {
+        foldConfigBar.style.display = (mode === 'fold') ? 'flex' : 'none';
+      }
+
       if (mode === 'single') {
         dynamicStyle.textContent = `@page { size: 105mm 148mm portrait; margin: 0; }`;
         badgeSingleWrap.style.display = 'flex';
         if (a4SheetContainer) a4SheetContainer.style.display = 'none';
         if (a4SheetContainerBack) a4SheetContainerBack.style.display = 'none';
-      } else {
+        if (a4FoldContainer) a4FoldContainer.style.display = 'none';
+        setSideMode(currentSideMode);
+      } else if (mode === 'fold') {
         dynamicStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
         badgeSingleWrap.style.display = 'none';
+        if (a4SheetContainer) a4SheetContainer.style.display = 'none';
+        if (a4SheetContainerBack) a4SheetContainerBack.style.display = 'none';
+        if (a4FoldContainer) a4FoldContainer.style.display = 'block';
+        renderA4FoldGrid();
+      } else if (mode === 'a4') {
+        dynamicStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
+        badgeSingleWrap.style.display = 'none';
+        if (a4FoldContainer) a4FoldContainer.style.display = 'none';
+        setSideMode(currentSideMode);
         renderA4Grid();
       }
-
-      btnModeSingle.classList.toggle("active", mode === 'single');
-      btnModeA4.classList.toggle("active", mode === 'a4');
-      setSideMode(currentSideMode);
     }
 
     btnModeSingle.addEventListener("click", () => setPrintMode('single'));
+    btnModeFold.addEventListener("click", () => setPrintMode('fold'));
     btnModeA4.addEventListener("click", () => setPrintMode('a4'));
+
+    if (foldSecondChairSelect) {
+      foldSecondChairSelect.addEventListener("change", () => {
+        if (currentPrintMode === 'fold') renderA4FoldGrid();
+      });
+    }
 
     // Print Button
     btnPrint.addEventListener("click", () => {
       if (currentPrintMode === 'a4') {
         renderA4Grid();
+      } else if (currentPrintMode === 'fold') {
+        renderA4FoldGrid();
       }
       window.print();
     });
