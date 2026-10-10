@@ -30,9 +30,7 @@
     </textPath>
   </text>
   
-  <!-- Bullets/Dots separating top and bottom text -->
-  <circle cx="59.2" cy="174.3" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
-  <circle cx="240.8" cy="174.3" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
+
   
   <!-- Center: Exact Leaf Icon from the Actiebutton (in green & thicker) -->
   <g transform="translate(150, 150) scale(4.8) translate(-11.5, -11.5)">
