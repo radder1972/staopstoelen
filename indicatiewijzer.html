@@ -155,93 +155,132 @@
       box-sizing: border-box;
     }
 
-    /* Header Section without boring line - replaced by full-width swooshes */
-    .doc-header {
+    /* Header Section in Website Huisstijl (Navbar + Occasions Header Banner + Swooshes) */
+    .doc-header-site-style {
+      margin-bottom: 2px;
+    }
+
+    /* 1. Top Brand Bar (zoals website navbar) */
+    .site-brand-bar {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      padding-bottom: 4px;
+      align-items: flex-end;
+      padding-bottom: 6px;
     }
 
-    .doc-brand-col {
+    .site-brand-left {
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      flex-shrink: 0;
-      padding-top: 3px;
+      gap: 2px;
     }
 
-    .doc-brand-logo {
+    .site-brand-logo {
       font-family: var(--font-heading);
-      font-size: 32px;
+      font-size: 26px;
       font-weight: 900;
       color: var(--color-forest);
       text-decoration: none;
       letter-spacing: -0.5px;
       line-height: 1;
     }
-    .doc-brand-logo span {
+    .site-brand-logo span {
       color: var(--color-terracotta);
     }
 
-    .doc-brand-tagline {
-      font-size: 10px;
+    .site-brand-tagline {
+      font-size: 9.5px;
       font-weight: 700;
       color: var(--color-forest-dark);
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
-    .doc-header-center {
-      flex: 1;
-      text-align: center;
-      padding: 0 4px;
+    .site-brand-contact {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.78rem;
+      color: var(--color-forest-dark);
+      font-weight: 500;
+      padding-bottom: 2px;
+    }
+    .site-brand-contact strong {
+      color: var(--color-terracotta);
+      font-size: 0.85rem;
     }
 
-    .doc-title-box h1 {
-      color: var(--color-forest-dark);
+    /* 2. Occasions Header Banner (zoals .occasions-header op de website) */
+    .site-banner-box {
+      background: linear-gradient(135deg, var(--color-forest) 0%, #3e7b1e 100%);
+      color: #ffffff;
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 3px 10px rgba(18, 43, 7, 0.12);
+      margin-bottom: 4px;
+      position: relative;
+    }
+
+    .site-banner-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .site-section-tag {
+      display: inline-block;
       font-family: var(--font-heading);
-      font-size: 1.32rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #ffc480; /* Warme terracotta goud */
+      margin-bottom: 2px;
+    }
+
+    .site-banner-title {
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 1.28rem;
       font-weight: 900;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
       line-height: 1.2;
-      margin: 2px 0 6px 0;
+      margin: 1px 0 3px 0;
       white-space: nowrap;
     }
 
-    .doc-title-box p.subtitle {
-      color: var(--color-gray);
-      font-size: 0.8rem;
-      font-weight: 500;
-      line-height: 1.35;
+    .site-banner-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.78rem;
+      font-weight: 400;
+      line-height: 1.3;
       margin: 0;
     }
 
-    /* Grote, prominente stempel badge */
-    .doc-header-stamp-wrap {
+    .site-banner-stamp {
       flex-shrink: 0;
       display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
-      margin-top: -6px;
+      align-items: center;
+      justify-content: center;
     }
 
     .doc-stamp-large {
-      width: 125px;
-      height: 125px;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.14));
+      width: 86px;
+      height: 86px;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.22));
       display: block;
     }
 
-    /* FULL WIDTH SWOOSHES as the primary divider line */
+    /* 3. FULL WIDTH SWOOSHES as the primary divider line */
     .header-swoosh-fullwidth {
       width: 100%;
-      height: 24px;
+      height: 18px;
       display: block;
-      margin-top: 4px;
-      margin-bottom: 12px;
+      margin-top: 2px;
+      margin-bottom: 8px;
       overflow: visible;
     }
 
@@ -534,18 +573,29 @@
         color: transparent !important;
       }
 
-      .doc-brand-logo {
-        font-size: 28px !important;
+      .site-brand-logo {
+        font-size: 24px !important;
       }
 
-      .doc-title-box h1 {
-        font-size: 1.25rem !important;
+      .site-banner-box {
+        padding: 7px 14px !important;
+        margin-bottom: 3px !important;
+      }
+
+      .site-banner-title {
+        font-size: 1.2rem !important;
         white-space: nowrap !important;
       }
 
       .doc-stamp-large {
-        width: 110px !important;
-        height: 110px !important;
+        width: 78px !important;
+        height: 78px !important;
+      }
+
+      .header-swoosh-fullwidth {
+        height: 14px !important;
+        margin-top: 2px !important;
+        margin-bottom: 6px !important;
       }
 
       .section-heading {
@@ -620,39 +670,45 @@
   <main class="document-wrapper" id="printableDocument">
     
     <div>
-      <!-- Document Header met Brand Logo, Titel en Grote Stempel Badge -->
-      <header class="doc-header">
-        <!-- Logo Links -->
-        <div class="doc-brand-col">
-          <div class="doc-brand-logo">staopstoelen<span>.nl</span></div>
-          <div class="doc-brand-tagline">Specialist in ergonomische maatwerk stoelen</div>
-        </div>
-
-        <!-- Titel & Tag Midden -->
-        <div class="doc-header-center">
-          <div class="doc-title-box">
-            <h1>Indicatiewijzer Zithouding &amp; Mobiliteit</h1>
-            <p class="subtitle">Medisch en ergonomisch beoordelingsprotocol voor functionele zitsystemen</p>
+      <!-- Document Header in Website Huisstijl (Navbar + Occasions Header Banner + Swooshes) -->
+      <header class="doc-header-site-style">
+        <!-- 1. Top Brand Bar (zoals de navbar op de website) -->
+        <div class="site-brand-bar">
+          <div class="site-brand-left">
+            <div class="site-brand-logo">staopstoelen<span>.nl</span></div>
+            <div class="site-brand-tagline">Specialist in ergonomische maatwerk stoelen</div>
+          </div>
+          <div class="site-brand-contact">
+            <span><strong>📞</strong> 078 - 631 4858</span>
+            <span><strong>✉️</strong> info@staopstoelen.nl</span>
+            <span><strong>📍</strong> Showroom Dordrecht</span>
           </div>
         </div>
 
-        <!-- Grote Kwaliteitskeurmerk Badge Rechts -->
-        <div class="doc-header-stamp-wrap">
-          <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Kwaliteitskeurmerk" class="doc-stamp-large">
+        <!-- 2. Occasions Header Banner (zoals de groene header banner op de website) -->
+        <div class="site-banner-box">
+          <div class="site-banner-text">
+            <span class="site-section-tag">Ergonomische Sneltoets &amp; Advies</span>
+            <h1 class="site-banner-title">Indicatiewijzer Zithouding &amp; Mobiliteit</h1>
+            <p class="site-banner-subtitle">Medisch en ergonomisch beoordelingsprotocol voor functionele zitsystemen</p>
+          </div>
+          <div class="site-banner-stamp">
+            <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Online Keuzehulp" class="doc-stamp-large">
+          </div>
         </div>
-      </header>
 
-      <!-- De 4 Vloeibare Huisstijl Swooshes over de VOLLE BREEDTE als scheidingslijn -->
-      <svg class="header-swoosh-fullwidth" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 60" preserveAspectRatio="none">
-        <!-- Wave 1: Sky Blue -->
-        <path d="M 0,22 Q 250,50 500,20 T 1000,25" fill="none" stroke="var(--color-sky)" stroke-width="4.5" stroke-linecap="round" opacity="0.75"></path>
-        <!-- Wave 2: Terracotta Orange -->
-        <path d="M 0,30 Q 250,10 500,32 T 1000,34" fill="none" stroke="var(--color-terracotta)" stroke-width="4" stroke-linecap="round" opacity="0.85"></path>
-        <!-- Wave 3: Sage Green -->
-        <path d="M 0,37 Q 250,54 500,30 T 1000,40" fill="none" stroke="var(--color-sage)" stroke-width="4.5" stroke-linecap="round" opacity="0.9"></path>
-        <!-- Wave 4: Forest Green -->
-        <path d="M 0,44 Q 250,26 500,44 T 1000,46" fill="none" stroke="var(--color-forest)" stroke-width="6" stroke-linecap="round"></path>
-      </svg>
+        <!-- 3. De 4 Vloeibare Huisstijl Swooshes over de VOLLE BREEDTE als overgangslijn -->
+        <svg class="header-swoosh-fullwidth" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 60" preserveAspectRatio="none">
+          <!-- Wave 1: Sky Blue -->
+          <path d="M 0,22 Q 250,50 500,20 T 1000,25" fill="none" stroke="var(--color-sky)" stroke-width="4.5" stroke-linecap="round" opacity="0.75"></path>
+          <!-- Wave 2: Terracotta Orange -->
+          <path d="M 0,30 Q 250,10 500,32 T 1000,34" fill="none" stroke="var(--color-terracotta)" stroke-width="4" stroke-linecap="round" opacity="0.85"></path>
+          <!-- Wave 3: Sage Green -->
+          <path d="M 0,37 Q 250,54 500,30 T 1000,40" fill="none" stroke="var(--color-sage)" stroke-width="4.5" stroke-linecap="round" opacity="0.9"></path>
+          <!-- Wave 4: Forest Green -->
+          <path d="M 0,44 Q 250,26 500,44 T 1000,46" fill="none" stroke="var(--color-forest)" stroke-width="6" stroke-linecap="round"></path>
+        </svg>
+      </header>
 
       <!-- Client Metadata Grid - Volledig leeg & strak uniform Outfit font -->
       <section class="client-meta-grid">
