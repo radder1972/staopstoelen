@@ -223,7 +223,7 @@
       font-weight: 700;
       color: var(--color-forest-dark);
       white-space: nowrap;
-      min-width: 96px;
+      min-width: 82px;
     }
     .input-fill {
       flex: 1;
@@ -237,24 +237,36 @@
       border: none;
       background: transparent;
       font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 500;
+      font-size: 11.5px;
       color: var(--color-dark);
       padding: 0 2px 1px 2px;
       outline: none;
       line-height: 1;
     }
 
-    .doc-intro-compact {
-      font-size: 11px;
-      color: var(--color-gray);
-      line-height: 1.35;
-      margin-top: 6px;
-      margin-bottom: 2px;
-      padding: 0 4px;
-    }
-    .doc-intro-compact strong {
+    /* Instructie Box */
+    .instruction-box {
+      margin-top: 8px;
+      margin-bottom: 4px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      border-left: 3.5px solid var(--color-forest);
+      border-radius: 6px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10.5px;
       color: var(--color-forest-dark);
+      line-height: 1.35;
+    }
+    .instruction-icon {
+      color: var(--color-forest);
+      flex-shrink: 0;
+    }
+    .instruction-text strong {
+      color: var(--color-forest-dark);
+      font-weight: 700;
     }
 
     /* Section Styling */
@@ -533,6 +545,18 @@
         border-bottom: 1.5px dotted #666666 !important;
       }
 
+      .instruction-box {
+        margin-top: 4px !important;
+        margin-bottom: 3px !important;
+        padding: 4px 8px !important;
+        font-size: 9.5px !important;
+        border-left-width: 3px !important;
+        background: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
       .eval-section {
         margin-top: 6px !important;
       }
@@ -647,33 +671,45 @@
         </div>
       </div>
 
-      <!-- 2. Klant- & Beoordelaar Gegevens -->
+      <!-- 2. Klant- & Afspraakgegevens -->
       <div class="client-details-grid">
         <div>
           <div class="input-line">
-            <label for="clientName" class="input-label">Cliënt / Naam:</label>
+            <label for="clientName" class="input-label">Naam cliënt:</label>
             <div class="input-fill"><input type="text" id="clientName" autocomplete="off"></div>
           </div>
           <div class="input-line">
-            <label for="clientDob" class="input-label">Geboortedatum:</label>
-            <div class="input-fill"><input type="text" id="clientDob" autocomplete="off"></div>
+            <label for="clientAddress" class="input-label">Adres:</label>
+            <div class="input-fill"><input type="text" id="clientAddress" autocomplete="off"></div>
+          </div>
+          <div class="input-line">
+            <label for="clientCity" class="input-label">Postcode / Woonplaats:</label>
+            <div class="input-fill"><input type="text" id="clientCity" autocomplete="off"></div>
           </div>
         </div>
         <div>
+          <div class="input-line">
+            <label for="clientPhone" class="input-label">Telefoon:</label>
+            <div class="input-fill"><input type="text" id="clientPhone" autocomplete="off"></div>
+          </div>
           <div class="input-line">
             <label for="visitDate" class="input-label">Datum passing:</label>
             <div class="input-fill"><input type="text" id="visitDate" autocomplete="off"></div>
           </div>
           <div class="input-line">
-            <label for="therapistName" class="input-label">Beoordelaar / Org.:</label>
+            <label for="therapistName" class="input-label">Adviseur / Technoloog:</label>
             <div class="input-fill"><input type="text" id="therapistName" autocomplete="off"></div>
           </div>
         </div>
       </div>
 
-      <p class="doc-intro-compact">
-        <strong>Gebruik:</strong> Evalueer tijdens het huisbezoek de ergonomische basishouding en medische indicaties. Vink de stellingen aan die actueel van toepassing zijn.
-      </p>
+      <!-- Uitleg hoe het formulier werkt -->
+      <div class="instruction-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="instruction-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <div class="instruction-text">
+          <strong>Gebruiksinstructie:</strong> Evalueer tijdens het huisbezoek de ergonomische basishouding en medische indicaties. Vink de stellingen aan die actueel van toepassing zijn.
+        </div>
+      </div>
 
       <!-- Section 1: Ergonomische Basishouding -->
       <section class="eval-section">
