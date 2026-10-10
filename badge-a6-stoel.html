@@ -122,6 +122,7 @@
       flex-wrap: wrap;
     }
 
+    .side-switch,
     .mode-switch {
       display: inline-flex;
       background: #edf2f7;
@@ -130,6 +131,7 @@
       border: 1px solid #cbd5e1;
     }
 
+    .side-btn,
     .mode-btn {
       padding: 6px 12px;
       border-radius: 6px;
@@ -146,6 +148,7 @@
       gap: 6px;
     }
 
+    .side-btn.active,
     .mode-btn.active {
       background: var(--color-forest);
       color: #ffffff;
@@ -482,6 +485,38 @@
       min-height: calc(100vh - 220px);
     }
 
+    .badge-single-wrap {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge-side-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-side-label {
+      font-family: var(--font-heading);
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
     /* ==========================================================================
        THE A6 BADGE (105mm x 148mm)
        ========================================================================== */
@@ -657,103 +692,154 @@
       margin-top: 1px;
     }
 
-    /* 4. Specificaties Grid (4 blokjes) */
+    /* 4. Specificaties Grid (4 blokjes met huisstijl-iconen) */
     .badge-specs-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.8mm;
-      margin-bottom: 2.5mm;
+      gap: 2mm;
+      margin-bottom: 2mm;
     }
 
     .spec-cell {
-      background: #f8fafc;
-      border: 1px solid #e6ecf2;
+      background: #fbfdfa;
+      border: 1px solid #d9e6d5;
+      border-radius: 5px;
+      padding: 3px 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 10mm;
+      box-sizing: border-box;
+    }
+
+    .spec-icon-wrap {
+      width: 20px;
+      height: 20px;
       border-radius: 4px;
-      padding: 2px 5px;
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .spec-icon-wrap svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2.2;
+    }
+
+    .spec-cell-text {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      min-width: 0;
+      flex: 1;
     }
 
     .spec-cell-label {
-      font-size: 6.5px;
-      font-weight: 700;
+      font-size: 6.2px;
+      font-weight: 800;
       text-transform: uppercase;
       color: #64748b;
-      letter-spacing: 0.2px;
-      display: flex;
-      align-items: center;
-      gap: 3px;
+      letter-spacing: 0.4px;
+      line-height: 1.1;
     }
 
     .spec-cell-value {
       font-family: var(--font-heading);
-      font-size: 8px;
+      font-size: 8.5px;
       font-weight: 800;
       color: var(--color-forest-dark);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1.2;
       margin-top: 1px;
     }
 
-    /* 5. Prijs & Meeneem Banner */
+    /* 5. Prijs & Meeneem Banner (Ruim, opvallend, echte showroomfocus) */
     .badge-price-banner {
-      background: #f4f8f1;
-      border: 1px solid #b7d5ae;
-      border-radius: 5px;
-      padding: 3px 7px;
+      background: linear-gradient(135deg, #f4faf1 0%, #eaf4e5 100%);
+      border: 1.8px solid var(--color-forest);
+      border-radius: 7px;
+      padding: 5px 9px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 2mm;
+      box-shadow: 0 3px 8px rgba(75, 143, 36, 0.12);
+      min-height: 17mm;
+      box-sizing: border-box;
     }
 
     .price-col {
       display: flex;
       flex-direction: column;
+      gap: 1.5px;
+    }
+
+    .price-label-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .price-label {
-      font-size: 6.5px;
+      font-size: 6.8px;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+
+    .price-subtext {
+      font-size: 6px;
       font-weight: 700;
       color: var(--color-forest-dark);
+      opacity: 0.7;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
 
     .price-value-wrap {
       display: flex;
       align-items: baseline;
-      gap: 5px;
+      gap: 6px;
+      margin-top: 1px;
     }
 
     .price-amount {
       font-family: var(--font-heading);
-      font-size: 15px;
+      font-size: 21px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1;
+      letter-spacing: -0.4px;
     }
 
     .price-old {
-      font-size: 8.5px;
+      font-size: 9.5px;
       color: #94a3b8;
       text-decoration: line-through;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .action-pill {
       background: var(--color-forest);
       color: #ffffff;
-      padding: 2px 6px;
-      border-radius: 3px;
+      padding: 5px 9px;
+      border-radius: 5px;
       font-family: var(--font-heading);
-      font-size: 7px;
+      font-size: 8px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.3px;
       white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* 6. Badge Footer */
@@ -804,19 +890,231 @@
       text-align: right;
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 2px;
     }
 
     .badge-contact-phone {
       font-family: var(--font-heading);
-      font-size: 8px;
+      font-size: 7.8px;
       font-weight: 800;
       color: var(--color-forest-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: flex-end;
+    }
+    .badge-contact-phone svg,
+    .badge-contact-address svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
     }
 
     .badge-contact-address {
       font-size: 6.5px;
       color: #64748b;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: flex-end;
+    }
+
+    /* ==========================================================================
+       ACHTERKANT SPECIFIEKE STYLES (Productspecificaties & Pasrapport)
+       ========================================================================== */
+    .badge-a6-back {
+      background: #ffffff;
+    }
+
+    .back-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 11mm;
+      margin-bottom: 2mm;
+      padding-top: 1mm;
+      border-bottom: 1px solid #eef2ed;
+      padding-bottom: 1.5mm;
+    }
+
+    .back-logo-text {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--color-forest);
+      line-height: 1;
+      letter-spacing: -0.4px;
+    }
+    .back-logo-text span {
+      color: var(--color-terracotta);
+    }
+
+    .back-header-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+
+    .back-sku-pill {
+      font-size: 6.5px;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--color-forest);
+      border-radius: 3px;
+      padding: 1.5px 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .back-sku-pill.occasion {
+      background: var(--color-terracotta);
+    }
+
+    .back-sku-sub {
+      font-size: 6px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .back-title-block {
+      margin-bottom: 2mm;
+    }
+    .back-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .back-model-name {
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      line-height: 1.15;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .back-brand-name {
+      font-family: var(--font-heading);
+      font-size: 7.5px;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+    .back-tagline {
+      font-size: 6.8px;
+      color: #64748b;
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
+    .back-section-wrap {
+      margin-bottom: 2mm;
+    }
+
+    .back-section-heading {
+      font-family: var(--font-heading);
+      font-size: 6.8px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 1.2mm;
+    }
+    .back-section-heading svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
+    }
+
+    .back-specs-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5mm 3.5mm;
+      background: #f8faf7;
+      border: 1px solid #e2ece0;
+      border-radius: 5px;
+      padding: 4px 6px;
+    }
+
+    .back-spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5px 0;
+      border-bottom: 1px dashed #e6ede4;
+      font-size: 6.8px;
+    }
+    .back-spec-row:last-child, .back-spec-row:nth-last-child(2) {
+      border-bottom: none;
+    }
+    .back-spec-k {
+      color: #64748b;
+      font-weight: 600;
+    }
+    .back-spec-v {
+      color: var(--color-forest-dark);
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .back-features-list {
+      list-style: none;
+      padding: 4px 6px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5px;
+      background: #ffffff;
+      border: 1px solid #eef2ed;
+      border-radius: 5px;
+    }
+    .back-features-list li {
+      font-size: 6.8px;
+      line-height: 1.25;
+      color: #334155;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .back-features-list li .feat-check {
+      color: var(--color-forest);
+      font-weight: 900;
+      flex-shrink: 0;
+      font-size: 7.5px;
+    }
+
+    .back-service-box {
+      background: #f4faf1;
+      border: 1px solid rgba(75, 143, 36, 0.35);
+      border-radius: 5px;
+      padding: 4px 6px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 6px;
+      margin-bottom: 2mm;
+    }
+    .back-service-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 6.2px;
+      color: var(--color-forest-dark);
+      line-height: 1.2;
+    }
+    .back-service-item svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
+    }
+    .back-service-item strong {
+      font-weight: 800;
     }
 
     /* ==========================================================================
@@ -828,9 +1126,21 @@
       height: 297mm;
       background: #ffffff;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      margin: 0 auto;
+      margin: 0 auto 35px auto;
       box-sizing: border-box;
       position: relative;
+    }
+
+    .a4-sheet-badge {
+      position: absolute;
+      top: -24px;
+      left: 0;
+      font-family: var(--font-heading);
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .a4-grid-4 {
@@ -891,7 +1201,9 @@
 
       .screen-header,
       .browser-bar,
-      .photo-selection-strip {
+      .photo-selection-strip,
+      .badge-side-label,
+      .a4-sheet-badge {
         display: none !important;
       }
 
@@ -899,6 +1211,7 @@
         padding: 0 !important;
         margin: 0 !important;
         min-height: auto !important;
+        display: block !important;
       }
 
       @page {
@@ -910,9 +1223,36 @@
         box-shadow: none !important;
         margin: 0 !important;
         border-radius: 0 !important;
+      }
+
+      /* Single: Dubbelzijdig (Voor + Achter) */
+      body.mode-single.side-both #colFront .badge-a6 {
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+      }
+      body.mode-single.side-both #colBack .badge-a6 {
         page-break-after: avoid !important;
         page-break-inside: avoid !important;
       }
+
+      /* Single: Alleen Voorkant */
+      body.mode-single.side-front #colFront .badge-a6 {
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      body.mode-single.side-front #colBack {
+        display: none !important;
+      }
+
+      /* Single: Alleen Achterkant */
+      body.mode-single.side-back #colBack .badge-a6 {
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      body.mode-single.side-back #colFront {
+        display: none !important;
+      }
+
       body.mode-single .a4-sheet-container {
         display: none !important;
       }
@@ -922,12 +1262,36 @@
         display: none !important;
       }
       body.mode-a4 .a4-sheet-container {
-        display: block !important;
         box-shadow: none !important;
         margin: 0 !important;
+      }
+      body.mode-a4.side-both #a4SheetContainer {
+        display: block !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+      }
+      body.mode-a4.side-both #a4SheetContainerBack {
+        display: block !important;
         page-break-after: avoid !important;
         page-break-inside: avoid !important;
       }
+      body.mode-a4.side-front #a4SheetContainer {
+        display: block !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      body.mode-a4.side-front #a4SheetContainerBack {
+        display: none !important;
+      }
+      body.mode-a4.side-back #a4SheetContainer {
+        display: none !important;
+      }
+      body.mode-a4.side-back #a4SheetContainerBack {
+        display: block !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
       body.mode-a4 .a4-badge-slot {
         border-color: #cbd5e1 !important;
       }
@@ -953,6 +1317,19 @@
       </div>
 
       <div class="toolbar-right">
+        <!-- Zijde Kiezer (Voor / Achter / Dubbelzijdig) -->
+        <div class="side-switch">
+          <button type="button" class="side-btn active" id="btnSideBoth" title="Dubbelzijdig printen (Voor- en achterkant)">
+            Dubbelzijdig
+          </button>
+          <button type="button" class="side-btn" id="btnSideFront" title="Alleen voorkant">
+            Voorkant
+          </button>
+          <button type="button" class="side-btn" id="btnSideBack" title="Alleen achterkant (Specificaties)">
+            Achterkant
+          </button>
+        </div>
+
         <!-- Print Mode Switcher -->
         <div class="mode-switch">
           <button type="button" class="mode-btn active" id="btnModeSingle" title="Direct 1 badge op A6 papier">
@@ -1036,92 +1413,261 @@
        ========================================================================== -->
   <main class="preview-stage">
 
-    <!-- 1x A6 Badge Wrapper (Single View) -->
+    <!-- 1x A6 Badge Wrapper (Single / Double View) -->
     <div class="badge-single-wrap" id="badgeSingleWrap">
-      <article class="badge-a6" id="badgeCard">
-        <!-- Subtiel ophanggat richtpunt -->
-        <div class="punch-hole-guide" id="punchHoleGuide"></div>
+      
+      <!-- VOORKANT KOLOM -->
+      <div class="badge-side-col" id="colFront">
+        <span class="badge-side-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+          Voorkant &bull; Showroombadge
+        </span>
+        <article class="badge-a6" id="badgeCard">
+          <!-- Subtiel ophanggat richtpunt -->
+          <div class="punch-hole-guide" id="punchHoleGuide"></div>
 
-        <!-- Kwaliteitssticker (prominent, hangt half over de stoelfoto) -->
-        <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Officiële Kwaliteitszegel" class="badge-quality-stamp" id="badgeQualityStamp">
+          <!-- Kwaliteitssticker (prominent, hangt half over de stoelfoto) -->
+          <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Officiële Kwaliteitszegel" class="badge-quality-stamp" id="badgeQualityStamp">
 
-        <!-- 1. Header -->
-        <header class="badge-header">
-          <div class="badge-brand-col">
-            <div class="badge-logo-text">staopstoelen<span>.nl</span></div>
-            <div class="badge-logo-subtitle">Specialist in ergonomisch maatwerk</div>
+          <!-- 1. Header -->
+          <header class="badge-header">
+            <div class="badge-brand-col">
+              <div class="badge-logo-text">staopstoelen<span>.nl</span></div>
+              <div class="badge-logo-subtitle">Specialist in ergonomisch maatwerk</div>
+            </div>
+          </header>
+
+          <!-- 2. Stoel Foto Container -->
+          <div class="badge-photo-container">
+            <img src="assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Stoelfoto" class="badge-photo-img" id="badgePhotoImg">
+            <span class="badge-photo-tag-topleft" id="badgePhotoCondition">Nieuw Maatwerk</span>
+            <span class="badge-photo-tag-bottomright" id="badgePhotoSetting">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 3px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              <span id="badgePhotoSettingText">Woonkamer Sfeer</span>
+            </span>
           </div>
-        </header>
 
-        <!-- 2. Stoel Foto Container -->
-        <div class="badge-photo-container">
-          <img src="assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Stoelfoto" class="badge-photo-img" id="badgePhotoImg">
-          <span class="badge-photo-tag-topleft" id="badgePhotoCondition">Nieuw Maatwerk</span>
-          <span class="badge-photo-tag-bottomright" id="badgePhotoSetting">🛋️ Sfeerimpressie</span>
-        </div>
+          <!-- 3. Product Titel & Type -->
+          <div class="badge-product-title-row">
+            <div class="badge-brand-label" id="badgeBrandLabel">DFM</div>
+            <h1 class="badge-model-name" id="badgeModelName" contenteditable="true">Sta-op stoel Ravi</h1>
+            <div class="badge-type-desc" id="badgeTypeDesc" contenteditable="true">Luxe ergonomische relax- &amp; sta-op fauteuil</div>
+          </div>
 
-        <!-- 3. Product Titel & Type -->
-        <div class="badge-product-title-row">
-          <div class="badge-brand-label" id="badgeBrandLabel">DFM</div>
-          <h1 class="badge-model-name" id="badgeModelName" contenteditable="true">Sta-op stoel Ravi</h1>
-          <div class="badge-type-desc" id="badgeTypeDesc" contenteditable="true">Luxe ergonomische relax- &amp; sta-op fauteuil</div>
-        </div>
+          <!-- 4. Specificaties Grid (Huisstijl-iconen) -->
+          <div class="badge-specs-grid">
+            <div class="spec-cell">
+              <div class="spec-icon-wrap" title="Maatvoering">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.3 8.7 8.7 21.3c-1 1-2.6 1-3.6 0l-3.4-3.4c-1-1-1-2.6 0-3.6L14.3 1.7c1-1 2.6-1 3.6 0l3.4 3.4c1 1 1 2.6 0 3.6z"></path>
+                  <path d="m7.5 10.5 2 2"></path>
+                  <path d="m10.5 7.5 2 2"></path>
+                  <path d="m13.5 4.5 2 2"></path>
+                </svg>
+              </div>
+              <div class="spec-cell-text">
+                <span class="spec-cell-label">Maatvoering</span>
+                <span class="spec-cell-value" id="specSize" contenteditable="true">Op maat (S/M/L)</span>
+              </div>
+            </div>
 
-        <!-- 4. Specificaties Grid -->
-        <div class="badge-specs-grid">
-          <div class="spec-cell">
-            <div class="spec-cell-label">📐 Maatvoering</div>
-            <div class="spec-cell-value" id="specSize" contenteditable="true">Op maat (S/M/L)</div>
-          </div>
-          <div class="spec-cell">
-            <div class="spec-cell-label">⚡ Verstelling</div>
-            <div class="spec-cell-value" id="specMotors" contenteditable="true">2 Motoren &bull; Sta-op</div>
-          </div>
-          <div class="spec-cell">
-            <div class="spec-cell-label">🛋️ Bekleding</div>
-            <div class="spec-cell-value" id="specCover" contenteditable="true">Leder / Stof</div>
-          </div>
-          <div class="spec-cell">
-            <div class="spec-cell-label">🛡️ Garantie</div>
-            <div class="spec-cell-value" id="specWarranty" contenteditable="true">3 Jaar &bull; Service aan huis</div>
-          </div>
-        </div>
+            <div class="spec-cell">
+              <div class="spec-icon-wrap" title="Verstelling">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="spec-cell-text">
+                <span class="spec-cell-label">Verstelling</span>
+                <span class="spec-cell-value" id="specMotors" contenteditable="true">2 Motoren &bull; Sta-op</span>
+              </div>
+            </div>
 
-        <!-- 5. Prijs & Meeneem Banner -->
-        <div class="badge-price-banner">
-          <div class="price-col">
-            <div class="price-label" id="badgePriceLabel">Showroomprijs</div>
-            <div class="price-value-wrap">
-              <span class="price-amount" id="badgePriceAmount" contenteditable="true">&euro; 1.945,-</span>
-              <span class="price-old" id="badgePriceOld" style="display: none;"></span>
+            <div class="spec-cell">
+              <div class="spec-icon-wrap" title="Bekleding">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 19v2"></path>
+                  <path d="M18 19v2"></path>
+                  <path d="M4 11a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6z"></path>
+                  <path d="M6 9V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"></path>
+                </svg>
+              </div>
+              <div class="spec-cell-text">
+                <span class="spec-cell-label">Bekleding</span>
+                <span class="spec-cell-value" id="specCover" contenteditable="true">Leder / Stof</span>
+              </div>
+            </div>
+
+            <div class="spec-cell">
+              <div class="spec-icon-wrap" title="Garantie">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <div class="spec-cell-text">
+                <span class="spec-cell-label">Garantie</span>
+                <span class="spec-cell-value" id="specWarranty" contenteditable="true">3 Jaar &bull; Service aan huis</span>
+              </div>
             </div>
           </div>
-          <div class="action-pill" id="badgeActionPill" contenteditable="true">Direct Meenemen</div>
-        </div>
 
-        <!-- 6. Footer -->
-        <footer class="badge-footer">
-          <div class="badge-footer-left">
-            <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="badge-qr-img">
-            <div class="badge-qr-info">
-              <span class="badge-qr-scan">Scan voor video:</span>
-              <span class="badge-qr-url">staopstoelen<span>.nl</span></span>
+          <!-- 5. Prijs & Meeneem Banner (Ruim & Opvallend) -->
+          <div class="badge-price-banner">
+            <div class="price-col">
+              <div class="price-label-row">
+                <span class="price-label" id="badgePriceLabel">Showroom Meeneemprijs</span>
+                <span class="price-subtext">&bull; Direct Leverbaar</span>
+              </div>
+              <div class="price-value-wrap">
+                <span class="price-amount" id="badgePriceAmount" contenteditable="true">&euro; 1.945,-</span>
+                <span class="price-old" id="badgePriceOld" style="display: none;"></span>
+              </div>
+            </div>
+            <div class="action-pill" id="badgeActionPill" contenteditable="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span id="badgeActionText">Direct Meenemen</span>
             </div>
           </div>
-          <div class="badge-footer-right">
-            <span class="badge-contact-phone">📞 078 - 631 4858</span>
-            <span class="badge-contact-address">Merwedestraat 239, Dordrecht</span>
+
+          <!-- 6. Footer (Huisstijl-iconen) -->
+          <footer class="badge-footer">
+            <div class="badge-footer-left">
+              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="badge-qr-img">
+              <div class="badge-qr-info">
+                <span class="badge-qr-scan">Scan voor video &amp; info:</span>
+                <span class="badge-qr-url">staopstoelen<span>.nl</span></span>
+              </div>
+            </div>
+            <div class="badge-footer-right">
+              <span class="badge-contact-phone">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>078 - 631 4858</span>
+              </span>
+              <span class="badge-contact-address">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Merwedestraat 239, Dordrecht</span>
+              </span>
+            </div>
+          </footer>
+        </article>
+      </div>
+
+      <!-- ACHTERKANT KOLOM -->
+      <div class="badge-side-col" id="colBack">
+        <span class="badge-side-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+          Achterkant &bull; Specificaties &amp; Pasrapport
+        </span>
+        <article class="badge-a6 badge-a6-back" id="badgeCardBack">
+          <!-- Subtiel ophanggat richtpunt -->
+          <div class="punch-hole-guide"></div>
+
+          <!-- 1. Header Achterkant -->
+          <header class="back-header">
+            <div class="badge-brand-col">
+              <div class="back-logo-text">staopstoelen<span>.nl</span></div>
+              <div class="badge-logo-subtitle">Productinformatie &amp; Pasrapport</div>
+            </div>
+            <div class="back-header-meta">
+              <span class="back-sku-pill" id="backConditionPill">Nieuw Maatwerk</span>
+              <span class="back-sku-sub" id="backSkuLabel">Model #...</span>
+            </div>
+          </header>
+
+          <!-- 2. Product Titel & Uitvoering -->
+          <div class="back-title-block">
+            <div class="back-title-row">
+              <h2 class="back-model-name" id="backModelName" contenteditable="true">Sta-op stoel Ravi</h2>
+              <span class="back-brand-name" id="backBrandName" contenteditable="true">DFM</span>
+            </div>
+            <div class="back-tagline" id="backTagline" contenteditable="true">Officieel ergonomisch maatwerk- &amp; specificatieoverzicht</div>
           </div>
-        </footer>
-      </article>
+
+          <!-- 3. Technische Maattabel (8 specificaties) -->
+          <div class="back-section-wrap">
+            <div class="back-section-heading">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              <span>Specificaties &amp; Maatvoering</span>
+            </div>
+            <div class="back-specs-table" id="backSpecsTable">
+              <!-- Dynamisch via JavaScript -->
+            </div>
+          </div>
+
+          <!-- 4. Ergonomische Pluspunten (Bullets) -->
+          <div class="back-section-wrap">
+            <div class="back-section-heading">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>Ergonomische Kenmerken</span>
+            </div>
+            <ul class="back-features-list" id="backFeaturesList" contenteditable="true">
+              <!-- Dynamisch via JavaScript -->
+            </ul>
+          </div>
+
+          <!-- 5. Showroom & Service Zekerheden Box -->
+          <div class="back-service-box">
+            <div class="back-service-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+              <div><strong>100% Maatgarantie</strong><br>Afgesteld op lichaamsmaat</div>
+            </div>
+            <div class="back-service-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <div><strong>Service aan Huis</strong><br>Eigen bezorgdienst NL &amp; VL</div>
+            </div>
+            <div class="back-service-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <div><strong>Garantie &amp; Nazorg</strong><br>Snelle service &amp; leenstoel</div>
+            </div>
+            <div class="back-service-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <div><strong>Inruil Mogelijk</strong><br>Inruilpremie op uw stoel</div>
+            </div>
+          </div>
+
+          <!-- 6. Footer Achterkant -->
+          <footer class="badge-footer">
+            <div class="badge-footer-left">
+              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="badge-qr-img">
+              <div class="badge-qr-info">
+                <span class="badge-qr-scan">Scan voor videodemo &amp; info:</span>
+                <span class="badge-qr-url">staopstoelen<span>.nl</span></span>
+              </div>
+            </div>
+            <div class="badge-footer-right">
+              <span class="badge-contact-phone">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>078 - 631 4858</span>
+              </span>
+              <span class="badge-contact-address">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Merwedestraat 239, Dordrecht</span>
+              </span>
+            </div>
+          </footer>
+        </article>
+      </div>
+
     </div>
 
-    <!-- 4x A6 Drukvel Container (A4 View) -->
+    <!-- 4x A6 Drukvel Container (A4 View - Pagina 1: Voorkant) -->
     <div class="a4-sheet-container" id="a4SheetContainer">
+      <div class="a4-sheet-badge">Pagina 1 &bull; 4x Voorkant (Showroombadges)</div>
       <div class="a4-cutmark-h"></div>
       <div class="a4-cutmark-v"></div>
       <div class="a4-grid-4" id="a4GridSlot">
-        <!-- Wordt dynamisch gevuld met 4 identieke of geselecteerde A6 badges -->
+        <!-- Wordt dynamisch gevuld met 4 A6 voorkant badges -->
+      </div>
+    </div>
+
+    <!-- 4x A6 Drukvel Container (A4 View - Pagina 2: Achterkant) -->
+    <div class="a4-sheet-container a4-sheet-back" id="a4SheetContainerBack">
+      <div class="a4-sheet-badge">Pagina 2 &bull; 4x Achterkant (Specificaties &amp; Pasrapport)</div>
+      <div class="a4-cutmark-h"></div>
+      <div class="a4-cutmark-v"></div>
+      <div class="a4-grid-4" id="a4GridSlotBack">
+        <!-- Wordt dynamisch gevuld met 4 A6 achterkant badges -->
       </div>
     </div>
 
@@ -1139,6 +1685,7 @@
     let currentImages = [];
     let currentImageIndex = 0;
     let currentPrintMode = 'single'; // 'single' of 'a4'
+    let currentSideMode = 'both'; // 'both', 'front', of 'back'
 
     // DOM Elements
     const chairCarousel = document.getElementById("chairCarousel");
@@ -1150,14 +1697,22 @@
     const btnPrint = document.getElementById("btnPrint");
     const btnModeSingle = document.getElementById("btnModeSingle");
     const btnModeA4 = document.getElementById("btnModeA4");
+    const btnSideBoth = document.getElementById("btnSideBoth");
+    const btnSideFront = document.getElementById("btnSideFront");
+    const btnSideBack = document.getElementById("btnSideBack");
     const a4SheetContainer = document.getElementById("a4SheetContainer");
+    const a4SheetContainerBack = document.getElementById("a4SheetContainerBack");
     const badgeSingleWrap = document.getElementById("badgeSingleWrap");
     const a4GridSlot = document.getElementById("a4GridSlot");
+    const a4GridSlotBack = document.getElementById("a4GridSlotBack");
+    const colFront = document.getElementById("colFront");
+    const colBack = document.getElementById("colBack");
 
-    // Badge Elements
+    // Badge Elements (Voorkant)
     const badgePhotoImg = document.getElementById("badgePhotoImg");
     const badgePhotoCondition = document.getElementById("badgePhotoCondition");
     const badgePhotoSetting = document.getElementById("badgePhotoSetting");
+    const badgePhotoSettingText = document.getElementById("badgePhotoSettingText");
     const badgeBrandLabel = document.getElementById("badgeBrandLabel");
     const badgeModelName = document.getElementById("badgeModelName");
     const badgeTypeDesc = document.getElementById("badgeTypeDesc");
@@ -1169,8 +1724,18 @@
     const badgePriceAmount = document.getElementById("badgePriceAmount");
     const badgePriceOld = document.getElementById("badgePriceOld");
     const badgeActionPill = document.getElementById("badgeActionPill");
+    const badgeActionText = document.getElementById("badgeActionText");
     const badgeQualityStamp = document.getElementById("badgeQualityStamp");
     const punchHoleGuide = document.getElementById("punchHoleGuide");
+
+    // Badge Elements (Achterkant)
+    const backModelName = document.getElementById("backModelName");
+    const backBrandName = document.getElementById("backBrandName");
+    const backConditionPill = document.getElementById("backConditionPill");
+    const backSkuLabel = document.getElementById("backSkuLabel");
+    const backTagline = document.getElementById("backTagline");
+    const backSpecsTable = document.getElementById("backSpecsTable");
+    const backFeaturesList = document.getElementById("backFeaturesList");
 
     // Quick Inputs
     const inputCustomPrice = document.getElementById("inputCustomPrice");
@@ -1390,29 +1955,29 @@
 
       const chosen = currentImages[currentImageIndex];
       badgePhotoImg.src = chosen.url;
-      badgePhotoSetting.textContent = chosen.type === 'cosy' ? '🛋️ Woonkamer Sfeer' : '📷 Showroom Detail';
+      if (badgePhotoSettingText) {
+        badgePhotoSettingText.textContent = chosen.type === 'cosy' ? 'Woonkamer Sfeer' : 'Showroom Detail';
+      }
 
       if (currentPrintMode === 'a4') {
         renderA4Grid();
       }
     }
 
-    // 8. Populate Badge with chair data
+    // 8. Populate Badge with chair data (Voorkant & Achterkant)
     function populateBadge(chair) {
       if (!chair) return;
 
-      // Brand & Model
+      // --- VOORKANT GEGEVENS ---
       const brand = chair.brand || 'Specialist';
       badgeBrandLabel.textContent = brand;
       badgeModelName.textContent = chair.name || 'Ergonomische Fauteuil';
 
-      // Type description
       const typeText = chair.type === 'staop' 
         ? 'Ergonomische sta-op & relaxfauteuil op maat' 
         : 'Luxe ergonomische senioren- & relaxfauteuil';
       badgeTypeDesc.textContent = typeText;
 
-      // Specs
       const specs = chair.specifications || {};
       specSize.textContent = specs['Maatwerk'] || 'Op lichaamsmaat';
       specMotors.textContent = specs['Aantal motoren'] || (chair.badge || 'Elektrisch verstelbaar');
@@ -1421,18 +1986,17 @@
       specCover.textContent = mat;
       specWarranty.textContent = (specs['Garantie'] || '3 Jaar') + ' • Service aan huis';
 
-      // Condition badge & Quality Stamp
       const isNieuw = chair.condition === 'nieuw';
       if (isNieuw) {
         badgePhotoCondition.textContent = 'Nieuw Maatwerk';
         badgePhotoCondition.className = 'badge-photo-tag-topleft';
-        badgePriceLabel.textContent = 'Showroomprijs';
-        badgeActionPill.textContent = 'Direct meenemen';
+        badgePriceLabel.textContent = 'Adviesprijs Maatwerk';
+        if (badgeActionText) badgeActionText.textContent = 'Nieuw Bestellen';
       } else {
         badgePhotoCondition.textContent = 'Gecertificeerd Gereviseerd';
         badgePhotoCondition.className = 'badge-photo-tag-topleft occasion';
-        badgePriceLabel.textContent = 'Occasion Meeneemprijs';
-        badgeActionPill.textContent = 'Direct leverbaar';
+        badgePriceLabel.textContent = 'Showroom Meeneemprijs';
+        if (badgeActionText) badgeActionText.textContent = 'Direct Meenemen';
       }
 
       // Quality stamp
@@ -1442,13 +2006,61 @@
       const formattedPrice = formatPrice(chair.price);
       badgePriceAmount.textContent = formattedPrice;
       inputCustomPrice.value = formattedPrice;
-      inputCustomTag.value = badgeActionPill.textContent;
+      inputCustomTag.value = badgeActionText ? badgeActionText.textContent : 'Direct Meenemen';
 
       if (chair.old_price) {
         badgePriceOld.style.display = 'inline';
         badgePriceOld.textContent = formatPrice(chair.old_price);
       } else {
         badgePriceOld.style.display = 'none';
+      }
+
+      // --- ACHTERKANT GEGEVENS (Productinformatie & Pasrapport) ---
+      if (backModelName) backModelName.textContent = chair.name || 'Ergonomische Fauteuil';
+      if (backBrandName) backBrandName.textContent = brand;
+      if (backConditionPill) {
+        backConditionPill.textContent = isNieuw ? 'Nieuw Maatwerk' : 'Gecertificeerd Gereviseerd';
+        backConditionPill.className = 'back-sku-pill' + (isNieuw ? '' : ' occasion');
+      }
+      if (backSkuLabel) {
+        backSkuLabel.textContent = 'REF: ' + (chair.id || 'ST-001').toUpperCase().slice(0, 16);
+      }
+
+      // Maat- en specificatietabel (8 velden in 2 kolommen)
+      if (backSpecsTable) {
+        const specItems = [
+          { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)' },
+          { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren' },
+          { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax' },
+          { k: 'Max. Belasting', v: specs['Maximaal gebruikersgewicht'] || 'Tot 130 kg' },
+          { k: 'Bekleding', v: mat },
+          { k: 'Bediening', v: specs['Bediening'] || 'Geïntegreerde handbediening' },
+          { k: 'Garantie', v: specs['Garantie'] || (isNieuw ? '3 Jaar aan huis' : '1 Jaar aan huis') },
+          { k: 'Levertijd', v: chair.status === 'beschikbaar' ? 'Direct leverbaar' : 'Op bestelling' }
+        ];
+
+        backSpecsTable.innerHTML = specItems.map(item => `
+          <div class="back-spec-row">
+            <span class="back-spec-k">${item.k}</span>
+            <span class="back-spec-v" contenteditable="true">${item.v}</span>
+          </div>
+        `).join('');
+      }
+
+      // Ergonomische pluspunten bullets
+      if (backFeaturesList) {
+        let feats = chair.features || [];
+        if (!feats || feats.length === 0) {
+          feats = [
+            "Ergonomische kantelverstelling (tilt) voor drukverlaging en gezonde zithouding",
+            "Onafhankelijk elektrisch verstelbare beensteun en rugleuning",
+            "Veilige, rustige opstahulp met volledige lichaamsbalans",
+            "Vakkundig opgemeten en ingesteld op uw persoonlijke lichaamsmaten"
+          ];
+        }
+        backFeaturesList.innerHTML = feats.slice(0, 4).map(f => `
+          <li><span class="feat-check">✓</span><span contenteditable="true">${f}</span></li>
+        `).join('');
       }
 
       // Image
@@ -1462,17 +2074,29 @@
       chairIndexLabel.textContent = `${currentChairIndex + 1} / ${filteredChairs.length}`;
     }
 
-    // 10. A4 Sheet Render (4x A6 cards)
+    // 10. A4 Sheet Render (4x A6 kaarten per vel - Pagina 1 & Pagina 2)
     function renderA4Grid() {
       a4GridSlot.innerHTML = '';
+      if (a4GridSlotBack) a4GridSlotBack.innerHTML = '';
+
       const badgeSource = document.getElementById("badgeCard");
-      const badgeHtml = badgeSource.outerHTML;
+      const badgeSourceBack = document.getElementById("badgeCardBack");
+
+      const badgeHtml = badgeSource ? badgeSource.outerHTML : '';
+      const badgeHtmlBack = badgeSourceBack ? badgeSourceBack.outerHTML : '';
 
       for (let i = 0; i < 4; i++) {
         const slot = document.createElement("div");
         slot.className = "a4-badge-slot";
         slot.innerHTML = badgeHtml;
         a4GridSlot.appendChild(slot);
+
+        if (a4GridSlotBack && badgeHtmlBack) {
+          const slotBack = document.createElement("div");
+          slotBack.className = "a4-badge-slot";
+          slotBack.innerHTML = badgeHtmlBack;
+          a4GridSlotBack.appendChild(slotBack);
+        }
       }
     }
 
@@ -1536,10 +2160,10 @@
       }
     });
 
-    // Keyboard navigation: Left/Right to flip chairs, Up/Down to flip photos!
+    // Keyboard navigation
     window.addEventListener("keydown", (e) => {
       if (document.activeElement.tagName === 'INPUT' || document.activeElement.isContentEditable) {
-        return; // don't hijack keyboard inside input fields
+        return;
       }
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -1562,11 +2186,14 @@
     });
 
     inputCustomTag.addEventListener("input", (e) => {
-      badgeActionPill.textContent = e.target.value;
+      if (badgeActionText) badgeActionText.textContent = e.target.value;
     });
 
     chkPunchHole.addEventListener("change", (e) => {
       punchHoleGuide.style.display = e.target.checked ? "block" : "none";
+      document.querySelectorAll(".punch-hole-guide").forEach(g => {
+        g.style.display = e.target.checked ? "block" : "none";
+      });
       if (currentPrintMode === 'a4') renderA4Grid();
     });
 
@@ -1575,10 +2202,37 @@
       if (currentPrintMode === 'a4') renderA4Grid();
     });
 
-    // Print Mode Switcher
+    // Zijde Kiezer (Voor / Achter / Dubbelzijdig)
+    function setSideMode(side) {
+      currentSideMode = side;
+      document.body.classList.remove('side-both', 'side-front', 'side-back');
+      document.body.classList.add(`side-${side}`);
+
+      btnSideBoth.classList.toggle('active', side === 'both');
+      btnSideFront.classList.toggle('active', side === 'front');
+      btnSideBack.classList.toggle('active', side === 'back');
+
+      if (currentPrintMode === 'single') {
+        if (colFront) colFront.style.display = (side === 'back') ? 'none' : 'flex';
+        if (colBack) colBack.style.display = (side === 'front') ? 'none' : 'flex';
+      } else {
+        if (a4SheetContainer) a4SheetContainer.style.display = (side === 'back') ? 'none' : 'block';
+        if (a4SheetContainerBack) a4SheetContainerBack.style.display = (side === 'front') ? 'none' : 'block';
+      }
+
+      if (currentPrintMode === 'a4') {
+        renderA4Grid();
+      }
+    }
+
+    btnSideBoth.addEventListener("click", () => setSideMode('both'));
+    btnSideFront.addEventListener("click", () => setSideMode('front'));
+    btnSideBack.addEventListener("click", () => setSideMode('back'));
+
+    // Print Mode Switcher (1x A6 / 4x A6 op A4)
     function setPrintMode(mode) {
       currentPrintMode = mode;
-      document.body.className = `mode-${mode}`;
+      document.body.className = `mode-${mode} side-${currentSideMode}`;
 
       let dynamicStyle = document.getElementById("dynamicPageRule");
       if (!dynamicStyle) {
@@ -1588,17 +2242,18 @@
       }
       if (mode === 'single') {
         dynamicStyle.textContent = `@page { size: 105mm 148mm portrait; margin: 0; }`;
-        badgeSingleWrap.style.display = 'block';
-        a4SheetContainer.style.display = 'none';
+        badgeSingleWrap.style.display = 'flex';
+        if (a4SheetContainer) a4SheetContainer.style.display = 'none';
+        if (a4SheetContainerBack) a4SheetContainerBack.style.display = 'none';
       } else {
         dynamicStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
         badgeSingleWrap.style.display = 'none';
-        a4SheetContainer.style.display = 'block';
         renderA4Grid();
       }
 
       btnModeSingle.classList.toggle("active", mode === 'single');
       btnModeA4.classList.toggle("active", mode === 'a4');
+      setSideMode(currentSideMode);
     }
 
     btnModeSingle.addEventListener("click", () => setPrintMode('single'));
@@ -1614,6 +2269,7 @@
 
     // Initial load
     setPrintMode('single');
+    setSideMode('both');
     loadChairs();
   </script>
 </body>
