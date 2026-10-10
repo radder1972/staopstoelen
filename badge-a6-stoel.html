@@ -899,49 +899,62 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
-    /* Grote Print Actieknop */
+    /* Grote Print Actieknop (Gecentreerd & Opvallend) */
     .config-bottom-action {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
       border-top: 1px solid #e2e8f0;
-      padding-top: 18px;
-    }
-
-    .print-tip-hint {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: #64748b;
-    }
-    .print-tip-hint svg {
-      color: var(--color-forest);
-      flex-shrink: 0;
+      padding: 22px 16px 12px 16px;
+      text-align: center;
     }
 
     .btn-print-large {
       background: linear-gradient(135deg, var(--color-forest) 0%, #356b17 100%);
       color: #ffffff;
       border: none;
-      padding: 12px 28px;
-      border-radius: 9px;
+      padding: 15px 36px;
+      border-radius: 12px;
       font-family: var(--font-heading);
-      font-size: 0.98rem;
+      font-size: 1.1rem;
       font-weight: 800;
+      letter-spacing: 0.2px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 16px rgba(75, 143, 36, 0.35);
-      transition: all 0.2s ease;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 6px 20px rgba(75, 143, 36, 0.40);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 0 auto;
     }
     .btn-print-large:hover {
-      background: linear-gradient(135deg, #356b17 0%, #264e10 100%);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(75, 143, 36, 0.45);
+      background: linear-gradient(135deg, var(--color-forest-dark) 0%, #295412 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(75, 143, 36, 0.50);
+    }
+    .btn-print-large:active {
+      transform: translateY(0);
+      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.35);
+    }
+
+    .print-tip-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: #64748b;
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.45;
+    }
+    .print-tip-hint svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
@@ -2093,7 +2106,7 @@
           </p>
         </div>
         <div class="section-header-actions">
-          <button type="button" class="btn-print-top" id="btnPrintTop">
+          <button type="button" class="btn-print-top" id="btnPrintTop" onclick="triggerPrint()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
             <span>Nu Afdrukken / PDF</span>
           </button>
@@ -2234,16 +2247,14 @@
           </div>
 
           <div class="config-options-panel">
-            <!-- Vouwvel specifieke optie (alleen in vouwmodus zichtbaar) -->
-            <div class="options-row" id="foldOptionsRow">
-              <div class="option-group" style="flex: 1; min-width: 280px;">
-                <label for="foldSecondChairSelect"><strong>Onderste badge op vouwvel:</strong></label>
-                <select id="foldSecondChairSelect" class="form-control-sm" style="flex: 1; max-width: 380px;">
-                  <option value="same">Zelfde als boven (2x deze stoel)</option>
-                </select>
+            <!-- Vouwvel informatieve rij -->
+            <div class="options-row" id="foldOptionsRow" style="align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #1e293b;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #e0f2fe; color: #0369a1; border-radius: 50%; font-size: 0.78rem; font-weight: 800;">ℹ</span>
+                <span><strong>A4 Vouwvel:</strong> Print automatisch 2 complete dubbelzijdige kaarten van de gekozen stoel op 1 A4 vel.</span>
               </div>
-              <div style="font-size: 0.8rem; color: #64748b;">
-                <em>Horizontaal doorsnijden op 148,5 mm en dubbelvouwen.</em>
+              <div style="font-size: 0.82rem; color: #64748b;">
+                <em>1× horizontaal doorsnijden op 148,5 mm &amp; dubbelvouwen.</em>
               </div>
             </div>
 
@@ -2284,15 +2295,15 @@
 
         <!-- STAP 4: ACTIEBALK -->
         <div class="config-bottom-action">
+          <button type="button" class="btn-print-large" id="btnPrint" onclick="triggerPrint()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Nu Afdrukken of Opslaan als PDF</span>
+          </button>
+
           <div class="print-tip-hint">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
             <span><strong>Print tip:</strong> Zet in het browser-printvenster de marges op <em>"Geen"</em> en vink <em>"Achtergrondafbeeldingen"</em> aan voor de mooiste kleuren en exacte afmetingen.</span>
           </div>
-
-          <button type="button" class="btn-print-large" id="btnPrint">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-            <span>Nu Afdrukken of Opslaan als PDF</span>
-          </button>
         </div>
 
       </div>
@@ -2631,7 +2642,6 @@
     const a4SheetContainerBack = document.getElementById("a4SheetContainerBack");
     const a4FoldContainer = document.getElementById("a4FoldContainer");
     const a4FoldGrid = document.getElementById("a4FoldGrid");
-    const foldSecondChairSelect = document.getElementById("foldSecondChairSelect");
     const badgeSingleWrap = document.getElementById("badgeSingleWrap");
     const a4GridSlot = document.getElementById("a4GridSlot");
     const a4GridSlotBack = document.getElementById("a4GridSlotBack");
@@ -2757,11 +2767,6 @@
           (c.name && c.name.toLowerCase().includes(targetParam))
         );
         if (found !== -1) initIndex = found;
-      }
-
-      if (foldSecondChairSelect) {
-        foldSecondChairSelect.innerHTML = '<option value="same">Zelfde als boven (2x deze stoel)</option>' +
-          chairsList.map(c => `<option value="${c.id}">${c.brand ? c.brand + ' ' : ''}${c.name} (${c.condition === 'nieuw' ? 'Nieuw' : 'Occasion'} - € ${c.price})</option>`).join('');
       }
 
       if (filteredChairs.length > 0) {
@@ -3283,7 +3288,7 @@
       }
     }
 
-    // 11. A4 Vouwvel Render (2x A6 Dubbelzijdige kaarten op 1 A4 vel)
+    // 11. A4 Vouwvel Render (2x A6 Dubbelzijdige kaarten van dezelfde stoel op 1 A4 vel)
     function renderA4FoldGrid() {
       if (!a4FoldGrid) return;
       a4FoldGrid.innerHTML = '';
@@ -3304,33 +3309,16 @@
       slot2.appendChild(badgeSourceBack.cloneNode(true));
       a4FoldGrid.appendChild(slot2);
 
-      // Bepaal stoel voor Kaart 2 (onderste 2 slots)
-      const secondChairVal = foldSecondChairSelect ? foldSecondChairSelect.value : 'same';
-      
+      // Slot 3: Kaart 2 Voorkant (onder links - identiek aan kaart 1)
       const slot3 = document.createElement("div");
       slot3.className = "a4-fold-slot";
+      slot3.appendChild(badgeSource.cloneNode(true));
+      a4FoldGrid.appendChild(slot3);
+
+      // Slot 4: Kaart 2 Achterkant (onder rechts - identiek aan kaart 1)
       const slot4 = document.createElement("div");
       slot4.className = "a4-fold-slot";
-
-      if (secondChairVal === 'same' || !secondChairVal) {
-        // Zelfde als bovenste badge
-        slot3.appendChild(badgeSource.cloneNode(true));
-        slot4.appendChild(badgeSourceBack.cloneNode(true));
-      } else {
-        const chair2 = chairsList.find(c => c.id === secondChairVal);
-        if (chair2) {
-          const frontClone = badgeSource.cloneNode(true);
-          const backClone = badgeSourceBack.cloneNode(true);
-          fillBadgeElement(frontClone, backClone, chair2);
-          slot3.appendChild(frontClone);
-          slot4.appendChild(backClone);
-        } else {
-          slot3.appendChild(badgeSource.cloneNode(true));
-          slot4.appendChild(badgeSourceBack.cloneNode(true));
-        }
-      }
-
-      a4FoldGrid.appendChild(slot3);
+      slot4.appendChild(badgeSourceBack.cloneNode(true));
       a4FoldGrid.appendChild(slot4);
     }
 
@@ -3543,25 +3531,29 @@
     if (cardModeFold) cardModeFold.addEventListener("click", () => setPrintMode('fold'));
     if (cardModeA4) cardModeA4.addEventListener("click", () => setPrintMode('a4'));
 
-    if (btnPrintTop) {
-      btnPrintTop.addEventListener("click", () => btnPrint.click());
-    }
-
-    if (foldSecondChairSelect) {
-      foldSecondChairSelect.addEventListener("change", () => {
-        if (currentPrintMode === 'fold') renderA4FoldGrid();
-      });
-    }
-
-    // Print Button
-    btnPrint.addEventListener("click", () => {
-      if (currentPrintMode === 'a4') {
-        renderA4Grid();
-      } else if (currentPrintMode === 'fold') {
-        renderA4FoldGrid();
+    // Robuuste print trigger functie (werkt zowel direct via onclick als event listener)
+    function triggerPrint() {
+      try {
+        if (currentPrintMode === 'a4') {
+          renderA4Grid();
+        } else if (currentPrintMode === 'fold') {
+          renderA4FoldGrid();
+        }
+      } catch (err) {
+        console.warn("Fout bij synchroniseren printgrid:", err);
       }
-      window.print();
-    });
+      setTimeout(() => {
+        window.print();
+      }, 50);
+    }
+    window.triggerPrint = triggerPrint;
+
+    if (btnPrint) {
+      btnPrint.addEventListener("click", triggerPrint);
+    }
+    if (btnPrintTop) {
+      btnPrintTop.addEventListener("click", triggerPrint);
+    }
 
     // Initial load: Default naar het A4 vouwvel (favoriet voor de showroom)
     setPrintMode('fold');
