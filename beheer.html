@@ -116,12 +116,11 @@
       padding: 40px 0;
     }
     
-    /* Admin Header Card */
+    /* Admin Header Card - Schoon, wit en rustig */
     .admin-header-card {
-      background: linear-gradient(135deg, #ffffff 0%, #f6faf3 55%, #fdfbf7 100%);
-      border: 1px solid rgba(75, 143, 36, 0.22);
-      border-left: 4px solid var(--color-forest);
-      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 12px;
       padding: 22px 28px;
       margin-bottom: 24px;
       display: flex;
@@ -129,60 +128,19 @@
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
-      box-shadow: 0 4px 20px rgba(18, 43, 7, 0.04);
-      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     }
     .admin-header-main {
       flex: 1;
       min-width: 280px;
     }
-    .admin-pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--color-forest);
-      background: rgba(75, 143, 36, 0.09);
-      padding: 4px 12px;
-      border-radius: 9999px;
-      border: 1px solid rgba(75, 143, 36, 0.22);
-      margin-bottom: 10px;
-    }
-    .admin-live-pulse {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #4b8f24;
-      box-shadow: 0 0 0 2px rgba(75, 143, 36, 0.22);
-      display: inline-block;
-    }
-    .admin-pill-sep {
-      color: rgba(75, 143, 36, 0.35);
-    }
-    .admin-pill-sub {
-      color: var(--color-forest-dark);
-      font-weight: 700;
-    }
-    .admin-version-pill {
-      font-size: 0.72rem;
-      color: #7d8c79;
-      background: #eef4ec;
-      padding: 2px 7px;
-      border-radius: 9999px;
-      border: 1px solid #d8e5d5;
-      font-weight: 600;
-      letter-spacing: 0;
-    }
     .admin-title {
       font-family: var(--font-heading);
-      font-size: 1.65rem;
-      font-weight: 800;
+      font-size: 1.55rem;
+      font-weight: 700;
       color: var(--color-forest-dark);
       margin: 0;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.2px;
       line-height: 1.25;
     }
     .admin-subtitle {
@@ -191,7 +149,7 @@
       margin-top: 6px;
       margin-bottom: 0;
       line-height: 1.5;
-      max-width: 680px;
+      max-width: 700px;
     }
     .btn-admin-action {
       display: inline-flex;
@@ -200,19 +158,19 @@
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: 0.88rem;
-      padding: 11px 18px;
-      border-radius: 10px;
+      padding: 10px 18px;
+      border-radius: 8px;
       background: #ffffff;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
       border: 1.5px solid var(--color-forest);
       text-decoration: none;
-      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.08);
       transition: all 0.2s ease;
       white-space: nowrap;
     }
     .btn-admin-action:hover {
       background: var(--color-forest);
       color: #ffffff;
+    }
       transform: translateY(-1px);
       box-shadow: 0 4px 14px rgba(75, 143, 36, 0.22);
     }
@@ -277,15 +235,15 @@
     }
     
     /* ==========================================================================
-       ECHTE TABBLADEN IN SALIEGROEN (Geen kapitalen, trapsgewijze diepte)
+       TABBLADEN: WIT BIJ INACTIEF, GROEN BIJ ACTIEF (Geen kapitalen)
        ========================================================================== */
     .admin-tabs-bar {
       display: flex;
       align-items: flex-end;
-      gap: 6px;
-      margin-bottom: 26px;
-      border-bottom: 2.5px solid #cfe0cb;
-      padding: 0 4px;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--color-gray-light);
+      padding: 0;
       position: relative;
       overflow-x: auto;
       flex-wrap: nowrap;
@@ -299,81 +257,62 @@
     .tab-btn {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      padding: 13px 20px;
+      gap: 8px;
+      padding: 11px 22px;
       font-family: var(--font-heading);
       font-weight: 600;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       text-transform: none !important; /* GEEN KAPITALEN */
       letter-spacing: 0;
-      color: #485c44;
-      background: #edf5eb; /* Zachte salie tint */
-      border: 1.5px solid #cfe0cb;
+      color: var(--color-forest-dark);
+      background: #ffffff; /* Wit bij niet-geselecteerd */
+      border: 1px solid var(--color-gray-light);
       border-bottom: none;
-      border-radius: 12px 12px 0 0;
-      margin-bottom: -2.5px;
+      border-radius: 8px 8px 0 0;
+      margin-bottom: -2px;
       cursor: pointer;
       position: relative;
-      transition: all 0.18s ease;
+      transition: all 0.15s ease;
       outline: none;
       white-space: nowrap;
       flex-shrink: 0;
-      box-shadow: inset 0 -2px 6px rgba(0,0,0,0.02);
     }
 
     .tab-btn svg {
       width: 17px;
       height: 17px;
-      stroke: #5d7558;
-      stroke-width: 2.2;
-      transition: stroke 0.18s ease;
+      stroke: var(--color-gray);
+      stroke-width: 2;
+      transition: stroke 0.15s ease;
       flex-shrink: 0;
     }
 
     .tab-btn:hover {
-      background: #e2ede0;
-      color: var(--color-forest-dark);
-      border-color: #bad3b4;
-      transform: translateY(-2px);
+      background: #f7faf5;
+      color: var(--color-forest);
+      border-color: #cbd5c8;
     }
     .tab-btn:hover svg {
       stroke: var(--color-forest);
     }
 
-    /* Actief tabblad: staat naar voren op de voorgrond in fris wit met groene topstrip */
+    /* Actief tabblad: GROEN met witte tekst en wit icoon */
     .tab-btn.active {
-      background: #ffffff;
-      color: var(--color-forest-dark);
-      font-weight: 800;
-      border: 1.5px solid #cfe0cb;
-      border-top: 3.5px solid var(--color-forest);
-      border-bottom: 3.5px solid #ffffff; /* Doorbreekt de onderlijn voor het echte tabblad effect */
-      margin-bottom: -2.5px;
+      background: var(--color-forest) !important;
+      color: #ffffff !important;
+      font-weight: 700;
+      border: 1px solid var(--color-forest) !important;
+      border-bottom: 2px solid var(--color-forest) !important;
+      margin-bottom: -2px;
       padding-top: 11px;
-      padding-bottom: 13.5px;
-      z-index: 5;
-      box-shadow: 0 -4px 14px rgba(75, 143, 36, 0.08);
-      transform: none;
+      padding-bottom: 11px;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.2);
     }
 
     .tab-btn.active svg {
-      stroke: var(--color-forest);
-      stroke-width: 2.4;
-    }
-
-    .tab-badge-pill {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      background: rgba(75, 143, 36, 0.12);
-      color: var(--color-forest);
-      margin-left: 2px;
-      transition: all 0.2s ease;
-    }
-    .tab-btn.active .tab-badge-pill {
-      background: rgba(243, 146, 35, 0.16);
-      color: var(--color-terracotta-dark);
+      stroke: #ffffff !important;
+      stroke-width: 2.2;
     }
     
     /* Table Container (Full width layout to prevent overlap) */
@@ -1056,21 +995,14 @@
   <main class="main-content">
     <div class="container">
       
-      <!-- Elegant Admin Header Card in Huisstijl Saliegroen -->
+      <!-- Admin Header Card (Rustig, wit en strak) -->
       <div class="admin-header-card">
         <div class="admin-header-main">
-          <div class="admin-pill-badge">
-            <span class="admin-live-pulse"></span>
-            <span>Beheersysteem</span>
-            <span class="admin-pill-sep">&bull;</span>
-            <span class="admin-pill-sub">staopstoelen.nl</span>
-            <span class="admin-version-pill">v10.18</span>
-          </div>
           <h1 class="admin-title">
             Beheer &amp; Huisstijl Dashboard
           </h1>
           <p class="admin-subtitle">
-            Centraal overzicht voor de stoelencatalogus, merken, live bezoekersstatistieken en alle officiële huisstijlmaterialen.
+            Centraal beheer van de stoelencatalogus, merken, statistieken en officiële huisstijlmaterialen van staopstoelen.nl.
           </p>
         </div>
         <div class="admin-header-actions">
@@ -1081,10 +1013,10 @@
         </div>
       </div>
 
-      <!-- Echte Tabbladen in Zacht Saliegroen (Geen kapitalen) -->
+      <!-- Tabbladen: Wit bij inactief, Groen bij actief (Geen kapitalen) -->
       <div class="admin-tabs-bar" role="tablist">
         <button class="tab-btn active" id="tabChairs" role="tab" aria-selected="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"></path>
             <path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path>
             <path d="M5 18v3"></path>
@@ -1094,7 +1026,7 @@
         </button>
 
         <button class="tab-btn" id="tabBrands" role="tab" aria-selected="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
             <line x1="7" y1="7" x2="7.01" y2="7"></line>
           </svg>
@@ -1102,7 +1034,7 @@
         </button>
 
         <button class="tab-btn" id="tabStats" role="tab" aria-selected="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="20" x2="18" y2="10"></line>
             <line x1="12" y1="20" x2="12" y2="4"></line>
             <line x1="6" y1="20" x2="6" y2="14"></line>
@@ -1111,7 +1043,7 @@
         </button>
 
         <button class="tab-btn" id="tabHuisstijl" role="tab" aria-selected="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
             <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
             <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
@@ -1119,7 +1051,6 @@
             <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
           </svg>
           <span>Huisstijl &amp; drukwerk</span>
-          <span class="tab-badge-pill">Portaal</span>
         </button>
       </div>
 
@@ -1670,21 +1601,18 @@
            ====================================================================== -->
       <div id="huisstijlSection" style="display: none; max-width: 1220px; margin: 0 auto; padding: 10px 24px 80px 24px; box-sizing: border-box;">
         
-        <!-- Header Banner -->
-        <div style="background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 50%, #fbf9f5 100%); border: 1px solid var(--color-gray-light); border-radius: 16px; padding: 32px 36px; margin-top: 16px; margin-bottom: 32px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+        <!-- Header Banner (Schoon & Wit) -->
+        <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 24px 28px; margin-top: 16px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
           <div>
-            <div style="font-size: 0.8rem; font-weight: 800; color: var(--color-forest); text-transform: uppercase; letter-spacing: 1px; background: rgba(75, 143, 36, 0.1); padding: 4px 12px; border-radius: 9999px; display: inline-block; margin-bottom: 8px; border: 1px solid rgba(75, 143, 36, 0.2);">
-              Intern Merkportaal
-            </div>
-            <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.75rem; font-weight: 800;">
+            <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem; font-weight: 700;">
               Huisstijl &amp; Drukwerk Portaal
             </h2>
-            <p style="color: var(--color-gray); margin-top: 6px; font-size: 0.95rem; max-width: 650px; line-height: 1.5;">
+            <p style="color: var(--color-gray); margin-top: 6px; font-size: 0.95rem; max-width: 650px; line-height: 1.5; margin-bottom: 0;">
               Alle officiële visitekaartjes, A5 flyers, intakeformulieren, werkwijzers en merkmiddelen van staopstoelen.nl op één centrale plek achter het beheer.
             </p>
           </div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="huisstijl.html" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: 8px;">
+            <a href="huisstijl.html" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 8px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Volledig Scherm Portaal (huisstijl.html) ↗
             </a>
