@@ -243,23 +243,17 @@
       border: 1px solid rgba(18, 43, 7, 0.08);
     }
 
-    /* Top Section: Identity (Logo + Name) on left, Large Eco Sticker on right */
-    .card-front-top {
+    /* Header: Brand logo left, Large Eco Sticker right */
+    .card-front-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 3mm;
-    }
-
-    .card-front-identity {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5mm;
+      position: relative;
     }
 
     .card-brand-logo {
       font-family: var(--font-heading);
-      font-size: 5mm;
+      font-size: 5.2mm;
       font-weight: 900;
       color: var(--color-forest);
       letter-spacing: -0.3px;
@@ -270,6 +264,21 @@
       color: var(--color-terracotta);
     }
 
+    /* Grote Kwaliteitssticker (Nieuw & Gereviseerd + Najaarsactie beukenblad in groen) */
+    .card-stamp-badge {
+      width: 18mm;
+      height: 18mm;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(18, 43, 7, 0.16));
+    }
+
+    /* Person Info (Over de volle breedte, exact 1 regel) */
+    .card-person {
+      margin-top: 1mm;
+      margin-bottom: 0.5mm;
+    }
+
     .card-person-name {
       font-family: var(--font-heading);
       font-size: 4.4mm;
@@ -277,16 +286,8 @@
       color: var(--color-forest-dark);
       letter-spacing: -0.2px;
       line-height: 1.15;
+      white-space: nowrap;
       margin: 0;
-    }
-
-    /* Grote Kwaliteitssticker (Nieuw & Gereviseerd + Eco-icoon) */
-    .card-stamp-badge {
-      width: 20mm;
-      height: 20mm;
-      flex-shrink: 0;
-      display: block;
-      filter: drop-shadow(0 2px 6px rgba(18, 43, 7, 0.16));
     }
 
     .card-person-title {
@@ -295,8 +296,7 @@
       font-weight: 700;
       color: var(--color-forest);
       letter-spacing: 0.1px;
-      margin-top: 1mm;
-      margin-bottom: 0.5mm;
+      margin-top: 0.8mm;
       white-space: nowrap;
       display: block;
     }
@@ -311,7 +311,7 @@
       height: 0.55mm;
       background: var(--color-forest);
       border-radius: 9999px;
-      margin: 1.6mm auto;
+      margin: 1.3mm auto;
     }
 
     /* Contact Details Grid (Compact, razor sharp) */
@@ -663,19 +663,19 @@
         <div class="card-label">Voorzijde (Wit &amp; Huisstijl)</div>
         
         <article class="business-card card-front" id="cardFront">
-          <!-- Top Row: Logo & Naam links, Grote Eco Kwaliteitssticker rechts -->
-          <div class="card-front-top">
-            <div class="card-front-identity">
-              <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
-              <h1 class="card-person-name">Geertjan Klein Haneveld</h1>
-            </div>
-            <!-- Grote Kwaliteitssticker: Nieuw & Gereviseerd + Eco-icoon -->
+          <!-- Header met Logo links en Grote Kwaliteitssticker rechts -->
+          <div class="card-front-header">
+            <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
+            <!-- Grote Kwaliteitssticker: Nieuw & Gereviseerd + Najaarsactie beukenblad in groen -->
             <img src="assets/sticker_nieuw_gereviseerd.svg" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
           </div>
 
-          <!-- Functietitel (Volledige breedte op 1 regel) -->
-          <div class="card-person-title">
-            Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
+          <!-- Person info: Geertjan Klein Haneveld op 1 regel & Titel op 1 regel -->
+          <div class="card-person">
+            <h1 class="card-person-name">Geertjan Klein Haneveld</h1>
+            <div class="card-person-title">
+              Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
+            </div>
           </div>
 
           <!-- Gecentreerde Groene Divider tussen de blokken -->
