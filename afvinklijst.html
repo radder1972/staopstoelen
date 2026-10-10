@@ -41,6 +41,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Consistent font across ALL form inputs and observations */
+    input, textarea, select, button {
+      font-family: var(--font-body);
+    }
+
     /* Print toolbar (only visible on screen) */
     .no-print-bar {
       max-width: 820px;
@@ -77,6 +82,23 @@
     .btn-print:hover {
       background: #3d751d;
       transform: translateY(-1px);
+    }
+    .btn-clear {
+      background: transparent;
+      color: var(--color-gray);
+      border: 1px solid var(--color-gray-light);
+      padding: 9px 18px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-clear:hover {
+      background: #f8fafc;
+      color: var(--color-dark);
+      border-color: #cbd5e1;
     }
 
     /* The A4 Sheet Canvas */
@@ -198,7 +220,21 @@
     .input-fill {
       flex: 1;
       border-bottom: 1px dotted #8c939c;
-      height: 16px;
+      height: 18px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .input-fill input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-dark);
+      padding: 0 2px 1px 2px;
+      outline: none;
+      line-height: 1;
     }
 
     /* Section Boxes */
@@ -257,11 +293,27 @@
       font-weight: 700;
       color: var(--color-terracotta);
       border-bottom: 1.5px solid var(--color-forest);
-      min-height: 22px;
+      min-height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 10px;
+    }
+    .maat-field {
+      width: 100%;
+      border: none;
+      background: transparent;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      outline: none;
+    }
+    .maat-field::placeholder {
+      color: #b0b7be;
+      font-weight: 500;
+      font-size: 12px;
     }
     .maat-desc {
       font-size: 9.5px;
@@ -275,34 +327,55 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-    .checklist-col-3 {
+    .checklist-grid-3x3 {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 7px 12px;
     }
 
     .check-item {
       display: flex;
       align-items: flex-start;
-      gap: 6px;
-      margin-bottom: 5px;
-      font-size: 11.5px;
+      gap: 7px;
+      font-size: 11px;
       color: var(--color-dark);
+      cursor: pointer;
+      line-height: 1.3;
+      user-select: none;
     }
     .check-item:last-child {
       margin-bottom: 0;
     }
-    .checkbox-square {
-      width: 13px;
-      height: 13px;
-      border: 1.5px solid var(--color-forest);
-      border-radius: 3px;
-      flex-shrink: 0;
+    .custom-checkbox {
+      width: 15px;
+      height: 15px;
       margin-top: 1.5px;
-      background: #ffffff;
+      cursor: pointer;
+      accent-color: var(--color-forest);
+      flex-shrink: 0;
+    }
+    .check-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
     .check-text strong {
       color: var(--color-forest-dark);
+      font-weight: 700;
+      font-size: 11px;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .check-text span {
+      color: var(--color-gray);
+      font-size: 10.5px;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* Specificaties & Model Table */
@@ -326,6 +399,17 @@
       width: 32%;
       background: var(--color-cream);
     }
+    .table-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px dotted #8c939c;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 11.5px;
+      color: var(--color-dark);
+      padding: 1px 4px;
+      outline: none;
+    }
 
     /* Notes Area */
     .notes-box {
@@ -337,6 +421,24 @@
       padding: 6px;
       font-size: 11px;
       color: #7b8087;
+    }
+    .notes-input {
+      width: 100%;
+      border: 1px dashed #b8bcc2;
+      border-radius: 6px;
+      height: 48px;
+      background: #fffdfa;
+      padding: 6px 8px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--color-dark);
+      resize: none;
+      outline: none;
+      box-sizing: border-box;
+      margin-top: 2px;
+    }
+    .notes-input::placeholder {
+      color: #9aa2ab;
     }
 
     /* Handtekeningen & Accoord Footer */
@@ -364,6 +466,17 @@
       height: 38px;
       margin-top: 2px;
     }
+    .sign-text-input {
+      flex: 1;
+      border: none;
+      border-bottom: 1px dotted #8c939c;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: var(--color-dark);
+      padding: 0 4px;
+      outline: none;
+    }
 
     /* Bottom Brand Details */
     .sheet-footer {
@@ -383,25 +496,37 @@
     /* Print optimizations */
     @media print {
       body {
-        background: #ffffff;
-        padding: 0;
-        margin: 0;
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
       .no-print-bar {
         display: none !important;
       }
       .sheet {
-        box-shadow: none;
-        margin: 0;
-        width: 100%;
-        min-height: 100vh;
-        padding: 10mm 14mm 10mm 14mm;
-        page-break-after: avoid;
-        page-break-inside: avoid;
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        min-height: 100vh !important;
+        padding: 10mm 14mm 10mm 14mm !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
       }
       @page {
         size: A4 portrait;
         margin: 0;
+      }
+
+      /* Clean handwriting lines: no grey placeholder texts */
+      input::placeholder, textarea::placeholder {
+        color: transparent !important;
+      }
+      input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+        color: transparent !important;
+      }
+      .notes-input {
+        border-color: #cbd5e1 !important;
+        background: transparent !important;
       }
     }
   </style>
@@ -419,10 +544,15 @@
         ✓ Officiële A4 Maatwerk Intake &amp; Afvinklijst
       </div>
     </div>
-    <button class="btn-print" onclick="window.print()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-      Afdrukken / Opslaan als PDF
-    </button>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button type="button" class="btn-clear" id="btnClearForm">
+        Wissen
+      </button>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Afdrukken / Opslaan als PDF
+      </button>
+    </div>
   </div>
 
   <!-- A4 Printable Sheet -->
@@ -457,30 +587,30 @@
       <div class="client-details-grid">
         <div>
           <div class="input-line">
-            <span class="input-label">Naam cliënt:</span>
-            <div class="input-fill"></div>
+            <label for="afvinkClientName" class="input-label">Naam cliënt:</label>
+            <div class="input-fill"><input type="text" id="afvinkClientName" autocomplete="off"></div>
           </div>
           <div class="input-line">
-            <span class="input-label">Adres:</span>
-            <div class="input-fill"></div>
+            <label for="afvinkClientAddress" class="input-label">Adres:</label>
+            <div class="input-fill"><input type="text" id="afvinkClientAddress" autocomplete="off"></div>
           </div>
           <div class="input-line">
-            <span class="input-label">Postcode / Woonplaats:</span>
-            <div class="input-fill"></div>
+            <label for="afvinkClientCity" class="input-label">Postcode / Woonplaats:</label>
+            <div class="input-fill"><input type="text" id="afvinkClientCity" autocomplete="off"></div>
           </div>
         </div>
         <div>
           <div class="input-line">
-            <span class="input-label">Telefoon:</span>
-            <div class="input-fill"></div>
+            <label for="afvinkClientPhone" class="input-label">Telefoon:</label>
+            <div class="input-fill"><input type="text" id="afvinkClientPhone" autocomplete="off"></div>
           </div>
           <div class="input-line">
-            <span class="input-label">Datum passing:</span>
-            <div class="input-fill"></div>
+            <label for="afvinkVisitDate" class="input-label">Datum passing:</label>
+            <div class="input-fill"><input type="text" id="afvinkVisitDate" autocomplete="off"></div>
           </div>
           <div class="input-line">
-            <span class="input-label">Adviseur / Technoloog:</span>
-            <div class="input-fill"></div>
+            <label for="afvinkAdvisor" class="input-label">Adviseur / Technoloog:</label>
+            <div class="input-fill"><input type="text" id="afvinkAdvisor" autocomplete="off"></div>
           </div>
         </div>
       </div>
@@ -495,22 +625,30 @@
           <div class="maten-grid">
             <div class="maat-card">
               <div class="maat-title">Zithoogte (A)</div>
-              <div class="maat-input">&nbsp;</div>
+              <div class="maat-input">
+                <input type="text" class="maat-field" id="maatZithoogte" placeholder=".. cm" autocomplete="off">
+              </div>
               <div class="maat-desc">Knieholte tot hiel (cm)</div>
             </div>
             <div class="maat-card">
               <div class="maat-title">Zitdiepte (B)</div>
-              <div class="maat-input">&nbsp;</div>
+              <div class="maat-input">
+                <input type="text" class="maat-field" id="maatZitdiepte" placeholder=".. cm" autocomplete="off">
+              </div>
               <div class="maat-desc">Achterzijde bil tot knieholte (cm)</div>
             </div>
             <div class="maat-card">
               <div class="maat-title">Armleggerhoogte (C)</div>
-              <div class="maat-input">&nbsp;</div>
+              <div class="maat-input">
+                <input type="text" class="maat-field" id="maatArmlegger" placeholder=".. cm" autocomplete="off">
+              </div>
               <div class="maat-desc">Zitting tot onderarm (cm)</div>
             </div>
             <div class="maat-card">
               <div class="maat-title">Zitbreedte (D)</div>
-              <div class="maat-input">&nbsp;</div>
+              <div class="maat-input">
+                <input type="text" class="maat-field" id="maatZitbreedte" placeholder=".. cm" autocomplete="off">
+              </div>
               <div class="maat-desc">Heupbreedte + 2-4 cm speling</div>
             </div>
           </div>
@@ -524,49 +662,75 @@
           2. Fysieke Aandachtspunten &amp; Ondersteuningsprofiel (Afvinken wat van toepassing is)
         </div>
         <div class="section-body">
-          <div class="checklist-col-3">
-            <div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Lage rugklachten</strong> / lumbaalsteun nodig</div>
+          <div class="checklist-grid-3x3">
+            <!-- Rij 1 -->
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkLageRug">
+              <div class="check-text">
+                <strong>Lage rugklachten</strong>
+                <span>/ lumbaalsteun nodig</span>
               </div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Hernia / artrose</strong> in rug of bekken</div>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkNekSchouder">
+              <div class="check-text">
+                <strong>Nek- &amp; schouderpijn</strong>
+                <span>/ Topswing vereist</span>
               </div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Kyfose</strong> (bolle bovenrug / aanpassing)</div>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkEvenwicht">
+              <div class="check-text">
+                <strong>Evenwichtsproblemen</strong>
+                <span>/ duizeligheid &amp; balans</span>
               </div>
-            </div>
-            <div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Nek- &amp; schouderpijn</strong> / Topswing vereist</div>
+            </label>
+
+            <!-- Rij 2 -->
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkHernia">
+              <div class="check-text">
+                <strong>Hernia / artrose</strong>
+                <span>/ steun in rug &amp; bekken</span>
               </div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Oedeem / vochtbenen</strong> (hart-balansstand)</div>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkOedeem">
+              <div class="check-text">
+                <strong>Oedeem / vochtbenen</strong>
+                <span>/ hart-balansstand</span>
               </div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Moeite met opstaan</strong> (krachtverlies benen)</div>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkZijwaarts">
+              <div class="check-text">
+                <strong>Zijwaartse instabiliteit</strong>
+                <span>/ laterale rompsteun</span>
               </div>
-            </div>
-            <div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Evenwichtsproblemen</strong> / duizeligheid</div>
+            </label>
+
+            <!-- Rij 3 -->
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkKyfose">
+              <div class="check-text">
+                <strong>Kyfose</strong>
+                <span>/ bolle rug aanpassing</span>
               </div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Zijwaartse instabiliteit</strong> (laterale steun)</div>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkOpstaan">
+              <div class="check-text">
+                <strong>Moeite met opstaan</strong>
+                <span>/ krachtverlies benen</span>
               </div>
-              <div class="check-item">
-                <div class="checkbox-square"></div>
-                <div class="check-text"><strong>Gevoelige stuit / decubitus</strong> (zachte zitting)</div>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="custom-checkbox" id="chkDecubitus">
+              <div class="check-text">
+                <strong>Gevoelige stuit / decubitus</strong>
+                <span>/ zachte / antidecubitus</span>
               </div>
-            </div>
+            </label>
           </div>
         </div>
       </div>
@@ -581,17 +745,17 @@
           <div class="checklist-columns">
             <div>
               <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Aandrijving &amp; Motoren:</div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>1-motorig:</strong> synchroon verstelbaar</div></div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>2-motorig:</strong> onafhankelijke rug &amp; voetensteun</div></div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>3-motorig:</strong> inclusief kantel-/kantelzitfunctie</div></div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>Accu-pakket:</strong> snoerloos in de kamer staan</div></div>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOpt1Mot"><div class="check-text"><strong>1-motorig:</strong> <span>synchroon verstelbaar</span></div></label>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOpt2Mot"><div class="check-text"><strong>2-motorig:</strong> <span>onafhankelijke rug &amp; voetensteun</span></div></label>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOpt3Mot"><div class="check-text"><strong>3-motorig:</strong> <span>inclusief kantel-/kantelzitfunctie</span></div></label>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOptAccu"><div class="check-text"><strong>Accu-pakket:</strong> <span>snoerloos in de kamer staan</span></div></label>
             </div>
             <div>
               <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Bekleding, Kleur &amp; Extra's:</div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>Leder:</strong> duurzaam &amp; makkelijk te reinigen</div></div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>Zacht Meubelstof:</strong> warm &amp; ademend</div></div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>Stomastand / Draaivoet:</strong> met blokkering bij opstaan</div></div>
-              <div class="check-item"><div class="checkbox-square"></div><div class="check-text"><strong>Wielsysteem / Verrijdbaar:</strong> met rempedaal</div></div>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOptLeder"><div class="check-text"><strong>Leder:</strong> <span>duurzaam &amp; makkelijk te reinigen</span></div></label>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOptStof"><div class="check-text"><strong>Zacht Meubelstof:</strong> <span>warm &amp; ademend</span></div></label>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOptDraai"><div class="check-text"><strong>Stomastand / Draaivoet:</strong> <span>met blokkering bij opstaan</span></div></label>
+              <label class="check-item"><input type="checkbox" class="custom-checkbox" id="chkOptWiel"><div class="check-text"><strong>Wielsysteem / Verrijdbaar:</strong> <span>met rempedaal</span></div></label>
             </div>
           </div>
         </div>
@@ -607,23 +771,39 @@
           <table class="specs-table">
             <tr>
               <td class="label-td">Merk &amp; Model stoel:</td>
-              <td style="width: 68%;">Fitform / Doge / Farstrup / Mecam &mdash; Model: .................................................</td>
+              <td style="width: 68%;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="color: var(--color-gray); font-size: 11px; white-space: nowrap;">Fitform / Doge / Farstrup / Mecam &mdash; Model:</span>
+                  <input type="text" id="afvinkStoelModel" class="table-input" placeholder="bijv. Fitform 570 Vario / Doge Bellino" autocomplete="off">
+                </div>
+              </td>
             </tr>
             <tr>
               <td class="label-td">Conditie:</td>
-              <td>[ &nbsp; ] 100% Gecertificeerd Gereviseerd (Als Nieuw) &nbsp;&nbsp;&nbsp; [ &nbsp; ] Nieuw Maatwerk</td>
+              <td>
+                <div style="display: flex; align-items: center; gap: 18px;">
+                  <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
+                    <input type="radio" name="stoelConditie" value="gereviseerd" class="custom-checkbox">
+                    <span>100% Gecertificeerd Gereviseerd (Als Nieuw)</span>
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
+                    <input type="radio" name="stoelConditie" value="nieuw" class="custom-checkbox">
+                    <span>Nieuw Maatwerk</span>
+                  </label>
+                </div>
+              </td>
             </tr>
             <tr>
               <td class="label-td">Geadviseerde Aanpassingen:</td>
-              <td>...........................................................................................................................................................</td>
+              <td>
+                <input type="text" id="afvinkAanpassingen" class="table-input" placeholder="bijv. Extra lumbaalpomp, verlengde voetensteun, traagschuim..." autocomplete="off">
+              </td>
             </tr>
           </table>
 
           <div style="margin-top: 6px;">
-            <span style="font-size: 10.5px; font-weight: 700; color: var(--color-forest-dark); text-transform: uppercase;">Bijzonderheden &amp; Afleverwensen:</span>
-            <div class="notes-box">
-              Ruimte voor eventuele deuromvangen, trappen, specifieke levertijden of persoonlijke opmerkingen...
-            </div>
+            <label for="afvinkNotes" style="font-size: 10.5px; font-weight: 700; color: var(--color-forest-dark); text-transform: uppercase; display: block; margin-bottom: 2px;">Bijzonderheden &amp; Afleverwensen:</label>
+            <textarea id="afvinkNotes" class="notes-input" placeholder="Ruimte voor eventuele deuromvangen, trappen, specifieke levertijden of persoonlijke opmerkingen..."></textarea>
           </div>
         </div>
       </div>
@@ -633,12 +813,18 @@
         <div class="sign-col">
           <div class="sign-title">Handtekening Adviseur / BewegingsTechnoloog:</div>
           <div class="sign-box"></div>
-          <div style="font-size: 10px; color: var(--color-gray);">Naam: ....................................................</div>
+          <div style="font-size: 10px; color: var(--color-gray); display: flex; align-items: center; gap: 4px;">
+            <span>Naam:</span>
+            <input type="text" id="signAdviseurNaam" class="sign-text-input" placeholder="Naam adviseur">
+          </div>
         </div>
         <div class="sign-col">
           <div class="sign-title">Voor akkoord / gezien door cliënt:</div>
           <div class="sign-box"></div>
-          <div style="font-size: 10px; color: var(--color-gray);">Datum &amp; Plaats: ............................................</div>
+          <div style="font-size: 10px; color: var(--color-gray); display: flex; align-items: center; gap: 4px;">
+            <span>Datum &amp; Plaats:</span>
+            <input type="text" id="signDatumPlaats" class="sign-text-input" placeholder="bijv. Dordrecht, 10-10-2026">
+          </div>
         </div>
       </div>
     </div>
@@ -658,5 +844,16 @@
 
   </div>
 
+  <script>
+    // Clear Form Button
+    document.getElementById("btnClearForm").addEventListener("click", () => {
+      if (confirm("Wilt u alle ingevulde velden wissen?")) {
+        document.querySelectorAll("input, textarea").forEach(i => {
+          if (i.type === "checkbox" || i.type === "radio") i.checked = false;
+          else i.value = "";
+        });
+      }
+    });
+  </script>
 </body>
 </html>
