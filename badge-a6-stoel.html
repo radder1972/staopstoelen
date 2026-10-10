@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=10.17">
 
   <style>
     :root {
@@ -44,208 +45,370 @@
     }
 
     body {
-      font-family: var(--font-body);
-      background-color: #f1f5f0;
+      background-color: var(--color-cream);
       color: var(--color-dark);
+      font-family: var(--font-body);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       -webkit-font-smoothing: antialiased;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    /* ==========================================================================
-       SCREEN CONTROLS & TOOLBAR (Niet zichtbaar bij printen)
-       ========================================================================== */
-    .screen-header {
-      background: #ffffff;
-      border-bottom: 2px solid var(--color-forest);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    /* Container matching beheer.html */
+    .container {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+
+    /* Admin Header matching beheer.html */
+    .admin-header {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--color-gray-light);
+      padding: 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
-    .toolbar-main {
-      padding: 12px 24px;
+    .admin-header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      flex-wrap: wrap;
     }
 
-    .toolbar-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .btn-back {
+    .admin-logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 2rem;
       color: var(--color-forest);
       text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 0.85rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: rgba(75, 143, 36, 0.08);
-      border: 1px solid rgba(75, 143, 36, 0.2);
-      transition: all 0.2s ease;
+      line-height: 1;
+      display: inline-block;
     }
-    .btn-back:hover {
-      background: rgba(75, 143, 36, 0.16);
-      color: #122b07;
+    .admin-logo span {
+      color: var(--color-terracotta);
     }
 
-    .toolbar-title {
-      font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--color-forest-dark);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .toolbar-title-badge {
-      font-size: 0.72rem;
-      background: var(--color-forest);
-      color: #ffffff;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      font-weight: 700;
-    }
-
-    .toolbar-version-badge {
-      font-size: 0.7rem;
-      background: rgba(75, 143, 36, 0.12);
-      color: var(--color-forest-dark);
-      border: 1px solid rgba(75, 143, 36, 0.3);
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
-    }
-
-    .toolbar-right {
+    .admin-header-nav {
       display: flex;
       align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
     }
 
-    .side-switch,
-    .mode-switch {
-      display: inline-flex;
-      background: #edf2f7;
-      border-radius: 8px;
-      padding: 3px;
-      border: 1px solid #cbd5e1;
-    }
-
-    .side-btn,
-    .mode-btn {
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: none;
-      background: transparent;
-      color: var(--color-dark);
+    .btn-admin-nav {
+      padding: 8px 16px;
+      font-size: 0.88rem;
       font-family: var(--font-heading);
-      font-size: 0.78rem;
       font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s ease;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      transition: var(--transition-smooth);
+      color: var(--color-forest-dark);
+      background: #ffffff;
+      border: 1px solid var(--color-gray-light);
+    }
+    .btn-admin-nav:hover {
+      background: var(--color-cream-dark);
+      border-color: #cbd5e1;
     }
 
-    .side-btn.active,
-    .mode-btn.active {
+    .main-content {
+      flex: 1;
+      padding: 28px 0 60px 0;
+    }
+
+    /* Admin Tabs Bar (Exact zoals in beheer.html) */
+    .admin-tabs-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--color-gray-light);
+      padding: 0;
+      position: relative;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .admin-tabs-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--color-forest-dark);
+      background: #ffffff;
+      border: 1px solid var(--color-gray-light);
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      margin-bottom: -2px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.15s ease;
+      outline: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .tab-btn svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--color-gray);
+      stroke-width: 2;
+      transition: stroke 0.15s ease;
+      flex-shrink: 0;
+    }
+    .tab-btn:hover {
+      background: #f7faf5;
+      color: var(--color-forest);
+      border-color: #cbd5c8;
+    }
+    .tab-btn:hover svg {
+      stroke: var(--color-forest);
+    }
+    .tab-btn.active {
+      background: var(--color-forest) !important;
+      color: #ffffff !important;
+      font-weight: 700;
+      border: 1px solid var(--color-forest) !important;
+      border-bottom: 2px solid var(--color-forest) !important;
+      margin-bottom: -2px;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.2);
+    }
+    .tab-btn.active svg {
+      stroke: #ffffff !important;
+    }
+
+    /* Section Header Banner */
+    .section-header-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f6faf3 55%, #fdfbf7 100%);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      border-radius: 14px;
+      padding: 22px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 14px rgba(18, 43, 7, 0.03);
+    }
+    .section-header-main {
+      flex: 1;
+      min-width: 280px;
+    }
+    .section-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-forest);
+      background: rgba(75, 143, 36, 0.09);
+      padding: 3px 11px;
+      border-radius: 9999px;
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      margin-bottom: 8px;
+    }
+    .section-badge-pill .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       background: var(--color-forest);
-      color: #ffffff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      display: inline-block;
     }
-
-    .btn-print {
+    .section-banner-title {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      margin: 0;
+      letter-spacing: -0.2px;
+      line-height: 1.25;
+    }
+    .section-banner-subtitle {
+      color: var(--color-gray);
+      font-size: 0.94rem;
+      margin-top: 6px;
+      margin-bottom: 0;
+      line-height: 1.5;
+      max-width: 700px;
+    }
+    .btn-print-top {
       background: linear-gradient(135deg, var(--color-forest) 0%, #3d791b 100%);
       color: #ffffff;
       border: none;
-      padding: 8px 18px;
+      padding: 10px 20px;
       border-radius: 8px;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.90rem;
       font-weight: 800;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.35);
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.35);
       transition: all 0.2s ease;
     }
-    .btn-print:hover {
+    .btn-print-top:hover {
       background: linear-gradient(135deg, #3d791b 0%, #2e5c14 100%);
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(75, 143, 36, 0.45);
+      box-shadow: 0 6px 18px rgba(75, 143, 36, 0.45);
     }
 
     /* ==========================================================================
-       CHAIR SEARCH & VISUAL CAROUSEL BAR
+       CONFIGURATIE- & SELECTIEPANEEL (Rustige beheerkaart)
        ========================================================================== */
-    .browser-bar {
-      background: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 10px 24px;
+    .badge-config-card {
+      background: #ffffff;
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      padding: 26px 28px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
     }
 
-    .browser-controls {
+    .config-step {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
       gap: 12px;
-      margin-bottom: 8px;
+    }
+
+    .config-step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .search-box {
-      position: relative;
-      flex: 1;
-      max-width: 380px;
+    .config-step-title {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .search-box input {
-      width: 100%;
-      padding: 7px 12px 7px 34px;
-      border-radius: 8px;
-      border: 1px solid #cbd5e1;
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      outline: none;
-      transition: border-color 0.15s;
+    .config-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    .search-box input:focus {
+
+    /* Stap 1: Stoel Selectie Rij */
+    .chair-select-controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .chair-dropdown-wrap {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .form-control-select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--color-gray-light);
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .form-control-select:focus {
       border-color: var(--color-forest);
       box-shadow: 0 0 0 3px rgba(75, 143, 36, 0.12);
     }
 
-    .search-icon {
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #94a3b8;
-      pointer-events: none;
+    .chair-quick-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .filter-pills {
+    .btn-chair-nav {
+      padding: 9px 13px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--color-gray-light);
+      background: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-chair-nav:hover {
+      background: #f4f8f1;
+      border-color: var(--color-forest);
+    }
+    .btn-chair-nav.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+    }
+
+    .chair-index-indicator {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #64748b;
+      padding: 0 4px;
+      white-space: nowrap;
+    }
+
+    /* Filter Pills */
+    .filter-pills-row {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
+      align-items: center;
     }
-
     .filter-pill {
       padding: 4px 10px;
       border-radius: 9999px;
@@ -263,241 +426,362 @@
       border-color: var(--color-forest);
     }
 
-    .chair-nav-controls {
+    /* Geselecteerde Stoel Samenvattingsstrip */
+    .active-chair-strip {
+      background: #f8faf6;
+      border: 1.5px solid rgba(75, 143, 36, 0.22);
+      border-radius: 10px;
+      padding: 12px 18px;
       display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-arrow-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      border: 1px solid #cbd5e1;
-      background: #ffffff;
-      color: var(--color-forest-dark);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      transition: all 0.15s ease;
-    }
-    .nav-arrow-btn:hover {
-      background: #eef5ec;
-      border-color: var(--color-forest);
-    }
-
-    .chair-count-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-      padding: 0 6px;
-      white-space: nowrap;
-    }
-
-    /* Horizontal scrollable visual carousel */
-    .chair-carousel {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 4px 2px 8px 2px;
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-    }
-    .chair-carousel::-webkit-scrollbar {
-      height: 6px;
-    }
-    .chair-carousel::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-
-    .chair-thumb-card {
-      flex: 0 0 130px;
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 6px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      text-align: center;
-      position: relative;
-    }
-    .chair-thumb-card:hover {
-      border-color: var(--color-sage);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    }
-    .chair-thumb-card.active {
-      border-color: var(--color-forest);
-      background: #f4f8f1;
-      box-shadow: 0 0 0 2px var(--color-forest);
-    }
-
-    .chair-thumb-img-wrap {
-      width: 100%;
-      height: 75px;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #f8fafc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 5px;
-    }
-    .chair-thumb-img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .chair-thumb-name {
-      font-family: var(--font-heading);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 2px;
-    }
-
-    .chair-thumb-price {
-      font-size: 0.70rem;
-      font-weight: 800;
-      color: var(--color-forest);
-    }
-
-    .chair-thumb-tag {
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      font-size: 0.55rem;
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    .chair-thumb-tag.nieuw {
-      background: rgba(75, 143, 36, 0.9);
-      color: #fff;
-    }
-    .chair-thumb-tag.occasion {
-      background: rgba(243, 146, 35, 0.95);
-      color: #fff;
-    }
-
-    /* ==========================================================================
-       PHOTO SELECTOR (Foto's van de geselecteerde stoel)
-       ========================================================================== */
-    .photo-selection-strip {
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 8px 24px;
-      display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
     }
 
-    .photo-strip-label {
+    .active-chair-main-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .active-chair-img-mini {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      border: 1.5px solid #cbd5e1;
+      object-fit: contain;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .active-chair-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .active-chair-name {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+
+    .active-chair-meta {
+      font-size: 0.82rem;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .active-chair-condition-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      background: rgba(75, 143, 36, 0.15);
+      color: var(--color-forest-dark);
+    }
+    .active-chair-condition-tag.occasion {
+      background: rgba(243, 146, 35, 0.15);
+      color: var(--color-terracotta-dark);
+    }
+
+    .active-chair-photo-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .photo-choice-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+    }
+
+    .photo-choice-btn {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--color-dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .photo-choice-btn:hover {
+      border-color: var(--color-forest);
+    }
+    .photo-choice-btn.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+      box-shadow: 0 1px 4px rgba(75, 143, 36, 0.2);
+    }
+
+    /* Stap 2: Duidelijke Printformaat Tegels */
+    .print-format-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .format-tile {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .format-tile:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transform: translateY(-1px);
+    }
+    .format-tile.active {
+      border-color: var(--color-forest);
+      background: #fbfdfa;
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.12);
+    }
+
+    .format-tile-badge {
+      position: absolute;
+      top: -10px;
+      right: 14px;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .format-tile-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .format-tile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #f1f5f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-forest);
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .format-tile.active .format-tile-icon {
+      background: var(--color-forest);
+      color: #ffffff;
+    }
+
+    .format-tile-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      line-height: 1.2;
+    }
+    .format-tile-sub {
+      font-size: 0.74rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .format-tile-desc {
+      font-size: 0.78rem;
+      color: #475569;
+      line-height: 1.4;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    /* Stap 3: Detailopties & Aanpassingen Rij */
+    .config-options-panel {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .options-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .option-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+    }
+    .option-group label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .form-control-sm {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      outline: none;
+      background: #ffffff;
+    }
+    .form-control-sm:focus {
+      border-color: var(--color-forest);
+    }
+
+    .side-switch {
+      display: inline-flex;
+      background: #e2e8f0;
+      border-radius: 7px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .side-btn {
+      padding: 5px 12px;
+      border-radius: 5px;
+      border: none;
+      background: transparent;
       font-family: var(--font-heading);
       font-size: 0.78rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .side-btn:hover {
+      color: var(--color-forest-dark);
+    }
+    .side-btn.active {
+      background: #ffffff;
+      color: var(--color-forest-dark);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* Grote Print Actieknop */
+    .config-bottom-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 18px;
+    }
+
+    .print-tip-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+    .print-tip-hint svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
+    }
+
+    .btn-print-large {
+      background: linear-gradient(135deg, var(--color-forest) 0%, #356b17 100%);
+      color: #ffffff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 9px;
+      font-family: var(--font-heading);
+      font-size: 0.98rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(75, 143, 36, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-print-large:hover {
+      background: linear-gradient(135deg, #356b17 0%, #264e10 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(75, 143, 36, 0.45);
+    }
+
+    /* ==========================================================================
+       LIVE VOORBEELD SECTIE
+       ========================================================================== */
+    .preview-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-gray-light);
+    }
+
+    .preview-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--color-forest-dark);
       display: flex;
       align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .photo-thumbnails {
-      display: flex;
       gap: 8px;
-      align-items: center;
-      overflow-x: auto;
-      flex: 1;
     }
 
-    .photo-thumb-btn {
-      flex: 0 0 52px;
-      height: 48px;
-      border: 2px solid #cbd5e1;
-      border-radius: 6px;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      background: #f8fafc;
-      padding: 0;
-      transition: all 0.15s ease;
-    }
-    .photo-thumb-btn:hover {
-      border-color: var(--color-forest);
-      transform: scale(1.05);
-    }
-    .photo-thumb-btn.active {
-      border-color: var(--color-forest);
-      box-shadow: 0 0 0 2px var(--color-forest);
-    }
-
-    .photo-thumb-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .photo-thumb-tag {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(22, 51, 35, 0.85);
-      color: #ffffff;
-      font-size: 0.48rem;
-      text-align: center;
-      padding: 1px 0;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
-    .photo-thumb-tag.cosy {
-      background: rgba(243, 146, 35, 0.95);
-    }
-
-    .badge-quick-customs {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .quick-input-group {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+    .preview-info-badge {
+      font-family: var(--font-heading);
       font-size: 0.74rem;
       font-weight: 700;
-      color: var(--color-dark);
-    }
-
-    .quick-input-group input {
-      padding: 4px 8px;
-      border-radius: 5px;
+      color: var(--color-forest-dark);
+      background: #ffffff;
       border: 1px solid #cbd5e1;
-      font-size: 0.76rem;
-      font-weight: 600;
-      outline: none;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
     /* ==========================================================================
        MAIN PREVIEW STAGE
        ========================================================================== */
     .preview-stage {
-      padding: 30px 16px 60px 16px;
+      padding: 0 0 60px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: calc(100vh - 220px);
+      width: 100%;
     }
 
     .badge-single-wrap {
@@ -1359,62 +1643,6 @@
       bottom: 1.5mm;
     }
 
-    /* Vouwvel Bedieningsbalk (bovenaan scherm in vouwmodus) */
-    .fold-config-bar {
-      display: none;
-      background: #ffffff;
-      border: 1.5px solid #d4e5d0;
-      border-radius: 10px;
-      padding: 10px 18px;
-      margin-bottom: 22px;
-      width: 100%;
-      max-width: 210mm;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      box-sizing: border-box;
-    }
-
-    .fold-config-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #334155;
-      font-size: 0.82rem;
-    }
-
-    .fold-config-info svg {
-      color: var(--color-forest);
-      flex-shrink: 0;
-    }
-
-    .fold-config-select-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-    }
-
-    .fold-config-select-wrap select {
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--color-dark);
-      background: #f8fafc;
-      outline: none;
-      cursor: pointer;
-      max-width: 280px;
-    }
-    .fold-config-select-wrap select:focus {
-      border-color: var(--color-forest);
-    }
-
     /* ==========================================================================
        PRINT MEDIA STYLES
        ========================================================================== */
@@ -1425,12 +1653,26 @@
         padding: 0 !important;
       }
 
-      .screen-header,
-      .browser-bar,
-      .photo-selection-strip,
+      .admin-header,
+      .admin-tabs-bar,
+      .section-header-banner,
+      .badge-config-card,
+      .preview-section-header,
       .badge-side-label,
       .a4-sheet-badge {
         display: none !important;
+      }
+
+      .main-content {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .container {
+        max-width: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
       .preview-stage {
@@ -1570,142 +1812,315 @@
     }
   </style>
 </head>
-<body class="mode-single">
+<body class="mode-fold side-both">
 
   <!-- ==========================================================================
-       TOP SCREEN TOOLBAR
+       TOP ADMIN HEADER (Identiek aan beheerpaneel)
        ========================================================================== -->
-  <header class="screen-header">
-    <div class="toolbar-main">
-      <div class="toolbar-left">
-        <a href="beheer.html#huisstijl" class="btn-back">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          Beheer
+  <header class="admin-header">
+    <div class="container admin-header-container">
+      <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="beheer.html" class="btn btn-outline" style="padding: 7px 16px; font-size: 0.88rem; min-height: auto; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+          ← Terug naar Beheerdashboard
         </a>
-        <div class="toolbar-title">
-          <span>A6 Stoelbadge &amp; Prijskaart</span>
-          <span class="toolbar-title-badge">A6 &bull; 105 × 148 mm</span>
-          <span class="toolbar-version-badge" title="Versie 2.1">v2.1</span>
-        </div>
-      </div>
-
-      <div class="toolbar-right">
-        <!-- Zijde Kiezer (Voor / Achter / Dubbelzijdig) -->
-        <div class="side-switch" id="sideSwitchGroup">
-          <button type="button" class="side-btn active" id="btnSideBoth" title="Dubbelzijdig printen (Voor- en achterkant)">
-            Dubbelzijdig
-          </button>
-          <button type="button" class="side-btn" id="btnSideFront" title="Alleen voorkant">
-            Voorkant
-          </button>
-          <button type="button" class="side-btn" id="btnSideBack" title="Alleen achterkant (Specificaties)">
-            Achterkant
-          </button>
-        </div>
-
-        <!-- Print Mode Switcher -->
-        <div class="mode-switch">
-          <button type="button" class="mode-btn active" id="btnModeSingle" title="Direct 1 badge op A6 papier">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
-            1x A6 Badge
-          </button>
-          <button type="button" class="mode-btn" id="btnModeFold" title="2 dubbelzijdige badges op 1 A4 vel (1x snijden, dubbelvouwen)">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="2 2"></line></svg>
-            A4 Vouwvel (2x A6)
-          </button>
-          <button type="button" class="mode-btn" id="btnModeA4" title="4 badges op 1 A4 vel met snijlijnen">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8"></rect><rect x="13" y="3" width="8" height="8"></rect><rect x="3" y="13" width="8" height="8"></rect><rect x="13" y="13" width="8" height="8"></rect></svg>
-            A4 Drukvel (4x A6)
-          </button>
-        </div>
-
-        <!-- Print Button -->
-        <button type="button" class="btn-print" id="btnPrint">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-          Afdrukken / PDF
-        </button>
-      </div>
-    </div>
-
-    <!-- Visual Chair Search & Carousel Bar -->
-    <div class="browser-bar">
-      <div class="browser-controls">
-        <div class="search-box">
-          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="chairSearchInput" placeholder="Zoek stoel op model, merk of type...">
-        </div>
-
-        <div class="filter-pills">
-          <button type="button" class="filter-pill active" data-filter="all">Alle Stoelen (<span id="countAll">0</span>)</button>
-          <button type="button" class="filter-pill" data-filter="nieuw">Nieuw (<span id="countNieuw">0</span>)</button>
-          <button type="button" class="filter-pill" data-filter="occasion">Occasions / Gereviseerd (<span id="countOccasion">0</span>)</button>
-          <button type="button" class="filter-pill" data-filter="cosy">🛋️ Met Sfeerfoto</button>
-        </div>
-
-        <div class="chair-nav-controls">
-          <button type="button" class="nav-arrow-btn" id="btnPrevChair" title="Vorige stoel (Pijl links)">&#9664;</button>
-          <span class="chair-count-badge" id="chairIndexLabel">1 / 40</span>
-          <button type="button" class="nav-arrow-btn" id="btnNextChair" title="Volgende stoel (Pijl rechts)">&#9654;</button>
-        </div>
-      </div>
-
-      <!-- Horizontal Visual Carousel -->
-      <div class="chair-carousel" id="chairCarousel">
-        <!-- Wordt dynamisch gevuld met stoelen -->
-      </div>
-    </div>
-
-    <!-- Foto Kiezer voor de Gekozen Stoel -->
-    <div class="photo-selection-strip">
-      <div class="photo-strip-label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span>Foto voor badge:</span>
-      </div>
-
-      <div class="photo-thumbnails" id="photoThumbnails">
-        <!-- Dynamische foto thumbnails van de stoel -->
-      </div>
-
-      <div class="badge-quick-customs">
-        <div class="quick-input-group">
-          <label for="inputCustomPrice">Prijs:</label>
-          <input type="text" id="inputCustomPrice" style="width: 80px;" placeholder="€ 1.945,-">
-        </div>
-        <div class="quick-input-group">
-          <label for="inputCustomTag">Actie:</label>
-          <input type="text" id="inputCustomTag" style="width: 120px;" placeholder="Direct meenemen">
-        </div>
-        <div class="quick-input-group">
-          <label><input type="checkbox" id="chkPunchHole" checked> Ophanggat</label>
-        </div>
-        <div class="quick-input-group">
-          <label><input type="checkbox" id="chkQualitySticker" checked> Sticker</label>
-        </div>
+        <a href="index.html" class="btn btn-outline" style="padding: 7px 16px; font-size: 0.88rem; min-height: auto; text-decoration: none;">
+          Naar Website
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- ==========================================================================
-       PREVIEW STAGE
-       ========================================================================== -->
-  <main class="preview-stage">
+  <main class="main-content">
+    <div class="container">
 
-    <!-- A4 Vouwvel Hulpbalk (alleen zichtbaar in vouwvel modus) -->
-    <div class="fold-config-bar" id="foldConfigBar">
-      <div class="fold-config-info">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="2 2"></line></svg>
-        <span><strong>A4 Vouwvel:</strong> 1x horizontaal snijden (148,5 mm), beide delen dubbelvouwen &rarr; 2 kant-en-klare dubbelzijdige A6 kaarten!</span>
-      </div>
-      <div class="fold-config-select-wrap">
-        <label for="foldSecondChairSelect">Onderste badge:</label>
-        <select id="foldSecondChairSelect">
-          <option value="same">Zelfde als boven (2x deze stoel)</option>
-        </select>
-      </div>
-    </div>
+      <!-- Admin Tabs Bar (In lijn met beheerpaneel) -->
+      <div class="admin-tabs-bar" role="tablist">
+        <a href="beheer.html#stoelen" class="tab-btn" style="text-decoration: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"></path>
+            <path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path>
+            <path d="M5 18v3"></path>
+            <path d="M19 18v3"></path>
+          </svg>
+          <span>Stoelen beheer</span>
+        </a>
 
-    <!-- 1x A6 Badge Wrapper (Single / Double View) -->
-    <div class="badge-single-wrap" id="badgeSingleWrap">
+        <a href="beheer.html#merken" class="tab-btn" style="text-decoration: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+          </svg>
+          <span>Merken beheer</span>
+        </a>
+
+        <a href="beheer.html#statistieken" class="tab-btn" style="text-decoration: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span>Statistieken</span>
+        </a>
+
+        <a href="beheer.html#huisstijl" class="tab-btn" style="text-decoration: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+          </svg>
+          <span>Huisstijl &amp; drukwerk</span>
+        </a>
+
+        <button class="tab-btn active" role="tab" aria-selected="true" style="pointer-events: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="3" width="14" height="18" rx="2"></rect><circle cx="12" cy="7" r="1.5"></circle></svg>
+          <span>🏷️ A6 Stoelbadges</span>
+        </button>
+      </div>
+
+      <!-- Section Header Banner -->
+      <div class="section-header-banner">
+        <div class="section-header-main">
+          <div class="section-badge-pill">
+            <span class="pulse-dot"></span>
+            <span>Drukwerk &bull; Showroom Kaarten &bull; A6 Formaat (105 × 148 mm)</span>
+          </div>
+          <h2 class="section-banner-title">A6 Stoelbadge &amp; Prijskaart Generator</h2>
+          <p class="section-banner-subtitle">
+            Genereer officiële showroombadges voor uw sta-opstoelen. Kies een model uit de catalogus, selecteer het gewenste afdrukformaat en print direct of sla op als PDF.
+          </p>
+        </div>
+        <div class="section-header-actions">
+          <button type="button" class="btn-print-top" id="btnPrintTop">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>🖨️ Nu Afdrukken / PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Unified Configuration Card (Rustig & Overzichtelijk in beheer-stijl) -->
+      <div class="badge-config-card">
+
+        <!-- STAP 1: STOEL KIEZEN -->
+        <div class="config-step">
+          <div class="config-step-header">
+            <div class="config-step-title">
+              <span class="config-step-num">1</span>
+              <span>Kies een sta-opstoel uit de catalogus</span>
+            </div>
+
+            <!-- Zoekveld & Snelfilters -->
+            <div class="filter-pills-row">
+              <input type="text" id="chairSearchInput" class="form-control-sm" style="width: 170px;" placeholder="Zoek op model/merk...">
+              <button type="button" class="filter-pill active" data-filter="all">Alle (<span id="countAll">0</span>)</button>
+              <button type="button" class="filter-pill" data-filter="nieuw">Nieuw (<span id="countNieuw">0</span>)</button>
+              <button type="button" class="filter-pill" data-filter="occasion">Occasions (<span id="countOccasion">0</span>)</button>
+              <button type="button" class="filter-pill" data-filter="cosy">🛋️ Sfeerfoto</button>
+            </div>
+          </div>
+
+          <div class="chair-select-controls">
+            <!-- Dropdown selector met alle stoelen -->
+            <div class="chair-dropdown-wrap">
+              <select id="chairSelectDropdown" class="form-control-select" aria-label="Selecteer sta-opstoel">
+                <option value="">Laden van catalogus...</option>
+              </select>
+            </div>
+
+            <!-- Vorige / Volgende knoppen -->
+            <div class="chair-quick-nav">
+              <button type="button" class="btn-chair-nav" id="btnPrevChair" title="Vorige stoel (Pijl links)">
+                &#9664; Vorige
+              </button>
+              <span class="chair-index-indicator" id="chairIndexLabel">1 / 40</span>
+              <button type="button" class="btn-chair-nav" id="btnNextChair" title="Volgende stoel (Pijl rechts)">
+                Volgende &#9654;
+              </button>
+            </div>
+          </div>
+
+          <!-- Actieve Stoel Mini Samenvatting met Foto Kiezer -->
+          <div class="active-chair-strip">
+            <div class="active-chair-main-info">
+              <img id="summaryChairImg" src="" alt="Stoelfoto" class="active-chair-img-mini">
+              <div class="active-chair-titles">
+                <div class="active-chair-name" id="summaryChairName">Sta-op stoel Ravi</div>
+                <div class="active-chair-meta">
+                  <span id="summaryChairBrand">DFM</span> &bull;
+                  <span class="active-chair-condition-tag" id="summaryChairTag">Nieuw</span> &bull;
+                  <strong style="color: var(--color-forest);" id="summaryChairPrice">€ 1.945,-</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Foto Keuze Knoppen (Catalogusfoto / Sfeerfoto) -->
+            <div class="active-chair-photo-selector">
+              <span class="photo-choice-label">Foto voor badge:</span>
+              <div id="summaryPhotoButtons" style="display: inline-flex; gap: 6px; flex-wrap: wrap;">
+                <!-- Wordt dynamisch gevuld met fotokeuzes -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAP 2: AFDRUKFORMAAT KIEZEN -->
+        <div class="config-step">
+          <div class="config-step-header">
+            <div class="config-step-title">
+              <span class="config-step-num">2</span>
+              <span>Kies uw gewenste afdrukformaat &amp; layout</span>
+            </div>
+          </div>
+
+          <div class="print-format-grid">
+            <!-- Formaat Tegel 1: A4 Vouwvel (⭐ Aanbevolen) -->
+            <div class="format-tile active" id="cardModeFold" data-mode="fold">
+              <span class="format-tile-badge">⭐ Aanbevolen voor showroom</span>
+              <div>
+                <div class="format-tile-header">
+                  <div class="format-tile-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="2 2"></line></svg>
+                  </div>
+                  <div>
+                    <div class="format-tile-title">A4 Vouwvel (2 dubbelzijdige badges)</div>
+                    <div class="format-tile-sub">1x doorsnijden &amp; dubbelvouwen</div>
+                  </div>
+                </div>
+                <div class="format-tile-desc">
+                  Print 2 complete dubbelzijdige A6 badges op 1 standaard A4 vel (voor- en achterkant strak naast elkaar). Geen dubbelzijdige printer nodig!
+                </div>
+              </div>
+            </div>
+
+            <!-- Formaat Tegel 2: 1x A6 Losse Badge -->
+            <div class="format-tile" id="cardModeSingle" data-mode="single">
+              <div>
+                <div class="format-tile-header">
+                  <div class="format-tile-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="3" width="14" height="18" rx="2"></rect><circle cx="12" cy="7" r="1.5"></circle></svg>
+                  </div>
+                  <div>
+                    <div class="format-tile-title">1x A6 Badge (105 × 148 mm)</div>
+                    <div class="format-tile-sub">Direct op A6 kaartformaat of fotopapier</div>
+                  </div>
+                </div>
+                <div class="format-tile-desc">
+                  Direct printen op los A6 papier of fotokaarten. Naar wens voor- en/of achterkant los of dubbelzijdig.
+                </div>
+              </div>
+            </div>
+
+            <!-- Formaat Tegel 3: A4 Drukvel (4x A6) -->
+            <div class="format-tile" id="cardModeA4" data-mode="a4">
+              <div>
+                <div class="format-tile-header">
+                  <div class="format-tile-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><rect x="13" y="13" width="8" height="8" rx="1"></rect></svg>
+                  </div>
+                  <div>
+                    <div class="format-tile-title">A4 Drukvel (4x A6 op 1 vel)</div>
+                    <div class="format-tile-sub">Met professionele snijkruisen</div>
+                  </div>
+                </div>
+                <div class="format-tile-desc">
+                  Vult een A4 vel met 4 badges voorzien van subtiele snijmarkeringen voor een snijmachine.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAP 3: DETAILOPTIES & AANPASSINGEN -->
+        <div class="config-step">
+          <div class="config-step-header">
+            <div class="config-step-title">
+              <span class="config-step-num">3</span>
+              <span>Opties &amp; Snelle aanpassingen</span>
+            </div>
+          </div>
+
+          <div class="config-options-panel">
+            <!-- Vouwvel specifieke optie (alleen in vouwmodus zichtbaar) -->
+            <div class="options-row" id="foldOptionsRow">
+              <div class="option-group" style="flex: 1; min-width: 280px;">
+                <label for="foldSecondChairSelect"><strong>Onderste badge op vouwvel:</strong></label>
+                <select id="foldSecondChairSelect" class="form-control-sm" style="flex: 1; max-width: 380px;">
+                  <option value="same">Zelfde als boven (2x deze stoel)</option>
+                </select>
+              </div>
+              <div style="font-size: 0.8rem; color: #64748b;">
+                ✂️ <em>Horizontaal doorknippen op 148,5 mm en dubbelvouwen.</em>
+              </div>
+            </div>
+
+            <!-- Zijde Kiezer (alleen bij losse A6 of A4 drukvel) -->
+            <div class="options-row" id="sideOptionsRow" style="display: none;">
+              <div class="option-group">
+                <span>Te printen zijde:</span>
+                <div class="side-switch" id="sideSwitchGroup" style="display: inline-flex;">
+                  <button type="button" class="side-btn active" id="btnSideBoth">Dubbelzijdig</button>
+                  <button type="button" class="side-btn" id="btnSideFront">Alleen voorkant</button>
+                  <button type="button" class="side-btn" id="btnSideBack">Alleen achterkant</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Snelle tekst & opmaak aanpassingen -->
+            <div class="options-row" style="border-top: 1px dashed #e2e8f0; padding-top: 12px;">
+              <div class="option-group">
+                <label for="inputCustomPrice">Prijs:</label>
+                <input type="text" id="inputCustomPrice" class="form-control-sm" style="width: 105px;" placeholder="€ 1.945,-">
+              </div>
+
+              <div class="option-group">
+                <label for="inputCustomTag">Actielabel:</label>
+                <input type="text" id="inputCustomTag" class="form-control-sm" style="width: 135px;" placeholder="Direct meenemen">
+              </div>
+
+              <div class="option-group">
+                <label><input type="checkbox" id="chkPunchHole" checked> Ophanggat markering tonen</label>
+              </div>
+
+              <div class="option-group">
+                <label><input type="checkbox" id="chkQualitySticker" checked> Kwaliteitszegel tonen</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAP 4: ACTIEBALK -->
+        <div class="config-bottom-action">
+          <div class="print-tip-hint">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span><strong>Print tip:</strong> Zet in het browser-printvenster de marges op <em>"Geen"</em> en vink <em>"Achtergrondafbeeldingen"</em> aan voor de mooiste kleuren en exacte afmetingen.</span>
+          </div>
+
+          <button type="button" class="btn-print-large" id="btnPrint">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>🖨️ Nu Afdrukken of Opslaan als PDF</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- LIVE PREVIEW SECTIE -->
+      <div class="preview-section-header">
+        <div class="preview-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <span>Live Afdrukvoorbeeld</span>
+        </div>
+        <div class="preview-info-badge" id="previewInfoBadge">
+          A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten (1x snijden &amp; vouwen)
+        </div>
+      </div>
+
+      <!-- Live Preview Stage met de daadwerkelijke kaarten -->
+      <div class="preview-stage" id="previewStage">
+
+        <!-- 1x A6 Badge Wrapper (Single / Double View) -->
+        <div class="badge-single-wrap" id="badgeSingleWrap">
       
       <!-- VOORKANT KOLOM -->
       <div class="badge-side-col" id="colFront">
@@ -1973,9 +2388,11 @@
       <div class="a4-fold-grid" id="a4FoldGrid">
         <!-- Dynamisch gevuld met 4 slots: [Voor 1] [Achter 1], [Voor 2] [Achter 2] -->
       </div>
-    </div>
+    </div> <!-- /#a4FoldContainer -->
 
-  </main>
+    </div> <!-- /#previewStage -->
+  </div> <!-- /.container -->
+</main> <!-- /.main-content -->
 
   <!-- ==========================================================================
        JAVASCRIPT LOGICA
@@ -1999,9 +2416,23 @@
     const btnPrevChair = document.getElementById("btnPrevChair");
     const btnNextChair = document.getElementById("btnNextChair");
     const btnPrint = document.getElementById("btnPrint");
+    const btnPrintTop = document.getElementById("btnPrintTop");
     const btnModeSingle = document.getElementById("btnModeSingle");
     const btnModeFold = document.getElementById("btnModeFold");
     const btnModeA4 = document.getElementById("btnModeA4");
+    const cardModeFold = document.getElementById("cardModeFold");
+    const cardModeSingle = document.getElementById("cardModeSingle");
+    const cardModeA4 = document.getElementById("cardModeA4");
+    const foldOptionsRow = document.getElementById("foldOptionsRow");
+    const sideOptionsRow = document.getElementById("sideOptionsRow");
+    const previewInfoBadge = document.getElementById("previewInfoBadge");
+    const chairSelectDropdown = document.getElementById("chairSelectDropdown");
+    const summaryChairImg = document.getElementById("summaryChairImg");
+    const summaryChairName = document.getElementById("summaryChairName");
+    const summaryChairBrand = document.getElementById("summaryChairBrand");
+    const summaryChairTag = document.getElementById("summaryChairTag");
+    const summaryChairPrice = document.getElementById("summaryChairPrice");
+    const summaryPhotoButtons = document.getElementById("summaryPhotoButtons");
     const sideSwitchGroup = document.getElementById("sideSwitchGroup");
     const btnSideBoth = document.getElementById("btnSideBoth");
     const btnSideFront = document.getElementById("btnSideFront");
@@ -2124,6 +2555,7 @@
 
       updateFilterCounts();
       filteredChairs = [...chairsList];
+      populateChairDropdown();
       renderCarousel();
       
       let initIndex = 0;
@@ -2155,8 +2587,25 @@
       document.getElementById("countOccasion").textContent = chairsList.filter(c => c.condition === 'occasion' || c.condition === 'refurbished').length;
     }
 
+    // Populate chair select dropdown
+    function populateChairDropdown() {
+      if (!chairSelectDropdown) return;
+      if (filteredChairs.length === 0) {
+        chairSelectDropdown.innerHTML = '<option value="">Geen stoelen gevonden voor deze zoekopdracht</option>';
+        return;
+      }
+      chairSelectDropdown.innerHTML = filteredChairs.map((c, idx) => {
+        const brandStr = c.brand ? `${c.brand} • ` : '';
+        const condStr = c.condition === 'nieuw' ? 'Nieuw' : 'Occasion';
+        const priceStr = formatPrice(c.price);
+        return `<option value="${idx}">${c.name} (${brandStr}${condStr} • ${priceStr})</option>`;
+      }).join('');
+      chairSelectDropdown.value = currentChairIndex;
+    }
+
     // 3. Render Chair Carousel
     function renderCarousel() {
+      if (!chairCarousel) return;
       chairCarousel.innerHTML = '';
       if (filteredChairs.length === 0) {
         chairCarousel.innerHTML = '<div style="padding: 12px; font-size: 0.85rem; color: #64748b;">Geen stoelen gevonden voor deze zoekopdracht.</div>';
@@ -2241,7 +2690,12 @@
       currentChairIndex = index;
       currentChair = filteredChairs[index];
 
-      // Update active card in carousel
+      // Update dropdown selection
+      if (chairSelectDropdown) {
+        chairSelectDropdown.value = index;
+      }
+
+      // Update active card in carousel (if present)
       document.querySelectorAll(".chair-thumb-card").forEach((c, idx) => {
         if (idx === currentChairIndex) {
           c.classList.add("active");
@@ -2257,6 +2711,19 @@
       currentImages = getAllImagesForChair(currentChair);
       currentImageIndex = 0; // Automatically select 1st image: cosy if present, else standard!
 
+      // Update mini summary in config card
+      if (summaryChairImg) {
+        summaryChairImg.src = (currentImages.length > 0 ? currentImages[0].url : currentChair.image) || '';
+      }
+      if (summaryChairName) summaryChairName.textContent = currentChair.name || '';
+      if (summaryChairBrand) summaryChairBrand.textContent = currentChair.brand || '';
+      if (summaryChairPrice) summaryChairPrice.textContent = formatPrice(currentChair.price);
+      if (summaryChairTag) {
+        const isNieuw = currentChair.condition === 'nieuw';
+        summaryChairTag.textContent = isNieuw ? 'Nieuw' : 'Occasion';
+        summaryChairTag.className = 'active-chair-condition-tag' + (isNieuw ? '' : ' occasion');
+      }
+
       renderPhotoThumbnails();
       populateBadge(currentChair);
 
@@ -2269,26 +2736,36 @@
 
     // 6. Render photo thumbnails for current chair
     function renderPhotoThumbnails() {
-      photoThumbnails.innerHTML = '';
+      if (photoThumbnails) photoThumbnails.innerHTML = '';
+      if (summaryPhotoButtons) summaryPhotoButtons.innerHTML = '';
       if (currentImages.length === 0) return;
 
       currentImages.forEach((imgObj, idx) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "photo-thumb-btn" + (idx === currentImageIndex ? " active" : "");
-        btn.title = imgObj.label;
+        // Option buttons in active chair summary
+        if (summaryPhotoButtons) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "photo-choice-btn" + (idx === currentImageIndex ? " active" : "");
+          btn.innerHTML = `${imgObj.label}`;
+          btn.title = `Toon ${imgObj.label} op de badge`;
+          btn.addEventListener("click", () => setChairImage(idx));
+          summaryPhotoButtons.appendChild(btn);
+        }
 
-        const tagClass = imgObj.type === 'cosy' ? ' cosy' : '';
-        btn.innerHTML = `
-          <img src="${imgObj.url}" alt="${imgObj.label}">
-          <span class="photo-thumb-tag${tagClass}">${imgObj.label}</span>
-        `;
-
-        btn.addEventListener("click", () => {
-          setChairImage(idx);
-        });
-
-        photoThumbnails.appendChild(btn);
+        // Legacy thumbnails if element exists
+        if (photoThumbnails) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "photo-thumb-btn" + (idx === currentImageIndex ? " active" : "");
+          btn.title = imgObj.label;
+          const tagClass = imgObj.type === 'cosy' ? ' cosy' : '';
+          btn.innerHTML = `
+            <img src="${imgObj.url}" alt="${imgObj.label}">
+            <span class="photo-thumb-tag${tagClass}">${imgObj.label}</span>
+          `;
+          btn.addEventListener("click", () => setChairImage(idx));
+          photoThumbnails.appendChild(btn);
+        }
       });
     }
 
@@ -2298,12 +2775,16 @@
       currentImageIndex = idx;
 
       // Update thumbnail active states
+      document.querySelectorAll(".photo-choice-btn").forEach((b, i) => {
+        b.classList.toggle("active", i === currentImageIndex);
+      });
       document.querySelectorAll(".photo-thumb-btn").forEach((b, i) => {
         b.classList.toggle("active", i === currentImageIndex);
       });
 
       const chosen = currentImages[currentImageIndex];
       badgePhotoImg.src = chosen.url;
+      if (summaryChairImg) summaryChairImg.src = chosen.url;
       if (badgePhotoSettingText) {
         badgePhotoSettingText.textContent = chosen.type === 'cosy' ? 'Woonkamer Sfeer' : 'Showroom Detail';
       }
@@ -2650,12 +3131,21 @@
             return imgs.some(x => x.type === 'cosy');
           });
         }
+        populateChairDropdown();
         renderCarousel();
         if (filteredChairs.length > 0) {
           selectChair(0);
         }
       });
     });
+
+    // Dropdown change listener
+    if (chairSelectDropdown) {
+      chairSelectDropdown.addEventListener("change", (e) => {
+        const idx = parseInt(e.target.value, 10);
+        if (!isNaN(idx)) selectChair(idx);
+      });
+    }
 
     // Navigation buttons
     btnPrevChair.addEventListener("click", () => {
@@ -2728,9 +3218,9 @@
       document.body.classList.remove('side-both', 'side-front', 'side-back');
       document.body.classList.add(`side-${side}`);
 
-      btnSideBoth.classList.toggle('active', side === 'both');
-      btnSideFront.classList.toggle('active', side === 'front');
-      btnSideBack.classList.toggle('active', side === 'back');
+      if (btnSideBoth) btnSideBoth.classList.toggle('active', side === 'both');
+      if (btnSideFront) btnSideFront.classList.toggle('active', side === 'front');
+      if (btnSideBack) btnSideBack.classList.toggle('active', side === 'back');
 
       if (currentPrintMode === 'single') {
         if (colFront) colFront.style.display = (side === 'back') ? 'none' : 'flex';
@@ -2742,9 +3232,9 @@
       }
     }
 
-    btnSideBoth.addEventListener("click", () => setSideMode('both'));
-    btnSideFront.addEventListener("click", () => setSideMode('front'));
-    btnSideBack.addEventListener("click", () => setSideMode('back'));
+    if (btnSideBoth) btnSideBoth.addEventListener("click", () => setSideMode('both'));
+    if (btnSideFront) btnSideFront.addEventListener("click", () => setSideMode('front'));
+    if (btnSideBack) btnSideBack.addEventListener("click", () => setSideMode('back'));
 
     // Print Mode Switcher (1x A6 / A4 Vouwvel / 4x A6 Drukvel)
     function setPrintMode(mode) {
@@ -2758,15 +3248,35 @@
         document.head.appendChild(dynamicStyle);
       }
 
-      btnModeSingle.classList.toggle("active", mode === 'single');
-      btnModeFold.classList.toggle("active", mode === 'fold');
-      btnModeA4.classList.toggle("active", mode === 'a4');
+      if (btnModeSingle) btnModeSingle.classList.toggle("active", mode === 'single');
+      if (btnModeFold) btnModeFold.classList.toggle("active", mode === 'fold');
+      if (btnModeA4) btnModeA4.classList.toggle("active", mode === 'a4');
+
+      if (cardModeSingle) cardModeSingle.classList.toggle("active", mode === 'single');
+      if (cardModeFold) cardModeFold.classList.toggle("active", mode === 'fold');
+      if (cardModeA4) cardModeA4.classList.toggle("active", mode === 'a4');
 
       if (sideSwitchGroup) {
         sideSwitchGroup.style.display = (mode === 'fold') ? 'none' : 'inline-flex';
       }
+      if (sideOptionsRow) {
+        sideOptionsRow.style.display = (mode === 'fold') ? 'none' : 'flex';
+      }
+      if (foldOptionsRow) {
+        foldOptionsRow.style.display = (mode === 'fold') ? 'flex' : 'none';
+      }
       if (foldConfigBar) {
         foldConfigBar.style.display = (mode === 'fold') ? 'flex' : 'none';
+      }
+
+      if (previewInfoBadge) {
+        if (mode === 'fold') {
+          previewInfoBadge.textContent = 'A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten (1x snijden & vouwen)';
+        } else if (mode === 'single') {
+          previewInfoBadge.textContent = '1x A6 Badge • 105 × 148 mm formaat';
+        } else if (mode === 'a4') {
+          previewInfoBadge.textContent = 'A4 Drukvel • 4x A6 Badges met snijmarkeringen';
+        }
       }
 
       if (mode === 'single') {
@@ -2792,9 +3302,17 @@
       }
     }
 
-    btnModeSingle.addEventListener("click", () => setPrintMode('single'));
-    btnModeFold.addEventListener("click", () => setPrintMode('fold'));
-    btnModeA4.addEventListener("click", () => setPrintMode('a4'));
+    if (btnModeSingle) btnModeSingle.addEventListener("click", () => setPrintMode('single'));
+    if (btnModeFold) btnModeFold.addEventListener("click", () => setPrintMode('fold'));
+    if (btnModeA4) btnModeA4.addEventListener("click", () => setPrintMode('a4'));
+
+    if (cardModeSingle) cardModeSingle.addEventListener("click", () => setPrintMode('single'));
+    if (cardModeFold) cardModeFold.addEventListener("click", () => setPrintMode('fold'));
+    if (cardModeA4) cardModeA4.addEventListener("click", () => setPrintMode('a4'));
+
+    if (btnPrintTop) {
+      btnPrintTop.addEventListener("click", () => btnPrint.click());
+    }
 
     if (foldSecondChairSelect) {
       foldSecondChairSelect.addEventListener("change", () => {
@@ -2812,8 +3330,8 @@
       window.print();
     });
 
-    // Initial load
-    setPrintMode('single');
+    // Initial load: Default naar het A4 vouwvel (favoriet voor de showroom)
+    setPrintMode('fold');
     setSideMode('both');
     loadChairs();
   </script>
