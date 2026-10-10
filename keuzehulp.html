@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=9.34">
+  <link rel="stylesheet" href="style.css?v=10.25">
 </head>
 <body>
 
@@ -95,22 +95,22 @@
     </div>
   </header>
 
-  <!-- Originele Titelbalk / Header Banner -->
+  <!-- Banner Header -->
   <section class="occasions-header" style="text-align: left;">
     <div class="container banner-flex-container" style="justify-content: flex-start; align-items: flex-start;">
-      <div style="text-align: left; max-width: 650px; flex: 1; min-width: 280px;">
-        <span class="section-tag" style="color: var(--color-terracotta);">Ergonomische Sneltoets &amp; Advies</span>
-        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.3rem;">Indicatiewijzer Zithouding &amp; Mobiliteit</h1>
-        <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 1.05rem;">Evalueer de fysieke zithouding en medische indicaties aan de hand van de ergonomische richtlijnen voor ergotherapeuten, wijkverpleging en mantelzorgers.</p>
+      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Persoonlijk Zitadvies</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Online Keuzehulp</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Vind in 3 eenvoudige stappen de ideale sta-op stoel die aansluit bij uw lichaamsbouw en persoonlijke behoeften.</p>
       </div>
-      <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Persoonlijke keuzehulp" class="banner-stamp">
+      <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Online Keuzehulp" class="banner-stamp">
     </div>
   </section>
 
   <!-- Keuzehulp Wizard Section -->
   <main class="wizard-viewport-section" id="keuzehulp">
     <div class="container wizard-wrapper">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+      <div class="wizard-top-actions">
         <a href="index.html" class="back-link" style="margin-bottom: 0;">← Terug naar Home</a>
         <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
           <div class="wizard-match-counter" id="liveMatchBadge" style="background: #ffffff; border: 1px solid var(--color-gray-light); color: var(--color-forest-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
@@ -124,6 +124,7 @@
         </div>
       </div>
       <div class="wizard-card" id="wizardCard">
+        <div class="wizard-card-inner">
         
         <!-- Step Bar Navigation -->
         <div class="wizard-steps-nav">
@@ -407,6 +408,7 @@
             </button>
           </div>
         </form>
+        </div>
       </div>
     </div>
   </main>
