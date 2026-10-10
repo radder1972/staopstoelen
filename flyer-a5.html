@@ -514,27 +514,26 @@
     }
 
     /* --------------------------------------------------------------------------
-       FLYER BACK (Achterzijde - Luxe Saliegroene Uitstraling)
+       FLYER BACK (Achterzijde - Lichte Elegante Salie Tint)
        -------------------------------------------------------------------------- */
     .flyer-back {
-      background: linear-gradient(155deg, #64a937 0%, #468820 100%);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(155deg, #f4faf1 0%, #e6f3e2 100%);
+      color: var(--color-dark);
+      border: 1px solid rgba(75, 143, 36, 0.22);
     }
 
     .flyer-back::before {
-      border-color: rgba(255, 255, 255, 0.25);
+      border-color: rgba(75, 143, 36, 0.2);
     }
 
     .flyer-back .flyer-logo {
-      color: #ffffff;
+      color: var(--color-forest);
     }
     .flyer-back .flyer-logo span {
-      color: #ffd8a8;
+      color: var(--color-terracotta);
     }
     .flyer-back .flyer-tagline {
-      color: #ffffff;
-      opacity: 0.92;
+      color: var(--color-gray);
     }
 
     .flyer-back-badge-stamp {
@@ -542,7 +541,7 @@
       height: 28mm;
       flex-shrink: 0;
       display: block;
-      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 2px 8px rgba(75, 143, 36, 0.15));
     }
 
     .flyer-back-intro {
@@ -558,19 +557,18 @@
       font-family: var(--font-heading);
       font-size: 5mm;
       font-weight: 900;
-      color: #ffffff;
+      color: var(--color-forest-dark);
       line-height: 1.25;
       letter-spacing: -0.15px;
     }
     .flyer-back-title span {
-      color: #ffd8a8;
+      color: var(--color-forest);
     }
 
     .flyer-back-desc {
       font-size: 2.85mm;
       line-height: 1.5;
-      color: #ffffff;
-      opacity: 0.95;
+      color: #4a5568;
       font-weight: 400;
     }
 
@@ -585,21 +583,21 @@
     }
 
     .flyer-step-card {
-      background: rgba(255, 255, 255, 0.16);
-      border: 0.25mm solid rgba(255, 255, 255, 0.32);
+      background: #ffffff;
+      border: 0.25mm solid rgba(75, 143, 36, 0.22);
       padding: 3.2mm 3.8mm;
       border-radius: 2mm;
       display: flex;
       flex-direction: column;
       gap: 1mm;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 1.5mm 4mm rgba(75, 143, 36, 0.06);
     }
 
     .step-number {
       font-family: var(--font-heading);
       font-size: 2.2mm;
       font-weight: 900;
-      color: #ffd8a8;
+      color: var(--color-terracotta-dark);
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
@@ -608,14 +606,13 @@
       font-family: var(--font-heading);
       font-size: 2.9mm;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--color-forest-dark);
     }
 
     .step-desc {
       font-size: 2.35mm;
       line-height: 1.4;
-      color: #ffffff;
-      opacity: 0.95;
+      color: #4a5568;
     }
 
     /* Voordelenstrook */
@@ -625,10 +622,11 @@
       display: flex;
       justify-content: space-between;
       gap: 2mm;
-      background: rgba(255, 255, 255, 0.2);
-      border: 0.25mm solid rgba(255, 255, 255, 0.38);
+      background: #ffffff;
+      border: 0.25mm solid rgba(75, 143, 36, 0.25);
       padding: 2.5mm 3.5mm;
       border-radius: 2mm;
+      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
     }
 
     .benefit-bullet {
@@ -636,11 +634,11 @@
       align-items: center;
       gap: 1.6mm;
       font-size: 2.35mm;
-      color: #ffffff;
+      color: var(--color-forest-dark);
       font-weight: 700;
     }
     .benefit-bullet span.check {
-      color: #ffd8a8;
+      color: var(--color-forest);
       font-weight: 900;
     }
 
@@ -652,7 +650,7 @@
       justify-content: space-between;
       align-items: center;
       padding-top: 1mm;
-      border-top: 0.3mm solid rgba(255, 255, 255, 0.22);
+      border-top: 0.3mm solid rgba(75, 143, 36, 0.2);
     }
 
     .back-footer-left {
@@ -664,16 +662,15 @@
       font-family: var(--font-heading);
       font-size: 2.8mm;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--color-forest-dark);
     }
     .back-footer-contact {
       font-size: 2.35mm;
-      color: #ffffff;
+      color: #4a5568;
       font-weight: 500;
-      opacity: 0.95;
     }
     .back-footer-contact strong {
-      color: #ffd8a8;
+      color: var(--color-terracotta-dark);
       font-weight: 700;
     }
 
@@ -688,7 +685,8 @@
       background: #ffffff;
       padding: 0.7mm;
       border-radius: 1mm;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      border: 0.25mm solid rgba(75, 143, 36, 0.2);
       display: block;
     }
     .back-qr-labels {
@@ -700,7 +698,7 @@
       font-family: var(--font-heading);
       font-size: 1.9mm;
       font-weight: 800;
-      color: #ffd8a8;
+      color: var(--color-terracotta);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -708,11 +706,11 @@
       font-family: var(--font-heading);
       font-size: 2.4mm;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--color-forest);
       letter-spacing: -0.1px;
     }
     .back-qr-url span {
-      color: #ffd8a8;
+      color: var(--color-terracotta);
     }
 
     /* --------------------------------------------------------------------------
@@ -1087,7 +1085,7 @@
               <div class="back-footer-contact">
                 Bel direct: <strong>078 - 631 4858</strong> &bull; WhatsApp: <strong>06 - 22 23 29 64</strong>
               </div>
-              <div class="back-footer-contact" style="color: rgba(255,255,255,0.7); font-size: 2.1mm;">
+              <div class="back-footer-contact" style="color: #6c757d; font-size: 2.1mm;">
                 Showroom: Merwedestraat 239, 3313 GT Dordrecht &bull; Gratis passing aan huis
               </div>
             </div>
