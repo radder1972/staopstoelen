@@ -1016,11 +1016,16 @@ section[id], section {
   height: 40px;
   border-radius: 10px;
   background-color: var(--color-sage-light);
+  border: 1px solid rgba(188, 228, 242, 0.85);
   color: var(--color-forest);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.step-icon-badge svg {
+  stroke: var(--color-forest);
 }
 
 .wizard-step-title {
