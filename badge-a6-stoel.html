@@ -660,7 +660,7 @@
 
     /* 3. Product Titel & Type */
     .badge-product-title-row {
-      margin-top: 2.5mm;
+      margin-top: 2mm;
       margin-bottom: 2mm;
     }
 
@@ -676,7 +676,7 @@
 
     .badge-model-name {
       font-family: var(--font-heading);
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1.15;
@@ -686,7 +686,7 @@
     }
 
     .badge-type-desc {
-      font-size: 8px;
+      font-size: 8.2px;
       color: var(--color-gray);
       line-height: 1.25;
       margin-top: 1px;
@@ -703,19 +703,19 @@
     .spec-cell {
       background: #fbfdfa;
       border: 1px solid #d9e6d5;
-      border-radius: 5px;
-      padding: 3px 6px;
+      border-radius: 6px;
+      padding: 3.5px 7px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      min-height: 10mm;
+      gap: 7px;
+      min-height: 10.5mm;
       box-sizing: border-box;
     }
 
     .spec-icon-wrap {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
+      width: 21px;
+      height: 21px;
+      border-radius: 5px;
       background: rgba(75, 143, 36, 0.12);
       color: var(--color-forest);
       display: flex;
@@ -724,9 +724,9 @@
       flex-shrink: 0;
     }
     .spec-icon-wrap svg {
-      width: 12px;
-      height: 12px;
-      stroke-width: 2.2;
+      width: 12.5px;
+      height: 12.5px;
+      stroke-width: 2.3;
     }
 
     .spec-cell-text {
@@ -737,7 +737,7 @@
     }
 
     .spec-cell-label {
-      font-size: 6.2px;
+      font-size: 6.4px;
       font-weight: 800;
       text-transform: uppercase;
       color: #64748b;
@@ -747,7 +747,7 @@
 
     .spec-cell-value {
       font-family: var(--font-heading);
-      font-size: 8.5px;
+      font-size: 8.8px;
       font-weight: 800;
       color: var(--color-forest-dark);
       white-space: nowrap;
@@ -757,25 +757,25 @@
       margin-top: 1px;
     }
 
-    /* 5. Prijs & Meeneem Banner (Ruim, opvallend, echte showroomfocus) */
+    /* 5. Prijs & Meeneem Banner (Ruim, prominent en maximale showroom-aandacht) */
     .badge-price-banner {
-      background: linear-gradient(135deg, #f4faf1 0%, #eaf4e5 100%);
-      border: 1.8px solid var(--color-forest);
-      border-radius: 7px;
-      padding: 5px 9px;
+      background: linear-gradient(135deg, #f3faef 0%, #e5f4df 100%);
+      border: 2px solid var(--color-forest);
+      border-radius: 8px;
+      padding: 8px 11px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2mm;
-      box-shadow: 0 3px 8px rgba(75, 143, 36, 0.12);
-      min-height: 17mm;
+      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.16);
+      min-height: 25mm;
       box-sizing: border-box;
+      margin-bottom: 0;
     }
 
     .price-col {
       display: flex;
       flex-direction: column;
-      gap: 1.5px;
+      gap: 2px;
     }
 
     .price-label-row {
@@ -785,137 +785,70 @@
     }
 
     .price-label {
-      font-size: 6.8px;
+      font-size: 7.5px;
       font-weight: 800;
       color: var(--color-forest);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       line-height: 1;
     }
 
     .price-subtext {
-      font-size: 6px;
+      font-size: 6.8px;
       font-weight: 700;
       color: var(--color-forest-dark);
-      opacity: 0.7;
+      opacity: 0.75;
       text-transform: uppercase;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.3px;
     }
 
     .price-value-wrap {
       display: flex;
       align-items: baseline;
-      gap: 6px;
+      gap: 7px;
       margin-top: 1px;
     }
 
     .price-amount {
       font-family: var(--font-heading);
-      font-size: 21px;
+      font-size: 26px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.6px;
     }
 
     .price-old {
-      font-size: 9.5px;
+      font-size: 11px;
       color: #94a3b8;
       text-decoration: line-through;
       font-weight: 700;
     }
 
+    .price-subline {
+      font-size: 6.6px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      opacity: 0.85;
+      margin-top: 2px;
+      letter-spacing: 0.2px;
+    }
+
     .action-pill {
       background: var(--color-forest);
       color: #ffffff;
-      padding: 5px 9px;
-      border-radius: 5px;
+      padding: 7px 12px;
+      border-radius: 6px;
       font-family: var(--font-heading);
-      font-size: 8px;
+      font-size: 9px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
       white-space: nowrap;
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+      box-shadow: 0 3px 8px rgba(75, 143, 36, 0.28);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-    }
-
-    /* 6. Badge Footer */
-    .badge-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid #e2e8f0;
-      padding-top: 2mm;
-      height: 11mm;
-    }
-
-    .badge-footer-left {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .badge-qr-img {
-      width: 26px;
-      height: 26px;
-      flex-shrink: 0;
-    }
-
-    .badge-qr-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .badge-qr-scan {
-      font-size: 6.5px;
-      font-weight: 700;
-      color: var(--color-forest);
-      text-transform: uppercase;
-    }
-
-    .badge-qr-url {
-      font-family: var(--font-heading);
-      font-size: 8px;
-      font-weight: 800;
-      color: var(--color-forest-dark);
-    }
-    .badge-qr-url span {
-      color: var(--color-terracotta);
-    }
-
-    .badge-footer-right {
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .badge-contact-phone {
-      font-family: var(--font-heading);
-      font-size: 7.8px;
-      font-weight: 800;
-      color: var(--color-forest-dark);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      justify-content: flex-end;
-    }
-    .badge-contact-phone svg,
-    .badge-contact-address svg {
-      color: var(--color-forest);
-      flex-shrink: 0;
-    }
-
-    .badge-contact-address {
-      font-size: 6.5px;
-      color: #64748b;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      justify-content: flex-end;
+      gap: 5px;
     }
 
     /* ==========================================================================
@@ -923,26 +856,27 @@
        ========================================================================== */
     .badge-a6-back {
       background: #ffffff;
+      padding: 6mm 7.5mm 6mm 7.5mm;
     }
 
     .back-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 11mm;
-      margin-bottom: 2mm;
-      padding-top: 1mm;
-      border-bottom: 1px solid #eef2ed;
-      padding-bottom: 1.5mm;
+      min-height: 12mm;
+      margin-bottom: 2.5mm;
+      padding-top: 0.5mm;
+      border-bottom: 1.5px solid #eef2ed;
+      padding-bottom: 2mm;
     }
 
     .back-logo-text {
       font-family: var(--font-heading);
-      font-size: 16px;
+      font-size: 19px;
       font-weight: 900;
       color: var(--color-forest);
       line-height: 1;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.5px;
     }
     .back-logo-text span {
       color: var(--color-terracotta);
@@ -952,16 +886,16 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 2px;
+      gap: 3px;
     }
 
     .back-sku-pill {
-      font-size: 6.5px;
+      font-size: 7.5px;
       font-weight: 800;
       color: #ffffff;
       background: var(--color-forest);
-      border-radius: 3px;
-      padding: 1.5px 5px;
+      border-radius: 4px;
+      padding: 2px 7px;
       text-transform: uppercase;
       letter-spacing: 0.4px;
     }
@@ -970,7 +904,7 @@
     }
 
     .back-sku-sub {
-      font-size: 6px;
+      font-size: 6.8px;
       font-weight: 700;
       color: #64748b;
       text-transform: uppercase;
@@ -978,17 +912,17 @@
     }
 
     .back-title-block {
-      margin-bottom: 2mm;
+      margin-bottom: 2.5mm;
     }
     .back-title-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 6px;
+      gap: 8px;
     }
     .back-model-name {
       font-family: var(--font-heading);
-      font-size: 11.5px;
+      font-size: 14.5px;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1.15;
@@ -999,58 +933,61 @@
     }
     .back-brand-name {
       font-family: var(--font-heading);
-      font-size: 7.5px;
+      font-size: 8.5px;
       font-weight: 800;
       color: var(--color-forest);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       flex-shrink: 0;
     }
     .back-tagline {
-      font-size: 6.8px;
+      font-size: 7.5px;
       color: #64748b;
-      line-height: 1.2;
-      margin-top: 1px;
+      line-height: 1.25;
+      margin-top: 1.5px;
+      font-weight: 500;
     }
 
     .back-section-wrap {
-      margin-bottom: 2mm;
+      margin-bottom: 2.5mm;
     }
 
     .back-section-heading {
       font-family: var(--font-heading);
-      font-size: 6.8px;
+      font-size: 7.8px;
       font-weight: 800;
       color: var(--color-forest-dark);
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
       display: flex;
       align-items: center;
-      gap: 4px;
-      margin-bottom: 1.2mm;
+      gap: 5px;
+      margin-bottom: 1.5mm;
     }
     .back-section-heading svg {
       color: var(--color-forest);
       flex-shrink: 0;
+      width: 12px;
+      height: 12px;
     }
 
     .back-specs-table {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5mm 3.5mm;
+      gap: 2mm 5mm;
       background: #f8faf7;
-      border: 1px solid #e2ece0;
-      border-radius: 5px;
-      padding: 4px 6px;
+      border: 1px solid #dce8da;
+      border-radius: 6px;
+      padding: 5px 8px;
     }
 
     .back-spec-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5px 0;
-      border-bottom: 1px dashed #e6ede4;
-      font-size: 6.8px;
+      padding: 2.5px 0;
+      border-bottom: 1px dashed #e2ebe0;
+      font-size: 7.6px;
     }
     .back-spec-row:last-child, .back-spec-row:nth-last-child(2) {
       border-bottom: none;
@@ -1067,54 +1004,58 @@
 
     .back-features-list {
       list-style: none;
-      padding: 4px 6px;
+      padding: 5px 8px;
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 2.5px;
+      gap: 3.5px;
       background: #ffffff;
-      border: 1px solid #eef2ed;
-      border-radius: 5px;
+      border: 1px solid #e7ede5;
+      border-radius: 6px;
     }
     .back-features-list li {
-      font-size: 6.8px;
-      line-height: 1.25;
+      font-size: 7.8px;
+      line-height: 1.35;
       color: #334155;
       display: flex;
       align-items: flex-start;
-      gap: 4px;
+      gap: 6px;
     }
     .back-features-list li .feat-check {
       color: var(--color-forest);
       font-weight: 900;
       flex-shrink: 0;
-      font-size: 7.5px;
+      font-size: 8.5px;
+      line-height: 1.2;
     }
 
     .back-service-box {
       background: #f4faf1;
-      border: 1px solid rgba(75, 143, 36, 0.35);
-      border-radius: 5px;
-      padding: 4px 6px;
+      border: 1.2px solid rgba(75, 143, 36, 0.35);
+      border-radius: 6px;
+      padding: 6px 8px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3px 6px;
-      margin-bottom: 2mm;
+      gap: 4px 8px;
+      margin-bottom: 0;
     }
     .back-service-item {
       display: flex;
       align-items: center;
-      gap: 4px;
-      font-size: 6.2px;
+      gap: 6px;
+      font-size: 7.2px;
       color: var(--color-forest-dark);
-      line-height: 1.2;
+      line-height: 1.25;
     }
     .back-service-item svg {
       color: var(--color-forest);
       flex-shrink: 0;
+      width: 14px;
+      height: 14px;
     }
     .back-service-item strong {
       font-weight: 800;
+      font-size: 7.6px;
     }
 
     /* ==========================================================================
@@ -1523,33 +1464,13 @@
                 <span class="price-amount" id="badgePriceAmount" contenteditable="true">&euro; 1.945,-</span>
                 <span class="price-old" id="badgePriceOld" style="display: none;"></span>
               </div>
+              <div class="price-subline">Inclusief BTW &bull; Afgesteld op maat &bull; Service aan huis</div>
             </div>
             <div class="action-pill" id="badgeActionPill" contenteditable="true">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span id="badgeActionText">Direct Meenemen</span>
             </div>
           </div>
-
-          <!-- 6. Footer (Huisstijl-iconen) -->
-          <footer class="badge-footer">
-            <div class="badge-footer-left">
-              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="badge-qr-img">
-              <div class="badge-qr-info">
-                <span class="badge-qr-scan">Scan voor video &amp; info:</span>
-                <span class="badge-qr-url">staopstoelen<span>.nl</span></span>
-              </div>
-            </div>
-            <div class="badge-footer-right">
-              <span class="badge-contact-phone">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>078 - 631 4858</span>
-              </span>
-              <span class="badge-contact-address">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Merwedestraat 239, Dordrecht</span>
-              </span>
-            </div>
-          </footer>
         </article>
       </div>
 
@@ -1625,27 +1546,6 @@
               <div><strong>Inruil Mogelijk</strong><br>Inruilpremie op uw stoel</div>
             </div>
           </div>
-
-          <!-- 6. Footer Achterkant -->
-          <footer class="badge-footer">
-            <div class="badge-footer-left">
-              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="badge-qr-img">
-              <div class="badge-qr-info">
-                <span class="badge-qr-scan">Scan voor videodemo &amp; info:</span>
-                <span class="badge-qr-url">staopstoelen<span>.nl</span></span>
-              </div>
-            </div>
-            <div class="badge-footer-right">
-              <span class="badge-contact-phone">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>078 - 631 4858</span>
-              </span>
-              <span class="badge-contact-address">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Merwedestraat 239, Dordrecht</span>
-              </span>
-            </div>
-          </footer>
         </article>
       </div>
 
