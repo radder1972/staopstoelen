@@ -276,24 +276,31 @@
 
     /* Person Info (Over de volle breedte, exact 1 regel, vrijer van de onderbox) */
     .card-person {
-      margin-top: 1mm;
-      margin-bottom: 1.5mm;
+      margin-top: 0.8mm;
+      margin-bottom: 2mm;
     }
 
     .card-person-name {
       font-family: var(--font-heading);
-      font-size: 4.4mm;
-      font-weight: 900;
+      font-size: 3.75mm;
       color: var(--color-forest-dark);
-      letter-spacing: -0.2px;
+      letter-spacing: -0.15px;
       line-height: 1.15;
       white-space: nowrap;
       margin: 0;
     }
+    .card-person-name .name-first {
+      font-weight: 900;
+      color: var(--color-forest-dark);
+    }
+    .card-person-name .name-last {
+      font-weight: 500;
+      color: #2c3e24;
+    }
 
     .card-person-title {
       font-family: var(--font-heading);
-      font-size: 2.35mm;
+      font-size: 2.25mm;
       font-weight: 700;
       color: var(--color-forest);
       letter-spacing: 0.1px;
@@ -306,20 +313,16 @@
       font-weight: 600;
     }
 
-    /* Onderbox: Scheidingslijn + Contactgegevens als compacte eenheid */
+    /* Onderbox: Contactgegevens als compacte eenheid */
     .card-bottom-box {
       display: flex;
       flex-direction: column;
       gap: 1.8mm;
     }
 
-    /* Centered Green Divider */
+    /* Centered Green Divider: verborgen voor maximale rust & ademruimte */
     .card-green-divider {
-      width: 48mm;
-      height: 0.55mm;
-      background: var(--color-forest);
-      border-radius: 9999px;
-      margin: 0 auto;
+      display: none;
     }
 
     /* Contact Details Grid (Compact, razor sharp) */
@@ -677,18 +680,18 @@
             <img src="assets/sticker_nieuw_gereviseerd.svg" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
           </div>
 
-          <!-- Person info: Geertjan Klein Haneveld op 1 regel & Titel op 1 regel -->
+          <!-- Person info: Geertjan (dik) Klein Haneveld (normaal) & Titel op 1 regel -->
           <div class="card-person">
-            <h1 class="card-person-name">Geertjan Klein Haneveld</h1>
+            <h1 class="card-person-name">
+              <span class="name-first">Geertjan</span> <span class="name-last">Klein Haneveld</span>
+            </h1>
             <div class="card-person-title">
               Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
             </div>
           </div>
 
-          <!-- Onderbox: Gecentreerde Groene Divider en Contactgegevens -->
+          <!-- Onderbox: Contactgegevens (met royale ademruimte, zonder divider) -->
           <div class="card-bottom-box">
-            <div class="card-green-divider"></div>
-
             <!-- Contact Grid -->
             <div class="card-contact-grid">
               <!-- Mobiel / WhatsApp direct -->
