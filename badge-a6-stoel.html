@@ -256,27 +256,6 @@
       line-height: 1.5;
       max-width: 700px;
     }
-    .btn-print-top {
-      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-      color: #ffffff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 10px;
-      font-family: var(--font-heading);
-      font-size: 0.90rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
-      transition: all 0.2s ease;
-    }
-    .btn-print-top:hover {
-      background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.45);
-    }
 
     /* ==========================================================================
        CONFIGURATIE- & SELECTIESTAPPEN (3 Duidelijke Witte Stappenkaarten)
@@ -2124,12 +2103,6 @@
             Genereer officiële showroombadges voor uw sta-opstoelen. Kies een model uit de catalogus, selecteer het gewenste afdrukformaat en print direct of sla op als PDF.
           </p>
         </div>
-        <div class="section-header-actions">
-          <button type="button" class="btn-print-top" id="btnPrintTop" onclick="triggerPrint()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-            <span>Nu Afdrukken / PDF</span>
-          </button>
-        </div>
       </div>
 
       <!-- Configuration Steps (3 Duidelijke Witte Stappenkaarten met Ruimte & Ademruimte) -->
@@ -2643,7 +2616,6 @@
     const btnFanNext = document.getElementById("btnFanNext");
     const chairFanDeck = document.getElementById("chairFanDeck");
     const btnPrint = document.getElementById("btnPrint");
-    const btnPrintTop = document.getElementById("btnPrintTop");
     const cardModeSingleA4 = document.getElementById("cardModeSingleA4");
     const cardModeSingle = document.getElementById("cardModeSingle");
     const singleA4OptionsRow = document.getElementById("singleA4OptionsRow");
@@ -3502,9 +3474,6 @@
 
     if (btnPrint) {
       btnPrint.addEventListener("click", triggerPrint);
-    }
-    if (btnPrintTop) {
-      btnPrintTop.addEventListener("click", triggerPrint);
     }
 
     // Initial load: Default naar 1x Kaart op A4 (⭐ Aanbevolen voor 1 stoel)
