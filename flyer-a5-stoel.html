@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A5 Flyer Stoel &amp; Prijzen | staopstoelen.nl - Specialist in maatwerkstoelen</title>
+  <meta name="description" content="Luxe A5 flyer met sfeerfoto en transparante prijsinformatie voor staopstoelen.nl. Occasions v.a. € 595,- en nieuw maatwerk v.a. € 1.495,- met gratis zitmeting aan huis.">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-sage: #6ab13c;
+      --color-sage-light: #eef7eb;
+      --color-sky: #bce4f2;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #c86908;
+      --color-cream: #fbf9f5;
+      --color-cream-dark: #f3efe6;
+      --color-dark: #1d2024;
+      --color-gray: #5e6368;
+      --color-gray-light: #e2e4e6;
+      --color-gray-subtle: #f4f6f8;
+      --color-border: #e6eae4;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+
+      /* Exact A5 Dimensions (148mm x 210mm) */
+      --flyer-w: 148mm;
+      --flyer-h: 210mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: #f7f9f6;
+      color: var(--color-dark);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Screen Top Toolbar */
+    .toolbar {
+      background: #ffffff;
+      color: var(--color-dark);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+      border-bottom: 2px solid var(--color-forest);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-back {
+      color: var(--color-forest);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.2);
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: rgba(75, 143, 36, 0.16);
+      color: #1a3310;
+    }
+
+    .toolbar-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1a3010;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .toolbar-title span {
+      color: var(--color-terracotta-dark);
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: rgba(243, 146, 35, 0.12);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(243, 146, 35, 0.3);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .view-selector {
+      display: flex;
+      background: #f1f4f0;
+      border: 1px solid #dce4d9;
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .btn-mode {
+      background: transparent;
+      border: none;
+      color: #555d67;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-mode:hover {
+      color: #1a3310;
+    }
+    .btn-mode.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.3);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--color-terracotta) 0%, #e07f12 100%);
+      color: #ffffff;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 3px 14px rgba(243, 146, 35, 0.4);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 18px rgba(243, 146, 35, 0.55);
+    }
+
+    /* Screen Stage */
+    .stage {
+      max-width: 1200px;
+      margin: 36px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .hint-bar {
+      background: #ffffff;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-gray);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .hint-bar strong {
+      color: var(--color-forest-dark);
+    }
+
+    /* Flyer Preview Wrap */
+    .flyers-preview-wrap {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .flyer-preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .flyer-label {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--color-forest-dark);
+      background: rgba(75, 143, 36, 0.12);
+      padding: 5px 16px;
+      border-radius: 9999px;
+    }
+
+    /* ==========================================================================
+       A5 FLYER CONTAINER (Exact 148mm x 210mm)
+       ========================================================================== */
+    .flyer-container {
+      width: var(--flyer-w);
+      height: var(--flyer-h);
+      position: relative;
+      border-radius: 3mm;
+      box-shadow: 0 16px 40px rgba(18, 43, 7, 0.14), 0 4px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 9mm 12mm 9mm 12mm;
+      background: #ffffff;
+      transform: translateZ(0);
+    }
+
+    /* Subtle luxury frame border inside flyer */
+    .flyer-container::before {
+      content: '';
+      position: absolute;
+      top: 4mm;
+      left: 4mm;
+      right: 4mm;
+      bottom: 4mm;
+      border: 0.35mm solid rgba(75, 143, 36, 0.12);
+      border-radius: 2mm;
+      pointer-events: none;
+    }
+
+    /* --------------------------------------------------------------------------
+       FLYER FRONT (Voorzijde - Sfeerfoto & Prijzen)
+       -------------------------------------------------------------------------- */
+    .flyer-front {
+      background: #ffffff;
+      color: var(--color-dark);
+    }
+
+    /* Header: Logo linksboven, Grote kwaliteitssticker rechtsboven */
+    .flyer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .flyer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+      padding-top: 0.2mm;
+    }
+
+    .flyer-logo {
+      font-family: var(--font-heading);
+      font-size: 6.8mm;
+      font-weight: 900;
+      color: var(--color-forest);
+      letter-spacing: -0.3px;
+      line-height: 1;
+      display: inline-block;
+    }
+    .flyer-logo span {
+      color: var(--color-terracotta);
+    }
+
+    .flyer-tagline {
+      font-family: var(--font-heading);
+      font-size: 2.35mm;
+      font-weight: 700;
+      color: var(--color-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* Kwaliteitssticker rechtsboven */
+    .flyer-badge-stamp {
+      width: 26mm;
+      height: 26mm;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 3px 8px rgba(18, 43, 7, 0.14));
+    }
+
+    /* Hero / Belofte Sectie */
+    .flyer-hero {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+      margin-top: 0.5mm;
+    }
+
+    .flyer-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.8mm;
+      align-self: flex-start;
+      font-family: var(--font-heading);
+      font-size: 2.2mm;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-terracotta);
+      background: rgba(243, 146, 35, 0.1);
+      padding: 1mm 3.2mm;
+      border-radius: 9999px;
+      border: 0.25mm solid rgba(243, 146, 35, 0.25);
+    }
+
+    .flyer-title {
+      font-family: var(--font-heading);
+      font-size: 5.2mm;
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.2px;
+    }
+    .flyer-title .highlight {
+      color: var(--color-forest);
+    }
+
+    /* SFEERFOTO CONTAINER MET OVERLAY BADGES */
+    .flyer-photo-section {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 56mm;
+      border-radius: 2.5mm;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(18, 43, 7, 0.12);
+      border: 0.3mm solid rgba(75, 143, 36, 0.25);
+      margin: 1.5mm 0;
+    }
+
+    .flyer-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 36%;
+      display: block;
+    }
+
+    /* Floating Prijslabel op de foto */
+    .photo-price-badge {
+      position: absolute;
+      top: 3.5mm;
+      right: 3.5mm;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 2.5mm 3.8mm;
+      border-radius: 2mm;
+      border: 0.3mm solid rgba(75, 143, 36, 0.3);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .ppb-tag {
+      font-family: var(--font-heading);
+      font-size: 1.8mm;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-forest-dark);
+    }
+
+    .ppb-main-price {
+      font-family: var(--font-heading);
+      font-size: 4.8mm;
+      font-weight: 900;
+      color: var(--color-terracotta-dark);
+      line-height: 1.1;
+      letter-spacing: -0.2px;
+    }
+    .ppb-main-price span {
+      font-size: 2.6mm;
+      font-weight: 700;
+      color: var(--color-gray);
+      text-transform: uppercase;
+    }
+
+    .ppb-sub {
+      font-size: 1.9mm;
+      font-weight: 700;
+      color: var(--color-forest);
+      margin-top: 0.4mm;
+    }
+
+    /* Floating passing badge linksonder op foto */
+    .photo-usp-badge {
+      position: absolute;
+      bottom: 3.5mm;
+      left: 3.5mm;
+      background: rgba(18, 43, 7, 0.88);
+      color: #ffffff;
+      padding: 1.8mm 3.5mm;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 2mm;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5mm;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+    .photo-usp-badge .check {
+      color: #7de043;
+      font-weight: 900;
+    }
+
+    /* 3 Duidelijke Pijlers / USPs */
+    .flyer-usps {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2.4mm;
+      margin: 0.5mm 0;
+    }
+
+    .flyer-usp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.8mm;
+    }
+
+    .usp-icon-wrap {
+      width: 5.4mm;
+      height: 5.4mm;
+      border-radius: 50%;
+      background: var(--color-forest);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.3mm;
+      box-shadow: 0 2px 5px rgba(75, 143, 36, 0.25);
+    }
+    .usp-icon-wrap svg {
+      width: 3mm;
+      height: 3mm;
+      stroke: #ffffff;
+      stroke-width: 2.8;
+    }
+
+    .usp-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4mm;
+    }
+
+    .usp-title {
+      font-family: var(--font-heading);
+      font-size: 2.85mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.05px;
+    }
+
+    .usp-desc {
+      font-size: 2.35mm;
+      line-height: 1.38;
+      color: #4b525a;
+      font-weight: 400;
+    }
+
+    /* Stijlvolle scheidingslijn */
+    .flyer-divider {
+      width: 100%;
+      height: 0.35mm;
+      background: linear-gradient(90deg, rgba(75, 143, 36, 0.4) 0%, rgba(243, 146, 35, 0.4) 100%);
+      border-radius: 9999px;
+      margin: 0.5mm 0;
+      opacity: 0.6;
+    }
+
+    /* Footer: Showroom links, Contact rechts, QR rechtsbuiten */
+    .flyer-footer {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 3mm;
+      align-items: center;
+      background: var(--color-cream);
+      padding: 2.8mm 3.8mm;
+      border-radius: 2mm;
+      border: 0.25mm solid var(--color-border);
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6mm;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-heading);
+      font-size: 2.1mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+      font-size: 2.25mm;
+      line-height: 1.32;
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+    .footer-col p.sub {
+      color: var(--color-gray);
+      font-weight: 400;
+      font-size: 2mm;
+    }
+
+    .footer-contact-link {
+      font-size: 2.25mm;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 1mm;
+    }
+    .footer-contact-link.highlight {
+      color: var(--color-terracotta-dark);
+      font-size: 2.4mm;
+    }
+
+    .footer-qr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6mm;
+      text-align: center;
+      padding-left: 2mm;
+      border-left: 0.3mm solid var(--color-border);
+    }
+
+    .footer-qr-img {
+      width: 12mm;
+      height: 12mm;
+      background: #ffffff;
+      padding: 0.6mm;
+      border-radius: 1mm;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      display: block;
+    }
+
+    .footer-qr-caption {
+      font-family: var(--font-heading);
+      font-size: 1.6mm;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: var(--color-terracotta);
+    }
+
+    /* --------------------------------------------------------------------------
+       FLYER BACK (Achterzijde - Lichte Salie Tint & Transparante Prijzen)
+       -------------------------------------------------------------------------- */
+    .flyer-back {
+      background: linear-gradient(155deg, #f4faf1 0%, #e6f3e2 100%);
+      color: var(--color-dark);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+    }
+
+    .flyer-back::before {
+      border-color: rgba(75, 143, 36, 0.2);
+    }
+
+    .flyer-back .flyer-logo {
+      color: var(--color-forest);
+    }
+    .flyer-back .flyer-logo span {
+      color: var(--color-terracotta);
+    }
+    .flyer-back .flyer-tagline {
+      color: var(--color-gray);
+    }
+
+    .flyer-back-badge-stamp {
+      width: 26mm;
+      height: 26mm;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(75, 143, 36, 0.15));
+    }
+
+    .flyer-back-intro {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+      margin-top: 0.5mm;
+    }
+
+    .flyer-back-title {
+      font-family: var(--font-heading);
+      font-size: 4.8mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      line-height: 1.22;
+      letter-spacing: -0.15px;
+    }
+    .flyer-back-title span {
+      color: var(--color-forest);
+    }
+
+    .flyer-back-desc {
+      font-size: 2.65mm;
+      line-height: 1.45;
+      color: #4a5568;
+      font-weight: 400;
+    }
+
+    /* 3 Overzichtelijke Prijscategorie Kaarten */
+    .price-cards-stack {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2.6mm;
+      margin: 1.2mm 0;
+    }
+
+    .price-card-item {
+      background: #ffffff;
+      border: 0.3mm solid rgba(75, 143, 36, 0.25);
+      border-radius: 2mm;
+      padding: 2.8mm 3.8mm;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3.5mm;
+      align-items: center;
+      box-shadow: 0 1.5mm 4mm rgba(75, 143, 36, 0.06);
+    }
+
+    .price-card-item.featured {
+      border: 0.35mm solid var(--color-terracotta);
+      box-shadow: 0 2mm 6mm rgba(243, 146, 35, 0.12);
+      position: relative;
+    }
+
+    .price-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+    }
+
+    .price-card-header {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .price-card-title {
+      font-family: var(--font-heading);
+      font-size: 2.9mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+
+    .price-card-badge {
+      font-family: var(--font-heading);
+      font-size: 1.8mm;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.6mm 2.2mm;
+      border-radius: 9999px;
+    }
+    .price-card-badge.green {
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest);
+      border: 0.2mm solid rgba(75, 143, 36, 0.3);
+    }
+    .price-card-badge.orange {
+      background: rgba(243, 146, 35, 0.12);
+      color: var(--color-terracotta-dark);
+      border: 0.2mm solid rgba(243, 146, 35, 0.35);
+    }
+
+    .price-card-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2mm 3mm;
+      list-style: none;
+    }
+
+    .price-card-bullet {
+      font-size: 2.2mm;
+      color: #4a5568;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2mm;
+    }
+    .price-card-bullet span.check {
+      color: var(--color-forest);
+      font-weight: 900;
+      font-size: 2.2mm;
+    }
+
+    /* Rechterkant Prijsbox */
+    .price-card-price-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      padding-left: 2.5mm;
+      border-left: 0.25mm solid rgba(75, 143, 36, 0.18);
+      min-width: 25mm;
+    }
+
+    .pc-label {
+      font-family: var(--font-heading);
+      font-size: 1.8mm;
+      font-weight: 700;
+      color: var(--color-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .pc-amount {
+      font-family: var(--font-heading);
+      font-size: 3.8mm;
+      font-weight: 900;
+      color: var(--color-terracotta-dark);
+      line-height: 1.1;
+      letter-spacing: -0.15px;
+    }
+
+    .pc-sub {
+      font-size: 1.85mm;
+      font-weight: 600;
+      color: var(--color-forest);
+      margin-top: 0.3mm;
+    }
+
+    /* Voordelenstrook / Zekerheden */
+    .flyer-back-benefits {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 2mm;
+      background: #ffffff;
+      border: 0.25mm solid rgba(75, 143, 36, 0.25);
+      padding: 2.2mm 3.2mm;
+      border-radius: 2mm;
+      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
+    }
+
+    .benefit-bullet {
+      display: flex;
+      align-items: center;
+      gap: 1.4mm;
+      font-size: 2.2mm;
+      color: var(--color-forest-dark);
+      font-weight: 700;
+    }
+    .benefit-bullet span.check {
+      color: var(--color-forest);
+      font-weight: 900;
+    }
+
+    /* Achterzijde Footer */
+    .flyer-back-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1mm;
+      border-top: 0.3mm solid rgba(75, 143, 36, 0.2);
+    }
+
+    .back-footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6mm;
+    }
+    .back-footer-title {
+      font-family: var(--font-heading);
+      font-size: 2.65mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+    .back-footer-contact {
+      font-size: 2.25mm;
+      color: #4a5568;
+      font-weight: 500;
+    }
+    .back-footer-contact strong {
+      color: var(--color-terracotta-dark);
+      font-weight: 700;
+    }
+
+    .back-qr-box {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+    }
+    .back-qr-img {
+      width: 12mm;
+      height: 12mm;
+      background: #ffffff;
+      padding: 0.6mm;
+      border-radius: 1mm;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      border: 0.25mm solid rgba(75, 143, 36, 0.2);
+      display: block;
+    }
+    .back-qr-labels {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3mm;
+    }
+    .back-qr-scan {
+      font-family: var(--font-heading);
+      font-size: 1.8mm;
+      font-weight: 800;
+      color: var(--color-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .back-qr-url {
+      font-family: var(--font-heading);
+      font-size: 2.35mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      letter-spacing: -0.1px;
+    }
+    .back-qr-url span {
+      color: var(--color-terracotta);
+    }
+
+    /* --------------------------------------------------------------------------
+       A4 DRUKVEL (Print Sheet: 2x A5 op 1 A4 vel met snijlijn in midden)
+       -------------------------------------------------------------------------- */
+    .sheet-print-container {
+      display: none;
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      margin: 20px auto;
+      padding: 12mm 15mm;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .sheet-header-info {
+      text-align: center;
+      margin-bottom: 6mm;
+      border-bottom: 1px solid var(--color-gray-light);
+      padding-bottom: 4mm;
+    }
+    .sheet-header-info h2 {
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+    }
+    .sheet-header-info p {
+      font-size: 9pt;
+      color: var(--color-gray);
+      margin-top: 1mm;
+    }
+
+    .grid-2-a5 {
+      display: grid;
+      grid-template-columns: repeat(2, 148mm);
+      gap: 8mm;
+      justify-content: center;
+      transform: scale(0.60);
+      transform-origin: top center;
+      height: 220mm;
+    }
+
+    .grid-flyer-wrapper {
+      position: relative;
+      width: 148mm;
+      height: 210mm;
+      border: 0.5px dashed #b5bcc4;
+      border-radius: 3mm;
+    }
+    .grid-flyer-wrapper .flyer-container {
+      box-shadow: none !important;
+    }
+
+    /* ==========================================================================
+       PRINT STYLESHEET (Exact A5 148mm x 210mm of A4 Drukvel)
+       ========================================================================== */
+    @page {
+      size: 148mm 210mm;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .toolbar, .hint-bar, .flyer-label {
+        display: none !important;
+      }
+
+      /* Single A5 Mode */
+      body.mode-front .stage,
+      body.mode-back .stage,
+      body.mode-both .stage {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+        display: block !important;
+      }
+
+      body.mode-front #flyerBackWrap {
+        display: none !important;
+      }
+
+      body.mode-back #flyerFrontWrap {
+        display: none !important;
+      }
+
+      body.mode-both .flyer-preview-item {
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .flyers-preview-wrap {
+        display: block !important;
+        gap: 0 !important;
+      }
+
+      .flyer-preview-item {
+        margin: 0 auto !important;
+        padding: 0 !important;
+      }
+
+      .flyer-container {
+        margin: 0 auto !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        width: 148mm !important;
+        height: 210mm !important;
+        page-break-inside: avoid;
+      }
+
+      /* Sheet Mode */
+      body.mode-sheet {
+        @page {
+          size: 210mm 297mm;
+          margin: 0;
+        }
+      }
+
+      body.mode-sheet .stage {
+        display: none !important;
+      }
+
+      body.mode-sheet .sheet-print-container {
+        display: block !important;
+        margin: 0 auto !important;
+        padding: 8mm 8mm !important;
+        box-shadow: none !important;
+        min-height: 100vh !important;
+      }
+
+      body.mode-sheet .grid-2-a5 {
+        transform: scale(0.65) !important;
+      }
+    }
+  </style>
+</head>
+<body class="mode-both">
+
+  <!-- Top Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="huisstijl.html" class="btn-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Terug naar Huisstijl
+      </a>
+      <div class="toolbar-title">
+        A5 Flyer &mdash; Stoel &amp; Prijsinformatie
+        <span>staopstoelen.nl</span>
+      </div>
+    </div>
+
+    <div class="toolbar-actions">
+      <!-- Weergave Modus -->
+      <div class="view-selector">
+        <button type="button" class="btn-mode" id="btnModeFront" onclick="setViewMode('front')">
+          Voorzijde
+        </button>
+        <button type="button" class="btn-mode" id="btnModeBack" onclick="setViewMode('back')">
+          Achterzijde
+        </button>
+        <button type="button" class="btn-mode active" id="btnModeBoth" onclick="setViewMode('both')">
+          Beide Zijden
+        </button>
+        <button type="button" class="btn-mode" id="btnModeSheet" onclick="setViewMode('sheet')">
+          A4 Drukvel (2x A5)
+        </button>
+      </div>
+
+      <button type="button" class="btn-print" id="btnPrintFlyer" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Afdrukken / Opslaan als PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Interactive Stage (Voorzijde & Achterzijde) -->
+  <main class="stage" id="screenStage">
+    <div class="hint-bar">
+      <span>💡</span>
+      <span><strong>Standaard A5 formaat (148 × 210 mm)</strong> &bull; Met warme interieur sfeerfoto van de stoel &bull; Heldere, transparante prijsindicaties en officiële kwaliteitssticker.</span>
+    </div>
+
+    <div class="flyers-preview-wrap">
+
+      <!-- ======================================================================
+           1. VOORZIJDE (FRONT) - MET SFEERFOTO EN PRIJSINDICATIE
+           ====================================================================== -->
+      <div class="flyer-preview-item" id="flyerFrontWrap">
+        <div class="flyer-label">Voorzijde (Sfeerfoto &amp; Prijslabel)</div>
+
+        <article class="flyer-container flyer-front" id="flyerFront">
+          
+          <!-- Header: Logo linksboven, Kwaliteitssticker rechtsboven -->
+          <header class="flyer-header">
+            <div class="flyer-brand">
+              <div class="flyer-logo">staopstoelen<span>.nl</span></div>
+              <div class="flyer-tagline">Specialist in ergonomische maatwerkstoelen</div>
+            </div>
+            <!-- Officiële Kwaliteitssticker -->
+            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="flyer-badge-stamp">
+          </header>
+
+          <!-- Hero: Koptekst & Eyebrow -->
+          <section class="flyer-hero">
+            <div class="flyer-eyebrow">
+              <span>●</span> Regio Dordrecht &bull; Gratis zitmeting aan huis
+            </div>
+            <h1 class="flyer-title">
+              Puur zitcomfort op maat.<br>
+              <span class="highlight">Voor elk budget een betrouwbare oplossing.</span>
+            </h1>
+          </section>
+
+          <!-- Sfeerfoto met Prominente Prijslabel Overlay -->
+          <section class="flyer-photo-section">
+            <img src="assets/Sta-op-stoel-DORDRECHT-interior.png" alt="Ergonomische sta-op stoel in sfeervol interieur" class="flyer-photo-img">
+            
+            <!-- Prijs Badge Rechtsboven op de Foto -->
+            <div class="photo-price-badge">
+              <span class="ppb-tag">Occasions v.a.</span>
+              <div class="ppb-main-price">&euro; 595,-</div>
+              <span class="ppb-sub">Nieuw maatwerk v.a. &euro; 1.495,-</span>
+            </div>
+
+            <!-- USP Badge Linksonder op de Foto -->
+            <div class="photo-usp-badge">
+              <span class="check">✓</span> Gratis passing &amp; zitmeting aan huis
+            </div>
+          </section>
+
+          <!-- 3 Belangrijke Pijlers / USPs -->
+          <section class="flyer-usps">
+            
+            <!-- USP 1 -->
+            <div class="flyer-usp-item">
+              <div class="usp-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div class="usp-content">
+                <div class="usp-title">Gratis proefzitten in uw eigen woonkamer</div>
+                <div class="usp-desc">U hoeft de deur niet uit: wij komen geheel vrijblijvend met passende stoelen bij u thuis in regio Dordrecht en Drechtsteden.</div>
+              </div>
+            </div>
+
+            <!-- USP 2 -->
+            <div class="flyer-usp-item">
+              <div class="usp-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="usp-content">
+                <div class="usp-title">Nieuw én gecertificeerd gereviseerd</div>
+                <div class="usp-desc">Keuze uit topmerken zoals Fitform en Doge. Grondig technisch nagekeken in eigen werkplaats met 1 tot 3 jaar garantie.</div>
+              </div>
+            </div>
+
+            <!-- USP 3 -->
+            <div class="flyer-usp-item">
+              <div class="usp-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div class="usp-content">
+                <div class="usp-title">Op uw centimeter nauwkeurig afgesteld</div>
+                <div class="usp-desc">Exact afgestelde zithoogte, zitdiepte en armleuninghoogte. Vaste zitexperts, snelle levering en vertrouwde service aan huis.</div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- Scheidingslijn -->
+          <div class="flyer-divider"></div>
+
+          <!-- Footer: Showroom & Contact & QR -->
+          <footer class="flyer-footer">
+            <div class="footer-col">
+              <div class="footer-col-title">Showroom Dordrecht</div>
+              <p>Merwedestraat 239<br>3313 GT Dordrecht</p>
+              <p class="sub">Gratis parkeren voor de deur</p>
+            </div>
+
+            <div class="footer-col">
+              <div class="footer-col-title">Direct Contact</div>
+              <a href="tel:+31786314858" class="footer-contact-link">
+                Showroom: <strong>078 - 631 4858</strong>
+              </a>
+              <a href="https://wa.me/31622232964" class="footer-contact-link highlight">
+                Mobiel / App: <strong>06 - 22 23 29 64</strong>
+              </a>
+              <a href="https://www.staopstoelen.nl" class="footer-contact-link">
+                www.staopstoelen.nl
+              </a>
+            </div>
+
+            <div class="footer-qr-box">
+              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="footer-qr-img">
+              <span class="footer-qr-caption">Scan voor afspraak</span>
+            </div>
+          </footer>
+
+        </article>
+      </div>
+
+      <!-- ======================================================================
+           2. ACHTERZIJDE (BACK) - PRIJSOVERZICHT & MODELLEN
+           ====================================================================== -->
+      <div class="flyer-preview-item" id="flyerBackWrap">
+        <div class="flyer-label">Achterzijde (Saliegroen &amp; Prijsoverzicht)</div>
+
+        <article class="flyer-container flyer-back" id="flyerBack">
+          
+          <!-- Header Achterzijde -->
+          <header class="flyer-header">
+            <div class="flyer-brand">
+              <div class="flyer-logo">staopstoelen<span>.nl</span></div>
+              <div class="flyer-tagline">Specialist in ergonomische maatwerkstoelen</div>
+            </div>
+            <!-- Kwaliteitszegel -->
+            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="flyer-back-badge-stamp">
+          </header>
+
+          <!-- Introductie Achterzijde -->
+          <section class="flyer-back-intro">
+            <h2 class="flyer-back-title">
+              Transparante prijzen &amp; <span>helder advies</span>
+            </h2>
+            <p class="flyer-back-desc">
+              Geen verborgen kosten. Al onze prijzen zijn inclusief persoonlijke passing, vakkundige levering aan huis en garantie.
+            </p>
+          </section>
+
+          <!-- 3 Overzichtelijke Prijscategorie Kaarten -->
+          <section class="price-cards-stack">
+            
+            <!-- Kaart 1: Gecertificeerde Occasions -->
+            <div class="price-card-item">
+              <div class="price-card-info">
+                <div class="price-card-header">
+                  <div class="price-card-title">Gecertificeerde Occasions</div>
+                  <span class="price-card-badge green">Duurzaam &bull; A-merken</span>
+                </div>
+                <ul class="price-card-bullets">
+                  <li class="price-card-bullet"><span class="check">✓</span> Fitform &amp; Doge A-kwaliteit</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> 100-punts revisie &amp; gereinigd</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> 1 jaar volledige garantie</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> Direct uit voorraad leverbaar</li>
+                </ul>
+              </div>
+              <div class="price-card-price-box">
+                <span class="pc-label">Vanaf</span>
+                <div class="pc-amount">&euro; 595,-</div>
+                <span class="pc-sub">tot &plusmn; &euro; 1.295,-</span>
+              </div>
+            </div>
+
+            <!-- Kaart 2: Comfort Sta-op Fauteuils (Nieuw) -->
+            <div class="price-card-item">
+              <div class="price-card-info">
+                <div class="price-card-header">
+                  <div class="price-card-title">Comfort Sta-op Fauteuils (Nieuw)</div>
+                  <span class="price-card-badge green">Snel leverbaar</span>
+                </div>
+                <ul class="price-card-bullets">
+                  <li class="price-card-bullet"><span class="check">✓</span> 1- of 2-motorige relax &amp; sta-op</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> Eenvoudige 2-knops bediening</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> Sterke vlekwerende stoffen</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> 2 jaar garantie aan huis</li>
+                </ul>
+              </div>
+              <div class="price-card-price-box">
+                <span class="pc-label">Vanaf</span>
+                <div class="pc-amount">&euro; 700,-</div>
+                <span class="pc-sub">tot &plusmn; &euro; 1.495,-</span>
+              </div>
+            </div>
+
+            <!-- Kaart 3: Orthopedisch Maatwerk (Fitform & Doge Nieuw) -->
+            <div class="price-card-item featured">
+              <div class="price-card-info">
+                <div class="price-card-header">
+                  <div class="price-card-title">Ergonomisch Maatwerk (Nieuw)</div>
+                  <span class="price-card-badge orange">100% Maatwerk</span>
+                </div>
+                <ul class="price-card-bullets">
+                  <li class="price-card-bullet"><span class="check">✓</span> 3 onafhankelijke motoren &amp; kantelstand</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> Op de centimeter op uw maat gebouwd</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> Ergonomische lendensteun op maat</li>
+                  <li class="price-card-bullet"><span class="check">✓</span> Tot 5 jaar fabrieksgarantie</li>
+                </ul>
+              </div>
+              <div class="price-card-price-box">
+                <span class="pc-label">Vanaf</span>
+                <div class="pc-amount">&euro; 1.495,-</div>
+                <span class="pc-sub">tot &plusmn; &euro; 2.895,-</span>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- Voordelenstrook -->
+          <section class="flyer-back-benefits">
+            <div class="benefit-bullet">
+              <span class="check">✓</span> Gratis zitmeting aan huis
+            </div>
+            <div class="benefit-bullet">
+              <span class="check">✓</span> Eigen werkplaats &amp; service
+            </div>
+            <div class="benefit-bullet">
+              <span class="check">✓</span> 14 dagen omruilgarantie
+            </div>
+          </section>
+
+          <!-- Footer Achterzijde -->
+          <footer class="flyer-back-footer">
+            <div class="back-footer-left">
+              <div class="back-footer-title">Wilt u meer weten of een afspraak maken?</div>
+              <div class="back-footer-contact">
+                Bel direct: <strong>078 - 631 4858</strong> &bull; WhatsApp: <strong>06 - 22 23 29 64</strong>
+              </div>
+              <div class="back-footer-contact" style="color: #6c757d; font-size: 2.1mm;">
+                Showroom: Merwedestraat 239, 3313 GT Dordrecht &bull; Gratis passing aan huis
+              </div>
+            </div>
+
+            <div class="back-qr-box">
+              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="back-qr-img">
+              <div class="back-qr-labels">
+                <span class="back-qr-scan">Bekijk actuele voorraad:</span>
+                <span class="back-qr-url">staopstoelen<span>.nl</span></span>
+              </div>
+            </div>
+          </footer>
+
+        </article>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       A4 DRUKVEL CONTAINER (2x A5 op 1 A4 vel met snijlijnen)
+       ========================================================================== -->
+  <section class="sheet-print-container" id="sheetContainer">
+    <div class="sheet-header-info">
+      <h2>staopstoelen.nl &mdash; A4 Drukvel (2x A5 Flyer met Stoel &amp; Prijzen)</h2>
+      <p>A5 formaat (148 × 210 mm) &bull; Ideaal om af te drukken op standaard A4 papier en door te snijden in het midden</p>
+      <div style="margin-top: 10px; display: inline-flex; gap: 8px;">
+        <button type="button" class="btn-mode active" id="btnSheetFront" style="background: var(--color-forest); color: #fff; padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Voorzijde (2x A5)</button>
+        <button type="button" class="btn-mode" id="btnSheetBack" style="background: #e2e4e6; color: var(--color-forest-dark); padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Achterzijde (2x A5)</button>
+      </div>
+    </div>
+
+    <div class="grid-2-a5" id="gridSheetSlot">
+      <!-- Wordt dynamisch gevuld met 2 identieke A5 flyers -->
+    </div>
+  </section>
+
+  <script>
+    const screenStage = document.getElementById("screenStage");
+    const sheetContainer = document.getElementById("sheetContainer");
+    const gridSheetSlot = document.getElementById("gridSheetSlot");
+    const btnModeFront = document.getElementById("btnModeFront");
+    const btnModeBack = document.getElementById("btnModeBack");
+    const btnModeBoth = document.getElementById("btnModeBoth");
+    const btnModeSheet = document.getElementById("btnModeSheet");
+    const flyerFrontWrap = document.getElementById("flyerFrontWrap");
+    const flyerBackWrap = document.getElementById("flyerBackWrap");
+    const btnSheetFront = document.getElementById("btnSheetFront");
+    const btnSheetBack = document.getElementById("btnSheetBack");
+
+    let currentSheetSide = 'front';
+
+    function setViewMode(mode) {
+      // Reset active states
+      [btnModeFront, btnModeBack, btnModeBoth, btnModeSheet].forEach(btn => btn.classList.remove("active"));
+      document.body.className = `mode-${mode}`;
+
+      if (mode === 'sheet') {
+        btnModeSheet.classList.add("active");
+        screenStage.style.display = "none";
+        sheetContainer.style.display = "block";
+        renderSheet(currentSheetSide);
+      } else {
+        screenStage.style.display = "flex";
+        sheetContainer.style.display = "none";
+
+        if (mode === 'front') {
+          btnModeFront.classList.add("active");
+          flyerFrontWrap.style.display = "flex";
+          flyerBackWrap.style.display = "none";
+        } else if (mode === 'back') {
+          btnModeBack.classList.add("active");
+          flyerFrontWrap.style.display = "none";
+          flyerBackWrap.style.display = "flex";
+        } else {
+          btnModeBoth.classList.add("active");
+          flyerFrontWrap.style.display = "flex";
+          flyerBackWrap.style.display = "flex";
+        }
+      }
+    }
+
+    function renderSheet(side = currentSheetSide) {
+      currentSheetSide = side;
+      gridSheetSlot.innerHTML = '';
+      const sourceCard = side === 'front' ? document.getElementById("flyerFront") : document.getElementById("flyerBack");
+      const flyerHtml = sourceCard.outerHTML;
+
+      for (let i = 0; i < 2; i++) {
+        const wrap = document.createElement("div");
+        wrap.className = "grid-flyer-wrapper";
+        wrap.innerHTML = flyerHtml;
+        gridSheetSlot.appendChild(wrap);
+      }
+    }
+
+    btnSheetFront.addEventListener("click", () => {
+      btnSheetFront.style.background = "var(--color-forest)";
+      btnSheetFront.style.color = "#fff";
+      btnSheetBack.style.background = "#e2e4e6";
+      btnSheetBack.style.color = "var(--color-forest-dark)";
+      renderSheet('front');
+    });
+
+    btnSheetBack.addEventListener("click", () => {
+      btnSheetBack.style.background = "var(--color-forest)";
+      btnSheetBack.style.color = "#fff";
+      btnSheetFront.style.background = "#e2e4e6";
+      btnSheetFront.style.color = "var(--color-forest-dark)";
+      renderSheet('back');
+    });
+  </script>
+</body>
+</html>
