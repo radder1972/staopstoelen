@@ -1705,7 +1705,7 @@
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
-      border: 0.5px dashed #cbd5e1;
+      border: none;
     }
 
     .a4-badge-slot .badge-a6 {
@@ -1714,32 +1714,18 @@
       height: 100%;
     }
 
-    /* Snijlijnen kruis in het midden */
-    .a4-cutmark-h {
-      position: absolute;
-      top: 148.5mm;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: #94a3b8;
-      pointer-events: none;
-      opacity: 0.4;
-    }
-
-    .a4-cutmark-v {
-      position: absolute;
-      left: 105mm;
-      top: 0;
-      width: 1px;
-      height: 100%;
-      background: #94a3b8;
-      pointer-events: none;
-      opacity: 0.4;
+    /* Snijlijnen en vouwlijnen zijn volledig verwijderd: het A4 vel is direct strak in 4 gelijke A6 delen verdeeld */
+    .a4-cutmark-h,
+    .a4-cutmark-v,
+    .a4-fold-cutmark-h,
+    .a4-fold-crease-v,
+    .fold-guide-cut-label,
+    .fold-guide-crease-label {
+      display: none !important;
     }
 
     /* ==========================================================================
        A4 VOUWVEL CONTAINER (2x A6 Dubbelzijdig op 1 A4 vel)
-       1x Horizontaal doormidden snijden (148,5 mm), verticaal dubbelvouwen (105 mm)
        ========================================================================== */
     .a4-fold-container {
       display: none;
@@ -1767,6 +1753,7 @@
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
+      border: none;
     }
 
     .a4-fold-slot .badge-a6 {
@@ -1774,73 +1761,6 @@
       width: 100% !important;
       height: 100% !important;
       border-radius: 0 !important;
-    }
-
-    /* Snijlijn Horizontaal (148,5 mm) - Zeer subtiele lichte stippellijn zonder groen of schaartjes */
-    .a4-fold-cutmark-h {
-      position: absolute;
-      top: 148.5mm;
-      left: 0;
-      width: 210mm;
-      height: 0;
-      border-top: 1px dashed rgba(0, 0, 0, 0.12);
-      z-index: 30;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .fold-guide-cut-label {
-      font-family: var(--font-heading);
-      font-size: 7.2px;
-      font-weight: 700;
-      letter-spacing: 0.35px;
-      text-transform: uppercase;
-      background: #ffffff;
-      padding: 2.5px 11px;
-      border-radius: 9999px;
-      color: #64748b;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      position: relative;
-      top: -0.5px;
-    }
-
-    /* Vouwlijn Verticaal (105 mm) - Zeer subtiele lichte vouwlijn */
-    .a4-fold-crease-v {
-      position: absolute;
-      left: 105mm;
-      top: 0;
-      width: 0;
-      height: 297mm;
-      border-left: 1px dashed rgba(0, 0, 0, 0.10);
-      z-index: 30;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .fold-guide-crease-label {
-      font-family: var(--font-heading);
-      font-size: 7.2px;
-      font-weight: 700;
-      letter-spacing: 0.35px;
-      text-transform: uppercase;
-      background: #ffffff;
-      padding: 2px 10px;
-      border-radius: 9999px;
-      color: #64748b;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .fold-guide-crease-label.top {
-      margin-top: 10mm;
-    }
-    .fold-guide-crease-label.bottom {
-      margin-bottom: 10mm;
     }
 
     /* ==========================================================================
@@ -1961,7 +1881,7 @@
       }
 
       body.mode-a4 .a4-badge-slot {
-        border-color: #cbd5e1 !important;
+        border: none !important;
       }
 
       /* A4 Vouwvel (2x A6 Dubbelzijdig) print mode */
@@ -1993,18 +1913,12 @@
       body.mode-fold .fold-guide-cut-label,
       body.mode-fold .fold-guide-crease-label,
       body.mode-fold .cut-edge-mark,
-      body.mode-fold .crease-edge-mark {
+      body.mode-fold .crease-edge-mark,
+      .a4-cutmark-h,
+      .a4-cutmark-v,
+      .a4-fold-cutmark-h,
+      .a4-fold-crease-v {
         display: none !important;
-      }
-
-      body.mode-fold .a4-fold-cutmark-h {
-        border-top: 1px dashed #e2e8f0 !important;
-        display: flex !important;
-      }
-
-      body.mode-fold .a4-fold-crease-v {
-        border-left: 1px dashed #e5e7eb !important;
-        display: flex !important;
       }
 
       /* Voorkom doordrukken/rasterfouten van boxen en schaduwen bij fysiek printen */
@@ -2264,11 +2178,11 @@
                   </div>
                   <div>
                     <div class="format-tile-title">A4 Drukvel (4x A6 op 1 vel)</div>
-                    <div class="format-tile-sub">Met professionele snijkruisen</div>
+                    <div class="format-tile-sub">In 4 gelijke A6 delen</div>
                   </div>
                 </div>
                 <div class="format-tile-desc">
-                  Vult een A4 vel met 4 badges voorzien van subtiele snijmarkeringen voor een snijmachine.
+                  Vult een A4 vel met 4 badges, direct klaar om in 4 gelijke delen te snijden.
                 </div>
               </div>
             </div>
@@ -2292,7 +2206,7 @@
                 <span><strong>A4 Vouwvel:</strong> Print automatisch 2 complete dubbelzijdige kaarten van de gekozen stoel op 1 A4 vel.</span>
               </div>
               <div style="font-size: 0.82rem; color: #64748b;">
-                <em>1× horizontaal doorsnijden op 148,5 mm &amp; dubbelvouwen.</em>
+                <em>1× horizontaal doorsnijden &amp; dubbelvouwen.</em>
               </div>
             </div>
 
@@ -2353,7 +2267,7 @@
           <span>Live Afdrukvoorbeeld</span>
         </div>
         <div class="preview-info-badge" id="previewInfoBadge">
-          A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten (1x snijden &amp; vouwen)
+          A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten
         </div>
       </div>
 
@@ -2599,8 +2513,6 @@
     <!-- 4x A6 Drukvel Container (A4 View - Pagina 1: Voorkant) -->
     <div class="a4-sheet-container" id="a4SheetContainer">
       <div class="a4-sheet-badge">Pagina 1 &bull; 4x Voorkant (Showroombadges)</div>
-      <div class="a4-cutmark-h"></div>
-      <div class="a4-cutmark-v"></div>
       <div class="a4-grid-4" id="a4GridSlot">
         <!-- Wordt dynamisch gevuld met 4 A6 voorkant badges -->
       </div>
@@ -2609,8 +2521,6 @@
     <!-- 4x A6 Drukvel Container (A4 View - Pagina 2: Achterkant) -->
     <div class="a4-sheet-container a4-sheet-back" id="a4SheetContainerBack">
       <div class="a4-sheet-badge">Pagina 2 &bull; 4x Achterkant (Specificaties &amp; Pasrapport)</div>
-      <div class="a4-cutmark-h"></div>
-      <div class="a4-cutmark-v"></div>
       <div class="a4-grid-4" id="a4GridSlotBack">
         <!-- Wordt dynamisch gevuld met 4 A6 achterkant badges -->
       </div>
@@ -2618,19 +2528,8 @@
 
     <!-- A4 Vouwvel Container (2x A6 Dubbelzijdig op 1 A4 vel) -->
     <div class="a4-sheet-container a4-fold-container" id="a4FoldContainer">
-      <div class="a4-sheet-badge">A4 Vouwvel &bull; 2x Dubbelzijdige A6 Stoelbadge (1x horizontaal snijden, dubbelvouwen)</div>
+      <div class="a4-sheet-badge">A4 Vouwvel &bull; 2x Dubbelzijdige A6 Stoelbadge</div>
       
-      <!-- Snijlijn Horizontaal (148,5 mm) -->
-      <div class="a4-fold-cutmark-h">
-        <span class="fold-guide-cut-label">Snijlijn (148,5 mm)</span>
-      </div>
-
-      <!-- Vouwlijn Verticaal (105 mm) -->
-      <div class="a4-fold-crease-v">
-        <span class="fold-guide-crease-label top">Vouwlijn</span>
-        <span class="fold-guide-crease-label bottom">Vouwlijn</span>
-      </div>
-
       <!-- 2x2 Grid -->
       <div class="a4-fold-grid" id="a4FoldGrid">
         <!-- Dynamisch gevuld met 4 slots: [Voor 1] [Achter 1], [Voor 2] [Achter 2] -->
@@ -3534,11 +3433,11 @@
 
       if (previewInfoBadge) {
         if (mode === 'fold') {
-          previewInfoBadge.textContent = 'A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten (1x snijden & vouwen)';
+          previewInfoBadge.textContent = 'A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten';
         } else if (mode === 'single') {
           previewInfoBadge.textContent = '1x A6 Badge • 105 × 148 mm formaat';
         } else if (mode === 'a4') {
-          previewInfoBadge.textContent = 'A4 Drukvel • 4x A6 Badges met snijmarkeringen';
+          previewInfoBadge.textContent = 'A4 Drukvel • 4x A6 Badges';
         }
       }
 
