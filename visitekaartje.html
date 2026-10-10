@@ -243,12 +243,18 @@
       border: 1px solid rgba(18, 43, 7, 0.08);
     }
 
-    /* Top row: Brand logo + Swooshes */
-    .card-front-header {
+    /* Top Section: Identity (Logo + Name) on left, Large Eco Sticker on right */
+    .card-front-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      position: relative;
+      align-items: center;
+      gap: 3mm;
+    }
+
+    .card-front-identity {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
     }
 
     .card-brand-logo {
@@ -264,26 +270,23 @@
       color: var(--color-terracotta);
     }
 
-    .card-stamp-badge {
-      width: 10.5mm;
-      height: 10.5mm;
-      display: block;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
-    }
-
-    /* Person Info */
-    .card-person {
-      margin-top: 1.5mm;
-      margin-bottom: 1.5mm;
-    }
-
     .card-person-name {
       font-family: var(--font-heading);
-      font-size: 4.6mm;
+      font-size: 4.4mm;
       font-weight: 900;
       color: var(--color-forest-dark);
       letter-spacing: -0.2px;
       line-height: 1.15;
+      margin: 0;
+    }
+
+    /* Grote Kwaliteitssticker (Nieuw & Gereviseerd + Eco-icoon) */
+    .card-stamp-badge {
+      width: 20mm;
+      height: 20mm;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(18, 43, 7, 0.16));
     }
 
     .card-person-title {
@@ -292,7 +295,8 @@
       font-weight: 700;
       color: var(--color-forest);
       letter-spacing: 0.1px;
-      margin-top: 0.8mm;
+      margin-top: 1mm;
+      margin-bottom: 0.5mm;
       white-space: nowrap;
       display: block;
     }
@@ -307,7 +311,7 @@
       height: 0.55mm;
       background: var(--color-forest);
       border-radius: 9999px;
-      margin: 1.8mm auto;
+      margin: 1.6mm auto;
     }
 
     /* Contact Details Grid (Compact, razor sharp) */
@@ -493,9 +497,10 @@
     }
 
     .card-back-stamp-seal {
-      width: 10.5mm;
-      height: 10.5mm;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
+      width: 17.5mm;
+      height: 17.5mm;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.45));
       display: block;
     }
 
@@ -658,19 +663,19 @@
         <div class="card-label">Voorzijde (Wit &amp; Huisstijl)</div>
         
         <article class="business-card card-front" id="cardFront">
-          <!-- Header with Logo and Stamp (zonder rare swooshes) -->
-          <div class="card-front-header">
-            <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
-            <!-- Subtiele Stempel / Keurmerk -->
-            <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Keurmerk" class="card-stamp-badge">
+          <!-- Top Row: Logo & Naam links, Grote Eco Kwaliteitssticker rechts -->
+          <div class="card-front-top">
+            <div class="card-front-identity">
+              <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
+              <h1 class="card-person-name">Geertjan Klein Haneveld</h1>
+            </div>
+            <!-- Grote Kwaliteitssticker: Nieuw & Gereviseerd + Eco-icoon -->
+            <img src="assets/sticker_nieuw_gereviseerd.svg" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
           </div>
 
-          <!-- Person info -->
-          <div class="card-person">
-            <h1 class="card-person-name">Geertjan Klein Haneveld</h1>
-            <div class="card-person-title">
-              Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
-            </div>
+          <!-- Functietitel (Volledige breedte op 1 regel) -->
+          <div class="card-person-title">
+            Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
           </div>
 
           <!-- Gecentreerde Groene Divider tussen de blokken -->
@@ -722,8 +727,8 @@
               <div class="card-back-logo">staopstoelen<span>.nl</span></div>
               <div class="card-back-tagline">Specialist in ergonomische maatwerkstoelen</div>
             </div>
-            <!-- Keurmerk Stempel -->
-            <img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="100% Kwaliteit" class="card-back-stamp-seal">
+            <!-- Grote Keurmerk / Sticker: Nieuw & Gereviseerd met Eco-icoon -->
+            <img src="assets/sticker_nieuw_gereviseerd.svg" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-back-stamp-seal">
           </div>
 
           <!-- USPs -->
