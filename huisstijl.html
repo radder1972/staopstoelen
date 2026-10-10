@@ -39,7 +39,7 @@
 
     body {
       font-family: var(--font-body);
-      background-color: #f4f6f8;
+      background-color: #faf9f5;
       color: var(--color-dark);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -48,8 +48,8 @@
 
     /* Top Navigation Toolbar */
     .portal-nav {
-      background: var(--color-forest-dark);
-      color: #ffffff;
+      background: #ffffff;
+      color: var(--color-dark);
       padding: 16px 36px;
       display: flex;
       justify-content: space-between;
@@ -57,8 +57,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 20px rgba(18, 43, 7, 0.3);
-      border-bottom: 2px solid var(--color-forest);
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+      border-bottom: 2px solid rgba(75, 143, 36, 0.2);
       flex-wrap: wrap;
       gap: 16px;
     }
@@ -78,7 +78,7 @@
       font-family: var(--font-heading);
       font-size: 1.35rem;
       font-weight: 900;
-      color: #ffffff;
+      color: var(--color-forest);
       letter-spacing: -0.3px;
       line-height: 1.1;
       text-decoration: none;
@@ -89,10 +89,11 @@
 
     .brand-sub {
       font-size: 0.78rem;
-      font-weight: 600;
-      color: #ffd8a8;
+      font-weight: 700;
+      color: var(--color-forest);
       text-transform: uppercase;
       letter-spacing: 0.8px;
+      opacity: 0.85;
     }
 
     .portal-nav-right {
@@ -102,7 +103,7 @@
     }
 
     .btn-website {
-      color: #ffffff;
+      color: var(--color-forest);
       text-decoration: none;
       font-family: var(--font-heading);
       font-size: 0.85rem;
@@ -112,12 +113,13 @@
       gap: 8px;
       padding: 8px 16px;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.2);
       transition: all 0.2s ease;
     }
     .btn-website:hover {
-      background: rgba(255, 255, 255, 0.22);
-      color: var(--color-sky);
+      background: rgba(75, 143, 36, 0.16);
+      color: #1a3310;
     }
 
     /* Main Container */
@@ -132,17 +134,17 @@
 
     /* Hero Banner */
     .portal-hero {
-      background: linear-gradient(135deg, #132d08 0%, #1c3d0d 100%);
-      color: #ffffff;
+      background: linear-gradient(135deg, #ffffff 0%, #f4f8f1 50%, #fdfbf5 100%);
+      color: var(--color-dark);
       padding: 44px 48px;
       border-radius: 20px;
-      box-shadow: 0 16px 40px rgba(18, 43, 7, 0.16);
+      box-shadow: 0 10px 32px rgba(75, 143, 36, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(75, 143, 36, 0.2);
     }
 
     .portal-hero::after {
@@ -152,7 +154,7 @@
       bottom: -80px;
       width: 320px;
       height: 320px;
-      background: radial-gradient(circle, rgba(75, 143, 36, 0.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(75, 143, 36, 0.1) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -168,13 +170,13 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.4px;
-      color: var(--color-terracotta);
-      background: rgba(243, 146, 35, 0.15);
-      padding: 4px 14px;
+      color: var(--color-forest);
+      background: rgba(75, 143, 36, 0.1);
+      padding: 5px 14px;
       border-radius: 9999px;
       display: inline-block;
       margin-bottom: 14px;
-      border: 1px solid rgba(243, 146, 35, 0.3);
+      border: 1px solid rgba(75, 143, 36, 0.25);
     }
 
     .hero-title {
@@ -182,17 +184,17 @@
       font-size: 2.2rem;
       font-weight: 900;
       line-height: 1.2;
-      color: #ffffff;
+      color: #17330c;
       margin-bottom: 12px;
       letter-spacing: -0.5px;
     }
     .hero-title span {
-      color: var(--color-sage);
+      color: var(--color-forest);
     }
 
     .hero-desc {
       font-size: 1.05rem;
-      color: #e2e8df;
+      color: #4a5568;
       line-height: 1.6;
     }
 
@@ -204,7 +206,7 @@
     .hero-seal {
       width: 130px;
       height: 130px;
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+      filter: drop-shadow(0 6px 20px rgba(75, 143, 36, 0.15));
     }
 
     /* Section Styles */
@@ -623,7 +625,7 @@
     <div class="portal-nav-right">
       <a href="afspraak.html" class="btn-website">
         <span>Showroom Dordrecht:</span>
-        <strong style="color: #ffd8a8; margin-left: 4px;">078 - 631 4858</strong>
+        <strong style="color: var(--color-terracotta-dark); margin-left: 4px;">078 - 631 4858</strong>
       </a>
     </div>
   </header>

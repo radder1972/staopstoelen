@@ -665,7 +665,7 @@
 
   <!-- Top Action Bar (Screen Only) -->
   <div class="top-toolbar">
-    <a href="keuzehulp.html" class="btn-back">
+    <a href="keuzehulp.html" class="btn-back" id="indicatiewijzerBackBtn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Terug naar Keuzehulp
     </a>
@@ -905,6 +905,15 @@
         });
       }
     });
+
+    // Check if opened from huisstijl portal
+    (function() {
+      var backBtn = document.getElementById('indicatiewijzerBackBtn');
+      if (backBtn && (document.referrer.indexOf('huisstijl') !== -1 || window.location.search.indexOf('from=huisstijl') !== -1)) {
+        backBtn.href = 'huisstijl.html';
+        backBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Terug naar Huisstijl';
+      }
+    })();
   </script>
 </body>
 </html>
