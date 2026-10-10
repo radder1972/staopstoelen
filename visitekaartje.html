@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitekaartje Geertjan Klein Haneveld | staopstoelen.nl</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-sage: #6ab13c;
+      --color-sage-light: #eef7eb;
+      --color-sky: #bce4f2;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #c86908;
+      --color-cream: #fbf9f5;
+      --color-cream-dark: #f3efe6;
+      --color-dark: #1d2024;
+      --color-gray: #5e6368;
+      --color-gray-light: #e2e4e6;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      
+      /* Card Dimensions (Euro Standard 85mm x 55mm) */
+      --card-w: 85mm;
+      --card-h: 55mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: #e9ecef;
+      color: var(--color-dark);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Screen Toolbar */
+    .toolbar {
+      background: var(--color-forest-dark);
+      color: #ffffff;
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 18px rgba(18, 43, 7, 0.3);
+      border-bottom: 2px solid var(--color-forest);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-back {
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--color-sky);
+    }
+
+    .toolbar-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .toolbar-title span {
+      color: var(--color-terracotta);
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(243, 146, 35, 0.2);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(243, 146, 35, 0.4);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .view-selector {
+      display: flex;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .btn-mode {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-mode.active {
+      background: #ffffff;
+      color: var(--color-forest-dark);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--color-terracotta) 0%, #e07f12 100%);
+      color: #ffffff;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 3px 14px rgba(243, 146, 35, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 18px rgba(243, 146, 35, 0.55);
+    }
+
+    /* Screen Showcase Stage */
+    .stage {
+      max-width: 1100px;
+      margin: 36px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .hint-bar {
+      background: #ffffff;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--color-gray);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hint-bar strong {
+      color: var(--color-forest-dark);
+    }
+
+    /* Cards Container - Side by Side View */
+    .cards-preview-wrap {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .card-preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-label {
+      font-family: var(--font-heading);
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-forest-dark);
+      background: rgba(75, 143, 36, 0.12);
+      padding: 4px 14px;
+      border-radius: 9999px;
+    }
+
+    /* ==========================================================================
+       THE BUSINESS CARD CONTAINER (85mm x 55mm Exact Physical Dimension)
+       ========================================================================== */
+    .business-card {
+      width: var(--card-w);
+      height: var(--card-h);
+      position: relative;
+      border-radius: 3.5mm;
+      box-shadow: 0 14px 34px rgba(18, 43, 7, 0.16), 0 3px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 5.5mm 6.5mm;
+      background: #ffffff;
+      transform: translateZ(0);
+    }
+
+    /* --------------------------------------------------------------------------
+       CARD FRONT (Voorzijde)
+       -------------------------------------------------------------------------- */
+    .card-front {
+      background: #ffffff;
+      color: var(--color-dark);
+      border: 1px solid rgba(18, 43, 7, 0.08);
+    }
+
+    /* Top row: Brand logo + Swooshes */
+    .card-front-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .card-brand-logo {
+      font-family: var(--font-heading);
+      font-size: 5mm;
+      font-weight: 900;
+      color: var(--color-forest);
+      letter-spacing: -0.3px;
+      line-height: 1;
+      display: inline-block;
+    }
+    .card-brand-logo span {
+      color: var(--color-terracotta);
+    }
+
+    .card-brand-swoosh {
+      width: 32mm;
+      height: 3.5mm;
+      display: block;
+      margin-top: 1.2mm;
+    }
+
+    .card-stamp-badge {
+      width: 10.5mm;
+      height: 10.5mm;
+      display: block;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
+    }
+
+    /* Person Info */
+    .card-person {
+      margin-top: 2mm;
+      margin-bottom: 2mm;
+    }
+
+    .card-person-name {
+      font-family: var(--font-heading);
+      font-size: 4.6mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.2px;
+      line-height: 1.15;
+    }
+
+    .card-person-title {
+      font-family: var(--font-heading);
+      font-size: 2.5mm;
+      font-weight: 700;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0.6mm;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+    }
+    .card-person-title span.badge-spec {
+      color: var(--color-terracotta);
+      font-weight: 800;
+    }
+
+    /* Contact Details Grid (Compact, razor sharp) */
+    .card-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2mm 2.5mm;
+      padding-top: 1.8mm;
+      border-top: 0.4mm solid rgba(75, 143, 36, 0.25);
+    }
+
+    .card-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.6mm;
+      font-size: 2.25mm;
+      color: var(--color-dark);
+      font-weight: 600;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .card-contact-item:hover {
+      color: var(--color-forest);
+    }
+
+    .card-contact-item svg {
+      width: 3.2mm;
+      height: 3.2mm;
+      flex-shrink: 0;
+      stroke: var(--color-forest);
+      stroke-width: 2.3;
+    }
+
+    .card-contact-item.item-mobile svg {
+      stroke: var(--color-terracotta);
+    }
+
+    .card-contact-item strong {
+      color: var(--color-forest-dark);
+      font-weight: 700;
+    }
+
+    .card-contact-item.item-full {
+      grid-column: 1 / -1;
+      font-size: 2.1mm;
+      color: var(--color-gray);
+    }
+    .card-contact-item.item-full svg {
+      stroke: var(--color-gray);
+    }
+
+    /* --------------------------------------------------------------------------
+       CARD BACK (Achterzijde - Premium Luxe Donkergroen & Terracotta)
+       -------------------------------------------------------------------------- */
+    .card-back {
+      background: linear-gradient(145deg, #132d08 0%, #0d1e05 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    /* Decorative faint backdrop swoosh */
+    .card-back-bg-waves {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .card-back-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-back-logo {
+      font-family: var(--font-heading);
+      font-size: 5.4mm;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+      line-height: 1;
+    }
+    .card-back-logo span {
+      color: var(--color-terracotta);
+    }
+
+    .card-back-tagline {
+      font-family: var(--font-heading);
+      font-size: 2.1mm;
+      font-weight: 700;
+      color: #ffd8a8;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-top: 0.8mm;
+    }
+
+    /* USPs with checkboxes */
+    .card-back-usps {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1mm;
+      margin: 1.5mm 0;
+    }
+
+    .card-usp-item {
+      display: flex;
+      align-items: center;
+      gap: 1.8mm;
+      font-size: 2.35mm;
+      color: #f1f5ec;
+      font-weight: 500;
+    }
+    .card-usp-item strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .usp-check {
+      width: 3.2mm;
+      height: 3.2mm;
+      background: var(--color-forest);
+      color: #ffffff;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1mm;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* Bottom footer on card back: QR + URL + Address */
+    .card-back-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5mm;
+      border-top: 0.3mm solid rgba(255, 255, 255, 0.18);
+    }
+
+    .card-back-qr-box {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+    }
+
+    .card-qr-img {
+      width: 10mm;
+      height: 10mm;
+      background: #ffffff;
+      padding: 0.6mm;
+      border-radius: 1mm;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      display: block;
+    }
+
+    .card-qr-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4mm;
+    }
+    .card-qr-text-scan {
+      font-family: var(--font-heading);
+      font-size: 2mm;
+      font-weight: 800;
+      color: var(--color-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card-qr-text-url {
+      font-family: var(--font-heading);
+      font-size: 2.4mm;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.1px;
+    }
+
+    .card-back-stamp-seal {
+      width: 10.5mm;
+      height: 10.5mm;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
+      display: block;
+    }
+
+    /* --------------------------------------------------------------------------
+       A4 DRUKVEL (Print Sheet: 10 Kaartjes met snijlijnen op 1 A4 vel)
+       -------------------------------------------------------------------------- */
+    .sheet-print-container {
+      display: none;
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      margin: 20px auto;
+      padding: 15mm 15mm;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .sheet-header-info {
+      text-align: center;
+      margin-bottom: 8mm;
+      border-bottom: 1px solid var(--color-gray-light);
+      padding-bottom: 4mm;
+    }
+    .sheet-header-info h2 {
+      font-family: var(--font-heading);
+      font-size: 14pt;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+    }
+    .sheet-header-info p {
+      font-size: 9pt;
+      color: var(--color-gray);
+      margin-top: 1mm;
+    }
+
+    .grid-10-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 85mm);
+      grid-template-rows: repeat(5, 55mm);
+      gap: 4mm 6mm;
+      justify-content: center;
+    }
+
+    /* Cutting marks (snijtekens / stippellijnen) rond de kaartjes op A4 vel */
+    .grid-card-wrapper {
+      position: relative;
+      width: 85mm;
+      height: 55mm;
+      border: 0.5px dashed #b5bcc4;
+      border-radius: 3.5mm;
+    }
+    .grid-card-wrapper .business-card {
+      box-shadow: none !important;
+    }
+
+    /* ==========================================================================
+       PRINT MEDIA QUERY (Exact 85mm x 55mm of A4 Drukvel)
+       ========================================================================== */
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .toolbar, .hint-bar, .card-label {
+        display: none !important;
+      }
+
+      /* Single Card Print Mode (default print) */
+      body.mode-single {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      body.mode-single .stage {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+      }
+
+      body.mode-single .cards-preview-wrap {
+        display: block !important;
+        gap: 0 !important;
+      }
+
+      body.mode-single .card-preview-item {
+        page-break-after: always;
+        break-after: page;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      body.mode-single .business-card {
+        margin: 0 auto !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      /* Sheet Mode Print */
+      body.mode-sheet .stage {
+        display: none !important;
+      }
+
+      body.mode-sheet .sheet-print-container {
+        display: block !important;
+        margin: 0 auto !important;
+        padding: 10mm 10mm !important;
+        box-shadow: none !important;
+        min-height: 100vh !important;
+      }
+    }
+  </style>
+</head>
+<body class="mode-single">
+
+  <!-- Top Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="index.html" class="btn-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Terug naar Website
+      </a>
+      <div class="toolbar-title">
+        Visitekaartje
+        <span>Geertjan Klein Haneveld</span>
+      </div>
+    </div>
+
+    <div class="toolbar-actions">
+      <!-- Weergave / Print Schakelaar -->
+      <div class="view-selector">
+        <button type="button" class="btn-mode active" id="btnModeSingle">
+          Enkel Kaartje (85×55mm)
+        </button>
+        <button type="button" class="btn-mode" id="btnModeSheet">
+          A4 Drukvel (10 op 1 vel)
+        </button>
+      </div>
+
+      <button type="button" class="btn-print" id="btnPrintCard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Afdrukken / Opslaan als PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Interactive Stage (Voorzijde & Achterzijde) -->
+  <main class="stage" id="screenStage">
+    <div class="hint-bar">
+      <span>💡</span>
+      <span><strong>Standaard formaat:</strong> 85 mm &times; 55 mm &bull; Klaar voor professionele drukkerij of direct zelf printen als A4 drukvel met snijtekens.</span>
+    </div>
+
+    <div class="cards-preview-wrap">
+      
+      <!-- 1. VOORZIJDE (FRONT) -->
+      <div class="card-preview-item">
+        <div class="card-label">Voorzijde (Wit &amp; Huisstijl)</div>
+        
+        <article class="business-card card-front" id="cardFront">
+          <!-- Header with Logo and Swooshes -->
+          <div class="card-front-header">
+            <div>
+              <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
+              <!-- 4 Signature Swooshes -->
+              <svg class="card-brand-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 60" preserveAspectRatio="none">
+                <path d="M 0,22 Q 250,50 500,20 T 1000,25" fill="none" stroke="var(--color-sky)" stroke-width="6" stroke-linecap="round" opacity="0.8"></path>
+                <path d="M 0,30 Q 250,10 500,32 T 1000,34" fill="none" stroke="var(--color-terracotta)" stroke-width="5" stroke-linecap="round" opacity="0.9"></path>
+                <path d="M 0,37 Q 250,54 500,30 T 1000,40" fill="none" stroke="var(--color-sage)" stroke-width="5.5" stroke-linecap="round" opacity="0.95"></path>
+                <path d="M 0,44 Q 250,26 500,44 T 1000,46" fill="none" stroke="var(--color-forest)" stroke-width="8" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <!-- Subtiele Stempel / Keurmerk -->
+            <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Keurmerk" class="card-stamp-badge">
+          </div>
+
+          <!-- Person info -->
+          <div class="card-person">
+            <h1 class="card-person-name">Geertjan Klein Haneveld</h1>
+            <div class="card-person-title">
+              Gediplomeerd Bewegingstechnoloog
+              <span class="badge-spec">&bull; Zitexpert</span>
+            </div>
+          </div>
+
+          <!-- Contact Grid -->
+          <div class="card-contact-grid">
+            <!-- Mobiel / WhatsApp direct -->
+            <a href="https://wa.me/31622232964" class="card-contact-item item-mobile" title="WhatsApp of mobiel bellen">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><strong>06 - 22 23 29 64</strong></span>
+            </a>
+
+            <!-- Vaste Lijn Showroom -->
+            <a href="tel:+31786314858" class="card-contact-item" title="Showroom Dordrecht bellen">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <span>078 - 631 4858</span>
+            </a>
+
+            <!-- Direct Email Geertjan -->
+            <a href="mailto:geertjan@staopstoelen.nl" class="card-contact-item" title="Stuur Geertjan een e-mail">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>geertjan@staopstoelen.nl</span>
+            </a>
+
+            <!-- Website -->
+            <a href="https://www.staopstoelen.nl" class="card-contact-item" title="Bezoek website">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>www.staopstoelen.nl</span>
+            </a>
+
+            <!-- Showroom Adres Volledige breedte -->
+            <div class="card-contact-item item-full">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Showroom: Merwedestraat 239, 3313 GT Dordrecht</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 2. ACHTERZIJDE (BACK) -->
+      <div class="card-preview-item">
+        <div class="card-label">Achterzijde (Luxe Forest Green &amp; QR)</div>
+        
+        <article class="business-card card-back" id="cardBack">
+          <!-- Background faint swoosh curves -->
+          <svg class="card-back-bg-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" preserveAspectRatio="none">
+            <path d="M 0,100 Q 150,220 300,120 T 500,160" fill="none" stroke="#4b8f24" stroke-width="40" stroke-linecap="round"></path>
+            <path d="M 0,160 Q 180,80 320,180 T 500,200" fill="none" stroke="#f39223" stroke-width="25" stroke-linecap="round"></path>
+          </svg>
+
+          <!-- Back Header: Logo + Strapline -->
+          <div class="card-back-header">
+            <div>
+              <div class="card-back-logo">staopstoelen<span>.nl</span></div>
+              <div class="card-back-tagline">Specialist in ergonomische maatwerkstoelen</div>
+            </div>
+            <!-- Keurmerk Stempel -->
+            <img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="100% Kwaliteit" class="card-back-stamp-seal">
+          </div>
+
+          <!-- USPs -->
+          <div class="card-back-usps">
+            <div class="card-usp-item">
+              <span class="usp-check">✓</span>
+              <span><strong>Gratis zitmeting &amp; passing aan huis</strong> in heel NL</span>
+            </div>
+            <div class="card-usp-item">
+              <span class="usp-check">✓</span>
+              <span><strong>Nieuw maatwerk &amp; gereviseerde occasions</strong></span>
+            </div>
+            <div class="card-usp-item">
+              <span class="usp-check">✓</span>
+              <span><strong>Eigen werkplaats</strong> &amp; deskundige afstelling</span>
+            </div>
+          </div>
+
+          <!-- Back Footer with QR code & URL -->
+          <div class="card-back-footer">
+            <div class="card-back-qr-box">
+              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="card-qr-img">
+              <div class="card-qr-text">
+                <span class="card-qr-text-scan">Scan voor afspraak:</span>
+                <span class="card-qr-text-url">staopstoelen.nl</span>
+              </div>
+            </div>
+            <div style="font-size: 2.1mm; color: rgba(255,255,255,0.7); text-align: right; line-height: 1.3;">
+              <span>Fitform &bull; Doge &bull; Farstrup</span><br>
+              <span style="color: #ffd8a8; font-weight: 700;">Direct uit voorraad leverbaar</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- A4 Print Sheet Container (10 Kaartjes per vel met snijlijnen) -->
+  <section class="sheet-print-container" id="sheetContainer">
+    <div class="sheet-header-info">
+      <h2>staopstoelen.nl &mdash; Drukvel Visitekaartjes (10 exemplaren)</h2>
+      <p>Geertjan Klein Haneveld &bull; Gediplomeerd Bewegingstechnoloog &bull; Formaat: 85 &times; 55 mm &bull; Knip of snijd langs de buitenranden</p>
+    </div>
+
+    <div class="grid-10-cards" id="gridCardsSlot">
+      <!-- Wordt dynamisch gevuld met 10 identieke kaartjes (5 rijen van 2) -->
+    </div>
+  </section>
+
+  <script>
+    // Print Action
+    document.getElementById("btnPrintCard").addEventListener("click", () => {
+      window.print();
+    });
+
+    // Switch between Single Card & A4 Sheet Mode
+    const btnSingle = document.getElementById("btnModeSingle");
+    const btnSheet = document.getElementById("btnModeSheet");
+    const screenStage = document.getElementById("screenStage");
+    const sheetContainer = document.getElementById("sheetContainer");
+    const gridCardsSlot = document.getElementById("gridCardsSlot");
+
+    function renderA4Sheet() {
+      if (gridCardsSlot.children.length === 0) {
+        const frontHtml = document.getElementById("cardFront").outerHTML;
+        for (let i = 0; i < 10; i++) {
+          const wrap = document.createElement("div");
+          wrap.className = "grid-card-wrapper";
+          wrap.innerHTML = frontHtml;
+          gridCardsSlot.appendChild(wrap);
+        }
+      }
+    }
+
+    btnSingle.addEventListener("click", () => {
+      btnSingle.classList.add("active");
+      btnSheet.classList.remove("active");
+      document.body.className = "mode-single";
+      screenStage.style.display = "flex";
+      sheetContainer.style.display = "none";
+    });
+
+    btnSheet.addEventListener("click", () => {
+      btnSheet.classList.add("active");
+      btnSingle.classList.remove("active");
+      document.body.className = "mode-sheet";
+      screenStage.style.display = "none";
+      sheetContainer.style.display = "block";
+      renderA4Sheet();
+    });
+  </script>
+</body>
+</html>
