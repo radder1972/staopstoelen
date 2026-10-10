@@ -409,30 +409,31 @@
       color: var(--color-dark);
     }
 
-    /* Call to Action Box */
+    /* Call to Action Box - rustig opgemaakt zoals de gebruiksinstructie */
     .doc-cta-box {
-      border: 1.5px solid #b7d5ae;
-      background-color: #f4f8f1;
+      background: rgba(75, 143, 36, 0.06);
+      border: 1px solid rgba(75, 143, 36, 0.20);
       border-radius: 8px;
-      padding: 10px 14px;
-      margin-top: 18px;
+      padding: 7px 12px;
+      margin-top: 14px;
     }
 
     .doc-cta-title {
       color: var(--color-forest-dark);
       font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 11.5px;
       font-weight: 800;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
 
     .doc-cta-text {
-      font-size: 11.5px;
-      line-height: 1.45;
-      color: #2d3748;
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: var(--color-dark);
     }
 
     .doc-cta-text strong {
@@ -442,24 +443,25 @@
 
     .doc-cta-badges {
       display: flex;
-      gap: 8px;
-      margin-top: 8px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      gap: 7px;
+      margin-top: 6px;
     }
 
     .cta-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: rgba(45, 90, 60, 0.08);
-      border: 1px solid rgba(45, 90, 60, 0.18);
-      font-size: 11px;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.20);
+      font-size: 9.5px;
       font-family: var(--font-heading);
-      font-weight: 600;
+      font-weight: 700;
       color: var(--color-forest-dark);
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .cta-badge svg {
@@ -634,37 +636,40 @@
       }
 
       .doc-cta-box {
-        padding: 8px 12px !important;
-        margin-top: 12px !important;
-        background: #f4f8f1 !important;
-        border: 1px solid #b7d5ae !important;
+        padding: 6px 10px !important;
+        margin-top: 10px !important;
+        background: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
 
       .doc-cta-title {
-        font-size: 12px !important;
+        font-size: 10.5px !important;
         color: #163323 !important;
-        margin-bottom: 3px !important;
+        margin-bottom: 2px !important;
+        white-space: nowrap !important;
       }
 
       .doc-cta-text {
-        font-size: 10.5px !important;
+        font-size: 9.5px !important;
         line-height: 1.35 !important;
         color: #1f2937 !important;
       }
 
       .doc-cta-badges {
-        margin-top: 5px !important;
+        margin-top: 4px !important;
         gap: 6px !important;
+        flex-wrap: nowrap !important;
       }
 
       .cta-badge {
-        padding: 2px 6px !important;
-        font-size: 9.5px !important;
-        background: #eef5ec !important;
-        border: 1px solid #b7d5ae !important;
+        padding: 1.5px 5px !important;
+        font-size: 8.5px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
         color: #163323 !important;
+        white-space: nowrap !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -900,24 +905,24 @@
       <!-- Advies & Wmo Protocol CTA Box -->
       <aside class="doc-cta-box">
         <h3 class="doc-cta-title">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-forest); flex-shrink: 0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          Wacht niet op een langdurig Wmo-traject &mdash; direct comfort &amp; behoud van zelfstandigheid
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-forest); flex-shrink: 0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Wacht niet op een langdurig Wmo-traject &mdash; direct comfort &amp; zelfstandigheid
         </h3>
         <p class="doc-cta-text">
           Gemeentelijke Wmo-aanvraagprocedures duren gemiddeld <strong>12 tot 20 weken</strong>, met risico op functieverlies of overbelasting van de mantelzorger. Wij leveren een ergonomische sta-opstoel direct op maat uit voorraad, passend bij ieder budget &mdash; snel geleverd inclusief <strong>gratis meting en passing aan huis</strong>.
         </p>
         <div class="doc-cta-badges">
           <span class="cta-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Snel geleverd uit voorraad
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Snel uit voorraad leverbaar
           </span>
           <span class="cta-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Gratis meting &amp; passing aan huis
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Gratis passing &amp; meting aan huis
           </span>
           <span class="cta-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Nieuw &amp; gereviseerd voor elk budget
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Nieuw &amp; gereviseerd op maat
           </span>
         </div>
       </aside>
