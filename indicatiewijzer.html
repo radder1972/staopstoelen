@@ -155,12 +155,12 @@
       box-sizing: border-box;
     }
 
-    /* Header Section in Website Huisstijl (Navbar + Occasions Header Banner + Swooshes) */
+    /* Header Section in Website Huisstijl (Navbar + Unified Header Box + Swooshes) */
     .doc-header-site-style {
       margin-bottom: 2px;
     }
 
-    /* 1. Top Brand Bar (zoals website navbar) */
+    /* 1. Top Brand Bar: staopstoelen.nl links, enkel telefoonnummer rechts */
     .site-brand-bar {
       display: flex;
       justify-content: space-between;
@@ -196,33 +196,37 @@
       white-space: nowrap;
     }
 
-    .site-brand-contact {
-      display: flex;
+    .site-brand-phone {
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
-      font-size: 0.78rem;
+      gap: 7px;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 800;
       color: var(--color-forest-dark);
-      font-weight: 500;
+      letter-spacing: -0.2px;
       padding-bottom: 2px;
     }
-    .site-brand-contact strong {
-      color: var(--color-terracotta);
-      font-size: 0.85rem;
+
+    /* 2. Gecombineerde Hoofdbox: Titelbanner + Cliëntgegevens + Instructie */
+    .unified-header-box {
+      border: 1px solid #d4dec9;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(18, 43, 7, 0.08);
+      margin-bottom: 2px;
+      background-color: #ffffff;
     }
 
-    /* 2. Occasions Header Banner (zoals .occasions-header op de website) */
+    /* Groene Banner bovenzijde (Grotere titel Indicatiewijzer Zithouding & Mobiliteit) */
     .site-banner-box {
-      background: linear-gradient(135deg, var(--color-forest) 0%, #3e7b1e 100%);
+      background: linear-gradient(135deg, var(--color-forest) 0%, #3a751c 100%);
       color: #ffffff;
-      border-radius: var(--radius-sm);
-      padding: 10px 16px;
+      padding: 10px 18px 11px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      box-shadow: 0 3px 10px rgba(18, 43, 7, 0.12);
-      margin-bottom: 4px;
-      position: relative;
     }
 
     .site-banner-text {
@@ -233,7 +237,7 @@
     .site-section-tag {
       display: inline-block;
       font-family: var(--font-heading);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -244,17 +248,17 @@
     .site-banner-title {
       color: #ffffff;
       font-family: var(--font-heading);
-      font-size: 1.28rem;
+      font-size: 1.42rem;
       font-weight: 900;
       letter-spacing: -0.3px;
-      line-height: 1.2;
+      line-height: 1.18;
       margin: 1px 0 3px 0;
       white-space: nowrap;
     }
 
     .site-banner-subtitle {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.82rem;
       font-weight: 400;
       line-height: 1.3;
       margin: 0;
@@ -268,39 +272,31 @@
     }
 
     .doc-stamp-large {
-      width: 86px;
-      height: 86px;
+      width: 90px;
+      height: 90px;
       filter: drop-shadow(0 3px 8px rgba(0,0,0,0.22));
       display: block;
     }
 
-    /* 3. FULL WIDTH SWOOSHES as the primary divider line */
-    .header-swoosh-fullwidth {
-      width: 100%;
-      height: 18px;
-      display: block;
-      margin-top: 2px;
-      margin-bottom: 8px;
-      overflow: visible;
+    /* Geïntegreerde Cliëntsectie */
+    .banner-client-section {
+      background-color: var(--color-cream);
+      padding: 10px 18px 8px 18px;
+      border-top: 2px solid var(--color-terracotta);
     }
 
-    /* Client & Visit Metadata Box */
     .client-meta-grid {
       display: grid;
       grid-template-columns: 1.3fr 0.9fr;
-      gap: 10px 20px;
-      background-color: var(--color-cream);
-      border: 1px solid var(--color-cream-dark);
-      border-radius: var(--radius-sm);
-      padding: 12px 18px;
-      margin-bottom: 10px;
+      gap: 8px 20px;
+      margin-bottom: 6px;
     }
 
     .meta-field {
       display: flex;
       align-items: flex-end;
       gap: 8px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     .meta-field label {
@@ -315,8 +311,8 @@
       border: none;
       border-bottom: 1.5px dotted #9aa2ab;
       background: transparent;
-      padding: 2px 4px;
-      font-size: 0.92rem;
+      padding: 1px 4px;
+      font-size: 0.9rem;
       font-family: var(--font-body);
       font-weight: 500;
       color: var(--color-dark);
@@ -324,16 +320,23 @@
       outline: none;
     }
 
-    /* Intro Instruction */
-    .doc-intro {
-      font-size: 0.84rem;
-      color: var(--color-dark);
-      line-height: 1.45;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      background-color: var(--color-sage-light);
-      border-left: 4px solid var(--color-forest);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    .doc-intro-compact {
+      font-size: 0.77rem;
+      color: var(--color-gray);
+      line-height: 1.35;
+      margin: 0;
+      padding-top: 4px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* 3. FULL WIDTH SWOOSHES als scheidingslijn direct onder de gecombineerde box */
+    .header-swoosh-fullwidth {
+      width: 100%;
+      height: 16px;
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 8px;
+      overflow: visible;
     }
 
     /* Section Styling */
@@ -578,22 +581,30 @@
       }
 
       .site-banner-box {
-        padding: 7px 14px !important;
-        margin-bottom: 3px !important;
+        padding: 7px 14px 8px 14px !important;
       }
 
       .site-banner-title {
-        font-size: 1.2rem !important;
+        font-size: 1.32rem !important;
         white-space: nowrap !important;
       }
 
       .doc-stamp-large {
-        width: 78px !important;
-        height: 78px !important;
+        width: 80px !important;
+        height: 80px !important;
+      }
+
+      .banner-client-section {
+        padding: 7px 14px 5px 14px !important;
+      }
+
+      .client-meta-grid {
+        gap: 5px 16px !important;
+        margin-bottom: 3px !important;
       }
 
       .header-swoosh-fullwidth {
-        height: 14px !important;
+        height: 13px !important;
         margin-top: 2px !important;
         margin-bottom: 6px !important;
       }
@@ -623,9 +634,9 @@
       }
 
       .doc-cta-box {
-        padding: 10px 14px !important;
-        margin-top: 10px !important;
-        margin-bottom: 8px !important;
+        padding: 8px 14px !important;
+        margin-top: 8px !important;
+        margin-bottom: 6px !important;
       }
 
       .doc-cta-title {
@@ -670,34 +681,61 @@
   <main class="document-wrapper" id="printableDocument">
     
     <div>
-      <!-- Document Header in Website Huisstijl (Navbar + Occasions Header Banner + Swooshes) -->
+      <!-- Document Header in Website Huisstijl (Navbar + Unified Header Box + Swooshes) -->
       <header class="doc-header-site-style">
-        <!-- 1. Top Brand Bar (zoals de navbar op de website) -->
+        <!-- 1. Top Brand Bar: Enkel staopstoelen.nl + tagline links, telefoonnummer rechts -->
         <div class="site-brand-bar">
           <div class="site-brand-left">
             <div class="site-brand-logo">staopstoelen<span>.nl</span></div>
-            <div class="site-brand-tagline">Specialist in ergonomische maatwerk stoelen</div>
+            <div class="site-brand-tagline">Specialisten in ergonomische maatwerkstoelen</div>
           </div>
-          <div class="site-brand-contact">
-            <span><strong>📞</strong> 078 - 631 4858</span>
-            <span><strong>✉️</strong> info@staopstoelen.nl</span>
-            <span><strong>📍</strong> Showroom Dordrecht</span>
-          </div>
-        </div>
-
-        <!-- 2. Occasions Header Banner (zoals de groene header banner op de website) -->
-        <div class="site-banner-box">
-          <div class="site-banner-text">
-            <span class="site-section-tag">Ergonomische Sneltoets &amp; Advies</span>
-            <h1 class="site-banner-title">Indicatiewijzer Zithouding &amp; Mobiliteit</h1>
-            <p class="site-banner-subtitle">Medisch en ergonomisch beoordelingsprotocol voor functionele zitsystemen</p>
-          </div>
-          <div class="site-banner-stamp">
-            <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Online Keuzehulp" class="doc-stamp-large">
+          <div class="site-brand-phone">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>078 - 631 4858</span>
           </div>
         </div>
 
-        <!-- 3. De 4 Vloeibare Huisstijl Swooshes over de VOLLE BREEDTE als overgangslijn -->
+        <!-- 2. Gecombineerde Hoofdbox: Titelbanner + Cliëntgegevens + Instructie -->
+        <div class="unified-header-box">
+          <!-- Bovenkant: Groene Banner (grotere titel Indicatiewijzer Zithouding & Mobiliteit) -->
+          <div class="site-banner-box">
+            <div class="site-banner-text">
+              <span class="site-section-tag">Ergonomische Sneltoets &amp; Advies</span>
+              <h1 class="site-banner-title">Indicatiewijzer Zithouding &amp; Mobiliteit</h1>
+              <p class="site-banner-subtitle">Medisch en ergonomisch beoordelingsprotocol voor functionele zitsystemen</p>
+            </div>
+            <div class="site-banner-stamp">
+              <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Online Keuzehulp" class="doc-stamp-large">
+            </div>
+          </div>
+
+          <!-- Onderkant: Cliëntgegevens & Protocol Instructie direct geïntegreerd -->
+          <div class="banner-client-section">
+            <div class="client-meta-grid">
+              <div class="meta-field">
+                <label for="clientName">Cliënt / Naam:</label>
+                <input type="text" id="clientName" autocomplete="off">
+              </div>
+              <div class="meta-field">
+                <label for="visitDate">Datum:</label>
+                <input type="text" id="visitDate" autocomplete="off">
+              </div>
+              <div class="meta-field">
+                <label for="therapistName">Beoordelaar / Organisatie:</label>
+                <input type="text" id="therapistName" autocomplete="off">
+              </div>
+              <div class="meta-field">
+                <label for="clientDob">Geboortedatum:</label>
+                <input type="text" id="clientDob" autocomplete="off">
+              </div>
+            </div>
+            <p class="doc-intro-compact">
+              Gebruik dit protocol tijdens het huisbezoek om de fysieke zithouding en medische indicaties te evalueren. Vink de stellingen aan die actueel van toepassing zijn.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. De 4 Vloeibare Huisstijl Swooshes over de VOLLE BREEDTE direct onder de gecombineerde box -->
         <svg class="header-swoosh-fullwidth" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 60" preserveAspectRatio="none">
           <!-- Wave 1: Sky Blue -->
           <path d="M 0,22 Q 250,50 500,20 T 1000,25" fill="none" stroke="var(--color-sky)" stroke-width="4.5" stroke-linecap="round" opacity="0.75"></path>
@@ -709,31 +747,6 @@
           <path d="M 0,44 Q 250,26 500,44 T 1000,46" fill="none" stroke="var(--color-forest)" stroke-width="6" stroke-linecap="round"></path>
         </svg>
       </header>
-
-      <!-- Client Metadata Grid - Volledig leeg & strak uniform Outfit font -->
-      <section class="client-meta-grid">
-        <div class="meta-field">
-          <label for="clientName">Cliënt / Naam:</label>
-          <input type="text" id="clientName" autocomplete="off">
-        </div>
-        <div class="meta-field">
-          <label for="visitDate">Datum:</label>
-          <input type="text" id="visitDate" autocomplete="off">
-        </div>
-        <div class="meta-field">
-          <label for="therapistName">Beoordelaar / Organisatie:</label>
-          <input type="text" id="therapistName" autocomplete="off">
-        </div>
-        <div class="meta-field">
-          <label for="clientDob">Geboortedatum:</label>
-          <input type="text" id="clientDob" autocomplete="off">
-        </div>
-      </section>
-
-      <!-- Intro Text -->
-      <p class="doc-intro">
-        Gebruik dit formulier tijdens het huisbezoek om de fysieke zithouding van de cliënt te evalueren. Vink de stellingen aan die actueel van toepassing zijn. Gebruik de invulregels voor uw observaties of specifieke meetwaarden.
-      </p>
 
       <!-- Section 1: Ergonomische Basishouding -->
       <section class="eval-section">
