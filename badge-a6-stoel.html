@@ -1207,8 +1207,21 @@
       updateFilterCounts();
       filteredChairs = [...chairsList];
       renderCarousel();
+      
+      let initIndex = 0;
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetParam = (urlParams.get('chair') || '').toLowerCase().trim();
+      if (targetParam && filteredChairs.length > 0) {
+        const found = filteredChairs.findIndex(c => 
+          (c.id && c.id.toLowerCase() === targetParam) ||
+          (c.slug && c.slug.toLowerCase() === targetParam) ||
+          (c.name && c.name.toLowerCase().includes(targetParam))
+        );
+        if (found !== -1) initIndex = found;
+      }
+
       if (filteredChairs.length > 0) {
-        selectChair(0);
+        selectChair(initIndex);
       }
     }
 
