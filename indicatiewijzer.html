@@ -307,6 +307,11 @@
       margin-bottom: 5px;
       background-color: #ffffff;
       transition: background-color 0.15s;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 66px;
     }
 
     .check-item:last-child {
@@ -330,7 +335,7 @@
     }
 
     .check-item.red-flag .custom-checkbox {
-      accent-color: var(--color-terracotta);
+      accent-color: var(--color-forest);
     }
 
     .check-title-group {
@@ -347,23 +352,23 @@
     }
 
     .check-item.red-flag .check-title {
-      color: #8c3800;
+      color: var(--color-forest-dark);
     }
 
     .check-risk {
       font-size: 0.74rem;
-      color: #b91c1c;
+      color: #4b5563;
       margin-top: 2px;
       line-height: 1.35;
     }
 
     .check-risk strong {
-      color: #991b1b;
+      color: var(--color-forest-dark);
       font-weight: 700;
     }
 
     .check-risk.clinical-note {
-      color: var(--color-gray);
+      color: #4b5563;
     }
 
     .check-risk.clinical-note strong {
@@ -570,14 +575,29 @@
       .check-item {
         padding: 4px 8px !important;
         margin-bottom: 4px !important;
+        min-height: 52px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
       }
 
       .check-title {
         font-size: 0.80rem !important;
+        color: #000000 !important;
+      }
+
+      .check-item.red-flag .check-title {
+        color: #000000 !important;
       }
 
       .check-risk {
         font-size: 0.70rem !important;
+        color: #374151 !important;
+      }
+
+      .check-risk strong {
+        color: #000000 !important;
       }
 
       .observation-row {
@@ -816,7 +836,7 @@
               <div class="check-title-group">
                 <label for="checkDecubitus" class="check-title">Er is géén verhoogd risico op decubitus (drukplekken / doorliggen)</label>
                 <div class="check-risk">
-                  <strong>Ergonomische indicatie:</strong> Bij langdurig zitten (>3 uur aaneengesloten) is een kantelverstelling vereist voor drukverdeling.
+                  <strong>Ergonomische indicatie:</strong> Bij langdurig zitten (>3 uur) is een kantelverstelling vereist voor drukverdeling.
                 </div>
               </div>
             </div>
