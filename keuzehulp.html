@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=10.27">
+  <link rel="stylesheet" href="style.css?v=10.28">
 </head>
 <body>
 
@@ -112,15 +112,9 @@
     <div class="container wizard-wrapper">
       <div class="wizard-top-actions">
         <a href="index.html" class="back-link" style="margin-bottom: 0;">← Terug naar Home</a>
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <div class="wizard-match-counter" id="liveMatchBadge" style="background: #ffffff; border: 1px solid var(--color-gray-light); color: var(--color-forest-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
-            <span class="pulse-indicator"></span>
-            <span id="liveMatchText"><strong>18</strong> modellen beschikbaar</span>
-          </div>
-          <a href="indicatiewijzer.html" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 18px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; border-radius: var(--radius-full); box-shadow: 0 4px 14px rgba(243, 146, 35, 0.28);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-            <span>Sneltoets Afvinkformulier (PDF)</span>
-          </a>
+        <div class="wizard-match-counter" id="liveMatchBadge" style="background: #ffffff; border: 1px solid var(--color-gray-light); color: var(--color-forest-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+          <span class="pulse-indicator"></span>
+          <span id="liveMatchText"><strong>18</strong> modellen beschikbaar</span>
         </div>
       </div>
       <div class="wizard-card" id="wizardCard">
@@ -529,7 +523,7 @@
     </div>
   </footer>
 
-  <script src="app.js?v=10.27"></script>
+  <script src="app.js?v=10.28"></script>
   <script>
     // Overriding prefillBooking from app.js to send to the dedicated afspraak page
     window.prefillBooking = function(chairName) {

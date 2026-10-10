@@ -983,21 +983,15 @@ function renderWizardResults() {
     clinicalCard.className = "clinical-eval-card";
     clinicalCard.style.cssText = "grid-column: 1 / -1; background: #ffffff; border: 1.5px solid rgba(75, 143, 36, 0.25); border-radius: 14px; padding: 18px 20px; margin-bottom: 8px; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.05);";
     clinicalCard.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div class="clinical-header-icon-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-              <path d="M9 14l2 2 4-4"/>
-            </svg>
-          </div>
-          <h4 style="margin: 0; color: var(--color-forest); font-size: 1.12rem; font-family: var(--font-heading); font-weight: 700;">Ergonomische Evaluatie Zithouding &amp; Mobiliteit</h4>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+        <div class="clinical-header-icon-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+            <path d="M9 14l2 2 4-4"/>
+          </svg>
         </div>
-        <button type="button" class="btn btn-outline" id="btnExportClinicalPdf" style="font-size: 0.82rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; border-color: var(--color-forest); color: var(--color-forest); background: #ffffff; cursor: pointer; border-radius: var(--radius-full);">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Exporteer Indicatiewijzer (PDF)
-        </button>
+        <h4 style="margin: 0; color: var(--color-forest); font-size: 1.12rem; font-family: var(--font-heading); font-weight: 700;">Ergonomische Evaluatie Zithouding &amp; Mobiliteit</h4>
       </div>
       <ul style="margin: 0 0 14px 0;">
         ${points.join("")}
@@ -1007,20 +1001,6 @@ function renderWizardResults() {
         Wacht niet op een langdurig Wmo-traject (vaak 12 tot 20 weken wachttijd). Wij leveren direct uit voorraad met gratis meting en passing aan huis.
       </div>
     `;
-
-    const exportBtn = clinicalCard.querySelector("#btnExportClinicalPdf");
-    if (exportBtn) {
-      exportBtn.addEventListener("click", () => {
-        const query = new URLSearchParams({
-          height: height || "",
-          standing: complaints.includes("standing") ? "1" : "0",
-          edema: (complaints.includes("edema") || complaints.includes("legs")) ? "1" : "0",
-          decubitus: complaints.includes("decubitus") ? "1" : "0",
-          print: "1"
-        });
-        window.open(`indicatiewijzer.html?${query.toString()}`, "_blank");
-      });
-    }
 
     resultsContainer.appendChild(clinicalCard);
   }
