@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v1.8) | staopstoelen.nl</title>
-  <meta name="version" content="1.8">
+  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v1.9) | staopstoelen.nl</title>
+  <meta name="version" content="1.9">
   <meta name="description" content="A6 stoelbadge en prijskaart generator voor in de showroom met sfeerfoto of standaardfoto, specificaties, prijzen en kwaliteitszegel van staopstoelen.nl.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -707,26 +707,35 @@
       flex-direction: column;
       box-sizing: border-box;
       margin-bottom: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
     }
 
     /* Specificaties Grid binnenin de groene box */
     .badge-specs-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 2mm;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .spec-cell {
       background: #ffffff;
       border: 1px solid #d4e5d0;
       border-radius: 6px;
-      padding: 3.2px 7px;
+      padding: 3.2px 6.5px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5.5px;
       min-height: 9.8mm;
       box-sizing: border-box;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
     }
 
     .spec-icon-wrap {
@@ -751,6 +760,7 @@
       flex-direction: column;
       min-width: 0;
       flex: 1;
+      overflow: hidden;
     }
 
     .spec-cell-label {
@@ -760,11 +770,14 @@
       color: #64748b;
       letter-spacing: 0.35px;
       line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .spec-cell-value {
       font-family: var(--font-heading);
-      font-size: 8.8px;
+      font-size: 8.2px;
       font-weight: 800;
       color: var(--color-forest-dark);
       white-space: nowrap;
@@ -772,6 +785,8 @@
       text-overflow: ellipsis;
       line-height: 1.2;
       margin-top: 1px;
+      max-width: 100%;
+      display: block;
     }
 
     /* Subtiele scheidingslijn met RUIME lucht tussen specs en prijsvak */
@@ -1330,7 +1345,7 @@
         <div class="toolbar-title">
           <span>A6 Stoelbadge &amp; Prijskaart</span>
           <span class="toolbar-title-badge">A6 &bull; 105 × 148 mm</span>
-          <span class="toolbar-version-badge" title="Versie 1.8">v1.8</span>
+          <span class="toolbar-version-badge" title="Versie 1.9">v1.9</span>
         </div>
       </div>
 
@@ -1650,7 +1665,7 @@
           <!-- Subtiele footer met versienummer (alleen op achterkant) -->
           <footer class="badge-subtle-footer">
             <span>staopstoelen.nl &bull; Productinformatie</span>
-            <span>v1.8</span>
+            <span>v1.9</span>
           </footer>
         </article>
       </div>
@@ -1984,13 +1999,45 @@
         : 'Luxe ergonomische senioren- & relaxfauteuil';
       badgeTypeDesc.textContent = typeText;
 
+      // Functie om de 4 specs op de voorkant altijd compact en op 1 regel te houden
+      function formatFrontSpec(val, type) {
+        if (!val) return '';
+        let str = String(val).trim();
+        if (type === 'motors') {
+          if (str.includes('1 motor, 2 motoren') || str.includes('1 motor, 2')) return '1, 2 of 3 motoren';
+          if (str.includes('3 motoren (of meer)')) return '3 Motoren (of meer)';
+          if (str.includes('3 motoren')) return '3 Motoren';
+          if (str.includes('2 motoren')) return '2 Motoren';
+          if (str.includes('1 motor')) return '1 Motor';
+          if (str.toLowerCase().includes('geen')) return 'Manueel';
+        }
+        if (type === 'size') {
+          if (str.includes('Geheel op maat')) return 'Op maat gemaakt';
+          if (str.includes('Small / Medium / Large') || str.includes('3 maten')) return 'Maten S / M / L';
+          if (str.includes('1 maat')) return 'Standaardmaat';
+        }
+        if (type === 'cover') {
+          if (str.includes('Stof') && str.includes('Leer')) return 'Stof of Leder';
+          if (str.includes('Leer')) return 'Luxe Leder';
+          if (str.includes('Stof')) return 'Luxe Meubelstof';
+        }
+        if (type === 'warranty') {
+          const years = (str.match(/\d+/) || ['3'])[0];
+          return `${years} Jaar Garantie`;
+        }
+        if (str.length > 22) {
+          return str.slice(0, 20).trim() + '…';
+        }
+        return str;
+      }
+
       const specs = chair.specifications || {};
-      specSize.textContent = specs['Maatwerk'] || 'Op lichaamsmaat';
-      specMotors.textContent = specs['Aantal motoren'] || (chair.badge || 'Elektrisch verstelbaar');
+      specSize.textContent = formatFrontSpec(specs['Maatwerk'] || 'Op lichaamsmaat', 'size');
+      specMotors.textContent = formatFrontSpec(specs['Aantal motoren'] || (chair.badge || 'Elektrisch'), 'motors');
       
       const mat = chair.material === 'leer' ? 'Luxe Rundleder' : (specs['Bekleding'] || 'Comfortabel Stof / Leer');
-      specCover.textContent = mat;
-      specWarranty.textContent = (specs['Garantie'] || '3 Jaar') + ' • Service aan huis';
+      specCover.textContent = formatFrontSpec(mat, 'cover');
+      specWarranty.textContent = formatFrontSpec(specs['Garantie'] || '3 Jaar', 'warranty');
 
       const isNieuw = chair.condition === 'nieuw';
       if (isNieuw) {
