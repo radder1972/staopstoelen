@@ -2447,7 +2447,14 @@
               <span>Specificaties &amp; Maatvoering</span>
             </div>
             <div class="back-specs-table" id="backSpecsTable">
-              <!-- Dynamisch via JavaScript -->
+              <div class="back-spec-row"><span class="back-spec-k">Maatvoering</span><span class="back-spec-v" contenteditable="true">3 maten, Small / Medium / Large</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Aantal Motoren</span><span class="back-spec-v" contenteditable="true">2 Motoren</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Sta-op Functie</span><span class="back-spec-v" contenteditable="true">Elektrisch ondersteund</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Max. Belasting</span><span class="back-spec-v" contenteditable="true">120 kg</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Bekleding</span><span class="back-spec-v" contenteditable="true">Luxe Rundleder</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Bediening</span><span class="back-spec-v" contenteditable="true">Handbediening in armleuning</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Garantie</span><span class="back-spec-v" contenteditable="true">3 Jaar aan huis</span></div>
+              <div class="back-spec-row"><span class="back-spec-k">Levertijd</span><span class="back-spec-v" contenteditable="true">Direct leverbaar</span></div>
             </div>
           </div>
 
@@ -2458,7 +2465,10 @@
               <span>Ergonomische Kenmerken</span>
             </div>
             <ul class="back-features-list" id="backFeaturesList" contenteditable="true">
-              <!-- Dynamisch via JavaScript -->
+              <li><span class="feat-check">✓</span><span contenteditable="true">100% Ergonomisch zitcomfort</span></li>
+              <li><span class="feat-check">✓</span><span contenteditable="true">Geleverd met kwaliteitsgarantie</span></li>
+              <li><span class="feat-check">✓</span><span contenteditable="true">Volledig op uw lichaamsmaat afgesteld</span></li>
+              <li><span class="feat-check">✓</span><span contenteditable="true">Vakkundig opgemeten en ingesteld op uw persoonlijke lichaamsmaten</span></li>
             </ul>
           </div>
 
@@ -3448,10 +3458,6 @@
         document.head.appendChild(dynamicStyle);
       }
 
-      if (btnModeSingle) btnModeSingle.classList.toggle("active", mode === 'single');
-      if (btnModeFold) btnModeFold.classList.toggle("active", mode === 'fold');
-      if (btnModeA4) btnModeA4.classList.toggle("active", mode === 'a4');
-
       if (cardModeSingle) cardModeSingle.classList.toggle("active", mode === 'single');
       if (cardModeFold) cardModeFold.classList.toggle("active", mode === 'fold');
       if (cardModeA4) cardModeA4.classList.toggle("active", mode === 'a4');
@@ -3464,9 +3470,6 @@
       }
       if (foldOptionsRow) {
         foldOptionsRow.style.display = (mode === 'fold') ? 'flex' : 'none';
-      }
-      if (foldConfigBar) {
-        foldConfigBar.style.display = (mode === 'fold') ? 'flex' : 'none';
       }
 
       if (previewInfoBadge) {
@@ -3501,10 +3504,6 @@
         renderA4Grid();
       }
     }
-
-    if (btnModeSingle) btnModeSingle.addEventListener("click", () => setPrintMode('single'));
-    if (btnModeFold) btnModeFold.addEventListener("click", () => setPrintMode('fold'));
-    if (btnModeA4) btnModeA4.addEventListener("click", () => setPrintMode('a4'));
 
     if (cardModeSingle) cardModeSingle.addEventListener("click", () => setPrintMode('single'));
     if (cardModeFold) cardModeFold.addEventListener("click", () => setPrintMode('fold'));
