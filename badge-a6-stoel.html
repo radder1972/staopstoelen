@@ -1669,7 +1669,7 @@
     }
 
     /* ==========================================================================
-       A4 DRUKVEL CONTAINER (4x A6 op 1 A4 vel)
+       A4 VEL BASISCONTAINER (210 × 297 mm)
        ========================================================================== */
     .a4-sheet-container {
       display: none;
@@ -1692,78 +1692,6 @@
       color: var(--color-forest-dark);
       letter-spacing: 0.5px;
       text-transform: uppercase;
-    }
-
-    .a4-grid-4 {
-      display: grid;
-      grid-template-columns: 105mm 105mm;
-      grid-template-rows: 148.5mm 148.5mm;
-      width: 210mm;
-      height: 297mm;
-    }
-
-    .a4-badge-slot {
-      width: 105mm;
-      height: 148.5mm;
-      box-sizing: border-box;
-      position: relative;
-      overflow: hidden;
-      border: none;
-    }
-
-    .a4-badge-slot .badge-a6 {
-      box-shadow: none;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Snijlijnen en vouwlijnen zijn volledig verwijderd: het A4 vel is direct strak in 4 gelijke A6 delen verdeeld */
-    .a4-cutmark-h,
-    .a4-cutmark-v,
-    .a4-fold-cutmark-h,
-    .a4-fold-crease-v,
-    .fold-guide-cut-label,
-    .fold-guide-crease-label {
-      display: none !important;
-    }
-
-    /* ==========================================================================
-       A4 VOUWVEL CONTAINER (2x A6 Dubbelzijdig op 1 A4 vel)
-       ========================================================================== */
-    .a4-fold-container {
-      display: none;
-      width: 210mm;
-      height: 297mm;
-      background: #ffffff;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      margin: 0 auto 35px auto;
-      box-sizing: border-box;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .a4-fold-grid {
-      display: grid;
-      grid-template-columns: 105mm 105mm;
-      grid-template-rows: 148.5mm 148.5mm;
-      width: 210mm;
-      height: 297mm;
-    }
-
-    .a4-fold-slot {
-      width: 105mm;
-      height: 148.5mm;
-      box-sizing: border-box;
-      position: relative;
-      overflow: hidden;
-      border: none;
-    }
-
-    .a4-fold-slot .badge-a6 {
-      box-shadow: none !important;
-      width: 100% !important;
-      height: 100% !important;
-      border-radius: 0 !important;
     }
 
     /* ==========================================================================
@@ -1909,84 +1837,8 @@
         display: none !important;
       }
 
-      /* A4 Drukvel (4x A6) mode */
-      body.mode-a4 .badge-single-wrap {
-        display: none !important;
-      }
-      body.mode-a4 .a4-sheet-container {
-        box-shadow: none !important;
-        margin: 0 !important;
-      }
-      body.mode-a4.side-both #a4SheetContainer {
-        display: block !important;
-        page-break-after: always !important;
-        page-break-inside: avoid !important;
-      }
-      body.mode-a4.side-both #a4SheetContainerBack {
-        display: block !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-      }
-      body.mode-a4.side-front #a4SheetContainer {
-        display: block !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-      }
-      body.mode-a4.side-front #a4SheetContainerBack {
-        display: none !important;
-      }
-      body.mode-a4.side-back #a4SheetContainer {
-        display: none !important;
-      }
-      body.mode-a4.side-back #a4SheetContainerBack {
-        display: block !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-      }
-
-      body.mode-a4 #a4SingleA4Container,
-      body.mode-a4 #a4SingleA4ContainerBack {
-        display: none !important;
-      }
-
-      body.mode-a4 .a4-badge-slot {
-        border: none !important;
-      }
-
-      /* A4 Vouwvel (2x A6 Dubbelzijdig) print mode */
-      body.mode-fold .badge-single-wrap,
-      body.mode-fold #a4SheetContainer,
-      body.mode-fold #a4SheetContainerBack,
-      body.mode-fold #a4SingleA4Container,
-      body.mode-fold #a4SingleA4ContainerBack,
-      body.mode-fold .fold-config-bar {
-        display: none !important;
-      }
-
-      body.mode-fold #a4FoldContainer {
-        display: block !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-        break-after: avoid !important;
-        break-inside: avoid !important;
-        box-shadow: none !important;
-        margin: 0 !important;
-        width: 210mm !important;
-        height: 297mm !important;
-        max-height: 297mm !important;
-        overflow: hidden !important;
-      }
-
-      body.mode-fold .a4-fold-slot {
-        border: none !important;
-      }
-
       /* A4 1x Kaart (1x A6 op A4 vel: voor linksboven, achter rechtsboven) print mode */
-      body.mode-single-a4 .badge-single-wrap,
-      body.mode-single-a4 #a4SheetContainer,
-      body.mode-single-a4 #a4SheetContainerBack,
-      body.mode-single-a4 #a4FoldContainer,
-      body.mode-single-a4 .fold-config-bar {
+      body.mode-single-a4 .badge-single-wrap {
         display: none !important;
       }
 
@@ -2038,17 +1890,6 @@
       body.mode-single-a4 .a4-single-slot.empty {
         background: transparent !important;
         background-color: transparent !important;
-      }
-
-      body.mode-fold .fold-guide-cut-label,
-      body.mode-fold .fold-guide-crease-label,
-      body.mode-fold .cut-edge-mark,
-      body.mode-fold .crease-edge-mark,
-      .a4-cutmark-h,
-      .a4-cutmark-v,
-      .a4-fold-cutmark-h,
-      .a4-fold-crease-v {
-        display: none !important;
       }
 
       /* Voorkom doordrukken/rasterfouten van boxen en schaduwen bij fysiek printen */
@@ -2107,7 +1948,7 @@
     }
   </style>
 </head>
-<body class="mode-fold side-both">
+<body class="mode-single-a4 side-both">
 
   <!-- ==========================================================================
        TOP ADMIN HEADER (Identiek aan beheerpaneel)
@@ -2281,43 +2122,7 @@
               </div>
             </div>
 
-            <!-- Formaat Tegel 2: A4 Vouwvel (2 dubbelzijdige badges) -->
-            <div class="format-tile" id="cardModeFold" data-mode="fold">
-              <div>
-                <div class="format-tile-header">
-                  <div class="format-tile-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="2 2"></line></svg>
-                  </div>
-                  <div>
-                    <div class="format-tile-title">A4 Vouwvel (2 dubbelzijdige badges)</div>
-                    <div class="format-tile-sub">1x doorsnijden &amp; dubbelvouwen</div>
-                  </div>
-                </div>
-                <div class="format-tile-desc">
-                  Print 2 complete dubbelzijdige A6 badges op 1 standaard A4 vel (voor- en achterkant strak naast elkaar). Geen dubbelzijdige printer nodig!
-                </div>
-              </div>
-            </div>
-
-            <!-- Formaat Tegel 3: A4 Drukvel (4x A6) -->
-            <div class="format-tile" id="cardModeA4" data-mode="a4">
-              <div>
-                <div class="format-tile-header">
-                  <div class="format-tile-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><rect x="13" y="13" width="8" height="8" rx="1"></rect></svg>
-                  </div>
-                  <div>
-                    <div class="format-tile-title">A4 Drukvel (4x A6 op 1 vel)</div>
-                    <div class="format-tile-sub">In 4 gelijke A6 delen</div>
-                  </div>
-                </div>
-                <div class="format-tile-desc">
-                  Vult een A4 vel met 4 badges, direct klaar om in 4 gelijke delen te snijden.
-                </div>
-              </div>
-            </div>
-
-            <!-- Formaat Tegel 4: 1x A6 Losse Badge -->
+            <!-- Formaat Tegel 2: 1x A6 Losse Badge -->
             <div class="format-tile" id="cardModeSingle" data-mode="single">
               <div>
                 <div class="format-tile-header">
@@ -2358,18 +2163,7 @@
               </div>
             </div>
 
-            <!-- Vouwvel informatieve rij -->
-            <div class="options-row" id="foldOptionsRow" style="display: none; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-              <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #1e293b;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #e0f2fe; color: #0369a1; border-radius: 50%; font-size: 0.78rem; font-weight: 800;">ℹ</span>
-                <span><strong>A4 Vouwvel:</strong> Print automatisch 2 complete dubbelzijdige kaarten van de gekozen stoel op 1 A4 vel.</span>
-              </div>
-              <div style="font-size: 0.82rem; color: #64748b;">
-                <em>1× horizontaal doorsnijden &amp; dubbelvouwen.</em>
-              </div>
-            </div>
-
-            <!-- Zijde Kiezer (bij 1x A6 op A4, losse A6 of A4 drukvel) -->
+            <!-- Zijde Kiezer (bij 1x Kaart op A4 of direct op A6) -->
             <div class="options-row" id="sideOptionsRow" style="display: flex;">
               <div class="option-group">
                 <span>Te printen zijde:</span>
@@ -2463,7 +2257,7 @@
           <span>Live Afdrukvoorbeeld</span>
         </div>
         <div class="preview-info-badge" id="previewInfoBadge">
-          A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten
+          1x Kaart op A4 (Dubbelzijdig) • Linksboven (voor) &amp; Rechtsboven (achter)
         </div>
       </div>
 
@@ -2722,32 +2516,6 @@
       </div>
     </div>
 
-    <!-- 4x A6 Drukvel Container (A4 View - Pagina 1: Voorkant) -->
-    <div class="a4-sheet-container" id="a4SheetContainer">
-      <div class="a4-sheet-badge">Pagina 1 &bull; 4x Voorkant (Showroombadges)</div>
-      <div class="a4-grid-4" id="a4GridSlot">
-        <!-- Wordt dynamisch gevuld met 4 A6 voorkant badges -->
-      </div>
-    </div>
-
-    <!-- 4x A6 Drukvel Container (A4 View - Pagina 2: Achterkant) -->
-    <div class="a4-sheet-container a4-sheet-back" id="a4SheetContainerBack">
-      <div class="a4-sheet-badge">Pagina 2 &bull; 4x Achterkant (Specificaties &amp; Pasrapport)</div>
-      <div class="a4-grid-4" id="a4GridSlotBack">
-        <!-- Wordt dynamisch gevuld met 4 A6 achterkant badges -->
-      </div>
-    </div>
-
-    <!-- A4 Vouwvel Container (2x A6 Dubbelzijdig op 1 A4 vel) -->
-    <div class="a4-sheet-container a4-fold-container" id="a4FoldContainer">
-      <div class="a4-sheet-badge">A4 Vouwvel &bull; 2x Dubbelzijdige A6 Stoelbadge</div>
-      
-      <!-- 2x2 Grid -->
-      <div class="a4-fold-grid" id="a4FoldGrid">
-        <!-- Dynamisch gevuld met 4 slots: [Voor 1] [Achter 1], [Voor 2] [Achter 2] -->
-      </div>
-    </div> <!-- /#a4FoldContainer -->
-
     </div> <!-- /#previewStage -->
   </div> <!-- /.container -->
 </main> <!-- /.main-content -->
@@ -2763,7 +2531,7 @@
     let currentChair = null;
     let currentImages = [];
     let currentImageIndex = 0;
-    let currentPrintMode = 'single-a4'; // 'single-a4', 'fold', 'a4' of 'single'
+    let currentPrintMode = 'single-a4'; // 'single-a4' of 'single'
     let currentSideMode = 'both'; // 'both', 'front', of 'back'
 
     // DOM Elements
@@ -2778,11 +2546,8 @@
     const btnPrint = document.getElementById("btnPrint");
     const btnPrintTop = document.getElementById("btnPrintTop");
     const cardModeSingleA4 = document.getElementById("cardModeSingleA4");
-    const cardModeFold = document.getElementById("cardModeFold");
     const cardModeSingle = document.getElementById("cardModeSingle");
-    const cardModeA4 = document.getElementById("cardModeA4");
     const singleA4OptionsRow = document.getElementById("singleA4OptionsRow");
-    const foldOptionsRow = document.getElementById("foldOptionsRow");
     const sideOptionsRow = document.getElementById("sideOptionsRow");
     const previewInfoBadge = document.getElementById("previewInfoBadge");
     const sideSwitchGroup = document.getElementById("sideSwitchGroup");
@@ -2793,13 +2558,7 @@
     const a4SingleA4ContainerBack = document.getElementById("a4SingleA4ContainerBack");
     const a4SingleGridFront = document.getElementById("a4SingleGridFront");
     const a4SingleGridBack = document.getElementById("a4SingleGridBack");
-    const a4SheetContainer = document.getElementById("a4SheetContainer");
-    const a4SheetContainerBack = document.getElementById("a4SheetContainerBack");
-    const a4FoldContainer = document.getElementById("a4FoldContainer");
-    const a4FoldGrid = document.getElementById("a4FoldGrid");
     const badgeSingleWrap = document.getElementById("badgeSingleWrap");
-    const a4GridSlot = document.getElementById("a4GridSlot");
-    const a4GridSlotBack = document.getElementById("a4GridSlotBack");
     const colFront = document.getElementById("colFront");
     const colBack = document.getElementById("colBack");
 
@@ -2874,12 +2633,8 @@
       if (btnPosCenter) btnPosCenter.classList.toggle('active', currentPhotoPos === 'center center');
       if (btnPosBottom) btnPosBottom.classList.toggle('active', currentPhotoPos === 'center 85%');
 
-      // Update A4 grids als die actief zijn
-      if (currentPrintMode === 'a4') {
-        renderA4Grid();
-      } else if (currentPrintMode === 'fold') {
-        renderA4FoldGrid();
-      } else if (currentPrintMode === 'single-a4') {
+      // Update A4 grid als 1x A6 op A4 actief is
+      if (currentPrintMode === 'single-a4') {
         renderA4SingleGrid();
       }
     }
@@ -3208,11 +2963,7 @@
       populateBadge(currentChair);
       applyPhotoStyling();
 
-      if (currentPrintMode === 'a4') {
-        renderA4Grid();
-      } else if (currentPrintMode === 'fold') {
-        renderA4FoldGrid();
-      } else if (currentPrintMode === 'single-a4') {
+      if (currentPrintMode === 'single-a4') {
         renderA4SingleGrid();
       }
     }
@@ -3237,11 +2988,7 @@
         badgePhotoSettingText.textContent = chosen.type === 'cosy' ? 'Woonkamer Sfeer' : 'Showroom Detail';
       }
 
-      if (currentPrintMode === 'a4') {
-        renderA4Grid();
-      } else if (currentPrintMode === 'fold') {
-        renderA4FoldGrid();
-      } else if (currentPrintMode === 'single-a4') {
+      if (currentPrintMode === 'single-a4') {
         renderA4SingleGrid();
       }
     }
@@ -3354,186 +3101,7 @@
       chairIndexLabel.textContent = `${currentChairIndex + 1} / ${filteredChairs.length}`;
     }
 
-    // 10. A4 Sheet Render (4x A6 kaarten per vel - Pagina 1 & Pagina 2)
-    function renderA4Grid() {
-      a4GridSlot.innerHTML = '';
-      if (a4GridSlotBack) a4GridSlotBack.innerHTML = '';
-
-      const badgeSource = document.getElementById("badgeCard");
-      const badgeSourceBack = document.getElementById("badgeCardBack");
-
-      const badgeHtml = badgeSource ? badgeSource.outerHTML : '';
-      const badgeHtmlBack = badgeSourceBack ? badgeSourceBack.outerHTML : '';
-
-      for (let i = 0; i < 4; i++) {
-        const slot = document.createElement("div");
-        slot.className = "a4-badge-slot";
-        slot.innerHTML = badgeHtml;
-        a4GridSlot.appendChild(slot);
-
-        if (a4GridSlotBack && badgeHtmlBack) {
-          const slotBack = document.createElement("div");
-          slotBack.className = "a4-badge-slot";
-          slotBack.innerHTML = badgeHtmlBack;
-          a4GridSlotBack.appendChild(slotBack);
-        }
-      }
-    }
-
-    // Helper: Fill cloned badge elements with chair data
-    function fillBadgeElement(frontEl, backEl, chair) {
-      if (!chair) return;
-      const brand = chair.brand || 'Specialist';
-      const isNieuw = chair.condition === 'nieuw';
-      const specs = chair.specifications || {};
-
-      if (frontEl) {
-        const brandEl = frontEl.querySelector('.badge-brand-label');
-        if (brandEl) brandEl.textContent = brand;
-
-        const modelEl = frontEl.querySelector('.badge-model-name');
-        if (modelEl) modelEl.textContent = chair.name || 'Ergonomische Fauteuil';
-
-        const typeEl = frontEl.querySelector('.badge-type-desc');
-        if (typeEl) {
-          typeEl.textContent = chair.type === 'staop' 
-            ? 'Ergonomische sta-op & relaxfauteuil op maat' 
-            : 'Luxe ergonomische senioren- & relaxfauteuil';
-        }
-
-        const sizeEl = frontEl.querySelector('#specSize');
-        if (sizeEl) sizeEl.textContent = formatFrontSpec(specs['Maatwerk'] || 'Op lichaamsmaat', 'size');
-
-        const motorsEl = frontEl.querySelector('#specMotors');
-        if (motorsEl) motorsEl.textContent = formatFrontSpec(specs['Aantal motoren'] || (chair.badge || 'Elektrisch'), 'motors');
-
-        const mat = chair.material === 'leer' ? 'Luxe Rundleder' : (specs['Bekleding'] || 'Comfortabel Stof / Leer');
-        const coverEl = frontEl.querySelector('#specCover');
-        if (coverEl) coverEl.textContent = formatFrontSpec(mat, 'cover');
-
-        const warEl = frontEl.querySelector('#specWarranty');
-        if (warEl) warEl.textContent = formatFrontSpec(specs['Garantie'] || '3 Jaar', 'warranty');
-
-        const condEl = frontEl.querySelector('.badge-photo-tag-topleft');
-        if (condEl) {
-          condEl.textContent = isNieuw ? 'Nieuw Maatwerk' : 'Gecertificeerd Gereviseerd';
-          condEl.className = 'badge-photo-tag-topleft' + (isNieuw ? '' : ' occasion');
-        }
-
-        const imgEl = frontEl.querySelector('.badge-photo-img');
-        if (imgEl) {
-          const imgs = getAllImagesForChair(chair);
-          const firstImg = imgs.length > 0 ? imgs[0] : null;
-          imgEl.src = firstImg ? firstImg.url : (chair.image || '');
-          imgEl.style.objectFit = currentPhotoFit;
-          imgEl.style.objectPosition = currentPhotoPos;
-          const scaleVal = currentPhotoFit === 'contain' ? 1 : (currentPhotoZoom / 100);
-          imgEl.style.transform = scaleVal === 1 ? 'none' : `scale(${scaleVal})`;
-        }
-
-        const priceEl = frontEl.querySelector('#badgePriceAmount');
-        if (priceEl) priceEl.textContent = formatPrice(chair.price);
-
-        const oldPriceEl = frontEl.querySelector('#badgePriceOld');
-        if (oldPriceEl) {
-          if (chair.old_price) {
-            oldPriceEl.style.display = 'inline';
-            oldPriceEl.textContent = formatPrice(chair.old_price);
-          } else {
-            oldPriceEl.style.display = 'none';
-          }
-        }
-      }
-
-      if (backEl) {
-        const mEl = backEl.querySelector('#backModelName');
-        if (mEl) mEl.textContent = chair.name || 'Ergonomische Fauteuil';
-
-        const bEl = backEl.querySelector('#backBrandName');
-        if (bEl) bEl.textContent = brand;
-
-        const cPill = backEl.querySelector('#backConditionPill');
-        if (cPill) {
-          cPill.textContent = isNieuw ? 'Nieuw Maatwerk' : 'Gecertificeerd Gereviseerd';
-          cPill.className = 'back-sku-pill' + (isNieuw ? '' : ' occasion');
-        }
-
-        const skuEl = backEl.querySelector('#backSkuLabel');
-        if (skuEl) skuEl.textContent = 'REF: ' + (chair.id || 'ST-001').toUpperCase().slice(0, 16);
-
-        const tableEl = backEl.querySelector('#backSpecsTable');
-        if (tableEl) {
-          const specItems = [
-            { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)' },
-            { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren' },
-            { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax' },
-            { k: 'Max. Belasting', v: specs['Maximaal gebruikersgewicht'] || 'Tot 130 kg' },
-            { k: 'Bekleding', v: mat },
-            { k: 'Bediening', v: specs['Bediening'] || 'Geïntegreerde handbediening' },
-            { k: 'Garantie', v: specs['Garantie'] || (isNieuw ? '3 Jaar aan huis' : '1 Jaar aan huis') },
-            { k: 'Levertijd', v: chair.status === 'beschikbaar' ? 'Direct leverbaar' : 'Op bestelling' }
-          ];
-          tableEl.innerHTML = specItems.map(item => `
-            <div class="back-spec-row">
-              <span class="back-spec-k">${item.k}</span>
-              <span class="back-spec-v">${item.v}</span>
-            </div>
-          `).join('');
-        }
-
-        const featList = backEl.querySelector('#backFeaturesList');
-        if (featList) {
-          let feats = chair.features || [];
-          if (!feats || feats.length === 0) {
-            feats = [
-              "100% Ergonomisch zitcomfort",
-              "Onafhankelijk elektrisch verstelbare beensteun en rugleuning",
-              "Veilige, rustige opstahulp met volledige lichaamsbalans",
-              "Vakkundig opgemeten en ingesteld op uw persoonlijke lichaamsmaten"
-            ];
-          }
-          featList.innerHTML = feats.slice(0, 4).map(f => `
-            <li><span class="feat-check">✓</span><span>${f}</span></li>
-          `).join('');
-        }
-      }
-    }
-
-    // 11. A4 Vouwvel Render (2x A6 Dubbelzijdige kaarten van dezelfde stoel op 1 A4 vel)
-    function renderA4FoldGrid() {
-      if (!a4FoldGrid) return;
-      a4FoldGrid.innerHTML = '';
-
-      const badgeSource = document.getElementById("badgeCard");
-      const badgeSourceBack = document.getElementById("badgeCardBack");
-      if (!badgeSource || !badgeSourceBack) return;
-
-      // Slot 1: Kaart 1 Voorkant (boven links)
-      const slot1 = document.createElement("div");
-      slot1.className = "a4-fold-slot";
-      slot1.appendChild(badgeSource.cloneNode(true));
-      a4FoldGrid.appendChild(slot1);
-
-      // Slot 2: Kaart 1 Achterkant (boven rechts)
-      const slot2 = document.createElement("div");
-      slot2.className = "a4-fold-slot";
-      slot2.appendChild(badgeSourceBack.cloneNode(true));
-      a4FoldGrid.appendChild(slot2);
-
-      // Slot 3: Kaart 2 Voorkant (onder links - identiek aan kaart 1)
-      const slot3 = document.createElement("div");
-      slot3.className = "a4-fold-slot";
-      slot3.appendChild(badgeSource.cloneNode(true));
-      a4FoldGrid.appendChild(slot3);
-
-      // Slot 4: Kaart 2 Achterkant (onder rechts - identiek aan kaart 1)
-      const slot4 = document.createElement("div");
-      slot4.className = "a4-fold-slot";
-      slot4.appendChild(badgeSourceBack.cloneNode(true));
-      a4FoldGrid.appendChild(slot4);
-    }
-
-    // 12. A4 1x Kaart Render (1x A6 op A4 vel: voor linksboven, achter rechtsboven voor perfect dubbelzijdig)
+    // 10. A4 1x Kaart Render (1x A6 op A4 vel: voor linksboven, achter rechtsboven voor perfect dubbelzijdig)
     function renderA4SingleGrid() {
       if (!a4SingleGridFront || !a4SingleGridBack) return;
       a4SingleGridFront.innerHTML = '';
@@ -3679,15 +3247,11 @@
     // Quick Custom Inputs Sync
     inputCustomPrice.addEventListener("input", (e) => {
       badgePriceAmount.textContent = e.target.value;
-      if (currentPrintMode === 'a4') renderA4Grid();
-      if (currentPrintMode === 'fold') renderA4FoldGrid();
       if (currentPrintMode === 'single-a4') renderA4SingleGrid();
     });
 
     inputCustomTag.addEventListener("input", (e) => {
       if (badgeActionText) badgeActionText.textContent = e.target.value;
-      if (currentPrintMode === 'a4') renderA4Grid();
-      if (currentPrintMode === 'fold') renderA4FoldGrid();
       if (currentPrintMode === 'single-a4') renderA4SingleGrid();
     });
 
@@ -3696,15 +3260,11 @@
       document.querySelectorAll(".punch-hole-guide").forEach(g => {
         g.style.display = e.target.checked ? "block" : "none";
       });
-      if (currentPrintMode === 'a4') renderA4Grid();
-      if (currentPrintMode === 'fold') renderA4FoldGrid();
       if (currentPrintMode === 'single-a4') renderA4SingleGrid();
     });
 
     chkQualitySticker.addEventListener("change", (e) => {
       badgeQualityStamp.style.display = e.target.checked ? "block" : "none";
-      if (currentPrintMode === 'a4') renderA4Grid();
-      if (currentPrintMode === 'fold') renderA4FoldGrid();
       if (currentPrintMode === 'single-a4') renderA4SingleGrid();
     });
 
@@ -3775,10 +3335,6 @@
         if (a4SingleA4Container) a4SingleA4Container.style.display = (side === 'back') ? 'none' : 'block';
         if (a4SingleA4ContainerBack) a4SingleA4ContainerBack.style.display = (side === 'front') ? 'none' : 'block';
         renderA4SingleGrid();
-      } else if (currentPrintMode === 'a4') {
-        if (a4SheetContainer) a4SheetContainer.style.display = (side === 'back') ? 'none' : 'block';
-        if (a4SheetContainerBack) a4SheetContainerBack.style.display = (side === 'front') ? 'none' : 'block';
-        renderA4Grid();
       }
     }
 
@@ -3786,7 +3342,7 @@
     if (btnSideFront) btnSideFront.addEventListener("click", () => setSideMode('front'));
     if (btnSideBack) btnSideBack.addEventListener("click", () => setSideMode('back'));
 
-    // Print Mode Switcher (1x Kaart op A4 / A4 Vouwvel / 4x A6 Drukvel / Losse A6)
+    // Print Mode Switcher (1x Kaart op A4 / Direct op A6 papier)
     function setPrintMode(mode) {
       currentPrintMode = mode;
       document.body.className = `mode-${mode} side-${currentSideMode}`;
@@ -3799,19 +3355,8 @@
       }
 
       if (cardModeSingleA4) cardModeSingleA4.classList.toggle("active", mode === 'single-a4');
-      if (cardModeFold) cardModeFold.classList.toggle("active", mode === 'fold');
-      if (cardModeA4) cardModeA4.classList.toggle("active", mode === 'a4');
       if (cardModeSingle) cardModeSingle.classList.toggle("active", mode === 'single');
 
-      if (sideSwitchGroup) {
-        sideSwitchGroup.style.display = (mode === 'fold') ? 'none' : 'inline-flex';
-      }
-      if (sideOptionsRow) {
-        sideOptionsRow.style.display = (mode === 'fold') ? 'none' : 'flex';
-      }
-      if (foldOptionsRow) {
-        foldOptionsRow.style.display = (mode === 'fold') ? 'flex' : 'none';
-      }
       if (singleA4OptionsRow) {
         singleA4OptionsRow.style.display = (mode === 'single-a4') ? 'flex' : 'none';
       }
@@ -3819,21 +3364,14 @@
       if (previewInfoBadge) {
         if (mode === 'single-a4') {
           previewInfoBadge.textContent = '1x Kaart op A4 (Dubbelzijdig) • Linksboven (voor) & Rechtsboven (achter)';
-        } else if (mode === 'fold') {
-          previewInfoBadge.textContent = 'A4 Vouwvel • 2x Dubbelzijdige A6 Kaarten';
         } else if (mode === 'single') {
           previewInfoBadge.textContent = 'Direct op A6 papier • 105 × 148 mm formaat';
-        } else if (mode === 'a4') {
-          previewInfoBadge.textContent = 'A4 Drukvel • 4x A6 Badges';
         }
       }
 
       if (mode === 'single-a4') {
         dynamicStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
         badgeSingleWrap.style.display = 'none';
-        if (a4SheetContainer) a4SheetContainer.style.display = 'none';
-        if (a4SheetContainerBack) a4SheetContainerBack.style.display = 'none';
-        if (a4FoldContainer) a4FoldContainer.style.display = 'none';
         setSideMode(currentSideMode);
         renderA4SingleGrid();
       } else if (mode === 'single') {
@@ -3841,43 +3379,17 @@
         badgeSingleWrap.style.display = 'flex';
         if (a4SingleA4Container) a4SingleA4Container.style.display = 'none';
         if (a4SingleA4ContainerBack) a4SingleA4ContainerBack.style.display = 'none';
-        if (a4SheetContainer) a4SheetContainer.style.display = 'none';
-        if (a4SheetContainerBack) a4SheetContainerBack.style.display = 'none';
-        if (a4FoldContainer) a4FoldContainer.style.display = 'none';
         setSideMode(currentSideMode);
-      } else if (mode === 'fold') {
-        dynamicStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
-        badgeSingleWrap.style.display = 'none';
-        if (a4SingleA4Container) a4SingleA4Container.style.display = 'none';
-        if (a4SingleA4ContainerBack) a4SingleA4ContainerBack.style.display = 'none';
-        if (a4SheetContainer) a4SheetContainer.style.display = 'none';
-        if (a4SheetContainerBack) a4SheetContainerBack.style.display = 'none';
-        if (a4FoldContainer) a4FoldContainer.style.display = 'block';
-        renderA4FoldGrid();
-      } else if (mode === 'a4') {
-        dynamicStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
-        badgeSingleWrap.style.display = 'none';
-        if (a4SingleA4Container) a4SingleA4Container.style.display = 'none';
-        if (a4SingleA4ContainerBack) a4SingleA4ContainerBack.style.display = 'none';
-        if (a4FoldContainer) a4FoldContainer.style.display = 'none';
-        setSideMode(currentSideMode);
-        renderA4Grid();
       }
     }
 
     if (cardModeSingleA4) cardModeSingleA4.addEventListener("click", () => setPrintMode('single-a4'));
-    if (cardModeFold) cardModeFold.addEventListener("click", () => setPrintMode('fold'));
-    if (cardModeA4) cardModeA4.addEventListener("click", () => setPrintMode('a4'));
     if (cardModeSingle) cardModeSingle.addEventListener("click", () => setPrintMode('single'));
 
     // Robuuste print trigger functie (werkt zowel direct via onclick als event listener)
     function triggerPrint() {
       try {
-        if (currentPrintMode === 'a4') {
-          renderA4Grid();
-        } else if (currentPrintMode === 'fold') {
-          renderA4FoldGrid();
-        } else if (currentPrintMode === 'single-a4') {
+        if (currentPrintMode === 'single-a4') {
           renderA4SingleGrid();
         }
       } catch (err) {
