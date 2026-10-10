@@ -929,7 +929,7 @@ function renderWizardResults() {
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
         <div style="display: flex; align-items: center; gap: 8px;">
           <span style="font-size: 1.25rem;">📋</span>
-          <h4 style="margin: 0; color: var(--color-forest); font-size: 1.12rem; font-family: var(--font-heading);">Klinische Evaluatie Zithouding & Mobiliteit</h4>
+          <h4 style="margin: 0; color: var(--color-forest); font-size: 1.12rem; font-family: var(--font-heading);">Ergonomische Evaluatie Zithouding &amp; Mobiliteit</h4>
         </div>
         <button type="button" class="btn btn-outline" id="btnExportClinicalPdf" style="font-size: 0.82rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; border-color: var(--color-forest); color: var(--color-forest); background: #ffffff; cursor: pointer; border-radius: var(--radius-full);">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
