@@ -394,12 +394,15 @@ function initWizard() {
   const nextBtn = document.getElementById("btnWizardNext");
   const backBtn = document.getElementById("btnWizardBack");
   const resetBtn = document.getElementById("btnWizardReset");
+  const skipBtn = document.getElementById("btnWizardSkip");
   const form = document.getElementById("wizardForm");
   
   if (!nextBtn || !backBtn || !resetBtn || !form) return;
   
   // Load chairs dynamically when wizard is initialized
-  loadWizardChairs();
+  loadWizardChairs().then(() => {
+    updateLiveMatchCount();
+  });
   
   // Track Option Card Selection
   const optionCards = document.querySelectorAll(".option-card");
@@ -411,22 +414,35 @@ function initWizard() {
     }
     
     card.addEventListener("click", (e) => {
-      // Prevent double trigger if clicking label/input directly
-      if (e.target.tagName === "INPUT") return;
-      
       const input = card.querySelector("input");
       if (!input) return;
       
+      // If clicking outside the actual input element, update input checked state
+      if (e.target.tagName !== "INPUT") {
+        if (input.type === "radio") {
+          input.checked = true;
+        } else if (input.type === "checkbox") {
+          input.checked = !input.checked;
+        }
+      }
+      
       if (input.type === "radio") {
-        // Uncheck siblings
+        // Uncheck sibling cards
         const name = input.name;
         document.querySelectorAll(`input[name="${name}"]`).forEach(sibling => {
-          sibling.closest(".option-card").classList.remove("selected");
+          sibling.closest(".option-card").classList.remove("selected", "auto-selected");
         });
-        input.checked = true;
         card.classList.add("selected");
+        
+        // AUTO-ADVANCE: On Step 1 (height choice), advance automatically after 220ms
+        if (name === "height" && state.wizardStep === 1) {
+          card.classList.add("auto-selected");
+          setTimeout(() => {
+            updateWizardAnswersFromForm();
+            goToWizardStep(2);
+          }, 220);
+        }
       } else if (input.type === "checkbox") {
-        input.checked = !input.checked;
         if (input.checked) {
           card.classList.add("selected");
         } else {
@@ -434,8 +450,20 @@ function initWizard() {
         }
       }
       
-      // Update answers state
+      // Update answers state & dynamic counter
       updateWizardAnswersFromForm();
+      updateLiveMatchCount();
+    });
+  });
+
+  // Step Tabs Navigation
+  document.querySelectorAll(".wizard-step-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      const targetStep = parseInt(tab.dataset.step);
+      if (targetStep) {
+        updateWizardAnswersFromForm();
+        goToWizardStep(targetStep);
+      }
     });
   });
 
@@ -454,6 +482,18 @@ function initWizard() {
     }
   });
 
+  // Skip Step 2 (complaints)
+  if (skipBtn) {
+    skipBtn.addEventListener("click", () => {
+      document.querySelectorAll('input[name="complaints"]').forEach(cb => {
+        cb.checked = false;
+        cb.closest(".option-card")?.classList.remove("selected");
+      });
+      updateWizardAnswersFromForm();
+      goToWizardStep(3);
+    });
+  }
+
   // Reset Click
   resetBtn.addEventListener("click", () => {
     form.reset();
@@ -462,19 +502,22 @@ function initWizard() {
       if (input && input.checked) {
         card.classList.add("selected");
       } else {
-        card.classList.remove("selected");
+        card.classList.remove("selected", "auto-selected");
       }
     });
+    updateWizardAnswersFromForm();
+    updateLiveMatchCount();
     goToWizardStep(1);
   });
 }
 
 function updateWizardAnswersFromForm() {
   const form = document.getElementById("wizardForm");
+  if (!form) return;
   const formData = new FormData(form);
   
-  state.wizardAnswers.height = formData.get("height");
-  state.wizardAnswers.motors = formData.get("motors");
+  state.wizardAnswers.height = formData.get("height") || "medium";
+  state.wizardAnswers.motors = formData.get("motors") || "3";
   state.wizardAnswers.modern = formData.get("modern") === "true";
   state.wizardAnswers.wireless = formData.get("wireless") === "true";
   
@@ -485,50 +528,109 @@ function updateWizardAnswersFromForm() {
   });
 }
 
+function countMatchingChairs() {
+  if (!state.chairs || state.chairs.length === 0) return 18;
+  const available = state.chairs.filter(c => c.status !== "verkocht" && c.status !== "gereserveerd");
+  const height = state.wizardAnswers.height;
+  
+  if (!height) return available.length;
+  
+  const matching = available.filter(chair => {
+    const descLower = (chair.description || "").toLowerCase();
+    const brandLower = (chair.brand || "").toLowerCase();
+    
+    // Fitform and Doge are modular/adjustable and fit all sizes
+    if (brandLower.includes("fitform") || brandLower.includes("doge") || descLower.includes("vario") || descLower.includes("modulair") || descLower.includes("instelbaar")) {
+      return true;
+    }
+    if (height === "small") {
+      return descLower.includes("maat s") || descLower.includes("small") || !descLower.includes("maat l");
+    } else if (height === "large") {
+      return descLower.includes("maat l") || descLower.includes("large") || !descLower.includes("maat s");
+    }
+    return true;
+  });
+  
+  return Math.max(3, matching.length);
+}
+
+function updateLiveMatchCount() {
+  const count = countMatchingChairs();
+  const countEl = document.getElementById("liveMatchText");
+  if (countEl) {
+    countEl.innerHTML = `<strong>${count}</strong> modellen beschikbaar`;
+  }
+  
+  const nextBtn = document.getElementById("btnWizardNext");
+  if (nextBtn && state.wizardStep === 3) {
+    nextBtn.innerHTML = `<span>Bekijk Resultaten & Advies (${count} stoelen)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+  }
+}
+
 function goToWizardStep(step) {
   state.wizardStep = step;
   
-  // Hide all steps
+  // Hide all steps & show active step
   document.querySelectorAll(".wizard-step").forEach(s => s.classList.remove("active"));
-  // Show active step
-  document.getElementById(`step${step}`).classList.add("active");
+  const currentStepEl = document.getElementById(`step${step}`);
+  if (currentStepEl) currentStepEl.classList.add("active");
   
-  // Update indicator steps
-  document.querySelectorAll(".progress-step").forEach((indicator, idx) => {
-    const indicatorStep = idx + 1;
-    indicator.className = "progress-step";
-    
-    if (indicatorStep < step) {
-      indicator.classList.add("completed");
-    } else if (indicatorStep === step) {
-      indicator.classList.add("active");
+  // Update step navigation tabs
+  document.querySelectorAll(".wizard-step-tab").forEach((tab, idx) => {
+    const tabStep = idx + 1;
+    tab.classList.remove("active", "completed");
+    if (tabStep < step) {
+      tab.classList.add("completed");
+    } else if (tabStep === step) {
+      tab.classList.add("active");
     }
   });
   
-  // Update Progress Bar width
+  // Update Progress Track Bar width
   const progressPercent = ((step - 1) / 3) * 100;
-  document.getElementById("progressBar").style.width = `${progressPercent}%`;
+  const progressBar = document.getElementById("progressBar");
+  if (progressBar) {
+    progressBar.style.width = `${progressPercent}%`;
+  }
   
-  // Toggle Nav Buttons
+  // Toggle Nav Buttons & CTAs
   const nextBtn = document.getElementById("btnWizardNext");
   const backBtn = document.getElementById("btnWizardBack");
   const resetBtn = document.getElementById("btnWizardReset");
+  const skipBtn = document.getElementById("btnWizardSkip");
+  
+  if (backBtn) {
+    backBtn.style.display = (step > 1 && step < 4) ? "inline-flex" : "none";
+  }
+  if (skipBtn) {
+    skipBtn.style.display = (step === 2) ? "inline-block" : "none";
+  }
   
   if (step === 1) {
-    backBtn.style.display = "none";
-    nextBtn.style.display = "inline-flex";
-    resetBtn.style.display = "none";
+    if (nextBtn) {
+      nextBtn.style.display = "inline-flex";
+      nextBtn.innerHTML = `<span>Volgende stap</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+    }
+    if (resetBtn) resetBtn.style.display = "none";
+  } else if (step === 2) {
+    if (nextBtn) {
+      nextBtn.style.display = "inline-flex";
+      nextBtn.innerHTML = `<span>Volgende: Techniek</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+    }
+    if (resetBtn) resetBtn.style.display = "none";
+  } else if (step === 3) {
+    if (nextBtn) {
+      nextBtn.style.display = "inline-flex";
+      const matches = countMatchingChairs();
+      nextBtn.innerHTML = `<span>Bekijk Resultaten & Advies (${matches} stoelen)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+    }
+    if (resetBtn) resetBtn.style.display = "none";
   } else if (step === 4) {
-    backBtn.style.display = "none";
-    nextBtn.style.display = "none";
-    resetBtn.style.display = "inline-flex";
+    if (nextBtn) nextBtn.style.display = "none";
+    if (resetBtn) resetBtn.style.display = "inline-flex";
     
     // Render matching chairs
     renderWizardResults();
-  } else {
-    backBtn.style.display = "inline-flex";
-    nextBtn.style.display = "inline-flex";
-    resetBtn.style.display = "none";
   }
 }
 
@@ -634,6 +736,7 @@ function formatPrice(priceVal) {
 
 function renderWizardResults() {
   const resultsContainer = document.getElementById("wizardResults");
+  if (!resultsContainer) return;
   resultsContainer.innerHTML = "";
   
   // Filtering variables
@@ -642,6 +745,71 @@ function renderWizardResults() {
   const motorsWanted = parseInt(state.wizardAnswers.motors);
   const modernWanted = state.wizardAnswers.modern;
   const wirelessWanted = state.wizardAnswers.wireless;
+
+  // 1. Interactive Choice Summary Strip (Clickable chips to quickly adjust any answer)
+  const summaryStrip = document.createElement("div");
+  summaryStrip.className = "results-summary-strip";
+  summaryStrip.style.cssText = "grid-column: 1 / -1;";
+
+  let heightLabel = "Maat M (1.65 - 1.80 m)";
+  if (height === "small") heightLabel = "Maat S (< 1.65 m)";
+  else if (height === "large") heightLabel = "Maat L (> 1.80 m)";
+
+  let chipsHtml = `
+    <span class="summary-strip-label">Uw keuzes:</span>
+    <button type="button" class="summary-chip" onclick="goToWizardStep(1)" title="Klik om maat te wijzigen">
+      👤 ${heightLabel} <span class="chip-edit">✏️</span>
+    </button>
+  `;
+
+  if (complaints.length > 0) {
+    const complaintNames = {
+      standing: "Opstaan",
+      edema: "Oedeem",
+      decubitus: "Decubitus",
+      back: "Lage rugpijn",
+      neck: "Nek & schouder"
+    };
+    complaints.forEach(c => {
+      const cName = complaintNames[c] || c;
+      chipsHtml += `
+        <button type="button" class="summary-chip" onclick="goToWizardStep(2)" title="Klik om klacht te wijzigen">
+          🩺 ${cName} <span class="chip-edit">✏️</span>
+        </button>
+      `;
+    });
+  } else {
+    chipsHtml += `
+      <button type="button" class="summary-chip" onclick="goToWizardStep(2)" title="Klik om klachten toe te voegen">
+        ✨ Geen fysieke klachten <span class="chip-edit">✏️</span>
+      </button>
+    `;
+  }
+
+  const motorLabel = motorsWanted === 1 ? "1 Motor" : "3 Motoren";
+  chipsHtml += `
+    <button type="button" class="summary-chip" onclick="goToWizardStep(3)" title="Klik om motortype te wijzigen">
+      ⚙️ ${motorLabel} <span class="chip-edit">✏️</span>
+    </button>
+  `;
+
+  if (wirelessWanted) {
+    chipsHtml += `
+      <button type="button" class="summary-chip" onclick="goToWizardStep(3)">
+        🔋 Accu <span class="chip-edit">✏️</span>
+      </button>
+    `;
+  }
+  if (modernWanted) {
+    chipsHtml += `
+      <button type="button" class="summary-chip" onclick="goToWizardStep(3)">
+        🌿 Draaivoet / Design <span class="chip-edit">✏️</span>
+      </button>
+    `;
+  }
+
+  summaryStrip.innerHTML = chipsHtml;
+  resultsContainer.appendChild(summaryStrip);
   
   // Score and filter models from dynamic state.chairs
   const scoredChairs = state.chairs
@@ -756,31 +924,24 @@ function renderWizardResults() {
 
     const clinicalCard = document.createElement("div");
     clinicalCard.className = "clinical-eval-card";
-    clinicalCard.style.cssText = "grid-column: 1 / -1; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);";
+    clinicalCard.style.cssText = "grid-column: 1 / -1; background: #ffffff; border: 1.5px solid rgba(75, 143, 36, 0.25); border-radius: 14px; padding: 18px 20px; margin-bottom: 8px; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.05);";
     clinicalCard.innerHTML = `
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-        <span style="font-size: 1.5rem;">📋</span>
-        <h4 style="margin: 0; color: var(--color-forest); font-size: 1.25rem;">Klinische Evaluatie Zithouding & Mobiliteit</h4>
-      </div>
-      <p style="margin: 0 0 14px 0; color: var(--color-gray); font-size: 0.95rem;">
-        Op basis van de getoetste richtlijnen voor ergotherapie & wijkverpleging gelden de volgende observaties voor uw situatie:
-      </p>
-      <ul style="margin: 0 0 18px 0; padding-left: 20px; line-height: 1.7; color: var(--color-dark); font-size: 0.95rem;">
-        ${points.join("")}
-      </ul>
-      <div style="border-left: 4px solid var(--color-terracotta); background-color: rgba(224, 122, 95, 0.08); padding: 14px 18px; border-radius: 0 8px 8px 0;">
-        <strong style="color: var(--color-terracotta); display: block; font-size: 1rem; margin-bottom: 4px;">
-          ${hasRedFlags ? "Eén of meerdere medische indicaties (rode vlaggen) vastgesteld" : "Ergonomisch zitadvies op maat"}
-        </strong>
-        <span style="color: var(--color-dark); font-size: 0.95rem; line-height: 1.55; display: block;">
-          <strong>Wacht niet op een langdurig Wmo-traject.</strong> Gemeentelijke aanvraagprocedures duren vaak 12 tot 20 weken. Wij leveren een ergonomische oplossing op maat, passend bij elk budget — snel geleverd inclusief gratis meting en passing aan huis.
-        </span>
-      </div>
-      <div style="margin-top: 18px; display: flex; justify-content: flex-end; align-items: center; gap: 10px; flex-wrap: wrap;">
-        <button type="button" class="btn btn-outline" id="btnExportClinicalPdf" style="font-size: 0.88rem; padding: 8px 16px; display: inline-flex; align-items: center; gap: 8px; border-color: var(--color-forest); color: var(--color-forest); background: #ffffff; cursor: pointer;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.25rem;">📋</span>
+          <h4 style="margin: 0; color: var(--color-forest); font-size: 1.12rem; font-family: var(--font-heading);">Klinische Evaluatie Zithouding & Mobiliteit</h4>
+        </div>
+        <button type="button" class="btn btn-outline" id="btnExportClinicalPdf" style="font-size: 0.82rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; border-color: var(--color-forest); color: var(--color-forest); background: #ffffff; cursor: pointer; border-radius: var(--radius-full);">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           Exporteer Indicatiewijzer (PDF)
         </button>
+      </div>
+      <ul style="margin: 0 0 12px 0; padding-left: 20px; line-height: 1.6; color: var(--color-dark); font-size: 0.88rem;">
+        ${points.join("")}
+      </ul>
+      <div style="border-left: 4px solid var(--color-terracotta); background-color: rgba(243, 146, 35, 0.08); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: var(--color-dark); line-height: 1.5;">
+        <strong style="color: var(--color-terracotta);">${hasRedFlags ? "Eén of meerdere medische indicaties vastgesteld:" : "Ergonomisch advies:"}</strong>
+        Wacht niet op een langdurig Wmo-traject (vaak 12 tot 20 weken wachttijd). Wij leveren direct uit voorraad met gratis meting en passing aan huis.
       </div>
     `;
 
@@ -809,11 +970,11 @@ function renderWizardResults() {
   if (matches.length === 0) {
     const noResults = document.createElement("div");
     noResults.className = "no-results";
-    noResults.style.cssText = "grid-column: 1 / -1;";
+    noResults.style.cssText = "grid-column: 1 / -1; padding: 24px; text-align: center;";
     noResults.innerHTML = `
       <h3>Geen standaard match gevonden</h3>
-      <p style="margin-top: 8px;">Op basis van uw antwoorden hebben we momenteel geen standaard model in de database dat direct 100% aansluit. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Plan een passing aan huis voor een gratis opmeting en passend advies.</p>
-      <a href="afspraak.html" class="btn btn-secondary" style="margin-top: 16px;">Vrijblijvend Advies Inplannen</a>
+      <p style="margin-top: 8px; color: var(--color-gray); font-size: 0.95rem;">Op basis van uw antwoorden hebben we momenteel geen standaard model in de database dat direct 100% aansluit. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Plan een vrijblijvende passing aan huis voor een gratis opmeting en passend advies.</p>
+      <a href="afspraak.html" class="btn btn-secondary" style="margin-top: 14px;">Vrijblijvend Advies Inplannen</a>
     `;
     resultsContainer.appendChild(noResults);
     return;
@@ -827,19 +988,14 @@ function renderWizardResults() {
   
   topMatches.forEach(chair => {
     const card = document.createElement("div");
-    card.className = "product-card";
-    card.style.cursor = "pointer";
-    card.addEventListener("click", () => {
-      if (typeof openProductModal === "function") {
-        openProductModal(chair);
-      }
-    });
+    card.className = "compact-match-card";
     
     // Generate dynamic features & suitability
     const dynamicFeatures = getChairFeatures(chair);
     const dynamicSuitability = getChairSuitability(chair, height, complaints);
     
     const featuresHtml = dynamicFeatures
+      .slice(0, 3)
       .map(feat => `<li>${feat}</li>`)
       .join("");
       
@@ -847,38 +1003,53 @@ function renderWizardResults() {
     const percentage = Math.max(0, Math.min(100, Math.round((chair.score / maxScore) * 100)));
       
     card.innerHTML = `
-      <div class="product-image" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 200px; padding: 10px;">
-        ${chair.image ? `<img src="${chair.image}" alt="${chair.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">` : `<span style="font-size: 3rem;">🛋️</span>`}
-        ${chair.badge ? `<span class="badge badge-${chair.badgeType || 'new'}">${chair.badge}</span>` : ""}
-        <span class="badge badge-relevance" style="left: auto; right: 16px; background-color: var(--color-forest); color: var(--color-light); font-weight: 700; border: 2px solid var(--color-light); box-shadow: 0 2px 6px rgba(0,0,0,0.1);">${percentage}% Match</span>
+      <div class="match-card-img-wrap">
+        ${chair.image ? `<img src="${chair.image}" alt="${chair.name}">` : `<span style="font-size: 2.5rem;">🛋️</span>`}
+        <span class="match-score-badge">${percentage}% Match</span>
       </div>
-      <div class="product-info">
-        <h3 class="product-title">${chair.name}</h3>
-        <p style="font-size: 0.85rem; color: var(--color-terracotta); font-weight:600; margin-bottom: 12px;">
-          ${dynamicSuitability}
-        </p>
-        <ul class="product-features">
+      <div class="match-card-body">
+        <h3 class="match-card-title">${chair.name}</h3>
+        <div class="match-card-suitability">${dynamicSuitability}</div>
+        <ul class="match-card-features">
           ${featuresHtml}
         </ul>
-        <div class="product-price-row" style="align-items: flex-end;">
+        <div class="match-card-price-row">
           <div>
             ${(chair.old_price && chair.old_price > chair.price) ? `
-              <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-height: 44px;">
-                <span style="text-decoration: line-through; color: var(--color-terracotta); font-size: 0.85rem; font-weight: 600; line-height: 1.2; margin-bottom: 2px;">${formatPrice(chair.old_price)}</span>
-                <span class="price-value" style="color: var(--color-forest); font-weight: bold; font-size: 1.3rem; line-height: 1.2;">${formatPrice(chair.price)}</span>
-              </div>
-            ` : `
-              <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-height: 44px;">
-                <span class="price-value" style="color: var(--color-forest); font-weight: bold; font-size: 1.3rem; line-height: 1.2;">${formatPrice(chair.price)}</span>
-              </div>
-            `}
+              <span style="text-decoration: line-through; color: var(--color-terracotta); font-size: 0.78rem; font-weight: 600; display: block;">${formatPrice(chair.old_price)}</span>
+            ` : ''}
+            <span class="match-card-price">${formatPrice(chair.price)}</span>
           </div>
-          <button type="button" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem; min-height: auto;">
-            Meer info
-          </button>
+          <div class="match-card-actions">
+            <button type="button" class="btn-card-details" title="Bekijk specificaties">Details</button>
+            <button type="button" class="btn-card-book" title="Plan proefzit afspraak">Probeer</button>
+          </div>
         </div>
       </div>
     `;
+
+    card.querySelector(".btn-card-details").addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (typeof openProductModal === "function") {
+        openProductModal(chair);
+      }
+    });
+
+    card.querySelector(".btn-card-book").addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (typeof prefillBooking === "function") {
+        prefillBooking(chair.name);
+      } else {
+        window.location.href = "afspraak.html";
+      }
+    });
+
+    card.addEventListener("click", () => {
+      if (typeof openProductModal === "function") {
+        openProductModal(chair);
+      }
+    });
+
     resultsContainer.appendChild(card);
   });
 }
