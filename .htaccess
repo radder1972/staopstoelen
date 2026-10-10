@@ -21,6 +21,10 @@
     RewriteRule ^api/ - [L]
     RewriteRule ^assets/ - [L]
 
+    # Rewrite clean URLs without .html extension (e.g. /huisstijl -> /huisstijl.html)
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^([^/]+)/?$ $1.html [L]
+
     # Redirect all non-existent old page URLs (404s / old Google search links) permanently to staopstoelen.html
     RewriteRule ^.*$ /staopstoelen.html [R=301,L]
 </IfModule>
