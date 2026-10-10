@@ -509,6 +509,39 @@ section[id], section {
   color: var(--color-gray);
 }
 
+/* Hero Image Wrapper & Quality Seal Sticker (hangt half over de gallery) */
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-quality-sticker-link {
+  position: absolute;
+  top: -32px;
+  left: -32px;
+  z-index: 15;
+  display: block;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: rotate(-10deg);
+}
+
+.hero-quality-sticker {
+  width: 134px;
+  height: 134px;
+  display: block;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  transition: filter 0.3s ease;
+}
+
+.hero-quality-sticker-link:hover {
+  transform: rotate(-5deg) scale(1.06);
+}
+
+.hero-quality-sticker-link:hover .hero-quality-sticker {
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.32)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
 .hero-image-container {
   position: relative;
   border-radius: var(--radius-lg);
@@ -2833,6 +2866,14 @@ footer h3, footer h4 {
 }
 
 @media (max-width: 576px) {
+  .hero-quality-sticker-link {
+    top: -16px;
+    left: -12px;
+  }
+  .hero-quality-sticker {
+    width: 86px;
+    height: 86px;
+  }
   .slideshow-actie-badge {
     top: 12px;
     right: 12px;
@@ -3254,11 +3295,27 @@ input[type="checkbox"] {
   }
 
   /* Prevent the hero image from growing too large on tablet and mobile viewports */
-  .hero-image-container {
+  .hero-image-wrapper {
     max-width: 400px;
     width: 100%;
     margin: 0 auto;
+  }
+
+  .hero-image-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
     aspect-ratio: 1/1; /* Show the full square image without cropping on smaller screens */
+  }
+
+  .hero-quality-sticker-link {
+    top: -20px;
+    left: -16px;
+  }
+
+  .hero-quality-sticker {
+    width: 104px;
+    height: 104px;
   }
 }
 

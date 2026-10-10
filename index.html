@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=10.23">
+  <link rel="stylesheet" href="style.css?v=10.24">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -167,80 +167,86 @@
           </div>
         </div>
       </div>
-      <div class="hero-image-container" id="heroImageContainer">
-        <div class="hero-slideshow" id="heroSlideshow">
-          <div class="hero-slide active">
-            <img src="assets/stoelen/chair_dordrecht_cozy.png" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht">
-            <div class="slide-caption">Sta-op Stoel Dordrecht</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_zwijndrecht_cozy.png" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht">
-            <div class="slide-caption">Draaibare Sta-op Stoel Zwijndrecht</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_rotterdam_cozy.png" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam">
-            <div class="slide-caption">Lederen Sta-op Stoel Rotterdam</div>
-          </div>
-          <div class="hero-slide" data-brand="fitform">
-            <img src="assets/stoelen/chair_fitform_570_reco_cozy.png" alt="Stijlvol interieur met de ergonomische Fitform 570 Vario">
-            <div class="slide-caption">Fitform 570 Vario</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_movie_cozy.png" alt="Klassiek interieur met de comfortabele Senioren Stoel Movie">
-            <div class="slide-caption">Senioren Stoel Movie</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_alfred_cozy.png" alt="Luxe lederen interieur met de moderne Sta-op Stoel Alfred">
-            <div class="slide-caption">Lederen Sta-op Stoel Alfred</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_athena_cozy.png" alt="Warm interieur met de snoerloze Senioren Stoel Athena">
-            <div class="slide-caption">Senioren Stoel Athena</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_fiji_cozy.png" alt="Modern interieur met de draaibare Sta-op Stoel Fiji">
-            <div class="slide-caption">Draaibare Sta-op Stoel Fiji</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_industro_cozy.png" alt="Stoer industrieel interieur met de Sta-op Stoel Industro">
-            <div class="slide-caption">Sta-op Stoel Industro</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_bellino_cozy.png" alt="Elegant interieur met de comfortabele Doge Bellino Royal">
-            <div class="slide-caption">Doge Bellino Royal</div>
-          </div>
-          <div class="hero-slide">
-            <img src="assets/stoelen/chair_doge_modulair_cozy.png" alt="Comfortabele zithoek met de Doge Modulair Zorgstoel">
-            <div class="slide-caption">Doge Modulair Zorgstoel</div>
-          </div>
-        </div>
-        
-        <!-- Slideshow Controls -->
-        <button class="slideshow-ctrl ctrl-prev" id="slideshowPrev" aria-label="Vorige afbeelding">&#10094;</button>
-        <button class="slideshow-ctrl ctrl-next" id="slideshowNext" aria-label="Volgende afbeelding">&#10095;</button>
-
-        <!-- Najaarsactie Button op de Slideshow -->
-        <div class="slideshow-actie-badge">
-          <div style="position: relative; display: inline-block;">
-            <!-- Subtiel herfstblaadje op de knop -->
-            <div style="position: absolute; top: -11px; right: -7px; pointer-events: none; z-index: 12;">
-              <svg width="26" height="26" viewBox="0 0 32 32" style="display:block; transform: rotate(26deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-                <defs>
-                  <linearGradient id="heroSlideLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#fed857"/>
-                    <stop offset="50%" stop-color="#f39223"/>
-                    <stop offset="100%" stop-color="#d35400"/>
-                  </linearGradient>
-                </defs>
-                <path d="M16 2 C23 6 28 13 26 21 C24 26 18 29 15 29 C14.5 29 14 31 13 32 L12 31.5 C12.8 30 13 28.5 13.5 27.5 C8 26 4 20 4 14 C4 8 10 3 16 2 Z" fill="url(#heroSlideLeafGrad)" />
-                <path d="M16 3 C15.5 10 14.5 18 13.2 27" stroke="#4a1f03" stroke-width="0.9" fill="none" opacity="0.65" />
-                <path d="M15.5 8 Q19 10 22 11 M15 12 Q19 14 23 16 M14.5 16 Q18 18 21 21 M15 10 Q11 12 7 13 M14.5 14 Q10 16 7 18 M14 18 Q10 20 8 23" stroke="#4a1f03" stroke-width="0.6" fill="none" opacity="0.45" />
-              </svg>
+      <div class="hero-image-wrapper">
+        <!-- Officiële Kwaliteitszegel: Nieuw & Gereviseerd (hangt half over de gallery) -->
+        <a href="revisie.html" class="hero-quality-sticker-link" title="Ontdek onze duurzame kwaliteitsbelofte: Nieuw &amp; Gereviseerd, 100% op maat">
+          <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.3" alt="Officiële Kwaliteitszegel: Nieuw &amp; Gereviseerd - Duurzaam &amp; Op Maat" class="hero-quality-sticker">
+        </a>
+        <div class="hero-image-container" id="heroImageContainer">
+          <div class="hero-slideshow" id="heroSlideshow">
+            <div class="hero-slide active">
+              <img src="assets/stoelen/chair_dordrecht_cozy.png" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht">
+              <div class="slide-caption">Sta-op Stoel Dordrecht</div>
             </div>
-            <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="btn btn-najaarsactie-red hero-slideshow-btn" title="Bekijk Fitform Najaarsactie met tot €600,- korting">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-              <span>Najaarsactie: Tot €600 Korting</span>
-            </a>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_zwijndrecht_cozy.png" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht">
+              <div class="slide-caption">Draaibare Sta-op Stoel Zwijndrecht</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_rotterdam_cozy.png" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam">
+              <div class="slide-caption">Lederen Sta-op Stoel Rotterdam</div>
+            </div>
+            <div class="hero-slide" data-brand="fitform">
+              <img src="assets/stoelen/chair_fitform_570_reco_cozy.png" alt="Stijlvol interieur met de ergonomische Fitform 570 Vario">
+              <div class="slide-caption">Fitform 570 Vario</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_movie_cozy.png" alt="Klassiek interieur met de comfortabele Senioren Stoel Movie">
+              <div class="slide-caption">Senioren Stoel Movie</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_alfred_cozy.png" alt="Luxe lederen interieur met de moderne Sta-op Stoel Alfred">
+              <div class="slide-caption">Lederen Sta-op Stoel Alfred</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_athena_cozy.png" alt="Warm interieur met de snoerloze Senioren Stoel Athena">
+              <div class="slide-caption">Senioren Stoel Athena</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_fiji_cozy.png" alt="Modern interieur met de draaibare Sta-op Stoel Fiji">
+              <div class="slide-caption">Draaibare Sta-op Stoel Fiji</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_industro_cozy.png" alt="Stoer industrieel interieur met de Sta-op Stoel Industro">
+              <div class="slide-caption">Sta-op Stoel Industro</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_bellino_cozy.png" alt="Elegant interieur met de comfortabele Doge Bellino Royal">
+              <div class="slide-caption">Doge Bellino Royal</div>
+            </div>
+            <div class="hero-slide">
+              <img src="assets/stoelen/chair_doge_modulair_cozy.png" alt="Comfortabele zithoek met de Doge Modulair Zorgstoel">
+              <div class="slide-caption">Doge Modulair Zorgstoel</div>
+            </div>
+          </div>
+          
+          <!-- Slideshow Controls -->
+          <button class="slideshow-ctrl ctrl-prev" id="slideshowPrev" aria-label="Vorige afbeelding">&#10094;</button>
+          <button class="slideshow-ctrl ctrl-next" id="slideshowNext" aria-label="Volgende afbeelding">&#10095;</button>
+
+          <!-- Najaarsactie Button op de Slideshow -->
+          <div class="slideshow-actie-badge">
+            <div style="position: relative; display: inline-block;">
+              <!-- Subtiel herfstblaadje op de knop -->
+              <div style="position: absolute; top: -11px; right: -7px; pointer-events: none; z-index: 12;">
+                <svg width="26" height="26" viewBox="0 0 32 32" style="display:block; transform: rotate(26deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+                  <defs>
+                    <linearGradient id="heroSlideLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fed857"/>
+                      <stop offset="50%" stop-color="#f39223"/>
+                      <stop offset="100%" stop-color="#d35400"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M16 2 C23 6 28 13 26 21 C24 26 18 29 15 29 C14.5 29 14 31 13 32 L12 31.5 C12.8 30 13 28.5 13.5 27.5 C8 26 4 20 4 14 C4 8 10 3 16 2 Z" fill="url(#heroSlideLeafGrad)" />
+                  <path d="M16 3 C15.5 10 14.5 18 13.2 27" stroke="#4a1f03" stroke-width="0.9" fill="none" opacity="0.65" />
+                  <path d="M15.5 8 Q19 10 22 11 M15 12 Q19 14 23 16 M14.5 16 Q18 18 21 21 M15 10 Q11 12 7 13 M14.5 14 Q10 16 7 18 M14 18 Q10 20 8 23" stroke="#4a1f03" stroke-width="0.6" fill="none" opacity="0.45" />
+                </svg>
+              </div>
+              <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="btn btn-najaarsactie-red hero-slideshow-btn" title="Bekijk Fitform Najaarsactie met tot €600,- korting">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                <span>Najaarsactie: Tot €600 Korting</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
