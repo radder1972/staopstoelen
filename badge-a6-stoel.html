@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v1.6) | staopstoelen.nl</title>
-  <meta name="version" content="1.6">
+  <title>A6 Stoelbadge &amp; Showroom Prijskaart (v1.7) | staopstoelen.nl</title>
+  <meta name="version" content="1.7">
   <meta name="description" content="A6 stoelbadge en prijskaart generator voor in de showroom met sfeerfoto of standaardfoto, specificaties, prijzen en kwaliteitszegel van staopstoelen.nl.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -892,6 +892,9 @@
     .badge-a6-back {
       background: #ffffff;
       padding: var(--badge-pad-top) var(--badge-pad-side) var(--badge-pad-bottom) var(--badge-pad-side);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .back-header {
@@ -899,10 +902,10 @@
       justify-content: space-between;
       align-items: center;
       min-height: 11mm;
-      margin-bottom: 2mm;
+      margin-bottom: 1.6mm;
       padding-top: 0;
       border-bottom: 1.5px solid #eef2ed;
-      padding-bottom: 1.8mm;
+      padding-bottom: 1.5mm;
     }
 
     .back-logo-text {
@@ -947,7 +950,7 @@
     }
 
     .back-title-block {
-      margin-bottom: 2.5mm;
+      margin-bottom: 1.8mm;
     }
     .back-title-row {
       display: flex;
@@ -983,8 +986,9 @@
       font-weight: 500;
     }
 
+    /* Secties strak aangesloten op de kop */
     .back-section-wrap {
-      margin-bottom: 2.5mm;
+      margin-bottom: 1.8mm;
     }
 
     .back-section-heading {
@@ -997,7 +1001,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      margin-bottom: 1.5mm;
+      margin-bottom: 1.2mm;
     }
     .back-section-heading svg {
       color: var(--color-forest);
@@ -1009,18 +1013,18 @@
     .back-specs-table {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2mm 5mm;
+      gap: 1.8mm 5mm;
       background: #f8faf7;
       border: 1px solid #dce8da;
       border-radius: 6px;
-      padding: 5px 8px;
+      padding: 4.5px 8px;
     }
 
     .back-spec-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2.5px 0;
+      padding: 2.2px 0;
       border-bottom: 1px dashed #e2ebe0;
       font-size: 7.6px;
     }
@@ -1037,13 +1041,14 @@
       text-align: right;
     }
 
+    /* Ergonomische Kenmerken strak onder de specificaties */
     .back-features-list {
       list-style: none;
-      padding: 5px 8px;
+      padding: 4.5px 8px;
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 3.5px;
+      gap: 3px;
       background: #ffffff;
       border: 1px solid #e7ede5;
       border-radius: 6px;
@@ -1064,33 +1069,64 @@
       line-height: 1.2;
     }
 
+    /* 5. Showroom & Service Zekerheden Box (100% Maatgarantie - Een stuk HOGER & Prominent) */
     .back-service-box {
-      background: #f4faf1;
-      border: 1.2px solid rgba(75, 143, 36, 0.35);
-      border-radius: 6px;
-      padding: 6px 8px;
+      background: linear-gradient(145deg, #f4faf1 0%, #e6f4df 100%);
+      border: 1.8px solid var(--color-forest);
+      border-radius: 8px;
+      padding: 11px 12px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4px 8px;
+      gap: 10px 12px;
+      margin-top: auto;
       margin-bottom: 0;
+      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.12);
+      min-height: 35mm;
+      box-sizing: border-box;
+      align-content: center;
     }
     .back-service-item {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 7.2px;
-      color: var(--color-forest-dark);
-      line-height: 1.25;
+      gap: 8px;
     }
-    .back-service-item svg {
-      color: var(--color-forest);
+    .service-icon-wrap {
+      width: 27px;
+      height: 27px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid #d4e5d0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
-      width: 14px;
-      height: 14px;
+      color: var(--color-forest);
+    }
+    .service-icon-wrap svg {
+      width: 15px;
+      height: 15px;
+      stroke-width: 2.3;
+    }
+    .service-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
     }
     .back-service-item strong {
+      font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 7.6px;
+      font-size: 8.6px;
+      color: var(--color-forest-dark);
+      display: block;
+      margin-bottom: 1.5px;
+      line-height: 1.15;
+    }
+    .back-service-item span {
+      font-size: 7.4px;
+      color: #556958;
+      display: block;
+      line-height: 1.2;
     }
 
     /* ==========================================================================
@@ -1289,7 +1325,7 @@
         <div class="toolbar-title">
           <span>A6 Stoelbadge &amp; Prijskaart</span>
           <span class="toolbar-title-badge">A6 &bull; 105 × 148 mm</span>
-          <span class="toolbar-version-badge" title="Versie 1.6">v1.6</span>
+          <span class="toolbar-version-badge" title="Versie 1.7">v1.7</span>
         </div>
       </div>
 
@@ -1510,11 +1546,6 @@
             </div>
           </div>
 
-          <!-- Subtiele footer met versienummer -->
-          <footer class="badge-subtle-footer">
-            <span>staopstoelen.nl</span>
-            <span>v1.6</span>
-          </footer>
         </article>
       </div>
 
@@ -1574,27 +1605,47 @@
           <!-- 5. Showroom & Service Zekerheden Box -->
           <div class="back-service-box">
             <div class="back-service-item">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-              <div><strong>100% Maatgarantie</strong><br>Afgesteld op lichaamsmaat</div>
+              <div class="service-icon-wrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+              </div>
+              <div class="service-text">
+                <strong>100% Maatgarantie</strong>
+                <span>Afgesteld op lichaamsmaat</span>
+              </div>
             </div>
             <div class="back-service-item">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-              <div><strong>Service aan Huis</strong><br>Eigen bezorgdienst NL &amp; VL</div>
+              <div class="service-icon-wrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </div>
+              <div class="service-text">
+                <strong>Service aan Huis</strong>
+                <span>Eigen bezorgdienst NL &amp; VL</span>
+              </div>
             </div>
             <div class="back-service-item">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-              <div><strong>Garantie &amp; Nazorg</strong><br>Snelle service &amp; leenstoel</div>
+              <div class="service-icon-wrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              </div>
+              <div class="service-text">
+                <strong>Garantie &amp; Nazorg</strong>
+                <span>Snelle service &amp; leenstoel</span>
+              </div>
             </div>
             <div class="back-service-item">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <div><strong>Inruil Mogelijk</strong><br>Inruilpremie op uw stoel</div>
+              <div class="service-icon-wrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="service-text">
+                <strong>Inruil Mogelijk</strong>
+                <span>Inruilpremie op uw stoel</span>
+              </div>
             </div>
           </div>
 
-          <!-- Subtiele footer met versienummer -->
+          <!-- Subtiele footer met versienummer (alleen op achterkant) -->
           <footer class="badge-subtle-footer">
             <span>staopstoelen.nl &bull; Productinformatie</span>
-            <span>v1.6</span>
+            <span>v1.7</span>
           </footer>
         </article>
       </div>
