@@ -58,16 +58,16 @@
 
     /* Container matching beheer.html */
     .container {
-      max-width: 1240px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 24px;
-      box-sizing: border-box;
+      max-width: 1240px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      padding: 0 24px !important;
+      box-sizing: border-box !important;
     }
 
     /* Admin Header matching beheer.html */
     .admin-header {
-      background-color: #ffffff;
+      background-color: var(--color-light);
       border-bottom: 1px solid var(--color-gray-light);
       padding: 16px 0;
       box-shadow: 0 4px 15px rgba(0,0,0,0.02);
@@ -80,51 +80,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
     }
 
     .admin-logo {
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--color-forest);
       text-decoration: none;
-      line-height: 1;
-      display: inline-block;
     }
     .admin-logo span {
       color: var(--color-terracotta);
     }
 
-    .admin-header-nav {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-admin-nav {
-      padding: 8px 16px;
-      font-size: 0.88rem;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: var(--radius-sm);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--transition-smooth);
-      color: var(--color-forest-dark);
-      background: #ffffff;
-      border: 1px solid var(--color-gray-light);
-    }
-    .btn-admin-nav:hover {
-      background: var(--color-cream-dark);
-      border-color: #cbd5e1;
-    }
-
     .main-content {
       flex: 1;
-      padding: 28px 0 60px 0;
+      padding: 40px 0;
     }
 
     /* Admin Tabs Bar (Exact zoals in beheer.html) */
