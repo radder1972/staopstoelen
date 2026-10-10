@@ -148,8 +148,12 @@
     .tab-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 11px 22px;
+      height: 44px;
+      box-sizing: border-box;
+      line-height: 1;
+      padding: 0 22px;
       font-family: var(--font-heading);
       font-weight: 600;
       font-size: 0.92rem;
@@ -167,7 +171,8 @@
       outline: none;
       white-space: nowrap;
       flex-shrink: 0;
-      text-decoration: none;
+      text-decoration: none !important;
+      vertical-align: bottom;
     }
     .tab-btn svg {
       width: 17px;
@@ -176,6 +181,7 @@
       stroke-width: 2;
       transition: stroke 0.15s ease;
       flex-shrink: 0;
+      display: block;
     }
     .tab-btn:hover {
       background: #f7faf5;
@@ -192,19 +198,23 @@
       border: 1px solid var(--color-forest) !important;
       border-bottom: 2px solid var(--color-forest) !important;
       margin-bottom: -2px;
+      height: 44px;
+      box-sizing: border-box;
       z-index: 2;
       box-shadow: 0 2px 8px rgba(75, 143, 36, 0.2);
     }
     .tab-btn.active svg {
       stroke: #ffffff !important;
+      stroke-width: 2.2;
     }
 
-    /* Section Header Banner */
+    /* Admin Header Card & Section Header Banner (Identiek aan beheer.html) */
+    .admin-header-card,
     .section-header-banner {
       background: linear-gradient(135deg, #ffffff 0%, #f6faf3 55%, #fdfbf7 100%);
       border: 1px solid rgba(75, 143, 36, 0.22);
       border-radius: 14px;
-      padding: 22px 28px;
+      padding: 24px 28px;
       margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
@@ -213,6 +223,7 @@
       flex-wrap: wrap;
       box-shadow: 0 3px 14px rgba(18, 43, 7, 0.03);
     }
+    .admin-header-main,
     .section-header-main {
       flex: 1;
       min-width: 280px;
@@ -239,20 +250,21 @@
       background: var(--color-forest);
       display: inline-block;
     }
+    .admin-title,
     .section-banner-title {
       font-family: var(--font-heading);
       font-size: 1.55rem;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--color-forest-dark);
       margin: 0;
       letter-spacing: -0.2px;
       line-height: 1.25;
     }
+    .admin-subtitle,
     .section-banner-subtitle {
       color: var(--color-gray);
       font-size: 0.94rem;
       margin-top: 6px;
-      margin-bottom: 0;
       line-height: 1.5;
       max-width: 700px;
     }
@@ -2032,11 +2044,8 @@
     <div class="container admin-header-container">
       <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
       <div style="display: flex; gap: 12px; align-items: center;">
-        <a href="beheer.html" class="btn btn-outline" style="padding: 7px 16px; font-size: 0.88rem; min-height: auto; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-          ← Terug naar Beheerdashboard
-        </a>
         <a href="index.html" class="btn btn-outline" style="padding: 7px 16px; font-size: 0.88rem; min-height: auto; text-decoration: none;">
-          Naar Website
+          ← Terug naar Website
         </a>
       </div>
     </div>
@@ -2044,6 +2053,22 @@
 
   <main class="main-content">
     <div class="container">
+
+      <!-- Admin Header Card (Rustig, saliegroen gradient, geen border-left - Identiek aan beheer.html) -->
+      <div class="admin-header-card">
+        <div class="admin-header-main">
+          <div class="section-badge-pill">
+            <span class="pulse-dot"></span>
+            <span>Beheersysteem &bull; staopstoelen.nl</span>
+          </div>
+          <h1 class="admin-title">
+            Beheer &amp; Huisstijl Dashboard
+          </h1>
+          <p class="admin-subtitle">
+            Centraal beheer van de stoelencatalogus, merken, statistieken en officiële huisstijlmaterialen van staopstoelen.nl.
+          </p>
+        </div>
+      </div>
 
       <!-- Admin Tabs Bar (In lijn met beheerpaneel) -->
       <div class="admin-tabs-bar" role="tablist">

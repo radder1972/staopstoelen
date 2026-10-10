@@ -293,12 +293,17 @@
     .tab-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 11px 22px;
+      height: 44px;
+      box-sizing: border-box;
+      line-height: 1;
+      padding: 0 22px;
       font-family: var(--font-heading);
       font-weight: 600;
       font-size: 0.92rem;
       text-transform: none !important; /* GEEN KAPITALEN */
+      text-decoration: none !important;
       letter-spacing: 0;
       color: var(--color-forest-dark);
       background: #ffffff; /* Wit bij niet-geselecteerd */
@@ -312,6 +317,7 @@
       outline: none;
       white-space: nowrap;
       flex-shrink: 0;
+      vertical-align: bottom;
     }
 
     .tab-btn svg {
@@ -321,6 +327,7 @@
       stroke-width: 2;
       transition: stroke 0.15s ease;
       flex-shrink: 0;
+      display: block;
     }
 
     .tab-btn:hover {
@@ -340,8 +347,8 @@
       border: 1px solid var(--color-forest) !important;
       border-bottom: 2px solid var(--color-forest) !important;
       margin-bottom: -2px;
-      padding-top: 11px;
-      padding-bottom: 11px;
+      height: 44px;
+      box-sizing: border-box;
       z-index: 2;
       box-shadow: 0 2px 8px rgba(75, 143, 36, 0.2);
     }
