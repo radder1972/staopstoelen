@@ -264,13 +264,6 @@
       color: var(--color-terracotta);
     }
 
-    .card-brand-swoosh {
-      width: 32mm;
-      height: 3.5mm;
-      display: block;
-      margin-top: 1.2mm;
-    }
-
     .card-stamp-badge {
       width: 10.5mm;
       height: 10.5mm;
@@ -280,8 +273,8 @@
 
     /* Person Info */
     .card-person {
-      margin-top: 2mm;
-      margin-bottom: 2mm;
+      margin-top: 1.5mm;
+      margin-bottom: 1.5mm;
     }
 
     .card-person-name {
@@ -308,13 +301,21 @@
       font-weight: 600;
     }
 
+    /* Centered Green Divider between blocks */
+    .card-green-divider {
+      width: 48mm;
+      height: 0.55mm;
+      background: var(--color-forest);
+      border-radius: 9999px;
+      margin: 1.8mm auto;
+    }
+
     /* Contact Details Grid (Compact, razor sharp) */
     .card-contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.2mm 2.5mm;
-      padding-top: 1.8mm;
-      border-top: 0.4mm solid rgba(75, 143, 36, 0.25);
+      padding-top: 0.5mm;
     }
 
     .card-contact-item {
@@ -367,17 +368,6 @@
       position: relative;
     }
 
-    /* Decorative faint backdrop swoosh */
-    .card-back-bg-waves {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.18;
-      pointer-events: none;
-    }
-
     .card-back-header {
       position: relative;
       z-index: 2;
@@ -415,7 +405,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.1mm;
-      margin: 1.5mm 0;
+      margin: 1.5mm 0 1.2mm 0;
     }
 
     .card-usp-item {
@@ -445,6 +435,16 @@
       flex-shrink: 0;
     }
 
+    /* Centered Green Divider on Card Back */
+    .card-back-green-divider {
+      width: 48mm;
+      height: 0.55mm;
+      background: var(--color-forest);
+      border-radius: 9999px;
+      margin: 1.8mm auto 1.5mm auto;
+      opacity: 0.85;
+    }
+
     /* Bottom footer on card back: QR + URL + Address */
     .card-back-footer {
       position: relative;
@@ -452,8 +452,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 1.5mm;
-      border-top: 0.3mm solid rgba(255, 255, 255, 0.18);
+      padding-top: 0.5mm;
     }
 
     .card-back-qr-box {
@@ -659,18 +658,9 @@
         <div class="card-label">Voorzijde (Wit &amp; Huisstijl)</div>
         
         <article class="business-card card-front" id="cardFront">
-          <!-- Header with Logo and Swooshes -->
+          <!-- Header with Logo and Stamp (zonder rare swooshes) -->
           <div class="card-front-header">
-            <div>
-              <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
-              <!-- 4 Signature Swooshes -->
-              <svg class="card-brand-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 60" preserveAspectRatio="none">
-                <path d="M 0,22 Q 250,50 500,20 T 1000,25" fill="none" stroke="var(--color-sky)" stroke-width="6" stroke-linecap="round" opacity="0.8"></path>
-                <path d="M 0,30 Q 250,10 500,32 T 1000,34" fill="none" stroke="var(--color-terracotta)" stroke-width="5" stroke-linecap="round" opacity="0.9"></path>
-                <path d="M 0,37 Q 250,54 500,30 T 1000,40" fill="none" stroke="var(--color-sage)" stroke-width="5.5" stroke-linecap="round" opacity="0.95"></path>
-                <path d="M 0,44 Q 250,26 500,44 T 1000,46" fill="none" stroke="var(--color-forest)" stroke-width="8" stroke-linecap="round"></path>
-              </svg>
-            </div>
+            <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
             <!-- Subtiele Stempel / Keurmerk -->
             <img src="assets/keuze_stempel.svg?v=1.0.48" alt="Keurmerk" class="card-stamp-badge">
           </div>
@@ -682,6 +672,9 @@
               Gediplomeerd bewegingstechnoloog <span class="badge-spec">(zitexpert)</span>
             </div>
           </div>
+
+          <!-- Gecentreerde Groene Divider tussen de blokken -->
+          <div class="card-green-divider"></div>
 
           <!-- Contact Grid -->
           <div class="card-contact-grid">
@@ -705,7 +698,7 @@
 
             <!-- Website -->
             <a href="https://www.staopstoelen.nl" class="card-contact-item" title="Bezoek website">
-              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
               <span>www.staopstoelen.nl</span>
             </a>
 
@@ -723,12 +716,6 @@
         <div class="card-label">Achterzijde (Luxe Forest Green &amp; QR)</div>
         
         <article class="business-card card-back" id="cardBack">
-          <!-- Background faint swoosh curves -->
-          <svg class="card-back-bg-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" preserveAspectRatio="none">
-            <path d="M 0,100 Q 150,220 300,120 T 500,160" fill="none" stroke="#4b8f24" stroke-width="40" stroke-linecap="round"></path>
-            <path d="M 0,160 Q 180,80 320,180 T 500,200" fill="none" stroke="#f39223" stroke-width="25" stroke-linecap="round"></path>
-          </svg>
-
           <!-- Back Header: Logo + Strapline -->
           <div class="card-back-header">
             <div>
@@ -754,6 +741,9 @@
               <span><strong>Eigen werkplaats</strong> &amp; deskundige afstelling</span>
             </div>
           </div>
+
+          <!-- Gecentreerde Groene Divider -->
+          <div class="card-back-green-divider"></div>
 
           <!-- Back Footer with QR code & URL -->
           <div class="card-back-footer">
