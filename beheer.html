@@ -68,8 +68,11 @@
     }
     
     .container {
-      max-width: 100% !important;
+      max-width: 1240px !important;
       width: 100% !important;
+      margin: 0 auto !important;
+      padding: 0 24px !important;
+      box-sizing: border-box !important;
     }
 
     .stats-charts-grid {
@@ -116,25 +119,50 @@
       padding: 40px 0;
     }
     
-    /* Admin Header Card - Schoon, wit en rustig */
-    .admin-header-card {
-      background: #ffffff;
-      border: 1px solid var(--color-gray-light);
-      border-radius: 12px;
-      padding: 22px 28px;
+    /* Admin Header Card & Section Header Banners - Zachte saliegroen gradient vulling, GEEN gekleurde rand links */
+    .admin-header-card,
+    .section-header-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f6faf3 55%, #fdfbf7 100%);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      border-radius: 14px;
+      padding: 24px 28px;
       margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 3px 14px rgba(18, 43, 7, 0.03);
     }
-    .admin-header-main {
+    .admin-header-main,
+    .section-header-main {
       flex: 1;
       min-width: 280px;
     }
-    .admin-title {
+    .section-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-forest);
+      background: rgba(75, 143, 36, 0.09);
+      padding: 3px 11px;
+      border-radius: 9999px;
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      margin-bottom: 8px;
+    }
+    .section-badge-pill .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-forest);
+      display: inline-block;
+    }
+    .admin-title,
+    .section-banner-title {
       font-family: var(--font-heading);
       font-size: 1.55rem;
       font-weight: 700;
@@ -143,13 +171,21 @@
       letter-spacing: -0.2px;
       line-height: 1.25;
     }
-    .admin-subtitle {
+    .admin-subtitle,
+    .section-banner-subtitle {
       color: var(--color-gray);
       font-size: 0.94rem;
       margin-top: 6px;
       margin-bottom: 0;
       line-height: 1.5;
       max-width: 700px;
+    }
+    .admin-header-actions,
+    .section-header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
     }
     .btn-admin-action {
       display: inline-flex;
@@ -166,11 +202,11 @@
       text-decoration: none;
       transition: all 0.2s ease;
       white-space: nowrap;
+      cursor: pointer;
     }
     .btn-admin-action:hover {
       background: var(--color-forest);
       color: #ffffff;
-    }
       transform: translateY(-1px);
       box-shadow: 0 4px 14px rgba(75, 143, 36, 0.22);
     }
@@ -995,9 +1031,13 @@
   <main class="main-content">
     <div class="container">
       
-      <!-- Admin Header Card (Rustig, wit en strak) -->
+      <!-- Admin Header Card (Rustig, saliegroen gradient, geen border-left) -->
       <div class="admin-header-card">
         <div class="admin-header-main">
+          <div class="section-badge-pill">
+            <span class="pulse-dot"></span>
+            <span>Beheersysteem &bull; staopstoelen.nl</span>
+          </div>
           <h1 class="admin-title">
             Beheer &amp; Huisstijl Dashboard
           </h1>
@@ -1055,10 +1095,30 @@
       </div>
 
       <div id="chairsSection">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 20px; gap: 16px; flex-wrap: wrap;">
-          <div>
-            <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Stoelen Beheer</h2>
-            <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Beheer de sta-op stoelen catalogus en exporteer de updates naar de html code.</p>
+        <div class="section-header-banner">
+          <div class="section-header-main">
+            <div class="section-badge-pill">
+              <span class="pulse-dot"></span>
+              <span>Catalogus &amp; Voorraad</span>
+            </div>
+            <h2 class="section-banner-title">Stoelen Beheer</h2>
+            <p class="section-banner-subtitle">
+              Beheer het complete assortiment sta-opstoelen en seniorenstoelen, werk prijzen en voorraad bij en synchroniseer direct met de website.
+            </p>
+          </div>
+          <div class="section-header-actions">
+            <button type="button" class="btn btn-sync-seo" id="syncSeoPagesBtn" style="margin: 0;" title="Genereer alle statische SEO-pagina's opnieuw en update sitemap.xml">
+              <svg id="syncSeoIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; display: inline-block;">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+              <span id="syncSeoLabel">Sync SEO Pagina's</span>
+            </button>
+            <button class="btn btn-primary" id="addChairBtn" style="margin: 0; display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Nieuwe Stoel Toevoegen</span>
+            </button>
           </div>
         </div>
 
@@ -1067,10 +1127,10 @@
           <!-- Dynamically populated -->
         </div>
         
-        <!-- Controls row (Search, filters, checkbox, button) -->
+        <!-- Controls row (Search & filters) -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; background-color: var(--color-cream); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--color-gray-light);">
           <!-- Filters (Left aligned/grouped) -->
-          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; flex: 1;">
             <div style="position: relative; width: 220px;">
               <input type="text" id="chairSearchInput" class="form-control" placeholder="Zoek stoel..." style="padding-left: 36px; min-height: 42px; margin: 0;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gray)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;">
@@ -1104,18 +1164,6 @@
               <input type="checkbox" id="filterOffer" style="width: 18px; height: 18px; cursor: pointer;">
               Alleen aanbiedingen
             </label>
-          </div>
-          
-          <div style="display: flex; gap: 10px; margin-left: auto;">
-            <button type="button" class="btn btn-sync-seo" id="syncSeoPagesBtn" style="margin: 0;" title="Genereer alle statische SEO-pagina's opnieuw en update sitemap.xml">
-              <svg id="syncSeoIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; display: inline-block;">
-                <polyline points="23 4 23 10 17 10"></polyline>
-                <polyline points="1 20 1 14 7 14"></polyline>
-                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-              </svg>
-              <span id="syncSeoLabel">Sync SEO Pagina's</span>
-            </button>
-            <button class="btn btn-primary" id="addChairBtn" style="margin: 0;">+ Nieuwe Stoel Toevoegen</button>
           </div>
         </div>
         
@@ -1401,13 +1449,24 @@
       </div> <!-- End #chairsSection -->
 
       <!-- Section: Brands Management (initially hidden) -->
-      <div id="brandsSection" style="display: none; max-width: 800px; margin: 0 auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; margin-bottom: 24px;">
-          <div>
-            <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">Merken Beheer</h2>
-            <p style="color: var(--color-gray); margin-top: 4px; font-size: 0.95rem;">Beheer de merknamen die kunnen worden geselecteerd bij het invoeren van stoelen.</p>
+      <div id="brandsSection" style="display: none;">
+        <div class="section-header-banner">
+          <div class="section-header-main">
+            <div class="section-badge-pill">
+              <span class="pulse-dot"></span>
+              <span>Fabrikanten &amp; Merken</span>
+            </div>
+            <h2 class="section-banner-title">Merken Beheer</h2>
+            <p class="section-banner-subtitle">
+              Beheer de fabrikanten en merknamen die worden gebruikt bij het invoeren en filteren van stoelen in de catalogus.
+            </p>
           </div>
-          <button class="btn btn-primary" id="addBrandBtn">+ Nieuw Merk Toevoegen</button>
+          <div class="section-header-actions">
+            <button class="btn btn-primary" id="addBrandBtn" style="margin: 0; display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Nieuw Merk Toevoegen</span>
+            </button>
+          </div>
         </div>
 
         <!-- Table of Brands -->
@@ -1428,32 +1487,42 @@
       </div> <!-- End #brandsSection -->
 
       <!-- Section: Statistics Dashboard (initially hidden) -->
-      <div id="statsSection" style="display: none; margin-bottom: 60px; max-width: 1000px; margin: 0 auto; padding: 0 16px;">
-        <div style="margin-top: 16px; margin-bottom: 24px; text-align: center;">
-          <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.6rem; font-weight: 700;">Bezoekersstatistieken</h2>
-          <p style="color: var(--color-gray); margin-top: 6px; margin-bottom: 12px; font-size: 0.95rem;">Visueel overzicht van de websitebezoeken, apparaattypen en afspraakconversies (laatste 30 dagen).</p>
-          <button type="button" id="btnResetStats" class="btn btn-outline" style="color: #c62828; border-color: #ef9a9a; font-size: 0.85rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; background: #ffebee; cursor: pointer;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-            Statistieken Resetten
-          </button>
+      <div id="statsSection" style="display: none; margin-bottom: 60px;">
+        <div class="section-header-banner">
+          <div class="section-header-main">
+            <div class="section-badge-pill">
+              <span class="pulse-dot"></span>
+              <span>Analytics &amp; Bezoekers</span>
+            </div>
+            <h2 class="section-banner-title">Bezoekersstatistieken</h2>
+            <p class="section-banner-subtitle">
+              Visueel overzicht van de websitebezoeken, apparaattypen, meest bekeken stoelen en afspraakconversies (laatste 30 dagen).
+            </p>
+          </div>
+          <div class="section-header-actions">
+            <button type="button" id="btnResetStats" class="btn btn-outline" style="color: #c62828; border-color: #ef9a9a; background: #ffffff; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s ease;" title="Wis alle lokaal opgeslagen bezoekersstatistieken">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              <span>Statistieken Resetten</span>
+            </button>
+          </div>
         </div>
         
         <!-- KPI Cards Grid (Compact & Centered) -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 32px;">
           <!-- Card 4: Totaal Paginabezoeken -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #1976d2; display: flex; flex-direction: column; justify-content: center;">
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center;">
             <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Totaal Paginabezoeken</div>
             <div style="font-size: 1.8rem; font-weight: 800; color: #1976d2; margin: 8px 0 4px 0;" id="kpiTotalPageviews">0</div>
             <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiTotalPageviewsSub">Totale weergaven</div>
           </div>
           <!-- Card 5: Unieke Bezoekers -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #2e7d32; display: flex; flex-direction: column; justify-content: center;">
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center;">
             <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Unieke Bezoekers</div>
             <div style="font-size: 1.8rem; font-weight: 800; color: #2e7d32; margin: 8px 0 4px 0;" id="kpiUniqueVisitors">0</div>
             <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiUniqueVisitorsSub">Unieke sessies</div>
           </div>
           <!-- Card 6: Conversies (Boekingen) -->
-          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #d32f2f; display: flex; flex-direction: column; justify-content: center;">
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center;">
             <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px;">Conversie Ratio (Boekingen)</div>
             <div style="font-size: 1.8rem; font-weight: 800; color: #d32f2f; margin: 8px 0 4px 0;" id="kpiConversionRate">0%</div>
             <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiConversionRateSub">Aandeel boekingen</div>
@@ -1461,7 +1530,7 @@
         </div>
 
         <!-- Dynamic Automated Business Insights Card -->
-        <div id="dynamicInsightsCard" style="background: linear-gradient(135deg, #f7faf5 0%, #ffffff 100%); border: 1px solid #d4e5cb; border-left: 5px solid var(--color-forest); border-radius: var(--radius-sm); padding: 22px 26px; margin-bottom: 28px; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.04);">
+        <div id="dynamicInsightsCard" style="background: linear-gradient(135deg, #f7faf5 0%, #ffffff 100%); border: 1px solid rgba(75, 143, 36, 0.22); border-radius: var(--radius-sm); padding: 22px 26px; margin-bottom: 28px; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.04);">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
             <div style="display: flex; align-items: center; gap: 10px;">
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: #e2ebd9; color: var(--color-forest); flex-shrink: 0; box-shadow: 0 1px 3px rgba(18,43,7,0.06);">
@@ -1599,22 +1668,25 @@
       <!-- ======================================================================
            Section: Huisstijl & Drukwerk Portaal (initially hidden)
            ====================================================================== -->
-      <div id="huisstijlSection" style="display: none; max-width: 1220px; margin: 0 auto; padding: 10px 24px 80px 24px; box-sizing: border-box;">
+      <div id="huisstijlSection" style="display: none; padding-bottom: 80px;">
         
-        <!-- Header Banner (Schoon & Wit) -->
-        <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 24px 28px; margin-top: 16px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
-          <div>
-            <h2 style="color: var(--color-forest-dark); font-family: var(--font-heading); margin: 0; font-size: 1.5rem; font-weight: 700;">
+        <div class="section-header-banner">
+          <div class="section-header-main">
+            <div class="section-badge-pill">
+              <span class="pulse-dot"></span>
+              <span>Intern Merkportaal</span>
+            </div>
+            <h2 class="section-banner-title">
               Huisstijl &amp; Drukwerk Portaal
             </h2>
-            <p style="color: var(--color-gray); margin-top: 6px; font-size: 0.95rem; max-width: 650px; line-height: 1.5; margin-bottom: 0;">
+            <p class="section-banner-subtitle">
               Alle officiële visitekaartjes, A5 flyers, intakeformulieren, werkwijzers en merkmiddelen van staopstoelen.nl op één centrale plek achter het beheer.
             </p>
           </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <div class="section-header-actions">
             <a href="huisstijl.html" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 8px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Volledig Scherm Portaal (huisstijl.html) ↗
+              <span>Volledig Scherm Portaal (huisstijl.html) ↗</span>
             </a>
           </div>
         </div>
