@@ -563,69 +563,205 @@
     }
 
     /* --------------------------------------------------------------------------
-       A4 DRUKVEL (Print Sheet: 10 Kaartjes met snijlijnen op 1 A4 vel)
+       A4 DRUKVEL (Print Sheet: 10 Kaartjes met snijlijnen & crop marks op 1 A4)
+       Exact 210mm x 297mm • 10 kaartjes (85x55mm) • 20mm L/R, 11mm B/O
        -------------------------------------------------------------------------- */
-    .sheet-print-container {
-      display: none;
-      width: 210mm;
-      min-height: 297mm;
-      background: #ffffff;
-      margin: 20px auto;
-      padding: 15mm 15mm;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-      box-sizing: border-box;
-      position: relative;
+    .sheet-preview-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin: 24px auto 60px auto;
+      max-width: 1000px;
+      padding: 0 16px;
     }
 
-    .sheet-header-info {
-      text-align: center;
-      margin-bottom: 8mm;
-      border-bottom: 1px solid var(--color-gray-light);
-      padding-bottom: 4mm;
+    .sheet-controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      width: 210mm;
+      max-width: 100%;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(75, 143, 36, 0.2);
+      flex-wrap: wrap;
     }
-    .sheet-header-info h2 {
+
+    .sheet-controls-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sheet-control-label {
       font-family: var(--font-heading);
-      font-size: 14pt;
-      font-weight: 900;
+      font-size: 0.88rem;
+      font-weight: 700;
       color: var(--color-forest-dark);
     }
-    .sheet-header-info p {
-      font-size: 9pt;
-      color: var(--color-gray);
-      margin-top: 1mm;
+
+    .sheet-toggle-group {
+      display: flex;
+      background: #eef3ec;
+      padding: 3px;
+      border-radius: 9999px;
+      gap: 3px;
     }
 
+    .btn-sheet-toggle {
+      background: transparent;
+      border: none;
+      color: var(--color-forest-dark);
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-sheet-toggle:hover {
+      background: rgba(75, 143, 36, 0.1);
+    }
+
+    .btn-sheet-toggle.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.3);
+    }
+
+    .sheet-controls-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--color-gray);
+      font-weight: 500;
+    }
+    .sheet-controls-hint svg {
+      stroke: var(--color-forest);
+      flex-shrink: 0;
+    }
+
+    .sheet-print-container {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      background: #ffffff;
+      margin: 0 auto;
+      padding: 11mm 20mm;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .sheet-top-header {
+      position: absolute;
+      top: 3.5mm;
+      left: 20mm;
+      right: 20mm;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 2.2mm;
+      font-weight: 600;
+      color: #7b8875;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+
+    /* Snijtekens (Crop Marks) in de marges rondom het kaartjesblok */
+    .sheet-crop-marks {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .crop-mark {
+      position: absolute;
+      background: #8e9e8b;
+    }
+    /* Verticale snijtekens boven & onder */
+    .crop-top-col1 { left: 20mm; top: 2mm; width: 0.25mm; height: 6mm; }
+    .crop-top-center { left: 105mm; top: 2mm; width: 0.25mm; height: 6mm; }
+    .crop-top-col2 { left: 190mm; top: 2mm; width: 0.25mm; height: 6mm; }
+    .crop-bot-col1 { left: 20mm; top: 289mm; width: 0.25mm; height: 6mm; }
+    .crop-bot-center { left: 105mm; top: 289mm; width: 0.25mm; height: 6mm; }
+    .crop-bot-col2 { left: 190mm; top: 289mm; width: 0.25mm; height: 6mm; }
+    /* Horizontale snijtekens links & rechts */
+    .crop-left-row1 { top: 11mm; left: 6mm; width: 10mm; height: 0.25mm; }
+    .crop-left-row2 { top: 66mm; left: 6mm; width: 10mm; height: 0.25mm; }
+    .crop-left-row3 { top: 121mm; left: 6mm; width: 10mm; height: 0.25mm; }
+    .crop-left-row4 { top: 176mm; left: 6mm; width: 10mm; height: 0.25mm; }
+    .crop-left-row5 { top: 231mm; left: 6mm; width: 10mm; height: 0.25mm; }
+    .crop-left-row6 { top: 286mm; left: 6mm; width: 10mm; height: 0.25mm; }
+    .crop-right-row1 { top: 11mm; left: 194mm; width: 10mm; height: 0.25mm; }
+    .crop-right-row2 { top: 66mm; left: 194mm; width: 10mm; height: 0.25mm; }
+    .crop-right-row3 { top: 121mm; left: 194mm; width: 10mm; height: 0.25mm; }
+    .crop-right-row4 { top: 176mm; left: 194mm; width: 10mm; height: 0.25mm; }
+    .crop-right-row5 { top: 231mm; left: 194mm; width: 10mm; height: 0.25mm; }
+    .crop-right-row6 { top: 286mm; left: 194mm; width: 10mm; height: 0.25mm; }
+
+    /* Grid van 10 kaartjes (2 kolommen x 5 rijen, 85x55mm, exact aansluitend) */
     .grid-10-cards {
       display: grid;
-      grid-template-columns: repeat(2, 85mm);
+      grid-template-columns: 85mm 85mm;
       grid-template-rows: repeat(5, 55mm);
-      gap: 4mm 6mm;
-      justify-content: center;
+      gap: 0;
+      width: 170mm;
+      height: 275mm;
+      box-sizing: border-box;
+      border: 0.2mm solid #a3b89e;
+      background: #ffffff;
     }
 
-    /* Cutting marks (snijtekens / stippellijnen) rond de kaartjes op A4 vel */
     .grid-card-wrapper {
       position: relative;
       width: 85mm;
       height: 55mm;
-      border: 0.5px dashed #b5bcc4;
-      border-radius: 3.5mm;
+      box-sizing: border-box;
+      outline: 0.15mm solid #d5ded2;
+      overflow: hidden;
     }
     .grid-card-wrapper .business-card {
       box-shadow: none !important;
+      border-radius: 0 !important;
+      border: none !important;
+      width: 85mm !important;
+      height: 55mm !important;
+      max-width: 85mm !important;
+      max-height: 55mm !important;
     }
 
     /* ==========================================================================
        PRINT MEDIA QUERY (Exact 85mm x 55mm of A4 Drukvel)
        ========================================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
     @media print {
-      body {
-        background: transparent !important;
-        padding: 0 !important;
+      html, body {
+        width: 210mm !important;
+        height: 297mm !important;
         margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        overflow: hidden !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
-      .toolbar, .hint-bar, .card-label {
+      .toolbar, .hint-bar, .card-label, .sheet-controls-bar {
         display: none !important;
       }
 
@@ -664,12 +800,30 @@
         display: none !important;
       }
 
+      body.mode-sheet .sheet-preview-stage {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        overflow: hidden !important;
+      }
+
       body.mode-sheet .sheet-print-container {
         display: block !important;
-        margin: 0 auto !important;
-        padding: 10mm 10mm !important;
+        margin: 0 !important;
+        padding: 11mm 20mm !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
         box-shadow: none !important;
-        min-height: 100vh !important;
+        border: none !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        overflow: hidden !important;
       }
     }
   </style>
@@ -843,21 +997,61 @@
     </div>
   </main>
 
-  <!-- A4 Print Sheet Container (10 Kaartjes per vel met snijlijnen) -->
-  <section class="sheet-print-container" id="sheetContainer">
-    <div class="sheet-header-info">
-      <h2>staopstoelen.nl &mdash; Drukvel Visitekaartjes (10 exemplaren)</h2>
-      <p id="sheetSubheading">Suus Klein Haneveld Wiersma &bull; Algemeen directeur &bull; Regio Dordrecht</p>
-      <div style="margin-top: 10px; display: inline-flex; gap: 8px;">
-        <button type="button" class="btn-mode active" id="btnSheetFront" style="background: var(--color-forest); color: #fff; padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Voorzijde (10x)</button>
-        <button type="button" class="btn-mode" id="btnSheetBack" style="background: #e2e4e6; color: var(--color-forest-dark); padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Achterzijde (10x)</button>
+  <!-- A4 Print Sheet Wrapper (Controls outside the page, clean A4 sheet inside) -->
+  <div class="sheet-preview-stage" id="sheetStage" style="display: none;">
+    <!-- Controls Bar above the sheet (screen only) -->
+    <div class="sheet-controls-bar">
+      <div class="sheet-controls-left">
+        <span class="sheet-control-label">Zijde drukvel:</span>
+        <div class="sheet-toggle-group">
+          <button type="button" class="btn-sheet-toggle active" id="btnSheetFront">Voorzijde (10x)</button>
+          <button type="button" class="btn-sheet-toggle" id="btnSheetBack">Achterzijde (10x)</button>
+        </div>
+      </div>
+      <div class="sheet-controls-hint">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>10 kaartjes op 1 A4 vel (85 &times; 55 mm) &bull; Symmetrische marges (20mm L/R, 11mm B/O) voor perfecte dubbelzijdige uitlijning</span>
       </div>
     </div>
 
-    <div class="grid-10-cards" id="gridCardsSlot">
-      <!-- Wordt dynamisch gevuld met 10 identieke kaartjes (5 rijen van 2) -->
-    </div>
-  </section>
+    <!-- The exact physical A4 sheet (210mm x 297mm) -->
+    <section class="sheet-print-container" id="sheetContainer">
+      <!-- Top header line (in the 11mm top margin, trimmed away during cutting) -->
+      <div class="sheet-top-header">
+        <span>staopstoelen.nl &bull; Drukvel Visitekaartjes &bull; <strong id="sheetTopPerson">Suus Klein Haneveld Wiersma</strong> &bull; <span id="sheetSideLabel">Voorzijde (10x)</span></span>
+      </div>
+
+      <!-- Crop marks (Snijtekens in de marges) -->
+      <div class="sheet-crop-marks">
+        <!-- Top vertical crop marks -->
+        <span class="crop-mark crop-top-col1"></span>
+        <span class="crop-mark crop-top-center"></span>
+        <span class="crop-mark crop-top-col2"></span>
+        <!-- Bottom vertical crop marks -->
+        <span class="crop-mark crop-bot-col1"></span>
+        <span class="crop-mark crop-bot-center"></span>
+        <span class="crop-mark crop-bot-col2"></span>
+        <!-- Left horizontal crop marks -->
+        <span class="crop-mark crop-left-row1"></span>
+        <span class="crop-mark crop-left-row2"></span>
+        <span class="crop-mark crop-left-row3"></span>
+        <span class="crop-mark crop-left-row4"></span>
+        <span class="crop-mark crop-left-row5"></span>
+        <span class="crop-mark crop-left-row6"></span>
+        <!-- Right horizontal crop marks -->
+        <span class="crop-mark crop-right-row1"></span>
+        <span class="crop-mark crop-right-row2"></span>
+        <span class="crop-mark crop-right-row3"></span>
+        <span class="crop-mark crop-right-row4"></span>
+        <span class="crop-mark crop-right-row5"></span>
+        <span class="crop-mark crop-right-row6"></span>
+      </div>
+
+      <div class="grid-10-cards" id="gridCardsSlot">
+        <!-- Wordt dynamisch gevuld met 10 identieke kaartjes (5 rijen van 2) -->
+      </div>
+    </section>
+  </div>
 
   <script>
     // Data per medewerker
@@ -925,7 +1119,8 @@
         mobileText.textContent = p.phoneDisplay;
       }
 
-      document.getElementById("sheetSubheading").innerHTML = p.sheetSubtitle;
+      const topPerson = document.getElementById("sheetTopPerson");
+      if (topPerson) topPerson.textContent = p.badge;
 
       document.getElementById("btnPersonGeertjan").classList.toggle("active", personKey === 'geertjan');
       document.getElementById("btnPersonMatthias").classList.toggle("active", personKey === 'matthias');
@@ -954,6 +1149,7 @@
     const btnSingle = document.getElementById("btnModeSingle");
     const btnSheet = document.getElementById("btnModeSheet");
     const screenStage = document.getElementById("screenStage");
+    const sheetStage = document.getElementById("sheetStage");
     const sheetContainer = document.getElementById("sheetContainer");
     const gridCardsSlot = document.getElementById("gridCardsSlot");
     const btnSheetFront = document.getElementById("btnSheetFront");
@@ -972,30 +1168,34 @@
         wrap.innerHTML = cardHtml;
         gridCardsSlot.appendChild(wrap);
       }
+      const sideLabel = document.getElementById("sheetSideLabel");
+      if (sideLabel) {
+        sideLabel.textContent = side === 'front' ? 'Voorzijde (10x)' : 'Achterzijde (10x)';
+      }
+      if (btnSheetFront && btnSheetBack) {
+        btnSheetFront.classList.toggle("active", side === 'front');
+        btnSheetBack.classList.toggle("active", side === 'back');
+      }
     }
 
-    btnSheetFront.addEventListener("click", () => {
-      btnSheetFront.style.background = "var(--color-forest)";
-      btnSheetFront.style.color = "#fff";
-      btnSheetBack.style.background = "#e2e4e6";
-      btnSheetBack.style.color = "var(--color-forest-dark)";
-      renderA4Sheet('front');
-    });
+    if (btnSheetFront) {
+      btnSheetFront.addEventListener("click", () => {
+        renderA4Sheet('front');
+      });
+    }
 
-    btnSheetBack.addEventListener("click", () => {
-      btnSheetBack.style.background = "var(--color-forest)";
-      btnSheetBack.style.color = "#fff";
-      btnSheetFront.style.background = "#e2e4e6";
-      btnSheetFront.style.color = "var(--color-forest-dark)";
-      renderA4Sheet('back');
-    });
+    if (btnSheetBack) {
+      btnSheetBack.addEventListener("click", () => {
+        renderA4Sheet('back');
+      });
+    }
 
     btnSingle.addEventListener("click", () => {
       btnSingle.classList.add("active");
       btnSheet.classList.remove("active");
       document.body.className = "mode-single";
       screenStage.style.display = "flex";
-      sheetContainer.style.display = "none";
+      if (sheetStage) sheetStage.style.display = "none";
     });
 
     btnSheet.addEventListener("click", () => {
@@ -1003,7 +1203,7 @@
       btnSingle.classList.remove("active");
       document.body.className = "mode-sheet";
       screenStage.style.display = "none";
-      sheetContainer.style.display = "block";
+      if (sheetStage) sheetStage.style.display = "flex";
       renderA4Sheet(currentSheetSide);
     });
 
