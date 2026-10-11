@@ -4336,19 +4336,24 @@ input[type="checkbox"] {
 .advisor-avatar-wrapper {
   position: relative;
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
+  max-width: 38px;
+  max-height: 38px;
 }
 
-.advisor-avatar-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top center;
-  border: 2px solid var(--color-forest, #4b8f24);
-  display: block;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.advisor-avatar-img,
+.advisor-trust-bubble img {
+  width: 38px !important;
+  height: 38px !important;
+  max-width: 38px !important;
+  max-height: 38px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  border: 2px solid var(--color-forest, #4b8f24) !important;
+  display: block !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12) !important;
 }
 
 .advisor-status-dot {
