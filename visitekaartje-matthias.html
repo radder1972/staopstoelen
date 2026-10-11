@@ -741,18 +741,104 @@
       max-height: 55mm !important;
     }
 
-    /* ==========================================================================
-       PRINT MEDIA QUERY (Exact 85mm x 55mm of A4 Drukvel)
-       ========================================================================== */
-    @page {
-      size: A4 portrait;
-      margin: 0;
+    /* --------------------------------------------------------------------------
+       DRUKKERIJ EXPORT (Printstudio Rotterdam: 89mm x 59mm met 2mm afloop)
+       -------------------------------------------------------------------------- */
+    .press-stage {
+      max-width: 1050px;
+      margin: 28px auto 60px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
     }
 
+    .press-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f6faf3 100%);
+      border: 1.5px solid rgba(75, 143, 36, 0.3);
+      border-radius: 12px;
+      padding: 14px 22px;
+      width: 100%;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .press-cards-wrap {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .press-card-preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .press-card-item {
+      width: 89mm;
+      height: 59mm;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 7.5mm 8.5mm;
+      box-shadow: 0 14px 34px rgba(18, 43, 7, 0.14), 0 3px 10px rgba(0,0,0,0.06);
+      background: #ffffff;
+    }
+
+    /* Subtiele snijlijn (85x55mm) zichtbaar op scherm */
+    .press-trim-guide {
+      position: absolute;
+      top: 2mm;
+      left: 2mm;
+      right: 2mm;
+      bottom: 2mm;
+      border: 0.25mm dashed rgba(75, 143, 36, 0.45);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Snijtekens in de hoeken voor Printstudio Rotterdam (85x55 trim marks) */
+    .press-crop-mark {
+      position: absolute;
+      background: #555555;
+      z-index: 12;
+      pointer-events: none;
+    }
+    .pcm-tl-v { left: 2mm; top: 0; width: 0.2mm; height: 2mm; }
+    .pcm-tl-h { left: 0; top: 2mm; width: 2mm; height: 0.2mm; }
+    .pcm-tr-v { right: 2mm; top: 0; width: 0.2mm; height: 2mm; }
+    .pcm-tr-h { right: 0; top: 2mm; width: 2mm; height: 0.2mm; }
+    .pcm-bl-v { left: 2mm; bottom: 0; width: 0.2mm; height: 2mm; }
+    .pcm-bl-h { left: 0; bottom: 2mm; width: 2mm; height: 0.2mm; }
+    .pcm-br-v { right: 2mm; bottom: 0; width: 0.2mm; height: 2mm; }
+    .pcm-br-h { right: 0; bottom: 2mm; width: 2mm; height: 0.2mm; }
+
+    .press-card-item.card-back {
+      background: linear-gradient(145deg, #f5faf2 0%, #e6f3e2 100%) !important;
+      border: none !important;
+    }
+    .press-card-item.card-front {
+      background: #ffffff !important;
+      border: none !important;
+    }
+
+    /* ==========================================================================
+       PRINT MEDIA QUERY (Exact 85mm x 55mm, A4 Drukvel of 89x59mm Drukkerij)
+       ========================================================================== */
     @media print {
       html, body {
-        width: 210mm !important;
-        height: 297mm !important;
+        width: 100% !important;
+        height: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
         background: transparent !important;
@@ -795,8 +881,14 @@
         border: none !important;
       }
 
+      body.mode-single .sheet-preview-stage,
+      body.mode-single .press-stage {
+        display: none !important;
+      }
+
       /* Sheet Mode Print */
-      body.mode-sheet .stage {
+      body.mode-sheet .stage,
+      body.mode-sheet .press-stage {
         display: none !important;
       }
 
@@ -825,6 +917,69 @@
         break-inside: avoid !important;
         overflow: hidden !important;
       }
+
+      /* Press Mode Print (89mm x 59mm per page for Printstudio Rotterdam) */
+      body.mode-press {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      body.mode-press .stage,
+      body.mode-press .sheet-preview-stage {
+        display: none !important;
+      }
+
+      body.mode-press .press-stage {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+        width: 89mm !important;
+      }
+
+      body.mode-press .press-banner,
+      body.mode-press .card-label,
+      body.mode-press .press-trim-guide {
+        display: none !important;
+      }
+
+      body.mode-press .press-cards-wrap {
+        display: block !important;
+        gap: 0 !important;
+      }
+
+      body.mode-press .press-card-preview-item {
+        display: block !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 89mm !important;
+        height: 59mm !important;
+      }
+
+      body.mode-press .press-card-preview-item:last-child {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      body.mode-press .press-card-item {
+        width: 89mm !important;
+        height: 59mm !important;
+        max-width: 89mm !important;
+        max-height: 59mm !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+    }
+  </style>
+  <style id="dynamicPageStyle">
+    @page {
+      size: A4 portrait;
+      margin: 0;
     }
   </style>
 </head>
@@ -864,6 +1019,9 @@
         </button>
         <button type="button" class="btn-mode" id="btnModeSheet">
           A4 Drukvel (10 op 1 vel)
+        </button>
+        <button type="button" class="btn-mode" id="btnModePress">
+          Drukkerij PDF (Printstudio)
         </button>
       </div>
 
@@ -1053,6 +1211,139 @@
     </section>
   </div>
 
+  <!-- Drukkerij Export Stage (Printstudio Rotterdam: 89x59mm incl. 2mm afloop + snijtekens) -->
+  <main class="press-stage" id="pressStage" style="display: none;">
+    <div class="press-banner">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2c5a1c" stroke-width="2.2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <div>
+        <strong style="color: #122b07; font-size: 14px;">Printstudio Rotterdam Formaat (89 &times; 59 mm &bull; 2 mm afloop &bull; 2 pagina's)</strong>
+        <div style="font-size: 12px; color: #44563e; margin-top: 2px;">
+          Direct klaar voor upload naar Printstudio Rotterdam. Klik op <strong>&ldquo;Afdrukken / Opslaan als PDF&rdquo;</strong> &rarr; Bestemming: <em>Opslaan als PDF</em>. Dit genereert een exacte 2-pagina vector PDF op 89&times;59 mm met 2mm afloop rondom en snijtekens.
+        </div>
+      </div>
+    </div>
+
+    <div class="press-cards-wrap">
+      <!-- Pagina 1: Voorzijde met 2mm bleed & snijtekens -->
+      <div class="press-card-preview-item">
+        <div class="card-label">Pagina 1 &bull; Voorzijde (89 &times; 59 mm)</div>
+        <div class="press-card-item card-front" id="pressCardFront">
+          <div class="press-trim-guide" title="Netto snijformaat 85x55mm"></div>
+          <!-- 8 Corner Crop Marks -->
+          <span class="press-crop-mark pcm-tl-v"></span>
+          <span class="press-crop-mark pcm-tl-h"></span>
+          <span class="press-crop-mark pcm-tr-v"></span>
+          <span class="press-crop-mark pcm-tr-h"></span>
+          <span class="press-crop-mark pcm-bl-v"></span>
+          <span class="press-crop-mark pcm-bl-h"></span>
+          <span class="press-crop-mark pcm-br-v"></span>
+          <span class="press-crop-mark pcm-br-h"></span>
+
+          <!-- Header met Logo links en Kwaliteitssticker rechts -->
+          <div class="card-front-header">
+            <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
+            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
+          </div>
+
+          <!-- Person info -->
+          <div class="card-person">
+            <h1 class="card-person-name" id="pressFrontName">
+              <span class="name-first">Matthias</span> <span class="name-last">Radder</span>
+            </h1>
+            <div class="card-person-title" id="pressFrontTitle">
+              Ergonomisch adviseur <span class="badge-spec">(zitexpert)</span>
+            </div>
+          </div>
+
+          <!-- Contactgegevens -->
+          <div class="card-bottom-box">
+            <div class="card-contact-grid">
+              <a href="https://wa.me/31634199024" class="card-contact-item item-mobile" id="pressMobileLink">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span><strong id="pressMobileText">06 - 341 99 024</strong></span>
+              </a>
+              <a href="tel:+31786314858" class="card-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <span>078 - 631 4858</span>
+              </a>
+              <a href="mailto:matthias@staopstoelen.nl" class="card-contact-item" id="pressEmailLink">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span id="pressEmailText">matthias@staopstoelen.nl</span>
+              </a>
+              <a href="https://www.staopstoelen.nl" class="card-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>www.staopstoelen.nl</span>
+              </a>
+              <div class="card-contact-item item-full">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Showroom: Merwedestraat 239, 3313 GT Dordrecht</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagina 2: Achterzijde met 2mm bleed & snijtekens -->
+      <div class="press-card-preview-item">
+        <div class="card-label">Pagina 2 &bull; Achterzijde (89 &times; 59 mm)</div>
+        <div class="press-card-item card-back" id="pressCardBack">
+          <div class="press-trim-guide" title="Netto snijformaat 85x55mm"></div>
+          <!-- 8 Corner Crop Marks -->
+          <span class="press-crop-mark pcm-tl-v"></span>
+          <span class="press-crop-mark pcm-tl-h"></span>
+          <span class="press-crop-mark pcm-tr-v"></span>
+          <span class="press-crop-mark pcm-tr-h"></span>
+          <span class="press-crop-mark pcm-bl-v"></span>
+          <span class="press-crop-mark pcm-bl-h"></span>
+          <span class="press-crop-mark pcm-br-v"></span>
+          <span class="press-crop-mark pcm-br-h"></span>
+
+          <!-- Back Header -->
+          <div class="card-back-header">
+            <div>
+              <div class="card-back-logo">staopstoelen<span>.nl</span></div>
+              <div class="card-back-tagline">Specialist in ergonomische maatwerkstoelen</div>
+            </div>
+            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-back-stamp-seal">
+          </div>
+
+          <!-- USPs -->
+          <div class="card-back-usps">
+            <div class="card-usp-item">
+              <span class="usp-check">✓</span>
+              <span><strong>Nieuw maatwerk &amp; gereviseerde occasions</strong></span>
+            </div>
+            <div class="card-usp-item">
+              <span class="usp-check">✓</span>
+              <span><strong>Eigen werkplaats</strong> &amp; deskundige afstelling</span>
+            </div>
+            <div class="card-usp-item">
+              <span class="usp-check">✓</span>
+              <span><strong>Gratis zitmeting &amp; passing aan huis</strong> in regio Dordrecht</span>
+            </div>
+          </div>
+
+          <div class="card-back-green-divider"></div>
+
+          <!-- Back Footer -->
+          <div class="card-back-footer">
+            <div class="card-back-qr-box">
+              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="card-qr-img">
+              <div class="card-qr-text">
+                <span class="card-qr-text-scan">Scan voor afspraak:</span>
+                <span class="card-qr-text-url">staopstoelen<span>.nl</span></span>
+              </div>
+            </div>
+            <div style="font-size: 2.1mm; color: #5a6458; text-align: right; line-height: 1.3;">
+              <span>Fitform &bull; Doge &bull; Farstrup</span><br>
+              <span style="color: var(--color-terracotta-dark); font-weight: 700;">Direct uit voorraad leverbaar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
   <script>
     // Data per medewerker
     const persons = {
@@ -1119,6 +1410,25 @@
         mobileText.textContent = p.phoneDisplay;
       }
 
+      // Update Press Mode fields (89x59mm Printstudio)
+      const pressFrontName = document.getElementById("pressFrontName");
+      if (pressFrontName) pressFrontName.innerHTML = p.nameHtml;
+      const pressFrontTitle = document.getElementById("pressFrontTitle");
+      if (pressFrontTitle) pressFrontTitle.innerHTML = p.titleHtml;
+
+      const pressEmailLink = document.getElementById("pressEmailLink");
+      if (pressEmailLink) {
+        pressEmailLink.href = `mailto:${p.email}`;
+        pressEmailLink.title = `Stuur ${p.badge.split(' ')[0]} een e-mail`;
+      }
+      const pressEmailText = document.getElementById("pressEmailText");
+      if (pressEmailText) pressEmailText.textContent = p.email;
+
+      const pressMobileLink = document.getElementById("pressMobileLink");
+      if (pressMobileLink) pressMobileLink.href = `https://wa.me/${p.phoneRaw}`;
+      const pressMobileText = document.getElementById("pressMobileText");
+      if (pressMobileText) pressMobileText.textContent = p.phoneDisplay;
+
       const topPerson = document.getElementById("sheetTopPerson");
       if (topPerson) topPerson.textContent = p.badge;
 
@@ -1145,17 +1455,26 @@
       window.print();
     });
 
-    // Switch between Single Card & A4 Sheet Mode
+    // Switch between Single Card, A4 Sheet & Press PDF Mode
     const btnSingle = document.getElementById("btnModeSingle");
     const btnSheet = document.getElementById("btnModeSheet");
+    const btnPress = document.getElementById("btnModePress");
     const screenStage = document.getElementById("screenStage");
     const sheetStage = document.getElementById("sheetStage");
+    const pressStage = document.getElementById("pressStage");
+    const dynamicPageStyle = document.getElementById("dynamicPageStyle");
     const sheetContainer = document.getElementById("sheetContainer");
     const gridCardsSlot = document.getElementById("gridCardsSlot");
     const btnSheetFront = document.getElementById("btnSheetFront");
     const btnSheetBack = document.getElementById("btnSheetBack");
 
     let currentSheetSide = 'front';
+
+    function setPageSize(sizeStr) {
+      if (dynamicPageStyle) {
+        dynamicPageStyle.textContent = `@page { size: ${sizeStr}; margin: 0; }`;
+      }
+    }
 
     function renderA4Sheet(side = currentSheetSide) {
       currentSheetSide = side;
@@ -1193,25 +1512,51 @@
     btnSingle.addEventListener("click", () => {
       btnSingle.classList.add("active");
       btnSheet.classList.remove("active");
+      if (btnPress) btnPress.classList.remove("active");
       document.body.className = "mode-single";
+      setPageSize("A4 portrait");
       screenStage.style.display = "flex";
       if (sheetStage) sheetStage.style.display = "none";
+      if (pressStage) pressStage.style.display = "none";
     });
 
     btnSheet.addEventListener("click", () => {
       btnSheet.classList.add("active");
       btnSingle.classList.remove("active");
+      if (btnPress) btnPress.classList.remove("active");
       document.body.className = "mode-sheet";
+      setPageSize("A4 portrait");
       screenStage.style.display = "none";
       if (sheetStage) sheetStage.style.display = "flex";
+      if (pressStage) pressStage.style.display = "none";
       renderA4Sheet(currentSheetSide);
     });
 
-    // Check URL parameter on load (?persoon=matthias of ?persoon=geertjan)
+    if (btnPress) {
+      btnPress.addEventListener("click", () => {
+        btnPress.classList.add("active");
+        btnSingle.classList.remove("active");
+        btnSheet.classList.remove("active");
+        document.body.className = "mode-press";
+        setPageSize("89mm 59mm");
+        screenStage.style.display = "none";
+        if (sheetStage) sheetStage.style.display = "none";
+        if (pressStage) pressStage.style.display = "flex";
+      });
+    }
+
+    // Check URL parameter on load (?persoon=matthias, ?modus=drukkerij etc.)
     const urlParams = new URLSearchParams(window.location.search);
     const paramPerson = urlParams.get('persoon');
     if (paramPerson && persons[paramPerson.toLowerCase()]) {
       setPerson(paramPerson.toLowerCase());
+    }
+
+    const paramMode = urlParams.get('modus');
+    if (paramMode === 'drukkerij' || paramMode === 'press') {
+      if (btnPress) btnPress.click();
+    } else if (paramMode === 'drukvel' || paramMode === 'sheet') {
+      if (btnSheet) btnSheet.click();
     }
   </script>
 </body>
