@@ -2883,42 +2883,50 @@ footer h3, footer h4 {
 .occasions-header {
   background-color: var(--color-forest);
   color: var(--color-light);
-  padding: 35px 0;
+  padding: 38px 0;
   text-align: left !important;
   min-height: 240px;
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .occasions-header h1 {
   color: var(--color-light);
-  font-size: 2.75rem;
-  margin-bottom: 12px;
+  font-size: 2.5rem;
+  margin-top: 4px;
+  margin-bottom: 8px;
   text-align: left !important;
+  font-family: var(--font-heading);
+  line-height: 1.2;
 }
 
 .occasions-header p {
   color: rgba(255, 255, 255, 0.85);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   max-width: 600px;
   margin: 0;
   text-align: left !important;
+  line-height: 1.5;
 }
 
 /* Banner Header Flex Alignment to Heading Top */
 .banner-flex-container {
   display: flex;
   align-items: flex-start !important;
-  justify-content: flex-start !important;
+  justify-content: space-between !important;
   gap: 24px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   text-align: left !important;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
+  z-index: 2;
 }
 
 .banner-icon {
@@ -2936,21 +2944,32 @@ footer h3, footer h4 {
 }
 
 .banner-stamp-link {
-  display: inline-block;
+  display: block;
+  width: 165px;
+  height: 165px;
+  flex-shrink: 0;
   margin-left: auto;
+  position: relative;
   text-decoration: none;
   cursor: pointer;
   outline: none;
+  overflow: visible;
 }
 
 .banner-stamp-link .banner-stamp {
+  width: 203.5px;
   height: 165px;
-  width: auto;
-  max-width: 205px;
+  max-width: none;
+  margin-left: -19.25px;
+  margin-top: 0;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+  animation: rock-banner-stamp 10s ease-in-out infinite;
+  transform-origin: 50% 50%;
 }
 
 .banner-stamp-link:hover .banner-stamp {
-  transform: scale(1.08) rotate(16deg) !important;
+  transform: scale(1.06) rotate(16deg) !important;
   filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.35));
 }
 
@@ -2960,8 +2979,10 @@ footer h3, footer h4 {
   flex-shrink: 0;
   margin-left: auto;
   margin-top: 0;
+  display: block;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
   animation: rock-banner-stamp 10s ease-in-out infinite;
+  transform-origin: 50% 50%;
 }
 
 .banner-ground-leaves {
@@ -3116,23 +3137,36 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 768px) {
+  .occasions-header {
+    height: auto;
+    min-height: 220px;
+    padding: 24px 0 32px 0;
+  }
   .banner-flex-container {
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
   }
   .banner-icon {
     margin-top: 0;
   }
   .banner-stamp {
-    margin: 24px auto 0 auto;
+    margin: 20px auto 0 auto;
     width: 135px;
     height: 135px;
   }
-  .banner-stamp-link .banner-stamp {
+  .banner-stamp-link {
+    width: 135px;
     height: 135px;
-    width: auto;
-    max-width: 170px;
-    margin: 24px auto 0 auto;
+    margin: 20px auto 0 auto;
+  }
+  .banner-stamp-link .banner-stamp {
+    width: 166.5px;
+    height: 135px;
+    max-width: none;
+    margin-left: -15.75px;
+    margin-top: 0;
   }
   .banner-ground-leaves {
     right: 50%;
