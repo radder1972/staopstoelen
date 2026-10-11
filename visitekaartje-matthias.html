@@ -838,11 +838,12 @@
     @media print {
       html, body {
         width: 100% !important;
-        height: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
         margin: 0 !important;
         padding: 0 !important;
         background: transparent !important;
-        overflow: hidden !important;
+        overflow: visible !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -851,34 +852,56 @@
         display: none !important;
       }
 
-      /* Single Card Print Mode (default print) */
+      /* Single Card Print Mode (voor- én achterzijde op aparte pagina) */
       body.mode-single {
         margin: 0 !important;
         padding: 0 !important;
+        overflow: visible !important;
       }
 
       body.mode-single .stage {
+        display: block !important;
         margin: 0 !important;
         padding: 0 !important;
         max-width: none !important;
+        width: 100% !important;
+        overflow: visible !important;
       }
 
       body.mode-single .cards-preview-wrap {
         display: block !important;
         gap: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
       }
 
       body.mode-single .card-preview-item {
-        page-break-after: always;
-        break-after: page;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
         margin: 0 !important;
         padding: 0 !important;
+        height: 98vh !important;
+        box-sizing: border-box !important;
+      }
+
+      body.mode-single .card-preview-item:last-child {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
       }
 
       body.mode-single .business-card {
         margin: 0 auto !important;
         box-shadow: none !important;
         border: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
 
       body.mode-single .sheet-preview-stage,
@@ -887,6 +910,10 @@
       }
 
       /* Sheet Mode Print */
+      body.mode-sheet {
+        overflow: hidden !important;
+      }
+
       body.mode-sheet .stage,
       body.mode-sheet .press-stage {
         display: none !important;
@@ -918,10 +945,11 @@
         overflow: hidden !important;
       }
 
-      /* Press Mode Print (89mm x 59mm per page for Printstudio Rotterdam) */
+      /* Press Mode Print (89mm x 59mm per page for Printstudio Rotterdam: 2 pagina's) */
       body.mode-press {
         margin: 0 !important;
         padding: 0 !important;
+        overflow: visible !important;
       }
 
       body.mode-press .stage,
@@ -935,6 +963,7 @@
         padding: 0 !important;
         max-width: none !important;
         width: 89mm !important;
+        overflow: visible !important;
       }
 
       body.mode-press .press-banner,
@@ -946,16 +975,24 @@
       body.mode-press .press-cards-wrap {
         display: block !important;
         gap: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
       }
 
       body.mode-press .press-card-preview-item {
         display: block !important;
         page-break-after: always !important;
         break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
         margin: 0 !important;
         padding: 0 !important;
         width: 89mm !important;
         height: 59mm !important;
+        max-height: 59mm !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
       }
 
       body.mode-press .press-card-preview-item:last-child {
@@ -1452,7 +1489,14 @@
 
     // Print Action
     document.getElementById("btnPrintCard").addEventListener("click", () => {
-      window.print();
+      if (document.body.classList.contains("mode-press")) {
+        setPageSize("89mm 59mm");
+      } else {
+        setPageSize("A4 portrait");
+      }
+      setTimeout(() => {
+        window.print();
+      }, 50);
     });
 
     // Switch between Single Card, A4 Sheet & Press PDF Mode
