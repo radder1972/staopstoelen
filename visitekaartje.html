@@ -1341,7 +1341,7 @@
           <div class="card-front-header">
             <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
             <!-- Grote Kwaliteitssticker: Nieuw & Gereviseerd + Actiebutton blaadje in groen en dikker -->
-            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
+            <img src="assets/sticker_nieuw_gereviseerd.png" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
           </div>
 
           <!-- Person info: Geertjan / Matthias & Titel op 1 regel -->
@@ -1410,7 +1410,7 @@
               <div class="card-back-tagline">Specialist in ergonomische maatwerkstoelen</div>
             </div>
             <!-- Grote Keurmerk / Sticker: Nieuw & Gereviseerd met Actiebutton blaadje -->
-            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-back-stamp-seal">
+            <img src="assets/sticker_nieuw_gereviseerd.png" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-back-stamp-seal">
           </div>
 
           <!-- USPs -->
@@ -1435,7 +1435,7 @@
           <!-- Back Footer with QR code & URL -->
           <div class="card-back-footer">
             <div class="card-back-qr-box">
-              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="card-qr-img">
+              <img src="assets/qr_staopstoelen.png" alt="Scan QR staopstoelen.nl" class="card-qr-img">
               <div class="card-qr-text">
                 <span class="card-qr-text-scan">Scan voor afspraak:</span>
                 <span class="card-qr-text-url">staopstoelen<span>.nl</span></span>
@@ -1539,7 +1539,7 @@
           <!-- Header met Logo links en Kwaliteitssticker rechts -->
           <div class="card-front-header">
             <div class="card-brand-logo">staopstoelen<span>.nl</span></div>
-            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
+            <img src="assets/sticker_nieuw_gereviseerd.png" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-stamp-badge">
           </div>
 
           <!-- Person info -->
@@ -1601,7 +1601,7 @@
               <div class="card-back-logo">staopstoelen<span>.nl</span></div>
               <div class="card-back-tagline">Specialist in ergonomische maatwerkstoelen</div>
             </div>
-            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-back-stamp-seal">
+            <img src="assets/sticker_nieuw_gereviseerd.png" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="card-back-stamp-seal">
           </div>
 
           <!-- USPs -->
@@ -1625,7 +1625,7 @@
           <!-- Back Footer -->
           <div class="card-back-footer">
             <div class="card-back-qr-box">
-              <img src="assets/qr_staopstoelen.svg" alt="Scan QR staopstoelen.nl" class="card-qr-img">
+              <img src="assets/qr_staopstoelen.png" alt="Scan QR staopstoelen.nl" class="card-qr-img">
               <div class="card-qr-text">
                 <span class="card-qr-text-scan">Scan voor afspraak:</span>
                 <span class="card-qr-text-url">staopstoelen<span>.nl</span></span>
@@ -1805,6 +1805,13 @@
         if (document.fonts && document.fonts.ready) {
           await document.fonts.ready;
         }
+
+        // Ensure all images (sticker badge & QR) are fully loaded
+        const imgs = el.querySelectorAll("img");
+        await Promise.all([...imgs].map(img => {
+          if (img.complete && img.naturalWidth !== 0) return Promise.resolve();
+          return new Promise(res => { img.onload = img.onerror = res; });
+        }));
 
         const bg = isFront ? '#ffffff' : '#f5faf2';
         const canvas = await html2canvas(el, {
