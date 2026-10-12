@@ -12,6 +12,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <style id="dynamicPageStyle">
+    @page {
+      size: 148mm 210mm portrait;
+      margin: 0;
+    }
+  </style>
+
   <style>
     :root {
       --color-forest: #4b8f24;
@@ -573,46 +580,80 @@
       font-weight: 400;
     }
 
-    /* 4 Stappen Naar Uw Ideale Stoel */
+    /* 4 Stappen Naar Uw Ideale Stoel - Onder Elkaar (Verticaal) */
     .flyer-steps-box {
       position: relative;
       z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5mm 4.5mm;
+      display: flex;
+      flex-direction: column;
+      gap: 2.8mm;
       margin: 1.5mm 0;
     }
 
     .flyer-step-card {
       background: #ffffff;
       border: 0.25mm solid rgba(75, 143, 36, 0.22);
-      padding: 3.2mm 3.8mm;
-      border-radius: 2mm;
+      padding: 2.8mm 3.8mm;
+      border-radius: 2.2mm;
       display: flex;
-      flex-direction: column;
-      gap: 1mm;
-      box-shadow: 0 1.5mm 4mm rgba(75, 143, 36, 0.06);
+      align-items: center;
+      gap: 3.8mm;
+      box-shadow: 0 1.2mm 3.5mm rgba(75, 143, 36, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .step-number {
+    .step-badge {
+      width: 11.5mm;
+      height: 11.5mm;
+      min-width: 11.5mm;
+      border-radius: 2mm;
+      background: linear-gradient(135deg, rgba(75, 143, 36, 0.10) 0%, rgba(75, 143, 36, 0.03) 100%);
+      border: 0.3mm solid rgba(75, 143, 36, 0.28);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-badge-label {
       font-family: var(--font-heading);
-      font-size: 2.2mm;
-      font-weight: 900;
+      font-size: 1.7mm;
+      font-weight: 800;
       color: var(--color-terracotta-dark);
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      margin-bottom: 0.4mm;
+    }
+
+    .step-badge-num,
+    .step-number {
+      font-family: var(--font-heading);
+      font-size: 4.2mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      line-height: 1;
+    }
+
+    .step-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8mm;
+      flex: 1;
     }
 
     .step-title {
       font-family: var(--font-heading);
-      font-size: 2.9mm;
+      font-size: 3.1mm;
       font-weight: 800;
       color: var(--color-forest-dark);
+      line-height: 1.2;
     }
 
     .step-desc {
       font-size: 2.35mm;
-      line-height: 1.4;
+      line-height: 1.38;
       color: #4a5568;
     }
 
@@ -716,66 +757,258 @@
 
     /* --------------------------------------------------------------------------
        A4 DRUKVEL (Print Sheet: 2x A5 op 1 A4 vel met snijlijn in midden)
+       100% WARE GROOTTE OP A4 LANDSCAPE (297 x 210 mm)
        -------------------------------------------------------------------------- */
-    .sheet-print-container {
+    .sheet-wrapper {
       display: none;
-      width: 210mm;
-      min-height: 297mm;
-      background: #ffffff;
-      margin: 20px auto;
-      padding: 12mm 15mm;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 15px 60px 15px;
       box-sizing: border-box;
-      position: relative;
     }
 
-    .sheet-header-info {
+    .sheet-header-panel {
+      background: #ffffff;
+      padding: 20px 28px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(75, 143, 36, 0.2);
       text-align: center;
-      margin-bottom: 6mm;
-      border-bottom: 1px solid var(--color-gray-light);
-      padding-bottom: 4mm;
+      margin-bottom: 25px;
     }
-    .sheet-header-info h2 {
+
+    .sheet-header-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-family: var(--font-heading);
-      font-size: 13pt;
-      font-weight: 900;
+      font-size: 1.2rem;
+      font-weight: 800;
       color: var(--color-forest-dark);
     }
-    .sheet-header-info p {
-      font-size: 9pt;
+    .sheet-header-title svg {
+      stroke: var(--color-forest);
+    }
+
+    .sheet-header-subtitle {
+      font-size: 0.94rem;
       color: var(--color-gray);
-      margin-top: 1mm;
+      margin: 8px auto 18px auto;
+      max-width: 760px;
+      line-height: 1.5;
+    }
+    .sheet-header-subtitle strong {
+      color: var(--color-dark);
     }
 
-    .grid-2-a5 {
-      display: grid;
-      grid-template-columns: repeat(2, 148mm);
-      gap: 8mm;
+    .sheet-controls-row {
+      display: flex;
       justify-content: center;
-      transform: scale(0.60);
-      transform-origin: top center;
-      height: 220mm;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
     }
 
-    .grid-flyer-wrapper {
-      position: relative;
-      width: 148mm;
-      height: 210mm;
-      border: 0.5px dashed #b5bcc4;
-      border-radius: 3mm;
+    .sheet-opt-group {
+      display: inline-flex;
+      background: #f1f4f0;
+      border: 1px solid #dce4d9;
+      border-radius: 9999px;
+      padding: 4px;
+      gap: 4px;
+      flex-wrap: wrap;
     }
-    .grid-flyer-wrapper .flyer-container {
+
+    .btn-sheet-opt {
+      background: transparent;
+      border: none;
+      color: #555d67;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-sheet-opt:hover {
+      color: var(--color-forest-dark);
+    }
+    .btn-sheet-opt.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.3);
+    }
+    .btn-sheet-opt .opt-badge {
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 2px 7px;
+      border-radius: 9999px;
+    }
+
+    .btn-print-large {
+      background: linear-gradient(135deg, var(--color-forest) 0%, #3d791b 100%);
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-print-large:hover {
+      background: linear-gradient(135deg, #3d791b 0%, #316215 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(75, 143, 36, 0.45);
+    }
+
+    .sheet-print-tip {
+      font-size: 0.84rem;
+      color: #4a5568;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.2);
+      border-radius: 8px;
+      padding: 9px 16px;
+      display: inline-block;
+      max-width: 860px;
+      line-height: 1.45;
+      text-align: left;
+    }
+    .sheet-print-tip strong {
+      color: var(--color-forest-dark);
+    }
+
+    /* Screen Preview Viewport */
+    .sheet-pages-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+    }
+
+    @media screen and (max-width: 1240px) {
+      .sheet-pages-container {
+        transform: scale(0.85);
+        transform-origin: top center;
+        margin-bottom: -50px;
+      }
+    }
+    @media screen and (max-width: 1050px) {
+      .sheet-pages-container {
+        transform: scale(0.68);
+        transform-origin: top center;
+        margin-bottom: -150px;
+      }
+    }
+
+    .a4-sheet-page {
+      width: 297mm;
+      height: 210mm;
+      min-width: 297mm;
+      min-height: 210mm;
+      max-width: 297mm;
+      max-height: 210mm;
+      background: #ffffff;
+      box-shadow: 0 16px 40px rgba(18, 43, 7, 0.14), 0 4px 12px rgba(0,0,0,0.06);
+      border-radius: 2mm;
+      position: relative;
+      display: flex;
+      box-sizing: border-box;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .sheet-half {
+      width: 148.5mm;
+      height: 210mm;
+      flex: 0 0 148.5mm;
+      display: flex;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sheet-half .flyer-container {
+      width: 148.5mm !important;
+      height: 210mm !important;
+      max-width: 148.5mm !important;
+      margin: 0 !important;
       box-shadow: none !important;
+      border-radius: 0 !important;
+      border: none !important;
+      box-sizing: border-box !important;
+    }
+
+    .sheet-cut-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 148.5mm;
+      width: 0;
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    .sheet-cut-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border-left: 0.25mm dashed rgba(75, 143, 36, 0.35);
+    }
+
+    .sheet-cut-mark-top {
+      position: absolute;
+      top: 1.5mm;
+      left: 0;
+      transform: translateX(-50%);
+      font-size: 2mm;
+      color: #6c7884;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 0 1.2mm;
+      border-radius: 0.8mm;
+      display: flex;
+      align-items: center;
+      gap: 0.6mm;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      white-space: nowrap;
+    }
+
+    .sheet-cut-mark-bottom {
+      position: absolute;
+      bottom: 1.5mm;
+      left: 0;
+      transform: translateX(-50%);
+      font-size: 2mm;
+      color: #6c7884;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 0 1.2mm;
+      border-radius: 0.8mm;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      white-space: nowrap;
     }
 
     /* ==========================================================================
-       PRINT STYLESHEET (Exact A5 148mm x 210mm of A4 Drukvel)
+       PRINT STYLESHEET
        ========================================================================== */
-    @page {
-      size: 148mm 210mm;
-      margin: 0;
-    }
-
     @media print {
       body {
         background: transparent !important;
@@ -783,14 +1016,16 @@
         margin: 0 !important;
       }
 
-      .toolbar, .hint-bar, .flyer-label {
+      .no-print,
+      .toolbar,
+      .hint-bar,
+      .flyer-label,
+      .sheet-header-panel {
         display: none !important;
       }
 
       /* Single A5 Mode */
-      body.mode-front .stage,
-      body.mode-back .stage,
-      body.mode-both .stage {
+      body:not(.mode-sheet) .stage {
         margin: 0 !important;
         padding: 0 !important;
         max-width: none !important;
@@ -806,8 +1041,13 @@
       }
 
       body.mode-both .flyer-preview-item {
-        page-break-after: always;
-        break-after: page;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+
+      body.mode-both .flyer-preview-item:last-child {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
       }
 
       .flyers-preview-wrap {
@@ -826,31 +1066,69 @@
         border-radius: 0 !important;
         width: 148mm !important;
         height: 210mm !important;
-        page-break-inside: avoid;
+        page-break-inside: avoid !important;
       }
 
-      /* Sheet Mode */
-      body.mode-sheet {
-        @page {
-          size: 210mm 297mm;
-          margin: 0;
-        }
-      }
-
+      /* Sheet Mode (Exact 297mm x 210mm A4 Landscape, 100% ware grootte) */
       body.mode-sheet .stage {
         display: none !important;
       }
 
-      body.mode-sheet .sheet-print-container {
+      body.mode-sheet .sheet-wrapper {
         display: block !important;
-        margin: 0 auto !important;
-        padding: 8mm 8mm !important;
-        box-shadow: none !important;
-        min-height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
-      body.mode-sheet .grid-2-a5 {
-        transform: scale(0.65) !important;
+      body.mode-sheet .sheet-pages-container {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: none !important;
+        gap: 0 !important;
+      }
+
+      body.mode-sheet .a4-sheet-page {
+        display: flex !important;
+        width: 297mm !important;
+        height: 210mm !important;
+        min-width: 297mm !important;
+        min-height: 210mm !important;
+        max-width: 297mm !important;
+        max-height: 210mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        overflow: hidden !important;
+        transform: none !important;
+      }
+
+      body.mode-sheet .a4-sheet-page:last-child {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      body.mode-sheet .sheet-half {
+        width: 148.5mm !important;
+        height: 210mm !important;
+        flex: 0 0 148.5mm !important;
+        display: flex !important;
+        box-sizing: border-box !important;
+      }
+
+      body.mode-sheet .sheet-half .flyer-container {
+        width: 148.5mm !important;
+        height: 210mm !important;
+        max-width: 148.5mm !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        page-break-inside: avoid !important;
       }
     }
   </style>
@@ -887,7 +1165,7 @@
         </button>
       </div>
 
-      <button type="button" class="btn-print" id="btnPrintFlyer" onclick="window.print()">
+      <button type="button" class="btn-print" id="btnPrintFlyer" onclick="triggerPrint()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
         Afdrukken / Opslaan als PDF
       </button>
@@ -1037,31 +1315,51 @@
             </p>
           </section>
 
-          <!-- 4 Duidelijke Stappen -->
+          <!-- 4 Duidelijke Stappen (Onder Elkaar) -->
           <section class="flyer-steps-box">
             
             <div class="flyer-step-card">
-              <div class="step-number">Stap 01</div>
-              <div class="step-title">Vrijblijvend advies</div>
-              <div class="step-desc">Bel ons of stuur een bericht via WhatsApp of de website voor deskundig advies.</div>
+              <div class="step-badge">
+                <span class="step-badge-label">STAP</span>
+                <span class="step-badge-num">01</span>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Vrijblijvend advies</div>
+                <div class="step-desc">Bel ons of stuur een bericht via WhatsApp of de website voor deskundig advies.</div>
+              </div>
             </div>
 
             <div class="flyer-step-card">
-              <div class="step-number">Stap 02</div>
-              <div class="step-title">Gratis zitmeting</div>
-              <div class="step-desc">Wij meten zithoogte, zitdiepte en armleuninghoogte bij u thuis of in onze showroom.</div>
+              <div class="step-badge">
+                <span class="step-badge-label">STAP</span>
+                <span class="step-badge-num">02</span>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Gratis zitmeting</div>
+                <div class="step-desc">Wij meten zithoogte, zitdiepte en armleuninghoogte bij u thuis of in onze showroom.</div>
+              </div>
             </div>
 
             <div class="flyer-step-card">
-              <div class="step-number">Stap 03</div>
-              <div class="step-title">Proefzitten op maat</div>
-              <div class="step-desc">Ervaar zelf het verschil van een kantelbare sta-op stoel met optimale lendensteun.</div>
+              <div class="step-badge">
+                <span class="step-badge-label">STAP</span>
+                <span class="step-badge-num">03</span>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Proefzitten op maat</div>
+                <div class="step-desc">Ervaar zelf het verschil van een kantelbare sta-op stoel met optimale lendensteun.</div>
+              </div>
             </div>
 
             <div class="flyer-step-card">
-              <div class="step-number">Stap 04</div>
-              <div class="step-title">Plaatsing &amp; garantie</div>
-              <div class="step-desc">Snel bezorgd, volledig afgesteld in uw woonkamer met vertrouwde service aan huis.</div>
+              <div class="step-badge">
+                <span class="step-badge-label">STAP</span>
+                <span class="step-badge-num">04</span>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Plaatsing &amp; garantie</div>
+                <div class="step-desc">Snel bezorgd, volledig afgesteld in uw woonkamer met vertrouwde service aan huis.</div>
+              </div>
             </div>
 
           </section>
@@ -1107,97 +1405,194 @@
   </main>
 
   <!-- ==========================================================================
-       A4 DRUKVEL CONTAINER (2x A5 op 1 A4 vel met snijlijnen)
+       A4 DRUKVEL CONTAINER (2x A5 op 1 A4 vel met snijlijnen - 100% ware grootte)
        ========================================================================== -->
-  <section class="sheet-print-container" id="sheetContainer">
-    <div class="sheet-header-info">
-      <h2>staopstoelen.nl &mdash; A4 Drukvel (2x A5 Flyer)</h2>
-      <p>A5 formaat (148 × 210 mm) &bull; Ideaal om af te drukken op standaard A4 papier en door te snijden in het midden</p>
-      <div style="margin-top: 10px; display: inline-flex; gap: 8px;">
-        <button type="button" class="btn-mode active" id="btnSheetFront" style="background: var(--color-forest); color: #fff; padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Voorzijde (2x A5)</button>
-        <button type="button" class="btn-mode" id="btnSheetBack" style="background: #e2e4e6; color: var(--color-forest-dark); padding: 6px 16px; border-radius: 9999px; border: none; cursor: pointer; font-weight: 700;">Achterzijde (2x A5)</button>
+  <section class="sheet-wrapper" id="sheetContainer" style="display: none;">
+    
+    <!-- Screen-only toolbar & uitleg -->
+    <div class="sheet-header-panel no-print">
+      <div class="sheet-header-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21" stroke-dasharray="2 2"/></svg>
+        <span>A4 Drukvel (2x A5 &bull; 100% Ware Grootte)</span>
+      </div>
+      <p class="sheet-header-subtitle">
+        Afdrukken op standaard <strong>A4 papier (Liggend / Landscape &bull; 297 × 210 mm)</strong> op ware grootte (geen verkleining).
+        Snijd na het printen simpelweg over de stippellijn in het midden door voor 2 volwaardige A5 flyers.
+      </p>
+      
+      <!-- Keuze opties voor het drukvel -->
+      <div class="sheet-controls-row">
+        <div class="sheet-opt-group">
+          <button type="button" class="btn-sheet-opt active" id="btnSheetBoth" onclick="setSheetSide('both')">
+            <span class="opt-badge">⭐ Aanbevolen</span>
+            Dubbelzijdig (2x Voor + 2x Achter)
+          </button>
+          <button type="button" class="btn-sheet-opt" id="btnSheetFront" onclick="setSheetSide('front')">
+            Alleen Voorzijde (2x A5)
+          </button>
+          <button type="button" class="btn-sheet-opt" id="btnSheetBack" onclick="setSheetSide('back')">
+            Alleen Achterzijde (2x A5)
+          </button>
+        </div>
+
+        <button type="button" class="btn-print-large" onclick="triggerPrint()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Nu Drukvel Afdrukken / Opslaan als PDF
+        </button>
+      </div>
+
+      <div class="sheet-print-tip">
+        <strong>💡 Printinstellingen:</strong> Papierformaat: <strong>A4</strong> &bull; Richting: <strong>Liggend (Landscape)</strong> &bull; Marges: <strong>Geen (0 mm)</strong> &bull; Schaal: <strong>100% (Ware grootte)</strong> &bull; Dubbelzijdig: <strong>Korte zijde omslaan</strong>.
       </div>
     </div>
 
-    <div class="grid-2-a5" id="gridSheetSlot">
-      <!-- Wordt dynamisch gevuld met 2 identieke A5 flyers -->
+    <!-- Printable A4 Sheets (1 of 2 pagina's) -->
+    <div class="sheet-pages-container" id="sheetPagesSlot">
+      <!-- Wordt dynamisch gevuld met 1 of 2 .a4-sheet-page vellen -->
     </div>
   </section>
 
   <script>
     const screenStage = document.getElementById("screenStage");
     const sheetContainer = document.getElementById("sheetContainer");
-    const gridSheetSlot = document.getElementById("gridSheetSlot");
+    const sheetPagesSlot = document.getElementById("sheetPagesSlot");
     const btnModeFront = document.getElementById("btnModeFront");
     const btnModeBack = document.getElementById("btnModeBack");
     const btnModeBoth = document.getElementById("btnModeBoth");
     const btnModeSheet = document.getElementById("btnModeSheet");
     const flyerFrontWrap = document.getElementById("flyerFrontWrap");
     const flyerBackWrap = document.getElementById("flyerBackWrap");
-    const btnSheetFront = document.getElementById("btnSheetFront");
-    const btnSheetBack = document.getElementById("btnSheetBack");
 
-    let currentSheetSide = 'front';
+    let currentViewMode = 'both';
+    let currentSheetSide = 'both';
+
+    function updatePageSize(mode) {
+      const dynamicStyle = document.getElementById("dynamicPageStyle");
+      if (!dynamicStyle) return;
+      if (mode === 'sheet') {
+        dynamicStyle.textContent = `@page { size: 297mm 210mm landscape; margin: 0; }`;
+      } else {
+        dynamicStyle.textContent = `@page { size: 148mm 210mm portrait; margin: 0; }`;
+      }
+    }
 
     function setViewMode(mode) {
-      // Reset active states
-      [btnModeFront, btnModeBack, btnModeBoth, btnModeSheet].forEach(btn => btn.classList.remove("active"));
+      currentViewMode = mode;
+      [btnModeFront, btnModeBack, btnModeBoth, btnModeSheet].forEach(btn => {
+        if (btn) btn.classList.remove("active");
+      });
       document.body.className = `mode-${mode}`;
+      updatePageSize(mode);
 
       if (mode === 'sheet') {
-        btnModeSheet.classList.add("active");
+        if (btnModeSheet) btnModeSheet.classList.add("active");
         screenStage.style.display = "none";
         sheetContainer.style.display = "block";
-        renderSheet(currentSheetSide);
+        renderA4Sheet(currentSheetSide);
       } else {
         screenStage.style.display = "flex";
         sheetContainer.style.display = "none";
 
         if (mode === 'front') {
-          btnModeFront.classList.add("active");
+          if (btnModeFront) btnModeFront.classList.add("active");
           flyerFrontWrap.style.display = "flex";
           flyerBackWrap.style.display = "none";
         } else if (mode === 'back') {
-          btnModeBack.classList.add("active");
+          if (btnModeBack) btnModeBack.classList.add("active");
           flyerFrontWrap.style.display = "none";
           flyerBackWrap.style.display = "flex";
         } else {
-          btnModeBoth.classList.add("active");
+          if (btnModeBoth) btnModeBoth.classList.add("active");
           flyerFrontWrap.style.display = "flex";
           flyerBackWrap.style.display = "flex";
         }
       }
     }
 
-    function renderSheet(side = currentSheetSide) {
+    function setSheetSide(side) {
       currentSheetSide = side;
-      gridSheetSlot.innerHTML = '';
-      const sourceCard = side === 'front' ? document.getElementById("flyerFront") : document.getElementById("flyerBack");
-      const flyerHtml = sourceCard.outerHTML;
-
-      for (let i = 0; i < 2; i++) {
-        const wrap = document.createElement("div");
-        wrap.className = "grid-flyer-wrapper";
-        wrap.innerHTML = flyerHtml;
-        gridSheetSlot.appendChild(wrap);
-      }
+      renderA4Sheet(side);
     }
 
-    btnSheetFront.addEventListener("click", () => {
-      btnSheetFront.style.background = "var(--color-forest)";
-      btnSheetFront.style.color = "#fff";
-      btnSheetBack.style.background = "#e2e4e6";
-      btnSheetBack.style.color = "var(--color-forest-dark)";
-      renderSheet('front');
+    function createA4Page(sourceCard, label) {
+      const page = document.createElement("div");
+      page.className = "a4-sheet-page";
+
+      const halfLeft = document.createElement("div");
+      halfLeft.className = "sheet-half sheet-left";
+      halfLeft.innerHTML = sourceCard.outerHTML;
+
+      const cutDivider = document.createElement("div");
+      cutDivider.className = "sheet-cut-divider";
+      cutDivider.innerHTML = `
+        <div class="sheet-cut-line"></div>
+        <div class="sheet-cut-mark-top">✂ snijlijn</div>
+        <div class="sheet-cut-mark-bottom">✂</div>
+      `;
+
+      const halfRight = document.createElement("div");
+      halfRight.className = "sheet-half sheet-right";
+      halfRight.innerHTML = sourceCard.outerHTML;
+
+      page.appendChild(halfLeft);
+      page.appendChild(cutDivider);
+      page.appendChild(halfRight);
+
+      return page;
+    }
+
+    function renderA4Sheet(side = currentSheetSide) {
+      currentSheetSide = side;
+      if (!sheetPagesSlot) return;
+      sheetPagesSlot.innerHTML = '';
+
+      const frontCard = document.getElementById("flyerFront");
+      const backCard = document.getElementById("flyerBack");
+
+      if (side === 'both') {
+        const page1 = createA4Page(frontCard, 'Pagina 1: 2x Voorzijde');
+        const page2 = createA4Page(backCard, 'Pagina 2: 2x Achterzijde');
+        sheetPagesSlot.appendChild(page1);
+        sheetPagesSlot.appendChild(page2);
+      } else if (side === 'front') {
+        const page = createA4Page(frontCard, '2x Voorzijde');
+        sheetPagesSlot.appendChild(page);
+      } else if (side === 'back') {
+        const page = createA4Page(backCard, '2x Achterzijde');
+        sheetPagesSlot.appendChild(page);
+      }
+
+      const btnSheetBoth = document.getElementById("btnSheetBoth");
+      const btnSheetFront = document.getElementById("btnSheetFront");
+      const btnSheetBack = document.getElementById("btnSheetBack");
+      [btnSheetBoth, btnSheetFront, btnSheetBack].forEach(b => {
+        if (b) b.classList.remove("active");
+      });
+      if (side === 'both' && btnSheetBoth) btnSheetBoth.classList.add("active");
+      if (side === 'front' && btnSheetFront) btnSheetFront.classList.add("active");
+      if (side === 'back' && btnSheetBack) btnSheetBack.classList.add("active");
+    }
+
+    function triggerPrint() {
+      updatePageSize(currentViewMode);
+      if (currentViewMode === 'sheet') {
+        renderA4Sheet(currentSheetSide);
+      }
+      setTimeout(() => {
+        window.print();
+      }, 60);
+    }
+    window.triggerPrint = triggerPrint;
+
+    window.addEventListener("beforeprint", () => {
+      updatePageSize(currentViewMode);
+      if (currentViewMode === 'sheet') {
+        renderA4Sheet(currentSheetSide);
+      }
     });
 
-    btnSheetBack.addEventListener("click", () => {
-      btnSheetBack.style.background = "var(--color-forest)";
-      btnSheetBack.style.color = "#fff";
-      btnSheetFront.style.background = "#e2e4e6";
-      btnSheetFront.style.color = "var(--color-forest-dark)";
-      renderSheet('back');
-    });
+    // Initial setup
+    updatePageSize('both');
   </script>
 </body>
 </html>
