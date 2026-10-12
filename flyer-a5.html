@@ -250,20 +250,20 @@
       flex-direction: column;
       justify-content: space-between;
       box-sizing: border-box;
-      padding: 11mm 13mm 10mm 13mm;
+      padding: 13mm 15mm 12mm 15mm;
       background: #ffffff;
       transform: translateZ(0);
     }
 
-    /* Subtle luxury frame border inside flyer */
+    /* Ingevouwen luxe binnenkader met veilige printmarge (voor goedkope printers) */
     .flyer-container::before {
       content: '';
       position: absolute;
-      top: 4.5mm;
-      left: 4.5mm;
-      right: 4.5mm;
-      bottom: 4.5mm;
-      border: 0.35mm solid rgba(75, 143, 36, 0.12);
+      top: 8mm;
+      left: 9mm;
+      right: 9mm;
+      bottom: 8mm;
+      border: 0.35mm solid rgba(75, 143, 36, 0.2);
       border-radius: 2mm;
       pointer-events: none;
     }
@@ -522,12 +522,13 @@
     }
 
     /* --------------------------------------------------------------------------
-       FLYER BACK (Achterzijde - Lichte Elegante Salie Tint)
+       FLYER BACK (Achterzijde - Wit vel met Ingevulde Groene Boxen)
+       Geschikt voor normale desktop-printers zonder witrand-afloop
        -------------------------------------------------------------------------- */
     .flyer-back {
-      background: linear-gradient(155deg, #f4faf1 0%, #e6f3e2 100%);
+      background: #ffffff;
       color: var(--color-dark);
-      border: 1px solid rgba(75, 143, 36, 0.22);
+      border: none;
     }
 
     .flyer-back::before {
@@ -580,7 +581,7 @@
       font-weight: 400;
     }
 
-    /* 4 Stappen Naar Uw Ideale Stoel - Onder Elkaar (Verticaal) */
+    /* 4 Stappen Naar Uw Ideale Stoel - Ingevulde Zachtgroene Boxen */
     .flyer-steps-box {
       position: relative;
       z-index: 2;
@@ -591,15 +592,19 @@
     }
 
     .flyer-step-card {
-      background: #ffffff;
-      border: 0.25mm solid rgba(75, 143, 36, 0.22);
-      padding: 2.8mm 3.8mm;
+      background: #f1f8ed;
+      border: 0.3mm solid rgba(75, 143, 36, 0.28);
+      padding: 2.7mm 3.8mm;
       border-radius: 2.2mm;
       display: flex;
       align-items: center;
       gap: 3.8mm;
-      box-shadow: 0 1.2mm 3.5mm rgba(75, 143, 36, 0.05);
+      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.06);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .flyer-step-card:hover {
+      border-color: rgba(75, 143, 36, 0.45);
+      background: #eaf5e5;
     }
 
     .step-badge {
@@ -607,13 +612,14 @@
       height: 11.5mm;
       min-width: 11.5mm;
       border-radius: 2mm;
-      background: linear-gradient(135deg, rgba(75, 143, 36, 0.10) 0%, rgba(75, 143, 36, 0.03) 100%);
-      border: 0.3mm solid rgba(75, 143, 36, 0.28);
+      background: #ffffff;
+      border: 0.3mm solid rgba(75, 143, 36, 0.35);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(75, 143, 36, 0.1);
     }
 
     .step-badge-label {
@@ -654,19 +660,19 @@
     .step-desc {
       font-size: 2.35mm;
       line-height: 1.38;
-      color: #4a5568;
+      color: #3b4734;
     }
 
-    /* Voordelenstrook */
+    /* Voordelenstrook - Ingevulde Zachtgroene Box */
     .flyer-back-benefits {
       position: relative;
       z-index: 2;
       display: flex;
       justify-content: space-between;
       gap: 2mm;
-      background: #ffffff;
-      border: 0.25mm solid rgba(75, 143, 36, 0.25);
-      padding: 2.5mm 3.5mm;
+      background: #eef7eb;
+      border: 0.3mm solid rgba(75, 143, 36, 0.32);
+      padding: 2.5mm 3.8mm;
       border-radius: 2mm;
       box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
     }
@@ -1291,7 +1297,7 @@
            2. ACHTERZIJDE (BACK)
            ====================================================================== -->
       <div class="flyer-preview-item" id="flyerBackWrap">
-        <div class="flyer-label">Achterzijde (Saliegroen &amp; Stappenplan)</div>
+        <div class="flyer-label">Achterzijde (Stappenplan &amp; Zekerheden)</div>
 
         <article class="flyer-container flyer-back" id="flyerBack">
           
