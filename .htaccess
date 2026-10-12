@@ -28,8 +28,11 @@
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
     RewriteRule ^([^/]+)/?$ $1.html [L]
 
-    # Redirect all non-existent old page URLs (404s / old Google search links) permanently to staopstoelen.html
-    RewriteRule ^.*$ /staopstoelen.html [R=301,L]
+    # Alias for Geertjan's business card (serves visitekaartje.html directly)
+    RewriteRule ^visitekaartje-geertjan(\.html)?$ /visitekaartje.html [L]
+
+    # Redirect all non-existent old page URLs (404s / old Google search links) temporarily to staopstoelen.html
+    RewriteRule ^.*$ /staopstoelen.html [R=302,L]
 </IfModule>
 
 # Fallback 404 handler
