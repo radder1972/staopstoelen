@@ -431,6 +431,15 @@ function sync_static_chair_pages($chairs = null) {
       margin-bottom: 0;
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-923357429"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+
+    gtag("config", "AW-923357429");
+  </script>
 </head>
 <body>
 

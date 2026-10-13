@@ -45,6 +45,70 @@ function logCustomVisitEvent(eventName = 'pageview') {
   }
 }
 
+// Google Ads Conversion & Event Tracking (AW-923357429)
+const GOOGLE_ADS_CONFIG = {
+  id: 'AW-923357429',
+  labels: {
+    appointment: '', // Optioneel: vul conversielabel in indien aangemaakt in Google Ads
+    phone: '',       // Optioneel: vul conversielabel in voor bellen
+    whatsapp: ''     // Optioneel: vul conversielabel in voor WhatsApp
+  }
+};
+
+function trackGoogleAdsConversion(conversionType, details = {}) {
+  try {
+    if (typeof window.gtag === 'function') {
+      const label = GOOGLE_ADS_CONFIG.labels[conversionType] || '';
+      const sendTo = label ? `${GOOGLE_ADS_CONFIG.id}/${label}` : GOOGLE_ADS_CONFIG.id;
+      
+      // Google Ads Conversie Gebeurtenis
+      window.gtag('event', 'conversion', {
+        send_to: sendTo,
+        event_category: details.event_category || 'Lead',
+        event_label: details.event_label || conversionType,
+        value: details.value || 1.0,
+        currency: details.currency || 'EUR'
+      });
+
+      // Google Standaard Lead Gebeurtenis
+      window.gtag('event', 'generate_lead', {
+        event_category: details.event_category || 'Lead',
+        event_label: details.event_label || conversionType,
+        value: details.value || 1.0,
+        currency: details.currency || 'EUR'
+      });
+
+      console.log(`[Google Ads] Conversie geregistreerd: ${conversionType}`, details);
+    }
+  } catch (err) {
+    console.warn('[Google Ads] Tracking fout:', err);
+  }
+}
+
+// Global click tracker for phone calls (078) & WhatsApp
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (!link) return;
+
+  const href = link.getAttribute('href') || '';
+  
+  // Telefoonklik (078 - 631 4858)
+  if (href.startsWith('tel:')) {
+    trackGoogleAdsConversion('phone', {
+      event_category: 'Contact',
+      event_label: 'Bellen: ' + href.replace('tel:', '')
+    });
+  }
+  
+  // WhatsApp klik
+  if (href.includes('wa.me') || href.includes('whatsapp.com')) {
+    trackGoogleAdsConversion('whatsapp', {
+      event_category: 'Contact',
+      event_label: 'WhatsApp Chat'
+    });
+  }
+});
+
 // Log pageview on DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {
   logCustomVisitEvent('pageview');
@@ -1530,6 +1594,16 @@ function initCalendar() {
       // Log custom database conversion event
       if (typeof logCustomVisitEvent === 'function') {
         logCustomVisitEvent('booking_conversion');
+      }
+
+      // Track Google Ads appointment booking conversion
+      if (typeof trackGoogleAdsConversion === 'function') {
+        trackGoogleAdsConversion('appointment', {
+          event_category: 'Appointment',
+          event_label: state.appointmentType === "home" ? "Passing aan Huis" : "Showroombezoek",
+          value: 1.0,
+          currency: 'EUR'
+        });
       }
       
       const formattedDate = state.selectedDate.toLocaleDateString("nl-NL", {
