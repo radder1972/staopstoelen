@@ -439,6 +439,7 @@ function sync_static_chair_pages($chairs = null) {
     gtag("js", new Date());
 
     gtag("config", "AW-923357429");
+    gtag("config", "G-3L01HS159K");
   </script>
 </head>
 <body>
