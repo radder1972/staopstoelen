@@ -1062,7 +1062,7 @@ function renderWizardResults() {
       </ul>
       <div style="border-left: 4px solid var(--color-terracotta); background-color: rgba(243, 146, 35, 0.08); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: var(--color-dark); line-height: 1.5;">
         <strong style="color: var(--color-terracotta);">${hasRedFlags ? "Eén of meerdere medische indicaties vastgesteld:" : "Ergonomisch advies:"}</strong>
-        Wacht niet op een langdurig Wmo-traject (vaak 12 tot 20 weken wachttijd). Wij leveren direct uit voorraad met gratis meting en passing aan huis.
+        Wacht niet op een langdurig Wmo-traject (vaak 12 tot 20 weken wachttijd). Wij leveren direct uit voorraad met deskundige maatmeting en gratis thuisbezorging.
       </div>
     `;
 
@@ -1080,7 +1080,7 @@ function renderWizardResults() {
     noResults.style.cssText = "grid-column: 1 / -1; padding: 24px; text-align: center;";
     noResults.innerHTML = `
       <h3>Geen standaard match gevonden</h3>
-      <p style="margin-top: 8px; color: var(--color-gray); font-size: 0.95rem;">Op basis van uw antwoorden hebben we momenteel geen standaard model in de database dat direct 100% aansluit. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Plan een vrijblijvende passing aan huis voor een gratis opmeting en passend advies.</p>
+      <p style="margin-top: 8px; color: var(--color-gray); font-size: 0.95rem;">Op basis van uw antwoorden hebben we momenteel geen standaard model in de database dat direct 100% aansluit. Geen zorgen! Onze BewegingsTechnologen leveren altijd maatwerk. Kom proefzitten in onze showroom voor een gratis opmeting en passend advies.</p>
       <a href="afspraak.html" class="btn btn-secondary" style="margin-top: 14px;">Vrijblijvend Advies Inplannen</a>
     `;
     resultsContainer.appendChild(noResults);

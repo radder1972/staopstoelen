@@ -337,7 +337,7 @@ function sync_static_chair_pages($chairs = null) {
   
   <!-- OpenGraph / Social Meta -->
   <meta property="og:title" content="' . $chair_name . ' | Staopstoelen.nl">
-  <meta property="og:description" content="Comfortabele ' . $condition_label . ' van ' . $brand . '. Bekijk specificaties, prijzen en vraag een gratis thuispassing aan.">
+  <meta property="og:description" content="Comfortabele ' . $condition_label . ' van ' . $brand . '. Bekijk specificaties, prijzen en plan een vrijblijvend zitadvies in onze showroom.">
   <meta property="og:image" content="' . htmlspecialchars($seo_image_url, ENT_QUOTES) . '">
   <meta property="og:url" content="https://staopstoelen.nl/stoelen/' . $chair_id . '.html">
   <meta property="og:type" content="product">
