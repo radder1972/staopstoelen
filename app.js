@@ -49,9 +49,9 @@ function logCustomVisitEvent(eventName = 'pageview') {
 const GOOGLE_ADS_CONFIG = {
   id: 'AW-923357429',
   labels: {
-    appointment: '', // Optioneel: vul conversielabel in indien aangemaakt in Google Ads
-    phone: '',       // Optioneel: vul conversielabel in voor bellen
-    whatsapp: ''     // Optioneel: vul conversielabel in voor WhatsApp
+    appointment: 'WfpDCLCA1psdEPWhpbgD', // Leadformulier indienen conversie
+    phone: '',                           // Optioneel: vul conversielabel in voor bellen
+    whatsapp: ''                         // Optioneel: vul conversielabel in voor WhatsApp
   }
 };
 
