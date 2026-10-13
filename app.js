@@ -1638,6 +1638,11 @@ function initCalendar() {
       
       submitBookingBtn.textContent = "Bevestig Afspraak";
       submitBookingBtn.disabled = false;
+
+      // Redirect to dedicated thank you page for Google Ads conversion tracking
+      setTimeout(() => {
+        window.location.href = "bedankt.html";
+      }, 1000);
     };
 
     if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
