@@ -16,9 +16,49 @@ window.adjustImageFit = function(img) {
   }
 };
 
+// Admin & Self-Visit Exclusion Manager
+// Prevents owner / test visits from polluting both internal statistics and Google Analytics 4
+(function initAdminExclusion() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    // Explicit opt-out via URL query param: ?negeer_bezoek=1 or ?admin_filter=1
+    if (params.get('negeer_bezoek') === '1' || params.get('admin_filter') === '1') {
+      localStorage.setItem('staopstoelen_ignore_analytics', 'true');
+      document.cookie = "staopstoelen_ignore_analytics=true; path=/; max-age=31536000; SameSite=Lax";
+      alert("✓ Eigen bezoeken worden vanaf nu NIET meer meegeteld in de statistieken op dit apparaat.");
+    } else if (params.get('negeer_bezoek') === '0') {
+      localStorage.removeItem('staopstoelen_ignore_analytics');
+      document.cookie = "staopstoelen_ignore_analytics=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      alert("✓ Eigen bezoeken worden vanaf nu WEER geteld.");
+    }
+
+    // Auto-opt-out when visiting beheer.html or if logged into admin session
+    if (window.location.pathname.includes('beheer.html') || sessionStorage.getItem('adminLoggedIn') === 'true') {
+      localStorage.setItem('staopstoelen_ignore_analytics', 'true');
+      document.cookie = "staopstoelen_ignore_analytics=true; path=/; max-age=31536000; SameSite=Lax";
+    }
+
+    // Disable Google Analytics & Google Ads tags if excluded
+    if (localStorage.getItem('staopstoelen_ignore_analytics') === 'true' || document.cookie.indexOf('staopstoelen_ignore_analytics=true') !== -1) {
+      window['ga-disable-G-3L01HS159K'] = true;
+      window['ga-disable-AW-923357429'] = true;
+    }
+  } catch (e) {
+    console.warn("Exclusion init:", e);
+  }
+})();
+
 // Local Visit & Event Tracking Logger
 function logCustomVisitEvent(eventName = 'pageview') {
   try {
+    // Ignore logging admin dashboard views and excluded devices (own visits)
+    if (window.location.pathname.includes('beheer.html') ||
+        sessionStorage.getItem('adminLoggedIn') === 'true' ||
+        localStorage.getItem('staopstoelen_ignore_analytics') === 'true' ||
+        document.cookie.indexOf('staopstoelen_ignore_analytics=true') !== -1) {
+      return;
+    }
+
     const params = new URLSearchParams(window.location.search);
     const logData = {
       page_url: window.location.pathname + window.location.hash,
@@ -29,11 +69,6 @@ function logCustomVisitEvent(eventName = 'pageview') {
       device_type: window.innerWidth < 768 ? 'mobile' : (window.innerWidth < 1024 ? 'tablet' : 'desktop'),
       event_name: eventName
     };
-    
-    // Ignore logging admin dashboard views
-    if (logData.page_url.includes('beheer.html')) {
-      return;
-    }
     
     fetch('api/log_visit.php', {
       method: 'POST',

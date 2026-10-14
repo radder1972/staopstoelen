@@ -1547,6 +1547,30 @@
           </div>
         </div>
         
+        <!-- Filter Eigen Bezoeken (Privacy & Zuivere Cijfers) -->
+        <div style="background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 12px; padding: 18px 24px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(18, 43, 7, 0.04); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+          <div>
+            <div style="font-weight: 800; color: #122b07; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.25rem;">🛡️</span>
+              <span>Filter Eigen Bezoek (Alleen Echte Klanten Tellen)</span>
+            </div>
+            <div style="font-size: 0.88rem; color: #555; margin-top: 5px; line-height: 1.5;">
+              Status op dit apparaat: <strong id="lblExclusionStatus" style="color: #2e7d32; background: #e8f5e9; padding: 2px 8px; border-radius: 6px;">Actief (U wordt NIET meegeteld)</strong>
+              <div style="font-size: 0.8rem; color: #666; margin-top: 4px;">
+                💡 <strong>Tip voor uw mobiel of tablet:</strong> open eenmalig <a href="index.html?negeer_bezoek=1" target="_blank" style="color: var(--color-forest); font-weight: 700; text-decoration: underline;">staopstoelen.nl/?negeer_bezoek=1</a> om ook daar uw eigen bezoeken automatisch uit te sluiten.
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" id="btnToggleExclusion" class="btn btn-outline" style="padding: 9px 16px; font-size: 0.85rem; font-weight: 700; border-radius: 8px; border-color: #6ab13c; color: #2e6819; background: #fff;" title="Schakel het negeren van bezoeken op deze computer in of uit">
+              Filter Wisselen
+            </button>
+            <button type="button" id="btnCleanMyIp" class="btn btn-outline" style="padding: 9px 16px; font-size: 0.85rem; font-weight: 700; border-radius: 8px; border-color: #1976d2; color: #1565c0; background: #e3f2fd;" title="Verwijdert alle oude testbezoeken van uw huidige internetverbinding en sluit dit IP permanent uit">
+              Mijn IP Uitsluiten &amp; Oude Testbezoeken Wissen
+            </button>
+          </div>
+        </div>
+
         <!-- KPI Cards Grid (Compact & Centered) -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 32px;">
           <!-- Card 4: Totaal Paginabezoeken -->
@@ -4419,6 +4443,77 @@
         }
       });
     }
+
+    // Admin Exclusion Controls
+    const lblExclusionStatus = document.getElementById("lblExclusionStatus");
+    const btnToggleExclusion = document.getElementById("btnToggleExclusion");
+    const btnCleanMyIp = document.getElementById("btnCleanMyIp");
+
+    function updateExclusionUI() {
+      const isExcluded = localStorage.getItem('staopstoelen_ignore_analytics') === 'true' || 
+                         document.cookie.indexOf('staopstoelen_ignore_analytics=true') !== -1;
+      if (lblExclusionStatus) {
+        if (isExcluded) {
+          lblExclusionStatus.innerHTML = "Actief (U wordt NIET meegeteld)";
+          lblExclusionStatus.style.color = "#2e7d32";
+          lblExclusionStatus.style.background = "#e8f5e9";
+        } else {
+          lblExclusionStatus.innerHTML = "Inactief (U wordt wél meegeteld)";
+          lblExclusionStatus.style.color = "#c62828";
+          lblExclusionStatus.style.background = "#ffebee";
+        }
+      }
+      if (btnToggleExclusion) {
+        btnToggleExclusion.textContent = isExcluded ? "Filter Tijdelijk Uitzetten" : "Filter Inschakelen";
+      }
+    }
+
+    if (btnToggleExclusion) {
+      btnToggleExclusion.addEventListener("click", () => {
+        const currentlyExcluded = localStorage.getItem('staopstoelen_ignore_analytics') === 'true';
+        if (currentlyExcluded) {
+          localStorage.removeItem('staopstoelen_ignore_analytics');
+          document.cookie = "staopstoelen_ignore_analytics=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+          alert("Het filter op dit apparaat is nu UITGESCHAKELD. Uw bezoeken worden weer meegeteld.");
+        } else {
+          localStorage.setItem('staopstoelen_ignore_analytics', 'true');
+          document.cookie = "staopstoelen_ignore_analytics=true; path=/; max-age=31536000; SameSite=Lax";
+          alert("Het filter op dit apparaat is nu INGESCHAKELD. Uw bezoeken worden vanaf nu niet meer meegeteld.");
+        }
+        updateExclusionUI();
+      });
+    }
+
+    if (btnCleanMyIp) {
+      btnCleanMyIp.addEventListener("click", () => {
+        if (confirm("Wilt u uw huidige IP-adres permanent uitsluiten en alle bezoeken die vanaf deze internetverbinding zijn geregistreerd wissen? Echte klanten blijven bewaard.")) {
+          btnCleanMyIp.disabled = true;
+          btnCleanMyIp.textContent = "Bezig met wissen...";
+          fetch('api/reset_stats.php?action=clean_my_ip')
+            .then(res => res.json())
+            .then(data => {
+              btnCleanMyIp.disabled = false;
+              btnCleanMyIp.textContent = "Mijn IP Uitsluiten & Oude Testbezoeken Wissen";
+              if (data.status === "success") {
+                alert("✓ Gelukt!\n\nUw IP-adres is permanent uitgesloten van de statistieken.\nEr zijn " + data.deleted + " eigen testbezoeken gewist uit de database.");
+                renderStatsDashboard();
+              } else {
+                alert("Fout bij uitsluiten IP: " + (data.message || 'Onbekende fout'));
+              }
+            })
+            .catch(err => {
+              btnCleanMyIp.disabled = false;
+              btnCleanMyIp.textContent = "Mijn IP Uitsluiten & Oude Testbezoeken Wissen";
+              alert("Fout bij communicatie: " + err);
+            });
+        }
+      });
+    }
+
+    // Auto-ensure admin is excluded when loading beheer.html
+    localStorage.setItem('staopstoelen_ignore_analytics', 'true');
+    document.cookie = "staopstoelen_ignore_analytics=true; path=/; max-age=31536000; SameSite=Lax";
+    updateExclusionUI();
 
     function renderStatsDashboard() {
       // Fetch visit stats asynchronously

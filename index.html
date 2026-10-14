@@ -55,6 +55,10 @@
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-923357429"></script>
   <script>
+    if (localStorage.getItem('staopstoelen_ignore_analytics') === 'true' || (document.cookie && document.cookie.indexOf('staopstoelen_ignore_analytics=true') !== -1)) {
+      window['ga-disable-G-3L01HS159K'] = true;
+      window['ga-disable-AW-923357429'] = true;
+    }
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());

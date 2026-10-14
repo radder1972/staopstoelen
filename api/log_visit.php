@@ -13,19 +13,41 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// 1. Check if client has admin exclusion cookie
+if (!empty($_COOKIE['staopstoelen_ignore_analytics']) && $_COOKIE['staopstoelen_ignore_analytics'] === 'true') {
+    echo json_encode(["status" => "ignored", "message" => "Admin visit excluded via cookie"]);
+    exit;
+}
+
 $input = json_decode(file_get_contents("php://input"), true);
 if (!$input || empty($input['page_url'])) {
     echo json_encode(["status" => "error", "message" => "Invalid input data"]);
     exit;
 }
 
+// 2. Check if client sent ignore_visit flag
+if (!empty($input['ignore_visit'])) {
+    echo json_encode(["status" => "ignored", "message" => "Admin visit excluded via flag"]);
+    exit;
+}
+
 try {
-    $pdo = getDBConnection();
-    
     // Hash IP address with a salt for privacy / AVG compliance
     $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $salt = "staopstoelen_secret_salt_2026";
     $ip_hash = hash('sha256', $ip . $salt);
+
+    // 3. Check if IP hash is in the excluded list
+    $excluded_file = __DIR__ . '/excluded_ips.json';
+    if (file_exists($excluded_file)) {
+        $excluded = json_decode(file_get_contents($excluded_file), true) ?: [];
+        if (in_array($ip_hash, $excluded) || in_array($ip, $excluded)) {
+            echo json_encode(["status" => "ignored", "message" => "Admin visit excluded via IP filter"]);
+            exit;
+        }
+    }
+
+    $pdo = getDBConnection();
     
     $page_url = substr(trim($input['page_url']), 0, 255);
     $referrer_url = !empty($input['referrer_url']) ? substr(trim($input['referrer_url']), 0, 255) : null;
