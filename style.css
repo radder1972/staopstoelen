@@ -3085,6 +3085,47 @@ footer h3, footer h4 {
   color: rgba(255,255,255,0.5);
 }
 
+/* Feature Check List with Warm Orange Badges */
+.feature-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-dark);
+}
+
+.feature-check-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(243, 146, 35, 0.16);
+  border: 1px solid rgba(243, 146, 35, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.feature-check-icon svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--color-terracotta);
+  stroke-width: 3;
+  fill: none;
+  display: block;
+}
+
 /* Page Banner Headers (Shared across subpages) */
 .occasions-header {
   background-color: var(--color-forest);
