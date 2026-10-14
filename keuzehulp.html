@@ -622,9 +622,9 @@
       modalBrand.innerHTML = `Merk: ${item.brand}${modelText}<br>Materiaal: ${materialText}`;
       if (item.brand && item.brand.toLowerCase() === 'fitform') {
         modalBrand.innerHTML += `
-          <div style="margin-top: 8px; display: inline-flex; align-items: center; gap: 8px; background: #fff8f5; border: 1px solid rgba(214, 90, 49, 0.35); padding: 4px 12px; border-radius: 999px;">
-            <img src="assets/fitform_logo_terracotta.png" alt="Officieel Fitform Dealer" style="height: 16px; width: auto; display: block;">
-            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); letter-spacing: 0.3px;">Officieel Dealer</span>
+          <div style="margin-top: 10px; display: inline-flex; align-items: center; gap: 10px; background: #fffbf7; border: 1.5px solid rgba(243, 146, 35, 0.45); padding: 6px 14px; border-radius: 999px; box-shadow: 0 2px 8px rgba(243, 146, 35, 0.08);">
+            <img src="assets/fitform_logo_terracotta.png" alt="Officieel Fitform Dealer" style="height: 24px; width: auto; display: block;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-terracotta); letter-spacing: 0.3px;">Officieel Fitform Dealer</span>
           </div>`;
       }
       modalDesc.innerHTML = item.description || "";
