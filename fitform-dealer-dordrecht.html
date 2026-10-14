@@ -137,63 +137,42 @@
   </script>
 
   <style>
-    .fitform-hero {
-      background: linear-gradient(135deg, var(--color-cream) 0%, #f4ede3 100%);
-      padding: 50px 0 60px 0;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--color-cream-dark);
+    .info-section-title {
+      font-size: 2rem;
+      color: var(--color-forest);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--color-sage-light);
+      padding-bottom: 8px;
     }
-    .fitform-hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      background: #ffffff;
-      padding: 10px 22px 10px 16px;
-      border-radius: 999px;
-      border: 1.5px solid rgba(243, 146, 35, 0.4);
-      box-shadow: 0 4px 16px rgba(243, 146, 35, 0.12);
-      margin-bottom: 24px;
+    .info-section-subtitle {
+      font-size: 1.5rem;
+      color: var(--color-forest);
+      margin-top: 32px;
+      margin-bottom: 16px;
     }
-    .fitform-hero-badge img {
-      height: 38px;
-      width: auto;
-      display: block;
-    }
-    .fitform-hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    @media (min-width: 992px) {
-      .fitform-hero-grid {
-        grid-template-columns: 1.15fr 0.85fr;
-      }
-    }
-    .fitform-usp-list {
-      list-style: none;
-      padding: 0;
-      margin: 24px 0 32px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .fitform-usp-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+    .info-text {
       font-size: 1.05rem;
-      line-height: 1.5;
+      line-height: 1.8;
       color: var(--color-dark);
+      margin-bottom: 20px;
     }
-    .fitform-usp-list svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--color-forest);
-      fill: none;
-      flex-shrink: 0;
-      margin-top: 2px;
+    .info-list {
+      margin-bottom: 24px;
+      padding-left: 20px;
+    }
+    .info-list li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-dark);
+      margin-bottom: 12px;
+    }
+    .brand-highlight {
+      font-weight: 700;
+      color: var(--color-forest);
+    }
+    .subpage-section strong, .subpage-section b {
+      color: var(--color-forest);
     }
     .fitform-feature-card {
       background: #ffffff;
@@ -232,7 +211,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
-      margin-top: 32px;
+      margin-top: 24px;
     }
     @media (min-width: 768px) {
       .fitform-model-grid {
@@ -269,47 +248,6 @@
       display: flex;
       flex-direction: column;
       flex: 1;
-    }
-    .step-box {
-      background: #ffffff;
-      border-radius: var(--radius-md);
-      padding: 24px;
-      border-left: 4px solid var(--color-terracotta);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    }
-    .faq-accordion-item {
-      background: #ffffff;
-      border-radius: var(--radius-md);
-      margin-bottom: 14px;
-      border: 1px solid var(--color-cream-dark);
-      overflow: hidden;
-    }
-    .faq-accordion-header {
-      padding: 18px 24px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-      font-size: 1.05rem;
-      user-select: none;
-    }
-    .faq-accordion-header svg {
-      transition: transform 0.25s ease;
-    }
-    .faq-accordion-content {
-      padding: 0 24px 20px 24px;
-      color: var(--color-dark);
-      line-height: 1.7;
-      font-size: 0.95rem;
-      display: none;
-    }
-    .faq-accordion-item.open .faq-accordion-content {
-      display: block;
-    }
-    .faq-accordion-item.open .faq-accordion-header svg {
-      transform: rotate(180deg);
     }
   </style>
 </head>
@@ -384,7 +322,6 @@
       <div class="navbar-row-2">
         <nav class="nav-links" id="navLinks">
           <a href="staopstoelen.html" id="linkGoedkopeStaopstoelen">Sta-op Stoelen</a>
-          <a href="fitform-dealer-dordrecht.html" class="active" id="linkFitformDealer">Fitform Dealer</a>
           <a href="seniorenstoelen.html" id="linkSeniorenstoelen">Senioren Stoelen</a>
           <a href="revisie.html" id="linkRevisie">Revisieproces</a>
           <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
@@ -396,429 +333,351 @@
     </div>
   </header>
 
-  <!-- Breadcrumbs -->
-  <div style="background: var(--color-light); border-bottom: 1px solid var(--color-gray-light); padding: 12px 0;">
-    <div class="container" style="font-size: 0.88rem; color: var(--color-gray);">
-      <a href="index.html" style="color: var(--color-forest); text-decoration: none;">Home</a> &gt; 
-      <span style="color: var(--color-dark); font-weight: 600;">Fitform Dealer Dordrecht</span>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="fitform-hero">
-    <div class="container">
-      <div class="fitform-hero-grid">
-        <div>
-          <div class="fitform-hero-badge">
-            <img src="assets/fitform_logo_terracotta.png" alt="Officieel Fitform Dealer Logo">
-            <div style="height: 28px; width: 1.5px; background: #e2dfd9;"></div>
-            <span style="font-size: 0.95rem; font-weight: 800; color: var(--color-forest-dark);">
-              Officieel Dealer Dordrecht
-            </span>
-          </div>
-
-          <h1 style="font-size: clamp(1.55rem, 4.6vw, 2.5rem); line-height: 1.25; color: var(--color-forest-dark); font-family: var(--font-heading); margin-bottom: 18px; word-break: break-word;">
-            Dé Erkende Fitform Dealer in Dordrecht &amp; Regio Rotterdam
-          </h1>
-
-          <p style="font-size: 1.2rem; font-weight: 600; color: var(--color-terracotta); margin-bottom: 16px;">
-            Deskundige maatwerkinmeting door Bewegingstechnoloog Geertjan &bull; Merwedestraat 239
-          </p>
-
-          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-dark); margin-bottom: 24px;">
-            Zoekt u een ergonomische sta-op stoel of relaxfauteuil van <strong>Fitform in Dordrecht</strong>? Als gecertificeerd dealer beschikt <strong>staopstoelen.nl</strong> over rechtstreekse fabriekslijnen met Wellco/Fitform. In onze ruime showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> (in het pand van Schipper Compact Wonen) kunt u de complete collectie nieuwe en gereviseerde Fitform stoelen in alle rust uitproberen.
-          </p>
-
-          <ul class="fitform-usp-list">
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>100% Op uw maten ingesteld:</strong> Zithoogte, zitdiepte, armleggerhoogte en lendensteun exact afgesteld.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>Rechtstreekse fabriekslijnen:</strong> Officiële fabrieksgarantie, snelle levering en originele Fitform onderdelen.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>Nieuw én Gereviseerd:</strong> Ook technisch 100% gereconditioneerde Fitform occasions met garantie.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>Gratis bezorging &amp; installatie:</strong> Vakkundig bij u thuisbezorgd en direct op maat gebruiksklaar geplaatst.</span>
-            </li>
-          </ul>
-
-          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-            <a href="afspraak.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 28px;">Plan een Proefzitsessie in Dordrecht</a>
-            <a href="staopstoelen.html?brand=Fitform" class="btn btn-secondary" style="font-size: 1.05rem; padding: 14px 28px;">Bekijk Fitform Aanbod</a>
-          </div>
-        </div>
-
-        <div style="position: relative; text-align: center;">
-          <img src="assets/geertjan_advies_showroom.jpg" alt="Bewegingstechnoloog Geertjan adviseert over Fitform sta-op stoelen in de showroom Dordrecht" style="width: 100%; max-width: 480px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 15px 35px rgba(0,0,0,0.12); border: 4px solid #ffffff; display: block; margin: 0 auto;">
-          <div style="background: rgba(255,255,255,0.96); border-radius: var(--radius-md); padding: 14px 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); display: inline-flex; align-items: center; gap: 14px; margin-top: -30px; position: relative; z-index: 2; border: 1px solid var(--color-cream-dark);">
-            <div style="background: var(--color-forest); color: #ffffff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800;">✓</div>
-            <div style="text-align: left; line-height: 1.3;">
-              <span style="display: block; font-weight: 700; color: var(--color-forest-dark); font-size: 0.95rem;">Geertjan Klein Haneveld</span>
-              <span style="font-size: 0.82rem; color: var(--color-gray);">Gediplomeerd Bewegingstechnoloog &bull; Fitform Specialist</span>
-            </div>
-          </div>
-        </div>
+  <!-- Banner Header -->
+  <section class="occasions-header">
+    <div class="container banner-flex-container">
+      <div style="text-align: left; max-width: 650px; flex: 1; min-width: 280px;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Zitspecialist &amp; Officieel Fitform Dealer &bull; Showroom Dordrecht</span>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Officieel Fitform Dealer Dordrecht</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Deskundige maatwerkinmeting door Bewegingstechnoloog Geertjan aan de Merwedestraat 239 in Dordrecht.</p>
       </div>
+      <img src="assets/najaarsactie_stempel.svg?v=2.3" alt="Fitform Najaarsactie tot €600 korting" class="banner-stamp">
     </div>
   </section>
 
-  <!-- Najaarsactie Banner -->
-  <section style="background-color: #ffffff; padding: 40px 0; border-bottom: 1px solid var(--color-gray-light);">
+  <!-- Page Content -->
+  <section class="subpage-section">
     <div class="container">
-      <div style="background: linear-gradient(135deg, var(--color-forest-dark) 0%, #1e422d 100%); border-radius: var(--radius-lg); padding: 32px 40px; color: #ffffff; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; box-shadow: 0 8px 30px rgba(26, 46, 38, 0.15);">
+      <a href="index.html" class="back-link">← Terug naar Home</a>
+
+      <p class="info-text">
+        Zoekt u een ergonomische sta-op stoel of relaxfauteuil van <strong>Fitform in Dordrecht of omstreken</strong>? Als officieel gecertificeerd dealer beschikt <span class="brand-highlight">staopstoelen.nl</span> (onderdeel van Schipper Compact Wonen) over rechtstreekse fabriekslijnen met de Nederlandse fabrikant Wellco/Fitform. In onze ruime showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> kunt u de complete Fitform collectie in alle rust ervaren en proefzitten.
+      </p>
+
+      <!-- Fitform Dealer Highlight Badge Card -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 28px; background: #ffffff; border: 2px solid var(--color-terracotta); border-radius: var(--radius-md); padding: 26px 34px; margin: 32px 0; box-shadow: 0 6px 22px rgba(243, 146, 35, 0.1); flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 260px;">
+          <span style="display: inline-block; background-color: var(--color-terracotta); color: #ffffff; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 12px; border-radius: 999px; margin-bottom: 8px;">Erkend Partnerschap</span>
+          <h2 style="font-size: 1.45rem; color: var(--color-forest); margin: 0 0 8px 0; font-family: var(--font-heading);">Dé Erkende Fitform Dealer in Dordrecht &amp; Drechtsteden</h2>
+          <p style="font-size: 0.98rem; line-height: 1.7; color: var(--color-dark); margin: 0 0 16px 0;">
+            Als gecertificeerd dealer beschikt Bewegingstechnoloog Geertjan over rechtstreekse fabriekslijnen met Wellco/Fitform. Uw stoel wordt exact volgens het officiële Fitform ergonomie-protocol ingemeten op zithoogte, zitdiepte en armleggerhoogte, inclusief volledige fabrieksgarantie en 100% originele onderdelen.
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="afspraak.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 10px 22px;">Plan een Proefzitsessie</a>
+            <a href="staopstoelen.html?brand=Fitform" class="btn btn-outline" style="font-size: 0.9rem; padding: 10px 22px;">Bekijk Fitform Aanbod</a>
+          </div>
+        </div>
+        <div style="background: #ffffff; padding: 20px 28px; border-radius: var(--radius-sm); border: 1.5px solid rgba(243, 146, 35, 0.35); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+          <img src="assets/fitform_logo_terracotta.png" alt="Officieel Fitform Dealer" style="height: 60px; width: auto; max-width: 240px; display: block;">
+        </div>
+      </div>
+
+      <!-- Ontmoet Geertjan Section (Exact styling as info.html) -->
+      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 32px; border-radius: var(--radius-lg); margin: 32px 0; flex-wrap: wrap;">
+        <img src="assets/geertjan_advies_showroom.jpg" alt="Bewegingstechnoloog Geertjan adviseert over Fitform sta-op stoelen in de showroom Dordrecht" style="width: 100%; max-width: 320px; height: 210px; object-fit: cover; border-radius: var(--radius-md); border: 3px solid var(--color-light); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <div style="flex: 1; min-width: 280px;">
-          <div style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-terracotta); color: #ffffff; padding: 6px 18px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px;">
+          <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 8px; font-size: 0.8rem; display: inline-block;">Onze Expert</span>
+          <h3 style="color: var(--color-forest); font-size: 1.5rem; margin: 0 0 4px 0; font-family: var(--font-heading);">Geertjan Klein Haneveld</h3>
+          <p style="font-size: 0.95rem; font-weight: 600; color: var(--color-forest); margin-bottom: 12px;">Gediplomeerd Bewegingstechnoloog &bull; Fitform Specialist</p>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-dark); margin: 0;">
+            Geertjan is onze vaste bewegingstechnoloog en specialist op het gebied van ergonomie en gezond zitten. Geen Fitform stoel verlaat onze showroom zonder dat deze door Geertjan tot op de centimeter nauwkeurig is ingesteld op uw ideale zithoogte, zitdiepte en armleggerhoogte. Zo bent u verzekerd van een stoel die als gegoten zit en pijnklachten effectief ontlast.
+          </p>
+        </div>
+      </div>
+
+      <!-- Fitform Najaarsactie Banner (Unified site-wide forest style) -->
+      <div style="margin: 36px 0; background-color: var(--color-forest); color: var(--color-light); border-radius: var(--radius-lg); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; box-shadow: 0 8px 24px rgba(75, 143, 36, 0.2);">
+        <div style="flex: 1; min-width: 280px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-terracotta); color: #ffffff; padding: 5px 14px; border-radius: 999px; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px;">
             <span>Officiële Fabrieksactie</span>
           </div>
-          <h2 style="font-size: 1.85rem; color: #ffffff; font-family: var(--font-heading); margin: 0 0 10px 0;">
-            Fitform Najaarsactie: Tot <span style="color: var(--color-terracotta);">€600 korting</span> in Dordrecht
-          </h2>
-          <p style="font-size: 1.05rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin: 0;">
+          <h3 style="font-size: 1.75rem; color: #ffffff; font-family: var(--font-heading); margin: 0 0 8px 0;">
+            Fitform Najaarsactie: Tot €600 korting in Dordrecht
+          </h3>
+          <p style="font-size: 1.02rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin: 0;">
             De hele maand oktober ontvangt u bij ons officiële fabrieks-korting bij aankoop van een Fitform fauteuil: <strong>€600 korting</strong> op de 600-serie en <strong>€500 korting</strong> op de 200-serie &amp; 574-02 Vario.
           </p>
         </div>
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-          <a href="staopstoelen.html?actie=1" class="btn btn-secondary" style="font-size: 1rem; padding: 12px 24px; white-space: nowrap;">Bekijk Actiemodellen</a>
-          <a href="afspraak.html" class="btn" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 1.5px solid rgba(255,255,255,0.4); font-size: 1rem; padding: 12px 24px; white-space: nowrap;">Afspraak Plannen</a>
+          <a href="staopstoelen.html?actie=1" class="btn btn-secondary" style="white-space: nowrap;">Bekijk Actiemodellen</a>
+          <a href="afspraak.html" class="btn" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 1.5px solid rgba(255,255,255,0.4); white-space: nowrap;">Afspraak Maken</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Waarom staopstoelen.nl als Fitform Dealer -->
-  <section style="background-color: var(--color-cream); padding: 70px 0;">
-    <div class="container">
-      <div class="text-center" style="max-width: 800px; margin: 0 auto 50px auto;">
+      <!-- Waarom staopstoelen.nl als Fitform Dealer -->
+      <div style="margin: 48px 0 32px 0;">
         <span class="section-tag" style="color: var(--color-terracotta);">Waarom staopstoelen.nl?</span>
-        <h2 class="section-title">Wat Maakt Ons Dé Fitform Specialist in Dordrecht?</h2>
-        <p class="section-subtitle">
+        <h2 class="info-section-title" style="margin-top: 6px;">Wat Maakt Ons Dé Fitform Specialist in Dordrecht?</h2>
+        <p class="info-text">
           Een Fitform sta-op stoel is medisch en ergonomisch de absolute top. Maar een stoel is pas écht ergonomisch als hij nauwkeurig is afgesteld op úw unieke lichaam.
         </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 24px;">
+          <div class="fitform-feature-card">
+            <div class="fitform-card-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: var(--color-forest); margin-bottom: 10px;">Advies door Bewegingstechnoloog</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
+              Geertjan is gediplomeerd bewegingstechnoloog. Hij analyseert uw zithouding, wervelkolom en opstamechaniek voor maximale verlichting van pijnklachten.
+            </p>
+          </div>
+
+          <div class="fitform-feature-card">
+            <div class="fitform-card-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: var(--color-forest); margin-bottom: 10px;">Originele Fabriekslijnen</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
+              Als officieel dealer bestellen wij rechtstreeks bij de Fitform fabriek in Best (Wellco). U geniet van volledige fabrieksgarantie en 100% originele onderdelen.
+            </p>
+          </div>
+
+          <div class="fitform-feature-card">
+            <div class="fitform-card-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: var(--color-forest); margin-bottom: 10px;">Nieuw &amp; Duurzaam Gereviseerd</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
+              Wilt u topkwaliteit Fitform voor een vriendelijkere prijs? Wij hebben een actuele voorraad gereviseerde Fitform Vario stoelen, technisch 100% nagelopen met garantie.
+            </p>
+          </div>
+
+          <div class="fitform-feature-card">
+            <div class="fitform-card-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: var(--color-forest); margin-bottom: 10px;">Gratis Bezorgd &amp; Afgesteld</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
+              Onze eigen bezorger brengt uw Fitform stoel met de bezorgbus in uw woonkamer, sluit hem aan en stelt hem direct op uw lichaamsmaten af.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px;">
-        <div class="fitform-feature-card">
-          <div class="fitform-card-icon">
-            <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
-          </div>
-          <h3 style="font-size: 1.25rem; color: var(--color-forest-dark); margin-bottom: 12px;">Advies door Bewegingstechnoloog</h3>
-          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
-            Geertjan is gediplomeerd bewegingstechnoloog. Hij kijkt niet alleen naar een mooi meubelstuk, maar analyseert uw zithouding, wervelkolom en opstamechaniek voor maximale verlichting van pijnklachten.
-          </p>
-        </div>
-
-        <div class="fitform-feature-card">
-          <div class="fitform-card-icon">
-            <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-          </div>
-          <h3 style="font-size: 1.25rem; color: var(--color-forest-dark); margin-bottom: 12px;">Originele Fabriekslijnen</h3>
-          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
-            Als officieel dealer bestellen wij rechtstreeks bij de Fitform fabriek in Best (Wellco). U geniet van volledige fabrieksgarantie, snelle levering en gegarandeerd 100% originele Fitform onderdelen.
-          </p>
-        </div>
-
-        <div class="fitform-feature-card">
-          <div class="fitform-card-icon">
-            <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 style="font-size: 1.25rem; color: var(--color-forest-dark); margin-bottom: 12px;">Nieuw &amp; Duurzaam Gereviseerd</h3>
-          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
-            Wilt u topkwaliteit Fitform voor een vriendelijkere prijs? Wij hebben een zorgvuldig geselecteerde voorraad gereviseerde Fitform Vario stoelen. Technisch 100% gereviseerd en geleverd met garantie.
-          </p>
-        </div>
-
-        <div class="fitform-feature-card">
-          <div class="fitform-card-icon">
-            <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <h3 style="font-size: 1.25rem; color: var(--color-forest-dark); margin-bottom: 12px;">Gratis Bezorgd &amp; Afgesteld</h3>
-          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin: 0;">
-            Geen bezorgkosten of gedoe met zware pakketten. Onze eigen bezorger brengt uw Fitform stoel met de bezorgbus in uw woonkamer, sluit hem aan en stelt hem direct gebruiksklaar voor u af.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Populaire Fitform Modellen -->
-  <section style="background-color: #ffffff; padding: 70px 0;">
-    <div class="container">
-      <div class="text-center" style="max-width: 800px; margin: 0 auto 40px auto;">
-        <span class="section-tag" style="color: var(--color-forest);">Populaire Modellen</span>
-        <h2 class="section-title">Ervaar Deze Fitform Fauteuils in Onze Showroom</h2>
-        <p class="section-subtitle">
-          In onze showroom aan de Merwedestraat 239 in Dordrecht hebben wij meerdere Fitform modellen speelklaar staan om zelf het comfort en de opstahulp te ervaren.
+      <!-- Populaire Fitform Modellen -->
+      <div style="margin: 48px 0 32px 0;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Populaire Modellen</span>
+        <h2 class="info-section-title" style="margin-top: 6px;">Ervaar Deze Fitform Fauteuils in Onze Showroom</h2>
+        <p class="info-text">
+          In onze showroom aan de Merwedestraat 239 in Dordrecht hebben wij meerdere Fitform modellen speelklaar staan om zelf het zitcomfort en de soepele opstahulp te ervaren.
         </p>
-      </div>
 
-      <div class="fitform-model-grid">
-        <!-- Model 1: Fitform 570 Vario -->
-        <div class="fitform-model-card">
-          <img src="assets/chair_fitform_570_reco_cozy.png" alt="Fitform 570 Vario sta-op stoel op maat in Dordrecht" class="fitform-model-img">
-          <div class="fitform-model-body">
-            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">De Ergonomische Alles-in-één</span>
-            <h3 style="font-size: 1.35rem; color: var(--color-forest-dark); margin: 0 0 10px 0;">Fitform 570 Vario</h3>
-            <p style="font-size: 0.92rem; color: var(--color-gray); line-height: 1.6; flex: 1; margin-bottom: 16px;">
-              De bekendste en meest veelzijdige sta-op stoel van Nederland. Voorzien van 3 motoren: voetenbank, rugleuning en unieke kantelverstelling werken volledig onafhankelijk voor optimale ontlasting van rug en benen.
-            </p>
-            <div style="border-top: 1px solid var(--color-cream-dark); padding-top: 14px; display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-forest);">Nieuw &amp; Gereviseerd</span>
-              <a href="staopstoelen.html?search=570" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Bekijk Details &rarr;</a>
+        <div class="fitform-model-grid">
+          <!-- Model 1: Fitform 570 Vario -->
+          <div class="fitform-model-card">
+            <img src="assets/chair_fitform_570_reco_cozy.png" alt="Fitform 570 Vario sta-op stoel op maat in Dordrecht" class="fitform-model-img">
+            <div class="fitform-model-body">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">De Ergonomische Alles-in-één</span>
+              <h3 style="font-size: 1.35rem; color: var(--color-forest); margin: 0 0 10px 0;">Fitform 570 Vario</h3>
+              <p style="font-size: 0.92rem; color: var(--color-gray); line-height: 1.6; flex: 1; margin-bottom: 16px;">
+                De bekendste en meest veelzijdige sta-op stoel van Nederland. Voorzien van 3 motoren: voetenbank, rugleuning en kanteling werken volledig onafhankelijk voor optimale ontlasting.
+              </p>
+              <div style="border-top: 1px solid var(--color-cream-dark); padding-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-forest);">Nieuw &amp; Gereviseerd</span>
+                <a href="staopstoelen.html?search=570" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Bekijk Details &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Model 2: Fitform 580 Elevo -->
+          <div class="fitform-model-card">
+            <img src="assets/chair_fitform_580_cozy.png" alt="Fitform 580 Elevo design sta-op stoel in showroom Dordrecht" class="fitform-model-img">
+            <div class="fitform-model-body">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">Modern Dutch Design</span>
+              <h3 style="font-size: 1.35rem; color: var(--color-forest); margin: 0 0 10px 0;">Fitform 580 Elevo</h3>
+              <p style="font-size: 0.92rem; color: var(--color-gray); line-height: 1.6; flex: 1; margin-bottom: 16px;">
+                Een slanke, moderne designfauteuil waarbij de sta-op functie onzichtbaar in het onderstel is verwerkt. Eigentijdse armleuningen en hoogwaardige stoffen of leersoorten.
+              </p>
+              <div style="border-top: 1px solid var(--color-cream-dark); padding-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-forest);">Topdesign op maat</span>
+                <a href="staopstoelen.html?search=580" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Bekijk Details &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Model 3: Fitform 574 Vario -->
+          <div class="fitform-model-card">
+            <img src="assets/chair_fitform_574_cozy.png" alt="Fitform 574 Vario met dichte zijpanden" class="fitform-model-img">
+            <div class="fitform-model-body">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">Klassiek &amp; Geborgen</span>
+              <h3 style="font-size: 1.35rem; color: var(--color-forest); margin: 0 0 10px 0;">Fitform 574 Vario</h3>
+              <p style="font-size: 0.92rem; color: var(--color-gray); line-height: 1.6; flex: 1; margin-bottom: 16px;">
+                De robuuste variant met gestoffeerde dichte zijwanden voor een behaaglijk en geborgen gevoel. Uitstekend geschikt voor mensen die extra zijdelingse steun zoeken.
+              </p>
+              <div style="border-top: 1px solid var(--color-cream-dark); padding-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-forest);">Tot €500 korting</span>
+                <a href="staopstoelen.html?search=574" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Bekijk Details &rarr;</a>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Model 2: Fitform 580 Elevo -->
-        <div class="fitform-model-card">
-          <img src="assets/chair_fitform_580_cozy.png" alt="Fitform 580 Elevo design sta-op stoel in showroom Dordrecht" class="fitform-model-img">
-          <div class="fitform-model-body">
-            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">Modern Dutch Design</span>
-            <h3 style="font-size: 1.35rem; color: var(--color-forest-dark); margin: 0 0 10px 0;">Fitform 580 Elevo</h3>
-            <p style="font-size: 0.92rem; color: var(--color-gray); line-height: 1.6; flex: 1; margin-bottom: 16px;">
-              Een slanke, moderne designfauteuil waarbij de sta-op functie volledig onzichtbaar in het onderstel is weggewerkt. Eigentijdse armleuningen en hoogwaardige stoffen of leersoorten.
-            </p>
-            <div style="border-top: 1px solid var(--color-cream-dark); padding-top: 14px; display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-forest);">Topdesign op maat</span>
-              <a href="staopstoelen.html?search=580" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Bekijk Details &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Model 3: Fitform 574 Vario -->
-        <div class="fitform-model-card">
-          <img src="assets/chair_fitform_574_cozy.png" alt="Fitform 574 Vario met dichte zijpanden" class="fitform-model-img">
-          <div class="fitform-model-body">
-            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">Klassiek &amp; Geborgen</span>
-            <h3 style="font-size: 1.35rem; color: var(--color-forest-dark); margin: 0 0 10px 0;">Fitform 574 Vario</h3>
-            <p style="font-size: 0.92rem; color: var(--color-gray); line-height: 1.6; flex: 1; margin-bottom: 16px;">
-              De robuuste variant met gestoffeerde dichte zijwanden voor een behaaglijk, warm en veilig gevoel. Uitstekend geschikt voor mensen die extra zijdelingse steun en comfort zoeken.
-            </p>
-            <div style="border-top: 1px solid var(--color-cream-dark); padding-top: 14px; display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-forest);">Tot €500 korting</span>
-              <a href="staopstoelen.html?search=574" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Bekijk Details &rarr;</a>
-            </div>
-          </div>
+        <div style="text-align: center; margin-top: 36px;">
+          <a href="staopstoelen.html?brand=Fitform" class="btn btn-primary" style="font-size: 1rem; padding: 12px 28px;">Bekijk Alle Fitform Stoelen in Onze Collectie</a>
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="staopstoelen.html?brand=Fitform" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 32px;">Bekijk Alle Fitform Stoelen in Onze Collectie</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Het Fitform Maatwerk Protocol -->
-  <section style="background-color: var(--color-cream-dark); padding: 70px 0;">
-    <div class="container">
-      <div class="text-center" style="max-width: 800px; margin: 0 auto 48px auto;">
-        <span class="section-tag" style="color: var(--color-forest-dark);">Hoe Werkt Maatwerk?</span>
-        <h2 class="section-title">De 4 Cruciale Maten van Fitform</h2>
-        <p class="section-subtitle">
+      <!-- Het Fitform Maatwerk Protocol (Timeline style as revisie.html) -->
+      <div style="margin: 48px 0 32px 0;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Hoe Werkt Maatwerk?</span>
+        <h2 class="info-section-title" style="margin-top: 6px;">De 4 Cruciale Maten van Fitform</h2>
+        <p class="info-text">
           Een standaardstoel past bijna niemand perfect. In onze showroom in Dordrecht meten we deze 4 punten exact voor u in:
         </p>
-      </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
-        <div class="step-box">
-          <span style="font-size: 1.8rem; font-weight: 800; color: var(--color-terracotta); display: block; margin-bottom: 8px;">01</span>
-          <h3 style="font-size: 1.15rem; color: var(--color-forest-dark); margin-bottom: 8px;">Zithoogte</h3>
-          <p style="font-size: 0.92rem; color: var(--color-dark); line-height: 1.6; margin: 0;">
-            Gemeten vanaf de knieholte tot de onderzijde van de hak. Uw voeten rusten vlak op de grond zonder afknelling van de bloedsomloop in de bovenbenen.
-          </p>
-        </div>
-
-        <div class="step-box">
-          <span style="font-size: 1.8rem; font-weight: 800; color: var(--color-terracotta); display: block; margin-bottom: 8px;">02</span>
-          <h3 style="font-size: 1.15rem; color: var(--color-forest-dark); margin-bottom: 8px;">Zitdiepte</h3>
-          <p style="font-size: 0.92rem; color: var(--color-dark); line-height: 1.6; margin: 0;">
-            De rugleuning sluit perfect aan tegen uw onderrug, terwijl er precies een handbreedte ruimte blijft tussen de zitting en uw knieholte.
-          </p>
-        </div>
-
-        <div class="step-box">
-          <span style="font-size: 1.8rem; font-weight: 800; color: var(--color-terracotta); display: block; margin-bottom: 8px;">03</span>
-          <h3 style="font-size: 1.15rem; color: var(--color-forest-dark); margin-bottom: 8px;">Armleggerhoogte</h3>
-          <p style="font-size: 0.92rem; color: var(--color-dark); line-height: 1.6; margin: 0;">
-            Uw onderarmen rusten ontspannen op de armleuningen in een hoek van 90 graden, waardoor nek-, schouder- en bovenrugspieren volledig kunnen ontspannen.
-          </p>
-        </div>
-
-        <div class="step-box">
-          <span style="font-size: 1.8rem; font-weight: 800; color: var(--color-terracotta); display: block; margin-bottom: 8px;">04</span>
-          <h3 style="font-size: 1.15rem; color: var(--color-forest-dark); margin-bottom: 8px;">Lendensteun</h3>
-          <p style="font-size: 0.92rem; color: var(--color-dark); line-height: 1.6; margin: 0;">
-            De natuurlijke S-kromming van uw wervelkolom wordt nauwkeurig ondersteund met een instelbare lendenpomp om onderrugklachten te voorkomen.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Showroom Locatie & Route -->
-  <section style="background-color: #ffffff; padding: 70px 0;">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;" class="hero-grid">
-        <div>
-          <span class="section-tag" style="color: var(--color-terracotta);">Onze Showroom in Dordrecht</span>
-          <h2 style="font-size: clamp(1.6rem, 4.5vw, 2.2rem); line-height: 1.25; color: var(--color-forest-dark); font-family: var(--font-heading); margin-bottom: 16px; word-break: break-word;">
-            Kom Rustig Proefzitten aan de Merwedestraat 239
-          </h2>
-          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-dark); margin-bottom: 20px;">
-            Onze showroom is gevestigd in hetzelfde pand als <strong>Schipper Compact Wonen</strong> aan de <strong>Merwedestraat 239 in Dordrecht</strong>. Bij ons vindt u een ontspannen, huiselijke sfeer met verse koffie en deskundig advies.
-          </p>
-
-          <div style="background: var(--color-cream); border-radius: var(--radius-md); padding: 22px; margin-bottom: 24px; border-left: 4px solid var(--color-forest);">
-            <p style="margin: 0 0 10px 0; font-weight: 700; color: var(--color-forest-dark); font-size: 1.05rem;">
-              📍 Adresgegevens Showroom:
-            </p>
-            <p style="margin: 0; line-height: 1.6; color: var(--color-dark); font-size: 0.95rem;">
-              <strong>staopstoelen.nl / Schipper Compact Wonen</strong><br>
-              Merwedestraat 239<br>
-              3313 GT Dordrecht<br>
-              <em>(Ruime gratis parkeergelegenheid direct voor de winkeldeur)</em>
-            </p>
+        <div class="timeline" style="margin-top: 24px;">
+          <div class="timeline-card">
+            <div class="timeline-number">1</div>
+            <h3 class="timeline-title">Zithoogte</h3>
+            <p class="timeline-desc">Gemeten van de knieholte tot de onderzijde van de hak. Uw voeten rusten vlak op de vloer zonder afknelling van de bloedsomloop in de bovenbenen.</p>
           </div>
+          <div class="timeline-card">
+            <div class="timeline-number">2</div>
+            <h3 class="timeline-title">Zitdiepte</h3>
+            <p class="timeline-desc">De rugleuning sluit perfect aan tegen uw onderrug, terwijl er precies een handbreedte ruimte blijft tussen de zitting en uw knieholte.</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-number">3</div>
+            <h3 class="timeline-title">Armleggerhoogte</h3>
+            <p class="timeline-desc">Uw onderarmen rusten ontspannen op de armleuningen in een hoek van 90 graden, waardoor nek-, schouder- en bovenrugspieren volledig kunnen ontspannen.</p>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-number">4</div>
+            <h3 class="timeline-title">Lendensteun</h3>
+            <p class="timeline-desc">De natuurlijke S-kromming van uw wervelkolom wordt nauwkeurig ondersteund met een instelbare lendenpomp om onderrugklachten te voorkomen.</p>
+          </div>
+        </div>
+      </div>
 
-          <p style="font-size: 0.95rem; color: var(--color-gray); margin-bottom: 24px; line-height: 1.6;">
+      <!-- Showroom Locatie & Route Section -->
+      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 32px; border-radius: var(--radius-lg); margin: 40px 0; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 280px;">
+          <span class="section-tag" style="color: var(--color-terracotta); margin-bottom: 8px; font-size: 0.8rem; display: inline-block;">Onze Showroom in Dordrecht</span>
+          <h3 style="color: var(--color-forest); font-size: 1.5rem; margin: 0 0 8px 0; font-family: var(--font-heading);">Kom Rustig Proefzitten aan de Merwedestraat 239</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-dark); margin: 0 0 16px 0;">
+            Onze showroom is gevestigd in hetzelfde pand als <strong>Schipper Compact Wonen</strong> aan de <strong>Merwedestraat 239 in Dordrecht</strong>. Bij ons vindt u een ontspannen sfeer met verse koffie, gratis parkeren voor de deur en deskundig advies.
+          </p>
+          <div style="margin-bottom: 18px; font-size: 0.92rem; color: var(--color-dark); line-height: 1.6;">
             <strong>Openingstijden:</strong><br>
             Dinsdag t/m Vrijdag: 10:00 - 16:00 uur<br>
             Maandag &amp; Zaterdag: Op afspraak (ook buiten vaste uren mogelijk)
-          </p>
-
-          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="btn btn-secondary" style="font-size: 0.95rem; padding: 12px 22px;">
-              Route via Google Maps &rarr;
-            </a>
-            <a href="afspraak.html" class="btn btn-outline" style="font-size: 0.95rem; padding: 12px 22px;">
-              Plan een Vrijblijvende Afspraak
-            </a>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="btn btn-secondary" style="font-size: 0.9rem; padding: 10px 20px;">Route via Google Maps &rarr;</a>
+            <a href="afspraak.html" class="btn btn-outline" style="font-size: 0.9rem; padding: 10px 20px;">Plan een Afspraak</a>
           </div>
         </div>
+        <img src="assets/pand_tekstbox.png?v=1.0.55" alt="Winkelpui staopstoelen.nl en Schipper Compact Wonen aan de Merwedestraat 239 in Dordrecht" style="width: 100%; max-width: 340px; border-radius: var(--radius-md); box-shadow: 0 6px 20px rgba(0,0,0,0.1); border: 3px solid var(--color-light); display: block;">
+      </div>
 
-        <div>
-          <img src="assets/pand_tekstbox.png?v=1.0.55" alt="Winkelpui staopstoelen.nl en Schipper Compact Wonen aan de Merwedestraat 239 in Dordrecht" style="width: 100%; border-radius: var(--radius-lg); box-shadow: 0 12px 30px rgba(0,0,0,0.1); border: 4px solid var(--color-light); display: block;">
+      <!-- FAQ Sectie (Site-wide FAQ Accordion markup) -->
+      <div style="margin: 48px 0 32px 0;">
+        <span class="section-tag" style="color: var(--color-terracotta);">Veelgestelde Vragen</span>
+        <h2 class="info-section-title" style="margin-top: 6px;">Vragen over Fitform in Dordrecht</h2>
+
+        <div class="faq-accordion" style="margin-top: 24px;">
+          <!-- Question 1 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Waar vind ik de officiële Fitform dealer in Dordrecht?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                De officiële Fitform dealer in Dordrecht is <strong>staopstoelen.nl</strong>, gevestigd in het pand van <strong>Schipper Compact Wonen</strong> aan de <strong>Merwedestraat 239 in Dordrecht</strong>. U kunt gratis direct voor de deur parkeren en er is een gediplomeerd bewegingstechnoloog aanwezig om u te adviseren.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Wat is het voordeel van kopen bij een officiële Fitform dealer?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Als erkend Fitform dealer werken wij met rechtstreekse fabriekslijnen naar fabrikant Wellco/Fitform. Hierdoor bent u verzekerd van 100% originele onderdelen, officiële fabrieksgarantie en specialistische maatwerkinmeting volgens het Fitform ergonomie-protocol door onze Bewegingstechnoloog Geertjan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Hebben jullie naast nieuwe ook gereviseerde Fitform stoelen?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Ja! Wij hebben een continu wisselend assortiment van technisch volledig gereviseerde Fitform occasions (zoals de Fitform 570 Vario en 574 Vario). Deze stoelen zijn technisch 100% nagelopen, gereinigd, voorzien van garantie en worden net zoals een nieuwe stoel exact op uw lichaamsmaten ingesteld.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Geldt de najaarskorting tot €600 ook in de showroom in Dordrecht?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Jazeker. Als erkend dealer kunt u bij ons direct profiteren van de officiële fabrieksactie: €600 korting op de Fitform 600-serie en €500 korting op de Fitform 200-serie en 574-02 Vario.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Hoe zit het met de bezorging en installatie thuis?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Nadat u in onze showroom uw ideale stoel heeft uitgekozen, bezorgen wij deze gratis en vakkundig met onze eigen bezorgbus bij u thuis in Dordrecht en de hele regio (o.a. Zwijndrecht, Papendrecht, Sliedrecht, Rotterdam, Barendrecht). Onze bezorger zet de stoel op zijn plek, controleert de afstelling en legt de bediening rustig uit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA block (Exact styling as revisie.html) -->
+      <div style="margin-top: 60px; background-color: var(--color-forest); color: var(--color-light); padding: 48px; border-radius: var(--radius-lg); text-align: center;">
+        <h2 style="color: var(--color-light); font-size: 1.75rem; margin-top: 0; margin-bottom: 16px;">Wilt u het comfort van Fitform zelf ervaren?</h2>
+        <p style="color: rgba(255,255,255,0.85); max-width: 640px; margin: 0 auto 32px auto; font-size: 1.05rem; line-height: 1.7;">
+          U bent van harte welkom in onze showroom aan de Merwedestraat 239 in Dordrecht om onze Fitform fauteuils vrijblijvend te proberen. Na aankoop bezorgen en installeren wij de stoel geheel gratis en vakkundig bij u thuis.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="afspraak.html" class="btn btn-secondary">Plan een Adviesgesprek</a>
+          <a href="tel:+31786314858" class="btn" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 1.5px solid rgba(255,255,255,0.5);">Bel 078 - 631 4858</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Sectie (SEO Rich Snippets) -->
-  <section style="background-color: var(--color-cream); padding: 70px 0;">
-    <div class="container" style="max-width: 860px;">
-      <div class="text-center" style="margin-bottom: 40px;">
-        <span class="section-tag" style="color: var(--color-forest);">Veelgestelde Vragen</span>
-        <h2 class="section-title">Vragen over Fitform in Dordrecht</h2>
-      </div>
-
-      <div class="faq-accordion-item open">
-        <div class="faq-accordion-header">
-          <span>Waar vind ik de officiële Fitform dealer in Dordrecht?</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-accordion-content">
-          De officiële Fitform dealer in Dordrecht is <strong>staopstoelen.nl</strong>, gevestigd in het pand van <strong>Schipper Compact Wonen</strong> aan de <strong>Merwedestraat 239 in Dordrecht</strong>. U kunt gratis parkeren voor de deur en er is een gediplomeerd bewegingstechnoloog aanwezig om u te adviseren.
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <div class="faq-accordion-header">
-          <span>Wat is het voordeel van kopen bij een officiële Fitform dealer?</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-accordion-content">
-          Als erkend Fitform dealer werken wij met rechtstreekse fabriekslijnen naar fabrikant Wellco/Fitform. Hierdoor bent u verzekerd van 100% originele onderdelen, officiële fabrieksgarantie en specialistische maatwerkinmeting volgens het Fitform ergonomie-protocol door onze Bewegingstechnoloog Geertjan.
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <div class="faq-accordion-header">
-          <span>Hebben jullie ook gereviseerde Fitform stoelen?</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-accordion-content">
-          Ja! Wij hebben een continu wisselend assortiment van technisch volledig gereviseerde Fitform occasions (zoals de Fitform 570 Vario en 574 Vario). Deze stoelen zijn technisch nagelopen, gereinigd, voorzien van garantie en worden net zoals een nieuwe stoel exact op uw lichaamsmaten ingesteld.
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <div class="faq-accordion-header">
-          <span>Geldt de najaarskorting tot €600 ook in de showroom in Dordrecht?</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-accordion-content">
-          Jazeker. Als erkend dealer kunt u bij ons direct profiteren van de officiële fabrieksactie: €600 korting op de Fitform 600-serie en €500 korting op de Fitform 200-serie en 574-02 Vario.
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <div class="faq-accordion-header">
-          <span>Hoe zit het met de bezorging en installatie thuis?</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-accordion-content">
-          Nadat u in onze showroom uw ideale stoel heeft uitgekozen, bezorgen wij deze gratis en vakkundig met onze eigen bezorgbus bij u thuis in Dordrecht en de hele regio (o.a. Zwijndrecht, Papendrecht, Sliedrecht, Rotterdam, Barendrecht). Onze bezorger zet de stoel op zijn plek, controleert de afstelling en legt de bediening rustig uit.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Box -->
-  <section style="background-color: #ffffff; padding: 60px 0;">
-    <div class="container text-center" style="max-width: 720px;">
-      <h2 style="font-size: clamp(1.6rem, 4.5vw, 2.2rem); line-height: 1.25; color: var(--color-forest-dark); font-family: var(--font-heading); margin-bottom: 14px; word-break: break-word;">
-        Ervaar Zelf het Verschil van Fitform op Maat
-      </h2>
-      <p style="font-size: 1.1rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 28px;">
-        Kom langs in onze showroom aan de Merwedestraat 239 in Dordrecht of plan vooraf een persoonlijk adviesgesprek in met Bewegingstechnoloog Geertjan.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <a href="afspraak.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 32px;">Proefzitten Inplannen</a>
-        <a href="tel:+31786314858" class="btn btn-outline" style="font-size: 1.05rem; padding: 14px 28px;">Bel 078 - 631 4858</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- Footer Section (Exact 3-column footer as info.html & revisie.html) -->
+  <footer>
     <div class="container footer-grid">
       <div class="footer-col">
-        <span class="footer-logo">staopstoelen<span>.nl</span></span>
+        <h3 style="color: var(--color-light);">staopstoelen.nl</h3>
         <p style="font-size: 0.92rem; color: var(--color-terracotta); font-weight: 700; margin-top: 10px; margin-bottom: 6px; letter-spacing: 0.2px;">
           Zitspecialist &amp; Officieel Fitform Dealer &mdash; Showroom Dordrecht
         </p>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 0; line-height: 1.6;">
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-top: 0; line-height: 1.6;">
           Maatwerk in nieuwe A-merk sta-op stoelen, ergonomische seniorenfauteuils en gecertificeerd gereviseerde topoccasions.
         </p>
-        <div style="margin-top: 16px; display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.08); padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15);">
-          <img src="assets/fitform_logo_terracotta.png" alt="Fitform Dealer" style="height: 22px; width: auto;">
-          <span style="font-size: 0.8rem; color: #ffffff; font-weight: 600;">Officieel Erkend Dealer</span>
-        </div>
       </div>
       <div class="footer-col">
-        <h3>Assortiment</h3>
-        <ul>
-          <li><a href="staopstoelen.html">Alle Sta-op Stoelen</a></li>
-          <li><a href="staopstoelen.html?brand=Fitform">Fitform Fauteuils</a></li>
-          <li><a href="seniorenstoelen.html">Senioren Stoelen</a></li>
-          <li><a href="staopstoelen.html?actie=1">Fitform Najaarsactie (€600)</a></li>
-          <li><a href="revisie.html">Gereviseerde Occasions</a></li>
-          <li><a href="keuzehulp.html">Digitale Keuzehulp</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Navigatie</h3>
-        <ul>
-          <li><a href="index.html">Home</a></li>
+        <h3>Snelle Links</h3>
+        <ul style="margin-top: 16px;">
+          <li><a href="staopstoelen.html">Sta-op Stoelen</a></li>
           <li><a href="fitform-dealer-dordrecht.html">Fitform Dealer Dordrecht</a></li>
-          <li><a href="winkel.html">Showroom Dordrecht</a></li>
+          <li><a href="seniorenstoelen.html">Senioren Stoelen</a></li>
           <li><a href="revisie.html">Revisieproces</a></li>
-          <li><a href="ervaringen.html">Ervaringen</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
           <li><a href="faq.html">Veelgestelde vragen (FAQ)</a></li>
           <li><a href="afspraak.html">Afspraak Inplannen</a></li>
           <li><a href="info.html">Over Ons</a></li>
@@ -858,44 +717,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.17
+        Gerealiseerd door BewegingsTechnologen. | Versie 9.33
       </div>
     </div>
   </footer>
 
-  <script>
-    // FAQ Accordion interaction
-    document.querySelectorAll('.faq-accordion-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const item = header.parentElement;
-        item.classList.toggle('open');
-      });
-    });
-
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.classList.toggle('open');
-      });
-    }
-
-    // Floating contact button toggle
-    const btnFloatingMain = document.getElementById('btnFloatingMain');
-    const floatingMenu = document.getElementById('floatingMenu');
-    if (btnFloatingMain && floatingMenu) {
-      btnFloatingMain.addEventListener('click', (e) => {
-        e.stopPropagation();
-        floatingMenu.classList.toggle('active');
-      });
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('#floatingContactWrapper')) {
-          floatingMenu.classList.remove('active');
-        }
-      });
-    }
-  </script>
+  <script src="app.js?v=9.33"></script>
 </body>
 </html>

@@ -473,7 +473,6 @@ function sync_static_chair_pages($chairs = null) {
       <div class="navbar-row-2">
         <nav class="nav-links" id="navLinks">
           <a href="../staopstoelen.html" class="' . $chair_active_staop . '">Sta-op Stoelen</a>
-          <a href="../fitform-dealer-dordrecht.html">Fitform Dealer</a>
           <a href="../seniorenstoelen.html" class="' . $chair_active_relax . '">Senioren Stoelen</a>
           <a href="../revisie.html">Revisieproces</a>
           <a href="../ervaringen.html">Ervaringen</a>

@@ -259,7 +259,7 @@ section[id], section {
 
 .nav-links {
   display: none;
-  gap: 26px;
+  gap: 36px;
 }
 
 @media (min-width: 768px) {
