@@ -379,34 +379,32 @@ section[id], section {
   }
 
   .navbar-container {
-    padding: 12px 18px 0 18px !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    padding-top: 54px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-bottom: 0 !important;
     position: relative !important;
     width: 100% !important;
+    display: block !important;
     box-sizing: border-box !important;
   }
 
-  /* Row 1, Left: Clean brand logo on same line as hamburger */
+  /* Row 1, Left: staopstoelen.nl PINNED ABSOLUTELY to top left */
   .nav-text-logo {
-    order: 1 !important;
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
+    position: absolute !important;
+    left: 16px !important;
+    top: 14px !important;
+    right: auto !important;
     margin: 0 !important;
     font-size: clamp(1.4rem, 5.5vw, 1.75rem) !important;
     font-weight: 900 !important;
     letter-spacing: -0.5px !important;
     line-height: 1 !important;
-    max-width: calc(100% - 50px) !important;
     white-space: nowrap !important;
     display: inline-flex !important;
     align-items: center !important;
-    z-index: 2;
+    z-index: 10 !important;
     color: var(--color-forest) !important;
-    flex-shrink: 1 !important;
   }
 
   /* Remove swooshes/waves completely on mobile */
@@ -414,24 +412,25 @@ section[id], section {
     display: none !important;
   }
 
-  /* Row 1, Right: Hamburger menu toggle on the exact same line */
+  /* Row 1, Right: Hamburger menu PINNED ABSOLUTELY to top right */
   .menu-toggle {
-    order: 2 !important;
-    margin: 0 0 0 auto !important;
+    position: absolute !important;
+    right: 16px !important;
+    top: 16px !important;
+    left: auto !important;
+    margin: 0 !important;
     display: flex !important;
-    flex-shrink: 0 !important;
+    z-index: 20 !important;
   }
 
-  /* Row 2: Dedicated Contact & Info strip */
+  /* Row 2: Dedicated Contact & Info strip directly below top row */
   .navbar-top-right {
-    order: 3 !important;
-    flex: 0 0 100% !important;
     position: relative !important;
     right: auto !important;
     top: auto !important;
-    width: calc(100% + 36px) !important;
-    margin: 10px -18px 0 -18px !important;
-    padding: 8px 18px !important;
+    width: calc(100% + 32px) !important;
+    margin: 0 -16px 0 -16px !important;
+    padding: 8px 16px !important;
     background: #f4f8f0 !important;
     border-top: 1px solid rgba(75, 143, 36, 0.12) !important;
     border-bottom: 1px solid rgba(75, 143, 36, 0.15) !important;
@@ -3341,25 +3340,24 @@ input[type="checkbox"] {
 
 @media (max-width: 768px) {
   .menu-toggle {
-    order: 2 !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
     width: 30px !important;
     height: 22px !important;
-    margin: 0 0 0 auto !important;
+    position: absolute !important;
+    right: 16px !important;
+    top: 16px !important;
+    left: auto !important;
+    margin: 0 !important;
     background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
     cursor: pointer !important;
     padding: 0 !important;
     z-index: 102 !important;
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
     box-sizing: content-box !important;
     box-shadow: none !important;
-    flex-shrink: 0 !important;
   }
 
   /* Generous invisible touch target so tapping is effortless */
