@@ -2986,6 +2986,84 @@ footer h3, footer h4 {
   padding-left: 4px;
 }
 
+/* Footer Contact & Showroom Column */
+.footer-contact-info {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.65;
+  margin-top: 16px;
+}
+
+.footer-contact-info strong {
+  color: #ffffff;
+  font-size: 0.96rem;
+}
+
+.footer-contact-links {
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-contact-links a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: none;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-contact-links a:hover {
+  color: #ffffff !important;
+  transform: translateX(2px);
+}
+
+.footer-usp-list {
+  margin-top: 18px !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.footer-usp-list li {
+  margin-bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 0.88rem !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  line-height: 1.35 !important;
+}
+
+.footer-usp-list li strong {
+  color: #ffffff !important;
+}
+
+.footer-usp-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(243, 146, 35, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-usp-badge svg {
+  width: 11px;
+  height: 11px;
+  stroke: var(--color-terracotta);
+  stroke-width: 3;
+  fill: none;
+  display: block;
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 30px;
