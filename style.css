@@ -259,7 +259,7 @@ section[id], section {
 
 .nav-links {
   display: none;
-  gap: 32px;
+  gap: 26px;
 }
 
 @media (min-width: 768px) {
@@ -272,6 +272,7 @@ section[id], section {
 .nav-links a {
   font-weight: 600;
   color: var(--color-forest-dark);
+  white-space: nowrap;
   transition: color var(--transition-smooth);
 }
 
@@ -3576,11 +3577,12 @@ input[type="checkbox"] {
 @media (min-width: 769px) and (max-width: 1024px) {
   /* Prevent navigation links overflow and wrapping */
   .nav-links {
-    gap: 16px !important;
+    gap: 14px !important;
   }
   
   .nav-links a {
-    font-size: 0.9rem !important;
+    font-size: 0.86rem !important;
+    white-space: nowrap !important;
   }
 
   /* Prevent top-right header elements overflow */
@@ -4528,5 +4530,11 @@ input[type="checkbox"] {
   font-weight: 700;
   text-decoration: none !important;
   white-space: nowrap;
+}
+
+.hero-dealer-trust:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(243, 146, 35, 0.2) !important;
+  border-color: rgba(243, 146, 35, 0.7) !important;
 }
 

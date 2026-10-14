@@ -473,6 +473,7 @@ function sync_static_chair_pages($chairs = null) {
       <div class="navbar-row-2">
         <nav class="nav-links" id="navLinks">
           <a href="../staopstoelen.html" class="' . $chair_active_staop . '">Sta-op Stoelen</a>
+          <a href="../fitform-dealer-dordrecht.html">Fitform Dealer</a>
           <a href="../seniorenstoelen.html" class="' . $chair_active_relax . '">Senioren Stoelen</a>
           <a href="../revisie.html">Revisieproces</a>
           <a href="../ervaringen.html">Ervaringen</a>
@@ -636,14 +637,18 @@ function sync_static_chair_pages($chairs = null) {
     <div class="container footer-grid">
       <div class="footer-col">
         <h3 style="color: var(--color-light);">staopstoelen.nl</h3>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.6;">
-          Specialist in premium A-merk sta-op stoelen en ergonomische seniorenstoelen op maat. Duurzaam, comfortabel en betaalbaar.
+        <p style="font-size: 0.92rem; color: var(--color-terracotta); font-weight: 700; margin-top: 10px; margin-bottom: 6px; letter-spacing: 0.2px;">
+          Zitspecialist &amp; Officieel Fitform Dealer &mdash; Showroom Dordrecht
+        </p>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-top: 0; line-height: 1.6;">
+          Maatwerk in nieuwe A-merk sta-op stoelen, ergonomische seniorenfauteuils en gecertificeerd gereviseerde topoccasions.
         </p>
       </div>
       <div class="footer-col">
         <h3>Snelle Links</h3>
         <ul style="margin-top: 16px;">
           <li><a href="../staopstoelen.html">Sta-op Stoelen</a></li>
+          <li><a href="../fitform-dealer-dordrecht.html">Fitform Dealer Dordrecht</a></li>
           <li><a href="../seniorenstoelen.html">Senioren Stoelen</a></li>
           <li><a href="../revisie.html">Revisieproces</a></li>
           <li><a href="../ervaringen.html">Klantverhalen</a></li>
@@ -733,6 +738,7 @@ function sync_static_chair_pages($chairs = null) {
     $static_pages = [
         ["", "1.0", "daily"],
         ["/staopstoelen.html", "0.9", "daily"],
+        ["/fitform-dealer-dordrecht.html", "0.9", "weekly"],
         ["/seniorenstoelen.html", "0.9", "daily"],
         ["/keuzehulp.html", "0.8", "weekly"],
         ["/revisie.html", "0.8", "weekly"],
