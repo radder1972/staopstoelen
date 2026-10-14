@@ -456,6 +456,16 @@ section[id], section {
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
+  text-decoration: none;
+  border: 1px solid rgba(75, 143, 36, 0.2);
+  transition: all 0.2s ease;
+}
+
+.hero-tag:hover {
+  background-color: #d8edd2;
+  color: var(--color-forest-dark);
+  border-color: rgba(75, 143, 36, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .hero-title {
