@@ -372,17 +372,15 @@
     }
 
     /* Specificaties & Aankoop */
+    /* Specificaties & Aankoop: Luchtig & Open */
     .specs-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 12px;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 18px;
+      padding: 4px 2px;
     }
 
-    .chair-spec-box {
-      border: 1px solid #e1e7ec;
-      background: #fbfcfd;
-      border-radius: 6px;
-      padding: 8px 12px;
+    .specs-col {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -391,15 +389,16 @@
 
     .spec-line {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       gap: 8px;
+      min-height: 24px;
     }
 
     .spec-label {
       font-size: 11.5px;
       font-weight: 700;
       color: var(--color-forest-dark);
-      min-width: 95px;
+      min-width: 105px;
       white-space: nowrap;
     }
 
@@ -409,10 +408,10 @@
       border-bottom: 1px dotted #8c939c;
       background: transparent;
       font-size: 12.5px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--color-dark);
       outline: none;
-      padding: 2px;
+      padding: 0 2px 2px 2px;
     }
 
     /* Maatwerk Maten Mini Grid */
@@ -420,12 +419,12 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     .maat-mini-card {
       background: #ffffff;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d1d5db;
       border-radius: 5px;
       padding: 4px;
       text-align: center;
@@ -935,7 +934,7 @@
       <div class="section-body">
         
         <div class="specs-grid">
-          <div class="chair-spec-box">
+          <div class="specs-col">
             <div class="spec-line">
               <span class="spec-label">Stoel / Model:</span>
               <input type="text" id="stoelModel" class="spec-input" placeholder="bijv. Fitform 570 Vario / Doge / Farstrup">
@@ -946,12 +945,12 @@
             </div>
           </div>
 
-          <div class="chair-spec-box" style="padding: 6px 10px;">
+          <div class="specs-col">
             <div class="spec-line">
               <span class="spec-label">Conditie:</span>
-              <div class="checkbox-row" style="gap: 14px;">
-                <label class="custom-check"><input type="radio" name="conditie" value="gereconditioneerd" checked> <strong>Gereconditioneerd</strong></label>
-                <label class="custom-check"><input type="radio" name="conditie" value="nieuw"> <strong>Nieuw</strong></label>
+              <div class="checkbox-row" style="gap: 16px;">
+                <label class="custom-check"><input type="radio" name="conditie" value="gereconditioneerd"> <span>Gereconditioneerd</span></label>
+                <label class="custom-check"><input type="radio" name="conditie" value="nieuw"> <span>Nieuw</span></label>
               </div>
             </div>
             <div class="maten-strip">
@@ -1009,7 +1008,7 @@
           </thead>
           <tbody>
             <tr>
-              <td class="tac"><input type="text" id="row1Qty" class="table-input-clean tac fw700" value="1x"></td>
+              <td class="tac"><input type="text" id="row1Qty" class="table-input-clean tac fw700" placeholder=""></td>
               <td><input type="text" id="row1Desc" class="table-input-clean fw700" placeholder="bijv. Fitform 570 Vario sta-op stoel, bekleding Rancho Cognac"></td>
               <td class="tar"><input type="text" id="row1Price" class="table-input-clean tar fw700" placeholder="€ 0,00" oninput="calculateTotal()"></td>
               <td class="tar"><input type="text" id="row1Sub" class="table-input-clean tar fw700" placeholder="€ 0,00" readonly></td>
@@ -1067,7 +1066,7 @@
         <div style="display: flex; flex-direction: column; justify-content: center; gap: 4px;">
           <strong style="color: var(--color-forest-dark);">Situatie woning:</strong>
           <div style="display: flex; gap: 10px; font-size: 11px;">
-            <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
+            <label class="custom-check"><input type="checkbox" id="chkGelijkvloers"> Begane grond</label>
             <label class="custom-check"><input type="checkbox" id="chkLift"> Lift aanwezig</label>
             <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap / etage</label>
           </div>
@@ -1114,7 +1113,7 @@
             </div>
             <div class="sign-detail-item fixed-date">
               <span>Showroom:</span>
-              <input type="text" class="sign-line-input" value="Dordrecht" readonly>
+              <input type="text" id="signShowroom" class="sign-line-input" placeholder="Dordrecht">
             </div>
           </div>
         </div>
@@ -1238,43 +1237,21 @@
     document.addEventListener('DOMContentLoaded', () => {
       loadFromStorage();
 
-      // Datum van vandaag automatisch invullen indien leeg
-      const dateEl = document.getElementById('orderDatum');
-      if (dateEl && !dateEl.value) {
-        const today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const yyyy = today.getFullYear();
-        dateEl.value = `${dd}-${mm}-${yyyy}`;
-        
-        const signDate = document.getElementById('signKlantDatum');
-        if (signDate && !signDate.value) signDate.value = `${dd}-${mm}-${yyyy}`;
-      }
-
       document.querySelectorAll('input').forEach(input => {
         input.addEventListener('input', saveToStorage);
         input.addEventListener('change', saveToStorage);
       });
     });
 
-    // Knoppen functionaliteit
+    // Knoppen functionaliteit (Alles 100% leegmaken voor printen met de pen)
     document.getElementById('btnClearForm').addEventListener('click', () => {
       if (confirm('Wilt u alle ingevulde velden leegmaken voor een schone bon?')) {
         localStorage.removeItem(STORAGE_KEY);
         document.querySelectorAll('input').forEach(i => {
           if (i.type === 'checkbox' || i.type === 'radio') i.checked = false;
-          else if (!i.readOnly) i.value = '';
+          else i.value = '';
         });
-        const defConditie = document.querySelector('input[name="conditie"][value="gereconditioneerd"]');
-        if (defConditie) defConditie.checked = true;
-        document.getElementById('chkGelijkvloers').checked = true;
-
-        const today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const yyyy = today.getFullYear();
-        document.getElementById('orderDatum').value = `${dd}-${mm}-${yyyy}`;
-        document.getElementById('signKlantDatum').value = `${dd}-${mm}-${yyyy}`;
+        document.getElementById('totalPrice').value = '';
       }
     });
 
