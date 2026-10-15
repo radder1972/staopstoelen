@@ -235,15 +235,17 @@
       background: #f7faf5;
       border: 1px solid #d8e2d2;
       border-radius: 7px;
-      padding: 8px 14px;
+      padding: 10px 16px;
       margin-top: 8px;
       margin-bottom: 8px;
+      min-height: 52px;
     }
 
     .order-title-box {
       display: flex;
-      align-items: center;
-      gap: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
     }
 
     .order-badge {
@@ -257,19 +259,21 @@
       border-radius: 5px;
       text-transform: uppercase;
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.2);
+      display: inline-block;
     }
 
     .order-tagline {
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 10px;
+      font-weight: 600;
       color: var(--color-forest-dark);
+      letter-spacing: 0.2px;
       white-space: nowrap;
     }
 
     .order-meta-fields {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 24px;
     }
 
     .meta-col {
@@ -859,15 +863,15 @@
       <div class="order-meta-fields">
         <div class="meta-col">
           <span class="meta-col-label">Bon-/Ordernr:</span>
-          <input type="text" id="orderNummer" class="meta-col-input" placeholder="bijv. 2026-0842" style="width: 100px;">
+          <input type="text" id="orderNummer" class="meta-col-input" placeholder="bijv. 2026-0842" style="width: 125px;">
         </div>
         <div class="meta-col">
           <span class="meta-col-label">Datum:</span>
-          <input type="text" id="orderDatum" class="meta-col-input" placeholder="DD-MM-JJJJ" style="width: 90px;">
+          <input type="text" id="orderDatum" class="meta-col-input" placeholder="DD-MM-JJJJ" style="width: 105px;">
         </div>
         <div class="meta-col">
           <span class="meta-col-label">Adviseur:</span>
-          <input type="text" id="orderAdviseur" class="meta-col-input" placeholder="Naam adviseur" style="width: 125px;">
+          <input type="text" id="orderAdviseur" class="meta-col-input" placeholder="Naam adviseur" style="width: 155px;">
         </div>
       </div>
     </div>
