@@ -224,6 +224,7 @@
       text-transform: none;
       font-size: 24px;
       letter-spacing: -0.5px;
+      color: var(--color-forest) !important;
     }
 
     .brand-subline {
@@ -1068,33 +1069,31 @@
             <tr>
               <td class="tac"><input type="text" id="row1Qty" class="table-input-clean tac"></td>
               <td><input type="text" id="row1Desc" class="table-input-clean"></td>
-              <td class="tar"><input type="text" id="row1Price" class="table-input-clean tar" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row1Price" class="table-input-clean tar" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)" onchange="formatPriceOnBlur(this)"></td>
               <td class="tar"><input type="text" id="row1Sub" class="table-input-clean tar" readonly></td>
             </tr>
             <tr>
               <td class="tac"><input type="text" id="row2Qty" class="table-input-clean tac"></td>
               <td><input type="text" id="row2Desc" class="table-input-clean"></td>
-              <td class="tar"><input type="text" id="row2Price" class="table-input-clean tar" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row2Price" class="table-input-clean tar" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)" onchange="formatPriceOnBlur(this)"></td>
               <td class="tar"><input type="text" id="row2Sub" class="table-input-clean tar" readonly></td>
             </tr>
             <tr>
               <td class="tac"><input type="text" id="row3Qty" class="table-input-clean tac"></td>
               <td><input type="text" id="row3Desc" class="table-input-clean"></td>
-              <td class="tar"><input type="text" id="row3Price" class="table-input-clean tar" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row3Price" class="table-input-clean tar" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)" onchange="formatPriceOnBlur(this)"></td>
               <td class="tar"><input type="text" id="row3Sub" class="table-input-clean tar" readonly></td>
             </tr>
             <tr>
               <td class="tac"><input type="text" id="row4Qty" class="table-input-clean tac"></td>
               <td><input type="text" id="row4Desc" class="table-input-clean"></td>
-              <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)" onchange="formatPriceOnBlur(this)"></td>
               <td class="tar"><input type="text" id="row4Sub" class="table-input-clean tar" readonly></td>
             </tr>
           </tbody>
           <tfoot>
             <tr class="order-total-row">
-              <td colspan="2" style="font-size: 11px; color: var(--color-gray); padding-left: 12px;">
-                <strong>Betalingsconditie:</strong> Factuur bij aflevering (betaling per mobiele pin aan huis of overboeking).
-              </td>
+              <td colspan="2"></td>
               <td class="order-total-lbl">Totaalbedrag:</td>
               <td class="tar">
                 <div class="total-price-cell">
@@ -1192,7 +1191,11 @@
         </li>
         <li class="terms-item">
           <span class="terms-dot">&bull;</span>
-          <span>Betaling geschiedt per factuur bij aflevering (per mobiele pin aan huis of per overboeking na plaatsing).</span>
+          <span><strong>Betalingsconditie:</strong> Factuur bij aflevering.</span>
+        </li>
+        <li class="terms-item">
+          <span class="terms-dot">&bull;</span>
+          <span>Betaling geschiedt per bankoverboeking na levering en plaatsing.</span>
         </li>
       </ul>
       <div class="footer-pill">
@@ -1217,6 +1220,17 @@
       return num.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    function formatPriceOnBlur(input) {
+      if (!input || !input.value) return;
+      let val = parseEuro(input.value);
+      if (val > 0) {
+        input.value = '€ ' + formatEuro(val);
+      } else if (input.value.trim() === '0') {
+        input.value = '€ 0,00';
+      }
+      calculateTotal();
+    }
+
     function calculateTotal() {
       let p1 = parseEuro(document.getElementById('row1Price').value);
       let p2 = parseEuro(document.getElementById('row2Price').value);
@@ -1231,6 +1245,8 @@
       let sum = p1 + p2 + p3 + p4;
       if (sum > 0) {
         document.getElementById('totalPrice').value = formatEuro(sum);
+      } else {
+        document.getElementById('totalPrice').value = '';
       }
       saveToStorage();
     }
