@@ -866,21 +866,16 @@
       letter-spacing: 0.4px;
     }
 
-    .home-visit-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2mm;
-    }
-    .home-visit-icon {
-      width: 4.8mm;
-      height: 4.8mm;
+    .home-visit-icon-top {
+      width: 7.2mm;
+      height: 7.2mm;
       color: var(--color-terracotta);
+      margin: 0 auto 0.8mm auto;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .home-visit-icon svg {
+    .home-visit-icon-top svg {
       width: 100%;
       height: 100%;
     }
@@ -891,6 +886,7 @@
       font-weight: 800;
       color: var(--color-forest-dark);
       letter-spacing: -0.1px;
+      line-height: 1.2;
     }
 
     .home-visit-sub {
@@ -898,29 +894,41 @@
       font-size: 2.85mm;
       font-weight: 500;
       color: #334155;
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
     .home-visit-badges {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 3.5mm;
+      gap: 3mm;
       flex-wrap: wrap;
-      margin-top: 0.4mm;
+      margin-top: 0.6mm;
     }
     .home-visit-badge-item {
       font-family: var(--font-heading);
-      font-size: 2.6mm;
+      font-size: 2.65mm;
       font-weight: 700;
       color: var(--color-forest-dark);
       display: inline-flex;
       align-items: center;
-      gap: 1mm;
+      gap: 1.4mm;
+      background: rgba(75, 143, 36, 0.08);
+      border: 0.25mm solid rgba(75, 143, 36, 0.22);
+      border-radius: 9999px;
+      padding: 0.8mm 2.8mm;
     }
-    .home-visit-badge-item span {
+    .home-visit-badge-icon {
+      width: 3.4mm;
+      height: 3.4mm;
       color: var(--color-terracotta);
-      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .home-visit-badge-icon svg {
+      width: 100%;
+      height: 100%;
     }
     .home-visit-phone-pill {
       background: var(--color-terracotta);
@@ -1512,23 +1520,37 @@
             </div>
           </section>
 
-          <!-- "Liever advies op maat bij u thuis?" (Zonder groene box, direct op wit, dichtbij de 4 foto's) -->
+          <!-- "Liever advies op maat bij u thuis?" (Zonder groene box, direct op wit, dichtbij de foto's) -->
           <section class="back-home-visit">
-            <div class="home-visit-header">
-              <div class="home-visit-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              </div>
-              <div class="home-visit-title">Liever advies op maat bij u thuis?</div>
+            <div class="home-visit-icon-top">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
+            <div class="home-visit-title">Liever advies op maat bij u thuis?</div>
             
             <div class="home-visit-sub">
-              Kunt u moeilijk naar onze showroom komen? Wij komen graag geheel vrijblijvend bij u thuis langs met passtoelen.
+              Kunt u moeilijk naar onze showroom komen?<br>
+              Wij komen graag geheel vrijblijvend bij u thuis langs.
             </div>
 
             <div class="home-visit-badges">
-              <div class="home-visit-badge-item"><span>✓</span> Gratis &amp; vrijblijvend</div>
-              <div class="home-visit-badge-item"><span>✓</span> Zitmeting aan huis</div>
-              <div class="home-visit-badge-item"><span>✓</span> Vrijblijvend proefzitten</div>
+              <div class="home-visit-badge-item">
+                <span class="home-visit-badge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+                Gratis &amp; vrijblijvend
+              </div>
+              <div class="home-visit-badge-item">
+                <span class="home-visit-badge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7l-6-6a2 2 0 0 0-2.8 0L3 12.2a2 2 0 0 0 0 2.8l6 6a2 2 0 0 0 2.8 0l9.5-9.5a2 2 0 0 0 0-2.8z"/><path d="M7.5 10.5l2 2"/><path d="M10.5 7.5l2 2"/><path d="M13.5 4.5l2 2"/></svg>
+                </span>
+                Zitmeting aan huis
+              </div>
+              <div class="home-visit-badge-item">
+                <span class="home-visit-badge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><path d="M5 18v3"/><path d="M19 18v3"/></svg>
+                </span>
+                Vrijblijvend proefzitten
+              </div>
             </div>
           </section>
 
