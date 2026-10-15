@@ -1,10 +1,10 @@
 // Google Calendar Webhook URL Configuration (Google Apps Script Web App)
 // Configure this with your deployed Apps Script Web App URL to automatically push bookings to Google Calendar.
-const GOOGLE_CALENDAR_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwyRN-iLM83LFZ4hZ08jzwpMdeHI6o5kU5fr0Bz2KpmOuG3XP5y_4zbyE2cO45WCdNN/exec";
+const GOOGLE_CALENDAR_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwLHBpUUVOG4HxtMvtLlChaTU_4nx822y8JhZSUvlMTXS7TljfACFQ02hg9SUbljW0m/exec";
 
 // Google Calendar Live Availability Get URL (Google Apps Script Web App)
 // Configure this with your deployed Apps Script Web App URL to retrieve real-time busy slots.
-const GOOGLE_CALENDAR_GET_SLOTS_URL = "https://script.google.com/macros/s/AKfycbwyRN-iLM83LFZ4hZ08jzwpMdeHI6o5kU5fr0Bz2KpmOuG3XP5y_4zbyE2cO45WCdNN/exec";
+const GOOGLE_CALENDAR_GET_SLOTS_URL = "https://script.google.com/macros/s/AKfycbwLHBpUUVOG4HxtMvtLlChaTU_4nx822y8JhZSUvlMTXS7TljfACFQ02hg9SUbljW0m/exec";
 
 // Global Image Fit & Visibility Helper
 window.adjustImageFit = function(img) {
