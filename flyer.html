@@ -247,9 +247,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1mm;
+      padding: 0 26mm 1.8mm 1mm; /* Ruimte rechts voor het grote zegel */
       border-bottom: 0.3mm solid rgba(75, 143, 36, 0.2);
-      padding-bottom: 1.8mm;
       margin-bottom: 1.8mm;
     }
 
@@ -281,10 +280,15 @@
     }
 
     .front-badge-seal {
-      width: 14mm;
-      height: 14mm;
+      position: absolute;
+      top: 6mm;
+      right: 6mm;
+      width: 27mm;
+      height: 27mm;
       object-fit: contain;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.12));
+      filter: drop-shadow(0 3mm 7mm rgba(0,0,0,0.25));
+      z-index: 15;
+      pointer-events: none;
     }
 
     /* Photo Section in Passe-Partout Frame */
@@ -395,42 +399,95 @@
       line-height: 1;
     }
 
-    /* Grote witruimte & beschrijvingsblok */
-    .front-desc-block {
-      margin: 3.5mm 0 2.5mm 0;
+    /* Expert Geert Spotlight Card (Grotere tekst & pasfoto Geert) */
+    .front-expert-card {
+      width: 100%;
+      background: #ffffff;
+      border: 0.35mm solid rgba(75, 143, 36, 0.22);
+      border-radius: 2.6mm;
+      padding: 2.5mm 3.5mm;
+      display: flex;
+      align-items: center;
+      gap: 3.5mm;
+      box-shadow: 0 1.5mm 4mm rgba(75, 143, 36, 0.05);
+      text-align: left;
+      margin: 1.5mm 0 2mm 0;
+    }
+
+    .expert-avatar-wrap {
+      position: relative;
+      width: 19mm;
+      height: 19mm;
+      min-width: 19mm;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 0.5mm solid var(--color-forest);
+      box-shadow: 0 2mm 5mm rgba(75, 143, 36, 0.2);
+      background: var(--color-cream);
+    }
+
+    .expert-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .expert-content {
       display: flex;
       flex-direction: column;
+      gap: 0.8mm;
+    }
+
+    .expert-name-row {
+      display: flex;
       align-items: center;
-      gap: 1.5mm;
+      gap: 2mm;
+    }
+
+    .expert-name {
+      font-family: var(--font-heading);
+      font-size: 3.1mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      letter-spacing: -0.2px;
+    }
+
+    .expert-role {
+      font-family: var(--font-heading);
+      font-size: 2.2mm;
+      font-weight: 700;
+      color: var(--color-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
 
     .front-usp-text {
       font-family: var(--font-body);
-      font-size: 2.55mm;
-      color: #374151;
-      line-height: 1.4;
-      max-width: 118mm;
-      margin: 0 auto;
+      font-size: 2.85mm; /* Duidelijk groter zoals gevraagd */
+      color: #2d3748;
+      line-height: 1.34;
+      font-weight: 500;
     }
     .front-usp-text strong {
       color: var(--color-forest-dark);
       font-weight: 700;
     }
 
-
-    /* QR & Showroom Banner onderaan de voorkant */
+    /* QR & Showroom Banner onderaan de voorkant (QR springt iets uit de box) */
     .front-qr-banner {
       width: 100%;
       background: var(--color-sage-light);
       border: 0.35mm solid var(--color-sage-border);
       border-radius: 2.2mm;
-      padding: 2.2mm 3.5mm;
+      padding: 2.4mm 3.5mm;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 3mm;
       box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
-      margin-top: 0.5mm;
+      margin-top: 1.5mm;
+      position: relative;
     }
 
     .front-qr-info {
@@ -469,17 +526,21 @@
     }
 
     .front-qr-code-box {
-      width: 18mm;
-      height: 18mm;
-      min-width: 18mm;
+      width: 19.5mm;
+      height: 19.5mm;
+      min-width: 19.5mm;
       background: #ffffff;
-      border: 0.3mm solid var(--color-terracotta);
-      border-radius: 1.5mm;
+      border: 0.35mm solid var(--color-terracotta);
+      border-radius: 1.8mm;
       padding: 1.2mm;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1.5mm 4mm rgba(0,0,0,0.08);
+      box-shadow: 0 2.5mm 6mm rgba(0,0,0,0.12);
+      margin-top: -3.5mm; /* Springt een klein beetje uit de box! */
+      margin-bottom: -1mm;
+      position: relative;
+      z-index: 5;
     }
     .front-qr-code-box img {
       width: 100%;
@@ -1079,13 +1140,15 @@
         <div class="flyer-label">Voorzijde</div>
 
         <article class="flyer-container flyer-front" id="flyerFront">
-          <!-- Top Header: Logo, Tagline & Quality Seal -->
+          <!-- Kwaliteitssticker (Veel groter & half over de foto heen) -->
+          <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Officiële Kwaliteitszegel: Nieuw &amp; Gereviseerd - Duurzaam op Maat" class="front-badge-seal">
+
+          <!-- Top Header: Logo & Tagline -->
           <header class="front-header">
             <div class="front-header-left">
               <div class="front-brand">staopstoelen<span>.nl</span></div>
               <div class="front-tagline">Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer</div>
             </div>
-            <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Officiële Kwaliteitszegel: Nieuw &amp; Gereviseerd - Duurzaam op Maat" class="front-badge-seal">
           </header>
 
           <!-- Photo in Passe-Partout Frame (ZONDER QR-code op de foto) -->
@@ -1101,7 +1164,7 @@
             </div>
           </div>
 
-          <!-- Content Section onder de foto: direct titels, dan royale witruimte, dan toelichting en QR banner -->
+          <!-- Content Section onder de foto -->
           <div class="front-content-section">
             <!-- 1. Direct onder de foto: Headline & Wij ook! -->
             <div class="front-titles-block">
@@ -1116,14 +1179,23 @@
               </div>
             </div>
 
-            <!-- 2. Grote witruimte met toelichting & zitmeting door bewegingstechnoloog -->
-            <div class="front-desc-block">
-              <p class="front-usp-text">
-                Persoonlijk advies &amp; gratis zitmeting door onze ervaren <strong>bewegingstechnoloog</strong> &mdash; in onze ruime showroom te Dordrecht of comfortabel bij u thuis. <strong>Persoonlijk zitadvies op maat.</strong>
-              </p>
+            <!-- 2. Grotere tekst & Pasfoto van Geert (Bewegingstechnoloog) -->
+            <div class="front-expert-card">
+              <div class="expert-avatar-wrap">
+                <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" class="expert-avatar-img">
+              </div>
+              <div class="expert-content">
+                <div class="expert-name-row">
+                  <span class="expert-name">Geertjan Klein Haneveld</span>
+                  <span class="expert-role">Bewegingstechnoloog</span>
+                </div>
+                <p class="front-usp-text">
+                  Persoonlijk advies &amp; <strong>gratis zitmeting</strong> door onze ervaren bewegingstechnoloog &mdash; in onze ruime showroom te <strong>Dordrecht</strong> of comfortabel bij u thuis.
+                </p>
+              </div>
             </div>
 
-            <!-- 3. Bottom QR & Showroom Banner -->
+            <!-- 3. Bottom QR & Showroom Banner (QR springt iets uit de box) -->
             <div class="front-qr-banner">
               <div class="front-qr-info">
                 <div class="front-qr-title">Ontdek ons complete aanbod</div>
