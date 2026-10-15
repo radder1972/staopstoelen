@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap');
-
 :root {
   --color-forest: #4b8f24; /* Brand Green from logo, optimized for legibility */
   --color-forest-rgb: 75, 143, 36;
@@ -4638,48 +4636,44 @@ input[type="checkbox"] {
 
 .falling-leaf {
   position: absolute;
-  top: -35px;
+  top: 0;
   pointer-events: none;
   opacity: 0;
+  will-change: transform, opacity;
   animation-name: fallAndStack;
   animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
 }
 
 @keyframes fallAndStack {
   0% {
-    top: -55px;
-    transform: translateX(0px) rotate(0deg);
+    transform: translateY(-55px) translateX(0px) rotate(0deg);
     opacity: 0;
   }
   6% {
     opacity: 0.95;
   }
   25% {
-    transform: translateX(45px) rotate(80deg);
+    transform: translateY(110px) translateX(35px) rotate(80deg);
   }
   48% {
-    transform: translateX(-35px) rotate(170deg);
+    transform: translateY(220px) translateX(-25px) rotate(170deg);
   }
   68% {
-    transform: translateX(30px) rotate(260deg);
+    transform: translateY(330px) translateX(20px) rotate(260deg);
     opacity: 0.95;
   }
   80% {
-    top: calc(100% - 24px + var(--land-y, 0px));
-    transform: translateX(0px) rotate(var(--land-rotate, 35deg));
+    transform: translateY(calc(440px + var(--land-y, 0px))) translateX(0px) rotate(var(--land-rotate, 35deg));
     opacity: 0.95;
   }
   98% {
-    top: calc(100% - 24px + var(--land-y, 0px));
-    transform: translateX(0px) rotate(var(--land-rotate, 35deg));
+    transform: translateY(calc(440px + var(--land-y, 0px))) translateX(0px) rotate(var(--land-rotate, 35deg));
     opacity: 0.95;
   }
   100% {
-    top: calc(100% - 24px + var(--land-y, 0px));
-    transform: translateX(0px) rotate(var(--land-rotate, 35deg));
+    transform: translateY(calc(440px + var(--land-y, 0px))) translateX(0px) rotate(var(--land-rotate, 35deg));
     opacity: 0;
   }
 }

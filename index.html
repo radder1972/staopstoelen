@@ -13,8 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="assets/stoelen/chair_fitform_570_reco_cozy.avif" type="image/avif" fetchpriority="high">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.46">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
+  </noscript>
+  <link rel="stylesheet" href="style.css?v=10.47">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -732,7 +736,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=10.45"></script>
+  <script src="app.js?v=10.46" defer></script>
   <script>
     // Load and render top 5 offers on home page
     function getGridDescriptionPreview(htmlStr) {
@@ -1469,32 +1473,31 @@
           container.appendChild(defsSvg);
         }
 
-        const numLeaves = 85;
+        const isMobile = window.innerWidth < 768;
+        const numLeaves = isMobile ? 12 : 24;
         for (let i = 0; i < numLeaves; i++) {
           const leaf = document.createElement("div");
           leaf.className = "falling-leaf";
           
           const gradId = leafGradients[i % leafGradients.length].id;
-          const size = Math.floor(Math.random() * 18) + 26; // 26px to 44px (larger leaves)
+          const size = Math.floor(Math.random() * 16) + 24; // 24px to 40px
           const left = (Math.random() * 96 + 1.5).toFixed(1);
-          const duration = (Math.random() * 6 + 7).toFixed(1); // 7s to 13s duration
-          const delay = (Math.random() * 18).toFixed(1); // 0s to 18s delay
+          const duration = (Math.random() * 5 + 6).toFixed(1); // 6s to 11s duration
+          const delay = (Math.random() * 10).toFixed(1); // 0s to 10s delay
           const landRotate = Math.floor(Math.random() * 180) - 90;
-          const landY = Math.floor(Math.random() * 18) - 10; // Stacking depth (-10px to +8px)
+          const landY = Math.floor(Math.random() * 18) - 10;
 
-          const isPair = (i % 12 === 0); // Coupled leaves are rare (~8% of total)
+          const isPair = (i % 10 === 0);
           let svgContent = "";
 
           if (!isPair) {
-            // Single realistic beech leaf matching Fitform logo
-            svgContent = `<svg width="${size}" height="${size}" viewBox="0 0 32 32" style="display:block; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.18));">
+            svgContent = `<svg width="${size}" height="${size}" viewBox="0 0 32 32" style="display:block;">
               <path d="M16 2 C23 6 28 13 26 21 C24 26 18 29 15 29 C14.5 29 14 31 13 32 L12 31.5 C12.8 30 13 28.5 13.5 27.5 C8 26 4 20 4 14 C4 8 10 3 16 2 Z" fill="url(#${gradId})" />
               <path d="M16 3 C15.5 10 14.5 18 13.2 27" stroke="#4a1f03" stroke-width="0.9" fill="none" opacity="0.65" />
               <path d="M15.5 8 Q19 10 22 11 M15 12 Q19 14 23 16 M14.5 16 Q18 18 21 21 M15 10 Q11 12 7 13 M14.5 14 Q10 16 7 18 M14 18 Q10 20 8 23" stroke="#4a1f03" stroke-width="0.6" fill="none" opacity="0.45" />
             </svg>`;
           } else {
-            // Rare pair of beech leaves with stem (exact Fitform logo cluster!)
-            svgContent = `<svg width="${Math.round(size * 1.15)}" height="${Math.round(size * 1.15)}" viewBox="0 0 36 36" style="display:block; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.18));">
+            svgContent = `<svg width="${Math.round(size * 1.15)}" height="${Math.round(size * 1.15)}" viewBox="0 0 36 36" style="display:block;">
               <path d="M12 4 C18 7 22 13 20 19 C18 23 13 25 11 25 C10.5 25 10 27 9 28 L8 27.5 C8.8 26 9 24.5 9.5 23.5 C5 22 2 17 2 12 C2 7 7 3 12 4 Z" fill="url(#${gradId})" />
               <path d="M12 5 C11.5 10 10.5 16 9.5 23.5" stroke="#4a1f03" stroke-width="0.8" fill="none" opacity="0.65" />
               <g transform="translate(10, 8) rotate(35) scale(0.75)">
@@ -1515,7 +1518,20 @@
         }
       }
 
-      initNajaarsactieLeaves();
+      if ("IntersectionObserver" in window) {
+        const leafTarget = document.getElementById("najaarsactie");
+        if (leafTarget) {
+          const leafObs = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+              initNajaarsactieLeaves();
+              leafObs.disconnect();
+            }
+          }, { rootMargin: "300px" });
+          leafObs.observe(leafTarget);
+        }
+      } else {
+        initNajaarsactieLeaves();
+      }
     });
   </script>
 </body>
