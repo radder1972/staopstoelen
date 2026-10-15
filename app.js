@@ -1675,7 +1675,7 @@ function initCalendar() {
         Er is een afspraak gepland voor een <strong>${typeText}</strong> ${locationDetail}. <br>
         Datum: <strong>${formattedDate}</strong> om <strong>${state.selectedTimeSlot}</strong>.<br><br>
         De bevestiging is zojuist naar uw e-mailadres (<strong>${email}</strong>) verzonden. Check eventueel uw spamfolder als u deze niet direct ziet.<br><br>
-        Onze BewegingsTechnoloog zal de afspraak zo spoedig mogelijk telefonisch met u bevestigen via <strong>${phone}</strong>.
+        Geertjan Klein Haneveld zal contact met u opnemen via <strong>${phone}</strong> om de afspraak te bevestigen en eventuele details door te nemen.
       `;
 
       // Show Google Maps and route description if visiting the showroom
