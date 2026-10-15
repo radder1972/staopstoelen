@@ -3270,17 +3270,16 @@ footer h3, footer h4 {
   transform: translateY(0) scale(1);
 }
 
-/* Announcement Bar Najaarsactie (Refined & Luxe) */
+/* Announcement Bar Najaarsactie (Stijlvol, rustig & minimalistisch) */
 .announcement-bar-najaar {
-  background: linear-gradient(90deg, #992800 0%, #ba3a05 22%, #cb4f12 50%, #d97706 82%, #8c3b06 100%);
+  background-color: #b85406;
   color: #ffffff;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   padding: 8px 16px;
   text-align: center;
   position: relative;
   z-index: 1000;
-  box-shadow: 0 3px 12px rgba(153, 40, 0, 0.22);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -3290,101 +3289,71 @@ footer h3, footer h4 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 10px;
   flex-wrap: wrap;
   line-height: 1.35;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .announcement-bar-link:hover {
-  opacity: 0.98;
-  transform: translateY(-1px);
+  opacity: 0.92;
 }
 
 .announcement-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  padding: 3px 11px;
+  background: rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 2px 10px;
   border-radius: 999px;
-  font-weight: 800;
-  font-size: 0.76rem;
+  font-weight: 700;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
   color: #ffffff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
 .announcement-badge svg {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   fill: currentColor;
   flex-shrink: 0;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
 }
 
 .announcement-text {
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.96);
+  font-weight: 400;
+  color: #ffffff;
   letter-spacing: 0.1px;
 }
 
 .announcement-text strong {
-  font-weight: 800;
+  font-weight: 700;
   color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
-.announcement-cta {
-  background: #ffffff;
-  color: #a83303;
-  font-weight: 800;
-  font-size: 0.78rem;
-  padding: 4px 14px;
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  letter-spacing: 0.2px;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.announcement-cta .announcement-arrow {
+.announcement-text .announcement-arrow {
   display: inline-block;
+  margin-left: 4px;
   transition: transform 0.2s ease;
-  font-weight: 900;
+  font-weight: 600;
 }
 
-.announcement-bar-link:hover .announcement-cta {
-  background: #256616;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(37, 102, 22, 0.45);
-}
-
-.announcement-bar-link:hover .announcement-cta .announcement-arrow {
-  transform: translateX(3px);
+.announcement-bar-link:hover .announcement-arrow {
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
   .announcement-bar-najaar {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     padding: 6px 10px;
   }
   .announcement-bar-link {
-    gap: 8px;
+    gap: 6px;
   }
   .announcement-badge {
     font-size: 0.7rem;
     padding: 2px 8px;
-  }
-  .announcement-cta {
-    font-size: 0.74rem;
-    padding: 3px 10px;
   }
 }
 
