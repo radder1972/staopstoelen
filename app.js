@@ -1471,8 +1471,14 @@ function initCalendar() {
   // Reset booking form
   resetBookingBtn.addEventListener("click", () => {
     interactiveArea.style.display = "block";
-    successScreen.style.display = "none";
-    
+    // Reset step indicator
+    const s1 = document.getElementById("stepIndicator1");
+    const s2 = document.getElementById("stepIndicator2");
+    const s3 = document.getElementById("stepIndicator3");
+    if (s1) { s1.className = "booking-step active"; }
+    if (s2) { s2.className = "booking-step"; }
+    if (s3) { s3.className = "booking-step highlight"; }
+
     // Reset selections
     state.selectedDate = null;
     state.selectedTimeSlot = null;
@@ -1631,6 +1637,14 @@ function initCalendar() {
       // Transition to success screen
       interactiveArea.style.display = "none";
       successScreen.style.display = "block";
+
+      // Update step indicator on success
+      const s1 = document.getElementById("stepIndicator1");
+      const s2 = document.getElementById("stepIndicator2");
+      const s3 = document.getElementById("stepIndicator3");
+      if (s1) { s1.className = "booking-step completed"; }
+      if (s2) { s2.className = "booking-step completed"; }
+      if (s3) { s3.className = "booking-step highlight active"; }
       
       // Log custom database conversion event
       if (typeof logCustomVisitEvent === 'function') {
@@ -1872,6 +1886,12 @@ function renderTimeSlots() {
         document.querySelectorAll(".time-slot-btn").forEach(b => b.classList.remove("selected"));
         state.selectedTimeSlot = slot;
         btn.classList.add("selected");
+
+        // Advance visual step indicator
+        const s1 = document.getElementById("stepIndicator1");
+        const s2 = document.getElementById("stepIndicator2");
+        if (s1) { s1.classList.add("completed"); }
+        if (s2) { s2.classList.add("active"); }
       });
       
       grid.appendChild(btn);

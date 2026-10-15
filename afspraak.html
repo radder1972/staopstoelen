@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.51">
+  <link rel="stylesheet" href="style.css?v=10.52">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-923357429"></script>
   <script>
@@ -145,6 +145,43 @@
       </p>
 
       <div class="booking-card" id="bookingCard">
+        <!-- Visual 3-Step Process Indicator -->
+        <div class="booking-steps-indicator" aria-label="Afspraak in 3 eenvoudige stappen">
+          <div class="booking-step active" id="stepIndicator1">
+            <div class="booking-step-badge">1</div>
+            <div class="booking-step-info">
+              <div class="booking-step-title">1. Kies datum &amp; tijd</div>
+              <div class="booking-step-sub">Selecteer uw gewenste moment</div>
+            </div>
+          </div>
+
+          <div class="booking-step-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+
+          <div class="booking-step" id="stepIndicator2">
+            <div class="booking-step-badge">2</div>
+            <div class="booking-step-info">
+              <div class="booking-step-title">2. Geef wensen/model door</div>
+              <div class="booking-step-sub">Vrijblijvend advies op maat</div>
+            </div>
+          </div>
+
+          <div class="booking-step-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </div>
+
+          <div class="booking-step highlight" id="stepIndicator3">
+            <div class="booking-step-badge" title="Verse koffie staat klaar">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            </div>
+            <div class="booking-step-info">
+              <div class="booking-step-title">3. Rustig proefzitten met een kop koffie</div>
+              <div class="booking-step-sub">In onze showroom in Dordrecht</div>
+            </div>
+          </div>
+        </div>
+
         <div class="booking-body">
           <!-- Type selector: Showroom Proefzitten & Gratis Thuisbezorging -->
           <div class="booking-type-select" style="grid-template-columns: 1fr;">
@@ -368,11 +405,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.51
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.52
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=10.51"></script>
+  <script src="app.js?v=10.52"></script>
 </body>
 </html>
