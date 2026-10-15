@@ -744,10 +744,10 @@
       line-height: 1.28;
     }
 
-    /* Rechter Kolom: 2 Foto's in Passe-partout */
+    /* Rechter Kolom: 2 Echte Collectiefoto's - vullend in de box */
     .back-photos-col {
-      flex: 0 0 54mm;
-      width: 54mm;
+      flex: 0 0 56mm;
+      width: 56mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -756,13 +756,12 @@
 
     .collection-photo-card {
       background: #ffffff;
-      border: 0.35mm solid rgba(75, 143, 36, 0.25);
+      border: 0.35mm solid rgba(75, 143, 36, 0.28);
       border-radius: 2.4mm;
-      padding: 1.2mm;
+      padding: 0; /* Geen lege rand: foto vult de box volledig */
+      overflow: hidden;
       box-shadow: 0 1.5mm 4mm rgba(0, 0, 0, 0.08);
       position: relative;
-      display: flex;
-      flex-direction: column;
       width: 100%;
       aspect-ratio: 4 / 3;
     }
@@ -771,16 +770,15 @@
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 1.8mm;
       overflow: hidden;
-      background: #faf9f5;
+      background: #e2e8f0;
     }
 
     .collection-photo-img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      background: #faf9f5;
+      object-fit: cover;
+      object-position: center;
       display: block;
     }
 
@@ -1490,10 +1488,10 @@
 
             <!-- Rechter Kolom: 2 Echte Collectiefoto's met Personen Helemaal in Beeld -->
             <div class="back-photos-col">
-              <!-- Foto 1: Heer in actieve zithouding -->
+              <!-- Foto 1: Heer in actieve zithouding (volledig in beeld met schoenen) -->
               <div class="collection-photo-card">
                 <div class="photo-img-frame">
-                  <img src="assets/flyer/card_gentleman_framed.jpg" alt="Fitform stoel op maat voor senior heer" class="collection-photo-img">
+                  <img src="assets/flyer/duo_gentleman.jpg?v=3" alt="Fitform stoel op maat voor senior heer" class="collection-photo-img">
                   <span class="photo-tag tag-green">
                     <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                     100% Maatwerk
@@ -1501,10 +1499,10 @@
                 </div>
               </div>
 
-              <!-- Foto 2: Dame in liggende relaxhouding -->
+              <!-- Foto 2: Dame in liggende relaxhouding (volledig in beeld met sandalen) -->
               <div class="collection-photo-card">
                 <div class="photo-img-frame">
-                  <img src="assets/flyer/card_lady_framed.jpg" alt="Elektrisch relaxen op maat voor senior dame" class="collection-photo-img">
+                  <img src="assets/flyer/duo_lady.jpg?v=3" alt="Elektrisch relaxen op maat voor senior dame" class="collection-photo-img">
                   <span class="photo-tag tag-orange">
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     Ultiem Zitcomfort
