@@ -450,6 +450,17 @@ function initHeroSlideshow() {
   container.addEventListener("mouseenter", stopTimer);
   container.addEventListener("mouseleave", startTimer);
 
+  // Slide click navigation
+  slides.forEach(slide => {
+    slide.addEventListener("click", (e) => {
+      if (e.target.closest(".slideshow-ctrl") || e.target.closest(".slideshow-actie-badge")) return;
+      const url = slide.getAttribute("data-url");
+      if (url) {
+        window.location.href = url;
+      }
+    });
+  });
+
   // Secret Easter Egg for Geert's secret picture on double click
   slides.forEach(slide => {
     const img = slide.querySelector("img");
