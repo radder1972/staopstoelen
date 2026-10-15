@@ -315,6 +315,7 @@ function initializeApp() {
   initFloatingMenu();
   initMobileMenu();
   initHeroSlideshow();
+  initFaqAccordion();
 
   // Check for prefilled chair selection
   const prefilled = localStorage.getItem("prefilledChair");
@@ -1948,3 +1949,41 @@ function initMobileMenu() {
     }
   });
 }
+
+/* ==========================================================================
+   FAQ ACCORDION INTERACTION
+   ========================================================================== */
+function initFaqAccordion() {
+  const questions = document.querySelectorAll(".faq-question");
+  if (!questions || questions.length === 0) return;
+
+  questions.forEach(q => {
+    if (q.dataset.faqBound === "true") return;
+    q.dataset.faqBound = "true";
+
+    q.addEventListener("click", () => {
+      const item = q.closest(".faq-item");
+      if (!item) return;
+      const answer = item.querySelector(".faq-answer");
+      if (!answer) return;
+      const isActive = item.classList.contains("active");
+
+      // Close sibling items in the same accordion container
+      const container = item.closest(".faq-accordion") || item.parentElement;
+      if (container) {
+        container.querySelectorAll(".faq-item").forEach(el => {
+          el.classList.remove("active");
+          const a = el.querySelector(".faq-answer");
+          if (a) a.style.maxHeight = null;
+        });
+      }
+
+      // If it wasn't open, open it
+      if (!isActive) {
+        item.classList.add("active");
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
+}
+

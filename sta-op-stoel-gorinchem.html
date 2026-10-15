@@ -625,38 +625,63 @@
       
       <div class="faq-accordion">
         <div class="faq-item">
-          <h3 class="faq-question">Hoe bereik ik de showroom vanuit Gorinchem?</h3>
-          <p class="faq-answer">
-            Vanaf Gorinchem rijdt u via de A15 richting Dordrecht. Neem afrit N3 en sla af naar de Merwedestraat in Dordrecht. Binnen circa 20 minuten staat u bij ons voor de deur.
-          </p>
+          <button type="button" class="faq-question">
+            <span>Hoe bereik ik de showroom vanuit Gorinchem?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Vanaf Gorinchem rijdt u via de A15 richting Dordrecht. Neem afrit N3 en sla af naar de Merwedestraat in Dordrecht. Binnen circa 20 minuten staat u bij ons voor de deur.
+            </p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <h3 class="faq-question">Kan ik alle stoelen rustig uitproberen in de showroom?</h3>
-          <p class="faq-answer">
-            Jazeker. In onze showroom aan de Merwedestraat 239 in Dordrecht staan diverse sta-op stoelen opgesteld. Bewegingstechnoloog Geertjan meet uw lichaamsmaten op en laat u in alle rust het verschil ervaren tussen verschillende relax- en sta-op functies.
-          </p>
+          <button type="button" class="faq-question">
+            <span>Kan ik alle stoelen rustig uitproberen in de showroom?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Jazeker. In onze showroom aan de Merwedestraat 239 in Dordrecht staan diverse sta-op stoelen opgesteld. Bewegingstechnoloog Geertjan meet uw lichaamsmaten op en laat u in alle rust het verschil ervaren tussen verschillende relax- en sta-op functies.
+            </p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <h3 class="faq-question">Welke merken sta-op stoelen kan ik bekijken?</h3>
-          <p class="faq-answer">
-            Wij werken met gerenommeerde merken zoals Fitform en Doge, aangevuld met technisch gecertificeerde en gereconditioneerde A-merk occasions.
-          </p>
+          <button type="button" class="faq-question">
+            <span>Welke merken sta-op stoelen kan ik bekijken?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Wij werken met gerenommeerde merken zoals Fitform en Doge, aangevuld met technisch gecertificeerde en gereconditioneerde A-merk occasions.
+            </p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <h3 class="faq-question">Hoe verloopt de bezorging en afstelling in Gorinchem?</h3>
-          <p class="faq-answer">
-            Zodra u uw stoel in onze showroom heeft gekozen, bezorgen wij deze met onze eigen bezorgdienst bij u thuis in Gorinchem. We zetten de stoel op de gewenste plek en stellen hem ter plekke op uw lichaamsmaten af, inclusief duidelijke uitleg van de bediening.
-          </p>
+          <button type="button" class="faq-question">
+            <span>Hoe verloopt de bezorging en afstelling in Gorinchem?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Zodra u uw stoel in onze showroom heeft gekozen, bezorgen wij deze met onze eigen bezorgdienst bij u thuis in Gorinchem. We zetten de stoel op de gewenste plek en stellen hem ter plekke op uw lichaamsmaten af, inclusief duidelijke uitleg van de bediening.
+            </p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <h3 class="faq-question">Kan er overlegd worden met een ergotherapeut of zorgverlener in Gorinchem?</h3>
-          <p class="faq-answer">
-            Zeker. Bewegingstechnoloog Geertjan stemt regelmatig af met ergotherapeuten en thuiszorgteams. Desgewenst stellen wij een gespecificeerd meetrapport en overzicht op voor uw behandelaar of zorgconsulent.
-          </p>
+          <button type="button" class="faq-question">
+            <span>Kan er overlegd worden met een ergotherapeut of zorgverlener in Gorinchem?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Zeker. Bewegingstechnoloog Geertjan stemt regelmatig af met ergotherapeuten en thuiszorgteams. Desgewenst stellen wij een gespecificeerd meetrapport en overzicht op voor uw behandelaar of zorgconsulent.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -774,6 +799,13 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=10.31"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (typeof initFaqAccordion === "function") {
+        initFaqAccordion();
+      }
+    });
+  </script>
 </body>
 </html>
