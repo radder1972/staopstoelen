@@ -386,30 +386,29 @@
     /* Specificaties & Aankoop */
     .specs-grid {
       display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 10px;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 12px;
     }
 
     .chair-spec-box {
       border: 1px solid #e1e7ec;
       background: #fbfcfd;
       border-radius: 6px;
-      padding: 7px 10px;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
     }
 
     .spec-line {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .spec-line:last-child {
-      margin-bottom: 0;
     }
 
     .spec-label {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       color: var(--color-forest-dark);
       min-width: 95px;
@@ -421,7 +420,7 @@
       border: none;
       border-bottom: 1px dotted #8c939c;
       background: transparent;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--color-dark);
       outline: none;
@@ -470,7 +469,7 @@
     .order-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11.5px;
+      font-size: 12px;
     }
 
     .order-table th {
@@ -500,10 +499,6 @@
       vertical-align: middle;
     }
 
-    .order-table tr:last-child td {
-      border-bottom: none;
-    }
-
     .table-input-clean {
       width: 100%;
       border: none;
@@ -524,6 +519,52 @@
 
     .table-input-clean.tac {
       text-align: center;
+    }
+
+    /* Totaalbedrag rij onderaan de tabel */
+    .order-total-row {
+      background: #f7faf5;
+      border-top: 2px solid var(--color-forest);
+    }
+
+    .order-total-row td {
+      padding: 7px 10px;
+      border-bottom: none;
+    }
+
+    .order-total-lbl {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .total-price-cell {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 5px;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--color-forest-dark);
+    }
+
+    .total-price-cell input {
+      width: 105px;
+      border: none;
+      border-bottom: 2px solid var(--color-forest);
+      background: transparent;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--color-forest-dark);
+      text-align: right;
+      outline: none;
+      padding: 1px 2px;
     }
 
     /* Checkboxes & Radios */
@@ -552,68 +593,42 @@
       cursor: pointer;
     }
 
-    /* Split Section: Financieel & Levering (Perfect symmetrisch) */
-    .finance-delivery-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .finance-card {
-      border: 1px solid #d1d5db;
+    /* Gecombineerde Box: Levering, Afspraken & Handtekeningen */
+    .delivery-agreement-wrap {
+      border: 1px solid var(--color-gray-light);
       border-radius: 7px;
-      overflow: hidden;
       background: #ffffff;
-      display: flex;
-      flex-direction: column;
+      overflow: hidden;
+      margin-bottom: 8px;
     }
 
-    .finance-card-body {
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1;
-      gap: 8px;
+    .delivery-meta-strip {
+      background: #fafbfc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 8px 12px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 14px;
+      font-size: 11px;
     }
 
-    .finance-amount-wrap {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 15px;
-      color: var(--color-forest-dark);
+    .delivery-info-line {
+      line-height: 1.4;
     }
 
-    .price-input {
-      width: 110px;
-      text-align: right;
-      border: none;
-      border-bottom: 2px solid var(--color-forest);
-      background: transparent;
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 800;
-      color: inherit;
-      outline: none;
-      padding: 1px 4px;
-    }
-
-    /* Handtekeningen Sectie: perfect uitgelijnd */
-    .sign-container {
+    /* Handtekeningen grid */
+    .signatures-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-bottom: 8px;
+      padding: 10px 12px;
+      background: #ffffff;
     }
 
     .sign-box-wrap {
-      border: 1px solid var(--color-gray-light);
-      border-radius: 7px;
-      padding: 9px 12px;
+      border: 1px solid #e1e7ec;
+      border-radius: 6px;
+      padding: 8px 12px;
       background: #fafbfc;
       display: flex;
       flex-direction: column;
@@ -648,7 +663,7 @@
     }
 
     .sign-field {
-      height: 62px;
+      height: 64px;
       border-bottom: 1.5px solid #94a3b8;
       background: #ffffff;
       margin-bottom: 6px;
@@ -901,7 +916,7 @@
       </div>
     </div>
 
-    <!-- 4. Aankoop / Stoel Specificaties -->
+    <!-- 4. Aankoop / Stoel Specificaties (Zonder motoren-rij) -->
     <div class="section-wrap">
       <div class="section-head orange">
         <span>Aankoop &amp; Stoel Specificaties</span>
@@ -913,29 +928,20 @@
           <div class="chair-spec-box">
             <div class="spec-line">
               <span class="spec-label">Stoel / Model:</span>
-              <input type="text" id="stoelModel" class="spec-input" placeholder="bijv. Fitform 570 Vario / Doge Bellino / Mecam">
-            </div>
-            <div class="spec-line">
-              <span class="spec-label">Uitvoering / Motoren:</span>
-              <div class="checkbox-row" style="gap: 12px;">
-                <label class="custom-check"><input type="radio" name="motoren" value="1-motorig"> 1-motorig</label>
-                <label class="custom-check"><input type="radio" name="motoren" value="2-motorig"> 2-motorig</label>
-                <label class="custom-check"><input type="radio" name="motoren" value="3-motorig" checked> 3-motorig (kantel)</label>
-                <label class="custom-check"><input type="radio" name="motoren" value="draaibaar"> Draaibaar</label>
-              </div>
+              <input type="text" id="stoelModel" class="spec-input" placeholder="bijv. Fitform 570 Vario / Doge / Farstrup">
             </div>
             <div class="spec-line">
               <span class="spec-label">Bekleding &amp; Kleur:</span>
-              <input type="text" id="stoelBekleding" class="spec-input" placeholder="bijv. Rancho Leder Cognac / Oasis Stof Antraciet">
+              <input type="text" id="stoelBekleding" class="spec-input" placeholder="bijv. Rancho Leder Cognac / Stof Oasis Antraciet">
             </div>
           </div>
 
-          <div class="chair-spec-box">
+          <div class="chair-spec-box" style="padding: 6px 10px;">
             <div class="spec-line">
-              <span class="spec-label">Conditie stoel:</span>
-              <div class="checkbox-row" style="gap: 12px;">
-                <label class="custom-check"><input type="radio" name="conditie" value="gereviseerd" checked> Gecertificeerd Gereviseerd</label>
-                <label class="custom-check"><input type="radio" name="conditie" value="nieuw"> Nieuw Maatwerk</label>
+              <span class="spec-label">Conditie:</span>
+              <div class="checkbox-row" style="gap: 14px;">
+                <label class="custom-check"><input type="radio" name="conditie" value="gereconditioneerd" checked> <strong>Gereconditioneerd</strong></label>
+                <label class="custom-check"><input type="radio" name="conditie" value="nieuw"> <strong>Nieuw</strong></label>
               </div>
             </div>
             <div class="maten-strip">
@@ -975,11 +981,11 @@
       </div>
     </div>
 
-    <!-- 5. Bestelregels & Omschrijving -->
+    <!-- 5. Bestelregels & Omschrijving (Exact 3 regels + Totaalregel er direct onder) -->
     <div class="section-wrap">
       <div class="section-head dark">
         <span>Omschrijving Aankoop &amp; Maatwerkafspraken</span>
-        <span style="font-size: 9.5px; font-weight: 600; opacity: 0.95;">Specificatie Prijsopbouw</span>
+        <span style="font-size: 9.5px; font-weight: 600; opacity: 0.95;">Specificatie &amp; Prijsopbouw</span>
       </div>
       <div class="section-body" style="padding: 0;">
         <table class="order-table">
@@ -987,8 +993,8 @@
             <tr>
               <th style="width: 55px;" class="tac">Aantal</th>
               <th>Artikelspecifieke Omschrijving &amp; Afspraken</th>
-              <th style="width: 120px;" class="tar">Prijs p.st. (€)</th>
-              <th style="width: 120px;" class="tar">Totaal (€)</th>
+              <th style="width: 125px;" class="tar">Prijs p.st. (€)</th>
+              <th style="width: 125px;" class="tar">Totaal (€)</th>
             </tr>
           </thead>
           <tbody>
@@ -1000,64 +1006,51 @@
             </tr>
             <tr>
               <td class="tac"><input type="text" id="row2Qty" class="table-input-clean tac" placeholder="1x"></td>
-              <td><input type="text" id="row2Desc" class="table-input-clean" placeholder="bijv. Geïntegreerd Lithium Accupakket"></td>
+              <td><input type="text" id="row2Desc" class="table-input-clean" placeholder="bijv. Geïntegreerd Lithium Accupakket (snoerloos)"></td>
               <td class="tar"><input type="text" id="row2Price" class="table-input-clean tar" placeholder="€ 0,00" oninput="calculateTotal()"></td>
               <td class="tar"><input type="text" id="row2Sub" class="table-input-clean tar" placeholder="€ 0,00" readonly></td>
             </tr>
             <tr>
               <td class="tac"><input type="text" id="row3Qty" class="table-input-clean tac" placeholder="1x"></td>
-              <td><input type="text" id="row3Desc" class="table-input-clean" placeholder="bijv. Bezorging, vakkundige plaatsing & instructie aan huis"></td>
-              <td class="tar"><input type="text" id="row3Price" class="table-input-clean tar" placeholder="Inbegrepen" oninput="calculateTotal()"></td>
+              <td><input type="text" id="row3Desc" class="table-input-clean" placeholder="Vrije regel voor extra opties, afspraken of inruil..."></td>
+              <td class="tar"><input type="text" id="row3Price" class="table-input-clean tar" placeholder="€ 0,00" oninput="calculateTotal()"></td>
               <td class="tar"><input type="text" id="row3Sub" class="table-input-clean tar" placeholder="€ 0,00" readonly></td>
             </tr>
-            <tr>
-              <td class="tac"><input type="text" id="row4Qty" class="table-input-clean tac" placeholder=""></td>
-              <td><input type="text" id="row4Desc" class="table-input-clean" placeholder="Vrije regel voor extra opties, maatwerkafspraken of specifieke wensen..."></td>
-              <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" placeholder="" oninput="calculateTotal()"></td>
-              <td class="tar"><input type="text" id="row4Sub" class="table-input-clean tar" placeholder="" readonly></td>
-            </tr>
           </tbody>
+          <tfoot>
+            <tr class="order-total-row">
+              <td colspan="2" style="font-size: 11px; color: var(--color-gray); padding-left: 12px;">
+                <strong>Betalingsconditie:</strong> Factuur bij aflevering (betaling per mobiele pin aan huis of overboeking).
+              </td>
+              <td class="order-total-lbl">Totaalbedrag:</td>
+              <td class="tar">
+                <div class="total-price-cell">
+                  <span>€</span>
+                  <input type="text" id="totalPrice" placeholder="0,00">
+                </div>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
 
-    <!-- 6. Financieel Overzicht & Levering / Afspraken (Symmetrisch & Geen Aanbetaling) -->
-    <div class="finance-delivery-grid">
-      
-      <!-- Financieel Blok: Alleen Totaalbedrag, geen aanbetaling -->
-      <div class="finance-card">
-        <div class="section-head" style="background: #394833;">
-          <span>Financieel Overzicht</span>
-          <span style="font-size: 9.5px; opacity: 0.95;">Bedrag Incl. 21% BTW</span>
-        </div>
-        <div class="finance-card-body">
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 0;">
-            <span class="finance-lbl" style="font-size: 13.5px;">Totaalbedrag order:</span>
-            <div class="finance-amount-wrap">
-              <span>€</span>
-              <input type="text" id="totalPrice" class="price-input" placeholder="0,00">
-            </div>
-          </div>
-          <div style="font-size: 11px; color: var(--color-gray); border-top: 1px dashed #d1d5db; padding-top: 6px; line-height: 1.4;">
-            <strong style="color: var(--color-forest-dark);">Betaling bij aflevering:</strong><br>
-            Factuur wordt voldaan per mobiele pin of per bank na vakkundige bezorging en plaatsing aan huis.
-          </div>
-        </div>
+    <!-- 6. Gecombineerde Box: Levering, Afspraken & Voor Akkoord -->
+    <div class="delivery-agreement-wrap">
+      <div class="section-head" style="background: #394833;">
+        <span>Levering, Afspraken &amp; Voor Akkoord</span>
+        <span style="font-size: 9.5px; opacity: 0.95;">Eigen Bezorg- &amp; Instelservice</span>
       </div>
 
-      <!-- Bezorging & Planning Blok -->
-      <div class="finance-card">
-        <div class="section-head" style="background: #394833;">
-          <span>Levering &amp; Afspraken</span>
-          <span style="font-size: 9.5px; opacity: 0.95;">Eigen Bezorgdienst</span>
+      <!-- Bovenste strook: Levering & Woonsituatie -->
+      <div class="delivery-meta-strip">
+        <div class="delivery-info-line">
+          <strong>Bezorging &amp; Instellen:</strong> Inclusief vakkundige levering &amp; ergonomisch instellen aan huis.<br>
+          <strong>Levertijd:</strong> In overleg zodra de stoel gereed / binnen is.
         </div>
-        <div class="finance-card-body">
-          <div style="font-size: 11px; line-height: 1.4;">
-            <strong>Bezorging &amp; instellen:</strong> Inclusief vakkundige levering &amp; ergonomisch instellen aan huis.<br>
-            <strong>Levertijd:</strong> In overleg zodra de stoel gereed / binnen is.
-          </div>
-          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px dashed #d1d5db; padding-top: 6px; font-size: 11px;">
-            <strong style="color: var(--color-forest-dark);">Situatie woning:</strong>
+        <div style="display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+          <strong style="color: var(--color-forest-dark);">Situatie woning:</strong>
+          <div style="display: flex; gap: 10px; font-size: 11px;">
             <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
             <label class="custom-check"><input type="checkbox" id="chkLift"> Lift aanwezig</label>
             <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap / etage</label>
@@ -1065,56 +1058,55 @@
         </div>
       </div>
 
+      <!-- Onderste strook: Symmetrische, grote Handtekeningenvakken -->
+      <div class="signatures-grid">
+        
+        <!-- Handtekening Klant -->
+        <div class="sign-box-wrap">
+          <div class="sign-head-block">
+            <div class="sign-title">Voor akkoord cliënt</div>
+            <div class="sign-subtitle">Opdrachtverstrekking &amp; akkoord voorwaarden</div>
+          </div>
+          <div class="sign-field">
+            <span class="sign-field-hint">Handtekening cliënt / gemachtigde</span>
+          </div>
+          <div class="sign-details">
+            <div class="sign-detail-item">
+              <span>Naam:</span>
+              <input type="text" id="signKlantNaam" class="sign-line-input" placeholder="Naam ondertekenaar">
+            </div>
+            <div class="sign-detail-item fixed-date">
+              <span>Datum:</span>
+              <input type="text" id="signKlantDatum" class="sign-line-input" placeholder="DD-MM-JJJJ">
+            </div>
+          </div>
+        </div>
+
+        <!-- Handtekening Adviseur -->
+        <div class="sign-box-wrap">
+          <div class="sign-head-block">
+            <div class="sign-title">Voor akkoord adviseur</div>
+            <div class="sign-subtitle">Schipper Compact Wonen / staopstoelen.nl</div>
+          </div>
+          <div class="sign-field">
+            <span class="sign-field-hint">Handtekening Schipper Compact Wonen</span>
+          </div>
+          <div class="sign-details">
+            <div class="sign-detail-item">
+              <span>Adviseur:</span>
+              <input type="text" id="signAdviseur" class="sign-line-input" placeholder="Geertjan / Matthias / Suus">
+            </div>
+            <div class="sign-detail-item fixed-date">
+              <span>Showroom:</span>
+              <input type="text" class="sign-line-input" value="Dordrecht" readonly>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- 7. Akkoord & Handtekeningen (Grote vakken & Perfect horizontaal uitgelijnd) -->
-    <div class="sign-container">
-      
-      <!-- Handtekening Klant -->
-      <div class="sign-box-wrap">
-        <div class="sign-head-block">
-          <div class="sign-title">Voor akkoord cliënt</div>
-          <div class="sign-subtitle">Opdrachtverstrekking &amp; akkoord voorwaarden</div>
-        </div>
-        <div class="sign-field">
-          <span class="sign-field-hint">Handtekening cliënt / gemachtigde</span>
-        </div>
-        <div class="sign-details">
-          <div class="sign-detail-item">
-            <span>Naam:</span>
-            <input type="text" id="signKlantNaam" class="sign-line-input" placeholder="Naam ondertekenaar">
-          </div>
-          <div class="sign-detail-item fixed-date">
-            <span>Datum:</span>
-            <input type="text" id="signKlantDatum" class="sign-line-input" placeholder="DD-MM-JJJJ">
-          </div>
-        </div>
-      </div>
-
-      <!-- Handtekening Adviseur -->
-      <div class="sign-box-wrap">
-        <div class="sign-head-block">
-          <div class="sign-title">Voor akkoord adviseur</div>
-          <div class="sign-subtitle">Schipper Compact Wonen / staopstoelen.nl</div>
-        </div>
-        <div class="sign-field">
-          <span class="sign-field-hint">Handtekening Schipper Compact Wonen</span>
-        </div>
-        <div class="sign-details">
-          <div class="sign-detail-item">
-            <span>Adviseur:</span>
-            <input type="text" id="signAdviseur" class="sign-line-input" placeholder="Geertjan / Matthias / Suus">
-          </div>
-          <div class="sign-detail-item fixed-date">
-            <span>Showroom:</span>
-            <input type="text" class="sign-line-input" value="Dordrecht" readonly>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 8. Footer & Voorwaarden -->
+    <!-- 7. Footer & Voorwaarden -->
     <footer class="sheet-footer">
       <div class="terms-text">
         Op alle verkopen en leveringen zijn onze Algemene Voorwaarden van toepassing, te bevragen in de showroom te Dordrecht of in te zien via <strong>www.staopstoelen.nl</strong>.<br>
@@ -1150,14 +1142,12 @@
       let p1 = parseEuro(document.getElementById('row1Price').value);
       let p2 = parseEuro(document.getElementById('row2Price').value);
       let p3 = parseEuro(document.getElementById('row3Price').value);
-      let p4 = parseEuro(document.getElementById('row4Price').value);
 
       document.getElementById('row1Sub').value = p1 > 0 ? '€ ' + formatEuro(p1) : '';
       document.getElementById('row2Sub').value = p2 > 0 ? '€ ' + formatEuro(p2) : '';
       document.getElementById('row3Sub').value = p3 > 0 ? '€ ' + formatEuro(p3) : '';
-      document.getElementById('row4Sub').value = p4 > 0 ? '€ ' + formatEuro(p4) : '';
 
-      let sum = p1 + p2 + p3 + p4;
+      let sum = p1 + p2 + p3;
       if (sum > 0) {
         document.getElementById('totalPrice').value = formatEuro(sum);
       }
@@ -1224,7 +1214,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       loadFromStorage();
 
-      // Datum van vandaag automatisch invullen
+      // Datum van vandaag automatisch invullen indien leeg
       const dateEl = document.getElementById('orderDatum');
       if (dateEl && !dateEl.value) {
         const today = new Date();
@@ -1251,9 +1241,7 @@
           if (i.type === 'checkbox' || i.type === 'radio') i.checked = false;
           else if (!i.readOnly) i.value = '';
         });
-        const defMotoren = document.querySelector('input[name="motoren"][value="3-motorig"]');
-        if (defMotoren) defMotoren.checked = true;
-        const defConditie = document.querySelector('input[name="conditie"][value="gereviseerd"]');
+        const defConditie = document.querySelector('input[name="conditie"][value="gereconditioneerd"]');
         if (defConditie) defConditie.checked = true;
         document.getElementById('chkGelijkvloers').checked = true;
 
@@ -1290,7 +1278,7 @@
       document.getElementById('optWielen').checked = false;
 
       document.getElementById('row1Qty').value = '1x';
-      document.getElementById('row1Desc').value = 'Fitform 570 Vario sta-op fauteuil, Rancho Cognac, gecertificeerd gereviseerd';
+      document.getElementById('row1Desc').value = 'Fitform 570 Vario sta-op fauteuil, Rancho Cognac, gereconditioneerd';
       document.getElementById('row1Price').value = '1.850,00';
 
       document.getElementById('row2Qty').value = '1x';
@@ -1301,11 +1289,7 @@
       document.getElementById('row3Desc').value = 'Eigen bezorging, plaatsing op vloer & ergonomisch instellen op maat';
       document.getElementById('row3Price').value = '0,00';
 
-      document.getElementById('row4Qty').value = '1x';
-      document.getElementById('row4Desc').value = 'Inruil huidige fauteuil en gratis afvoer';
-      document.getElementById('row4Price').value = '- 100,00';
-
-      document.getElementById('totalPrice').value = '1.995,00';
+      document.getElementById('totalPrice').value = '2.095,00';
 
       document.getElementById('signKlantNaam').value = 'H. de Vries';
       document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
