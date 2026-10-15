@@ -196,3 +196,29 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
+
+/**
+ * Handmatige Testfunctie:
+ * Selecteer deze functie bovenin de knoppenbalk van Google Apps Script
+ * en klik op "Uitvoeren" om direct een testmail naar matthias.radder@gmail.com te sturen.
+ */
+function testBooking() {
+  const fakeEvent = {
+    postData: {
+      contents: JSON.stringify({
+        name: "Matthias Radder (Test)",
+        phone: "078 - 631 4858",
+        email: "matthias.radder@gmail.com",
+        date: "2026-10-20",
+        timeSlot: "10:00 - 12:00",
+        startTime: "10:00",
+        endTime: "12:00",
+        appointmentType: "showroom",
+        address: "Merwedestraat 239, 3313 GT Dordrecht",
+        notes: "Testboeking vanuit Google Apps Script editor om de nieuwe tekst te controleren."
+      })
+    }
+  };
+  const result = doPost(fakeEvent);
+  Logger.log("Resultaat van test: " + result.getContent());
+}
