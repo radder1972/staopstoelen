@@ -478,6 +478,19 @@
       align-items: center;
     }
 
+    .options-title-row {
+      min-height: 26px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .options-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      white-space: nowrap;
+    }
+
     /* Maatwerk Maten Mini Grid */
     .maten-strip {
       display: grid;
@@ -673,7 +686,11 @@
     }
 
     .delivery-info-line {
-      line-height: 1.4;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
     }
 
     /* Handtekeningen grid */
@@ -906,6 +923,7 @@
 
     .sheet.brand-mode-schipper .form-lbl,
     .sheet.brand-mode-schipper .spec-label,
+    .sheet.brand-mode-schipper .options-title,
     .sheet.brand-mode-schipper .maat-mini-lbl,
     .sheet.brand-mode-schipper .sign-title,
     .sheet.brand-mode-schipper .sign-detail-item {
@@ -1137,6 +1155,9 @@
               <span class="spec-label">Bekleding &amp; Kleur:</span>
               <input type="text" id="stoelBekleding" class="spec-input">
             </div>
+            <div class="spec-line options-title-row">
+              <span class="options-title">Geselecteerde Opties &amp; Accessoires:</span>
+            </div>
           </div>
 
           <div class="specs-col">
@@ -1169,16 +1190,13 @@
         </div>
 
         <!-- Extra Accessoires & Zorghulpmiddelen Checklist: 3x2 Grid -->
-        <div style="margin-top: 5px;">
-          <div style="font-size: 11.5px; font-weight: 700; color: var(--color-forest-dark); margin-bottom: 4px;">Geselecteerde Opties &amp; Accessoires:</div>
-          <div class="options-grid-3x2">
-            <label class="custom-check"><input type="checkbox" id="optAccu"> Accupakket (snoerloos)</label>
-            <label class="custom-check"><input type="checkbox" id="optVerwarming"> Verwarming zitting/rug</label>
-            <label class="custom-check"><input type="checkbox" id="optLumbaal"> Opblaasbare lendesteun</label>
-            <label class="custom-check"><input type="checkbox" id="optWielen"> Wielsysteem / Rijvoorziening</label>
-            <label class="custom-check"><input type="checkbox" id="optKussen"> Ergonomisch hoofdkussen</label>
-            <label class="custom-check"><input type="checkbox" id="optTafel"> Afneembaar werk-/eetblad</label>
-          </div>
+        <div class="options-grid-3x2" style="margin-top: 8px;">
+          <label class="custom-check"><input type="checkbox" id="optAccu"> Accupakket (snoerloos)</label>
+          <label class="custom-check"><input type="checkbox" id="optVerwarming"> Verwarming zitting/rug</label>
+          <label class="custom-check"><input type="checkbox" id="optLumbaal"> Opblaasbare lendesteun</label>
+          <label class="custom-check"><input type="checkbox" id="optWielen"> Wielsysteem / Rijvoorziening</label>
+          <label class="custom-check"><input type="checkbox" id="optKussen"> Ergonomisch hoofdkussen</label>
+          <label class="custom-check"><input type="checkbox" id="optTafel"> Afneembaar werk-/eetblad</label>
         </div>
 
       </div>
@@ -1252,8 +1270,8 @@
       <!-- Bovenste strook: Levering & Woonsituatie -->
       <div class="delivery-meta-strip">
         <div class="delivery-info-line">
-          <strong>Bezorging &amp; Instellen:</strong> Inclusief vakkundige levering &amp; ergonomisch instellen aan huis.<br>
-          <strong>Levertijd:</strong> In overleg zodra de stoel gereed / binnen is.
+          <div>Inclusief vakkundige levering &amp; ergonomisch instellen aan huis.</div>
+          <div>Levertijd in overleg zodra de stoel gereed / binnen is.</div>
         </div>
         <div style="display: flex; flex-direction: column; justify-content: center; gap: 4px;">
           <strong style="color: var(--color-forest-dark);">Situatie woning:</strong>
