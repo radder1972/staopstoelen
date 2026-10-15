@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.58">
+  <link rel="stylesheet" href="style.css?v=10.59">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-923357429"></script>
   <script>
@@ -124,7 +124,7 @@
           Uw gegevens zijn in goede orde ontvangen. We kijken ernaar uit om u te verwelkomen in onze showroom in Dordrecht.
         </p>
       </div>
-      <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="banner-stamp">
+      <img src="assets/stempel_geertjan.svg?v=1.0" alt="Bewegingstechnoloog Geertjan - Showroom Dordrecht" class="banner-stamp" width="165" height="165">
     </div>
   </section>
 
@@ -141,10 +141,15 @@
         <div style="padding: 36px 36px 28px 36px; background-color: #ffffff; border-bottom: 1px solid var(--color-cream-dark);">
           <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
             
-            <!-- Geertjan Pasfoto met subtiele groene ring en zachte schaduw -->
+            <!-- Geertjan geanimeerde foto met duim omhoog en geverifieerd specialist badge -->
             <div style="position: relative; flex-shrink: 0;">
-              <img src="assets/geert.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" style="width: 88px; height: 88px; border-radius: 50%; object-fit: cover; object-position: top center; border: 3px solid var(--color-forest); box-shadow: 0 4px 14px rgba(75, 143, 36, 0.2); display: block;">
-              <span style="position: absolute; bottom: 2px; right: 2px; width: 22px; height: 22px; background-color: var(--color-forest); border: 2.5px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold;" title="Geverifieerd specialist">✓</span>
+              <picture>
+                <source srcset="assets/geertjan_thumbs_up_animated.webp" type="image/webp">
+                <img src="assets/geertjan_thumbs_up_animated.gif" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: top center; border: 3px solid var(--color-forest); box-shadow: 0 4px 14px rgba(75, 143, 36, 0.2); display: block;">
+              </picture>
+              <span style="position: absolute; bottom: 0; right: 0; width: 28px; height: 28px; background-color: var(--color-forest); border: 2.5px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15);" title="Geverifieerd specialist">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
             </div>
 
             <!-- Geertjan Introductie & Tekst -->
@@ -183,12 +188,27 @@
 
             <!-- Blok 2: Parkeren & Toegankelijkheid -->
             <div style="background: #ffffff; padding: 20px; border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,0.06);">
-              <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--color-forest); margin-bottom: 6px;">Parkeren &amp; Comfort</div>
-              <div style="font-size: 0.95rem; color: var(--color-dark); line-height: 1.6;">
-                ✓ <strong>Gratis parkeren</strong> direct voor de deur<br>
-                ✓ Volledig gelijkvloers &amp; rolstoelvriendelijk<br>
-                ✓ Vers kopje koffie of thee staat klaar
-              </div>
+              <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--color-forest); margin-bottom: 10px;">Parkeren &amp; Comfort</div>
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--color-dark); line-height: 1.4;">
+                  <span style="width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--color-forest)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <span><strong>Gratis parkeren</strong> direct voor de deur</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--color-dark); line-height: 1.4;">
+                  <span style="width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--color-forest)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <span>Volledig gelijkvloers &amp; rolstoelvriendelijk</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--color-dark); line-height: 1.4;">
+                  <span style="width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--color-forest)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <span>Vers kopje koffie of thee staat klaar</span>
+                </li>
+              </ul>
             </div>
 
             <!-- Blok 3: Openingstijden & Contact -->
@@ -300,6 +320,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=10.58"></script>
+  <script src="app.js?v=10.59"></script>
 </body>
 </html>
