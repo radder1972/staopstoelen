@@ -839,18 +839,83 @@
     }
 
     /* Huisstijl Admin Section Styles */
+    /* Huisstijl Admin Section Styles & Collapsible Groups */
+    .huisstijl-toolbar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 24px 0 20px 0;
+      padding: 14px 20px;
+      background: #ffffff;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .huisstijl-count-info {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-gray);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .huisstijl-toggle-btns {
+      display: flex;
+      gap: 10px;
+    }
+    .huisstijl-collapsible-group {
+      margin-bottom: 24px;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .huisstijl-collapsible-group[open] {
+      box-shadow: 0 6px 24px rgba(75, 143, 36, 0.06);
+      border-color: rgba(75, 143, 36, 0.25);
+    }
     .huisstijl-category-title {
       font-family: var(--font-heading);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--color-forest-dark);
       display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 12px;
-      margin-top: 36px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid var(--color-gray-light);
-      padding-bottom: 10px;
+      padding: 18px 24px;
+      background: #fbfdfa;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .huisstijl-category-title::-webkit-details-marker {
+      display: none;
+    }
+    .huisstijl-collapsible-group[open] > .huisstijl-category-title {
+      border-bottom-color: var(--color-gray-light);
+      background: #f4faf1;
+    }
+    .huisstijl-category-title:hover {
+      background: #eef7eb;
+    }
+    .huisstijl-title-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .huisstijl-title-icon {
+      font-size: 1.35rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .huisstijl-category-badge {
       font-size: 0.78rem;
@@ -861,11 +926,123 @@
       border-radius: 9999px;
       border: 1px solid rgba(75, 143, 36, 0.2);
     }
+    .huisstijl-chevron-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-gray);
+    }
+    .huisstijl-collapse-hint {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-gray);
+    }
+    .huisstijl-chevron {
+      transition: transform 0.25s ease;
+      color: var(--color-forest);
+    }
+    .huisstijl-collapsible-group[open] .huisstijl-chevron {
+      transform: rotate(180deg);
+    }
     .huisstijl-items-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-      margin-bottom: 40px;
+      padding: 24px;
+      margin-bottom: 0;
+    }
+    .huisstijl-colors-card,
+    .huisstijl-downloads-card {
+      padding: 24px;
+    }
+    .huisstijl-colors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 16px;
+    }
+    .color-swatch-box {
+      border: 1px solid var(--color-gray-light);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease;
+    }
+    .color-swatch-box:hover {
+      transform: translateY(-2px);
+    }
+    .swatch-color {
+      height: 60px;
+    }
+    .swatch-info {
+      padding: 14px;
+      font-size: 0.86rem;
+    }
+    .swatch-info strong {
+      color: var(--color-forest-dark);
+      font-size: 0.92rem;
+    }
+    .swatch-info code {
+      color: var(--color-terracotta-dark);
+      font-family: monospace;
+      font-weight: 700;
+      background: #fbf9f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .huisstijl-downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .download-item-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: #fbfdfa;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+    .download-item-card:hover {
+      border-color: var(--color-forest);
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(75, 143, 36, 0.1);
+    }
+    .download-icon-box {
+      font-size: 1.8rem;
+      min-width: 40px;
+      text-align: center;
+    }
+    .download-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 2px;
+    }
+    .download-info strong {
+      font-size: 0.92rem;
+      color: var(--color-forest-dark);
+    }
+    .download-info span {
+      font-size: 0.78rem;
+      color: var(--color-gray);
+    }
+    .download-action-btn {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--color-forest);
+      background: rgba(75, 143, 36, 0.1);
+      padding: 6px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+      border: 1px solid rgba(75, 143, 36, 0.2);
     }
     .huisstijl-material-card {
       background: #ffffff;
@@ -1819,12 +1996,36 @@
           </div>
         </div>
 
-        <!-- 1. Visitekaartjes -->
-        <div class="huisstijl-category-title">
-          <span>Visitekaartjes</span>
-          <span class="huisstijl-category-badge">85 × 55 mm Euro-standaard &bull; A4 Drukvel (10x)</span>
+        <!-- Toolbar: Uitklappen / Inklappen -->
+        <div class="huisstijl-toolbar-row">
+          <div class="huisstijl-count-info">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-forest);"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>5 categorieën drukwerk &amp; merkbestanden</span>
+          </div>
+          <div class="huisstijl-toggle-btns">
+            <button type="button" class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px;" onclick="toggleAllHuisstijl(true)">
+              ➕ Alles Uitklappen
+            </button>
+            <button type="button" class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px;" onclick="toggleAllHuisstijl(false)">
+              ➖ Alles Inklappen
+            </button>
+          </div>
         </div>
-        <div class="huisstijl-items-grid">
+
+        <!-- 1. Visitekaartjes -->
+        <details class="huisstijl-collapsible-group" open id="groupVisitekaartjes">
+          <summary class="huisstijl-category-title">
+            <div class="huisstijl-title-left">
+              <span class="huisstijl-title-icon">📇</span>
+              <span>Visitekaartjes</span>
+              <span class="huisstijl-category-badge">85 × 55 mm Euro-standaard &bull; A4 Drukvel (10x)</span>
+            </div>
+            <div class="huisstijl-chevron-wrap">
+              <span class="huisstijl-collapse-hint">In-/uitklappen</span>
+              <svg class="huisstijl-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="huisstijl-items-grid">
           
           <!-- Kaart Geertjan -->
           <article class="huisstijl-material-card">
@@ -1979,14 +2180,23 @@
             </div>
           </article>
 
-        </div>
+          </div>
+        </details>
 
         <!-- 2. Flyers & Folders -->
-        <div class="huisstijl-category-title">
-          <span>Flyers &amp; Folders</span>
-          <span class="huisstijl-category-badge">A5 Formaat (148 × 210 mm) &bull; A4 Drukvel (2x A5)</span>
-        </div>
-        <div class="huisstijl-items-grid">
+        <details class="huisstijl-collapsible-group" open id="groupFlyers">
+          <summary class="huisstijl-category-title">
+            <div class="huisstijl-title-left">
+              <span class="huisstijl-title-icon">📄</span>
+              <span>Flyers &amp; Folders</span>
+              <span class="huisstijl-category-badge">A5 &bull; A6 &bull; A4 Drukvel</span>
+            </div>
+            <div class="huisstijl-chevron-wrap">
+              <span class="huisstijl-collapse-hint">In-/uitklappen</span>
+              <svg class="huisstijl-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="huisstijl-items-grid">
           
           <!-- Flyer Stoel & Prijzen -->
           <article class="huisstijl-material-card">
@@ -2133,14 +2343,23 @@
             </div>
           </article>
 
-        </div>
+          </div>
+        </details>
 
-        <!-- 3. Werkwijzers & Intake Formulieren -->
-        <div class="huisstijl-category-title">
-          <span>Werkwijzers &amp; Formulieren</span>
-          <span class="huisstijl-category-badge">A4 Formaat (210 × 297 mm)</span>
-        </div>
-        <div class="huisstijl-items-grid">
+        <!-- 3. Werkwijzers & Formulieren -->
+        <details class="huisstijl-collapsible-group" open id="groupWerkwijzers">
+          <summary class="huisstijl-category-title">
+            <div class="huisstijl-title-left">
+              <span class="huisstijl-title-icon">📋</span>
+              <span>Werkwijzers &amp; Formulieren</span>
+              <span class="huisstijl-category-badge">A4 Formaat (210 × 297 mm)</span>
+            </div>
+            <div class="huisstijl-chevron-wrap">
+              <span class="huisstijl-collapse-hint">In-/uitklappen</span>
+              <svg class="huisstijl-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="huisstijl-items-grid">
           
           <!-- Indicatiewijzer -->
           <article class="huisstijl-material-card">
@@ -2295,50 +2514,98 @@
             </div>
           </article>
 
-        </div>
+          </div>
+        </details>
 
-        <!-- 4. Merkkleuren & Digitale Downloads -->
-        <div class="huisstijl-category-title">
-          <span>Huisstijlkleuren &amp; Digitale Bestanden</span>
-          <span class="huisstijl-category-badge">Officiële Specificaties</span>
-        </div>
-        <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.03);">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px;">
-            <div style="border: 1px solid var(--color-gray-light); border-radius: 10px; overflow: hidden; background: #fff;">
-              <div style="height: 56px; background: #4b8f24;"></div>
-              <div style="padding: 12px; font-size: 0.85rem;"><strong>Bosgroen</strong><br><span style="color: var(--color-gray); font-family: monospace;">#4B8F24</span></div>
+        <!-- 4. Huisstijlkleuren -->
+        <details class="huisstijl-collapsible-group" open id="groupKleuren">
+          <summary class="huisstijl-category-title">
+            <div class="huisstijl-title-left">
+              <span class="huisstijl-title-icon">🎨</span>
+              <span>Huisstijlkleuren</span>
+              <span class="huisstijl-category-badge">Officiële Hex &amp; RGB Codes</span>
             </div>
-            <div style="border: 1px solid var(--color-gray-light); border-radius: 10px; overflow: hidden; background: #fff;">
-              <div style="height: 56px; background: #f39223;"></div>
-              <div style="padding: 12px; font-size: 0.85rem;"><strong>Terracotta</strong><br><span style="color: var(--color-gray); font-family: monospace;">#F39223</span></div>
+            <div class="huisstijl-chevron-wrap">
+              <span class="huisstijl-collapse-hint">In-/uitklappen</span>
+              <svg class="huisstijl-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
-            <div style="border: 1px solid var(--color-gray-light); border-radius: 10px; overflow: hidden; background: #fff;">
-              <div style="height: 56px; background: #6ab13c;"></div>
-              <div style="padding: 12px; font-size: 0.85rem;"><strong>Saliegroen</strong><br><span style="color: var(--color-gray); font-family: monospace;">#6AB13C</span></div>
-            </div>
-            <div style="border: 1px solid var(--color-gray-light); border-radius: 10px; overflow: hidden; background: #fff;">
-              <div style="height: 56px; background: #f4faf1; border-bottom: 1px solid #eee;"></div>
-              <div style="padding: 12px; font-size: 0.85rem;"><strong>Salie Tint</strong><br><span style="color: var(--color-gray); font-family: monospace;">#F4FAF1</span></div>
-            </div>
-            <div style="border: 1px solid var(--color-gray-light); border-radius: 10px; overflow: hidden; background: #fff;">
-              <div style="height: 56px; background: #122b07;"></div>
-              <div style="padding: 12px; font-size: 0.85rem;"><strong>Donkergroen</strong><br><span style="color: var(--color-gray); font-family: monospace;">#122B07</span></div>
+          </summary>
+          <div class="huisstijl-colors-card">
+            <div class="huisstijl-colors-grid">
+              <div class="color-swatch-box">
+                <div class="swatch-color" style="background: #4b8f24;"></div>
+                <div class="swatch-info"><strong>Bosgroen</strong><br><code>#4B8F24</code></div>
+              </div>
+              <div class="color-swatch-box">
+                <div class="swatch-color" style="background: #f39223;"></div>
+                <div class="swatch-info"><strong>Terracotta</strong><br><code>#F39223</code></div>
+              </div>
+              <div class="color-swatch-box">
+                <div class="swatch-color" style="background: #6ab13c;"></div>
+                <div class="swatch-info"><strong>Saliegroen</strong><br><code>#6AB13C</code></div>
+              </div>
+              <div class="color-swatch-box">
+                <div class="swatch-color" style="background: #f4faf1; border-bottom: 1px solid #e2e8f0;"></div>
+                <div class="swatch-info"><strong>Salie Tint</strong><br><code>#F4FAF1</code></div>
+              </div>
+              <div class="color-swatch-box">
+                <div class="swatch-color" style="background: #122b07;"></div>
+                <div class="swatch-info"><strong>Donkergroen</strong><br><code>#122B07</code></div>
+              </div>
             </div>
           </div>
+        </details>
 
-          <div style="display: flex; gap: 16px; align-items: center; border-top: 1px solid var(--color-gray-light); padding-top: 20px; flex-wrap: wrap;">
-            <span style="font-weight: 700; font-size: 0.92rem; color: var(--color-forest-dark);">Directe Downloads:</span>
-            <a href="assets/sticker_nieuw_gereviseerd.svg?v=1.4" download class="btn btn-outline" style="font-size: 0.85rem; padding: 8px 16px; text-decoration: none; border-radius: 8px;">
-              ⬇ Kwaliteitssticker SVG
-            </a>
-            <a href="assets/qr_staopstoelen.svg" download class="btn btn-outline" style="font-size: 0.85rem; padding: 8px 16px; text-decoration: none; border-radius: 8px;">
-              ⬇ QR-Code SVG
-            </a>
-            <a href="assets/Sta-op-stoel-DORDRECHT-interior.png" target="_blank" class="btn btn-outline" style="font-size: 0.85rem; padding: 8px 16px; text-decoration: none; border-radius: 8px;">
-              🖼 Stoel Sfeerfoto (HD)
-            </a>
+        <!-- 5. Digitale Bestanden & Downloads -->
+        <details class="huisstijl-collapsible-group" open id="groupDownloads">
+          <summary class="huisstijl-category-title">
+            <div class="huisstijl-title-left">
+              <span class="huisstijl-title-icon">💾</span>
+              <span>Digitale Bestanden &amp; Downloads</span>
+              <span class="huisstijl-category-badge">Vector Logo's, QR-Codes &amp; Beeldmateriaal</span>
+            </div>
+            <div class="huisstijl-chevron-wrap">
+              <span class="huisstijl-collapse-hint">In-/uitklappen</span>
+              <svg class="huisstijl-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="huisstijl-downloads-card">
+            <div class="huisstijl-downloads-grid">
+              <a href="assets/sticker_nieuw_gereviseerd.svg?v=1.4" download class="download-item-card">
+                <span class="download-icon-box">🛡️</span>
+                <div class="download-info">
+                  <strong>Kwaliteitszegel Sticker</strong>
+                  <span>Officiële vector SVG kwaliteitsbadge</span>
+                </div>
+                <span class="download-action-btn">⬇ SVG</span>
+              </a>
+              <a href="assets/qr_staopstoelen.svg" download class="download-item-card">
+                <span class="download-icon-box">📱</span>
+                <div class="download-info">
+                  <strong>QR-Code (Vector SVG)</strong>
+                  <span>Haarscherp vectorbestand voor elk drukwerk</span>
+                </div>
+                <span class="download-action-btn">⬇ SVG</span>
+              </a>
+              <a href="assets/qr_staopstoelen.png" download class="download-item-card">
+                <span class="download-icon-box">🔳</span>
+                <div class="download-info">
+                  <strong>QR-Code (HD PNG)</strong>
+                  <span>Hoge resolutie rasterbestand met witruimte</span>
+                </div>
+                <span class="download-action-btn">⬇ PNG</span>
+              </a>
+              <a href="assets/Sta-op-stoel-DORDRECHT-interior.png" target="_blank" class="download-item-card">
+                <span class="download-icon-box">🛋️</span>
+                <div class="download-info">
+                  <strong>Stoel Sfeerfoto (HD)</strong>
+                  <span>Woonkamer interieur in hoge resolutie</span>
+                </div>
+                <span class="download-action-btn">👁 HD Foto</span>
+              </a>
+            </div>
           </div>
-        </div>
+        </details>
 
       </div> <!-- End #huisstijlSection -->
 
@@ -5564,6 +5831,18 @@
       setTimeout(handleInitialTab, 50);
     }
     window.addEventListener("hashchange", handleInitialTab);
+
+    // Huisstijl & Drukwerk collapse/expand all helper
+    function toggleAllHuisstijl(expand) {
+      const groups = document.querySelectorAll('.huisstijl-collapsible-group');
+      groups.forEach(g => {
+        if (expand) {
+          g.setAttribute('open', '');
+        } else {
+          g.removeAttribute('open');
+        }
+      });
+    }
 
     // Initialize check
     checkLogin();
