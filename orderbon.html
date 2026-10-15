@@ -119,7 +119,13 @@
       color: var(--color-dark);
     }
 
-    .brand-switch-btn.active {
+    .brand-switch-btn.active#btnBrandSchipper {
+      background: #1e293b;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+    }
+
+    .brand-switch-btn.active#btnBrandStaop {
       background: var(--color-forest);
       color: #ffffff;
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
@@ -348,6 +354,10 @@
 
     .section-head.dark {
       background: linear-gradient(90deg, #2b3328 0%, #465442 100%);
+    }
+
+    .section-head.delivery-head {
+      background: #394833;
     }
 
     .section-body {
@@ -825,6 +835,127 @@
       font-size: 13px;
     }
 
+    /* =========================================================
+       SCHIPPER COMPACT WONEN: 100% ZWART-WIT / MONOCHROOM THEMA
+       ========================================================= */
+    .sheet.brand-mode-schipper {
+      --color-forest: #1e293b;
+      --color-forest-dark: #0f172a;
+      --color-sage: #475569;
+      --color-sage-light: #f1f5f9;
+      --color-terracotta: #334155;
+      --color-terracotta-dark: #1e293b;
+    }
+
+    .sheet.brand-mode-schipper .sheet-header {
+      border-bottom: 2.5px solid #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .brand-name {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .brand-name span {
+      color: #475569;
+    }
+
+    .sheet.brand-mode-schipper .brand-subline {
+      color: #475569;
+    }
+
+    .sheet.brand-mode-schipper .header-right .web-pill {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .sheet.brand-mode-schipper .order-meta-bar {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+    }
+
+    .sheet.brand-mode-schipper .order-badge {
+      background: #0f172a;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+    }
+
+    .sheet.brand-mode-schipper .meta-col-label {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .meta-col-input {
+      border-bottom: 1.5px solid #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .section-head {
+      background: linear-gradient(90deg, #1e293b 0%, #334155 100%);
+      color: #ffffff;
+    }
+
+    .sheet.brand-mode-schipper .section-head.orange {
+      background: linear-gradient(90deg, #334155 0%, #475569 100%);
+    }
+
+    .sheet.brand-mode-schipper .section-head.dark {
+      background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .sheet.brand-mode-schipper .section-head.delivery-head {
+      background: linear-gradient(90deg, #1e293b 0%, #334155 100%) !important;
+    }
+
+    .sheet.brand-mode-schipper .form-lbl,
+    .sheet.brand-mode-schipper .spec-label,
+    .sheet.brand-mode-schipper .maat-mini-lbl,
+    .sheet.brand-mode-schipper .sign-title,
+    .sheet.brand-mode-schipper .sign-detail-item {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .order-table th {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-bottom: 1.5px solid #cbd5e1;
+    }
+
+    .sheet.brand-mode-schipper .order-total-row {
+      background: #f8fafc;
+      border-top: 2px solid #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .order-total-lbl,
+    .sheet.brand-mode-schipper .total-price-cell {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .total-price-cell input {
+      border-bottom: 2px solid #0f172a;
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .custom-check input[type="checkbox"],
+    .sheet.brand-mode-schipper .custom-check input[type="radio"] {
+      accent-color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .sheet-footer {
+      border-top: 1.5px solid #cbd5e1;
+    }
+
+    .sheet.brand-mode-schipper .terms-dot {
+      color: #475569;
+    }
+
+    .sheet.brand-mode-schipper .footer-pill {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .footer-dot {
+      color: #94a3b8;
+    }
+
     /* Print Specific Styling */
     @media print {
       body {
@@ -907,7 +1038,7 @@
   </div>
 
   <!-- A4 Sheet Canvas -->
-  <div class="sheet">
+  <div class="sheet brand-mode-schipper" id="sheetCanvas">
 
     <!-- 1. Header -->
     <header class="sheet-header">
@@ -1113,7 +1244,7 @@
 
     <!-- 6. Gecombineerde Box: Levering, Afspraken & Voor Akkoord -->
     <div class="delivery-agreement-wrap">
-      <div class="section-head" style="background: #394833;">
+      <div class="section-head delivery-head">
         <span>Levering, Afspraken &amp; Voor Akkoord</span>
         <span style="font-size: 9.5px; opacity: 0.95;">Eigen Bezorg- &amp; Instelservice</span>
       </div>
@@ -1358,6 +1489,17 @@
       if (!BRANDS[brandKey]) brandKey = 'schipper';
       activeBrand = brandKey;
       const b = BRANDS[brandKey];
+
+      const sheetCanvas = document.getElementById('sheetCanvas');
+      if (sheetCanvas) {
+        if (brandKey === 'schipper') {
+          sheetCanvas.classList.add('brand-mode-schipper');
+          sheetCanvas.classList.remove('brand-mode-staop');
+        } else {
+          sheetCanvas.classList.add('brand-mode-staop');
+          sheetCanvas.classList.remove('brand-mode-schipper');
+        }
+      }
 
       const brandTitleEl = document.getElementById('brandTitle');
       if (brandTitleEl) {
