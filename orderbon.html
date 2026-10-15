@@ -325,6 +325,43 @@
       width: 105px;
     }
 
+    .date-boxes-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding-top: 1px;
+    }
+
+    .date-box {
+      width: 28px;
+      height: 21px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      background: #ffffff;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-dark);
+      outline: none;
+      padding: 0;
+    }
+
+    .date-box.date-box-year {
+      width: 44px;
+    }
+
+    .date-box:focus {
+      border-color: var(--color-forest);
+    }
+
+    .date-sep {
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+      user-select: none;
+    }
+
     /* Section Styles */
     .section-wrap {
       margin-bottom: 8px;
@@ -974,6 +1011,19 @@
       color: #94a3b8;
     }
 
+    .sheet.brand-mode-schipper .date-box {
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .date-box:focus {
+      border-color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .date-sep {
+      color: #64748b;
+    }
+
     /* Print Specific Styling */
     @media print {
       body {
@@ -1084,7 +1134,13 @@
         </div>
         <div class="meta-col">
           <span class="meta-col-label">Datum:</span>
-          <input type="text" id="orderDatum" class="meta-col-input" style="width: 110px;">
+          <div class="date-boxes-wrap">
+            <input type="text" id="orderDatumDag" class="date-box" maxlength="2" autocomplete="off" oninput="autoAdvanceDate(this, 'orderDatumMaand')">
+            <span class="date-sep">/</span>
+            <input type="text" id="orderDatumMaand" class="date-box" maxlength="2" autocomplete="off" oninput="autoAdvanceDate(this, 'orderDatumJaar')">
+            <span class="date-sep">/</span>
+            <input type="text" id="orderDatumJaar" class="date-box date-box-year" maxlength="4" autocomplete="off">
+          </div>
         </div>
         <div class="meta-col">
           <span class="meta-col-label">Adviseur:</span>
@@ -1471,6 +1527,13 @@
       window.print();
     }
 
+    function autoAdvanceDate(current, nextId) {
+      if (current && current.value.length >= current.maxLength) {
+        const next = document.getElementById(nextId);
+        if (next) next.focus();
+      }
+    }
+
     // Merk Wisselaar (Schipper Compact Wonen vs staopstoelen.nl)
     const BRANDS = {
       schipper: {
@@ -1598,6 +1661,9 @@
 
     document.getElementById('btnFillDemo').addEventListener('click', () => {
       document.getElementById('orderNummer').value = '2026-SCW-104';
+      document.getElementById('orderDatumDag').value = '15';
+      document.getElementById('orderDatumMaand').value = '10';
+      document.getElementById('orderDatumJaar').value = '2026';
       document.getElementById('orderAdviseur').value = 'Geertjan Klein Haneveld';
       document.getElementById('klantNaam').value = 'Dhr. H. de Vries';
       document.getElementById('klantAdres').value = 'Kastanjelaan 14';
