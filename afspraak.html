@@ -16,7 +16,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.54">
+  <link rel="stylesheet" href="style.css?v=10.55">
   <style>
     /* Critical styles for 3-Step Process Indicator */
     .booking-steps-indicator {
@@ -259,10 +259,10 @@
   <!-- Banner Header -->
   <section class="occasions-header">
     <div class="container banner-flex-container">
-      <div style="text-align: left; max-width: 600px; flex: 1; min-width: 280px;">
+      <div style="text-align: left; max-width: 650px; flex: 1; min-width: 280px;">
         <span class="section-tag" style="color: var(--color-terracotta);">Direct Boeken</span>
-        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Plan een Adviesgesprek</h1>
-        <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Kom rustig proefzitten in onze showroom in Dordrecht. Geertjan stelt uw stoel exact op maat af en wij bezorgen deze gratis en vakkundig bij u thuis.</p>
+        <h1 style="color: var(--color-light); margin: 4px 0 8px 0; font-size: 2.5rem;">Boek een Adviesgesprek</h1>
+        <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 1.1rem;">Kies hieronder uw datum en tijdstip voor een persoonlijk zitadvies op maat in onze showroom in Dordrecht.</p>
       </div>
       <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Nieuw &amp; Gereviseerd - Duurzaam op maat" class="banner-stamp">
     </div>
@@ -271,11 +271,7 @@
 
   <section id="afspraak-planner" class="subpage-section">
     <div class="container">
-      <a href="index.html" class="back-link">← Terug naar Home</a>
-
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 32px; max-width: 800px;">
-        Breng een bezoek aan onze showroom aan de Merwedestraat 239 in Dordrecht voor een deskundige zitmeting op maat. Onze gediplomeerde Bewegingstechnoloog Geertjan adviseert u geheel vrijblijvend over de perfecte sta-op stoel. Gratis parkeren voor de deur. Gekozen stoel gratis thuisbezorgd!
-      </p>
+      <a href="index.html" class="back-link" style="margin-bottom: 24px; display: inline-block;">← Terug naar Home</a>
 
       <div class="booking-card" id="bookingCard">
         <!-- Visual 3-Step Process Indicator -->
@@ -316,18 +312,24 @@
         </div>
 
         <div class="booking-body">
-          <!-- Type selector: Showroom Proefzitten & Gratis Thuisbezorging -->
-          <div class="booking-type-select" style="grid-template-columns: 1fr;">
-            <div class="booking-type-card selected" id="typeShowroom" style="cursor: default; border-color: var(--color-forest);">
+          <!-- Locatiebevestiging Showroom Dordrecht -->
+          <div class="booking-type-select" style="grid-template-columns: 1fr; margin-bottom: 24px;">
+            <div class="booking-type-card selected" id="typeShowroom" style="cursor: default; border-color: rgba(75, 143, 36, 0.35); background: #fdfbf7; padding: 14px 20px;">
               <input type="radio" name="appointmentType" value="showroom" checked style="display: none;">
-              <div class="booking-type-info">
-                <h3 style="color: var(--color-forest); display: flex; align-items: center; gap: 8px;">
-                  <svg style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                  Proefzitten in onze Showroom (Merwedestraat 239, Dordrecht)
-                </h3>
-                <p style="font-size: 0.95rem; margin-top: 4px; color: var(--color-dark);">
-                  Kom rustig proefzitten en vergelijken. Bewegingstechnoloog Geertjan stelt uw stoel exact op maat af. Parkeren kan gratis direct voor de deur. Stoel gekozen? <strong>Wij bezorgen deze gratis en vakkundig bij u thuis!</strong>
-                </p>
+              <div class="booking-type-info" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: rgba(75, 143, 36, 0.12); color: var(--color-forest); flex-shrink: 0;">
+                    <svg style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  </span>
+                  <div>
+                    <h3 style="color: var(--color-forest-dark); font-size: 1.05rem; margin: 0 0 2px 0; font-weight: 700;">
+                      Showroom Dordrecht &bull; Merwedestraat 239
+                    </h3>
+                    <p style="font-size: 0.88rem; margin: 0; color: var(--color-gray);">
+                      Gratis parkeren direct voor de deur &bull; Rolstoelvriendelijk &bull; Vrijblijvend advies door Geertjan
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="typeHome" style="display: none !important;">
@@ -538,11 +540,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.54
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.55
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=10.54"></script>
+  <script src="app.js?v=10.55"></script>
 </body>
 </html>
