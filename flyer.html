@@ -247,9 +247,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1mm 1mm 1mm;
+      padding: 0 1mm;
       border-bottom: 0.3mm solid rgba(75, 143, 36, 0.2);
-      padding-bottom: 2mm;
+      padding-bottom: 1.8mm;
+      margin-bottom: 1.8mm;
     }
 
     .front-header-left {
@@ -290,7 +291,7 @@
     .front-photo-frame {
       position: relative;
       z-index: 2;
-      margin: 1.5mm 0;
+      margin: 0 0 2.2mm 0;
       background: var(--color-cream);
       border: 0.35mm solid rgba(75, 143, 36, 0.25);
       border-radius: 2.5mm;
@@ -301,7 +302,7 @@
     .front-photo-inner {
       position: relative;
       width: 100%;
-      height: 76mm;
+      height: 77mm;
       border-radius: 1.8mm;
       overflow: hidden;
       background: #ffffff;
@@ -348,27 +349,17 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 1.8mm;
-    }
-
-    .front-hex-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3mm;
-      width: 100%;
-    }
-
-    .front-hex-decor {
-      height: 0.3mm;
       flex: 1;
-      background: linear-gradient(90deg, transparent, rgba(234, 88, 12, 0.35), transparent);
+      justify-content: space-between;
+      padding-top: 1mm;
     }
 
-    .front-hex-icon {
-      width: 18px;
-      height: 18px;
-      display: block;
+    .front-titles-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2mm;
+      width: 100%;
     }
 
     .front-headline {
@@ -388,8 +379,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 3mm;
-      width: 80%;
+      gap: 2.5mm;
+      width: 75%;
     }
     .front-subhead-line {
       flex: 1;
@@ -404,11 +395,20 @@
       line-height: 1;
     }
 
+    /* Grote witruimte & beschrijvingsblok */
+    .front-desc-block {
+      margin: 3.5mm 0 2.5mm 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5mm;
+    }
+
     .front-usp-text {
       font-family: var(--font-body);
       font-size: 2.55mm;
       color: #374151;
-      line-height: 1.36;
+      line-height: 1.4;
       max-width: 118mm;
       margin: 0 auto;
     }
@@ -416,6 +416,7 @@
       color: var(--color-forest-dark);
       font-weight: 700;
     }
+
 
     /* QR & Showroom Banner onderaan de voorkant */
     .front-qr-banner {
@@ -1100,39 +1101,33 @@
             </div>
           </div>
 
-          <!-- Content Section onder de foto (Fris, Licht, Website Huisstijl) -->
+          <!-- Content Section onder de foto: direct titels, dan royale witruimte, dan toelichting en QR banner -->
           <div class="front-content-section">
-            <!-- Hexagon Icoon in Oranje -->
-            <div class="front-hex-wrap">
-              <div class="front-hex-decor"></div>
-              <svg class="front-hex-icon" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12,2 21,7.2 21,16.8 12,22 3,16.8 3,7.2"/>
-              </svg>
-              <div class="front-hex-decor"></div>
+            <!-- 1. Direct onder de foto: Headline & Wij ook! -->
+            <div class="front-titles-block">
+              <h1 class="front-headline">
+                Vindt u goed <span>zitcomfort</span> belangrijk?
+              </h1>
+
+              <div class="front-subhead-row">
+                <div class="front-subhead-line"></div>
+                <div class="front-subhead">Wij ook!</div>
+                <div class="front-subhead-line"></div>
+              </div>
             </div>
 
-            <!-- Headline -->
-            <h1 class="front-headline">
-              Vindt u goed <span>zitcomfort</span> belangrijk?
-            </h1>
-
-            <!-- Subhead -->
-            <div class="front-subhead-row">
-              <div class="front-subhead-line"></div>
-              <div class="front-subhead">Wij ook!</div>
-              <div class="front-subhead-line"></div>
+            <!-- 2. Grote witruimte met toelichting & zitmeting door bewegingstechnoloog -->
+            <div class="front-desc-block">
+              <p class="front-usp-text">
+                Persoonlijk advies &amp; gratis zitmeting door onze ervaren <strong>bewegingstechnoloog</strong> &mdash; in onze ruime showroom te Dordrecht of comfortabel bij u thuis. <strong>Persoonlijk zitadvies op maat.</strong>
+              </p>
             </div>
 
-            <!-- Kernbelofte -->
-            <p class="front-usp-text">
-              Persoonlijk advies &amp; gratis zitmeting door onze ervaren <strong>bewegingstechnoloog</strong> &mdash; in onze ruime showroom te Dordrecht of comfortabel bij u thuis.
-            </p>
-
-            <!-- Bottom QR & Showroom Banner -->
+            <!-- 3. Bottom QR & Showroom Banner -->
             <div class="front-qr-banner">
               <div class="front-qr-info">
                 <div class="front-qr-title">Ontdek ons complete aanbod</div>
-                <div class="front-qr-sub">Scan de QR-code voor actuele voorraad &amp; prijzen</div>
+                <div class="front-qr-sub">Scan de QR-code voor actuele modellen &amp; prijzen</div>
                 <div class="front-qr-address">Showroom Dordrecht &bull; <strong>078 – 631 4858</strong></div>
               </div>
               <div class="front-qr-code-box">
