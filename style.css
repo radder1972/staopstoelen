@@ -583,6 +583,16 @@ section[id], section {
   position: relative;
 }
 
+.hero-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.05rem, 3vw, 1.25rem);
+  font-weight: 600;
+  color: var(--color-forest-dark);
+  line-height: 1.35;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
 .hero-description {
   font-size: 1.125rem;
   color: var(--color-gray);
@@ -3858,6 +3868,13 @@ input[type="checkbox"] {
   /* Heading scaling for mobile viewports */
   .hero-title {
     font-size: clamp(1.65rem, 6vw, 2.1rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+    min-height: 2.7em;
   }
 
   .section-title {
