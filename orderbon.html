@@ -704,34 +704,48 @@
     /* Voorwaarden & Footer */
     .sheet-footer {
       margin-top: auto;
-      padding-top: 6px;
-      border-top: 1px solid #cbd5e1;
+      padding-top: 10px;
+      border-top: 1.5px solid #d8e2d2;
     }
 
-    .terms-text {
-      font-size: 9px;
+    .terms-bullets {
+      list-style: none;
+      padding: 0 4px;
+      margin: 0 0 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .terms-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 9.5px;
       color: #4b5563;
-      line-height: 1.4;
-      text-align: center;
-      margin-bottom: 6px;
+      line-height: 1.35;
     }
 
-    .terms-text strong {
-      color: var(--color-dark);
+    .terms-dot {
+      color: var(--color-forest);
+      font-size: 13px;
+      line-height: 1;
+      flex-shrink: 0;
     }
 
     .footer-pill {
       background: #f4f8f1;
       border: 1px solid #b7d5ae;
       border-radius: 9999px;
-      padding: 4px 16px;
+      padding: 5px 22px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 14px;
-      font-size: 10.5px;
+      gap: 16px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--color-forest-dark);
+      margin-top: 4px;
     }
 
     .footer-pill span {
@@ -1095,10 +1109,20 @@
 
     <!-- 7. Footer & Voorwaarden -->
     <footer class="sheet-footer">
-      <div class="terms-text">
-        Officiële aankoop- en maatwerkovereenkomst &bull; Op alle verkopen en leveringen zijn onze Algemene Voorwaarden van toepassing, te bevragen in de showroom te Dordrecht of in te zien via <strong>www.staopstoelen.nl</strong>.<br>
-        Betaling geschiedt per factuur bij aflevering (per mobiele pin aan huis of per overboeking na plaatsing).
-      </div>
+      <ul class="terms-bullets">
+        <li class="terms-item">
+          <span class="terms-dot">&bull;</span>
+          <span><strong>Officiële aankoop- en maatwerkovereenkomst.</strong></span>
+        </li>
+        <li class="terms-item">
+          <span class="terms-dot">&bull;</span>
+          <span>Op alle verkopen en leveringen zijn onze Algemene Voorwaarden van toepassing, te bevragen in de showroom te Dordrecht of via <strong>www.staopstoelen.nl</strong>.</span>
+        </li>
+        <li class="terms-item">
+          <span class="terms-dot">&bull;</span>
+          <span>Betaling geschiedt per factuur bij aflevering (per mobiele pin aan huis of per overboeking na plaatsing).</span>
+        </li>
+      </ul>
       <div class="footer-pill">
         <span><strong>staopstoelen.nl</strong></span>
         <span class="footer-dot">&bull;</span>
