@@ -9,7 +9,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=10.45">
+  <!-- Core Web Vitals: Preconnect & Preload LCP Hero Image -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/stoelen/chair_fitform_570_reco_cozy.avif" type="image/avif" fetchpriority="high">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
+  <link rel="stylesheet" href="style.css?v=10.46">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -219,54 +224,84 @@
         </a>
         <div class="hero-image-container" id="heroImageContainer">
           <div class="hero-slideshow" id="heroSlideshow">
-            <!-- 1. Fitform 570 Vario (Actiemodel) -->
+            <!-- 1. Fitform 570 Vario (Actiemodel) - LCP Image -->
             <div class="hero-slide active" data-brand="fitform" data-url="staopstoelen.html?actie=1#najaarsactieBanner" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_fitform_570_reco_cozy.png" alt="Fitform 570 Vario sta-op stoel met najaarsactie korting">
+              <picture>
+                <source srcset="assets/stoelen/chair_fitform_570_reco_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_fitform_570_reco_cozy.jpg" alt="Fitform 570 Vario sta-op stoel met najaarsactie korting" width="800" height="800" fetchpriority="high" decoding="sync">
+              </picture>
               <div class="slide-caption">Fitform 570 Vario &bull; Tot €600 Korting</div>
             </div>
             <!-- 2. Sta-op Stoel Dordrecht -->
             <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-dordrecht" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_dordrecht_cozy.png" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht">
+              <picture>
+                <source srcset="assets/stoelen/chair_dordrecht_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_dordrecht_cozy.jpg" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Sta-op Stoel Dordrecht</div>
             </div>
             <!-- 3. Fitform 574 Vario (Actiemodel) -->
             <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html?actie=1#najaarsactieBanner" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_fitform_574_cozy.png" alt="Fitform 574 Vario met najaarsactie fabrieksactie">
+              <picture>
+                <source srcset="assets/stoelen/chair_fitform_574_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_fitform_574_cozy.jpg" alt="Fitform 574 Vario met najaarsactie fabrieksactie" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Fitform 574 Vario &bull; Tot €600 Korting</div>
             </div>
             <!-- 4. Draaibare Sta-op Stoel Zwijndrecht -->
             <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-draaibaar-zwijndrecht" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_zwijndrecht_cozy.png" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht">
+              <picture>
+                <source srcset="assets/stoelen/chair_zwijndrecht_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_zwijndrecht_cozy.jpg" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Draaibare Sta-op Stoel Zwijndrecht</div>
             </div>
             <!-- 5. Fitform 580 Vario (Actiemodel) -->
             <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html?actie=1#najaarsactieBanner" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_fitform_580_cozy.png" alt="Fitform 580 Vario ergonomische fauteuil met najaarsactie">
+              <picture>
+                <source srcset="assets/stoelen/chair_fitform_580_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_fitform_580_cozy.jpg" alt="Fitform 580 Vario ergonomische fauteuil met najaarsactie" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Fitform 580 Vario &bull; Tot €600 Korting</div>
             </div>
             <!-- 6. Lederen Sta-op Stoel Rotterdam -->
             <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-rotterdam" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_rotterdam_cozy.png" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam">
+              <picture>
+                <source srcset="assets/stoelen/chair_rotterdam_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_rotterdam_cozy.jpg" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Lederen Sta-op Stoel Rotterdam</div>
             </div>
             <!-- 7. Fitform 552 Elevo (Actiemodel) -->
             <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html?actie=1#najaarsactieBanner" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_fitform_552_cozy.png" alt="Fitform 552 Elevo sta-op stoel met najaarsactie">
+              <picture>
+                <source srcset="assets/stoelen/chair_fitform_552_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_fitform_552_cozy.jpg" alt="Fitform 552 Elevo sta-op stoel met najaarsactie" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Fitform 552 Elevo &bull; Tot €600 Korting</div>
             </div>
             <!-- 8. Doge Bellino Royal -->
             <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-doge-bellino" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_bellino_cozy.png" alt="Elegant interieur met de comfortabele Doge Bellino Royal">
+              <picture>
+                <source srcset="assets/stoelen/chair_bellino_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_bellino_cozy.jpg" alt="Elegant interieur met de comfortabele Doge Bellino Royal" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Doge Bellino Royal</div>
             </div>
             <!-- 9. Fitform 570 RECO (Actiemodel) -->
             <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html?actie=1#najaarsactieBanner" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_fitform_570_cozy.png" alt="Fitform 570 Vario RECO met najaarsactie">
+              <picture>
+                <source srcset="assets/stoelen/chair_fitform_570_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_fitform_570_cozy.jpg" alt="Fitform 570 Vario RECO met najaarsactie" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Fitform 570 RECO &bull; Tot €600 Korting</div>
             </div>
             <!-- 10. Doge Modulair Zorgstoel -->
             <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-doge-modulair" style="cursor: pointer;">
-              <img src="assets/stoelen/chair_doge_modulair_cozy.png" alt="Comfortabele zithoek met de Doge Modulair Zorgstoel">
+              <picture>
+                <source srcset="assets/stoelen/chair_doge_modulair_cozy.avif" type="image/avif">
+                <img src="assets/stoelen/chair_doge_modulair_cozy.jpg" alt="Comfortabele zithoek met de Doge Modulair Zorgstoel" width="800" height="800" loading="lazy" decoding="async">
+              </picture>
               <div class="slide-caption">Doge Modulair Zorgstoel</div>
             </div>
           </div>
@@ -311,8 +346,10 @@
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;" class="najaarsactie-grid">
         <!-- Image Column (Left) -->
         <div class="najaarsactie-image-col" style="position: relative; text-align: center;">
-          <div style="position: relative; display: inline-block;">
-            <img src="assets/fitform_najaarsactie_2026.png" alt="Fitform Najaarsactie - korting tot 600 euro op een Fitform fauteuil op maat" style="width: 100%; max-width: 540px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 15px 35px rgba(0,0,0,0.12); display: block;">
+            <picture>
+              <source srcset="assets/fitform_najaarsactie_2026.avif" type="image/avif">
+              <img src="assets/fitform_najaarsactie_2026.jpg" alt="Fitform Najaarsactie - korting tot 600 euro op een Fitform fauteuil op maat" width="540" height="360" loading="lazy" decoding="async" style="width: 100%; max-width: 540px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 15px 35px rgba(0,0,0,0.12); display: block;">
+            </picture>
             
             <!-- Voordeel Sticker (linksboven, gezicht blijft 100% vrij) -->
             <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="banner-stamp-link" title="Klik om de €600 najaarsactie stoelen te bekijken" style="position: absolute; top: -22px; left: -22px; z-index: 5; text-decoration: none; width: 135px; height: 135px; margin: 0;">
@@ -652,7 +689,10 @@
             <a href="tel:+31786314858" class="advisor-trust-bubble" style="display: flex !important; align-items: center !important; gap: 12px !important; margin-top: 12px !important; text-decoration: none !important; color: inherit !important; box-sizing: border-box !important; width: 100% !important; background: transparent !important; border: none !important; padding: 0 !important; transition: all 0.2s ease !important;" title="Bel direct met Geertjan voor advies over dit model">
               <!-- Geertjan Pasfoto (Groter: 54px) -->
               <div style="position: relative !important; width: 54px !important; height: 54px !important; min-width: 54px !important; max-width: 54px !important; border-radius: 50% !important; overflow: hidden !important; border: 2.5px solid #4b8f24 !important; flex-shrink: 0 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;">
-                <img src="assets/geert.png" alt="Geertjan" style="width: 54px !important; height: 54px !important; max-width: 54px !important; min-width: 54px !important; object-fit: cover !important; object-position: top center !important; display: block !important; margin: 0 !important; border-radius: 50% !important; border: none !important;">
+                <picture>
+                  <source srcset="assets/geert_avatar.avif" type="image/avif">
+                  <img src="assets/geert_avatar.jpg" alt="Geertjan" width="54" height="54" loading="lazy" decoding="async" style="width: 54px !important; height: 54px !important; max-width: 54px !important; min-width: 54px !important; object-fit: cover !important; object-position: top center !important; display: block !important; margin: 0 !important; border-radius: 50% !important; border: none !important;">
+                </picture>
               </div>
               <!-- Tekstballonnetje Rechts -->
               <div style="position: relative !important; background: #ffffff !important; border: 1.5px solid #c9dcb9 !important; border-radius: 12px !important; padding: 9px 13px !important; font-size: 0.84rem !important; line-height: 1.35 !important; color: #2d3329 !important; flex: 1 !important; text-align: left !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;">
