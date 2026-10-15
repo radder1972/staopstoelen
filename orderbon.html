@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orderbon | Schipper Compact Wonen & staopstoelen.nl</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-sage: #6ab13c;
+      --color-sage-light: #eef7eb;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #d27712;
+      --color-cream: #fbf9f5;
+      --color-cream-dark: #f3efe6;
+      --color-dark: #1d2024;
+      --color-gray: #5e6368;
+      --color-gray-light: #d6dadf;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: #eef2f5;
+      padding: 20px 10px;
+      line-height: 1.3;
+      font-size: 11.5px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    input, textarea, select, button {
+      font-family: var(--font-body);
+    }
+
+    /* Screen Toolbar */
+    .no-print-bar {
+      max-width: 210mm;
+      margin: 0 auto 16px auto;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toolbar-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--color-forest-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar-badge {
+      background: var(--color-sage-light);
+      color: var(--color-forest);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      border: 1px solid rgba(75, 143, 36, 0.2);
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action {
+      background: transparent;
+      color: var(--color-gray);
+      border: 1px solid var(--color-gray-light);
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 11.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: #f8fafc;
+      color: var(--color-dark);
+      border-color: #cbd5e1;
+    }
+
+    .btn-print {
+      background: var(--color-forest);
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.25);
+    }
+
+    .btn-print:hover {
+      background: #3d751d;
+      transform: translateY(-1px);
+    }
+
+    /* A4 Sheet Canvas */
+    .sheet {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 10mm 14mm 9mm 14mm;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid var(--color-forest);
+      position: relative;
+    }
+
+    .brand-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.4px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .brand-name span {
+      color: var(--color-terracotta);
+    }
+
+    .brand-subline {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-forest);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .brand-dual {
+      font-size: 10px;
+      color: var(--color-gray);
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-dual strong {
+      color: var(--color-forest-dark);
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 9.5px;
+      color: var(--color-gray);
+      line-height: 1.35;
+    }
+
+    .header-right strong {
+      color: var(--color-dark);
+    }
+
+    .header-right .web-pill {
+      display: inline-block;
+      background: var(--color-forest-dark);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 9.5px;
+      letter-spacing: 0.4px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+    }
+
+    /* Document Title & Meta Bar */
+    .order-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #f7faf5 0%, #f3efe6 100%);
+      border: 1px solid #dde5d7;
+      border-radius: 6px;
+      padding: 6px 12px;
+      margin-top: 8px;
+    }
+
+    .order-title-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .order-badge {
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .order-tagline {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+    }
+
+    .order-meta-fields {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+
+    .meta-input {
+      border: none;
+      border-bottom: 1.5px solid var(--color-forest);
+      background: transparent;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      padding: 1px 4px;
+      outline: none;
+      width: 100px;
+    }
+
+    /* Section Styles */
+    .section-wrap {
+      margin-top: 7px;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .section-head {
+      background: linear-gradient(90deg, var(--color-forest) 0%, var(--color-sage) 100%);
+      color: #ffffff;
+      padding: 3.5px 10px;
+      font-family: var(--font-heading);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-head.orange {
+      background: linear-gradient(90deg, var(--color-terracotta) 0%, #f6a644 100%);
+    }
+
+    .section-head.dark {
+      background: linear-gradient(90deg, #2a3227 0%, #465341 100%);
+    }
+
+    .section-body {
+      padding: 6px 10px;
+    }
+
+    /* Form Grids */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 14px;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      min-height: 20px;
+    }
+
+    .form-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      white-space: nowrap;
+      min-width: 82px;
+    }
+
+    .form-fill {
+      flex: 1;
+      border-bottom: 1px dotted #8c939c;
+      min-height: 18px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .form-input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-dark);
+      padding: 0 2px 1px 2px;
+      outline: none;
+      line-height: 1;
+    }
+
+    .form-input::placeholder {
+      color: #b0b7be;
+      font-size: 10.5px;
+      font-style: italic;
+    }
+
+    /* Specificaties & Aankoop */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 8px;
+    }
+
+    .chair-spec-box {
+      border: 1px solid #e2e8f0;
+      background: #fafbfc;
+      border-radius: 5px;
+      padding: 6px 8px;
+    }
+
+    .spec-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .spec-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .spec-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      min-width: 90px;
+      white-space: nowrap;
+    }
+
+    .spec-input {
+      flex: 1;
+      border: none;
+      border-bottom: 1px dotted #8c939c;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-dark);
+      outline: none;
+      padding: 1px 2px;
+    }
+
+    /* Maatwerk Maten Mini Grid */
+    .maten-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .maat-mini-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 3px 4px;
+      text-align: center;
+    }
+
+    .maat-mini-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .maat-mini-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid var(--color-forest);
+      background: transparent;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--color-terracotta-dark);
+      outline: none;
+      padding: 2px 0 1px 0;
+    }
+
+    /* Order / Aankoop Table */
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2px;
+      font-size: 10.5px;
+    }
+
+    .order-table th {
+      background: #edf3e9;
+      color: var(--color-forest-dark);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: 4px 6px;
+      text-align: left;
+      border-bottom: 1.5px solid #cbd5e1;
+    }
+
+    .order-table th.tar, .order-table td.tar {
+      text-align: right;
+    }
+
+    .order-table th.tac, .order-table td.tac {
+      text-align: center;
+    }
+
+    .order-table td {
+      padding: 4px 6px;
+      border-bottom: 1px dotted #cbd5e1;
+      vertical-align: middle;
+    }
+
+    .order-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table-input-clean {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-dark);
+      outline: none;
+    }
+
+    .table-input-clean.fw700 {
+      font-weight: 700;
+    }
+
+    .table-input-clean.tar {
+      text-align: right;
+    }
+
+    .table-input-clean.tac {
+      text-align: center;
+    }
+
+    /* Checkboxes & Radios */
+    .checkbox-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      font-size: 10.5px;
+    }
+
+    .custom-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .custom-check input[type="checkbox"],
+    .custom-check input[type="radio"] {
+      width: 13px;
+      height: 13px;
+      accent-color: var(--color-forest);
+      cursor: pointer;
+    }
+
+    /* Split Section: Financieel & Levering */
+    .finance-delivery-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 8px;
+      margin-top: 7px;
+    }
+
+    .finance-card {
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .finance-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .finance-table td {
+      padding: 4px 8px;
+      border-bottom: 1px dotted #e2e8f0;
+    }
+
+    .finance-table tr:last-child td {
+      border-bottom: none;
+      background: #fbf9f5;
+      font-weight: 800;
+    }
+
+    .finance-lbl {
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+
+    .finance-amount-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 11.5px;
+      color: var(--color-forest-dark);
+    }
+
+    .finance-amount-wrap.total {
+      font-size: 13px;
+      color: var(--color-forest-dark);
+    }
+
+    .finance-amount-wrap.due {
+      font-size: 13px;
+      color: var(--color-terracotta-dark);
+    }
+
+    .price-input {
+      width: 85px;
+      text-align: right;
+      border: none;
+      border-bottom: 1.5px solid var(--color-forest);
+      background: transparent;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 800;
+      color: inherit;
+      outline: none;
+      padding: 1px 2px;
+    }
+
+    .price-input.due-input {
+      border-color: var(--color-terracotta);
+    }
+
+    /* Handtekeningen Sectie */
+    .sign-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 7px;
+    }
+
+    .sign-box-wrap {
+      border: 1px solid var(--color-gray-light);
+      border-radius: 6px;
+      padding: 6px 10px;
+      background: #fafbfc;
+    }
+
+    .sign-title {
+      font-size: 10px;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 3px;
+    }
+
+    .sign-field {
+      height: 38px;
+      border-bottom: 1px solid #94a3b8;
+      background: #ffffff;
+      margin-bottom: 4px;
+      position: relative;
+    }
+
+    .sign-field-hint {
+      position: absolute;
+      bottom: 2px;
+      right: 4px;
+      font-size: 8.5px;
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    .sign-details {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 9.5px;
+      color: var(--color-gray);
+    }
+
+    .sign-line-input {
+      border: none;
+      border-bottom: 1px dotted #8c939c;
+      background: transparent;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-dark);
+      outline: none;
+      padding: 0 2px;
+      flex: 1;
+    }
+
+    /* Voorwaarden & Footer */
+    .sheet-footer {
+      margin-top: 6px;
+      padding-top: 5px;
+      border-top: 1px solid #cbd5e1;
+    }
+
+    .terms-text {
+      font-size: 8.5px;
+      color: #4b5563;
+      line-height: 1.35;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .terms-text strong {
+      color: var(--color-dark);
+    }
+
+    .footer-pill {
+      background: #f4f8f1;
+      border: 1px solid #b7d5ae;
+      border-radius: 9999px;
+      padding: 3.5px 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+    }
+
+    .footer-pill span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-dot {
+      color: var(--color-terracotta);
+      font-size: 12px;
+    }
+
+    /* Print Specific Styling */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .no-print-bar {
+        display: none !important;
+      }
+
+      .sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        padding: 8mm 12mm 6mm 12mm !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      input::placeholder, textarea::placeholder {
+        color: transparent !important;
+      }
+
+      input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+        color: transparent !important;
+      }
+
+      .footer-pill {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <div class="no-print-bar">
+    <div class="toolbar-left">
+      <span class="toolbar-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Orderbon Systeem
+      </span>
+      <span class="toolbar-badge">A4 Printklaar &amp; Digitaal</span>
+      <span id="saveStatus" style="font-size: 11px; color: #16a34a; font-weight: 600; display: none;">✓ Opgeslagen</span>
+    </div>
+    <div class="toolbar-right">
+      <button type="button" class="btn-action" id="btnFillDemo">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        Voorbeeld Inladen
+      </button>
+      <button type="button" class="btn-action" id="btnClearForm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        Leegmaken
+      </button>
+      <button type="button" class="btn-print" onclick="window.print()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Afdrukken / PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- A4 Sheet Canvas -->
+  <div class="sheet">
+
+    <!-- 1. Header -->
+    <header class="sheet-header">
+      <div class="brand-left">
+        <div class="brand-title-wrap">
+          <div class="brand-name">Schipper <span>compact wonen</span></div>
+        </div>
+        <div class="brand-subline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
+        <div class="brand-dual">
+          <span>Showroom &amp; Maatwerk: <strong>staopstoelen.nl</strong></span>
+          <span>&bull;</span>
+          <span>Merwedestraat 239, 3313 GT Dordrecht</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="web-pill">WWW.SCHIPPERCOMPACTWONEN.NL</span><br>
+        <strong>Tel:</strong> 078 – 631 4858 &bull; <strong>E-mail:</strong> info@staopstoelen.nl<br>
+        <strong>IBAN:</strong> NL09 RABO 0117 0475 62<br>
+        <strong>Kamer van Koophandel:</strong> 23060656
+      </div>
+    </header>
+
+    <!-- 2. Order Meta Bar -->
+    <div class="order-meta-bar">
+      <div class="order-title-box">
+        <span class="order-badge">ORDERBON</span>
+        <span class="order-tagline">Officiële aankoop- &amp; maatwerkopdracht</span>
+      </div>
+      <div class="order-meta-fields">
+        <div class="meta-item">
+          <span>Bon-/Ordernr:</span>
+          <input type="text" id="orderNummer" class="meta-input" placeholder="bijv. 2026-0842" style="width: 90px;">
+        </div>
+        <div class="meta-item">
+          <span>Datum:</span>
+          <input type="text" id="orderDatum" class="meta-input" placeholder="DD-MM-JJJJ" style="width: 85px;">
+        </div>
+        <div class="meta-item">
+          <span>Adviseur:</span>
+          <input type="text" id="orderAdviseur" class="meta-input" placeholder="Naam adviseur" style="width: 110px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Gegevens Klant -->
+    <div class="section-wrap">
+      <div class="section-head">
+        <span>Gegevens Klant &amp; Contact</span>
+        <span style="font-size: 8.5px; font-weight: 600; opacity: 0.9;">Particulier / Zorginstelling</span>
+      </div>
+      <div class="section-body">
+        <div class="grid-2col">
+          <div>
+            <div class="form-row">
+              <span class="form-lbl">Naam cliënt:</span>
+              <div class="form-fill"><input type="text" id="klantNaam" class="form-input" placeholder="Dhr. / Mevr. Achternaam"></div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Adres:</span>
+              <div class="form-fill"><input type="text" id="klantAdres" class="form-input" placeholder="Straatnaam en huisnummer"></div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Postcode &amp; Plaats:</span>
+              <div class="form-fill">
+                <input type="text" id="klantPostcode" class="form-input" placeholder="1234 AB" style="width: 65px; flex: none;">
+                <span style="color: var(--color-gray); padding: 0 4px;">-</span>
+                <input type="text" id="klantPlaats" class="form-input" placeholder="Woonplaats">
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="form-row">
+              <span class="form-lbl">Telefoonnummer:</span>
+              <div class="form-fill"><input type="text" id="klantTelefoon" class="form-input" placeholder="06 - ... of vast nummer"></div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">E-mailadres:</span>
+              <div class="form-fill"><input type="text" id="klantEmail" class="form-input" placeholder="klant@email.nl"></div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Contactpersoon:</span>
+              <div class="form-fill"><input type="text" id="klantContactpersoon" class="form-input" placeholder="Mantelzorger / zoon / dochter + telnr"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Aankoop / Stoel Specificaties -->
+    <div class="section-wrap">
+      <div class="section-head orange">
+        <span>Aankoop &amp; Stoel Specificaties</span>
+        <span style="font-size: 8.5px; font-weight: 600; opacity: 0.9;">100% Maatwerk op Lichaamsmaten</span>
+      </div>
+      <div class="section-body">
+        
+        <div class="specs-grid">
+          <div class="chair-spec-box">
+            <div class="spec-line">
+              <span class="spec-label">Stoel / Model:</span>
+              <input type="text" id="stoelModel" class="spec-input" placeholder="bijv. Fitform 570 Vario / Doge Bellino / Mecam">
+            </div>
+            <div class="spec-line">
+              <span class="spec-label">Uitvoering / Motoren:</span>
+              <div class="checkbox-row" style="gap: 10px;">
+                <label class="custom-check"><input type="radio" name="motoren" value="1-motorig"> 1-motorig</label>
+                <label class="custom-check"><input type="radio" name="motoren" value="2-motorig"> 2-motorig</label>
+                <label class="custom-check"><input type="radio" name="motoren" value="3-motorig" checked> 3-motorig (kantel)</label>
+                <label class="custom-check"><input type="radio" name="motoren" value="draaibaar"> Draaibaar</label>
+              </div>
+            </div>
+            <div class="spec-line">
+              <span class="spec-label">Bekleding &amp; Kleur:</span>
+              <input type="text" id="stoelBekleding" class="spec-input" placeholder="bijv. Rancho Leder Cognac / Oasis Stof Antraciet">
+            </div>
+          </div>
+
+          <div class="chair-spec-box">
+            <div class="spec-line">
+              <span class="spec-label">Conditie stoel:</span>
+              <div class="checkbox-row" style="gap: 10px;">
+                <label class="custom-check"><input type="radio" name="conditie" value="gereviseerd" checked> Gecertificeerd Gereviseerd</label>
+                <label class="custom-check"><input type="radio" name="conditie" value="nieuw"> Nieuw Maatwerk</label>
+              </div>
+            </div>
+            <div class="maten-strip">
+              <div class="maat-mini-card">
+                <div class="maat-mini-lbl">Zithoogte</div>
+                <input type="text" id="maatZithoogte" class="maat-mini-input" placeholder=".. cm">
+              </div>
+              <div class="maat-mini-card">
+                <div class="maat-mini-lbl">Zitdiepte</div>
+                <input type="text" id="maatZitdiepte" class="maat-mini-input" placeholder=".. cm">
+              </div>
+              <div class="maat-mini-card">
+                <div class="maat-mini-lbl">Armleggers</div>
+                <input type="text" id="maatArmleggers" class="maat-mini-input" placeholder=".. cm">
+              </div>
+              <div class="maat-mini-card">
+                <div class="maat-mini-lbl">Lendensteun</div>
+                <input type="text" id="maatLenden" class="maat-mini-input" placeholder="Std / Pomp">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extra Accessoires & Zorghulpmiddelen Checklist -->
+        <div style="margin-top: 6px; padding-top: 4px; border-top: 1px dashed #cbd5e1;">
+          <div style="font-size: 9.5px; font-weight: 700; color: var(--color-forest-dark); margin-bottom: 3px;">Geselecteerde Opties &amp; Accessoires:</div>
+          <div class="checkbox-row">
+            <label class="custom-check"><input type="checkbox" id="optAccu"> Accupakket (snoerloos)</label>
+            <label class="custom-check"><input type="checkbox" id="optVerwarming"> Verwarming zitting/rug</label>
+            <label class="custom-check"><input type="checkbox" id="optLumbaal"> Opblaasbare lendesteun</label>
+            <label class="custom-check"><input type="checkbox" id="optWielen"> Wielsysteem / Rijvoorziening</label>
+            <label class="custom-check"><input type="checkbox" id="optKussen"> Ergonomisch hoofdkussen</label>
+            <label class="custom-check"><input type="checkbox" id="optTafel"> Afneembaar werk-/eetblad</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 5. Bestelregels & Omschrijving -->
+    <div class="section-wrap">
+      <div class="section-head dark">
+        <span>Omschrijving Aankoop &amp; Maatwerkafspraken</span>
+        <span style="font-size: 8.5px; font-weight: 600; opacity: 0.9;">Specificatie Prijsopbouw</span>
+      </div>
+      <div class="section-body" style="padding: 0;">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th style="width: 50px;" class="tac">Aantal</th>
+              <th>Artikelspecifieke Omschrijving &amp; Afspraken</th>
+              <th style="width: 110px;" class="tar">Prijs p.st. (€)</th>
+              <th style="width: 110px;" class="tar">Totaal (€)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tac"><input type="text" id="row1Qty" class="table-input-clean tac fw700" value="1x"></td>
+              <td><input type="text" id="row1Desc" class="table-input-clean fw700" placeholder="bijv. Fitform 570 Vario sta-op stoel, bekleding Rancho Cognac"></td>
+              <td class="tar"><input type="text" id="row1Price" class="table-input-clean tar fw700" placeholder="€ 0,00" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row1Sub" class="table-input-clean tar fw700" placeholder="€ 0,00" readonly></td>
+            </tr>
+            <tr>
+              <td class="tac"><input type="text" id="row2Qty" class="table-input-clean tac" placeholder="1x"></td>
+              <td><input type="text" id="row2Desc" class="table-input-clean" placeholder="bijv. Geïntegreerd Lithium Accupakket"></td>
+              <td class="tar"><input type="text" id="row2Price" class="table-input-clean tar" placeholder="€ 0,00" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row2Sub" class="table-input-clean tar" placeholder="€ 0,00" readonly></td>
+            </tr>
+            <tr>
+              <td class="tac"><input type="text" id="row3Qty" class="table-input-clean tac" placeholder="1x"></td>
+              <td><input type="text" id="row3Desc" class="table-input-clean" placeholder="bijv. Bezorging, vakkundige plaatsing & instructie aan huis"></td>
+              <td class="tar"><input type="text" id="row3Price" class="table-input-clean tar" placeholder="Inbegrepen" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row3Sub" class="table-input-clean tar" placeholder="€ 0,00" readonly></td>
+            </tr>
+            <tr>
+              <td class="tac"><input type="text" id="row4Qty" class="table-input-clean tac" placeholder=""></td>
+              <td><input type="text" id="row4Desc" class="table-input-clean" placeholder="Vrije regel voor extra opties, inruil oude stoel of specifieke wensen..."></td>
+              <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" placeholder="" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row4Sub" class="table-input-clean tar" placeholder="" readonly></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 6. Financieel Overzicht & Bezorging/Levering -->
+    <div class="finance-delivery-grid">
+      
+      <!-- Financieel Blok -->
+      <div class="finance-card">
+        <div class="section-head" style="background: #394833;">
+          <span>Financieel Overzicht</span>
+          <span style="font-size: 8.5px; opacity: 0.9;">Bedragen Incl. 21% BTW</span>
+        </div>
+        <table class="finance-table">
+          <tr>
+            <td class="finance-lbl">Totaalbedrag order:</td>
+            <td>
+              <div class="finance-amount-wrap total">
+                <span>€</span>
+                <input type="text" id="totalPrice" class="price-input" placeholder="0,00" oninput="calculateBalance()">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="finance-lbl">
+              Aanbetaling:
+              <div style="font-size: 8.5px; font-weight: normal; color: var(--color-gray);">Binnen 8 dgn of direct voldaan</div>
+            </td>
+            <td>
+              <div class="finance-amount-wrap">
+                <span>€</span>
+                <input type="text" id="depositPrice" class="price-input" placeholder="0,00" oninput="calculateBalance()">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="finance-lbl">
+              Restbedrag bij levering:
+              <div style="font-size: 8.5px; font-weight: normal; color: var(--color-gray);">Per pin bij bezorging of bank</div>
+            </td>
+            <td>
+              <div class="finance-amount-wrap due">
+                <span>€</span>
+                <input type="text" id="balancePrice" class="price-input due-input" placeholder="0,00" readonly>
+              </div>
+            </td>
+          </tr>
+        </table>
+        
+        <div style="padding: 4px 8px; background: #fafafa; border-top: 1px solid #e2e8f0; font-size: 9.5px;">
+          <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Betaalwijze aanbetaling:</div>
+          <div class="checkbox-row" style="gap: 8px;">
+            <label class="custom-check"><input type="radio" name="payDeposit" value="pin" checked> Pin winkel</label>
+            <label class="custom-check"><input type="radio" name="payDeposit" value="factuur"> Factuur / Bank</label>
+            <label class="custom-check"><input type="radio" name="payDeposit" value="contant"> Contant</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bezorging & Planning Blok -->
+      <div class="finance-card">
+        <div class="section-head" style="background: #394833;">
+          <span>Levering &amp; Afspraken</span>
+          <span style="font-size: 8.5px; opacity: 0.9;">Eigen Bezorgdienst</span>
+        </div>
+        <div style="padding: 6px 8px; font-size: 10px;">
+          <div style="margin-bottom: 5px;">
+            <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Verwachte levertijd:</div>
+            <div class="checkbox-row" style="gap: 8px;">
+              <label class="custom-check"><input type="radio" name="deliveryTime" value="snel" checked> Binnen 1-2 wkn</label>
+              <label class="custom-check"><input type="radio" name="deliveryTime" value="op-maat"> 3-5 wkn</label>
+              <label class="custom-check"><input type="radio" name="deliveryTime" value="in-overleg"> In overleg</label>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 5px;">
+            <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Bezorgwijze &amp; Plaatsing:</div>
+            <div class="checkbox-row" style="gap: 8px;">
+              <label class="custom-check"><input type="radio" name="deliveryMethod" value="bezorgen" checked> Bezorging &amp; instellen aan huis</label>
+              <label class="custom-check"><input type="radio" name="deliveryMethod" value="afhalen"> Afhalen showroom</label>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Situatie woning &amp; Inruil:</div>
+            <div class="checkbox-row" style="gap: 8px;">
+              <label class="custom-check"><input type="checkbox" id="chkLift"> Lift aanwezig</label>
+              <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
+              <label class="custom-check"><input type="checkbox" id="chkInruil"> Oude stoel meenemen</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 7. Akkoord & Handtekeningen -->
+    <div class="sign-container">
+      <div class="sign-box-wrap">
+        <div class="sign-title">Voor akkoord &amp; opdrachtverstrekking (Klant):</div>
+        <div class="sign-field">
+          <span class="sign-field-hint">Handtekening cliënt / gemachtigde</span>
+        </div>
+        <div class="sign-details">
+          <div style="display: flex; align-items: center; gap: 4px; flex: 1;">
+            <span>Naam:</span>
+            <input type="text" id="signKlantNaam" class="sign-line-input" placeholder="Naam ondertekenaar">
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px; width: 110px;">
+            <span>Datum:</span>
+            <input type="text" id="signKlantDatum" class="sign-line-input" placeholder="DD-MM-JJJJ">
+          </div>
+        </div>
+      </div>
+
+      <div class="sign-box-wrap">
+        <div class="sign-title">Gezien &amp; geaccepteerd (Adviseur):</div>
+        <div class="sign-field">
+          <span class="sign-field-hint">Handtekening Schipper Compact Wonen</span>
+        </div>
+        <div class="sign-details">
+          <div style="display: flex; align-items: center; gap: 4px; flex: 1;">
+            <span>Adviseur:</span>
+            <input type="text" id="signAdviseur" class="sign-line-input" placeholder="Geertjan / Matthias / Suus">
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px; width: 110px;">
+            <span>Showroom:</span>
+            <input type="text" class="sign-line-input" value="Dordrecht" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Footer & Voorwaarden -->
+    <footer class="sheet-footer">
+      <div class="terms-text">
+        Op alle verkopen en leveringen zijn onze Algemene Voorwaarden van toepassing, te bevragen in de showroom te Dordrecht of in te zien via <strong>www.staopstoelen.nl</strong>.<br>
+        Aanbetaling dient binnen 8 dagen na ontvangst van deze orderbon te zijn voldaan. Het resterende bedrag dient bij bezorging per mobiele pin of vooraf per bank te worden voldaan.
+      </div>
+      <div class="footer-pill">
+        <span><strong>Schipper Compact Wonen</strong> &bull; staopstoelen.nl</span>
+        <span class="footer-dot">&bull;</span>
+        <span>Merwedestraat 239, 3313 GT Dordrecht</span>
+        <span class="footer-dot">&bull;</span>
+        <span>Tel: 078 – 631 4858</span>
+        <span class="footer-dot">&bull;</span>
+        <span>IBAN: NL09 RABO 0117 0475 62</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Berekening Totalen
+    function parseEuro(val) {
+      if (!val) return 0;
+      let clean = val.replace('€', '').replace(/\s/g, '').replace('.', '').replace(',', '.');
+      let num = parseFloat(clean);
+      return isNaN(num) ? 0 : num;
+    }
+
+    function formatEuro(num) {
+      return num.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calculateTotal() {
+      let p1 = parseEuro(document.getElementById('row1Price').value);
+      let p2 = parseEuro(document.getElementById('row2Price').value);
+      let p3 = parseEuro(document.getElementById('row3Price').value);
+      let p4 = parseEuro(document.getElementById('row4Price').value);
+
+      document.getElementById('row1Sub').value = p1 > 0 ? '€ ' + formatEuro(p1) : '';
+      document.getElementById('row2Sub').value = p2 > 0 ? '€ ' + formatEuro(p2) : '';
+      document.getElementById('row3Sub').value = p3 > 0 ? '€ ' + formatEuro(p3) : '';
+      document.getElementById('row4Sub').value = p4 > 0 ? '€ ' + formatEuro(p4) : '';
+
+      let sum = p1 + p2 + p3 + p4;
+      if (sum > 0) {
+        document.getElementById('totalPrice').value = formatEuro(sum);
+        calculateBalance();
+      }
+      saveToStorage();
+    }
+
+    function calculateBalance() {
+      let total = parseEuro(document.getElementById('totalPrice').value);
+      let deposit = parseEuro(document.getElementById('depositPrice').value);
+      let balance = Math.max(0, total - deposit);
+      document.getElementById('balancePrice').value = formatEuro(balance);
+      saveToStorage();
+    }
+
+    // Auto-save naar LocalStorage
+    const STORAGE_KEY = 'scw_orderbon_data';
+
+    function saveToStorage() {
+      const data = {};
+      document.querySelectorAll('input').forEach(input => {
+        if (input.type === 'radio' || input.type === 'checkbox') {
+          if (input.name) {
+            data[input.name + '_' + input.value] = input.checked;
+          } else if (input.id) {
+            data[input.id] = input.checked;
+          }
+        } else if (input.id) {
+          data[input.id] = input.value;
+        }
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      
+      const statusEl = document.getElementById('saveStatus');
+      if (statusEl) {
+        statusEl.style.display = 'inline';
+        clearTimeout(window.saveTimer);
+        window.saveTimer = setTimeout(() => {
+          statusEl.style.display = 'none';
+        }, 1500);
+      }
+    }
+
+    function loadFromStorage() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      try {
+        const data = JSON.parse(saved);
+        Object.keys(data).forEach(key => {
+          const el = document.getElementById(key);
+          if (el) {
+            if (el.type === 'checkbox') {
+              el.checked = data[key];
+            } else {
+              el.value = data[key];
+            }
+          } else {
+            // Check radio or custom checkboxes with name_val
+            const parts = key.split('_');
+            if (parts.length === 2) {
+              const radios = document.querySelectorAll(`input[name="${parts[0]}"]`);
+              radios.forEach(r => {
+                if (r.value === parts[1]) r.checked = data[key];
+              });
+            }
+          }
+        });
+      } catch (e) {
+        console.error('Error loading storage', e);
+      }
+    }
+
+    // Event listeners for change and input
+    document.addEventListener('DOMContentLoaded', () => {
+      loadFromStorage();
+
+      // Vandaag datum instellen indien datum leeg is
+      const dateEl = document.getElementById('orderDatum');
+      if (dateEl && !dateEl.value) {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        dateEl.value = `${dd}-${mm}-${yyyy}`;
+        
+        const signDate = document.getElementById('signKlantDatum');
+        if (signDate && !signDate.value) signDate.value = `${dd}-${mm}-${yyyy}`;
+      }
+
+      document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', saveToStorage);
+        input.addEventListener('change', saveToStorage);
+      });
+    });
+
+    // Knoppen functionaliteit
+    document.getElementById('btnClearForm').addEventListener('click', () => {
+      if (confirm('Wilt u alle ingevulde velden leegmaken voor een schone bon?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        document.querySelectorAll('input').forEach(i => {
+          if (i.type === 'checkbox' || i.type === 'radio') i.checked = false;
+          else if (!i.readOnly || i.id === 'balancePrice') i.value = '';
+        });
+        // Default radio selections
+        const defMotoren = document.querySelector('input[name="motoren"][value="3-motorig"]');
+        if (defMotoren) defMotoren.checked = true;
+        const defConditie = document.querySelector('input[name="conditie"][value="gereviseerd"]');
+        if (defConditie) defConditie.checked = true;
+        const defPin = document.querySelector('input[name="payDeposit"][value="pin"]');
+        if (defPin) defPin.checked = true;
+        const defTime = document.querySelector('input[name="deliveryTime"][value="snel"]');
+        if (defTime) defTime.checked = true;
+        const defMeth = document.querySelector('input[name="deliveryMethod"][value="bezorgen"]');
+        if (defMeth) defMeth.checked = true;
+        document.getElementById('chkGelijkvloers').checked = true;
+
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        document.getElementById('orderDatum').value = `${dd}-${mm}-${yyyy}`;
+        document.getElementById('signKlantDatum').value = `${dd}-${mm}-${yyyy}`;
+      }
+    });
+
+    document.getElementById('btnFillDemo').addEventListener('click', () => {
+      document.getElementById('orderNummer').value = '2026-SCW-104';
+      document.getElementById('orderAdviseur').value = 'Geertjan Klein Haneveld';
+      document.getElementById('klantNaam').value = 'Dhr. H. de Vries';
+      document.getElementById('klantAdres').value = 'Kastanjelaan 14';
+      document.getElementById('klantPostcode').value = '3311 AA';
+      document.getElementById('klantPlaats').value = 'Dordrecht';
+      document.getElementById('klantTelefoon').value = '06 - 12 34 56 78';
+      document.getElementById('klantEmail').value = 'h.devries@kpnmail.nl';
+      document.getElementById('klantContactpersoon').value = 'Dochter Marloes (06-87654321)';
+
+      document.getElementById('stoelModel').value = 'Fitform 570 Vario (Maat M)';
+      document.getElementById('stoelBekleding').value = 'Rancho Leder Cognac (Kleur 42)';
+      document.getElementById('maatZithoogte').value = '46 cm';
+      document.getElementById('maatZitdiepte').value = '49 cm';
+      document.getElementById('maatArmleggers').value = '21 cm';
+      document.getElementById('maatLenden').value = 'Pomp';
+
+      document.getElementById('optAccu').checked = true;
+      document.getElementById('optLumbaal').checked = true;
+      document.getElementById('optVerwarming').checked = false;
+      document.getElementById('optWielen').checked = false;
+
+      document.getElementById('row1Qty').value = '1x';
+      document.getElementById('row1Desc').value = 'Fitform 570 Vario sta-op fauteuil, Rancho Cognac, gecertificeerd gereviseerd';
+      document.getElementById('row1Price').value = '1.850,00';
+
+      document.getElementById('row2Qty').value = '1x';
+      document.getElementById('row2Desc').value = 'Geïntegreerd Lithium-Ion accupakket (snoerloos gebruik in kamer)';
+      document.getElementById('row2Price').value = '245,00';
+
+      document.getElementById('row3Qty').value = '1x';
+      document.getElementById('row3Desc').value = 'Eigen bezorging, plaatsing op vloer & ergonomisch instellen op maat';
+      document.getElementById('row3Price').value = '0,00';
+
+      document.getElementById('row4Qty').value = '1x';
+      document.getElementById('row4Desc').value = 'Inruil huidige defecte relaxfauteuil en gratis afvoer';
+      document.getElementById('row4Price').value = '- 100,00';
+
+      document.getElementById('totalPrice').value = '1.995,00';
+      document.getElementById('depositPrice').value = '500,00';
+      document.getElementById('balancePrice').value = '1.495,00';
+
+      document.getElementById('signKlantNaam').value = 'H. de Vries';
+      document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
+
+      calculateTotal();
+      alert('Voorbeelddata voor een Fitform 570 Vario order succesvol ingeladen!');
+    });
+  </script>
+</body>
+</html>
