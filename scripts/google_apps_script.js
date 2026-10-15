@@ -164,7 +164,9 @@ function doPost(e) {
         </div>
       `;
 
-      GmailApp.sendEmail(email, emailSubject, "", {
+      MailApp.sendEmail({
+        to: email,
+        subject: emailSubject,
         htmlBody: emailHtml,
         name: "Geertjan Klein Haneveld - Staopstoelen.nl"
       });
