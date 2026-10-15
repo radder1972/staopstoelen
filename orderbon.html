@@ -88,6 +88,43 @@
       border: 1px solid rgba(75, 143, 36, 0.25);
     }
 
+    /* Brand Switcher */
+    .brand-switcher {
+      display: inline-flex;
+      background: #edf2f7;
+      border: 1px solid #cbd5e1;
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .brand-switch-btn {
+      border: none;
+      background: transparent;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .brand-switch-btn:hover {
+      color: var(--color-dark);
+    }
+
+    .brand-switch-btn.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+    }
+
     .toolbar-right {
       display: flex;
       align-items: center;
@@ -181,6 +218,12 @@
 
     .brand-name span {
       color: var(--color-terracotta);
+    }
+
+    .brand-name.brand-staop {
+      text-transform: none;
+      font-size: 24px;
+      letter-spacing: -0.5px;
     }
 
     .brand-subline {
@@ -827,10 +870,16 @@
     <div class="toolbar-left">
       <span class="toolbar-title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-        Orderbon Systeem
+        Orderbon
       </span>
-      <span class="toolbar-badge">A4 Printklaar &amp; Digitaal</span>
-      <span id="saveStatus" style="font-size: 11.5px; color: #16a34a; font-weight: 600; display: none;">✓ Opgeslagen</span>
+      <div class="brand-switcher" id="brandSwitcher">
+        <button type="button" class="brand-switch-btn active" id="btnBrandSchipper" onclick="switchBrand('schipper')">
+          Schipper Compact Wonen
+        </button>
+        <button type="button" class="brand-switch-btn" id="btnBrandStaop" onclick="switchBrand('staopstoelen')">
+          staopstoelen.nl
+        </button>
+      </div>
     </div>
     <div class="toolbar-right">
       <button type="button" class="btn-action" id="btnFillDemo">
@@ -858,13 +907,13 @@
     <!-- 1. Header -->
     <header class="sheet-header">
       <div class="brand-left">
-        <div class="brand-name">Schipper <span>compact wonen</span></div>
-        <div class="brand-subline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
+        <div class="brand-name" id="brandTitle">Schipper <span>compact wonen</span></div>
+        <div class="brand-subline" id="brandSubline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
       </div>
       <div class="header-right">
-        <span class="web-pill">WWW.SCHIPPERCOMPACTWONEN.NL</span><br>
+        <span class="web-pill" id="headerWebPill">WWW.SCHIPPERCOMPACTWONEN.NL</span><br>
         <strong>Adres:</strong> Merwedestraat 239, 3313 GT Dordrecht<br>
-        <strong>Tel:</strong> 078 – 631 4858 &bull; <strong>E-mail:</strong> info@staopstoelen.nl<br>
+        <strong>Tel:</strong> 078 – 631 4858 &bull; <strong>E-mail:</strong> <span id="headerEmail">info@schippercompactwonen.nl</span><br>
         <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656
       </div>
     </header>
@@ -1110,10 +1159,10 @@
         <div class="sign-box-wrap">
           <div class="sign-head-block">
             <div class="sign-title">Voor akkoord adviseur</div>
-            <div class="sign-subtitle">Schipper Compact Wonen / staopstoelen.nl</div>
+            <div class="sign-subtitle" id="signAdviseurSubtitle">Schipper Compact Wonen</div>
           </div>
           <div class="sign-field">
-            <span class="sign-field-hint">Handtekening Schipper Compact Wonen</span>
+            <span class="sign-field-hint" id="signFieldHint">Handtekening Schipper Compact Wonen</span>
           </div>
           <div class="sign-details">
             <div class="sign-detail-item">
@@ -1139,7 +1188,7 @@
         </li>
         <li class="terms-item">
           <span class="terms-dot">&bull;</span>
-          <span>Op alle verkopen en leveringen zijn onze Algemene Voorwaarden van toepassing, te bevragen in de showroom te Dordrecht of via <strong>www.staopstoelen.nl</strong>.</span>
+          <span>Op alle verkopen en leveringen zijn onze Algemene Voorwaarden van toepassing, te bevragen in de showroom te Dordrecht.</span>
         </li>
         <li class="terms-item">
           <span class="terms-dot">&bull;</span>
@@ -1147,7 +1196,7 @@
         </li>
       </ul>
       <div class="footer-pill">
-        <span><strong>staopstoelen.nl</strong></span>
+        <span id="footerPillDomain"><strong>schippercompactwonen.nl</strong></span>
         <span class="footer-dot">&bull;</span>
         <span>Telefoon: 078 – 631 4858</span>
       </div>
@@ -1257,10 +1306,108 @@
       window.print();
     }
 
+    // Merk Wisselaar (Schipper Compact Wonen vs staopstoelen.nl)
+    const BRANDS = {
+      schipper: {
+        nameHtml: 'Schipper <span>compact wonen</span>',
+        isLowercase: false,
+        subline: 'Dé specialist in seniorenmeubelen & zorghulpmiddelen',
+        webPill: 'WWW.SCHIPPERCOMPACTWONEN.NL',
+        email: 'info@schippercompactwonen.nl',
+        signSubtitle: 'Schipper Compact Wonen',
+        signHint: 'Handtekening Schipper Compact Wonen',
+        footerDomain: 'schippercompactwonen.nl',
+        pageTitle: 'Orderbon | Schipper Compact Wonen'
+      },
+      staopstoelen: {
+        nameHtml: 'staopstoelen<span>.nl</span>',
+        isLowercase: true,
+        subline: 'Dé specialist in ergonomische maatwerkstoelen',
+        webPill: 'WWW.STAOPSTOELEN.NL',
+        email: 'info@staopstoelen.nl',
+        signSubtitle: 'staopstoelen.nl',
+        signHint: 'Handtekening staopstoelen.nl',
+        footerDomain: 'staopstoelen.nl',
+        pageTitle: 'Orderbon | staopstoelen.nl'
+      }
+    };
+
+    let activeBrand = 'schipper';
+
+    function switchBrand(brandKey) {
+      if (!BRANDS[brandKey]) brandKey = 'schipper';
+      activeBrand = brandKey;
+      const b = BRANDS[brandKey];
+
+      const brandTitleEl = document.getElementById('brandTitle');
+      if (brandTitleEl) {
+        brandTitleEl.innerHTML = b.nameHtml;
+        if (b.isLowercase) {
+          brandTitleEl.classList.add('brand-staop');
+        } else {
+          brandTitleEl.classList.remove('brand-staop');
+        }
+      }
+
+      const sublineEl = document.getElementById('brandSubline');
+      if (sublineEl) sublineEl.textContent = b.subline;
+
+      const webPillEl = document.getElementById('headerWebPill');
+      if (webPillEl) webPillEl.textContent = b.webPill;
+
+      const emailEl = document.getElementById('headerEmail');
+      if (emailEl) emailEl.textContent = b.email;
+
+      const signSubEl = document.getElementById('signAdviseurSubtitle');
+      if (signSubEl) signSubEl.textContent = b.signSubtitle;
+
+      const signHintEl = document.getElementById('signFieldHint');
+      if (signHintEl) signHintEl.textContent = b.signHint;
+
+      const footerDomainEl = document.getElementById('footerPillDomain');
+      if (footerDomainEl) footerDomainEl.innerHTML = '<strong>' + b.footerDomain + '</strong>';
+
+      document.title = b.pageTitle;
+
+      const btnSchipper = document.getElementById('btnBrandSchipper');
+      if (btnSchipper) btnSchipper.classList.toggle('active', brandKey === 'schipper');
+
+      const btnStaop = document.getElementById('btnBrandStaop');
+      if (btnStaop) btnStaop.classList.toggle('active', brandKey === 'staopstoelen');
+
+      try {
+        const url = new URL(window.location);
+        url.searchParams.set('brand', brandKey);
+        window.history.replaceState({}, '', url);
+      } catch (e) {}
+
+      localStorage.setItem('scw_orderbon_brand', brandKey);
+    }
+
     // Event listeners
     document.addEventListener('DOMContentLoaded', () => {
       // Begin altijd 100% blanco voor een maagdelijk printformulier
       clearAllFields();
+
+      // Initialiseer merk vanuit URL (?brand=staopstoelen) of localStorage
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const brandParam = urlParams.get('brand');
+        if (brandParam === 'staopstoelen' || brandParam === 'staop') {
+          switchBrand('staopstoelen');
+        } else if (brandParam === 'schipper') {
+          switchBrand('schipper');
+        } else {
+          const savedBrand = localStorage.getItem('scw_orderbon_brand');
+          if (savedBrand === 'staopstoelen') {
+            switchBrand('staopstoelen');
+          } else {
+            switchBrand('schipper');
+          }
+        }
+      } catch (e) {
+        switchBrand('schipper');
+      }
 
       document.querySelectorAll('input').forEach(input => {
         input.addEventListener('input', saveToStorage);
