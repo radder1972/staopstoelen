@@ -203,7 +203,23 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 8px;
+      margin-bottom: 10px;
       border-bottom: 2.5px solid var(--color-forest);
+    }
+
+    .header-order-badge {
+      display: inline-block;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 13.5px;
+      letter-spacing: 1.2px;
+      padding: 4.5px 16px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.2);
     }
 
     .brand-left {
@@ -917,9 +933,11 @@
       color: #475569;
     }
 
-    .sheet.brand-mode-schipper .header-right .web-pill {
+    .sheet.brand-mode-schipper .header-right .web-pill,
+    .sheet.brand-mode-schipper .header-order-badge {
       background: #0f172a;
       color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
     }
 
     .sheet.brand-mode-schipper .order-meta-bar {
@@ -1115,39 +1133,12 @@
         <div class="brand-subline" id="brandSubline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
       </div>
       <div class="header-right">
-        <span class="web-pill" id="headerWebPill">WWW.SCHIPPERCOMPACTWONEN.NL</span><br>
+        <div class="header-order-badge">ORDERBON</div><br>
         <strong>Adres:</strong> Merwedestraat 239, 3313 GT Dordrecht<br>
         <strong>Tel:</strong> 078 – 631 4858 &bull; <strong>E-mail:</strong> <span id="headerEmail">info@schippercompactwonen.nl</span><br>
         <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656
       </div>
     </header>
-
-    <!-- 2. Order Meta Bar -->
-    <div class="order-meta-bar">
-      <div>
-        <span class="order-badge">ORDERBON</span>
-      </div>
-      <div class="order-meta-fields">
-        <div class="meta-col">
-          <span class="meta-col-label">Bon-/Ordernr:</span>
-          <input type="text" id="orderNummer" class="meta-col-input" style="width: 130px;">
-        </div>
-        <div class="meta-col">
-          <span class="meta-col-label">Datum:</span>
-          <div class="date-boxes-wrap">
-            <input type="text" id="orderDatumDag" class="date-box" maxlength="2" autocomplete="off" oninput="autoAdvanceDate(this, 'orderDatumMaand')">
-            <span class="date-sep">/</span>
-            <input type="text" id="orderDatumMaand" class="date-box" maxlength="2" autocomplete="off" oninput="autoAdvanceDate(this, 'orderDatumJaar')">
-            <span class="date-sep">/</span>
-            <input type="text" id="orderDatumJaar" class="date-box date-box-year" maxlength="4" autocomplete="off">
-          </div>
-        </div>
-        <div class="meta-col">
-          <span class="meta-col-label">Adviseur:</span>
-          <input type="text" id="orderAdviseur" class="meta-col-input" style="width: 160px;">
-        </div>
-      </div>
-    </div>
 
     <!-- 3. Gegevens Klant -->
     <div class="section-wrap">
@@ -1299,6 +1290,18 @@
               <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)" onchange="formatPriceOnBlur(this)"></td>
               <td class="tar"><input type="text" id="row4Sub" class="table-input-clean tar" readonly></td>
             </tr>
+            <tr>
+              <td class="tac"><input type="text" id="row5Qty" class="table-input-clean tac"></td>
+              <td><input type="text" id="row5Desc" class="table-input-clean"></td>
+              <td class="tar"><input type="text" id="row5Price" class="table-input-clean tar" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)" onchange="formatPriceOnBlur(this)"></td>
+              <td class="tar"><input type="text" id="row5Sub" class="table-input-clean tar" readonly></td>
+            </tr>
+            <tr>
+              <td class="tac"><input type="text" id="row6Qty" class="table-input-clean tac"></td>
+              <td><input type="text" id="row6Desc" class="table-input-clean"></td>
+              <td class="tar"><input type="text" id="row6Price" class="table-input-clean tar" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)" onchange="formatPriceOnBlur(this)"></td>
+              <td class="tar"><input type="text" id="row6Sub" class="table-input-clean tar" readonly></td>
+            </tr>
           </tbody>
           <tfoot>
             <tr class="order-total-row">
@@ -1441,13 +1444,17 @@
       let p2 = parseEuro(document.getElementById('row2Price').value);
       let p3 = parseEuro(document.getElementById('row3Price').value);
       let p4 = parseEuro(document.getElementById('row4Price').value);
+      let p5 = parseEuro(document.getElementById('row5Price').value);
+      let p6 = parseEuro(document.getElementById('row6Price').value);
 
       document.getElementById('row1Sub').value = p1 > 0 ? '€ ' + formatEuro(p1) : '';
       document.getElementById('row2Sub').value = p2 > 0 ? '€ ' + formatEuro(p2) : '';
       document.getElementById('row3Sub').value = p3 > 0 ? '€ ' + formatEuro(p3) : '';
       document.getElementById('row4Sub').value = p4 > 0 ? '€ ' + formatEuro(p4) : '';
+      document.getElementById('row5Sub').value = p5 > 0 ? '€ ' + formatEuro(p5) : '';
+      document.getElementById('row6Sub').value = p6 > 0 ? '€ ' + formatEuro(p6) : '';
 
-      let sum = p1 + p2 + p3 + p4;
+      let sum = p1 + p2 + p3 + p4 + p5 + p6;
       if (sum > 0) {
         document.getElementById('totalPrice').value = formatEuro(sum);
       } else {
@@ -1660,11 +1667,6 @@
     });
 
     document.getElementById('btnFillDemo').addEventListener('click', () => {
-      document.getElementById('orderNummer').value = '2026-SCW-104';
-      document.getElementById('orderDatumDag').value = '15';
-      document.getElementById('orderDatumMaand').value = '10';
-      document.getElementById('orderDatumJaar').value = '2026';
-      document.getElementById('orderAdviseur').value = 'Geertjan Klein Haneveld';
       document.getElementById('klantNaam').value = 'Dhr. H. de Vries';
       document.getElementById('klantAdres').value = 'Kastanjelaan 14';
       document.getElementById('klantPostcode').value = '3311 AA';
@@ -1704,7 +1706,9 @@
       document.getElementById('totalPrice').value = '1.995,00';
 
       document.getElementById('signKlantNaam').value = 'H. de Vries';
+      document.getElementById('signKlantDatum').value = '15-10-2026';
       document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
+      document.getElementById('signShowroom').value = 'Dordrecht';
 
       calculateTotal();
       alert('Voorbeelddata voor een Fitform 570 Vario order succesvol ingeladen!');
