@@ -649,66 +649,172 @@
       margin: 0 auto;
     }
 
-    /* 4 Photo Cards Grid in Passe-Partout */
-    .back-cards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 4mm;
-      row-gap: 2.8mm;
-      margin: 1mm 0;
+    /* ==========================================================================
+       4 USPs & 2 COLLECTIEFOTO'S (Vrijzinnig Box Formaat)
+       ========================================================================== */
+    .back-feature-layout {
+      display: flex;
+      gap: 3.5mm;
+      width: 100%;
+      margin: 1mm 0 2mm 0;
       position: relative;
       z-index: 2;
+      align-items: stretch;
     }
 
-    .back-card {
-      background: #ffffff;
-      border: 0.35mm solid rgba(75, 143, 36, 0.22);
-      border-radius: 2.2mm;
-      padding: 2.2mm 2.6mm;
+    /* Linker Kolom: De 4 USPs */
+    .back-usp-col {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.04);
+      justify-content: space-between;
+      gap: 1.6mm;
     }
 
-    /* Passe-partout effect: zachte podium-inzet met subtiele schaduw */
-    .back-card-passepartout {
-      width: 100%;
-      height: 25.5mm;
-      background: var(--color-cream);
-      border-radius: 1.6mm;
-      border: 0.25mm solid rgba(0, 0, 0, 0.04);
+    .usp-badge-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.6mm;
+      font-family: var(--font-heading);
+      font-size: 2.85mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 0.2mm;
+    }
+
+    .usp-badge-dot {
+      width: 2.2mm;
+      height: 2.2mm;
+      border-radius: 50%;
+      background: var(--color-terracotta);
+      display: inline-block;
+    }
+
+    .usp-card-item {
+      background: #ffffff;
+      border: 0.3mm solid rgba(75, 143, 36, 0.22);
+      border-radius: 2mm;
+      padding: 1.8mm 2.4mm;
+      display: flex;
+      align-items: flex-start;
+      gap: 2.2mm;
+      box-shadow: 0 1mm 2.5mm rgba(75, 143, 36, 0.04);
+    }
+
+    .usp-icon-wrap {
+      width: 5.2mm;
+      height: 5.2mm;
+      min-width: 5.2mm;
+      border-radius: 50%;
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.4mm;
-      padding: 1.5mm;
+      margin-top: 0.3mm;
+    }
+    .usp-icon-wrap svg {
+      width: 3.2mm;
+      height: 3.2mm;
+      fill: currentColor;
     }
 
-    .back-card-passepartout img {
-      max-height: 100%;
-      max-width: 92%;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 2.5px 4px rgba(0, 0, 0, 0.14));
+    .usp-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3mm;
+      text-align: left;
     }
 
-    .back-card-title {
+    .usp-title {
       font-family: var(--font-heading);
-      font-size: 3.0mm;
+      font-size: 3.2mm;
       font-weight: 800;
-      color: var(--color-forest);
-      margin-bottom: 0.5mm;
+      color: var(--color-dark);
       line-height: 1.2;
     }
 
-    .back-card-text {
+    .usp-desc {
       font-family: var(--font-body);
-      font-size: 2.75mm;
+      font-size: 2.65mm;
       font-weight: 500;
-      line-height: 1.32;
-      color: var(--color-gray);
+      color: #475569;
+      line-height: 1.28;
+    }
+
+    /* Rechter Kolom: 2 Foto's in Passe-partout */
+    .back-photos-col {
+      flex: 0 0 54mm;
+      width: 54mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2.2mm;
+    }
+
+    .collection-photo-card {
+      background: #ffffff;
+      border: 0.35mm solid rgba(75, 143, 36, 0.25);
+      border-radius: 2.4mm;
+      padding: 1.2mm;
+      box-shadow: 0 1.5mm 4mm rgba(0, 0, 0, 0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+    }
+
+    .photo-img-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 1.8mm;
+      overflow: hidden;
+      background: #faf9f5;
+    }
+
+    .collection-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #faf9f5;
+      display: block;
+    }
+
+    .photo-tag {
+      position: absolute;
+      bottom: 1.5mm;
+      left: 1.5mm;
+      font-family: var(--font-heading);
+      font-size: 2.35mm;
+      font-weight: 800;
+      padding: 0.7mm 2mm;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1mm;
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.22);
+      letter-spacing: 0.1px;
+    }
+    .photo-tag svg {
+      width: 2.5mm;
+      height: 2.5mm;
+      fill: currentColor;
+    }
+
+    .photo-tag.tag-green {
+      background: rgba(75, 143, 36, 0.92);
+      color: #ffffff;
+      border: 0.2mm solid rgba(255,255,255,0.4);
+    }
+
+    .photo-tag.tag-orange {
+      background: rgba(243, 146, 35, 0.95);
+      color: #ffffff;
+      border: 0.2mm solid rgba(255,255,255,0.4);
     }
 
     /* VERGROOTTE "Liever advies bij u thuis?" Banner (Vult de witte ruimte) */
@@ -1328,50 +1434,83 @@
             </h2>
           </header>
 
-          <!-- 4 Photo Cards Grid in Passe-partout (met transparante uitsnedes) -->
-          <section class="back-cards-grid">
-            <!-- Card 1 -->
-            <div class="back-card">
-              <div class="back-card-passepartout">
-                <img src="assets/flyer/card1_advies_cutout.png?v=2" alt="Persoonlijk advies bewegingstechnoloog">
+          <!-- 4 USPs met 2 Echte Collectiefoto's in Vrijzinnig Box Formaat -->
+          <section class="back-feature-layout">
+            <!-- Linker Kolom: Opsomming van 4 Punten -->
+            <div class="back-usp-col">
+              <div class="usp-badge-header">
+                <span class="usp-badge-dot"></span>
+                <span>Waarom Staopstoelen.nl?</span>
               </div>
-              <div class="back-card-title">Persoonlijk Advies</div>
-              <p class="back-card-text">
-                Bij ons krijgt u persoonlijk advies van een ervaren bewegingstechnoloog.
-              </p>
+
+              <!-- Punt 1: Persoonlijk advies -->
+              <div class="usp-card-item">
+                <div class="usp-icon-wrap">
+                  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="usp-text-wrap">
+                  <div class="usp-title">Persoonlijk advies</div>
+                  <div class="usp-desc">Deskundig advies en gratis zitmeting door onze ervaren bewegingstechnoloog.</div>
+                </div>
+              </div>
+
+              <!-- Punt 2: Topkwaliteit stoelen -->
+              <div class="usp-card-item">
+                <div class="usp-icon-wrap">
+                  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="usp-text-wrap">
+                  <div class="usp-title">Topkwaliteit stoelen</div>
+                  <div class="usp-desc">Bewezen Nederlandse en Scandinavische kwaliteitsmerken met volledige garantie.</div>
+                </div>
+              </div>
+
+              <!-- Punt 3: Perfect op maat -->
+              <div class="usp-card-item">
+                <div class="usp-icon-wrap">
+                  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="usp-text-wrap">
+                  <div class="usp-title">Perfect op maat</div>
+                  <div class="usp-desc">Exact afgestemd op uw lichaam, ergonomische wensen en uw eigen interieur.</div>
+                </div>
+              </div>
+
+              <!-- Punt 4: Eerlijke prijzen -->
+              <div class="usp-card-item">
+                <div class="usp-icon-wrap">
+                  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="usp-text-wrap">
+                  <div class="usp-title">Eerlijke prijzen</div>
+                  <div class="usp-desc">Ruim aanbod nieuwe én zorgvuldig gereviseerde sta-op stoelen met garantie.</div>
+                </div>
+              </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="back-card">
-              <div class="back-card-passepartout">
-                <img src="assets/flyer/card2_topkwaliteit_cutout.png?v=2" alt="Hoogwaardige sta-op stoelen">
+            <!-- Rechter Kolom: 2 Echte Collectiefoto's met Personen Helemaal in Beeld -->
+            <div class="back-photos-col">
+              <!-- Foto 1: Heer in actieve zithouding -->
+              <div class="collection-photo-card">
+                <div class="photo-img-frame">
+                  <img src="assets/flyer/card_gentleman_framed.jpg" alt="Fitform stoel op maat voor senior heer" class="collection-photo-img">
+                  <span class="photo-tag tag-green">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    100% Maatwerk
+                  </span>
+                </div>
               </div>
-              <div class="back-card-title">Topkwaliteit Stoelen</div>
-              <p class="back-card-text">
-                Wij bieden hoogwaardige Nederlandse &amp; Scandinavische sta-op stoelen van bewezen topkwaliteit.
-              </p>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="back-card">
-              <div class="back-card-passepartout">
-                <img src="assets/flyer/card3_wensen_cutout.png?v=2" alt="Stoel perfect op maat">
+              <!-- Foto 2: Dame in liggende relaxhouding -->
+              <div class="collection-photo-card">
+                <div class="photo-img-frame">
+                  <img src="assets/flyer/card_lady_framed.jpg" alt="Elektrisch relaxen op maat voor senior dame" class="collection-photo-img">
+                  <span class="photo-tag tag-orange">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    Ultiem Zitcomfort
+                  </span>
+                </div>
               </div>
-              <div class="back-card-title">Perfect op Maat</div>
-              <p class="back-card-text">
-                Wij vinden altijd een stoel die perfect bij uw eisen, wensen en interieur past.
-              </p>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="back-card">
-              <div class="back-card-passepartout">
-                <img src="assets/flyer/card4_prijs_cutout.png?v=2" alt="Ruim aanbod eerlijke prijs">
-              </div>
-              <div class="back-card-title">Eerlijke Prijzen</div>
-              <p class="back-card-text">
-                Wij hebben een ruim aanbod aan stoelen voor een eerlijke, transparante prijs.
-              </p>
             </div>
           </section>
 
