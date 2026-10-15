@@ -1898,6 +1898,7 @@ section[id], section {
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .product-card:hover {

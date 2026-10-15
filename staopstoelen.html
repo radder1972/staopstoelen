@@ -1964,7 +1964,8 @@
       modalImg.alt = item.name;
       modalTitle.textContent = item.name;
       const materialText = item.material === "leer" ? "Leer" : "Stof";
-      modalBrand.innerHTML = `Merk: ${item.brand}${modelText}<br>Materiaal: ${materialText}`;
+      const modelText = item.model ? `<br>Model: ${item.model}` : "";
+      modalBrand.innerHTML = `Merk: ${item.brand || ''}${modelText}<br>Materiaal: ${materialText}`;
       if (item.brand && item.brand.toLowerCase() === 'fitform') {
         modalBrand.innerHTML += `
           <div style="margin-top: 10px; display: inline-flex; align-items: center; gap: 10px; background: #fffbf7; border: 1.5px solid rgba(243, 146, 35, 0.45); padding: 6px 14px; border-radius: 999px; box-shadow: 0 2px 8px rgba(243, 146, 35, 0.08);">
