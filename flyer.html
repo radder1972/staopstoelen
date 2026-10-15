@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A5 Flyer | Staopstoelen.nl - Specialist in ergonomisch maatwerk</title>
-  <meta name="description" content="Officiële A5 flyer voor Staopstoelen.nl in de complete huisstijl. Specialist in ergonomische maatwerkstoelen, gratis zitmeting aan huis en showroom in Dordrecht.">
+  <title>A5 Flyer | Staopstoelen.nl - Officiële Huisstijl</title>
+  <meta name="description" content="Officiële A5 flyer voor Staopstoelen.nl in de exacte website huisstijl. Specialist in ergonomische maatwerkstoelen, gratis zitmeting aan huis en showroom in Dordrecht.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style id="dynamicPageStyle">
     @page {
@@ -21,18 +21,16 @@
 
   <style>
     :root {
+      /* Exact Website Colors */
       --color-forest: #4b8f24;
-      --color-forest-dark: #122b07;
-      --color-forest-deeper: #0d1e05;
-      --color-sage: #6ab13c;
-      --color-sage-light: #eef7eb;
-      --color-sage-subtle: #f4faf2;
+      --color-forest-hover: #3d7a1c;
       --color-terracotta: #ea580c;
       --color-terracotta-warm: #f39223;
-      --color-terracotta-dark: #c86908;
+      --color-sage-light: #eef7eb;
       --color-cream: #fbf9f5;
-      --color-cream-dark: #f3efe6;
+      --color-cream-card: #f8faf6;
       --color-dark: #1d2024;
+      --color-charcoal-block: #1c1f23;
       --color-gray: #4a5568;
       --color-gray-light: #e2e8f0;
       --font-heading: 'Montserrat', sans-serif;
@@ -71,7 +69,7 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
-      border-bottom: 2px solid var(--color-forest);
+      border-bottom: 3px solid var(--color-forest);
       flex-wrap: wrap;
       gap: 12px;
     }
@@ -105,13 +103,13 @@
       font-family: var(--font-heading);
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .toolbar-title span {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--color-terracotta);
       font-size: 0.88rem;
     }
@@ -149,7 +147,7 @@
     }
     .btn-mode.active {
       background: #ffffff;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
@@ -170,7 +168,7 @@
       transition: all 0.2s ease;
     }
     .btn-print:hover {
-      background: var(--color-forest-dark);
+      background: var(--color-forest-hover);
       transform: translateY(-1px);
       box-shadow: 0 6px 18px rgba(75, 143, 36, 0.4);
     }
@@ -198,7 +196,7 @@
       border: 1px solid rgba(75, 143, 36, 0.25);
     }
     .hint-bar strong {
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
     }
 
     /* Flyer Preview Wrap */
@@ -223,7 +221,7 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
       background: #ffffff;
       border: 1.5px solid var(--color-forest);
       padding: 6px 18px;
@@ -239,7 +237,7 @@
       height: var(--flyer-h);
       position: relative;
       border-radius: 2mm;
-      box-shadow: 0 16px 40px rgba(18, 43, 7, 0.18), 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.08);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -249,62 +247,57 @@
     }
 
     /* ==========================================================================
-       1. VOORZIJDE (FRONT) - VOLLEDIGE HUISSTIJL
+       1. VOORZIJDE (FRONT) - WEBSITE HUISSTIJL (GROEN & ORANJE)
        ========================================================================== */
     .flyer-front {
-      background: var(--color-forest-dark);
+      background: var(--color-charcoal-block);
       padding: 0;
       justify-content: space-between;
     }
 
-    /* Top Brand Strip (Bovenaan de foto) */
+    /* Top Brand Strip (Bovenaan de foto met fris wit badge) */
     .front-top-bar {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       z-index: 10;
-      background: linear-gradient(180deg, rgba(18, 43, 7, 0.88) 0%, rgba(18, 43, 7, 0.45) 75%, transparent 100%);
-      padding: 4mm 7mm 8mm 7mm;
+      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 65%, transparent 100%);
+      padding: 4mm 6mm 7mm 6mm;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .front-brand-header {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4mm;
+    /* Wit logo blokje met officiële website kleuren */
+    .front-logo-pill {
+      background: rgba(255, 255, 255, 0.96);
+      padding: 2.2mm 4.5mm;
+      border-radius: 9999px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5mm;
+      border: 1px solid rgba(75, 143, 36, 0.2);
     }
 
     .front-logo-text {
       font-family: var(--font-heading);
-      font-size: 5.6mm;
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: -0.3px;
+      font-size: 4.8mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      letter-spacing: -0.4px;
       line-height: 1;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
     .front-logo-text span {
-      color: #fed857;
-    }
-
-    .front-tagline {
-      font-family: var(--font-heading);
-      font-size: 2.1mm;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      color: var(--color-terracotta);
     }
 
     /* Kwaliteitszegel rechtsboven */
     .front-badge-seal {
       width: 20mm;
       height: 20mm;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.35));
       display: block;
     }
 
@@ -326,15 +319,14 @@
       display: block;
     }
 
-    /* Subtiel huisstijl-label linksonder op de foto */
+    /* Oranje kwaliteitslabel linksonder op de foto */
     .front-photo-badge {
       position: absolute;
       left: 7mm;
       bottom: 6mm;
       z-index: 5;
-      background: rgba(18, 43, 7, 0.92);
-      border: 1px solid rgba(254, 216, 87, 0.5);
-      backdrop-filter: blur(4px);
+      background: rgba(234, 88, 12, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       padding: 1.8mm 3.8mm;
       border-radius: 9999px;
       display: inline-flex;
@@ -346,12 +338,12 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     }
     .front-photo-badge svg {
       width: 3.2mm;
       height: 3.2mm;
-      fill: #fed857;
+      fill: #ffffff;
     }
 
     /* QR Code Overlay (Rechtsonder op de foto) */
@@ -365,13 +357,13 @@
       background: #ffffff;
       padding: 1.8mm;
       box-sizing: border-box;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
       border-radius: 1.5mm;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(75, 143, 36, 0.3);
+      border: 1.2px solid var(--color-terracotta);
     }
 
     .front-qr-overlay img {
@@ -380,11 +372,11 @@
       display: block;
     }
 
-    /* Bottom Deep Forest Green Block (Huisstijl) */
+    /* Bottom Block in Huisstijl Donker Antraciet (GEEN donkergroen) */
     .front-bottom-block {
       width: 100%;
       height: 94mm;
-      background: linear-gradient(175deg, #122b07 0%, #173b0a 55%, #0e2405 100%);
+      background: var(--color-charcoal-block);
       padding: 5.5mm 11mm 5.5mm 11mm;
       display: flex;
       flex-direction: column;
@@ -394,10 +386,10 @@
       box-sizing: border-box;
       color: #ffffff;
       position: relative;
-      border-top: 1.5px solid rgba(254, 216, 87, 0.35);
+      border-top: 2px solid var(--color-terracotta);
     }
 
-    /* Hexagon Icon */
+    /* Hexagon Icoon in Oranje */
     .front-hex-wrap {
       display: flex;
       align-items: center;
@@ -409,7 +401,7 @@
     .front-hex-decor {
       height: 1px;
       flex: 1;
-      background: linear-gradient(90deg, transparent, rgba(254, 216, 87, 0.4), transparent);
+      background: linear-gradient(90deg, transparent, rgba(234, 88, 12, 0.45), transparent);
     }
 
     .front-hex-icon {
@@ -426,37 +418,28 @@
       color: #ffffff;
       letter-spacing: -0.15px;
       margin: 0;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     }
 
     .front-dotted-line {
       width: 86%;
-      border-bottom: 1.2px dotted rgba(254, 216, 87, 0.55);
+      border-bottom: 1.5px dotted var(--color-terracotta);
       margin: 0 auto;
-    }
-
-    .front-subhead-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2mm;
     }
 
     .front-subhead {
       font-family: var(--font-heading);
       font-size: 6.2mm;
-      font-weight: 900;
-      color: #fed857;
+      font-weight: 800;
+      color: #ffffff;
       margin: 0;
       line-height: 1.1;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.35);
     }
 
     /* Huisstijl kernbelofte strook */
     .front-usp-strip {
       font-family: var(--font-body);
       font-size: 2.5mm;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.88);
       line-height: 1.35;
       font-weight: 400;
       max-width: 110mm;
@@ -467,7 +450,7 @@
       font-weight: 700;
     }
 
-    /* Brand banner onderaan */
+    /* Brand Signatuur onderaan */
     .front-brand-row {
       display: flex;
       flex-direction: column;
@@ -478,27 +461,27 @@
 
     .front-brand {
       font-family: var(--font-heading);
-      font-size: 8.8mm;
-      font-weight: 900;
+      font-size: 9.0mm;
+      font-weight: 800;
       color: #ffffff;
       letter-spacing: -0.3px;
       line-height: 1;
     }
     .front-brand span {
-      color: #ea580c;
+      color: var(--color-terracotta);
     }
 
     .front-sub-tagline {
       font-family: var(--font-heading);
       font-size: 2.1mm;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.65);
       text-transform: uppercase;
       letter-spacing: 0.8px;
     }
 
     /* ==========================================================================
-       2. ACHTERZIJDE (BACK) - VOLLEDIGE HUISSTIJL
+       2. ACHTERZIJDE (BACK) - WIT & HUISSTIJL (GROEN & ORANJE)
        ========================================================================== */
     .flyer-back {
       background: #ffffff;
@@ -519,7 +502,7 @@
       left: 6mm;
       right: 6mm;
       bottom: 5mm;
-      border: 0.3mm solid rgba(75, 143, 36, 0.22);
+      border: 0.3mm solid rgba(75, 143, 36, 0.25);
       border-radius: 2mm;
       pointer-events: none;
     }
@@ -538,15 +521,15 @@
     .back-logo-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .back-logo-title {
       font-family: var(--font-heading);
-      font-size: 5.6mm;
-      font-weight: 900;
+      font-size: 5.8mm;
+      font-weight: 800;
       color: var(--color-forest);
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
       line-height: 1;
     }
     .back-logo-title span {
@@ -557,8 +540,8 @@
       display: inline-flex;
       align-items: center;
       gap: 1.2mm;
-      background: rgba(234, 88, 12, 0.1);
-      border: 0.3mm solid rgba(234, 88, 12, 0.3);
+      background: rgba(234, 88, 12, 0.08);
+      border: 0.35mm solid rgba(234, 88, 12, 0.35);
       padding: 1mm 2.8mm;
       border-radius: 9999px;
       font-family: var(--font-heading);
@@ -572,14 +555,11 @@
     .back-intro-title {
       font-family: var(--font-heading);
       font-size: 3.8mm;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.32;
-      color: var(--color-forest-dark);
-      letter-spacing: -0.15px;
+      color: var(--color-dark);
+      letter-spacing: -0.1px;
       margin-top: 0.5mm;
-    }
-    .back-intro-title span {
-      color: var(--color-forest);
     }
 
     /* 4 Photo Cards Grid (2x2 in zachtgroene/cream huisstijl kaartjes) */
@@ -595,14 +575,14 @@
 
     .back-card {
       background: var(--color-cream);
-      border: 0.3mm solid rgba(75, 143, 36, 0.28);
+      border: 0.3mm solid rgba(75, 143, 36, 0.25);
       border-radius: 2mm;
       padding: 2.5mm 3.2mm;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      box-shadow: 0 1mm 3mm rgba(18, 43, 7, 0.04);
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.03);
     }
 
     .back-card-img-wrap {
@@ -626,7 +606,7 @@
       font-family: var(--font-heading);
       font-size: 2.6mm;
       font-weight: 800;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
       margin-bottom: 0.6mm;
       line-height: 1.2;
     }
@@ -636,26 +616,26 @@
       font-size: 2.45mm;
       font-weight: 500;
       line-height: 1.32;
-      color: #3b4734;
+      color: var(--color-gray);
     }
 
     /* Middle Home Visit Banner (Huisstijl Uitnodiging) */
     .back-home-visit {
-      background: linear-gradient(135deg, var(--color-sage-light) 0%, #e5f3df 100%);
+      background: var(--color-sage-light);
       border: 0.35mm solid rgba(75, 143, 36, 0.35);
       border-radius: 2mm;
       padding: 2.2mm 4mm;
       text-align: center;
       position: relative;
       z-index: 2;
-      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.06);
+      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
     }
 
     .home-visit-title {
       font-family: var(--font-heading);
       font-size: 3.1mm;
       font-weight: 800;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
       margin-bottom: 0.5mm;
       display: flex;
       align-items: center;
@@ -665,14 +645,14 @@
     .home-visit-title svg {
       width: 3.6mm;
       height: 3.6mm;
-      stroke: var(--color-forest);
+      stroke: var(--color-terracotta);
     }
 
     .home-visit-sub {
       font-family: var(--font-body);
       font-size: 2.65mm;
       font-weight: 600;
-      color: #274d15;
+      color: var(--color-dark);
     }
 
     /* Bottom Contact & Showroom Section */
@@ -697,7 +677,7 @@
       font-family: var(--font-heading);
       font-size: 2.85mm;
       font-weight: 800;
-      color: var(--color-forest-dark);
+      color: var(--color-dark);
       margin-bottom: 0.4mm;
       text-transform: uppercase;
       letter-spacing: 0.4px;
@@ -714,19 +694,19 @@
     .back-col-phone {
       font-family: var(--font-heading);
       font-weight: 800;
-      color: var(--color-forest);
+      color: var(--color-terracotta);
       font-size: 2.9mm;
       margin-top: 0.4mm;
     }
 
     .back-col-hours {
       font-weight: 700;
-      color: var(--color-forest-dark);
+      color: var(--color-dark);
     }
 
     .back-col-usp {
       font-size: 2.25mm;
-      color: #55606d;
+      color: var(--color-gray);
       font-weight: 500;
     }
     .back-col-usp span {
@@ -752,6 +732,7 @@
       border-radius: 0.6mm;
       background: #ffffff;
       padding: 0.5mm;
+      border: 1px solid var(--color-terracotta);
     }
 
     .back-qr-labels {
@@ -771,8 +752,8 @@
     .back-qr-url {
       font-family: var(--font-heading);
       font-size: 2.7mm;
-      font-weight: 900;
-      color: var(--color-forest-dark);
+      font-weight: 800;
+      color: var(--color-forest);
       letter-spacing: -0.15px;
     }
     .back-qr-url span {
@@ -808,7 +789,7 @@
       font-family: var(--font-heading);
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
     }
 
     .sheet-header-subtitle {
@@ -852,7 +833,7 @@
     }
     .btn-sheet-opt.active {
       background: #ffffff;
-      color: var(--color-forest-dark);
+      color: var(--color-forest);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .btn-sheet-opt .opt-badge {
@@ -878,7 +859,7 @@
       transition: all 0.2s ease;
     }
     .btn-print-large:hover {
-      background: var(--color-forest-dark);
+      background: var(--color-forest-hover);
       transform: translateY(-1px);
     }
 
@@ -1072,7 +1053,7 @@
       </a>
       <div class="toolbar-title">
         A5 Flyer
-        <span>staopstoelen.nl &bull; Officiële Huisstijl</span>
+        <span>staopstoelen.nl &bull; Huisstijl</span>
       </div>
     </div>
 
@@ -1104,7 +1085,7 @@
   <main class="stage" id="screenStage">
     <div class="hint-bar">
       <span>🌿</span>
-      <span><strong>Originele Flyer in Volledige Huisstijl (148 × 210 mm)</strong> &bull; Met kwaliteitszegel, actuele tijden en scherpe QR-code &bull; Direct af te drukken als A5 of als A4 drukvel (2x A5 per vel).</span>
+      <span><strong>A5 Flyer in Website Huisstijl (148 × 210 mm)</strong> &bull; Huisstijlkleuren (Groen #4b8f24 &amp; Oranje #ea580c), actuele tijden en scherpe QR-code.</span>
     </div>
 
     <div class="flyers-preview-wrap">
@@ -1113,16 +1094,15 @@
            1. VOORZIJDE (FRONT)
            ====================================================================== -->
       <div class="flyer-preview-item" id="flyerFrontWrap">
-        <div class="flyer-label">Voorzijde (Huisstijl)</div>
+        <div class="flyer-label">Voorzijde</div>
 
         <article class="flyer-container flyer-front" id="flyerFront">
-          <!-- Top Photo with Brand Strip & Seal -->
+          <!-- Top Photo with Logo Pill & Seal -->
           <div class="front-photo-wrap">
-            <!-- Brand strip bovenaan -->
+            <!-- Brand pill bovenaan met officiële huiskleuren -->
             <div class="front-top-bar">
-              <div class="front-brand-header">
+              <div class="front-logo-pill">
                 <div class="front-logo-text">staopstoelen<span>.nl</span></div>
-                <div class="front-tagline">Zitspecialist &amp; Ergonomisch Maatwerk</div>
               </div>
               <!-- Kwaliteitssticker rechtsboven -->
               <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Officiële Kwaliteitszegel: Nieuw &amp; Gereviseerd - Duurzaam op Maat" class="front-badge-seal">
@@ -1131,24 +1111,24 @@
             <!-- Foto van dame die opstaat uit stoel -->
             <img src="assets/flyer/flyer_front_photo.jpg" alt="Vrouw staat ontspannen op uit ergonomische sta-op stoel in sfeervolle woonkamer" class="front-photo-img">
             
-            <!-- Keurmerk-badge linksonder -->
+            <!-- Oranje kwaliteitslabel linksonder -->
             <div class="front-photo-badge">
               <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
               <span>100% Maatwerk aangemeten</span>
             </div>
 
-            <!-- QR code overlay rechtsonder -->
+            <!-- QR code overlay rechtsonder met oranje accentrand -->
             <div class="front-qr-overlay">
               <img src="assets/qr_staopstoelen.svg" alt="Scan QR Staopstoelen.nl">
             </div>
           </div>
 
-          <!-- Bottom Deep Forest Green Block (Huisstijl) -->
+          <!-- Bottom Charcoal Block (GEEN donkergroen) -->
           <div class="front-bottom-block">
-            <!-- Hexagon Icoon & Sierlijn -->
+            <!-- Hexagon Icoon in Oranje -->
             <div class="front-hex-wrap">
               <div class="front-hex-decor"></div>
-              <svg class="front-hex-icon" viewBox="0 0 24 24" fill="none" stroke="#fed857" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="front-hex-icon" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="12,2 21,7.2 21,16.8 12,22 3,16.8 3,7.2"/>
               </svg>
               <div class="front-hex-decor"></div>
@@ -1163,8 +1143,8 @@
             <div class="front-dotted-line"></div>
 
             <!-- Subhead -->
-            <div class="front-subhead-row">
-              <div class="front-subhead">Wij ook!</div>
+            <div class="front-subhead">
+              Wij ook!
             </div>
 
             <div class="front-dotted-line"></div>
@@ -1174,7 +1154,7 @@
               Persoonlijk advies &amp; gratis zitmeting door onze ervaren <strong>bewegingstechnoloog</strong> &mdash; in onze showroom te Dordrecht of comfortabel bij u thuis.
             </p>
 
-            <!-- Brand Signatuur onderaan -->
+            <!-- Brand Signatuur onderaan met oranje .nl -->
             <div class="front-brand-row">
               <div class="front-brand">
                 staopstoelen<span>.nl</span>
@@ -1191,11 +1171,11 @@
            2. ACHTERZIJDE (BACK)
            ====================================================================== -->
       <div class="flyer-preview-item" id="flyerBackWrap">
-        <div class="flyer-label">Achterzijde (Huisstijl)</div>
+        <div class="flyer-label">Achterzijde</div>
 
         <article class="flyer-container flyer-back" id="flyerBack">
           
-          <!-- Top Header -->
+          <!-- Top Header: Logo in Groen + Oranje en Fitform Dealer -->
           <header class="back-header">
             <div class="back-logo-row">
               <div class="back-logo-title">staopstoelen<span>.nl</span></div>
@@ -1204,12 +1184,12 @@
               </div>
             </div>
             <h2 class="back-intro-title">
-              Ervaar het comfort zelf in onze showroom in <span>Dordrecht</span>,<br>
+              Ervaar het comfort zelf in onze showroom in Dordrecht,<br>
               waar we graag de tijd voor u nemen.
             </h2>
           </header>
 
-          <!-- 4 Photo Cards Grid (2x2 in zachtgroene huisstijl kaartjes) -->
+          <!-- 4 Photo Cards Grid (2x2) -->
           <section class="back-cards-grid">
             <!-- Card 1 -->
             <div class="back-card">
@@ -1227,7 +1207,7 @@
               <div class="back-card-img-wrap">
                 <img src="assets/flyer/card2_topkwaliteit.jpg" alt="Hoogwaardige sta-op stoelen van topkwaliteit">
               </div>
-              <div class="back-card-title">Topkwaliteit &amp; Garantie</div>
+              <div class="back-card-title">Topkwaliteit Stoelen</div>
               <p class="back-card-text">
                 Wij bieden hoogwaardige Nederlandse &amp; Scandinavische sta-op stoelen van bewezen topkwaliteit.
               </p>
@@ -1273,20 +1253,19 @@
             <div class="back-contact-col">
               <div class="back-col-title">Showroom Dordrecht</div>
               <div class="back-col-line">Merwedestraat 239 &bull; 3313 GT Dordrecht</div>
-              <div class="back-col-line" style="font-size: 2.3mm; color: #55606d;">(in het pand van Schipper Compact Wonen)</div>
-              <div class="back-col-line back-col-phone">078 – 631 4858</div>
-              <div class="back-col-usp"><span>✓</span> Gratis parkeren voor de deur &bull; Gelijkvloers</div>
+              <div class="back-col-line" style="font-size: 2.3mm; color: #718096;">(in het pand van Schipper Compact Wonen)</div>
+              <div class="back-col-usp" style="margin-top: 0.5mm;"><span>✓</span> Gratis parkeren voor de deur &bull; Gelijkvloers</div>
             </div>
 
-            <!-- Middle Col: Openingstijden -->
+            <!-- Middle Col: Openingstijden & Bellen -->
             <div class="back-contact-col">
               <div class="back-col-title">Openingstijden</div>
-              <div class="back-col-line">Dinsdag t/m Vrijdag:</div>
-              <div class="back-col-line back-col-hours">10:00 – 16:00 uur</div>
+              <div class="back-col-line">Dinsdag t/m Vrijdag: <span class="back-col-hours">10:00 – 16:00 uur</span></div>
               <div class="back-col-line back-col-usp">Maandag &amp; Zaterdag: <strong>Op afspraak</strong></div>
+              <div class="back-col-line back-col-phone">Bel direct: 078 – 631 4858</div>
             </div>
 
-            <!-- Right QR Card -->
+            <!-- Right QR Card met Oranje Accent -->
             <div class="back-qr-card">
               <img src="assets/qr_staopstoelen.svg" alt="Scan QR Staopstoelen.nl">
               <div class="back-qr-labels">
