@@ -351,7 +351,7 @@
     }
 
     .section-body {
-      padding: 8px 14px;
+      padding: 9px 14px 15px 14px;
     }
 
     /* Form Grids */
@@ -622,7 +622,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, auto);
-      gap: 6px 16px;
+      gap: 5px 16px;
       font-size: 11.5px;
     }
 
@@ -670,33 +670,33 @@
     .signatures-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 10px 12px;
+      column-gap: 26px;
+      padding: 9px 14px 11px 14px;
       background: #ffffff;
     }
 
     .sign-box-wrap {
-      border: 1px solid #e1e7ec;
-      border-radius: 6px;
-      padding: 8px 12px;
-      background: #fafbfc;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .sign-head-block {
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 4px;
-      margin-bottom: 6px;
-      min-height: 32px;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 4px;
+      min-height: auto;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .sign-title {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 800;
       font-family: var(--font-heading);
       color: var(--color-forest-dark);
@@ -713,19 +713,19 @@
     }
 
     .sign-field {
-      height: 64px;
-      border-bottom: 1.5px solid #94a3b8;
-      background: #ffffff;
-      margin-bottom: 6px;
+      height: 52px;
+      border-bottom: 1.5px solid #8c939c;
+      background: transparent;
+      margin-bottom: 7px;
       position: relative;
-      border-radius: 4px 4px 0 0;
+      border-radius: 0;
     }
 
     .sign-field-hint {
       position: absolute;
       bottom: 4px;
-      right: 6px;
-      font-size: 9px;
+      right: 2px;
+      font-size: 9.5px;
       color: #94a3b8;
       font-style: italic;
     }
@@ -733,7 +733,7 @@
     .sign-details {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
       font-size: 11px;
       color: var(--color-gray);
       align-items: center;
@@ -744,6 +744,9 @@
       align-items: center;
       gap: 4px;
       flex: 1;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
     }
 
     .sign-detail-item.fixed-date {
@@ -755,8 +758,9 @@
       border: none;
       border-bottom: 1px dotted #8c939c;
       background: transparent;
-      font-size: 11.5px;
-      font-weight: 600;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
       color: var(--color-dark);
       outline: none;
       padding: 0 3px;
@@ -990,7 +994,7 @@
         <span>Aankoop &amp; Stoel Specificaties</span>
         <span style="font-size: 9.5px; font-weight: 600; opacity: 0.95;">100% Maatwerk op Lichaamsmaten</span>
       </div>
-      <div class="section-body" style="padding: 8px 14px 13px 14px;">
+      <div class="section-body" style="padding: 8px 14px 15px 14px;">
         
         <div class="specs-grid">
           <div class="specs-col">
@@ -1034,8 +1038,8 @@
         </div>
 
         <!-- Extra Accessoires & Zorghulpmiddelen Checklist: 3x2 Grid -->
-        <div style="margin-top: 10px;">
-          <div style="font-size: 11.5px; font-weight: 700; color: var(--color-forest-dark); margin-bottom: 6px;">Geselecteerde Opties &amp; Accessoires:</div>
+        <div style="margin-top: 5px;">
+          <div style="font-size: 11.5px; font-weight: 700; color: var(--color-forest-dark); margin-bottom: 4px;">Geselecteerde Opties &amp; Accessoires:</div>
           <div class="options-grid-3x2">
             <label class="custom-check"><input type="checkbox" id="optAccu"> Accupakket (snoerloos)</label>
             <label class="custom-check"><input type="checkbox" id="optVerwarming"> Verwarming zitting/rug</label>
