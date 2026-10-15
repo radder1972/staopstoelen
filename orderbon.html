@@ -158,8 +158,8 @@
     .sheet-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding-bottom: 9px;
+      align-items: center;
+      padding-bottom: 8px;
       border-bottom: 2.5px solid var(--color-forest);
     }
 
@@ -191,23 +191,11 @@
       text-transform: uppercase;
     }
 
-    .brand-dual {
-      font-size: 10.5px;
-      color: var(--color-gray);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .brand-dual strong {
-      color: var(--color-forest-dark);
-    }
-
     .header-right {
       text-align: right;
       font-size: 10px;
       color: var(--color-gray);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .header-right strong {
@@ -319,7 +307,7 @@
     }
 
     .section-body {
-      padding: 9px 14px;
+      padding: 8px 14px;
     }
 
     /* Form Grids */
@@ -327,21 +315,21 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 22px;
-      row-gap: 10px;
+      row-gap: 8px;
     }
 
     .grid-2col > div,
     .form-col {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 7px;
     }
 
     .form-row {
       display: flex;
       align-items: flex-end;
       gap: 8px;
-      min-height: 29px;
+      min-height: 26px;
     }
 
     .form-lbl {
@@ -357,7 +345,7 @@
     .form-fill {
       flex: 1;
       border-bottom: 1px dotted #8c939c;
-      min-height: 24px;
+      min-height: 22px;
       display: flex;
       align-items: flex-end;
     }
@@ -386,7 +374,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 22px;
-      row-gap: 10px;
+      row-gap: 8px;
       padding: 2px 0;
     }
 
@@ -394,14 +382,14 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 10px;
+      gap: 7px;
     }
 
     .spec-line {
       display: flex;
       align-items: flex-end;
       gap: 8px;
-      min-height: 29px;
+      min-height: 26px;
     }
 
     .spec-label {
@@ -425,13 +413,13 @@
       color: var(--color-dark);
       outline: none;
       padding: 0 2px 2px 2px;
-      min-height: 24px;
+      min-height: 22px;
       line-height: 1.2;
       box-sizing: border-box;
     }
 
     .spec-line .checkbox-row {
-      min-height: 24px;
+      min-height: 22px;
       display: flex;
       align-items: center;
     }
@@ -503,7 +491,7 @@
     }
 
     .order-table td {
-      padding: 6px 8px;
+      padding: 5px 8px;
       border-bottom: 1px dotted #d1d7de;
       vertical-align: middle;
     }
@@ -851,11 +839,15 @@
       </button>
       <button type="button" class="btn-action" id="btnClearForm">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-        Leegmaken
+        Formulier Wissen
       </button>
-      <button type="button" class="btn-print" onclick="window.print()">
+      <button type="button" class="btn-action" id="btnPrintFilled" onclick="window.print()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-        Afdrukken / PDF
+        Ingevuld Printen
+      </button>
+      <button type="button" class="btn-print" id="btnPrintBlank" onclick="printBlankOrderbon()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Blanco Formulier Printen
       </button>
     </div>
   </div>
@@ -868,17 +860,12 @@
       <div class="brand-left">
         <div class="brand-name">Schipper <span>compact wonen</span></div>
         <div class="brand-subline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
-        <div class="brand-dual">
-          <span>Showroom &amp; Maatwerk: <strong>staopstoelen.nl</strong></span>
-          <span>&bull;</span>
-          <span>Merwedestraat 239, 3313 GT Dordrecht</span>
-        </div>
       </div>
       <div class="header-right">
         <span class="web-pill">WWW.SCHIPPERCOMPACTWONEN.NL</span><br>
+        <strong>Adres:</strong> Merwedestraat 239, 3313 GT Dordrecht<br>
         <strong>Tel:</strong> 078 – 631 4858 &bull; <strong>E-mail:</strong> info@staopstoelen.nl<br>
-        <strong>IBAN:</strong> NL09 RABO 0117 0475 62<br>
-        <strong>Kamer van Koophandel:</strong> 23060656
+        <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656
       </div>
     </header>
 
@@ -890,15 +877,15 @@
       <div class="order-meta-fields">
         <div class="meta-col">
           <span class="meta-col-label">Bon-/Ordernr:</span>
-          <input type="text" id="orderNummer" class="meta-col-input" placeholder="bijv. 2026-0842" style="width: 130px;">
+          <input type="text" id="orderNummer" class="meta-col-input" style="width: 130px;">
         </div>
         <div class="meta-col">
           <span class="meta-col-label">Datum:</span>
-          <input type="text" id="orderDatum" class="meta-col-input" placeholder="DD-MM-JJJJ" style="width: 110px;">
+          <input type="text" id="orderDatum" class="meta-col-input" style="width: 110px;">
         </div>
         <div class="meta-col">
           <span class="meta-col-label">Adviseur:</span>
-          <input type="text" id="orderAdviseur" class="meta-col-input" placeholder="Naam adviseur" style="width: 160px;">
+          <input type="text" id="orderAdviseur" class="meta-col-input" style="width: 160px;">
         </div>
       </div>
     </div>
@@ -914,33 +901,33 @@
           <div class="form-col">
             <div class="form-row">
               <span class="form-lbl">Naam cliënt:</span>
-              <div class="form-fill"><input type="text" id="klantNaam" class="form-input" placeholder="Dhr. / Mevr. Achternaam"></div>
+              <div class="form-fill"><input type="text" id="klantNaam" class="form-input"></div>
             </div>
             <div class="form-row">
               <span class="form-lbl">Adres:</span>
-              <div class="form-fill"><input type="text" id="klantAdres" class="form-input" placeholder="Straatnaam en huisnummer"></div>
+              <div class="form-fill"><input type="text" id="klantAdres" class="form-input"></div>
             </div>
             <div class="form-row">
               <span class="form-lbl">Postcode &amp; Plaats:</span>
               <div class="form-fill">
-                <input type="text" id="klantPostcode" class="form-input" placeholder="1234 AB" style="width: 75px; flex: none;">
+                <input type="text" id="klantPostcode" class="form-input" style="width: 75px; flex: none;">
                 <span style="color: var(--color-gray); padding: 0 4px;">-</span>
-                <input type="text" id="klantPlaats" class="form-input" placeholder="Woonplaats">
+                <input type="text" id="klantPlaats" class="form-input">
               </div>
             </div>
           </div>
           <div class="form-col">
             <div class="form-row">
               <span class="form-lbl">Telefoonnummer:</span>
-              <div class="form-fill"><input type="text" id="klantTelefoon" class="form-input" placeholder="06 - ... of vast nummer"></div>
+              <div class="form-fill"><input type="text" id="klantTelefoon" class="form-input"></div>
             </div>
             <div class="form-row">
               <span class="form-lbl">E-mailadres:</span>
-              <div class="form-fill"><input type="text" id="klantEmail" class="form-input" placeholder="klant@email.nl"></div>
+              <div class="form-fill"><input type="text" id="klantEmail" class="form-input"></div>
             </div>
             <div class="form-row">
               <span class="form-lbl">Contactpersoon:</span>
-              <div class="form-fill"><input type="text" id="klantContactpersoon" class="form-input" placeholder="Mantelzorger / zoon / dochter + telnr"></div>
+              <div class="form-fill"><input type="text" id="klantContactpersoon" class="form-input"></div>
             </div>
           </div>
         </div>
@@ -959,11 +946,11 @@
           <div class="specs-col">
             <div class="spec-line">
               <span class="spec-label">Stoel / Model:</span>
-              <input type="text" id="stoelModel" class="spec-input" placeholder="bijv. Fitform 570 Vario / Doge / Farstrup">
+              <input type="text" id="stoelModel" class="spec-input">
             </div>
             <div class="spec-line">
               <span class="spec-label">Bekleding &amp; Kleur:</span>
-              <input type="text" id="stoelBekleding" class="spec-input" placeholder="bijv. Rancho Leder Cognac / Stof Oasis Antraciet">
+              <input type="text" id="stoelBekleding" class="spec-input">
             </div>
           </div>
 
@@ -978,19 +965,19 @@
             <div class="maten-strip">
               <div class="maat-mini-card">
                 <div class="maat-mini-lbl">Zithoogte</div>
-                <input type="text" id="maatZithoogte" class="maat-mini-input" placeholder=".. cm">
+                <input type="text" id="maatZithoogte" class="maat-mini-input">
               </div>
               <div class="maat-mini-card">
                 <div class="maat-mini-lbl">Zitdiepte</div>
-                <input type="text" id="maatZitdiepte" class="maat-mini-input" placeholder=".. cm">
+                <input type="text" id="maatZitdiepte" class="maat-mini-input">
               </div>
               <div class="maat-mini-card">
                 <div class="maat-mini-lbl">Armleggers</div>
-                <input type="text" id="maatArmleggers" class="maat-mini-input" placeholder=".. cm">
+                <input type="text" id="maatArmleggers" class="maat-mini-input">
               </div>
               <div class="maat-mini-card">
                 <div class="maat-mini-lbl">Lendensteun</div>
-                <input type="text" id="maatLenden" class="maat-mini-input" placeholder="Std / Pomp">
+                <input type="text" id="maatLenden" class="maat-mini-input">
               </div>
             </div>
           </div>
@@ -1030,28 +1017,28 @@
           </thead>
           <tbody>
             <tr>
-              <td class="tac"><input type="text" id="row1Qty" class="table-input-clean tac fw700" placeholder=""></td>
-              <td><input type="text" id="row1Desc" class="table-input-clean fw700" placeholder="bijv. Fitform 570 Vario sta-op stoel, bekleding Rancho Cognac"></td>
-              <td class="tar"><input type="text" id="row1Price" class="table-input-clean tar fw700" placeholder="€ 0,00" oninput="calculateTotal()"></td>
-              <td class="tar"><input type="text" id="row1Sub" class="table-input-clean tar fw700" placeholder="€ 0,00" readonly></td>
+              <td class="tac"><input type="text" id="row1Qty" class="table-input-clean tac fw700"></td>
+              <td><input type="text" id="row1Desc" class="table-input-clean fw700"></td>
+              <td class="tar"><input type="text" id="row1Price" class="table-input-clean tar fw700" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row1Sub" class="table-input-clean tar fw700" readonly></td>
             </tr>
             <tr>
-              <td class="tac"><input type="text" id="row2Qty" class="table-input-clean tac" placeholder="1x"></td>
-              <td><input type="text" id="row2Desc" class="table-input-clean" placeholder="bijv. Geïntegreerd Lithium Accupakket (snoerloos)"></td>
-              <td class="tar"><input type="text" id="row2Price" class="table-input-clean tar" placeholder="€ 0,00" oninput="calculateTotal()"></td>
-              <td class="tar"><input type="text" id="row2Sub" class="table-input-clean tar" placeholder="€ 0,00" readonly></td>
+              <td class="tac"><input type="text" id="row2Qty" class="table-input-clean tac"></td>
+              <td><input type="text" id="row2Desc" class="table-input-clean"></td>
+              <td class="tar"><input type="text" id="row2Price" class="table-input-clean tar" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row2Sub" class="table-input-clean tar" readonly></td>
             </tr>
             <tr>
-              <td class="tac"><input type="text" id="row3Qty" class="table-input-clean tac" placeholder="1x"></td>
-              <td><input type="text" id="row3Desc" class="table-input-clean" placeholder="bijv. Bezorging, vakkundige plaatsing & instructie aan huis"></td>
-              <td class="tar"><input type="text" id="row3Price" class="table-input-clean tar" placeholder="Inbegrepen" oninput="calculateTotal()"></td>
-              <td class="tar"><input type="text" id="row3Sub" class="table-input-clean tar" placeholder="€ 0,00" readonly></td>
+              <td class="tac"><input type="text" id="row3Qty" class="table-input-clean tac"></td>
+              <td><input type="text" id="row3Desc" class="table-input-clean"></td>
+              <td class="tar"><input type="text" id="row3Price" class="table-input-clean tar" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row3Sub" class="table-input-clean tar" readonly></td>
             </tr>
             <tr>
-              <td class="tac"><input type="text" id="row4Qty" class="table-input-clean tac" placeholder=""></td>
-              <td><input type="text" id="row4Desc" class="table-input-clean" placeholder="Vrije regel voor extra opties, afspraken of inruil..."></td>
-              <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" placeholder="" oninput="calculateTotal()"></td>
-              <td class="tar"><input type="text" id="row4Sub" class="table-input-clean tar" placeholder="" readonly></td>
+              <td class="tac"><input type="text" id="row4Qty" class="table-input-clean tac"></td>
+              <td><input type="text" id="row4Desc" class="table-input-clean"></td>
+              <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" oninput="calculateTotal()"></td>
+              <td class="tar"><input type="text" id="row4Sub" class="table-input-clean tar" readonly></td>
             </tr>
           </tbody>
           <tfoot>
@@ -1063,7 +1050,7 @@
               <td class="tar">
                 <div class="total-price-cell">
                   <span>€</span>
-                  <input type="text" id="totalPrice" placeholder="0,00">
+                  <input type="text" id="totalPrice">
                 </div>
               </td>
             </tr>
@@ -1110,11 +1097,11 @@
           <div class="sign-details">
             <div class="sign-detail-item">
               <span>Naam:</span>
-              <input type="text" id="signKlantNaam" class="sign-line-input" placeholder="Naam ondertekenaar">
+              <input type="text" id="signKlantNaam" class="sign-line-input">
             </div>
             <div class="sign-detail-item fixed-date">
               <span>Datum:</span>
-              <input type="text" id="signKlantDatum" class="sign-line-input" placeholder="DD-MM-JJJJ">
+              <input type="text" id="signKlantDatum" class="sign-line-input">
             </div>
           </div>
         </div>
@@ -1131,11 +1118,11 @@
           <div class="sign-details">
             <div class="sign-detail-item">
               <span>Adviseur:</span>
-              <input type="text" id="signAdviseur" class="sign-line-input" placeholder="Geertjan / Matthias / Suus">
+              <input type="text" id="signAdviseur" class="sign-line-input">
             </div>
             <div class="sign-detail-item fixed-date">
               <span>Showroom:</span>
-              <input type="text" id="signShowroom" class="sign-line-input" placeholder="Dordrecht">
+              <input type="text" id="signShowroom" class="sign-line-input">
             </div>
           </div>
         </div>
@@ -1255,9 +1242,25 @@
       }
     }
 
+    function clearAllFields() {
+      document.querySelectorAll('.sheet input').forEach(i => {
+        if (i.type === 'checkbox' || i.type === 'radio') i.checked = false;
+        else i.value = '';
+      });
+      const total = document.getElementById('totalPrice');
+      if (total) total.value = '';
+      localStorage.removeItem(STORAGE_KEY);
+    }
+
+    function printBlankOrderbon() {
+      clearAllFields();
+      window.print();
+    }
+
     // Event listeners
     document.addEventListener('DOMContentLoaded', () => {
-      loadFromStorage();
+      // Begin altijd 100% blanco voor een maagdelijk printformulier
+      clearAllFields();
 
       document.querySelectorAll('input').forEach(input => {
         input.addEventListener('input', saveToStorage);
@@ -1265,16 +1268,9 @@
       });
     });
 
-    // Knoppen functionaliteit (Alles 100% leegmaken voor printen met de pen)
+    // Knoppen functionaliteit
     document.getElementById('btnClearForm').addEventListener('click', () => {
-      if (confirm('Wilt u alle ingevulde velden leegmaken voor een schone bon?')) {
-        localStorage.removeItem(STORAGE_KEY);
-        document.querySelectorAll('input').forEach(i => {
-          if (i.type === 'checkbox' || i.type === 'radio') i.checked = false;
-          else i.value = '';
-        });
-        document.getElementById('totalPrice').value = '';
-      }
+      clearAllFields();
     });
 
     document.getElementById('btnFillDemo').addEventListener('click', () => {
