@@ -912,10 +912,24 @@
       flex-wrap: wrap;
     }
     .huisstijl-title-icon {
-      font-size: 1.35rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1.5px solid rgba(75, 143, 36, 0.25);
+      color: var(--color-forest);
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.08);
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .huisstijl-collapsible-group[open] .huisstijl-title-icon {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+      box-shadow: 0 4px 10px rgba(75, 143, 36, 0.25);
     }
     .huisstijl-category-badge {
       font-size: 0.78rem;
@@ -1016,9 +1030,25 @@
       box-shadow: 0 6px 18px rgba(75, 143, 36, 0.1);
     }
     .download-icon-box {
-      font-size: 1.8rem;
-      min-width: 40px;
-      text-align: center;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1.5px solid rgba(75, 143, 36, 0.2);
+      color: var(--color-forest);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.22s ease;
+      flex-shrink: 0;
+    }
+    .download-item-card:hover .download-icon-box {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.28);
+      transform: scale(1.05);
     }
     .download-info {
       display: flex;
@@ -1035,14 +1065,23 @@
       color: var(--color-gray);
     }
     .download-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 0.78rem;
       font-weight: 700;
       color: var(--color-forest);
       background: rgba(75, 143, 36, 0.1);
-      padding: 6px 12px;
+      padding: 7px 13px;
       border-radius: 8px;
       white-space: nowrap;
       border: 1px solid rgba(75, 143, 36, 0.2);
+      transition: all 0.2s ease;
+    }
+    .download-item-card:hover .download-action-btn {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
     }
     .huisstijl-material-card {
       background: #ffffff;
@@ -1129,8 +1168,19 @@
       font-weight: 500;
     }
     .huisstijl-meta-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(75, 143, 36, 0.12);
+      border: 1px solid rgba(75, 143, 36, 0.25);
       color: var(--color-forest);
+      font-size: 0.68rem;
       font-weight: 900;
+      flex-shrink: 0;
+      line-height: 1;
     }
     .huisstijl-card-actions {
       padding: 14px 22px;
@@ -2003,11 +2053,13 @@
             <span>5 categorieën drukwerk &amp; merkbestanden</span>
           </div>
           <div class="huisstijl-toggle-btns">
-            <button type="button" class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px;" onclick="toggleAllHuisstijl(true)">
-              ➕ Alles Uitklappen
+            <button type="button" class="btn btn-outline" style="font-size: 0.82rem; padding: 7px 14px; display: inline-flex; align-items: center; gap: 6px;" onclick="toggleAllHuisstijl(true)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-forest);"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
+              <span>Alles Uitklappen</span>
             </button>
-            <button type="button" class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px;" onclick="toggleAllHuisstijl(false)">
-              ➖ Alles Inklappen
+            <button type="button" class="btn btn-outline" style="font-size: 0.82rem; padding: 7px 14px; display: inline-flex; align-items: center; gap: 6px;" onclick="toggleAllHuisstijl(false)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-forest);"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+              <span>Alles Inklappen</span>
             </button>
           </div>
         </div>
@@ -2016,7 +2068,13 @@
         <details class="huisstijl-collapsible-group" open id="groupVisitekaartjes">
           <summary class="huisstijl-category-title">
             <div class="huisstijl-title-left">
-              <span class="huisstijl-title-icon">📇</span>
+              <span class="huisstijl-title-icon" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                  <circle cx="8" cy="12" r="2.5"></circle>
+                  <path d="M14 10h4M14 14h3"></path>
+                </svg>
+              </span>
               <span>Visitekaartjes</span>
               <span class="huisstijl-category-badge">85 × 55 mm Euro-standaard &bull; A4 Drukvel (10x)</span>
             </div>
@@ -2067,10 +2125,10 @@
                 Bekijk Kaartje
               </a>
               <a href="assets/visitekaartje-geertjan.pdf" download="visitekaartje-geertjan-85x55mm.pdf" class="huisstijl-btn-secondary" style="border-color: #2e5c1e; color: #1e4513; font-weight: 700; background: #eef6ec;" title="Download direct de 2-zijdige drukklare vector PDF (85 × 55 mm)">
-                📄 PDF
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF
               </a>
               <a href="visitekaartje.html#vistaprint" target="_blank" class="huisstijl-btn-secondary" style="border-color: #f39223; color: #c86908; font-weight: 700;" title="Direct downloaden voor Vistaprint">
-                📦 Vistaprint
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Vistaprint
               </a>
               <a href="visitekaartje.html#sheetContainer" target="_blank" class="huisstijl-btn-secondary" title="Open A4 Drukvel (10 op 1 vel)">
                 Drukvel (10x)
@@ -2118,10 +2176,10 @@
                 Bekijk Kaartje
               </a>
               <a href="assets/visitekaartje-matthias.pdf" download="visitekaartje-matthias-85x55mm.pdf" class="huisstijl-btn-secondary" style="border-color: #2e5c1e; color: #1e4513; font-weight: 700; background: #eef6ec;" title="Download direct de 2-zijdige drukklare vector PDF (85 × 55 mm)">
-                📄 PDF
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF
               </a>
               <a href="visitekaartje-matthias.html#vistaprint" target="_blank" class="huisstijl-btn-secondary" style="border-color: #f39223; color: #c86908; font-weight: 700;" title="Direct downloaden voor Vistaprint">
-                📦 Vistaprint
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Vistaprint
               </a>
               <a href="visitekaartje-matthias.html#sheetContainer" target="_blank" class="huisstijl-btn-secondary" title="Open A4 Drukvel (10 op 1 vel)">
                 Drukvel (10x)
@@ -2169,10 +2227,10 @@
                 Bekijk Kaartje
               </a>
               <a href="assets/visitekaartje-suus.pdf" download="visitekaartje-suus-85x55mm.pdf" class="huisstijl-btn-secondary" style="border-color: #2e5c1e; color: #1e4513; font-weight: 700; background: #eef6ec;" title="Download direct de 2-zijdige drukklare vector PDF (85 × 55 mm)">
-                📄 PDF
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF
               </a>
               <a href="visitekaartje-suus.html#vistaprint" target="_blank" class="huisstijl-btn-secondary" style="border-color: #f39223; color: #c86908; font-weight: 700;" title="Direct downloaden voor Vistaprint">
-                📦 Vistaprint
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Vistaprint
               </a>
               <a href="visitekaartje-suus.html#sheetContainer" target="_blank" class="huisstijl-btn-secondary" title="Open A4 Drukvel (10 op 1 vel)">
                 Drukvel (10x)
@@ -2187,7 +2245,14 @@
         <details class="huisstijl-collapsible-group" open id="groupFlyers">
           <summary class="huisstijl-category-title">
             <div class="huisstijl-title-left">
-              <span class="huisstijl-title-icon">📄</span>
+              <span class="huisstijl-title-icon" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </span>
               <span>Flyers &amp; Folders</span>
               <span class="huisstijl-category-badge">A5 &bull; A6 &bull; A4 Drukvel</span>
             </div>
@@ -2303,7 +2368,10 @@
                   <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.4" alt="Sticker" style="width: 16px; height: 16px;">
                 </div>
                 <div style="background: #f1f5f9; border-radius: 4px; height: 50px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px;">
-                  <span style="font-size: 0.5rem; color: #64748b;">🛋️ Sfeerfoto / Cosy</span>
+                  <span style="font-size: 0.5rem; color: #64748b; display: inline-flex; align-items: center; gap: 4px;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/></svg>
+                    Sfeerfoto / Cosy
+                  </span>
                 </div>
                 <div class="mock-flyer-headline" style="font-size: 0.55rem; line-height: 1.1; margin-bottom: 2px;">
                   Fitform 570 Vario
@@ -2350,7 +2418,13 @@
         <details class="huisstijl-collapsible-group" open id="groupWerkwijzers">
           <summary class="huisstijl-category-title">
             <div class="huisstijl-title-left">
-              <span class="huisstijl-title-icon">📋</span>
+              <span class="huisstijl-title-icon" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  <path d="m9 14 2 2 4-4"></path>
+                </svg>
+              </span>
               <span>Werkwijzers &amp; Formulieren</span>
               <span class="huisstijl-category-badge">A4 Formaat (210 × 297 mm)</span>
             </div>
@@ -2521,7 +2595,15 @@
         <details class="huisstijl-collapsible-group" open id="groupKleuren">
           <summary class="huisstijl-category-title">
             <div class="huisstijl-title-left">
-              <span class="huisstijl-title-icon">🎨</span>
+              <span class="huisstijl-title-icon" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                </svg>
+              </span>
               <span>Huisstijlkleuren</span>
               <span class="huisstijl-category-badge">Officiële Hex &amp; RGB Codes</span>
             </div>
@@ -2560,7 +2642,13 @@
         <details class="huisstijl-collapsible-group" open id="groupDownloads">
           <summary class="huisstijl-category-title">
             <div class="huisstijl-title-left">
-              <span class="huisstijl-title-icon">💾</span>
+              <span class="huisstijl-title-icon" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </span>
               <span>Digitale Bestanden &amp; Downloads</span>
               <span class="huisstijl-category-badge">Vector Logo's, QR-Codes &amp; Beeldmateriaal</span>
             </div>
@@ -2572,36 +2660,77 @@
           <div class="huisstijl-downloads-card">
             <div class="huisstijl-downloads-grid">
               <a href="assets/sticker_nieuw_gereviseerd.svg?v=1.4" download class="download-item-card">
-                <span class="download-icon-box">🛡️</span>
+                <span class="download-icon-box" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </span>
                 <div class="download-info">
                   <strong>Kwaliteitszegel Sticker</strong>
                   <span>Officiële vector SVG kwaliteitsbadge</span>
                 </div>
-                <span class="download-action-btn">⬇ SVG</span>
+                <span class="download-action-btn">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>SVG</span>
+                </span>
               </a>
               <a href="assets/qr_staopstoelen.svg" download class="download-item-card">
-                <span class="download-icon-box">📱</span>
+                <span class="download-icon-box" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                    <rect x="6" y="6" width="1" height="1" fill="currentColor"></rect>
+                    <rect x="17" y="6" width="1" height="1" fill="currentColor"></rect>
+                    <rect x="6" y="17" width="1" height="1" fill="currentColor"></rect>
+                    <path d="M14 17h3v3"></path>
+                  </svg>
+                </span>
                 <div class="download-info">
                   <strong>QR-Code (Vector SVG)</strong>
                   <span>Haarscherp vectorbestand voor elk drukwerk</span>
                 </div>
-                <span class="download-action-btn">⬇ SVG</span>
+                <span class="download-action-btn">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>SVG</span>
+                </span>
               </a>
               <a href="assets/qr_staopstoelen.png" download class="download-item-card">
-                <span class="download-icon-box">🔳</span>
+                <span class="download-icon-box" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </span>
                 <div class="download-info">
                   <strong>QR-Code (HD PNG)</strong>
                   <span>Hoge resolutie rasterbestand met witruimte</span>
                 </div>
-                <span class="download-action-btn">⬇ PNG</span>
+                <span class="download-action-btn">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>PNG</span>
+                </span>
               </a>
               <a href="assets/Sta-op-stoel-DORDRECHT-interior.png" target="_blank" class="download-item-card">
-                <span class="download-icon-box">🛋️</span>
+                <span class="download-icon-box" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"></path>
+                    <path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path>
+                    <path d="M5 18v3"></path>
+                    <path d="M19 18v3"></path>
+                  </svg>
+                </span>
                 <div class="download-info">
                   <strong>Stoel Sfeerfoto (HD)</strong>
                   <span>Woonkamer interieur in hoge resolutie</span>
                 </div>
-                <span class="download-action-btn">👁 HD Foto</span>
+                <span class="download-action-btn">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>HD Foto</span>
+                </span>
               </a>
             </div>
           </div>
