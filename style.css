@@ -3814,7 +3814,7 @@ input[type="checkbox"] {
   /* Najaarsactie Campaign Grid Mobile Styling */
   .najaarsactie-grid {
     grid-template-columns: 1fr !important;
-    gap: 30px !important;
+    gap: 48px !important;
   }
   .najaarsactie-image-col {
     order: -1;
@@ -4613,7 +4613,7 @@ input[type="checkbox"] {
 @media (max-width: 900px) {
   .najaarsactie-grid {
     grid-template-columns: 1fr !important;
-    gap: 30px !important;
+    gap: 48px !important;
   }
 }
 
