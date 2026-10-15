@@ -474,6 +474,41 @@
       font-weight: 700;
     }
 
+    
+    /* Officiële Fitform Dealer Badge gecentreerd onder Geert-box */
+    .front-dealer-center-wrap {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.2mm 0 1.6mm 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .front-dealer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 2mm;
+      background: rgba(243, 146, 35, 0.08);
+      border: 0.35mm solid rgba(243, 146, 35, 0.45);
+      padding: 1.1mm 3.8mm;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 2.3mm;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--color-terracotta);
+      box-shadow: 0 1mm 3mm rgba(243, 146, 35, 0.08);
+    }
+
+    .dealer-pill-img {
+      height: 3.4mm;
+      width: auto;
+      display: block;
+    }
+
     /* QR & Showroom Banner onderaan de voorkant (QR springt iets uit de box) */
     .front-qr-banner {
       width: 100%;
@@ -1195,7 +1230,15 @@
               </div>
             </div>
 
-            <!-- 3. Bottom QR & Showroom Banner (QR springt iets uit de box) -->
+            <!-- 3. Officiële Fitform Dealer Badge gecentreerd onder de Geert-box -->
+            <div class="front-dealer-center-wrap">
+              <div class="front-dealer-pill">
+                <img src="assets/fitform_logo_terracotta.png" alt="Fitform" class="dealer-pill-img">
+                <span>Officiële Fitform Dealer</span>
+              </div>
+            </div>
+
+            <!-- 4. Bottom QR & Showroom Banner (QR springt iets uit de box) -->
             <div class="front-qr-banner">
               <div class="front-qr-info">
                 <div class="front-qr-title">Ontdek ons complete aanbod</div>
@@ -1218,14 +1261,10 @@
 
         <article class="flyer-container flyer-back" id="flyerBack">
           
-          <!-- Top Header: Logo & Fitform Dealer -->
+          <!-- Top Header: Logo -->
           <header class="back-header">
             <div class="back-logo-row">
               <div class="back-logo-title">staopstoelen<span>.nl</span></div>
-              <div class="back-dealer-pill">
-                <img src="assets/fitform_logo_terracotta.png" alt="Fitform" style="height: 3.2mm; width: auto; display: block;">
-                <span>Officiële Fitform Dealer</span>
-              </div>
             </div>
             <h2 class="back-intro-title">
               Ervaar het comfort zelf in onze showroom in Dordrecht,<br>
