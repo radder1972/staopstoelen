@@ -354,23 +354,7 @@ function initHeroSlideshow() {
   function updateSlideshowActieBadge(activeSlide) {
     const badge = document.querySelector(".slideshow-actie-badge");
     if (!badge) return;
-
-    let isFitform = false;
-    if (activeSlide) {
-      const captionText = activeSlide.querySelector(".slide-caption")?.textContent || "";
-      const imgAlt = activeSlide.querySelector("img")?.alt || "";
-      const brandAttr = activeSlide.getAttribute("data-brand") || "";
-      const fullText = `${captionText} ${imgAlt} ${brandAttr}`.toLowerCase();
-      if (fullText.includes("fitform")) {
-        isFitform = true;
-      }
-    }
-
-    if (isFitform) {
-      badge.classList.add("is-visible");
-    } else {
-      badge.classList.remove("is-visible");
-    }
+    badge.classList.add("is-visible");
   }
   window.updateSlideshowActieBadge = updateSlideshowActieBadge;
 
