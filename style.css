@@ -3252,16 +3252,16 @@ footer h3, footer h4 {
   box-shadow: 0 8px 26px rgba(37, 102, 22, 0.45), 0 3px 12px rgba(234, 88, 12, 0.4) !important;
 }
 
-/* Slideshow Action Button / Badge (Permanently visible during Najaarsactie) */
+/* Slideshow Action Button / Badge (Alleen zichtbaar bij Fitform stoelen) */
 .slideshow-actie-badge {
   position: absolute;
   top: 18px;
   right: 18px;
   z-index: 10;
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0) scale(1);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.96);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .slideshow-actie-badge.is-visible {

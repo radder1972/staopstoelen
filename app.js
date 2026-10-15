@@ -354,7 +354,17 @@ function initHeroSlideshow() {
   function updateSlideshowActieBadge(activeSlide) {
     const badge = document.querySelector(".slideshow-actie-badge");
     if (!badge) return;
-    badge.classList.add("is-visible");
+    const isFitform = Boolean(
+      activeSlide && (
+        activeSlide.getAttribute("data-brand") === "fitform" ||
+        (activeSlide.querySelector(".slide-caption") && activeSlide.querySelector(".slide-caption").textContent.toLowerCase().includes("fitform"))
+      )
+    );
+    if (isFitform) {
+      badge.classList.add("is-visible");
+    } else {
+      badge.classList.remove("is-visible");
+    }
   }
   window.updateSlideshowActieBadge = updateSlideshowActieBadge;
 
