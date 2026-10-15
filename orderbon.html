@@ -782,6 +782,40 @@
       cursor: pointer;
     }
 
+    .custom-check-other-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .custom-check-other-wrap .custom-check {
+      flex-shrink: 0;
+    }
+
+    .opt-other-fill {
+      flex: 1;
+      border-bottom: 1px dotted #8c939c;
+      min-height: 18px;
+      display: flex;
+      align-items: flex-end;
+      min-width: 0;
+    }
+
+    .opt-other-input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--color-dark);
+      padding: 0 2px 1px 2px;
+      outline: none;
+      line-height: 1.2;
+    }
+
     /* Gecombineerde Box: Levering, Afspraken & Handtekeningen */
     .delivery-agreement-wrap {
       border: 1px solid var(--color-gray-light);
@@ -1330,7 +1364,15 @@
           <label class="custom-check"><input type="checkbox" id="optLumbaal"> Opblaasbare lendesteun</label>
           <label class="custom-check"><input type="checkbox" id="optWielen"> Wielsysteem / Rijvoorziening</label>
           <label class="custom-check"><input type="checkbox" id="optKussen"> Ergonomisch hoofdkussen</label>
-          <label class="custom-check"><input type="checkbox" id="optTafel"> Afneembaar werk-/eetblad</label>
+          <div class="custom-check-other-wrap">
+            <label class="custom-check" for="optOverig">
+              <input type="checkbox" id="optOverig">
+              <span>Overig:</span>
+            </label>
+            <div class="opt-other-fill">
+              <input type="text" id="optOverigTekst" class="opt-other-input" autocomplete="off" spellcheck="false">
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1746,6 +1788,16 @@
         input.addEventListener('input', saveToStorage);
         input.addEventListener('change', saveToStorage);
       });
+
+      const optOverigTekst = document.getElementById('optOverigTekst');
+      const optOverig = document.getElementById('optOverig');
+      if (optOverigTekst && optOverig) {
+        optOverigTekst.addEventListener('input', () => {
+          if (optOverigTekst.value.trim().length > 0) {
+            optOverig.checked = true;
+          }
+        });
+      }
     });
 
     // Knoppen functionaliteit
@@ -1773,6 +1825,9 @@
       document.getElementById('optLumbaal').checked = true;
       document.getElementById('optVerwarming').checked = false;
       document.getElementById('optWielen').checked = false;
+      document.getElementById('optKussen').checked = false;
+      document.getElementById('optOverig').checked = false;
+      document.getElementById('optOverigTekst').value = '';
 
       document.getElementById('row1Qty').value = '1x';
       document.getElementById('row1Desc').value = 'Fitform 570 Vario sta-op fauteuil, Rancho Cognac, gereconditioneerd';
