@@ -3332,17 +3332,6 @@ footer h3, footer h4 {
   color: #ffffff;
 }
 
-.announcement-text .announcement-arrow {
-  display: inline-block;
-  margin-left: 4px;
-  transition: transform 0.2s ease;
-  font-weight: 600;
-}
-
-.announcement-bar-link:hover .announcement-arrow {
-  transform: translateX(4px);
-}
-
 @media (max-width: 768px) {
   .announcement-bar-najaar {
     font-size: 0.78rem;
