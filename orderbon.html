@@ -138,7 +138,7 @@
       transform: translateY(-1px);
     }
 
-    /* A4 Sheet Canvas: exactly 210mm x 297mm */
+    /* A4 Sheet Canvas */
     .sheet {
       width: 210mm;
       min-height: 297mm;
@@ -272,7 +272,6 @@
       gap: 18px;
     }
 
-    /* Meta field with label on top, input below */
     .meta-col {
       display: flex;
       flex-direction: column;
@@ -553,11 +552,11 @@
       cursor: pointer;
     }
 
-    /* Split Section: Financieel & Levering */
+    /* Split Section: Financieel & Levering (Perfect symmetrisch) */
     .finance-delivery-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       margin-bottom: 8px;
     }
 
@@ -566,70 +565,44 @@
       border-radius: 7px;
       overflow: hidden;
       background: #ffffff;
+      display: flex;
+      flex-direction: column;
     }
 
-    .finance-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 11.5px;
-    }
-
-    .finance-table td {
-      padding: 5px 10px;
-      border-bottom: 1px dotted #e2e8f0;
-    }
-
-    .finance-table tr:last-child td {
-      border-bottom: none;
-      background: #fbf9f5;
-      font-weight: 800;
-    }
-
-    .finance-lbl {
-      font-weight: 700;
-      color: var(--color-dark);
+    .finance-card-body {
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      gap: 8px;
     }
 
     .finance-amount-wrap {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 5px;
+      gap: 6px;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--color-forest-dark);
-    }
-
-    .finance-amount-wrap.total {
-      font-size: 14px;
-      color: var(--color-forest-dark);
-    }
-
-    .finance-amount-wrap.due {
-      font-size: 14px;
-      color: var(--color-terracotta-dark);
     }
 
     .price-input {
-      width: 95px;
+      width: 110px;
       text-align: right;
       border: none;
-      border-bottom: 1.5px solid var(--color-forest);
+      border-bottom: 2px solid var(--color-forest);
       background: transparent;
       font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 800;
       color: inherit;
       outline: none;
-      padding: 1px 2px;
+      padding: 1px 4px;
     }
 
-    .price-input.due-input {
-      border-color: var(--color-terracotta);
-    }
-
-    /* Handtekeningen Sectie */
+    /* Handtekeningen Sectie: perfect uitgelijnd */
     .sign-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -640,32 +613,53 @@
     .sign-box-wrap {
       border: 1px solid var(--color-gray-light);
       border-radius: 7px;
-      padding: 7px 12px;
+      padding: 9px 12px;
       background: #fafbfc;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sign-head-block {
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      min-height: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .sign-title {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 800;
       font-family: var(--font-heading);
       color: var(--color-forest-dark);
       text-transform: uppercase;
-      letter-spacing: 0.3px;
-      margin-bottom: 3px;
+      letter-spacing: 0.4px;
+      line-height: 1.2;
+    }
+
+    .sign-subtitle {
+      font-size: 9.5px;
+      font-weight: 500;
+      color: var(--color-gray);
+      margin-top: 1px;
     }
 
     .sign-field {
-      height: 48px;
-      border-bottom: 1px solid #94a3b8;
+      height: 62px;
+      border-bottom: 1.5px solid #94a3b8;
       background: #ffffff;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       position: relative;
+      border-radius: 4px 4px 0 0;
     }
 
     .sign-field-hint {
       position: absolute;
-      bottom: 3px;
-      right: 5px;
+      bottom: 4px;
+      right: 6px;
       font-size: 9px;
       color: #94a3b8;
       font-style: italic;
@@ -674,21 +668,34 @@
     .sign-details {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
-      font-size: 10.5px;
+      gap: 12px;
+      font-size: 11px;
       color: var(--color-gray);
+      align-items: center;
+    }
+
+    .sign-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .sign-detail-item.fixed-date {
+      width: 120px;
+      flex: none;
     }
 
     .sign-line-input {
       border: none;
       border-bottom: 1px dotted #8c939c;
       background: transparent;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--color-dark);
       outline: none;
       padding: 0 3px;
-      flex: 1;
+      width: 100%;
     }
 
     /* Voorwaarden & Footer */
@@ -828,7 +835,7 @@
       </div>
     </header>
 
-    <!-- 2. Order Meta Bar: Label boven, veld eronder -->
+    <!-- 2. Order Meta Bar -->
     <div class="order-meta-bar">
       <div class="order-title-box">
         <span class="order-badge">ORDERBON</span>
@@ -1005,7 +1012,7 @@
             </tr>
             <tr>
               <td class="tac"><input type="text" id="row4Qty" class="table-input-clean tac" placeholder=""></td>
-              <td><input type="text" id="row4Desc" class="table-input-clean" placeholder="Vrije regel voor extra opties, inruil oude stoel of specifieke wensen..."></td>
+              <td><input type="text" id="row4Desc" class="table-input-clean" placeholder="Vrije regel voor extra opties, maatwerkafspraken of specifieke wensen..."></td>
               <td class="tar"><input type="text" id="row4Price" class="table-input-clean tar" placeholder="" oninput="calculateTotal()"></td>
               <td class="tar"><input type="text" id="row4Sub" class="table-input-clean tar" placeholder="" readonly></td>
             </tr>
@@ -1014,57 +1021,26 @@
       </div>
     </div>
 
-    <!-- 6. Financieel Overzicht & Bezorging/Levering -->
+    <!-- 6. Financieel Overzicht & Levering / Afspraken (Symmetrisch & Geen Aanbetaling) -->
     <div class="finance-delivery-grid">
       
-      <!-- Financieel Blok -->
+      <!-- Financieel Blok: Alleen Totaalbedrag, geen aanbetaling -->
       <div class="finance-card">
         <div class="section-head" style="background: #394833;">
           <span>Financieel Overzicht</span>
-          <span style="font-size: 9.5px; opacity: 0.95;">Bedragen Incl. 21% BTW</span>
+          <span style="font-size: 9.5px; opacity: 0.95;">Bedrag Incl. 21% BTW</span>
         </div>
-        <table class="finance-table">
-          <tr>
-            <td class="finance-lbl">Totaalbedrag order:</td>
-            <td>
-              <div class="finance-amount-wrap total">
-                <span>€</span>
-                <input type="text" id="totalPrice" class="price-input" placeholder="0,00" oninput="calculateBalance()">
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="finance-lbl">
-              Aanbetaling:
-              <div style="font-size: 9.5px; font-weight: normal; color: var(--color-gray);">Binnen 8 dgn of direct voldaan</div>
-            </td>
-            <td>
-              <div class="finance-amount-wrap">
-                <span>€</span>
-                <input type="text" id="depositPrice" class="price-input" placeholder="0,00" oninput="calculateBalance()">
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="finance-lbl">
-              Restbedrag bij levering:
-              <div style="font-size: 9.5px; font-weight: normal; color: var(--color-gray);">Per pin bij bezorging of bank</div>
-            </td>
-            <td>
-              <div class="finance-amount-wrap due">
-                <span>€</span>
-                <input type="text" id="balancePrice" class="price-input due-input" placeholder="0,00" readonly>
-              </div>
-            </td>
-          </tr>
-        </table>
-        
-        <div style="padding: 5px 10px; background: #fafafa; border-top: 1px solid #e2e8f0; font-size: 10.5px;">
-          <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Betaalwijze aanbetaling:</div>
-          <div class="checkbox-row" style="gap: 12px;">
-            <label class="custom-check"><input type="radio" name="payDeposit" value="pin" checked> Pin winkel</label>
-            <label class="custom-check"><input type="radio" name="payDeposit" value="factuur"> Factuur / Bank</label>
-            <label class="custom-check"><input type="radio" name="payDeposit" value="contant"> Contant</label>
+        <div class="finance-card-body">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 0;">
+            <span class="finance-lbl" style="font-size: 13.5px;">Totaalbedrag order:</span>
+            <div class="finance-amount-wrap">
+              <span>€</span>
+              <input type="text" id="totalPrice" class="price-input" placeholder="0,00">
+            </div>
+          </div>
+          <div style="font-size: 11px; color: var(--color-gray); border-top: 1px dashed #d1d5db; padding-top: 6px; line-height: 1.4;">
+            <strong style="color: var(--color-forest-dark);">Betaling bij aflevering:</strong><br>
+            Factuur wordt voldaan per mobiele pin of per bank na vakkundige bezorging en plaatsing aan huis.
           </div>
         </div>
       </div>
@@ -1075,79 +1051,74 @@
           <span>Levering &amp; Afspraken</span>
           <span style="font-size: 9.5px; opacity: 0.95;">Eigen Bezorgdienst</span>
         </div>
-        <div style="padding: 7px 10px; font-size: 11px;">
-          <div style="margin-bottom: 6px;">
-            <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Verwachte levertijd:</div>
-            <div class="checkbox-row" style="gap: 10px;">
-              <label class="custom-check"><input type="radio" name="deliveryTime" value="snel" checked> Binnen 1-2 wkn</label>
-              <label class="custom-check"><input type="radio" name="deliveryTime" value="op-maat"> 3-5 wkn</label>
-              <label class="custom-check"><input type="radio" name="deliveryTime" value="in-overleg"> In overleg</label>
-            </div>
+        <div class="finance-card-body">
+          <div style="font-size: 11px; line-height: 1.4;">
+            <strong>Bezorging &amp; instellen:</strong> Inclusief vakkundige levering &amp; ergonomisch instellen aan huis.<br>
+            <strong>Levertijd:</strong> In overleg zodra de stoel gereed / binnen is.
           </div>
-
-          <div style="margin-bottom: 6px;">
-            <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Bezorgwijze &amp; Plaatsing:</div>
-            <div class="checkbox-row" style="gap: 10px;">
-              <label class="custom-check"><input type="radio" name="deliveryMethod" value="bezorgen" checked> Bezorging &amp; instellen aan huis</label>
-              <label class="custom-check"><input type="radio" name="deliveryMethod" value="afhalen"> Afhalen showroom</label>
-            </div>
-          </div>
-
-          <div>
-            <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 2px;">Situatie woning &amp; Inruil:</div>
-            <div class="checkbox-row" style="gap: 10px;">
-              <label class="custom-check"><input type="checkbox" id="chkLift"> Lift aanwezig</label>
-              <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
-              <label class="custom-check"><input type="checkbox" id="chkInruil"> Oude stoel meenemen</label>
-            </div>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px dashed #d1d5db; padding-top: 6px; font-size: 11px;">
+            <strong style="color: var(--color-forest-dark);">Situatie woning:</strong>
+            <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
+            <label class="custom-check"><input type="checkbox" id="chkLift"> Lift aanwezig</label>
+            <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap / etage</label>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- 7. Akkoord & Handtekeningen -->
+    <!-- 7. Akkoord & Handtekeningen (Grote vakken & Perfect horizontaal uitgelijnd) -->
     <div class="sign-container">
+      
+      <!-- Handtekening Klant -->
       <div class="sign-box-wrap">
-        <div class="sign-title">Voor akkoord &amp; opdrachtverstrekking (Klant):</div>
+        <div class="sign-head-block">
+          <div class="sign-title">Voor akkoord cliënt</div>
+          <div class="sign-subtitle">Opdrachtverstrekking &amp; akkoord voorwaarden</div>
+        </div>
         <div class="sign-field">
           <span class="sign-field-hint">Handtekening cliënt / gemachtigde</span>
         </div>
         <div class="sign-details">
-          <div style="display: flex; align-items: center; gap: 4px; flex: 1;">
+          <div class="sign-detail-item">
             <span>Naam:</span>
             <input type="text" id="signKlantNaam" class="sign-line-input" placeholder="Naam ondertekenaar">
           </div>
-          <div style="display: flex; align-items: center; gap: 4px; width: 120px;">
+          <div class="sign-detail-item fixed-date">
             <span>Datum:</span>
             <input type="text" id="signKlantDatum" class="sign-line-input" placeholder="DD-MM-JJJJ">
           </div>
         </div>
       </div>
 
+      <!-- Handtekening Adviseur -->
       <div class="sign-box-wrap">
-        <div class="sign-title">Gezien &amp; geaccepteerd (Adviseur):</div>
+        <div class="sign-head-block">
+          <div class="sign-title">Voor akkoord adviseur</div>
+          <div class="sign-subtitle">Schipper Compact Wonen / staopstoelen.nl</div>
+        </div>
         <div class="sign-field">
           <span class="sign-field-hint">Handtekening Schipper Compact Wonen</span>
         </div>
         <div class="sign-details">
-          <div style="display: flex; align-items: center; gap: 4px; flex: 1;">
+          <div class="sign-detail-item">
             <span>Adviseur:</span>
             <input type="text" id="signAdviseur" class="sign-line-input" placeholder="Geertjan / Matthias / Suus">
           </div>
-          <div style="display: flex; align-items: center; gap: 4px; width: 120px;">
+          <div class="sign-detail-item fixed-date">
             <span>Showroom:</span>
             <input type="text" class="sign-line-input" value="Dordrecht" readonly>
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- 8. Footer & Voorwaarden -->
     <footer class="sheet-footer">
       <div class="terms-text">
         Op alle verkopen en leveringen zijn onze Algemene Voorwaarden van toepassing, te bevragen in de showroom te Dordrecht of in te zien via <strong>www.staopstoelen.nl</strong>.<br>
-        Aanbetaling dient binnen 8 dagen na ontvangst van deze orderbon te zijn voldaan. Het resterende bedrag dient bij bezorging per mobiele pin of vooraf per bank te worden voldaan.
+        Betaling geschiedt per factuur bij aflevering (per mobiele pin aan huis of per overboeking na plaatsing).
       </div>
       <div class="footer-pill">
         <span><strong>Schipper Compact Wonen</strong> &bull; staopstoelen.nl</span>
@@ -1163,7 +1134,7 @@
   </div>
 
   <script>
-    // Berekening Totalen
+    // Berekening Totaal
     function parseEuro(val) {
       if (!val) return 0;
       let clean = val.replace('€', '').replace(/\s/g, '').replace('.', '').replace(',', '.');
@@ -1189,16 +1160,7 @@
       let sum = p1 + p2 + p3 + p4;
       if (sum > 0) {
         document.getElementById('totalPrice').value = formatEuro(sum);
-        calculateBalance();
       }
-      saveToStorage();
-    }
-
-    function calculateBalance() {
-      let total = parseEuro(document.getElementById('totalPrice').value);
-      let deposit = parseEuro(document.getElementById('depositPrice').value);
-      let balance = Math.max(0, total - deposit);
-      document.getElementById('balancePrice').value = formatEuro(balance);
       saveToStorage();
     }
 
@@ -1258,11 +1220,11 @@
       }
     }
 
-    // Event listeners for change and input
+    // Event listeners
     document.addEventListener('DOMContentLoaded', () => {
       loadFromStorage();
 
-      // Vandaag datum instellen indien datum leeg is
+      // Datum van vandaag automatisch invullen
       const dateEl = document.getElementById('orderDatum');
       if (dateEl && !dateEl.value) {
         const today = new Date();
@@ -1287,18 +1249,12 @@
         localStorage.removeItem(STORAGE_KEY);
         document.querySelectorAll('input').forEach(i => {
           if (i.type === 'checkbox' || i.type === 'radio') i.checked = false;
-          else if (!i.readOnly || i.id === 'balancePrice') i.value = '';
+          else if (!i.readOnly) i.value = '';
         });
         const defMotoren = document.querySelector('input[name="motoren"][value="3-motorig"]');
         if (defMotoren) defMotoren.checked = true;
         const defConditie = document.querySelector('input[name="conditie"][value="gereviseerd"]');
         if (defConditie) defConditie.checked = true;
-        const defPin = document.querySelector('input[name="payDeposit"][value="pin"]');
-        if (defPin) defPin.checked = true;
-        const defTime = document.querySelector('input[name="deliveryTime"][value="snel"]');
-        if (defTime) defTime.checked = true;
-        const defMeth = document.querySelector('input[name="deliveryMethod"][value="bezorgen"]');
-        if (defMeth) defMeth.checked = true;
         document.getElementById('chkGelijkvloers').checked = true;
 
         const today = new Date();
@@ -1346,12 +1302,10 @@
       document.getElementById('row3Price').value = '0,00';
 
       document.getElementById('row4Qty').value = '1x';
-      document.getElementById('row4Desc').value = 'Inruil huidige defecte relaxfauteuil en gratis afvoer';
+      document.getElementById('row4Desc').value = 'Inruil huidige fauteuil en gratis afvoer';
       document.getElementById('row4Price').value = '- 100,00';
 
       document.getElementById('totalPrice').value = '1.995,00';
-      document.getElementById('depositPrice').value = '500,00';
-      document.getElementById('balancePrice').value = '1.495,00';
 
       document.getElementById('signKlantNaam').value = 'H. de Vries';
       document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
