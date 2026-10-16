@@ -152,16 +152,17 @@ function doPost(e) {
               <p style="margin: 0 0 16px 0; line-height: 1.5;">Met vriendelijke groet,</p>
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: 0; padding: 0;">
                 <tr>
-                  <td style="vertical-align: top; padding-right: 16px; width: 68px;">
-                    <img src="https://staopstoelen.nl/assets/geert_avatar.png" alt="Geertjan Klein Haneveld" width="68" height="68" style="display: block; width: 68px; height: 68px; border-radius: 50%; border: 1px solid #e0e0e0; object-fit: cover;">
+                  <td style="vertical-align: top; padding-right: 20px; width: 92px;">
+                    <img src="https://staopstoelen.nl/assets/geert_avatar.png" alt="Geertjan Klein Haneveld" width="92" height="92" style="display: block; width: 92px; height: 92px; border-radius: 50%; border: 1px solid #d5ded0; object-fit: cover;">
                   </td>
                   <td style="vertical-align: top; font-size: 14px; line-height: 1.5; color: #111111;">
-                    <strong style="color: #111111; font-size: 15px;">Geertjan Klein Haneveld</strong><br>
-                    Bewegingstechnoloog &amp; Erkend Fitform Dealer<br>
-                    staopstoelen.nl - Schipper Compact Wonen<br>
-                    Merwedestraat 239, 3313 GT Dordrecht<br>
-                    Telefoon: 078 - 631 4858<br>
-                    E-mail: info@staopstoelen.nl
+                    <div style="font-size: 16px; font-weight: bold; color: #111111; margin-bottom: 2px;">Geertjan Klein Haneveld</div>
+                    <div style="font-size: 13px; color: #444444; font-weight: 600; margin-bottom: 8px;">Gediplomeerd bewegingstechnoloog &amp; Erkend Fitform Dealer</div>
+                    <div style="font-size: 13px; line-height: 1.6; color: #222222;">
+                      06 - 22 23 29 64 &nbsp;&bull;&nbsp; 078 - 631 4858<br>
+                      <a href="mailto:geertjan@staopstoelen.nl" style="color: #222222; text-decoration: none;">geertjan@staopstoelen.nl</a> &nbsp;&bull;&nbsp; <a href="https://staopstoelen.nl" target="_blank" style="color: #222222; text-decoration: none;">www.staopstoelen.nl</a><br>
+                      Showroom: Merwedestraat 239, 3313 GT Dordrecht
+                    </div>
                   </td>
                 </tr>
               </table>
