@@ -674,20 +674,20 @@
        ========================================================================== */
     .flyer-back {
       background: #ffffff;
-      padding: 7mm 8mm 6.5mm 8mm;
+      padding: 8.5mm 13mm 8.5mm 13mm;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       position: relative;
     }
 
     .flyer-back::before {
       content: '';
       position: absolute;
-      top: 4mm;
-      left: 4mm;
-      right: 4mm;
-      bottom: 4mm;
+      top: 5mm;
+      left: 5mm;
+      right: 5mm;
+      bottom: 5mm;
       border: 0.35mm solid rgba(75, 143, 36, 0.25);
       border-radius: 2.5mm;
       pointer-events: none;
@@ -901,45 +901,119 @@
       border: 0.2mm solid rgba(255,255,255,0.4);
     }
 
-    /* VERGROOTTE "Liever advies bij u thuis?" Banner (Vult de witte ruimte) */
-    .back-home-visit {
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      padding: 0;
+    /* VERGROOTTE "Liever advies bij u thuis?" Card (naar beneden geschoven, als sluitende callout) */
+    .back-home-visit-card {
       position: relative;
       z-index: 2;
-      box-shadow: none;
+      background: var(--color-cream);
+      border: 0.4mm solid rgba(75, 143, 36, 0.3);
+      border-radius: 2.8mm;
+      padding: 3.5mm 4.5mm 3.2mm 4.5mm;
       display: flex;
       flex-direction: column;
-      gap: 1mm;
+      align-items: center;
       text-align: center;
-      margin: 1.5mm 0 0 0;
+      margin-top: auto;
+      margin-bottom: 1.5mm;
+      box-shadow: 0 2mm 6mm rgba(75, 143, 36, 0.07);
     }
 
-    /* Grote opvallende Bel Direct banner boven de showroom box */
+    .home-visit-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.2mm;
+      margin-bottom: 0.8mm;
+    }
+
+    .home-visit-icon-top {
+      width: 5.5mm;
+      height: 5.5mm;
+      color: var(--color-terracotta);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .home-visit-icon-top svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .home-visit-title {
+      font-family: var(--font-heading);
+      font-size: 3.8mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.1px;
+      line-height: 1.2;
+    }
+
+    .home-visit-sub {
+      font-family: var(--font-body);
+      font-size: 2.8mm;
+      font-weight: 500;
+      color: #334155;
+      line-height: 1.34;
+      max-width: 112mm;
+      margin: 0 auto;
+    }
+
+    .home-visit-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5mm;
+      flex-wrap: wrap;
+      margin: 2.2mm 0;
+    }
+    .home-visit-badge-item {
+      font-family: var(--font-heading);
+      font-size: 2.65mm;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 1.4mm;
+      background: #ffffff;
+      border: 0.25mm solid rgba(75, 143, 36, 0.25);
+      border-radius: 9999px;
+      padding: 0.8mm 3mm;
+      box-shadow: 0 0.8mm 2mm rgba(0,0,0,0.03);
+    }
+    .home-visit-badge-icon {
+      width: 3.2mm;
+      height: 3.2mm;
+      color: var(--color-terracotta);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .home-visit-badge-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .back-phone-banner-row {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 0 1.8mm 0;
-      position: relative;
-      z-index: 2;
+      margin: 0.8mm 0 0 0;
     }
 
     .back-phone-pill-prominent {
       background: var(--color-terracotta);
       color: #ffffff;
-      padding: 1.4mm 4.5mm;
+      padding: 1.4mm 4.8mm;
       border-radius: 9999px;
       font-family: var(--font-heading);
-      font-size: 3.2mm; /* Groter & duidelijk leesbaar voor senioren */
+      font-size: 3.1mm;
       font-weight: 800;
       display: inline-flex;
       align-items: center;
       gap: 1.8mm;
-      box-shadow: 0 2mm 6mm rgba(243, 146, 35, 0.28);
+      box-shadow: 0 1.8mm 5mm rgba(243, 146, 35, 0.28);
       letter-spacing: 0.2px;
     }
     .back-phone-pill-prominent svg {
@@ -950,84 +1024,6 @@
     .back-phone-pill-prominent strong {
       font-weight: 900;
       letter-spacing: 0.4px;
-    }
-
-    .home-visit-icon-top {
-      width: 7.2mm;
-      height: 7.2mm;
-      color: var(--color-terracotta);
-      margin: 0 auto 0.8mm auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .home-visit-icon-top svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .home-visit-title {
-      font-family: var(--font-heading);
-      font-size: 3.9mm;
-      font-weight: 800;
-      color: var(--color-forest-dark);
-      letter-spacing: -0.1px;
-      line-height: 1.2;
-    }
-
-    .home-visit-sub {
-      font-family: var(--font-body);
-      font-size: 2.85mm;
-      font-weight: 500;
-      color: #334155;
-      line-height: 1.35;
-    }
-
-    /* Netjes gecentreerd verticaal tussen de tekst erboven en de oranje label box eronder */
-    .home-visit-badges {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3.2mm;
-      flex-wrap: wrap;
-      margin: 2.8mm 0; /* Exact gelijke afstand naar tekst erboven en naar oranje knop eronder */
-    }
-    .home-visit-badge-item {
-      font-family: var(--font-heading);
-      font-size: 2.7mm;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-      display: inline-flex;
-      align-items: center;
-      gap: 1.5mm;
-      background: rgba(75, 143, 36, 0.08);
-      border: 0.25mm solid rgba(75, 143, 36, 0.22);
-      border-radius: 9999px;
-      padding: 0.9mm 3mm;
-    }
-    .home-visit-badge-icon {
-      width: 3.4mm;
-      height: 3.4mm;
-      color: var(--color-terracotta);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .home-visit-badge-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-    .home-visit-phone-pill {
-      background: var(--color-terracotta);
-      color: #ffffff;
-      padding: 0.8mm 2.8mm;
-      border-radius: 9999px;
-      font-family: var(--font-heading);
-      font-size: 2.3mm;
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      gap: 1mm;
     }
 
     /* Bottom Contact & Showroom Section (Zelfde hoogte en stijl als voorpagina box) */
@@ -1164,7 +1160,7 @@
 
     .a5-page.flyer-front,
     .a5-page.flyer-back {
-      padding: 8mm 13mm 8mm 13mm !important;
+      padding: 8.5mm 13mm 8.5mm 13mm !important;
     }
     .a5-page.flyer-front::before,
     .a5-page.flyer-back::before {
@@ -1184,14 +1180,15 @@
       background: #ffffff;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      padding: 8.5mm 13mm 8.5mm 13mm;
     }
 
     .section-headline-wrap {
-      margin-bottom: 4mm;
+      margin-bottom: 4.5mm;
       position: relative;
       z-index: 2;
-      padding: 0 1mm;
+      padding: 0;
     }
 
     .section-main-title {
@@ -1220,8 +1217,8 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: 2.2mm; /* Compact bij elkaar */
-      margin-bottom: 4.5mm;
+      gap: 2.4mm; /* Compact bij elkaar */
+      margin-bottom: 0;
       padding-left: 4.5mm; /* Ingesprongen */
     }
 
@@ -1289,6 +1286,7 @@
       display: flex;
       align-items: center;
       gap: 4.5mm;
+      margin-top: auto;
       margin-bottom: 1.5mm;
       box-shadow: 0 2mm 6mm rgba(75, 143, 36, 0.07);
     }
@@ -2122,16 +2120,17 @@
             </div>
           </section>
 
-          <!-- "Liever advies op maat bij u thuis?" (Zonder groene box, direct op wit, dichtbij de foto's) -->
-          <section class="back-home-visit">
-            <div class="home-visit-icon-top">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <!-- "Liever advies op maat bij u thuis?" Card (naar beneden geschoven, als sluitende callout) -->
+          <div class="back-home-visit-card">
+            <div class="home-visit-header-row">
+              <div class="home-visit-icon-top">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div class="home-visit-title">Liever advies op maat bij u thuis?</div>
             </div>
-            <div class="home-visit-title">Liever advies op maat bij u thuis?</div>
             
             <div class="home-visit-sub">
-              Kunt u moeilijk naar onze showroom komen?<br>
-              Wij komen graag geheel vrijblijvend bij u thuis langs.
+              Kunt u moeilijk naar onze showroom komen? Wij komen graag geheel vrijblijvend bij u thuis langs voor een gratis zitmeting en proefzit.
             </div>
 
             <div class="home-visit-badges">
@@ -2154,44 +2153,15 @@
                 Vrijblijvend proefzitten
               </div>
             </div>
-          </section>
 
-          <!-- Grote opvallende Bel Direct knop BOVEN de groene showroombox -->
-          <div class="back-phone-banner-row">
-            <div class="back-phone-pill-prominent">
-              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              <span>Bel direct voor advies of afspraak: <strong>078 - 631 48 58</strong></span>
+            <!-- Grote opvallende Bel Direct knop in de card -->
+            <div class="back-phone-banner-row">
+              <div class="back-phone-pill-prominent">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>Bel direct voor advies of afspraak: <strong>078 - 631 48 58</strong></span>
+              </div>
             </div>
           </div>
-
-          <!-- Bottom Showroom & Openingstijden (Groene box met gelijke hoogte als voorkant) -->
-          <footer class="back-footer-box">
-            <!-- Left Col: Showroom -->
-            <div class="back-contact-col">
-              <div class="back-col-title">Showroom Dordrecht</div>
-              <div class="back-col-line">Merwedestraat 239 &bull; 3313 GT Dordrecht</div>
-              <div class="back-check-item">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span>Gratis parkeren voor de deur</span>
-              </div>
-              <div class="back-check-item">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span>Volledig gelijkvloers</span>
-              </div>
-            </div>
-
-            <!-- Middle Col: Openingstijden -->
-            <div class="back-contact-col">
-              <div class="back-col-title">Openingstijden</div>
-              <div class="back-col-line">Dinsdag t/m Vrijdag: <span class="back-col-hours">10:00 – 16:00 uur</span></div>
-              <div class="back-col-line">Maandag &amp; Zaterdag: <span class="back-col-hours">Op afspraak</span></div>
-            </div>
-
-            <!-- Right QR Card -->
-            <div class="back-qr-card">
-              <img src="assets/qr_staopstoelen.png?v=5" alt="Scan QR Staopstoelen.nl">
-            </div>
-          </footer>
 
         </div>
 
