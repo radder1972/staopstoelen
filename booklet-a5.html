@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A5 Booklet (Dubbelgevouwen A4) - Uitleg over Staopstoelen | Staopstoelen.nl</title>
+
+  <!-- Google Fonts: Montserrat & Outfit (Officiële Website Huisstijl Staopstoelen.nl) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style id="dynamicPageStyle">
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+  </style>
+
+  <style>
+    /* ==========================================================================
+       HUISSTIJL KLEUREN & BASIS VARIABELEN
+       ========================================================================== */
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #3a701c;
+      --color-forest-hover: #3e791e;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #dc8019;
+      --color-cream: #fbf9f5;
+      --color-sage-light: #eef7eb;
+      --color-sage-border: #b8dcad;
+      --color-dark: #1d2024;
+      --color-gray: #4a5568;
+      --color-gray-light: #718096;
+      --color-border: #e2e8f0;
+
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: var(--color-dark);
+      font-family: var(--font-body);
+      line-height: 1.35;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Screen Toolbar */
+    .screen-toolbar {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-nav-link {
+      color: var(--color-forest);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.84rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      transition: all 0.2s ease;
+    }
+    .btn-nav-link:hover {
+      background: var(--color-forest);
+      color: #ffffff;
+    }
+
+    .toolbar-title {
+      font-family: var(--font-heading);
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--color-forest);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolbar-title span {
+      font-weight: 700;
+      color: var(--color-terracotta);
+      font-size: 0.86rem;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .view-selector {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-mode {
+      border: none;
+      background: transparent;
+      padding: 8px 14px;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-gray);
+      border-radius: 7px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-mode:hover {
+      color: var(--color-dark);
+    }
+    .btn-mode.active {
+      background: #ffffff;
+      color: var(--color-forest);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-print {
+      background: var(--color-forest);
+      color: #ffffff;
+      border: none;
+      padding: 9px 20px;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-print:hover {
+      background: var(--color-forest-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Screen Stage */
+    .stage {
+      padding: 24px 20px 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+    }
+
+    .hint-bar {
+      margin-bottom: 24px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 0.86rem;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    /* ==========================================================================
+       A5 CONTAINER (148.5 x 210 mm)
+       ========================================================================== */
+    .a5-page {
+      width: 148.5mm;
+      height: 210mm;
+      min-width: 148.5mm;
+      min-height: 210mm;
+      max-width: 148.5mm;
+      max-height: 210mm;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding: 6.5mm 7.5mm 6.5mm 7.5mm;
+    }
+
+    /* Subtiel decoratief kader rondom elke A5 pagina */
+    .a5-page::before {
+      content: '';
+      position: absolute;
+      top: 3.5mm;
+      left: 3.5mm;
+      right: 3.5mm;
+      bottom: 3.5mm;
+      border: 0.3mm solid rgba(75, 143, 36, 0.22);
+      border-radius: 2mm;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Bovenste paginakop */
+    .page-header-row {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.5mm;
+      border-bottom: 0.3mm solid rgba(75, 143, 36, 0.2);
+      margin-bottom: 2mm;
+    }
+
+    .page-brand {
+      font-family: var(--font-heading);
+      font-size: 5.4mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      letter-spacing: -0.3px;
+      line-height: 1;
+    }
+    .page-brand span {
+      color: var(--color-terracotta);
+    }
+
+    .page-chapter-tag {
+      font-family: var(--font-heading);
+      font-size: 2.3mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: var(--color-sage-light);
+      padding: 0.8mm 2.2mm;
+      border-radius: 9999px;
+      border: 0.25mm solid rgba(75, 143, 36, 0.25);
+    }
+
+    .page-number-pill {
+      font-family: var(--font-heading);
+      font-size: 2.4mm;
+      font-weight: 800;
+      color: var(--color-terracotta);
+      background: #fff6ee;
+      border: 0.25mm solid rgba(243, 146, 35, 0.4);
+      padding: 0.6mm 2.2mm;
+      border-radius: 9999px;
+    }
+
+    /* Paginavoet */
+    .page-footer-row {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.4mm;
+      border-top: 0.3mm solid rgba(75, 143, 36, 0.2);
+      margin-top: auto;
+      font-size: 2.3mm;
+      color: var(--color-gray);
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+
+    .page-footer-row span:last-child {
+      color: var(--color-terracotta);
+      font-weight: 800;
+    }
+
+    /* ==========================================================================
+       PAGINA 1: VOORKANT / COVER
+       ========================================================================== */
+    .page-cover {
+      background: #ffffff;
+      justify-content: space-between;
+    }
+
+    .cover-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28mm 1.5mm 0; /* Ruimte rechts voor het 165px stempel */
+      border-bottom: 0.3mm solid rgba(75, 143, 36, 0.2);
+      margin-bottom: 2mm;
+    }
+
+    .cover-brand-title {
+      font-family: var(--font-heading);
+      font-size: 6.8mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      letter-spacing: -0.4px;
+      line-height: 1;
+    }
+    .cover-brand-title span {
+      color: var(--color-terracotta);
+    }
+
+    .cover-tagline {
+      font-size: 2.4mm;
+      font-weight: 600;
+      color: #4a5568;
+      letter-spacing: 0.2px;
+      margin-top: 0.4mm;
+    }
+
+    /* Kwaliteitszegel stempel rechtsboven */
+    .cover-stamp-wrap {
+      position: absolute;
+      top: -1mm;
+      right: 0mm;
+      z-index: 10;
+      width: 26mm;
+      height: 26mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cover-stamp-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2mm 5mm rgba(0,0,0,0.18));
+      transform: rotate(8deg);
+    }
+
+    /* Cover Hero Box met foto */
+    .cover-hero-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 52mm;
+      border-radius: 2.4mm;
+      overflow: hidden;
+      border: 0.35mm solid rgba(75, 143, 36, 0.3);
+      box-shadow: 0 2mm 6mm rgba(0,0,0,0.08);
+      margin-bottom: 2.2mm;
+    }
+    .cover-hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cover-hero-pill-left {
+      position: absolute;
+      bottom: 2.5mm;
+      left: 2.5mm;
+      background: rgba(29, 32, 36, 0.85);
+      color: #ffffff;
+      padding: 1.2mm 2.8mm;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 2.3mm;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+      backdrop-filter: blur(2px);
+      border: 0.2mm solid rgba(255,255,255,0.3);
+    }
+
+    .cover-hero-pill-right {
+      position: absolute;
+      top: 2.5mm;
+      right: 2.5mm;
+      background: var(--color-terracotta);
+      color: #ffffff;
+      padding: 1mm 2.6mm;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 2.1mm;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 1mm;
+      box-shadow: 0 1.5mm 4mm rgba(0,0,0,0.25);
+    }
+
+    /* Cover Titles & Subtitles */
+    .cover-main-titles {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-bottom: 2.2mm;
+    }
+
+    .cover-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 2.4mm;
+      font-weight: 800;
+      color: var(--color-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 0.6mm;
+    }
+
+    .cover-title {
+      font-family: var(--font-heading);
+      font-size: 6.8mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.8mm;
+    }
+    .cover-title span {
+      color: var(--color-terracotta);
+    }
+
+    .cover-desc {
+      font-family: var(--font-body);
+      font-size: 2.85mm;
+      color: #334155;
+      line-height: 1.35;
+      max-width: 95%;
+      margin: 0 auto;
+    }
+
+    /* 4 Gids Hoofdpunten Card */
+    .cover-topics-card {
+      position: relative;
+      z-index: 2;
+      background: var(--color-sage-light);
+      border: 0.35mm solid var(--color-sage-border);
+      border-radius: 2.2mm;
+      padding: 2.5mm 3.2mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4mm;
+      margin-bottom: 2.2mm;
+    }
+
+    .cover-topics-header {
+      font-family: var(--font-heading);
+      font-size: 2.6mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+    }
+
+    .cover-topics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6mm 3mm;
+    }
+
+    .cover-topic-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5mm;
+      font-size: 2.45mm;
+      color: #1e293b;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+    .cover-topic-item svg {
+      width: 3.2mm;
+      height: 3.2mm;
+      fill: var(--color-forest);
+      flex-shrink: 0;
+      margin-top: 0.2mm;
+    }
+
+    /* Cover Bottom Bar */
+    .cover-bottom-bar {
+      position: relative;
+      z-index: 2;
+      background: #ffffff;
+      border: 0.3mm solid #cbd5e1;
+      border-radius: 2mm;
+      padding: 2mm 3.2mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2mm;
+    }
+
+    .cover-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      font-family: var(--font-heading);
+      font-size: 2.5mm;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .cover-contact-item svg {
+      width: 3.2mm;
+      height: 3.2mm;
+      stroke: var(--color-terracotta);
+      fill: none;
+      stroke-width: 2.4;
+    }
+
+    .cover-phone-pill {
+      background: var(--color-terracotta);
+      color: #000000;
+      font-family: var(--font-heading);
+      font-size: 2.85mm;
+      font-weight: 900;
+      padding: 1.1mm 3.2mm;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2mm;
+      box-shadow: 0 1mm 3mm rgba(243, 146, 35, 0.25);
+    }
+    .cover-phone-pill svg {
+      width: 3mm;
+      height: 3mm;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       PAGINA 2: BINNENKANT LINKS (ERGONOMIE & MAATWERK)
+       ========================================================================== */
+    .page-ergonomie {
+      background: #ffffff;
+    }
+
+    .section-headline-wrap {
+      margin-bottom: 2mm;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-main-title {
+      font-family: var(--font-heading);
+      font-size: 5.6mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+      margin-bottom: 0.8mm;
+    }
+    .section-main-title span {
+      color: var(--color-terracotta);
+    }
+
+    .section-intro-text {
+      font-size: 2.7mm;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    /* 5 Maatwerk Criteria List */
+    .criteria-stack {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8mm;
+      margin-bottom: 2.4mm;
+    }
+
+    .criterion-card {
+      background: #ffffff;
+      border: 0.3mm solid rgba(75, 143, 36, 0.22);
+      border-left: 1.2mm solid var(--color-forest);
+      border-radius: 1.6mm;
+      padding: 1.6mm 2.6mm;
+      display: flex;
+      align-items: flex-start;
+      gap: 2.2mm;
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.03);
+    }
+
+    .criterion-num {
+      width: 4.8mm;
+      height: 4.8mm;
+      min-width: 4.8mm;
+      background: var(--color-sage-light);
+      border: 0.25mm solid var(--color-sage-border);
+      color: var(--color-forest-dark);
+      font-family: var(--font-heading);
+      font-size: 2.6mm;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.2mm;
+    }
+
+    .criterion-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3mm;
+    }
+
+    .criterion-title {
+      font-family: var(--font-heading);
+      font-size: 2.75mm;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+    }
+    .criterion-title span {
+      color: var(--color-terracotta);
+      font-size: 2.2mm;
+      font-weight: 700;
+    }
+
+    .criterion-desc {
+      font-size: 2.35mm;
+      color: #475569;
+      line-height: 1.32;
+    }
+
+    /* Expert Quote Callout */
+    .expert-callout-card {
+      position: relative;
+      z-index: 2;
+      background: var(--color-cream);
+      border: 0.35mm solid rgba(243, 146, 35, 0.35);
+      border-radius: 2.2mm;
+      padding: 2.2mm 3mm;
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      margin-bottom: 2mm;
+    }
+
+    .expert-avatar-mini {
+      width: 14mm;
+      height: 14mm;
+      min-width: 14mm;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 0.35mm solid var(--color-forest);
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.1);
+    }
+    .expert-avatar-mini img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .expert-quote-text {
+      font-size: 2.4mm;
+      color: #1e293b;
+      font-style: italic;
+      line-height: 1.3;
+    }
+    .expert-quote-author {
+      font-family: var(--font-heading);
+      font-size: 2.3mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      font-style: normal;
+      margin-top: 0.6mm;
+    }
+
+    /* ==========================================================================
+       PAGINA 3: BINNENKANT RECHTS (MOTOREN, STANDEN & KWALITEIT)
+       ========================================================================== */
+    .page-techniek {
+      background: #ffffff;
+    }
+
+    /* 4 Standen Grid */
+    .positions-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8mm;
+      margin-bottom: 2.5mm;
+    }
+
+    .pos-card {
+      background: #ffffff;
+      border: 0.3mm solid rgba(75, 143, 36, 0.22);
+      border-radius: 1.8mm;
+      padding: 1.8mm 2mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.03);
+    }
+
+    .pos-img-wrap {
+      width: 100%;
+      height: 14mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1mm;
+    }
+    .pos-img-wrap img {
+      max-height: 100%;
+      max-width: 95%;
+      object-fit: contain;
+    }
+
+    .pos-title {
+      font-family: var(--font-heading);
+      font-size: 2.5mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      line-height: 1.15;
+      margin-bottom: 0.4mm;
+    }
+
+    .pos-desc {
+      font-size: 2.1mm;
+      color: #475569;
+      line-height: 1.25;
+    }
+
+    /* Motoren Uitleg Box */
+    .motors-compare-box {
+      position: relative;
+      z-index: 2;
+      background: var(--color-sage-light);
+      border: 0.35mm solid var(--color-sage-border);
+      border-radius: 2mm;
+      padding: 2.2mm 2.8mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+      margin-bottom: 2.2mm;
+    }
+
+    .motors-box-title {
+      font-family: var(--font-heading);
+      font-size: 2.6mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .motor-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.6mm;
+      font-size: 2.3mm;
+      color: #1e293b;
+      line-height: 1.28;
+    }
+    .motor-badge {
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 2mm;
+      font-weight: 800;
+      padding: 0.4mm 1.6mm;
+      border-radius: 9999px;
+      white-space: nowrap;
+      margin-top: 0.2mm;
+    }
+    .motor-badge.terracotta {
+      background: var(--color-terracotta);
+      color: #000000;
+    }
+
+    /* Nieuw vs Gereviseerd Split Card */
+    .compare-split-card {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm;
+      margin-bottom: 2mm;
+    }
+
+    .compare-col {
+      background: #ffffff;
+      border: 0.3mm solid rgba(75, 143, 36, 0.25);
+      border-radius: 1.8mm;
+      padding: 2mm 2.4mm;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8mm;
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.03);
+    }
+    .compare-col.reco {
+      border-color: rgba(243, 146, 35, 0.4);
+      background: #fffdfa;
+    }
+
+    .compare-col-tag {
+      font-family: var(--font-heading);
+      font-size: 2.3mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .compare-col.reco .compare-col-tag {
+      color: var(--color-terracotta);
+    }
+
+    .compare-col-text {
+      font-size: 2.15mm;
+      color: #334155;
+      line-height: 1.28;
+    }
+
+    /* ==========================================================================
+       PAGINA 4: ACHTERKANT / BACK COVER (SHOWROOM, SERVICE & CONTACT)
+       ========================================================================== */
+    .page-back {
+      background: #ffffff;
+      justify-content: space-between;
+    }
+
+    .back-showroom-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 38mm;
+      border-radius: 2.2mm;
+      overflow: hidden;
+      border: 0.35mm solid rgba(75, 143, 36, 0.3);
+      box-shadow: 0 1.5mm 5mm rgba(0,0,0,0.08);
+      margin-bottom: 2mm;
+    }
+    .back-showroom-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .back-showroom-badge {
+      position: absolute;
+      bottom: 2mm;
+      left: 2mm;
+      background: rgba(29, 32, 36, 0.88);
+      color: #ffffff;
+      padding: 1mm 2.6mm;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 2.2mm;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+      backdrop-filter: blur(2px);
+    }
+
+    /* Geertjan Profile Box */
+    .back-profile-box {
+      position: relative;
+      z-index: 2;
+      background: #ffffff;
+      border: 0.35mm solid rgba(75, 143, 36, 0.25);
+      border-radius: 2mm;
+      padding: 2mm 3mm;
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.03);
+      margin-bottom: 2.2mm;
+    }
+
+    .back-profile-img {
+      width: 15mm;
+      height: 15mm;
+      min-width: 15mm;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 0.35mm solid var(--color-forest);
+      box-shadow: 0 1mm 3mm rgba(0,0,0,0.12);
+    }
+    .back-profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .back-profile-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2mm;
+    }
+
+    .back-profile-name {
+      font-family: var(--font-heading);
+      font-size: 2.9mm;
+      font-weight: 800;
+      color: #1e293b;
+    }
+    .back-profile-role {
+      font-family: var(--font-heading);
+      font-size: 2.2mm;
+      font-weight: 700;
+      color: var(--color-forest);
+    }
+    .back-profile-desc {
+      font-size: 2.2mm;
+      color: #475569;
+      line-height: 1.25;
+      margin-top: 0.4mm;
+    }
+
+    /* 4 Zekerheden Box */
+    .back-zekerheden-card {
+      position: relative;
+      z-index: 2;
+      background: var(--color-sage-light);
+      border: 0.35mm solid var(--color-sage-border);
+      border-radius: 2mm;
+      padding: 2.2mm 3mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1mm;
+      margin-bottom: 2.2mm;
+    }
+
+    .zekerheid-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.6mm;
+      font-size: 2.35mm;
+      color: #1e293b;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+    .zekerheid-item svg {
+      width: 3.2mm;
+      height: 3.2mm;
+      fill: var(--color-forest);
+      flex-shrink: 0;
+      margin-top: 0.2mm;
+    }
+
+    /* Back Contact Footer Box */
+    .back-contact-box {
+      position: relative;
+      z-index: 2;
+      background: #ffffff;
+      border: 0.35mm solid #cbd5e1;
+      border-radius: 2.2mm;
+      padding: 2.5mm 3.2mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5mm;
+      box-shadow: 0 1mm 4mm rgba(0,0,0,0.04);
+    }
+
+    .back-contact-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4mm;
+    }
+
+    .back-contact-title {
+      font-family: var(--font-heading);
+      font-size: 2.7mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .back-contact-line {
+      font-size: 2.45mm;
+      color: #334155;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .back-phone-tag {
+      background: var(--color-terracotta);
+      color: #000000;
+      font-family: var(--font-heading);
+      font-size: 3.0mm;
+      font-weight: 900;
+      padding: 1.2mm 3.4mm;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2mm;
+      margin-top: 0.8mm;
+      width: fit-content;
+      box-shadow: 0 1.5mm 4mm rgba(243, 146, 35, 0.25);
+    }
+    .back-phone-tag svg {
+      width: 3.2mm;
+      height: 3.2mm;
+      fill: currentColor;
+    }
+
+    .back-qr-wrap {
+      width: 18mm;
+      height: 18mm;
+      min-width: 18mm;
+      background: #ffffff;
+      border: 0.35mm solid var(--color-terracotta);
+      border-radius: 1.6mm;
+      padding: 1mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1.5mm 4mm rgba(0,0,0,0.06);
+    }
+    .back-qr-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ==========================================================================
+       WEERGAVE MODI: BOEKJE (SPREAD) & A4 DRUKVEL (VOUWVEL)
+       ========================================================================== */
+    .booklet-display-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+    }
+
+    /* Dubbele pagina / Spread weergave */
+    .spread-container {
+      display: flex;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
+      background: #ffffff;
+      position: relative;
+    }
+
+    /* Subtiele vouwschaduw in het midden van de spread */
+    .spread-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 148.5mm;
+      width: 6mm;
+      margin-left: -3mm;
+      background: linear-gradient(to right, rgba(0,0,0,0.06), rgba(0,0,0,0.14) 50%, rgba(0,0,0,0.06));
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    .spread-label {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--color-forest);
+      background: #ffffff;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    /* A4 Drukvellen */
+    .a4-sheet-container {
+      width: 297mm;
+      height: 210mm;
+      min-width: 297mm;
+      min-height: 210mm;
+      background: #ffffff;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+      position: relative;
+      display: flex;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Vouwlijn markering op A4 vel */
+    .a4-fold-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 148.5mm;
+      width: 0.3mm;
+      border-left: 0.3mm dashed rgba(75, 143, 36, 0.45);
+      z-index: 40;
+      pointer-events: none;
+    }
+
+    .a4-fold-indicator {
+      position: absolute;
+      top: 1.5mm;
+      left: 148.5mm;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border: 0.25mm solid var(--color-forest);
+      padding: 0.4mm 1.8mm;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 1.8mm;
+      font-weight: 800;
+      color: var(--color-forest);
+      z-index: 45;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Losse A5 pagina's grid */
+    .pages-loose-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+    }
+
+    .loose-page-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .loose-page-card .a5-page {
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
+    }
+
+    /* ==========================================================================
+       PRINT SPECIFICATIES (@MEDIA PRINT)
+       ========================================================================== */
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .screen-toolbar,
+      .hint-bar,
+      .spread-label {
+        display: none !important;
+      }
+
+      .stage {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+      }
+
+      .spread-container::after {
+        display: none !important; /* Geen schaduw op de papieren print */
+      }
+
+      /* In A4 Drukvel modus */
+      body.mode-sheet .a4-sheet-container {
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+
+      /* In Losse A5 modus */
+      body.mode-loose .a5-page {
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+
+      /* In Boekje modus: print automatisch de A4 drukvellen */
+      body.mode-booklet .a4-sheet-container {
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body class="mode-booklet">
+
+  <!-- Screen-Only Top Toolbar -->
+  <header class="screen-toolbar">
+    <div class="toolbar-left">
+      <a href="index.html" class="btn-nav-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Website
+      </a>
+      <a href="flyer-a5.html" class="btn-nav-link" title="Bekijk de 2-zijdige A5 Flyer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        Enkele A5 Flyer
+      </a>
+      <div class="toolbar-title">
+        A5 Booklet (4 Pagina's)
+        <span>Dubbelgevouwen A4 • Uitleg over Sta-op Stoelen</span>
+      </div>
+    </div>
+
+    <div class="toolbar-actions">
+      <div class="view-selector">
+        <button class="btn-mode active" id="btnModeBooklet" onclick="setViewMode('booklet')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Boekje (Leesweergave)
+        </button>
+        <button class="btn-mode" id="btnModeSheet" onclick="setViewMode('sheet')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21" stroke-dasharray="2 2"/></svg>
+          Drukvel (A4 Vouwvel)
+        </button>
+        <button class="btn-mode" id="btnModeLoose" onclick="setViewMode('loose')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="2" width="12" height="20" rx="2"/></svg>
+          Losse A5 Pagina's
+        </button>
+      </div>
+
+      <button class="btn-print" onclick="triggerPrint()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print / PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Stage Container -->
+  <main class="stage">
+    
+    <div class="hint-bar" id="hintBar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span id="hintText"><strong>Leesweergave:</strong> Bekijk de cover, de dubbele binnenspread (Pagina 2 & 3) en de achterkant precies zoals een opengeslagen brochure.</span>
+    </div>
+
+    <!-- 1. VIEW MODE: BOEKJE (LEESVOLGORDE) -->
+    <div id="viewBooklet" class="booklet-display-wrap">
+      
+      <!-- Pagina 1: Voorkant -->
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="spread-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Voorkant • Pagina 1 (Cover)
+        </div>
+        <div class="spread-container" style="box-shadow: 0 16px 36px rgba(0,0,0,0.15);">
+          <!-- Injected Page 1 -->
+          <div id="slotBookletP1"></div>
+        </div>
+      </div>
+
+      <!-- Pagina 2 & 3: Binnenkant Spread (Zij-aan-zij) -->
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="spread-label">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Binnenkant Spread • Pagina 2 & 3 (Opengeslagen)
+        </div>
+        <div class="spread-container" id="slotBookletSpread">
+          <!-- Injected Page 2 & Page 3 -->
+        </div>
+      </div>
+
+      <!-- Pagina 4: Achterkant -->
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="spread-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Achterkant • Pagina 4 (Showroom & Contact)
+        </div>
+        <div class="spread-container" style="box-shadow: 0 16px 36px rgba(0,0,0,0.15);">
+          <!-- Injected Page 4 -->
+          <div id="slotBookletP4"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. VIEW MODE: A4 DRUKVEL (VOUWVEL) -->
+    <div id="viewSheet" class="booklet-display-wrap" style="display: none;">
+      
+      <!-- Vel 1 (Buitenkant: Pagina 4 links + Pagina 1 rechts) -->
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="spread-label">
+          <strong>A4 Vel 1 (Buitenkant)</strong>: Links Pagina 4 (Achterkant) &bull; Rechts Pagina 1 (Voorkant)
+        </div>
+        <div class="a4-sheet-container" id="sheetPage1">
+          <div class="a4-fold-line"></div>
+          <div class="a4-fold-indicator">VOUWLIJN (MIDDEN)</div>
+          <div class="sheet-half-left" id="slotSheetP4" style="width: 148.5mm; height: 210mm;"></div>
+          <div class="sheet-half-right" id="slotSheetP1" style="width: 148.5mm; height: 210mm;"></div>
+        </div>
+      </div>
+
+      <!-- Vel 2 (Binnenkant: Pagina 2 links + Pagina 3 rechts) -->
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="spread-label">
+          <strong>A4 Vel 2 (Binnenkant)</strong>: Links Pagina 2 (Ergonomie) &bull; Rechts Pagina 3 (Techniek)
+        </div>
+        <div class="a4-sheet-container" id="sheetPage2">
+          <div class="a4-fold-line"></div>
+          <div class="a4-fold-indicator">VOUWLIJN (MIDDEN)</div>
+          <div class="sheet-half-left" id="slotSheetP2" style="width: 148.5mm; height: 210mm;"></div>
+          <div class="sheet-half-right" id="slotSheetP3" style="width: 148.5mm; height: 210mm;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. VIEW MODE: LOSSE A5 PAGINA'S -->
+    <div id="viewLoose" class="pages-loose-grid" style="display: none;">
+      <div class="loose-page-card">
+        <span class="spread-label">Pagina 1 (Cover)</span>
+        <div id="slotLooseP1"></div>
+      </div>
+      <div class="loose-page-card">
+        <span class="spread-label">Pagina 2 (Ergonomie)</span>
+        <div id="slotLooseP2"></div>
+      </div>
+      <div class="loose-page-card">
+        <span class="spread-label">Pagina 3 (Techniek)</span>
+        <div id="slotLooseP3"></div>
+      </div>
+      <div class="loose-page-card">
+        <span class="spread-label">Pagina 4 (Showroom)</span>
+        <div id="slotLooseP4"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       MASTER A5 PAGINA'S BRON-ELEMENTEN (Worden dynamisch gekloond in de weergaven)
+       ========================================================================== -->
+  <div style="display: none;" id="masterPagesSource">
+
+    <!-- MASTER: PAGINA 1 (COVER) -->
+    <div class="a5-page page-cover" id="page1">
+      
+      <!-- Top Cover Header -->
+      <div class="cover-header">
+        <div style="display: flex; flex-direction: column;">
+          <div class="cover-brand-title">staopstoelen<span>.nl</span></div>
+          <div class="cover-tagline">Zitspecialist &amp; Bewegingstechnoloog &bull; Showroom Dordrecht</div>
+        </div>
+      </div>
+
+      <!-- Officieel Kwaliteitszegel (165px conform subpagina's) -->
+      <div class="cover-stamp-wrap">
+        <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.6" alt="Kwaliteitszegel Nieuw &amp; Gereviseerd">
+      </div>
+
+      <!-- Hero Foto Card -->
+      <div class="cover-hero-card">
+        <img src="assets/stoelen/chair_fitform_570_reco_cozy.jpg" alt="Ergonomische sta-op stoel op maat">
+        <div class="cover-hero-pill-left">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          100% Op Lichaamsmaat Ingesteld
+        </div>
+        <div class="cover-hero-pill-right">
+          Officieel Fitform Dealer
+        </div>
+      </div>
+
+      <!-- Cover Titles -->
+      <div class="cover-main-titles">
+        <div class="cover-eyebrow">Brochure &bull; Advies &amp; Keuzehulp</div>
+        <h1 class="cover-title">Uitleg over <span>Sta-op Stoelen</span></h1>
+        <p class="cover-desc">
+          Alles over ergonomisch zitcomfort, motoren, kantelverstelling en het cruciale verschil tussen een standaard fabrieksstoel en echt maatwerk.
+        </p>
+      </div>
+
+      <!-- 4 Hoofdpunten Card -->
+      <div class="cover-topics-card">
+        <div class="cover-topics-header">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="12 6 12 12 16 14"/></svg>
+          Wat u in deze gids ontdekt:
+        </div>
+        <div class="cover-topics-grid">
+          <div class="cover-topic-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span><strong>De 5 Maatwerk Criteria</strong> voor een gezonde zithouding</span>
+          </div>
+          <div class="cover-topic-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span><strong>Motoren &amp; Functies:</strong> 1, 2 of 3 motoren &amp; kanteling</span>
+          </div>
+          <div class="cover-topic-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span><strong>Nieuw vs. Gereviseerd:</strong> A-merken met volle garantie</span>
+          </div>
+          <div class="cover-topic-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span><strong>Persoonlijke Maatname</strong> door Geertjan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cover Bottom Contact Strip -->
+      <div class="cover-bottom-bar">
+        <div class="cover-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Merwedestraat 239, Dordrecht</span>
+        </div>
+        <div class="cover-phone-pill">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          078 - 631 48 58
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="page-footer-row">
+        <span>Staopstoelen.nl &bull; De Zitspecialist van Zuid-Holland</span>
+        <span class="page-number-pill">Pagina 1</span>
+      </div>
+
+    </div>
+
+    <!-- MASTER: PAGINA 2 (BINNENKANT LINKS: ERGONOMIE & MAATWERK) -->
+    <div class="a5-page page-ergonomie" id="page2">
+      
+      <div class="page-header-row">
+        <div class="page-brand">staopstoelen<span>.nl</span></div>
+        <div class="page-chapter-tag">Deel 1 &bull; Ergonomie &amp; Maatwerk</div>
+        <div class="page-number-pill">Pagina 2</div>
+      </div>
+
+      <div class="section-headline-wrap">
+        <h2 class="section-main-title">Waarom <span>Maatwerk</span> Essentieel Is</h2>
+        <p class="section-intro-text">
+          Een standaard confectiestoel is gemaakt voor een 'gemiddeld' mens dat niet bestaat. Een stoel die niet exact op uw lichaam is afgesteld leidt tot onderuitglijden, beknelde bloedvaten en chronische rugpijn.
+        </p>
+      </div>
+
+      <!-- 5 Maatwerk Criteria -->
+      <div class="criteria-stack">
+        
+        <!-- 1. Zithoogte -->
+        <div class="criterion-card">
+          <div class="criterion-num">1</div>
+          <div class="criterion-body">
+            <div class="criterion-title">
+              Zithoogte
+              <span>Voeten plat &bull; Kniehoek 90&deg;</span>
+            </div>
+            <div class="criterion-desc">
+              Uw voeten moeten vlak op de grond rusten zonder dat de voorkant van de zitting in de bovenbenen drukt. Dit voorkomt afknelling van de bloedsomloop en tintelingen.
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Zitdiepte -->
+        <div class="criterion-card">
+          <div class="criterion-num">2</div>
+          <div class="criterion-body">
+            <div class="criterion-title">
+              Zitdiepte
+              <span>2 Vingers speling in knieholte</span>
+            </div>
+            <div class="criterion-desc">
+              Uw stuitje moet volledig aansluiten tegen de rugleuning. Tussen de voorkant van de zitting en uw knieholte hoort 2 vingers ruimte te zitten voor een vrije zenuwbaan.
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Armleuninghoogte -->
+        <div class="criterion-card">
+          <div class="criterion-num">3</div>
+          <div class="criterion-body">
+            <div class="criterion-title">
+              Armleuninghoogte
+              <span>Schouders ontspannen</span>
+            </div>
+            <div class="criterion-desc">
+              Als de armleuningen te hoog zijn trekt u uw schouders op (nekpijn). Zijn ze te laag, dan zakt u scheef. De arm moet in een natuurlijke hoek van 90° rusten.
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Lendensteun -->
+        <div class="criterion-card">
+          <div class="criterion-num">4</div>
+          <div class="criterion-body">
+            <div class="criterion-title">
+              Lendensteun (Lordose)
+              <span>Natuurlijke S-kromming</span>
+            </div>
+            <div class="criterion-desc">
+              De ruggengraat heeft een natuurlijke holling. Een instelbaar lumbaal kussen ondersteunt precies de onderrug, waardoor de tussenwervelschijven volledig ontlasten.
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Zitbreedte -->
+        <div class="criterion-card">
+          <div class="criterion-num">5</div>
+          <div class="criterion-body">
+            <div class="criterion-title">
+              Zitbreedte
+              <span>Stabiele bekkenondersteuning</span>
+            </div>
+            <div class="criterion-desc">
+              Een te brede stoel nodigt uit tot scheefhangen; een te smalle stoel beknelt het bekken. Een breedte op maat geeft rust en een stabiele, rechte zit.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Expert Callout Geertjan -->
+      <div class="expert-callout-card">
+        <div class="expert-avatar-mini">
+          <img src="assets/geert_avatar.jpg" alt="Bewegingstechnoloog Geertjan">
+        </div>
+        <div>
+          <div class="expert-quote-text">
+            &ldquo;Een kwartier verkeerd zitten levert al overbelasting op de wervelkolom op. In onze showroom meet ik uw 5 lichaamsmaten ter plekke op de millimeter nauwkeurig in.&rdquo;
+          </div>
+          <div class="expert-quote-author">Geertjan Radder &bull; Bewegingstechnoloog &amp; Zitspecialist</div>
+        </div>
+      </div>
+
+      <div class="page-footer-row">
+        <span>Staopstoelen.nl &bull; Maatwerk &amp; Ergonomie</span>
+        <span>Lees verder op pagina 3 &rarr;</span>
+      </div>
+
+    </div>
+
+    <!-- MASTER: PAGINA 3 (BINNENKANT RECHTS: TECHNIEK & MOTOREN) -->
+    <div class="a5-page page-techniek" id="page3">
+      
+      <div class="page-header-row">
+        <div class="page-brand">staopstoelen<span>.nl</span></div>
+        <div class="page-chapter-tag">Deel 2 &bull; Techniek &amp; Functies</div>
+        <div class="page-number-pill">Pagina 3</div>
+      </div>
+
+      <div class="section-headline-wrap">
+        <h2 class="section-main-title">De 4 Standen &amp; <span>Motoren</span></h2>
+        <p class="section-intro-text">
+          Een moderne sta-op stoel beweegt elektrisch en geruisloos mee met uw dagritme. Van actief zitten en ontspannen lezen tot gezonde rust en veilig opstaan.
+        </p>
+      </div>
+
+      <!-- 4 Standen Grid -->
+      <div class="positions-grid">
+        <div class="pos-card">
+          <div class="pos-img-wrap">
+            <img src="assets/faq_chair_closed.png" alt="Zitstand">
+          </div>
+          <div class="pos-title">1. Zitstand</div>
+          <div class="pos-desc">Actief, ergonomisch gecorrigeerd zitten met volledige rugsteun.</div>
+        </div>
+        <div class="pos-card">
+          <div class="pos-img-wrap">
+            <img src="assets/faq_chair_legsup.png" alt="Relaxstand">
+          </div>
+          <div class="pos-title">2. Relaxstand</div>
+          <div class="pos-desc">Voeten omhoog voor tv-kijken of lezen zonder vermoeide benen.</div>
+        </div>
+        <div class="pos-card">
+          <div class="pos-img-wrap">
+            <img src="assets/faq_chair_lieflat.png" alt="Hart-balans Ruststand">
+          </div>
+          <div class="pos-title">3. Hart-Balans Rust</div>
+          <div class="pos-desc">Benen hoger dan het hart: optimale ontlasting van bloedvaten &amp; rug.</div>
+        </div>
+        <div class="pos-card">
+          <div class="pos-img-wrap">
+            <img src="assets/faq_chair_elevated.png" alt="Sta-op Stand">
+          </div>
+          <div class="pos-title">4. Sta-op Stand</div>
+          <div class="pos-desc">Vloeiende lift brengt u moeiteloos en stabiel weer op de benen.</div>
+        </div>
+      </div>
+
+      <!-- Motoren Vergelijking -->
+      <div class="motors-compare-box">
+        <div class="motors-box-title">Hoeveel motoren heeft u nodig?</div>
+        
+        <div class="motor-row">
+          <span class="motor-badge">1 Motor</span>
+          <span><strong>Synchroon:</strong> Rugleuning en voetensteun bewegen tegelijkertijd. Eenvoudige, overzichtelijke bediening met slechts 2 knoppen.</span>
+        </div>
+
+        <div class="motor-row">
+          <span class="motor-badge">2 Motoren</span>
+          <span><strong>Onafhankelijk:</strong> Rug en voetklep zijn los van elkaar instelbaar. Ideaal om met rechte rug met de benen omhoog te lezen of te handwerken.</span>
+        </div>
+
+        <div class="motor-row">
+          <span class="motor-badge terracotta">3 Motoren</span>
+          <span><strong>Inclusief Kantelverstelling (Tilt):</strong> De gehele zitting kantelt achterover. De zithoek blijft constant, waardoor wrijving en afschuifkrachten verdwijnen.</span>
+        </div>
+      </div>
+
+      <!-- Nieuw vs Gereviseerd -->
+      <div class="compare-split-card">
+        <div class="compare-col">
+          <div class="compare-col-tag">Nieuw op Maat</div>
+          <div class="compare-col-text">
+            <strong>100% Fabrieksnieuw:</strong> Officiële Fitform &amp; Doge modellen, vrije keuze uit luxe stoffen en ledersoorten. Inclusief fabrieksacties tot &euro; 600,- korting.
+          </div>
+        </div>
+        <div class="compare-col reco">
+          <div class="compare-col-tag">Gereviseerd A-Merk</div>
+          <div class="compare-col-text">
+            <strong>Circulair &amp; Betaalbaar:</strong> Technisch 100% gereviseerd, opnieuw gestoffeerd, op maat afgesteld met volledige garantie. Tot 60% voordeliger dan nieuw!
+          </div>
+        </div>
+      </div>
+
+      <div class="page-footer-row">
+        <span>Staopstoelen.nl &bull; Functies &amp; Techniek</span>
+        <span>Showroom &amp; Contact op pagina 4 &rarr;</span>
+      </div>
+
+    </div>
+
+    <!-- MASTER: PAGINA 4 (ACHTERKANT: SHOWROOM, SERVICE & CONTACT) -->
+    <div class="a5-page page-back" id="page4">
+      
+      <div class="page-header-row">
+        <div class="page-brand">staopstoelen<span>.nl</span></div>
+        <div class="page-chapter-tag">Deel 3 &bull; Showroom &amp; Service</div>
+        <div class="page-number-pill">Pagina 4</div>
+      </div>
+
+      <div class="section-headline-wrap">
+        <h2 class="section-main-title">Ervaar het Zelf in <span>Dordrecht</span></h2>
+        <p class="section-intro-text">
+          Geen opdringerige verkooptrucjes, maar deskundig ergonomisch advies onder het genot van verse koffie. Kom rustig proefzitten en ervaar het verschil direct aan den lijve.
+        </p>
+      </div>
+
+      <!-- Showroom Foto Card -->
+      <div class="back-showroom-card">
+        <img src="assets/showroom.jpg" alt="Showroom Staopstoelen.nl Dordrecht Merwedestraat 239">
+        <div class="back-showroom-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Showroom Merwedestraat 239, Dordrecht &bull; Gratis Parkeren voor de deur
+        </div>
+      </div>
+
+      <!-- Wie is Geertjan Profile Card -->
+      <div class="back-profile-box">
+        <div class="back-profile-img">
+          <img src="assets/geert_avatar.jpg" alt="Geertjan Radder">
+        </div>
+        <div class="back-profile-info">
+          <div class="back-profile-name">Geertjan Radder</div>
+          <div class="back-profile-role">Bewegingstechnoloog &amp; Zitspecialist</div>
+          <div class="back-profile-desc">
+            Al meer dan 15 jaar gespecialiseerd in ergonomische zitsystemen. Ik neem de tijd voor u en meet elke stoel persoonlijk in zodat u jarenlang pijnvrij geniet.
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Zekerheden Box -->
+      <div class="back-zekerheden-card">
+        <div class="zekerheid-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span><strong>Gratis Bezorging &amp; Installatie:</strong> Vakkundig geplaatst en op maat afgesteld in uw huiskamer.</span>
+        </div>
+        <div class="zekerheid-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span><strong>Gratis Thuisdemonstratie:</strong> Kunt u niet reizen? Wij komen met plezier vrijblijvend bij u aan huis.</span>
+        </div>
+        <div class="zekerheid-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span><strong>Volledige Garantie &amp; Snelle Nazorg:</strong> Onze eigen technische dienst staat altijd voor u klaar.</span>
+        </div>
+      </div>
+
+      <!-- Contact & Openingstijden Footer Box -->
+      <div class="back-contact-box">
+        <div class="back-contact-col">
+          <div class="back-contact-title">Showroom Dordrecht</div>
+          <div class="back-contact-line"><strong>Merwedestraat 239</strong>, 3313 TW Dordrecht</div>
+          <div class="back-contact-line">Dinsdag t/m Zaterdag 10:00 &ndash; 17:00 (en op afspraak)</div>
+          <div class="back-contact-line">E-mail: <strong>info@staopstoelen.nl</strong> &bull; www.staopstoelen.nl</div>
+          
+          <div class="back-phone-tag">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            078 - 631 48 58
+          </div>
+        </div>
+
+        <!-- QR Code -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1mm;">
+          <div class="back-qr-wrap">
+            <img src="assets/qr_staopstoelen.svg" alt="Scan QR code voor afspraak en route">
+          </div>
+          <span style="font-family: var(--font-heading); font-size: 2mm; font-weight: 800; color: var(--color-forest); text-transform: uppercase;">
+            Scan &bull; Afspraak
+          </span>
+        </div>
+      </div>
+
+      <div class="page-footer-row">
+        <span>Staopstoelen.nl &bull; Officieel Fitform Dealer</span>
+        <span class="page-number-pill">Pagina 4</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JavaScript voor weergave- en printmodi -->
+  <script>
+    let currentMode = 'booklet';
+
+    function initPages() {
+      const p1 = document.getElementById("page1");
+      const p2 = document.getElementById("page2");
+      const p3 = document.getElementById("page3");
+      const p4 = document.getElementById("page4");
+
+      // 1. Booklet mode slots
+      const slotBookletP1 = document.getElementById("slotBookletP1");
+      const slotBookletSpread = document.getElementById("slotBookletSpread");
+      const slotBookletP4 = document.getElementById("slotBookletP4");
+
+      slotBookletP1.innerHTML = p1.outerHTML;
+      slotBookletSpread.innerHTML = p2.outerHTML + p3.outerHTML;
+      slotBookletP4.innerHTML = p4.outerHTML;
+
+      // 2. A4 Sheet mode slots (Dubbelzijdig vouwvel)
+      // Vel 1: Pagina 4 (links) + Pagina 1 (rechts)
+      document.getElementById("slotSheetP4").innerHTML = p4.outerHTML;
+      document.getElementById("slotSheetP1").innerHTML = p1.outerHTML;
+      // Vel 2: Pagina 2 (links) + Pagina 3 (rechts)
+      document.getElementById("slotSheetP2").innerHTML = p2.outerHTML;
+      document.getElementById("slotSheetP3").innerHTML = p3.outerHTML;
+
+      // 3. Loose pages slots
+      document.getElementById("slotLooseP1").innerHTML = p1.outerHTML;
+      document.getElementById("slotLooseP2").innerHTML = p2.outerHTML;
+      document.getElementById("slotLooseP3").innerHTML = p3.outerHTML;
+      document.getElementById("slotLooseP4").innerHTML = p4.outerHTML;
+    }
+
+    function setViewMode(mode) {
+      currentMode = mode;
+      document.body.className = `mode-${mode}`;
+
+      document.getElementById("viewBooklet").style.display = (mode === 'booklet') ? 'flex' : 'none';
+      document.getElementById("viewSheet").style.display = (mode === 'sheet') ? 'flex' : 'none';
+      document.getElementById("viewLoose").style.display = (mode === 'loose') ? 'flex' : 'none';
+
+      ['btnModeBooklet', 'btnModeSheet', 'btnModeLoose'].forEach(id => {
+        document.getElementById(id).classList.remove("active");
+      });
+
+      const hintText = document.getElementById("hintText");
+      const dynamicStyle = document.getElementById("dynamicPageStyle");
+
+      if (mode === 'booklet') {
+        document.getElementById("btnModeBooklet").classList.add("active");
+        hintText.innerHTML = "<strong>Boekje (Leesweergave):</strong> Bekijk de cover, de dubbele binnenspread (Pagina 2 & 3) en de achterkant precies zoals een opengeslagen brochure.";
+        dynamicStyle.innerHTML = "@page { size: A4 landscape; margin: 0; }";
+      } else if (mode === 'sheet') {
+        document.getElementById("btnModeSheet").classList.add("active");
+        hintText.innerHTML = "<strong>Drukvel (A4 Vouwvel):</strong> Print dit dubbelzijdig op A4 (korte zijde omslaan) en vouw het vel doormidden voor een direct kant-en-klaar A5 boekje!";
+        dynamicStyle.innerHTML = "@page { size: A4 landscape; margin: 0; }";
+      } else if (mode === 'loose') {
+        document.getElementById("btnModeLoose").classList.add("active");
+        hintText.innerHTML = "<strong>Losse A5 Pagina's:</strong> Bekijk en print alle 4 de pagina's afzonderlijk op A5 staand formaat.";
+        dynamicStyle.innerHTML = "@page { size: A5 portrait; margin: 0; }";
+      }
+    }
+
+    function triggerPrint() {
+      // In booklet mode printen we standaard het handige A4 vouwvel
+      if (currentMode === 'booklet') {
+        document.getElementById("viewBooklet").style.display = 'none';
+        document.getElementById("viewSheet").style.display = 'flex';
+        window.print();
+        document.getElementById("viewBooklet").style.display = 'flex';
+        document.getElementById("viewSheet").style.display = 'none';
+      } else {
+        window.print();
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initPages();
+      setViewMode('booklet');
+    });
+  </script>
+</body>
+</html>
