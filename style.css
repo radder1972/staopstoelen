@@ -4249,76 +4249,97 @@ input[type="checkbox"] {
     position: sticky;
     top: 62px;
     z-index: 95;
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(214, 90, 49, 0.28);
     border-radius: 9999px;
     padding: 7px 12px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 18px rgba(18, 43, 7, 0.08), 0 2px 6px rgba(214, 90, 49, 0.08);
   }
 
   .btn-mobile-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 14px;
-    background: #f1f5f9;
-    color: var(--color-forest, #256616);
+    padding: 8px 15px;
+    background: linear-gradient(135deg, #256616 0%, #1e5512 100%);
+    color: #ffffff;
     font-weight: 700;
-    font-size: 0.85rem;
-    border: 1.5px solid transparent;
+    font-size: 0.86rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 9999px;
     cursor: pointer;
     transition: all 0.18s ease;
     white-space: nowrap;
     text-decoration: none;
     line-height: 1.2;
+    box-shadow: 0 2px 8px rgba(37, 102, 22, 0.28);
     -webkit-tap-highlight-color: transparent;
   }
   .btn-mobile-pill:active {
     transform: scale(0.96);
-    background: #e2e8f0;
+    box-shadow: 0 1px 4px rgba(37, 102, 22, 0.2);
+  }
+  .btn-mobile-pill svg {
+    stroke: #ffffff;
   }
   .btn-mobile-pill.has-active-filters {
-    background: rgba(37, 102, 22, 0.1);
-    border-color: var(--color-forest, #256616);
-    color: var(--color-forest, #256616);
+    background: linear-gradient(135deg, #17420c 0%, #256616 100%);
+    box-shadow: 0 3px 12px rgba(37, 102, 22, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
   }
   .mobile-filter-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-terracotta, #d65a31);
+    background: linear-gradient(135deg, #ea580c 0%, #d65a31 100%);
     color: #ffffff;
     font-size: 0.72rem;
     font-weight: 800;
-    min-width: 19px;
-    height: 19px;
+    min-width: 20px;
+    height: 20px;
     padding: 0 5px;
     border-radius: 9999px;
     line-height: 1;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   }
   .mobile-results-count {
     font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--color-gray, #6b7280);
+    font-weight: 700;
+    color: #1e5512;
+    background: #edf7e8;
+    border: 1px solid rgba(37, 102, 22, 0.22);
+    padding: 5px 12px;
+    border-radius: 9999px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
   }
   .btn-mobile-sort {
-    background: #ffffff;
-    border: 1.5px solid #e2e8f0;
-    color: var(--color-dark, #2b2b2b);
+    background: #fff6f0;
+    border: 1.5px solid rgba(214, 90, 49, 0.35);
+    color: #c44317;
+    box-shadow: 0 2px 8px rgba(214, 90, 49, 0.12);
+  }
+  .btn-mobile-sort svg {
+    stroke: #c44317;
+  }
+  .btn-mobile-sort:active {
+    background: #feece0;
   }
   .btn-mobile-sort.is-sorted {
-    border-color: var(--color-forest, #256616);
-    color: var(--color-forest, #256616);
-    background: rgba(37, 102, 22, 0.06);
+    background: linear-gradient(135deg, #ea580c 0%, #d65a31 100%);
+    border-color: #ea580c;
+    color: #ffffff;
+    box-shadow: 0 3px 12px rgba(214, 90, 49, 0.35);
+  }
+  .btn-mobile-sort.is-sorted svg {
+    stroke: #ffffff;
   }
 
   /* Filter sidebar becomes off-canvas drawer */
@@ -4335,7 +4356,7 @@ input[type="checkbox"] {
     background-color: #ffffff;
     z-index: 1005;
     padding: 0;
-    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.25);
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.28);
     overflow: hidden;
     transform: translateX(105%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -4351,33 +4372,35 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    border-bottom: 1.5px solid var(--color-gray-light, #e5e7eb);
-    background: #ffffff;
+    background: linear-gradient(135deg, #256616 0%, #17420c 100%);
+    border-bottom: 2.5px solid var(--color-terracotta, #d65a31);
+    color: #ffffff;
     flex-shrink: 0;
   }
   .mobile-drawer-title {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 800;
-    color: var(--color-forest, #256616);
+    color: #ffffff;
     margin: 0;
+    letter-spacing: 0.3px;
   }
   .btn-clear-filters-link {
-    background: none;
-    border: none;
-    color: var(--color-terracotta, #d65a31);
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #ffffff;
     font-weight: 700;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 6px;
+    padding: 5px 14px;
+    border-radius: 9999px;
     transition: background 0.15s ease;
   }
-  .btn-clear-filters-link:hover {
-    background: rgba(214, 90, 49, 0.1);
+  .btn-clear-filters-link:hover, .btn-clear-filters-link:active {
+    background: rgba(255, 255, 255, 0.3);
   }
   .btn-close-drawer {
-    background: #f3f4f6;
-    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     width: 34px;
     height: 34px;
     border-radius: 50%;
@@ -4386,13 +4409,13 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #374151;
+    color: #ffffff;
     margin-left: 6px;
     line-height: 1;
     transition: background 0.15s ease;
   }
   .btn-close-drawer:active {
-    background: #e5e7eb;
+    background: rgba(255, 255, 255, 0.35);
   }
 
   .filter-sidebar-scroll {
@@ -4406,25 +4429,26 @@ input[type="checkbox"] {
     display: block;
     padding: 14px 20px;
     background: #ffffff;
-    border-top: 1.5px solid var(--color-gray-light, #e5e7eb);
+    border-top: 2px solid rgba(37, 102, 22, 0.15);
     flex-shrink: 0;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.06);
   }
   .btn-apply-filters {
     width: 100%;
-    padding: 12px 18px;
-    font-size: 1rem;
-    font-weight: 700;
+    padding: 14px 20px;
+    font-size: 1.02rem;
+    font-weight: 800;
     border-radius: 9999px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: none;
-    background: var(--color-forest, #256616);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    background: linear-gradient(115deg, #ea580c 0%, #d65a31 42%, #256616 100%);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(37, 102, 22, 0.28);
+    box-shadow: 0 4px 16px rgba(214, 90, 49, 0.35), 0 2px 6px rgba(37, 102, 22, 0.25);
     transition: transform 0.15s ease;
+    letter-spacing: 0.3px;
   }
   .btn-apply-filters:active {
     transform: scale(0.98);
@@ -4471,23 +4495,24 @@ input[type="checkbox"] {
   }
   .sort-sheet-container {
     background: #ffffff;
-    border-radius: 20px 20px 0 0;
+    border-radius: 24px 24px 0 0;
     padding: 16px 20px 32px 20px;
     width: 100%;
     max-width: 520px;
     margin: 0 auto;
-    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.25);
     transform: translateY(100%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-sizing: border-box;
+    border-top: 3px solid var(--color-terracotta, #d65a31);
   }
   .sort-sheet-overlay.active .sort-sheet-container {
     transform: translateY(0);
   }
   .sort-sheet-handle {
     width: 44px;
-    height: 4px;
-    background: #e2e8f0;
+    height: 5px;
+    background: #ea580c;
     border-radius: 4px;
     margin: 0 auto 14px auto;
   }
@@ -4496,20 +4521,20 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: space-between;
     padding-bottom: 12px;
-    border-bottom: 1px solid #f1f5f9;
-    margin-bottom: 8px;
+    border-bottom: 2px solid rgba(214, 90, 49, 0.15);
+    margin-bottom: 12px;
   }
   .sort-sheet-title {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: var(--color-forest, #256616);
     margin: 0;
   }
   .sort-sheet-close {
-    background: #f1f5f9;
-    border: none;
-    width: 32px;
-    height: 32px;
+    background: #fff5ee;
+    border: 1px solid rgba(214, 90, 49, 0.25);
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     font-size: 1.3rem;
     line-height: 1;
@@ -4517,23 +4542,24 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #4b5563;
+    color: #c44317;
+    transition: background 0.15s ease;
   }
   .sort-sheet-close:active {
-    background: #e2e8f0;
+    background: #feece0;
   }
   .sort-options-list {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
   .sort-option-btn {
     width: 100%;
     text-align: left;
     background: #ffffff;
-    border: none;
-    border-radius: 10px;
-    padding: 13px 14px;
+    border: 1.5px solid #f0ede6;
+    border-radius: 12px;
+    padding: 13px 16px;
     font-size: 0.95rem;
     font-weight: 600;
     color: #374151;
@@ -4541,20 +4567,24 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: all 0.15s ease;
     -webkit-tap-highlight-color: transparent;
   }
   .sort-option-btn:hover, .sort-option-btn:active {
-    background: #f8fafc;
+    background: #fdfbf7;
+    border-color: rgba(214, 90, 49, 0.35);
   }
   .sort-option-btn.active {
-    background: rgba(37, 102, 22, 0.08);
-    color: var(--color-forest, #256616);
-    font-weight: 700;
+    background: linear-gradient(135deg, #f0f7ec 0%, #e6f3df 100%);
+    color: #1e5512;
+    font-weight: 800;
+    border: 2px solid #256616;
+    box-shadow: 0 2px 8px rgba(37, 102, 22, 0.14);
   }
   .sort-option-btn .sort-check-icon {
     opacity: 0;
-    color: var(--color-forest, #256616);
+    color: #256616;
+    stroke-width: 3;
     transition: opacity 0.15s ease;
   }
   .sort-option-btn.active .sort-check-icon {
