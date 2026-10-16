@@ -3979,13 +3979,55 @@ input[type="checkbox"] {
     font-size: 1.85rem !important;
   }
 
-  /* Najaarsactie Campaign Grid Mobile Styling */
+  /* Fitform Advertentie Tablet: Foto & tekst strak NAAST elkaar in 2 kolommen */
   .najaarsactie-grid {
-    grid-template-columns: 1fr !important;
-    gap: 48px !important;
+    grid-template-columns: 0.95fr 1.05fr !important;
+    gap: 24px !important;
+    align-items: center !important;
   }
   .najaarsactie-image-col {
-    order: -1;
+    order: 0 !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+  }
+  .najaarsactie-image-col img {
+    max-width: 320px !important;
+    height: auto !important;
+  }
+  .najaarsactie-image-col .banner-stamp-link {
+    width: 95px !important;
+    height: 95px !important;
+    top: -16px !important;
+    left: -16px !important;
+  }
+  .najaarsactie-image-col .banner-stamp {
+    width: 95px !important;
+    height: 95px !important;
+  }
+  .najaarsactie-content {
+    margin-top: 0 !important;
+  }
+  .najaarsactie-content h2 {
+    font-size: clamp(1.35rem, 2.3vw, 1.7rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+  }
+  .najaarsactie-content p {
+    font-size: 0.92rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 14px !important;
+  }
+  .najaarsactie-content > div:nth-of-type(2) {
+    padding: 14px 16px !important;
+    margin-bottom: 16px !important;
+  }
+  .najaarsactie-content ul li {
+    font-size: 0.92rem !important;
+    gap: 8px !important;
+  }
+  .najaarsactie-content .btn-najaarsactie-red {
+    padding: 10px 24px !important;
+    font-size: 0.92rem !important;
   }
 
   /* Hero styling voor tablet: compacte 2-koloms layout waarbij slideshow altijd netjes NAAST de tekst blijft */
@@ -4078,6 +4120,68 @@ input[type="checkbox"] {
   .hero-slideshow-btn {
     padding: 8px 14px !important;
     font-size: 0.78rem !important;
+  }
+
+  /* Fitform Advertentie op Productpagina (staopstoelen.html): Foto & tekst strak NAAST elkaar op tablet */
+  .najaarsactie-catalog-banner {
+    padding: 24px 20px !important;
+    gap: 16px !important;
+  }
+  .najaarsactie-catalog-banner .najaarsactie-banner-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 22px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .najaarsactie-foto-col {
+    flex: 0 0 240px !important;
+    max-width: 240px !important;
+    margin: 8px 10px !important;
+  }
+  .najaarsactie-foto-col img {
+    max-width: 240px !important;
+    height: auto !important;
+  }
+  .najaarsactie-foto-col .banner-stamp-link {
+    width: 88px !important;
+    height: 88px !important;
+    top: -14px !important;
+    left: -14px !important;
+  }
+  .najaarsactie-foto-col .banner-stamp {
+    width: 88px !important;
+    height: 88px !important;
+  }
+  .najaarsactie-info-col {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    gap: 12px !important;
+  }
+  .najaarsactie-info-col h3 {
+    font-size: clamp(1.25rem, 2.2vw, 1.55rem) !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+  }
+  .najaarsactie-info-col p {
+    font-size: 0.9rem !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+  }
+  .najaarsactie-info-col > div:nth-of-type(1) {
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+  }
+  .najaarsactie-info-col > div:nth-of-type(1) > div {
+    padding: 10px 8px !important;
+    flex: 1 1 0 !important;
+  }
+  .najaarsactie-info-col > div:nth-of-type(1) > div span:first-of-type {
+    font-size: 0.72rem !important;
+  }
+  .najaarsactie-info-col > div:nth-of-type(1) > div span:last-of-type {
+    font-size: 1.05rem !important;
   }
 }
 
@@ -4864,11 +4968,21 @@ input[type="checkbox"] {
   }
 }
 
-/* Najaarsactie campaign section styles */
-@media (max-width: 900px) {
+/* Najaarsactie campaign section styles (alleen smartphones onder 768px breken af naar 1 kolom) */
+@media (max-width: 767px) {
   .najaarsactie-grid {
     grid-template-columns: 1fr !important;
-    gap: 48px !important;
+    gap: 36px !important;
+  }
+  .najaarsactie-image-col {
+    order: -1 !important;
+  }
+  .najaarsactie-catalog-banner .najaarsactie-banner-inner {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .najaarsactie-foto-col {
+    margin: 10px auto !important;
   }
 }
 
