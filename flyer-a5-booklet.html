@@ -1611,14 +1611,31 @@
     }
 
     /* ==========================================================================
-       PRINT SPECIFICATIES (@MEDIA PRINT)
+       PRINT SPECIFICATIES (@MEDIA PRINT - 100% WARE GROOTTE & ZONDER BLEED ARTIFACTEN)
        ========================================================================== */
     @media print {
+      /* CRUCIAAL: Schakel alle box-shadows, filters en backdrop-filters uit in print/PDF.
+         Dit voorkomt dat de browser Skia Soft-Masks (rastermaskers) aanmaakt die als
+         lelijke blokken, grijze randen of bleed-vlakken achter boxen worden afgedrukt. */
+      *,
+      *::before,
+      *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
       body {
         background: transparent !important;
         padding: 0 !important;
         margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
+
       .screen-toolbar,
       .hint-bar,
       .spread-label {
@@ -1635,12 +1652,28 @@
         display: none !important; /* Geen schaduw op de papieren print */
       }
 
+      /* Voorkom dat de QR-boxen buiten hun containerrand springen in print/PDF */
+      .front-qr-code-box,
+      .back-qr-wrap {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .a5-page {
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
       /* In A4 Drukvel modus */
       body.mode-sheet .a4-sheet-container {
         page-break-after: always;
         break-after: page;
         box-shadow: none !important;
         margin: 0 !important;
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       body.mode-sheet .a4-sheet-container:last-of-type,
       body.mode-sheet div:last-child > .a4-sheet-container {
@@ -1654,6 +1687,9 @@
         break-after: page;
         box-shadow: none !important;
         margin: 0 !important;
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       body.mode-loose .loose-page-card:last-child .a5-page {
         page-break-after: avoid !important;
@@ -1666,6 +1702,9 @@
         break-after: page;
         box-shadow: none !important;
         margin: 0 !important;
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       body.mode-booklet .a4-sheet-container:last-of-type,
       body.mode-booklet div:last-child > .a4-sheet-container {
