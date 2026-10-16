@@ -1630,8 +1630,8 @@ function initCalendar() {
           <div style="font-size: 26px; font-weight: bold; color: #2e6819; margin: 0; line-height: 1.2;">
             staopstoelen<span style="color: #f39223;">.nl</span>
           </div>
-          <div style="font-size: 14px; color: #666666; margin-top: 4px;">
-            Uw zitspecialist op maat
+          <div style="font-size: 13px; font-weight: 500; color: #666666; margin-top: 4px;">
+            Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer
           </div>
         </div>
 
