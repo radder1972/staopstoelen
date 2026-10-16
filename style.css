@@ -675,7 +675,7 @@ section[id], section {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 /* Hero Quality Stamp (in de witte ruimte boven de slideshow conform pagina's met groene balk) */
@@ -693,8 +693,8 @@ section[id], section {
 }
 
 .hero-corner-stamp-link .banner-stamp {
-  width: 130px;
-  height: 130px;
+  width: 165px;
+  height: 165px;
   filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.14));
   animation: rock-banner-stamp 10s ease-in-out infinite;
   transform-origin: 50% 50%;
@@ -4205,11 +4205,11 @@ input[type="checkbox"] {
   }
 
   .hero-stamp-header {
-    margin-bottom: 8px !important;
+    margin-bottom: 12px !important;
   }
   .hero-corner-stamp-link .banner-stamp {
-    width: 105px !important;
-    height: 105px !important;
+    width: 140px !important;
+    height: 140px !important;
   }
 }
 
