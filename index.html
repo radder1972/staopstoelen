@@ -364,18 +364,24 @@
     <div class="najaarsactie-leaves-bg" id="najaarsactieLeaves"></div>
     <div class="container">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;" class="najaarsactie-grid">
-        <!-- Image Column (Left) -->
-        <div class="najaarsactie-image-col" style="position: relative; text-align: center;">
-            <picture>
-              <source media="(max-width: 640px)" srcset="assets/fitform_najaarsactie_2026_mobile.avif" type="image/avif">
-              <source srcset="assets/fitform_najaarsactie_2026.avif" type="image/avif">
-              <img src="assets/fitform_najaarsactie_2026.jpg" alt="Fitform Najaarsactie - korting tot 600 euro op een Fitform fauteuil op maat" width="540" height="360" loading="lazy" decoding="async" style="width: 100%; max-width: 540px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 15px 35px rgba(0,0,0,0.12); display: block;">
+        <!-- Image Column (Left) - Dubbelklik Easter Egg: Geertjan in de fauteuil! -->
+        <div class="najaarsactie-image-col" style="position: relative; text-align: center; cursor: pointer;" ondblclick="toggleNajaarsactieEasterEgg()" title="Dubbelklik voor een verrassing!">
+            <picture id="najaarsactiePicture" style="transition: opacity 0.22s ease-in-out; display: block;">
+              <source id="najaarsactieSourceMobile" media="(max-width: 640px)" srcset="assets/fitform_najaarsactie_2026_mobile.avif" type="image/avif">
+              <source id="najaarsactieSource" srcset="assets/fitform_najaarsactie_2026.avif" type="image/avif">
+              <img id="najaarsactieImg" src="assets/fitform_najaarsactie_2026.jpg" alt="Fitform Najaarsactie - korting tot 600 euro op een Fitform fauteuil op maat" width="540" height="360" loading="lazy" decoding="async" style="width: 100%; max-width: 540px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 15px 35px rgba(0,0,0,0.12); display: block;">
             </picture>
             
             <!-- Voordeel Sticker (linksboven, gezicht blijft 100% vrij) -->
             <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="banner-stamp-link" title="Klik om de €600 najaarsactie stoelen te bekijken" style="position: absolute; top: -22px; left: -22px; z-index: 5; text-decoration: none; width: 135px; height: 135px; margin: 0;">
               <img src="assets/najaarsactie_stempel.svg?v=2.3" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp" width="135" height="135" loading="lazy" decoding="async" style="width: 135px !important; height: 135px !important; margin: 0 !important; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.22)); cursor: pointer;">
             </a>
+
+            <!-- Subtiele Easter Egg badge onder de advertentie -->
+            <div id="najaarsactieEasterEggPill" style="display: none; margin-top: 14px; background: rgba(75, 143, 36, 0.1); color: var(--color-forest); border: 1px solid rgba(75, 143, 36, 0.3); padding: 6px 18px; border-radius: 9999px; font-weight: 700; font-size: 0.88rem; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Getest &amp; goedgekeurd door Geertjan!</span>
+            </div>
           </div>
 
         <!-- Content Column (Right) -->
@@ -754,6 +760,39 @@
 
   <script src="app.js?v=10.82" defer></script>
   <script>
+    // Fitform Najaarsactie Easter Egg: dubbelklik toont Geertjan in de fauteuil
+    let isNajaarsactieEasterEgg = false;
+    function toggleNajaarsactieEasterEgg() {
+      isNajaarsactieEasterEgg = !isNajaarsactieEasterEgg;
+      const pic = document.getElementById('najaarsactiePicture');
+      const img = document.getElementById('najaarsactieImg');
+      const srcMobile = document.getElementById('najaarsactieSourceMobile');
+      const srcDesktop = document.getElementById('najaarsactieSource');
+      const pill = document.getElementById('najaarsactieEasterEggPill');
+      
+      if (pic) pic.style.opacity = '0';
+      setTimeout(() => {
+        if (isNajaarsactieEasterEgg) {
+          if (srcMobile) srcMobile.srcset = 'assets/geert_in_fauteuil.jpg';
+          if (srcDesktop) srcDesktop.srcset = 'assets/geert_in_fauteuil.jpg';
+          if (img) {
+            img.src = 'assets/geert_in_fauteuil.jpg';
+            img.alt = 'Geertjan test de Fitform relaxfauteuil';
+          }
+          if (pill) pill.style.display = 'inline-flex';
+        } else {
+          if (srcMobile) srcMobile.srcset = 'assets/fitform_najaarsactie_2026_mobile.avif';
+          if (srcDesktop) srcDesktop.srcset = 'assets/fitform_najaarsactie_2026.avif';
+          if (img) {
+            img.src = 'assets/fitform_najaarsactie_2026.jpg';
+            img.alt = 'Fitform Najaarsactie - korting tot 600 euro op een Fitform fauteuil op maat';
+          }
+          if (pill) pill.style.display = 'none';
+        }
+        if (pic) pic.style.opacity = '1';
+      }, 140);
+    }
+
     // Load and render top 5 offers on home page
     function getGridDescriptionPreview(htmlStr) {
       if (!htmlStr) return "";

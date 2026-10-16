@@ -401,15 +401,21 @@
         <!-- Hoofdinhoud: Sfeerfoto links, tekst & kortingen & gecentreerde actieknop rechts -->
         <div class="najaarsactie-banner-inner" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
           
-          <!-- Sfeerfoto met officiële Voordeelsticker (linksboven zodat gezicht 100% vrij blijft) -->
-          <div class="najaarsactie-foto-col" style="flex: 0 0 auto; position: relative; margin: 12px 14px 8px 18px;">
+          <!-- Sfeerfoto met officiële Voordeelsticker (Dubbelklik Easter Egg: Geertjan in de fauteuil!) -->
+          <div class="najaarsactie-foto-col" style="flex: 0 0 auto; position: relative; margin: 12px 14px 8px 18px; cursor: pointer;" ondblclick="toggleCatalogueEasterEgg()" title="Dubbelklik voor een verrassing!">
             <div style="position: relative; display: inline-block;">
-              <img src="assets/fitform_najaarsactie_2026.png" alt="Fitform Najaarsactie - korting tot €600 op een Fitform fauteuil" style="width: 100%; max-width: 295px; height: auto; border-radius: 14px; box-shadow: 0 12px 28px rgba(0,0,0,0.12); object-fit: cover; display: block;">
+              <img id="catalogueNajaarsactieImg" src="assets/fitform_najaarsactie_2026.png" alt="Fitform Najaarsactie - korting tot €600 op een Fitform fauteuil" style="width: 100%; max-width: 295px; height: auto; border-radius: 14px; box-shadow: 0 12px 28px rgba(0,0,0,0.12); object-fit: cover; display: block; transition: opacity 0.22s ease-in-out;">
               
               <!-- Voordeelsticker op sfeerfoto (linksboven, gezicht blijft 100% vrij) -->
               <a href="#catalogGrid" onclick="filterNajaarsactieChairs(true); return false;" class="banner-stamp-link" title="Klik om de €600 najaarsactie stoelen te bekijken" style="position: absolute; top: -20px; left: -22px; z-index: 5; text-decoration: none; width: 130px; height: 130px; margin: 0;">
                 <img src="assets/najaarsactie_stempel.svg?v=2.3" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp" style="width: 130px !important; height: 130px !important; margin: 0 !important; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.22)); cursor: pointer;">
               </a>
+
+              <!-- Subtiele Easter Egg badge onder de advertentie -->
+              <div id="catalogueEasterEggPill" style="display: none; margin-top: 10px; background: rgba(75, 143, 36, 0.1); color: var(--color-forest); border: 1px solid rgba(75, 143, 36, 0.3); padding: 5px 14px; border-radius: 9999px; font-weight: 700; font-size: 0.82rem; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Getest door Geertjan!</span>
+              </div>
             </div>
           </div>
 
@@ -2374,6 +2380,31 @@
     document.querySelectorAll(".condition-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".type-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".material-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
+
+    // Fitform Najaarsactie Easter Egg: dubbelklik toont Geertjan in de fauteuil
+    let isCatalogueEasterEgg = false;
+    function toggleCatalogueEasterEgg() {
+      isCatalogueEasterEgg = !isCatalogueEasterEgg;
+      const img = document.getElementById('catalogueNajaarsactieImg');
+      const pill = document.getElementById('catalogueEasterEggPill');
+      if (img) img.style.opacity = '0';
+      setTimeout(() => {
+        if (isCatalogueEasterEgg) {
+          if (img) {
+            img.src = 'assets/geert_in_fauteuil.jpg';
+            img.alt = 'Geertjan test de Fitform relaxfauteuil';
+          }
+          if (pill) pill.style.display = 'inline-flex';
+        } else {
+          if (img) {
+            img.src = 'assets/fitform_najaarsactie_2026.png';
+            img.alt = 'Fitform Najaarsactie - korting tot €600 op een Fitform fauteuil';
+          }
+          if (pill) pill.style.display = 'none';
+        }
+        if (img) img.style.opacity = '1';
+      }, 140);
+    }
 
     // Initial render with API fetch fallback
     window.addEventListener("DOMContentLoaded", async () => {
