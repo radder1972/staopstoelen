@@ -246,7 +246,7 @@
 
     .page-brand {
       font-family: var(--font-heading);
-      font-size: 5.4mm;
+      font-size: 6.2mm;
       font-weight: 800;
       color: var(--color-forest);
       letter-spacing: -0.3px;
@@ -337,9 +337,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 26mm 1.8mm 1mm; /* Ruimte rechts voor het grote zegel */
+      padding: 0 26mm 2mm 0;
       border-bottom: 0.3mm solid rgba(75, 143, 36, 0.2);
-      margin-bottom: 1.8mm;
+      margin-bottom: 5.5mm;
     }
 
     .front-header-left {
@@ -350,7 +350,7 @@
 
     .front-brand {
       font-family: var(--font-heading);
-      font-size: 6.8mm;
+      font-size: 6.2mm;
       font-weight: 800;
       color: var(--color-forest);
       letter-spacing: -0.4px;
@@ -571,7 +571,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 1.2mm 0 1.6mm 0;
+      margin: 1.5mm 0 1.8mm 0;
       position: relative;
       z-index: 2;
     }
@@ -579,22 +579,22 @@
     .front-dealer-pill {
       display: inline-flex;
       align-items: center;
-      gap: 2mm;
-      background: rgba(243, 146, 35, 0.08);
-      border: 0.35mm solid rgba(243, 146, 35, 0.45);
-      padding: 1.2mm 4mm;
+      gap: 3.5mm;
+      background: #ffffff;
+      border: 0.45mm solid var(--color-terracotta);
+      padding: 1.8mm 6mm;
       border-radius: 9999px;
       font-family: var(--font-heading);
-      font-size: 2.6mm;
+      font-size: 3.2mm;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.4px;
-      color: var(--color-terracotta);
-      box-shadow: 0 1mm 3mm rgba(243, 146, 35, 0.08);
+      color: var(--color-terracotta-dark);
+      box-shadow: 0 2mm 6mm rgba(243, 146, 35, 0.25);
     }
 
     .dealer-pill-img {
-      height: 3.4mm;
+      height: 7.5mm; /* Forse slag groter */
       width: auto;
       display: block;
     }
@@ -619,7 +619,7 @@
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 0.6mm;
+      gap: 0.8mm;
     }
 
     .front-qr-title {
@@ -630,25 +630,20 @@
       line-height: 1.2;
     }
 
-    .front-qr-sub {
-      font-family: var(--font-body);
-      font-size: 2.65mm;
-      color: var(--color-gray);
-      line-height: 1.25;
-    }
-
     .front-qr-address {
       font-family: var(--font-heading);
-      font-size: 2.75mm;
+      font-size: 2.85mm;
       font-weight: 700;
       color: var(--color-dark);
-      display: flex;
-      align-items: center;
-      gap: 1.5mm;
+      line-height: 1.3;
     }
-    .front-qr-address strong {
-      color: #111111;
-      font-weight: 800;
+
+    .front-qr-sub {
+      font-family: var(--font-body);
+      font-size: 2.85mm; /* Dezelfde grootte */
+      font-weight: 500; /* Niet vet */
+      color: #374151;
+      line-height: 1.3;
     }
 
     .front-qr-code-box {
@@ -1867,7 +1862,6 @@
           <header class="front-header">
             <div class="front-header-left">
               <div class="front-brand">staopstoelen<span>.nl</span></div>
-              <div class="front-tagline">Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer</div>
             </div>
           </header>
 
@@ -1927,8 +1921,8 @@
             <div class="front-qr-banner">
               <div class="front-qr-info">
                 <div class="front-qr-title">Ontdek ons complete aanbod</div>
+                <div class="front-qr-address">Showroom Dordrecht &bull; 078 - 631 48 58</div>
                 <div class="front-qr-sub">Scan de QR-code voor actuele modellen &amp; prijzen</div>
-                <div class="front-qr-address">Showroom Dordrecht &bull; <strong>078 - 631 48 58</strong></div>
               </div>
               <div class="front-qr-code-box">
                 <img src="assets/qr_staopstoelen.png?v=5" alt="Scan QR Staopstoelen.nl">
@@ -2035,26 +2029,21 @@
         </div>
       </div>
 
-      <div class="page-footer-row">
-        <span>Staopstoelen.nl &bull; Ergonomie &amp; Maatwerk</span>
-        <span>Lees verder op pagina 3 &rarr;</span>
-      </div>
-
     </div>
 
     <!-- MASTER: PAGINA 3 (BINNENKANT RECHTS: EXACT A5 FLYER ACHTERZIJDE) -->
     <div class="a5-page flyer-back" id="page3">
           
           <!-- Top Header: Logo -->
-          <header class="back-header">
-            <div class="back-logo-row">
-              <div class="back-logo-title">staopstoelen<span>.nl</span></div>
-            </div>
-            <h2 class="back-intro-title">
+          <div class="page-header-row">
+            <div class="page-brand">staopstoelen<span>.nl</span></div>
+            <div class="page-chapter-tag">Zitcomfort &amp; Advies</div>
+          </div>
+
+          <h2 class="back-intro-title">
               Ervaar het comfort zelf in onze showroom in Dordrecht,<br>
               waar we graag de tijd voor u nemen.
             </h2>
-          </header>
 
           <!-- 4 USPs met 2 Echte Collectiefoto's in Vrijzinnig Box Formaat -->
           <section class="back-feature-layout">
@@ -2286,11 +2275,6 @@
             Scan &bull; Afspraak
           </span>
         </div>
-      </div>
-
-      <div class="page-footer-row">
-        <span>Staopstoelen.nl &bull; Showroom Dordrecht &bull; 078 - 631 48 58</span>
-        <span>Officieel Fitform Dealer</span>
       </div>
 
     </div>
