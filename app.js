@@ -1623,99 +1623,76 @@ function initCalendar() {
     }) : "";
 
     const customerEmailHtml = `
-      <div style="font-family: 'Outfit', Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #1d2024; max-width: 620px; margin: 0 auto; border: 1px solid #e5dfd5; border-radius: 10px; overflow: hidden; background-color: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+      <div style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #222222; max-width: 600px; margin: 0 auto; padding: 24px 20px; background-color: #ffffff;">
         
-        <!-- Brand Header: Fris groen (#4b8f24) met warme oranje bies (#f39223) -->
-        <div style="background: linear-gradient(135deg, #4b8f24 0%, #3d791c 100%); padding: 26px 24px 22px; text-align: center; border-bottom: 4px solid #f39223;">
-          <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff;">
-            staopstoelen<span style="color: #fed857;">.nl</span>
+        <!-- Kop: Logo links, daaronder zitspecialist -->
+        <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e8e8e8;">
+          <div style="font-size: 26px; font-weight: bold; color: #2e6819; margin: 0; line-height: 1.2;">
+            staopstoelen<span style="color: #f39223;">.nl</span>
           </div>
-          <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #e3f4f9; margin-top: 4px;">
-            Zorg &amp; Zitcomfort op Maat &bull; Showroom Dordrecht
+          <div style="font-size: 14px; color: #666666; margin-top: 4px;">
+            Uw zitspecialist op maat
           </div>
         </div>
 
-        <!-- Bevestigingsbadge & Titel -->
-        <div style="background-color: #fbf9f5; border-bottom: 1px solid #ede8de; padding: 18px 24px; text-align: center;">
-          <span style="display: inline-block; background-color: #fef3e6; color: #dc8019; border: 1px solid #f9d4aa; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
-            Aanvraag Ontvangen
-          </span>
-          <h2 style="margin: 8px 0 0 0; font-size: 20px; color: #1d2024; font-weight: 700;">
-            Hartelijk dank voor uw aanvraag!
-          </h2>
-        </div>
+        <p style="margin: 0 0 16px 0; color: #222222;">Beste ${name},</p>
         
-        <!-- Hoofdinhoud -->
-        <div style="padding: 28px 26px; background-color: #ffffff;">
-          <p style="margin: 0 0 16px 0; font-size: 15px; color: #2e382b;">Beste <strong>${name}</strong>,</p>
-          <p style="margin: 0 0 18px 0; font-size: 15px; color: #444444; line-height: 1.6;">
-            Fijn dat u contact met ons heeft opgenomen voor een adviesgesprek. Uw aanvraag is in goede orde ontvangen met onderstaande gegevens:
+        <p style="margin: 0 0 20px 0; color: #333333;">
+          Bedankt voor uw aanvraag. Uw afspraak staat bij ons genoteerd met de volgende gegevens:
+        </p>
+
+        <!-- Overzicht afspraak: rustig en overzichtelijk -->
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px; line-height: 1.6;">
+          <tr>
+            <td style="padding: 6px 0; color: #666666; width: 140px;">Type afspraak:</td>
+            <td style="padding: 6px 0; color: #111111; font-weight: bold;">${typeLabel}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #666666;">Datum:</td>
+            <td style="padding: 6px 0; color: #111111; font-weight: bold;">${formattedBookingDate}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #666666;">Tijdstip:</td>
+            <td style="padding: 6px 0; color: #111111; font-weight: bold;">${state.selectedTimeSlot}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #666666;">Adres / Locatie:</td>
+            <td style="padding: 6px 0; color: #111111;">${locationStr}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #666666;">Telefoonnummer:</td>
+            <td style="padding: 6px 0; color: #111111;">${phone}</td>
+          </tr>
+          ${notes && notes !== '-' ? `
+          <tr>
+            <td style="padding: 6px 0; color: #666666;">Uw opmerkingen:</td>
+            <td style="padding: 6px 0; color: #111111;">${notes}</td>
+          </tr>` : ''}
+        </table>
+
+        <p style="margin: 20px 0 6px 0; font-weight: bold; color: #111111;">Hoe nu verder?</p>
+        <p style="margin: 0 0 20px 0; color: #333333;">
+          Ik zal telefonisch contact met u opnemen om de afspraak te bevestigen en eventuele details door te nemen.
+        </p>
+
+        ${state.appointmentType === "showroom" ? `
+        <p style="margin: 20px 0 6px 0; font-weight: bold; color: #111111;">Praktische informatie showroombezoek:</p>
+        <p style="margin: 0 0 24px 0; color: #333333;">
+          Adres: Merwedestraat 239, 3313 GT Dordrecht.<br>
+          U kunt gratis direct voor de deur parkeren. Onze showroom is rolstoeltoegankelijk en de koffie staat klaar!
+        </p>` : ''}
+
+        <!-- Handtekening in rustig zwart-wit, zonder onderstreepte links -->
+        <div style="margin-top: 32px; color: #111111; font-size: 14px; line-height: 1.6;">
+          <p style="margin: 0 0 16px 0;">Met vriendelijke groet,</p>
+          <p style="margin: 0;">
+            <strong style="color: #111111;">Geertjan Klein Haneveld</strong><br>
+            Bewegingstechnoloog &amp; Erkend Fitform Dealer<br>
+            staopstoelen.nl - Schipper Compact Wonen<br>
+            Merwedestraat 239, 3313 GT Dordrecht<br>
+            Telefoon: 078 - 631 4858<br>
+            E-mail: info@staopstoelen.nl
           </p>
-          
-          <!-- Afspraak Kaart -->
-          <div style="background-color: #fdfbf7; border: 1px solid #e8e3d8; border-radius: 8px; padding: 16px 20px; margin: 20px 0;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
-              <tr>
-                <td style="padding: 6px 0; color: #777777; width: 130px;"><strong>Type afspraak:</strong></td>
-                <td style="padding: 6px 0; color: #1d2024; font-weight: 600;">${typeLabel}</td>
-              </tr>
-              <tr>
-                <td style="padding: 6px 0; color: #777777;"><strong>Datum:</strong></td>
-                <td style="padding: 6px 0; color: #4b8f24; font-weight: 700; font-size: 15px;">${formattedBookingDate}</td>
-              </tr>
-              <tr>
-                <td style="padding: 6px 0; color: #777777;"><strong>Tijdvak:</strong></td>
-                <td style="padding: 6px 0; color: #1d2024; font-weight: 600;">${state.selectedTimeSlot}</td>
-              </tr>
-              <tr>
-                <td style="padding: 6px 0; color: #777777;"><strong>Locatie:</strong></td>
-                <td style="padding: 6px 0; color: #1d2024;">${locationStr}</td>
-              </tr>
-              ${notes && notes !== '-' ? `
-              <tr>
-                <td style="padding: 6px 0; color: #777777;"><strong>Uw wensen:</strong></td>
-                <td style="padding: 6px 0; color: #1d2024; font-style: italic;">${notes}</td>
-              </tr>` : ''}
-            </table>
-          </div>
-
-          <!-- Blok: Hoe nu verder (Fris groen) -->
-          <div style="background-color: #f4f9f0; border-left: 4px solid #4b8f24; border-radius: 6px; padding: 16px 18px; margin: 22px 0;">
-            <h3 style="color: #2d5a15; margin: 0 0 6px 0; font-size: 15px; font-weight: 700;">Hoe nu verder?</h3>
-            <p style="margin: 0; font-size: 14px; color: #333333; line-height: 1.55;">
-              Ik neem vooraf persoonlijk telefonisch contact met u op om de afspraak te bevestigen en eventuele specifieke zitwensen alvast door te nemen.
-            </p>
-          </div>
-
-          ${state.appointmentType === "showroom" ? `
-          <!-- Blok: Praktische informatie Showroom (Warm oranje bies) -->
-          <div style="background-color: #fef8f0; border-left: 4px solid #f39223; border-radius: 6px; padding: 16px 18px; margin: 20px 0;">
-            <h3 style="color: #b86208; margin: 0 0 6px 0; font-size: 15px; font-weight: 700;">Praktische informatie showroombezoek:</h3>
-            <p style="margin: 0; font-size: 14px; color: #333333; line-height: 1.55;">
-              Adres: <strong>Merwedestraat 239, 3313 GT Dordrecht</strong>.<br>
-              U kunt gratis direct voor onze deur parkeren. Onze showroom is drempelvrij, volledig rolstoeltoegankelijk en de verse koffie staat klaar!
-            </p>
-          </div>` : ''}
-
-          <!-- Ondertekening Geertjan -->
-          <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #eee;">
-            <p style="margin: 0; line-height: 1.55; color: #333333; font-size: 14px;">
-              Met vriendelijke groet,<br><br>
-              <strong style="font-size: 16px; color: #1d2024;">Geertjan Klein Haneveld</strong><br>
-              <span style="color: #666; font-size: 13px;">Bewegingstechnoloog &amp; Erkend Fitform Dealer</span><br>
-              <span style="color: #4b8f24; font-weight: 700;">staopstoelen<span style="color: #f39223;">.nl</span></span> &bull; <span style="color: #555;">Schipper Compact Wonen</span><br>
-              <span style="color: #777; font-size: 13px;">Merwedestraat 239, 3313 GT Dordrecht</span><br>
-              <span style="display: inline-block; margin-top: 4px; font-size: 13px;">
-                Telefoon: <a href="tel:0786314858" style="color: #4b8f24; text-decoration: none; font-weight: 600;">078 - 631 4858</a> &bull; 
-                E-mail: <a href="mailto:info@staopstoelen.nl" style="color: #4b8f24; text-decoration: none;">info@staopstoelen.nl</a>
-              </span>
-            </p>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div style="background-color: #fbf9f5; border-top: 1px solid #ede8de; padding: 14px 24px; text-align: center; font-size: 12px; color: #888888;">
-          Staopstoelen.nl is een activiteit van Schipper Compact Wonen &bull; Specialist in ergonomisch zitcomfort sinds 1990
         </div>
       </div>
     `;
