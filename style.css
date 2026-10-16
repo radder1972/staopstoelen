@@ -4320,26 +4320,31 @@ input[type="checkbox"] {
     text-overflow: ellipsis;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
   }
+  /* Sorteren knop in de exacte terracotta huiskleur #f39223 */
   .btn-mobile-sort {
-    background: #fff6f0;
-    border: 1.5px solid rgba(214, 90, 49, 0.35);
-    color: #c44317;
-    box-shadow: 0 2px 8px rgba(214, 90, 49, 0.12);
+    background-color: var(--color-terracotta, #f39223);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 8px rgba(243, 146, 35, 0.35);
   }
   .btn-mobile-sort svg {
-    stroke: #c44317;
+    stroke: #ffffff !important;
+  }
+  .btn-mobile-sort:hover {
+    background-color: var(--color-terracotta-hover, #dc8019);
   }
   .btn-mobile-sort:active {
-    background: #feece0;
+    transform: scale(0.96);
+    background-color: var(--color-terracotta-hover, #dc8019);
   }
   .btn-mobile-sort.is-sorted {
-    background: linear-gradient(135deg, #ea580c 0%, #d65a31 100%);
-    border-color: #ea580c;
+    background-color: var(--color-terracotta-hover, #dc8019);
+    border-color: #ffffff;
     color: #ffffff;
-    box-shadow: 0 3px 12px rgba(214, 90, 49, 0.35);
+    box-shadow: 0 3px 12px rgba(220, 128, 25, 0.45);
   }
   .btn-mobile-sort.is-sorted svg {
-    stroke: #ffffff;
+    stroke: #ffffff !important;
   }
 
   /* Filter sidebar becomes off-canvas drawer */
@@ -4373,7 +4378,7 @@ input[type="checkbox"] {
     justify-content: space-between;
     padding: 16px 20px;
     background: linear-gradient(135deg, #256616 0%, #17420c 100%);
-    border-bottom: 2.5px solid var(--color-terracotta, #d65a31);
+    border-bottom: 2.5px solid var(--color-terracotta, #f39223);
     color: #ffffff;
     flex-shrink: 0;
   }
@@ -4444,9 +4449,9 @@ input[type="checkbox"] {
     justify-content: center;
     cursor: pointer;
     border: 1.5px solid rgba(255, 255, 255, 0.3);
-    background: linear-gradient(115deg, #ea580c 0%, #d65a31 42%, #256616 100%);
+    background: linear-gradient(115deg, #f39223 0%, #dc8019 42%, #256616 100%);
     color: #ffffff;
-    box-shadow: 0 4px 16px rgba(214, 90, 49, 0.35), 0 2px 6px rgba(37, 102, 22, 0.25);
+    box-shadow: 0 4px 16px rgba(243, 146, 35, 0.35), 0 2px 6px rgba(37, 102, 22, 0.25);
     transition: transform 0.15s ease;
     letter-spacing: 0.3px;
   }
@@ -4504,7 +4509,7 @@ input[type="checkbox"] {
     transform: translateY(100%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-sizing: border-box;
-    border-top: 3px solid var(--color-terracotta, #d65a31);
+    border-top: 3.5px solid var(--color-terracotta, #f39223);
   }
   .sort-sheet-overlay.active .sort-sheet-container {
     transform: translateY(0);
@@ -4512,7 +4517,7 @@ input[type="checkbox"] {
   .sort-sheet-handle {
     width: 44px;
     height: 5px;
-    background: #ea580c;
+    background: var(--color-terracotta, #f39223);
     border-radius: 4px;
     margin: 0 auto 14px auto;
   }
@@ -4521,7 +4526,7 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: space-between;
     padding-bottom: 12px;
-    border-bottom: 2px solid rgba(214, 90, 49, 0.15);
+    border-bottom: 2px solid rgba(243, 146, 35, 0.2);
     margin-bottom: 12px;
   }
   .sort-sheet-title {
@@ -4531,8 +4536,8 @@ input[type="checkbox"] {
     margin: 0;
   }
   .sort-sheet-close {
-    background: #fff5ee;
-    border: 1px solid rgba(214, 90, 49, 0.25);
+    background: #fdf5ea;
+    border: 1px solid rgba(243, 146, 35, 0.3);
     width: 34px;
     height: 34px;
     border-radius: 50%;
@@ -4542,11 +4547,11 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #c44317;
+    color: var(--color-terracotta-hover, #dc8019);
     transition: background 0.15s ease;
   }
   .sort-sheet-close:active {
-    background: #feece0;
+    background: #faebd7;
   }
   .sort-options-list {
     display: flex;
