@@ -12,9 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.82">
+  <link rel="stylesheet" href="style.css?v=10.83">
   <style>
 
+    @media (max-width: 991px) {
+      .desktop-only-filter {
+        display: none !important;
+      }
+    }
     .catalog-layout {
       display: grid;
       grid-template-columns: 1fr;
@@ -522,89 +527,138 @@
 
       <div class="catalog-layout">
         <!-- Sidebar filters -->
-        <aside class="filter-sidebar">
-          <!-- Knop om alle filters te wissen en alle stoelen te tonen -->
-          <div class="filter-group" style="padding-bottom: 16px; margin-bottom: 18px; border-bottom: 1.5px solid var(--color-gray-light);">
-            <button type="button" onclick="showAllChairs()" class="btn btn-secondary" style="width: 100%; padding: 11px 14px; font-size: 0.9rem; font-weight: 700; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-              <span>Toon alle stoelen</span>
-            </button>
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Sorteer Op</h3>
-            <select class="sort-select" id="sortSelect">
-              <option value="price-asc">Prijs: Laag naar Hoog</option>
-              <option value="price-desc">Prijs: Hoog naar Laag</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Type stoel</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="type-filter" value="staop" checked>
-              <span>Sta-op Stoel</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="type-filter" value="relax">
-              <span>Senioren Stoel</span>
-            </label>
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Conditie</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="condition-filter" value="nieuw">
-              <span>Nieuw</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="condition-filter" value="occasion">
-              <span>Occasion</span>
-            </label>
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Materiaal</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="material-filter" value="stof">
-              <span>Stof</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="material-filter" value="leer">
-              <span>Leer</span>
-            </label>
-          </div>
-
-          <div class="filter-group" id="brandFilterGroup">
-            <h3 class="filter-group-title">Merk</h3>
-            <!-- Dynamisch ingeladen op basis van merken in de database -->
-          </div>
-
-          <div class="filter-group">
-            <h3 class="filter-group-title">Prijsklasse</h3>
-            <label class="checkbox-label">
-              <input type="checkbox" class="price-filter" value="under-1500">
-              <span>Onder € 1.500</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="price-filter" value="1500-2500">
-              <span>€ 1.500 - € 2.500</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" class="price-filter" value="over-2500">
-              <span>Boven € 2.500</span>
-            </label>
-          </div>
-
-          <div class="filter-group" style="border-bottom:none; padding-bottom:0;">
-            <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.95rem; line-height:1.6; color:var(--color-dark);">
-              <strong>🌿 Optimaal op maat:</strong> Al onze sta-op stoelen (nieuw, gebruikt én geconditioneerd) worden door onze BewegingsTechnologen exact ingesteld op uw lichaamsmaten voor optimaal comfort.
+        <aside class="filter-sidebar" id="filterSidebar">
+          <!-- Mobile Drawer Header -->
+          <div class="mobile-drawer-header">
+            <h3 class="mobile-drawer-title">Filters</h3>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <button type="button" onclick="showAllChairs(false)" class="btn-clear-filters-link">Wissen</button>
+              <button type="button" class="btn-close-drawer" onclick="closeMobileFilters()" aria-label="Sluit filters">&times;</button>
             </div>
+          </div>
+
+          <div class="filter-sidebar-scroll">
+            <!-- Knop om alle filters te wissen en alle stoelen te tonen (Desktop) -->
+            <div class="filter-group desktop-only-filter" style="padding-bottom: 16px; margin-bottom: 18px; border-bottom: 1.5px solid var(--color-gray-light);">
+              <button type="button" onclick="showAllChairs()" class="btn btn-secondary" style="width: 100%; padding: 11px 14px; font-size: 0.9rem; font-weight: 700; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                <span>Toon alle stoelen</span>
+              </button>
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-group-title">Sorteer Op</h3>
+              <select class="sort-select" id="sortSelect">
+                <option value="recommended">Aanbevolen (Standaard)</option>
+                <option value="price-asc">Prijs: Laag naar Hoog</option>
+                <option value="price-desc">Prijs: Hoog naar Laag</option>
+                <option value="brand-asc">Merk: A tot Z</option>
+                <option value="newest">Nieuwste aanbod</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-group-title">Type stoel</h3>
+              <label class="checkbox-label">
+                <input type="checkbox" class="type-filter" value="staop" checked>
+                <span>Sta-op Stoel</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="type-filter" value="relax">
+                <span>Senioren Stoel</span>
+              </label>
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-group-title">Conditie</h3>
+              <label class="checkbox-label">
+                <input type="checkbox" class="condition-filter" value="nieuw">
+                <span>Nieuw</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="condition-filter" value="occasion">
+                <span>Occasion</span>
+              </label>
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-group-title">Materiaal</h3>
+              <label class="checkbox-label">
+                <input type="checkbox" class="material-filter" value="stof">
+                <span>Stof</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="material-filter" value="leer">
+                <span>Leer</span>
+              </label>
+            </div>
+
+            <div class="filter-group" id="brandFilterGroup">
+              <h3 class="filter-group-title">Merk</h3>
+              <!-- Dynamisch ingeladen op basis van merken in de database -->
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-group-title">Prijsklasse</h3>
+              <label class="checkbox-label">
+                <input type="checkbox" class="price-filter" value="under-1500">
+                <span>Onder € 1.500</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="price-filter" value="1500-2500">
+                <span>€ 1.500 - € 2.500</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="price-filter" value="over-2500">
+                <span>Boven € 2.500</span>
+              </label>
+            </div>
+
+            <div class="filter-group" style="border-bottom:none; padding-bottom:0;">
+              <div style="background-color: var(--color-sage-light); padding:16px; border-radius:var(--radius-sm); font-size:0.95rem; line-height:1.6; color:var(--color-dark);">
+                <strong>🌿 Optimaal op maat:</strong> Al onze sta-op stoelen (nieuw, gebruikt én geconditioneerd) worden door onze BewegingsTechnologen exact ingesteld op uw lichaamsmaten voor optimaal comfort.
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Drawer Footer -->
+          <div class="mobile-drawer-footer">
+            <button type="button" onclick="applyMobileFilters()" class="btn btn-primary btn-apply-filters">
+              <span id="mobileApplyChairCount">Toon stoelen</span>
+            </button>
           </div>
         </aside>
 
         <!-- Product Grid -->
         <main>
+          <!-- Mobile Shop Controls (Filter & Sorteer Bar) -->
+          <div class="mobile-shop-controls" id="mobileShopControls">
+            <button type="button" class="btn-mobile-pill" id="btnOpenMobileFilters" onclick="openMobileFilters()" aria-label="Open filters">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
+                <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
+                <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
+                <line x1="17" y1="16" x2="23" y2="16"/>
+              </svg>
+              <span>Filteren</span>
+              <span class="mobile-filter-badge" id="mobileFilterBadge" style="display: none;">0</span>
+            </button>
+
+            <span class="mobile-results-count" id="mobileResultsCount">Stoelen laden...</span>
+
+            <button type="button" class="btn-mobile-pill btn-mobile-sort" id="btnOpenMobileSort" onclick="openMobileSort()" aria-label="Open sorteeropties">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 5h10M11 9h7M11 13h4"/>
+                <path d="M3 17l3 3 3-3M6 18V4"/>
+              </svg>
+              <span id="mobileSortBtnLabel">Sorteren</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+          </div>
+
           <!-- Actief filter notificatie bar -->
           <div id="filterStatusBanner" style="display: none; background: #fff8f0; border: 1.5px solid #f2cfbb; border-radius: 12px; padding: 12px 18px; margin-bottom: 22px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; box-shadow: 0 4px 14px rgba(214, 90, 49, 0.08);">
             <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--color-forest); font-size: 0.95rem;">
@@ -941,6 +995,42 @@
       </div>
     </div>
   </div>
+
+  <!-- Mobile Sort Bottom Sheet Overlay & Container -->
+  <div class="sort-sheet-overlay" id="sortSheetOverlay" onclick="closeMobileSort()">
+    <div class="sort-sheet-container" id="sortSheetContainer" onclick="event.stopPropagation()">
+      <div class="sort-sheet-handle"></div>
+      <div class="sort-sheet-header">
+        <h3 class="sort-sheet-title">Sorteer op</h3>
+        <button type="button" class="sort-sheet-close" onclick="closeMobileSort()" aria-label="Sluiten">&times;</button>
+      </div>
+      <div class="sort-options-list">
+        <button type="button" class="sort-option-btn active" data-sort="recommended" onclick="selectSortOption('recommended')">
+          <span class="sort-option-text">Aanbevolen (Standaard)</span>
+          <svg class="sort-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+        <button type="button" class="sort-option-btn" data-sort="price-asc" onclick="selectSortOption('price-asc')">
+          <span class="sort-option-text">Prijs: Laag naar Hoog</span>
+          <svg class="sort-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+        <button type="button" class="sort-option-btn" data-sort="price-desc" onclick="selectSortOption('price-desc')">
+          <span class="sort-option-text">Prijs: Hoog naar Laag</span>
+          <svg class="sort-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+        <button type="button" class="sort-option-btn" data-sort="brand-asc" onclick="selectSortOption('brand-asc')">
+          <span class="sort-option-text">Merk: A tot Z</span>
+          <svg class="sort-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+        <button type="button" class="sort-option-btn" data-sort="newest" onclick="selectSortOption('newest')">
+          <span class="sort-option-text">Nieuwste aanbod</span>
+          <svg class="sort-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
   <script src="app.js?v=10.82"></script>
   <script>
@@ -1698,18 +1788,136 @@
       `;
     }
 
+    // Mobile Shop Controls & Sort Logic
+    let currentSortValue = "recommended";
+
+    const sortDisplayLabels = {
+      "recommended": "Aanbevolen",
+      "price-asc": "Prijs: Laag - Hoog",
+      "price-desc": "Prijs: Hoog - Laag",
+      "brand-asc": "Merk: A - Z",
+      "newest": "Nieuwste"
+    };
+
+    function openMobileSort() {
+      const overlay = document.getElementById("sortSheetOverlay");
+      if (overlay) {
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeMobileSort() {
+      const overlay = document.getElementById("sortSheetOverlay");
+      if (overlay) {
+        overlay.classList.remove("active");
+        const sidebar = document.getElementById("filterSidebar");
+        if (!sidebar || !sidebar.classList.contains("mobile-open")) {
+          document.body.style.overflow = "";
+        }
+      }
+    }
+
+    function selectSortOption(sortKey) {
+      currentSortValue = sortKey;
+      const desktopSelect = document.getElementById("sortSelect");
+      if (desktopSelect) {
+        desktopSelect.value = sortKey;
+      }
+      updateSortUI(sortKey);
+      closeMobileSort();
+      renderCatalog();
+    }
+
+    function updateSortUI(sortKey) {
+      document.querySelectorAll(".sort-option-btn").forEach(btn => {
+        if (btn.getAttribute("data-sort") === sortKey) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+
+      const sortLabel = document.getElementById("mobileSortBtnLabel");
+      const sortBtn = document.getElementById("btnOpenMobileSort");
+      if (sortLabel) {
+        sortLabel.textContent = sortDisplayLabels[sortKey] || "Sorteren";
+      }
+      if (sortBtn) {
+        if (sortKey !== "recommended") {
+          sortBtn.classList.add("is-sorted");
+        } else {
+          sortBtn.classList.remove("is-sorted");
+        }
+      }
+    }
+
+    function openMobileFilters() {
+      const sidebar = document.getElementById("filterSidebar");
+      const backdrop = document.getElementById("filterDrawerBackdrop");
+      if (sidebar) sidebar.classList.add("mobile-open");
+      if (backdrop) backdrop.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMobileFilters() {
+      const sidebar = document.getElementById("filterSidebar");
+      const backdrop = document.getElementById("filterDrawerBackdrop");
+      if (sidebar) sidebar.classList.remove("mobile-open");
+      if (backdrop) backdrop.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function applyMobileFilters() {
+      closeMobileFilters();
+      const target = document.getElementById("catalogGrid");
+      if (target) {
+        const yOffset = -120;
+        const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    function updateActiveFilterBadge(count) {
+      const badge = document.getElementById("mobileFilterBadge");
+      const filterBtn = document.getElementById("btnOpenMobileFilters");
+      if (!badge || !filterBtn) return;
+
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = "inline-flex";
+        filterBtn.classList.add("has-active-filters");
+      } else {
+        badge.style.display = "none";
+        filterBtn.classList.remove("has-active-filters");
+      }
+    }
+
     // Render Logic
     function renderCatalog() {
       const grid = document.getElementById("catalogGrid");
       grid.innerHTML = "";
 
       // Get filter states
-      const sortVal = document.getElementById("sortSelect").value;
+      const sortSelectEl = document.getElementById("sortSelect");
+      const sortVal = sortSelectEl ? sortSelectEl.value : currentSortValue;
       const checkedBrands = Array.from(document.querySelectorAll(".brand-filter:checked")).map(cb => cb.value);
       const checkedPrices = Array.from(document.querySelectorAll(".price-filter:checked")).map(cb => cb.value);
       const checkedConditions = Array.from(document.querySelectorAll(".condition-filter:checked")).map(cb => cb.value);
       const checkedTypes = Array.from(document.querySelectorAll(".type-filter:checked")).map(cb => cb.value);
       const checkedMaterials = Array.from(document.querySelectorAll(".material-filter:checked")).map(cb => cb.value);
+
+      // Calculate active filter count for mobile badge
+      let activeFilterCount = 0;
+      activeFilterCount += checkedBrands.length;
+      activeFilterCount += checkedPrices.length;
+      activeFilterCount += checkedConditions.length;
+      activeFilterCount += checkedMaterials.length;
+      const staopDefaultChecked = checkedTypes.includes("staop") && !checkedTypes.includes("relax");
+      if (!staopDefaultChecked) {
+        activeFilterCount += 1;
+      }
+      updateActiveFilterBadge(activeFilterCount);
 
       // Filter
       let filtered = [...GOEDKOPE_STAOPSTOELEN_DATA];
@@ -1753,9 +1961,24 @@
 
       // Sort
       if (sortVal === "price-desc") {
-        filtered.sort((a, b) => b.price - a.price);
+        filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+      } else if (sortVal === "price-asc") {
+        filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+      } else if (sortVal === "brand-asc") {
+        filtered.sort((a, b) => (a.brand || '').localeCompare(b.brand || ''));
+      } else if (sortVal === "newest") {
+        filtered.sort((a, b) => {
+          if (a.condition === 'nieuw' && b.condition !== 'nieuw') return -1;
+          if (b.condition === 'nieuw' && a.condition !== 'nieuw') return 1;
+          return (b.id || '').localeCompare(a.id || '');
+        });
       } else {
-        filtered.sort((a, b) => a.price - b.price);
+        // "recommended" (standard):
+        filtered.sort((a, b) => {
+          const aAvail = (a.status === 'beschikbaar' || !a.status) ? 0 : 1;
+          const bAvail = (b.status === 'beschikbaar' || !b.status) ? 0 : 1;
+          return aAvail - bAvail;
+        });
       }
 
       // Check for URL hash selection (e.g. #sta-op-stoel-dordrecht)
@@ -1772,6 +1995,13 @@
       if (selectedChairMatch) {
         filtered = [selectedChairMatch];
       }
+
+      // Update mobile results count and apply button count
+      const resultsCountEl = document.getElementById("mobileResultsCount");
+      const applyCountEl = document.getElementById("mobileApplyChairCount");
+      const chairCountText = filtered.length === 1 ? "1 stoel" : `${filtered.length} stoelen`;
+      if (resultsCountEl) resultsCountEl.textContent = chairCountText;
+      if (applyCountEl) applyCountEl.textContent = `Toon ${chairCountText}`;
 
       // Manage selected chair banner
       let bannerContainer = document.getElementById("selectedChairBanner");
@@ -2375,7 +2605,11 @@
     });
 
     // Event Listeners
-    document.getElementById("sortSelect").addEventListener("change", renderCatalog);
+    document.getElementById("sortSelect").addEventListener("change", (e) => {
+      currentSortValue = e.target.value;
+      updateSortUI(currentSortValue);
+      renderCatalog();
+    });
     document.querySelectorAll(".price-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".condition-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
     document.querySelectorAll(".type-filter").forEach(cb => cb.addEventListener("change", renderCatalog));
