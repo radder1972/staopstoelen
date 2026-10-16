@@ -534,13 +534,23 @@ section[id], section {
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 48px;
+  gap: 36px;
   align-items: center;
 }
 
-@media (min-width: 992px) {
+/* Tablet & Desktop: Houd de slideshow altijd NAAST de tekst (vanaf 768px) */
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
   }
 }
 
@@ -3938,7 +3948,7 @@ input[type="checkbox"] {
    Tablet Optimization Adjustments (769px - 1024px)
    ========================================================================== */
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   /* Prevent navigation links overflow and wrapping */
   .nav-links {
     gap: 14px !important;
@@ -3978,9 +3988,96 @@ input[type="checkbox"] {
     order: -1;
   }
 
-  /* Hero title font size scaling for tablets */
+  /* Hero styling voor tablet: compacte 2-koloms layout waarbij slideshow altijd netjes NAAST de tekst blijft */
   .hero-title {
-    font-size: 2.8rem !important;
+    font-size: clamp(1.85rem, 2.8vw, 2.25rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.02rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-description {
+    font-size: 0.95rem !important;
+    line-height: 1.52 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hero-buttons {
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hero-buttons .btn {
+    padding: 10px 18px !important;
+    font-size: 0.92rem !important;
+  }
+
+  .hero-stats {
+    gap: 16px !important;
+    padding-top: 14px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .stat-item h3,
+  .stat-item .stat-number {
+    font-size: 1.4rem !important;
+  }
+
+  .stat-item p {
+    font-size: 0.78rem !important;
+  }
+
+  .hero-dealer-trust {
+    margin-top: 14px !important;
+    padding: 8px 16px 8px 12px !important;
+    gap: 10px !important;
+    max-width: 100% !important;
+  }
+
+  .hero-dealer-trust img {
+    height: 32px !important;
+  }
+
+  .hero-dealer-trust span:first-child {
+    font-size: 0.88rem !important;
+  }
+
+  .hero-dealer-trust span:last-child {
+    font-size: 0.76rem !important;
+    margin-left: 20px !important;
+  }
+
+  /* Compacte slideshow voor tablet formaat zodat hij strak naast de tekst past */
+  .hero-image-wrapper {
+    max-width: 320px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    align-self: center !important;
+  }
+
+  .hero-image-container {
+    width: 100% !important;
+    max-width: 320px !important;
+    aspect-ratio: 1/1 !important;
+  }
+
+  .hero-quality-sticker-link {
+    top: -16px !important;
+    left: -14px !important;
+  }
+
+  .hero-quality-sticker {
+    width: 88px !important;
+    height: 88px !important;
+  }
+
+  .hero-slideshow-btn {
+    padding: 8px 14px !important;
+    font-size: 0.78rem !important;
   }
 }
 
