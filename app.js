@@ -1692,18 +1692,6 @@ function initCalendar() {
     };
 
     const transitionToSuccess = () => {
-      // Transition to success screen
-      interactiveArea.style.display = "none";
-      successScreen.style.display = "block";
-
-      // Update step indicator on success
-      const s1 = document.getElementById("stepIndicator1");
-      const s2 = document.getElementById("stepIndicator2");
-      const s3 = document.getElementById("stepIndicator3");
-      if (s1) { s1.className = "booking-step completed"; }
-      if (s2) { s2.className = "booking-step completed"; }
-      if (s3) { s3.className = "booking-step highlight active"; }
-      
       // Log custom database conversion event
       if (typeof logCustomVisitEvent === 'function') {
         logCustomVisitEvent('booking_conversion');
@@ -1718,44 +1706,9 @@ function initCalendar() {
           currency: 'EUR'
         });
       }
-      
-      const formattedDate = state.selectedDate.toLocaleDateString("nl-NL", {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      });
-      
-      const typeText = state.appointmentType === "home" ? "Passing aan Huis" : "Showroombezoek in Dordrecht";
-      const locationDetail = state.appointmentType === "home" ? `op uw adres (${address})` : "op onze locatie (Merwedestraat 239, Dordrecht)";
-      
-      document.getElementById("successSummary").innerHTML = `
-        Er is een afspraak gepland voor een <strong>${typeText}</strong> ${locationDetail}. <br>
-        Datum: <strong>${formattedDate}</strong> om <strong>${state.selectedTimeSlot}</strong>.<br><br>
-        De bevestiging is zojuist naar uw e-mailadres (<strong>${email}</strong>) verzonden. Check eventueel uw spamfolder als u deze niet direct ziet.<br><br>
-        Geertjan Klein Haneveld zal contact met u opnemen via <strong>${phone}</strong> om de afspraak te bevestigen en eventuele details door te nemen.
-      `;
 
-      // Show Google Maps and route description if visiting the showroom
-      const successRouteInfo = document.getElementById("successRouteInfo");
-      const successMapIframe = document.getElementById("successMapIframe");
-      if (successRouteInfo && successMapIframe) {
-        if (state.appointmentType === "showroom") {
-          successRouteInfo.style.display = "block";
-          successMapIframe.src = "https://maps.google.com/maps?q=Merwedestraat%20239,%20Dordrecht&t=&z=15&ie=UTF8&iwloc=&output=embed";
-        } else {
-          successRouteInfo.style.display = "none";
-          successMapIframe.src = "";
-        }
-      }
-      
-      submitBookingBtn.textContent = "Bevestig Afspraak";
-      submitBookingBtn.disabled = false;
-
-      // Redirect to dedicated thank you page for Google Ads conversion tracking
-      setTimeout(() => {
-        window.location.href = "bedankt.html";
-      }, 1000);
+      // Direct clean redirect to thank you page
+      window.location.href = "bedankt.html";
     };
 
     if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
