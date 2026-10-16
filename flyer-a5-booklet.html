@@ -1628,24 +1628,50 @@
         -webkit-backdrop-filter: none !important;
       }
 
+      html,
       body {
-        background: transparent !important;
-        padding: 0 !important;
+        background: #ffffff !important;
+        color: #111827 !important;
         margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        display: block !important;
+        float: none !important;
+        overflow: visible !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
 
+      /* Verberg alle scherm-elementen, werkbalken, hints en bron-templates */
       .screen-toolbar,
       .hint-bar,
-      .spread-label {
+      .spread-label,
+      #masterPagesSource {
         display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
       }
 
       .stage {
         padding: 0 !important;
         margin: 0 !important;
         display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        flex: none !important;
+      }
+
+      .booklet-display-wrap {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
       }
 
       .spread-container::after {
@@ -1659,55 +1685,111 @@
         margin-bottom: 0 !important;
       }
 
+      /* STANDAARD PRINTMODUS (zowel bij 'Boekje' leesweergave als 'Drukvel' modus):
+         Print automatisch de 2 perfecte A4 Drukvellen (dubbelzijdig A4 vouwvel) */
+      body.mode-booklet #viewBooklet,
+      body.mode-sheet #viewBooklet,
+      body.mode-booklet #viewLoose,
+      body.mode-sheet #viewLoose {
+        display: none !important;
+      }
+
+      body.mode-booklet #viewSheet,
+      body.mode-sheet #viewSheet {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      #viewSheet > div {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      /* A4 Drukvellen: 297 x 209.6 mm (0.4mm veilige marge tegen subpixel afronding waardoor browsers een blanco extra pagina genereren) */
+      .a4-sheet-container {
+        width: 297mm !important;
+        height: 209.6mm !important;
+        max-height: 209.6mm !important;
+        min-width: 297mm !important;
+        min-height: 209.6mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        display: flex !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .sheet-half-left,
+      .sheet-half-right {
+        width: 148.5mm !important;
+        height: 209.6mm !important;
+        max-height: 209.6mm !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
       .a5-page {
+        width: 148.5mm !important;
+        height: 209.6mm !important;
+        max-height: 209.6mm !important;
         overflow: hidden !important;
+        box-shadow: none !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
 
-      /* In A4 Drukvel modus */
-      body.mode-sheet .a4-sheet-container {
-        page-break-after: always;
-        break-after: page;
-        box-shadow: none !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
+      /* Vel 1 (Buitenkant: P4 links + P1 rechts): start direct op pagina 1 en breek na afloop */
+      #viewSheet > div:first-child,
+      #sheetPage1 {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        page-break-after: always !important;
+        break-after: page !important;
       }
-      body.mode-sheet .a4-sheet-container:last-of-type,
-      body.mode-sheet div:last-child > .a4-sheet-container {
+
+      /* Vel 2 (Binnenkant: P2 links + P3 rechts): géén page-break na afloop! */
+      #viewSheet > div:last-child,
+      #sheetPage2 {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
         page-break-after: avoid !important;
         break-after: avoid !important;
       }
 
-      /* In Losse A5 modus */
-      body.mode-loose .a5-page {
-        page-break-after: always;
-        break-after: page;
-        box-shadow: none !important;
+      /* In Losse A5 modus (print 4 afzonderlijke pagina's) */
+      body.mode-loose #viewBooklet,
+      body.mode-loose #viewSheet {
+        display: none !important;
+      }
+
+      body.mode-loose #viewLoose {
+        display: block !important;
         margin: 0 !important;
-        overflow: hidden !important;
+        padding: 0 !important;
+      }
+
+      body.mode-loose .loose-page-card {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
+
+      body.mode-loose .loose-page-card .a5-page {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        height: 209.6mm !important;
+      }
+
       body.mode-loose .loose-page-card:last-child .a5-page {
-        page-break-after: avoid !important;
-        break-after: avoid !important;
-      }
-
-      /* In Boekje modus: print automatisch de A4 drukvellen */
-      body.mode-booklet .a4-sheet-container {
-        page-break-after: always;
-        break-after: page;
-        box-shadow: none !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-      }
-      body.mode-booklet .a4-sheet-container:last-of-type,
-      body.mode-booklet div:last-child > .a4-sheet-container {
         page-break-after: avoid !important;
         break-after: avoid !important;
       }
@@ -2318,16 +2400,8 @@
     }
 
     function triggerPrint() {
-      // In booklet mode printen we standaard het handige A4 vouwvel
-      if (currentMode === 'booklet') {
-        document.getElementById("viewBooklet").style.display = 'none';
-        document.getElementById("viewSheet").style.display = 'flex';
-        window.print();
-        document.getElementById("viewBooklet").style.display = 'flex';
-        document.getElementById("viewSheet").style.display = 'none';
-      } else {
-        window.print();
-      }
+      // In @media print zorgt de CSS er automatisch voor dat de 2 A4 drukvellen perfect geprint worden
+      window.print();
     }
 
     window.addEventListener("DOMContentLoaded", () => {
