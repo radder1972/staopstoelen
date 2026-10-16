@@ -1612,6 +1612,60 @@ function initCalendar() {
       }
     }
 
+    // Build customized confirmation email HTML (without 'within 2 hours' restriction)
+    const typeLabel = state.appointmentType === "home" ? "Passing aan Huis" : "Showroombezoek Dordrecht";
+    const locationStr = state.appointmentType === "home" ? address : "Merwedestraat 239, 3313 GT Dordrecht";
+    const formattedBookingDate = state.selectedDate ? state.selectedDate.toLocaleDateString("nl-NL", {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }) : "";
+
+    const customerEmailHtml = `
+      <div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #2e382b; max-width: 620px; margin: 0 auto; border: 1px solid #e2ddd3; border-radius: 8px; overflow: hidden;">
+        <div style="background-color: #2e382b; padding: 24px; text-align: center; color: #ffffff;">
+          <h2 style="margin: 0; font-size: 22px; color: #ffffff;">Hartelijk dank voor uw aanvraag!</h2>
+          <p style="margin: 6px 0 0 0; color: #d6e2cf; font-size: 14px;">Staopstoelen.nl &bull; Specialist in Zitcomfort</p>
+        </div>
+        
+        <div style="padding: 28px 24px; background-color: #ffffff;">
+          <p>Beste <strong>${name}</strong>,</p>
+          <p>Fijn dat u contact met ons heeft opgenomen voor een adviesgesprek. Uw aanvraag is in goede orde ontvangen met onderstaande gegevens:</p>
+          
+          <div style="background-color: #f7f5f0; border-left: 4px solid #4b8f24; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
+            <p style="margin: 4px 0;"><strong>Type afspraak:</strong> ${typeLabel}</p>
+            <p style="margin: 4px 0;"><strong>Datum:</strong> ${formattedBookingDate}</p>
+            <p style="margin: 4px 0;"><strong>Tijdvak:</strong> ${state.selectedTimeSlot}</p>
+            <p style="margin: 4px 0;"><strong>Locatie:</strong> ${locationStr}</p>
+            ${notes && notes !== '-' ? `<p style="margin: 4px 0;"><strong>Uw opmerkingen:</strong> ${notes}</p>` : ''}
+          </div>
+
+          <h3 style="color: #2e382b; margin-top: 24px; margin-bottom: 8px; font-size: 17px;">Hoe nu verder?</h3>
+          <p style="margin-top: 0;">
+            Ik zal telefonisch contact met u opnemen om de afspraak te bevestigen en eventuele details door te nemen.
+          </p>
+
+          ${state.appointmentType === "showroom" ? `
+          <div style="background-color: #f0f7ed; border-left: 4px solid #4b8f24; padding: 12px 16px; margin: 18px 0; border-radius: 4px; font-size: 14px;">
+            <strong>Praktische informatie showroombezoek:</strong><br>
+            Adres: Merwedestraat 239, 3313 GT Dordrecht. U kunt gratis direct voor de deur parkeren. Onze showroom is volledig rolstoeltoegankelijk en de koffie staat klaar!
+          </div>` : ''}
+
+          <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #eee;">
+            <p style="margin: 0; line-height: 1.5;">
+              Met vriendelijke groet,<br><br>
+              <strong>Geertjan Klein Haneveld</strong><br>
+              <span style="color: #666; font-size: 14px;">Bewegingstechnoloog &amp; Erkend Fitform Dealer</span><br>
+              <span style="color: #4b8f24; font-weight: 600;">Staopstoelen.nl</span> &bull; Schipper Compact Wonen<br>
+              Merwedestraat 239, 3313 GT Dordrecht<br>
+              Telefoon: <a href="tel:0786314858" style="color: #4b8f24; text-decoration: none; font-weight: 600;">078 - 631 4858</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+
     // Assemble the payload for Google Calendar webhook
     const bookingPayload = {
       name: name,
@@ -1630,6 +1684,10 @@ function initCalendar() {
       appointmentType: state.appointmentType,
       address: state.appointmentType === "home" ? address : "Merwedestraat 239, Dordrecht (Showroom)",
       notes: notes,
+      emailSubject: "Bevestiging van uw aanvraag voor een adviesgesprek - Staopstoelen.nl",
+      senderName: "Geertjan Klein Haneveld - Staopstoelen.nl",
+      notificationEmail: "schipperwonen@gmail.com, info@staopstoelen.nl",
+      emailHtml: customerEmailHtml,
       timestamp: new Date().toISOString()
     };
 

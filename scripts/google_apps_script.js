@@ -4,16 +4,14 @@
  * Beheert:
  * 1. Ophalen van bezette tijdsloten uit Google Agenda (doGet)
  * 2. Aanmaken van de afspraak in Google Agenda (doPost)
- * 3. Verzenden van de bevestigingsmail naar de klant met de gevraagde tekst (doPost)
- * 4. Verzenden van een notificatiemail naar het Staopstoelen.nl team
- * 
- * Instructies:
- * Plak deze code in uw Google Apps Script project (https://script.google.com).
- * Klik op "Implementeren" -> "Nieuwe implementatie beheren" -> "Nieuwe versie" om bij te werken.
+ * 3. Verzenden van de bevestigingsmail naar de klant met de tekst van Geertjan (doPost)
+ * 4. Verzenden van een notificatiemail naar Schipper Compact Wonen / Staopstoelen team (doPost)
+ * 5. autoriseerEmail(): eenmalig uitvoeren om Google e-mailrechten te activeren
+ * 6. testBooking(): handmatige testboeking
  */
 
 // Configuratie
-const NOTIFICATION_EMAIL = "info@staopstoelen.nl"; // Ontvangt interne boekingsnotificaties
+const NOTIFICATION_EMAIL = "schipperwonen@gmail.com, info@staopstoelen.nl"; // Ontvangt interne boekingsnotificaties
 const CALENDAR_ID = "primary"; // Gebruikt de primaire Google Agenda van het account
 
 /**
@@ -164,12 +162,19 @@ function doPost(e) {
         </div>
       `;
 
-      MailApp.sendEmail({
-        to: email,
-        subject: emailSubject,
-        htmlBody: emailHtml,
-        name: "Geertjan Klein Haneveld - Staopstoelen.nl"
-      });
+      try {
+        GmailApp.sendEmail(email, emailSubject, "", {
+          htmlBody: emailHtml,
+          name: "Geertjan Klein Haneveld - Staopstoelen.nl"
+        });
+      } catch (e1) {
+        MailApp.sendEmail({
+          to: email,
+          subject: emailSubject,
+          htmlBody: emailHtml,
+          name: "Geertjan Klein Haneveld - Staopstoelen.nl"
+        });
+      }
     }
 
     // 3. Notificatiemail naar het bedrijf / team
@@ -187,7 +192,11 @@ function doPost(e) {
         `Opmerkingen: ${notes}\n\n` +
         `Deze afspraak is automatisch aan de Google Agenda toegevoegd.`;
 
-      MailApp.sendEmail(NOTIFICATION_EMAIL, internalSubject, internalBody);
+      try {
+        MailApp.sendEmail(NOTIFICATION_EMAIL, internalSubject, internalBody);
+      } catch (e2) {
+        // Negeer eventuele notificatiefout zodat de klantbevestiging voorrang heeft
+      }
     }
 
     return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
@@ -200,27 +209,33 @@ function doPost(e) {
 }
 
 /**
- * Handmatige Testfunctie:
- * Selecteer deze functie bovenin de knoppenbalk van Google Apps Script
- * en klik op "Uitvoeren" om direct een testmail naar matthias.radder@gmail.com te sturen.
+ * STAP A: Voer deze functie EENMALIG uit om Google toestemming voor e-mail te geven
+ */
+function autoriseerEmail() {
+  GmailApp.sendEmail("schipperwonen@gmail.com", "Test Autorisatie Staopstoelen", "Toestemming voor het verzenden van e-mails is succesvol geactiveerd!");
+  Logger.log("Toestemming geactiveerd en mail verzonden naar Schipper!");
+}
+
+/**
+ * Handmatige Testfunctie
  */
 function testBooking() {
   const fakeEvent = {
     postData: {
       contents: JSON.stringify({
-        name: "Matthias Radder (Test)",
+        name: "Test Klant",
         phone: "078 - 631 4858",
-        email: "matthias.radder@gmail.com",
-        date: "2026-10-20",
+        email: "schipperwonen@gmail.com",
+        date: "2026-10-24",
         timeSlot: "10:00 - 12:00",
         startTime: "10:00",
         endTime: "12:00",
         appointmentType: "showroom",
         address: "Merwedestraat 239, 3313 GT Dordrecht",
-        notes: "Testboeking vanuit Google Apps Script editor om de nieuwe tekst te controleren."
+        notes: "Testboeking vanuit Google Apps Script editor om de bevestigings- en notificatiemail te controleren."
       })
     }
   };
   const result = doPost(fakeEvent);
-  Logger.log("Resultaat van test: " + result.getContent());
+  Logger.log("Resultaat: " + result.getContent());
 }
