@@ -1642,6 +1642,11 @@
         box-shadow: none !important;
         margin: 0 !important;
       }
+      body.mode-sheet .a4-sheet-container:last-of-type,
+      body.mode-sheet div:last-child > .a4-sheet-container {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
 
       /* In Losse A5 modus */
       body.mode-loose .a5-page {
@@ -1650,6 +1655,10 @@
         box-shadow: none !important;
         margin: 0 !important;
       }
+      body.mode-loose .loose-page-card:last-child .a5-page {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
 
       /* In Boekje modus: print automatisch de A4 drukvellen */
       body.mode-booklet .a4-sheet-container {
@@ -1657,6 +1666,11 @@
         break-after: page;
         box-shadow: none !important;
         margin: 0 !important;
+      }
+      body.mode-booklet .a4-sheet-container:last-of-type,
+      body.mode-booklet div:last-child > .a4-sheet-container {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
       }
     }
   </style>
