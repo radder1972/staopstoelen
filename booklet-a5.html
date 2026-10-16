@@ -1332,7 +1332,7 @@
       overflow: hidden;
       border: 0.35mm solid rgba(75, 143, 36, 0.3);
       box-shadow: 0 1.5mm 5mm rgba(0,0,0,0.08);
-      margin-bottom: 3mm;
+      margin-bottom: 4mm;
     }
     .back-showroom-card img {
       width: 100%;
@@ -1364,9 +1364,9 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: 3.2mm;
-      margin: 1.5mm 0 2.5mm 0;
-      padding-left: 2mm;
+      gap: 3.6mm;
+      margin: 1.5mm 0 3.5mm 0;
+      padding-left: 1.5mm;
     }
 
     .zekerheid-row {
@@ -1421,19 +1421,20 @@
       font-weight: 500;
     }
 
-    /* Back Contact Footer Box */
+    /* Back Contact Footer Box (Identiek aan .front-qr-banner van Pagina 1) */
     .back-contact-box {
       position: relative;
       z-index: 2;
-      background: #ffffff;
-      border: 0.35mm solid #cbd5e1;
+      width: 100%;
+      background: var(--color-sage-light);
+      border: 0.35mm solid var(--color-sage-border);
       border-radius: 2.2mm;
-      padding: 2.5mm 3.2mm;
+      padding: 3.2mm 4.2mm 3.2mm 4.2mm;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2.5mm;
-      box-shadow: 0 1mm 4mm rgba(0,0,0,0.04);
+      gap: 3mm;
+      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
       margin-top: auto;
       margin-bottom: 1.5mm;
     }
@@ -1441,63 +1442,86 @@
     .back-contact-col {
       display: flex;
       flex-direction: column;
-      gap: 0.4mm;
+      gap: 0.6mm;
+      text-align: left;
     }
 
     .back-contact-title {
       font-family: var(--font-heading);
-      font-size: 3.0mm;
-      font-weight: 800;
-      color: #111827;
+      font-size: 3.2mm;
+      font-weight: 700;
+      color: var(--color-forest);
       text-transform: uppercase;
       letter-spacing: 0.4px;
+      line-height: 1.2;
     }
 
     .back-contact-line {
-      font-size: 2.75mm;
-      color: #1e293b;
+      font-family: var(--font-body);
+      font-size: 2.8mm;
+      color: #2d3748;
       line-height: 1.35;
       font-weight: 500;
+    }
+    .back-contact-line strong {
+      color: var(--color-dark);
+      font-weight: 700;
     }
 
     .back-phone-tag {
       background: var(--color-terracotta);
-      color: #000000;
+      color: #111827;
       font-family: var(--font-heading);
-      font-size: 3.0mm;
-      font-weight: 900;
-      padding: 1.2mm 3.4mm;
+      font-size: 2.95mm;
+      font-weight: 700; /* Rustig en goed leesbaar net als pagina 3 */
+      padding: 1.2mm 3.6mm;
       border-radius: 9999px;
       display: inline-flex;
       align-items: center;
-      gap: 1.2mm;
-      margin-top: 0.8mm;
+      gap: 1.4mm;
+      margin-top: 1mm;
       width: fit-content;
       box-shadow: 0 1.5mm 4mm rgba(243, 146, 35, 0.25);
     }
     .back-phone-tag svg {
       width: 3.2mm;
       height: 3.2mm;
-      fill: currentColor;
+      fill: #111827;
     }
 
     .back-qr-wrap {
-      width: 18mm;
-      height: 18mm;
-      min-width: 18mm;
+      width: 19.5mm;
+      height: 19.5mm;
+      min-width: 19.5mm;
       background: #ffffff;
       border: 0.35mm solid var(--color-terracotta);
-      border-radius: 1.6mm;
-      padding: 1mm;
+      border-radius: 1.8mm;
+      padding: 1.2mm;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1.5mm 4mm rgba(0,0,0,0.06);
+      box-shadow: 0 2.5mm 6mm rgba(0,0,0,0.12);
+      margin-top: -3.5mm; /* Overloop / springt uit de box net als pagina 1 */
+      margin-bottom: -1mm;
+      position: relative;
+      z-index: 5;
     }
     .back-qr-wrap img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      display: block;
+    }
+
+    .back-qr-label {
+      font-family: var(--font-heading);
+      font-size: 2.1mm;
+      font-weight: 700;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-top: 1mm;
+      text-align: center;
     }
 
     /* ==========================================================================
@@ -2138,7 +2162,7 @@
         <img src="assets/showroom.jpg" alt="Showroom Staopstoelen.nl Dordrecht Merwedestraat 239">
         <div class="back-showroom-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Showroom Merwedestraat 239, Dordrecht &bull; Gratis Parkeren voor de deur
+          Showroom Dordrecht &bull; Merwedestraat 239
         </div>
       </div>
 
@@ -2149,8 +2173,8 @@
             <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div class="zekerheid-content">
-            <div class="zekerheid-title">Gratis bezorging &amp; installatie</div>
-            <div class="zekerheid-desc">Vakkundig bij u thuisbezorgd, gemonteerd en direct op maat afgesteld in uw huiskamer.</div>
+            <div class="zekerheid-title">Gratis parkeren voor de deur</div>
+            <div class="zekerheid-desc">Ruime showroom te Dordrecht met gratis parkeerplaatsen direct voor de ingang.</div>
           </div>
         </div>
 
@@ -2160,7 +2184,7 @@
           </div>
           <div class="zekerheid-content">
             <div class="zekerheid-title">Gratis demonstratie &amp; zitmeting aan huis</div>
-            <div class="zekerheid-desc">Kunt u moeilijk reizen? Wij komen met plezier en geheel vrijblijvend bij u langs voor advies.</div>
+            <div class="zekerheid-desc">Kunt u moeilijk reizen? Wij komen met plezier en geheel vrijblijvend bij u thuis langs.</div>
           </div>
         </div>
 
@@ -2175,7 +2199,7 @@
         </div>
       </div>
 
-      <!-- Contact & Openingstijden Footer Box -->
+      <!-- Contact & Openingstijden Footer Box (Consistent met Pagina 1) -->
       <div class="back-contact-box">
         <div class="back-contact-col">
           <div class="back-contact-title">Showroom Dordrecht</div>
@@ -2189,12 +2213,12 @@
           </div>
         </div>
 
-        <!-- QR Code -->
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 1mm;">
+        <!-- QR Code met overloop en label -->
+        <div style="display: flex; flex-direction: column; align-items: center;">
           <div class="back-qr-wrap">
             <img src="assets/qr_staopstoelen.svg" alt="Scan QR code voor afspraak en route">
           </div>
-          <span style="font-family: var(--font-heading); font-size: 2mm; font-weight: 800; color: var(--color-forest); text-transform: uppercase;">
+          <span class="back-qr-label">
             Scan &bull; Afspraak
           </span>
         </div>
