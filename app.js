@@ -1682,17 +1682,24 @@ function initCalendar() {
           U kunt gratis direct voor de deur parkeren. Onze showroom is rolstoeltoegankelijk en de koffie staat klaar!
         </p>` : ''}
 
-        <!-- Handtekening in rustig zwart-wit, zonder onderstreepte links -->
+        <!-- Handtekening in rustig zwart-wit met pasfoto van Geertjan -->
         <div style="margin-top: 32px; color: #111111; font-size: 14px; line-height: 1.6;">
           <p style="margin: 0 0 16px 0;">Met vriendelijke groet,</p>
-          <p style="margin: 0;">
-            <strong style="color: #111111;">Geertjan Klein Haneveld</strong><br>
-            Bewegingstechnoloog &amp; Erkend Fitform Dealer<br>
-            staopstoelen.nl - Schipper Compact Wonen<br>
-            Merwedestraat 239, 3313 GT Dordrecht<br>
-            Telefoon: 078 - 631 4858<br>
-            E-mail: info@staopstoelen.nl
-          </p>
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: 0; padding: 0;">
+            <tr>
+              <td style="vertical-align: top; padding-right: 16px; width: 68px;">
+                <img src="https://staopstoelen.nl/assets/geert_avatar.png" alt="Geertjan Klein Haneveld" width="68" height="68" style="display: block; width: 68px; height: 68px; border-radius: 50%; border: 1px solid #e0e0e0; object-fit: cover;">
+              </td>
+              <td style="vertical-align: top; font-size: 14px; line-height: 1.5; color: #111111;">
+                <strong style="color: #111111; font-size: 15px;">Geertjan Klein Haneveld</strong><br>
+                Bewegingstechnoloog &amp; Erkend Fitform Dealer<br>
+                staopstoelen.nl - Schipper Compact Wonen<br>
+                Merwedestraat 239, 3313 GT Dordrecht<br>
+                Telefoon: 078 - 631 4858<br>
+                E-mail: info@staopstoelen.nl
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     `;
