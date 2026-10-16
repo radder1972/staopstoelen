@@ -1586,34 +1586,10 @@
       overflow: hidden;
     }
 
-    /* Vouwlijn markering op A4 vel */
-    .a4-fold-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 148.5mm;
-      width: 0.3mm;
-      border-left: 0.3mm dashed rgba(75, 143, 36, 0.45);
-      z-index: 40;
-      pointer-events: none;
-    }
-
+    /* Vouwlijn markeringen verwijderd (vouwen op het midden lukt prima zonder stippellijn) */
+    .a4-fold-line,
     .a4-fold-indicator {
-      position: absolute;
-      top: 1.5mm;
-      left: 148.5mm;
-      transform: translateX(-50%);
-      background: #ffffff;
-      border: 0.25mm solid var(--color-forest);
-      padding: 0.4mm 1.8mm;
-      border-radius: 9999px;
-      font-family: var(--font-heading);
-      font-size: 1.8mm;
-      font-weight: 800;
-      color: var(--color-forest);
-      z-index: 45;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
+      display: none !important;
     }
 
     /* Losse A5 pagina's grid */
@@ -1784,8 +1760,6 @@
           <strong>A4 Vel 1 (Buitenkant)</strong>: Links Pagina 4 (Achterkant) &bull; Rechts Pagina 1 (Voorkant)
         </div>
         <div class="a4-sheet-container" id="sheetPage1">
-          <div class="a4-fold-line"></div>
-          <div class="a4-fold-indicator">VOUWLIJN (MIDDEN)</div>
           <div class="sheet-half-left" id="slotSheetP4" style="width: 148.5mm; height: 210mm;"></div>
           <div class="sheet-half-right" id="slotSheetP1" style="width: 148.5mm; height: 210mm;"></div>
         </div>
@@ -1797,8 +1771,6 @@
           <strong>A4 Vel 2 (Binnenkant)</strong>: Links Pagina 2 (Ergonomie) &bull; Rechts Pagina 3 (Techniek)
         </div>
         <div class="a4-sheet-container" id="sheetPage2">
-          <div class="a4-fold-line"></div>
-          <div class="a4-fold-indicator">VOUWLIJN (MIDDEN)</div>
           <div class="sheet-half-left" id="slotSheetP2" style="width: 148.5mm; height: 210mm;"></div>
           <div class="sheet-half-right" id="slotSheetP3" style="width: 148.5mm; height: 210mm;"></div>
         </div>
