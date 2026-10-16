@@ -215,19 +215,19 @@
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
-      padding: 6.5mm 7.5mm 6.5mm 7.5mm;
+      padding: 8mm 11.5mm 8mm 11.5mm;
     }
 
     /* Subtiel decoratief kader rondom elke A5 pagina */
     .a5-page::before {
       content: '';
       position: absolute;
-      top: 3.5mm;
-      left: 3.5mm;
-      right: 3.5mm;
-      bottom: 3.5mm;
-      border: 0.3mm solid rgba(75, 143, 36, 0.22);
-      border-radius: 2mm;
+      top: 4.5mm;
+      left: 4.5mm;
+      right: 4.5mm;
+      bottom: 4.5mm;
+      border: 0.35mm solid rgba(75, 143, 36, 0.25);
+      border-radius: 2.5mm;
       pointer-events: none;
       z-index: 1;
     }
@@ -372,7 +372,7 @@
     .front-badge-seal {
       position: absolute;
       top: 6mm;
-      right: 6mm;
+      right: 8mm;
       width: 27mm;
       height: 27mm;
       object-fit: contain;
@@ -396,7 +396,7 @@
     .front-photo-inner {
       position: relative;
       width: 100%;
-      height: 77mm;
+      height: 73mm;
       border-radius: 1.8mm;
       overflow: hidden;
       background: #ffffff;
@@ -837,12 +837,12 @@
 
     /* Rechter Kolom: 2 Echte Collectiefoto's - vullend in de box */
     .back-photos-col {
-      flex: 0 0 56mm;
-      width: 56mm;
+      flex: 0 0 52mm;
+      width: 52mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 2.2mm;
+      gap: 2mm;
     }
 
     .collection-photo-card {
@@ -1169,14 +1169,14 @@
 
     .a5-page.flyer-front,
     .a5-page.flyer-back {
-      padding: 6mm 8mm 6.5mm 8mm;
+      padding: 7.5mm 11.5mm 7.5mm 11.5mm !important;
     }
     .a5-page.flyer-front::before,
     .a5-page.flyer-back::before {
-      top: 4mm;
-      left: 4mm;
-      right: 4mm;
-      bottom: 4mm;
+      top: 4.5mm;
+      left: 4.5mm;
+      right: 4.5mm;
+      bottom: 4.5mm;
       border: 0.35mm solid rgba(75, 143, 36, 0.25);
       border-radius: 2.5mm;
     }
@@ -1196,6 +1196,7 @@
       margin-bottom: 4.5mm;
       position: relative;
       z-index: 2;
+      padding: 0 1.5mm;
     }
 
     .section-main-title {
@@ -1227,7 +1228,7 @@
       justify-content: space-between;
       gap: 3.5mm;
       margin-bottom: 4.5mm;
-      padding-left: 5mm; /* Verder ingesprongen */
+      padding-left: 4.5mm; /* Verder ingesprongen */
       flex: 1;
     }
 
