@@ -215,17 +215,17 @@
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
-      padding: 8mm 11.5mm 8mm 11.5mm;
+      padding: 8.5mm 13mm 8.5mm 13mm;
     }
 
     /* Subtiel decoratief kader rondom elke A5 pagina */
     .a5-page::before {
       content: '';
       position: absolute;
-      top: 4.5mm;
-      left: 4.5mm;
-      right: 4.5mm;
-      bottom: 4.5mm;
+      top: 5mm;
+      left: 5mm;
+      right: 5mm;
+      bottom: 5mm;
       border: 0.35mm solid rgba(75, 143, 36, 0.25);
       border-radius: 2.5mm;
       pointer-events: none;
@@ -832,8 +832,8 @@
 
     /* Rechter Kolom: 2 Echte Collectiefoto's - vullend in de box */
     .back-photos-col {
-      flex: 0 0 52mm;
-      width: 52mm;
+      flex: 0 0 51mm;
+      width: 51mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1164,21 +1164,21 @@
 
     .a5-page.flyer-front,
     .a5-page.flyer-back {
-      padding: 7.5mm 11.5mm 7.5mm 11.5mm !important;
+      padding: 8mm 13mm 8mm 13mm !important;
     }
     .a5-page.flyer-front::before,
     .a5-page.flyer-back::before {
-      top: 4.5mm;
-      left: 4.5mm;
-      right: 4.5mm;
-      bottom: 4.5mm;
+      top: 5mm;
+      left: 5mm;
+      right: 5mm;
+      bottom: 5mm;
       border: 0.35mm solid rgba(75, 143, 36, 0.25);
       border-radius: 2.5mm;
     }
 
     /* ==========================================================================
        PAGINA 2: BINNENKANT LINKS (ERGONOMIE & MAATWERK)
-       Licht, typografisch genummerd, ingesprongen en grotere Geertjan box
+       Compacte genummerde stappen, ruime marges & grote Geertjan box
        ========================================================================== */
     .page-ergonomie {
       background: #ffffff;
@@ -1188,10 +1188,10 @@
     }
 
     .section-headline-wrap {
-      margin-bottom: 4.5mm;
+      margin-bottom: 4mm;
       position: relative;
       z-index: 2;
-      padding: 0 1.5mm;
+      padding: 0 1mm;
     }
 
     .section-main-title {
@@ -1208,30 +1208,27 @@
     }
 
     .section-intro-text {
-      font-size: 3.0mm;
+      font-size: 2.9mm;
       color: #334155;
-      line-height: 1.4;
+      line-height: 1.38;
       font-weight: 500;
     }
 
-    /* 5 Maatwerk Criteria List - Typografisch genummerd, zonder boxen, ingesprongen */
+    /* 5 Maatwerk Criteria List - Compact bij elkaar, zonder boxen, ingesprongen */
     .criteria-list {
       position: relative;
       z-index: 2;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 3.5mm;
+      gap: 2.2mm; /* Compact bij elkaar */
       margin-bottom: 4.5mm;
-      padding-left: 4.5mm; /* Verder ingesprongen */
-      flex: 1;
+      padding-left: 4.5mm; /* Ingesprongen */
     }
 
     .criterion-item {
       display: flex;
       align-items: flex-start;
-      gap: 3.5mm;
-      min-height: 13.5mm; /* Allemaal even hoog */
+      gap: 3.2mm;
       background: transparent;
       border: none;
       box-shadow: none;
@@ -1240,25 +1237,25 @@
 
     .criterion-num {
       font-family: var(--font-heading);
-      font-size: 4.8mm;
+      font-size: 4.4mm;
       font-weight: 800;
       color: var(--color-forest);
-      line-height: 1;
-      min-width: 6.5mm;
-      margin-top: 0.2mm;
+      line-height: 1.1;
+      min-width: 6mm;
+      margin-top: 0.1mm;
       letter-spacing: -0.3px;
     }
 
     .criterion-content {
       display: flex;
       flex-direction: column;
-      gap: 0.6mm;
+      gap: 0.4mm;
       flex: 1;
     }
 
     .criterion-title {
       font-family: var(--font-heading);
-      font-size: 3.4mm;
+      font-size: 3.2mm;
       font-weight: 800;
       color: #1e293b;
       line-height: 1.25;
@@ -1269,15 +1266,15 @@
     }
     .criterion-subtitle {
       color: var(--color-terracotta);
-      font-size: 2.75mm;
+      font-size: 2.65mm;
       font-weight: 700;
     }
 
     .criterion-desc {
       font-family: var(--font-body);
-      font-size: 2.85mm;
+      font-size: 2.7mm;
       color: #475569;
-      line-height: 1.36;
+      line-height: 1.32;
       font-weight: 500;
     }
 
@@ -1288,11 +1285,11 @@
       background: var(--color-cream);
       border: 0.4mm solid rgba(75, 143, 36, 0.3);
       border-radius: 2.8mm;
-      padding: 3.8mm 4.6mm; /* Grotere box */
+      padding: 3.8mm 4.6mm;
       display: flex;
       align-items: center;
       gap: 4.5mm;
-      margin-bottom: 2mm;
+      margin-bottom: 1.5mm;
       box-shadow: 0 2mm 6mm rgba(75, 143, 36, 0.07);
     }
 
@@ -1314,7 +1311,7 @@
     }
 
     .expert-quote-text {
-      font-size: 3.1mm; /* Grotere quote */
+      font-size: 3.1mm;
       color: #1e293b;
       font-style: italic;
       line-height: 1.4;
@@ -2040,19 +2037,19 @@
             <div class="page-chapter-tag">Zitcomfort &amp; Advies</div>
           </div>
 
-          <h2 class="back-intro-title">
-              Ervaar het comfort zelf in onze showroom in Dordrecht,<br>
-              waar we graag de tijd voor u nemen.
-            </h2>
+          <!-- Grote kop gelijk aan Pagina 2 met groen en oranje + beknopte introtekst -->
+          <div class="section-headline-wrap">
+            <h2 class="section-main-title">Waarom <span>Staopstoelen.nl</span>?</h2>
+            <p class="section-intro-text">
+              Kom proefzitten in onze showroom in Dordrecht, of kies voor persoonlijk advies en een gratis zitmeting bij u thuis.
+            </p>
+          </div>
 
           <!-- 4 USPs met 2 Echte Collectiefoto's in Vrijzinnig Box Formaat -->
           <section class="back-feature-layout">
             <!-- Linker Kolom: Opsomming van 4 Punten -->
             <div class="back-usp-col">
-              <div class="usp-badge-header">
-                <span class="usp-badge-dot"></span>
-                <span>Waarom Staopstoelen.nl?</span>
-              </div>
+              
 
               <!-- Punt 1: Persoonlijk advies -->
               <div class="usp-card-item">
