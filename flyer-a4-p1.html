@@ -703,15 +703,19 @@
 
     .front-headline {
       font-family: var(--font-heading);
-      font-size: 5.4mm;
-      font-weight: 800;
-      line-height: 1.2;
+      font-size: 5.0mm;
+      font-weight: 700;
+      line-height: 1.25;
       color: var(--color-dark);
-      letter-spacing: -0.2px;
+      letter-spacing: -0.15px;
       margin: 0;
+      text-align: center;
     }
     .front-headline span {
+      display: block;
       color: var(--color-forest);
+      font-weight: 700;
+      margin-top: 0.6mm;
     }
 
     /* Opvallende Actiebalk (Zwarte letters voor optimale print-leesbaarheid) */
@@ -734,7 +738,7 @@
     }
     .front-promo-ribbon strong {
       font-weight: 700;
-      color: #000000;
+      color: #111111;
     }
 
     /* Twee Drempelverlagende Keuzes: Nieuw vs Occasion */
@@ -768,7 +772,7 @@
     .card-choice-badge {
       font-family: var(--font-heading);
       font-size: 2.5mm;
-      font-weight: 800;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
@@ -785,7 +789,7 @@
     .opt-highlight {
       font-family: var(--font-heading);
       font-size: 2.65mm;
-      font-weight: 800;
+      font-weight: 700;
       margin-top: 0.3mm;
     }
     .opt-nieuw .opt-highlight { color: var(--color-terracotta); }
@@ -854,14 +858,14 @@
 
     .front-usp-text {
       font-family: var(--font-body);
-      font-size: 3.0mm;
+      font-size: 2.95mm;
       color: #1e293b;
       line-height: 1.35;
-      font-weight: 500;
+      font-weight: 450;
     }
     .front-usp-text strong {
       color: var(--color-forest-dark);
-      font-weight: 700;
+      font-weight: 650;
     }
 
     /* QR & Showroom Banner onderaan de voorkant */
@@ -883,20 +887,20 @@
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 0.5mm;
+      gap: 0.8mm;
     }
 
     .front-qr-title {
       font-family: var(--font-heading);
-      font-size: 3.1mm;
+      font-size: 2.8mm;
       font-weight: 700;
       color: var(--color-forest);
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .front-qr-sub {
       font-family: var(--font-body);
-      font-size: 2.5mm;
+      font-size: 2.8mm;
       color: #1e293b;
       line-height: 1.25;
       font-weight: 500;
@@ -904,12 +908,13 @@
 
     .front-qr-address {
       font-family: var(--font-heading);
-      font-size: 2.65mm;
+      font-size: 2.8mm;
       font-weight: 600;
       color: var(--color-dark);
       display: flex;
       align-items: center;
       gap: 1.5mm;
+      line-height: 1.25;
     }
     .front-qr-address strong {
       color: #111111;
@@ -959,7 +964,7 @@
     .back-intro-title {
       font-family: var(--font-heading);
       font-size: 3.8mm;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.3;
       color: var(--color-dark);
       letter-spacing: -0.1px;
@@ -982,7 +987,7 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2.4mm;
       width: 100%;
-      margin: 1mm 0 1.8mm 0;
+      margin: 0.8mm 0 1.2mm 0;
       position: relative;
       z-index: 2;
     }
@@ -999,7 +1004,7 @@
     .back-chair-img-frame {
       position: relative;
       width: 100%;
-      height: 27mm;
+      height: 25.5mm;
       background: #f8fafc;
       overflow: hidden;
     }
@@ -1018,7 +1023,7 @@
       left: 1.5mm;
       font-family: var(--font-heading);
       font-size: 2.1mm;
-      font-weight: 800;
+      font-weight: 700;
       padding: 0.6mm 2mm;
       border-radius: 9999px;
       color: #ffffff;
@@ -1029,7 +1034,7 @@
     .chair-badge-tag.tag-forest { background: var(--color-forest-dark); }
 
     .back-chair-info {
-      padding: 1.6mm 2mm;
+      padding: 1.5mm 2mm;
       display: flex;
       flex-direction: column;
       gap: 0.4mm;
@@ -1056,7 +1061,7 @@
        ========================================================================== */
     .back-voucher-wrapper {
       width: 100%;
-      margin: 1mm 0 1.8mm 0;
+      margin: 0.8mm 0 1.2mm 0;
       position: relative;
       z-index: 2;
     }
@@ -1065,7 +1070,7 @@
       background: #fffcf8;
       border: 0.45mm solid rgba(243, 146, 35, 0.65);
       border-radius: 2.6mm;
-      padding: 2.4mm 3.5mm;
+      padding: 2.2mm 3.5mm;
       position: relative;
     }
 
@@ -1074,7 +1079,7 @@
       align-items: center;
       justify-content: center;
       gap: 2mm;
-      margin-bottom: 1mm;
+      margin-bottom: 0.8mm;
     }
 
     .voucher-badge-title {
@@ -1092,35 +1097,65 @@
       font-weight: 600;
       color: #1e293b;
       text-align: center;
-      margin-bottom: 1.5mm;
+      margin-bottom: 1.4mm;
       line-height: 1.25;
     }
 
     .voucher-benefits-grid {
       display: flex;
       flex-direction: column;
-      gap: 1.1mm;
-      margin-bottom: 1.4mm;
+      gap: 1.3mm;
+      margin: 0 4.5mm 1.6mm 4.5mm;
+      padding: 0 1.5mm;
     }
 
     .voucher-benefit-item {
       display: flex;
       align-items: center;
-      gap: 1.8mm;
+      gap: 2.4mm;
       font-size: 2.6mm;
       color: #1e293b;
       line-height: 1.25;
       font-weight: 500;
     }
     .voucher-benefit-item strong {
-      font-weight: 700;
-      color: #000000;
+      font-weight: 650;
+      color: #0f172a;
     }
-    .voucher-benefit-item svg {
-      width: 3.2mm;
-      height: 3.2mm;
-      fill: var(--color-forest);
+
+    /* Huisstijl Vinkjes met Randje/Rondje */
+    .huisstijl-check-badge {
+      width: 4.4mm;
+      height: 4.4mm;
+      min-width: 4.4mm;
+      border-radius: 50%;
+      background: #eef7eb;
+      border: 0.35mm solid #4b8f24;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #4b8f24;
       flex-shrink: 0;
+    }
+    .huisstijl-check-badge svg {
+      width: 2.5mm;
+      height: 2.5mm;
+      stroke: #4b8f24;
+      stroke-width: 3.2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .huisstijl-check-badge.badge-small {
+      width: 3.8mm;
+      height: 3.8mm;
+      min-width: 3.8mm;
+      border-width: 0.3mm;
+    }
+    .huisstijl-check-badge.badge-small svg {
+      width: 2.1mm;
+      height: 2.1mm;
+      stroke-width: 3.2;
     }
 
     .voucher-validity-bar {
@@ -1133,7 +1168,7 @@
       text-align: center;
     }
 
-    /* Subtiele hint voor advies aan huis */
+    /* Subtiele hint voor advies aan huis (Iets naar beneden) */
     .back-home-visit-hint {
       display: flex;
       align-items: center;
@@ -1142,7 +1177,7 @@
       font-size: 2.5mm;
       color: #1e293b;
       font-weight: 500;
-      margin: 0.2mm 0 1.2mm 0;
+      margin: 1.8mm 0 1.4mm 0;
       text-align: center;
       position: relative;
       z-index: 2;
@@ -1162,7 +1197,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 0 1.5mm 0;
+      margin: 0 0 1.4mm 0;
       position: relative;
       z-index: 2;
     }
@@ -1215,7 +1250,7 @@
     .back-col-title {
       font-family: var(--font-heading);
       font-size: 3.1mm;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--color-forest);
       margin-bottom: 0.2mm;
       text-transform: uppercase;
@@ -1239,18 +1274,12 @@
     .back-check-item {
       display: flex;
       align-items: center;
-      gap: 1.2mm;
+      gap: 1.8mm;
       font-family: var(--font-body);
       font-size: 2.55mm;
       color: #374151;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.2;
-    }
-    .back-check-item svg {
-      width: 3.2mm;
-      height: 3.2mm;
-      fill: var(--color-forest);
-      flex-shrink: 0;
     }
 
     /* Right QR Card on Back */
@@ -1762,7 +1791,8 @@
             <!-- 1. Direct onder de foto: Prikkelende Headline & Actie Lint -->
             <div class="front-titles-block">
               <h1 class="front-headline">
-                Moeite met opstaan? <span>Ervaar ultiem zitcomfort</span>
+                Moeite met opstaan?<br>
+                <span>Ervaar ultiem zitcomfort</span>
               </h1>
               
               <div class="front-promo-ribbon">
@@ -1830,7 +1860,7 @@
                   <span class="expert-role">Bewegingstechnoloog</span>
                 </div>
                 <p class="front-usp-text">
-                  Elke stoel wordt <strong>gratis op uw exacte lichaamsmaten</strong> afgesteld. Zo voorkomen we rugklachten en beknelde benen &mdash; in onze showroom te <strong>Dordrecht</strong> of bij u thuis.
+                  Elke stoel wordt <strong>gratis op uw exacte lichaamsmaten</strong> afgesteld in onze showroom te <strong>Dordrecht</strong> of bij u thuis.
                 </p>
               </div>
             </div>
@@ -1904,7 +1934,8 @@
             <!-- 1. Direct onder de foto: Prikkelende Headline & Actie Lint -->
             <div class="front-titles-block">
               <h1 class="front-headline">
-                Moeite met opstaan? <span>Ervaar ultiem zitcomfort</span>
+                Moeite met opstaan?<br>
+                <span>Ervaar ultiem zitcomfort</span>
               </h1>
               
               <div class="front-promo-ribbon">
@@ -1972,7 +2003,7 @@
                   <span class="expert-role">Bewegingstechnoloog</span>
                 </div>
                 <p class="front-usp-text">
-                  Elke stoel wordt <strong>gratis op uw exacte lichaamsmaten</strong> afgesteld. Zo voorkomen we rugklachten en beknelde benen &mdash; in onze showroom te <strong>Dordrecht</strong> of bij u thuis.
+                  Elke stoel wordt <strong>gratis op uw exacte lichaamsmaten</strong> afgesteld in onze showroom te <strong>Dordrecht</strong> of bij u thuis.
                 </p>
               </div>
             </div>

@@ -17,14 +17,14 @@
   <!-- Bottom text path (counter-clockwise, R=102) -->
   <path id="text-path-bottom" d="M 48,150 A 102,102 0 0,0 252,150" fill="none" />
   
-  <!-- Text elements -->
-  <text fill="#122b07" stroke="#122b07" stroke-width="1.1" stroke-linejoin="round" font-family="'Montserrat', 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="20.5" letter-spacing="1.1">
+  <!-- Text elements (Crisp & legible for print without ink bleed) -->
+  <text fill="#122b07" font-family="'Montserrat', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="20" letter-spacing="1.6">
     <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">
       NIEUW &amp; GEREVISEERD
     </textPath>
   </text>
   
-  <text fill="#122b07" stroke="#122b07" stroke-width="1.1" stroke-linejoin="round" font-family="'Montserrat', 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="20" letter-spacing="2.6">
+  <text fill="#122b07" font-family="'Montserrat', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="19.5" letter-spacing="3.0">
     <textPath href="#text-path-bottom" startOffset="50%" text-anchor="middle">
       DUURZAAM &amp; OP MAAT
     </textPath>
