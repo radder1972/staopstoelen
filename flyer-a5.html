@@ -1276,12 +1276,21 @@
       height: 8mm;
     }
 
-    /* Hoopje 4: Bij de Najaarsactie stempel linksboven op de fotolijst */
+    /* Hoopje 4a: Bij de Najaarsactie stempel linksboven op de fotolijst */
     .pile-photo-stamp {
       top: 15mm;
       left: 0;
       width: 12mm;
       height: 10mm;
+    }
+
+    /* Hoopje 4b: Flinke stapel bladeren rechtsonder op de foto */
+    .pile-photo-br {
+      bottom: -3mm;
+      right: -2mm;
+      width: 28mm;
+      height: 24mm;
+      z-index: 18;
     }
 
     /* Hoopje 5a: Rechtsboven op Nieuw Maatwerk kaart */
@@ -1482,6 +1491,16 @@
                 <span id="frontPhotoBadgeText">Officiële Fabrieksactie Fitform</span>
               </div>
             </div>
+
+            <!-- Flinke stapel bladeren rechtsonder op de foto -->
+            <span class="leaf-pile pile-photo-br">
+              <svg width="28" height="28" viewBox="0 0 32 32" style="bottom: 0; right: 0; transform: rotate(38deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" style="bottom: 5px; right: 9px; transform: rotate(-22deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+              <svg width="22" height="22" viewBox="0 0 32 32" style="bottom: 11px; right: -2px; transform: rotate(45deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
+              <svg width="20" height="20" viewBox="0 0 32 32" style="bottom: 1px; right: 19px; transform: rotate(-15deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" /></svg>
+              <svg width="18" height="18" viewBox="0 0 32 32" style="bottom: 12px; right: 14px; transform: rotate(26deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+              <svg width="15" height="15" viewBox="0 0 32 32" style="bottom: -2px; right: 10px; transform: rotate(52deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+            </span>
           </div>
 
           <!-- Content Section onder de foto -->
