@@ -415,6 +415,7 @@
 
     /* Opvallende Actiebalk (Zwarte letters voor optimale print-leesbaarheid) */
     .front-promo-ribbon {
+      position: relative;
       width: 100%;
       background: #fed7aa;
       border: 0.4mm solid #ea580c;
@@ -1235,74 +1236,125 @@
     }
 
     /* ==========================================================================
-       HERFSTBLAADJES DIE SUBTIEL OP DE BOXEN LIGGEN (Conform website)
+       HOOPJES HERFSTBLADEREN OP EN ROND DE BOXEN (Conform website)
        ========================================================================== */
-    .box-leaf {
+    .leaf-pile {
       position: absolute;
       pointer-events: none;
-      z-index: 12;
-      display: block;
+      z-index: 15;
+      display: inline-block;
       line-height: 0;
     }
-    .box-leaf svg {
+    .leaf-pile svg {
+      position: absolute;
       display: block;
     }
 
-    /* Blaadjes op de Tijdelijke Najaarsactie balk (op de uiteinden) */
-    .leaf-actie-left {
-      top: -2.2mm;
-      left: 1.5mm;
-      transform: rotate(-25deg);
-    }
-    .leaf-actie-right {
-      bottom: -2.2mm;
-      right: 1.5mm;
-      transform: rotate(35deg);
+    /* Hoopje 1: Grote hoop van 3 bladeren links op de Najaarsactie balk */
+    .pile-actie-left {
+      top: 50%;
+      left: 0mm;
+      width: 14mm;
+      height: 10mm;
+      transform: translateY(-50%);
     }
 
-    /* Blaadje op de Occasion kaart */
-    .leaf-occasion-tr {
-      top: -2.5mm;
-      right: 2.5mm;
-      transform: rotate(25deg);
+    /* Hoopje 2: Grote hoop van 3 bladeren rechts op de Najaarsactie balk */
+    .pile-actie-right {
+      top: 50%;
+      right: 0mm;
+      width: 14mm;
+      height: 10mm;
+      transform: translateY(-50%);
     }
 
-    /* Blaadje op de Expert Geertjan kaart */
-    .leaf-expert-tr {
-      top: -2.5mm;
-      right: 3.5mm;
-      transform: rotate(30deg);
+    /* Hoopje 3: Subtiel hoopje bovenop de Najaarsactie balk */
+    .pile-actie-top-mid {
+      top: -3.5mm;
+      right: 22%;
+      width: 10mm;
+      height: 8mm;
     }
 
-    /* Blaadje op de Front Showroom QR balk */
-    .leaf-front-qr-tl {
-      top: -2.5mm;
-      left: 5mm;
-      transform: rotate(-18deg);
+    /* Hoopje 4: Bij de Najaarsactie stempel linksboven op de fotolijst */
+    .pile-photo-stamp {
+      top: 15mm;
+      left: 0;
+      width: 12mm;
+      height: 10mm;
     }
 
-    /* Blaadjes op de Showroom Waardebon (Achterzijde) */
-    .leaf-voucher-tl {
+    /* Hoopje 5a: Rechtsboven op Nieuw Maatwerk kaart */
+    .pile-nieuw-tr {
       top: -3.2mm;
-      left: 6mm;
-      transform: rotate(-25deg);
-    }
-    .leaf-voucher-tr {
-      top: -3mm;
-      right: 7mm;
-      transform: rotate(22deg);
-    }
-    .leaf-voucher-br {
-      bottom: -3mm;
-      right: 4mm;
-      transform: rotate(35deg);
+      right: 2.5mm;
+      width: 10mm;
+      height: 8mm;
     }
 
-    /* Blaadje op de Showroom Footer Box */
-    .leaf-footer-tl {
-      top: -2.6mm;
+    /* Hoopje 5b: Rechtsboven op de Occasion kaart */
+    .pile-occasion-tr {
+      top: -3.2mm;
+      right: 2.5mm;
+      width: 10mm;
+      height: 8mm;
+    }
+
+    /* Hoopje 6: Rechtsboven op de Expert Geertjan kaart */
+    .pile-expert-tr {
+      top: -3.2mm;
+      right: 3.5mm;
+      width: 10mm;
+      height: 8mm;
+    }
+
+    /* Hoopje 7: Linksboven op de Showroom QR banner (voorzijde) */
+    .pile-front-qr {
+      top: -3.2mm;
+      left: 5mm;
+      width: 10mm;
+      height: 8mm;
+    }
+
+    /* --- Achterzijde --- */
+    /* Hoopje 8: Fitform 570 stoel actiekaart (tot €600 korting) */
+    .pile-chair-fitform {
+      top: -2.5mm;
+      left: 2.5mm;
+      width: 10mm;
+      height: 8mm;
+    }
+
+    /* Hoopje 9: Showroom Waardebon Linksboven (hoop van 3 bladeren) */
+    .pile-voucher-tl {
+      top: -4.5mm;
+      left: 5mm;
+      width: 14mm;
+      height: 10mm;
+    }
+
+    /* Hoopje 10: Showroom Waardebon Rechtsboven (hoop van 2 bladeren) */
+    .pile-voucher-tr {
+      top: -3.8mm;
+      right: 7mm;
+      width: 10mm;
+      height: 8mm;
+    }
+
+    /* Hoopje 11: Showroom Waardebon Rechtsonder (hoop van 2 bladeren) */
+    .pile-voucher-br {
+      bottom: -3.8mm;
+      right: 4mm;
+      width: 10mm;
+      height: 8mm;
+    }
+
+    /* Hoopje 12: Showroom Footer Box Linksboven (hoop van 2 bladeren) */
+    .pile-footer-tl {
+      top: -3mm;
       left: 6mm;
-      transform: rotate(-18deg);
+      width: 10mm;
+      height: 8mm;
     }
   </style>
 </head>
@@ -1414,8 +1466,12 @@
           <!-- Photo in Passe-Partout Frame (Dubbelklik = Easter Egg Geertjan!) -->
           <div class="front-photo-frame">
             <div class="front-photo-inner" ondblclick="toggleFrontEasterEgg()" title="Dubbelklik voor een verrassing!">
-              <!-- Officiële Najaarsactie Voordeelsticker -->
+              <!-- Officiële Najaarsactie Voordeelsticker & Hoopje Bladeren -->
               <img src="assets/najaarsactie_stempel.svg?v=2.3" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="front-photo-stamp">
+              <span class="leaf-pile pile-photo-stamp">
+                <svg width="22" height="22" viewBox="0 0 32 32" style="top: 0; left: 0; transform: rotate(-38deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                <svg width="16" height="16" viewBox="0 0 32 32" style="top: 7px; left: 8px; transform: rotate(18deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+              </span>
               
               <!-- Hoofdfoto -->
               <img src="assets/fitform_najaarsactie_2026.jpg" alt="Ontspannen in ergonomische Fitform fauteuil" class="front-photo-img" id="frontMainImg">
@@ -1437,12 +1493,24 @@
               </h1>
               
               <div class="front-promo-ribbon">
-                <!-- Blaadjes die subtiel op de uiteinden van de actiebalk liggen -->
-                <span class="box-leaf leaf-actie-left">
-                  <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                <!-- Hoopje van 3 bladeren links op de actiebalk -->
+                <span class="leaf-pile pile-actie-left">
+                  <svg width="22" height="22" viewBox="0 0 32 32" style="top: -6px; left: -8px; transform: rotate(-35deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                  <svg width="17" height="17" viewBox="0 0 32 32" style="top: -1px; left: 2px; transform: rotate(20deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+                  <svg width="13" height="13" viewBox="0 0 32 32" style="top: -10px; left: 5px; transform: rotate(-10deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
                 </span>
-                <span class="box-leaf leaf-actie-right">
-                  <svg width="19" height="19" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+
+                <!-- Subtiel hoopje van 2 bladeren bovenop de actiebalk -->
+                <span class="leaf-pile pile-actie-top-mid">
+                  <svg width="16" height="16" viewBox="0 0 32 32" style="top: -3px; left: 0; transform: rotate(18deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+                  <svg width="13" height="13" viewBox="0 0 32 32" style="top: -1px; left: 7px; transform: rotate(-22deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                </span>
+
+                <!-- Hoopje van 3 bladeren rechts op de actiebalk -->
+                <span class="leaf-pile pile-actie-right">
+                  <svg width="22" height="22" viewBox="0 0 32 32" style="top: -5px; right: -7px; transform: rotate(38deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
+                  <svg width="17" height="17" viewBox="0 0 32 32" style="top: -1px; right: 3px; transform: rotate(-18deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" /></svg>
+                  <svg width="13" height="13" viewBox="0 0 32 32" style="top: -9px; right: 5px; transform: rotate(15deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
                 </span>
 
                 <span><strong>TIJDELIJKE NAJAARSACTIE:</strong> Tot <strong>€ 600,- korting</strong> op Fitform maatwerk</span>
@@ -1451,15 +1519,21 @@
 
             <!-- 2. Twee Drempelverlagende Keuzes (Nieuw vs Occasion) -->
             <div class="front-options-grid">
-              <div class="front-option-card opt-nieuw">
+              <div class="front-option-card opt-nieuw" style="position: relative;">
+                <!-- Hoopje van 2 bladeren op Nieuw Maatwerk box -->
+                <span class="leaf-pile pile-nieuw-tr">
+                  <svg width="19" height="19" viewBox="0 0 32 32" style="top: -2px; right: 0; transform: rotate(24deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                  <svg width="14" height="14" viewBox="0 0 32 32" style="top: -5px; right: 8px; transform: rotate(-15deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+                </span>
                 <div class="card-choice-badge">Nieuw Maatwerk</div>
                 <div class="opt-desc">100% op uw lichaam aangemeten</div>
                 <div class="opt-highlight">Tot € 600,- Najaarskorting</div>
               </div>
               <div class="front-option-card opt-occasion" style="position: relative;">
-                <!-- Blaadje op occasion box -->
-                <span class="box-leaf leaf-occasion-tr">
-                  <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" /></svg>
+                <!-- Hoopje van 2 bladeren op occasion box -->
+                <span class="leaf-pile pile-occasion-tr">
+                  <svg width="19" height="19" viewBox="0 0 32 32" style="top: 0; right: 0; transform: rotate(26deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" /></svg>
+                  <svg width="14" height="14" viewBox="0 0 32 32" style="top: -4px; right: 8px; transform: rotate(-15deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
                 </span>
                 <div class="card-choice-badge">Gereviseerde Occasion</div>
                 <div class="opt-desc">Technisch 100% nieuwstaat &amp; garantie</div>
@@ -1469,9 +1543,10 @@
 
             <!-- 3. Grotere tekst & Pasfoto van Geert (Bewegingstechnoloog) -->
             <div class="front-expert-card" style="position: relative;">
-              <!-- Blaadje op expert kaart -->
-              <span class="box-leaf leaf-expert-tr">
-                <svg width="22" height="22" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+              <!-- Hoopje van 2 bladeren op expert kaart -->
+              <span class="leaf-pile pile-expert-tr">
+                <svg width="20" height="20" viewBox="0 0 32 32" style="top: 0; right: 0; transform: rotate(32deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+                <svg width="14" height="14" viewBox="0 0 32 32" style="top: -3px; right: 8px; transform: rotate(-20deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
               </span>
               <div class="expert-avatar-wrap">
                 <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" class="expert-avatar-img">
@@ -1489,9 +1564,10 @@
 
             <!-- 4. Bottom QR & Showroom Banner -->
             <div class="front-qr-banner">
-              <!-- Blaadje op showroom banner -->
-              <span class="box-leaf leaf-front-qr-tl">
-                <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+              <!-- Hoopje van 2 bladeren op showroom banner -->
+              <span class="leaf-pile pile-front-qr">
+                <svg width="19" height="19" viewBox="0 0 32 32" style="top: 0; left: 0; transform: rotate(-22deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+                <svg width="14" height="14" viewBox="0 0 32 32" style="top: 4px; left: 7px; transform: rotate(25deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
               </span>
               <div class="front-qr-info">
                 <div class="front-qr-title">Kom vrijblijvend proefzitten in Dordrecht</div>
@@ -1534,8 +1610,13 @@
 
           <!-- 3 Concrete Stoelen in Beeld -->
           <section class="back-chairs-row">
-            <!-- Stoel 1: Fitform 570 Vario -->
-            <div class="back-chair-card">
+            <!-- Stoel 1: Fitform 570 Vario (Najaarsactie topper) -->
+            <div class="back-chair-card" style="position: relative;">
+              <!-- Hoopje bladeren op Fitform actiekaart -->
+              <span class="leaf-pile pile-chair-fitform">
+                <svg width="18" height="18" viewBox="0 0 32 32" style="top: 0; left: 0; transform: rotate(-28deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                <svg width="13" height="13" viewBox="0 0 32 32" style="top: 3px; left: 7px; transform: rotate(20deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+              </span>
               <div class="back-chair-img-frame">
                 <img src="assets/stoelen/chair_fitform_570_cozy.jpg" alt="Fitform 570 Vario sta-op stoel op maat" class="back-chair-img">
                 <span class="chair-badge-tag tag-orange">Tot € 600,- korting</span>
@@ -1574,15 +1655,19 @@
           <!-- DE SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn) -->
           <section class="back-voucher-wrapper">
             <div class="showroom-voucher-card">
-              <!-- Blaadjes die op de Showroom Waardebon liggen -->
-              <span class="box-leaf leaf-voucher-tl">
-                <svg width="26" height="26" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+              <!-- Hoopjes bladeren op de Showroom Waardebon -->
+              <span class="leaf-pile pile-voucher-tl">
+                <svg width="24" height="24" viewBox="0 0 32 32" style="top: -6px; left: -6px; transform: rotate(-30deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                <svg width="18" height="18" viewBox="0 0 32 32" style="top: -1px; left: 4px; transform: rotate(22deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+                <svg width="14" height="14" viewBox="0 0 32 32" style="top: -8px; left: 8px; transform: rotate(-12deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
               </span>
-              <span class="box-leaf leaf-voucher-tr">
-                <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
+              <span class="leaf-pile pile-voucher-tr">
+                <svg width="20" height="20" viewBox="0 0 32 32" style="top: -4px; right: -4px; transform: rotate(28deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
+                <svg width="15" height="15" viewBox="0 0 32 32" style="top: -2px; right: 6px; transform: rotate(-18deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" /></svg>
               </span>
-              <span class="box-leaf leaf-voucher-br">
-                <svg width="22" height="22" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+              <span class="leaf-pile pile-voucher-br">
+                <svg width="22" height="22" viewBox="0 0 32 32" style="bottom: -5px; right: -5px; transform: rotate(36deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+                <svg width="15" height="15" viewBox="0 0 32 32" style="bottom: 2px; right: 5px; transform: rotate(-15deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
               </span>
 
               <div class="voucher-top-bar">
@@ -1627,9 +1712,10 @@
 
           <!-- Bottom Showroom & Openingstijden -->
           <footer class="back-footer-box">
-            <!-- Blaadje op showroom box -->
-            <span class="box-leaf leaf-footer-tl">
-              <svg width="22" height="22" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+            <!-- Hoopje van 2 bladeren op showroom box -->
+            <span class="leaf-pile pile-footer-tl">
+              <svg width="20" height="20" viewBox="0 0 32 32" style="top: 0; left: 0; transform: rotate(-24deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+              <svg width="14" height="14" viewBox="0 0 32 32" style="top: 4px; left: 7px; transform: rotate(22deg);"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" /></svg>
             </span>
             <!-- Left Col: Showroom -->
             <div class="back-contact-col">
