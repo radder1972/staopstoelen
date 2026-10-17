@@ -264,8 +264,8 @@
       position: relative;
     }
 
-    /* Top Header Bar */
-    .front-header {
+    /* Top Header Bar (100% identiek voor- en achterzijde) */
+    .flyer-brand-header {
       position: relative;
       z-index: 2;
       display: flex;
@@ -275,13 +275,13 @@
       margin-bottom: 2mm;
     }
 
-    .front-header-left {
+    .flyer-brand-left {
       display: flex;
       flex-direction: column;
       gap: 0.3mm;
     }
 
-    .front-brand {
+    .flyer-brand {
       font-family: var(--font-heading);
       font-size: 6.8mm;
       font-weight: 800;
@@ -289,17 +289,18 @@
       letter-spacing: -0.4px;
       line-height: 1;
     }
-    .front-brand span {
+    .flyer-brand span {
       color: var(--color-terracotta);
     }
 
-    .front-tagline {
+    .flyer-tagline {
       font-family: var(--font-heading);
-      font-size: 2.5mm;
+      font-size: 2.22mm;
       font-weight: 700;
       color: var(--color-gray-light);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.25px;
+      white-space: nowrap;
     }
 
     .front-badge-seal {
@@ -642,34 +643,12 @@
       position: relative;
     }
 
-    /* Top Brand & Intro Header */
-    .back-header {
+    /* Introductie Showroom Header op de Achterzijde */
+    .back-intro-header {
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       position: relative;
       z-index: 2;
       margin-bottom: 1.5mm;
-    }
-
-    .back-logo-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.2mm;
-    }
-
-    .back-logo-title {
-      font-family: var(--font-heading);
-      font-size: 6.2mm;
-      font-weight: 800;
-      color: var(--color-forest);
-      letter-spacing: -0.4px;
-      line-height: 1;
-    }
-    .back-logo-title span {
-      color: var(--color-terracotta);
     }
 
     .back-intro-title {
@@ -1307,10 +1286,10 @@
           <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.6" alt="Officiële Kwaliteitszegel: Nieuw &amp; Gereviseerd - Duurzaam op Maat" class="front-badge-seal">
 
           <!-- Top Header: Logo & Tagline -->
-          <header class="front-header">
-            <div class="front-header-left">
-              <div class="front-brand">staopstoelen<span>.nl</span></div>
-              <div class="front-tagline">Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer Dordrecht</div>
+          <header class="flyer-brand-header">
+            <div class="flyer-brand-left">
+              <div class="flyer-brand">staopstoelen<span>.nl</span></div>
+              <div class="flyer-tagline">Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer Dordrecht</div>
             </div>
           </header>
 
@@ -1399,16 +1378,21 @@
           <!-- De Buitenbox (Sierkader) -->
           <div class="flyer-outer-frame"></div>
           
-          <!-- Top Header: Logo & Intro -->
-          <header class="back-header">
-            <div class="back-logo-row">
-              <div class="back-logo-title">staopstoelen<span>.nl</span></div>
+          <!-- Top Header: Logo & Tagline (Identiek aan voorzijde) -->
+          <header class="flyer-brand-header">
+            <div class="flyer-brand-left">
+              <div class="flyer-brand">staopstoelen<span>.nl</span></div>
+              <div class="flyer-tagline">Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer Dordrecht</div>
             </div>
+          </header>
+
+          <!-- Introductie Showroom Dordrecht -->
+          <div class="back-intro-header">
             <h2 class="back-intro-title">
               Kom proefzitten in onze showroom in Dordrecht
               <span>waar we alle tijd nemen voor uw persoonlijke zitcomfort en een gratis zitmeting.</span>
             </h2>
-          </header>
+          </div>
 
           <!-- 3 Concrete Stoelen in Beeld -->
           <section class="back-chairs-row">
