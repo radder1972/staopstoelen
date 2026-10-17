@@ -238,14 +238,29 @@
     }
 
     /* ==========================================================================
-       1. VOORZIJDE (FRONT) - ACTIE & VOORDEEL DESIGN (GEEN VOUWLIJN, GEEN BLEED)
+       DE ELEGANTE BUITENBOX (SIERKADER RONDOM DE HELE PAGINA)
+       ========================================================================== */
+    .flyer-outer-frame {
+      position: absolute;
+      top: 3.5mm;
+      left: 3.5mm;
+      right: 3.5mm;
+      bottom: 3.5mm;
+      border: 0.4mm solid rgba(75, 143, 36, 0.35);
+      border-radius: 2.5mm;
+      pointer-events: none;
+      z-index: 25;
+    }
+
+    /* ==========================================================================
+       1. VOORZIJDE (FRONT) - ACTIE & VOORDEEL DESIGN
        ========================================================================== */
     .flyer-front {
       background: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 6.5mm 8.5mm 6.5mm 8.5mm;
+      padding: 6mm 8mm 6mm 8mm;
       position: relative;
     }
 
@@ -256,7 +271,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 26mm 1.5mm 1mm; /* Ruimte rechts voor het grote zegel */
+      padding: 0 26mm 1.5mm 1mm;
       border-bottom: 0.3mm solid rgba(75, 143, 36, 0.2);
       margin-bottom: 1.5mm;
     }
@@ -290,8 +305,8 @@
 
     .front-badge-seal {
       position: absolute;
-      top: 5.5mm;
-      right: 6.5mm;
+      top: 5mm;
+      right: 5.5mm;
       width: 26mm;
       height: 26mm;
       object-fit: contain;
@@ -446,15 +461,15 @@
       background: #f8fbf6;
     }
 
-    .opt-badge {
+    .card-choice-badge {
       font-family: var(--font-heading);
       font-size: 2.5mm;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
-    .opt-nieuw .opt-badge { color: var(--color-terracotta-dark); }
-    .opt-occasion .opt-badge { color: var(--color-forest-dark); }
+    .opt-nieuw .card-choice-badge { color: var(--color-terracotta-dark); }
+    .opt-occasion .card-choice-badge { color: var(--color-forest-dark); }
 
     .opt-desc {
       font-size: 2.3mm;
@@ -621,7 +636,7 @@
        ========================================================================== */
     .flyer-back {
       background: #ffffff;
-      padding: 6.5mm 8.5mm 6.5mm 8.5mm;
+      padding: 6mm 8mm 6mm 8mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -754,7 +769,7 @@
     }
 
     /* ==========================================================================
-       SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn, GEEN stippellijn)
+       SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn)
        ========================================================================== */
     .back-voucher-wrapper {
       width: 100%;
@@ -971,7 +986,6 @@
 
     /* ==========================================================================
        A4 DRUKVEL LAYOUT (2x A5 naast elkaar op A4 liggend 297 x 210 mm)
-       GEEN VOUWLIJN OF SNIJLIJN MEER!
        ========================================================================== */
     .sheet-wrapper {
       padding: 30px 20px 80px 20px;
@@ -1095,7 +1109,7 @@
       align-items: center;
     }
 
-    /* Single A4 Sheet Page (297 x 210 mm) - Schoon zonder vouwlijn */
+    /* Single A4 Sheet Page (297 x 210 mm) */
     .a4-sheet-page {
       width: 297mm;
       height: 210mm;
@@ -1196,6 +1210,11 @@
         overflow: hidden !important;
       }
 
+      .flyer-outer-frame {
+        border: 0.4mm solid rgba(75, 143, 36, 0.45) !important;
+        box-shadow: none !important;
+      }
+
       /* Voorkom dat QR en badges ooit buiten containerranden springen */
       .front-qr-code-box,
       .back-qr-card {
@@ -1270,7 +1289,7 @@
   <main class="stage" id="screenStage">
     <div class="hint-bar">
       <span>🍂</span>
-      <span><strong>A5 Actieflyer (148 × 210 mm) &bull; Geen vouwlijnen &bull; 100% Strakke boxen zonder print-bleed</strong> met Fitform Najaarsactie (€600 korting), prijsinstap vanaf €495,- en Showroom Waardebon.</span>
+      <span><strong>A5 Actieflyer (148 × 210 mm) &bull; Met stijlvolle buitenbox</strong> &bull; Fitform Najaarsactie (€600 korting), prijsinstap vanaf €495,- en Showroom Waardebon.</span>
     </div>
 
     <div class="flyers-preview-wrap">
@@ -1282,6 +1301,9 @@
         <div class="flyer-label">Voorzijde</div>
 
         <article class="flyer-container flyer-front" id="flyerFront">
+          <!-- De Buitenbox (Sierkader) -->
+          <div class="flyer-outer-frame"></div>
+
           <!-- Kwaliteitssticker rechtsboven -->
           <img src="assets/sticker_nieuw_gereviseerd.svg?v=1.6" alt="Officiële Kwaliteitszegel: Nieuw &amp; Gereviseerd - Duurzaam op Maat" class="front-badge-seal">
 
@@ -1323,15 +1345,15 @@
               </div>
             </div>
 
-            <!-- 2. Twee Drempelverlagende Keuzes (Nieuw vs Gereviseerd) -->
+            <!-- 2. Twee Drempelverlagende Keuzes (Nieuw vs Occasion) -->
             <div class="front-options-grid">
               <div class="front-option-card opt-nieuw">
-                <div class="opt-badge">Nieuw Maatwerk</div>
+                <div class="card-choice-badge">Nieuw Maatwerk</div>
                 <div class="opt-desc">100% op uw lichaam aangemeten</div>
                 <div class="opt-highlight">Tot € 600,- Najaarskorting</div>
               </div>
               <div class="front-option-card opt-occasion">
-                <div class="opt-badge">Gereviseerde Occasion</div>
+                <div class="card-choice-badge">Gereviseerde Occasion</div>
                 <div class="opt-desc">Technisch 100% nieuwstaat &amp; garantie</div>
                 <div class="opt-highlight">Al vanaf € 495,-</div>
               </div>
@@ -1375,6 +1397,8 @@
         <div class="flyer-label">Achterzijde</div>
 
         <article class="flyer-container flyer-back" id="flyerBack">
+          <!-- De Buitenbox (Sierkader) -->
+          <div class="flyer-outer-frame"></div>
           
           <!-- Top Header: Logo & Intro -->
           <header class="back-header">
@@ -1426,7 +1450,7 @@
             </div>
           </section>
 
-          <!-- DE SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn, GEEN schaartjes/stippels) -->
+          <!-- DE SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn) -->
           <section class="back-voucher-wrapper">
             <div class="showroom-voucher-card">
               <div class="voucher-top-bar">
@@ -1506,7 +1530,7 @@
 
   <!-- ==========================================================================
        A4 DRUKVEL CONTAINER (2x A5 op 1 A4 vel - 100% ware grootte, ZONDER VOUWLIJN)
-       ========================================================================== -->
+       ========================================================================== */
   <section class="sheet-wrapper" id="sheetContainer" style="display: none;">
     
     <!-- Screen-only toolbar & uitleg -->
