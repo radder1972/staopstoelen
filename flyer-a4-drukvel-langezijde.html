@@ -535,10 +535,10 @@
        ========================================================================== */
     .flyer-outer-frame {
       position: absolute;
-      top: 6.5mm;
-      left: 7.5mm;
-      right: 7.5mm;
-      bottom: 6.5mm;
+      top: 8.0mm;
+      left: 8.0mm;
+      right: 8.0mm;
+      bottom: 8.0mm;
       background: #ffffff;
       border: 0.4mm solid rgba(75, 143, 36, 0.45);
       border-radius: 2.5mm;
@@ -554,7 +554,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 10.5mm 12mm 10.5mm 12mm;
+      padding: 12.0mm 12.0mm 12.0mm 12.0mm;
       position: relative;
     }
 
@@ -565,8 +565,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 26mm 0 1mm;
+      padding: 0 2mm;
       margin-bottom: 2mm;
+      width: 100%;
+    }
+    .flyer-front .flyer-brand-left {
+      max-width: 95mm;
     }
 
     .flyer-brand-left {
@@ -599,10 +603,10 @@
 
     .front-badge-seal {
       position: absolute;
-      top: 7.5mm;
-      right: 8.5mm;
-      width: 24.5mm;
-      height: 24.5mm;
+      top: 7.0mm;
+      right: 9.5mm;
+      width: 23mm;
+      height: 23mm;
       object-fit: contain;
       z-index: 15;
       pointer-events: none;
@@ -934,7 +938,7 @@
        ========================================================================== */
     .flyer-back {
       background: var(--color-afloop-sage);
-      padding: 10.5mm 12mm 10.5mm 12mm;
+      padding: 12.0mm 12.0mm 12.0mm 12.0mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1481,6 +1485,47 @@
       height: 8mm;
     }
   </style>
+
+  <style>
+    /* ==========================================================================
+       SUB-MILLIMETER BLEED & OVERSPRAY COMPENSATIE VOOR EPSON ET-8500
+       Doel: Exact 5,5 mm zichtbare saliegroene marge na het doorvouwen op 148,5 mm.
+       Aan de buitenranden spuit de ET-8500 in randloze modus ~2,5 mm overspray.
+       Aan de vouwlijn (midden 148,5 mm) verliest het papier 0,0 mm inkt.
+       ========================================================================== */
+
+    /* LINKER FLYER: Buitenrand links (8,0mm -> 5,5mm na print), Vouwrand rechts (5,5mm) */
+    .sheet-left .flyer-outer-frame {
+      top: 8.0mm !important;
+      bottom: 8.0mm !important;
+      left: 8.0mm !important;
+      right: 5.5mm !important;
+    }
+    .sheet-left .flyer-front,
+    .sheet-left .flyer-back {
+      padding: 12.0mm 9.5mm 12.0mm 12.0mm !important; /* top, right (fold), bottom, left (outer) */
+    }
+    .sheet-left .front-badge-seal {
+      top: 7.0mm !important;
+      right: 7.0mm !important; /* 5.5mm frame + 1.5mm inside */
+    }
+
+    /* RECHTER FLYER: Vouwrand links (5,5mm), Buitenrand rechts (8,0mm -> 5,5mm na print) */
+    .sheet-right .flyer-outer-frame {
+      top: 8.0mm !important;
+      bottom: 8.0mm !important;
+      left: 5.5mm !important;
+      right: 8.0mm !important;
+    }
+    .sheet-right .flyer-front,
+    .sheet-right .flyer-back {
+      padding: 12.0mm 12.0mm 12.0mm 9.5mm !important; /* top, right (outer), bottom, left (fold) */
+    }
+    .sheet-right .front-badge-seal {
+      top: 7.0mm !important;
+      right: 9.5mm !important; /* 8.0mm frame + 1.5mm inside */
+    }
+  </style>
 </head>
 <body>
   <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;" aria-hidden="true">
@@ -1574,7 +1619,7 @@
   <div class="sheet-page">
     <div class="cut-mark-top"></div>
     <div class="cut-mark-bottom"></div>
-    <div class="sheet-half"><article class="flyer-container flyer-front" id="flyerFront">
+    <div class="sheet-half sheet-left"><article class="flyer-container flyer-front" id="flyerFront">
           <!-- De Buitenbox (Sierkader) -->
           <div class="flyer-outer-frame"></div>
 
@@ -1716,7 +1761,7 @@
             </div>
           </div>
         </article></div>
-    <div class="sheet-half"><article class="flyer-container flyer-front" id="flyerFront">
+    <div class="sheet-half sheet-right"><article class="flyer-container flyer-front" id="flyerFront">
           <!-- De Buitenbox (Sierkader) -->
           <div class="flyer-outer-frame"></div>
 
@@ -1864,7 +1909,7 @@
   <div class="sheet-page sheet-page-rotated">
     <div class="cut-mark-top"></div>
     <div class="cut-mark-bottom"></div>
-    <div class="sheet-half"><article class="flyer-container flyer-back" id="flyerBack">
+    <div class="sheet-half sheet-left"><article class="flyer-container flyer-back" id="flyerBack">
           <!-- De Buitenbox (Sierkader) -->
           <div class="flyer-outer-frame"></div>
           
@@ -2021,7 +2066,7 @@
           </footer>
 
         </article></div>
-    <div class="sheet-half"><article class="flyer-container flyer-back" id="flyerBack">
+    <div class="sheet-half sheet-right"><article class="flyer-container flyer-back" id="flyerBack">
           <!-- De Buitenbox (Sierkader) -->
           <div class="flyer-outer-frame"></div>
           
