@@ -355,8 +355,8 @@
     .toolbar-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 8px;
+      flex-wrap: nowrap;
     }
 
     .view-selector {
@@ -370,14 +370,15 @@
     .btn-mode {
       border: none;
       background: transparent;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 6px;
       font-family: var(--font-heading);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #475569;
       cursor: pointer;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
     .btn-mode.active {
       background: #ffffff;
@@ -389,17 +390,18 @@
       background: var(--color-terracotta);
       color: #ffffff;
       border: none;
-      padding: 8px 18px;
+      padding: 7px 14px;
       border-radius: 8px;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       box-shadow: 0 2px 8px rgba(243, 146, 35, 0.3);
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
     .btn-print:hover {
       background: var(--color-terracotta-dark);
@@ -411,17 +413,18 @@
       color: #ffffff;
       text-decoration: none;
       border: none;
-      padding: 8px 18px;
+      padding: 7px 14px;
       border-radius: 8px;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       box-shadow: 0 2px 8px rgba(75, 143, 36, 0.3);
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
     .btn-download-pdf:hover {
       background: var(--color-forest-dark);
@@ -1271,83 +1274,173 @@
     }
 
     /* ==========================================================================
-       A4 DRUKVEL LAYOUT (2x A5 naast elkaar op A4 liggend 297 x 210 mm)
+       AFDRUK- & DOWNLOAD HUB (3 OVERZICHTELIJKE OPTIES VOOR ELKE PRINTER)
        ========================================================================== */
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    .btn-sheet-opt {
-      border: none;
-      background: transparent;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-family: var(--font-heading);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #475569;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-    .btn-sheet-opt.active {
+    .print-hub-section {
+      max-width: 1080px;
+      width: 100%;
+      margin: 10px auto 40px auto;
       background: #ffffff;
-      color: var(--color-forest);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      border: 1px solid #d5e5cf;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    .opt-badge {
-      background: #eef7eb;
-      color: var(--color-forest);
-      font-size: 0.72rem;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 800;
+    .print-hub-header {
+      text-align: center;
+      margin-bottom: 26px;
     }
 
-    .btn-print-large {
-      background: var(--color-terracotta);
-      color: #ffffff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 8px;
+    .print-hub-title {
       font-family: var(--font-heading);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      display: flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(243, 146, 35, 0.35);
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .print-hub-title span {
+      color: var(--color-forest);
+    }
+
+    .print-hub-subtitle {
+      font-size: 0.92rem;
+      color: #64748b;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .print-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .print-hub-card {
+      background: #fafcf9;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
       transition: all 0.2s ease;
     }
-    .btn-print-large:hover {
-      background: var(--color-terracotta-dark);
-      transform: translateY(-1px);
+    .print-hub-card:hover {
+      border-color: var(--color-forest);
+      box-shadow: 0 8px 24px rgba(75, 143, 36, 0.12);
+      transform: translateY(-2px);
+    }
+    .print-hub-card.card-featured {
+      background: #ffffff;
+      border: 2px solid var(--color-forest);
+      box-shadow: 0 6px 20px rgba(75, 143, 36, 0.12);
     }
 
-    
+    .hub-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .hub-badge.badge-green {
+      background: #eef7eb;
+      color: #387018;
+      border: 1px solid #b8dcad;
+    }
+    .hub-badge.badge-orange {
+      background: #fff7ed;
+      color: #c2410c;
+      border: 1px solid #fed7aa;
+    }
+    .hub-badge.badge-blue {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
 
-    /* Container holding the printable A4 pages */
-    
+    .hub-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+    }
 
-    /* Single A4 Sheet Page (297 x 210 mm) */
-    
+    .hub-card-desc {
+      font-size: 0.84rem;
+      color: #475569;
+      line-height: 1.45;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
 
-    /* Left & Right A5 Halves */
-    
+    .hub-card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-    
+    .btn-hub-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+      transition: all 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-hub-primary:hover {
+      background: var(--color-forest-dark);
+      transform: translateY(-1px);
+    }
+    .btn-hub-orange {
+      background: var(--color-terracotta);
+      box-shadow: 0 2px 6px rgba(243, 146, 35, 0.25);
+    }
+    .btn-hub-orange:hover {
+      background: var(--color-terracotta-dark);
+    }
+
+    .btn-hub-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      font-family: var(--font-heading);
+      font-size: 0.80rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .btn-hub-secondary:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
 
     /* ==========================================================================
        PRINT MEDIA QUERIES (100% WARE GROOTTE & ZONDER BLEED ARTIFACTEN)

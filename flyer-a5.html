@@ -124,8 +124,8 @@
     .toolbar-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 8px;
+      flex-wrap: nowrap;
     }
 
     .view-selector {
@@ -139,14 +139,15 @@
     .btn-mode {
       border: none;
       background: transparent;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 6px;
       font-family: var(--font-heading);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #475569;
       cursor: pointer;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
     .btn-mode.active {
       background: #ffffff;
@@ -158,17 +159,18 @@
       background: var(--color-terracotta);
       color: #ffffff;
       border: none;
-      padding: 8px 18px;
+      padding: 7px 14px;
       border-radius: 8px;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       box-shadow: 0 2px 8px rgba(243, 146, 35, 0.3);
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
     .btn-print:hover {
       background: var(--color-terracotta-dark);
@@ -180,17 +182,18 @@
       color: #ffffff;
       text-decoration: none;
       border: none;
-      padding: 8px 18px;
+      padding: 7px 14px;
       border-radius: 8px;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       box-shadow: 0 2px 8px rgba(75, 143, 36, 0.3);
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
     .btn-download-pdf:hover {
       background: var(--color-forest-dark);
@@ -1040,163 +1043,172 @@
     }
 
     /* ==========================================================================
-       A4 DRUKVEL LAYOUT (2x A5 naast elkaar op A4 liggend 297 x 210 mm)
+       AFDRUK- & DOWNLOAD HUB (3 OVERZICHTELIJKE OPTIES VOOR ELKE PRINTER)
        ========================================================================== */
-    .sheet-wrapper {
-      padding: 30px 20px 80px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .sheet-header-panel {
-      max-width: 900px;
+    .print-hub-section {
+      max-width: 1080px;
       width: 100%;
+      margin: 10px auto 40px auto;
       background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+      border: 1px solid #d5e5cf;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    .sheet-header-title {
+    .print-hub-header {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .print-hub-title {
       font-family: var(--font-heading);
-      font-size: 1.15rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      color: var(--color-forest);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sheet-header-subtitle {
-      font-size: 0.88rem;
-      color: #475569;
-      line-height: 1.5;
-    }
-
-    .sheet-controls-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .sheet-opt-group {
-      display: inline-flex;
-      background: #f1f5f9;
-      padding: 3px;
-      border-radius: 8px;
-      gap: 4px;
-    }
-
-    .btn-sheet-opt {
-      border: none;
-      background: transparent;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-family: var(--font-heading);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #475569;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-    .btn-sheet-opt.active {
-      background: #ffffff;
-      color: var(--color-forest);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-
-    .opt-badge {
-      background: #eef7eb;
-      color: var(--color-forest);
-      font-size: 0.72rem;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 800;
-    }
-
-    .btn-print-large {
-      background: var(--color-terracotta);
-      color: #ffffff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-family: var(--font-heading);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(243, 146, 35, 0.35);
-      transition: all 0.2s ease;
-    }
-    .btn-print-large:hover {
-      background: var(--color-terracotta-dark);
-      transform: translateY(-1px);
-    }
-
-    .sheet-print-tip {
-      background: #f8fafc;
-      border: 1px dashed #cbd5e1;
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 0.82rem;
-      color: #64748b;
-      line-height: 1.5;
-    }
-
-    /* Container holding the printable A4 pages */
-    .sheet-pages-container {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      align-items: center;
-    }
-
-    /* Single A4 Sheet Page (297 x 210 mm) */
-    .a4-sheet-page {
-      width: 297mm;
-      height: 210mm;
-      min-width: 297mm;
-      min-height: 210mm;
-      max-width: 297mm;
-      max-height: 210mm;
-      background: #ffffff;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.06);
-      display: flex;
-      position: relative;
-      overflow: hidden;
-      box-sizing: border-box;
-    }
-
-    /* Left & Right A5 Halves */
-    .sheet-half {
-      width: 148.5mm;
-      height: 210mm;
-      min-width: 148.5mm;
-      max-width: 148.5mm;
+      color: var(--color-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      box-sizing: border-box;
-      overflow: hidden;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .print-hub-title span {
+      color: var(--color-forest);
     }
 
-    .sheet-half .flyer-container {
-      box-shadow: none !important;
-      border: none !important;
+    .print-hub-subtitle {
+      font-size: 0.92rem;
+      color: #64748b;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .print-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .print-hub-card {
+      background: #fafcf9;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .print-hub-card:hover {
+      border-color: var(--color-forest);
+      box-shadow: 0 8px 24px rgba(75, 143, 36, 0.12);
+      transform: translateY(-2px);
+    }
+    .print-hub-card.card-featured {
+      background: #ffffff;
+      border: 2px solid var(--color-forest);
+      box-shadow: 0 6px 20px rgba(75, 143, 36, 0.12);
+    }
+
+    .hub-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .hub-badge.badge-green {
+      background: #eef7eb;
+      color: #387018;
+      border: 1px solid #b8dcad;
+    }
+    .hub-badge.badge-orange {
+      background: #fff7ed;
+      color: #c2410c;
+      border: 1px solid #fed7aa;
+    }
+    .hub-badge.badge-blue {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .hub-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+    }
+
+    .hub-card-desc {
+      font-size: 0.84rem;
+      color: #475569;
+      line-height: 1.45;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .hub-card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-hub-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+      transition: all 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-hub-primary:hover {
+      background: var(--color-forest-dark);
+      transform: translateY(-1px);
+    }
+    .btn-hub-orange {
+      background: var(--color-terracotta);
+      box-shadow: 0 2px 6px rgba(243, 146, 35, 0.25);
+    }
+    .btn-hub-orange:hover {
+      background: var(--color-terracotta-dark);
+    }
+
+    .btn-hub-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      font-family: var(--font-heading);
+      font-size: 0.80rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .btn-hub-secondary:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
     }
 
     /* ==========================================================================
@@ -1230,8 +1242,7 @@
       .screen-toolbar,
       .hint-bar,
       .flyer-label,
-      .sheet-header-panel,
-      .sheet-wrapper {
+      .print-hub-section {
         display: none !important;
       }
 
@@ -1305,24 +1316,6 @@
 
       body.mode-back #flyerFrontWrap { display: none !important; }
       body.mode-back #flyerBackWrap { display: block !important; page-break-after: avoid !important; }
-
-      body.mode-sheet .stage { display: none !important; }
-      body.mode-sheet .sheet-wrapper { display: block !important; padding: 0 !important; margin: 0 !important; }
-      body.mode-sheet .sheet-pages-container { display: block !important; gap: 0 !important; }
-      body.mode-sheet .a4-sheet-page {
-        width: 297mm !important;
-        height: 210mm !important;
-        box-shadow: none !important;
-        border: none !important;
-        page-break-after: always !important;
-        break-after: page !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-      }
-      body.mode-sheet .a4-sheet-page:last-child {
-        page-break-after: avoid !important;
-        break-after: avoid !important;
-      }
     }
 
     /* ==========================================================================
@@ -1502,17 +1495,17 @@
     <div class="toolbar-left">
       <a href="beheer.html#huisstijl" class="btn-back" title="Terug naar het Huisstijl &amp; Drukwerk Portaal">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>Terug naar Portaal</span>
+        <span>Terug naar Beheer Portaal</span>
       </a>
       <div class="toolbar-title">
-        🍂 <span>staopstoelen.nl</span> &bull; A5 Najaarsactie &amp; Showroom Flyer
+        🍂 <span>staopstoelen.nl</span> &bull; Najaarsactie Flyer 2026
       </div>
     </div>
 
     <div class="toolbar-actions">
       <div class="view-selector">
         <button type="button" class="btn-mode active" id="btnModeBoth" onclick="setViewMode('both')">
-          A5 Dubbelzijdig
+          Beide Zijden
         </button>
         <button type="button" class="btn-mode" id="btnModeFront" onclick="setViewMode('front')">
           Voorzijde
@@ -1520,19 +1513,15 @@
         <button type="button" class="btn-mode" id="btnModeBack" onclick="setViewMode('back')">
           Achterzijde
         </button>
-        <a href="flyer-a4-drukvel.html" class="btn-mode" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: #eef7eb; color: #4b8f24; border-color: #b8dcad; font-weight: 700;">
-          📄 A4 Drukvel (2x A5)
-        </a>
       </div>
 
-      <a href="flyer_a4_drukvel_2xA5.pdf" download="flyer_a4_drukvel_2xA5.pdf" class="btn-download-pdf" style="background: #ea580c;" title="Download direct het printklare A4 Drukvel (2x A5 op 1 vel, 100% randloos voor o.a. Epson ET-8500)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        <span>Download A4 Drukvel PDF</span>
+      <a href="#printHub" class="btn-back" style="background: #eef7eb; color: var(--color-forest); border-color: #b8dcad; text-decoration: none;">
+        🖨️ Alle Printopties
       </a>
 
-      <a href="flyer_a5_najaarsactie.pdf" download="flyer_a5_najaarsactie.pdf" class="btn-download-pdf" title="Download direct het printklare A5 PDF-bestand">
+      <a href="assets/flyer/flyer_a4_drukvel_langezijde_duplex.pdf" download="flyer_a4_drukvel_langezijde_duplex.pdf" class="btn-download-pdf" style="background: #ea580c;" title="Download direct het printklare A4 Drukvel (2x A5 op 1 vel, 100% randloos voor Epson ET-8500)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        <span>Download A5 PDF</span>
+        <span>Download A4 Drukvel</span>
       </a>
 
       <button type="button" class="btn-print" id="btnPrintFlyer" onclick="triggerPrint()">
@@ -1876,161 +1865,122 @@
   </main>
 
   <!-- ==========================================================================
-       A4 DRUKVEL CONTAINER (2x A5 op 1 A4 vel - 100% ware grootte, ZONDER VOUWLIJN)
-       ========================================================================== */
-  <section class="sheet-wrapper" id="sheetContainer" style="display: none;">
-    
-    <!-- Screen-only toolbar & uitleg -->
-    <div class="sheet-header-panel no-print">
-      <div class="sheet-header-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-        <span>A4 Drukvel (2x A5 &bull; 100% Ware Grootte)</span>
-      </div>
-      <p class="sheet-header-subtitle">
-        Afdrukken op standaard <strong>A4 papier (Liggend / Landscape &bull; 297 × 210 mm)</strong> op ware grootte (geen verkleining en zonder vouwlijn).
+       AFDRUK- & DOWNLOAD HUB (3 OVERZICHTELIJKE OPTIES VOOR ELKE PRINTER)
+       ========================================================================== -->
+  <section class="print-hub-section no-print" id="printHub">
+    <div class="print-hub-header">
+      <h2 class="print-hub-title">
+        🖨️ <span>Afdruk- &amp; Drukwerkopties</span> voor staopstoelen.nl
+      </h2>
+      <p class="print-hub-subtitle">
+        Kies hieronder het bestand of de methode die past bij uw printer (Epson ET-8500 fotoprinter, kantoorprinter of echt A5 papier).
       </p>
-      
-      <!-- Keuze opties voor het drukvel -->
-      <div class="sheet-controls-row">
-        <div class="sheet-opt-group">
-          <button type="button" class="btn-sheet-opt active" id="btnSheetBoth" onclick="setSheetSide('both')">
-            <span class="opt-badge">⭐ Aanbevolen</span>
-            Dubbelzijdig (2x Voor + 2x Achter)
-          </button>
-          <button type="button" class="btn-sheet-opt" id="btnSheetFront" onclick="setSheetSide('front')">
-            Alleen Voorzijde (2x A5)
-          </button>
-          <button type="button" class="btn-sheet-opt" id="btnSheetBack" onclick="setSheetSide('back')">
-            Alleen Achterzijde (2x A5)
-          </button>
-        </div>
-
-        <button type="button" class="btn-print-large" onclick="triggerPrint()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Nu Drukvel Afdrukken / Opslaan als PDF
-        </button>
-      </div>
-
-      <div class="sheet-print-tip">
-        <strong>💡 Printinstellingen:</strong> Papierformaat: <strong>A4</strong> &bull; Richting: <strong>Liggend (Landscape)</strong> &bull; Marges: <strong>Geen (0 mm)</strong> &bull; Schaal: <strong>100% (Ware grootte)</strong> &bull; Dubbelzijdig: <strong>Korte zijde omslaan</strong>.
-      </div>
     </div>
 
-    <!-- Printable A4 Sheets (1 of 2 pagina's) -->
-    <div class="sheet-pages-container" id="sheetPagesSlot">
-      <!-- Wordt dynamisch gevuld met 1 of 2 .a4-sheet-page vellen -->
+    <div class="print-hub-grid">
+      
+      <!-- Optie 1: A4 Drukvel Randloos (Aanbevolen voor Epson ET-8500) -->
+      <article class="print-hub-card card-featured">
+        <div>
+          <span class="hub-badge badge-green">⭐ Aanbevolen voor Epson ET-8500</span>
+          <h3 class="hub-card-title">A4 Drukvel (100% Randloos)</h3>
+          <p class="hub-card-desc">
+            2 flyers per A4 vel (297 &times; 210 mm liggend). Saliegroen loopt naadloos door tot de papiersnede. Inclusief <strong>wiskundige bleed-compensatie</strong>: na het vouwen op het midden (148,5 mm) zijn alle marges exact 5,5 mm rondom.
+          </p>
+        </div>
+        <div class="hub-card-actions">
+          <a href="assets/flyer/flyer_a4_drukvel_langezijde_duplex.pdf" download="flyer_a4_drukvel_langezijde_duplex.pdf" class="btn-hub-primary btn-hub-orange" title="Aanbevolen voor Epson automatische duplex">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download PDF (Standaard Duplex)
+          </a>
+          <a href="assets/flyer/flyer_a4_drukvel_2xA5.pdf" download="flyer_a4_drukvel_2xA5.pdf" class="btn-hub-secondary">
+            Download PDF (Korte zijde / Handmatig)
+          </a>
+          <div style="display: flex; gap: 6px;">
+            <a href="assets/flyer/flyer_a4_pagina1_voorkant_2xA5.pdf" download="flyer_a4_pagina1_voorkant_2xA5.pdf" class="btn-hub-secondary" style="flex: 1;" title="Handmatige invoer / Achterinvoer pagina 1">
+              Voorzijde (2x)
+            </a>
+            <a href="assets/flyer/flyer_a4_pagina2_achterkant_2xA5.pdf" download="flyer_a4_pagina2_achterkant_2xA5.pdf" class="btn-hub-secondary" style="flex: 1;" title="Handmatige invoer / Achterinvoer pagina 2">
+              Achterzijde (2x)
+            </a>
+          </div>
+          <a href="flyer-a4-drukvel.html" target="_blank" class="btn-hub-secondary" style="background: #eef7eb; color: #2e5917; border-color: #b8dcad;">
+            📄 Open A4 Drukvel Weergave &rarr;
+          </a>
+        </div>
+      </article>
+
+      <!-- Optie 2: A4 Drukvel met Witte Marges & Snijkruizen (Kantoorprinters) -->
+      <article class="print-hub-card">
+        <div>
+          <span class="hub-badge badge-orange">Kantoorprinters &bull; Laser</span>
+          <h3 class="hub-card-title">A4 met Marges &amp; Snijkruizen</h3>
+          <p class="hub-card-desc">
+            Voor standaard kantoorprinters (HP, Canon, Brother) die <strong>niet randloos</strong> kunnen printen en altijd 4-5 mm witmarge vereisen. Met handige snijlijnen op de hoeken om 2 strakke A5 flyers uit te snijden.
+          </p>
+        </div>
+        <div class="hub-card-actions">
+          <a href="assets/flyer/flyer_a4_met_witmarges_en_snijkruizen.pdf" download="flyer_a4_met_witmarges_en_snijkruizen.pdf" class="btn-hub-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download PDF met Snijlijnen
+          </a>
+          <a href="flyer-a4-met-marges.html" target="_blank" class="btn-hub-secondary">
+            📄 Open Drukvel met Snijkruizen &rarr;
+          </a>
+        </div>
+      </article>
+
+      <!-- Optie 3: Enkel A5 Formaat (Op A5 papier) -->
+      <article class="print-hub-card">
+        <div>
+          <span class="hub-badge badge-blue">A5 Papier (148,5 &times; 210 mm)</span>
+          <h3 class="hub-card-title">A5 Master Formaat</h3>
+          <p class="hub-card-desc">
+            Enkele 2-zijdige A5 flyer. Ideaal voor printers met een speciale A5 papierlade of professionele drukkers die los A5 drukwerk verwerken.
+          </p>
+        </div>
+        <div class="hub-card-actions">
+          <a href="assets/flyer/flyer_a5_najaarsactie.pdf" download="flyer_a5_najaarsactie.pdf" class="btn-hub-primary" style="background: var(--color-forest);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download A5 Master PDF
+          </a>
+          <button type="button" class="btn-hub-secondary" onclick="triggerPrint()">
+            🖨️ Direct A5 Printen via Browser
+          </button>
+        </div>
+      </article>
+
     </div>
   </section>
 
   <script>
     const screenStage = document.getElementById("screenStage");
-    const sheetContainer = document.getElementById("sheetContainer");
-    const sheetPagesSlot = document.getElementById("sheetPagesSlot");
-    const btnModeFront = document.getElementById("btnModeFront");
-    const btnModeBack = document.getElementById("btnModeBack");
-    const btnModeBoth = document.getElementById("btnModeBoth");
-    const btnModeSheet = document.getElementById("btnModeSheet");
     const flyerFrontWrap = document.getElementById("flyerFrontWrap");
     const flyerBackWrap = document.getElementById("flyerBackWrap");
 
     let currentViewMode = 'both';
-    let currentSheetSide = 'both';
-
-    function updatePageSize(mode) {
-      const dynamicStyle = document.getElementById("dynamicPageStyle");
-      if (!dynamicStyle) return;
-      if (mode === 'sheet') {
-        dynamicStyle.textContent = `@page { size: 297mm 210mm; margin: 0mm !important; }`;
-      } else {
-        dynamicStyle.textContent = `@page { size: 148.5mm 210mm; margin: 0mm !important; } @page :left { margin: 0mm !important; } @page :right { margin: 0mm !important; }`;
-      }
-    }
-    updatePageSize('both');
 
     function setViewMode(mode) {
       currentViewMode = mode;
-      [btnModeFront, btnModeBack, btnModeBoth, btnModeSheet].forEach(btn => {
-        if (btn) btn.classList.remove("active");
-      });
-      document.body.className = `mode-${mode}`;
-      updatePageSize(mode);
-
-      if (mode === 'sheet') {
-        if (btnModeSheet) btnModeSheet.classList.add("active");
-        screenStage.style.display = "none";
-        sheetContainer.style.display = "block";
-        renderA4Sheet(currentSheetSide);
-      } else {
-        screenStage.style.display = "flex";
-        sheetContainer.style.display = "none";
-
-        if (mode === 'front') {
-          if (btnModeFront) btnModeFront.classList.add("active");
-          flyerFrontWrap.style.display = "flex";
-          flyerBackWrap.style.display = "none";
-        } else if (mode === 'back') {
-          if (btnModeBack) btnModeBack.classList.add("active");
-          flyerFrontWrap.style.display = "none";
-          flyerBackWrap.style.display = "flex";
-        } else {
-          if (btnModeBoth) btnModeBoth.classList.add("active");
-          flyerFrontWrap.style.display = "flex";
-          flyerBackWrap.style.display = "flex";
-        }
-      }
-    }
-
-    function setSheetSide(side) {
-      currentSheetSide = side;
-      renderA4Sheet(side);
-    }
-
-    function createA4Page(sourceCard, label) {
-      const page = document.createElement("div");
-      page.className = "a4-sheet-page";
-
-      const halfLeft = document.createElement("div");
-      halfLeft.className = "sheet-half sheet-left";
-      halfLeft.innerHTML = sourceCard.outerHTML;
-
-      const halfRight = document.createElement("div");
-      halfRight.className = "sheet-half sheet-right";
-      halfRight.innerHTML = sourceCard.outerHTML;
-
-      page.appendChild(halfLeft);
-      page.appendChild(halfRight);
-
-      return page;
-    }
-
-    function renderA4Sheet(side = currentSheetSide) {
-      currentSheetSide = side;
-      if (!sheetPagesSlot) return;
-      sheetPagesSlot.innerHTML = '';
-
-      const frontCard = document.getElementById("flyerFront");
-      const backCard = document.getElementById("flyerBack");
-
-      if (side === 'both') {
-        const page1 = createA4Page(frontCard, "Voorzijde");
-        const page2 = createA4Page(backCard, "Achterzijde");
-        sheetPagesSlot.appendChild(page1);
-        sheetPagesSlot.appendChild(page2);
-      } else if (side === 'front') {
-        const page = createA4Page(frontCard, "Voorzijde");
-        sheetPagesSlot.appendChild(page);
-      } else if (side === 'back') {
-        const page = createA4Page(backCard, "Achterzijde");
-        sheetPagesSlot.appendChild(page);
-      }
-
-      ['btnSheetBoth', 'btnSheetFront', 'btnSheetBack'].forEach(id => {
+      ['btnModeFront', 'btnModeBack', 'btnModeBoth'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.remove("active");
       });
-      if (side === 'both') document.getElementById('btnSheetBoth')?.classList.add("active");
-      if (side === 'front') document.getElementById('btnSheetFront')?.classList.add("active");
-      if (side === 'back') document.getElementById('btnSheetBack')?.classList.add("active");
+      document.body.className = `mode-${mode}`;
+
+      if (mode === 'front') {
+        document.getElementById('btnModeFront')?.classList.add("active");
+        flyerFrontWrap.style.display = "flex";
+        flyerBackWrap.style.display = "none";
+      } else if (mode === 'back') {
+        document.getElementById('btnModeBack')?.classList.add("active");
+        flyerFrontWrap.style.display = "none";
+        flyerBackWrap.style.display = "flex";
+      } else {
+        document.getElementById('btnModeBoth')?.classList.add("active");
+        flyerFrontWrap.style.display = "flex";
+        flyerBackWrap.style.display = "flex";
+      }
     }
 
     function triggerPrint() {
