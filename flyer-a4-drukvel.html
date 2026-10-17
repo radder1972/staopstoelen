@@ -29,7 +29,7 @@
     @media screen {
       body {
         background: #e6ece8;
-        padding-top: 150px;
+        padding-top: 155px;
         padding-bottom: 60px;
         display: flex;
         flex-direction: column;
@@ -162,6 +162,10 @@
     .sheet-page:last-child {
       page-break-after: avoid;
       break-after: avoid;
+    }
+    .sheet-page-rotated {
+      transform: rotate(180deg);
+      transform-origin: center center;
     }
     .sheet-half {
       width: 148.5mm !important;
@@ -1525,9 +1529,14 @@
       </div>
 
       <div class="screen-actions">
-        <a href="flyer_a4_drukvel_2xA5.pdf" download="flyer_a4_drukvel_2xA5.pdf" class="btn-action btn-green" title="Download direct het printklare A4 PDF-bestand met beide zijden">
+        <a href="flyer_a4_drukvel_2xA5.pdf" download="flyer_a4_drukvel_2xA5.pdf" class="btn-action btn-green" title="Download direct het printklare A4 PDF-bestand (Korte zijde omslaan)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Download A4 PDF (Beide Pagina's)
+          Download A4 PDF (Korte Zijde)
+        </a>
+
+        <a href="flyer_a4_drukvel_langezijde_duplex.pdf" download="flyer_a4_drukvel_langezijde_duplex.pdf" class="btn-action btn-orange" title="Download A4 PDF speciaal voor Lange Zijde Omslaan (Pagina 2 is al 180° gedraaid)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PDF (Lange Zijde Omslaan)
         </a>
 
         <a href="flyer_a4_pagina1_voorkant_2xA5.pdf" download="flyer_a4_pagina1_voorkant_2xA5.pdf" class="btn-action btn-secondary" title="Download alleen Pagina 1 (2x Voorzijde)">
@@ -1538,7 +1547,7 @@
           Achterkant PDF
         </a>
 
-        <button type="button" class="btn-action btn-orange" onclick="window.print()">
+        <button type="button" class="btn-action btn-secondary" onclick="window.print()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           Afdrukken
         </button>
