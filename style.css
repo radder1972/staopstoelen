@@ -534,7 +534,14 @@ section[id], section {
   gap: 32px;
   border-top: 1px solid var(--color-gray-light);
   padding-top: 24px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+}
+
+.hero-dealer-trust-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 12px;
 }
 
 .hero-grid {
@@ -4093,8 +4100,14 @@ input[type="checkbox"] {
     font-size: 0.78rem !important;
   }
 
+  .hero-dealer-trust-wrapper {
+    margin-top: 8px !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
   .hero-dealer-trust {
-    margin-top: 14px !important;
+    margin-top: 0 !important;
     padding: 8px 16px 8px 12px !important;
     gap: 10px !important;
     max-width: 100% !important;
