@@ -238,28 +238,15 @@
     }
 
     /* ==========================================================================
-       1. VOORZIJDE (FRONT) - ACTIE & VOORDEEL DESIGN
+       1. VOORZIJDE (FRONT) - ACTIE & VOORDEEL DESIGN (GEEN VOUWLIJN, GEEN BLEED)
        ========================================================================== */
     .flyer-front {
       background: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 5.5mm 7.5mm 5.5mm 7.5mm;
+      padding: 6.5mm 8.5mm 6.5mm 8.5mm;
       position: relative;
-    }
-
-    .flyer-front::before {
-      content: '';
-      position: absolute;
-      top: 3.5mm;
-      left: 3.5mm;
-      right: 3.5mm;
-      bottom: 3.5mm;
-      border: 0.35mm solid rgba(75, 143, 36, 0.25);
-      border-radius: 2.5mm;
-      pointer-events: none;
-      z-index: 1;
     }
 
     /* Top Header Bar */
@@ -303,26 +290,24 @@
 
     .front-badge-seal {
       position: absolute;
-      top: 5mm;
-      right: 5mm;
-      width: 27mm;
-      height: 27mm;
+      top: 5.5mm;
+      right: 6.5mm;
+      width: 26mm;
+      height: 26mm;
       object-fit: contain;
-      filter: drop-shadow(0 3mm 7mm rgba(0,0,0,0.22));
       z-index: 15;
       pointer-events: none;
     }
 
-    /* Photo Section in Passe-Partout Frame */
+    /* Photo Section in Passe-Partout Frame (Strak zonder shadow-bleed) */
     .front-photo-frame {
       position: relative;
       z-index: 2;
       margin: 0 0 1.8mm 0;
       background: var(--color-cream);
-      border: 0.35mm solid rgba(75, 143, 36, 0.25);
+      border: 0.35mm solid rgba(75, 143, 36, 0.3);
       border-radius: 2.5mm;
       padding: 1.4mm;
-      box-shadow: 0 1.5mm 4mm rgba(0, 0, 0, 0.05);
     }
 
     .front-photo-inner {
@@ -347,12 +332,11 @@
     /* Officiële Najaarsactie Voordeelsticker linksboven op de foto */
     .front-photo-stamp {
       position: absolute;
-      top: -2mm;
-      left: -2mm;
-      width: 28mm;
-      height: 28mm;
+      top: 0;
+      left: 0;
+      width: 27mm;
+      height: 27mm;
       z-index: 10;
-      filter: drop-shadow(0 2.5mm 6mm rgba(0,0,0,0.25));
       pointer-events: none;
     }
 
@@ -371,7 +355,6 @@
       display: flex;
       align-items: center;
       gap: 1.2mm;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       letter-spacing: 0.2px;
       border: 0.25mm solid rgba(255,255,255,0.4);
     }
@@ -418,7 +401,7 @@
     /* Opvallende Actiebalk (Terracotta) */
     .front-promo-ribbon {
       width: 100%;
-      background: linear-gradient(135deg, #f39223 0%, #dc8019 100%);
+      background: var(--color-terracotta);
       color: #ffffff;
       border-radius: 9999px;
       padding: 1.3mm 3.2mm;
@@ -429,7 +412,6 @@
       font-family: var(--font-heading);
       font-size: 2.55mm;
       font-weight: 700;
-      box-shadow: 0 1.5mm 4mm rgba(243, 146, 35, 0.25);
       letter-spacing: 0.2px;
     }
     .front-promo-ribbon strong {
@@ -453,7 +435,6 @@
       display: flex;
       flex-direction: column;
       gap: 0.5mm;
-      box-shadow: 0 1mm 3mm rgba(0,0,0,0.04);
       border: 0.35mm solid #e2e8f0;
     }
     .front-option-card.opt-nieuw {
@@ -495,13 +476,12 @@
     .front-expert-card {
       width: 100%;
       background: #ffffff;
-      border: 0.35mm solid rgba(75, 143, 36, 0.22);
+      border: 0.35mm solid rgba(75, 143, 36, 0.28);
       border-radius: 2.4mm;
       padding: 2.2mm 3.2mm;
       display: flex;
       align-items: center;
       gap: 3.2mm;
-      box-shadow: 0 1.5mm 4mm rgba(75, 143, 36, 0.05);
       text-align: left;
       margin: 0.8mm 0;
     }
@@ -514,7 +494,6 @@
       border-radius: 50%;
       overflow: hidden;
       border: 0.45mm solid var(--color-forest);
-      box-shadow: 0 2mm 5mm rgba(75, 143, 36, 0.2);
       background: var(--color-cream);
     }
 
@@ -577,7 +556,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 3mm;
-      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
       margin-top: 1mm;
       position: relative;
     }
@@ -629,9 +607,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2mm 5mm rgba(0,0,0,0.12);
-      margin-top: -3mm;
-      margin-bottom: -1mm;
       position: relative;
       z-index: 5;
     }
@@ -646,24 +621,11 @@
        ========================================================================== */
     .flyer-back {
       background: #ffffff;
-      padding: 5.5mm 7.5mm 5.5mm 7.5mm;
+      padding: 6.5mm 8.5mm 6.5mm 8.5mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-    }
-
-    .flyer-back::before {
-      content: '';
-      position: absolute;
-      top: 3.5mm;
-      left: 3.5mm;
-      right: 3.5mm;
-      bottom: 3.5mm;
-      border: 0.35mm solid rgba(75, 143, 36, 0.25);
-      border-radius: 2.5mm;
-      pointer-events: none;
-      z-index: 1;
     }
 
     /* Top Brand & Intro Header */
@@ -729,10 +691,9 @@
 
     .back-chair-card {
       background: #ffffff;
-      border: 0.35mm solid rgba(75, 143, 36, 0.25);
+      border: 0.35mm solid rgba(75, 143, 36, 0.28);
       border-radius: 2.2mm;
       overflow: hidden;
-      box-shadow: 0 1.2mm 3.5mm rgba(0,0,0,0.06);
       display: flex;
       flex-direction: column;
     }
@@ -763,7 +724,6 @@
       padding: 0.6mm 2mm;
       border-radius: 9999px;
       color: #ffffff;
-      box-shadow: 0 1mm 2.5mm rgba(0,0,0,0.25);
       letter-spacing: 0.1px;
     }
     .chair-badge-tag.tag-orange { background: var(--color-terracotta); }
@@ -794,7 +754,7 @@
     }
 
     /* ==========================================================================
-       SHOWROOM WAARDEBON (Het ultieme actie-element)
+       SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn, GEEN stippellijn)
        ========================================================================== */
     .back-voucher-wrapper {
       width: 100%;
@@ -804,11 +764,10 @@
     }
 
     .showroom-voucher-card {
-      background: #fffdfa;
-      border: 0.55mm dashed var(--color-terracotta);
+      background: #fffcf8;
+      border: 0.45mm solid rgba(243, 146, 35, 0.65);
       border-radius: 2.6mm;
       padding: 2.4mm 3.5mm;
-      box-shadow: 0 1.5mm 5mm rgba(243, 146, 35, 0.08);
       position: relative;
     }
 
@@ -820,15 +779,11 @@
       margin-bottom: 1mm;
     }
 
-    .voucher-cut-symbol {
-      font-size: 3.2mm;
-    }
-
     .voucher-badge-title {
       font-family: var(--font-heading);
       font-size: 2.85mm;
       font-weight: 800;
-      color: var(--color-terracotta);
+      color: var(--color-terracotta-dark);
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
@@ -875,7 +830,7 @@
       text-align: center;
     }
 
-    /* Subtiele hint voor thuisbezoek */
+    /* Subtiele hint voor advies aan huis */
     .back-home-visit-hint {
       display: flex;
       align-items: center;
@@ -919,7 +874,6 @@
       display: inline-flex;
       align-items: center;
       gap: 1.8mm;
-      box-shadow: 0 2mm 6mm rgba(243, 146, 35, 0.28);
       letter-spacing: 0.2px;
     }
     .back-phone-pill-prominent svg {
@@ -945,7 +899,6 @@
       gap: 3.5mm;
       position: relative;
       z-index: 2;
-      box-shadow: 0 1mm 3mm rgba(75, 143, 36, 0.05);
     }
 
     .back-contact-col {
@@ -1008,7 +961,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2mm 5mm rgba(0,0,0,0.08);
     }
     .back-qr-card img {
       width: 100%;
@@ -1019,6 +971,7 @@
 
     /* ==========================================================================
        A4 DRUKVEL LAYOUT (2x A5 naast elkaar op A4 liggend 297 x 210 mm)
+       GEEN VOUWLIJN OF SNIJLIJN MEER!
        ========================================================================== */
     .sheet-wrapper {
       padding: 30px 20px 80px 20px;
@@ -1142,7 +1095,7 @@
       align-items: center;
     }
 
-    /* Single A4 Sheet Page (297 x 210 mm) */
+    /* Single A4 Sheet Page (297 x 210 mm) - Schoon zonder vouwlijn */
     .a4-sheet-page {
       width: 297mm;
       height: 210mm;
@@ -1177,46 +1130,29 @@
       border: none !important;
     }
 
-    /* Central Cutting Line */
-    .a4-sheet-page::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 148.5mm;
-      width: 0.25mm;
-      border-left: 0.25mm dashed rgba(100, 116, 139, 0.4);
-      z-index: 50;
-      pointer-events: none;
-    }
-
-    /* Cutting Marks (Snijkruisjes op 148.5mm) */
-    .a4-sheet-page::before {
-      content: '✂ SNIJLIJN (148,5 mm)';
-      position: absolute;
-      top: 1.5mm;
-      left: 148.5mm;
-      transform: translateX(-50%);
-      font-family: var(--font-heading);
-      font-size: 1.8mm;
-      font-weight: 700;
-      color: rgba(100, 116, 139, 0.7);
-      background: #ffffff;
-      padding: 0.2mm 1.5mm;
-      border-radius: 9999px;
-      z-index: 51;
-      pointer-events: none;
-      letter-spacing: 0.2px;
-    }
-
     /* ==========================================================================
-       PRINT MEDIA QUERIES (Exacte mm en pagina-afbrekingen)
+       PRINT MEDIA QUERIES (100% WARE GROOTTE & ZONDER BLEED ARTIFACTEN)
        ========================================================================== */
     @media print {
+      /* CRUCIAAL: Schakel alle box-shadows, filters en backdrop-filters uit in print/PDF.
+         Dit voorkomt Skia Soft-Masks (rastermaskers) die als lelijke blokken/bleed achter boxen worden geprint! */
+      *,
+      *::before,
+      *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
       body {
         background: #ffffff !important;
         margin: 0 !important;
         padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
       .no-print,
@@ -1257,6 +1193,14 @@
         page-break-inside: avoid !important;
         break-inside: avoid !important;
         margin: 0 auto !important;
+        overflow: hidden !important;
+      }
+
+      /* Voorkom dat QR en badges ooit buiten containerranden springen */
+      .front-qr-code-box,
+      .back-qr-card {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
       }
 
       body.mode-front #flyerBackWrap { display: none !important; }
@@ -1326,7 +1270,7 @@
   <main class="stage" id="screenStage">
     <div class="hint-bar">
       <span>🍂</span>
-      <span><strong>A5 Actieflyer (148 × 210 mm) &bull; Concept 1: Harde Actie &amp; Voordeelflyer</strong> met Fitform Najaarsactie (€600 korting), prijsinstap vanaf €495,- en Showroom Waardebon.</span>
+      <span><strong>A5 Actieflyer (148 × 210 mm) &bull; Geen vouwlijnen &bull; 100% Strakke boxen zonder print-bleed</strong> met Fitform Najaarsactie (€600 korting), prijsinstap vanaf €495,- en Showroom Waardebon.</span>
     </div>
 
     <div class="flyers-preview-wrap">
@@ -1482,13 +1426,11 @@
             </div>
           </section>
 
-          <!-- DE SHOWROOM WAARDEBON (Het fysieke conversie-element!) -->
+          <!-- DE SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn, GEEN schaartjes/stippels) -->
           <section class="back-voucher-wrapper">
             <div class="showroom-voucher-card">
               <div class="voucher-top-bar">
-                <span class="voucher-cut-symbol">✂️</span>
                 <span class="voucher-badge-title">SHOWROOM WAARDEBON</span>
-                <span class="voucher-cut-symbol">✂️</span>
               </div>
               <div class="voucher-intro-text">
                 Neem deze waardebon mee naar onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> en ontvang:
@@ -1563,19 +1505,18 @@
   </main>
 
   <!-- ==========================================================================
-       A4 DRUKVEL CONTAINER (2x A5 op 1 A4 vel met snijlijnen - 100% ware grootte)
+       A4 DRUKVEL CONTAINER (2x A5 op 1 A4 vel - 100% ware grootte, ZONDER VOUWLIJN)
        ========================================================================== -->
   <section class="sheet-wrapper" id="sheetContainer" style="display: none;">
     
     <!-- Screen-only toolbar & uitleg -->
     <div class="sheet-header-panel no-print">
       <div class="sheet-header-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21" stroke-dasharray="2 2"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
         <span>A4 Drukvel (2x A5 &bull; 100% Ware Grootte)</span>
       </div>
       <p class="sheet-header-subtitle">
-        Afdrukken op standaard <strong>A4 papier (Liggend / Landscape &bull; 297 × 210 mm)</strong> op ware grootte (geen verkleining).<br>
-        Snijd na het printen simpelweg in het midden door (op 148,5 mm) voor 2 volwaardige A5 flyers.
+        Afdrukken op standaard <strong>A4 papier (Liggend / Landscape &bull; 297 × 210 mm)</strong> op ware grootte (geen verkleining en zonder vouwlijn).
       </p>
       
       <!-- Keuze opties voor het drukvel -->
