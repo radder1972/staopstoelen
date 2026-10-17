@@ -30,6 +30,8 @@
       --color-cream: #fbf9f5;
       --color-sage-light: #eef7eb;
       --color-sage-border: #b8dcad;
+      --color-afloop-sage: #d5e5cf; /* Verfijnde saliegroene afloop voor aflopende printer */
+      --color-afloop-border: rgba(75, 143, 36, 0.45);
       --color-dark: #1d2024;
       --color-gray: #4a5568;
       --color-gray-light: #718096;
@@ -228,7 +230,7 @@
       min-height: 210mm;
       max-width: 148mm;
       max-height: 210mm;
-      background: #ffffff;
+      background: var(--color-afloop-sage);
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0,0,0,0.06);
       position: relative;
       overflow: hidden;
@@ -238,25 +240,26 @@
     }
 
     /* ==========================================================================
-       DE ELEGANTE BUITENBOX (SIERKADER MET RUIME MARGE VANAF PAPIERRAND)
+       DE ELEGANTE BUITENBOX (BUITENRAND VER NAAR BUITEN & SALIEGROENE AFLOOP)
        ========================================================================== */
     .flyer-outer-frame {
       position: absolute;
-      top: 6mm;
-      left: 6mm;
-      right: 6mm;
-      bottom: 6mm;
-      border: 0.4mm solid rgba(75, 143, 36, 0.35);
+      top: 3.5mm;
+      left: 3.5mm;
+      right: 3.5mm;
+      bottom: 3.5mm;
+      background: #ffffff;
+      border: 0.4mm solid rgba(75, 143, 36, 0.45);
       border-radius: 2.5mm;
       pointer-events: none;
-      z-index: 25;
+      z-index: 1;
     }
 
     /* ==========================================================================
        1. VOORZIJDE (FRONT) - ACTIE & VOORDEEL DESIGN
        ========================================================================== */
     .flyer-front {
-      background: #ffffff;
+      background: var(--color-afloop-sage);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -305,8 +308,8 @@
 
     .front-badge-seal {
       position: absolute;
-      top: 7mm;
-      right: 7.2mm;
+      top: 4.8mm;
+      right: 4.8mm;
       width: 24.5mm;
       height: 24.5mm;
       object-fit: contain;
@@ -639,7 +642,7 @@
        2. ACHTERZIJDE (BACK) - SHOWROOM UITNODIGING & WAARDEBON
        ========================================================================== */
     .flyer-back {
-      background: #ffffff;
+      background: var(--color-afloop-sage);
       padding: 8.5mm 9.5mm 8.5mm 9.5mm;
       display: flex;
       flex-direction: column;
@@ -1190,6 +1193,7 @@
       }
 
       .flyer-container {
+        background: var(--color-afloop-sage) !important;
         box-shadow: none !important;
         border: none !important;
         page-break-inside: avoid !important;
@@ -1199,6 +1203,7 @@
       }
 
       .flyer-outer-frame {
+        background: #ffffff !important;
         border: 0.4mm solid rgba(75, 143, 36, 0.45) !important;
         box-shadow: none !important;
       }
