@@ -1235,42 +1235,74 @@
     }
 
     /* ==========================================================================
-       HERFSTBLAADJES ILLUSTRATIES (Conform website)
+       HERFSTBLAADJES DIE SUBTIEL OP DE BOXEN LIGGEN (Conform website)
        ========================================================================== */
-    .leaf-illu {
+    .box-leaf {
       position: absolute;
       pointer-events: none;
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5mm;
+      z-index: 12;
+      display: block;
+      line-height: 0;
     }
-    .leaf-illu svg {
+    .box-leaf svg {
       display: block;
     }
 
-    /* Links en rechts op de pagina (keurig binnen de pagina, tegen het groene sierkader) */
-    .leaf-illu-left {
-      left: 3.6mm;
-      top: 96mm;
-      transform: translateY(-50%);
+    /* Blaadjes op de Tijdelijke Najaarsactie balk (op de uiteinden) */
+    .leaf-actie-left {
+      top: -2.2mm;
+      left: 1.5mm;
+      transform: rotate(-25deg);
     }
-    .leaf-illu-right {
-      right: 3.6mm;
-      top: 96mm;
-      transform: translateY(-50%);
+    .leaf-actie-right {
+      bottom: -2.2mm;
+      right: 1.5mm;
+      transform: rotate(35deg);
     }
 
-    .leaf-illu-back-left {
-      left: 3.6mm;
-      top: 104mm;
-      transform: translateY(-50%);
+    /* Blaadje op de Occasion kaart */
+    .leaf-occasion-tr {
+      top: -2.5mm;
+      right: 2.5mm;
+      transform: rotate(25deg);
     }
-    .leaf-illu-back-right {
-      right: 3.6mm;
-      top: 104mm;
-      transform: translateY(-50%);
+
+    /* Blaadje op de Expert Geertjan kaart */
+    .leaf-expert-tr {
+      top: -2.5mm;
+      right: 3.5mm;
+      transform: rotate(30deg);
+    }
+
+    /* Blaadje op de Front Showroom QR balk */
+    .leaf-front-qr-tl {
+      top: -2.5mm;
+      left: 5mm;
+      transform: rotate(-18deg);
+    }
+
+    /* Blaadjes op de Showroom Waardebon (Achterzijde) */
+    .leaf-voucher-tl {
+      top: -3.2mm;
+      left: 6mm;
+      transform: rotate(-25deg);
+    }
+    .leaf-voucher-tr {
+      top: -3mm;
+      right: 7mm;
+      transform: rotate(22deg);
+    }
+    .leaf-voucher-br {
+      bottom: -3mm;
+      right: 4mm;
+      transform: rotate(35deg);
+    }
+
+    /* Blaadje op de Showroom Footer Box */
+    .leaf-footer-tl {
+      top: -2.6mm;
+      left: 6mm;
+      transform: rotate(-18deg);
     }
   </style>
 </head>
@@ -1379,23 +1411,6 @@
             </div>
           </header>
 
-          <!-- Illustraties: Authentieke Herfstblaadjes Links en Rechts op de pagina -->
-          <div class="leaf-illu leaf-illu-left">
-            <svg width="22" height="22" viewBox="0 0 32 32" style="transform: rotate(-32deg);">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" />
-            </svg>
-            <svg width="17" height="17" viewBox="0 0 32 32" style="transform: rotate(18deg); margin-top: -6px; margin-left: 3px;">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" />
-            </svg>
-          </div>
-          <div class="leaf-illu leaf-illu-right">
-            <svg width="22" height="22" viewBox="0 0 32 32" style="transform: rotate(36deg);">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" />
-            </svg>
-            <svg width="17" height="17" viewBox="0 0 32 32" style="transform: rotate(-20deg); margin-top: -6px; margin-right: 3px;">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" />
-            </svg>
-          </div>
           <!-- Photo in Passe-Partout Frame (Dubbelklik = Easter Egg Geertjan!) -->
           <div class="front-photo-frame">
             <div class="front-photo-inner" ondblclick="toggleFrontEasterEgg()" title="Dubbelklik voor een verrassing!">
@@ -1422,9 +1437,15 @@
               </h1>
               
               <div class="front-promo-ribbon">
-                <svg width="15" height="15" viewBox="0 0 32 32" style="transform: rotate(-25deg); flex-shrink: 0;"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                <!-- Blaadjes die subtiel op de uiteinden van de actiebalk liggen -->
+                <span class="box-leaf leaf-actie-left">
+                  <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+                </span>
+                <span class="box-leaf leaf-actie-right">
+                  <svg width="19" height="19" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+                </span>
+
                 <span><strong>TIJDELIJKE NAJAARSACTIE:</strong> Tot <strong>€ 600,- korting</strong> op Fitform maatwerk</span>
-                <svg width="15" height="15" viewBox="0 0 32 32" style="transform: rotate(35deg); flex-shrink: 0;"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
               </div>
             </div>
 
@@ -1435,7 +1456,11 @@
                 <div class="opt-desc">100% op uw lichaam aangemeten</div>
                 <div class="opt-highlight">Tot € 600,- Najaarskorting</div>
               </div>
-              <div class="front-option-card opt-occasion">
+              <div class="front-option-card opt-occasion" style="position: relative;">
+                <!-- Blaadje op occasion box -->
+                <span class="box-leaf leaf-occasion-tr">
+                  <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" /></svg>
+                </span>
                 <div class="card-choice-badge">Gereviseerde Occasion</div>
                 <div class="opt-desc">Technisch 100% nieuwstaat &amp; garantie</div>
                 <div class="opt-highlight">Al vanaf € 495,-</div>
@@ -1443,7 +1468,11 @@
             </div>
 
             <!-- 3. Grotere tekst & Pasfoto van Geert (Bewegingstechnoloog) -->
-            <div class="front-expert-card">
+            <div class="front-expert-card" style="position: relative;">
+              <!-- Blaadje op expert kaart -->
+              <span class="box-leaf leaf-expert-tr">
+                <svg width="22" height="22" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+              </span>
               <div class="expert-avatar-wrap">
                 <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" class="expert-avatar-img">
               </div>
@@ -1460,6 +1489,10 @@
 
             <!-- 4. Bottom QR & Showroom Banner -->
             <div class="front-qr-banner">
+              <!-- Blaadje op showroom banner -->
+              <span class="box-leaf leaf-front-qr-tl">
+                <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+              </span>
               <div class="front-qr-info">
                 <div class="front-qr-title">Kom vrijblijvend proefzitten in Dordrecht</div>
                 <div class="front-qr-sub">Merwedestraat 239 &bull; Gratis parkeren voor de deur &bull; Gelijkvloers</div>
@@ -1538,30 +1571,22 @@
             </div>
           </section>
 
-          <!-- Illustraties: Authentieke Herfstblaadjes Links en Rechts op de achterzijde -->
-          <div class="leaf-illu leaf-illu-back-left">
-            <svg width="22" height="22" viewBox="0 0 32 32" style="transform: rotate(-28deg);">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" />
-            </svg>
-            <svg width="17" height="17" viewBox="0 0 32 32" style="transform: rotate(22deg); margin-top: -6px; margin-left: 3px;">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradGreen)" />
-            </svg>
-          </div>
-          <div class="leaf-illu leaf-illu-back-right">
-            <svg width="22" height="22" viewBox="0 0 32 32" style="transform: rotate(35deg);">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" />
-            </svg>
-            <svg width="17" height="17" viewBox="0 0 32 32" style="transform: rotate(-20deg); margin-top: -6px; margin-right: 3px;">
-              <use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" />
-            </svg>
-          </div>
           <!-- DE SHOWROOM WAARDEBON (Strakke kaart, GEEN vouwlijn) -->
           <section class="back-voucher-wrapper">
             <div class="showroom-voucher-card">
+              <!-- Blaadjes die op de Showroom Waardebon liggen -->
+              <span class="box-leaf leaf-voucher-tl">
+                <svg width="26" height="26" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
+              </span>
+              <span class="box-leaf leaf-voucher-tr">
+                <svg width="20" height="20" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
+              </span>
+              <span class="box-leaf leaf-voucher-br">
+                <svg width="22" height="22" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradRed)" /></svg>
+              </span>
+
               <div class="voucher-top-bar">
-                <svg width="14" height="14" viewBox="0 0 32 32" style="transform: rotate(-22deg); flex-shrink: 0;"><use href="#flyerLeafBase" fill="url(#flyerLeafGradAmber)" /></svg>
                 <span class="voucher-badge-title">SHOWROOM WAARDEBON</span>
-                <svg width="14" height="14" viewBox="0 0 32 32" style="transform: rotate(26deg); flex-shrink: 0;"><use href="#flyerLeafBase" fill="url(#flyerLeafGradWine)" /></svg>
               </div>
               <div class="voucher-intro-text">
                 Neem deze waardebon mee naar onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> en ontvang:
@@ -1602,6 +1627,10 @@
 
           <!-- Bottom Showroom & Openingstijden -->
           <footer class="back-footer-box">
+            <!-- Blaadje op showroom box -->
+            <span class="box-leaf leaf-footer-tl">
+              <svg width="22" height="22" viewBox="0 0 32 32"><use href="#flyerLeafBase" fill="url(#flyerLeafGradGold)" /></svg>
+            </span>
             <!-- Left Col: Showroom -->
             <div class="back-contact-col">
               <div class="back-col-title">Showroom Dordrecht</div>
