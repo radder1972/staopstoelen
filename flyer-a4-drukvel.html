@@ -598,7 +598,7 @@
       font-family: var(--font-heading);
       font-size: 2.22mm;
       font-weight: 600;
-      color: #475569;
+      color: #111111;
       text-transform: uppercase;
       letter-spacing: 0.25px;
       white-space: nowrap;
@@ -697,28 +697,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.2mm;
+      gap: 2.2mm;
       width: 100%;
+      margin-bottom: 0.8mm;
     }
 
     .front-headline {
       font-family: var(--font-heading);
-      font-size: 5.0mm;
-      font-weight: 700;
-      line-height: 1.25;
+      font-size: 5.2mm;
+      font-weight: 800;
+      line-height: 1.22;
       color: var(--color-dark);
-      letter-spacing: -0.15px;
+      letter-spacing: -0.2px;
       margin: 0;
       text-align: center;
     }
     .front-headline span {
       display: block;
       color: var(--color-forest);
-      font-weight: 700;
+      font-weight: 800;
       margin-top: 0.6mm;
     }
 
-    /* Opvallende Actiebalk (Zwarte letters voor optimale print-leesbaarheid) */
+    /* Opvallende Actiebalk (Met meer witte ruimte eromheen) */
     .front-promo-ribbon {
       position: relative;
       width: 100%;
@@ -726,7 +727,9 @@
       border: 0.4mm solid #ea580c;
       color: #1a1a1a;
       border-radius: 9999px;
-      padding: 1.2mm 2.8mm;
+      padding: 1.3mm 2.8mm;
+      margin-top: 1.0mm;
+      margin-bottom: 0.6mm;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -887,34 +890,26 @@
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 0.8mm;
+      gap: 1.4mm;
     }
 
     .front-qr-title {
       font-family: var(--font-heading);
-      font-size: 2.8mm;
+      font-size: 3.3mm;
       font-weight: 700;
       color: var(--color-forest);
-      line-height: 1.25;
-    }
-
-    .front-qr-sub {
-      font-family: var(--font-body);
-      font-size: 2.8mm;
-      color: #1e293b;
-      line-height: 1.25;
-      font-weight: 500;
+      line-height: 1.2;
     }
 
     .front-qr-address {
       font-family: var(--font-heading);
-      font-size: 2.8mm;
+      font-size: 2.95mm;
       font-weight: 600;
       color: var(--color-dark);
       display: flex;
       align-items: center;
       gap: 1.5mm;
-      line-height: 1.25;
+      line-height: 1.2;
     }
     .front-qr-address strong {
       color: #111111;
@@ -1168,27 +1163,53 @@
       text-align: center;
     }
 
-    /* Subtiele hint voor advies aan huis (Iets naar beneden) */
+    /* Advies aan huis (Icoon boven tekst, 2 regels) */
     .back-home-visit-hint {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.6mm;
-      font-size: 2.5mm;
-      color: #1e293b;
-      font-weight: 500;
-      margin: 1.8mm 0 1.4mm 0;
+      gap: 0.8mm;
+      margin: 1.6mm 0 1.5mm 0;
       text-align: center;
       position: relative;
       z-index: 2;
     }
-    .back-home-visit-hint svg {
+
+    .home-visit-icon-pill {
+      width: 5.4mm;
+      height: 5.4mm;
+      min-width: 5.4mm;
+      border-radius: 50%;
+      background: #eef7eb;
+      border: 0.35mm solid #4b8f24;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.3mm;
+    }
+    .home-visit-icon-pill svg {
       width: 3.2mm;
       height: 3.2mm;
       stroke: var(--color-forest);
       fill: none;
       stroke-width: 2.2;
-      flex-shrink: 0;
+    }
+
+    .home-visit-line1 {
+      font-family: var(--font-heading);
+      font-size: 2.85mm;
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.2;
+    }
+
+    .home-visit-line2 {
+      font-family: var(--font-body);
+      font-size: 2.7mm;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+      line-height: 1.25;
     }
 
     /* Grote opvallende Bel Direct banner boven de showroom box */
@@ -1225,7 +1246,7 @@
       letter-spacing: 0.3px;
     }
 
-    /* Bottom Showroom & Openingstijden */
+    /* Bottom Showroom & Openingstijden (Bovenaan uitgelijnd!) */
     .back-footer-box {
       width: 100%;
       background: var(--color-sage-light);
@@ -1233,7 +1254,7 @@
       border-radius: 2.4mm;
       padding: 2.4mm 3.5mm;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 3.5mm;
       position: relative;
@@ -1875,8 +1896,7 @@
               </span>
               <div class="front-qr-info">
                 <div class="front-qr-title">Kom vrijblijvend proefzitten in Dordrecht</div>
-                <div class="front-qr-sub">Merwedestraat 239 &bull; Gratis parkeren voor de deur &bull; Gelijkvloers</div>
-                <div class="front-qr-address">Bel direct voor advies: <strong>078 - 631 48 58</strong></div>
+                <div class="front-qr-address">Bel direct voor advies of afspraak: <strong>078 - 631 48 58</strong></div>
               </div>
               <div class="front-qr-code-box">
                 <img src="assets/qr_staopstoelen.png?v=5" alt="Scan QR Staopstoelen.nl">
@@ -2018,8 +2038,7 @@
               </span>
               <div class="front-qr-info">
                 <div class="front-qr-title">Kom vrijblijvend proefzitten in Dordrecht</div>
-                <div class="front-qr-sub">Merwedestraat 239 &bull; Gratis parkeren voor de deur &bull; Gelijkvloers</div>
-                <div class="front-qr-address">Bel direct voor advies: <strong>078 - 631 48 58</strong></div>
+                <div class="front-qr-address">Bel direct voor advies of afspraak: <strong>078 - 631 48 58</strong></div>
               </div>
               <div class="front-qr-code-box">
                 <img src="assets/qr_staopstoelen.png?v=5" alt="Scan QR Staopstoelen.nl">
@@ -2147,10 +2166,13 @@
             </div>
           </section>
 
-          <!-- Subtiele hint voor advies aan huis -->
+          <!-- Advies aan huis (Icoon boven tekst, 2 regels) -->
           <div class="back-home-visit-hint">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-            <span>Kunt u moeilijk naar de showroom komen? Wij komen ook geheel vrijblijvend <strong>bij u thuis voor een proefzit</strong>.</span>
+            <div class="home-visit-icon-pill">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            </div>
+            <div class="home-visit-line1">Kunt u moeilijk naar de showroom komen?</div>
+            <div class="home-visit-line2">Wij komen geheel vrijblijvend bij u thuis langs.</div>
           </div>
 
           <!-- Grote opvallende Bel Direct banner boven de showroom box -->
@@ -2314,10 +2336,13 @@
             </div>
           </section>
 
-          <!-- Subtiele hint voor advies aan huis -->
+          <!-- Advies aan huis (Icoon boven tekst, 2 regels) -->
           <div class="back-home-visit-hint">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-            <span>Kunt u moeilijk naar de showroom komen? Wij komen ook geheel vrijblijvend <strong>bij u thuis voor een proefzit</strong>.</span>
+            <div class="home-visit-icon-pill">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            </div>
+            <div class="home-visit-line1">Kunt u moeilijk naar de showroom komen?</div>
+            <div class="home-visit-line2">Wij komen geheel vrijblijvend bij u thuis langs.</div>
           </div>
 
           <!-- Grote opvallende Bel Direct banner boven de showroom box -->
