@@ -1932,6 +1932,12 @@ section[id], section {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+@media (min-width: 768px) {
+  #offersGrid.offers-top3-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
 
 .results-container {
   display: grid;
