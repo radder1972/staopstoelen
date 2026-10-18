@@ -1973,8 +1973,10 @@ section[id], section {
   height: auto !important;
   max-width: 100% !important;
   max-height: 100% !important;
-  object-fit: contain;
-  border-radius: 12px;
+  object-fit: contain !important;
+  border-radius: 16px !important;
+  padding: 0 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .results-container {
