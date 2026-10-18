@@ -1985,7 +1985,8 @@
       const rawHash = window.location.hash ? decodeURIComponent(window.location.hash.replace("#", "")).trim().toLowerCase() : "";
       let selectedChairMatch = null;
 
-      if (rawHash) {
+      const reservedHashes = ["occasions", "cataloggrid", "najaarsactiebanner", "actiemodellen", "najaarsactie", "actie"];
+      if (rawHash && !reservedHashes.includes(rawHash)) {
         selectedChairMatch = GOEDKOPE_STAOPSTOELEN_DATA.find(c => c && c.id && c.id.toLowerCase() === rawHash);
         if (!selectedChairMatch) {
           selectedChairMatch = GOEDKOPE_STAOPSTOELEN_DATA.find(c => c && c.id && c.id.toLowerCase().includes(rawHash));
@@ -2568,6 +2569,34 @@
       }
     }
 
+    function filterOccasionChairs(scrollToGrid = true) {
+      document.querySelectorAll(".brand-filter").forEach(cb => cb.checked = false);
+      document.querySelectorAll(".price-filter").forEach(cb => cb.checked = false);
+      document.querySelectorAll(".condition-filter").forEach(cb => {
+        cb.checked = (cb.value.toLowerCase() === 'occasion');
+      });
+
+      renderCatalog();
+
+      if (scrollToGrid) {
+        const target = document.getElementById("catalogGrid");
+        if (target) {
+          const yOffset = -120;
+          const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }
+
+    function isOccasionsRequested() {
+      const h = (window.location.hash || "").toLowerCase();
+      const s = (window.location.search || "").toLowerCase();
+      return h === "#occasions" ||
+             s.includes("condition=occasion") ||
+             s.includes("occasions=1") ||
+             s.includes("filter=occasions");
+    }
+
     function isActieRequested() {
       const h = (window.location.hash || "").toLowerCase();
       const s = (window.location.search || "").toLowerCase();
@@ -2580,7 +2609,7 @@
              s.includes("filter=actie");
     }
 
-    // Smoothly land on #najaarsactieBanner with proper header offset on page load or hash change
+    // Smoothly land on #najaarsactieBanner or #catalogGrid with proper header offset on page load or hash change
     function handleNajaarsactieHashLanding() {
       if (isActieRequested()) {
         filterNajaarsactieChairs(false);
@@ -2592,6 +2621,16 @@
             window.scrollTo({ top: y, behavior: 'smooth' });
           }
         }, 150);
+      } else if (isOccasionsRequested()) {
+        filterOccasionChairs(false);
+        setTimeout(() => {
+          const el = document.getElementById("catalogGrid");
+          if (el) {
+            const yOffset = -120;
+            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 150);
       }
     }
 
@@ -2599,6 +2638,8 @@
     window.addEventListener("hashchange", () => {
       if (isActieRequested()) {
         filterNajaarsactieChairs(true);
+      } else if (isOccasionsRequested()) {
+        filterOccasionChairs(true);
       } else {
         renderCatalog();
       }
@@ -2658,6 +2699,8 @@
       initBrandFilters();
       if (isActieRequested()) {
         filterNajaarsactieChairs(false);
+      } else if (isOccasionsRequested()) {
+        filterOccasionChairs(false);
       } else {
         renderCatalog();
       }
