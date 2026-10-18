@@ -654,7 +654,7 @@ section[id], section {
   gap: 32px;
   border-top: 1px solid var(--color-gray-light);
   padding-top: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .stat-item h3,
@@ -4123,7 +4123,7 @@ input[type="checkbox"] {
 
   .hero-dealer-trust span:last-child {
     font-size: 0.76rem !important;
-    margin-left: 20px !important;
+    margin-left: 0 !important;
   }
 
   /* Compacte slideshow voor tablet formaat zodat hij strak naast de tekst past */
