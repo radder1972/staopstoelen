@@ -21,7 +21,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.98">
+  <link rel="stylesheet" href="style.css?v=10.83">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -692,7 +692,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.82
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.83
       </div>
     </div>
   </footer>
@@ -780,7 +780,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=10.82" defer></script>
+  <script src="app.js?v=10.83" defer></script>
   <script>
     // Fitform Najaarsactie Easter Egg: dubbelklik toont Geertjan in de fauteuil
     let isNajaarsactieEasterEgg = false;
@@ -855,6 +855,12 @@
     let currentGalleryIndex = 0;
     let activeGallery = [];
 
+    function getBustedImgUrl(url) {
+      if (!url) return '';
+      const sep = url.includes('?') ? '&' : '?';
+      return `${url}${sep}v=3.2`;
+    }
+
     function showGalleryImage(index) {
       if (activeGallery.length === 0) return;
       if (index < 0) {
@@ -870,7 +876,7 @@
       
       modalImg.style.opacity = 0;
       setTimeout(() => {
-        modalImg.src = imgUrl;
+        modalImg.src = getBustedImgUrl(imgUrl);
         modalImg.style.opacity = 1;
       }, 150);
       
@@ -1008,7 +1014,7 @@
       const modalTabs = document.getElementById("modalGalleryTabs");
       const bookBtn = document.getElementById("modalBookBtn");
 
-      modalImg.src = item.image;
+      modalImg.src = getBustedImgUrl(item.image);
       modalImg.alt = item.name;
       modalTitle.textContent = item.name;
       const materialText = item.material === "leer" ? "Leer" : "Stof";
@@ -1195,7 +1201,7 @@
         
         activeGallery.forEach((imgUrl, index) => {
           const thumb = document.createElement("img");
-          thumb.src = imgUrl;
+          thumb.src = getBustedImgUrl(imgUrl);
           thumb.alt = `${item.name} foto ${index + 1}`;
           thumb.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
           thumb.onerror = function() {
@@ -1471,7 +1477,7 @@
 
                 card.innerHTML = `
                   <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
-                    <img src="${item.image}" alt="${cleanTitle}" loading="lazy" decoding="async" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; border-radius: 16px; padding: 0 !important; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);">
+                    <img src="${getBustedImgUrl(item.image)}" alt="${cleanTitle}" loading="lazy" decoding="async" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; border-radius: 16px; padding: 0 !important; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);">
                     ${stampHtml}
                     <div style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; z-index: 4;">
                       ${actieInfo ? `
@@ -1507,9 +1513,9 @@
                   const imgElement = card.querySelector(".product-image img");
                   if (imgElement) {
                     const preloadImg = new Image();
-                    preloadImg.src = hoverImage;
-                    card.addEventListener("mouseenter", () => { imgElement.src = hoverImage; });
-                    card.addEventListener("mouseleave", () => { imgElement.src = item.image; });
+                    preloadImg.src = getBustedImgUrl(hoverImage);
+                    card.addEventListener("mouseenter", () => { imgElement.src = getBustedImgUrl(hoverImage); });
+                    card.addEventListener("mouseleave", () => { imgElement.src = getBustedImgUrl(item.image); });
                   }
                 }
 
