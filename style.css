@@ -619,15 +619,11 @@ section[id], section {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.hero-expert-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.hero-expert-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(18, 43, 7, 0.1) !important;
+.hero-expert-spotlight {
+  transition: transform 0.25s ease;
 }
 @media (max-width: 768px) {
-  .hero-expert-card {
+  .hero-expert-spotlight {
     margin: 18px auto 0 auto !important;
     max-width: 100% !important;
   }
