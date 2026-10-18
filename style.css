@@ -233,15 +233,15 @@ section[id], section {
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  padding-top: 115px; /* Space for absolute text logo and Maak een afspraak button */
+  padding-top: 124px; /* Space for absolute text logo + strapline and Maak een afspraak button */
 }
 
 .logo-swoosh {
   position: absolute;
-  top: 50px; /* Positioned below the aligned-top text logo */
+  top: 66px; /* Positioned below the aligned-top text logo + strapline */
   left: 0;
   width: 100%;
-  height: 55px; /* Compact height to fit in the whitespace under the logo */
+  height: 50px; /* Compact height to fit in the whitespace under the logo */
   z-index: 1;
   pointer-events: none;
 }
@@ -345,12 +345,14 @@ section[id], section {
 .nav-text-logo {
   position: absolute;
   left: 24px;
-  top: 12px; /* Aligned at the top */
+  top: 8px; /* Aligned at the top */
   font-family: var(--font-heading), 'Montserrat', sans-serif;
   font-size: 2.65rem; /* Larger heading font size */
   font-weight: 800; /* Extra bold heading style */
-  line-height: 1.2;
-  display: inline-block;
+  line-height: 1.05;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
   color: var(--color-forest);
   text-decoration: none;
   letter-spacing: -0.8px;
@@ -360,6 +362,17 @@ section[id], section {
 
 .nav-text-logo span {
   color: var(--color-terracotta); /* Make .nl orange */
+}
+
+.nav-logo-strapline {
+  font-family: var(--font-body), 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  margin-top: 3px;
+  padding-left: 2px;
 }
 
 .nav-text-logo:hover {
@@ -392,7 +405,7 @@ section[id], section {
   .nav-text-logo {
     position: absolute !important;
     left: 16px !important;
-    top: 14px !important;
+    top: 10px !important;
     right: auto !important;
     margin: 0 !important;
     font-size: clamp(1.4rem, 5.5vw, 1.75rem) !important;
@@ -401,9 +414,15 @@ section[id], section {
     line-height: 1 !important;
     white-space: nowrap !important;
     display: inline-flex !important;
-    align-items: center !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
     z-index: 10 !important;
     color: var(--color-forest) !important;
+  }
+
+  .nav-logo-strapline {
+    font-size: 0.68rem !important;
+    margin-top: 2px !important;
   }
 
   /* Remove swooshes/waves completely on mobile */
