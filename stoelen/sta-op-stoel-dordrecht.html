@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.83">
+  <link rel="stylesheet" href="../style.css?v=10.84">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -83,6 +83,14 @@
       max-height: 440px;
       object-fit: contain;
       transition: opacity 0.25s ease;
+    }
+    .main-image-frame img.has-photo-bg,
+    .main-image-frame img:not([src*=".png"]) {
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+    .gallery-thumbnail img {
+      border-radius: 4px;
     }
     .trust-bullets-box {
       background: #fbf9f5;
@@ -176,7 +184,7 @@
           <span class="badge badge-new" style="position: absolute; top: 16px; left: 16px; z-index: 2;">
             Nieuw
           </span>
-          <img id="detailMainImg" src="../assets/stoelen/Sta-op-stoel-DORDRECHT-1.jpg" alt="Sta-op stoel Dordrecht">
+          <img id="detailMainImg" class="has-photo-bg" src="../assets/stoelen/Sta-op-stoel-DORDRECHT-1.jpg" alt="Sta-op stoel Dordrecht">
         </div>
         
         
@@ -428,7 +436,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.83
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.84
       </div>
     </div>
   </footer>
@@ -440,6 +448,11 @@
         mainImg.style.opacity = '0.3';
         setTimeout(() => {
           mainImg.src = imgUrl;
+          if (/\.png(\?|$)/i.test(imgUrl)) {
+            mainImg.classList.remove('has-photo-bg');
+          } else {
+            mainImg.classList.add('has-photo-bg');
+          }
           mainImg.style.opacity = '1';
         }, 150);
       }

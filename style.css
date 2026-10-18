@@ -1989,6 +1989,19 @@ section[id], section {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
+/* Stoelfoto's op productpagina's en modal met winkelachtergrond afgeronde hoeken net als op home */
+.main-image-frame img.has-photo-bg,
+.main-image-frame img:not([src*=".png"]),
+.modal-image-wrapper img.has-photo-bg,
+.modal-image-wrapper img:not([src*=".png"]):not(.quality-stamp) {
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-thumbnail img {
+  border-radius: 4px;
+}
+
 .results-container {
   display: grid;
   grid-template-columns: 1fr;
