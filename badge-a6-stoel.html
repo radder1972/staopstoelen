@@ -1719,6 +1719,7 @@
       padding: 3px 0;
       border-bottom: 1px dashed #e2ebe0;
       font-size: 9.5px;
+      gap: 6px;
     }
     .back-spec-row:last-child, .back-spec-row:nth-last-child(2) {
       border-bottom: none;
@@ -1728,12 +1729,17 @@
       color: var(--color-terracotta-dark);
       font-weight: 800;
       font-size: 9.5px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .back-spec-v {
       color: var(--color-forest-dark);
       font-weight: 800;
       font-size: 9.5px;
       text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     /* Ergonomische Kenmerken met meer wit en ruimte */
@@ -1915,25 +1921,56 @@
        PRINT MEDIA STYLES
        ========================================================================== */
     @media print {
-      body {
+      /* Schakel alle box-shadows, filters en backdrop-filters uit in print.
+         Dit voorkomt Skia rastermaskers die als grijze/lelijke vlekken achter boxen of stickers printen */
+      *,
+      *::before,
+      *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      html, body {
         background: #ffffff !important;
         margin: 0 !important;
         padding: 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        display: block !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
+      /* Verberg de gehele beheer- en configuratie-interface tijdens afdrukken */
+      body > *:not(.main-content),
+      .main-content > .container > *:not(.preview-stage),
       .admin-header,
+      .admin-header-card,
       .admin-tabs-bar,
       .section-header-banner,
-      .badge-config-card,
+      .badge-config-steps,
+      .config-step-card,
+      .config-bottom-action-card,
       .preview-section-header,
       .badge-side-label,
-      .a4-sheet-badge {
+      .a4-sheet-badge,
+      .header-quick-access,
+      .filter-pills-row,
+      .chair-select-controls,
+      .chair-fan-container,
+      .print-tip-hint {
         display: none !important;
       }
 
       .main-content {
         padding: 0 !important;
         margin: 0 !important;
+        display: block !important;
+        flex: none !important;
       }
 
       .container {
@@ -1941,6 +1978,7 @@
         width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
+        display: block !important;
       }
 
       .preview-stage {
@@ -1948,53 +1986,91 @@
         margin: 0 !important;
         min-height: auto !important;
         display: block !important;
+        background: transparent !important;
+        border: none !important;
       }
 
       @page {
         margin: 0;
       }
 
-      /* Single A6 print mode */
+      /* Single A6 print mode (Direct op A6 papier: 105 × 148 mm) */
+      body.mode-single .badge-single-wrap {
+        display: block !important;
+        gap: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      body.mode-single .badge-side-col {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 105mm !important;
+        height: 147.8mm !important;
+        max-height: 147.8mm !important;
+        overflow: hidden !important;
+      }
+
       body.mode-single .badge-a6 {
         box-shadow: none !important;
         margin: 0 !important;
         border-radius: 0 !important;
+        width: 105mm !important;
+        height: 147.8mm !important;
+        max-height: 147.8mm !important;
+        overflow: hidden !important;
       }
 
       /* Single: Dubbelzijdig (Voor + Achter) */
-      body.mode-single.side-both #colFront .badge-a6 {
+      body.mode-single.side-both #colFront {
+        display: block !important;
         page-break-after: always !important;
+        break-after: page !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
-      body.mode-single.side-both #colBack .badge-a6 {
+      body.mode-single.side-both #colBack {
+        display: block !important;
         page-break-after: avoid !important;
+        break-after: avoid !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
 
       /* Single: Alleen Voorkant */
-      body.mode-single.side-front #colFront .badge-a6 {
+      body.mode-single.side-front #colFront {
+        display: block !important;
         page-break-after: avoid !important;
+        break-after: avoid !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       body.mode-single.side-front #colBack {
         display: none !important;
       }
 
       /* Single: Alleen Achterkant */
-      body.mode-single.side-back #colBack .badge-a6 {
+      body.mode-single.side-back #colBack {
+        display: block !important;
         page-break-after: avoid !important;
+        break-after: avoid !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       body.mode-single.side-back #colFront {
         display: none !important;
       }
 
-      body.mode-single .a4-sheet-container {
+      body.mode-single .a4-single-a4-container,
+      body.mode-single #a4SingleA4Container,
+      body.mode-single #a4SingleA4ContainerBack {
         display: none !important;
       }
 
       /* A4 1x Kaart (1x A6 op A4 vel: voor linksboven, achter rechtsboven) print mode */
-      body.mode-single-a4 .badge-single-wrap {
+      body.mode-single-a4 .badge-single-wrap,
+      body.mode-single-a4 #badgeSingleWrap {
         display: none !important;
       }
 
@@ -2003,26 +2079,32 @@
         box-shadow: none !important;
         margin: 0 !important;
         width: 210mm !important;
-        height: 297mm !important;
-        max-height: 297mm !important;
+        height: 296.5mm !important;
+        max-height: 296.5mm !important;
         overflow: hidden !important;
       }
 
       body.mode-single-a4.side-both #a4SingleA4Container {
         display: block !important;
         page-break-after: always !important;
+        break-after: page !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       body.mode-single-a4.side-both #a4SingleA4ContainerBack {
         display: block !important;
         page-break-after: avoid !important;
+        break-after: avoid !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
 
       body.mode-single-a4.side-front #a4SingleA4Container {
         display: block !important;
         page-break-after: avoid !important;
+        break-after: avoid !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       body.mode-single-a4.side-front #a4SingleA4ContainerBack {
         display: none !important;
@@ -2034,7 +2116,9 @@
       body.mode-single-a4.side-back #a4SingleA4ContainerBack {
         display: block !important;
         page-break-after: avoid !important;
+        break-after: avoid !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
 
       body.mode-single-a4 .a4-single-slot {
@@ -2420,7 +2504,7 @@
 
         <!-- STAP 4 / ACTIEBALK -->
         <div class="config-bottom-action-card">
-          <button type="button" class="btn-print-large" id="btnPrint" onclick="triggerPrint()">
+          <button type="button" class="btn-print-large" id="btnPrint">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
             <span>Nu Afdrukken of Opslaan als PDF</span>
           </button>
@@ -2867,6 +2951,54 @@
       return str;
     }
 
+    // Helper: format back specification (compact & senior-leesbaar)
+    function formatBackSpec(val, type) {
+      if (!val) return '';
+      let str = String(val).trim();
+      if (type === 'motors') {
+        if (str.includes('1 motor, 2 motoren') || str.includes('1 motor, 2')) return '1, 2 of 3 motoren';
+        if (str.includes('3 motoren (of meer)')) return '3 Motoren (of meer)';
+        if (str.includes('3 motoren')) return '3 Motoren';
+        if (str.includes('2 motoren')) return '2 Motoren';
+        if (str.includes('1 motor')) return '1 Motor';
+        if (str.toLowerCase().includes('geen')) return 'Manueel';
+      }
+      if (type === 'size') {
+        if (str.includes('Geheel op maat')) return 'Op maat gemaakt';
+        if (str.includes('Small / Medium / Large') || str.includes('3 maten')) return 'Maten S / M / L';
+        if (str.includes('1 maat')) return 'Standaardmaat';
+      }
+      if (type === 'weight') {
+        if (str.includes('150 kg (of meer')) return 'Tot 150+ kg';
+        if (str.includes('120 kg (optioneel')) return 'Tot 120+ kg';
+        if (str.includes('150')) return 'Tot 150 kg';
+        if (str.includes('120')) return 'Tot 120 kg';
+        if (str.includes('100')) return 'Tot 100 kg';
+      }
+      if (type === 'cover') {
+        if (str.includes('Stof') && str.includes('Leer')) return 'Luxe Stof / Leder';
+        if (str.includes('Leer')) return 'Luxe Leder';
+        if (str.includes('Stof')) return 'Luxe Meubelstof';
+      }
+      if (type === 'control') {
+        if (str.includes('Hendel')) return 'Hendel zijkant';
+        if (str.includes('armleuning')) return 'In armleuning';
+        if (str.includes('knoppen')) {
+          const m = str.match(/\d+\s*knoppen/i);
+          return m ? `Handbed. (${m[0]})` : 'Handbediening';
+        }
+        return 'Handbediening';
+      }
+      if (type === 'warranty') {
+        const years = (str.match(/\d+/) || ['3'])[0];
+        return `${years} Jaar aan huis`;
+      }
+      if (str.length > 25) {
+        return str.slice(0, 23).trim() + '…';
+      }
+      return str;
+    }
+
     // 1. Load chairs from database.json
     async function loadChairs() {
       try {
@@ -3238,13 +3370,13 @@
       // Maat- en specificatietabel (8 velden in 2 kolommen)
       if (backSpecsTable) {
         const specItems = [
-          { k: 'Maatvoering', v: specs['Maatwerk'] || 'S / M / L (op maat)' },
-          { k: 'Aantal Motoren', v: specs['Aantal motoren'] || '2 Motoren' },
-          { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch ondersteund' : 'Comfort Relax' },
-          { k: 'Max. Belasting', v: specs['Maximaal gebruikersgewicht'] || 'Tot 130 kg' },
-          { k: 'Bekleding', v: mat },
-          { k: 'Bediening', v: specs['Bediening'] || 'Geïntegreerde handbediening' },
-          { k: 'Garantie', v: specs['Garantie'] || (isNieuw ? '3 Jaar aan huis' : '1 Jaar aan huis') },
+          { k: 'Maatvoering', v: formatBackSpec(specs['Maatwerk'] || 'S / M / L (op maat)', 'size') },
+          { k: 'Aantal Motoren', v: formatBackSpec(specs['Aantal motoren'] || '2 Motoren', 'motors') },
+          { k: 'Sta-op Functie', v: chair.type === 'staop' ? 'Elektrisch' : 'Comfort Relax' },
+          { k: 'Max. Belasting', v: formatBackSpec(specs['Maximaal gebruikersgewicht'] || 'Tot 130 kg', 'weight') },
+          { k: 'Bekleding', v: formatBackSpec(mat, 'cover') },
+          { k: 'Bediening', v: formatBackSpec(specs['Bediening'] || 'Handbediening', 'control') },
+          { k: 'Garantie', v: formatBackSpec(specs['Garantie'] || (isNieuw ? '3 Jaar' : '1 Jaar'), 'warranty') },
           { k: 'Levertijd', v: chair.status === 'beschikbaar' ? 'Direct leverbaar' : 'Op bestelling' }
         ];
 
@@ -3568,23 +3700,17 @@
     if (cardModeSingleA4) cardModeSingleA4.addEventListener("click", () => setPrintMode('single-a4'));
     if (cardModeSingle) cardModeSingle.addEventListener("click", () => setPrintMode('single'));
 
-    // Robuuste print trigger functie (werkt zowel direct via onclick als event listener)
+    // Directe, betrouwbare print trigger functie
     function triggerPrint() {
-      try {
-        if (currentPrintMode === 'single-a4') {
-          renderA4SingleGrid();
-        }
-      } catch (err) {
-        console.warn("Fout bij synchroniseren printgrid:", err);
+      if (currentPrintMode === 'single-a4' && (!a4SingleGridFront || a4SingleGridFront.children.length === 0)) {
+        renderA4SingleGrid();
       }
-      setTimeout(() => {
-        window.print();
-      }, 50);
+      window.print();
     }
     window.triggerPrint = triggerPrint;
 
     if (btnPrint) {
-      btnPrint.addEventListener("click", triggerPrint);
+      btnPrint.onclick = triggerPrint;
     }
 
     // Initial load: Default naar 1x Kaart op A4 (⭐ Aanbevolen voor 1 stoel)
