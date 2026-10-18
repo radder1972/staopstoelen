@@ -3673,19 +3673,19 @@ input[type="checkbox"] {
   background: linear-gradient(135deg, #fdf8f3 0%, #faede1 100%);
   border: 1.5px solid rgba(214, 90, 49, 0.3);
   border-radius: 18px;
-  padding: 42px 40px;
-  min-height: 400px;
-  margin-bottom: 38px;
-  box-shadow: 0 12px 36px rgba(18, 43, 7, 0.07);
+  padding: 16px 24px;
+  min-height: auto;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(18, 43, 7, 0.06);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 10px;
   scroll-margin-top: 165px;
 }
 @media (max-width: 991px) {
   .najaarsactie-catalog-banner {
-    padding: 28px 22px;
-    gap: 20px;
+    padding: 14px 18px;
+    gap: 10px;
     min-height: auto;
     scroll-margin-top: 180px;
   }
@@ -4188,66 +4188,52 @@ input[type="checkbox"] {
     font-size: 0.78rem !important;
   }
 
-  /* Fitform Advertentie op Productpagina (staopstoelen.html): Foto & tekst strak NAAST elkaar op tablet */
+  /* Fitform Advertentie op Productpagina (staopstoelen.html): Compacte sfeerfoto & tekst strak naast elkaar op tablet */
   .najaarsactie-catalog-banner {
-    padding: 24px 20px !important;
-    gap: 16px !important;
+    padding: 14px 16px !important;
+    gap: 8px !important;
   }
   .najaarsactie-catalog-banner .najaarsactie-banner-inner {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    gap: 22px !important;
+    gap: 18px !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
   }
   .najaarsactie-foto-col {
-    flex: 0 0 240px !important;
-    max-width: 240px !important;
-    margin: 8px 10px !important;
+    flex: 0 0 165px !important;
+    max-width: 165px !important;
+    margin: 4px 6px !important;
   }
   .najaarsactie-foto-col img {
-    max-width: 240px !important;
+    max-width: 165px !important;
     height: auto !important;
   }
   .najaarsactie-foto-col .banner-stamp-link {
-    width: 88px !important;
-    height: 88px !important;
-    top: -14px !important;
+    width: 76px !important;
+    height: 76px !important;
+    top: -12px !important;
     left: -14px !important;
   }
   .najaarsactie-foto-col .banner-stamp {
-    width: 88px !important;
-    height: 88px !important;
+    width: 76px !important;
+    height: 76px !important;
   }
   .najaarsactie-info-col {
     flex: 1 1 auto !important;
     min-width: 0 !important;
-    gap: 12px !important;
+    gap: 6px !important;
   }
   .najaarsactie-info-col h3 {
-    font-size: clamp(1.25rem, 2.2vw, 1.55rem) !important;
+    font-size: clamp(1.15rem, 2vw, 1.38rem) !important;
     line-height: 1.25 !important;
     margin: 0 !important;
   }
   .najaarsactie-info-col p {
-    font-size: 0.9rem !important;
-    line-height: 1.45 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
     margin: 0 !important;
-  }
-  .najaarsactie-info-col > div:nth-of-type(1) {
-    gap: 8px !important;
-    flex-wrap: nowrap !important;
-  }
-  .najaarsactie-info-col > div:nth-of-type(1) > div {
-    padding: 10px 8px !important;
-    flex: 1 1 0 !important;
-  }
-  .najaarsactie-info-col > div:nth-of-type(1) > div span:first-of-type {
-    font-size: 0.72rem !important;
-  }
-  .najaarsactie-info-col > div:nth-of-type(1) > div span:last-of-type {
-    font-size: 1.05rem !important;
   }
 
   .hero-stamp-header {
