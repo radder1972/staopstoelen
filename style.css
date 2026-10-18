@@ -119,14 +119,12 @@ img {
 }
 
 .section-title {
-  font-size: 2.25rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.85rem);
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
   margin-bottom: 16px;
-}
-
-@media (min-width: 768px) {
-  .section-title {
-    font-size: 2.75rem;
-  }
 }
 
 .section-subtitle {
@@ -5539,8 +5537,7 @@ input[type="checkbox"] {
 }
 
 .hero-dealer-trust:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(243, 146, 35, 0.2) !important;
-  border-color: rgba(243, 146, 35, 0.7) !important;
+  transform: translateY(-1px);
+  opacity: 0.88;
 }
 
