@@ -627,13 +627,8 @@ section[id], section {
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 40px;
-}
-
-.hero-buttons .btn {
-  padding: 13px 22px;
-  font-size: 0.96rem;
 }
 
 @media (max-width: 600px) {

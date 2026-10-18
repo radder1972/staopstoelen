@@ -2569,6 +2569,33 @@
       }
     }
 
+    function filterNieuwChairs(scrollToGrid = true) {
+      document.querySelectorAll(".brand-filter").forEach(cb => cb.checked = false);
+      document.querySelectorAll(".price-filter").forEach(cb => cb.checked = false);
+      document.querySelectorAll(".condition-filter").forEach(cb => {
+        cb.checked = (cb.value.toLowerCase() === 'nieuw');
+      });
+
+      renderCatalog();
+
+      if (scrollToGrid) {
+        const target = document.getElementById("catalogGrid");
+        if (target) {
+          const yOffset = -120;
+          const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }
+
+    function isNieuwRequested() {
+      const h = (window.location.hash || "").toLowerCase();
+      const s = (window.location.search || "").toLowerCase();
+      return h === "#nieuw" ||
+             s.includes("condition=nieuw") ||
+             s.includes("filter=nieuw");
+    }
+
     function filterOccasionChairs(scrollToGrid = true) {
       document.querySelectorAll(".brand-filter").forEach(cb => cb.checked = false);
       document.querySelectorAll(".price-filter").forEach(cb => cb.checked = false);
@@ -2631,6 +2658,16 @@
             window.scrollTo({ top: y, behavior: 'smooth' });
           }
         }, 150);
+      } else if (isNieuwRequested()) {
+        filterNieuwChairs(false);
+        setTimeout(() => {
+          const el = document.getElementById("catalogGrid");
+          if (el) {
+            const yOffset = -120;
+            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 150);
       }
     }
 
@@ -2640,6 +2677,8 @@
         filterNajaarsactieChairs(true);
       } else if (isOccasionsRequested()) {
         filterOccasionChairs(true);
+      } else if (isNieuwRequested()) {
+        filterNieuwChairs(true);
       } else {
         renderCatalog();
       }
@@ -2701,6 +2740,8 @@
         filterNajaarsactieChairs(false);
       } else if (isOccasionsRequested()) {
         filterOccasionChairs(false);
+      } else if (isNieuwRequested()) {
+        filterNieuwChairs(false);
       } else {
         renderCatalog();
       }
