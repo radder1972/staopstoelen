@@ -27,6 +27,10 @@
     # Direct shortcut for Google Reviews (staopstoelen.nl/review)
     RewriteRule ^(google-)?review(\.html)?/?$ https://g.page/r/CYF_zuQphK3aEAE/review [R=302,NE,L]
 
+    # Campaign Shortcuts (Print flyer & offline marketing -> GA4 tracked)
+    RewriteRule ^(najaars)?actie/?$ /?utm_source=flyer&utm_medium=print&utm_campaign=najaarsactie [R=302,NE,L]
+    RewriteRule ^flyer/?$ /?utm_source=flyer&utm_medium=print&utm_campaign=najaarsactie [R=302,NE,L]
+
     # Rewrite clean URLs without .html extension (e.g. /keuzehulp -> /keuzehulp.html)
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
     RewriteRule ^([^/]+)/?$ $1.html [L]
