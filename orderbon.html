@@ -282,7 +282,6 @@
       border-radius: 6px;
       text-transform: uppercase;
       margin-bottom: 5px;
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.2);
     }
 
     .brand-left {
@@ -367,7 +366,6 @@
       padding: 5px 16px;
       border-radius: 6px;
       text-transform: uppercase;
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.2);
       display: inline-block;
     }
 
@@ -1034,7 +1032,6 @@
     .sheet.brand-mode-schipper .header-order-badge {
       background: #0f172a;
       color: #ffffff;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
     }
 
     .sheet.brand-mode-schipper .order-meta-bar {
@@ -1045,7 +1042,6 @@
     .sheet.brand-mode-schipper .order-badge {
       background: #0f172a;
       color: #ffffff;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
     }
 
     .sheet.brand-mode-schipper .meta-col-label {
@@ -1141,10 +1137,26 @@
 
     /* Print Specific Styling */
     @media print {
+      /* CRUCIAAL: Schakel alle box-shadows, filters en backdrop-filters uit in print/PDF.
+         Dit voorkomt dat de browser Skia Soft-Masks (rastermaskers) aanmaakt die als
+         lelijke blokken, grijze randen of bleed-vlakken achter boxen en badges worden afgedrukt. */
+      *,
+      *::before,
+      *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
       body {
         background: #ffffff !important;
         padding: 0 !important;
         margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
       .no-print-bar {
