@@ -444,18 +444,18 @@
         </defs>
       </svg>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;" class="najaarsactie-grid">
-        <!-- Image Column (Left) - Dubbelklik Easter Egg: Geertjan in de fauteuil! -->
-        <div class="najaarsactie-image-col" style="text-align: center;">
-          <!-- Officiële Fabrieksactie + Fitform gecentreerd boven de foto -->
-          <div style="display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap;">
-            <img src="assets/fitform_logo_terracotta.png" alt="Fitform" width="74" height="38" loading="lazy" decoding="async" style="height: 36px; width: auto; display: block;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-terracotta); color: #ffffff; height: 36px; padding: 0 16px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.8px; box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35); box-sizing: border-box; white-space: nowrap;">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-              <span>Officiële Fabrieksactie</span>
-            </div>
-          </div>
+      <!-- Regel 1: Officiële Fitform Fabrieksactie apart gecentreerd over de volle breedte -->
+      <div style="display: flex; justify-content: center; margin-bottom: 28px;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-terracotta); color: #ffffff; height: 38px; padding: 0 22px; border-radius: 999px; font-weight: 700; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.8px; box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35); box-sizing: border-box; white-space: nowrap;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          <span>Officiële Fitform Fabrieksactie</span>
+        </div>
+      </div>
 
+      <!-- Deel 2: Twee kolommen (Foto links, Tekst rechts) -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;" class="najaarsactie-grid">
+        <!-- Linkerkolom: Foto -->
+        <div class="najaarsactie-image-col" style="text-align: center;">
           <div style="position: relative; display: inline-block; max-width: 100%; cursor: pointer;" ondblclick="toggleNajaarsactieEasterEgg()" title="Dubbelklik voor een verrassing!">
             <picture id="najaarsactiePicture" style="transition: opacity 0.22s ease-in-out; display: block;">
               <source id="najaarsactieSourceMobile" media="(max-width: 640px)" srcset="assets/fitform_najaarsactie_2026_mobile.avif" type="image/avif">
@@ -469,57 +469,28 @@
             </a>
           </div>
 
-          <!-- Subtiele Easter Egg badge onder de advertentie -->
+          <!-- Subtiele Easter Egg badge onder de foto -->
           <div id="najaarsactieEasterEggPill" style="display: none; margin-top: 12px; background: rgba(75, 143, 36, 0.1); color: var(--color-forest); border: 1px solid rgba(75, 143, 36, 0.3); padding: 6px 18px; border-radius: 9999px; font-weight: 700; font-size: 0.88rem; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Getest &amp; goedgekeurd door Geertjan!</span>
           </div>
-
-          <!-- Toon Actiemodellen gecentreerd onder de foto -->
-          <div style="display: flex; justify-content: center; margin-top: 22px;">
-            <div style="position: relative; display: inline-block;">
-              <!-- Blaadje linksboven -->
-              <div style="position: absolute; top: -16px; left: -16px; pointer-events: none; z-index: 3;">
-                <svg width="40" height="40" viewBox="0 0 32 32" style="display:block; transform: rotate(-25deg); filter: drop-shadow(0 2px 5px rgba(0,0,0,0.25));">
-                  <use href="#boxLeafBase" fill="url(#boxLeafGradAmber)" />
-                </svg>
-              </div>
-              <!-- Blaadje rechtsonder -->
-              <div style="position: absolute; bottom: -14px; right: -14px; pointer-events: none; z-index: 3;">
-                <svg width="34" height="34" viewBox="0 0 32 32" style="display:block; transform: rotate(38deg); filter: drop-shadow(0 2px 5px rgba(0,0,0,0.25));">
-                  <use href="#boxLeafBase" fill="url(#boxLeafGradRed)" />
-                </svg>
-              </div>
-              <!-- Blaadje rechtsboven -->
-              <div style="position: absolute; top: -12px; right: 18px; pointer-events: none; z-index: 3;">
-                <svg width="28" height="28" viewBox="0 0 32 32" style="display:block; transform: rotate(18deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
-                  <use href="#boxLeafBase" fill="url(#boxLeafGradWine)" />
-                </svg>
-              </div>
-
-              <!-- Oranje-Groene Knop: Toon Actiemodellen -->
-              <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="btn btn-najaarsactie-red" style="position: relative; z-index: 2; background: linear-gradient(115deg, #ea580c 0%, #e68a00 42%, #256616 100%); color: #ffffff; border: 2px solid rgba(255,255,255,0.45); padding: 13px 34px; font-size: 1.02rem; font-weight: 800; border-radius: var(--radius-full); box-shadow: 0 5px 18px rgba(37, 102, 22, 0.35), 0 2px 8px rgba(234, 88, 12, 0.3); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none;">
-                <span>Toon Actiemodellen</span>
-              </a>
-            </div>
-          </div>
         </div>
 
-        <!-- Content Column (Right) -->
+        <!-- Rechterkolom: Tekst -->
         <div class="najaarsactie-content" style="display: flex; flex-direction: column; justify-content: center;">
           <h2 class="section-title" style="color: var(--color-forest); margin-bottom: 16px;">
             Profiteer van korting tot <span style="color: var(--color-terracotta);">€600</span> op een Fitform-fauteuil
           </h2>
           
-          <p style="font-size: 1.15rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 16px; font-weight: 400;">
+          <p style="font-size: 1.15rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 14px; font-weight: 400;">
             De hele maand oktober ontvangt u bij staopstoelen.nl fabrieksactiekorting bij de aanschaf van een Fitform fauteuil op maat.
           </p>
 
-          <p style="font-size: 1.125rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 16px; font-weight: 400;">
+          <p style="font-size: 1.125rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 14px; font-weight: 400;">
             Met een Fitform-fauteuil kiest u voor 100% Nederlands maatwerk, ultiem ergonomisch zitcomfort en moeiteloos opstaan.
           </p>
           
-          <p style="font-size: 1.125rem; color: var(--color-forest); font-weight: 700; line-height: 1.6; margin-bottom: 24px;">
+          <p style="font-size: 1.125rem; color: var(--color-forest); font-weight: 700; line-height: 1.6; margin-bottom: 20px;">
             Wacht niet langer, écht goed zitten is nu wel héél aantrekkelijk!
           </p>
 
@@ -529,6 +500,35 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
+        </div>
+      </div>
+
+      <!-- Regel 3: Toon Actiemodellen apart gecentreerd over de volle breedte -->
+      <div style="display: flex; justify-content: center; margin-top: 36px;">
+        <div style="position: relative; display: inline-block;">
+          <!-- Blaadje linksboven -->
+          <div style="position: absolute; top: -16px; left: -16px; pointer-events: none; z-index: 3;">
+            <svg width="40" height="40" viewBox="0 0 32 32" style="display:block; transform: rotate(-25deg); filter: drop-shadow(0 2px 5px rgba(0,0,0,0.25));">
+              <use href="#boxLeafBase" fill="url(#boxLeafGradAmber)" />
+            </svg>
+          </div>
+          <!-- Blaadje rechtsonder -->
+          <div style="position: absolute; bottom: -14px; right: -14px; pointer-events: none; z-index: 3;">
+            <svg width="34" height="34" viewBox="0 0 32 32" style="display:block; transform: rotate(38deg); filter: drop-shadow(0 2px 5px rgba(0,0,0,0.25));">
+              <use href="#boxLeafBase" fill="url(#boxLeafGradRed)" />
+            </svg>
+          </div>
+          <!-- Blaadje rechtsboven -->
+          <div style="position: absolute; top: -12px; right: 18px; pointer-events: none; z-index: 3;">
+            <svg width="28" height="28" viewBox="0 0 32 32" style="display:block; transform: rotate(18deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+              <use href="#boxLeafBase" fill="url(#boxLeafGradWine)" />
+            </svg>
+          </div>
+
+          <!-- Oranje-Groene Knop: Toon Actiemodellen -->
+          <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="btn btn-najaarsactie-red" style="position: relative; z-index: 2; background: linear-gradient(115deg, #ea580c 0%, #e68a00 42%, #256616 100%); color: #ffffff; border: 2px solid rgba(255,255,255,0.45); padding: 14px 42px; font-size: 1.08rem; font-weight: 800; border-radius: var(--radius-full); box-shadow: 0 5px 18px rgba(37, 102, 22, 0.35), 0 2px 8px rgba(234, 88, 12, 0.3); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none;">
+            <span>Toon Actiemodellen</span>
+          </a>
         </div>
       </div>
     </div>
