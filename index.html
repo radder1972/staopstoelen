@@ -1443,9 +1443,14 @@
                   `;
                 }
 
+                const cleanTitle = String(item.name || "")
+                  .replace(/\b(occasion|occasions|reco|demo|voorraad|senioren\s+sta-?op\s+stoel|sta-?op\s+stoel|seniorenstoel|draaibaar|draaibare)\b/gi, "")
+                  .replace(/\s+/g, " ")
+                  .trim() || item.name;
+
                 card.innerHTML = `
                   <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
-                    <img src="${item.image}" alt="${item.name}" loading="lazy" decoding="async" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                    <img src="${item.image}" alt="${cleanTitle}" loading="lazy" decoding="async" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                     ${stampHtml}
                     <div style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; z-index: 4;">
                       ${actieInfo ? `
@@ -1458,7 +1463,7 @@
                     </div>
                   </div>
                   <div class="product-info" style="display: flex; flex-direction: column;">
-                    <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${item.name}</h3>
+                    <h3 class="product-title" style="font-size: 1.15rem; margin-bottom: 8px;">${cleanTitle}</h3>
                     <div style="font-size: 0.875rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
                       ${getGridDescriptionPreview(item.description)}
                     </div>
