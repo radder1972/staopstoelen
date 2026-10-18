@@ -789,7 +789,7 @@
             </button>
             <div class="faq-answer">
               <p>
-                Bij staopstoelen.nl heeft u keuze uit zowel gloednieuwe maatwerkstoelen als vakkundig gereviseerde occasions (RECO) van A-merken zoals Fitform en Doge. Onze gereviseerde sta-op stoelen zijn al verkrijgbaar vanaf € 595,- inclusief 1 jaar volledige garantie en afstelling op maat. Nieuwe modellen starten vanaf circa € 1.495,-.
+                Bij staopstoelen.nl heeft u keuze uit zowel gloednieuwe maatwerkstoelen als vakkundig gereviseerde occasions (RECO) van A-merken zoals Fitform en Doge. Onze gereviseerde sta-op stoelen zijn al verkrijgbaar vanaf <span class="dynamic-lowest-occasion-price">€ 1.050,-</span> inclusief 1 jaar volledige garantie en afstelling op maat. Nieuwe modellen starten vanaf circa € 1.495,-.
               </p>
             </div>
           </div>
@@ -2736,6 +2736,15 @@
         console.warn("Could not connect to database server. Using localStorage/static fallback.");
       }
       initBrandFilters();
+      const occStaop = GOEDKOPE_STAOPSTOELEN_DATA.filter(c => ((c.condition && c.condition.toLowerCase() === "occasion") || c.badgeType === "reco") && (!c.type || c.type.toLowerCase() === "staop") && Number(c.price) > 0);
+      const availOccStaop = occStaop.filter(c => !c.status || c.status.toLowerCase() === "beschikbaar");
+      const pricePool = availOccStaop.length > 0 ? availOccStaop : occStaop;
+      if (pricePool.length > 0) {
+        const minOccPrice = Math.min(...pricePool.map(c => Number(c.price)));
+        document.querySelectorAll(".dynamic-lowest-occasion-price").forEach(el => {
+          el.textContent = `€ ${minOccPrice.toLocaleString("nl-NL")},-`;
+        });
+      }
       if (isActieRequested()) {
         filterNajaarsactieChairs(false);
       } else if (isOccasionsRequested()) {

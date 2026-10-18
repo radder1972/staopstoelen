@@ -197,7 +197,7 @@
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.13); color: var(--color-forest); flex-shrink: 0; margin-top: 2px;">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              <span><strong style="color: var(--color-dark);">Occasions v.a. € 595,- &amp; nieuw maatwerk</strong> &mdash; Ruime collectie Fitform &amp; Doge</span>
+              <span><strong style="color: var(--color-dark);">Occasions v.a. <span class="dynamic-lowest-occasion-price">€ 1.050,-</span> &amp; nieuw maatwerk</strong> &mdash; Ruime collectie Fitform &amp; Doge</span>
             </li>
             <li style="display: flex; align-items: flex-start; gap: 11px; line-height: 1.45;">
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.13); color: var(--color-forest); flex-shrink: 0; margin-top: 2px;">
@@ -1319,6 +1319,17 @@
           if (dbData && dbData.staopstoelen) {
             const allChairs = dbData.staopstoelen || [];
             
+            // Dynamically update lowest occasion price in Hero USP
+            const occStaop = allChairs.filter(c => ((c.condition && c.condition.toLowerCase() === "occasion") || c.badgeType === "reco") && (!c.type || c.type.toLowerCase() === "staop") && Number(c.price) > 0);
+            const availOccStaop = occStaop.filter(c => !c.status || c.status.toLowerCase() === "beschikbaar");
+            const pricePool = availOccStaop.length > 0 ? availOccStaop : occStaop;
+            if (pricePool.length > 0) {
+              const minOccPrice = Math.min(...pricePool.map(c => Number(c.price)));
+              document.querySelectorAll(".dynamic-lowest-occasion-price").forEach(el => {
+                el.textContent = `€ ${minOccPrice.toLocaleString("nl-NL")},-`;
+              });
+            }
+
             // Dynamically populate Hero Slideshow with chairs that have an ambient/cozy photo
             renderDynamicHeroSlideshow(allChairs);
 
