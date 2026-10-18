@@ -1338,61 +1338,45 @@
             const addedIds = new Set();
             
             function findBestChair(condition, type) {
-              // Priority 1: marked as offer, available
-              let match = allChairs.find(c => 
+              const matchesFilter = (c) =>
                 !addedIds.has(c.id) &&
-                c.is_offer === true && 
-                c.status === "beschikbaar" && 
-                (condition === null || c.condition === condition) && 
-                c.type === type
-              );
-              
+                (condition === null || c.condition === condition) &&
+                (type === null || c.type === type);
+
+              // Priority 1: marked as offer, available
+              let match = allChairs.find(c => matchesFilter(c) && c.is_offer === true && c.status === "beschikbaar");
+
               // Priority 2: marked as offer
               if (!match) {
-                match = allChairs.find(c => 
-                  !addedIds.has(c.id) &&
-                  c.is_offer === true && 
-                  (condition === null || c.condition === condition) && 
-                  c.type === type
-                );
+                match = allChairs.find(c => matchesFilter(c) && c.is_offer === true);
               }
-              
-              // Priority 3: available
+
+              // Priority 3: available true occasion (named Occasion) when requesting occasion
+              if (!match && condition === "occasion") {
+                match = allChairs.find(c => matchesFilter(c) && c.status === "beschikbaar" && c.name && c.name.toLowerCase().includes("occasion"));
+              }
+
+              // Priority 4: available
               if (!match) {
-                match = allChairs.find(c => 
-                  !addedIds.has(c.id) &&
-                  c.status === "beschikbaar" && 
-                  (condition === null || c.condition === condition) && 
-                  c.type === type
-                );
+                match = allChairs.find(c => matchesFilter(c) && c.status === "beschikbaar");
               }
-              
-              // Priority 4: fallback to any matching
+
+              // Priority 5: fallback to any matching
               if (!match) {
-                match = allChairs.find(c => 
-                  !addedIds.has(c.id) &&
-                  (condition === null || c.condition === condition) && 
-                  c.type === type
-                );
+                match = allChairs.find(c => matchesFilter(c));
               }
-              
+
               if (match) {
                 addedIds.add(match.id);
               }
               return match;
             }
-            
-            // 1. Nieuwe sta-op stoel
-            const nieuwStaop = findBestChair("nieuw", "staop");
-            if (nieuwStaop) offers.push(nieuwStaop);
-            
-            // 2. Occasion sta-op stoel
-            const occasionStaop = findBestChair("occasion", "staop");
-            if (occasionStaop) offers.push(occasionStaop);
-            
-            // 3. Seniorenstoel (Type 'relax' is seniorenstoel)
-            const seniorenstoel = findBestChair(null, "relax");
-            if (seniorenstoel) offers.push(seniorenstoel);
+
+            // Selecteer 3 occasions voor de Top 3 Aanbiedingen sectie
+            for (let i = 0; i < 3; i++) {
+              const occ = findBestChair("occasion", null);
+              if (occ) offers.push(occ);
+            }
             
             // Fallback: fill up to 3 if any category was completely empty
             if (offers.length < 3) {
