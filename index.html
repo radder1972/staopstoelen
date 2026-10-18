@@ -21,7 +21,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.97">
+  <link rel="stylesheet" href="style.css?v=10.98">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -1022,7 +1022,8 @@
           </div>`;
       }
       modalDesc.innerHTML = item.description || "";
-      const actieInfo = getFitformActieInfo(item);
+      const isNew = item.condition === "nieuw";
+      const actieInfo = isNew ? null : getFitformActieInfo(item);
       if (actieInfo && item.old_price && item.old_price > item.price) {
         modalPrice.innerHTML = `
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
@@ -1075,7 +1076,7 @@
       
       if (item.condition === "occasion") {
         modalStamp.src = "assets/revisie_stempel_clean.svg?v=2.0";
-        modalStamp.alt = "Gereviseerd";
+        modalStamp.alt = "Gereviseerd als nieuw met garantie";
         modalStamp.className = "quality-stamp";
         modalStamp.style.display = "block";
       } else {
@@ -1085,7 +1086,10 @@
       const modalStatusLabel = document.getElementById("modalProductStatusLabel");
       const modalImgWrapper = document.getElementById("modalImageWrapper");
       
-      if (item.status === "verkocht") {
+      if (isNew) {
+        modalStatusLabel.style.display = "none";
+        if (modalImgWrapper) modalImgWrapper.classList.remove("is-unavailable");
+      } else if (item.status === "verkocht") {
         modalStatusLabel.textContent = "Verkocht";
         modalStatusLabel.className = "product-status-label status-verkocht";
         modalStatusLabel.style.display = "block";
@@ -1100,7 +1104,11 @@
         if (modalImgWrapper) modalImgWrapper.classList.remove("is-unavailable");
       }
 
-      if (item.badge) {
+      if (isNew) {
+        modalBadge.textContent = "Nieuw";
+        modalBadge.className = "badge badge-new";
+        modalBadge.style.display = "block";
+      } else if (item.badge) {
         modalBadge.textContent = item.badge;
         modalBadge.className = `badge badge-${item.badgeType || 'new'}`;
         modalBadge.style.display = "block";
@@ -1108,7 +1116,7 @@
         modalBadge.style.display = "none";
       }
 
-      // Handle Najaarsactie sticker and alert in modal (excluded for occasions)
+      // Handle Najaarsactie sticker and alert in modal (geen actie sticker op nieuwe stoel of occasions)
       const modalActieSticker = document.getElementById("modalActieSticker");
       const modalNajaarsactieAlert = document.getElementById("modalNajaarsactieAlert");
       if (modalActieSticker) {
@@ -1371,8 +1379,11 @@
               return match;
             }
 
-            // Selecteer 3 occasions voor de Top 3 Aanbiedingen sectie
-            for (let i = 0; i < 3; i++) {
+            // Selecteer 1 nieuwe stoel en 2 occasions voor de Top 3 Aanbiedingen sectie
+            const nieuwChair = findBestChair("nieuw", "staop") || findBestChair("nieuw", null);
+            if (nieuwChair) offers.push(nieuwChair);
+
+            for (let i = offers.length; i < 3; i++) {
               const occ = findBestChair("occasion", null);
               if (occ) offers.push(occ);
             }
@@ -1402,18 +1413,22 @@
                 card.className = "product-card";
                 card.setAttribute("tabindex", "0");
 
+                const isNew = item.condition === "nieuw";
+
                 let stampHtml = "";
                 if (item.condition === "occasion") {
-                  stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=2.0" alt="Gereviseerd" class="quality-stamp" width="68" height="68" loading="lazy" decoding="async">`;
+                  stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=2.0" alt="Gereviseerd als nieuw met garantie" class="quality-stamp" width="68" height="68" loading="lazy" decoding="async">`;
                 }
-                if (item.status === "verkocht") {
-                  stampHtml += `<div class="product-status-label status-verkocht">Verkocht</div>`;
-                } else if (item.status === "gereserveerd") {
-                  stampHtml += `<div class="product-status-label status-gereserveerd">Gereserveerd</div>`;
+                if (!isNew) {
+                  if (item.status === "verkocht") {
+                    stampHtml += `<div class="product-status-label status-verkocht">Verkocht</div>`;
+                  } else if (item.status === "gereserveerd") {
+                    stampHtml += `<div class="product-status-label status-gereserveerd">Gereserveerd</div>`;
+                  }
                 }
 
-                const isUnavailable = item.status && item.status !== "beschikbaar";
-                const actieInfo = getFitformActieInfo(item);
+                const isUnavailable = !isNew && item.status && item.status !== "beschikbaar";
+                const actieInfo = isNew ? null : getFitformActieInfo(item);
 
                 let priceHtml = "";
                 if (actieInfo && item.old_price && item.old_price > item.price) {
@@ -1447,6 +1462,13 @@
                   .replace(/\s+/g, " ")
                   .trim() || item.name;
 
+                let badgeHtml = "";
+                if (isNew) {
+                  badgeHtml = `<span class="badge badge-new" style="position: static;">Nieuw</span>`;
+                } else if (item.badge) {
+                  badgeHtml = `<span class="badge badge-${item.badgeType || 'new'}" style="position: static;">${item.badge}</span>`;
+                }
+
                 card.innerHTML = `
                   <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
                     <img src="${item.image}" alt="${cleanTitle}" loading="lazy" decoding="async" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; border-radius: 16px; padding: 0 !important; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);">
@@ -1458,7 +1480,7 @@
                           <span>${actieInfo.label}</span>
                         </div>
                       ` : ''}
-                      ${item.badge ? `<span class="badge badge-${item.badgeType || 'new'}" style="position: static;">${item.badge}</span>` : ""}
+                      ${badgeHtml}
                     </div>
                   </div>
                   <div class="product-info" style="display: flex; flex-direction: column;">
