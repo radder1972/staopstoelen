@@ -350,9 +350,8 @@ section[id], section {
   font-size: 2.65rem; /* Larger heading font size */
   font-weight: 800; /* Extra bold heading style */
   line-height: 1.05;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: inline-block !important;
+  white-space: nowrap !important;
   color: var(--color-forest);
   text-decoration: none;
   letter-spacing: -0.8px;
@@ -360,11 +359,20 @@ section[id], section {
   transition: opacity var(--transition-fast);
 }
 
+.nav-logo-main {
+  display: block;
+  white-space: nowrap !important;
+}
+
 .nav-text-logo span {
   color: var(--color-terracotta); /* Make .nl orange */
+  display: inline !important;
+  white-space: nowrap !important;
 }
 
 .nav-logo-strapline {
+  display: block;
+  white-space: nowrap !important;
   font-family: var(--font-body), 'Outfit', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
@@ -414,9 +422,7 @@ section[id], section {
     letter-spacing: -0.5px !important;
     line-height: 1 !important;
     white-space: nowrap !important;
-    display: inline-flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
+    display: inline-block !important;
     z-index: 10 !important;
     color: var(--color-forest) !important;
   }
