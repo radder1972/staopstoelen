@@ -365,14 +365,14 @@ section[id], section {
 }
 
 .nav-logo-strapline {
-  font-family: var(--font-heading), 'Montserrat', sans-serif;
-  font-size: 0.72rem;
+  font-family: var(--font-body), 'Outfit', sans-serif;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--color-dark);
-  letter-spacing: 0.85px;
+  color: #0f172a;
+  letter-spacing: 0.45px;
   line-height: 1.2;
-  margin-top: 4px;
+  margin-top: 3px;
   padding-left: 2px;
 }
 
