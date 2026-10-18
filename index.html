@@ -403,111 +403,80 @@
   </section>
 
   <!-- Fitform Najaarsactie Campaign Section -->
-  <section id="najaarsactie" style="position: relative; overflow: hidden; padding: 80px 0; background-color: #ffffff; border-top: 1px solid var(--color-gray-light); border-bottom: 1px solid var(--color-gray-light); scroll-margin-top: 140px;">
+  <section id="najaarsactie" style="position: relative; overflow: hidden; padding: 40px 0; background-color: #ffffff; border-top: 1px solid var(--color-gray-light); border-bottom: 1px solid var(--color-gray-light); scroll-margin-top: 140px;">
     <div class="najaarsactie-leaves-bg" id="najaarsactieLeaves"></div>
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;" class="najaarsactie-grid">
+      <!-- SVG Gradienten en basisvorm voor blaadjes op de actieknop -->
+      <svg width="0" height="0" style="position: absolute; overflow: hidden; pointer-events: none;" aria-hidden="true">
+        <defs>
+          <linearGradient id="boxLeafGradGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fed857" />
+            <stop offset="50%" stop-color="#f39223" />
+            <stop offset="100%" stop-color="#d35400" />
+          </linearGradient>
+          <linearGradient id="boxLeafGradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f39223" />
+            <stop offset="65%" stop-color="#c0392b" />
+            <stop offset="100%" stop-color="#78281f" />
+          </linearGradient>
+          <linearGradient id="boxLeafGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f1c40f" />
+            <stop offset="50%" stop-color="#e67e22" />
+            <stop offset="100%" stop-color="#a04000" />
+          </linearGradient>
+          <linearGradient id="boxLeafGradWine" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f39223" />
+            <stop offset="60%" stop-color="#b71c1c" />
+            <stop offset="100%" stop-color="#560027" />
+          </linearGradient>
+          <linearGradient id="boxLeafGradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7cb342" />
+            <stop offset="50%" stop-color="#e67e22" />
+            <stop offset="100%" stop-color="#c0392b" />
+          </linearGradient>
+          
+          <!-- Herbruikbaar Authentiek Beukenblad met Steel en Fijne Nerven -->
+          <g id="boxLeafBase">
+            <path d="M16 2 C23 6 28 13 26 21 C24 26 18 29 15 29 C14.5 29 14 31 13 32 L12 31.5 C12.8 30 13 28.5 13.5 27.5 C8 26 4 20 4 14 C4 8 10 3 16 2 Z" />
+            <path d="M16 3 C15.5 10 14.5 18 13.2 27" stroke="#4a1f03" stroke-width="0.9" fill="none" opacity="0.65" />
+            <path d="M15.5 8 Q19 10 22 11 M15 12 Q19 14 23 16 M14.5 16 Q18 18 21 21 M15 10 Q11 12 7 13 M14.5 14 Q10 16 7 18 M14 18 Q10 20 8 23" stroke="#4a1f03" stroke-width="0.6" fill="none" opacity="0.45" />
+          </g>
+        </defs>
+      </svg>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;" class="najaarsactie-grid">
         <!-- Image Column (Left) - Dubbelklik Easter Egg: Geertjan in de fauteuil! -->
-        <div class="najaarsactie-image-col" style="position: relative; text-align: center; cursor: pointer;" ondblclick="toggleNajaarsactieEasterEgg()" title="Dubbelklik voor een verrassing!">
-            <picture id="najaarsactiePicture" style="transition: opacity 0.22s ease-in-out; display: block;">
-              <source id="najaarsactieSourceMobile" media="(max-width: 640px)" srcset="assets/fitform_najaarsactie_2026_mobile.avif" type="image/avif">
-              <source id="najaarsactieSource" srcset="assets/fitform_najaarsactie_2026.avif" type="image/avif">
-              <img id="najaarsactieImg" src="assets/fitform_najaarsactie_2026.jpg" alt="Fitform Najaarsactie - korting tot 600 euro op een Fitform fauteuil op maat" width="540" height="403" loading="lazy" decoding="async" style="width: 100%; max-width: 540px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 15px 35px rgba(0,0,0,0.12); display: block;">
-            </picture>
-            
-            <!-- Voordeel Sticker (linksboven, gezicht blijft 100% vrij) -->
-            <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="banner-stamp-link" title="Klik om de €600 najaarsactie stoelen te bekijken" style="position: absolute; top: -22px; left: -22px; z-index: 5; text-decoration: none; width: 135px; height: 135px; margin: 0;">
-              <img src="assets/najaarsactie_stempel.svg?v=2.4" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp" width="135" height="135" loading="lazy" decoding="async" style="width: 135px !important; height: 135px !important; margin: 0 !important; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.22)); cursor: pointer;">
-            </a>
-
-            <!-- Subtiele Easter Egg badge onder de advertentie -->
-            <div id="najaarsactieEasterEggPill" style="display: none; margin-top: 14px; background: rgba(75, 143, 36, 0.1); color: var(--color-forest); border: 1px solid rgba(75, 143, 36, 0.3); padding: 6px 18px; border-radius: 9999px; font-weight: 700; font-size: 0.88rem; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Getest &amp; goedgekeurd door Geertjan!</span>
-            </div>
-          </div>
-
-        <!-- Content Column (Right) -->
-        <div class="najaarsactie-content" style="margin-top: 16px;">
-          <div style="display: flex; justify-content: flex-start; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap;">
-            <img src="assets/fitform_logo_terracotta.png" alt="Fitform" width="74" height="38" loading="lazy" decoding="async" style="height: 38px; width: auto; display: block;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-terracotta); color: #ffffff; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.8px; box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35); box-sizing: border-box; white-space: nowrap;">
+        <div class="najaarsactie-image-col" style="text-align: center;">
+          <!-- Officiële Fabrieksactie + Fitform gecentreerd boven de foto -->
+          <div style="display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap;">
+            <img src="assets/fitform_logo_terracotta.png" alt="Fitform" width="74" height="38" loading="lazy" decoding="async" style="height: 36px; width: auto; display: block;">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-terracotta); color: #ffffff; height: 36px; padding: 0 16px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.8px; box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35); box-sizing: border-box; white-space: nowrap;">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
               <span>Officiële Fabrieksactie</span>
             </div>
           </div>
-          
-          <h2 class="section-title" style="color: var(--color-forest); margin-bottom: 16px;">
-            Profiteer van korting tot <span style="color: var(--color-terracotta);">€600</span> op een Fitform-fauteuil
-          </h2>
-          
-          <p style="font-size: 1.125rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 24px; font-weight: 400;">
-            De hele maand oktober ontvangt u bij staopstoelen.nl korting bij de aanschaf van een Fitform fauteuil.
-          </p>
 
-          <div style="background-color: var(--color-cream); border-radius: var(--radius-md); padding: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.04); border-left: 5px solid var(--color-terracotta); margin-bottom: 24px;">
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-              <li style="display: flex; align-items: center; gap: 12px; font-size: 1.125rem; color: var(--color-gray); font-weight: 400;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong style="font-weight: 600; color: var(--color-dark);">600-serie:</strong> <span style="color: var(--color-terracotta); font-weight: 600;">€600 korting</span></span>
-              </li>
-              <li style="display: flex; align-items: center; gap: 12px; font-size: 1.125rem; color: var(--color-gray); font-weight: 400;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong style="font-weight: 600; color: var(--color-dark);">200-serie & 574-02 Vario:</strong> <span style="color: var(--color-terracotta); font-weight: 600;">€500 korting</span></span>
-              </li>
-              <li style="display: flex; align-items: center; gap: 12px; font-size: 1.125rem; color: var(--color-gray); font-weight: 400;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong style="font-weight: 600; color: var(--color-dark);">Overige 500-serie:</strong> <span style="color: var(--color-terracotta); font-weight: 600;">€300 korting</span></span>
-              </li>
-            </ul>
+          <div style="position: relative; display: inline-block; max-width: 100%; cursor: pointer;" ondblclick="toggleNajaarsactieEasterEgg()" title="Dubbelklik voor een verrassing!">
+            <picture id="najaarsactiePicture" style="transition: opacity 0.22s ease-in-out; display: block;">
+              <source id="najaarsactieSourceMobile" media="(max-width: 640px)" srcset="assets/fitform_najaarsactie_2026_mobile.avif" type="image/avif">
+              <source id="najaarsactieSource" srcset="assets/fitform_najaarsactie_2026.avif" type="image/avif">
+              <img id="najaarsactieImg" src="assets/fitform_najaarsactie_2026.jpg" alt="Fitform Najaarsactie - korting tot 600 euro op een Fitform fauteuil op maat" width="540" height="403" loading="lazy" decoding="async" style="width: 100%; max-width: 480px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 12px 30px rgba(0,0,0,0.12); display: block;">
+            </picture>
+            
+            <!-- Voordeel Sticker (linksboven, gezicht blijft 100% vrij) -->
+            <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="banner-stamp-link" title="Klik om de €600 najaarsactie stoelen te bekijken" style="position: absolute; top: -18px; left: -18px; z-index: 5; text-decoration: none; width: 125px; height: 125px; margin: 0;">
+              <img src="assets/najaarsactie_stempel.svg?v=2.4" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp" width="125" height="125" loading="lazy" decoding="async" style="width: 125px !important; height: 125px !important; margin: 0 !important; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.22)); cursor: pointer;">
+            </a>
           </div>
 
-          <p style="font-size: 1.125rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 8px; font-weight: 400;">
-            Met een Fitform-fauteuil kiest u voor maatwerk, comfort en gezond zitten.
-          </p>
-          <p style="font-size: 1.125rem; color: var(--color-forest); font-weight: 600; line-height: 1.6; margin-bottom: 24px;">
-            Wacht niet langer, écht goed zitten is nu wel héél aantrekkelijk!
-          </p>
+          <!-- Subtiele Easter Egg badge onder de advertentie -->
+          <div id="najaarsactieEasterEggPill" style="display: none; margin-top: 12px; background: rgba(75, 143, 36, 0.1); color: var(--color-forest); border: 1px solid rgba(75, 143, 36, 0.3); padding: 6px 18px; border-radius: 9999px; font-weight: 700; font-size: 0.88rem; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Getest &amp; goedgekeurd door Geertjan!</span>
+          </div>
 
-        <!-- SVG Gradienten en basisvorm identiek aan de sticker en actiebox -->
-        <svg width="0" height="0" style="position: absolute; overflow: hidden; pointer-events: none;" aria-hidden="true">
-          <defs>
-            <linearGradient id="boxLeafGradGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#fed857" />
-              <stop offset="50%" stop-color="#f39223" />
-              <stop offset="100%" stop-color="#d35400" />
-            </linearGradient>
-            <linearGradient id="boxLeafGradRed" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f39223" />
-              <stop offset="65%" stop-color="#c0392b" />
-              <stop offset="100%" stop-color="#78281f" />
-            </linearGradient>
-            <linearGradient id="boxLeafGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f1c40f" />
-              <stop offset="50%" stop-color="#e67e22" />
-              <stop offset="100%" stop-color="#a04000" />
-            </linearGradient>
-            <linearGradient id="boxLeafGradWine" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f39223" />
-              <stop offset="60%" stop-color="#b71c1c" />
-              <stop offset="100%" stop-color="#560027" />
-            </linearGradient>
-            <linearGradient id="boxLeafGradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#7cb342" />
-              <stop offset="50%" stop-color="#e67e22" />
-              <stop offset="100%" stop-color="#c0392b" />
-            </linearGradient>
-            
-            <!-- Herbruikbaar Authentiek Beukenblad met Steel en Fijne Nerven -->
-            <g id="boxLeafBase">
-              <path d="M16 2 C23 6 28 13 26 21 C24 26 18 29 15 29 C14.5 29 14 31 13 32 L12 31.5 C12.8 30 13 28.5 13.5 27.5 C8 26 4 20 4 14 C4 8 10 3 16 2 Z" />
-              <path d="M16 3 C15.5 10 14.5 18 13.2 27" stroke="#4a1f03" stroke-width="0.9" fill="none" opacity="0.65" />
-              <path d="M15.5 8 Q19 10 22 11 M15 12 Q19 14 23 16 M14.5 16 Q18 18 21 21 M15 10 Q11 12 7 13 M14.5 14 Q10 16 7 18 M14 18 Q10 20 8 23" stroke="#4a1f03" stroke-width="0.6" fill="none" opacity="0.45" />
-            </g>
-          </defs>
-        </svg>
-
-          <div style="display: flex; justify-content: center; margin-top: 28px;">
+          <!-- Toon Actiemodellen gecentreerd onder de foto -->
+          <div style="display: flex; justify-content: center; margin-top: 22px;">
             <div style="position: relative; display: inline-block;">
               <!-- Blaadje linksboven -->
               <div style="position: absolute; top: -16px; left: -16px; pointer-events: none; z-index: 3;">
@@ -529,14 +498,35 @@
               </div>
 
               <!-- Oranje-Groene Knop: Toon Actiemodellen -->
-              <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="btn btn-najaarsactie-red" style="position: relative; z-index: 2; background: linear-gradient(115deg, #ea580c 0%, #e68a00 42%, #256616 100%); color: #ffffff; border: 2px solid rgba(255,255,255,0.45); padding: 14px 38px; font-size: 1.05rem; font-weight: 800; border-radius: var(--radius-full); box-shadow: 0 5px 18px rgba(37, 102, 22, 0.35), 0 2px 8px rgba(234, 88, 12, 0.3); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none;">
+              <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="btn btn-najaarsactie-red" style="position: relative; z-index: 2; background: linear-gradient(115deg, #ea580c 0%, #e68a00 42%, #256616 100%); color: #ffffff; border: 2px solid rgba(255,255,255,0.45); padding: 13px 34px; font-size: 1.02rem; font-weight: 800; border-radius: var(--radius-full); box-shadow: 0 5px 18px rgba(37, 102, 22, 0.35), 0 2px 8px rgba(234, 88, 12, 0.3); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none;">
                 <span>Toon Actiemodellen</span>
               </a>
             </div>
           </div>
-          <div style="text-align: center; margin-top: 14px;">
-            <a href="fitform-dealer-dordrecht.html" style="color: var(--color-forest); font-size: 0.92rem; font-weight: 600; text-decoration: none;">
-              Meer informatie over ons officieel Fitform dealerschap in Dordrecht
+        </div>
+
+        <!-- Content Column (Right) -->
+        <div class="najaarsactie-content" style="display: flex; flex-direction: column; justify-content: center;">
+          <h2 class="section-title" style="color: var(--color-forest); margin-bottom: 16px;">
+            Profiteer van korting tot <span style="color: var(--color-terracotta);">€600</span> op een Fitform-fauteuil
+          </h2>
+          
+          <p style="font-size: 1.15rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 16px; font-weight: 400;">
+            De hele maand oktober ontvangt u bij staopstoelen.nl fabrieksactiekorting bij de aanschaf van een Fitform fauteuil op maat.
+          </p>
+
+          <p style="font-size: 1.125rem; color: var(--color-gray); line-height: 1.6; margin-bottom: 16px; font-weight: 400;">
+            Met een Fitform-fauteuil kiest u voor 100% Nederlands maatwerk, ultiem ergonomisch zitcomfort en moeiteloos opstaan.
+          </p>
+          
+          <p style="font-size: 1.125rem; color: var(--color-forest); font-weight: 700; line-height: 1.6; margin-bottom: 24px;">
+            Wacht niet langer, écht goed zitten is nu wel héél aantrekkelijk!
+          </p>
+
+          <div>
+            <a href="fitform-dealer-dordrecht.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--color-forest-dark); font-size: 0.98rem; font-weight: 700; text-decoration: none;">
+              <span>Meer informatie over ons officieel Fitform dealerschap in Dordrecht</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </div>
