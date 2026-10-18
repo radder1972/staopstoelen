@@ -21,7 +21,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.90">
+  <link rel="stylesheet" href="style.css?v=10.93">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -1437,7 +1437,7 @@
 
                 card.innerHTML = `
                   <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
-                    <img src="${item.image}" alt="${cleanTitle}" loading="lazy" decoding="async" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                    <img src="${item.image}" alt="${cleanTitle}" loading="lazy" decoding="async" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; border-radius: 12px;">
                     ${stampHtml}
                     <div style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; z-index: 4;">
                       ${actieInfo ? `

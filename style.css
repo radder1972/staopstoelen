@@ -1966,6 +1966,17 @@ section[id], section {
   }
 }
 
+/* Stoelfoto's in Aanbiedingen box met afgeronde hoeken */
+#offersGrid .product-image img:not(.quality-stamp),
+.offers-top3-grid .product-image img:not(.quality-stamp) {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
 .results-container {
   display: grid;
   grid-template-columns: 1fr;
