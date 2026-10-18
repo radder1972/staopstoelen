@@ -272,7 +272,7 @@
         <p style="margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem;">Kom proefzitten in onze showroom aan de Merwedestraat 239 in Dordrecht (gratis parkeren). Ontdek onze collectie ergonomische senioren stoelen op maat.</p>
       </div>
       <a href="staopstoelen.html#najaarsactieBanner" class="banner-stamp-link" title="Bekijk de Fitform Najaarsactie op de sta-op stoelen pagina">
-        <img src="assets/najaarsactie_stempel.svg?v=2.3" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp">
+        <img src="assets/najaarsactie_stempel.svg?v=2.4" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp">
       </a>
     </div>
 
@@ -768,7 +768,7 @@
             <button type="button" class="modal-gallery-arrow prev-arrow" id="modalPrevBtn" aria-label="Vorige foto">&#10094;</button>
             <img id="modalProductImage" src="" alt="" style="opacity: 1;">
             <button type="button" class="modal-gallery-arrow next-arrow" id="modalNextBtn" aria-label="Volgende foto">&#10095;</button>
-            <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" style="display: none;">
+            <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.1" alt="Gereviseerd" class="quality-stamp" style="display: none;">
             <div id="modalProductStatusLabel" class="product-status-label" style="display: none;"></div>
             <div id="modalBadgesContainer" style="position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; z-index: 5;">
               <div id="modalActieSticker" class="actie-sticker" style="display: none;" title="Fitform Najaarsactie: Tot €600,- Fabriekskorting">
@@ -1907,7 +1907,7 @@
 
         let stampHtml = "";
         if (item.condition === "occasion") {
-          stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp">`;
+          stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=1.1" alt="Gereviseerd" class="quality-stamp">`;
         }
         if (item.status === "verkocht") {
           stampHtml += `<div class="product-status-label status-verkocht">Verkocht</div>`;
@@ -2136,7 +2136,7 @@
       
       // Render condition stamp (revisie / occasion)
       if (item.condition === "occasion") {
-        modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.0.48";
+        modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.1";
         modalStamp.alt = "Gereviseerd";
         modalStamp.className = "quality-stamp";
         modalStamp.style.display = "block";

@@ -395,7 +395,7 @@
             
             <!-- Voordeel Sticker (linksboven, gezicht blijft 100% vrij) -->
             <a href="staopstoelen.html?actie=1#najaarsactieBanner" class="banner-stamp-link" title="Klik om de €600 najaarsactie stoelen te bekijken" style="position: absolute; top: -22px; left: -22px; z-index: 5; text-decoration: none; width: 135px; height: 135px; margin: 0;">
-              <img src="assets/najaarsactie_stempel.svg?v=2.3" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp" width="135" height="135" loading="lazy" decoding="async" style="width: 135px !important; height: 135px !important; margin: 0 !important; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.22)); cursor: pointer;">
+              <img src="assets/najaarsactie_stempel.svg?v=2.4" alt="Fitform Najaarsactie Voordeelsticker: tot €600 Korting" class="banner-stamp" width="135" height="135" loading="lazy" decoding="async" style="width: 135px !important; height: 135px !important; margin: 0 !important; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.22)); cursor: pointer;">
             </a>
 
             <!-- Subtiele Easter Egg badge onder de advertentie -->
@@ -706,7 +706,7 @@
             <button type="button" class="modal-gallery-arrow prev-arrow" id="modalPrevBtn" aria-label="Vorige foto">&#10094;</button>
             <img id="modalProductImage" src="" alt="" style="opacity: 1;">
             <button type="button" class="modal-gallery-arrow next-arrow" id="modalNextBtn" aria-label="Volgende foto">&#10095;</button>
-            <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" width="68" height="68" style="display: none;">
+            <img id="modalProductStamp" src="assets/revisie_stempel_clean.svg?v=1.1" alt="Gereviseerd" class="quality-stamp" width="68" height="68" style="display: none;">
             <div id="modalProductStatusLabel" class="product-status-label" style="display: none;"></div>
             <div style="position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; z-index: 4;">
               <div id="modalActieSticker" class="actie-sticker" style="display: none;" title="Fitform Najaarsactie: Tot €600,- Fabriekskorting">
@@ -1073,7 +1073,7 @@
       }
       
       if (item.condition === "occasion") {
-        modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.0.48";
+        modalStamp.src = "assets/revisie_stempel_clean.svg?v=1.1";
         modalStamp.alt = "Gereviseerd";
         modalStamp.className = "quality-stamp";
         modalStamp.style.display = "block";
@@ -1408,7 +1408,7 @@
 
                 let stampHtml = "";
                 if (item.condition === "occasion") {
-                  stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=1.0.48" alt="Gereviseerd" class="quality-stamp" width="68" height="68" loading="lazy" decoding="async">`;
+                  stampHtml += `<img src="assets/revisie_stempel_clean.svg?v=1.1" alt="Gereviseerd" class="quality-stamp" width="68" height="68" loading="lazy" decoding="async">`;
                 }
                 if (item.status === "verkocht") {
                   stampHtml += `<div class="product-status-label status-verkocht">Verkocht</div>`;

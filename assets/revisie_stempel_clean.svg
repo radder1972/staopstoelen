@@ -30,10 +30,6 @@
     </textPath>
   </text>
   
-  <!-- Bullets/Dots separating top and bottom text (centered at 15 degrees below horizontal line to balance top/bottom gaps) -->
-  <circle cx="59.2" cy="174.3" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
-  <circle cx="240.8" cy="174.3" r="6" fill="#f39223" stroke="#122b07" stroke-width="1.5" />
-  
   <!-- Center green checkmark (extra bold, slightly scaled down) -->
   <path d="M 112 150 L 138 176 L 188 126" fill="none" stroke="#4b8f24" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
