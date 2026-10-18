@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.84">
+  <link rel="stylesheet" href="style.css?v=10.85">
   <style>
     .revisie-stappen-container {
       margin-top: 40px;
@@ -30,6 +30,7 @@
       max-width: 480px;
       height: 320px;
       box-sizing: border-box;
+      position: relative;
     }
     .revisie-stap-image img {
       width: 100%;
@@ -38,6 +39,21 @@
       border-radius: var(--radius-md);
       border: 4px solid var(--color-light);
       box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+    .revisie-photo-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(18, 43, 7, 0.88);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .revisie-stap-text {
       flex: 1;
@@ -71,6 +87,153 @@
       color: var(--color-dark);
       margin: 0;
     }
+
+    /* Trust & Waarborg Grid */
+    .revisie-usp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 36px 0 52px 0;
+    }
+    .revisie-usp-card {
+      background: #ffffff;
+      border: 1px solid rgba(18, 43, 7, 0.08);
+      border-radius: var(--radius-md);
+      padding: 22px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .revisie-usp-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+    .revisie-usp-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(37, 102, 22, 0.1);
+      color: var(--color-forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .revisie-usp-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .revisie-usp-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--color-forest-dark);
+      margin-bottom: 4px;
+      font-family: var(--font-heading);
+    }
+    .revisie-usp-desc {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-gray);
+      margin: 0;
+    }
+
+    /* Garantie Callout Box */
+    .revisie-garantie-callout {
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: rgba(37, 102, 22, 0.07);
+      border: 1.5px solid rgba(37, 102, 22, 0.25);
+      border-radius: var(--radius-md);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .revisie-garantie-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--color-forest);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .revisie-garantie-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .revisie-garantie-callout strong {
+      display: block;
+      color: var(--color-forest-dark);
+      font-size: 0.98rem;
+      margin-bottom: 3px;
+    }
+    .revisie-garantie-callout p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-dark);
+    }
+
+    /* Maatwerk & Zithouding Checklist Card */
+    .revisie-maatwerk-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-gray-light);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      overflow: hidden;
+      margin: 60px 0 40px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 860px) {
+      .revisie-maatwerk-card {
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+    .revisie-maatwerk-img {
+      flex: 1 1 45%;
+      min-height: 320px;
+      position: relative;
+    }
+    .revisie-maatwerk-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .revisie-maatwerk-body {
+      flex: 1 1 55%;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .revisie-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+    }
+    .revisie-checklist li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--color-dark);
+    }
+    .revisie-checklist li svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-terracotta);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
     
     @media (min-width: 768px) {
       .revisie-stap-row {
@@ -94,8 +257,8 @@
     "step": [
       {
         "@type": "HowToStep",
-        "name": "Volledig strippen van het frame",
-        "text": "De stoel wordt volledig gestript tot op het metalen basisframe. Motoren, kabels en elektronische besturing worden grondig gecontroleerd, gereinigd en getest. Versleten componenten worden vervangen.",
+        "name": "Demontage & Diepte-inspectie",
+        "text": "De stoel wordt vakkundig ontmanteld tot op het stalen basisframe. Motoren, kabels en elektronische besturing worden grondig gecontroleerd, gereinigd en getest. Versleten componenten worden preventief vervangen.",
         "image": "https://staopstoelen.nl/assets/revisie_stap3.jpg"
       },
       {
@@ -112,8 +275,8 @@
       },
       {
         "@type": "HowToStep",
-        "name": "Het eindresultaat: als nieuw met 2 jaar garantie",
-        "text": "Het resultaat is een prachtige sta-op stoel in absolute nieuwstaat. Volledig gedesinfecteerd, ergonomisch afgesteld en geleverd met 2 jaar volledige garantie.",
+        "name": "Het eindresultaat: als nieuw met 2 jaar volledige garantie",
+        "text": "Het resultaat is een prachtige sta-op stoel in absolute nieuwstaat. Volledig gedesinfecteerd, ergonomisch afgesteld en geleverd met 2 jaar volledige garantie op frame, motoren en elektronica, inclusief eigen servicedienst aan huis.",
         "image": "https://staopstoelen.nl/assets/revisie_stap4.jpg"
       }
     ]
@@ -250,9 +413,49 @@
     <div class="container">
       <a href="index.html" class="back-link">← Terug naar Home</a>
       
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 48px; max-width: 800px;">
-        Bij staopstoelen.nl geloven we in duurzaamheid en topkwaliteit. Onze gediplomeerde BewegingsTechnologen reviseren premium A-merk sta-op stoelen (zoals Fitform en Doge) tot in het kleinste detail. Van het volledig reinigen en controleren van de motoren tot het vernieuwen van de vulling en de bekleding: elke stoel verlaat onze werkplaats als nieuw. Bekijk hieronder stap voor stap hoe ons zorgvuldige revisieproces verloopt.
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 24px; max-width: 800px;">
+        Bij staopstoelen.nl geloven we in duurzaamheid, medische verantwoording en topkwaliteit. Onze gediplomeerde BewegingsTechnologen reviseren premium A-merk sta-op stoelen (zoals Fitform en Doge) tot in het kleinste detail. Van het reinigen en controleren van de motoren tot het vernieuwen van de vulling en de bekleding: elke stoel verlaat onze werkplaats als nieuw. Bekijk hieronder stap voor stap hoe ons zorgvuldige revisieproces verloopt.
       </p>
+
+      <!-- 4 Waarborg Pijlers Grid -->
+      <div class="revisie-usp-grid">
+        <div class="revisie-usp-card">
+          <div class="revisie-usp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div>
+            <div class="revisie-usp-title">Demontage &amp; Inspectie</div>
+            <p class="revisie-usp-desc">Volledig ontmanteld tot op het stalen frame; motoren en elektronica doorgemeten.</p>
+          </div>
+        </div>
+        <div class="revisie-usp-card">
+          <div class="revisie-usp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+          </div>
+          <div>
+            <div class="revisie-usp-title">100% Hygiëne &amp; Nieuw Schuim</div>
+            <p class="revisie-usp-desc">Gecertificeerd nieuw koudschuim en dieptereiniging; gegarandeerd bacterie- en geurvrij.</p>
+          </div>
+        </div>
+        <div class="revisie-usp-card">
+          <div class="revisie-usp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="revisie-usp-title">Maatwerk Afstelling</div>
+            <p class="revisie-usp-desc">Bij levering door onze BewegingsTechnoloog afgesteld op beenlengte en rughoek.</p>
+          </div>
+        </div>
+        <div class="revisie-usp-card">
+          <div class="revisie-usp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l9-13h-6l2-5l-9 13h6z"/></svg>
+          </div>
+          <div>
+            <div class="revisie-usp-title">2 Jaar Volledige Garantie</div>
+            <p class="revisie-usp-desc">Gegarandeerde dekking op frame, motoren én elektronica met eigen service aan huis.</p>
+          </div>
+        </div>
+      </div>
 
       <!-- Revisieproces Stappen in Blokken -->
       <div class="revisie-stappen-container">
@@ -260,14 +463,15 @@
         <!-- Stap 1 -->
         <div class="revisie-stap-row">
           <div class="revisie-stap-image">
-            <img src="assets/revisie_stap3.jpg" alt="Revisieproces stap 1: Volledig strippen van het frame">
+            <span class="revisie-photo-tag">Werkplaatsinspectie</span>
+            <img src="assets/revisie_stap3.jpg" alt="Revisieproces stap 1: Demontage en diepte-inspectie van frame en elektronica">
           </div>
           <div class="revisie-stap-text">
             <span class="revisie-stap-number">Stap 1</span>
-            <h3 class="revisie-stap-title">Volledig strippen van het frame</h3>
-            <p class="revisie-stap-subtitle">Grondige reiniging en controle van mechaniek</p>
+            <h3 class="revisie-stap-title">Demontage &amp; Diepte-inspectie</h3>
+            <p class="revisie-stap-subtitle">Vakkundige ontmanteling, reiniging en mechanische controle</p>
             <p class="revisie-stap-desc">
-              We strippen de stoel volledig tot op het metalen basisframe. De motoren, kabels en de elektronische besturing worden grondig gecontroleerd, gereinigd en getest. Eventuele versleten bedrading of zwakke componenten worden direct vervangen.
+              Onze BewegingsTechnologen ontmantelen de stoel zorgvuldig tot op het stalen basisframe. De motoren, spindels, bekabeling en elektronische besturingsunit worden diepgaand gereinigd, doorgemeten en getest onder belasting. Eventuele versleten bedrading of twijfelachtige componenten worden direct preventief vervangen door originele fabrieksonderdelen.
             </p>
           </div>
         </div>
@@ -275,14 +479,15 @@
         <!-- Stap 2 -->
         <div class="revisie-stap-row">
           <div class="revisie-stap-image">
-            <img src="assets/revisie_stap2.jpg" alt="Revisieproces stap 2: Nieuwe bekleding & Kussens">
+            <span class="revisie-photo-tag">100% Nieuw Koudschuim</span>
+            <img src="assets/revisie_stap2.jpg" alt="Revisieproces stap 2: Nieuwe kussens en bekleding op de werkbank">
           </div>
           <div class="revisie-stap-text">
             <span class="revisie-stap-number">Stap 2</span>
             <h3 class="revisie-stap-title">Nieuwe bekleding &amp; Kussens</h3>
-            <p class="revisie-stap-subtitle">Hernieuwde opbouw voor optimaal comfort</p>
+            <p class="revisie-stap-subtitle">Hernieuwde opbouw voor optimaal comfort en maximale hygiëne</p>
             <p class="revisie-stap-desc">
-              De gedemonteerde armleuningen en zitkussens worden voorzien van nieuw, hoogwaardig koudschuim en volledig opnieuw bekleed. De stoel is na deze opbouw weer hygiënisch schoon en biedt het comfort van een splinternieuw exemplaar.
+              Hygiëne staat bij ons voorop. De armleuningen en zitkussens worden ontdaan van de oude vulling en voorzien van nieuw, gecertificeerd koudschuim (pantera/HR-schuim). Vervolgens wordt de stoel vakkundig opnieuw bekleed met slijtvaste, gemakkelijk te reinigen zorgstoffen of hoogwaardig kwaliteitsleder. De stoel is na deze opbouw 100% hygiënisch schoon, bacterievrij en biedt het comfort van een splinternieuw exemplaar.
             </p>
           </div>
         </div>
@@ -290,14 +495,15 @@
         <!-- Stap 3 -->
         <div class="revisie-stap-row">
           <div class="revisie-stap-image">
-            <img src="assets/revisie_stap1.jpg" alt="Revisieproces stap 3: Kwaliteitscontrole & Motor-tests">
+            <span class="revisie-photo-tag">Dynamische Belastingstest</span>
+            <img src="assets/revisie_stap1.jpg" alt="Revisieproces stap 3: Kwaliteitscontrole en motortests onder belasting">
           </div>
           <div class="revisie-stap-text">
             <span class="revisie-stap-number">Stap 3</span>
             <h3 class="revisie-stap-title">Kwaliteitscontrole &amp; Motor-tests</h3>
-            <p class="revisie-stap-subtitle">Zware inspectie onder belasting</p>
+            <p class="revisie-stap-subtitle">Strenge testcyclus onder dynamische belasting</p>
             <p class="revisie-stap-desc">
-              Alle mechanische en elektrische functies van de stoel ondergaan een strenge testcyclus onder belasting. De motoren voor de rugleuning, voetensteun en liftfunctie worden gecontroleerd op stille en soepele werking.
+              Alle mechanische en elektrische functies van de stoel ondergaan een strenge testcyclus onder belasting. De onafhankelijke motoren voor de rugleuning, voetensteun, kantelverstelling en de krachtige sta-op lift worden gecontroleerd op een geruisloze, soepele werking. Ook de handbediening en eventuele accu worden nauwkeurig doorgemeten.
             </p>
           </div>
         </div>
@@ -305,18 +511,62 @@
         <!-- Stap 4 -->
         <div class="revisie-stap-row">
           <div class="revisie-stap-image">
-            <img src="assets/revisie_stap4.jpg" alt="Revisieproces stap 4: Het eindresultaat">
+            <span class="revisie-photo-tag">2 Jaar Garantie</span>
+            <img src="assets/revisie_stap4.jpg" alt="Revisieproces stap 4: Het eindresultaat, als nieuw geleverd met 2 jaar garantie">
           </div>
           <div class="revisie-stap-text">
             <span class="revisie-stap-number">Stap 4</span>
-            <h3 class="revisie-stap-title">Het eindresultaat</h3>
-            <p class="revisie-stap-subtitle">Als nieuw geleverd met garantie</p>
+            <h3 class="revisie-stap-title">Het Eindresultaat &amp; Zekerheid</h3>
+            <p class="revisie-stap-subtitle">Inclusief 2 jaar volledige garantie (ook op motoren &amp; elektronica)</p>
             <p class="revisie-stap-desc">
-              Het resultaat is een prachtige sta-op stoel die zowel optisch als technisch in absolute nieuwstaat verkeert. Volledig gedesinfecteerd, ergonomisch afgesteld en klaar om weer jarenlang comfortabel en veilig zitplezier te bieden.
+              Het resultaat is een prachtige sta-op stoel die zowel optisch als technisch in absolute nieuwstaat verkeert. Volledig gedesinfecteerd, ergonomisch op uw lichaam afgesteld en standaard geleverd met <strong>2 jaar volledige garantie</strong> op het frame, de motoren én de complete elektronica. Mocht er ooit iets zijn, dan lost onze eigen servicedienst dit snel en kosteloos bij u thuis op.
             </p>
+            <div class="revisie-garantie-callout">
+              <div class="revisie-garantie-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+              <div>
+                <strong>Standaard 2 Jaar Volledige Garantie &amp; Service aan Huis</strong>
+                <p>Geen vage voorwaarden: volledige dekking op het frame, de elektromotoren en alle printplaten/bediening, inclusief gratis service aan huis door onze eigen vakmensen.</p>
+              </div>
+            </div>
           </div>
         </div>
 
+      </div>
+
+      <!-- Maatwerk & Zithouding Card (Autoriteit & Medisch Niveau) -->
+      <div class="revisie-maatwerk-card">
+        <div class="revisie-maatwerk-img">
+          <img src="assets/geertjan_advies_showroom.jpg" alt="BewegingsTechnoloog Geert-Jan stelt sta-op stoel ergonomisch op maat af voor klant in showroom Dordrecht" loading="lazy">
+        </div>
+        <div class="revisie-maatwerk-body">
+          <span class="revisie-stap-number">Medisch Verantwoord Zitten</span>
+          <h2 style="color: var(--color-forest-dark); font-size: 1.5rem; margin: 4px 0 12px 0; font-family: var(--font-heading); font-weight: 700;">
+            Waarom gereviseerd bij staopstoelen.nl écht beter zit dan Marktplaats
+          </h2>
+          <p style="font-size: 0.98rem; line-height: 1.7; color: var(--color-gray); margin: 0 0 12px 0;">
+            Een tweedehands sta-op stoel van een particuliere verkoper past vrijwel nooit bij uw lichaamsbouw. Een te diepe zitting knelt bloedvaten af, en een verkeerde zithoogte bemoeilijkt het opstaan aanzienlijk. Onze gediplomeerde <strong>BewegingsTechnologen</strong> stellen elke gereviseerde stoel bij aflevering kosteloos tot op de centimeter nauwkeurig op uw lichaam af:
+          </p>
+          <ul class="revisie-checklist">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Exacte zithoogte:</strong> Voeten vlak op de vloer, geen druk onder de bovenbenen.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Juiste zitdiepte:</strong> Volledige bekkenondersteuning en circa 2 vingers ruimte achter de knieholtes.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Optimale armleggerhoogte:</strong> Ontspannen schouders en effectieve hefboom bij het opstaan.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Lenden- en rughoek:</strong> Optimale ondersteuning van de natuurlijke S-curve van uw wervelkolom.</span>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <h2 class="section-title text-center" style="font-size: 1.85rem; margin-top: 40px; margin-bottom: 40px; color: var(--color-forest);">Hoe wij A-merken reviseren</h2>
@@ -335,18 +585,21 @@
         </div>
         <div class="timeline-card">
           <div class="timeline-number">3</div>
-          <h3 class="timeline-title">Ergonomische Afstelling</h3>
-          <p class="timeline-desc">Onze BewegingsTechnologen stellen de stoel bij aflevering exact in op uw zithoogte, zitdiepte en armleggerhoogte.</p>
+          <h3 class="timeline-title">Ergonomische Afstelling &amp; Garantie</h3>
+          <p class="timeline-desc">Onze BewegingsTechnologen stellen de stoel bij levering exact in op uw lichaam. Geleverd met 2 jaar volledige garantie en service aan huis.</p>
         </div>
       </div>
 
       <!-- CTA block -->
       <div style="margin-top: 60px; background-color: var(--color-forest); color: var(--color-light); padding: 48px; border-radius: var(--radius-lg); text-align: center;">
         <h2 style="color: var(--color-light); font-size: 1.75rem; margin-top: 0; margin-bottom: 16px;">Wilt u het comfort zelf ervaren?</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 32px auto;">
-          U bent van harte welkom in onze showroom in Dordrecht om onze stoelen vrijblijvend te proberen. Na aankoop bezorgen wij de stoel geheel gratis en vakkundig bij u thuis.
+        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 32px auto;">
+          U bent van harte welkom in onze showroom in Dordrecht om onze gereviseerde en nieuwe sta-op stoelen vrijblijvend te proberen. Wij bezorgen uw stoel gratis bij u thuis en stellen deze direct op maat voor u af.
         </p>
-        <a href="afspraak.html" class="btn btn-secondary">Plan een Adviesgesprek</a>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="afspraak.html" class="btn btn-secondary">Plan een Adviesgesprek in de Showroom</a>
+          <a href="tel:+31786314858" class="btn" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.4);">Bel 078 - 631 4858</a>
+        </div>
       </div>
     </div>
   </section>
@@ -426,11 +679,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.84
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.85
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=10.84"></script>
+  <script src="app.js?v=10.85"></script>
 </body>
 </html>
