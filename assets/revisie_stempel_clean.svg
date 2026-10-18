@@ -11,25 +11,28 @@
   <!-- Inner thin dark green border -->
   <circle cx="150" cy="150" r="76" fill="none" stroke="#122b07" stroke-width="3" />
   
-  <!-- Text paths optimized to center the text exactly between the inner (R=76) and outer (R=112) borders -->
-  <!-- Top text path (clockwise, R=86) -->
-  <path id="text-path-top" d="M 64,150 A 86,86 0 0,1 236,150" fill="none" />
-  <!-- Bottom text path (counter-clockwise, R=102) -->
-  <path id="text-path-bottom" d="M 48,150 A 102,102 0 0,0 252,150" fill="none" />
+  <!-- Text paths -->
+  <!-- Top text path (clockwise, R=88) -->
+  <path id="text-path-top" d="M 62,150 A 88,88 0 0,1 238,150" fill="none" />
+  <!-- Bottom text path (counter-clockwise, R=100) -->
+  <path id="text-path-bottom" d="M 50,150 A 100,100 0 0,0 250,150" fill="none" />
   
-  <!-- Text elements (larger font size, weight 900 for legibility, with stroke for extra boldness) -->
-  <text fill="#122b07" stroke="#122b07" stroke-width="1.2" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="1.2">
+  <!-- Text elements (Bold & ultra-clear for stickers & badges) -->
+  <text fill="#122b07" stroke="#122b07" stroke-width="0.7" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="18" letter-spacing="1.2">
     <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">
-      100% GEREVISEERD
+      GEREVISEERD ALS NIEUW
     </textPath>
   </text>
   
-  <text fill="#122b07" stroke="#122b07" stroke-width="1.2" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22.5" letter-spacing="4.5">
+  <text fill="#122b07" stroke="#122b07" stroke-width="0.7" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="19" letter-spacing="3.0">
     <textPath href="#text-path-bottom" startOffset="50%" text-anchor="middle">
-      ALS NIEUW
+      MET GARANTIE
     </textPath>
   </text>
   
-  <!-- Center green checkmark (extra bold, slightly scaled down) -->
-  <path d="M 112 150 L 138 176 L 188 126" fill="none" stroke="#4b8f24" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Center: Green Leaf Icon -->
+  <g transform="translate(150, 150) scale(3.9) translate(-11.5, -11.5)">
+    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" fill="none" stroke="#4b8f24" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" fill="none" stroke="#4b8f24" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
 </svg>
