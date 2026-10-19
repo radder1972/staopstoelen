@@ -5624,14 +5624,28 @@ input[type="checkbox"] {
 .lead-magnet-check-icon {
   width: 22px;
   height: 22px;
+  min-width: 22px;
   border-radius: 50%;
-  background: rgba(75, 143, 36, 0.12);
+  background: #eef7eb;
+  border: 1.5px solid var(--color-forest, #4b8f24);
   color: var(--color-forest, #4b8f24);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   margin-top: 2px;
+  box-sizing: border-box;
+}
+
+.lead-magnet-check-icon svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--color-forest, #4b8f24);
+  stroke-width: 3.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
 }
 
 .lead-magnet-expert-quote {
