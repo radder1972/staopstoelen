@@ -5622,13 +5622,12 @@ input[type="checkbox"] {
 }
 
 .lead-magnet-check-icon {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
   border-radius: 50%;
-  background: rgba(243, 146, 35, 0.16);
-  border: 1px solid rgba(243, 146, 35, 0.4);
-  color: var(--color-terracotta, #f39223);
+  background: rgba(75, 143, 36, 0.13);
+  color: var(--color-forest, #4b8f24);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -5640,7 +5639,7 @@ input[type="checkbox"] {
 .lead-magnet-check-icon svg {
   width: 13px;
   height: 13px;
-  stroke: var(--color-terracotta, #f39223);
+  stroke: var(--color-forest, #4b8f24);
   stroke-width: 3;
   fill: none;
   stroke-linecap: round;
