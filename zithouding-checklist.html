@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zithouding Checklist &amp; Ergonomische Zelftest | staopstoelen.nl</title>
+  <meta name="description" content="Gratis Zithouding Checklist voor thuis. Ontdek binnen 2 minuten of uw huidige stoel nog wel fysiotherapeutisch verantwoord is.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-sage: #6ab13c;
+      --color-sage-light: #eef7eb;
+      --color-sky: #bce4f2;
+      --color-terracotta: #f39223;
+      --color-cream: #fbf9f5;
+      --color-cream-dark: #f3efe6;
+      --color-dark: #1d2024;
+      --color-gray: #5e6368;
+      --color-gray-light: #e2e4e6;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: #f1f3f5;
+      padding: 20px;
+      line-height: 1.35;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .no-print-bar {
+      max-width: 820px;
+      margin: 0 auto 16px auto;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+    .no-print-bar .info-text {
+      color: var(--color-forest-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .btn-print {
+      background: var(--color-forest);
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.25);
+      text-decoration: none;
+    }
+    .btn-print:hover {
+      background: #3d751d;
+    }
+
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 12mm 16mm 10mm 16mm;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 2.5px solid var(--color-forest);
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 27px;
+      font-weight: 900;
+      color: var(--color-forest);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .logo-text span {
+      color: var(--color-terracotta);
+    }
+    .logo-subtitle {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .doc-title-box {
+      text-align: right;
+    }
+    .doc-badge {
+      display: inline-block;
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest-dark);
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      margin-bottom: 4px;
+    }
+    .doc-title {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      line-height: 1.2;
+    }
+    .doc-subtitle {
+      font-size: 11px;
+      color: var(--color-terracotta);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    /* Intro Hero Box */
+    .intro-box {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #fbfdf9 0%, #f4f8f0 100%);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .intro-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2px solid var(--color-forest);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .intro-text h3 {
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      margin-bottom: 3px;
+    }
+    .intro-text p {
+      font-size: 11px;
+      color: #374151;
+      line-height: 1.45;
+    }
+
+    /* Checklist Grid */
+    .checklist-list {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .check-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 9px;
+      padding: 8px 12px;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .check-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .check-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .check-content {
+      flex: 1;
+    }
+    .check-title {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      margin-bottom: 2px;
+    }
+    .check-question {
+      font-size: 11px;
+      font-weight: 600;
+      color: #111827;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .check-reason {
+      font-size: 10.5px;
+      color: #4b5563;
+      line-height: 1.4;
+    }
+    .check-reason strong {
+      color: var(--color-terracotta);
+      font-weight: 700;
+    }
+
+    .check-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: flex-end;
+      flex-shrink: 0;
+      min-width: 130px;
+    }
+    .check-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+    .check-box-square {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid #9ca3af;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Result & Action Box */
+    .result-box {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #f7f9f6 0%, #edf4ea 100%);
+      border: 1.5px solid rgba(75, 143, 36, 0.35);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .result-title {
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .result-text {
+      font-size: 11px;
+      line-height: 1.45;
+      color: #1f2937;
+    }
+    .result-bullets {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 14px;
+      font-size: 10.5px;
+      color: #1f2937;
+    }
+    .result-bullet-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .result-bullet-item svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
+    }
+
+    /* Footer Pill */
+    .sheet-footer {
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid var(--color-gray-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      color: #4b5563;
+    }
+    .sheet-footer strong {
+      color: var(--color-forest-dark);
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+      .sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        min-height: 100vh !important;
+        padding: 8mm 12mm 6mm 12mm !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Top Bar -->
+  <div class="no-print-bar">
+    <div class="info-text">
+      ✓ Officiële Zithouding Checklist (A4 formaat) &mdash; staopstoelen.nl
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      Afdrukken of Opslaan als PDF
+    </button>
+  </div>
+
+  <div class="sheet">
+    <div>
+      <!-- Header -->
+      <header class="sheet-header">
+        <div>
+          <div class="logo-text">staopstoelen<span>.nl</span></div>
+          <div class="logo-subtitle">Specialist in ergonomisch zitcomfort &bull; Fitform Dealer</div>
+        </div>
+        <div class="doc-title-box">
+          <span class="doc-badge">Gratis Zelftest</span>
+          <h1 class="doc-title">Zithouding Checklist</h1>
+          <div class="doc-subtitle">Evalueer uw huidige stoel in 5 concrete stappen</div>
+        </div>
+      </header>
+
+      <!-- Intro door Geertjan -->
+      <div class="intro-box">
+        <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld" class="intro-avatar">
+        <div class="intro-text">
+          <h3>Advies van Bewegingstechnoloog Geertjan Klein Haneveld</h3>
+          <p>
+            &ldquo;Veel senioren hebben ongemerkt last van rug-, nek- of beenpijn omdat hun stoel net niet op hun lichaamsmaten is afgesteld. Met deze 5 controlepunten ontdekt u binnen enkele minuten of uw huidige stoel u nog wel de juiste ondersteuning biedt.&rdquo;
+          </p>
+        </div>
+      </div>
+
+      <!-- 5 Checklist Items -->
+      <div class="checklist-list">
+        
+        <!-- Stap 1: Zithoogte -->
+        <article class="check-card">
+          <div class="check-card-top">
+            <div class="check-step-num">1</div>
+            <div class="check-content">
+              <div class="check-title">De Zithoogte &mdash; Steun onder de voetzolen</div>
+              <div class="check-question">Rusten beide voetzolen plat en stabiel op de vloer, met de knieën en heupen in een ontspannen hoek van circa 90 graden?</div>
+              <div class="check-reason"><strong>Risico bij afwijking:</strong> Te hoog = bloedvaten in de knieholte worden afgekneld (koude/dikke benen). Te laag = overbelasting van de onderrug en heupen bij het opstaan.</div>
+            </div>
+            <div class="check-actions">
+              <span class="check-option"><span class="check-box-square"></span> Goed afgesteld</span>
+              <span class="check-option"><span class="check-box-square"></span> Aandachtspunt</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stap 2: Zitdiepte -->
+        <article class="check-card">
+          <div class="check-card-top">
+            <div class="check-step-num">2</div>
+            <div class="check-content">
+              <div class="check-title">De Zitdiepte &mdash; Ruimte achter de knieholte</div>
+              <div class="check-question">Past er een platte hand (circa 2 tot 4 vingers) tussen de voorzijde van de zitting en de achterkant van uw knieholte als u goed achterin zit?</div>
+              <div class="check-reason"><strong>Risico bij afwijking:</strong> Te diep = u wordt gedwongen tot onderuitzakken (bolle rug en orgaandruk). Te ondiep = te weinig draagvlak voor de bovenbenen, leidend tot onrustig zitten.</div>
+            </div>
+            <div class="check-actions">
+              <span class="check-option"><span class="check-box-square"></span> Goed afgesteld</span>
+              <span class="check-option"><span class="check-box-square"></span> Aandachtspunt</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stap 3: Lendensteun -->
+        <article class="check-card">
+          <div class="check-card-top">
+            <div class="check-step-num">3</div>
+            <div class="check-content">
+              <div class="check-title">De Lendensteun &mdash; Natuurlijke S-curve van de rug</div>
+              <div class="check-question">Sluit de rugleuning over de volle lengte aan en voelt u duidelijke steun in de holling van uw onderrug (zonder losse kussentjes te gebruiken)?</div>
+              <div class="check-reason"><strong>Risico bij afwijking:</strong> Zonder ergonomische lendensteun zakt de wervelkolom in elkaar. Dit is de nummer 1 oorzaak van zeurende lage rugpijn en stijfheid bij senioren.</div>
+            </div>
+            <div class="check-actions">
+              <span class="check-option"><span class="check-box-square"></span> Goed afgesteld</span>
+              <span class="check-option"><span class="check-box-square"></span> Aandachtspunt</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stap 4: Armleggerhoogte -->
+        <article class="check-card">
+          <div class="check-card-top">
+            <div class="check-step-num">4</div>
+            <div class="check-content">
+              <div class="check-title">De Armleggers &mdash; Ontspanning in schouders en nek</div>
+              <div class="check-question">Rusten uw onderarmen ontspannen op de armleuningen met de schouders laag en vrij (zonder dat u ze omhoog moet duwen of scheef hangt)?</div>
+              <div class="check-reason"><strong>Risico bij afwijking:</strong> Te hoge armleggers veroorzaken kramp en spanningshoofdpijn. Te lage armleggers nodigen uit tot zijwaarts scheefhangen en geven geen afzetsteun.</div>
+            </div>
+            <div class="check-actions">
+              <span class="check-option"><span class="check-box-square"></span> Goed afgesteld</span>
+              <span class="check-option"><span class="check-box-square"></span> Aandachtspunt</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stap 5: Veilig Opstaan -->
+        <article class="check-card">
+          <div class="check-card-top">
+            <div class="check-step-num">5</div>
+            <div class="check-content">
+              <div class="check-title">Het Opstaan &mdash; Behoud van mobiliteit en veiligheid</div>
+              <div class="check-question">Kunt u in één vloeiende beweging opstaan, zonder eerst meerdere malen te schommelen of hulp van een partner of wandelstok nodig te hebben?</div>
+              <div class="check-reason"><strong>Risico bij afwijking:</strong> Moeite met opstaan vergroot het risico op vallen aanzienlijk. Een rustige elektrische sta-op ondersteuning ontlast heupen en knieën direct.</div>
+            </div>
+            <div class="check-actions">
+              <span class="check-option"><span class="check-box-square"></span> Goed afgesteld</span>
+              <span class="check-option"><span class="check-box-square"></span> Aandachtspunt</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Resultaat & Wat nu? -->
+      <div class="result-box">
+        <div class="result-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Uw Uitslag &mdash; Heeft u 1 of meerdere &lsquo;Aandachtspunten&rsquo; aangevinkt?
+        </div>
+        <p class="result-text">
+          Dan is de kans groot dat uw huidige stoel niet (meer) goed aansluit op uw lichaam. Goed zitten is écht maatwerk: een goede sta-op stoel wordt op uw <strong>zithoogte, zitdiepte en armleuninghoogte</strong> ingesteld.
+        </p>
+        <div class="result-bullets">
+          <div class="result-bullet-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Gratis deskundige inmeting in onze showroom</span>
+          </div>
+          <div class="result-bullet-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Mogelijkheid tot gratis thuispassing in de regio</span>
+          </div>
+          <div class="result-bullet-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Topoccasions v.a. € 1.050,- &amp; nieuw Fitform</span>
+          </div>
+          <div class="result-bullet-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Gratis thuisbezorgd &amp; ter plekke op maat gezet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sheet Footer -->
+    <footer class="sheet-footer">
+      <div><strong>staopstoelen.nl</strong> &bull; Merwedestraat 239, 3313 GT Dordrecht &bull; Gratis parkeren voor de deur</div>
+      <div><strong>Bel direct voor advies:</strong> 078 - 631 4858 &bull; 06 - 22 23 29 64</div>
+    </footer>
+  </div>
+
+</body>
+</html>

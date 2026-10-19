@@ -21,7 +21,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.89">
+  <link rel="stylesheet" href="style.css?v=10.90">
   <!-- Schema.org LocalBusiness Structured Data -->
   <script type="application/ld+json">
   {
@@ -568,8 +568,126 @@
     </div>
   </section>
 
+  <!-- Lead Magnet: Zithouding Checklist -->
+  <section id="zithouding-checklist" class="bg-alt" style="padding: 80px 0;">
+    <div class="container">
+      <div class="text-center" style="max-width: 820px; margin: 0 auto;">
+        <span class="section-tag" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest, #4b8f24);">Gratis Download</span>
+        <h2 class="section-title">Zit U Wel Echt Goed? Doe de 5-Minuten Zithouding Check</h2>
+        <p class="section-subtitle">
+          Heeft u regelmatig last van een vermoeide onderrug, zware benen of moeite met soepel opstaan? Met deze praktische checklist controleert u zelf thuis of uw stoel nog ergonomisch verantwoord is.
+        </p>
+      </div>
+
+      <div class="lead-magnet-card">
+        <div class="lead-magnet-grid">
+          <!-- Linkerzijde: Inhoud en expertquote -->
+          <div class="lead-magnet-left">
+            <div>
+              <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-terracotta, #f39223); margin-bottom: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                PDF Gids (A4 Print-Ready)
+              </div>
+              <h3 style="font-size: 1.35rem; color: var(--color-forest, #4b8f24); margin-bottom: 12px; font-weight: 700;">
+                Wat u ontdekt in deze praktische checklist:
+              </h3>
+              <ul class="lead-magnet-check-list">
+                <li class="lead-magnet-check-item">
+                  <span class="lead-magnet-check-icon">✓</span>
+                  <div><strong>1. Zithoogte & kniehoek:</strong> Waarom uw voeten vlak moeten rusten om afknelling van bloedvaten te vermijden.</div>
+                </li>
+                <li class="lead-magnet-check-item">
+                  <span class="lead-magnet-check-icon">✓</span>
+                  <div><strong>2. Zitdiepte & knieholte:</strong> Hoe 2 tot 3 vingers ruimte voorkomen dat uw onderrug onderuitglijdt.</div>
+                </li>
+                <li class="lead-magnet-check-item">
+                  <span class="lead-magnet-check-icon">✓</span>
+                  <div><strong>3. Ergonomische lendensteun:</strong> Waarom actieve ondersteuning van de natuurlijke S-kromming rugpijn stopt.</div>
+                </li>
+                <li class="lead-magnet-check-item">
+                  <span class="lead-magnet-check-icon">✓</span>
+                  <div><strong>4. Armleuninghoogte:</strong> De juiste hoek om nek- en schouderspanning direct te ontlasten.</div>
+                </li>
+                <li class="lead-magnet-check-item">
+                  <span class="lead-magnet-check-icon">✓</span>
+                  <div><strong>5. Veilig & stabiel opstaan:</strong> Hoe de juiste kantelverstelling uw heupen en knieën ontziet.</div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="lead-magnet-expert-quote">
+              <img src="assets/geert_avatar.png" alt="Geertjan Klein Haneveld" class="lead-magnet-expert-img">
+              <div style="font-size: 0.88rem; color: #444; line-height: 1.45;">
+                <p style="margin: 0 0 4px 0; font-style: italic;">
+                  &ldquo;Een verkeerd afgestelde stoel kost dagelijks ongemerkt heel veel energie. Met deze 5 checks weet u binnen enkele minuten precies waar het knelt.&rdquo;
+                </p>
+                <div style="font-weight: 700; color: #111;">Geertjan Klein Haneveld</div>
+                <div style="font-size: 0.8rem; color: #666;">Bewegingstechnoloog &amp; Zitspecialist</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rechterzijde: Formulier & Directe download -->
+          <div class="lead-magnet-right">
+            <div id="leadMagnetFormWrapper">
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-forest, #4b8f24); margin-bottom: 6px;">
+                Ontvang direct de gratis checklist
+              </h3>
+              <p style="font-size: 0.92rem; color: #666; margin-bottom: 24px; line-height: 1.5;">
+                Vul uw gegevens in en download direct het overzichtelijke PDF-document.
+              </p>
+
+              <form id="leadMagnetForm" onsubmit="handleLeadMagnetSubmit(event)" novalidate>
+                <div class="lead-magnet-input-group">
+                  <label for="lead_name" class="lead-magnet-label">Uw naam <span style="font-weight: 400; color: #777;">(optioneel)</span></label>
+                  <input type="text" id="lead_name" name="lead_name" class="lead-magnet-input" placeholder="Bijv. Jan of Mvr. De Vries">
+                </div>
+
+                <div class="lead-magnet-input-group">
+                  <label for="lead_email" class="lead-magnet-label">Uw e-mailadres <span style="color: #c53030;">*</span></label>
+                  <input type="email" id="lead_email" name="lead_email" class="lead-magnet-input" placeholder="uw.email@voorbeeld.nl" required>
+                </div>
+
+                <button type="submit" id="leadMagnetSubmitBtn" class="btn btn-primary lead-magnet-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Download Checklist (PDF)</span>
+                </button>
+              </form>
+
+              <div style="font-size: 0.8rem; color: #777; margin-top: 14px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span>100% gratis &amp; vrijblijvend. Uw privacy is gewaarborgd.</span>
+              </div>
+            </div>
+
+            <!-- Succesbericht (verschijnt na verzending) -->
+            <div id="leadMagnetSuccess" style="display: none; text-align: center; padding: 20px 10px;">
+              <div style="width: 58px; height: 58px; border-radius: 50%; background: #eef6ec; color: var(--color-forest, #4b8f24); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; border: 2px solid var(--color-forest, #4b8f24);">
+                ✓
+              </div>
+              <h3 style="font-size: 1.3rem; color: var(--color-forest, #4b8f24); margin-bottom: 8px; font-weight: 700;">
+                Bedankt voor uw aanvraag!
+              </h3>
+              <p style="font-size: 0.95rem; color: #444; line-height: 1.5; margin-bottom: 20px;">
+                De download van uw checklist is gestart. We hebben tevens een kopie verstuurd naar <strong id="leadSuccessEmail" style="color: #111;"></strong>.
+              </p>
+              <a href="assets/zithouding-checklist.pdf" download id="leadMagnetDownloadLink" class="btn btn-primary lead-magnet-btn" style="text-decoration: none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Checklist opnieuw downloaden
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Social Proof / Customer Stories -->
-  <section id="klantverhalen" class="bg-alt" style="padding: 80px 0;">
+  <section id="klantverhalen" style="padding: 80px 0; background-color: var(--color-light);">
     <div class="container">
       <div class="text-center" style="max-width: 750px; margin: 0 auto;">
         <span class="section-tag">Klantverhalen</span>
@@ -581,7 +699,7 @@
   </section>
 
   <!-- Live appointment scheduler -->
-  <section id="afspraak-planner" style="padding: 80px 0; background-color: var(--color-light); border-top: 1px solid var(--color-gray-light);">
+  <section id="afspraak-planner" class="bg-alt" style="padding: 80px 0; border-top: 1px solid var(--color-gray-light);">
     <div class="container">
       <div class="text-center" style="max-width: 750px; margin: 0 auto;">
         <span class="section-tag">Direct Boeken</span>
@@ -613,6 +731,7 @@
           <li><a href="revisie.html">Revisieproces</a></li>
           <li><a href="ervaringen.html">Klantverhalen</a></li>
           <li><a href="faq.html">Veelgestelde vragen (FAQ)</a></li>
+          <li><a href="#zithouding-checklist">Zithouding Checklist (PDF)</a></li>
           <li><a href="afspraak.html">Afspraak Inplannen</a></li>
           <li><a href="info.html">Over Ons</a></li>
         </ul>
@@ -692,7 +811,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.89
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.90
       </div>
     </div>
   </footer>
@@ -780,7 +899,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=10.89" defer></script>
+  <script src="app.js?v=10.90" defer></script>
   <script>
     // Fitform Najaarsactie Easter Egg: dubbelklik toont Geertjan in de fauteuil
     let isNajaarsactieEasterEgg = false;

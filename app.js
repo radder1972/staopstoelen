@@ -2062,3 +2062,153 @@ function initFaqAccordion() {
   });
 }
 
+/* ==========================================================================
+   Lead Magnet Handler - Zithouding Checklist Download
+   ========================================================================== */
+function handleLeadMagnetSubmit(event) {
+  if (event) event.preventDefault();
+
+  const nameInput = document.getElementById("lead_name");
+  const emailInput = document.getElementById("lead_email");
+  const submitBtn = document.getElementById("leadMagnetSubmitBtn");
+  const formWrapper = document.getElementById("leadMagnetFormWrapper");
+  const successBox = document.getElementById("leadMagnetSuccess");
+  const successEmailSpan = document.getElementById("leadSuccessEmail");
+
+  const email = emailInput ? emailInput.value.trim() : "";
+  const name = nameInput ? nameInput.value.trim() : "";
+
+  // Basic email validation
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert("Vul alstublieft een geldig e-mailadres in om de checklist te ontvangen.");
+    if (emailInput) emailInput.focus();
+    return;
+  }
+
+  // Loading state on button
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin-icon">
+        <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="10"></circle>
+      </svg>
+      <span>Even geduld...</span>
+    `;
+  }
+
+  // 1. Trigger direct browser download of the PDF
+  const triggerPdfDownload = () => {
+    try {
+      const a = document.createElement("a");
+      a.href = "assets/zithouding-checklist.pdf";
+      a.download = "Zithouding-Checklist-Staopstoelen.nl.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (e) {
+      console.warn("Direct download error:", e);
+    }
+  };
+
+  // 2. Build email confirmation HTML for customer
+  const leadEmailHtml = `
+    <div style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #222222; max-width: 600px; margin: 0 auto; padding: 24px 20px; background-color: #ffffff;">
+      <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e8e8e8;">
+        <a href="https://staopstoelen.nl" target="_blank" style="text-decoration: none; display: inline-block;">
+          <img src="https://staopstoelen.nl/assets/logo_email.png" alt="staopstoelen.nl" width="220" style="display: block; border: 0; width: 220px; height: auto; max-width: 100%;">
+        </a>
+        <div style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 500; color: #666666; margin-top: 6px;">
+          Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer
+        </div>
+      </div>
+
+      <p style="margin: 0 0 16px 0; color: #222222;">Beste ${name || "lezer"},</p>
+
+      <p style="margin: 0 0 16px 0; color: #333333;">
+        Hartelijk dank voor uw aanvraag van de <strong>Zithouding Checklist</strong>.
+      </p>
+
+      <p style="margin: 0 0 20px 0; color: #333333;">
+        Met deze checklist controleert u in 5 overzichtelijke stappen of uw huidige stoel uw lichaam nog optimaal ondersteunt, of dat er verbeterpunten zijn op het gebied van zithoogte, zitdiepte en lendensteun.
+      </p>
+
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="https://staopstoelen.nl/assets/zithouding-checklist.pdf" target="_blank" style="background-color: #4b8f24; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 9999px; font-weight: bold; font-size: 15px; display: inline-block;">
+          📥 Bekijk & Download de Checklist (PDF)
+        </a>
+      </div>
+
+      <p style="margin: 0 0 16px 0; color: #333333;">
+        Heeft u naar aanleiding van de checklist twijfels over uw eigen stoel, of merkt u dat u niet meer comfortabel zit? U bent altijd van harte welkom in onze showroom in Dordrecht voor een vrijblijvend zitadvies en een kop koffie. U parkeert gratis voor de deur.
+      </p>
+
+      <div style="margin-top: 32px; color: #111111; font-size: 14px; line-height: 1.6;">
+        <p style="margin: 0 0 16px 0;">Met vriendelijke groet,</p>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: 0; padding: 0;">
+          <tr>
+            <td style="vertical-align: top; padding-right: 20px; width: 92px;">
+              <img src="https://staopstoelen.nl/assets/geert_avatar.png" alt="Geertjan Klein Haneveld" width="92" height="92" style="display: block; width: 92px; height: 92px; border-radius: 50%; border: 1px solid #d5ded0; object-fit: cover;">
+            </td>
+            <td style="vertical-align: top; font-size: 14px; line-height: 1.5; color: #111111;">
+              <div style="font-size: 16px; font-weight: bold; color: #111111; margin-bottom: 2px;">Geertjan Klein Haneveld</div>
+              <div style="font-size: 13px; color: #444444; font-weight: 600; margin-bottom: 8px;">Gediplomeerd bewegingstechnoloog &amp; Erkend Fitform Dealer</div>
+              <div style="font-size: 13px; line-height: 1.6; color: #222222;">
+                06 - 22 23 29 64 &nbsp;&bull;&nbsp; 078 - 631 4858<br>
+                <a href="mailto:geertjan@staopstoelen.nl" style="color: #222222; text-decoration: none;">geertjan@staopstoelen.nl</a> &nbsp;&bull;&nbsp; <a href="https://staopstoelen.nl" target="_blank" style="color: #222222; text-decoration: none;">www.staopstoelen.nl</a><br>
+                Showroom: Merwedestraat 239, 3313 GT Dordrecht
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  `;
+
+  // 3. Payload for webhook (pushes lead to inbox / CRM / notification)
+  const leadPayload = {
+    name: name || "Geïnteresseerde",
+    email: email,
+    phone: "",
+    appointmentType: "checklist_download",
+    emailSubject: "Uw Zithouding Checklist (PDF) - Staopstoelen.nl",
+    senderName: "Geertjan Klein Haneveld - Staopstoelen.nl",
+    notificationEmail: "schipperwonen@gmail.com, info@staopstoelen.nl",
+    emailHtml: leadEmailHtml,
+    timestamp: new Date().toISOString()
+  };
+
+  // 4. Analytics & Event tracking
+  try {
+    if (typeof logCustomVisitEvent === "function") {
+      logCustomVisitEvent("lead_magnet_download");
+    }
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        event_category: "Lead Magnet",
+        event_label: "Zithouding Checklist PDF",
+        value: 1.0
+      });
+    }
+  } catch (err) {
+    console.warn("Analytics tracking error:", err);
+  }
+
+  // 5. Send webhook in background, start download and switch UI
+  triggerPdfDownload();
+
+  if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
+    fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(leadPayload)
+    })
+    .then(res => console.log("Lead webhook response:", res))
+    .catch(err => console.warn("Lead webhook error:", err));
+  }
+
+  // Show success state
+  if (formWrapper) formWrapper.style.display = "none";
+  if (successBox) successBox.style.display = "block";
+  if (successEmailSpan) successEmailSpan.textContent = email;
+}
+

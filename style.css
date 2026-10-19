@@ -5569,3 +5569,163 @@ input[type="checkbox"] {
   opacity: 0.88;
 }
 
+/* ==========================================================================
+   Lead Magnet - Zithouding Checklist
+   ========================================================================== */
+.lead-magnet-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  max-width: 1040px;
+  margin: 40px auto 0;
+}
+
+.lead-magnet-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.lead-magnet-left {
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lead-magnet-right {
+  padding: 44px 36px;
+  background: #fcfbf8;
+  border-left: 1px solid var(--color-gray-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lead-magnet-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lead-magnet-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.98rem;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.lead-magnet-check-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(75, 143, 36, 0.12);
+  color: var(--color-forest, #4b8f24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.lead-magnet-expert-quote {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #f6f8f4;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(75, 143, 36, 0.2);
+  margin-top: 10px;
+}
+
+.lead-magnet-expert-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-forest, #4b8f24);
+  flex-shrink: 0;
+}
+
+.lead-magnet-input-group {
+  margin-bottom: 18px;
+}
+
+.lead-magnet-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-dark);
+  margin-bottom: 6px;
+}
+
+.lead-magnet-input {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border: 1.5px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--color-dark);
+  transition: var(--transition-smooth);
+}
+
+.lead-magnet-input:focus {
+  outline: none;
+  border-color: var(--color-forest, #4b8f24);
+  box-shadow: 0 0 0 3px rgba(75, 143, 36, 0.15);
+}
+
+.lead-magnet-btn {
+  width: 100%;
+  padding: 15px 24px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(75, 143, 36, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.lead-magnet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(75, 143, 36, 0.4);
+}
+
+@media (max-width: 860px) {
+  .lead-magnet-grid {
+    grid-template-columns: 1fr;
+  }
+  .lead-magnet-right {
+    border-left: none;
+    border-top: 1px solid var(--color-gray-light);
+    padding: 32px 24px;
+  }
+  .lead-magnet-left {
+    padding: 32px 24px;
+  }
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
