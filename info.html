@@ -12,20 +12,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.116">
-  <!-- Schema.org LocalBusiness Structured Data -->
+  <link rel="stylesheet" href="style.css?v=10.117">
+  <!-- Schema.org LocalBusiness & MedicalBusiness Structured Data (Lokale Dominantie) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["FurnitureStore", "MedicalBusiness"],
-    "name": "staopstoelen.nl | Showroom Dordrecht",
-    "description": "Dé sta-op stoelen specialist in Dordrecht en regio Drechtsteden & Rotterdam. Ruim aanbod nieuwe en gereviseerde Fitform en Doge stoelen op maat. Showroom aan de Merwedestraat 239 in Dordrecht met gratis parkeren voor de deur.",
-    "image": "https://staopstoelen.nl/assets/showroom.jpg",
+    "@type": [
+      "LocalBusiness",
+      "MedicalBusiness",
+      "MedicalDeviceStore",
+      "FurnitureStore"
+    ],
     "@id": "https://staopstoelen.nl/#localbusiness",
+    "name": "staopstoelen.nl | Showroom Dordrecht",
+    "alternateName": [
+      "Staopstoelen Dordrecht",
+      "Fitform Dealer Dordrecht",
+      "Zitspecialist Dordrecht",
+      "Schipper Compact Wonen"
+    ],
+    "legalName": "Schipper Compact Wonen / staopstoelen.nl",
+    "description": "Ergonomisch zitspecialist en erkend Fitform Dealer in Dordrecht. Deskundige aanmeting en zithouding analyse door gediplomeerd Bewegingstechnoloog Geertjan Klein Haneveld. Showroom aan de Merwedestraat 239 in Dordrecht met gratis parkeren voor de deur, tevens gratis thuispassing in de hele regio Drechtsteden.",
     "url": "https://staopstoelen.nl/",
+    "logo": "https://staopstoelen.nl/favicon-32x32.png",
+    "image": [
+      "https://staopstoelen.nl/assets/showroom.jpg",
+      "https://staopstoelen.nl/assets/geert_avatar.png",
+      "https://staopstoelen.nl/assets/pand_tekstbox.png"
+    ],
     "telephone": "+31786314858",
     "email": "info@staopstoelen.nl",
     "priceRange": "€€",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Pin, Contant, Bankoverschrijving, Factuur",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Merwedestraat 239",
@@ -51,8 +70,186 @@
         ],
         "opens": "10:00",
         "closes": "16:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Saturday"
+        ],
+        "description": "Geopend op afspraak voor persoonlijk zitadvies en proefzitten"
       }
-    ]
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Geertjan Klein Haneveld",
+      "jobTitle": "Bewegingstechnoloog & Zitspecialist",
+      "image": "https://staopstoelen.nl/assets/geert_avatar.png",
+      "description": "Gediplomeerd Bewegingstechnoloog en specialist in ergonomisch zitcomfort, wervelkolom ontlasting en maatwerk sta-op stoelen voor senioren en mensen met fysieke klachten.",
+      "knowsAbout": [
+        "Bewegingstechnologie",
+        "Ergonomie",
+        "Zithouding en bekkenkanteling",
+        "Fitform sta-op stoelen",
+        "Wervelkolom ontlasting",
+        "Mobiliteitsoplossingen voor senioren",
+        "Preventie van decubitus en rugpijn"
+      ]
+    },
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "Geertjan Klein Haneveld",
+        "jobTitle": "Bewegingstechnoloog & Zitspecialist",
+        "image": "https://staopstoelen.nl/assets/geert_avatar.png"
+      }
+    ],
+    "medicalSpecialty": [
+      "OccupationalTherapy",
+      "PhysicalTherapy",
+      "Geriatrics"
+    ],
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Schipper Compact Wonen",
+      "url": "https://schippercompactwonen.nl"
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "Fitform",
+      "url": "https://www.fitform.nl"
+    },
+    "sameAs": [
+      "https://schippercompactwonen.nl",
+      "https://www.fitform.nl",
+      "https://www.google.com/maps/dir/?api=1&destination=Merwedestraat+239,+Dordrecht"
+    ],
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Dordrecht",
+        "sameAs": "https://nl.wikipedia.org/wiki/Dordrecht"
+      },
+      {
+        "@type": "City",
+        "name": "Zwijndrecht",
+        "sameAs": "https://nl.wikipedia.org/wiki/Zwijndrecht_(Nederland)"
+      },
+      {
+        "@type": "City",
+        "name": "Papendrecht"
+      },
+      {
+        "@type": "City",
+        "name": "Sliedrecht"
+      },
+      {
+        "@type": "City",
+        "name": "Hendrik-Ido-Ambacht"
+      },
+      {
+        "@type": "City",
+        "name": "Alblasserdam"
+      },
+      {
+        "@type": "City",
+        "name": "Hardinxveld-Giessendam"
+      },
+      {
+        "@type": "City",
+        "name": "Ridderkerk"
+      },
+      {
+        "@type": "City",
+        "name": "Barendrecht"
+      },
+      {
+        "@type": "City",
+        "name": "Gorinchem"
+      },
+      {
+        "@type": "City",
+        "name": "'s-Gravendeel"
+      },
+      {
+        "@type": "City",
+        "name": "Oud-Beijerland"
+      },
+      {
+        "@type": "City",
+        "name": "Strijen"
+      },
+      {
+        "@type": "City",
+        "name": "Puttershoek"
+      },
+      {
+        "@type": "City",
+        "name": "Rotterdam"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Drechtsteden"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Hoeksche Waard"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Zuid-Holland"
+      }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Ergonomische Zitzorg & Sta-op Stoelen Diensten",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Deskundige Zithouding Inmeting op Maat",
+            "description": "Individuele ergonomische opmeting van zithoogte, zitdiepte, armleuninghoogte en lendensteun door Bewegingstechnoloog Geertjan Klein Haneveld in showroom Dordrecht of aan huis.",
+            "provider": {
+              "@id": "https://staopstoelen.nl/#localbusiness"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Gratis Thuisdemo en Thuispassing",
+            "description": "Vrijblijvend proefzitten en testen van sta-op stoelen in uw eigen woonkamer in Dordrecht en de regio Drechtsteden.",
+            "provider": {
+              "@id": "https://staopstoelen.nl/#localbusiness"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fitform Maatwerk Sta-op Stoelen Levering",
+            "description": "Erkend Fitform Dealer: levering van nieuwe Fitform sta-op stoelen en gecertificeerd gereviseerde topoccasions met garantie en persoonlijke nazorg.",
+            "provider": {
+              "@id": "https://staopstoelen.nl/#localbusiness"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Revisie en Onderhoud van Sta-op Stoelen",
+            "description": "Grondige technische keuring, motor- en bekledingsrevisie en ergonomische afstelling met garantie.",
+            "provider": {
+              "@id": "https://staopstoelen.nl/#localbusiness"
+            }
+          }
+        }
+      ]
+    }
   }
   </script>
   <style>
@@ -484,11 +681,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.116
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.117
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=10.116"></script>
+  <script src="app.js?v=10.117"></script>
 </body>
 </html>

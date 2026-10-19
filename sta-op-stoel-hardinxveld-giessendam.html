@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=10.116">
+  <link rel="stylesheet" href="style.css?v=10.117">
 
   <!-- Schema.org LocalBusiness, FAQPage & BreadcrumbList Structured Data -->
   <script type="application/ld+json">
@@ -19,7 +19,7 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["FurnitureStore", "MedicalBusiness"],
+        "@type": ["LocalBusiness", "MedicalBusiness", "MedicalDeviceStore", "FurnitureStore"],
         "@id": "https://staopstoelen.nl/#sta-op-stoel-hardinxveld-giessendam",
         "name": "staopstoelen.nl | Zitspecialist voor Hardinxveld-Giessendam & Drechtsteden",
         "url": "https://staopstoelen.nl/sta-op-stoel-hardinxveld-giessendam.html",
@@ -29,6 +29,8 @@
         "telephone": "+31786314858",
         "email": "info@staopstoelen.nl",
         "priceRange": "€€",
+        "currenciesAccepted": "EUR",
+        "paymentAccepted": "Pin, Contant, Bankoverschrijving, Factuur",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Merwedestraat 239",
@@ -39,8 +41,31 @@
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "51.8153",
-          "longitude": "4.6931"
+          "latitude": "51.8184",
+          "longitude": "4.6990"
+        },
+        "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Merwedestraat+239,+Dordrecht",
+        "founder": {
+          "@type": "Person",
+          "name": "Geertjan Klein Haneveld",
+          "jobTitle": "Bewegingstechnoloog & Zitspecialist",
+          "image": "https://staopstoelen.nl/assets/geert_avatar.png",
+          "description": "Gediplomeerd Bewegingstechnoloog en specialist in ergonomisch zitcomfort en maatwerk sta-op stoelen voor senioren."
+        },
+        "medicalSpecialty": [
+          "OccupationalTherapy",
+          "PhysicalTherapy",
+          "Geriatrics"
+        ],
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Schipper Compact Wonen",
+          "url": "https://schippercompactwonen.nl"
+        },
+        "brand": {
+          "@type": "Brand",
+          "name": "Fitform",
+          "url": "https://www.fitform.nl"
         },
         "areaServed": [
           {"@type": "City", "name": "Hardinxveld-Giessendam"},
@@ -817,12 +842,12 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-flex">
         <p>&copy; 2026 staopstoelen.nl &mdash; Onderdeel van Schipper Compact Wonen. Alle rechten voorbehouden.</p>
-        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">Gerealiseerd door BewegingsTechnologen. | Versie 10.116</p>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">Gerealiseerd door BewegingsTechnologen. | Versie 10.117</p>
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=10.116"></script>
+  <script src="app.js?v=10.117"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       if (typeof initFaqAccordion === "function") {
