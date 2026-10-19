@@ -153,20 +153,29 @@
       letter-spacing: 0.2px;
     }
 
-    /* Intro Hero Box */
+    /* Twee Groene Boxen: precies even hoog en symmetrisch gestyled */
+    .intro-box,
+    .result-box {
+      height: 104px;
+      min-height: 104px;
+      max-height: 104px;
+      box-sizing: border-box;
+      background: linear-gradient(135deg, #f7f9f6 0%, #edf4ea 100%);
+      border: 1.5px solid rgba(75, 143, 36, 0.32);
+      border-radius: 11px;
+      padding: 12px 18px;
+    }
+
     .intro-box {
-      margin-top: 11px;
-      background: linear-gradient(135deg, #fbfdf9 0%, #f4f8f0 100%);
-      border: 1px solid rgba(75, 143, 36, 0.22);
-      border-radius: 10px;
-      padding: 11px 16px;
+      margin-top: 10px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 16px;
     }
+
     .intro-avatar {
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       border: 2px solid var(--color-forest);
       object-fit: cover;
@@ -187,7 +196,7 @@
 
     /* Checklist Grid */
     .checklist-list {
-      margin-top: 11px;
+      margin-top: 10px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -196,7 +205,7 @@
     .check-card {
       border: 1px solid #e5e7eb;
       border-radius: 10px;
-      padding: 11px 16px;
+      padding: 10px 16px;
       background: #ffffff;
       box-shadow: 0 1px 4px rgba(0,0,0,0.03);
     }
@@ -206,21 +215,41 @@
       align-items: flex-start;
       gap: 14px;
     }
+
+    .check-step-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
     .check-step-num {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: var(--color-forest);
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 12px;
+      font-size: 11.5px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 1px;
     }
+    .check-step-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(75, 143, 36, 0.1);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      color: var(--color-forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
     .check-content {
       flex: 1;
     }
@@ -276,32 +305,31 @@
 
     /* Result & Action Box */
     .result-box {
-      margin-top: 11px;
-      background: linear-gradient(135deg, #f7f9f6 0%, #edf4ea 100%);
-      border: 1.5px solid rgba(75, 143, 36, 0.35);
-      border-radius: 11px;
-      padding: 13px 16px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .result-title {
       font-family: var(--font-heading);
       font-size: 13px;
       font-weight: 800;
       color: var(--color-forest-dark);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .result-text {
       font-size: 11.5px;
-      line-height: 1.45;
+      line-height: 1.42;
       color: #1f2937;
     }
     .result-bullets {
-      margin-top: 8px;
+      margin-top: 6px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px 16px;
+      gap: 5px 16px;
       font-size: 11px;
       color: #1f2937;
     }
@@ -318,7 +346,7 @@
 
     /* Footer Pill */
     .sheet-footer {
-      margin-top: 11px;
+      margin-top: 10px;
       padding-top: 8px;
       border-top: 1px solid var(--color-gray-light);
       display: flex;
@@ -382,24 +410,39 @@
       </div>
     </header>
 
-    <!-- Intro door Geertjan -->
+    <!-- Intro door Geertjan (Groene Box Boven) -->
     <div class="intro-box">
       <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld" class="intro-avatar">
       <div class="intro-text">
-        <h3>Advies van Bewegingstechnoloog Geertjan Klein Haneveld</h3>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px;">
+          <h3>Advies van Bewegingstechnoloog Geertjan Klein Haneveld</h3>
+          <span style="font-size: 10px; font-weight: 700; color: var(--color-forest); background: #ffffff; padding: 2px 9px; border-radius: 9999px; border: 1px solid rgba(75, 143, 36, 0.3); text-transform: uppercase; letter-spacing: 0.3px;">Fitform Specialist Dordrecht</span>
+        </div>
         <p>
           &ldquo;Veel senioren hebben ongemerkt last van rug-, nek- of beenpijn omdat hun stoel net niet op hun lichaamsmaten is afgesteld. Met deze 5 controlepunten ontdekt u binnen enkele minuten of uw huidige stoel u nog wel de juiste ondersteuning biedt.&rdquo;
         </p>
       </div>
     </div>
 
-    <!-- 5 Checklist Items -->
+    <!-- 5 Checklist Items met Huisstijl Iconografie -->
     <div class="checklist-list">
       
       <!-- Stap 1: Zithoogte -->
       <article class="check-card">
         <div class="check-card-top">
-          <div class="check-step-num">1</div>
+          <div class="check-step-badge">
+            <div class="check-step-num">1</div>
+            <div class="check-step-icon" title="Zithoogte afstelling">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="21" x2="21" y2="21"></line>
+                <path d="M6 13h12"></path>
+                <line x1="6" y1="13" x2="6" y2="5"></line>
+                <line x1="12" y1="4" x2="12" y2="18"></line>
+                <polyline points="9 7 12 4 15 7"></polyline>
+                <polyline points="9 15 12 18 15 15"></polyline>
+              </svg>
+            </div>
+          </div>
           <div class="check-content">
             <div class="check-title">De Zithoogte &mdash; Steun onder de voetzolen</div>
             <div class="check-question">Rusten beide voetzolen plat en stabiel op de vloer, met de knieën en heupen in een ontspannen hoek van circa 90 graden?</div>
@@ -415,7 +458,19 @@
       <!-- Stap 2: Zitdiepte -->
       <article class="check-card">
         <div class="check-card-top">
-          <div class="check-step-num">2</div>
+          <div class="check-step-badge">
+            <div class="check-step-num">2</div>
+            <div class="check-step-icon" title="Zitdiepte afstelling">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 4v10a2 2 0 0 0 2 2h12"></path>
+                <line x1="8" y1="10" x2="18" y2="10"></line>
+                <polyline points="11 7 8 10 11 13"></polyline>
+                <polyline points="15 7 18 10 15 13"></polyline>
+                <line x1="7" y1="16" x2="7" y2="21"></line>
+                <line x1="17" y1="16" x2="17" y2="21"></line>
+              </svg>
+            </div>
+          </div>
           <div class="check-content">
             <div class="check-title">De Zitdiepte &mdash; Ruimte achter de knieholte</div>
             <div class="check-question">Past er een platte hand (circa 2 tot 4 vingers) tussen de voorzijde van de zitting en de achterkant van uw knieholte als u goed achterin zit?</div>
@@ -431,7 +486,16 @@
       <!-- Stap 3: Lendensteun -->
       <article class="check-card">
         <div class="check-card-top">
-          <div class="check-step-num">3</div>
+          <div class="check-step-badge">
+            <div class="check-step-num">3</div>
+            <div class="check-step-icon" title="Ergonomische lendensteun">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 4c2.5 2 2.5 5 0 7s0 5 2.5 8"></path>
+                <path d="M15 9a3.5 3.5 0 0 0 0 6"></path>
+                <line x1="15" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          </div>
           <div class="check-content">
             <div class="check-title">De Lendensteun &mdash; Natuurlijke S-curve van de rug</div>
             <div class="check-question">Sluit de rugleuning over de volle lengte aan en voelt u duidelijke steun in de holling van uw onderrug (zonder losse kussentjes te gebruiken)?</div>
@@ -444,10 +508,20 @@
         </div>
       </article>
 
-      <!-- Stap 4: Armleggerhoogte -->
+      <!-- Stap 4: Armleggers -->
       <article class="check-card">
         <div class="check-card-top">
-          <div class="check-step-num">4</div>
+          <div class="check-step-badge">
+            <div class="check-step-num">4</div>
+            <div class="check-step-icon" title="Armlegger ontspanning">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h12a3 3 0 0 1 3 3v8"></path>
+                <line x1="4" y1="8" x2="4" y2="19"></line>
+                <line x1="9" y1="13" x2="15" y2="13"></line>
+                <polyline points="12 10 15 13 12 16"></polyline>
+              </svg>
+            </div>
+          </div>
           <div class="check-content">
             <div class="check-title">De Armleggers &mdash; Ontspanning in schouders en nek</div>
             <div class="check-question">Rusten uw onderarmen ontspannen op de armleuningen met de schouders laag en vrij (zonder dat u ze omhoog moet duwen of scheef hangt)?</div>
@@ -463,7 +537,17 @@
       <!-- Stap 5: Veilig Opstaan -->
       <article class="check-card">
         <div class="check-card-top">
-          <div class="check-step-num">5</div>
+          <div class="check-step-badge">
+            <div class="check-step-num">5</div>
+            <div class="check-step-icon" title="Elektrische sta-op ondersteuning">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17l10-4 4 2"></path>
+                <line x1="4" y1="17" x2="6" y2="7"></line>
+                <line x1="16" y1="20" x2="16" y2="6"></line>
+                <polyline points="12 10 16 6 20 10"></polyline>
+              </svg>
+            </div>
+          </div>
           <div class="check-content">
             <div class="check-title">Het Opstaan &mdash; Behoud van mobiliteit en veiligheid</div>
             <div class="check-question">Kunt u in één vloeiende beweging opstaan, zonder eerst meerdere malen te schommelen of hulp van een partner of wandelstok nodig te hebben?</div>
@@ -478,11 +562,11 @@
 
     </div>
 
-    <!-- Resultaat & Wat nu? -->
+    <!-- Resultaat & Wat nu? (Groene Box Onder) -->
     <div class="result-box">
       <div class="result-title">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-        Uw Uitslag &mdash; Heeft u 1 of meerdere &lsquo;Aandachtspunten&rsquo; aangevinkt?
+        <span>Uw Uitslag &mdash; Heeft u 1 of meerdere &lsquo;Aandachtspunten&rsquo; aangevinkt?</span>
       </div>
       <p class="result-text">
         Dan is de kans groot dat uw huidige stoel niet (meer) goed aansluit op uw lichaam. Goed zitten is écht maatwerk: een goede sta-op stoel wordt op uw <strong>zithoogte, zitdiepte en armleuninghoogte</strong> ingesteld.
@@ -490,7 +574,7 @@
       <div class="result-bullets">
         <div class="result-bullet-item">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Gratis deskundige inmeting in onze showroom</span>
+          <span>Gratis inmeting in onze showroom Dordrecht</span>
         </div>
         <div class="result-bullet-item">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -502,7 +586,7 @@
         </div>
         <div class="result-bullet-item">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Gratis thuisbezorgd &amp; ter plekke op maat gezet</span>
+          <span>Gratis thuisbezorgd &amp; direct op maat gezet</span>
         </div>
       </div>
     </div>
