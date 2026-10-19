@@ -1628,7 +1628,7 @@ function initCalendar() {
         <!-- Kop: Logo met strapline -->
         <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e8e8e8;">
           <a href="https://staopstoelen.nl" target="_blank" style="text-decoration: none; display: inline-block;">
-            <img src="https://staopstoelen.nl/assets/logo_email_salie.png" alt="staopstoelen.nl - Specialist in Ergonomisch Zitcomfort • Fitform Dealer" width="280" style="display: block; border: 0; width: 280px; height: auto; max-width: 100%;">
+            <img src="https://staopstoelen.nl/assets/logo_email_website.png" alt="staopstoelen.nl - Specialist in Ergonomisch Zitcomfort • Fitform Dealer" width="280" style="display: block; border: 0; width: 280px; height: auto; max-width: 100%;">
           </a>
         </div>
 
@@ -2112,7 +2112,7 @@ function handleLeadMagnetSubmit(event) {
     <div style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #222222; max-width: 600px; margin: 0 auto; padding: 24px 20px; background-color: #ffffff;">
       <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e8e8e8;">
         <a href="https://staopstoelen.nl" target="_blank" style="text-decoration: none; display: inline-block;">
-          <img src="https://staopstoelen.nl/assets/logo_email_salie.png" alt="staopstoelen.nl - Specialist in Ergonomisch Zitcomfort • Fitform Dealer" width="280" style="display: block; border: 0; width: 280px; height: auto; max-width: 100%;">
+          <img src="https://staopstoelen.nl/assets/logo_email_website.png" alt="staopstoelen.nl - Specialist in Ergonomisch Zitcomfort • Fitform Dealer" width="280" style="display: block; border: 0; width: 280px; height: auto; max-width: 100%;">
         </a>
       </div>
 
