@@ -1,6 +1,6 @@
 {
   "name": "staopstoelen",
-  "version": "10.119.0",
+  "version": "10.120.0",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
