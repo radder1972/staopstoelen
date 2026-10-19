@@ -699,7 +699,7 @@ section[id], section {
 .hero-geertjan-cta-title {
   font-family: var(--font-heading);
   font-size: 0.94rem;
-  font-weight: 650;
+  font-weight: 800;
   color: var(--color-forest-dark);
   line-height: 1.25;
   letter-spacing: 0.1px;
