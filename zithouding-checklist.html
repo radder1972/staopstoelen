@@ -386,19 +386,36 @@
       height: 10px;
     }
 
-    /* Footer Pill */
+    /* Footer zoals op de Orderbon */
     .sheet-footer {
-      margin-top: 8px;
-      padding-top: 6px;
-      border-top: 1px solid var(--color-gray-light);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 10.5px;
-      color: #4b5563;
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1.5px solid #d8e2d2;
     }
-    .sheet-footer strong {
+
+    .footer-pill {
+      background: #f4f8f1;
+      border: 1px solid #b7d5ae;
+      border-radius: 9999px;
+      padding: 5px 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      font-size: 11px;
+      font-weight: 700;
       color: var(--color-forest-dark);
+    }
+
+    .footer-pill span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-dot {
+      color: var(--color-terracotta);
+      font-size: 13px;
     }
 
     @media print {
@@ -417,6 +434,10 @@
         height: 100vh !important;
         max-height: 297mm !important;
         padding: 12mm 18mm 10mm 18mm !important;
+      }
+      .footer-pill {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       @page {
         size: A4 portrait;
@@ -653,10 +674,15 @@
       </div>
     </div>
 
-    <!-- Sheet Footer -->
+    <!-- Sheet Footer zoals op de Orderbon (inclusief showroom adres) -->
     <footer class="sheet-footer">
-      <div><strong>staopstoelen.nl</strong> &bull; Merwedestraat 239, 3313 GT Dordrecht &bull; Gratis parkeren voor de deur</div>
-      <div><strong>Bel direct voor advies:</strong> 078 - 631 4858 &bull; 06 - 22 23 29 64</div>
+      <div class="footer-pill">
+        <span><strong>staopstoelen.nl</strong></span>
+        <span class="footer-dot">&bull;</span>
+        <span>Merwedestraat 239, 3313 GT Dordrecht</span>
+        <span class="footer-dot">&bull;</span>
+        <span>Telefoon: 078 &ndash; 631 4858</span>
+      </div>
     </footer>
   </div>
 
