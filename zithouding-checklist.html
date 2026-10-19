@@ -86,7 +86,7 @@
       min-height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 10mm 15mm 8mm 15mm;
+      padding: 13mm 18mm 11mm 18mm;
       box-shadow: 0 8px 30px rgba(0,0,0,0.1);
       position: relative;
       display: flex;
@@ -99,7 +99,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       border-bottom: 2.5px solid var(--color-forest);
     }
 
@@ -156,9 +156,9 @@
     /* Twee Groene Boxen: precies even hoog en symmetrisch gestyled */
     .intro-box,
     .result-box {
-      height: 104px;
-      min-height: 104px;
-      max-height: 104px;
+      height: 114px;
+      min-height: 114px;
+      max-height: 114px;
       box-sizing: border-box;
       background: linear-gradient(135deg, #f7f9f6 0%, #edf4ea 100%);
       border: 1.5px solid rgba(75, 143, 36, 0.32);
@@ -167,15 +167,15 @@
     }
 
     .intro-box {
-      margin-top: 10px;
+      margin-top: 8px;
       display: flex;
       align-items: center;
       gap: 16px;
     }
 
     .intro-avatar {
-      width: 60px;
-      height: 60px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
       border: 2px solid var(--color-forest);
       object-fit: cover;
@@ -196,16 +196,16 @@
 
     /* Checklist Grid */
     .checklist-list {
-      margin-top: 10px;
+      margin-top: 8px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .check-card {
       border: 1px solid #e5e7eb;
       border-radius: 10px;
-      padding: 10px 16px;
+      padding: 9px 15px;
       background: #ffffff;
       box-shadow: 0 1px 4px rgba(0,0,0,0.03);
     }
@@ -216,38 +216,51 @@
       gap: 14px;
     }
 
+    /* Overlappende Stap-Badge (Icoontje met nummer half linksboven) */
     .check-step-badge {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      margin-right: 4px;
+    }
+    .check-step-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #f3f7f0;
+      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      color: var(--color-forest);
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-      margin-top: 1px;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(75, 143, 36, 0.08);
+      box-sizing: border-box;
     }
-    .check-step-num {
+    .check-step-icon svg {
       width: 24px;
       height: 24px;
+    }
+    .check-step-num {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: var(--color-forest);
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 11.5px;
+      font-size: 10.5px;
+      line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-    }
-    .check-step-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(75, 143, 36, 0.1);
-      border: 1px solid rgba(75, 143, 36, 0.22);
-      color: var(--color-forest);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+      z-index: 2;
     }
 
     .check-content {
@@ -255,22 +268,22 @@
     }
     .check-title {
       font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 12.8px;
       font-weight: 800;
       color: var(--color-forest-dark);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
     .check-question {
-      font-size: 11.5px;
+      font-size: 11.2px;
       font-weight: 600;
       color: #111827;
-      line-height: 1.42;
-      margin-bottom: 4px;
+      line-height: 1.38;
+      margin-bottom: 3px;
     }
     .check-reason {
-      font-size: 11px;
+      font-size: 10.8px;
       color: #4b5563;
-      line-height: 1.42;
+      line-height: 1.38;
     }
     .check-reason strong {
       color: var(--color-terracotta);
@@ -280,17 +293,17 @@
     .check-actions {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
       align-items: flex-end;
       flex-shrink: 0;
-      min-width: 140px;
+      min-width: 135px;
       padding-top: 2px;
     }
     .check-option {
       display: flex;
       align-items: center;
       gap: 7px;
-      font-size: 11px;
+      font-size: 10.8px;
       font-weight: 600;
       color: #374151;
       cursor: pointer;
@@ -305,49 +318,71 @@
 
     /* Result & Action Box */
     .result-box {
-      margin-top: 10px;
+      margin-top: 8px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     .result-title {
       font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 12.8px;
       font-weight: 800;
       color: var(--color-forest-dark);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+    }
+    .result-badge-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
     .result-text {
-      font-size: 11.5px;
-      line-height: 1.42;
+      font-size: 11px;
+      line-height: 1.38;
       color: #1f2937;
     }
     .result-bullets {
-      margin-top: 6px;
+      margin-top: 5px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5px 16px;
-      font-size: 11px;
+      font-size: 10.8px;
       color: #1f2937;
     }
     .result-bullet-item {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
       font-weight: 600;
     }
-    .result-bullet-item svg {
+    .bullet-check-badge {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(75, 143, 36, 0.15);
       color: var(--color-forest);
+      font-weight: 800;
+      font-size: 10.5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
 
     /* Footer Pill */
     .sheet-footer {
-      margin-top: 10px;
-      padding-top: 8px;
+      margin-top: 8px;
+      padding-top: 6px;
       border-top: 1px solid var(--color-gray-light);
       display: flex;
       justify-content: space-between;
@@ -374,7 +409,7 @@
         width: 100% !important;
         height: 100vh !important;
         max-height: 297mm !important;
-        padding: 8mm 12mm 6mm 12mm !important;
+        padding: 10mm 16mm 8mm 16mm !important;
       }
       @page {
         size: A4 portrait;
@@ -565,28 +600,28 @@
     <!-- Resultaat & Wat nu? (Groene Box Onder) -->
     <div class="result-box">
       <div class="result-title">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <div class="result-badge-check">✓</div>
         <span>Uw Uitslag &mdash; Heeft u 1 of meerdere &lsquo;Aandachtspunten&rsquo; aangevinkt?</span>
       </div>
       <p class="result-text">
-        Dan is de kans groot dat uw huidige stoel niet (meer) goed aansluit op uw lichaam. Goed zitten is écht maatwerk: een goede sta-op stoel wordt op uw <strong>zithoogte, zitdiepte en armleuninghoogte</strong> ingesteld.
+        Dan sluit uw stoel niet meer goed aan op uw lichaam. Goed zitten is écht maatwerk: een goede sta-op stoel wordt op uw <strong>exacte zithoogte, zitdiepte en armleuninghoogte</strong> ingesteld.
       </p>
       <div class="result-bullets">
         <div class="result-bullet-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span class="bullet-check-badge">✓</span>
           <span>Gratis inmeting in onze showroom Dordrecht</span>
         </div>
         <div class="result-bullet-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span class="bullet-check-badge">✓</span>
           <span>Mogelijkheid tot gratis thuispassing in de regio</span>
         </div>
         <div class="result-bullet-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span class="bullet-check-badge">✓</span>
           <span>Topoccasions v.a. € 1.050,- &amp; nieuw Fitform</span>
         </div>
         <div class="result-bullet-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Gratis thuisbezorgd &amp; direct op maat gezet</span>
+          <span class="bullet-check-badge">✓</span>
+          <span>Gratis bezorging &amp; direct op maat afgesteld</span>
         </div>
       </div>
     </div>
