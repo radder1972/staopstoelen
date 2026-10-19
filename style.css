@@ -724,10 +724,6 @@ section[id], section {
 #zithouding-checklist {
   scroll-margin-top: 100px;
 }
-#zithouding-checklist .section-title {
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
 @media (max-width: 768px) {
   #zithouding-checklist {
     scroll-margin-top: 70px;
