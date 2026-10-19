@@ -217,19 +217,19 @@
       gap: 14px;
     }
 
-    /* Overlappende Stap-Badge (Groter icoon met nummer half linksboven zonder witte rand) */
+    /* Overlappende Stap-Badge (Nog groter icoon met nummer half linksboven zonder witte rand) */
     .check-step-badge {
       position: relative;
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       flex-shrink: 0;
       margin-top: 1px;
-      margin-right: 5px;
+      margin-right: 7px;
     }
     .check-step-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 11px;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
       background: #f3f7f0;
       border: 1.5px solid rgba(75, 143, 36, 0.28);
       color: var(--color-forest);
@@ -240,21 +240,21 @@
       box-sizing: border-box;
     }
     .check-step-icon svg {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
     }
     .check-step-num {
       position: absolute;
-      top: -5px;
-      left: -5px;
-      width: 22px;
-      height: 22px;
+      top: -6px;
+      left: -6px;
+      width: 23px;
+      height: 23px;
       border-radius: 50%;
       background: var(--color-forest);
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 13px;
+      font-size: 13.5px;
       line-height: 1;
       display: flex;
       align-items: center;
@@ -467,7 +467,6 @@
         <div class="logo-subtitle">Specialist in ergonomisch zitcomfort &bull; Fitform Dealer</div>
       </div>
       <div class="doc-title-box">
-        <span class="doc-badge">Gratis Zelftest</span>
         <h1 class="doc-title">Zithouding Checklist</h1>
         <div class="doc-subtitle">Evalueer uw huidige stoel in 5 concrete stappen</div>
       </div>
@@ -495,12 +494,12 @@
             <div class="check-step-icon" title="Zithoogte afstelling">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <!-- Stoel profiel links -->
-                <path d="M4 4v9a1 1 0 0 0 1 1h7"></path>
-                <line x1="4" y1="14" x2="4" y2="20"></line>
-                <line x1="12" y1="14" x2="12" y2="20"></line>
+                <path d="M4 5v9a1 1 0 0 0 1 1h7"></path>
+                <line x1="4" y1="15" x2="4" y2="20"></line>
+                <line x1="12" y1="15" x2="12" y2="20"></line>
                 <!-- Vloerlijn onder stoel -->
                 <line x1="2" y1="20" x2="14" y2="20"></line>
-                <!-- Hoogtepijl rechts: compleet vrijstaand, géén overlappende lijnen -->
+                <!-- Hoogtepijl rechts: 14 units lang, compleet vrijstaand -->
                 <line x1="19" y1="5" x2="19" y2="19"></line>
                 <polyline points="16 8 19 5 22 8"></polyline>
                 <polyline points="16 16 19 19 22 16"></polyline>
@@ -526,13 +525,14 @@
             <div class="check-step-num">2</div>
             <div class="check-step-icon" title="Zitdiepte afstelling">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 5v9a2 2 0 0 0 2 2h14"></path>
-                <line x1="6" y1="16" x2="6" y2="21"></line>
-                <line x1="18" y1="16" x2="18" y2="21"></line>
-                <!-- Dieptepijl horizontaal, geen overlap -->
-                <line x1="8" y1="11" x2="18" y2="11"></line>
-                <polyline points="11 8 8 11 11 14"></polyline>
-                <polyline points="15 8 18 11 15 14"></polyline>
+                <!-- Rugleuning & zitting & poten -->
+                <path d="M4 4v11a1 1 0 0 0 1 1h14"></path>
+                <line x1="5" y1="16" x2="5" y2="21"></line>
+                <line x1="17" y1="16" x2="17" y2="21"></line>
+                <!-- Dieptepijl horizontaal: 14 units lang (x: 7 tot 21, y: 9), ruim boven zitting -->
+                <line x1="7" y1="9" x2="21" y2="9"></line>
+                <polyline points="10 6 7 9 10 12"></polyline>
+                <polyline points="18 6 21 9 18 12"></polyline>
               </svg>
             </div>
           </div>
@@ -555,13 +555,14 @@
             <div class="check-step-num">3</div>
             <div class="check-step-icon" title="Ergonomische lendensteun">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Rugcurve -->
-                <path d="M7 4c3 3 3 5 0 8s0 5 3 8"></path>
-                <!-- Lendenkussen steun -->
-                <path d="M12 9c2 1 3 2 3 3s-1 2-3 3"></path>
-                <!-- Steunindicator zonder overlap -->
-                <line x1="17" y1="12" x2="21" y2="12"></line>
-                <polyline points="18 9 15 12 18 15"></polyline>
+                <!-- Natuurlijke S-curve van de rugwervel links -->
+                <path d="M3 4c2.5 3 2.5 5 0 8s0 5 2.5 8"></path>
+                <!-- Ergonomisch lendenkussen in de holling -->
+                <path d="M6 9a2 3 0 0 1 0 6"></path>
+                <!-- Horizontale steunpijl rechts: 13 units lang (x: 10 tot 23, y: 12), geen contact -->
+                <line x1="10" y1="12" x2="23" y2="12"></line>
+                <polyline points="13 9 10 12 13 15"></polyline>
+                <polyline points="20 9 23 12 20 15"></polyline>
               </svg>
             </div>
           </div>
@@ -584,12 +585,15 @@
             <div class="check-step-num">4</div>
             <div class="check-step-icon" title="Armlegger ontspanning">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 9h12a3 3 0 0 1 3 3v8"></path>
-                <line x1="4" y1="9" x2="4" y2="20"></line>
-                <!-- Hoogte-ontspanning pijl vrijstaand binnen armleuning -->
-                <line x1="10" y1="13" x2="10" y2="18"></line>
-                <polyline points="8 15 10 13 12 15"></polyline>
-                <polyline points="8 16 10 18 12 16"></polyline>
+                <!-- Armleuning frame links -->
+                <line x1="3" y1="10" x2="14" y2="10"></line>
+                <line x1="4" y1="10" x2="4" y2="19"></line>
+                <line x1="13" y1="10" x2="13" y2="19"></line>
+                <line x1="2" y1="19" x2="15" y2="19"></line>
+                <!-- DUIDELIJKE hoogtepijl rechts: 14 units lang (y: 5 tot 19), exact even groot als stap 1 & vrijstaand -->
+                <line x1="19" y1="5" x2="19" y2="19"></line>
+                <polyline points="16 8 19 5 22 8"></polyline>
+                <polyline points="16 16 19 19 22 16"></polyline>
               </svg>
             </div>
           </div>
@@ -612,11 +616,13 @@
             <div class="check-step-num">5</div>
             <div class="check-step-icon" title="Elektrische sta-op ondersteuning">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="21" x2="15" y2="21"></line>
-                <path d="M4 17l8-3 5 1"></path>
-                <line x1="4" y1="17" x2="6" y2="8"></line>
-                <!-- Vrijstaande sta-op lift pijl rechts -->
-                <line x1="19" y1="19" x2="19" y2="6"></line>
+                <!-- Gekantelde stoelbasis links -->
+                <line x1="2" y1="21" x2="14" y2="21"></line>
+                <line x1="4" y1="16" x2="13" y2="12"></line>
+                <line x1="4" y1="16" x2="7" y2="7"></line>
+                <line x1="8" y1="14" x2="8" y2="21"></line>
+                <!-- DUIDELIJKE sta-op lift pijl rechts: 14 units lang (y: 6 tot 20), vrijstaand -->
+                <line x1="19" y1="6" x2="19" y2="20"></line>
                 <polyline points="16 9 19 6 22 9"></polyline>
               </svg>
             </div>
