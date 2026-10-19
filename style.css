@@ -619,6 +619,12 @@ section[id], section {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+@media (max-width: 768px) {
+  .hero-tag {
+    display: none !important;
+  }
+}
+
 .hero-expert-spotlight {
   transition: transform 0.25s ease;
 }
