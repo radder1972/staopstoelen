@@ -153,22 +153,18 @@
       letter-spacing: 0.2px;
     }
 
-    /* Twee Groene Boxen: precies even hoog en ruim gestyled */
-    .intro-box,
-    .result-box {
-      height: 126px;
-      min-height: 126px;
-      max-height: 126px;
+    /* Intro Box */
+    .intro-box {
+      height: 122px;
+      min-height: 122px;
+      max-height: 122px;
       box-sizing: border-box;
       background: linear-gradient(135deg, #f7f9f6 0%, #edf4ea 100%);
       border: 1.5px solid rgba(75, 143, 36, 0.32);
       border-radius: 11px;
-      padding: 15px 20px;
-    }
-
-    .intro-box {
-      margin-top: 16px;
-      margin-bottom: 16px;
+      padding: 14px 20px;
+      margin-top: 11px;
+      margin-bottom: 11px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -201,18 +197,18 @@
       margin-top: 0;
       display: flex;
       flex-direction: column;
-      gap: 13px;
+      gap: 9px;
     }
 
     .check-card {
       border: 1px solid #e5e7eb;
       border-radius: 10px;
-      padding: 11px 18px;
+      padding: 9px 16px;
       background: #ffffff;
       box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-      height: 100px;
-      min-height: 100px;
-      max-height: 100px;
+      height: 96px;
+      min-height: 96px;
+      max-height: 96px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -327,31 +323,27 @@
       display: inline-block;
     }
 
-    /* Result & Action Box */
+    /* Result & Action Box - Rustig, ruim met vinkjes onder elkaar */
     .result-box {
-      margin-top: 18px;
-      margin-bottom: 22px;
-      height: 126px;
-      min-height: 126px;
-      max-height: 126px;
+      margin-top: 13px;
+      margin-bottom: 14px;
+      background: #f7faf5;
+      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      border-radius: 12px;
+      padding: 16px 24px;
       box-sizing: border-box;
-      background: linear-gradient(135deg, #f7f9f6 0%, #edf4ea 100%);
-      border: 1.5px solid rgba(75, 143, 36, 0.32);
-      border-radius: 11px;
-      padding: 15px 20px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
     .result-title {
       font-family: var(--font-heading);
       font-size: 13px;
       font-weight: 800;
       color: var(--color-forest-dark);
-      margin-bottom: 2px;
+      margin-bottom: 5px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
     }
     .result-badge-check {
       width: 22px;
@@ -369,23 +361,23 @@
       height: 13px;
     }
     .result-text {
-      font-size: 11.4px;
+      font-size: 11.2px;
       font-weight: 400;
-      line-height: 1.42;
-      color: #1f2937;
+      line-height: 1.44;
+      color: #374151;
+      margin-bottom: 9px;
     }
     .result-bullets {
-      margin-top: 4px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5px 16px;
-      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 5.5px;
+      font-size: 11.2px;
       color: #1f2937;
     }
     .result-bullet-item {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 9px;
       font-weight: 500;
     }
     .bullet-check-badge {
