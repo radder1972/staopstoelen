@@ -201,11 +201,11 @@
     }
 
     .check-card {
-      border: 1px solid #e5e7eb;
+      border: 1px solid #dbe3d8;
       border-radius: 10px;
       padding: 9px 16px;
       background: #ffffff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      box-shadow: none;
       height: 96px;
       min-height: 96px;
       max-height: 96px;
@@ -240,7 +240,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.08);
+      box-shadow: none;
       box-sizing: border-box;
     }
     .check-step-icon svg {
@@ -264,7 +264,7 @@
       align-items: center;
       justify-content: center;
       border: none;
-      box-shadow: 0 2px 5px rgba(18, 43, 7, 0.25);
+      box-shadow: none;
       z-index: 2;
     }
 
@@ -429,6 +429,12 @@
     }
 
     @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
       body {
         background: #ffffff !important;
         padding: 0 !important;
@@ -444,10 +450,6 @@
         height: 100vh !important;
         max-height: 297mm !important;
         padding: 12mm 18mm 10mm 18mm !important;
-      }
-      .footer-pill {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
       }
       @page {
         size: A4 portrait;
