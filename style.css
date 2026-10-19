@@ -5704,16 +5704,17 @@ input[type="checkbox"] {
   margin: 20px 0 28px 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .lead-magnet-check-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   color: #333333;
-  line-height: 1.5;
+  line-height: 1.48;
+  min-height: 44px;
 }
 
 .lead-magnet-check-item strong {
@@ -5732,7 +5733,7 @@ input[type="checkbox"] {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 1px;
   box-sizing: border-box;
 }
 
