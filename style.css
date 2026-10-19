@@ -635,50 +635,91 @@ section[id], section {
   }
 }
 
-/* Geertjan Checklist CTA Link in Hero (zonder box, subtiel & elegant) */
+/* Geertjan Checklist CTA in Hero (zonder box) */
 .hero-geertjan-cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 12px;
   background: transparent;
   border: none;
-  box-shadow: none;
-  padding: 6px 0 0 0;
-  margin-top: 12px;
+  padding: 4px 0;
+  margin-top: 14px;
   text-decoration: none;
-  font-size: 0.88rem;
-  color: #4b5563;
-  transition: all 0.2s ease;
-  line-height: 1.4;
+  box-shadow: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
 .hero-geertjan-cta:hover {
-  transform: translateY(-1px);
-  color: var(--color-forest);
+  transform: translateY(-2px);
 }
 
-.hero-geertjan-cta-icon {
+.hero-geertjan-cta-badge {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: rgba(243, 146, 35, 0.15);
   color: var(--color-terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  align-self: center;
+  margin: auto 0;
+  transition: transform 0.25s ease;
 }
 
-.hero-geertjan-cta-action {
-  color: var(--color-terracotta);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.hero-geertjan-cta:hover .hero-geertjan-cta-badge {
+  transform: scale(1.08);
+}
+
+.hero-geertjan-cta-badge svg {
+  width: 19px;
+  height: 19px;
+  display: block;
+}
+
+.hero-geertjan-cta-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  gap: 3px;
+  line-height: 1.25;
+}
+
+.hero-geertjan-cta-title {
+  font-family: var(--font-heading);
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--color-forest-dark);
+  line-height: 1.25;
+  letter-spacing: 0.1px;
+  margin: 0;
+  padding: 0;
+  display: block;
   transition: color 0.2s ease;
 }
 
-.hero-geertjan-cta:hover .hero-geertjan-cta-action {
-  color: #b85d0d;
+.hero-geertjan-cta:hover .hero-geertjan-cta-title {
+  color: var(--color-forest);
 }
 
-.hero-geertjan-cta:hover .hero-geertjan-cta-icon {
-  transform: translateX(2px);
+.hero-geertjan-cta-sub {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-terracotta);
+  line-height: 1.25;
+  letter-spacing: 0.1px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 #zithouding-checklist {
