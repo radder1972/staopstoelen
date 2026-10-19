@@ -699,9 +699,10 @@ section[id], section {
 .hero-geertjan-cta-title {
   font-family: var(--font-heading);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-weight: 650;
   color: var(--color-forest-dark);
   line-height: 1.25;
+  letter-spacing: 0.1px;
   margin: 0;
   padding: 0;
   display: block;
@@ -709,9 +710,10 @@ section[id], section {
 
 .hero-geertjan-cta-sub {
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-terracotta);
   line-height: 1.25;
+  letter-spacing: 0.1px;
   margin: 0;
   padding: 0;
   display: inline-flex;
@@ -721,6 +723,10 @@ section[id], section {
 
 #zithouding-checklist {
   scroll-margin-top: 100px;
+}
+#zithouding-checklist .section-title {
+  font-weight: 700;
+  letter-spacing: -0.3px;
 }
 @media (max-width: 768px) {
   #zithouding-checklist {
@@ -5709,9 +5715,14 @@ input[type="checkbox"] {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   color: #333333;
   line-height: 1.5;
+}
+
+.lead-magnet-check-item strong {
+  font-weight: 600;
+  color: var(--color-forest-dark, #122b07);
 }
 
 .lead-magnet-check-icon {
