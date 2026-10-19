@@ -1625,14 +1625,11 @@ function initCalendar() {
     const customerEmailHtml = `
       <div style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #222222; max-width: 600px; margin: 0 auto; padding: 24px 20px; background-color: #ffffff;">
         
-        <!-- Kop: Logo links, daaronder strapline -->
+        <!-- Kop: Logo met strapline -->
         <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e8e8e8;">
           <a href="https://staopstoelen.nl" target="_blank" style="text-decoration: none; display: inline-block;">
-            <img src="https://staopstoelen.nl/assets/logo_email.png" alt="staopstoelen.nl" width="220" style="display: block; border: 0; width: 220px; height: auto; max-width: 100%;">
+            <img src="https://staopstoelen.nl/assets/logo_email.png" alt="staopstoelen.nl - Specialist in Ergonomisch Zitcomfort • Fitform Dealer" width="280" style="display: block; border: 0; width: 280px; height: auto; max-width: 100%;">
           </a>
-          <div style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 500; color: #666666; margin-top: 6px;">
-            Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer
-          </div>
         </div>
 
         <p style="margin: 0 0 16px 0; color: #222222;">Beste ${name},</p>
@@ -2115,11 +2112,8 @@ function handleLeadMagnetSubmit(event) {
     <div style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #222222; max-width: 600px; margin: 0 auto; padding: 24px 20px; background-color: #ffffff;">
       <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e8e8e8;">
         <a href="https://staopstoelen.nl" target="_blank" style="text-decoration: none; display: inline-block;">
-          <img src="https://staopstoelen.nl/assets/logo_email.png" alt="staopstoelen.nl" width="220" style="display: block; border: 0; width: 220px; height: auto; max-width: 100%;">
+          <img src="https://staopstoelen.nl/assets/logo_email.png" alt="staopstoelen.nl - Specialist in Ergonomisch Zitcomfort • Fitform Dealer" width="280" style="display: block; border: 0; width: 280px; height: auto; max-width: 100%;">
         </a>
-        <div style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 500; color: #666666; margin-top: 6px;">
-          Specialist in Ergonomisch Zitcomfort &bull; Fitform Dealer
-        </div>
       </div>
 
       <p style="margin: 0 0 16px 0; color: #222222;">Beste ${name || "lezer"},</p>
@@ -2133,8 +2127,8 @@ function handleLeadMagnetSubmit(event) {
       </p>
 
       <div style="text-align: center; margin: 30px 0;">
-        <a href="https://staopstoelen.nl/assets/zithouding-checklist.pdf" target="_blank" style="background-color: #4b8f24; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 9999px; font-weight: bold; font-size: 15px; display: inline-block;">
-          📥 Bekijk & Download de Checklist (PDF)
+        <a href="https://staopstoelen.nl/assets/zithouding-checklist.pdf" target="_blank" style="background-color: #4b8f24; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 9999px; font-weight: bold; font-size: 15px; display: inline-block; vertical-align: middle;">
+          <img src="https://staopstoelen.nl/assets/icon_download_white.png" width="16" height="16" alt="↓" style="vertical-align: -2px; margin-right: 8px; border: 0; display: inline-block;">Bekijk &amp; Download de Checklist (PDF)
         </a>
       </div>
 
