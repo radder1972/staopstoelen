@@ -89,10 +89,53 @@ function doPost(e) {
     const address = payload.address || "Merwedestraat 239, 3313 GT Dordrecht";
     const notes = payload.notes || "-";
 
+    // A. Specifieke afhandeling voor Lead Magnet: Zithouding Checklist Download
+    // (Maakt GEEN agenda-afspraak, verstuurt alleen klantmail en teamnotificatie van download)
+    if (appointmentType === "checklist_download" || payload.action === "checklist_download") {
+      // 1. Bevestigingsmail naar de klant met checklist & downloadknop
+      if (email && payload.emailHtml) {
+        const customerSubject = payload.emailSubject || "Uw Zithouding Checklist (PDF) - Staopstoelen.nl";
+        try {
+          GmailApp.sendEmail(email, customerSubject, "", {
+            htmlBody: payload.emailHtml,
+            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl"
+          });
+        } catch (e1) {
+          MailApp.sendEmail({
+            to: email,
+            subject: customerSubject,
+            htmlBody: payload.emailHtml,
+            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl"
+          });
+        }
+      }
+
+      // 2. Notificatiemail naar het bedrijf / team dat er een download is geweest
+      if (NOTIFICATION_EMAIL) {
+        const downloadSubject = `Nieuwe download: Zithouding Checklist (${name})`;
+        const downloadBody = 
+          `Er is zojuist een gratis Zithouding Checklist (PDF) gedownload via de website:\n\n` +
+          `Naam: ${name}\n` +
+          `E-mail: ${email}\n` +
+          `Datum & tijd: ${new Date().toLocaleString("nl-NL", { timeZone: "Europe/Amsterdam" })}\n\n` +
+          `De bezoeker heeft direct de e-mailbevestiging met de downloadlink ontvangen.\n` +
+          `Er is géén agenda-afspraak aangemaakt (dit betreft een lead download).`;
+
+        try {
+          MailApp.sendEmail(NOTIFICATION_EMAIL, downloadSubject, downloadBody);
+        } catch (e2) {
+          // Negeer
+        }
+      }
+
+      return ContentService.createTextOutput(JSON.stringify({ status: "success", type: "checklist_download" }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     const typeTitle = appointmentType === "home" ? "Passing aan Huis" : "Showroombezoek Dordrecht";
     const eventTitle = `Afspraak: ${name} (${typeTitle})`;
 
-    // 1. Maak agenda afspraak
+    // 1. Maak agenda afspraak (alleen voor echte afspraken!)
     let startDateObj, endDateObj;
     if (date && startTime && endTime) {
       const [year, month, day] = date.split("-").map(Number);
