@@ -153,17 +153,17 @@
       letter-spacing: 0.2px;
     }
 
-    /* Twee Groene Boxen: precies even hoog en symmetrisch gestyled */
+    /* Twee Groene Boxen: precies even hoog en ruim gestyled */
     .intro-box,
     .result-box {
-      height: 114px;
-      min-height: 114px;
-      max-height: 114px;
+      height: 120px;
+      min-height: 120px;
+      max-height: 120px;
       box-sizing: border-box;
       background: linear-gradient(135deg, #f7f9f6 0%, #edf4ea 100%);
       border: 1.5px solid rgba(75, 143, 36, 0.32);
       border-radius: 11px;
-      padding: 12px 18px;
+      padding: 13px 18px;
     }
 
     .intro-box {
@@ -174,8 +174,8 @@
     }
 
     .intro-avatar {
-      width: 62px;
-      height: 62px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       border: 2px solid var(--color-forest);
       object-fit: cover;
@@ -183,15 +183,17 @@
     }
     .intro-text h3 {
       font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 12.2px;
       font-weight: 800;
       color: var(--color-forest-dark);
       margin-bottom: 3px;
+      white-space: nowrap;
     }
     .intro-text p {
-      font-size: 11.5px;
+      font-size: 11.8px;
+      font-weight: 400;
       color: #374151;
-      line-height: 1.45;
+      line-height: 1.48;
     }
 
     /* Checklist Grid */
@@ -199,7 +201,7 @@
       margin-top: 8px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .check-card {
@@ -216,50 +218,50 @@
       gap: 14px;
     }
 
-    /* Overlappende Stap-Badge (Icoontje met nummer half linksboven) */
+    /* Overlappende Stap-Badge (Groter icoon met nummer half linksboven zonder witte rand) */
     .check-step-badge {
       position: relative;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       flex-shrink: 0;
-      margin-top: 2px;
-      margin-right: 4px;
+      margin-top: 1px;
+      margin-right: 5px;
     }
     .check-step-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      border-radius: 11px;
       background: #f3f7f0;
       border: 1.5px solid rgba(75, 143, 36, 0.28);
       color: var(--color-forest);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 5px rgba(75, 143, 36, 0.08);
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.08);
       box-sizing: border-box;
     }
     .check-step-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
     }
     .check-step-num {
       position: absolute;
-      top: -6px;
-      left: -6px;
-      width: 20px;
-      height: 20px;
+      top: -5px;
+      left: -5px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--color-forest);
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 10.5px;
+      font-size: 13px;
       line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid #ffffff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+      border: none;
+      box-shadow: 0 2px 5px rgba(18, 43, 7, 0.25);
       z-index: 2;
     }
 
@@ -268,22 +270,23 @@
     }
     .check-title {
       font-family: var(--font-heading);
-      font-size: 12.8px;
+      font-size: 13px;
       font-weight: 800;
       color: var(--color-forest-dark);
       margin-bottom: 2px;
     }
     .check-question {
-      font-size: 11.2px;
-      font-weight: 600;
-      color: #111827;
-      line-height: 1.38;
+      font-size: 11.8px;
+      font-weight: 400;
+      color: #374151;
+      line-height: 1.44;
       margin-bottom: 3px;
     }
     .check-reason {
-      font-size: 10.8px;
+      font-size: 11.2px;
+      font-weight: 400;
       color: #4b5563;
-      line-height: 1.38;
+      line-height: 1.44;
     }
     .check-reason strong {
       color: var(--color-terracotta);
@@ -303,8 +306,8 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      font-size: 10.8px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 500;
       color: #374151;
       cursor: pointer;
     }
@@ -325,7 +328,7 @@
     }
     .result-title {
       font-family: var(--font-heading);
-      font-size: 12.8px;
+      font-size: 13px;
       font-weight: 800;
       color: var(--color-forest-dark);
       margin-bottom: 2px;
@@ -334,49 +337,54 @@
       gap: 8px;
     }
     .result-badge-check {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--color-forest);
       color: #ffffff;
-      font-weight: 900;
-      font-size: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
+    .result-badge-check svg {
+      width: 13px;
+      height: 13px;
+    }
     .result-text {
-      font-size: 11px;
-      line-height: 1.38;
+      font-size: 11.4px;
+      font-weight: 400;
+      line-height: 1.42;
       color: #1f2937;
     }
     .result-bullets {
-      margin-top: 5px;
+      margin-top: 4px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5px 16px;
-      font-size: 10.8px;
+      font-size: 11px;
       color: #1f2937;
     }
     .result-bullet-item {
       display: flex;
       align-items: center;
       gap: 7px;
-      font-weight: 600;
+      font-weight: 500;
     }
     .bullet-check-badge {
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
       border-radius: 50%;
-      background: rgba(75, 143, 36, 0.15);
+      background: rgba(75, 143, 36, 0.16);
       color: var(--color-forest);
-      font-weight: 800;
-      font-size: 10.5px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+    }
+    .bullet-check-badge svg {
+      width: 10px;
+      height: 10px;
     }
 
     /* Footer Pill */
@@ -409,7 +417,7 @@
         width: 100% !important;
         height: 100vh !important;
         max-height: 297mm !important;
-        padding: 10mm 16mm 8mm 16mm !important;
+        padding: 12mm 18mm 10mm 18mm !important;
       }
       @page {
         size: A4 portrait;
@@ -468,13 +476,17 @@
           <div class="check-step-badge">
             <div class="check-step-num">1</div>
             <div class="check-step-icon" title="Zithoogte afstelling">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="21" x2="21" y2="21"></line>
-                <path d="M6 13h12"></path>
-                <line x1="6" y1="13" x2="6" y2="5"></line>
-                <line x1="12" y1="4" x2="12" y2="18"></line>
-                <polyline points="9 7 12 4 15 7"></polyline>
-                <polyline points="9 15 12 18 15 15"></polyline>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Stoel profiel links -->
+                <path d="M4 4v9a1 1 0 0 0 1 1h7"></path>
+                <line x1="4" y1="14" x2="4" y2="20"></line>
+                <line x1="12" y1="14" x2="12" y2="20"></line>
+                <!-- Vloerlijn onder stoel -->
+                <line x1="2" y1="20" x2="14" y2="20"></line>
+                <!-- Hoogtepijl rechts: compleet vrijstaand, géén overlappende lijnen -->
+                <line x1="19" y1="5" x2="19" y2="19"></line>
+                <polyline points="16 8 19 5 22 8"></polyline>
+                <polyline points="16 16 19 19 22 16"></polyline>
               </svg>
             </div>
           </div>
@@ -496,13 +508,14 @@
           <div class="check-step-badge">
             <div class="check-step-num">2</div>
             <div class="check-step-icon" title="Zitdiepte afstelling">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 4v10a2 2 0 0 0 2 2h12"></path>
-                <line x1="8" y1="10" x2="18" y2="10"></line>
-                <polyline points="11 7 8 10 11 13"></polyline>
-                <polyline points="15 7 18 10 15 13"></polyline>
-                <line x1="7" y1="16" x2="7" y2="21"></line>
-                <line x1="17" y1="16" x2="17" y2="21"></line>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5v9a2 2 0 0 0 2 2h14"></path>
+                <line x1="6" y1="16" x2="6" y2="21"></line>
+                <line x1="18" y1="16" x2="18" y2="21"></line>
+                <!-- Dieptepijl horizontaal, geen overlap -->
+                <line x1="8" y1="11" x2="18" y2="11"></line>
+                <polyline points="11 8 8 11 11 14"></polyline>
+                <polyline points="15 8 18 11 15 14"></polyline>
               </svg>
             </div>
           </div>
@@ -524,10 +537,14 @@
           <div class="check-step-badge">
             <div class="check-step-num">3</div>
             <div class="check-step-icon" title="Ergonomische lendensteun">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 4c2.5 2 2.5 5 0 7s0 5 2.5 8"></path>
-                <path d="M15 9a3.5 3.5 0 0 0 0 6"></path>
-                <line x1="15" y1="12" x2="19" y2="12"></line>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Rugcurve -->
+                <path d="M7 4c3 3 3 5 0 8s0 5 3 8"></path>
+                <!-- Lendenkussen steun -->
+                <path d="M12 9c2 1 3 2 3 3s-1 2-3 3"></path>
+                <!-- Steunindicator zonder overlap -->
+                <line x1="17" y1="12" x2="21" y2="12"></line>
+                <polyline points="18 9 15 12 18 15"></polyline>
               </svg>
             </div>
           </div>
@@ -549,11 +566,13 @@
           <div class="check-step-badge">
             <div class="check-step-num">4</div>
             <div class="check-step-icon" title="Armlegger ontspanning">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 8h12a3 3 0 0 1 3 3v8"></path>
-                <line x1="4" y1="8" x2="4" y2="19"></line>
-                <line x1="9" y1="13" x2="15" y2="13"></line>
-                <polyline points="12 10 15 13 12 16"></polyline>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 9h12a3 3 0 0 1 3 3v8"></path>
+                <line x1="4" y1="9" x2="4" y2="20"></line>
+                <!-- Hoogte-ontspanning pijl vrijstaand binnen armleuning -->
+                <line x1="10" y1="13" x2="10" y2="18"></line>
+                <polyline points="8 15 10 13 12 15"></polyline>
+                <polyline points="8 16 10 18 12 16"></polyline>
               </svg>
             </div>
           </div>
@@ -575,11 +594,13 @@
           <div class="check-step-badge">
             <div class="check-step-num">5</div>
             <div class="check-step-icon" title="Elektrische sta-op ondersteuning">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 17l10-4 4 2"></path>
-                <line x1="4" y1="17" x2="6" y2="7"></line>
-                <line x1="16" y1="20" x2="16" y2="6"></line>
-                <polyline points="12 10 16 6 20 10"></polyline>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="21" x2="15" y2="21"></line>
+                <path d="M4 17l8-3 5 1"></path>
+                <line x1="4" y1="17" x2="6" y2="8"></line>
+                <!-- Vrijstaande sta-op lift pijl rechts -->
+                <line x1="19" y1="19" x2="19" y2="6"></line>
+                <polyline points="16 9 19 6 22 9"></polyline>
               </svg>
             </div>
           </div>
@@ -600,7 +621,9 @@
     <!-- Resultaat & Wat nu? (Groene Box Onder) -->
     <div class="result-box">
       <div class="result-title">
-        <div class="result-badge-check">✓</div>
+        <span class="result-badge-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </span>
         <span>Uw Uitslag &mdash; Heeft u 1 of meerdere &lsquo;Aandachtspunten&rsquo; aangevinkt?</span>
       </div>
       <p class="result-text">
@@ -608,19 +631,27 @@
       </p>
       <div class="result-bullets">
         <div class="result-bullet-item">
-          <span class="bullet-check-badge">✓</span>
+          <span class="bullet-check-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
           <span>Gratis inmeting in onze showroom Dordrecht</span>
         </div>
         <div class="result-bullet-item">
-          <span class="bullet-check-badge">✓</span>
+          <span class="bullet-check-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
           <span>Mogelijkheid tot gratis thuispassing in de regio</span>
         </div>
         <div class="result-bullet-item">
-          <span class="bullet-check-badge">✓</span>
+          <span class="bullet-check-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
           <span>Topoccasions v.a. € 1.050,- &amp; nieuw Fitform</span>
         </div>
         <div class="result-bullet-item">
-          <span class="bullet-check-badge">✓</span>
+          <span class="bullet-check-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
           <span>Gratis bezorging &amp; direct op maat afgesteld</span>
         </div>
       </div>
