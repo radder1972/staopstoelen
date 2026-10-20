@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.126">
+  <link rel="stylesheet" href="style.css?v=10.127">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1439,6 +1439,14 @@
           <span>Statistieken</span>
         </button>
 
+        <button class="tab-btn" id="tabAnalytics" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"></path>
+            <path d="M18 9l-5 5-4-4-3 3"></path>
+          </svg>
+          <span>Google Analytics</span>
+        </button>
+
         <button class="tab-btn" id="tabHuisstijl" role="tab" aria-selected="false">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
@@ -2192,6 +2200,133 @@
           </div>
         </div>
       </div> <!-- End #statsSection -->
+
+      <!-- ======================================================================
+           Section: Google Analytics 4 Dashboard (Looker Studio Embed & Deep-Links)
+           ====================================================================== -->
+      <div id="analyticsSection" style="display: none; margin-bottom: 60px;">
+        <div class="section-header-banner">
+          <div class="section-header-main">
+            <div class="section-badge-pill">
+              <span class="pulse-dot"></span>
+              <span>GA4 • Property ID: 387069338</span>
+            </div>
+            <h2 class="section-banner-title">Google Analytics (GA4) Live Dashboard</h2>
+            <p class="section-banner-subtitle">
+              Live overzicht van websitebezoekers, Google Ads-prestaties, organisch zoekverkeer en conversies voor <strong>staopstoelen.nl</strong>.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <button type="button" onclick="toggleLookerConfig()" class="btn btn-outline" style="border-color: var(--color-forest); color: var(--color-forest-dark); background: #ffffff; padding: 10px 18px; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span>Looker Insluit-link Instellen</span>
+            </button>
+            <a href="https://analytics.google.com/analytics/web/#/p387069338/reports/dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+              <span>Open Google Analytics</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Snelle Google Analytics Deep-links (Quick Cards) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin: 24px 0 28px 0;">
+          <a href="https://analytics.google.com/analytics/web/#/p387069338/reports/dashboard?params=_u..nav%3Dmaui&r=realtime-overview" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='var(--color-forest)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='#d1e2cb'; this.style.transform='none';">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: #15803d; text-transform: uppercase; letter-spacing: 0.5px;">Live Monitor</span>
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span>
+            </div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--color-forest-dark);">Realtime Bezoekers</div>
+            <div style="font-size: 0.84rem; color: #64748b; line-height: 1.4;">Wie zit er nu op de website en op welke pagina?</div>
+          </a>
+
+          <a href="https://analytics.google.com/analytics/web/#/p387069338/reports/lifecycle-traffic-acquisition-v2" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='var(--color-forest)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='#d1e2cb'; this.style.transform='none';">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: #ea580c; text-transform: uppercase; letter-spacing: 0.5px;">Acquisitie</span>
+              <span style="font-size: 1rem;">🔍</span>
+            </div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--color-forest-dark);">Kanalen &amp; Google Ads</div>
+            <div style="font-size: 0.84rem; color: #64748b; line-height: 1.4;">Herkomst: Google Ads (SEA), zoekresultaten (SEO) en direct.</div>
+          </a>
+
+          <a href="https://analytics.google.com/analytics/web/#/p387069338/reports/lifecycle-pages-and-screens" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='var(--color-forest)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='#d1e2cb'; this.style.transform='none';">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Betrokkenheid</span>
+              <span style="font-size: 1rem;">🪑</span>
+            </div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--color-forest-dark);">Stoelpagina's &amp; Bezoek</div>
+            <div style="font-size: 0.84rem; color: #64748b; line-height: 1.4;">Meest bezochte modellen, leestijd en weergaven.</div>
+          </a>
+
+          <a href="https://analytics.google.com/analytics/web/#/p387069338/reports/lifecycle-conversions" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='var(--color-forest)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='#d1e2cb'; this.style.transform='none';">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: #9333ea; text-transform: uppercase; letter-spacing: 0.5px;">Resultaat</span>
+              <span style="font-size: 1rem;">🎯</span>
+            </div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--color-forest-dark);">Conversies &amp; Leads</div>
+            <div style="font-size: 0.84rem; color: #64748b; line-height: 1.4;">Afspraken, checklist-downloads en offerteaanvragen.</div>
+          </a>
+        </div>
+
+        <!-- Configuratie box (Inklapbaar / Instelbaar) -->
+        <div id="lookerConfigBox" style="display: none; background: #f8faf7; border: 1.5px solid #cfe2c7; border-radius: 14px; padding: 22px 26px; margin-bottom: 24px; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 14px;">
+            <div>
+              <h3 style="margin: 0 0 6px 0; font-size: 1.1rem; color: var(--color-forest-dark); font-weight: 800;">
+                Looker Studio Rapport Koppeling
+              </h3>
+              <p style="margin: 0; font-size: 0.88rem; color: #4b5563; line-height: 1.5;">
+                Plak hieronder de <em>Insluit-URL</em> van uw Google Looker Studio rapport om het live in dit dashboard te tonen.
+              </p>
+            </div>
+            <button type="button" onclick="toggleLookerConfig()" style="background: none; border: none; font-size: 1.3rem; color: #6b7280; cursor: pointer; padding: 2px 6px;">&times;</button>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid #d1d5db; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; font-size: 0.84rem; color: #374151; line-height: 1.6;">
+            <strong>In 3 stappen uw Looker Studio rapport genereren:</strong>
+            <ol style="margin: 6px 0 0 20px; padding: 0;">
+              <li>Open <a href="https://lookerstudio.google.com/reporting/create" target="_blank" rel="noopener noreferrer" style="color: var(--color-forest); font-weight: 700; text-decoration: underline;">Looker Studio (Nieuw Rapport)</a> en selecteer <em>Google Analytics</em> als gegevensbron.</li>
+              <li>Kies uw property <strong>staopstoelen.nl (387069338)</strong> en klik op <em>Toevoegen</em>.</li>
+              <li>Klik rechtsboven op <strong>Delen</strong> &rarr; zet de link-toegang op <em>"Iedereen met de link kan bekijken"</em>.</li>
+              <li>Klik linksboven op <strong>Bestand &rarr; Rapport insluiten</strong> &rarr; vink <em>"Insluiten inschakelen"</em> aan en kies <strong>"Insluit-URL"</strong>.</li>
+              <li>Kopieer die link en plak hem hieronder:</li>
+            </ol>
+          </div>
+
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <input type="url" id="inputLookerUrl" placeholder="https://lookerstudio.google.com/embed/reporting/..." style="flex: 1; min-width: 280px; padding: 11px 16px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; font-family: monospace;">
+            <button type="button" onclick="saveLookerUrl()" class="btn btn-primary" style="padding: 11px 22px; font-size: 0.88rem; font-weight: 700;">
+              Koppeling Opslaan
+            </button>
+            <button type="button" onclick="resetLookerUrl()" class="btn btn-outline" style="border-color: #ef4444; color: #b91c1c; padding: 11px 16px; font-size: 0.88rem;">
+              Wissen
+            </button>
+          </div>
+        </div>
+
+        <!-- Looker Studio Iframe Container -->
+        <div id="lookerFrameContainer" style="background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(18, 43, 7, 0.05); min-height: 500px; position: relative;">
+          <!-- Placeholder als er nog geen link is opgeslagen -->
+          <div id="lookerPlaceholder" style="padding: 60px 30px; text-align: center; display: none;">
+            <div style="font-size: 3rem; margin-bottom: 14px;">📊</div>
+            <h3 style="font-size: 1.35rem; color: var(--color-forest-dark); font-weight: 800; margin-bottom: 8px;">
+              Koppel uw Looker Studio Rapport
+            </h3>
+            <p style="max-width: 600px; margin: 0 auto 24px auto; color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
+              U heeft GA4 Property ID <strong>387069338</strong> geactiveerd. Plak uw Looker Studio insluit-link om het live interactieve dashboard direct in dit venster te openen.
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" onclick="toggleLookerConfig(true)" class="btn btn-primary" style="padding: 12px 26px; font-weight: 700; font-size: 0.92rem;">
+                Insluit-link Invoeren
+              </button>
+              <a href="https://lookerstudio.google.com/reporting/create" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 12px 24px; font-weight: 700; font-size: 0.92rem; border-color: var(--color-forest); color: var(--color-forest-dark); background: #ffffff;">
+                Open Looker Studio &rarr;
+              </a>
+            </div>
+          </div>
+
+          <iframe id="lookerIframe" src="" style="display: none; width: 100%; height: 950px; border: 0;" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+      </div> <!-- End #analyticsSection -->
 
       <!-- ======================================================================
            Section: Huisstijl & Drukwerk Portaal (initially hidden)
@@ -6106,22 +6241,86 @@
     const tabChairs = document.getElementById("tabChairs");
     const tabBrands = document.getElementById("tabBrands");
     const tabStats = document.getElementById("tabStats");
+    const tabAnalytics = document.getElementById("tabAnalytics");
     const tabHuisstijl = document.getElementById("tabHuisstijl");
     const chairsSection = document.getElementById("chairsSection");
     const brandsSection = document.getElementById("brandsSection");
     const statsSection = document.getElementById("statsSection");
+    const analyticsSection = document.getElementById("analyticsSection");
     const huisstijlSection = document.getElementById("huisstijlSection");
+
+    // Looker Studio GA4 Logic
+    function initLookerDashboard() {
+      const savedUrl = localStorage.getItem("staopstoelen_looker_url") || "";
+      const iframe = document.getElementById("lookerIframe");
+      const placeholder = document.getElementById("lookerPlaceholder");
+      const input = document.getElementById("inputLookerUrl");
+
+      if (input) input.value = savedUrl;
+
+      if (savedUrl && savedUrl.startsWith("http")) {
+        if (iframe) {
+          if (iframe.src !== savedUrl) iframe.src = savedUrl;
+          iframe.style.display = "block";
+        }
+        if (placeholder) placeholder.style.display = "none";
+      } else {
+        if (iframe) iframe.style.display = "none";
+        if (placeholder) placeholder.style.display = "block";
+      }
+    }
+
+    function toggleLookerConfig(forceOpen = null) {
+      const box = document.getElementById("lookerConfigBox");
+      if (!box) return;
+      if (forceOpen === true) {
+        box.style.display = "block";
+        const input = document.getElementById("inputLookerUrl");
+        if (input) input.focus();
+      } else if (forceOpen === false) {
+        box.style.display = "none";
+      } else {
+        box.style.display = (box.style.display === "none" || !box.style.display) ? "block" : "none";
+      }
+    }
+
+    function saveLookerUrl() {
+      const input = document.getElementById("inputLookerUrl");
+      if (!input) return;
+      const url = input.value.trim();
+      if (!url) {
+        alert("Voer a.u.b. een geldige Looker Studio insluit-link in.");
+        return;
+      }
+      if (!url.startsWith("http")) {
+        alert("De link moet beginnen met https://");
+        return;
+      }
+      localStorage.setItem("staopstoelen_looker_url", url);
+      toggleLookerConfig(false);
+      initLookerDashboard();
+      alert("Looker Studio dashboard succesvol gekoppeld!");
+    }
+
+    function resetLookerUrl() {
+      if (confirm("Weet u zeker dat u de opgeslagen Looker Studio koppeling wilt wissen?")) {
+        localStorage.removeItem("staopstoelen_looker_url");
+        const input = document.getElementById("inputLookerUrl");
+        if (input) input.value = "";
+        initLookerDashboard();
+      }
+    }
     
     function switchAdminTab(targetTab) {
       if (!tabChairs || !tabBrands || !tabStats || !tabHuisstijl) return;
       
-      [tabChairs, tabBrands, tabStats, tabHuisstijl].forEach(btn => {
+      [tabChairs, tabBrands, tabStats, tabAnalytics, tabHuisstijl].forEach(btn => {
         if (btn) {
           btn.classList.remove("active");
           btn.setAttribute("aria-selected", "false");
         }
       });
-      [chairsSection, brandsSection, statsSection, huisstijlSection].forEach(sec => sec && (sec.style.display = "none"));
+      [chairsSection, brandsSection, statsSection, analyticsSection, huisstijlSection].forEach(sec => sec && (sec.style.display = "none"));
 
       if (targetTab === "brands") {
         tabBrands.classList.add("active");
@@ -6132,6 +6331,13 @@
         tabStats.setAttribute("aria-selected", "true");
         if (statsSection) statsSection.style.display = "block";
         renderStatsDashboard();
+      } else if (targetTab === "analytics") {
+        if (tabAnalytics) {
+          tabAnalytics.classList.add("active");
+          tabAnalytics.setAttribute("aria-selected", "true");
+        }
+        if (analyticsSection) analyticsSection.style.display = "block";
+        initLookerDashboard();
       } else if (targetTab === "huisstijl") {
         tabHuisstijl.classList.add("active");
         tabHuisstijl.setAttribute("aria-selected", "true");
@@ -6163,6 +6369,7 @@
     if (tabChairs) tabChairs.addEventListener("click", () => { history.replaceState(null, "", "#stoelen"); switchAdminTab("chairs"); });
     if (tabBrands) tabBrands.addEventListener("click", () => { history.replaceState(null, "", "#merken"); switchAdminTab("brands"); });
     if (tabStats) tabStats.addEventListener("click", () => { history.replaceState(null, "", "#statistieken"); switchAdminTab("stats"); });
+    if (tabAnalytics) tabAnalytics.addEventListener("click", () => { history.replaceState(null, "", "#analytics"); switchAdminTab("analytics"); });
     if (tabHuisstijl) tabHuisstijl.addEventListener("click", () => { history.replaceState(null, "", "#huisstijl"); switchAdminTab("huisstijl"); });
 
     // Handle hash on load and hashchange
@@ -6174,6 +6381,8 @@
         switchAdminTab("brands");
       } else if (target === "statistieken" || target === "stats") {
         switchAdminTab("stats");
+      } else if (target === "analytics" || target === "google-analytics" || target === "ga4") {
+        switchAdminTab("analytics");
       } else if (target === "huisstijl") {
         switchAdminTab("huisstijl");
       } else if (target === "stoelen" || target === "chairs") {
