@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <script>
-    try {
-      if (localStorage.getItem("staopstoelen_a11y_text") === "large") {
-        document.documentElement.classList.add("a11y-text-large");
-      }
-      if (localStorage.getItem("staopstoelen_a11y_contrast") === "high") {
-        document.documentElement.classList.add("a11y-high-contrast");
-      }
-    } catch (e) {}
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hartelijk dank voor uw aanvraag | staopstoelen.nl</title>
@@ -95,25 +84,6 @@
               <div class="nav-logo-strapline">Specialist in ergonomisch zitcomfort</div>
             </a>
       <div class="navbar-top-right" id="navbarTopRight">
-        <!-- Leesbaarheids-toggles (Toegankelijkheid & Hoog Contrast) -->
-        <div class="a11y-toolbar" role="region" aria-label="Leesbaarheid en contrast opties">
-          <div class="a11y-text-resizer" role="group" aria-label="Tekstgrootte">
-            <button type="button" class="a11y-btn a11y-btn-size a11y-btn-normal active" id="a11yBtnNormal" title="Standaard tekstgrootte (100%)" aria-label="Standaard tekstgrootte">
-              <span>A</span>
-            </button>
-            <button type="button" class="a11y-btn a11y-btn-size a11y-btn-large" id="a11yBtnLarge" title="Grote tekst voor beter leesgemak (+18%)" aria-label="Grote tekst">
-              <span>A+</span>
-            </button>
-          </div>
-          <span class="a11y-separator" aria-hidden="true"></span>
-          <button type="button" class="a11y-btn a11y-btn-contrast" id="a11yBtnContrast" title="Hoog-contrast modus in- of uitschakelen" aria-label="Hoog contrast" aria-pressed="false">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8v16z"/>
-            </svg>
-            <span class="a11y-contrast-text">Contrast</span>
-          </button>
-        </div>
-
         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="nav-top-contact-link" title="Route naar Showroom Dordrecht (Merwedestraat 239)">
           <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Showroom Dordrecht
