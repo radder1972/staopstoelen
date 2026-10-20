@@ -5844,3 +5844,342 @@ input[type="checkbox"] {
 
 
 
+
+/* ==========================================================================
+   ACCESSIBILITY MODULE (LEESBAARHEIDS-TOGGLES & HOOG CONTRAST)
+   ========================================================================== */
+
+/* 1. Toolbar UI */
+.a11y-toolbar {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(75, 143, 36, 0.25);
+  border-radius: var(--radius-full, 9999px);
+  padding: 3px 6px;
+  gap: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  user-select: none;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  vertical-align: middle;
+}
+
+.a11y-toolbar:hover {
+  border-color: var(--color-forest, #4b8f24);
+  box-shadow: 0 3px 10px rgba(75, 143, 36, 0.15);
+}
+
+.a11y-text-resizer {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.a11y-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-forest-dark, #122b07);
+  font-family: var(--font-body, system-ui);
+  font-weight: 700;
+  padding: 3px 7px;
+  min-height: 27px;
+  border-radius: var(--radius-full, 9999px);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+}
+
+.a11y-btn:hover {
+  background: rgba(75, 143, 36, 0.1);
+  color: var(--color-forest, #4b8f24);
+}
+
+.a11y-btn:focus-visible {
+  outline: 2px solid var(--color-forest, #4b8f24);
+  outline-offset: 2px;
+}
+
+.a11y-btn.active {
+  background: var(--color-forest, #4b8f24);
+  color: #ffffff !important;
+  box-shadow: 0 1px 4px rgba(75, 143, 36, 0.35);
+}
+
+.a11y-btn-normal {
+  font-size: 0.78rem;
+  min-width: 25px;
+}
+
+.a11y-btn-large {
+  font-size: 0.95rem;
+  font-weight: 800;
+  min-width: 28px;
+}
+
+.a11y-separator {
+  display: inline-block;
+  width: 1px;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.14);
+  margin: 0 2px;
+}
+
+.a11y-btn-contrast {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  padding: 3px 8px;
+}
+
+.a11y-btn-contrast svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.a11y-btn-contrast:hover svg {
+  transform: rotate(180deg);
+}
+
+.a11y-btn-contrast.active {
+  background: #111827;
+  color: #fed857 !important;
+  border-color: #fed857;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Header Placement */
+@media (max-width: 768px) {
+  .a11y-toolbar {
+    position: absolute;
+    right: 68px; /* Room for hamburger on far right */
+    top: 13px;
+    z-index: 25;
+    padding: 2px 4px;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(75, 143, 36, 0.35);
+  }
+  .a11y-btn {
+    padding: 2px 5px;
+    min-height: 25px;
+  }
+  .a11y-contrast-text {
+    display: none; /* Icon-only on mobile */
+  }
+}
+
+@media (max-width: 380px) {
+  .a11y-toolbar {
+    right: 58px;
+    top: 12px;
+    padding: 1px 3px;
+  }
+  .a11y-btn-normal {
+    min-width: 22px;
+    font-size: 0.72rem;
+  }
+  .a11y-btn-large {
+    min-width: 24px;
+    font-size: 0.85rem;
+  }
+}
+
+/* 2. Text Enlargement Mode (Smooth & Layout-Safe) */
+html.a11y-text-large {
+  font-size: 18.5px !important;
+}
+
+/* Explicit Layout Protections: prevent breaking fixed banners, logos and tight grids */
+html.a11y-text-large .nav-text-logo {
+  font-size: 42px !important; /* Keep brand mark dimensions stable */
+  line-height: 1.05 !important;
+}
+
+html.a11y-text-large .nav-logo-strapline {
+  font-size: 13px !important;
+}
+
+@media (min-width: 769px) {
+  html.a11y-text-large .nav-links {
+    gap: 20px !important; /* Tighter gap prevents menu wrapping to second line */
+  }
+  html.a11y-text-large .navbar-top-right {
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html.a11y-text-large .nav-text-logo {
+    font-size: 1.55rem !important;
+  }
+  html.a11y-text-large .navbar-container {
+    padding-top: 68px !important;
+  }
+}
+
+/* 3. High Contrast Mode (WCAG AAA Senior Accessible) */
+html.a11y-high-contrast {
+  --color-forest: #68d834;
+  --color-forest-dark: #ffffff;
+  --color-forest-rgb: 104, 216, 52;
+  --color-sage: #86ea52;
+  --color-sage-light: #162413;
+  --color-sky: #7cd8ff;
+  --color-terracotta: #ff9d3b;
+  --color-terracotta-hover: #ffb164;
+  --color-gold: #ffea55;
+  --color-cream: #0c100c;
+  --color-cream-dark: #141a14;
+  --color-dark: #ffffff;
+  --color-light: #182018;
+  --color-gray: #e2e8f0;
+  --color-gray-light: #2d3b2c;
+  --color-shadow: rgba(0, 0, 0, 0.85);
+  --color-shadow-hover: rgba(104, 216, 52, 0.4);
+  background-color: #0c100c !important;
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast body {
+  background-color: #0c100c !important;
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .navbar {
+  background: #0c100c !important;
+  border-bottom: 2px solid #68d834 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+}
+
+html.a11y-high-contrast .navbar-top-right {
+  background: #141a14 !important;
+  border-color: #2d3b2c !important;
+}
+
+html.a11y-high-contrast .announcement-bar-najaar {
+  background: #182018 !important;
+  border-bottom: 2px solid #ffea55 !important;
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .product-card,
+html.a11y-high-contrast .chair-card,
+html.a11y-high-contrast .stoel-card,
+html.a11y-high-contrast .card,
+html.a11y-high-contrast .faq-item,
+html.a11y-high-contrast .review-card,
+html.a11y-high-contrast .usp-card,
+html.a11y-high-contrast .keuzehulp-box,
+html.a11y-high-contrast .hero-expert-spotlight,
+html.a11y-high-contrast .contact-form,
+html.a11y-high-contrast .modal-content {
+  background-color: #141a14 !important;
+  border: 2px solid #3c523a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7) !important;
+}
+
+html.a11y-high-contrast .product-card:hover,
+html.a11y-high-contrast .chair-card:hover {
+  border-color: #68d834 !important;
+  box-shadow: 0 6px 20px rgba(104, 216, 52, 0.35) !important;
+}
+
+html.a11y-high-contrast .product-image {
+  background-color: #0f140f !important;
+}
+
+html.a11y-high-contrast p,
+html.a11y-high-contrast li,
+html.a11y-high-contrast span {
+  color: #f1f5f9;
+}
+
+html.a11y-high-contrast h1,
+html.a11y-high-contrast h2,
+html.a11y-high-contrast h3,
+html.a11y-high-contrast h4,
+html.a11y-high-contrast strong,
+html.a11y-high-contrast .nav-links a {
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .nav-links a:hover,
+html.a11y-high-contrast .nav-links a.active {
+  color: #68d834 !important;
+  text-decoration: underline !important;
+}
+
+html.a11y-high-contrast a {
+  color: #ffea55 !important;
+}
+
+html.a11y-high-contrast a:hover {
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .nav-top-contact-link {
+  color: #68d834 !important;
+}
+
+html.a11y-high-contrast .nav-top-contact-link:hover {
+  color: #ffea55 !important;
+}
+
+html.a11y-high-contrast .btn-primary {
+  background-color: #68d834 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  border: 2px solid #ffffff !important;
+}
+
+html.a11y-high-contrast .btn-secondary {
+  background-color: #ff9d3b !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  border: 2px solid #ffffff !important;
+}
+
+html.a11y-high-contrast input,
+html.a11y-high-contrast select,
+html.a11y-high-contrast textarea {
+  background-color: #121812 !important;
+  color: #ffffff !important;
+  border: 2px solid #68d834 !important;
+}
+
+html.a11y-high-contrast .footer,
+html.a11y-high-contrast footer {
+  background-color: #080a08 !important;
+  border-top: 2px solid #68d834 !important;
+}
+
+html.a11y-high-contrast .a11y-toolbar {
+  background: #141a14 !important;
+  border: 2px solid #68d834 !important;
+}
+
+html.a11y-high-contrast .a11y-btn {
+  color: #ffffff !important;
+}
+
+html.a11y-high-contrast .a11y-btn.active {
+  background: #68d834 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+html.a11y-high-contrast .a11y-btn-contrast.active {
+  background: #ffea55 !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+html.a11y-high-contrast .a11y-separator {
+  background: #68d834 !important;
+}

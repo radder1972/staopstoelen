@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+  <script>
+    try {
+      if (localStorage.getItem("staopstoelen_a11y_text") === "large") {
+        document.documentElement.classList.add("a11y-text-large");
+      }
+      if (localStorage.getItem("staopstoelen_a11y_contrast") === "high") {
+        document.documentElement.classList.add("a11y-high-contrast");
+      }
+    } catch (e) {}
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Indicatiewijzer Zithouding & Mobiliteit | staopstoelen.nl</title>
