@@ -40,7 +40,7 @@ window.adjustImageFit = function(img) {
 
     // Disable Google Analytics & Google Ads tags if excluded
     if (localStorage.getItem('staopstoelen_ignore_analytics') === 'true' || document.cookie.indexOf('staopstoelen_ignore_analytics=true') !== -1) {
-      window['ga-disable-G-3L01HS159K'] = true;
+      window['ga-disable-G-5KQF1CELDD'] = true;
       window['ga-disable-AW-923357429'] = true;
     }
   } catch (e) {
