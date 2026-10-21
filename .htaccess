@@ -1,3 +1,11 @@
+# Set DirectoryIndex to prefer modern static HTML over legacy PHP
+DirectoryIndex index.html index.php
+
+# Disable LiteSpeed Server Cache for static site
+<IfModule LiteSpeed>
+    CacheDisable
+</IfModule>
+
 # Force Anti-Cache for HTML, CSS, JS and API responses
 <IfModule mod_headers.c>
     <FilesMatch "\.(html|htm|js|css|php|json)$">
@@ -12,7 +20,15 @@
     RewriteEngine On
     RewriteBase /
 
-    # Exclude existing valid files and directories
+    # Disable LiteSpeed Cache via Rewrite Environment
+    RewriteRule .* - [E=Cache-Control:no-cache]
+
+    # Prevent legacy WordPress index.php from being requested directly
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php [NC]
+    RewriteRule ^index\.php$ / [R=301,L]
+
+    # Exclude existing valid files and directories (except index.php)
+    RewriteCond %{REQUEST_URI} !^/index\.php$ [NC]
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
