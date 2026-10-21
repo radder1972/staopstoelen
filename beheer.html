@@ -2309,7 +2309,7 @@
             </ol>
           </div>
 
-          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
             <input type="url" id="inputLookerUrl" placeholder="https://lookerstudio.google.com/embed/reporting/..." style="flex: 1; min-width: 280px; padding: 11px 16px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; font-family: monospace;">
             <button type="button" onclick="saveLookerUrl()" class="btn btn-primary" style="padding: 11px 22px; font-size: 0.88rem; font-weight: 700;">
               Koppeling Opslaan
@@ -2317,6 +2317,70 @@
             <button type="button" onclick="resetLookerUrl()" class="btn btn-outline" style="border-color: #ef4444; color: #b91c1c; padding: 11px 16px; font-size: 0.88rem;">
               Wissen
             </button>
+          </div>
+
+          <!-- Custom Staopstoelen.nl Looker Studio Thema Gids -->
+          <div style="background: #ffffff; border: 1.5px solid rgba(75, 143, 36, 0.25); border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 6px; background: rgba(75, 143, 36, 0.12); color: var(--color-forest); display: flex; align-items: center; justify-content: center;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                  </svg>
+                </div>
+                <span style="font-weight: 800; font-size: 0.95rem; color: var(--color-forest-dark);">Officieel Staopstoelen.nl Thema voor Looker Studio</span>
+              </div>
+              <span style="font-size: 0.76rem; font-weight: 700; color: #4b5563; background: #f3f4f6; padding: 3px 8px; border-radius: 6px;">Thema &amp; Lay-out &rarr; Aanpassen</span>
+            </div>
+            
+            <p style="font-size: 0.84rem; color: #4b5563; line-height: 1.5; margin-bottom: 14px;">
+              Gebruik onderstaande officiële kleurcodes in Looker Studio onder <strong>Thema en lay-out &rarr; Aanpassen</strong> om al uw grafieken direct in de herkenbare Staopstoelen.nl huisstijl te tonen:
+            </p>
+
+            <!-- Kleurenpalet voor grafieken -->
+            <div style="margin-bottom: 14px;">
+              <div style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-forest-dark); margin-bottom: 8px;">
+                Grafiekvolgorde (Palet voor gegevens):
+              </div>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 6px; background: #f8faf7; border: 1px solid #d1e2cb; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-family: monospace;">
+                  <span style="width: 14px; height: 14px; border-radius: 4px; background: #4B8F24;"></span>
+                  <span>1. #4B8F24 (Groen)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; background: #f8faf7; border: 1px solid #d1e2cb; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-family: monospace;">
+                  <span style="width: 14px; height: 14px; border-radius: 4px; background: #F39223;"></span>
+                  <span>2. #F39223 (Oranje)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; background: #f8faf7; border: 1px solid #d1e2cb; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-family: monospace;">
+                  <span style="width: 14px; height: 14px; border-radius: 4px; background: #6AB13C;"></span>
+                  <span>3. #6AB13C (Saliegroen)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; background: #f8faf7; border: 1px solid #d1e2cb; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-family: monospace;">
+                  <span style="width: 14px; height: 14px; border-radius: 4px; background: #FED857;"></span>
+                  <span>4. #FED857 (Goudgeel)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; background: #f8faf7; border: 1px solid #d1e2cb; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-family: monospace;">
+                  <span style="width: 14px; height: 14px; border-radius: 4px; background: #4A90E2;"></span>
+                  <span>5. #4A90E2 (Hemelsblauw)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; background: #f8faf7; border: 1px solid #d1e2cb; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-family: monospace;">
+                  <span style="width: 14px; height: 14px; border-radius: 4px; background: #122B07;"></span>
+                  <span>6. #122B07 (Donkergroen)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canvas & Kaarten styling -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.82rem; color: #374151; background: #f8faf7; padding: 12px 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <div><strong>Rapportachtergrond:</strong> <code>#FBF9F5</code> (Warm crème)</div>
+              <div><strong>Kaartachtergrond:</strong> <code>#FFFFFF</code> (Wit)</div>
+              <div><strong>Kaartrand:</strong> <code>#D1E2CB</code> (1.5px, 14px radius)</div>
+              <div><strong>Lettertype:</strong> Montserrat / Roboto</div>
+            </div>
           </div>
         </div>
 
