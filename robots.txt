@@ -2,5 +2,11 @@ User-agent: *
 Allow: /
 Disallow: /beheer.html
 Disallow: /api/
+Disallow: /orderbon.html
+Disallow: /badge-*.html
+Disallow: /flyer*.html
+Disallow: /booklet-*.html
+Disallow: /visitekaartje*.html
+Disallow: /scratch/
 
 Sitemap: https://staopstoelen.nl/sitemap.xml

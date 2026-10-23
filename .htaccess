@@ -15,7 +15,9 @@ DirectoryIndex index.html index.php
     </FilesMatch>
 </IfModule>
 
-# 301 SEO Redirects for old Google search links -> staopstoelen.html
+# ----------------------------------------------------------------------
+# Rewrite Engine & SEO Canonicalization
+# ----------------------------------------------------------------------
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
@@ -23,39 +25,43 @@ DirectoryIndex index.html index.php
     # Disable LiteSpeed Cache via Rewrite Environment
     RewriteRule .* - [E=Cache-Control:no-cache]
 
-    # Prevent legacy WordPress index.php from being requested directly
-    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php [NC]
-    RewriteRule ^index\.php$ / [R=301,L]
+    # Rule 1: Canonicalize Domain & Protocol (Force HTTPS & Non-WWW)
+    # Redirects any http:// or www. requests to https://staopstoelen.nl/
+    RewriteCond %{HTTPS} off [OR]
+    RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+    RewriteCond %{HTTP_HOST} ^www\. [NC]
+    RewriteRule ^(.*)$ https://staopstoelen.nl/$1 [R=301,L]
 
-    # Exclude existing valid files and directories (except index.php)
-    RewriteCond %{REQUEST_URI} !^/index\.php$ [NC]
+    # Rule 2: Prevent /index.html and /index.php direct access (canonicalize to /)
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(html|php) [NC]
+    RewriteRule ^index\.(html|php)$ / [R=301,L]
+
+    # Rule 3: Campaign & Review Shortcuts (Direct 302 redirects)
+    RewriteRule ^(google-)?review(\.html)?/?$ https://g.page/r/CYF_zuQphK3aEAE/review [R=302,NE,L]
+    RewriteRule ^(najaars)?actie/?$ /?utm_source=flyer&utm_medium=print&utm_campaign=najaarsactie [R=302,NE,L]
+    RewriteRule ^flyer/?$ /?utm_source=flyer&utm_medium=print&utm_campaign=najaarsactie [R=302,NE,L]
+
+    # Rule 4: Business card aliases & legacy redirects
+    RewriteRule ^visitekaartje-geertjan(\.html)?$ /visitekaartje.html [L]
+    RewriteRule ^huisstijl(\.html)?/?$ /beheer.html#huisstijl [R=301,NE,L]
+
+    # Rule 5: Exclude API, assets, and actual existing files and directories
+    RewriteRule ^api/ - [L]
+    RewriteRule ^assets/ - [L]
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # Exclude API folder and static assets from redirecting
-    RewriteRule ^api/ - [L]
-    RewriteRule ^assets/ - [L]
-
-    # Redirect legacy /huisstijl and /huisstijl.html to beheer.html#huisstijl
-    RewriteRule ^huisstijl(\.html)?/?$ /beheer.html#huisstijl [R=301,NE,L]
-
-    # Direct shortcut for Google Reviews (staopstoelen.nl/review)
-    RewriteRule ^(google-)?review(\.html)?/?$ https://g.page/r/CYF_zuQphK3aEAE/review [R=302,NE,L]
-
-    # Campaign Shortcuts (Print flyer & offline marketing -> GA4 tracked)
-    RewriteRule ^(najaars)?actie/?$ /?utm_source=flyer&utm_medium=print&utm_campaign=najaarsactie [R=302,NE,L]
-    RewriteRule ^flyer/?$ /?utm_source=flyer&utm_medium=print&utm_campaign=najaarsactie [R=302,NE,L]
-
-    # Rewrite clean URLs without .html extension (e.g. /keuzehulp -> /keuzehulp.html)
+    # Rule 6: Clean URL rewriting without .html extension (e.g. /keuzehulp -> /keuzehulp.html)
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
     RewriteRule ^([^/]+)/?$ $1.html [L]
 
-    # Alias for Geertjan's business card (serves visitekaartje.html directly)
-    RewriteRule ^visitekaartje-geertjan(\.html)?$ /visitekaartje.html [L]
+    # Rule 7: Subdirectory clean URL rewrite (e.g. /stoelen/sta-op-stoel-alfred -> /stoelen/sta-op-stoel-alfred.html)
+    RewriteCond %{DOCUMENT_ROOT}/$1/$2.html -f
+    RewriteRule ^([^/]+)/([^/]+)/?$ $1/$2.html [L]
 
-    # Redirect all non-existent old page URLs (404s / old Google search links) temporarily to staopstoelen.html
-    RewriteRule ^.*$ /staopstoelen.html [R=302,L]
+    # Rule 8: 301 Permanent SEO Redirect for legacy dead links to staopstoelen.html
+    RewriteRule ^.*$ /staopstoelen.html [R=301,L]
 </IfModule>
 
 # Fallback 404 handler
