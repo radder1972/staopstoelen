@@ -141,20 +141,46 @@
 
     .seg.completed .seg-fill { width: 100%; }
 
-    /* Scene Stage (16:9 Aspect Ratio) */
-    .scene-stage {
+    /* Main Stage Split Wrapper (Side-by-Side on desktop, stack on mobile) */
+    .stage-split-wrapper {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      background: #ffffff;
+      min-height: 420px;
+      transition: all 0.3s ease;
+    }
+
+    /* Bioscoop mode: video full width on top, companion panel underneath */
+    .stage-split-wrapper.mode-cinema {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 840px) {
+      .stage-split-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left: Cinema Screen (Het beeld is 100% vrij en zichtbaar!) */
+    .cinema-screen {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #edf3eb;
+      background: #0f172a;
       overflow: hidden;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
+      aspect-ratio: 16/9;
+      min-height: 320px;
+    }
+
+    .stage-split-wrapper.mode-cinema .cinema-screen {
+      aspect-ratio: 16/9;
+      min-height: 460px;
     }
 
     @media (max-width: 640px) {
-      .scene-stage { aspect-ratio: 4/3; }
+      .cinema-screen { min-height: 240px; }
+      .stage-split-wrapper.mode-cinema .cinema-screen { min-height: 240px; }
     }
 
     .scene-bg {
@@ -163,52 +189,110 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.95;
+      opacity: 0.96;
       transform: scale(1);
-      transition: transform 12s cubic-bezier(0.1, 0, 0.3, 1), opacity 0.4s ease;
+      transition: transform 12s cubic-bezier(0.1, 0, 0.3, 1), opacity 0.35s ease;
     }
 
-    .scene-stage.playing .scene-bg {
+    .stage-split-wrapper.playing .scene-bg {
       transform: scale(1.08) translate(-1%, -1%);
     }
 
-    .scene-gradient {
+    .cinema-vignette {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.42) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 45%, rgba(0,0,0,0.6) 100%);
       pointer-events: none;
     }
 
-    /* Scene Content Overlay (Light Frosted Glass Card) */
-    .scene-overlay {
+    .cinema-scene-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 5;
+      background: rgba(15, 23, 42, 0.75);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    .cinema-captions {
       position: relative;
       z-index: 5;
+      padding: 14px;
+      width: 100%;
       text-align: center;
-      max-width: 650px;
-      width: calc(100% - 32px);
-      padding: 18px 24px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1.5px solid rgba(255, 255, 255, 0.95);
-      border-radius: 16px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+    }
+
+    .caption-text {
+      background: rgba(15, 23, 42, 0.85);
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 500;
+      line-height: 1.4;
+      padding: 6px 18px;
+      border-radius: 20px;
+      display: inline-block;
+      max-width: 92%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Right: Companion Panel (De tekst is geweken naar dit paneel!) */
+    .companion-panel {
+      background: #fbfdfa;
+      border-left: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin: 12px;
+      justify-content: center;
+      padding: 24px 28px;
+      position: relative;
     }
 
-    .scene-anim {
-      animation: cardPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    .stage-split-wrapper.mode-cinema .companion-panel {
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding: 22px 28px;
     }
 
-    @keyframes cardPop {
-      0% { opacity: 0; transform: translateY(12px) scale(0.98); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+    .panel-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      width: 100%;
     }
 
-    .scene-kicker {
+    .panel-inner.scene-anim {
+      animation: panelSlideIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes panelSlideIn {
+      0% { opacity: 0; transform: translateX(12px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .panel-kicker {
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 1.2px;
@@ -218,40 +302,40 @@
       border: 1px solid #c8dec4;
       padding: 3px 10px;
       border-radius: 20px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
-    .scene-title {
+    .panel-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.55rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: var(--text);
-      line-height: 1.2;
+      line-height: 1.25;
       letter-spacing: -0.3px;
-      margin-bottom: 4px;
-    }
-
-    @media (max-width: 640px) {
-      .scene-title { font-size: 1.2rem; }
-    }
-
-    .scene-subtitle {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-      max-width: 580px;
-      margin-top: 4px;
       margin-bottom: 8px;
     }
 
     @media (max-width: 640px) {
-      .scene-subtitle { font-size: 0.75rem; margin-bottom: 6px; }
+      .panel-title { font-size: 1.15rem; }
     }
 
-    .scene-metric-pill {
+    .panel-visual-box {
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    .panel-subtitle {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-top: 6px;
+      margin-bottom: 12px;
+    }
+
+    .panel-metric-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -260,10 +344,31 @@
       padding: 5px 14px;
       border-radius: 8px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 800;
       color: var(--green);
-      box-shadow: 0 4px 12px rgba(35, 84, 27, 0.1);
+      box-shadow: 0 2px 8px rgba(35, 84, 27, 0.08);
+    }
+
+    .btn-view-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-view-toggle:hover {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: #bcdbb4;
     }
 
     /* Scene 1: Battle Grid */
@@ -483,32 +588,6 @@
     .stack-tier.bank { border-left: 4px solid #2563eb; }
     .stack-tier.loan { border-left: 4px solid #d97706; }
     .stack-tier.equity { border-left: 4px solid var(--green); }
-
-    /* Subtitle Banner at bottom of video */
-    .scene-captions {
-      position: absolute;
-      bottom: 14px;
-      left: 16px;
-      right: 16px;
-      text-align: center;
-      z-index: 6;
-      pointer-events: none;
-    }
-
-    .caption-text {
-      background: rgba(23, 38, 20, 0.88);
-      color: #ffffff;
-      font-size: 0.82rem;
-      font-weight: 500;
-      padding: 6px 18px;
-      border-radius: 20px;
-      display: inline-block;
-      max-width: 88%;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
 
     /* Player Controls Bar */
     .player-controls {
@@ -761,48 +840,60 @@
       <div class="seg" onclick="jumpToScene(4)"><div class="seg-fill" id="fill-4"></div></div>
     </div>
 
-    <!-- Scene Stage -->
-    <div class="scene-stage" id="scene-stage">
-      <img src="assets/senior_chair_dilemma.jpg" alt="Scene Background" class="scene-bg" id="scene-bg">
-      <div class="scene-gradient"></div>
+    <!-- Main Stage: Split Layout (Beeld 100% vrij links, Datapaneel rechts) -->
+    <div class="stage-split-wrapper" id="stage-split-wrapper">
+      
+      <!-- LEFT: 100% Pure Cinema Screen (Het beeld is volledig zichtbaar en onbelemmerd!) -->
+      <div class="cinema-screen" id="cinema-screen">
+        <img src="assets/senior_chair_dilemma.jpg" alt="Scene Background" class="scene-bg" id="scene-bg">
+        <div class="cinema-vignette"></div>
 
-      <!-- Overlay Text & Visual Graphics (Crisp Glass Card) -->
-      <div class="scene-overlay scene-anim" id="scene-overlay">
-        <div class="scene-kicker" id="scene-kicker">
-          <span>01 / 05</span> Het Marktdilemma
+        <!-- Diskrete Scène Tag linksboven in beeld -->
+        <div class="cinema-scene-tag" id="cinema-tag">
+          <span class="live-dot"></span> <span id="tag-text">Scène 1/5 • Marktvacuüm</span>
         </div>
-        <h2 class="scene-title" id="scene-title">
-          Tussen € 4.500 Nieuw &amp; € 500 Marktplaats
-        </h2>
-        <div id="scene-visual-content" style="width:100%;">
-          <div class="battle-grid">
-            <div class="battle-card bad">
-              <span class="battle-tag">🔴 Fabrieksnieuw</span>
-              <div class="battle-val">€ 4.500+</div>
-              <div class="battle-sub">Onbetaalbaar voor 70% • 8–12 wkn wachttijd</div>
-            </div>
-            <div class="battle-vs">VS</div>
-            <div class="battle-card warning">
-              <span class="battle-tag">⚠️ Marktplaats</span>
-              <div class="battle-val">€ 500</div>
-              <div class="battle-sub">Onhygiënisch • Geen garantie • Foute maat</div>
-            </div>
+
+        <!-- Subtitle banner aan onderzijde video (Netflix/broadcast stijl) -->
+        <div class="cinema-captions">
+          <div class="caption-text" id="caption-text">
+            "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes."
           </div>
         </div>
-        <p class="scene-subtitle" id="scene-subtitle">
-          Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.
-        </p>
-        <div class="scene-metric-pill" id="scene-metric">
-          70% Onbediende Doelgroep
+      </div>
+
+      <!-- RIGHT: De tekst is geweken naar dit speciale interactieve datapaneel! -->
+      <div class="companion-panel" id="companion-panel">
+        <div class="panel-inner scene-anim" id="panel-content">
+          <div class="panel-kicker" id="scene-kicker">
+            <span>01 / 05</span> HET MARKTVACUÜM
+          </div>
+          <h2 class="panel-title" id="scene-title">
+            Tussen € 4.500 Nieuw &amp; € 500 Marktplaats
+          </h2>
+          <div id="scene-visual-content" class="panel-visual-box">
+            <div class="battle-grid">
+              <div class="battle-card bad">
+                <span class="battle-tag">🔴 Fabrieksnieuw</span>
+                <div class="battle-val">€ 4.500+</div>
+                <div class="battle-sub">Onbetaalbaar voor 70% • 8–12 wkn wachttijd</div>
+              </div>
+              <div class="battle-vs">VS</div>
+              <div class="battle-card warning">
+                <span class="battle-tag">⚠️ Marktplaats</span>
+                <div class="battle-val">€ 500</div>
+                <div class="battle-sub">Onhygiënisch • Geen garantie • Foute maat</div>
+              </div>
+            </div>
+          </div>
+          <p class="panel-subtitle" id="scene-subtitle">
+            Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.
+          </p>
+          <div class="panel-metric-pill" id="scene-metric">
+            70% Onbediende Doelgroep
+          </div>
         </div>
       </div>
 
-      <!-- Subtitle banner -->
-      <div class="scene-captions">
-        <div class="caption-text" id="caption-text">
-          "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes."
-        </div>
-      </div>
     </div>
 
     <!-- Controls Bar -->
@@ -823,6 +914,9 @@
       </div>
 
       <div class="ctrl-right">
+        <button class="btn-view-toggle" id="btn-view" onclick="toggleViewMode()" title="Wissel weergave">
+          <span id="view-icon">⊞</span> <span id="view-label">Bioscoop Modus</span>
+        </button>
         <button class="btn-audio" id="btn-voice" onclick="toggleVoice()" title="Vrouwelijke Voice-over stem">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
           <span id="voice-label">👩 Vrouwenstem Actief</span>
@@ -921,8 +1015,26 @@
 </div>
 
 <script>
+  let isCinemaMode = false;
+  function toggleViewMode() {
+    isCinemaMode = !isCinemaMode;
+    const wrapper = document.getElementById('stage-split-wrapper');
+    const label = document.getElementById('view-label');
+    const icon = document.getElementById('view-icon');
+    if (isCinemaMode) {
+      wrapper.classList.add('mode-cinema');
+      label.textContent = "Zij-aan-Zij Modus";
+      icon.textContent = "◫";
+    } else {
+      wrapper.classList.remove('mode-cinema');
+      label.textContent = "Bioscoop Modus";
+      icon.textContent = "⊞";
+    }
+  }
+
   const scenes = [
     {
+      shortTag: "Marktvacuüm",
       kicker: "01 / 05 • HET MARKTVACUÜM",
       title: "Tussen € 4.500 Nieuw & € 500 Marktplaats",
       subtitle: "Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.",
@@ -949,6 +1061,7 @@
       `
     },
     {
+      shortTag: "Sweet Spot",
       kicker: "02 / 05 • DE SWEET SPOT",
       title: "Certified Fitform: Fabriekskwaliteit voor € 1.550",
       subtitle: "Officiële Wellco/Fitform modellen met genummerd keurmerkzegel, direct leverbaar uit de showroom in Dordrecht.",
@@ -977,6 +1090,7 @@
       `
     },
     {
+      shortTag: "30-Punts Keuring",
       kicker: "03 / 05 • VAKMANSCHAP & REVISIE",
       title: "30-Punts Keuring & Inmeting Geertjan",
       subtitle: "Linak motoren getest op 150 kg, ozon-extractie en zithoogte op de millimeter afgesteld op het lichaam van de koper.",
@@ -1013,6 +1127,7 @@
       `
     },
     {
+      shortTag: "Unit Economics",
       kicker: "04 / 05 • CASHFLOW & MARGES",
       title: "€ 650 Netto Marge per Stoel (42%)",
       subtitle: "Conservatief doorgerekend inclusief inkoop, onderdelen, 2-mans bezorging en servicebuffers.",
@@ -1048,6 +1163,7 @@
       `
     },
     {
+      shortTag: "Overnamedeal",
       kicker: "05 / 05 • DE INVESTERINGSSTRUCTUUR",
       title: "€ 155k Deal • Slechts € 40k Eigen Inleg",
       subtitle: "50% Bancair met BMKB-garantie, 25% vendor loan van Geertjan en een terugverdientijd binnen een jaar.",
@@ -1182,7 +1298,6 @@
     if (s.audio && voiceEnabled) {
       currentAudio = new Audio(s.audio);
 
-      // Voortgangsbalkje loopt synchroon mee met het audiosignaal
       currentAudio.ontimeupdate = () => {
         if (!isPlaying || !currentAudio || !currentAudio.duration) return;
         const progressPct = (currentAudio.currentTime / currentAudio.duration) * 100;
@@ -1191,7 +1306,6 @@
         updateTotalTimeDisplay(currentAudio.currentTime);
       };
 
-      // Zodra Ellen helemaal klaar is met praten: wacht 0.5s en ga naar de volgende scene
       currentAudio.onended = () => {
         const fill = document.getElementById('fill-' + currentScene);
         if (fill) fill.style.width = '100%';
@@ -1205,13 +1319,18 @@
         startFallbackTimer(s.durationSec);
       });
     } else {
-      // Zonder audio: gebruik de natuurlijke lengte van de scene
       startFallbackTimer(s.durationSec);
     }
   }
 
   function renderScene(idx) {
     const s = scenes[idx];
+
+    // Discrete tag linksboven in beeld
+    const tag = document.getElementById('tag-text');
+    if (tag) tag.textContent = `Scène ${idx+1}/5 • ${s.shortTag || ''}`;
+
+    // Update het geweken informatiepaneel
     document.getElementById('scene-kicker').innerHTML = `<span>0${idx+1} / 05</span> ${s.kicker.split('•')[1] || s.kicker}`;
     document.getElementById('scene-title').textContent = s.title;
     document.getElementById('scene-subtitle').textContent = s.subtitle;
@@ -1225,19 +1344,19 @@
       bg.style.opacity = '0.35';
       setTimeout(() => {
         bg.src = s.bg;
-        bg.style.opacity = '0.95';
+        bg.style.opacity = '0.96';
       }, 120);
     } else if (bg) {
       bg.src = s.bg;
-      bg.style.opacity = '0.95';
+      bg.style.opacity = '0.96';
     }
 
-    // Trigger overlay entrance animation
-    const overlay = document.getElementById('scene-overlay');
-    if (overlay) {
-      overlay.classList.remove('scene-anim');
-      void overlay.offsetWidth;
-      overlay.classList.add('scene-anim');
+    // Trigger subtiele slide-in animatie op het informatiepaneel
+    const panelContent = document.getElementById('panel-content');
+    if (panelContent) {
+      panelContent.classList.remove('scene-anim');
+      void panelContent.offsetWidth;
+      panelContent.classList.add('scene-anim');
     }
 
     for (let i = 0; i < scenes.length; i++) {
@@ -1269,7 +1388,6 @@
       currentScene++;
       renderScene(currentScene);
     } else {
-      // Einde van de video
       pause();
       currentScene = 0;
       renderScene(0);
@@ -1279,14 +1397,16 @@
 
   function play() {
     isPlaying = true;
-    document.getElementById('scene-stage').classList.add('playing');
+    const stage = document.getElementById('stage-split-wrapper');
+    if (stage) stage.classList.add('playing');
     document.getElementById('play-icon').innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
     renderScene(currentScene);
   }
 
   function pause() {
     isPlaying = false;
-    document.getElementById('scene-stage').classList.remove('playing');
+    const stage = document.getElementById('stage-split-wrapper');
+    if (stage) stage.classList.remove('playing');
     document.getElementById('play-icon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
     stopAudio();
   }
