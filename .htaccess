@@ -45,6 +45,10 @@ DirectoryIndex index.html index.php
     RewriteRule ^visitekaartje-geertjan(\.html)?$ /visitekaartje.html [L]
     RewriteRule ^huisstijl(\.html)?/?$ /beheer.html#huisstijl [R=301,NE,L]
 
+    # Regio landing page aliases (e.g. /sta-op-stoelen/dordrecht or /sta-op-stoel/dordrecht -> /sta-op-stoel-dordrecht.html)
+    RewriteRule ^sta-op-stoel(?:en)?/([a-zA-Z0-9-]+)/?$ /sta-op-stoel-$1.html [R=301,L]
+    RewriteRule ^sta-op-stoelen-([a-zA-Z0-9-]+)/?$ /sta-op-stoel-$1.html [R=301,L]
+
     # Rule 5: Exclude API, assets, and actual existing files and directories
     RewriteRule ^api/ - [L]
     RewriteRule ^assets/ - [L]
