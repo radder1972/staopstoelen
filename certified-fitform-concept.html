@@ -562,9 +562,138 @@
       color: var(--brand-green);
     }
 
+    /* Reading Path Selector (Gateway) */
+    .path-gateway {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+    }
+
+    .gateway-kicker {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--brand-green);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gateway-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .gateway-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 780px;
+    }
+
+    .gateway-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 740px) {
+      .gateway-grid { grid-template-columns: 1fr; }
+    }
+
+    .path-card {
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      background: var(--bg-subtle);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .path-card:hover {
+      border-color: var(--brand-green);
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46, 96, 34, 0.09);
+    }
+
+    .path-card.visual {
+      border-color: #bcdbb4;
+      background: linear-gradient(180deg, #ffffff 0%, #f4f8f2 100%);
+    }
+
+    .path-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .path-badge.fast {
+      background: var(--brand-green-light);
+      color: var(--brand-green);
+    }
+
+    .path-badge.deep {
+      background: #eef2f6;
+      color: #334155;
+    }
+
+    .path-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .path-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .path-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--brand-green);
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .path-card:hover .path-cta {
+      color: #1e4515;
+    }
+
     @media print {
       body { background: #fff; padding: 0; font-size: 10pt; }
-      .memo-nav, .btn-quiet { display: none; }
+      .memo-nav, .btn-quiet, .path-gateway { display: none; }
       .memo-section, .memo-summary { border: 1px solid #ddd; margin-bottom: 14px; page-break-inside: avoid; }
     }
   </style>
@@ -601,8 +730,58 @@
     </p>
   </header>
 
+  <!-- Leeswijzer / Keuze Gateway -->
+  <div class="path-gateway">
+    <div class="gateway-kicker">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+      Leeswijzer &bull; Kies uw insteek
+    </div>
+    <h2 class="gateway-title">Hoe wilt u dit dossier doornemen?</h2>
+    <p class="gateway-desc">
+      Kies tussen de snelle visuele directie-snapshot van 1 minuut of het volledige 10-delige strategische investeringsmemo.
+    </p>
+
+    <div class="gateway-grid">
+      <!-- Keuze A: 60 Seconden Visueel -->
+      <a href="certified-fitform-infographic.html" class="path-card visual">
+        <div>
+          <span class="path-badge fast">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            60-Seconden Snapshot
+          </span>
+          <div class="path-heading">Visuele Pitch &amp; Visualisator</div>
+          <p class="path-text">
+            Bekijk de fotorealistische showroom impressie, de interactieve 30-punts stoel-anatomie en de unit economics waterval in 1 minuut.
+          </p>
+        </div>
+        <div class="path-cta">
+          Bekijk 60-Seconden Visuele Pitch
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- Keuze B: Volledig Rapport -->
+      <a href="#hoofdstuk-01" class="path-card">
+        <div>
+          <span class="path-badge deep">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Volledig Dossier &bull; 12 min
+          </span>
+          <div class="path-heading">Het Uitgebreide Strategische Rapport</div>
+          <p class="path-text">
+            10 gedetailleerde hoofdstukken voor accountants en financiers: marktanalyse, Wellco dealerrelaties, GA4 data-analyse en overnamestructuur.
+          </p>
+        </div>
+        <div class="path-cta">
+          Start Volledig Rapport (Hoofdstuk 01)
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+
   <!-- Executive Summary / Managementsamenvatting in 60 seconden -->
-  <section class="memo-summary">
+  <section class="memo-summary" id="samenvatting">
     <div class="summary-badge">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       Managementsamenvatting &bull; 60 Seconden
@@ -678,7 +857,7 @@
   </section>
 
   <!-- 1. Marktleemte -->
-  <section class="memo-section">
+  <section class="memo-section" id="hoofdstuk-01">
     <div class="section-title">
       <span class="section-num">01</span>
       Het Marktleemte: De Keuze van de Consument
