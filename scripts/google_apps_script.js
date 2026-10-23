@@ -98,14 +98,16 @@ function doPost(e) {
         try {
           GmailApp.sendEmail(email, customerSubject, "", {
             htmlBody: payload.emailHtml,
-            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl"
+            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl",
+            replyTo: "info@staopstoelen.nl"
           });
         } catch (e1) {
           MailApp.sendEmail({
             to: email,
             subject: customerSubject,
             htmlBody: payload.emailHtml,
-            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl"
+            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl",
+            replyTo: "info@staopstoelen.nl"
           });
         }
       }
@@ -122,7 +124,13 @@ function doPost(e) {
           `Er is géén agenda-afspraak aangemaakt (dit betreft een lead download).`;
 
         try {
-          MailApp.sendEmail(NOTIFICATION_EMAIL, downloadSubject, downloadBody);
+          MailApp.sendEmail({
+            to: NOTIFICATION_EMAIL,
+            subject: downloadSubject,
+            body: downloadBody,
+            name: "staopstoelen.nl | Downloads",
+            replyTo: email || "info@staopstoelen.nl"
+          });
         } catch (e2) {
           // Negeer
         }
@@ -217,14 +225,16 @@ function doPost(e) {
       try {
         GmailApp.sendEmail(email, emailSubject, "", {
           htmlBody: emailHtml,
-          name: "Geertjan Klein Haneveld - Staopstoelen.nl"
+          name: "Geertjan Klein Haneveld - Staopstoelen.nl",
+          replyTo: "info@staopstoelen.nl"
         });
       } catch (e1) {
         MailApp.sendEmail({
           to: email,
           subject: emailSubject,
           htmlBody: emailHtml,
-          name: "Geertjan Klein Haneveld - Staopstoelen.nl"
+          name: "Geertjan Klein Haneveld - Staopstoelen.nl",
+          replyTo: "info@staopstoelen.nl"
         });
       }
     }
@@ -245,7 +255,13 @@ function doPost(e) {
         `Deze afspraak is automatisch aan de Google Agenda toegevoegd.`;
 
       try {
-        MailApp.sendEmail(NOTIFICATION_EMAIL, internalSubject, internalBody);
+        MailApp.sendEmail({
+          to: NOTIFICATION_EMAIL,
+          subject: internalSubject,
+          body: internalBody,
+          name: "staopstoelen.nl | Afspraken",
+          replyTo: email || "info@staopstoelen.nl"
+        });
       } catch (e2) {
         // Negeer eventuele notificatiefout zodat de klantbevestiging voorrang heeft
       }
