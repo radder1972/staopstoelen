@@ -1,17 +1,17 @@
 /**
- * Google Apps Script Web App voor Staopstoelen.nl
+ * Google Apps Script Web App voor Schipper Compact Wonen & Staopstoelen.nl
  * 
  * Beheert:
  * 1. Ophalen van bezette tijdsloten uit Google Agenda (doGet)
  * 2. Aanmaken van de afspraak in Google Agenda (doPost)
- * 3. Verzenden van de bevestigingsmail naar de klant met de tekst van Geertjan (doPost)
- * 4. Verzenden van een notificatiemail naar Schipper Compact Wonen / Staopstoelen team (doPost)
- * 5. autoriseerEmail(): eenmalig uitvoeren om Google e-mailrechten te activeren
- * 6. testBooking(): handmatige testboeking
+ * 3. Dynamisch verzenden van de bevestigingsmail naar de klant op basis van het merk (Schipper vs Staopstoelen)
+ * 4. Verzenden van de interne notificatiemail naar het team
+ * 5. autoriseerEmail(): eenmalig uitvoeren om e-mailrechten te activeren
+ * 6. testBookingSchipper() & testBookingStaopstoelen(): handmatige testfuncties in de Apps Script editor
  */
 
 // Configuratie
-const NOTIFICATION_EMAIL = "schipperwonen@gmail.com, info@staopstoelen.nl"; // Ontvangt interne boekingsnotificaties
+const DEFAULT_NOTIFICATION_EMAIL = "schipperwonen@gmail.com, info@staopstoelen.nl";
 const CALENDAR_ID = "primary"; // Gebruikt de primaire Google Agenda van het account
 
 /**
@@ -33,7 +33,7 @@ function doGet(e) {
     const events = calendar.getEvents(dayStart, dayEnd);
     const busySlots = [];
 
-    // Tijdsloten definiëren
+    // Tijdsloten definiëren (sluit aan op zowel Staopstoelen als Schipper)
     const slots = [
       { label: "10:00 - 12:00", startH: 10, startM: 0, endH: 12, endM: 0 },
       { label: "12:00 - 14:00", startH: 12, startM: 0, endH: 14, endM: 0 },
@@ -67,7 +67,7 @@ function doGet(e) {
 }
 
 /**
- * POST Handler: Maakt de agenda-afspraak en verstuurt de bevestigingsmail
+ * POST Handler: Maakt agenda-afspraak en verstuurt merk-specifieke e-mails
  */
 function doPost(e) {
   try {
@@ -78,45 +78,99 @@ function doPost(e) {
       payload = e.parameter || {};
     }
 
+    // Merk-detectie: Schipper Compact Wonen vs Staopstoelen.nl
+    const brandString = [
+      payload.brand,
+      payload.site,
+      payload.senderName,
+      payload.replyTo,
+      payload.emailSubject,
+      payload.notificationEmail,
+      payload.notes
+    ].filter(Boolean).join(" ");
+
+    const isSchipper = /schipper/i.test(brandString);
+
+    const brandConfig = isSchipper ? {
+      brandName: "Schipper Compact Wonen",
+      brandSubtitle: "Specialist in Ergonomisch Zitcomfort & Fitform",
+      senderName: "Geertjan Klein Haneveld - Schipper Compact Wonen",
+      replyTo: "info@schippercompactwonen.nl",
+      websiteUrl: "https://schippercompactwonen.nl",
+      websiteDomain: "www.schippercompactwonen.nl",
+      defaultSubject: "Bevestiging van uw aanvraag voor een adviesgesprek - Schipper Compact Wonen",
+      internalTag: "[Schipper Compact Wonen]",
+      primaryColor: "#344E41",
+      accentColor: "#588157",
+      bgColor: "#FAF7F1",
+      borderColor: "#DDD3C2",
+      notificationEmail: "schipperwonen@gmail.com, info@schippercompactwonen.nl"
+    } : {
+      brandName: "Staopstoelen.nl",
+      brandSubtitle: "Specialist in Zitcomfort & Ergonomie",
+      senderName: "Geertjan Klein Haneveld - Staopstoelen.nl",
+      replyTo: "info@staopstoelen.nl",
+      websiteUrl: "https://staopstoelen.nl",
+      websiteDomain: "www.staopstoelen.nl",
+      defaultSubject: "Bevestiging van uw aanvraag voor een adviesgesprek - Staopstoelen.nl",
+      internalTag: "[Staopstoelen.nl]",
+      primaryColor: "#2e382b",
+      accentColor: "#4b8f24",
+      bgColor: "#f7f5f0",
+      borderColor: "#e2ddd3",
+      notificationEmail: "schipperwonen@gmail.com, info@staopstoelen.nl"
+    };
+
     const name = payload.name || "Klant";
     const phone = payload.phone || "Onbekend";
     const email = payload.email || "";
     const date = payload.date || "";
-    const timeSlot = payload.timeSlot || "";
-    const startTime = payload.startTime || "10:00";
-    const endTime = payload.endTime || "12:00";
+    const timeSlot = payload.timeSlot || payload.time || "";
+    
+    // Tijdslot start & end time
+    let startTime = payload.startTime;
+    let endTime = payload.endTime;
+    if ((!startTime || !endTime) && timeSlot && timeSlot.includes(" - ")) {
+      const parts = timeSlot.split(" - ");
+      if (!startTime) startTime = parts[0].trim();
+      if (!endTime) endTime = parts[1].trim();
+    }
+    if (!startTime) startTime = "10:00";
+    if (!endTime) endTime = "12:00";
+
     const appointmentType = payload.appointmentType || "showroom";
-    const address = payload.address || "Merwedestraat 239, 3313 GT Dordrecht";
+    const address = payload.address || (isSchipper ? "Merwedestraat 239, 3313 GT Dordrecht (Showroom)" : "Merwedestraat 239, 3313 GT Dordrecht");
     const notes = payload.notes || "-";
 
+    const senderName = payload.senderName || brandConfig.senderName;
+    const replyToEmail = payload.replyTo || brandConfig.replyTo;
+    const notificationEmail = payload.notificationEmail || brandConfig.notificationEmail || DEFAULT_NOTIFICATION_EMAIL;
+
     // A. Specifieke afhandeling voor Lead Magnet: Zithouding Checklist Download
-    // (Maakt GEEN agenda-afspraak, verstuurt alleen klantmail en teamnotificatie van download)
     if (appointmentType === "checklist_download" || payload.action === "checklist_download") {
-      // 1. Bevestigingsmail naar de klant met checklist & downloadknop
       if (email && payload.emailHtml) {
-        const customerSubject = payload.emailSubject || "Uw Zithouding Checklist (PDF) - Staopstoelen.nl";
+        const customerSubject = payload.emailSubject || `Uw Zithouding Checklist (PDF) - ${brandConfig.brandName}`;
         try {
           GmailApp.sendEmail(email, customerSubject, "", {
             htmlBody: payload.emailHtml,
-            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl",
-            replyTo: "info@staopstoelen.nl"
+            name: senderName,
+            replyTo: replyToEmail
           });
         } catch (e1) {
           MailApp.sendEmail({
             to: email,
             subject: customerSubject,
             htmlBody: payload.emailHtml,
-            name: payload.senderName || "Geertjan Klein Haneveld - Staopstoelen.nl",
-            replyTo: "info@staopstoelen.nl"
+            name: senderName,
+            replyTo: replyToEmail
           });
         }
       }
 
-      // 2. Notificatiemail naar het bedrijf / team dat er een download is geweest
-      if (NOTIFICATION_EMAIL) {
-        const downloadSubject = `Nieuwe download: Zithouding Checklist (${name})`;
+      if (notificationEmail) {
+        const downloadSubject = `${brandConfig.internalTag} Nieuwe download: Zithouding Checklist (${name})`;
         const downloadBody = 
-          `Er is zojuist een gratis Zithouding Checklist (PDF) gedownload via de website:\n\n` +
+          `Er is zojuist een gratis Zithouding Checklist (PDF) gedownload via ${brandConfig.brandName} (${brandConfig.websiteDomain}):\n\n` +
           `Naam: ${name}\n` +
           `E-mail: ${email}\n` +
           `Datum & tijd: ${new Date().toLocaleString("nl-NL", { timeZone: "Europe/Amsterdam" })}\n\n` +
@@ -125,27 +179,30 @@ function doPost(e) {
 
         try {
           MailApp.sendEmail({
-            to: NOTIFICATION_EMAIL,
+            to: notificationEmail,
             subject: downloadSubject,
             body: downloadBody,
-            name: "staopstoelen.nl | Downloads",
-            replyTo: email || "info@staopstoelen.nl"
+            name: `${brandConfig.brandName} | Downloads`,
+            replyTo: email || replyToEmail
           });
-        } catch (e2) {
-          // Negeer
-        }
+        } catch (e2) {}
       }
 
       return ContentService.createTextOutput(JSON.stringify({ status: "success", type: "checklist_download" }))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    const typeTitle = appointmentType === "home" ? "Passing aan Huis" : "Showroombezoek Dordrecht";
-    const eventTitle = `Afspraak: ${name} (${typeTitle})`;
+    // B. Agenda afspraak & bevestiging voor Adviesgesprek / Passing
+    const isHome = appointmentType === "home" || appointmentType === "thuis";
+    const typeTitle = isHome ? "Passing aan Huis" : "Showroombezoek Dordrecht";
+    const isScheduled = Boolean(date && date.includes("-"));
+    const eventTitle = isScheduled 
+      ? `${brandConfig.internalTag} Afspraak: ${name} (${typeTitle})`
+      : `${brandConfig.internalTag} Aanvraag / Terugbellen: ${name} (${typeTitle})`;
 
-    // 1. Maak agenda afspraak (alleen voor echte afspraken!)
+    // 1. Maak agenda afspraak
     let startDateObj, endDateObj;
-    if (date && startTime && endTime) {
+    if (isScheduled && startTime && endTime) {
       const [year, month, day] = date.split("-").map(Number);
       const [startH, startM] = startTime.split(":").map(Number);
       const [endH, endM] = endTime.split(":").map(Number);
@@ -158,10 +215,12 @@ function doPost(e) {
     }
 
     const description = 
+      `Website: ${brandConfig.brandName} (${brandConfig.websiteDomain})\n` +
       `Klant: ${name}\n` +
       `Telefoon: ${phone}\n` +
       `E-mail: ${email}\n` +
       `Type: ${typeTitle}\n` +
+      (timeSlot ? `Tijdvak: ${timeSlot}\n` : '') +
       `Locatie: ${address}\n` +
       `Opmerkingen / Wensen: ${notes}\n`;
 
@@ -173,28 +232,28 @@ function doPost(e) {
 
     // 2. Bevestigingsmail naar de klant
     if (email) {
-      const emailSubject = `Bevestiging van uw aanvraag voor een adviesgesprek - Staopstoelen.nl`;
+      const emailSubject = payload.emailSubject || brandConfig.defaultSubject;
       
-      const emailHtml = `
-        <div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #2e382b; max-width: 620px; margin: 0 auto; border: 1px solid #e2ddd3; border-radius: 8px; overflow: hidden;">
-          <div style="background-color: #2e382b; padding: 24px; text-align: center; color: #ffffff;">
-            <h2 style="margin: 0; font-size: 22px; color: #ffffff;">Hartelijk dank voor uw aanvraag!</h2>
-            <p style="margin: 6px 0 0 0; color: #d6e2cf; font-size: 14px;">Staopstoelen.nl &bull; Specialist in Zitcomfort</p>
+      const emailHtml = payload.emailHtml || `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #2e382b; max-width: 620px; margin: 0 auto; border: 1px solid ${brandConfig.borderColor}; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
+          <div style="background-color: ${brandConfig.primaryColor}; padding: 24px; text-align: center; color: #ffffff;">
+            <h2 style="margin: 0; font-size: 22px; color: #ffffff; font-weight: 700;">Hartelijk dank voor uw aanvraag!</h2>
+            <p style="margin: 6px 0 0 0; color: #e5ede3; font-size: 14px;">${brandConfig.brandName} &bull; ${brandConfig.brandSubtitle}</p>
           </div>
           
-          <div style="padding: 28px 24px; background-color: #ffffff;">
+          <div style="padding: 28px 24px;">
             <p>Beste <strong>${name}</strong>,</p>
             <p>Fijn dat u contact met ons heeft opgenomen voor een adviesgesprek. Uw aanvraag is in goede orde ontvangen met onderstaande gegevens:</p>
             
-            <div style="background-color: #f7f5f0; border-left: 4px solid #4b8f24; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
+            <div style="background-color: ${brandConfig.bgColor}; border-left: 4px solid ${brandConfig.accentColor}; padding: 14px 18px; margin: 20px 0; border-radius: 6px;">
               <p style="margin: 4px 0;"><strong>Type afspraak:</strong> ${typeTitle}</p>
-              <p style="margin: 4px 0;"><strong>Datum:</strong> ${date}</p>
-              <p style="margin: 4px 0;"><strong>Tijdvak:</strong> ${timeSlot}</p>
+              ${date ? `<p style="margin: 4px 0;"><strong>Datum:</strong> ${date}</p>` : ''}
+              ${timeSlot ? `<p style="margin: 4px 0;"><strong>Tijdvak:</strong> ${timeSlot}</p>` : ''}
               <p style="margin: 4px 0;"><strong>Locatie:</strong> ${address}</p>
               ${notes && notes !== '-' ? `<p style="margin: 4px 0;"><strong>Uw opmerkingen:</strong> ${notes}</p>` : ''}
             </div>
 
-            <h3 style="color: #2e382b; margin-top: 24px; margin-bottom: 8px; font-size: 17px;">Hoe nu verder?</h3>
+            <h3 style="color: ${brandConfig.primaryColor}; margin-top: 24px; margin-bottom: 8px; font-size: 17px;">Hoe nu verder?</h3>
             <p style="margin-top: 0;">
               Ik zal telefonisch contact met u opnemen om de afspraak te bevestigen en eventuele details door te nemen.
             </p>
@@ -204,14 +263,14 @@ function doPost(e) {
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: 0; padding: 0;">
                 <tr>
                   <td style="vertical-align: top; padding-right: 20px; width: 92px;">
-                    <img src="https://staopstoelen.nl/assets/geert_avatar.png" alt="Geertjan Klein Haneveld" width="92" height="92" style="display: block; width: 92px; height: 92px; border-radius: 50%; border: 1px solid #d5ded0; object-fit: cover;">
+                    <img src="https://staopstoelen.nl/assets/geert_avatar.png" alt="Geertjan Klein Haneveld" width="92" height="92" style="display: block; width: 92px; height: 92px; border-radius: 50%; border: 1px solid ${brandConfig.borderColor}; object-fit: cover;">
                   </td>
                   <td style="vertical-align: top; font-size: 14px; line-height: 1.5; color: #111111;">
                     <div style="font-size: 16px; font-weight: bold; color: #111111; margin-bottom: 2px;">Geertjan Klein Haneveld</div>
-                    <div style="font-size: 13px; color: #444444; font-weight: 600; margin-bottom: 8px;">Gediplomeerd bewegingstechnoloog &amp; Erkend Fitform Dealer</div>
-                    <div style="font-size: 13px; line-height: 1.6; color: #222222;">
+                    <div style="font-size: 13px; color: #555555; font-weight: 600; margin-bottom: 8px;">Gediplomeerd bewegingstechnoloog &amp; Erkend Fitform Dealer</div>
+                    <div style="font-size: 13px; line-height: 1.6; color: #333333;">
                       06 - 22 23 29 64 &nbsp;&bull;&nbsp; 078 - 631 4858<br>
-                      <a href="mailto:geertjan@staopstoelen.nl" style="color: #222222; text-decoration: none;">geertjan@staopstoelen.nl</a> &nbsp;&bull;&nbsp; <a href="https://staopstoelen.nl" target="_blank" style="color: #222222; text-decoration: none;">www.staopstoelen.nl</a><br>
+                      <a href="mailto:${replyToEmail}" style="color: ${brandConfig.primaryColor}; font-weight: 600; text-decoration: none;">${replyToEmail}</a> &nbsp;&bull;&nbsp; <a href="${brandConfig.websiteUrl}" target="_blank" style="color: ${brandConfig.primaryColor}; text-decoration: none;">${brandConfig.websiteDomain}</a><br>
                       Showroom: Merwedestraat 239, 3313 GT Dordrecht
                     </div>
                   </td>
@@ -225,30 +284,30 @@ function doPost(e) {
       try {
         GmailApp.sendEmail(email, emailSubject, "", {
           htmlBody: emailHtml,
-          name: "Geertjan Klein Haneveld - Staopstoelen.nl",
-          replyTo: "info@staopstoelen.nl"
+          name: senderName,
+          replyTo: replyToEmail
         });
       } catch (e1) {
         MailApp.sendEmail({
           to: email,
           subject: emailSubject,
           htmlBody: emailHtml,
-          name: "Geertjan Klein Haneveld - Staopstoelen.nl",
-          replyTo: "info@staopstoelen.nl"
+          name: senderName,
+          replyTo: replyToEmail
         });
       }
     }
 
     // 3. Notificatiemail naar het bedrijf / team
-    if (NOTIFICATION_EMAIL) {
-      const internalSubject = `Nieuwe afspraak: ${name} (${typeTitle}) - ${date} ${timeSlot}`;
+    if (notificationEmail) {
+      const internalSubject = `${brandConfig.internalTag} Nieuwe afspraak: ${name} (${typeTitle})${date ? ` - ${date} ${timeSlot}` : ''}`;
       const internalBody = 
-        `Er is een nieuwe afspraak ingepland via de website:\n\n` +
+        `Er is een nieuwe afspraak ingepland via ${brandConfig.brandName} (${brandConfig.websiteDomain}):\n\n` +
         `Klant: ${name}\n` +
         `Telefoon: ${phone}\n` +
         `E-mail: ${email}\n` +
-        `Datum: ${date}\n` +
-        `Tijdvak: ${timeSlot}\n` +
+        (date ? `Datum: ${date}\n` : '') +
+        (timeSlot ? `Tijdvak: ${timeSlot}\n` : '') +
         `Type: ${typeTitle}\n` +
         `Locatie: ${address}\n` +
         `Opmerkingen: ${notes}\n\n` +
@@ -256,15 +315,13 @@ function doPost(e) {
 
       try {
         MailApp.sendEmail({
-          to: NOTIFICATION_EMAIL,
+          to: notificationEmail,
           subject: internalSubject,
           body: internalBody,
-          name: "staopstoelen.nl | Afspraken",
-          replyTo: email || "info@staopstoelen.nl"
+          name: `${brandConfig.brandName} | Afspraken`,
+          replyTo: email || replyToEmail
         });
-      } catch (e2) {
-        // Negeer eventuele notificatiefout zodat de klantbevestiging voorrang heeft
-      }
+      } catch (e2) {}
     }
 
     return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
@@ -280,30 +337,62 @@ function doPost(e) {
  * STAP A: Voer deze functie EENMALIG uit om Google toestemming voor e-mail te geven
  */
 function autoriseerEmail() {
-  GmailApp.sendEmail("schipperwonen@gmail.com", "Test Autorisatie Staopstoelen", "Toestemming voor het verzenden van e-mails is succesvol geactiveerd!");
-  Logger.log("Toestemming geactiveerd en mail verzonden naar Schipper!");
+  GmailApp.sendEmail("schipperwonen@gmail.com", "Test Autorisatie Staopstoelen & Schipper", "Toestemming voor het verzenden van e-mails is succesvol geactiveerd!");
+  Logger.log("Toestemming geactiveerd en testmail verzonden!");
 }
 
 /**
- * Handmatige Testfunctie
+ * Handmatige Testfunctie voor Schipper Compact Wonen
  */
-function testBooking() {
+function testBookingSchipper() {
   const fakeEvent = {
     postData: {
       contents: JSON.stringify({
-        name: "Test Klant",
+        brand: "Schipper Compact Wonen",
+        site: "schippercompactwonen.nl",
+        name: "Test Klant Schipper",
         phone: "078 - 631 4858",
         email: "schipperwonen@gmail.com",
-        date: "2026-10-24",
-        timeSlot: "10:00 - 12:00",
-        startTime: "10:00",
-        endTime: "12:00",
+        date: "2026-10-25",
+        timeSlot: "14:00 - 16:00",
+        startTime: "14:00",
+        endTime: "16:00",
         appointmentType: "showroom",
         address: "Merwedestraat 239, 3313 GT Dordrecht",
-        notes: "Testboeking vanuit Google Apps Script editor om de bevestigings- en notificatiemail te controleren."
+        notes: "Testboeking voor Schipper Compact Wonen afzender en opmaak.",
+        senderName: "Geertjan Klein Haneveld - Schipper Compact Wonen",
+        replyTo: "info@schippercompactwonen.nl"
       })
     }
   };
   const result = doPost(fakeEvent);
-  Logger.log("Resultaat: " + result.getContent());
+  Logger.log("Schipper Resultaat: " + result.getContent());
+}
+
+/**
+ * Handmatige Testfunctie voor Staopstoelen.nl
+ */
+function testBookingStaopstoelen() {
+  const fakeEvent = {
+    postData: {
+      contents: JSON.stringify({
+        brand: "Staopstoelen.nl",
+        site: "staopstoelen.nl",
+        name: "Test Klant Staopstoelen",
+        phone: "078 - 631 4858",
+        email: "schipperwonen@gmail.com",
+        date: "2026-10-25",
+        timeSlot: "10:00 - 12:00",
+        startTime: "10:00",
+        endTime: "12:00",
+        appointmentType: "home",
+        address: "Teststraat 1, Dordrecht",
+        notes: "Testboeking voor Staopstoelen.nl afzender en opmaak.",
+        senderName: "Geertjan Klein Haneveld - Staopstoelen.nl",
+        replyTo: "info@staopstoelen.nl"
+      })
+    }
+  };
+  const result = doPost(fakeEvent);
+  Logger.log("Staopstoelen Resultaat: " + result.getContent());
 }
