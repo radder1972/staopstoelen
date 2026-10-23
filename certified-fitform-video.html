@@ -681,7 +681,8 @@
       metric: "70% Onbediende Markt",
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "In Nederland kost een nieuwe ergonomische sta-op stoel al snel 4.500 euro. Te duur voor de meesten. Maar op Marktplaats koopt men een onhygiënische gok, zonder garantie en met de verkeerde maatvoering.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg"
+      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      audio: "assets/audio/scene_1.m4a"
     },
     {
       kicker: "02 / 05 • De Sweet Spot",
@@ -690,7 +691,8 @@
       metric: "€ 1.450 – € 1.850",
       caption: "staopstoelen.nl vult dit gat met Certified Fitform Occasions: topkwaliteit voor 1.550 euro mét 24 maanden garantie.",
       voiceText: "staopstoelen punt nl vult dit gat met Certified Fitform Occasions. Topkwaliteit van Nederlands fabricaat, voor 1.550 euro, mét 24 maanden volledige omruilgarantie.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg"
+      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      audio: "assets/audio/scene_2.m4a"
     },
     {
       kicker: "03 / 05 • Kwaliteit & Maatwerk",
@@ -698,8 +700,9 @@
       subtitle: "Linak motoren belast getest op 150 kg, ozon-extractie en zithoogte op de millimeter afgesteld op het lichaam van de koper.",
       metric: "Retouren < 2%",
       caption: "Elke stoel ondergaat een 30-punten inspectie en wordt door Geertjan op maat gekalibreerd.",
-      voiceText: "Elke stoel ondergaat een strenge 30-punten keuring, ozon-dieptereiniging en wordt door Geertjan op de millimeter afgesteld op de zithoogte en zitdiepte van de koper. Retouren zijn minder dan 2 procent.",
-      bg: "assets/dutch_technician_fitform_workshop.jpg"
+      voiceText: "Elke stoel ondergaat een strenge dertig-punten keuring, ozon-dieptereiniging en wordt door Geertjan op de millimeter afgesteld op de zithoogte en zitdiepte van de koper. Retouren zijn minder dan twee procent.",
+      bg: "assets/dutch_technician_fitform_workshop.jpg",
+      audio: "assets/audio/scene_3.m4a"
     },
     {
       kicker: "04 / 05 • Unit Economics",
@@ -708,7 +711,8 @@
       metric: "+€ 7.800 Netto / Mnd",
       caption: "Ijzersterke cijfers: na inkoop, onderdelen en 2-mans transport resteert 650 euro netto cashflow per stoel.",
       voiceText: "De unit economics zijn ijzersterk. Met een inkoop van 450 euro blijft er na transport, onderdelen en servicebuffer 650 euro netto marge over. Goed voor 7.800 euro maandelijkse cashflow.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg"
+      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      audio: "assets/audio/scene_4.m4a"
     },
     {
       kicker: "05 / 05 • De Overnamedeal",
@@ -716,8 +720,9 @@
       subtitle: "50% Bancair met BMKB-garantie, 25% vendor loan van de verkoper en een terugverdientijd van 9 tot 14 maanden.",
       metric: "ROI in 9–14 Mnd",
       caption: "Met 50% BMKB-garantie en een verkoperslening is slechts 40.000 euro eigen inbreng vereist. Terugverdiend binnen een jaar.",
-      voiceText: "Met een totale investering van 155.000 euro, 50 procent BMKB-garantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inbreng nodig. Binnen 12 maanden volledig terugverdiend.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg"
+      voiceText: "Met een totale investering van 155.000 euro, 50 procent B M K B garantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inbreng nodig. Binnen twaalf maanden volledig terugverdiend.",
+      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      audio: "assets/audio/scene_5.m4a"
     }
   ];
 
@@ -726,19 +731,18 @@
   let sceneProgress = 0;
   let timer = null;
   let voiceEnabled = true;
+  let currentAudio = null;
   let selectedFemaleVoice = null;
   const SCENE_DURATION_MS = 12000;
   const TICK_MS = 100;
 
-  // Zoek specifiek naar een vrouwelijke Nederlandse stem
+  // Zoek specifiek naar een vrouwelijke Nederlandse stem (voor fallback)
   function loadFemaleVoice() {
     if (!('speechSynthesis' in window)) return;
     const voices = window.speechSynthesis.getVoices();
     const nlVoices = voices.filter(v => v.lang.toLowerCase().startsWith('nl') || v.lang.toLowerCase() === 'dut');
     
-    // Bekende vrouwelijke stemmen in macOS, iOS, Windows, Chrome
     const femaleNames = ['ellen', 'claire', 'ilse', 'fenna', 'colette', 'saskia', 'anita', 'siri', 'female', 'vrouw'];
-    
     for (const name of femaleNames) {
       const match = nlVoices.find(v => v.name.toLowerCase().includes(name));
       if (match) {
@@ -747,27 +751,51 @@
       }
     }
 
-    // Google Nederlands in Chrome is van nature een warme vrouwenstem
     if (!selectedFemaleVoice) {
       const googleNl = nlVoices.find(v => v.name.includes('Google') || v.name.toLowerCase().includes('nederlands'));
       if (googleNl) selectedFemaleVoice = googleNl;
     }
 
-    // Fallback naar eerste beschikbare Nederlandse stem
     if (!selectedFemaleVoice && nlVoices.length > 0) {
       selectedFemaleVoice = nlVoices[0];
-    }
-
-    const label = document.getElementById('voice-label');
-    if (selectedFemaleVoice && label) {
-      const shortName = selectedFemaleVoice.name.split(' ')[0].replace(/[^a-zA-Z]/g, '');
-      label.textContent = `👩 Vrouwenstem (${shortName || 'NL'})`;
     }
   }
 
   if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = loadFemaleVoice;
     loadFemaleVoice();
+  }
+
+  function stopAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  }
+
+  function playSceneAudio(idx) {
+    stopAudio();
+    if (!voiceEnabled || !isPlaying) return;
+
+    const s = scenes[idx];
+    if (s.audio) {
+      currentAudio = new Audio(s.audio);
+      currentAudio.play().catch(e => {
+        console.warn("Audio file autoplay blocked, using fallback synthesis:", e);
+        if ('speechSynthesis' in window) {
+          const utter = new SpeechSynthesisUtterance(s.voiceText);
+          if (selectedFemaleVoice) {
+            utter.voice = selectedFemaleVoice;
+            utter.lang = selectedFemaleVoice.lang; // Zorg dat locale 100% overeenkomt met de stem
+          }
+          utter.pitch = 1.15;
+          utter.rate = 1.0;
+          window.speechSynthesis.speak(utter);
+        }
+      });
+    }
   }
 
   function renderScene(idx) {
@@ -798,18 +826,8 @@
       }
     }
 
-    // Vrouwelijke voice-over afspelen
-    if (voiceEnabled && isPlaying && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(s.voiceText);
-      if (selectedFemaleVoice) {
-        utter.voice = selectedFemaleVoice;
-      }
-      utter.lang = 'nl-NL';
-      utter.pitch = 1.15; // Iets hogere, vriendelijke vrouwelijke intonatie
-      utter.rate = 1.02;  // Rustige, natuurlijke spreeksnelheid
-      window.speechSynthesis.speak(utter);
-    }
+    // Speel audio van de huidige scene
+    playSceneAudio(idx);
   }
 
   function tick() {
@@ -852,7 +870,7 @@
     document.getElementById('scene-stage').classList.remove('playing');
     document.getElementById('play-icon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
     if (timer) clearInterval(timer);
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    stopAudio();
   }
 
   function togglePlay() {
@@ -882,12 +900,12 @@
     const label = document.getElementById('voice-label');
     if (voiceEnabled) {
       btn.className = "btn-audio";
-      label.textContent = selectedFemaleVoice ? `👩 Vrouwenstem (${selectedFemaleVoice.name.split(' ')[0]})` : "👩 Vrouwenstem Actief";
-      if (isPlaying) renderScene(currentScene);
+      label.textContent = "👩 Vrouwenstem Actief";
+      if (isPlaying) playSceneAudio(currentScene);
     } else {
       btn.className = "btn-audio muted";
       label.textContent = "🔇 Stem Gedempt";
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      stopAudio();
     }
   }
 
