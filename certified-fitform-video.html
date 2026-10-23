@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>60-Seconden Video Pitch: Certified Fitform Occasions | staopstoelen.nl</title>
+  <meta name="description" content="60-seconden interactieve video pitch over het Certified Fitform Occasions model voor staopstoelen.nl en Schipper Compact Wonen Dordrecht.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <style>
+    :root {
+      --bg: #0d120c;
+      --card-bg: #141c13;
+      --border: #223020;
+      --text: #f0f4ef;
+      --text-muted: #9eb19a;
+      --green: #48a336;
+      --green-glow: rgba(72, 163, 54, 0.35);
+      --accent: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px 16px 60px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 980px;
+      width: 100%;
+    }
+
+    /* Top Nav */
+    .video-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .nav-brand span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-quiet {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-quiet:hover {
+      background: var(--card-bg);
+      color: var(--text);
+      border-color: #3b5038;
+    }
+
+    /* Video Player Frame */
+    .video-player-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 50px rgba(0,0,0,0.6), 0 0 40px var(--green-glow);
+      position: relative;
+    }
+
+    /* Top Progress Segments (5 scenes x 12 seconds = 60s) */
+    .segments-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      padding: 14px 18px 8px;
+      background: rgba(10, 15, 9, 0.85);
+      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 10;
+    }
+
+    .seg {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .seg-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--green);
+      transition: width 0.1s linear;
+    }
+
+    .seg.completed .seg-fill { width: 100%; }
+
+    /* Scene Stage (16:9 Aspect Ratio) */
+    .scene-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 640px) {
+      .scene-stage { aspect-ratio: 4/3; }
+    }
+
+    .scene-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      transform: scale(1);
+      transition: transform 12s cubic-bezier(0.1, 0, 0.3, 1), opacity 0.6s ease;
+      filter: blur(1px);
+    }
+
+    .scene-stage.playing .scene-bg {
+      transform: scale(1.12);
+    }
+
+    .scene-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(13,18,12,0.4) 0%, rgba(13,18,12,0.95) 100%);
+    }
+
+    /* Scene Content Overlay */
+    .scene-overlay {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      max-width: 760px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .scene-kicker {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(72, 163, 54, 0.15);
+      border: 1px solid rgba(72, 163, 54, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scene-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.8);
+    }
+
+    @media (max-width: 640px) {
+      .scene-title { font-size: 1.45rem; }
+    }
+
+    .scene-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 620px;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    @media (max-width: 640px) {
+      .scene-subtitle { font-size: 0.88rem; }
+    }
+
+    .scene-metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1.5px solid var(--green);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #7dd964;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+
+    /* Subtitle Banner at bottom of video */
+    .scene-captions {
+      position: absolute;
+      bottom: 64px;
+      left: 20px;
+      right: 20px;
+      text-align: center;
+      z-index: 6;
+    }
+
+    .caption-text {
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      font-size: 0.92rem;
+      padding: 6px 16px;
+      border-radius: 8px;
+      display: inline-block;
+      max-width: 90%;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Player Controls Bar */
+    .player-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #090e08;
+      border-top: 1px solid var(--border);
+    }
+
+    .ctrl-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-play {
+      background: var(--green);
+      color: #ffffff;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(72, 163, 54, 0.4);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-play:hover {
+      transform: scale(1.08);
+      background: #39822a;
+    }
+
+    .btn-step {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-step:hover {
+      color: var(--text);
+      border-color: #3b5038;
+      background: var(--card-bg);
+    }
+
+    .time-display {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .time-display span {
+      color: var(--text);
+    }
+
+    .ctrl-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-audio {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-audio.active {
+      color: #7dd964;
+      border-color: var(--green);
+      background: rgba(72, 163, 54, 0.12);
+    }
+
+    /* Scene Selection List below */
+    .storyboard-section {
+      margin-top: 36px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title span {
+      color: var(--green);
+      font-size: 0.78rem;
+      background: rgba(72, 163, 54, 0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(72, 163, 54, 0.3);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .story-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-card:hover, .story-card.active {
+      border-color: var(--green);
+      background: #172216;
+      transform: translateY(-2px);
+    }
+
+    .story-time {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    .story-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .story-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Script Draaiboek Box */
+    .script-box {
+      margin-top: 36px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .script-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .script-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+
+    .script-table th {
+      text-align: left;
+      padding: 10px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .script-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    .script-table tr:hover td {
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .script-time {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      color: var(--green);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Nav -->
+  <div class="video-nav">
+    <a href="certified-fitform-concept.html" class="nav-brand">
+      staopstoelen<span>.nl</span>
+      <span style="color:var(--text-muted); font-size:0.8rem; font-weight:400;">| 60-Seconden Video Pitch</span>
+    </a>
+    <div class="nav-links">
+      <a href="certified-fitform-infographic.html" class="btn-quiet">
+        Infographic
+      </a>
+      <a href="certified-fitform-concept.html" class="btn-quiet">
+        Volledig Rapport
+      </a>
+    </div>
+  </div>
+
+  <!-- Video Player -->
+  <div class="video-player-card">
+    
+    <!-- Top 5 Scene Progress Bars (Total 60s) -->
+    <div class="segments-bar" id="segments-bar">
+      <div class="seg" onclick="jumpToScene(0)"><div class="seg-fill" id="fill-0"></div></div>
+      <div class="seg" onclick="jumpToScene(1)"><div class="seg-fill" id="fill-1"></div></div>
+      <div class="seg" onclick="jumpToScene(2)"><div class="seg-fill" id="fill-2"></div></div>
+      <div class="seg" onclick="jumpToScene(3)"><div class="seg-fill" id="fill-3"></div></div>
+      <div class="seg" onclick="jumpToScene(4)"><div class="seg-fill" id="fill-4"></div></div>
+    </div>
+
+    <!-- Scene Stage -->
+    <div class="scene-stage" id="scene-stage">
+      <img src="assets/certified_fitform_occasion_showroom.jpg" alt="Scene Background" class="scene-bg" id="scene-bg">
+      <div class="scene-gradient"></div>
+
+      <!-- Overlay Text Content -->
+      <div class="scene-overlay">
+        <div class="scene-kicker" id="scene-kicker">
+          <span>01 / 05</span> Het Marktdilemma
+        </div>
+        <h2 class="scene-title" id="scene-title">
+          Tussen € 4.500 Nieuw &amp; € 500 Marktplaats
+        </h2>
+        <p class="scene-subtitle" id="scene-subtitle">
+          Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok zonder garantie en de verkeerde maatvoering.
+        </p>
+        <div class="scene-metric-pill" id="scene-metric">
+          70% Onbediende Vraag
+        </div>
+      </div>
+
+      <!-- Subtitle banner -->
+      <div class="scene-captions">
+        <div class="caption-text" id="caption-text">
+          "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes."
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls Bar -->
+    <div class="player-controls">
+      <div class="ctrl-left">
+        <button class="btn-play" id="btn-play" onclick="togglePlay()" title="Afspelen / Pauzeren">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="play-icon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </button>
+        <button class="btn-step" onclick="prevScene()" title="Vorige scène">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="btn-step" onclick="nextScene()" title="Volgende scène">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <div class="time-display">
+          <span id="current-time">0:00</span> / 1:00
+        </div>
+      </div>
+
+      <div class="ctrl-right">
+        <button class="btn-audio active" id="btn-voice" onclick="toggleVoice()" title="Nederlandse Gesproken Voice-over">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          <span id="voice-label">Stem Actief</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Storyboard / Scene Switcher -->
+  <div class="storyboard-section">
+    <div class="section-title">
+      De 5 Scènes van de Pitch <span>60 Seconden Draaiboek</span>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-card active" id="card-0" onclick="jumpToScene(0)">
+        <div class="story-time">0:00 – 0:12</div>
+        <div class="story-title">1. Het Marktvacuüm</div>
+        <div class="story-desc">Het gat tussen onbetaalbaar nieuw (€ 4.500) en risicovol Marktplaats.</div>
+      </div>
+
+      <div class="story-card" id="card-1" onclick="jumpToScene(1)">
+        <div class="story-time">0:12 – 0:24</div>
+        <div class="story-title">2. De Sweet Spot</div>
+        <div class="story-desc">Certified Fitform: € 1.550 met keurmerkzegel &amp; showroom Dordrecht.</div>
+      </div>
+
+      <div class="story-card" id="card-2" onclick="jumpToScene(2)">
+        <div class="story-title">3. 30-Punts Keuring</div>
+        <div class="story-desc">Revisie, Linak motoren, ozon-extractie en inmeting door Geertjan.</div>
+      </div>
+
+      <div class="story-card" id="card-3" onclick="jumpToScene(3)">
+        <div class="story-time">0:24 – 0:48</div>
+        <div class="story-title">4. Unit Economics</div>
+        <div class="story-desc">€ 650 netto marge (42%), € 7.800/mnd cashflow bij 12 stoelen.</div>
+      </div>
+
+      <div class="story-card" id="card-4" onclick="jumpToScene(4)">
+        <div class="story-time">0:48 – 1:00</div>
+        <div class="story-title">5. De Overnamedeal</div>
+        <div class="story-desc">€ 155k investering, € 40k eigen inleg, vendor loan &amp; BMKB garantie.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Draaiboek voor Opnames -->
+  <div class="script-box">
+    <div class="script-title">🎥 Draaiboek voor Video-Opname of AI-Productie (HeyGen / Runway)</div>
+    <table class="script-table">
+      <thead>
+        <tr>
+          <th>Tijd</th>
+          <th>Visueel Beeld (Shot)</th>
+          <th>Gesproken Voice-Over Tekst</th>
+          <th>Kernboodschap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="script-time">0:00 - 0:12</td>
+          <td>Senior bladert vertwijfeld door dure folder van Prominent. Close-up Marktplaats app.</td>
+          <td>"In Nederland kost een nieuwe sta-op stoel al snel 4.500 euro. Te duur voor de meesten. Maar op Marktplaats koopt men een onhygiënische gok zonder garantie en de verkeerde maat."</td>
+          <td>Het marktvacuüm claimen</td>
+        </tr>
+        <tr>
+          <td class="script-time">0:12 - 0:24</td>
+          <td>Pan over de showroom in Dordrecht. Prachtige cognackleurige Fitform met lederen keurmerktag.</td>
+          <td>"staopstoelen.nl vult dit gat met Certified Fitform Occasions. Topkwaliteit van Nederlands fabricaat, voor 1.550 euro mét 24 maanden omruilgarantie."</td>
+          <td>De Sweet Spot (€ 1.550)</td>
+        </tr>
+        <tr>
+          <td class="script-time">0:24 - 0:36</td>
+          <td>Werkplaats Dordrecht: Geertjan met meetlint en Linak testapparatuur. Dieptereiniging stoom.</td>
+          <td>"Elke stoel ondergaat een 30-punten keuring, ozon-dieptereiniging en wordt door Geertjan op de millimeter afgesteld op zithoogte en zitdiepte van de koper."</td>
+          <td>Vertrouwen &amp; Maatwerk</td>
+        </tr>
+        <tr>
+          <td class="script-time">0:36 - 0:48</td>
+          <td>Geanimeerde waterval-grafiek met marges en cashflow.</td>
+          <td>"De unit economics zijn ijzersterk: met een inkoop van 450 euro blijft er na transport en onderdelen 650 euro netto marge over. Goed voor 7.800 euro cashflow per maand."</td>
+          <td>42% Netto Marge</td>
+        </tr>
+        <tr>
+          <td class="script-time">0:48 - 1:00</td>
+          <td>Matthias bij de fysieke winkel Schipper en het domein staopstoelen.nl. Handdruk / financieringsmix.</td>
+          <td>"Met een overname van 155.000 euro, 50 procent BMKB-garantie en een vendor loan is slechts 40.000 euro eigen inleg nodig. Terugverdiend in 12 maanden."</td>
+          <td>Asymmetrische Investering</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+  const scenes = [
+    {
+      kicker: "01 / 05 • Het Marktdilemma",
+      title: "Tussen € 4.500 Nieuw & € 500 Marktplaats",
+      subtitle: "Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok zonder garantie.",
+      metric: "70% Onbediende Markt",
+      caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
+      voiceText: "In Nederland kost een nieuwe ergonomische sta-op stoel al snel 4.500 euro. Te duur voor de meesten. Maar op Marktplaats koopt men een onhygiënische gok, zonder garantie en met de verkeerde maatvoering.",
+      bg: "assets/certified_fitform_occasion_showroom.jpg"
+    },
+    {
+      kicker: "02 / 05 • De Sweet Spot",
+      title: "Certified Fitform: Premium voor € 1.550",
+      subtitle: "Officiële Wellco/Fitform modellen met genummerd keurmerkzegel, direct leverbaar uit de showroom in Dordrecht.",
+      metric: "€ 1.450 – € 1.850",
+      caption: "staopstoelen.nl vult dit gat met Certified Fitform Occasions: topkwaliteit voor 1.550 euro mét 24 maanden garantie.",
+      voiceText: "staopstoelen punt nl vult dit gat met Certified Fitform Occasions. Topkwaliteit van Nederlands fabricaat, voor 1.550 euro, mét 24 maanden volledige omruilgarantie.",
+      bg: "assets/certified_fitform_occasion_showroom.jpg"
+    },
+    {
+      kicker: "03 / 05 • Kwaliteit & Maatwerk",
+      title: "30-Punts Keuring & Inmeting Geertjan",
+      subtitle: "Linak motoren belast getest op 150 kg, ozon-extractie en zithoogte op de millimeter afgesteld op het lichaam van de koper.",
+      metric: "Retouren < 2%",
+      caption: "Elke stoel ondergaat een 30-punten inspectie en wordt door Geertjan op maat gekalibreerd.",
+      voiceText: "Elke stoel ondergaat een strenge 30-punten keuring, ozon-dieptereiniging en wordt door Geertjan op de millimeter afgesteld op de zithoogte en zitdiepte van de koper. Retouren zijn minder dan 2 procent.",
+      bg: "assets/dutch_technician_fitform_workshop.jpg"
+    },
+    {
+      kicker: "04 / 05 • Unit Economics",
+      title: "€ 650 Netto Marge per Stoel (42%)",
+      subtitle: "Conservatief doorgerekend inclusief 2-mans bezorging, onderdelen en servicebuffers. € 7.800 netto per maand bij 12 stoelen.",
+      metric: "+€ 7.800 Netto / Mnd",
+      caption: "Ijzersterke cijfers: na inkoop, onderdelen en 2-mans transport resteert 650 euro netto cashflow per stoel.",
+      voiceText: "De unit economics zijn ijzersterk. Met een inkoop van 450 euro blijft er na transport, onderdelen en servicebuffer 650 euro netto marge over. Goed voor 7.800 euro maandelijkse cashflow.",
+      bg: "assets/certified_fitform_occasion_showroom.jpg"
+    },
+    {
+      kicker: "05 / 05 • De Overnamedeal",
+      title: "€ 155k Investering • Slechts € 40k Eigen Inleg",
+      subtitle: "50% Bancair met BMKB-garantie, 25% vendor loan van de verkoper en een terugverdientijd van 9 tot 14 maanden.",
+      metric: "ROI in 9–14 Mnd",
+      caption: "Met 50% BMKB-garantie en een verkoperslening is slechts 40.000 euro eigen inbreng vereist. Terugverdiend binnen een jaar.",
+      voiceText: "Met een totale investering van 155.000 euro, 50 procent BMKB-garantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inbreng nodig. Binnen 12 maanden volledig terugverdiend.",
+      bg: "assets/certified_fitform_occasion_showroom.jpg"
+    }
+  ];
+
+  let currentScene = 0;
+  let isPlaying = false;
+  let sceneProgress = 0;
+  let timer = null;
+  let voiceEnabled = true;
+  const SCENE_DURATION_MS = 12000; // 12 seconds per scene * 5 = 60s
+  const TICK_MS = 100;
+
+  function renderScene(idx) {
+    const s = scenes[idx];
+    document.getElementById('scene-kicker').innerHTML = `<span>0${idx+1} / 05</span> ${s.kicker.split('•')[1] || s.kicker}`;
+    document.getElementById('scene-title').textContent = s.title;
+    document.getElementById('scene-subtitle').textContent = s.subtitle;
+    document.getElementById('scene-metric').textContent = s.metric;
+    document.getElementById('caption-text').textContent = `"${s.caption}"`;
+    document.getElementById('scene-bg').src = s.bg;
+
+    // Update Storyboard card highlights
+    for(let i=0; i<5; i++) {
+      const card = document.getElementById('card-' + i);
+      const fill = document.getElementById('fill-' + i);
+      const seg = fill.parentElement;
+      if(i < idx) {
+        seg.className = "seg completed";
+        fill.style.width = "100%";
+        card.className = "story-card";
+      } else if(i === idx) {
+        seg.className = "seg";
+        fill.style.width = `${(sceneProgress / SCENE_DURATION_MS) * 100}%`;
+        card.className = "story-card active";
+      } else {
+        seg.className = "seg";
+        fill.style.width = "0%";
+        card.className = "story-card";
+      }
+    }
+
+    // Voice over narration
+    if(voiceEnabled && isPlaying && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(s.voiceText);
+      utter.lang = 'nl-NL';
+      utter.rate = 1.05;
+      utter.pitch = 1.0;
+      window.speechSynthesis.speak(utter);
+    }
+  }
+
+  function tick() {
+    sceneProgress += TICK_MS;
+    const currentTotalSec = Math.floor((currentScene * SCENE_DURATION_MS + sceneProgress) / 1000);
+    const min = Math.floor(currentTotalSec / 60);
+    const sec = currentTotalSec % 60;
+    document.getElementById('current-time').textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+
+    const fill = document.getElementById('fill-' + currentScene);
+    if(fill) {
+      fill.style.width = `${Math.min(100, (sceneProgress / SCENE_DURATION_MS) * 100)}%`;
+    }
+
+    if(sceneProgress >= SCENE_DURATION_MS) {
+      sceneProgress = 0;
+      if(currentScene < 4) {
+        currentScene++;
+        renderScene(currentScene);
+      } else {
+        // Finished 60s
+        pause();
+        currentScene = 0;
+        sceneProgress = 0;
+        renderScene(0);
+        document.getElementById('current-time').textContent = "1:00";
+      }
+    }
+  }
+
+  function play() {
+    isPlaying = true;
+    document.getElementById('scene-stage').classList.add('playing');
+    document.getElementById('play-icon').innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+    timer = setInterval(tick, TICK_MS);
+    renderScene(currentScene);
+  }
+
+  function pause() {
+    isPlaying = false;
+    document.getElementById('scene-stage').classList.remove('playing');
+    document.getElementById('play-icon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+    if(timer) clearInterval(timer);
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  }
+
+  function togglePlay() {
+    if(isPlaying) pause();
+    else play();
+  }
+
+  function jumpToScene(idx) {
+    currentScene = idx;
+    sceneProgress = 0;
+    renderScene(idx);
+    const currentTotalSec = idx * 12;
+    document.getElementById('current-time').textContent = `0:${currentTotalSec < 10 ? '0' : ''}${currentTotalSec}`;
+  }
+
+  function nextScene() {
+    if(currentScene < 4) jumpToScene(currentScene + 1);
+  }
+
+  function prevScene() {
+    if(currentScene > 0) jumpToScene(currentScene - 1);
+  }
+
+  function toggleVoice() {
+    voiceEnabled = !voiceEnabled;
+    const btn = document.getElementById('btn-voice');
+    const label = document.getElementById('voice-label');
+    if(voiceEnabled) {
+      btn.className = "btn-audio active";
+      label.textContent = "Stem Actief";
+      if(isPlaying) renderScene(currentScene);
+    } else {
+      btn.className = "btn-audio";
+      label.textContent = "Stem Gedempt";
+      if('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+  }
+
+  // Initial render
+  renderScene(0);
+</script>
+
+</body>
+</html>
