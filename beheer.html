@@ -1335,6 +1335,18 @@
     }
     .mock-line.short { width: 60%; }
     .mock-line.green { background: rgba(75, 143, 36, 0.25); }
+
+    /* Marktplaats Modal Grid */
+    .mp-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 24px;
+    }
+    @media (max-width: 820px) {
+      .mp-modal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1456,6 +1468,15 @@
             <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
           </svg>
           <span>Huisstijl &amp; drukwerk</span>
+        </button>
+
+        <button class="tab-btn" id="tabMarktplaats" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span>Marktplaats generator</span>
         </button>
       </div>
 
@@ -3185,6 +3206,192 @@
 
       </div> <!-- End #huisstijlSection -->
 
+      <!-- Section: Marktplaats Generator (initially hidden) -->
+      <div id="marktplaatsSection" style="display: none; padding-bottom: 80px;">
+        <div class="section-header-banner" style="background: linear-gradient(135deg, #fff7f0 0%, #ffffff 100%); border-left: 4px solid #e65c00;">
+          <div class="section-header-main">
+            <div class="section-badge-pill" style="background: rgba(230, 92, 0, 0.1); color: #e65c00; border-color: rgba(230, 92, 0, 0.2);">
+              <span class="pulse-dot" style="background-color: #e65c00;"></span>
+              <span>Marktplaats Leadmachine</span>
+            </div>
+            <h2 class="section-banner-title">Marktplaats Advertentie Generator</h2>
+            <p class="section-banner-subtitle">
+              Genereer binnen 5 seconden veilige, conversiegerichte Marktplaats-advertenties voor al je occasions &amp; voorraadstoelen. Kopieer met 1 klik de geoptimaliseerde titel en wervende tekst en download direct de foto's.
+            </p>
+          </div>
+          <div class="section-header-actions">
+            <a href="https://www.marktplaats.nl/m/plaats-advertentie" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin: 0; display: inline-flex; align-items: center; gap: 8px; background-color: #e65c00; border-color: #d15400;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>Open Marktplaats Plaatsen ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Veiligheid & Tips Banner -->
+        <div style="background: #ffffff; border: 1.5px solid #fed7aa; border-radius: 12px; padding: 20px 24px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(230,92,0,0.04);">
+          <div style="display: flex; gap: 14px; align-items: flex-start;">
+            <div style="background: #ffedd5; color: #c2410c; padding: 10px; border-radius: 10px; flex-shrink: 0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <div>
+              <h4 style="margin: 0 0 6px 0; color: #9a3412; font-family: var(--font-heading); font-size: 1.02rem;">Plaatsingsadvies &amp; Veiligheid (Voorkom Marktplaats Blokkades)</h4>
+              <ul style="margin: 0; padding-left: 20px; color: #7c2d12; font-size: 0.88rem; line-height: 1.6;">
+                <li><strong>Categorie:</strong> Plaats bij voorkeur in <em>Zorg en Welzijn &gt; Hulpmiddelen | Sta-op stoelen</em> of <em>Huis en Inrichting &gt; Fauteuils</em>.</li>
+                <li><strong>Geen harde weblinks in gratis advertenties:</strong> Deze generator stript automatisch weblinks en verwijst in plaats daarvan veilig naar de fysieke showroom aan de Merwedestraat in Dordrecht en jullie telefoonnummers.</li>
+                <li><strong>Foto's:</strong> Upload altijd minimaal 4 duidelijke foto's (rug, zitting, sta-op stand, afstandsbediening) voor maximale betrouwbaarheid.</li>
+                <li><strong>Verkocht?</strong> Zet de stoel in Beheer op 'Verkocht' en verwijder de advertentie direct op Marktplaats om teleurstelling te voorkomen.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter- en zoekbalk -->
+        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; flex: 1; min-width: 280px;">
+            <div style="position: relative; flex: 1; min-width: 220px;">
+              <input type="text" id="mpSearchInput" class="form-control" placeholder="Zoek op model, merk of type..." style="padding-left: 36px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gray)" stroke-width="2" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <select id="mpFilterCondition" class="form-control" style="width: auto; min-width: 180px;">
+              <option value="occasion" selected>⭐ Alleen Occasion / RECO</option>
+              <option value="all">Alle Condities (Nieuw + Occasion)</option>
+              <option value="nieuw">Alleen Nieuw</option>
+            </select>
+            <select id="mpFilterStatus" class="form-control" style="width: auto; min-width: 160px;">
+              <option value="beschikbaar" selected>Alleen Beschikbaar</option>
+              <option value="all">Alle Statussen</option>
+              <option value="verkocht">Alleen Verkocht</option>
+            </select>
+            <select id="mpFilterBrand" class="form-control" style="width: auto; min-width: 140px;">
+              <option value="">Alle Merken</option>
+            </select>
+          </div>
+          <div id="mpCountBadge" style="font-weight: 700; font-size: 0.88rem; color: #b45309; background: #fffbeb; padding: 6px 14px; border-radius: 999px; border: 1px solid #fde68a;">
+            0 stoelen klaar
+          </div>
+        </div>
+
+        <!-- Cards Grid Container -->
+        <div id="mpCardsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+          <!-- Dynamically populated via renderMarktplaatsCards -->
+        </div>
+      </div> <!-- End #marktplaatsSection -->
+
+      <!-- Marktplaats Advertentie Generator Modal Overlay -->
+      <div class="modal-overlay" id="marktplaatsModal" style="display: none; align-items: center; justify-content: center; z-index: 30000; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); position: fixed; top: 0; left: 0; right: 0; bottom: 0;">
+        <div class="modal-card" style="max-width: 940px; width: 95%; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+          
+          <!-- Modal Header -->
+          <div class="modal-header" style="background: linear-gradient(135deg, #fff7f0 0%, #ffffff 100%); border-bottom: 1.5px solid #fed7aa; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="background: #e65c00; color: #ffffff; width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              </div>
+              <div>
+                <h3 style="color: #9a3412; font-family: var(--font-heading); margin: 0; font-size: 1.15rem; font-weight: 800;" id="mpModalChairName">Stoel Advertentie</h3>
+                <span style="font-size: 0.82rem; color: #7c2d12;">Kopieer gegevens direct naar Marktplaats.nl</span>
+              </div>
+            </div>
+            <button type="button" style="font-size: 1.6rem; line-height: 1; font-weight: bold; color: var(--color-gray); background: none; border: none; cursor: pointer; padding: 4px 8px;" id="mpModalCloseBtn">&times;</button>
+          </div>
+
+          <!-- Modal Body (Scrollable) -->
+          <div class="modal-body" style="padding: 24px; overflow-y: auto; flex: 1; background: #fafaf9;">
+            <div class="mp-modal-grid">
+              
+              <!-- Linker Kolom: Titels, Prijzen & Tekst -->
+              <div style="display: flex; flex-direction: column; gap: 18px;">
+                
+                <!-- Veld 1: Titel -->
+                <div class="form-group" style="margin: 0;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <label class="form-label" style="margin: 0; font-weight: 700; color: var(--color-forest-dark);">
+                      Marktplaats Advertentietitel <span style="font-weight: 400; color: var(--color-gray); font-size: 0.8rem;">(Max 60 tekens)</span>
+                    </label>
+                    <span id="mpTitleCount" style="font-size: 0.78rem; font-weight: 700; color: var(--color-forest);">0 / 60</span>
+                  </div>
+                  <div style="display: flex; gap: 8px;">
+                    <input type="text" class="form-control" id="mpInputTitle" maxlength="60" style="font-weight: 600; font-size: 0.95rem;">
+                    <button type="button" class="btn btn-outline" id="mpBtnCopyTitle" style="padding: 8px 14px; white-space: nowrap; font-size: 0.85rem; border-color: #cbd5e1;">
+                      📋 Kopieer
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Veld 2: Prijs & Categorie (2 Kolommen) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 6px;">Vraagprijs</label>
+                    <div style="display: flex; gap: 8px;">
+                      <input type="text" class="form-control" id="mpInputPrice" style="font-weight: 700; font-size: 1rem; color: #b45309;">
+                      <button type="button" class="btn btn-outline" id="mpBtnCopyPrice" style="padding: 8px 12px; white-space: nowrap; font-size: 0.85rem; border-color: #cbd5e1;">
+                        Kopieer
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 6px;">Aanbevolen Categorie</label>
+                    <input type="text" class="form-control" id="mpCategoryText" readonly value="Zorg en Welzijn > Hulpmiddelen" style="background: #f1f5f9; font-size: 0.82rem; color: #475569;">
+                  </div>
+                </div>
+
+                <!-- Veld 3: Advertentietekst -->
+                <div class="form-group" style="margin: 0;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <label class="form-label" style="margin: 0; font-weight: 700; color: var(--color-forest-dark);">
+                      Wervende Advertentietekst
+                    </label>
+                    <button type="button" class="btn btn-primary" id="mpBtnCopyDesc" style="padding: 6px 16px; font-size: 0.85rem; background-color: #4b8f24; border-color: #3e7b1d;">
+                      📋 Kopieer Volledige Tekst
+                    </button>
+                  </div>
+                  <textarea class="form-control" id="mpInputDesc" rows="13" style="font-family: inherit; font-size: 0.88rem; line-height: 1.5; resize: vertical; background: #ffffff;"></textarea>
+                </div>
+
+              </div>
+
+              <!-- Rechter Kolom: Foto's & Externe Link -->
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                  <h4 style="margin: 0 0 10px 0; font-size: 0.92rem; font-weight: 700; color: var(--color-forest-dark); display: flex; align-items: center; justify-content: space-between;">
+                    <span>Foto's van deze stoel</span>
+                    <span id="mpPhotoCount" style="font-size: 0.78rem; font-weight: 600; color: var(--color-gray);">0 foto's</span>
+                  </h4>
+                  <p style="font-size: 0.8rem; color: var(--color-gray); margin-bottom: 12px;">
+                    Klik op een foto om te openen / opslaan, of download direct de hoofdfoto.
+                  </p>
+                  
+                  <!-- Thumbnails Grid -->
+                  <div id="mpModalThumbnails" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-height: 220px; overflow-y: auto; margin-bottom: 12px;">
+                    <!-- Populated dynamically -->
+                  </div>
+
+                  <a id="mpDownloadMainPhotoBtn" href="#" download target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; font-size: 0.85rem; padding: 8px 12px; border-color: #cbd5e1; display: block; text-decoration: none;">
+                    ⬇️ Download Hoofdfoto
+                  </a>
+                </div>
+
+                <!-- Grote Actieknop naar Marktplaats -->
+                <a href="https://www.marktplaats.nl/m/plaats-advertentie" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; text-align: center; font-weight: 800; font-size: 1rem; padding: 14px; background: linear-gradient(180deg, #ff7a1a 0%, #e65c00 100%); border-color: #cc5200; text-decoration: none; box-shadow: 0 4px 14px rgba(230,92,0,0.3); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                  <span>Plaatsen op Marktplaats ↗</span>
+                </a>
+                
+                <p style="font-size: 0.78rem; color: #64748b; text-align: center; margin: 0; line-height: 1.4;">
+                  Tip: open Marktplaats, plak de gekopieerde titel &amp; tekst en sleep de foto('s) erin!
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Modal Footer -->
+          <div class="modal-footer" style="padding: 14px 24px; background: #ffffff; border-top: 1.5px solid #e2e8f0; display: flex; justify-content: flex-end;">
+            <button type="button" class="btn btn-outline" id="mpModalFooterCloseBtn" style="padding: 8px 20px; min-height: auto;">Sluiten</button>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Brand Form Modal Overlay -->
       <div class="modal-overlay" id="brandModal">
         <div class="modal-card">
@@ -4257,6 +4464,9 @@
           </td>
           <td style="white-space: nowrap;">
             <div class="action-btn-group">
+              <button class="btn-action btn-marktplaats" data-index="${index}" title="Genereer Marktplaats Advertentie" style="color: #e65c00;" onclick="event.stopPropagation();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              </button>
               <a href="badge-a6-stoel.html?chair=${encodeURIComponent(item.id || item.slug || '')}" target="_blank" class="btn-action" title="Print A6 Stoelbadge" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; color: var(--color-forest);" onclick="event.stopPropagation();">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><rect x="5" y="3" width="14" height="18" rx="2"></rect><circle cx="12" cy="7" r="1.5"></circle></svg>
               </a>
@@ -4282,6 +4492,15 @@
         e.stopPropagation();
         const index = parseInt(deleteBtn.getAttribute("data-index"));
         deleteChair(index);
+        return;
+      }
+
+      const mpBtn = e.target.closest(".btn-marktplaats");
+      if (mpBtn) {
+        e.stopPropagation();
+        const index = parseInt(mpBtn.getAttribute("data-index"));
+        const item = activeData[index];
+        if (item) openMarktplaatsModal(item);
         return;
       }
       
@@ -6330,11 +6549,13 @@
     const tabStats = document.getElementById("tabStats");
     const tabAnalytics = document.getElementById("tabAnalytics");
     const tabHuisstijl = document.getElementById("tabHuisstijl");
+    const tabMarktplaats = document.getElementById("tabMarktplaats");
     const chairsSection = document.getElementById("chairsSection");
     const brandsSection = document.getElementById("brandsSection");
     const statsSection = document.getElementById("statsSection");
     const analyticsSection = document.getElementById("analyticsSection");
     const huisstijlSection = document.getElementById("huisstijlSection");
+    const marktplaatsSection = document.getElementById("marktplaatsSection");
 
     // Looker Studio GA4 Logic
     const DEFAULT_LOOKER_URL = "https://lookerstudio.google.com/embed/reporting/1f58eaa3-a8c0-46a3-bd8c-ec36a4f7eee8/page/TIJ0C";
@@ -6403,13 +6624,13 @@
     function switchAdminTab(targetTab) {
       if (!tabChairs || !tabBrands || !tabStats || !tabHuisstijl) return;
       
-      [tabChairs, tabBrands, tabStats, tabAnalytics, tabHuisstijl].forEach(btn => {
+      [tabChairs, tabBrands, tabStats, tabAnalytics, tabHuisstijl, tabMarktplaats].forEach(btn => {
         if (btn) {
           btn.classList.remove("active");
           btn.setAttribute("aria-selected", "false");
         }
       });
-      [chairsSection, brandsSection, statsSection, analyticsSection, huisstijlSection].forEach(sec => sec && (sec.style.display = "none"));
+      [chairsSection, brandsSection, statsSection, analyticsSection, huisstijlSection, marktplaatsSection].forEach(sec => sec && (sec.style.display = "none"));
 
       if (targetTab === "brands") {
         tabBrands.classList.add("active");
@@ -6431,6 +6652,13 @@
         tabHuisstijl.classList.add("active");
         tabHuisstijl.setAttribute("aria-selected", "true");
         if (huisstijlSection) huisstijlSection.style.display = "block";
+      } else if (targetTab === "marktplaats") {
+        if (tabMarktplaats) {
+          tabMarktplaats.classList.add("active");
+          tabMarktplaats.setAttribute("aria-selected", "true");
+        }
+        if (marktplaatsSection) marktplaatsSection.style.display = "block";
+        renderMarktplaatsCards();
       } else {
         tabChairs.classList.add("active");
         tabChairs.setAttribute("aria-selected", "true");
@@ -6460,6 +6688,7 @@
     if (tabStats) tabStats.addEventListener("click", () => { history.replaceState(null, "", "#statistieken"); switchAdminTab("stats"); });
     if (tabAnalytics) tabAnalytics.addEventListener("click", () => { history.replaceState(null, "", "#analytics"); switchAdminTab("analytics"); });
     if (tabHuisstijl) tabHuisstijl.addEventListener("click", () => { history.replaceState(null, "", "#huisstijl"); switchAdminTab("huisstijl"); });
+    if (tabMarktplaats) tabMarktplaats.addEventListener("click", () => { history.replaceState(null, "", "#marktplaats"); switchAdminTab("marktplaats"); });
 
     // Handle hash on load and hashchange
     function handleInitialTab() {
@@ -6474,10 +6703,359 @@
         switchAdminTab("analytics");
       } else if (target === "huisstijl") {
         switchAdminTab("huisstijl");
+      } else if (target === "marktplaats" || target === "mp") {
+        switchAdminTab("marktplaats");
       } else if (target === "stoelen" || target === "chairs") {
         switchAdminTab("chairs");
       }
     }
+
+    // ==========================================
+    // Marktplaats Generator Functionaliteit
+    // ==========================================
+    let currentMpChair = null;
+
+    function renderMarktplaatsCards() {
+      const grid = document.getElementById("mpCardsGrid");
+      const badge = document.getElementById("mpCountBadge");
+      const brandSelect = document.getElementById("mpFilterBrand");
+      if (!grid) return;
+
+      if (brandSelect && brandSelect.options.length <= 1 && Array.isArray(activeData)) {
+        const brands = [...new Set(activeData.map(c => c.brand).filter(Boolean))].sort();
+        brands.forEach(b => {
+          const opt = document.createElement("option");
+          opt.value = b;
+          opt.textContent = b;
+          brandSelect.appendChild(opt);
+        });
+      }
+
+      const searchQuery = (document.getElementById("mpSearchInput")?.value || "").trim().toLowerCase();
+      const conditionFilter = document.getElementById("mpFilterCondition")?.value || "occasion";
+      const statusFilter = document.getElementById("mpFilterStatus")?.value || "beschikbaar";
+      const brandFilter = document.getElementById("mpFilterBrand")?.value || "";
+
+      let items = (activeData || []).filter(chair => {
+        const isOccasion = (chair.condition || "").toLowerCase().includes("occasion") || (chair.condition || "").toLowerCase().includes("reco");
+        if (conditionFilter === "occasion" && !isOccasion) return false;
+        if (conditionFilter === "nieuw" && isOccasion) return false;
+
+        if (statusFilter === "beschikbaar" && chair.status === "verkocht") return false;
+        if (statusFilter === "verkocht" && chair.status !== "verkocht") return false;
+
+        if (brandFilter && (chair.brand || "").toLowerCase() !== brandFilter.toLowerCase()) return false;
+
+        if (searchQuery) {
+          const hay = `${chair.name || ''} ${chair.brand || ''} ${chair.model || ''} ${chair.material || ''}`.toLowerCase();
+          if (!hay.includes(searchQuery)) return false;
+        }
+
+        return true;
+      });
+
+      if (badge) {
+        badge.textContent = `${items.length} stoel${items.length === 1 ? '' : 'en'} klaar voor MP`;
+      }
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 24px; background: #fff; border-radius: 12px; border: 1.5px dashed #cbd5e1;">
+            <p style="font-size: 1.1rem; color: var(--color-gray); margin-bottom: 8px;">Geen stoelen gevonden die voldoen aan deze filters.</p>
+            <p style="font-size: 0.88rem; color: #94a3b8; margin: 0;">Pas de filters hierboven aan om meer stoelen weer te geven.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = items.map((chair) => {
+        const isOccasion = (chair.condition || "").toLowerCase().includes("occasion") || (chair.condition || "").toLowerCase().includes("reco");
+        const priceFormatted = chair.price ? `€ ${chair.price.toLocaleString("nl-NL")},-` : "Prijs op aanvraag";
+        const isVerkocht = chair.status === "verkocht";
+        const chairImage = chair.image || "assets/chair.png";
+
+        return `
+          <div class="mp-card" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#e65c00'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='none';">
+            <div style="position: relative; height: 180px; background: #f8fafc; overflow: hidden;">
+              <img src="${chairImage}" alt="${chair.name}" style="width: 100%; height: 100%; object-fit: contain; padding: 12px;">
+              <div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; flex-wrap: wrap;">
+                <span style="font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: ${isOccasion ? '#2e7d32' : '#1976d2'}; color: #fff;">
+                  ${isOccasion ? 'Occasion / RECO' : 'Nieuw'}
+                </span>
+                ${isVerkocht ? '<span style="font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: #dc2626; color: #fff;">Verkocht</span>' : ''}
+              </div>
+              <div style="position: absolute; bottom: 10px; right: 10px; font-weight: 800; font-size: 1.05rem; color: #9a3412; background: rgba(255,255,255,0.94); padding: 4px 10px; border-radius: 8px; backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
+                ${priceFormatted}
+              </div>
+            </div>
+            
+            <div style="padding: 16px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 14px;">
+              <div>
+                <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--color-forest); letter-spacing: 0.5px;">
+                  ${chair.brand || 'Fitform'} ${chair.model ? `• ${chair.model}` : ''}
+                </div>
+                <h4 style="margin: 4px 0 6px 0; font-size: 0.98rem; color: var(--color-forest-dark); font-family: var(--font-heading); line-height: 1.35;">
+                  ${chair.name}
+                </h4>
+                <div style="font-size: 0.8rem; color: var(--color-gray); display: flex; gap: 8px; flex-wrap: wrap;">
+                  <span>${chair.material === 'leer' ? 'Leder' : 'Stof'}</span>
+                  <span>•</span>
+                  <span>${chair.specifications && chair.specifications["Aantal motoren"] ? chair.specifications["Aantal motoren"] : 'Elektrisch'}</span>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-primary" onclick="openMarktplaatsModalByChairId('${chair.id}')" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; font-size: 0.88rem; font-weight: 700; background: linear-gradient(180deg, #ff7a1a 0%, #e65c00 100%); border-color: #cc5200; box-shadow: 0 2px 6px rgba(230,92,0,0.25); text-decoration: none;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Genereer Advertentie 📋</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function generateMarktplaatsTitle(chair) {
+      const brand = chair.brand || "Fitform";
+      const model = chair.model || "";
+      const isOccasion = (chair.condition || "").toLowerCase().includes("occasion") || (chair.condition || "").toLowerCase().includes("reco");
+      
+      let base = "";
+      if (model && !model.toLowerCase().includes(brand.toLowerCase())) {
+        base = `${brand} ${model} Sta-op stoel`;
+      } else if (chair.name) {
+        base = chair.name.replace(/^(Occasion|DEMO|Voorraad|RECO)\s+/i, "");
+      } else {
+        base = `${brand} Sta-op stoel`;
+      }
+      
+      const suffix = isOccasion ? "| 1 Jr Gar | Dordrecht" : "| Nieuw & Garantie | Dordrecht";
+      let fullTitle = `${base} ${suffix}`.trim();
+      
+      if (fullTitle.length > 60) {
+        const shortSuffix = isOccasion ? "| Garantie | Dordrecht" : "| Dordrecht";
+        fullTitle = `${base} ${shortSuffix}`.trim();
+      }
+      
+      if (fullTitle.length > 60) {
+        fullTitle = fullTitle.substring(0, 60);
+      }
+      return fullTitle;
+    }
+
+    function generateMarktplaatsText(chair) {
+      const brand = chair.brand || "Fitform";
+      const name = chair.name || "Sta-op stoel";
+      const model = chair.model || "";
+      const isOccasion = (chair.condition || "").toLowerCase().includes("occasion") || (chair.condition || "").toLowerCase().includes("reco");
+      const price = chair.price ? `€ ${chair.price.toLocaleString("nl-NL")},-` : "Vraagprijs op aanvraag";
+      const material = chair.material === "leer" ? "Leder" : (chair.material === "stof" ? "Kwaliteitsstof" : "Comfortabele bekleding");
+      
+      const specs = chair.specifications || {};
+      const motoren = specs["Aantal motoren"] || (chair.features && chair.features.find(f => f.toLowerCase().includes("motor"))) || "Elektrisch verstelbaar (onafhankelijk)";
+      const maat = specs["Maatwerk"] || "Individueel op maat instelbaar";
+      const garantie = isOccasion ? "1 Jaar volledige garantie (inclusief certificaat)" : (specs["Garantie"] || "Volledige fabrieksgarantie");
+      
+      let featuresList = "";
+      if (chair.features && Array.isArray(chair.features) && chair.features.length > 0) {
+        featuresList = chair.features.map(f => `• ${f}`).join("\n");
+      } else {
+        featuresList = "• Elektrische sta-op en relaxfunctie\n• Ergonomisch ontworpen voor optimale ondersteuning van rug en nek\n• Eenvoudige, overzichtelijke handbediening";
+      }
+
+      return `Zoekt u het ultieme zitcomfort van een topkwaliteit ergonomische sta-op stoel, maar wilt u niet de hoge nieuwprijs van € 3.500,- tot € 4.500,- betalen?
+
+In onze showroom in Dordrecht staat deze prachtige ${name} direct klaar voor proefzitten en bezichtiging. ${isOccasion ? "Technisch en optisch 100% gekeurd door onze BewegingsTechnologen en geleverd met volledige garantie." : "Nieuw geleverd met volledige garantie en service aan huis."}
+
+VRAAGPRIJS: ${price} (eerlijke en transparante vaste prijs)
+
+SPECIFICATIES & KENMERKEN:
+• Merk: ${brand}
+• Model: ${model || name}
+• Bekleding: ${material}
+• Aantal motoren: ${motoren}
+• Maatvoering: ${maat}
+• Conditie: ${isOccasion ? "Gereviseerde top-occasion (technisch & optisch als nieuw)" : "Nieuw"}
+• Garantie: ${garantie}
+${featuresList}
+
+WAAROM KIEZEN VOOR STAOPSTOELEN.NL?
+✓ Fysieke showroom in Dordrecht: kom rustig proefzitten en vrijblijvend vergelijken
+✓ Deskundige aanmeting door gediplomeerd Bewegingstechnoloog Geertjan Klein Haneveld
+✓ Eigen bezorgdienst: gratis thuisbezorgd en vakkundig op maat afgesteld in de regio Drechtsteden & Zuid-Holland
+✓ Eerlijk advies zonder opdringerige verkooppraatjes
+
+SHOWROOM ADRES & OPENINGSTIJDEN:
+Merwedestraat 239, 3313 GT Dordrecht
+(In het pand van Schipper Compact Wonen - gratis parkeren direct voor de deur op eigen terrein, volledig gelijkvloers en rolstoelvriendelijk)
+
+Reguliere openingstijden:
+• Dinsdag t/m vrijdag: 10:00 - 16:00 uur
+• Maandag en zaterdag: Geopend op afspraak voor persoonlijk proefzitten en maatwerkadvies
+
+VRAGEN OF PROEFZITTEN INPLANNEN?
+Heeft u specifieke vragen over deze stoel of wilt u een afspraak maken?
+• Bellen: 078 - 631 4858
+• WhatsApp: 06 - 2223 2964
+Of stuur ons gerust een bericht via Marktplaats. Wij reageren snel!`;
+    }
+
+    function openMarktplaatsModalByChairId(chairId) {
+      const chair = (activeData || []).find(c => (c.id === chairId || c.slug === chairId));
+      if (chair) {
+        openMarktplaatsModal(chair);
+      } else {
+        alert("Stoel niet gevonden.");
+      }
+    }
+    window.openMarktplaatsModalByChairId = openMarktplaatsModalByChairId;
+
+    function openMarktplaatsModal(chair) {
+      if (!chair) return;
+      currentMpChair = chair;
+
+      const modal = document.getElementById("marktplaatsModal");
+      const titleInput = document.getElementById("mpInputTitle");
+      const titleCount = document.getElementById("mpTitleCount");
+      const priceInput = document.getElementById("mpInputPrice");
+      const descInput = document.getElementById("mpInputDesc");
+      const nameHeading = document.getElementById("mpModalChairName");
+      const thumbsContainer = document.getElementById("mpModalThumbnails");
+      const mainDownloadBtn = document.getElementById("mpDownloadMainPhotoBtn");
+      const photoCount = document.getElementById("mpPhotoCount");
+
+      if (nameHeading) nameHeading.textContent = chair.name || "Sta-op stoel";
+
+      const title = generateMarktplaatsTitle(chair);
+      if (titleInput) {
+        titleInput.value = title;
+        if (titleCount) {
+          titleCount.textContent = `${title.length} / 60`;
+          titleCount.style.color = title.length > 55 ? "#b45309" : "var(--color-forest)";
+        }
+      }
+
+      if (priceInput) {
+        priceInput.value = chair.price ? `€ ${chair.price.toLocaleString("nl-NL")},-` : "Prijs op aanvraag";
+      }
+
+      const desc = generateMarktplaatsText(chair);
+      if (descInput) {
+        descInput.value = desc;
+      }
+
+      const photos = [];
+      if (chair.image) photos.push(chair.image);
+      if (chair.imageUp && !photos.includes(chair.imageUp)) photos.push(chair.imageUp);
+      if (chair.imageLie && !photos.includes(chair.imageLie)) photos.push(chair.imageLie);
+      if (Array.isArray(chair.gallery)) {
+        chair.gallery.forEach(img => {
+          if (img && !photos.includes(img)) photos.push(img);
+        });
+      }
+
+      if (photoCount) photoCount.textContent = `${photos.length} foto${photos.length === 1 ? '' : "'s"}`;
+
+      if (mainDownloadBtn) {
+        if (photos.length > 0) {
+          mainDownloadBtn.href = photos[0];
+          mainDownloadBtn.download = `${(chair.brand || 'stoel').toLowerCase()}-${(chair.model || 'model').toLowerCase()}-foto-1.jpg`;
+          mainDownloadBtn.style.display = "block";
+        } else {
+          mainDownloadBtn.style.display = "none";
+        }
+      }
+
+      if (thumbsContainer) {
+        if (photos.length === 0) {
+          thumbsContainer.innerHTML = '<span style="color:#94a3b8; font-size:0.8rem; grid-column:1/-1;">Geen foto\'s beschikbaar</span>';
+        } else {
+          thumbsContainer.innerHTML = photos.map((p, i) => `
+            <a href="${p}" target="_blank" title="Klik om grote foto ${i + 1} te bekijken / opslaan" style="display: block; position: relative; height: 90px; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; background: #f8fafc; text-decoration: none;">
+              <img src="${p}" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;">
+              <span style="position: absolute; bottom: 3px; right: 3px; font-size: 0.68rem; background: rgba(0,0,0,0.65); color: #fff; padding: 1px 5px; border-radius: 4px; font-weight: 600;">Foto ${i + 1}</span>
+            </a>
+          `).join("");
+        }
+      }
+
+      if (modal) {
+        modal.style.display = "flex";
+      }
+    }
+    window.openMarktplaatsModal = openMarktplaatsModal;
+
+    function closeMarktplaatsModal() {
+      const modal = document.getElementById("marktplaatsModal");
+      if (modal) modal.style.display = "none";
+    }
+    window.closeMarktplaatsModal = closeMarktplaatsModal;
+
+    function copyToClipboard(text, successMsg) {
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMsg || "Gekopieerd naar klembord!");
+        }).catch(() => {
+          fallbackCopyText(text, successMsg);
+        });
+      } else {
+        fallbackCopyText(text, successMsg);
+      }
+    }
+
+    function fallbackCopyText(text, successMsg) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast(successMsg || "Gekopieerd naar klembord!");
+      } catch (err) {
+        alert("Kon niet automatisch kopiëren. Selecteer de tekst a.u.b. handmatig.");
+      }
+      document.body.removeChild(ta);
+    }
+
+    // Modal listeners
+    document.getElementById("mpInputTitle")?.addEventListener("input", (e) => {
+      const count = document.getElementById("mpTitleCount");
+      if (count) {
+        count.textContent = `${e.target.value.length} / 60`;
+        count.style.color = e.target.value.length > 55 ? "#b45309" : "var(--color-forest)";
+      }
+    });
+
+    document.getElementById("mpBtnCopyTitle")?.addEventListener("click", () => {
+      const val = document.getElementById("mpInputTitle")?.value || "";
+      copyToClipboard(val, "✓ Titel gekopieerd naar klembord!");
+    });
+
+    document.getElementById("mpBtnCopyPrice")?.addEventListener("click", () => {
+      const val = document.getElementById("mpInputPrice")?.value || "";
+      copyToClipboard(val, "✓ Prijs gekopieerd naar klembord!");
+    });
+
+    document.getElementById("mpBtnCopyDesc")?.addEventListener("click", () => {
+      const val = document.getElementById("mpInputDesc")?.value || "";
+      copyToClipboard(val, "✓ Volledige advertentietekst gekopieerd!");
+    });
+
+    document.getElementById("mpModalCloseBtn")?.addEventListener("click", closeMarktplaatsModal);
+    document.getElementById("mpModalFooterCloseBtn")?.addEventListener("click", closeMarktplaatsModal);
+    document.getElementById("marktplaatsModal")?.addEventListener("click", (e) => {
+      if (e.target.id === "marktplaatsModal") closeMarktplaatsModal();
+    });
+
+    ["mpSearchInput", "mpFilterCondition", "mpFilterStatus", "mpFilterBrand"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("input", renderMarktplaatsCards);
+        el.addEventListener("change", renderMarktplaatsCards);
+      }
+    });
 
     if (window.location.hash || window.location.search.includes("tab=")) {
       setTimeout(handleInitialTab, 50);
