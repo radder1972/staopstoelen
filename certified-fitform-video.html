@@ -12,14 +12,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap">
   <style>
     :root {
-      --bg: #0d120c;
-      --card-bg: #141c13;
-      --border: #223020;
-      --text: #f0f4ef;
-      --text-muted: #9eb19a;
-      --green: #48a336;
-      --green-glow: rgba(72, 163, 54, 0.35);
-      --accent: #f59e0b;
+      --bg: #f8faf6;
+      --card-bg: #ffffff;
+      --border: #dbe6d6;
+      --text: #192318;
+      --text-muted: #526350;
+      --text-subtle: #768673;
+      --green: #23541b;
+      --green-light: #eaf3e7;
+      --green-dark: #173812;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,7 +32,7 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding: 24px 16px 60px;
+      padding: 30px 16px 60px;
       -webkit-font-smoothing: antialiased;
       display: flex;
       flex-direction: column;
@@ -73,7 +76,7 @@
     }
 
     .btn-quiet {
-      background: transparent;
+      background: #ffffff;
       border: 1px solid var(--border);
       color: var(--text-muted);
       padding: 6px 14px;
@@ -89,18 +92,18 @@
     }
 
     .btn-quiet:hover {
-      background: var(--card-bg);
-      color: var(--text);
-      border-color: #3b5038;
+      background: var(--green-light);
+      color: var(--green);
+      border-color: #bcdbb4;
     }
 
     /* Video Player Frame */
     .video-player-card {
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1.5px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 16px 50px rgba(0,0,0,0.6), 0 0 40px var(--green-glow);
+      box-shadow: 0 12px 40px rgba(35, 84, 27, 0.08);
       position: relative;
     }
 
@@ -109,19 +112,24 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 6px;
-      padding: 14px 18px 8px;
-      background: rgba(10, 15, 9, 0.85);
-      backdrop-filter: blur(8px);
+      padding: 14px 18px 10px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
       position: relative;
       z-index: 10;
     }
 
     .seg {
-      height: 4px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 2px;
+      height: 5px;
+      background: #e2e8df;
+      border-radius: 3px;
       overflow: hidden;
       cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .seg:hover {
+      background: #c8dec4;
     }
 
     .seg-fill {
@@ -138,7 +146,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 16/9;
-      background: #000;
+      background: #edf3eb;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -155,45 +163,51 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.35;
+      opacity: 0.88;
       transform: scale(1);
       transition: transform 12s cubic-bezier(0.1, 0, 0.3, 1), opacity 0.6s ease;
-      filter: blur(1px);
     }
 
     .scene-stage.playing .scene-bg {
-      transform: scale(1.12);
+      transform: scale(1.08);
     }
 
     .scene-gradient {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(13,18,12,0.4) 0%, rgba(13,18,12,0.95) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(248,250,246,0.4) 60%, rgba(248,250,246,0.85) 100%);
     }
 
-    /* Scene Content Overlay */
+    /* Scene Content Overlay (Light Frosted Glass Card) */
     .scene-overlay {
       position: relative;
       z-index: 5;
       text-align: center;
-      max-width: 760px;
-      padding: 24px;
+      max-width: 680px;
+      padding: 24px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin: 16px;
     }
 
     .scene-kicker {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       color: var(--green);
-      background: rgba(72, 163, 54, 0.15);
-      border: 1px solid rgba(72, 163, 54, 0.3);
+      background: var(--green-light);
+      border: 1px solid #c8dec4;
       padding: 4px 12px;
       border-radius: 20px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -201,51 +215,49 @@
 
     .scene-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #ffffff;
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
-      text-shadow: 0 4px 16px rgba(0,0,0,0.8);
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.4px;
+      margin-bottom: 10px;
     }
 
     @media (max-width: 640px) {
-      .scene-title { font-size: 1.45rem; }
+      .scene-title { font-size: 1.35rem; }
     }
 
     .scene-subtitle {
-      font-size: 1.1rem;
+      font-size: 0.98rem;
       color: var(--text-muted);
-      line-height: 1.5;
-      max-width: 620px;
-      margin-bottom: 18px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      line-height: 1.55;
+      max-width: 580px;
+      margin-bottom: 16px;
     }
 
     @media (max-width: 640px) {
-      .scene-subtitle { font-size: 0.88rem; }
+      .scene-subtitle { font-size: 0.82rem; margin-bottom: 10px; }
     }
 
     .scene-metric-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1.5px solid var(--green);
-      padding: 10px 20px;
-      border-radius: 12px;
+      gap: 8px;
+      background: #ffffff;
+      border: 2px solid var(--green);
+      padding: 8px 18px;
+      border-radius: 10px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      color: #7dd964;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      color: var(--green);
+      box-shadow: 0 4px 14px rgba(35, 84, 27, 0.1);
     }
 
     /* Subtitle Banner at bottom of video */
     .scene-captions {
       position: absolute;
-      bottom: 64px;
+      bottom: 20px;
       left: 20px;
       right: 20px;
       text-align: center;
@@ -253,15 +265,16 @@
     }
 
     .caption-text {
-      background: rgba(0, 0, 0, 0.75);
-      color: #ffffff;
-      font-size: 0.92rem;
-      padding: 6px 16px;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 20px;
       display: inline-block;
       max-width: 90%;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
 
     /* Player Controls Bar */
@@ -269,8 +282,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 20px;
-      background: #090e08;
+      padding: 14px 20px;
+      background: #ffffff;
       border-top: 1px solid var(--border);
     }
 
@@ -284,24 +297,24 @@
       background: var(--green);
       color: #ffffff;
       border: none;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 2px 10px rgba(72, 163, 54, 0.4);
+      box-shadow: 0 4px 14px rgba(35, 84, 27, 0.3);
       transition: transform 0.15s ease, background 0.15s ease;
     }
 
     .btn-play:hover {
       transform: scale(1.08);
-      background: #39822a;
+      background: var(--green-dark);
     }
 
     .btn-step {
-      background: transparent;
+      background: #ffffff;
       border: 1px solid var(--border);
       color: var(--text-muted);
       width: 32px;
@@ -316,15 +329,15 @@
 
     .btn-step:hover {
       color: var(--text);
-      border-color: #3b5038;
-      background: var(--card-bg);
+      border-color: #bcdbb4;
+      background: var(--green-light);
     }
 
     .time-display {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--text-subtle);
     }
 
     .time-display span {
@@ -341,21 +354,21 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 5px 12px;
-      border-radius: 6px;
+      background: var(--green-light);
+      border: 1px solid #c8dec4;
+      color: var(--green);
+      padding: 6px 14px;
+      border-radius: 8px;
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.15s ease;
     }
 
-    .btn-audio.active {
-      color: #7dd964;
-      border-color: var(--green);
-      background: rgba(72, 163, 54, 0.12);
+    .btn-audio.muted {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #64748b;
     }
 
     /* Scene Selection List below */
@@ -371,15 +384,16 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      color: var(--text);
     }
 
     .section-title span {
       color: var(--green);
-      font-size: 0.78rem;
-      background: rgba(72, 163, 54, 0.15);
+      font-size: 0.76rem;
+      background: var(--green-light);
       padding: 3px 8px;
       border-radius: 4px;
-      border: 1px solid rgba(72, 163, 54, 0.3);
+      border: 1px solid #c8dec4;
     }
 
     .story-grid {
@@ -390,8 +404,8 @@
     }
 
     .story-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      background: #ffffff;
+      border: 1.5px solid var(--border);
       border-radius: 12px;
       padding: 16px;
       cursor: pointer;
@@ -402,8 +416,9 @@
 
     .story-card:hover, .story-card.active {
       border-color: var(--green);
-      background: #172216;
+      background: #fbfdfa;
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(35, 84, 27, 0.08);
     }
 
     .story-time {
@@ -422,7 +437,7 @@
     }
 
     .story-desc {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.45;
     }
@@ -430,15 +445,16 @@
     /* Script Draaiboek Box */
     .script-box {
       margin-top: 36px;
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
     }
 
     .script-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 12px;
       color: var(--text);
@@ -447,13 +463,13 @@
     .script-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.84rem;
+      font-size: 0.85rem;
     }
 
     .script-table th {
       text-align: left;
       padding: 10px;
-      color: var(--text-muted);
+      color: var(--text-subtle);
       border-bottom: 1px solid var(--border);
       font-size: 0.74rem;
       text-transform: uppercase;
@@ -462,14 +478,14 @@
 
     .script-table td {
       padding: 12px 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid #f0f3ee;
       color: var(--text-muted);
       vertical-align: top;
     }
 
     .script-table tr:hover td {
       color: var(--text);
-      background: rgba(255,255,255,0.02);
+      background: #fafbfa;
     }
 
     .script-time {
@@ -488,7 +504,7 @@
   <div class="video-nav">
     <a href="certified-fitform-concept.html" class="nav-brand">
       staopstoelen<span>.nl</span>
-      <span style="color:var(--text-muted); font-size:0.8rem; font-weight:400;">| 60-Seconden Video Pitch</span>
+      <span style="color:var(--text-subtle); font-size:0.8rem; font-weight:400;">| 60-Seconden Video Pitch</span>
     </a>
     <div class="nav-links">
       <a href="certified-fitform-infographic.html" class="btn-quiet">
@@ -517,7 +533,7 @@
       <img src="assets/certified_fitform_occasion_showroom.jpg" alt="Scene Background" class="scene-bg" id="scene-bg">
       <div class="scene-gradient"></div>
 
-      <!-- Overlay Text Content -->
+      <!-- Overlay Text Content (Crisp Glass Card) -->
       <div class="scene-overlay">
         <div class="scene-kicker" id="scene-kicker">
           <span>01 / 05</span> Het Marktdilemma
@@ -559,9 +575,9 @@
       </div>
 
       <div class="ctrl-right">
-        <button class="btn-audio active" id="btn-voice" onclick="toggleVoice()" title="Nederlandse Gesproken Voice-over">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-          <span id="voice-label">Stem Actief</span>
+        <button class="btn-audio" id="btn-voice" onclick="toggleVoice()" title="Vrouwelijke Voice-over stem">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          <span id="voice-label">👩 Vrouwenstem Actief</span>
         </button>
       </div>
     </div>
@@ -588,12 +604,13 @@
       </div>
 
       <div class="story-card" id="card-2" onclick="jumpToScene(2)">
+        <div class="story-time">0:24 – 0:36</div>
         <div class="story-title">3. 30-Punts Keuring</div>
         <div class="story-desc">Revisie, Linak motoren, ozon-extractie en inmeting door Geertjan.</div>
       </div>
 
       <div class="story-card" id="card-3" onclick="jumpToScene(3)">
-        <div class="story-time">0:24 – 0:48</div>
+        <div class="story-time">0:36 – 0:48</div>
         <div class="story-title">4. Unit Economics</div>
         <div class="story-desc">€ 650 netto marge (42%), € 7.800/mnd cashflow bij 12 stoelen.</div>
       </div>
@@ -709,8 +726,49 @@
   let sceneProgress = 0;
   let timer = null;
   let voiceEnabled = true;
-  const SCENE_DURATION_MS = 12000; // 12 seconds per scene * 5 = 60s
+  let selectedFemaleVoice = null;
+  const SCENE_DURATION_MS = 12000;
   const TICK_MS = 100;
+
+  // Zoek specifiek naar een vrouwelijke Nederlandse stem
+  function loadFemaleVoice() {
+    if (!('speechSynthesis' in window)) return;
+    const voices = window.speechSynthesis.getVoices();
+    const nlVoices = voices.filter(v => v.lang.toLowerCase().startsWith('nl') || v.lang.toLowerCase() === 'dut');
+    
+    // Bekende vrouwelijke stemmen in macOS, iOS, Windows, Chrome
+    const femaleNames = ['ellen', 'claire', 'ilse', 'fenna', 'colette', 'saskia', 'anita', 'siri', 'female', 'vrouw'];
+    
+    for (const name of femaleNames) {
+      const match = nlVoices.find(v => v.name.toLowerCase().includes(name));
+      if (match) {
+        selectedFemaleVoice = match;
+        break;
+      }
+    }
+
+    // Google Nederlands in Chrome is van nature een warme vrouwenstem
+    if (!selectedFemaleVoice) {
+      const googleNl = nlVoices.find(v => v.name.includes('Google') || v.name.toLowerCase().includes('nederlands'));
+      if (googleNl) selectedFemaleVoice = googleNl;
+    }
+
+    // Fallback naar eerste beschikbare Nederlandse stem
+    if (!selectedFemaleVoice && nlVoices.length > 0) {
+      selectedFemaleVoice = nlVoices[0];
+    }
+
+    const label = document.getElementById('voice-label');
+    if (selectedFemaleVoice && label) {
+      const shortName = selectedFemaleVoice.name.split(' ')[0].replace(/[^a-zA-Z]/g, '');
+      label.textContent = `👩 Vrouwenstem (${shortName || 'NL'})`;
+    }
+  }
+
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = loadFemaleVoice;
+    loadFemaleVoice();
+  }
 
   function renderScene(idx) {
     const s = scenes[idx];
@@ -721,16 +779,15 @@
     document.getElementById('caption-text').textContent = `"${s.caption}"`;
     document.getElementById('scene-bg').src = s.bg;
 
-    // Update Storyboard card highlights
-    for(let i=0; i<5; i++) {
+    for (let i = 0; i < 5; i++) {
       const card = document.getElementById('card-' + i);
       const fill = document.getElementById('fill-' + i);
       const seg = fill.parentElement;
-      if(i < idx) {
+      if (i < idx) {
         seg.className = "seg completed";
         fill.style.width = "100%";
         card.className = "story-card";
-      } else if(i === idx) {
+      } else if (i === idx) {
         seg.className = "seg";
         fill.style.width = `${(sceneProgress / SCENE_DURATION_MS) * 100}%`;
         card.className = "story-card active";
@@ -741,13 +798,16 @@
       }
     }
 
-    // Voice over narration
-    if(voiceEnabled && isPlaying && 'speechSynthesis' in window) {
+    // Vrouwelijke voice-over afspelen
+    if (voiceEnabled && isPlaying && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(s.voiceText);
+      if (selectedFemaleVoice) {
+        utter.voice = selectedFemaleVoice;
+      }
       utter.lang = 'nl-NL';
-      utter.rate = 1.05;
-      utter.pitch = 1.0;
+      utter.pitch = 1.15; // Iets hogere, vriendelijke vrouwelijke intonatie
+      utter.rate = 1.02;  // Rustige, natuurlijke spreeksnelheid
       window.speechSynthesis.speak(utter);
     }
   }
@@ -760,17 +820,16 @@
     document.getElementById('current-time').textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
 
     const fill = document.getElementById('fill-' + currentScene);
-    if(fill) {
+    if (fill) {
       fill.style.width = `${Math.min(100, (sceneProgress / SCENE_DURATION_MS) * 100)}%`;
     }
 
-    if(sceneProgress >= SCENE_DURATION_MS) {
+    if (sceneProgress >= SCENE_DURATION_MS) {
       sceneProgress = 0;
-      if(currentScene < 4) {
+      if (currentScene < 4) {
         currentScene++;
         renderScene(currentScene);
       } else {
-        // Finished 60s
         pause();
         currentScene = 0;
         sceneProgress = 0;
@@ -792,12 +851,12 @@
     isPlaying = false;
     document.getElementById('scene-stage').classList.remove('playing');
     document.getElementById('play-icon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
-    if(timer) clearInterval(timer);
-    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if (timer) clearInterval(timer);
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
   }
 
   function togglePlay() {
-    if(isPlaying) pause();
+    if (isPlaying) pause();
     else play();
   }
 
@@ -810,25 +869,25 @@
   }
 
   function nextScene() {
-    if(currentScene < 4) jumpToScene(currentScene + 1);
+    if (currentScene < 4) jumpToScene(currentScene + 1);
   }
 
   function prevScene() {
-    if(currentScene > 0) jumpToScene(currentScene - 1);
+    if (currentScene > 0) jumpToScene(currentScene - 1);
   }
 
   function toggleVoice() {
     voiceEnabled = !voiceEnabled;
     const btn = document.getElementById('btn-voice');
     const label = document.getElementById('voice-label');
-    if(voiceEnabled) {
-      btn.className = "btn-audio active";
-      label.textContent = "Stem Actief";
-      if(isPlaying) renderScene(currentScene);
-    } else {
+    if (voiceEnabled) {
       btn.className = "btn-audio";
-      label.textContent = "Stem Gedempt";
-      if('speechSynthesis' in window) window.speechSynthesis.cancel();
+      label.textContent = selectedFemaleVoice ? `👩 Vrouwenstem (${selectedFemaleVoice.name.split(' ')[0]})` : "👩 Vrouwenstem Actief";
+      if (isPlaying) renderScene(currentScene);
+    } else {
+      btn.className = "btn-audio muted";
+      label.textContent = "🔇 Stem Gedempt";
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     }
   }
 
