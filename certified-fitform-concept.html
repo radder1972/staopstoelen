@@ -8,30 +8,24 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap">
   <style>
     :root {
-      --color-forest: #4b8f24;
-      --color-forest-dark: #122b07;
-      --color-sage: #6ab13c;
-      --color-sage-light: #e8f5e5;
-      --color-sky: #bce4f2;
-      --color-sky-light: #f0f9fc;
-      --color-terracotta: #f39223;
-      --color-terracotta-dark: #dc8019;
-      --color-terracotta-light: #fff5ea;
-      --color-cream: #fbf9f5;
-      --color-cream-dark: #f3efe6;
-      --color-dark: #1d2024;
-      --color-gray: #5e6368;
-      --color-gray-light: #e2e4e6;
-      --color-white: #ffffff;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-      --shadow-md: 0 8px 24px rgba(0,0,0,0.07);
-      --shadow-lg: 0 16px 40px rgba(0,0,0,0.1);
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
+      --bg-page: #fbfbf9;
+      --bg-card: #ffffff;
+      --bg-subtle: #f5f6f4;
+      --bg-accent: #f2f7f0;
+      --border-color: #e5e7eb;
+      --border-light: #eff1f3;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --text-subtle: #6b7280;
+      --brand-green: #2e6022;
+      --brand-green-light: #e9f2e6;
+      --brand-terracotta: #c86914;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
     }
 
     * {
@@ -41,439 +35,417 @@
     }
 
     body {
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--color-cream);
-      color: var(--color-dark);
-      line-height: 1.6;
-      padding: 30px 20px 80px;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 40px 20px 80px;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 1040px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
-    /* Top Action Bar */
-    .top-bar {
+    /* Top Nav / Meta Bar */
+    .memo-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--color-gray-light);
-    }
-
-    .top-bar .brand-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-      font-size: 0.95rem;
-      text-decoration: none;
-    }
-
-    .top-bar .brand-badge span {
-      background: var(--color-forest-dark);
-      color: #fff;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      letter-spacing: 0.5px;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn-action {
-      background: var(--color-white);
-      border: 1px solid var(--color-gray-light);
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-dark);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-
-    .btn-action:hover {
-      background: var(--color-cream-dark);
-      border-color: var(--color-gray);
-    }
-
-    /* Hero Header */
-    .hero-card {
-      background: linear-gradient(135deg, var(--color-forest-dark) 0%, #1e440c 100%);
-      color: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 40px;
       margin-bottom: 32px;
-      box-shadow: var(--shadow-md);
-      position: relative;
-      overflow: hidden;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(243, 146, 35, 0.15);
-      pointer-events: none;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      padding: 5px 14px;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--color-sky);
-      margin-bottom: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .hero-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 14px;
-      letter-spacing: -0.5px;
-    }
-
-    .hero-title span {
-      color: var(--color-terracotta);
-    }
-
-    .hero-subtitle {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 820px;
-      line-height: 1.55;
-    }
-
-    /* Section Cards */
-    .section-card {
-      background: var(--color-white);
-      border-radius: var(--radius-md);
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .section-header {
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 22px;
-      padding-bottom: 14px;
-      border-bottom: 2px solid var(--color-cream-dark);
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.95rem;
     }
 
-    .section-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+    .nav-brand strong {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--brand-green);
+    }
+
+    .nav-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      background: var(--bg-subtle);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .nav-actions {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1rem;
+      gap: 8px;
     }
 
-    .icon-green { background: var(--color-sage-light); color: var(--color-forest-dark); }
-    .icon-orange { background: var(--color-terracotta-light); color: var(--color-terracotta-dark); }
-    .icon-blue { background: var(--color-sky-light); color: #02668e; }
+    .btn-quiet {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-quiet:hover {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border-color: #cbd5e1;
+    }
+
+    /* Editorial Header */
+    .memo-header {
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .memo-kicker {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--brand-green);
+      margin-bottom: 10px;
+    }
+
+    .memo-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .memo-lead {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      max-width: 820px;
+      line-height: 1.6;
+    }
+
+    /* Section Cards */
+    .memo-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      margin-bottom: 28px;
+    }
 
     .section-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--color-forest-dark);
+      color: var(--text-main);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* Comparison Grid (The Gap) */
+    .section-num {
+      font-size: 0.8rem;
+      color: var(--brand-green);
+      background: var(--brand-green-light);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-subtle);
+      margin-bottom: 24px;
+    }
+
+    /* Comparison (The Gap) */
     .gap-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1.2fr;
-      gap: 18px;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 820px) {
-      .gap-grid { grid-template-columns: 1fr; }
-      .hero-card { padding: 28px 20px; }
-      .hero-title { font-size: 1.7rem; }
-    }
-
-    .gap-col {
-      border-radius: var(--radius-sm);
-      padding: 22px;
-      border: 1.5px solid var(--color-gray-light);
-      background: #fafbfc;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .gap-col.highlight {
-      border: 2px solid var(--color-forest);
-      background: var(--color-sage-light);
-      position: relative;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .gap-badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 12px;
-      width: fit-content;
-    }
-
-    .badge-red { background: #ffebee; color: #c62828; }
-    .badge-yellow { background: #fff8e1; color: #b78103; }
-    .badge-green { background: var(--color-forest); color: #ffffff; }
-
-    .gap-col h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-      color: var(--color-dark);
-    }
-
-    .gap-col .price-tag {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--color-forest-dark);
-      margin-bottom: 14px;
-    }
-
-    .gap-col ul {
-      list-style: none;
-      font-size: 0.88rem;
-      color: var(--color-gray);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .gap-col ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      line-height: 1.4;
-    }
-
-    .gap-col.highlight ul {
-      color: var(--color-forest-dark);
-      font-weight: 500;
-    }
-
-    /* 5 Pillars */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: 1fr 1fr 1.15fr;
       gap: 16px;
     }
 
-    .pillar-card {
-      background: #fafafa;
-      border: 1px solid var(--color-gray-light);
+    @media (max-width: 800px) {
+      .gap-grid { grid-template-columns: 1fr; }
+    }
+
+    .gap-card {
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 18px 16px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-
-    .pillar-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--color-forest);
-    }
-
-    .pillar-number {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--color-forest);
-      color: #fff;
+      padding: 20px;
+      background: var(--bg-subtle);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px;
-      font-weight: 800;
+      flex-direction: column;
+    }
+
+    .gap-card.selected {
+      background: var(--bg-accent);
+      border: 1.5px solid var(--brand-green);
+    }
+
+    .gap-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-subtle);
+      margin-bottom: 6px;
+    }
+
+    .gap-card.selected .gap-label {
+      color: var(--brand-green);
+      font-weight: 700;
+    }
+
+    .gap-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .gap-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+
+    .gap-card.selected .gap-price {
+      color: var(--brand-green);
+    }
+
+    .gap-list {
+      list-style: none;
       font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .gap-list li {
+      position: relative;
+      padding-left: 16px;
+      line-height: 1.45;
+    }
+
+    .gap-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text-subtle);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .gap-card.selected .gap-list li::before {
+      color: var(--brand-green);
+    }
+
+    /* 5 Pillars (Quiet numbered list/grid) */
+    .pillars-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .pillar-box {
+      border: 1px solid var(--border-light);
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    .pillar-idx {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--brand-green);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
     }
 
     .pillar-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      color: var(--color-forest-dark);
+      color: var(--text-main);
       margin-bottom: 6px;
     }
 
-    .pillar-desc {
+    .pillar-text {
       font-size: 0.8rem;
-      color: var(--color-gray);
-      line-height: 1.4;
+      color: var(--text-muted);
+      line-height: 1.45;
     }
 
-    /* Economics Table & Cards */
-    .econ-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    @media (max-width: 768px) {
-      .econ-container { grid-template-columns: 1fr; }
-    }
-
-    .econ-card {
-      background: var(--color-cream);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-      border: 1px solid var(--color-cream-dark);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .econ-step-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .econ-step {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 14px;
-      background: #ffffff;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .econ-step strong {
-      font-size: 1rem;
-    }
-
-    .econ-total {
-      background: var(--color-forest-dark);
-      color: #fff;
-      padding: 16px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .econ-total span {
-      font-size: 0.95rem;
-    }
-
-    .econ-total strong {
-      font-size: 1.4rem;
-      color: var(--color-terracotta);
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    /* Table */
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-
-    .data-table th {
-      background: var(--color-cream-dark);
-      text-align: left;
-      padding: 12px 14px;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-    }
-
-    .data-table td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--color-gray-light);
-    }
-
-    .data-table tr:last-child td {
-      border-bottom: none;
-      font-weight: 700;
-      background: var(--color-sage-light);
-      color: var(--color-forest-dark);
-    }
-
-    /* Takeaways & Strategy */
-    .strategy-grid {
+    /* Economics */
+    .econ-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
 
     @media (max-width: 768px) {
-      .strategy-grid { grid-template-columns: 1fr; }
+      .econ-layout { grid-template-columns: 1fr; }
     }
 
-    .strategy-item {
-      background: #fafbfc;
-      border-left: 4px solid var(--color-terracotta);
-      padding: 18px 20px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    .econ-panel {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .strategy-item h4 {
+    .econ-panel-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      color: var(--color-forest-dark);
-      margin-bottom: 6px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
     }
 
-    .strategy-item p {
+    .cost-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      padding: 8px 10px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+    }
+
+    .cost-row.accent {
+      background: var(--brand-green-light);
+      border-color: #d1e5cb;
+      font-weight: 600;
+      color: var(--brand-green);
+    }
+
+    .margin-highlight {
+      background: var(--text-main);
+      color: #ffffff;
+      padding: 12px 14px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.92rem;
+    }
+
+    .margin-highlight strong {
+      font-size: 1.2rem;
+      color: #7dd964;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .clean-table {
+      width: 100%;
+      border-collapse: collapse;
       font-size: 0.85rem;
-      color: var(--color-gray);
-      line-height: 1.45;
     }
 
-    /* Footer Note */
+    .clean-table th {
+      text-align: left;
+      padding: 10px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .clean-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+
+    .clean-table tr:last-child td {
+      border-bottom: none;
+      font-weight: 600;
+      color: var(--brand-green);
+    }
+
+    /* Strategy Panels */
+    .strategy-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .strategy-duo { grid-template-columns: 1fr; }
+    }
+
+    .strategy-box {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      background: #fafafa;
+    }
+
+    .strategy-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .strategy-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
     .memo-footer {
       text-align: center;
-      font-size: 0.85rem;
-      color: var(--color-gray);
-      margin-top: 40px;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-top: 48px;
       padding-top: 20px;
-      border-top: 1px solid var(--color-gray-light);
+      border-top: 1px solid var(--border-color);
     }
 
     @media print {
-      body { background: #fff; padding: 0; font-size: 11pt; }
-      .top-bar, .btn-action { display: none; }
-      .hero-card { background: #122b07 !important; -webkit-print-color-adjust: exact; color: #fff !important; }
-      .section-card { box-shadow: none; border: 1px solid #ddd; margin-bottom: 16px; page-break-inside: avoid; }
+      body { background: #fff; padding: 0; font-size: 10pt; }
+      .memo-nav, .btn-quiet { display: none; }
+      .memo-section { border: 1px solid #ddd; margin-bottom: 14px; page-break-inside: avoid; }
     }
   </style>
 </head>
@@ -481,252 +453,259 @@
 
 <div class="container">
 
-  <!-- Top Action Bar -->
-  <div class="top-bar">
-    <a href="index.html" class="brand-badge">
+  <!-- Minimal Nav -->
+  <div class="memo-nav">
+    <a href="index.html" class="nav-brand">
       <strong>staopstoelen.nl</strong>
-      <span>STRATEGISCH MEMO</span>
+      <span class="nav-tag">Strategisch Dossier</span>
     </a>
-    <div class="top-actions">
-      <button onclick="window.print()" class="btn-action">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-        Print / Opslaan als PDF
+    <div class="nav-actions">
+      <button onclick="window.print()" class="btn-quiet">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Afdrukken / PDF
       </button>
-      <a href="beheer.html" class="btn-action">
-        &larr; Naar Dashboard
+      <a href="beheer.html" class="btn-quiet">
+        &larr; Dashboard
       </a>
     </div>
   </div>
 
-  <!-- Hero Banner -->
-  <div class="hero-card">
-    <div class="hero-tag">Nieuw Businessmodel &amp; Waardepropositie</div>
-    <h1 class="hero-title">Certified Fitform <span>Occasion Label</span></h1>
-    <p class="hero-subtitle">
-      Hoe we een onbenut marktleemte vullen tussen onbetaalbaar nieuw (€ 4.000+) en onbetrouwbaar Marktplaats (€ 500), 
-      met 65% brutomarge en een bewezen reden voor landelijke online tractie op <strong>staopstoelen.nl</strong>.
+  <!-- Editorial Memo Header -->
+  <header class="memo-header">
+    <div class="memo-kicker">Businessmodel &amp; Propositie</div>
+    <h1 class="memo-title">Certified Fitform Occasion Label</h1>
+    <p class="memo-lead">
+      Een schaalbaar businessmodel dat het marktleemte vult tussen onbetaalbaar nieuw en onbetrouwbaar Marktplaats. 
+      Gerealiseerd met 65% brutomarge en een gerichte online tractie op <strong>staopstoelen.nl</strong>.
     </p>
-  </div>
+  </header>
 
-  <!-- 1. The Market Gap -->
-  <div class="section-card">
-    <div class="section-header">
-      <div class="section-icon icon-orange">1</div>
-      <h2 class="section-title">Het Marktleemte: De 3 Keuzes van de Consument</h2>
+  <!-- 1. Marktleemte -->
+  <section class="memo-section">
+    <div class="section-title">
+      <span class="section-num">01</span>
+      Het Marktleemte: De Keuze van de Consument
     </div>
+    <p class="section-subtitle">Waarom het huidige aanbod in Nederland de plank misslaat voor de grootste groep kopers.</p>
 
     <div class="gap-grid">
-      <!-- Col 1: Nieuw -->
-      <div class="gap-col">
-        <span class="gap-badge badge-red">Dealer Nieuw</span>
+      <!-- Fabrieksnieuw -->
+      <div class="gap-card">
+        <div class="gap-label">Traditioneel Nieuw</div>
         <h4>Nieuwe Fitform Stoel</h4>
-        <div class="price-tag">€ 3.500 – € 5.500+</div>
-        <ul>
-          <li><span>⚠️</span> Onbetaalbaar voor een grote groep senioren / AOW'ers</li>
-          <li><span>⚠️</span> Moordende concurrentie op Google Ads tegen Prominent &amp; Velderhof</li>
-          <li><span>⚠️</span> Hoge kapitaalbeslag &amp; lage procentuele marge</li>
+        <div class="gap-price">€ 3.500 – € 5.500+</div>
+        <ul class="gap-list">
+          <li>Onbetaalbaar voor een aanzienlijk deel van de senioren doelgroep.</li>
+          <li>Moordende advertentieconcurrentie op algemene zoektermen tegen Prominent &amp; Velderhof.</li>
+          <li>Hoog kapitaalbeslag bij fabrieksinkoop met bescheiden marges.</li>
         </ul>
       </div>
 
-      <!-- Col 2: Marktplaats -->
-      <div class="gap-col">
-        <span class="gap-badge badge-yellow">Marktplaats</span>
-        <h4>Particuliere Tweedehands</h4>
-        <div class="price-tag">€ 400 – € 800</div>
-        <ul>
-          <li><span>❌</span> <strong>Geen maatwerk:</strong> Stoel past niet op het lichaam; veroorzaakt rugklachten</li>
-          <li><span>❌</span> Onhygiënisch (urineverlies, huisdieren, slijtage)</li>
-          <li><span>❌</span> Geen garantie, onbekende motorschade</li>
-          <li><span>❌</span> Zwaar tillen (70 kg) door mantelzorger</li>
+      <!-- Marktplaats -->
+      <div class="gap-card">
+        <div class="gap-label">Particulier Aanbod</div>
+        <h4>Ongecontroleerd Tweedehands</h4>
+        <div class="gap-price">€ 400 – € 800</div>
+        <ul class="gap-list">
+          <li><strong>Geen maatwerk:</strong> Stoel is ingesteld op de vorige eigenaar en veroorzaakt rugklachten.</li>
+          <li>Hygiënerisico (intensief gebruikt, geuren of incontinentieschade).</li>
+          <li>Geen garantie op elektronica of motoren; 70 kg zwaar transport voor mantelzorger.</li>
         </ul>
       </div>
 
-      <!-- Col 3: Ons Label -->
-      <div class="gap-col highlight">
-        <span class="gap-badge badge-green">Onze Blue Ocean</span>
+      <!-- Certified Occasion -->
+      <div class="gap-card selected">
+        <div class="gap-label">Ons Label</div>
         <h4>Certified Fitform Occasion</h4>
-        <div class="price-tag">€ 1.250 – € 1.950</div>
-        <ul>
-          <li><span>✅</span> <strong>50% tot 65% goedkoper</strong> dan de nieuwprijs</li>
-          <li><span>✅</span> <strong>Op de millimeter ingemeten</strong> door Bewegingstechnoloog Geertjan</li>
-          <li><span>✅</span> 100% technisch gekeurd &amp; medisch gedesinfecteerd</li>
-          <li><span>✅</span> <strong>12 tot 24 maanden all-in garantie</strong> aan huis</li>
-          <li><span>✅</span> Gratis bezorgd, aangesloten &amp; oude stoel meegenomen</li>
+        <div class="gap-price">€ 1.250 – € 1.950</div>
+        <ul class="gap-list">
+          <li><strong>50% tot 65% voordeliger</strong> dan de nieuwprijs met gelijke beleving.</li>
+          <li><strong>Op de millimeter ingemeten</strong> door Bewegingstechnoloog Geertjan.</li>
+          <li>100% technisch gereviseerd, diep gereinigd en hygiënisch als nieuw.</li>
+          <li><strong>24 maanden all-in garantie aan huis</strong> met eigen servicewagen.</li>
+          <li>Gratis bezorgd, aangesloten, proefgezeten en oude stoel meegenomen.</li>
         </ul>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- 2. The 5 Pillars -->
-  <div class="section-card">
-    <div class="section-header">
-      <div class="section-icon icon-green">2</div>
-      <h2 class="section-title">De 5 Kwaliteitspijlers van het Keurmerk</h2>
+  <!-- 2. De 5 Pijlers -->
+  <section class="memo-section">
+    <div class="section-title">
+      <span class="section-num">02</span>
+      De 5 Pijlers van het Keurmerk
     </div>
+    <p class="section-subtitle">Het 30-punten kwaliteitsprotocol dat elke twijfel over 'tweedehands' wegneemt.</p>
 
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <div class="pillar-number">1</div>
+    <div class="pillars-row">
+      <div class="pillar-box">
+        <div class="pillar-idx">01 / TECHNIEK</div>
         <div class="pillar-title">30-Punts Keuring</div>
-        <div class="pillar-desc">Alle 3 de motoren, printplaat, trafo en noodaccu belast getest op 150 kg.</div>
+        <div class="pillar-text">Alle motoren, printplaat, bedrading en noodstroomaccu belast getest op 150 kg.</div>
       </div>
-      <div class="pillar-card">
-        <div class="pillar-number">2</div>
-        <div class="pillar-title">Ergonomisch Maatwerk</div>
-        <div class="pillar-desc">Zithoogte, zitdiepte en armleggers exact ingesteld op het lichaam van de koper.</div>
+      <div class="pillar-box">
+        <div class="pillar-idx">02 / ERGONOMIE</div>
+        <div class="pillar-title">Maatwerkinmeting</div>
+        <div class="pillar-text">Zithoogte, zitdiepte en armleggers exact gekalibreerd op de lichaamsmaten van de koper.</div>
       </div>
-      <div class="pillar-card">
-        <div class="pillar-number">3</div>
-        <div class="pillar-title">Diepte-Hygiëne</div>
-        <div class="pillar-desc">Ozon- en stoomdesinfectie. Gegarandeerd rook-, vlek- en huisdiervrij.</div>
+      <div class="pillar-box">
+        <div class="pillar-idx">03 / HYGIËNE</div>
+        <div class="pillar-title">Diepte-Reiniging</div>
+        <div class="pillar-text">Ozon- en stoomdesinfectie van zitting en bekleding. Gegarandeerd geur- en vlekvrij.</div>
       </div>
-      <div class="pillar-card">
-        <div class="pillar-number">4</div>
+      <div class="pillar-box">
+        <div class="pillar-idx">04 / ZEKERHEID</div>
         <div class="pillar-title">24 Mnd Huisgarantie</div>
-        <div class="pillar-desc">Bij technische storingen komt onze eigen monteur gratis aan huis repareren.</div>
+        <div class="pillar-text">Bij technische storingen komt onze monteur kosteloos aan huis voor reparatie of wissel.</div>
       </div>
-      <div class="pillar-card">
-        <div class="pillar-number">5</div>
-        <div class="pillar-title">Witte-Handschoen</div>
-        <div class="pillar-desc">Bezorging tot in de woonkamer, proefzitten, instructie &amp; afvoer oude stoel.</div>
+      <div class="pillar-box">
+        <div class="pillar-idx">05 / SERVICE</div>
+        <div class="pillar-title">Witte Handschoen</div>
+        <div class="pillar-text">Plaatsing in de woonkamer, rustige instructie en desgewenst afvoer van de oude stoel.</div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- 3. Financial Unit Economics -->
-  <div class="section-card">
-    <div class="section-header">
-      <div class="section-icon icon-blue">3</div>
-      <h2 class="section-title">De Unit Economics: 65% Brutomarge per Stoel</h2>
+  <!-- 3. Rendement & Marges -->
+  <section class="memo-section">
+    <div class="section-title">
+      <span class="section-num">03</span>
+      Unit Economics: 65% Brutomarge per Transactie
     </div>
+    <p class="section-subtitle">Inzicht in de kostenopbouw en de gezonde cashflow per verkochte stoel.</p>
 
-    <div class="econ-container">
-      <!-- Breakdown -->
-      <div class="econ-card">
+    <div class="econ-layout">
+      <!-- Links: Kostenopbouw -->
+      <div class="econ-panel">
         <div>
-          <h4 style="font-family: 'Montserrat', sans-serif; margin-bottom: 14px; color: var(--color-forest-dark);">Kostenopbouw per Stoel</h4>
-          <div class="econ-step-list">
-            <div class="econ-step">
-              <span>Gemiddelde inkoop (particulier / inruil)</span>
+          <div class="econ-panel-title">Kostenopbouw per Stoel</div>
+          <div class="cost-stack">
+            <div class="cost-row">
+              <span>Inkoopwaarde (particulier / inruil)</span>
               <strong>€ 350</strong>
             </div>
-            <div class="econ-step">
+            <div class="cost-row">
               <span>Revisie, onderdelen &amp; reiniging</span>
               <strong>€ 200</strong>
             </div>
-            <div class="econ-step" style="background: var(--color-cream-dark);">
+            <div class="cost-row">
               <span>Totale kostprijs gereed product</span>
               <strong>€ 550</strong>
             </div>
-            <div class="econ-step" style="border-left: 4px solid var(--color-forest);">
+            <div class="cost-row accent">
               <span>Verkoopprijs (Certified Occasion)</span>
-              <strong style="color: var(--color-forest);">€ 1.650</strong>
+              <strong>€ 1.650</strong>
             </div>
           </div>
         </div>
 
-        <div class="econ-total">
+        <div class="margin-highlight">
           <span>Bruto Marge per Stoel:</span>
           <strong>+ € 1.100 (66%)</strong>
         </div>
       </div>
 
-      <!-- Volume Projection -->
-      <div class="econ-card">
+      <!-- Rechts: Rendementsprojectie -->
+      <div class="econ-panel">
         <div>
-          <h4 style="font-family: 'Montserrat', sans-serif; margin-bottom: 14px; color: var(--color-forest-dark);">Jaarlijkse Rendementsprognose</h4>
-          <table class="data-table">
+          <div class="econ-panel-title">Rendementsprojectie op Jaarbasis</div>
+          <table class="clean-table">
             <thead>
               <tr>
-                <th>Volume</th>
+                <th>Afzetvolume</th>
                 <th>Omzet / mnd</th>
-                <th>Brutowinst / jaar</th>
+                <th>Brutomarge / jaar</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>10 stoelen / mnd</td>
                 <td>€ 16.500</td>
-                <td><strong>€ 132.000</strong></td>
+                <td>€ 132.000</td>
               </tr>
               <tr>
                 <td>15 stoelen / mnd</td>
                 <td>€ 24.750</td>
-                <td><strong>€ 198.000</strong></td>
+                <td>€ 198.000</td>
               </tr>
               <tr>
                 <td>20 stoelen / mnd</td>
                 <td>€ 33.000</td>
-                <td><strong>€ 264.000</strong></td>
+                <td>€ 264.000</td>
               </tr>
               <tr>
-                <td>Benchmark Nieuw</td>
+                <td>Nieuw (ter vergelijking)</td>
                 <td>Bij 35% marge</td>
-                <td>Noodzaak tot 2x meer kapitaal</td>
+                <td>Vergt 2x meer kapitaal</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size: 0.78rem; color: var(--color-gray); margin-top: 14px; line-height: 1.4;">
-          * Berekening exclusief vaste winkelkosten. Geeft de directe toegevoegde waarde per verkooptransactie weer.
+        <p style="font-size: 0.78rem; color: var(--text-subtle); margin-top: 14px; line-height: 1.4;">
+          * Berekening toont de directe handelsmarge op transactieniveau, exclusief vaste winkel- en personeelslasten.
         </p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- 4. The Two-Sided Funnel -->
-  <div class="section-card">
-    <div class="section-header">
-      <div class="section-icon icon-orange">4</div>
-      <h2 class="section-title">De Tweezijdige Funnel: Waarom dit Online wél Werkt</h2>
+  <!-- 4. De Funnel -->
+  <section class="memo-section">
+    <div class="section-title">
+      <span class="section-num">04</span>
+      De Tweezijdige Funnel op staopstoelen.nl
     </div>
+    <p class="section-subtitle">Hoe we de aanbod- en vraagzijde gelijktijdig organiseren via het domein.</p>
 
-    <div class="strategy-grid">
-      <div class="strategy-item">
-        <h4>1. De Inkoopfunnel (Constante Voorraadstroom)</h4>
+    <div class="strategy-duo">
+      <div class="strategy-box">
+        <h4>1. De Inkoopfunnel (Continue Voorraad)</h4>
         <p>
-          Kinderen en nabestaanden zitten met zware Fitform stoelen van opa of oma en willen geen Marktplaats-gedoe. 
-          Via een speciale pagina <em>"Fitform stoel verkopen of laten ophalen?"</em> bieden we een snelle overnameprijs (€ 250 - € 400) inclusief ophaalservice. Dit garandeert een oneindige instroom aan kwalitatieve stoelen.
+          Kinderen en mantelzorgers zitten met een zware Fitform stoel van overleden of verhuisde ouders. 
+          Via de propositie <em>"Fitform stoel verkopen of laten ophalen?"</em> bieden we een snelle overname en professionele ophaaldienst. 
+          Dit levert een constante, betrouwbare instroom van A-kwaliteit stoelen op tegen minimale acquisitiekosten.
         </p>
       </div>
-      <div class="strategy-item">
-        <h4>2. De Verkoopfunnel (Lage CPC, Hoge Intentie)</h4>
+      <div class="strategy-box">
+        <h4>2. De Verkoopfunnel (Hoge Intentie, Lage CPC)</h4>
         <p>
-          In plaats van te bieden op het overbevolkte <em>"sta op stoel"</em>, richten we ons op <em>"tweedehands fitform stoel"</em>, <em>"fitform occasion garantie"</em> en <em>"gebruikte fitform op maat"</em>. 
-          De concurrentie is hier minimaal, de advertentiekosten zijn een fractie, en de conversieratio is extreem hoog omdat mensen specifiek een betaalbare A-merk stoel zoeken.
+          In plaats van te concurreren op het brede en dure zoekwoord <em>"sta op stoel"</em>, targeten we zoekers naar 
+          <em>"tweedehands fitform stoel"</em>, <em>"fitform occasion garantie"</em> en <em>"gebruikte fitform op maat"</em>. 
+          De concurrentiedruk is hier laag, de kosten per klik zijn bescheiden en de koopintentie is uitzonderlijk hoog.
         </p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- 5. Negotiation Leverage with Seller -->
-  <div class="section-card" style="border-left: 4px solid var(--color-forest-dark);">
-    <div class="section-header">
-      <div class="section-icon icon-green">5</div>
-      <h2 class="section-title">De Onderhandelingshefboom bij de Winkelovername</h2>
+  <!-- 5. Onderhandelingsstrategie Overname -->
+  <section class="memo-section">
+    <div class="section-title">
+      <span class="section-num">05</span>
+      Strategische Hefboom bij de Winkelovername
     </div>
+    <p class="section-subtitle">Waarom dit toekomstige model de huidige overnameprijs juist beschermt.</p>
 
-    <div class="strategy-grid">
-      <div class="strategy-item" style="border-color: var(--color-forest);">
+    <div class="strategy-duo">
+      <div class="strategy-box">
         <h4>€ 0 Goodwill voor het Concept</h4>
         <p>
-          De huidige eigenaar verkoopt traditioneel lokaal zonder gecertificeerd occasionplatform. 
-          Dit Certified Fitform model is <strong>100% jouw innovatie en executiekracht</strong>. De verkoper kan hier geen cent extra overnamewaarde voor claimen.
+          De huidige verkoper exploiteert een traditionele lokale dorpswinkel zonder gecertificeerd occasionplatform. 
+          Dit schaalbare Certified Fitform model is <strong>jouw eigen innovatie en executiekracht</strong>. De verkoper kan hier geen enkele overnamewaarde voor vorderen.
         </p>
       </div>
-      <div class="strategy-item" style="border-color: var(--color-forest);">
+      <div class="strategy-box">
         <h4>Scherpe Waardering Bestaande Voorraad</h4>
         <p>
-          De 10 tot 30 stoelen die nu in de winkel staan (waaronder occasions en demo's) moeten worden overgenomen tegen <strong>ruwe inkoopwaarde (€ 300 – € 500 per stuk)</strong>. 
-          Het argument: jíj moet nog € 200 per stoel investeren in arbeidsuren, revisie, reiniging en de garantieclaim.
+          De aanwezige voorraad in de winkel (occasions en showroommodellen) wordt gewaardeerd tegen <strong>ruwe inkoopprijs (€ 300 – € 500 per stuk)</strong>. 
+          Jij bent immers degene die nog € 200 per stoel moet investeren in arbeid, revisie, reiniging en de garantievoorziening om ze verkoopklaar te maken.
         </p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="memo-footer">
+  <!-- Footer -->
+  <footer class="memo-footer">
     <strong>staopstoelen.nl</strong> &bull; Strategisch Uitwerkingsdocument &bull; Vertrouwelijk &bull; 2026
-  </div>
+  </footer>
 
 </div>
 
