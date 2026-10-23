@@ -163,19 +163,20 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.88;
+      opacity: 0.95;
       transform: scale(1);
-      transition: transform 12s cubic-bezier(0.1, 0, 0.3, 1), opacity 0.6s ease;
+      transition: transform 12s cubic-bezier(0.1, 0, 0.3, 1), opacity 0.4s ease;
     }
 
     .scene-stage.playing .scene-bg {
-      transform: scale(1.08);
+      transform: scale(1.08) translate(-1%, -1%);
     }
 
     .scene-gradient {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(248,250,246,0.4) 60%, rgba(248,250,246,0.85) 100%);
+      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.42) 100%);
+      pointer-events: none;
     }
 
     /* Scene Content Overlay (Light Frosted Glass Card) */
@@ -183,31 +184,41 @@
       position: relative;
       z-index: 5;
       text-align: center;
-      max-width: 680px;
-      padding: 24px 32px;
+      max-width: 650px;
+      width: calc(100% - 32px);
+      padding: 18px 24px;
       background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 16px;
+      margin: 12px;
+    }
+
+    .scene-anim {
+      animation: cardPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes cardPop {
+      0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .scene-kicker {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 1.2px;
       text-transform: uppercase;
       color: var(--green);
       background: var(--green-light);
       border: 1px solid #c8dec4;
-      padding: 4px 12px;
+      padding: 3px 10px;
       border-radius: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -215,28 +226,29 @@
 
     .scene-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.95rem;
+      font-size: 1.55rem;
       font-weight: 800;
       color: var(--text);
       line-height: 1.2;
-      letter-spacing: -0.4px;
-      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
     }
 
     @media (max-width: 640px) {
-      .scene-title { font-size: 1.35rem; }
+      .scene-title { font-size: 1.2rem; }
     }
 
     .scene-subtitle {
-      font-size: 0.98rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.4;
       max-width: 580px;
-      margin-bottom: 16px;
+      margin-top: 4px;
+      margin-bottom: 8px;
     }
 
     @media (max-width: 640px) {
-      .scene-subtitle { font-size: 0.82rem; margin-bottom: 10px; }
+      .scene-subtitle { font-size: 0.75rem; margin-bottom: 6px; }
     }
 
     .scene-metric-pill {
@@ -245,36 +257,257 @@
       gap: 8px;
       background: #ffffff;
       border: 2px solid var(--green);
-      padding: 8px 18px;
-      border-radius: 10px;
+      padding: 5px 14px;
+      border-radius: 8px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--green);
-      box-shadow: 0 4px 14px rgba(35, 84, 27, 0.1);
+      box-shadow: 0 4px 12px rgba(35, 84, 27, 0.1);
     }
+
+    /* Scene 1: Battle Grid */
+    .battle-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+      margin: 10px 0 8px;
+    }
+    @media (max-width: 600px) {
+      .battle-grid { grid-template-columns: 1fr; gap: 6px; }
+      .battle-vs { display: none; }
+    }
+    .battle-card {
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: left;
+      border: 1.5px solid;
+    }
+    .battle-card.bad {
+      background: #fef2f2;
+      border-color: #fca5a5;
+    }
+    .battle-card.warning {
+      background: #fffbeb;
+      border-color: #fcd34d;
+    }
+    .battle-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .battle-card.bad .battle-tag { color: #b91c1c; }
+    .battle-card.warning .battle-tag { color: #d97706; }
+    .battle-val {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+    .battle-sub {
+      font-size: 0.72rem;
+      color: #64748b;
+      line-height: 1.3;
+    }
+    .battle-vs {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: #94a3b8;
+      background: #ffffff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* Scene 2: Sweet Spot Seal */
+    .sweet-badge-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 8px 0;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .seal-emblem {
+      background: linear-gradient(135deg, #23541b 0%, #153510 100%);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(35, 84, 27, 0.25);
+      border: 1.5px solid #a3d499;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sweet-price-hero {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .sweet-price-sub {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+    .sweet-pills {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .sweet-pill {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--green);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    /* Scene 3: Checklist */
+    .check-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      max-width: 520px;
+      margin: 8px 0;
+      text-align: left;
+    }
+    .check-row {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.78rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .check-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check-left svg {
+      flex-shrink: 0;
+      color: var(--green);
+    }
+    .check-status {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--green);
+      background: var(--green-light);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid #c8dec4;
+      white-space: nowrap;
+    }
+
+    /* Scene 4: Mini Waterfall */
+    .waterfall-card-box {
+      width: 100%;
+      max-width: 520px;
+      margin: 6px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .wf-tile {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 12px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.78rem;
+    }
+    .wf-tile.highlight {
+      background: var(--green-light);
+      border-color: #bcdbb4;
+      font-weight: 800;
+      color: var(--green);
+      font-size: 0.92rem;
+    }
+
+    /* Scene 5: Deal Stack */
+    .deal-stack-box {
+      width: 100%;
+      max-width: 520px;
+      margin: 6px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      text-align: left;
+    }
+    .stack-tier {
+      padding: 6px 12px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+    }
+    .stack-tier.bank { border-left: 4px solid #2563eb; }
+    .stack-tier.loan { border-left: 4px solid #d97706; }
+    .stack-tier.equity { border-left: 4px solid var(--green); }
 
     /* Subtitle Banner at bottom of video */
     .scene-captions {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
+      bottom: 14px;
+      left: 16px;
+      right: 16px;
       text-align: center;
       z-index: 6;
+      pointer-events: none;
     }
 
     .caption-text {
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--text);
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 8px 20px;
+      background: rgba(23, 38, 20, 0.88);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 18px;
       border-radius: 20px;
       display: inline-block;
-      max-width: 90%;
-      border: 1.5px solid var(--border);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      max-width: 88%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     /* Player Controls Bar */
@@ -530,22 +763,37 @@
 
     <!-- Scene Stage -->
     <div class="scene-stage" id="scene-stage">
-      <img src="assets/certified_fitform_occasion_showroom.jpg" alt="Scene Background" class="scene-bg" id="scene-bg">
+      <img src="assets/senior_chair_dilemma.jpg" alt="Scene Background" class="scene-bg" id="scene-bg">
       <div class="scene-gradient"></div>
 
-      <!-- Overlay Text Content (Crisp Glass Card) -->
-      <div class="scene-overlay">
+      <!-- Overlay Text & Visual Graphics (Crisp Glass Card) -->
+      <div class="scene-overlay scene-anim" id="scene-overlay">
         <div class="scene-kicker" id="scene-kicker">
           <span>01 / 05</span> Het Marktdilemma
         </div>
         <h2 class="scene-title" id="scene-title">
           Tussen € 4.500 Nieuw &amp; € 500 Marktplaats
         </h2>
+        <div id="scene-visual-content" style="width:100%;">
+          <div class="battle-grid">
+            <div class="battle-card bad">
+              <span class="battle-tag">🔴 Fabrieksnieuw</span>
+              <div class="battle-val">€ 4.500+</div>
+              <div class="battle-sub">Onbetaalbaar voor 70% • 8–12 wkn wachttijd</div>
+            </div>
+            <div class="battle-vs">VS</div>
+            <div class="battle-card warning">
+              <span class="battle-tag">⚠️ Marktplaats</span>
+              <div class="battle-val">€ 500</div>
+              <div class="battle-sub">Onhygiënisch • Geen garantie • Foute maat</div>
+            </div>
+          </div>
+        </div>
         <p class="scene-subtitle" id="scene-subtitle">
-          Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok zonder garantie en de verkeerde maatvoering.
+          Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.
         </p>
         <div class="scene-metric-pill" id="scene-metric">
-          70% Onbediende Vraag
+          70% Onbediende Doelgroep
         </div>
       </div>
 
@@ -638,31 +886,31 @@
       <tbody>
         <tr>
           <td class="script-time">0:00 - 0:11</td>
-          <td>Senior bladert vertwijfeld door dure folder van Prominent. Close-up Marktplaats app.</td>
+          <td>Senior &amp; dochter in dilemma voor tablet &amp; versleten fauteuil. Battle grid: € 4.500 nieuw vs. € 500 Marktplaats.</td>
           <td>"Een nieuwe ergonomische sta-op stoel kost al snel 4.500 euro. Te duur voor velen. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat."</td>
           <td>Het marktvacuüm claimen</td>
         </tr>
         <tr>
           <td class="script-time">0:11 - 0:23</td>
-          <td>Pan over de showroom in Dordrecht. Prachtige cognackleurige Fitform met lederen keurmerktag.</td>
+          <td>Zonnige showroom Dordrecht: cognac Fitform met lederen keurmerktag. Sweet spot: € 1.550 met 24 mnd garantie.</td>
           <td>"staopstoelen.nl vult dit gat met Certified Fitform Occasions. Topkwaliteit van Nederlands fabricaat voor 1.550 euro, mét 24 maanden volledige omruilgarantie."</td>
           <td>De Sweet Spot (€ 1.550)</td>
         </tr>
         <tr>
           <td class="script-time">0:23 - 0:32</td>
-          <td>Werkplaats Dordrecht: Geertjan met meetlint en Linak testapparatuur. Dieptereiniging stoom.</td>
+          <td>Werkplaats Dordrecht met Geertjan: Linak testapparatuur, ozon-extractie &amp; inmeting op maat. Retouren &lt; 2%.</td>
           <td>"Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door Geertjan exact op maat afgesteld. Retouren zijn minder dan twee procent."</td>
           <td>Vertrouwen &amp; Maatwerk</td>
         </tr>
         <tr>
           <td class="script-time">0:32 - 0:44</td>
-          <td>Geanimeerde waterval-grafiek met marges en cashflow.</td>
+          <td>Eikenhouten adviestafel met tablet, staal cognac leer en waterval margegrafiek (€ 650 netto / € 7.800 mnd).</td>
           <td>"De unit economics zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over. Goed voor 7.800 euro cashflow per maand."</td>
           <td>42% Netto Marge</td>
         </tr>
         <tr>
           <td class="script-time">0:44 - 0:54</td>
-          <td>Matthias bij de fysieke winkel Schipper en het domein staopstoelen.nl. Handdruk / financieringsmix.</td>
+          <td>Handdruk en bedrijfsoverdracht Geertjan &amp; Matthias in showroom met blauwdrukken. Financieringsmix.</td>
           <td>"Met 50 procent BMKB-garantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inleg nodig. Binnen een jaar terugverdiend."</td>
           <td>Asymmetrische Investering</td>
         </tr>
@@ -675,59 +923,165 @@
 <script>
   const scenes = [
     {
-      kicker: "01 / 05 • Het Marktdilemma",
+      kicker: "01 / 05 • HET MARKTVACUÜM",
       title: "Tussen € 4.500 Nieuw & € 500 Marktplaats",
       subtitle: "Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.",
-      metric: "70% Onbediende Markt",
+      metric: "70% Onbediende Doelgroep",
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "Een nieuwe ergonomische sta-op stoel kost al snel 4500 euro. Te duur voor velen. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      bg: "assets/senior_chair_dilemma.jpg",
       audio: "assets/audio/scene_1.m4a",
-      durationSec: 11.5
+      durationSec: 11.5,
+      visualHtml: `
+        <div class="battle-grid">
+          <div class="battle-card bad">
+            <span class="battle-tag">🔴 Fabrieksnieuw</span>
+            <div class="battle-val">€ 4.500+</div>
+            <div class="battle-sub">Onbetaalbaar voor 70% • 8–12 wkn levertijd</div>
+          </div>
+          <div class="battle-vs">VS</div>
+          <div class="battle-card warning">
+            <span class="battle-tag">⚠️ Marktplaats</span>
+            <div class="battle-val">€ 500</div>
+            <div class="battle-sub">Onhygiënisch • Geen garantie • Foute maat</div>
+          </div>
+        </div>
+      `
     },
     {
-      kicker: "02 / 05 • De Sweet Spot",
-      title: "Certified Fitform: Premium voor € 1.550",
+      kicker: "02 / 05 • DE SWEET SPOT",
+      title: "Certified Fitform: Fabriekskwaliteit voor € 1.550",
       subtitle: "Officiële Wellco/Fitform modellen met genummerd keurmerkzegel, direct leverbaar uit de showroom in Dordrecht.",
-      metric: "€ 1.450 – € 1.850",
+      metric: "€ 1.550 • Direct Leverbaar",
       caption: "staopstoelen.nl vult dit gat met Certified Fitform Occasions: topkwaliteit voor 1.550 euro mét 24 maanden garantie.",
       voiceText: "Staopstoelen punt nl vult dit gat met Certified Fitform Occasions. Topkwaliteit van Nederlands fabricaat voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
       bg: "assets/certified_fitform_occasion_showroom.jpg",
       audio: "assets/audio/scene_2.m4a",
-      durationSec: 12.2
+      durationSec: 12.2,
+      visualHtml: `
+        <div class="sweet-badge-box">
+          <div class="seal-emblem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            Certified Fitform
+          </div>
+          <div class="sweet-price-hero">
+            € 1.550
+            <span class="sweet-price-sub">nieuw € 4.200</span>
+          </div>
+        </div>
+        <div class="sweet-pills">
+          <span class="sweet-pill">✓ 30-Punts Keuring</span>
+          <span class="sweet-pill">✓ 24 Mnd Volledige Garantie</span>
+          <span class="sweet-pill">✓ Showroom Dordrecht</span>
+        </div>
+      `
     },
     {
-      kicker: "03 / 05 • Kwaliteit & Maatwerk",
+      kicker: "03 / 05 • VAKMANSCHAP & REVISIE",
       title: "30-Punts Keuring & Inmeting Geertjan",
-      subtitle: "Linak motoren belast getest op 150 kg, ozon-extractie en zithoogte op de millimeter afgesteld op het lichaam van de koper.",
-      metric: "Retouren < 2%",
+      subtitle: "Linak motoren getest op 150 kg, ozon-extractie en zithoogte op de millimeter afgesteld op het lichaam van de koper.",
+      metric: "🛡️ Retouren < 2%",
       caption: "Elke stoel ondergaat een 30-punten inspectie en wordt door Geertjan exact op maat afgesteld.",
       voiceText: "Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door Geertjan exact op maat afgesteld. Retouren zijn minder dan twee procent.",
       bg: "assets/dutch_technician_fitform_workshop.jpg",
       audio: "assets/audio/scene_3.m4a",
-      durationSec: 9.1
+      durationSec: 9.1,
+      visualHtml: `
+        <div class="check-grid">
+          <div class="check-row">
+            <div class="check-left">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Linak Motoren</strong>: 150 kg belastingtest &amp; elektronica</span>
+            </div>
+            <span class="check-status">100% OK</span>
+          </div>
+          <div class="check-row">
+            <div class="check-left">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Dieptereiniging</strong>: Ozon-extractie &amp; antibacterieel</span>
+            </div>
+            <span class="check-status">GECERTIFICEERD</span>
+          </div>
+          <div class="check-row">
+            <div class="check-left">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Inmeting Geertjan</strong>: Zithoogte, -diepte &amp; armleggers</span>
+            </div>
+            <span class="check-status">OP MAAT</span>
+          </div>
+        </div>
+      `
     },
     {
-      kicker: "04 / 05 • Unit Economics",
+      kicker: "04 / 05 • CASHFLOW & MARGES",
       title: "€ 650 Netto Marge per Stoel (42%)",
-      subtitle: "Conservatief doorgerekend inclusief 2-mans bezorging, onderdelen en servicebuffers. € 7.800 netto per maand bij 12 stoelen.",
-      metric: "+€ 7.800 Netto / Mnd",
-      caption: "Ijzersterke cijfers: na inkoop, onderdelen en 2-mans transport resteert 650 euro netto cashflow per stoel.",
+      subtitle: "Conservatief doorgerekend inclusief inkoop, onderdelen, 2-mans bezorging en servicebuffers.",
+      metric: "📈 +€ 7.800 Netto / Mnd (bij 12 stoelen)",
+      caption: "De unit economics zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over.",
       voiceText: "De unit economics zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over. Goed voor 7800 euro cashflow per maand.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      bg: "assets/unit_economics_fitform_showroom.jpg",
       audio: "assets/audio/scene_4.m4a",
-      durationSec: 11.4
+      durationSec: 11.4,
+      visualHtml: `
+        <div class="waterfall-card-box">
+          <div class="wf-tile">
+            <span>Verkoopprijs Certified Occasion</span>
+            <strong style="color:var(--green); font-size:0.95rem;">€ 1.550</strong>
+          </div>
+          <div class="wf-tile" style="color:#64748b;">
+            <span>Inkoop occasion Fitform</span>
+            <strong style="color:#dc2626;">- € 450</strong>
+          </div>
+          <div class="wf-tile" style="color:#64748b;">
+            <span>Revisie, onderdelen &amp; ozonbehandeling</span>
+            <strong style="color:#dc2626;">- € 175</strong>
+          </div>
+          <div class="wf-tile" style="color:#64748b;">
+            <span>2-Mans bezorging, inmeten &amp; garantiebuffer</span>
+            <strong style="color:#dc2626;">- € 275</strong>
+          </div>
+          <div class="wf-tile highlight">
+            <span>Netto Cashflow Marge per Stoel</span>
+            <strong style="font-size:1.05rem;">+ € 650 (42%)</strong>
+          </div>
+        </div>
+      `
     },
     {
-      kicker: "05 / 05 • De Overnamedeal",
-      title: "€ 155k Investering • Slechts € 40k Eigen Inleg",
-      subtitle: "50% Bancair met BMKB-garantie, 25% vendor loan van de verkoper en een terugverdientijd van 9 tot 14 maanden.",
-      metric: "ROI in 9–14 Mnd",
+      kicker: "05 / 05 • DE INVESTERINGSSTRUCTUUR",
+      title: "€ 155k Deal • Slechts € 40k Eigen Inleg",
+      subtitle: "50% Bancair met BMKB-garantie, 25% vendor loan van Geertjan en een terugverdientijd binnen een jaar.",
+      metric: "⏱️ Terugverdientijd: 9 tot 14 Maanden",
       caption: "Met 50% BMKB-garantie en een verkoperslening is slechts 40.000 euro eigen inbreng vereist. Terugverdiend binnen een jaar.",
       voiceText: "Met 50 procent B M K B garantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inleg nodig. Binnen een jaar terugverdiend.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      bg: "assets/schipper_partnership_handshake.jpg",
       audio: "assets/audio/scene_5.m4a",
-      durationSec: 10.0
+      durationSec: 10.0,
+      visualHtml: `
+        <div class="deal-stack-box">
+          <div class="stack-tier bank">
+            <div>
+              <strong style="color:#1e3a8a;">50% Bancaire Financiering</strong>
+              <div style="font-size:0.74rem; color:#64748b;">BMKB Staatsgarantie (67,5% borgstelling)</div>
+            </div>
+            <strong style="font-size:1.05rem; color:#1e40af;">€ 75.000</strong>
+          </div>
+          <div class="stack-tier loan">
+            <div>
+              <strong style="color:#92400e;">25% Verkoperslening (Vendor Loan)</strong>
+              <div style="font-size:0.74rem; color:#64748b;">Achtergesteld door Geertjan • 6% rente</div>
+            </div>
+            <strong style="font-size:1.05rem; color:#b45309;">€ 40.000</strong>
+          </div>
+          <div class="stack-tier equity">
+            <div>
+              <strong style="color:var(--green);">25% Eigen Inbreng Ondernemer</strong>
+              <div style="font-size:0.74rem; color:#64748b;">Direct gedekt door operationele cashflow</div>
+            </div>
+            <strong style="font-size:1.1rem; color:var(--green);">€ 40.000</strong>
+          </div>
+        </div>
+      `
     }
   ];
 
@@ -861,9 +1215,30 @@
     document.getElementById('scene-kicker').innerHTML = `<span>0${idx+1} / 05</span> ${s.kicker.split('•')[1] || s.kicker}`;
     document.getElementById('scene-title').textContent = s.title;
     document.getElementById('scene-subtitle').textContent = s.subtitle;
-    document.getElementById('scene-metric').textContent = s.metric;
+    document.getElementById('scene-visual-content').innerHTML = s.visualHtml || '';
+    document.getElementById('scene-metric').innerHTML = s.metric;
     document.getElementById('caption-text').textContent = `"${s.caption}"`;
-    document.getElementById('scene-bg').src = s.bg;
+
+    // Smooth image crossfade
+    const bg = document.getElementById('scene-bg');
+    if (bg && !bg.src.endsWith(s.bg)) {
+      bg.style.opacity = '0.35';
+      setTimeout(() => {
+        bg.src = s.bg;
+        bg.style.opacity = '0.95';
+      }, 120);
+    } else if (bg) {
+      bg.src = s.bg;
+      bg.style.opacity = '0.95';
+    }
+
+    // Trigger overlay entrance animation
+    const overlay = document.getElementById('scene-overlay');
+    if (overlay) {
+      overlay.classList.remove('scene-anim');
+      void overlay.offsetWidth;
+      overlay.classList.add('scene-anim');
+    }
 
     for (let i = 0; i < scenes.length; i++) {
       const card = document.getElementById('card-' + i);
