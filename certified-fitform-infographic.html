@@ -575,11 +575,33 @@
       background: #eef5ec;
     }
 
+    /* Interactive Visualizer Styles */
+    .visual-stage {
+      background: #fafbfa;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    .hotspot-pulse::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      border: 2px solid currentColor;
+      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+
     /* Print styles */
     @media print {
       body { background: #fff; padding: 0; }
       .canvas { border: none; box-shadow: none; padding: 10px; max-width: 100%; }
-      .top-bar, .nav-actions, .banner-cta { display: none; }
+      .top-bar, .nav-actions, .banner-cta, .mode-toggle, .hotspot-pills { display: none; }
       .gap-box.highlight { border: 1.5px solid #23541b; }
       .bottom-banner { background: #23541b !important; -webkit-print-color-adjust: exact; }
     }
@@ -619,6 +641,27 @@
       Hoe een 22 jaar oud slapend domein (staopstoelen.nl) en een fysieke speciaalzaak in Dordrecht (Schipper Compact Wonen) samen het grootste marktvacuüm in de Nederlandse zorg- en seniorenmarkt claimen.
     </p>
   </header>
+
+  <!-- Editorial Visual Hero Banner -->
+  <div style="margin-bottom: 32px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--card-border); position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+    <img src="assets/certified_fitform_occasion_showroom.jpg" alt="Certified Fitform Occasion Showroom Visualisatie" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 440px;">
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, transparent 0%, rgba(15,30,12,0.88) 100%); padding: 22px 26px; color: #ffffff; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <span style="background: rgba(46,96,34,0.9); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 6px;">
+          Fotorealistische Showroom Visualisatie
+        </span>
+        <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 2px;">
+          De Fysieke Beleving: Showroom Dordrecht &amp; Keurmerk
+        </h3>
+        <p style="font-size: 0.84rem; color: #e2ecd9; max-width: 620px;">
+          Cognackleurig leder, medisch gekalibreerd met anatomisch inmeetrapport en voorzien van officieel genummerd keurmerkzegel.
+        </p>
+      </div>
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.15rem; color: #7dd964;">
+        € 1.450 – € 1.850
+      </div>
+    </div>
+  </div>
 
   <!-- Section 1: The Gap -->
   <div class="section-header">
@@ -732,9 +775,124 @@
     </div>
   </div>
 
-  <!-- Section 3: Financials & Deal Architecture -->
+  <!-- Section 3: Product Visualizer -->
+  <div class="section-header" style="justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span class="section-pill">Pijler 3</span>
+      <h2 class="section-name">30-Punts Inspectie &amp; Stoel-Anatomie</h2>
+    </div>
+    <!-- Mode Toggle -->
+    <div class="mode-toggle" style="display: flex; align-items: center; background: #eef2ec; padding: 3px; border-radius: 8px; border: 1px solid var(--card-border);">
+      <button id="btn-certified" onclick="setMode('certified')" style="padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; border: none; cursor: pointer; background: var(--green); color: #fff; transition: all 0.2s;">
+        Certified Fitform
+      </button>
+      <button id="btn-marktplaats" onclick="setMode('marktplaats')" style="padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; border: none; cursor: pointer; background: transparent; color: var(--text-muted); transition: all 0.2s;">
+        Marktplaats Stoel
+      </button>
+    </div>
+  </div>
+
+  <div class="visual-stage">
+    <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; align-items: center;">
+      
+      <!-- Interactive Canvas -->
+      <div style="position: relative; background: #ffffff; border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 350px;">
+        <div id="canvas-badge" style="position: absolute; top: 12px; left: 12px; font-size: 0.72rem; font-weight: 700; background: var(--green-light); color: var(--green); padding: 3px 10px; border-radius: 12px; border: 1px solid #c8dec4;">
+          ✓ 100% Gekeurd &amp; Gecertificeerd
+        </div>
+
+        <div style="position: relative; width: 100%; max-width: 330px; aspect-ratio: 4/3.8; margin-top: 20px; display: flex; align-items: center; justify-content: center;">
+          <svg viewBox="0 0 400 380" style="width: 100%; height: 100%; user-select: none;" id="chair-svg">
+            <defs>
+              <linearGradient id="chairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2e6022" />
+                <stop offset="100%" stop-color="#1b3f14" />
+              </linearGradient>
+              <linearGradient id="chairGradMp" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#64748b" />
+                <stop offset="100%" stop-color="#334155" />
+              </linearGradient>
+            </defs>
+            <path id="part-back" d="M140 70 C140 45, 175 40, 205 45 C230 50, 235 75, 230 180 C228 200, 215 220, 200 230 L160 225 C145 205, 140 120, 140 70 Z" fill="url(#chairGrad)" stroke="#14310d" stroke-width="3" />
+            <path id="part-seat" d="M150 220 C180 225, 250 225, 305 210 C315 215, 318 235, 310 248 C290 262, 210 268, 150 252 Z" fill="url(#chairGrad)" stroke="#14310d" stroke-width="3" />
+            <path id="part-arm" d="M125 150 C125 130, 260 135, 280 155 C290 165, 285 240, 275 255 C270 265, 135 265, 125 245 Z" fill="url(#chairGrad)" opacity="0.92" stroke="#14310d" stroke-width="3" />
+            <path id="part-legrest" d="M305 225 L325 300 C315 305, 290 305, 280 295 L275 255 Z" fill="url(#chairGrad)" stroke="#14310d" stroke-width="2.5" />
+            <path d="M100 330 L330 330 C335 330, 338 335, 335 340 L320 345 L95 345 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+            <rect x="180" y="275" width="50" height="22" rx="4" fill="#475569" stroke="#334155" stroke-width="2" />
+            <circle cx="205" cy="286" r="4" fill="#22c55e" id="motor-led" />
+            <line x1="205" y1="286" x2="295" y2="245" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+            <line x1="205" y1="286" x2="165" y2="180" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+            <circle cx="120" cy="348" r="7" fill="#334155" />
+            <circle cx="310" cy="348" r="7" fill="#334155" />
+          </svg>
+
+          <!-- Hotspots -->
+          <button onclick="selectHotspot(1)" id="hs-1" style="position: absolute; top: 72%; left: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 800; font-size: 0.72rem; border: 2px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.25);" class="hotspot-pulse">1</button>
+          <button onclick="selectHotspot(2)" id="hs-2" style="position: absolute; top: 57%; left: 62%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 800; font-size: 0.72rem; border: 2px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.25);" class="hotspot-pulse">2</button>
+          <button onclick="selectHotspot(3)" id="hs-3" style="position: absolute; top: 34%; left: 46%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 800; font-size: 0.72rem; border: 2px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.25);" class="hotspot-pulse">3</button>
+          <button onclick="selectHotspot(4)" id="hs-4" style="position: absolute; top: 44%; left: 34%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 800; font-size: 0.72rem; border: 2px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.25);" class="hotspot-pulse">4</button>
+          <button onclick="selectHotspot(5)" id="hs-5" style="position: absolute; top: 82%; left: 28%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 800; font-size: 0.72rem; border: 2px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.25);" class="hotspot-pulse">5</button>
+        </div>
+
+        <div style="font-size: 0.74rem; color: var(--text-subtle); margin-top: 14px;">
+          💡 Klik op een nummer op de stoel voor de inspectiedetails
+        </div>
+      </div>
+
+      <!-- Detail Card -->
+      <div style="background: #ffffff; border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 22px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <span id="detail-num" style="width: 22px; height: 22px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 800; font-size: 0.72rem; display: inline-flex; align-items: center; justify-content: center;">1</span>
+            <span id="detail-category" style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--green);">Aandrijftechniek</span>
+          </div>
+
+          <h3 id="detail-title" style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">3 Onafhankelijke Linak Motoren</h3>
+          <p id="detail-desc" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
+            Fitform maakt gebruik van Deense Linak industriële actuatoren. We testen de motoren onder 150 kg belasting op stroompieken, speling en mechanisch geluid.
+          </p>
+
+          <div style="background: var(--bg); border: 1px solid var(--card-border); border-radius: 6px; padding: 12px; font-size: 0.78rem; display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-subtle);">Inspectiepunt:</span>
+              <strong id="detail-check">Koolborstels, spindel, relais &amp; printplaat</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-subtle);">Revisie-actie:</span>
+              <span id="detail-action" style="font-weight: 600; color: var(--green);">Smeren met speciaalvet of Linak vervanging</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-subtle);">Garantie:</span>
+              <span style="font-weight: 700; color: var(--text);">24 maanden volledige omruil</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="risk-benefit-box" style="margin-top: 14px; background: var(--green-light); border: 1px solid #c9dec6; border-radius: 6px; padding: 12px; font-size: 0.78rem;">
+          <div style="font-weight: 700; color: var(--green); margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+            ✓ Waarom dit verkoopt:
+          </div>
+          <p id="risk-benefit-text" style="color: var(--text-muted); line-height: 1.45;">
+            Een particuliere Marktplaats-koper heeft geen idee of een motor na twee weken doorbrandt. Ons keurmerk neemt die angst 100% weg.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Quick Hotspot Selectors -->
+    <div class="hotspot-pills" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--card-border);">
+      <button onclick="selectHotspot(1)" style="padding: 5px 10px; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--card-border); background: #fff; cursor: pointer; font-weight: 600;">1. Linak Motoren</button>
+      <button onclick="selectHotspot(2)" style="padding: 5px 10px; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--card-border); background: #fff; cursor: pointer; font-weight: 600;">2. Maatwerk Inmeting</button>
+      <button onclick="selectHotspot(3)" style="padding: 5px 10px; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--card-border); background: #fff; cursor: pointer; font-weight: 600;">3. Lendensteun</button>
+      <button onclick="selectHotspot(4)" style="padding: 5px 10px; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--card-border); background: #fff; cursor: pointer; font-weight: 600;">4. Dieptereiniging</button>
+      <button onclick="selectHotspot(5)" style="padding: 5px 10px; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--card-border); background: #fff; cursor: pointer; font-weight: 600;">5. Noodaccu &amp; Zegel</button>
+    </div>
+  </div>
+
+  <!-- Section 4: Financials & Deal Architecture -->
   <div class="section-header">
-    <span class="section-pill">Pijler 3</span>
+    <span class="section-pill">Pijler 4</span>
     <h2 class="section-name">Financiële Hefboom &amp; Unit Economics</h2>
   </div>
 
@@ -808,9 +966,9 @@
     </div>
   </div>
 
-  <!-- Section 4: The 5 Reality Shields -->
+  <!-- Section 5: The 5 Reality Shields -->
   <div class="section-header">
-    <span class="section-pill">Pijler 4</span>
+    <span class="section-pill">Pijler 5</span>
     <h2 class="section-name">Risicobeheersing: De 5 'Reken-Je-Niet-Rijk' Filters</h2>
   </div>
 
@@ -873,6 +1031,127 @@
   </div>
 
 </div>
+
+<script>
+  const data = {
+    1: {
+      category: "Aandrijftechniek",
+      title: "3 Onafhankelijke Linak Motoren",
+      desc: "Fitform maakt gebruik van Deense Linak industriële actuatoren. We testen de motoren onder 150 kg belasting op stroompieken, speling en mechanisch geluid.",
+      check: "Koolborstels, spindel, relais & printplaat",
+      action: "Smeren met speciaalvet of Linak vervanging",
+      benefit: "Een particuliere Marktplaats-koper heeft geen idee of een motor na twee weken doorbrandt. Ons keurmerk neemt die angst 100% weg."
+    },
+    2: {
+      category: "Ergonomie & Gezondheid",
+      title: "Maatwerk Inmeting door Geertjan",
+      desc: "Geen mens is gelijk. De zithoogte (40–60 cm), zitdiepte (43–53 cm) en armleggerhoogte worden exact afgesteld op de onderbeen- en bovenbeenlengte van de koper.",
+      check: "Insteekbussen, afstelbouten en kantelhoek",
+      action: "Fysiek afgesteld in werkplaats Dordrecht",
+      benefit: "Verkeerde zithoogte knelt bloedvaten af en veroorzaakt decubitus. Dit maatwerk onderscheidt ons definitief van Marktplaats-dozen."
+    },
+    3: {
+      category: "Wervelkolom & Comfort",
+      title: "Pneumatische Lendensteun (Topline)",
+      desc: "In de rugleuning bevindt zich een regelbare luchtkamer die de natuurlijke S-curve van de wervelkolom optimaal ondersteunt tegen rugpijn.",
+      check: "Luchtdichtheid van de balg & handpompklep",
+      action: "Balg preventief vervangen bij drukverlies",
+      benefit: "Senioren met scoliose of lage rugklachten eisen deze ondersteuning; dit maakt de stoel medisch verantwoord."
+    },
+    4: {
+      category: "Hygiëne & Textiel",
+      title: "Microbiële Dieptereiniging & Ozon",
+      desc: "Elke stoel ondergaat een extractiereiniging met professionele biocide stoom en een geurneutraliserende ozon-behandeling. Vlekvrij en bacterievrij.",
+      check: "Lederconditie, schuimelasticiteit, bacteriën",
+      action: "Dieptereiniging + leder-voeding & impregnering",
+      benefit: "De #1 reden dat mantelzorgers Marktplaats vermijden is de angst voor urine- of huisdiergeuren van een onbekende overledene."
+    },
+    5: {
+      category: "Veiligheid & Zekerheid",
+      title: "Nieuwe Noodaccu & Genummerd Zegel",
+      desc: "Een sta-op stoel moet ook bij stroomuitval omhoog kunnen. We plaatsen een verse back-up batterij en verzegelen de stoel met het Certified Fitform serienummer.",
+      check: "Accucapaciteit (Ah test) & nooddaalcircuit",
+      action: "Nieuwe lithium/loodgel back-up batterij",
+      benefit: "Gegarandeerde veiligheid: senioren komen nooit vast te zitten in de ligstand als de stroom in huis uitvalt."
+    }
+  };
+
+  function selectHotspot(id) {
+    const d = data[id];
+    document.getElementById('detail-num').textContent = id;
+    document.getElementById('detail-category').textContent = d.category;
+    document.getElementById('detail-title').textContent = d.title;
+    document.getElementById('detail-desc').textContent = d.desc;
+    document.getElementById('detail-check').textContent = d.check;
+    document.getElementById('detail-action').textContent = d.action;
+    document.getElementById('risk-benefit-text').textContent = d.benefit;
+
+    for (let i = 1; i <= 5; i++) {
+      const btn = document.getElementById('hs-' + i);
+      if (i === id) {
+        btn.style.transform = "translate(-50%, -50%) scale(1.2)";
+        btn.style.boxShadow = "0 0 0 4px rgba(46, 96, 34, 0.4)";
+      } else {
+        btn.style.transform = "translate(-50%, -50%) scale(1)";
+        btn.style.boxShadow = "0 2px 8px rgba(0,0,0,0.25)";
+      }
+    }
+  }
+
+  function setMode(mode) {
+    const btnCert = document.getElementById('btn-certified');
+    const btnMp = document.getElementById('btn-marktplaats');
+    const badge = document.getElementById('canvas-badge');
+    const chairSvg = document.getElementById('chair-svg');
+    const motorLed = document.getElementById('motor-led');
+    const riskBox = document.getElementById('risk-benefit-box');
+
+    if (mode === 'marktplaats') {
+      btnMp.style.background = "#b91c1c";
+      btnMp.style.color = "#ffffff";
+      btnCert.style.background = "transparent";
+      btnCert.style.color = "var(--text-muted)";
+      badge.style.background = "#fef2f2";
+      badge.style.color = "#b91c1c";
+      badge.style.borderColor = "#fca5a5";
+      badge.innerHTML = "⚠️ Marktplaats: Onbekende Historie &amp; Geen Garantie";
+      chairSvg.querySelectorAll('path').forEach(p => {
+        if (p.id !== 'part-arm' && p.id !== 'part-seat' && p.id !== 'part-back') return;
+        p.setAttribute('fill', 'url(#chairGradMp)');
+        p.setAttribute('stroke', '#334155');
+      });
+      motorLed.setAttribute('fill', '#ef4444');
+      riskBox.style.background = "#fef2f2";
+      riskBox.style.borderColor = "#fecaca";
+      riskBox.querySelector('div').style.color = "#b91c1c";
+      riskBox.querySelector('div').innerHTML = "⚠️ Het Marktplaats Risico:";
+      document.getElementById('risk-benefit-text').textContent = "Geen garantie, doorgezakte schuimkern, verkeerde maatvoering voor de nieuwe koper en een zware klus voor de familie om 70 kg van een zolderverdieping te tillen.";
+    } else {
+      btnCert.style.background = "var(--green)";
+      btnCert.style.color = "#ffffff";
+      btnMp.style.background = "transparent";
+      btnMp.style.color = "var(--text-muted)";
+      badge.style.background = "var(--green-light)";
+      badge.style.color = "var(--green)";
+      badge.style.borderColor = "#c8dec4";
+      badge.innerHTML = "✓ 100% Gekeurd &amp; Gecertificeerd";
+      chairSvg.querySelectorAll('path').forEach(p => {
+        if (p.id !== 'part-arm' && p.id !== 'part-seat' && p.id !== 'part-back') return;
+        p.setAttribute('fill', 'url(#chairGrad)');
+        p.setAttribute('stroke', '#14310d');
+      });
+      motorLed.setAttribute('fill', '#22c55e');
+      riskBox.style.background = "var(--green-light)";
+      riskBox.style.borderColor = "#c9dec6";
+      riskBox.querySelector('div').style.color = "var(--green)";
+      riskBox.querySelector('div').innerHTML = "✓ Waarom dit verkoopt:";
+      selectHotspot(1);
+    }
+  }
+
+  // Initialize hotspot 1
+  selectHotspot(1);
+</script>
 
 </body>
 </html>
