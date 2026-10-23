@@ -338,37 +338,69 @@
     .panel-metric-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: #ffffff;
       border: 2px solid var(--green);
-      padding: 5px 14px;
-      border-radius: 8px;
+      padding: 7px 16px;
+      border-radius: 10px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--green);
-      box-shadow: 0 2px 8px rgba(35, 84, 27, 0.08);
+      box-shadow: 0 2px 10px rgba(35, 84, 27, 0.1);
+    }
+    .panel-metric-pill svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
 
-    .btn-view-toggle {
+    /* Huisstijl Icon Bubbles & Badge Styling */
+    .brand-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--green-light);
+      border: 1.5px solid #c8dec4;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s ease;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
-    .btn-view-toggle:hover {
+    .icon-bubble {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
+    }
+    .icon-bubble svg {
+      width: 20px;
+      height: 20px;
+    }
+    .icon-bubble.green {
       background: var(--green-light);
+      border: 1.5px solid #c8dec4;
       color: var(--green);
-      border-color: #bcdbb4;
+    }
+    .icon-bubble.amber {
+      background: #fef3c7;
+      border: 1.5px solid #fde68a;
+      color: #b45309;
+    }
+    .icon-bubble.red {
+      background: #fee2e2;
+      border: 1.5px solid #fca5a5;
+      color: #b91c1c;
+    }
+    .icon-bubble.blue {
+      background: #dbeafe;
+      border: 1.5px solid #bfdbfe;
+      color: #1e40af;
     }
 
     /* Scene 1: Battle Grid */
@@ -385,8 +417,8 @@
       .battle-vs { display: none; }
     }
     .battle-card {
-      border-radius: 10px;
-      padding: 10px 12px;
+      border-radius: 12px;
+      padding: 12px 14px;
       text-align: left;
       border: 1.5px solid;
     }
@@ -398,61 +430,65 @@
       background: #fffbeb;
       border-color: #fcd34d;
     }
+    .battle-card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
     .battle-tag {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.6px;
       display: block;
-      margin-bottom: 2px;
     }
     .battle-card.bad .battle-tag { color: #b91c1c; }
     .battle-card.warning .battle-tag { color: #d97706; }
     .battle-val {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: #1e293b;
-      margin-bottom: 2px;
+      line-height: 1.1;
     }
     .battle-sub {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: #64748b;
-      line-height: 1.3;
+      line-height: 1.35;
     }
     .battle-vs {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 900;
-      color: #94a3b8;
-      background: #ffffff;
-      width: 28px;
-      height: 28px;
+      color: var(--green);
+      background: var(--green-light);
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #cbd5e1;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      border: 1.5px solid #c8dec4;
+      box-shadow: 0 2px 8px rgba(35, 84, 27, 0.1);
     }
 
     /* Scene 2: Sweet Spot Seal */
     .sweet-badge-box {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 16px;
-      margin: 8px 0;
+      margin: 10px 0;
       width: 100%;
       flex-wrap: wrap;
     }
     .seal-emblem {
       background: linear-gradient(135deg, #23541b 0%, #153510 100%);
       color: #ffffff;
-      border-radius: 10px;
-      padding: 8px 14px;
+      border-radius: 12px;
+      padding: 10px 16px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.8px;
       text-transform: uppercase;
@@ -460,11 +496,16 @@
       border: 1.5px solid #a3d499;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
+    }
+    .seal-emblem svg {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
     }
     .sweet-price-hero {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       font-weight: 900;
       color: var(--green);
       line-height: 1;
@@ -473,121 +514,139 @@
       gap: 8px;
     }
     .sweet-price-sub {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: #94a3b8;
       text-decoration: line-through;
     }
     .sweet-pills {
       display: flex;
-      gap: 6px;
-      justify-content: center;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 6px;
+      margin-top: 8px;
     }
     .sweet-pill {
       background: #ffffff;
-      border: 1px solid var(--border);
+      border: 1.5px solid #c8dec4;
       border-radius: 20px;
-      padding: 3px 10px;
-      font-size: 0.72rem;
+      padding: 5px 12px;
+      font-size: 0.75rem;
       font-weight: 700;
       color: var(--green);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sweet-pill svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
     }
 
     /* Scene 3: Checklist */
     .check-grid {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 7px;
       width: 100%;
-      max-width: 520px;
       margin: 8px 0;
       text-align: left;
     }
     .check-row {
       background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 6px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      font-size: 0.78rem;
+      gap: 12px;
+      font-size: 0.8rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
     .check-left {
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-    .check-left svg {
-      flex-shrink: 0;
-      color: var(--green);
+      gap: 12px;
     }
     .check-status {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 800;
       color: var(--green);
       background: var(--green-light);
-      padding: 2px 7px;
-      border-radius: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
       border: 1px solid #c8dec4;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .check-status svg {
+      width: 13px;
+      height: 13px;
     }
 
     /* Scene 4: Mini Waterfall */
     .waterfall-card-box {
       width: 100%;
-      max-width: 520px;
-      margin: 6px 0;
+      margin: 8px 0;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
     .wf-tile {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 5px 12px;
+      padding: 7px 14px;
       background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 0.78rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+    }
+    .wf-tile-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .wf-tile.highlight {
       background: var(--green-light);
       border-color: #bcdbb4;
       font-weight: 800;
       color: var(--green);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
     }
 
     /* Scene 5: Deal Stack */
     .deal-stack-box {
       width: 100%;
-      max-width: 520px;
-      margin: 6px 0;
+      margin: 8px 0;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 7px;
       text-align: left;
     }
     .stack-tier {
-      padding: 6px 12px;
+      padding: 8px 14px;
       background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
+      gap: 12px;
     }
-    .stack-tier.bank { border-left: 4px solid #2563eb; }
-    .stack-tier.loan { border-left: 4px solid #d97706; }
-    .stack-tier.equity { border-left: 4px solid var(--green); }
+    .stack-tier-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .stack-tier.bank { border-left: 5px solid #2563eb; }
+    .stack-tier.loan { border-left: 5px solid #d97706; }
+    .stack-tier.equity { border-left: 5px solid var(--green); }
 
     /* Player Controls Bar */
     .player-controls {
@@ -609,15 +668,19 @@
       background: var(--green);
       color: #ffffff;
       border: none;
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(35, 84, 27, 0.3);
+      box-shadow: 0 4px 16px rgba(35, 84, 27, 0.35);
       transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn-play svg {
+      width: 22px;
+      height: 22px;
     }
 
     .btn-play:hover {
@@ -627,27 +690,32 @@
 
     .btn-step {
       background: #ffffff;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.15s ease;
     }
+    .btn-step svg {
+      width: 18px;
+      height: 18px;
+    }
 
     .btn-step:hover {
-      color: var(--text);
+      color: var(--green);
       border-color: #bcdbb4;
       background: var(--green-light);
+      transform: scale(1.05);
     }
 
     .time-display {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: var(--text-subtle);
     }
@@ -659,28 +727,110 @@
     .ctrl-right {
       display: flex;
       align-items: center;
+      gap: 10px;
+    }
+
+    .btn-view-toggle {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-view-toggle svg {
+      width: 18px;
+      height: 18px;
+      color: var(--green);
+    }
+
+    .btn-view-toggle:hover {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: #bcdbb4;
+      transform: translateY(-1px);
     }
 
     .btn-audio {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: var(--green-light);
-      border: 1px solid #c8dec4;
+      border: 1.5px solid #c8dec4;
       color: var(--green);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.78rem;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.15s ease;
+    }
+    .btn-audio svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn-audio:hover {
+      background: #dcefd7;
+      border-color: #a8d59e;
+      transform: translateY(-1px);
     }
 
     .btn-audio.muted {
       background: #f1f5f9;
       border-color: #cbd5e1;
       color: #64748b;
+    }
+
+    .story-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .story-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--green-light);
+      border: 1px solid #c8dec4;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .story-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .script-title-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .script-title-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--green-light);
+      border: 1px solid #c8dec4;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .script-title-icon svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* Scene Selection List below */
@@ -815,14 +965,19 @@
   <!-- Nav -->
   <div class="video-nav">
     <a href="certified-fitform-concept.html" class="nav-brand">
+      <span class="brand-icon-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10M9 22h6M12 2a7 7 0 0 0-7 7v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9a7 7 0 0 0-7-7z"></path></svg>
+      </span>
       staopstoelen<span>.nl</span>
       <span style="color:var(--text-subtle); font-size:0.8rem; font-weight:400;">| 60-Seconden Video Pitch</span>
     </a>
     <div class="nav-links">
       <a href="certified-fitform-infographic.html" class="btn-quiet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
         Infographic
       </a>
       <a href="certified-fitform-concept.html" class="btn-quiet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
         Volledig Rapport
       </a>
     </div>
@@ -873,15 +1028,29 @@
           <div id="scene-visual-content" class="panel-visual-box">
             <div class="battle-grid">
               <div class="battle-card bad">
-                <span class="battle-tag">🔴 Fabrieksnieuw</span>
-                <div class="battle-val">€ 4.500+</div>
-                <div class="battle-sub">Onbetaalbaar voor 70% • 8–12 wkn wachttijd</div>
+                <div class="battle-card-top">
+                  <div class="icon-bubble red">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  </div>
+                  <div>
+                    <span class="battle-tag">Fabrieksnieuw</span>
+                    <div class="battle-val">€ 4.500+</div>
+                  </div>
+                </div>
+                <div class="battle-sub">Onbetaalbaar voor 70% van senioren • 8–12 wkn levertijd</div>
               </div>
               <div class="battle-vs">VS</div>
               <div class="battle-card warning">
-                <span class="battle-tag">⚠️ Marktplaats</span>
-                <div class="battle-val">€ 500</div>
-                <div class="battle-sub">Onhygiënisch • Geen garantie • Foute maat</div>
+                <div class="battle-card-top">
+                  <div class="icon-bubble amber">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  </div>
+                  <div>
+                    <span class="battle-tag">Marktplaats</span>
+                    <div class="battle-val">€ 500</div>
+                  </div>
+                </div>
+                <div class="battle-sub">Onhygiënisch • Geen garantie • Verkeerde maat</div>
               </div>
             </div>
           </div>
@@ -889,6 +1058,7 @@
             Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.
           </p>
           <div class="panel-metric-pill" id="scene-metric">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
             70% Onbediende Doelgroep
           </div>
         </div>
@@ -900,13 +1070,13 @@
     <div class="player-controls">
       <div class="ctrl-left">
         <button class="btn-play" id="btn-play" onclick="togglePlay()" title="Afspelen / Pauzeren">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="play-icon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="play-icon"><polygon points="6 4 20 12 6 20"></polygon></svg>
         </button>
         <button class="btn-step" onclick="prevScene()" title="Vorige scène">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
         <button class="btn-step" onclick="nextScene()" title="Volgende scène">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
         <div class="time-display">
           <span id="current-time">0:00</span> / 1:00
@@ -915,11 +1085,12 @@
 
       <div class="ctrl-right">
         <button class="btn-view-toggle" id="btn-view" onclick="toggleViewMode()" title="Wissel weergave">
-          <span id="view-icon">⊞</span> <span id="view-label">Bioscoop Modus</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" id="view-icon"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+          <span id="view-label">Bioscoop Modus</span>
         </button>
         <button class="btn-audio" id="btn-voice" onclick="toggleVoice()" title="Vrouwelijke Voice-over stem">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-          <span id="voice-label">👩 Vrouwenstem Actief</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" id="voice-icon"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          <span id="voice-label">Vrouwenstem Actief</span>
         </button>
       </div>
     </div>
@@ -934,31 +1105,56 @@
 
     <div class="story-grid">
       <div class="story-card active" id="card-0" onclick="jumpToScene(0)">
-        <div class="story-time">0:00 – 0:12</div>
+        <div class="story-card-header">
+          <div class="story-time">0:00 – 0:12</div>
+          <div class="story-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+        </div>
         <div class="story-title">1. Het Marktvacuüm</div>
         <div class="story-desc">Het gat tussen onbetaalbaar nieuw (€ 4.500) en risicovol Marktplaats.</div>
       </div>
 
       <div class="story-card" id="card-1" onclick="jumpToScene(1)">
-        <div class="story-time">0:12 – 0:24</div>
+        <div class="story-card-header">
+          <div class="story-time">0:12 – 0:24</div>
+          <div class="story-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          </div>
+        </div>
         <div class="story-title">2. De Sweet Spot</div>
         <div class="story-desc">Certified Fitform: € 1.550 met keurmerkzegel &amp; showroom Dordrecht.</div>
       </div>
 
       <div class="story-card" id="card-2" onclick="jumpToScene(2)">
-        <div class="story-time">0:24 – 0:36</div>
+        <div class="story-card-header">
+          <div class="story-time">0:24 – 0:36</div>
+          <div class="story-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </div>
+        </div>
         <div class="story-title">3. 30-Punts Keuring</div>
         <div class="story-desc">Revisie, Linak motoren, ozon-extractie en inmeting door Geertjan.</div>
       </div>
 
       <div class="story-card" id="card-3" onclick="jumpToScene(3)">
-        <div class="story-time">0:36 – 0:48</div>
+        <div class="story-card-header">
+          <div class="story-time">0:36 – 0:48</div>
+          <div class="story-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+          </div>
+        </div>
         <div class="story-title">4. Unit Economics</div>
         <div class="story-desc">€ 650 netto marge (42%), € 7.800/mnd cashflow bij 12 stoelen.</div>
       </div>
 
       <div class="story-card" id="card-4" onclick="jumpToScene(4)">
-        <div class="story-time">0:48 – 1:00</div>
+        <div class="story-card-header">
+          <div class="story-time">0:48 – 1:00</div>
+          <div class="story-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+        </div>
         <div class="story-title">5. De Overnamedeal</div>
         <div class="story-desc">€ 155k investering, € 40k eigen inleg, vendor loan &amp; BMKB garantie.</div>
       </div>
@@ -967,7 +1163,12 @@
 
   <!-- Live Draaiboek voor Opnames -->
   <div class="script-box">
-    <div class="script-title">🎥 Draaiboek voor Video-Opname of AI-Productie (HeyGen / Runway)</div>
+    <div class="script-title-box">
+      <div class="script-title-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+      </div>
+      <div class="script-title" style="margin-bottom:0;">Draaiboek voor Video-Opname of AI-Productie (HeyGen / Runway)</div>
+    </div>
     <table class="script-table">
       <thead>
         <tr>
@@ -1024,11 +1225,15 @@
     if (isCinemaMode) {
       wrapper.classList.add('mode-cinema');
       label.textContent = "Zij-aan-Zij Modus";
-      icon.textContent = "◫";
+      if (icon) {
+        icon.innerHTML = '<rect x="2" y="4" width="20" height="16" rx="2"></rect><polygon points="10 9 15 12 10 15" fill="currentColor"></polygon>';
+      }
     } else {
       wrapper.classList.remove('mode-cinema');
       label.textContent = "Bioscoop Modus";
-      icon.textContent = "⊞";
+      if (icon) {
+        icon.innerHTML = '<rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line>';
+      }
     }
   }
 
@@ -1038,7 +1243,7 @@
       kicker: "01 / 05 • HET MARKTVACUÜM",
       title: "Tussen € 4.500 Nieuw & € 500 Marktplaats",
       subtitle: "Fabrieksnieuw is voor 70% van de senioren onbetaalbaar. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.",
-      metric: "70% Onbediende Doelgroep",
+      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg> 70% Onbediende Doelgroep',
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "Een nieuwe ergonomische sta-op stoel kost al snel 4500 euro. Te duur voor velen. Maar op Marktplaats koopt men een onhygiënische gok: zonder garantie en met de verkeerde maat.",
       bg: "assets/senior_chair_dilemma.jpg",
@@ -1047,15 +1252,29 @@
       visualHtml: `
         <div class="battle-grid">
           <div class="battle-card bad">
-            <span class="battle-tag">🔴 Fabrieksnieuw</span>
-            <div class="battle-val">€ 4.500+</div>
-            <div class="battle-sub">Onbetaalbaar voor 70% • 8–12 wkn levertijd</div>
+            <div class="battle-card-top">
+              <div class="icon-bubble red">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              </div>
+              <div>
+                <span class="battle-tag">Fabrieksnieuw</span>
+                <div class="battle-val">€ 4.500+</div>
+              </div>
+            </div>
+            <div class="battle-sub">Onbetaalbaar voor 70% van senioren • 8–12 wkn levertijd</div>
           </div>
           <div class="battle-vs">VS</div>
           <div class="battle-card warning">
-            <span class="battle-tag">⚠️ Marktplaats</span>
-            <div class="battle-val">€ 500</div>
-            <div class="battle-sub">Onhygiënisch • Geen garantie • Foute maat</div>
+            <div class="battle-card-top">
+              <div class="icon-bubble amber">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              </div>
+              <div>
+                <span class="battle-tag">Marktplaats</span>
+                <div class="battle-val">€ 500</div>
+              </div>
+            </div>
+            <div class="battle-sub">Onhygiënisch • Geen garantie • Verkeerde maat</div>
           </div>
         </div>
       `
@@ -1065,7 +1284,7 @@
       kicker: "02 / 05 • DE SWEET SPOT",
       title: "Certified Fitform: Fabriekskwaliteit voor € 1.550",
       subtitle: "Officiële Wellco/Fitform modellen met genummerd keurmerkzegel, direct leverbaar uit de showroom in Dordrecht.",
-      metric: "€ 1.550 • Direct Leverbaar",
+      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> € 1.550 • Direct Leverbaar',
       caption: "staopstoelen.nl vult dit gat met Certified Fitform Occasions: topkwaliteit voor 1.550 euro mét 24 maanden garantie.",
       voiceText: "Staopstoelen punt nl vult dit gat met Certified Fitform Occasions. Topkwaliteit van Nederlands fabricaat voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
       bg: "assets/certified_fitform_occasion_showroom.jpg",
@@ -1074,7 +1293,7 @@
       visualHtml: `
         <div class="sweet-badge-box">
           <div class="seal-emblem">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
             Certified Fitform
           </div>
           <div class="sweet-price-hero">
@@ -1083,9 +1302,18 @@
           </div>
         </div>
         <div class="sweet-pills">
-          <span class="sweet-pill">✓ 30-Punts Keuring</span>
-          <span class="sweet-pill">✓ 24 Mnd Volledige Garantie</span>
-          <span class="sweet-pill">✓ Showroom Dordrecht</span>
+          <span class="sweet-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            30-Punts Keuring
+          </span>
+          <span class="sweet-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            24 Mnd Volledige Garantie
+          </span>
+          <span class="sweet-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Showroom Dordrecht
+          </span>
         </div>
       `
     },
@@ -1094,7 +1322,7 @@
       kicker: "03 / 05 • VAKMANSCHAP & REVISIE",
       title: "30-Punts Keuring & Inmeting Geertjan",
       subtitle: "Linak motoren getest op 150 kg, ozon-extractie en zithoogte op de millimeter afgesteld op het lichaam van de koper.",
-      metric: "🛡️ Retouren < 2%",
+      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg> Retouren &lt; 2%',
       caption: "Elke stoel ondergaat een 30-punten inspectie en wordt door Geertjan exact op maat afgesteld.",
       voiceText: "Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door Geertjan exact op maat afgesteld. Retouren zijn minder dan twee procent.",
       bg: "assets/dutch_technician_fitform_workshop.jpg",
@@ -1104,24 +1332,48 @@
         <div class="check-grid">
           <div class="check-row">
             <div class="check-left">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>Linak Motoren</strong>: 150 kg belastingtest &amp; elektronica</span>
+              <div class="icon-bubble green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </div>
+              <div>
+                <strong>Linak Motoren &amp; Mechaniek</strong>
+                <div style="font-size:0.72rem; color:#64748b;">150 kg belastingtest, bekabeling &amp; afstandsbediening</div>
+              </div>
             </div>
-            <span class="check-status">100% OK</span>
+            <span class="check-status">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              100% OK
+            </span>
           </div>
           <div class="check-row">
             <div class="check-left">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>Dieptereiniging</strong>: Ozon-extractie &amp; antibacterieel</span>
+              <div class="icon-bubble green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+              </div>
+              <div>
+                <strong>Dieptereiniging &amp; Ozon-Extractie</strong>
+                <div style="font-size:0.72rem; color:#64748b;">100% bacterie- en geurvrij, leder/stof als nieuw</div>
+              </div>
             </div>
-            <span class="check-status">GECERTIFICEERD</span>
+            <span class="check-status">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              GEKEURD
+            </span>
           </div>
           <div class="check-row">
             <div class="check-left">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>Inmeting Geertjan</strong>: Zithoogte, -diepte &amp; armleggers</span>
+              <div class="icon-bubble green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2"></rect><line x1="6" y1="7" x2="6" y2="11"></line><line x1="10" y1="7" x2="10" y2="13"></line><line x1="14" y1="7" x2="14" y2="11"></line><line x1="18" y1="7" x2="18" y2="13"></line></svg>
+              </div>
+              <div>
+                <strong>Inmeting Geertjan op Maat</strong>
+                <div style="font-size:0.72rem; color:#64748b;">Zithoogte, -diepte en armleggers exact afgesteld</div>
+              </div>
             </div>
-            <span class="check-status">OP MAAT</span>
+            <span class="check-status">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              OP MAAT
+            </span>
           </div>
         </div>
       `
@@ -1131,7 +1383,7 @@
       kicker: "04 / 05 • CASHFLOW & MARGES",
       title: "€ 650 Netto Marge per Stoel (42%)",
       subtitle: "Conservatief doorgerekend inclusief inkoop, onderdelen, 2-mans bezorging en servicebuffers.",
-      metric: "📈 +€ 7.800 Netto / Mnd (bij 12 stoelen)",
+      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> +€ 7.800 Netto / Mnd (bij 12 stoelen)',
       caption: "De unit economics zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over.",
       voiceText: "De unit economics zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over. Goed voor 7800 euro cashflow per maand.",
       bg: "assets/unit_economics_fitform_showroom.jpg",
@@ -1140,23 +1392,38 @@
       visualHtml: `
         <div class="waterfall-card-box">
           <div class="wf-tile">
-            <span>Verkoopprijs Certified Occasion</span>
+            <div class="wf-tile-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              <span>Verkoopprijs Certified Occasion</span>
+            </div>
             <strong style="color:var(--green); font-size:0.95rem;">€ 1.550</strong>
           </div>
           <div class="wf-tile" style="color:#64748b;">
-            <span>Inkoop occasion Fitform</span>
+            <div class="wf-tile-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span>Inkoop occasion Fitform</span>
+            </div>
             <strong style="color:#dc2626;">- € 450</strong>
           </div>
           <div class="wf-tile" style="color:#64748b;">
-            <span>Revisie, onderdelen &amp; ozonbehandeling</span>
+            <div class="wf-tile-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              <span>Revisie, onderdelen &amp; ozonbehandeling</span>
+            </div>
             <strong style="color:#dc2626;">- € 175</strong>
           </div>
           <div class="wf-tile" style="color:#64748b;">
-            <span>2-Mans bezorging, inmeten &amp; garantiebuffer</span>
+            <div class="wf-tile-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <span>2-Mans bezorging, inmeten &amp; garantiebuffer</span>
+            </div>
             <strong style="color:#dc2626;">- € 275</strong>
           </div>
           <div class="wf-tile highlight">
-            <span>Netto Cashflow Marge per Stoel</span>
+            <div class="wf-tile-left">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <span>Netto Cashflow Marge per Stoel</span>
+            </div>
             <strong style="font-size:1.05rem;">+ € 650 (42%)</strong>
           </div>
         </div>
@@ -1167,7 +1434,7 @@
       kicker: "05 / 05 • DE INVESTERINGSSTRUCTUUR",
       title: "€ 155k Deal • Slechts € 40k Eigen Inleg",
       subtitle: "50% Bancair met BMKB-garantie, 25% vendor loan van Geertjan en een terugverdientijd binnen een jaar.",
-      metric: "⏱️ Terugverdientijd: 9 tot 14 Maanden",
+      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg> Terugverdientijd: 9 tot 14 Maanden',
       caption: "Met 50% BMKB-garantie en een verkoperslening is slechts 40.000 euro eigen inbreng vereist. Terugverdiend binnen een jaar.",
       voiceText: "Met 50 procent B M K B garantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inleg nodig. Binnen een jaar terugverdiend.",
       bg: "assets/schipper_partnership_handshake.jpg",
@@ -1176,23 +1443,38 @@
       visualHtml: `
         <div class="deal-stack-box">
           <div class="stack-tier bank">
-            <div>
-              <strong style="color:#1e3a8a;">50% Bancaire Financiering</strong>
-              <div style="font-size:0.74rem; color:#64748b;">BMKB Staatsgarantie (67,5% borgstelling)</div>
+            <div class="stack-tier-left">
+              <div class="icon-bubble blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <div>
+                <strong style="color:#1e3a8a;">50% Bancaire Financiering</strong>
+                <div style="font-size:0.74rem; color:#64748b;">BMKB Staatsgarantie (67,5% borgstelling RVO)</div>
+              </div>
             </div>
             <strong style="font-size:1.05rem; color:#1e40af;">€ 75.000</strong>
           </div>
           <div class="stack-tier loan">
-            <div>
-              <strong style="color:#92400e;">25% Verkoperslening (Vendor Loan)</strong>
-              <div style="font-size:0.74rem; color:#64748b;">Achtergesteld door Geertjan • 6% rente</div>
+            <div class="stack-tier-left">
+              <div class="icon-bubble amber">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div>
+                <strong style="color:#92400e;">25% Verkoperslening (Vendor Loan)</strong>
+                <div style="font-size:0.74rem; color:#64748b;">Achtergesteld door Geertjan • 6% rente</div>
+              </div>
             </div>
             <strong style="font-size:1.05rem; color:#b45309;">€ 40.000</strong>
           </div>
           <div class="stack-tier equity">
-            <div>
-              <strong style="color:var(--green);">25% Eigen Inbreng Ondernemer</strong>
-              <div style="font-size:0.74rem; color:#64748b;">Direct gedekt door operationele cashflow</div>
+            <div class="stack-tier-left">
+              <div class="icon-bubble green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </div>
+              <div>
+                <strong style="color:var(--green);">25% Eigen Inbreng Ondernemer</strong>
+                <div style="font-size:0.74rem; color:#64748b;">Direct gedekt door operationele cashflow</div>
+              </div>
             </div>
             <strong style="font-size:1.1rem; color:var(--green);">€ 40.000</strong>
           </div>
@@ -1399,7 +1681,8 @@
     isPlaying = true;
     const stage = document.getElementById('stage-split-wrapper');
     if (stage) stage.classList.add('playing');
-    document.getElementById('play-icon').innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+    const pIcon = document.getElementById('play-icon');
+    if (pIcon) pIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1.5"></rect><rect x="14" y="4" width="4" height="16" rx="1.5"></rect>';
     renderScene(currentScene);
   }
 
@@ -1407,7 +1690,8 @@
     isPlaying = false;
     const stage = document.getElementById('stage-split-wrapper');
     if (stage) stage.classList.remove('playing');
-    document.getElementById('play-icon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+    const pIcon = document.getElementById('play-icon');
+    if (pIcon) pIcon.innerHTML = '<polygon points="6 4 20 12 6 20"></polygon>';
     stopAudio();
   }
 
@@ -1438,13 +1722,20 @@
     voiceEnabled = !voiceEnabled;
     const btn = document.getElementById('btn-voice');
     const label = document.getElementById('voice-label');
+    const icon = document.getElementById('voice-icon');
     if (voiceEnabled) {
       btn.className = "btn-audio";
-      label.textContent = "👩 Vrouwenstem Actief";
+      label.textContent = "Vrouwenstem Actief";
+      if (icon) {
+        icon.innerHTML = '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line>';
+      }
       if (isPlaying) playSceneAudio(currentScene);
     } else {
       btn.className = "btn-audio muted";
-      label.textContent = "🔇 Stem Gedempt";
+      label.textContent = "Stem Gedempt";
+      if (icon) {
+        icon.innerHTML = '<line x1="1" y1="1" x2="23" y2="23"></line><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V5a3 3 0 0 0-5.68-1.33"></path><path d="M19 10v2a7 7 0 0 1-.14 1.38M12 19v4M8 23h8"></path>';
+      }
       stopAudio();
       if (isPlaying) startFallbackTimer(scenes[currentScene].durationSec);
     }
