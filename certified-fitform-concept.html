@@ -453,10 +453,119 @@
       border-top: 1px solid var(--border-color);
     }
 
+    /* Executive Summary Block */
+    .memo-summary {
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcf9 100%);
+      border: 1.5px solid #dbe6d6;
+      border-left: 6px solid var(--brand-green);
+      border-radius: var(--radius-md);
+      padding: 32px 30px;
+      margin-bottom: 34px;
+      box-shadow: 0 4px 20px rgba(46, 96, 34, 0.05);
+    }
+
+    .summary-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--brand-green-light);
+      color: var(--brand-green);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .summary-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .summary-intro {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 860px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .summary-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .summary-card-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--brand-green);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .summary-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .summary-card-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .summary-callout {
+      background: var(--bg-accent);
+      border: 1px solid #d2e4cb;
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.55;
+    }
+
+    .summary-callout svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--brand-green);
+    }
+
+    .summary-callout strong {
+      color: var(--brand-green);
+    }
+
     @media print {
       body { background: #fff; padding: 0; font-size: 10pt; }
       .memo-nav, .btn-quiet { display: none; }
-      .memo-section { border: 1px solid #ddd; margin-bottom: 14px; page-break-inside: avoid; }
+      .memo-section, .memo-summary { border: 1px solid #ddd; margin-bottom: 14px; page-break-inside: avoid; }
     }
   </style>
 </head>
@@ -487,6 +596,82 @@
       Gerealiseerd met 65% brutomarge en een gerichte online tractie op <strong>staopstoelen.nl</strong>.
     </p>
   </header>
+
+  <!-- Executive Summary / Managementsamenvatting in 60 seconden -->
+  <section class="memo-summary">
+    <div class="summary-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      Managementsamenvatting &bull; 60 Seconden
+    </div>
+    <h2 class="summary-heading">De Essentie van het Dossier in 5 Kernpunten</h2>
+    <p class="summary-intro">
+      Dit memo verbindt de fysieke overname van Schipper Compact Wonen Dordrecht met de herpositionering van het 22 jaar oude domein <strong>staopstoelen.nl</strong>. Onderstaand de strategische en financiële samenvatting op directieniveau:
+    </p>
+
+    <div class="summary-grid">
+      <!-- Pijler 1 -->
+      <div class="summary-card">
+        <div class="summary-card-num">
+          <span>01</span> Marktleemte &amp; Sweet Spot
+        </div>
+        <div class="summary-card-title">Hét alternatief tussen € 4.500 en € 500</div>
+        <p class="summary-card-desc">
+          Er heerst een vacuüm tussen onbetaalbaar nieuw (€ 3.500–€ 5.500+) en een onhygiënische gok op Marktplaats (€ 400–€ 750). Door Fitform-stoelen technisch te reviseren, op lichaamsmaat af te stellen en met 24 maanden garantie te leveren (€ 1.450–€ 1.850), bedienen we de grootste onbediende groep senioren en mantelzorgers.
+        </p>
+      </div>
+
+      <!-- Pijler 2 -->
+      <div class="summary-card">
+        <div class="summary-card-num">
+          <span>02</span> Fabrikantrelatie Wellco
+        </div>
+        <div class="summary-card-title">Bondgenoot i.p.v. Bedreiging</div>
+        <p class="summary-card-desc">
+          Fitform reviseert zelf uitsluitend via een intern B2B RECO-programma voor dealers en weigert principieel om direct aan consumenten (D2C) te verkopen om retailruzies te voorkomen. `staopstoelen.nl` beschermt hun merkwaarde, haalt verouderde 'rotzooi' van Marktplaats en fungeert als structurele afnemer van officiële onderdelen.
+        </p>
+      </div>
+
+      <!-- Pijler 3 -->
+      <div class="summary-card">
+        <div class="summary-card-num">
+          <span>03</span> Data-Realiteit &amp; Dealmandate
+        </div>
+        <div class="summary-card-title">Winkel draait op schippercompactwonen.nl</div>
+        <p class="summary-card-desc">
+          GA4-data bewijst dat de huidige € 20k/mnd omzet rust op <code>schippercompactwonen.nl</code> (212 organische Google-sessies/mnd). <code>staopstoelen.nl</code> heeft historisch 0 tractie en vertegenwoordigt € 0 goodwill. Beide domeinen en de Google Reviews moeten onvoorwaardelijk en zonder meerprijs in de overnameovereenkomst worden verankerd.
+        </p>
+      </div>
+
+      <!-- Pijler 4 -->
+      <div class="summary-card">
+        <div class="summary-card-num">
+          <span>04</span> Financiële Structuur
+        </div>
+        <div class="summary-card-title">€ 155k investering / € 40k eigen inleg</div>
+        <p class="summary-card-desc">
+          Totale overnamesom inclusief werkkapitaal bedraagt € 155.000. Door 50% bancair/BMKB (€ 75k) en 25% achtergestelde verkoperslening (€ 40k) te benutten, is de eigen vermogensinzet beperkt tot € 40k. Met 12 stoelen per maand is het break-even punt al in maand 4 bereikt en is de eigen inleg binnen 9 tot 14 maanden terugverdiend.
+        </p>
+      </div>
+
+      <!-- Pijler 5 -->
+      <div class="summary-card">
+        <div class="summary-card-num">
+          <span>05</span> Risicobeheersing
+        </div>
+        <div class="summary-card-title">Geen grootheidswaanzin, direct starten</div>
+        <p class="summary-card-desc">
+          We rekenen ons niet rijk: we hanteren een conservatieve netto marge van € 650 per stoel (inclusief transport, servicebuffer en 2-mans montage). We starten lean met de ~10 Fitform-stoelen die al in de showroom staan en richten de actieradius strak in op de kansrijke 35 km-straal rond Dordrecht (Rotterdam, Drechtsteden, Alblasserwaard).
+        </p>
+      </div>
+    </div>
+
+    <div class="summary-callout">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      <div>
+        <strong>Strategische Conclusie:</strong> De winkel in Dordrecht fungeert als de operationele ruggengraat (showroom, werkplaats, ervaren personeel, lokale cashflow); het domein <code>staopstoelen.nl</code> fungeert als de schaalbare hefboom voor landelijke inkoop en gecertificeerde verkoop. Dankzij de 25% vendor loan is het neerwaartse risico maximaal gedeeld met de verkoper, terwijl het opwaartse herpositioneringspotentieel volledig bij de koper ligt.
+      </div>
+    </div>
+  </section>
 
   <!-- 1. Marktleemte -->
   <section class="memo-section">
