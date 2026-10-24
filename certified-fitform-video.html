@@ -731,11 +731,11 @@
         align-items: flex-start !important;
         text-align: left !important;
       }
-      .corner-panel-sticker {
-        top: -14px !important;
+      .corner-box-sticker {
+        top: -16px !important;
         right: 12px !important;
-        width: 82px !important;
-        height: 82px !important;
+        width: 88px !important;
+        height: 88px !important;
       }
       .has-corner-sticker .panel-title {
         padding-right: 76px !important;
@@ -1035,41 +1035,36 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
-    /* Scene 2: Sweet Spot Corner Sticker & Left-Aligned Price Layout */
+    /* Scene 2: Sweet Spot Grote Sticker op Rechtsboven Hoek van de Box */
     .has-corner-sticker .panel-title {
-      padding-right: 70px;
+      padding-right: 74px;
     }
 
-    .corner-panel-sticker {
+    .corner-box-sticker {
       position: absolute;
-      top: -18px;
-      right: -24px;
-      z-index: 25;
-      width: 106px;
-      height: 106px;
+      top: -24px;
+      right: -32px;
+      z-index: 30;
+      width: 120px;
+      height: 120px;
       display: block;
-      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
-      transform: rotate(8deg);
+      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.38)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.20));
+      transform: rotate(9deg);
       transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
       cursor: pointer;
       pointer-events: auto;
     }
-    .corner-panel-sticker:hover {
+    .corner-box-sticker:hover {
       transform: rotate(0deg) scale(1.08);
-      filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.45));
+      filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.48));
     }
 
-    .sweet-scene2-wrap {
-      width: 100%;
-      text-align: left;
-      position: relative;
-    }
     .sweet-price-box {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 8px;
-      margin: 10px 0 14px 0;
+      margin: 10px 0 16px 0;
       text-align: left;
     }
     .sweet-price-hero {
@@ -2218,6 +2213,8 @@
 
       <!-- RIGHT: Zwevend reclamepaneel dat over de video heen valt -->
       <div class="companion-panel" id="companion-panel">
+        <!-- Grote Kwaliteitssticker rechtsboven op de hoek van de box -->
+        <div id="companion-corner-badge"></div>
         <div class="panel-inner scene-anim" id="panel-content">
           <div class="panel-kicker" id="scene-kicker">
             <span class="kicker-dot"></span> MARKTVACUÜM
@@ -2528,19 +2525,14 @@
       audio: "assets/audio/scene_2.m4a",
       durationSec: 13.3,
       visualHtml: `
-        <div class="sweet-scene2-wrap">
-          <!-- Grote Officiële Certified Fitform Kwaliteitssticker rechtsboven overlappend op de hoek van de box -->
-          <img src="assets/sticker_certified_fitform.svg?v=2.0" alt="Certified Fitform Kwaliteitssticker" class="corner-panel-sticker" width="106" height="106" title="Officiële Certified Fitform Kwaliteitszegel">
-
-          <div class="sweet-price-box">
-            <div class="sweet-price-hero">
-              €&nbsp;1.550
-              <span class="sweet-price-sub">nieuw €&nbsp;4.500</span>
-            </div>
-            <div class="sweet-guarantee-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              24 Mnd Volledige Omruilgarantie
-            </div>
+        <div class="sweet-price-box">
+          <div class="sweet-price-hero">
+            €&nbsp;1.550
+            <span class="sweet-price-sub">nieuw €&nbsp;4.500</span>
+          </div>
+          <div class="sweet-guarantee-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            24 Mnd Volledige Omruilgarantie
           </div>
         </div>
       `
@@ -2928,6 +2920,16 @@
       kickerEl.innerHTML = `<span class="kicker-dot"></span> ${kickerText}`;
     }
     document.getElementById('scene-title').innerHTML = s.title;
+
+    // Grote Certified Fitform sticker rechtsboven op de hoek van de box (in Scène 2)
+    const badgeEl = document.getElementById('companion-corner-badge');
+    if (badgeEl) {
+      if (idx === 1) {
+        badgeEl.innerHTML = `<img src="assets/sticker_certified_fitform.svg?v=3.0" alt="Certified Fitform staopstoelen.nl" class="corner-box-sticker" width="120" height="120" title="Certified Fitform staopstoelen.nl">`;
+      } else {
+        badgeEl.innerHTML = '';
+      }
+    }
 
     const subEl = document.getElementById('scene-subtitle');
     if (subEl) {
