@@ -2230,7 +2230,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
           <div class="video-lightbox-actions">
             <a href="waarom-certified-fitform.html" id="videoLightboxMoreLink" class="video-lightbox-link">Bekijk vergelijkingstabel &amp; details &rarr;</a>
             <button type="button" class="video-lightbox-close" onclick="closeCertifiedVideoModal()" aria-label="Sluit video">
-              <span>&#10005; Sluiten</span>
+              &#10005;
             </button>
           </div>
         </div>
