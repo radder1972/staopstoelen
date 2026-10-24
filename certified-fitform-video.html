@@ -517,55 +517,75 @@
       pointer-events: none;
     }
 
-    /* Broadcast Brand Logo & Strapline on Video Screen: Puur Logo + Strapline, ZONDER pil-vorm */
-    .video-brand-overlay {
+    /* Creatieve Hoek-Uitsnede met Bedrijfskleuren & Liquid Swooshes */
+    .video-corner-swoosh-badge {
       position: absolute;
-      top: 24px;
-      left: 26px;
+      top: 0;
+      left: 0;
       z-index: 12;
       pointer-events: none;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 10px 24px 6px 18px;
+      border-bottom-right-radius: 26px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22), 0 1px 4px rgba(0, 0, 0, 0.08);
+      border-right: 1.5px solid rgba(243, 146, 35, 0.4);
+      border-bottom: 1.5px solid rgba(243, 146, 35, 0.4);
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 3px;
-      line-height: 1;
-      transition: all 0.35s ease;
+      gap: 2px;
+      min-width: 210px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .stage-split-wrapper.box-left .video-brand-overlay {
+    .stage-split-wrapper.box-left .video-corner-swoosh-badge {
       left: auto;
-      right: 26px;
+      right: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 26px;
+      border-right: none;
+      border-left: 1.5px solid rgba(243, 146, 35, 0.4);
+      padding: 10px 18px 6px 24px;
       align-items: flex-end;
       text-align: right;
     }
 
-    .video-brand-logo {
+    .corner-logo-text {
       font-family: var(--font-heading), 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.55rem;
+      font-size: 1.45rem;
       letter-spacing: -0.6px;
-      color: #4b8f24; /* Officiële Staopstoelen Groen */
-      line-height: 1;
+      line-height: 1.05;
       display: inline-flex;
       align-items: baseline;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.95);
     }
 
-    .video-brand-logo span {
-      color: #f39223; /* Officiële Terracotta Oranje */
+    .corner-logo-text .logo-name {
+      color: #2e6819; /* Authentiek Staopstoelen Groen */
     }
 
-    .video-brand-strapline {
+    .corner-logo-text .logo-dot-nl {
+      color: #f39223; /* Terracotta Oranje */
+    }
+
+    .corner-strapline {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: #64748b;
       line-height: 1;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85), 0 1px 2px rgba(0, 0, 0, 0.95);
+      margin-bottom: 2px;
+    }
+
+    .corner-swoosh-lines {
+      width: 100%;
+      height: 14px;
+      display: block;
       margin-top: 2px;
-      opacity: 0.95;
+      overflow: visible;
     }
 
     .cinema-captions {
@@ -669,17 +689,23 @@
         background: #ffffff !important;
         padding: 20px !important;
       }
-      .stage-split-wrapper.box-left .video-brand-overlay {
-        left: 18px !important;
+      .stage-split-wrapper.box-left .video-corner-swoosh-badge {
+        left: 0 !important;
         right: auto !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 24px !important;
+        border-left: none !important;
+        border-right: 1.5px solid rgba(243, 146, 35, 0.4) !important;
+        padding: 8px 16px 5px 14px !important;
+        min-width: 170px !important;
         align-items: flex-start !important;
         text-align: left !important;
       }
-      .video-brand-logo {
-        font-size: 1.3rem !important;
+      .corner-logo-text {
+        font-size: 1.2rem !important;
       }
-      .video-brand-strapline {
-        font-size: 0.68rem !important;
+      .corner-strapline {
+        font-size: 0.65rem !important;
       }
       .stage-split-wrapper.box-left .cinema-captions {
         left: 16px !important;
@@ -2086,11 +2112,21 @@
         <img src="assets/senior_chair_dilemma.jpg" alt="Scene Background" class="scene-bg motion-0" id="scene-bg">
         <div class="cinema-vignette"></div>
 
-        <!-- Broadcast Brand Watermark in Video Screen (Met officiële merkkleuren) -->
-        <!-- Broadcast Brand Overlay in Video Screen: Puur Logo + Strapline, ZONDER pil-vorm -->
-        <div class="video-brand-overlay">
-          <div class="video-brand-logo">staopstoelen<span>.nl</span></div>
-          <div class="video-brand-strapline">Certified Fitform</div>
+        <!-- Creatieve Hoek-Uitsnede met Bedrijfskleuren & Liquid Swooshes -->
+        <div class="video-corner-swoosh-badge">
+          <div class="corner-swoosh-inner">
+            <div class="corner-logo-text">
+              <span class="logo-name">staopstoelen</span><span class="logo-dot-nl">.nl</span>
+            </div>
+            <div class="corner-strapline">Certified Fitform</div>
+          </div>
+          <!-- Overlapping liquid swoosh waves in company colors -->
+          <svg class="corner-swoosh-lines" viewBox="0 0 260 18" preserveAspectRatio="none">
+            <path d="M 0,4 Q 65,13 130,5 T 260,9" fill="none" stroke="#bce4f2" stroke-width="3.2" stroke-linecap="round" opacity="0.85"/>
+            <path d="M 0,7 Q 65,2 130,10 T 260,12" fill="none" stroke="#f39223" stroke-width="2.6" stroke-linecap="round" opacity="0.9"/>
+            <path d="M 0,10 Q 65,15 130,8 T 260,14" fill="none" stroke="#6ab13c" stroke-width="2.9" stroke-linecap="round" opacity="0.9"/>
+            <path d="M 0,13 Q 65,6 130,13 T 260,15" fill="none" stroke="#2e6819" stroke-width="3.6" stroke-linecap="round"/>
+          </svg>
         </div>
 
         <!-- YouTube Center Ripple Indicator bij klik -->
@@ -2932,7 +2968,7 @@
 
   // YouTube click on video screen with center ripple
   function handleScreenClick(e) {
-    if (e.target.closest('.cinema-captions') || e.target.closest('.video-brand-overlay')) return;
+    if (e.target.closest('.cinema-captions') || e.target.closest('.video-corner-swoosh-badge')) return;
     togglePlay();
     const ripple = document.getElementById('yt-center-ripple');
     const rIcon = document.getElementById('yt-ripple-icon');
