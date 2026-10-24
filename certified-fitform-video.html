@@ -1177,170 +1177,263 @@
       height: 12px;
     }
 
-    /* Scene 4: Compact Infographic Waterfall & Pitch Hero Card */
-    .wf-compact-card {
+    /* Scene 4: High-Impact Financial Infographic (Waterval, Marge-Balk & Vliegwiel) */
+    .info-waterfall-bar-card {
       width: 100%;
-      margin: 4px 0 10px;
-      background: rgba(255, 255, 255, 0.86);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      margin: 4px 0 8px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 7px 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      box-sizing: border-box;
+    }
+    .info-bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      font-size: 0.68rem;
+      font-weight: 750;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .info-bar-total {
+      color: var(--color-forest);
+      font-weight: 850;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .info-stacked-bar {
+      display: flex;
+      height: 22px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.18);
+      background: #e2e8f0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 850;
+      color: #ffffff;
+      line-height: 22px;
+      text-align: center;
+    }
+    .info-bar-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+    .info-bar-seg.seg-inkoop { background: #ef4444; }
+    .info-bar-seg.seg-revisie { background: #f59e0b; }
+    .info-bar-seg.seg-bezorg { background: #64748b; }
+    .info-bar-seg.seg-marge {
+      background: linear-gradient(90deg, #15803d 0%, #22c55e 100%);
+      font-weight: 900;
+      letter-spacing: 0.4px;
+    }
+
+    .info-rows-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
       border: 1.5px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom: 8px;
+      box-sizing: border-box;
     }
-    .wf-compact-card .wf-row {
+    .info-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 7px 12px;
-      font-size: 0.78rem;
+      padding: 5.5px 12px;
+      font-size: 0.77rem;
       border-bottom: 1px solid #f1f5f9;
     }
-    .wf-compact-card .wf-row:last-child {
-      border-bottom: none;
-    }
-    .wf-compact-card .wf-row.sub {
-      color: #64748b;
-      background: rgba(248, 250, 248, 0.65);
-    }
-    .wf-compact-card .wf-row.sub .wf-val {
-      color: #dc2626;
+    .info-row.rev {
+      background: #f8fafc;
       font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
-      white-space: nowrap !important;
+      padding: 6.5px 12px;
     }
-    .wf-compact-card .wf-row .wf-label {
+    .info-row-left {
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+    .info-icon-disc {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-icon-disc.green { background: #dcfce7; color: #15803d; }
+    .info-icon-disc.red { background: #fee2e2; color: #b91c1c; }
+    .info-icon-disc.orange { background: #fef3c7; color: #b45309; }
+    .info-icon-disc.blue { background: #f1f5f9; color: #475569; }
+
+    .info-label {
       font-weight: 600;
+      color: #334155;
     }
-    .wf-compact-card .wf-row .wf-val.pos {
-      color: var(--color-forest);
-      font-weight: 800;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
-      white-space: nowrap !important;
-    }
-    .wf-compact-card .wf-row.total {
-      background: rgba(255, 252, 248, 0.90);
-      border-top: 1.5px solid rgba(243, 146, 35, 0.35);
-      padding: 9px 12px;
-    }
-    .wf-total-right {
+    .info-row-right {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
-    .wf-total-val {
+    .info-pct-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 4px;
+      line-height: 1.2;
+    }
+    .info-pct-tag.red { background: #fee2e2; color: #b91c1c; }
+    .info-pct-tag.orange { background: #fef3c7; color: #b45309; }
+    .info-pct-tag.blue { background: #f1f5f9; color: #475569; }
+
+    .info-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.84rem;
+      white-space: nowrap !important;
+    }
+    .info-amount.green { color: var(--color-forest); font-size: 0.95rem; }
+    .info-amount.red { color: #dc2626; }
+
+    .info-hero-marge {
+      background: linear-gradient(135deg, #122b07 0%, #1e4510 100%);
+      color: #ffffff;
+      padding: 9px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid var(--color-terracotta);
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.15);
+    }
+    .info-hero-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      color: #86efac;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .info-hero-sub {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 1px;
+    }
+    .info-hero-val {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      white-space: nowrap !important;
+    }
+
+    /* Multiplier Formula Widget */
+    .info-multiplier-widget {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(255, 247, 237, 0.95) 0%, rgba(255, 237, 213, 0.95) 100%);
+      border: 1.5px solid var(--color-terracotta);
+      border-radius: 12px;
+      padding: 9px 12px;
+      box-shadow: 0 4px 14px rgba(243, 146, 35, 0.15);
+      box-sizing: border-box;
+    }
+    .info-mult-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .info-mult-kicker {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 900;
+      color: #b45309;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    .info-mult-yr-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 850;
+      color: var(--color-forest);
+      background: #dcfce7;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+    }
+    .info-mult-formula {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+    .info-mult-box {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(243, 146, 35, 0.3);
+      border-radius: 8px;
+      padding: 4px 6px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .info-mult-box.hero {
+      background: #ffffff;
+      border: 1.5px solid var(--color-terracotta);
+      box-shadow: 0 2px 8px rgba(234, 88, 12, 0.15);
+      flex: 1.35;
+    }
+    .mult-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #1e293b;
+      line-height: 1.1;
+      white-space: nowrap !important;
+    }
+    .mult-num.hero {
+      color: #ea580c;
+      font-size: 1.12rem;
+    }
+    .mult-lbl {
+      font-size: 0.61rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-top: 1px;
+      white-space: nowrap;
+    }
+    .mult-lbl.hero {
+      color: #92400e;
+    }
+    .mult-operator {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.05rem;
       font-weight: 900;
-      color: #ea580c;
-      white-space: nowrap !important;
-    }
-    .wf-badge-pct {
-      font-size: 0.72rem;
-      font-weight: 800;
-      background: #ffedd5;
       color: #c86914;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(243, 146, 35, 0.4);
-      white-space: nowrap !important;
-      letter-spacing: 0.3px;
-    }
-    .pitch-kpi-banner {
-      width: 100%;
-      background: linear-gradient(135deg, rgba(255, 247, 237, 0.88) 0%, rgba(255, 237, 213, 0.88) 100%);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 2px solid var(--color-terracotta);
-      border-radius: 12px;
-      padding: 10px 14px;
-      box-shadow: 0 4px 16px rgba(243, 146, 35, 0.16);
-      margin-top: 2px;
-      box-sizing: border-box;
-    }
-    .pitch-kpi-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-    .pitch-kpi-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #b45309;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .pitch-kpi-subtag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #7c2d12;
-      background: rgba(255, 255, 255, 0.75);
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(243, 146, 35, 0.3);
-      white-space: nowrap;
-    }
-    .pitch-kpi-body {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-    }
-    .pitch-kpi-hero {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-    .pitch-hero-plus {
-      font-size: 1.15rem;
-      font-weight: 900;
-      color: #ea580c;
-    }
-    .pitch-hero-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.68rem;
-      font-weight: 900;
-      color: #c86914;
-      letter-spacing: -0.5px;
-      line-height: 1;
-      white-space: nowrap !important;
-    }
-    .pitch-hero-freq {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #92400e;
-    }
-    .pitch-kpi-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #ffffff;
-      border: 1.5px solid rgba(46, 104, 25, 0.35);
-      color: #2e6819;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 800;
-      padding: 3px 9px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-      white-space: nowrap !important;
-    }
-    .pitch-kpi-caption {
-      font-size: 0.7rem;
-      color: #78350f;
-      margin-top: 5px;
-      font-weight: 500;
-      line-height: 1.35;
+      flex-shrink: 0;
+      padding: 0 1px;
     }
     .kicker-badge-orange {
       background: var(--color-terracotta);
@@ -2414,68 +2507,105 @@
       audio: "assets/audio/scene_4.m4a",
       durationSec: 11.8,
       visualHtml: `
-        <div class="wf-compact-card">
-          <div class="wf-row">
-            <div class="wf-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2e6819" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-              <span>Verkoopprijs Occasion</span>
-            </div>
-            <span class="wf-val pos">€&nbsp;1.550</span>
+        <!-- 1. Visuele Waterval / Omzetverdeling Balk (Stacked Proportional Bar) -->
+        <div class="info-waterfall-bar-card">
+          <div class="info-bar-header">
+            <span class="info-bar-title">Omzetverdeling per stoel</span>
+            <span class="info-bar-total">€&nbsp;1.550 = 100%</span>
           </div>
-          <div class="wf-row sub">
-            <div class="wf-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-              <span>Inkoop occasion Fitform</span>
-            </div>
-            <span class="wf-val">- €&nbsp;450</span>
-          </div>
-          <div class="wf-row sub">
-            <div class="wf-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-              <span>Revisie, onderdelen &amp; ozon</span>
-            </div>
-            <span class="wf-val">- €&nbsp;175</span>
-          </div>
-          <div class="wf-row sub">
-            <div class="wf-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              <span>2-Mans bezorging &amp; inmeten</span>
-            </div>
-            <span class="wf-val">- €&nbsp;275</span>
-          </div>
-          <div class="wf-row total">
-            <div class="wf-label" style="color: #92400e;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-              <strong>Netto resultaat per stoel</strong>
-            </div>
-            <div class="wf-total-right">
-              <span class="wf-badge-pct">42% MARGE</span>
-              <span class="wf-total-val">+ €&nbsp;650</span>
-            </div>
+          <div class="info-stacked-bar">
+            <div class="info-bar-seg seg-inkoop" style="width: 29%;" title="Inkoop: € 450 (29%)">29%</div>
+            <div class="info-bar-seg seg-revisie" style="width: 11%;" title="Revisie: € 175 (11%)">11%</div>
+            <div class="info-bar-seg seg-bezorg" style="width: 18%;" title="Bezorging: € 275 (18%)">18%</div>
+            <div class="info-bar-seg seg-marge" style="width: 42%;" title="Netto Marge: € 650 (42%)">42% WINST</div>
           </div>
         </div>
 
-        <div class="pitch-kpi-banner">
-          <div class="pitch-kpi-header">
-            <span class="pitch-kpi-tag">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-              MAANDELIJKS CASHFLOW VOLUME
-            </span>
-            <span class="pitch-kpi-subtag">Hefboom: 12 stoelen / mnd</span>
-          </div>
-          <div class="pitch-kpi-body">
-            <div class="pitch-kpi-hero">
-              <span class="pitch-hero-plus">+</span>
-              <span class="pitch-hero-num">€&nbsp;7.800</span>
-              <span class="pitch-hero-freq">/ mnd</span>
+        <!-- 2. Trapsgewijze Waterval Kaart met Iconen, Percentages & Hero Winst -->
+        <div class="info-rows-card">
+          <div class="info-row rev">
+            <div class="info-row-left">
+              <span class="info-icon-disc green">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              </span>
+              <span class="info-label">Verkoopprijs Occasion</span>
             </div>
-            <div class="pitch-kpi-badge">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <span class="info-amount green">€&nbsp;1.550</span>
+          </div>
+
+          <div class="info-row cost">
+            <div class="info-row-left">
+              <span class="info-icon-disc red">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </span>
+              <span class="info-label">Inkoop occasion</span>
+            </div>
+            <div class="info-row-right">
+              <span class="info-pct-tag red">-29%</span>
+              <span class="info-amount red">- €&nbsp;450</span>
+            </div>
+          </div>
+
+          <div class="info-row cost">
+            <div class="info-row-left">
+              <span class="info-icon-disc orange">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              </span>
+              <span class="info-label">Revisie, onderdelen &amp; ozon</span>
+            </div>
+            <div class="info-row-right">
+              <span class="info-pct-tag orange">-11%</span>
+              <span class="info-amount red">- €&nbsp;175</span>
+            </div>
+          </div>
+
+          <div class="info-row cost">
+            <div class="info-row-left">
+              <span class="info-icon-disc blue">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </span>
+              <span class="info-label">2-Mans transport &amp; inmeten</span>
+            </div>
+            <div class="info-row-right">
+              <span class="info-pct-tag blue">-18%</span>
+              <span class="info-amount red">- €&nbsp;275</span>
+            </div>
+          </div>
+
+          <!-- Hero Marge Balk -->
+          <div class="info-hero-marge">
+            <div class="info-hero-left">
+              <div class="info-hero-badge">✦ 42% NETTO MARGE</div>
+              <div class="info-hero-sub">Directe winst per stoel</div>
+            </div>
+            <div class="info-hero-val">+ €&nbsp;650</div>
+          </div>
+        </div>
+
+        <!-- 3. Het Maandelijkse Vliegwiel (Grafische Multiplier Widget) -->
+        <div class="info-multiplier-widget">
+          <div class="info-mult-header">
+            <span class="info-mult-kicker">HET MAANDELIJKSE VLIEGWIEL</span>
+            <span class="info-mult-yr-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="vertical-align: middle; margin-right: 3px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
               €&nbsp;93.600 / jr
-            </div>
+            </span>
           </div>
-          <div class="pitch-kpi-caption">
-            Gezonde extra liquiditeit bovenop de bestaande winkelbasis Dordrecht.
+          <div class="info-mult-formula">
+            <div class="info-mult-box">
+              <span class="mult-num">12</span>
+              <span class="mult-lbl">stoelen/mnd</span>
+            </div>
+            <span class="mult-operator">&times;</span>
+            <div class="info-mult-box">
+              <span class="mult-num">€&nbsp;650</span>
+              <span class="mult-lbl">netto winst</span>
+            </div>
+            <span class="mult-operator">=</span>
+            <div class="info-mult-box hero">
+              <span class="mult-num hero">+ €&nbsp;7.800</span>
+              <span class="mult-lbl hero">cashflow / mnd</span>
+            </div>
           </div>
         </div>
       `
