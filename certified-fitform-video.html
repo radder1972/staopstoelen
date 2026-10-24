@@ -660,9 +660,9 @@
       z-index: 10;
       width: 395px;
       max-width: calc(48% - 12px);
-      height: 520px;
-      min-height: 520px;
-      max-height: 520px;
+      height: 536px;
+      min-height: 536px;
+      max-height: 536px;
       box-sizing: border-box;
       background: linear-gradient(145deg, rgba(244, 251, 242, 0.82) 0%, rgba(234, 247, 232, 0.76) 100%);
       backdrop-filter: blur(20px);
@@ -670,11 +670,11 @@
       border: 1.5px solid rgba(185, 222, 175, 0.65);
       border-radius: 18px;
       box-shadow: 0 18px 45px rgba(22, 45, 16, 0.22), 0 2px 10px rgba(0, 0, 0, 0.08);
-      padding: 16px 20px;
+      padding: 14px 18px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      overflow: hidden;
+      justify-content: flex-start;
+      overflow: visible;
       transition: background 0.2s ease, opacity 0.25s ease;
     }
 
@@ -775,7 +775,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: left;
       width: 100%;
       height: 100%;
@@ -791,16 +791,16 @@
     }
 
     .panel-kicker {
-      font-size: 0.72rem;
+      font-size: 0.70rem;
       font-weight: 800;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.1px;
       text-transform: uppercase;
       color: var(--color-terracotta);
       background: #fff7ed;
       border: 1.5px solid rgba(243, 146, 35, 0.45);
-      padding: 4px 12px;
+      padding: 3px 10px;
       border-radius: 20px;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -816,23 +816,23 @@
 
     .panel-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.20rem;
       font-weight: 800;
       color: var(--color-forest-dark);
-      line-height: 1.25;
+      line-height: 1.2;
       letter-spacing: -0.3px;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
 
     @media (max-width: 640px) {
-      .panel-title { font-size: 1.15rem; }
+      .panel-title { font-size: 1.10rem; }
       .sweet-sticker-img { width: 72px; height: 72px; }
       .sweet-price-hero { font-size: 1.85rem; }
     }
 
     .panel-visual-box {
       width: 100%;
-      margin: 8px 0;
+      margin: 3px 0 0;
     }
 
     .panel-subtitle {
@@ -1257,21 +1257,21 @@
     /* Scene 4: High-Impact Financial Infographic (Waterval, Marge-Balk & Vliegwiel) */
     .info-waterfall-bar-card {
       width: 100%;
-      margin: 2px 0 5px;
+      margin: 0 0 3px;
       background: rgba(255, 255, 255, 0.94);
       border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 5px 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border-radius: 9px;
+      padding: 3px 8px 3px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       box-sizing: border-box;
     }
     .info-bar-header {
       display: flex;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .info-bar-title {
-      font-size: 0.69rem;
+      font-size: 0.67rem;
       font-weight: 800;
       color: #64748b;
       text-transform: uppercase;
@@ -1280,16 +1280,16 @@
     }
     .info-stacked-bar {
       display: flex;
-      height: 19px;
-      border-radius: 6px;
+      height: 16px;
+      border-radius: 5px;
       overflow: hidden;
       box-shadow: inset 0 1px 3px rgba(0,0,0,0.18);
       background: #e2e8f0;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.64rem;
+      font-size: 0.60rem;
       font-weight: 850;
       color: #ffffff;
-      line-height: 19px;
+      line-height: 16px;
       text-align: center;
     }
     .info-bar-seg {
@@ -1313,34 +1313,34 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
       border: 1.5px solid var(--border);
-      border-radius: 12px;
+      border-radius: 11px;
       overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-      margin-bottom: 5px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+      margin-bottom: 4px;
       box-sizing: border-box;
     }
     .info-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4px 10px;
-      font-size: 0.77rem;
+      padding: 2.5px 8px;
+      font-size: 0.74rem;
       border-bottom: 1px solid #f1f5f9;
     }
     .info-row.rev {
       background: #f8fafc;
       font-weight: 700;
-      padding: 5px 10px;
+      padding: 3.5px 8px;
     }
     .info-row-left {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
     }
     .info-icon-disc {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
+      width: 19px;
+      height: 19px;
+      border-radius: 5px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -1362,9 +1362,9 @@
     }
     .info-pct-tag {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.63rem;
       font-weight: 800;
-      padding: 1px 6px;
+      padding: 1px 5px;
       border-radius: 4px;
       line-height: 1.2;
     }
@@ -1375,16 +1375,16 @@
     .info-amount {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       white-space: nowrap !important;
     }
-    .info-amount.green { color: var(--color-forest); font-size: 0.95rem; }
+    .info-amount.green { color: var(--color-forest); font-size: 0.90rem; }
     .info-amount.red { color: #dc2626; }
 
     .info-hero-marge {
       background: linear-gradient(135deg, #122b07 0%, #1e4510 100%);
       color: #ffffff;
-      padding: 7px 12px;
+      padding: 5px 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1393,9 +1393,9 @@
     }
     .info-hero-badge {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.70rem;
       font-weight: 900;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.7px;
       color: #86efac;
       text-transform: uppercase;
       display: inline-flex;
@@ -1403,13 +1403,13 @@
       gap: 4px;
     }
     .info-hero-sub {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: rgba(255,255,255,0.75);
       margin-top: 1px;
     }
     .info-hero-val {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.18rem;
       font-weight: 900;
       color: #ffffff;
       text-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -1428,7 +1428,7 @@
       background: linear-gradient(145deg, #0b1e10 0%, #123318 60%, #08170c 100%);
       border: 2px solid #f59e0b;
       border-radius: 11px;
-      padding: 6px 10px 7px;
+      padding: 5px 8px 5px;
       box-shadow: 0 4px 16px rgba(11, 30, 16, 0.35), 0 0 0 1px rgba(245, 158, 11, 0.4);
       box-sizing: border-box;
       position: relative;
@@ -1449,11 +1449,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
     .fruit-kicker {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.64rem;
+      font-size: 0.63rem;
       font-weight: 900;
       color: #fbbf24;
       letter-spacing: 0.7px;
@@ -1477,11 +1477,11 @@
     }
     .fruit-kicker-badge {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.62rem;
+      font-size: 0.61rem;
       font-weight: 850;
       color: #0b1e10;
       background: linear-gradient(135deg, #fde047 0%, #f59e0b 100%);
-      padding: 2px 7px;
+      padding: 1.5px 6px;
       border-radius: 999px;
       letter-spacing: 0.4px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.25);
@@ -1494,13 +1494,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 4px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .fruit-reel {
       background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 7px;
-      padding: 3px 5px;
+      border-radius: 6px;
+      padding: 2px 4px;
       text-align: center;
       flex: 1;
       display: flex;
@@ -1517,7 +1517,7 @@
     }
     .reel-val {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 900;
       color: #0f172a;
       line-height: 1.1;
@@ -1525,10 +1525,10 @@
     }
     .fruit-reel.highlight .reel-val {
       color: #b45309;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
     .reel-lbl {
-      font-size: 0.58rem;
+      font-size: 0.57rem;
       font-weight: 750;
       color: #64748b;
       text-transform: uppercase;
@@ -1541,7 +1541,7 @@
     }
     .reel-op {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.90rem;
       font-weight: 900;
       color: #fbbf24;
       flex-shrink: 0;
@@ -1553,7 +1553,7 @@
       background: linear-gradient(180deg, #061309 0%, #0a1f0d 100%);
       border: 1.5px solid #eab308;
       border-radius: 8px;
-      padding: 5px 10px;
+      padding: 4px 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1588,7 +1588,7 @@
     }
     .jackpot-kicker {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.63rem;
       font-weight: 900;
       letter-spacing: 0.8px;
       color: #86efac;
@@ -1598,7 +1598,7 @@
       gap: 5px;
     }
     .jackpot-sub {
-      font-size: 0.60rem;
+      font-size: 0.58rem;
       color: rgba(255, 255, 255, 0.72);
       margin-top: 1px;
     }
@@ -1611,7 +1611,7 @@
     }
     .jackpot-val {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.38rem;
+      font-size: 1.30rem;
       font-weight: 900;
       line-height: 1;
       color: #fef08a;
@@ -1624,7 +1624,7 @@
     }
     .jackpot-yr {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 850;
       color: #86efac;
       text-transform: uppercase;
@@ -2402,7 +2402,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.0</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.1</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2586,7 +2586,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.0
+            <span class="version-dot"></span> v2.6.1
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -2930,7 +2930,7 @@
       align: "right",
       shortTag: "Unit Economics",
       kicker: 'UNIT ECONOMICS <span class="kicker-badge-orange">42% MARGE</span>',
-      title: "€\u00A0650 Netto Marge per Verkochte Stoel",
+      title: "€\u00A0650 Netto Marge per Stoel",
       subtitle: "",
       metric: "",
       caption: "De bedrijfskundige cijfers zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over per verkochte stoel.",
