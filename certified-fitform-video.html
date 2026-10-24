@@ -2036,23 +2036,36 @@
     }
 
     /* Embedded Mode (voor integratie op de consumentenpagina / andere pagina's) */
+    html.is-embedded,
     body.is-embedded {
       background: transparent !important;
       padding: 0 !important;
       margin: 0 !important;
       overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
     }
     body.is-embedded .dossier-fixed-nav,
     body.is-embedded .dossier-hero-header,
     body.is-embedded .video-mode-switcher-wrapper,
     body.is-embedded .collapsible-drawer,
-    body.is-embedded .btn-drawer-toggle-wrapper {
+    body.is-embedded .drawer-toggle-wrapper,
+    body.is-embedded .btn-drawer-toggle-wrapper,
+    body.is-embedded #btn-toggle-drawer,
+    body.is-embedded .yt-version-badge,
+    body.mode-consumer .collapsible-drawer,
+    body.mode-consumer .drawer-toggle-wrapper,
+    body.mode-consumer .btn-drawer-toggle-wrapper,
+    body.mode-consumer #btn-toggle-drawer,
+    body.mode-consumer .yt-version-badge {
       display: none !important;
     }
     body.is-embedded .container {
       padding: 0 !important;
       max-width: 100% !important;
       margin: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
     }
     body.is-embedded .video-player-card {
       border-radius: 0 !important;
@@ -2060,6 +2073,20 @@
       box-shadow: none !important;
       margin: 0 !important;
       max-width: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+    }
+    body.is-embedded .stage-split-wrapper {
+      flex: 1 1 auto !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+    }
+    body.is-embedded .yt-bottom-bar {
+      flex: 0 0 auto !important;
     }
 
     /* Video Reel Mode Switcher (Klantversie vs Investeerderspitch) */
@@ -4207,6 +4234,8 @@
     const heroLead = document.getElementById('hero-lead');
 
     if (mode === 'consumer') {
+      document.body.classList.add('mode-consumer');
+      document.body.classList.remove('mode-investor');
       scenes = CONSUMER_SCENES;
       if (btnCons) btnCons.classList.add('active');
       if (btnInv) btnInv.classList.remove('active');
@@ -4214,6 +4243,8 @@
       if (heroTitle) heroTitle.innerHTML = 'Waarom <span class="title-highlight">Certified Fitform</span>?';
       if (heroLead) heroLead.textContent = 'Ontdek waarom een Certified Fitform de slimste keuze is: medische topkwaliteit en 24 maanden garantie voor minder dan de helft van de prijs.';
     } else {
+      document.body.classList.add('mode-investor');
+      document.body.classList.remove('mode-consumer');
       scenes = INVESTOR_SCENES;
       if (btnInv) btnInv.classList.add('active');
       if (btnCons) btnCons.classList.remove('active');
