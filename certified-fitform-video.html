@@ -800,7 +800,7 @@
       border: 1.5px solid rgba(243, 146, 35, 0.45);
       padding: 3px 10px;
       border-radius: 20px;
-      margin-bottom: 5px;
+      margin-bottom: 12px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -816,23 +816,37 @@
 
     .panel-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.20rem;
+      font-size: 1.22rem;
       font-weight: 800;
       color: var(--color-forest-dark);
-      line-height: 1.2;
+      line-height: 1.25;
       letter-spacing: -0.3px;
-      margin-bottom: 5px;
+      margin-bottom: 16px;
     }
 
     @media (max-width: 640px) {
-      .panel-title { font-size: 1.10rem; }
+      .panel-title { font-size: 1.10rem; margin-bottom: 10px; }
       .sweet-sticker-img { width: 72px; height: 72px; }
       .sweet-price-hero { font-size: 1.85rem; }
     }
 
     .panel-visual-box {
       width: 100%;
-      margin: 3px 0 0;
+      margin: 8px 0 0;
+    }
+
+    /* Scène 4 compacte calibratie: Unit Economics heeft waterval + rijen + jackpot widget */
+    #companion-panel[data-scene="3"] .panel-kicker,
+    .stage-split-wrapper[data-scene="3"] .panel-kicker {
+      margin-bottom: 5px !important;
+    }
+    #companion-panel[data-scene="3"] .panel-title,
+    .stage-split-wrapper[data-scene="3"] .panel-title {
+      margin-bottom: 6px !important;
+    }
+    #companion-panel[data-scene="3"] .panel-visual-box,
+    .stage-split-wrapper[data-scene="3"] .panel-visual-box {
+      margin-top: 2px !important;
     }
 
     .panel-subtitle {
@@ -2477,7 +2491,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.3</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.4</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2662,7 +2676,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.3
+            <span class="version-dot"></span> v2.6.4
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -3339,6 +3353,7 @@
     // Dynamische positie van het zwevende informatiepaneel afgestemd op het hoofdonderwerp van de scène
     const stage = document.getElementById('stage-split-wrapper');
     if (stage) {
+      stage.setAttribute('data-scene', idx);
       if (s.align === 'left') {
         stage.classList.remove('box-right');
         stage.classList.add('box-left');
@@ -3347,6 +3362,11 @@
         stage.classList.add('box-right');
       }
       stage.classList.remove('has-corner-sticker');
+    }
+
+    const panel = document.getElementById('companion-panel');
+    if (panel) {
+      panel.setAttribute('data-scene', idx);
     }
 
     // Update het zwevende informatiepaneel (puur reclame, zonder hoofdstuknummers)
