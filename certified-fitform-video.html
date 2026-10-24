@@ -1139,63 +1139,93 @@
       flex-shrink: 0;
     }
 
-    /* Scene 3: Checklist */
+    /* Scene 3: Checklist - Perfecte Gelijke Hoogte & Gebalanceerde Boxen */
     .check-grid {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 9px;
       width: 100%;
-      margin: 8px 0;
+      margin: 10px 0;
       text-align: left;
     }
     .check-row {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 8px 12px;
+      border-radius: 12px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      font-size: 0.8rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      min-height: 68px;
+      height: 68px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .check-left {
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+    .check-text {
+      min-width: 0;
+      flex: 1;
+    }
+    .check-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.84rem;
+      color: var(--color-forest-dark);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .check-sub {
+      font-size: 0.72rem;
+      color: #64748b;
+      line-height: 1.25;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .check-status {
       font-size: 0.7rem;
       font-weight: 800;
       color: var(--color-forest);
       background: rgba(75, 143, 36, 0.12);
-      padding: 3px 8px;
+      padding: 4px 9px;
       border-radius: 6px;
-      border: 1px solid rgba(75, 143, 36, 0.25);
+      border: 1px solid rgba(75, 143, 36, 0.28);
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      flex-shrink: 0;
     }
     .check-status svg {
-      width: 13px;
-      height: 13px;
+      width: 12px;
+      height: 12px;
     }
     .check-status.orange {
       font-size: 0.7rem;
       font-weight: 800;
       color: #c86914;
       background: #fff7ed;
-      padding: 3px 9px;
+      padding: 4px 9px;
       border-radius: 6px;
       border: 1px solid rgba(243, 146, 35, 0.45);
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      flex-shrink: 0;
     }
     .check-status.orange svg {
       width: 12px;
@@ -2518,9 +2548,9 @@
           <div class="check-row">
             <div class="check-left">
               <div class="step-num-badge orange">1</div>
-              <div>
-                <strong>Linak Motoren &amp; Mechaniek</strong>
-                <div style="font-size:0.72rem; color:#64748b;">150 kg belastingtest, bekabeling &amp; afstandsbediening</div>
+              <div class="check-text">
+                <div class="check-title">Linak Motoren &amp; Mechaniek</div>
+                <div class="check-sub">150 kg belastingtest &amp; bekabeling</div>
               </div>
             </div>
             <span class="check-status orange">
@@ -2531,9 +2561,9 @@
           <div class="check-row">
             <div class="check-left">
               <div class="step-num-badge orange">2</div>
-              <div>
-                <strong>Dieptereiniging &amp; Ozon-Extractie</strong>
-                <div style="font-size:0.72rem; color:#64748b;">100% bacterie- en geurvrij, leder/stof als nieuw</div>
+              <div class="check-text">
+                <div class="check-title">Ozon-Dieptereiniging</div>
+                <div class="check-sub">100% bacterie- &amp; geurvrij, fris als nieuw</div>
               </div>
             </div>
             <span class="check-status orange">
@@ -2544,9 +2574,9 @@
           <div class="check-row">
             <div class="check-left">
               <div class="step-num-badge green">3</div>
-              <div>
-                <strong>Inmeting staopstoelen.nl op Maat</strong>
-                <div style="font-size:0.72rem; color:#64748b;">Zithoogte, -diepte en armleggers exact afgesteld</div>
+              <div class="check-text">
+                <div class="check-title">Inmeting &amp; Maatafstelling</div>
+                <div class="check-sub">Zithoogte, -diepte &amp; armleggers op maat</div>
               </div>
             </div>
             <span class="check-status">
