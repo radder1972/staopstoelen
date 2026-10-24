@@ -720,7 +720,7 @@
         max-width: 100% !important;
         width: 100% !important;
         height: auto !important;
-        min-height: 580px !important;
+        min-height: 660px !important;
         max-height: none !important;
         overflow: visible !important;
         margin: 0 !important;
@@ -2236,6 +2236,16 @@
       padding: 16px 18px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     }
+    @media (min-width: 681px) and (max-width: 800px) {
+      .consumer-cta-intro { display: none; }
+    }
+    .consumer-cta-intro {
+      font-size: 0.84rem;
+      line-height: 1.4;
+      color: #475569;
+      text-align: left;
+    }
+    .consumer-cta-intro strong { color: var(--color-forest-dark); font-weight: 800; }
     .consumer-cta-badge-row {
       display: flex;
       gap: 8px;
@@ -2279,6 +2289,16 @@
       display: flex;
       gap: 9px;
       flex-direction: column;
+    }
+    /* Laatste klantscène: compacter zodat de extra subtitel + knoppen zonder afkappen in het paneel passen (desktop/liggend) */
+    @media (min-width: 681px) {
+      body.mode-consumer .companion-panel[data-scene="3"] .panel-title { margin-bottom: 6px; }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-intro { font-size: 0.8rem; line-height: 1.35; }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-card { gap: 7px; padding: 10px 16px; }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-details { gap: 6px; padding: 6px 0; }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-actions { gap: 7px; }
+      body.mode-consumer .companion-panel[data-scene="3"] .btn-consumer-primary,
+      body.mode-consumer .companion-panel[data-scene="3"] .btn-consumer-secondary { padding-top: 9px; padding-bottom: 9px; }
     }
     .btn-consumer-primary {
       display: inline-flex;
@@ -3727,6 +3747,7 @@
       durationSec: 9.0,
       visualHtml: `
         <div class="consumer-cta-card">
+          <div class="consumer-cta-intro">Voel zelf het verschil: <strong>vrijblijvend proefzitten</strong> met persoonlijk advies, in de showroom of bij u thuis.</div>
           <div class="consumer-cta-badge-row">
             <span class="consumer-tag green">Showroom Dordrecht</span>
             <span class="consumer-tag orange">Thuisbezorgd &amp; Ingesteld</span>
