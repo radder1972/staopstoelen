@@ -1967,7 +1967,7 @@
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 999px;
-      padding: 3px 9px;
+      padding: 3px 10px;
       color: #ffffff;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
@@ -1981,6 +1981,12 @@
       background: rgba(255, 255, 255, 0.22);
       border-color: #fbbf24;
       transform: translateY(-1px);
+    }
+    .btn-yt-voice-choice.active-matthias {
+      background: linear-gradient(135deg, rgba(75, 143, 36, 0.45) 0%, rgba(243, 146, 35, 0.45) 100%);
+      border-color: #fbbf24;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
     }
     .btn-yt-voice-choice .voice-badge-icon {
       font-size: 0.75rem;
@@ -2519,7 +2525,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.6</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.7</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2691,10 +2697,10 @@
           <button class="btn-yt" id="btn-voice" onclick="toggleVoice()" title="Voice-over dempen of aanzetten (m)">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="voice-icon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
           </button>
-          <!-- Stem Keuze Toggle (Fenna Vrouw / Maarten Man) -->
-          <button class="btn-yt-voice-choice" id="btn-voice-choice" onclick="toggleVoiceGender()" title="Wissel stem: Fenna (Vrouw, NL) / Maarten (Man, NL)">
+          <!-- Stem Keuze Toggle (Matthias Echte Stem / Fenna Vrouw / Maarten Man) -->
+          <button class="btn-yt-voice-choice active-matthias" id="btn-voice-choice" onclick="toggleVoiceGender()" title="Wissel stem: Matthias (Echte Stem) / Fenna (Vrouw AI) / Maarten (Man AI)">
             <span class="voice-badge-icon">🎙️</span>
-            <span id="voice-choice-label">Fenna (V)</span>
+            <span id="voice-choice-label">Matthias (Echte Stem)</span>
           </button>
           <!-- Tijdweergave -->
           <div class="time-display">
@@ -2709,7 +2715,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.6
+            <span class="version-dot"></span> v2.6.7
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -3347,20 +3353,40 @@
     }, tickInterval);
   }
 
-  let currentVoiceGender = 'fenna'; // 'fenna' (Vrouw, NL Neural) of 'maarten' (Man, NL Neural)
+  let currentVoiceMode = 'matthias'; // 'matthias' (Echte Stem) | 'fenna' (Vrouw AI) | 'maarten' (Man AI)
 
   function toggleVoiceGender() {
-    currentVoiceGender = currentVoiceGender === 'fenna' ? 'maarten' : 'fenna';
+    if (currentVoiceMode === 'matthias') {
+      currentVoiceMode = 'fenna';
+    } else if (currentVoiceMode === 'fenna') {
+      currentVoiceMode = 'maarten';
+    } else {
+      currentVoiceMode = 'matthias';
+    }
+
     const label = document.getElementById('voice-choice-label');
-    if (label) {
-      label.textContent = currentVoiceGender === 'fenna' ? 'Fenna (V)' : 'Maarten (M)';
-    }
     const btn = document.getElementById('btn-voice-choice');
-    if (btn) {
-      btn.title = currentVoiceGender === 'fenna'
-        ? "Huidige stem: Fenna (Vrouw, NL) • Klik voor Maarten (Man, NL)"
-        : "Huidige stem: Maarten (Man, NL) • Klik voor Fenna (Vrouw, NL)";
+
+    if (currentVoiceMode === 'matthias') {
+      if (label) label.textContent = 'Matthias (Echte Stem)';
+      if (btn) {
+        btn.classList.add('active-matthias');
+        btn.title = 'Huidige stem: Matthias Radder (Echte Stem) • Klik voor Fenna (Vrouw AI)';
+      }
+    } else if (currentVoiceMode === 'fenna') {
+      if (label) label.textContent = 'Fenna (Vrouw AI)';
+      if (btn) {
+        btn.classList.remove('active-matthias');
+        btn.title = 'Huidige stem: Fenna (Vrouw AI) • Klik voor Maarten (Man AI)';
+      }
+    } else {
+      if (label) label.textContent = 'Maarten (Man AI)';
+      if (btn) {
+        btn.classList.remove('active-matthias');
+        btn.title = 'Huidige stem: Maarten (Man AI) • Klik voor Matthias (Echte Stem)';
+      }
     }
+
     if (isPlaying) {
       playSceneAudio(currentScene);
     }
@@ -3373,7 +3399,9 @@
     const s = scenes[idx];
     if (s.audio && voiceEnabled) {
       let audioPath = s.audio;
-      if (currentVoiceGender === 'maarten') {
+      if (currentVoiceMode === 'matthias') {
+        audioPath = audioPath.replace('/scene_', '/matthias_scene_');
+      } else if (currentVoiceMode === 'maarten') {
         audioPath = audioPath.replace('/scene_', '/maarten_scene_');
       }
       currentAudio = new Audio(audioPath);
