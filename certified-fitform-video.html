@@ -2127,6 +2127,117 @@
       color: var(--green);
       white-space: nowrap;
     }
+
+    /* Inklapbare Info Drawer onder de Speler */
+    .drawer-toggle-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0 28px;
+    }
+
+    .btn-drawer-toggle {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 24px;
+      font-size: 0.85rem;
+      font-weight: 750;
+      color: var(--color-forest-dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(18, 43, 7, 0.06);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .btn-drawer-toggle:hover {
+      background: #f8faf6;
+      border-color: var(--color-forest);
+      color: var(--color-forest);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(18, 43, 7, 0.12);
+    }
+
+    .drawer-toggle-icon {
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.25s ease;
+      color: var(--color-forest);
+    }
+
+    .btn-drawer-toggle.is-open .drawer-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .drawer-toggle-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .collapsible-drawer {
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .collapsible-drawer.is-collapsed {
+      max-height: 0 !important;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .collapsible-drawer.is-expanded {
+      max-height: 3000px;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      margin-bottom: 40px;
+    }
+
+    /* Live Player Versienummer Badge in Controls */
+    .yt-version-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      padding: 3px 8px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-right: 6px;
+      cursor: default;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .yt-version-badge:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.45);
+      color: #ffffff;
+    }
+
+    .yt-version-badge .version-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -2174,7 +2285,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.5.0</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2356,6 +2467,10 @@
         </div>
 
         <div class="ctrl-right">
+          <!-- Live Versienummer Badge -->
+          <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
+            <span class="version-dot"></span> v2.5.0
+          </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" id="view-icon"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
@@ -2371,6 +2486,20 @@
     </div>
 
   </div>
+
+  <!-- Inklapbare Info Toggle -->
+  <div class="drawer-toggle-wrapper">
+    <button class="btn-drawer-toggle" id="btn-toggle-drawer" onclick="toggleDetailsDrawer()" aria-expanded="false" title="Klik om scènes en draaiboek te tonen of verbergen">
+      <span class="drawer-toggle-icon" id="drawer-toggle-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </span>
+      <span id="drawer-toggle-label">Toon Scènes &amp; Draaiboek</span>
+      <span class="drawer-toggle-badge">5 Scènes • Script</span>
+    </button>
+  </div>
+
+  <!-- Inklapbare Drawer met Storyboard en Draaiboek -->
+  <div class="collapsible-drawer is-collapsed" id="collapsible-drawer">
 
   <!-- Storyboard / Scene Switcher -->
   <div class="storyboard-section">
@@ -2503,9 +2632,34 @@
     </table>
   </div>
 
+  </div><!-- /collapsible-drawer -->
+
 </div>
 
 <script>
+  let isDrawerOpen = false;
+  function toggleDetailsDrawer() {
+    isDrawerOpen = !isDrawerOpen;
+    const drawer = document.getElementById('collapsible-drawer');
+    const btn = document.getElementById('btn-toggle-drawer');
+    const label = document.getElementById('drawer-toggle-label');
+    if (!drawer || !btn) return;
+    
+    if (isDrawerOpen) {
+      drawer.classList.remove('is-collapsed');
+      drawer.classList.add('is-expanded');
+      btn.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+      if (label) label.textContent = 'Verberg Scènes & Draaiboek';
+    } else {
+      drawer.classList.remove('is-expanded');
+      drawer.classList.add('is-collapsed');
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      if (label) label.textContent = 'Toon Scènes & Draaiboek';
+    }
+  }
+
   let isCinemaMode = false;
   function toggleViewMode() {
     isCinemaMode = !isCinemaMode;
