@@ -2656,6 +2656,504 @@
       border-color: var(--color-forest);
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.28);
     }
+
+    /* Widget A: Zitadvies & Maatwerk Intakeformulier met 5 Stoel-Iconen (vaste hoogte 258px) */
+    .zitadvies-form-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+      width: 100%;
+      height: 258px;
+      min-height: 258px;
+      max-height: 258px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .zitadvies-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      height: 22px;
+      flex-shrink: 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #eef2ec;
+    }
+    .zitadvies-form-tag {
+      font-size: 0.63rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      background: #f0fdf4;
+      border: 1px solid rgba(75, 143, 36, 0.3);
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .zitadvies-step-pill {
+      font-size: 0.63rem;
+      font-weight: 800;
+      color: #c25e00;
+      background: #fff7ed;
+      border: 1px solid rgba(243, 146, 35, 0.35);
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .zitadvies-main-grid {
+      display: grid;
+      grid-template-columns: 124px 1fr;
+      gap: 10px;
+      height: 162px;
+      min-height: 162px;
+      max-height: 162px;
+      flex-shrink: 0;
+      align-items: stretch;
+    }
+    .zitadvies-icon-stage {
+      background: linear-gradient(180deg, #f8fbf6 0%, #eef6eb 100%);
+      border: 1.5px solid rgba(75, 143, 36, 0.24);
+      border-radius: 10px;
+      height: 162px;
+      min-height: 162px;
+      max-height: 162px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .zitadvies-svg-wrap {
+      width: 96px;
+      height: 108px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .zitadvies-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .zitadvies-measure-badge {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid rgba(243, 146, 35, 0.45);
+      border-radius: 6px;
+      padding: 3px 4px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 800;
+      color: #c25e00;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-shadow: 0 2px 5px rgba(243, 146, 35, 0.12);
+    }
+    .zitadvies-form-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 162px;
+      min-height: 162px;
+      max-height: 162px;
+      min-width: 0;
+      text-align: left;
+    }
+    .zitadvies-active-header {
+      background: #f8fafc;
+      border-left: 3px solid var(--color-terracotta);
+      border-radius: 0 8px 8px 0;
+      padding: 5px 8px;
+      height: 48px;
+      min-height: 48px;
+      max-height: 48px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .zitadvies-active-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .zitadvies-active-desc {
+      font-size: 0.67rem;
+      color: #475569;
+      line-height: 1.25;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .zitadvies-ABCD-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+      height: 70px;
+      min-height: 70px;
+      max-height: 70px;
+    }
+    .zitadvies-field {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      padding: 4px 7px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    .zitadvies-field.active {
+      background: #fff7ed;
+      border-color: var(--color-terracotta);
+      box-shadow: 0 0 0 1.5px rgba(243, 146, 35, 0.25);
+    }
+    .zitadvies-field-lbl {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #475569;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .zitadvies-field-letter {
+      width: 15px;
+      height: 15px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: #1e293b;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .zitadvies-field.active .zitadvies-field-letter {
+      background: var(--color-terracotta);
+      color: #ffffff;
+    }
+    .zitadvies-field-val {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      background: #f0fdf4;
+      border: 1px dashed rgba(75, 143, 36, 0.45);
+      padding: 1px 5px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .zitadvies-checks-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      background: #f4f9f1;
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      border-radius: 7px;
+      padding: 4px 7px;
+      height: 28px;
+      min-height: 28px;
+      max-height: 28px;
+      box-sizing: border-box;
+    }
+    .zitadvies-check-item {
+      font-size: 0.60rem;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+    .zitadvies-check-box {
+      width: 13px;
+      height: 13px;
+      border-radius: 3px;
+      background: var(--color-forest);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .zitadvies-tabs-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      padding-top: 5px;
+      border-top: 1px solid #eef2ec;
+      height: 28px;
+      box-sizing: border-box;
+    }
+    .zitadvies-tab-btn {
+      padding: 3px 2px;
+      font-size: 0.58rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #475569;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.18s ease;
+    }
+    .zitadvies-tab-btn.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+    }
+
+    /* Widget B: 4-Staps Werkplaats & Revisie Foto-Scanner (vaste hoogte 258px) */
+    .revisie-process-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+      width: 100%;
+      height: 258px;
+      min-height: 258px;
+      max-height: 258px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .revisie-stage-grid {
+      display: grid;
+      grid-template-columns: 122px 1fr;
+      gap: 10px;
+      height: 158px;
+      min-height: 158px;
+      max-height: 158px;
+      flex-shrink: 0;
+    }
+    .revisie-photo-frame {
+      position: relative;
+      height: 158px;
+      min-height: 158px;
+      max-height: 158px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid var(--color-terracotta);
+      background: #0f172a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      box-sizing: border-box;
+    }
+    .revisie-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .revisie-photo-badge {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      right: 5px;
+      background: rgba(15, 28, 22, 0.9);
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.56rem;
+      font-weight: 800;
+      padding: 3px 5px;
+      border-radius: 5px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border: 1px solid rgba(243, 146, 35, 0.5);
+    }
+    .revisie-detail-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 158px;
+      min-height: 158px;
+      max-height: 158px;
+      text-align: left;
+      min-width: 0;
+    }
+    .revisie-thumbs-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      padding-top: 5px;
+      border-top: 1px solid #eef2ec;
+      height: 32px;
+      box-sizing: border-box;
+    }
+    .revisie-thumb-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 3px 4px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #475569;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.60rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.18s ease;
+    }
+    .revisie-thumb-btn.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      border-color: var(--color-forest);
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+    }
+
+    /* Widget C: Eindproduct Voor/Na & 4-Standen + CTA Kaart (vaste hoogte 258px) */
+    .eindproduct-showcase-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+      width: 100%;
+      height: 258px;
+      min-height: 258px;
+      max-height: 258px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .eindproduct-top-grid {
+      display: grid;
+      grid-template-columns: 1fr 122px;
+      gap: 8px;
+      height: 122px;
+      min-height: 122px;
+      max-height: 122px;
+      align-items: stretch;
+    }
+    .eindproduct-before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      height: 122px;
+    }
+    .eindproduct-ba-box {
+      position: relative;
+      border-radius: 9px;
+      overflow: hidden;
+      border: 1.5px solid #cbd5e1;
+      height: 122px;
+      box-sizing: border-box;
+    }
+    .eindproduct-ba-box.after {
+      border: 2px solid var(--color-forest);
+      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.18);
+    }
+    .eindproduct-ba-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .eindproduct-ba-lbl {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      right: 4px;
+      background: rgba(15, 23, 42, 0.86);
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 800;
+      padding: 2px 4px;
+      border-radius: 4px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .eindproduct-ba-box.after .eindproduct-ba-lbl {
+      background: rgba(20, 83, 45, 0.92);
+      border: 1px solid #86efac;
+    }
+    .eindproduct-motion-mini {
+      background: #f8fbf6;
+      border: 1.5px solid rgba(75, 143, 36, 0.25);
+      border-radius: 9px;
+      padding: 4px 6px;
+      height: 122px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .eindproduct-motion-mini img {
+      height: 76px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: opacity 0.25s ease;
+    }
+    .eindproduct-motion-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      background: #e7f5e1;
+      padding: 2px 6px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .eindproduct-cta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    .eindproduct-cta-row .btn-consumer-primary,
+    .eindproduct-cta-row .btn-consumer-secondary {
+      height: 36px;
+      font-size: 0.72rem;
+      padding: 0 8px;
+    }
     .consumer-cta-phone {
       display: inline-flex;
       align-items: center;
@@ -3181,14 +3679,22 @@
 
     <!-- Versie-keuze Toggle: Investeerderspitch vs Consumentenvideo -->
     <div class="video-mode-switcher-wrapper">
-      <div class="video-mode-switcher" id="video-mode-switcher" role="tablist" aria-label="Kies videovariatie">
+      <div class="video-mode-switcher" id="video-mode-switcher" role="tablist" aria-label="Kies videovariatie" style="flex-wrap: wrap; justify-content: center;">
         <button type="button" class="mode-switch-btn active" id="btn-mode-investor" onclick="switchReelMode('investor')" title="60-seconden pitch deck inclusief financiële cijfers en overnamestructuur">
           <span class="mode-badge-dot"></span>
           <span>Investeerderspitch (60s)</span>
         </button>
-        <button type="button" class="mode-switch-btn" id="btn-mode-consumer" onclick="switchReelMode('consumer')" title="40-seconden consumentenvideo gericht op herkenning, keuring en showroombezoek">
+        <button type="button" class="mode-switch-btn" id="btn-mode-consumer" onclick="switchReelMode('consumer')" title="45-seconden consumentenvideo gericht op herkenning, keuring en showroombezoek">
           <span class="mode-badge-dot"></span>
-          <span>Klantversie (40s)</span>
+          <span>Klantversie (45s)</span>
+        </button>
+        <button type="button" class="mode-switch-btn" id="btn-mode-revisie" onclick="switchReelMode('revisie')" title="Inspectie, Revisie & Zitadvies video met werkplaatsfoto's, stoel-iconen en het eindproduct">
+          <span class="mode-badge-dot"></span>
+          <span>Inspectie &amp; Revisie (45s)</span>
+        </button>
+        <button type="button" class="mode-switch-btn" id="btn-mode-afspraak" onclick="switchReelMode('afspraak')" title="Proefzitten & Zitmeting video voor de afspraakpagina">
+          <span class="mode-badge-dot"></span>
+          <span>Proefzitten &amp; Zitadvies (38s)</span>
         </button>
       </div>
     </div>
@@ -4150,46 +4656,62 @@
     {
       align: "right",
       shortTag: "De Zitmeting",
-      kicker: "STAP 1 • IN DE SHOWROOM",
+      kicker: "STAP 1 • HET ZITADVIES-FORMULIER",
       title: "Persoonlijke Zitmeting door Geertjan",
-      subtitle: "Onder het genot van een verse kop koffie meet bewegingstechnoloog Geertjan uw exacte lichaamsmaten op.",
-      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg> Gediplomeerd Bewegingstechnoloog',
+      subtitle: "",
+      metric: "",
       caption: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
       voiceText: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
       bg: "assets/geert_in_de_winkel_left.jpg?v=20261024_1",
       audio: "assets/audio/afspraak_scene_2.m4a?v=eleven_1",
       durationSec: 10.44,
       visualHtml: `
-        <div class="check-grid">
-          <div class="check-row">
-            <div class="check-left">
-              <div class="step-num-badge orange">1</div>
-              <div class="check-text">
-                <div class="check-title">Onderbeenlengte &amp; Zithoogte</div>
-                <div class="check-sub">Voeten rusten plat op de vloer zonder druk op de knieholte</div>
-              </div>
-            </div>
-            <span class="check-status orange">OP MAAT</span>
+        <div class="zitadvies-form-card" id="zitadvies-form-widget" onclick="event.stopPropagation()">
+          <div class="zitadvies-top-bar">
+            <span class="zitadvies-form-tag">&#9745; Maatwerk Zitadvies- &amp; Intakeformulier</span>
+            <span class="zitadvies-step-pill">Meting <span id="zitadvies-step-idx">1</span> / 5</span>
           </div>
-          <div class="check-row">
-            <div class="check-left">
-              <div class="step-num-badge orange">2</div>
-              <div class="check-text">
-                <div class="check-title">Bovenbeenlengte &amp; Zitdiepte</div>
-                <div class="check-sub">Optimale steun onder het bovenbeen zonder onderuitzakken</div>
+          <div class="zitadvies-main-grid">
+            <div class="zitadvies-icon-stage">
+              <div class="zitadvies-svg-wrap" id="zitadvies-svg-container"></div>
+              <div class="zitadvies-measure-badge" id="zitadvies-measure-badge">&#8597; Zithoogte A: 46 cm</div>
+            </div>
+            <div class="zitadvies-form-right">
+              <div class="zitadvies-active-header">
+                <div class="zitadvies-active-title" id="zitadvies-active-title">1. Zithoogte (Maat A &bull; Knieholte tot vloer)</div>
+                <div class="zitadvies-active-desc" id="zitadvies-active-desc">Voeten plat op de vloer, knieholte vrij van druk voor optimale doorbloeding.</div>
+              </div>
+              <div class="zitadvies-ABCD-grid">
+                <div class="zitadvies-field active" id="zit-field-1" onclick="selectZitadviesStep(1, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Zithoogte</span>
+                  <span class="zitadvies-field-val">46 cm &#8597;</span>
+                </div>
+                <div class="zitadvies-field" id="zit-field-2" onclick="selectZitadviesStep(2, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Zitdiepte</span>
+                  <span class="zitadvies-field-val">48 cm &#8596;</span>
+                </div>
+                <div class="zitadvies-field" id="zit-field-4" onclick="selectZitadviesStep(4, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armhoogte</span>
+                  <span class="zitadvies-field-val">22 cm &#8597;</span>
+                </div>
+                <div class="zitadvies-field" id="zit-field-3" onclick="selectZitadviesStep(3, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lendensteun</span>
+                  <span class="zitadvies-field-val">S-Curve &#8596;</span>
+                </div>
+              </div>
+              <div class="zitadvies-checks-strip">
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Onderrugsteun</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Ontspannen nek</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Soepel opstaan</span>
               </div>
             </div>
-            <span class="check-status orange">OP MAAT</span>
           </div>
-          <div class="check-row">
-            <div class="check-left">
-              <div class="step-num-badge green">3</div>
-              <div class="check-text">
-                <div class="check-title">Armleggerhoogte &amp; Lendensteun</div>
-                <div class="check-sub">Ontspannen schouders en vulling precies in uw onderrug</div>
-              </div>
-            </div>
-            <span class="check-status green">PERFECT</span>
+          <div class="zitadvies-tabs-row">
+            <button type="button" onclick="selectZitadviesStep(1, true)" id="zit-tab-1" class="zitadvies-tab-btn active">1. Hoogte &#8597;</button>
+            <button type="button" onclick="selectZitadviesStep(2, true)" id="zit-tab-2" class="zitadvies-tab-btn">2. Diepte &#8596;</button>
+            <button type="button" onclick="selectZitadviesStep(3, true)" id="zit-tab-3" class="zitadvies-tab-btn">3. Lenden &#8596;</button>
+            <button type="button" onclick="selectZitadviesStep(4, true)" id="zit-tab-4" class="zitadvies-tab-btn">4. Arm &#8597;</button>
+            <button type="button" onclick="selectZitadviesStep(5, true)" id="zit-tab-5" class="zitadvies-tab-btn">5. Sta-op &#8593;</button>
           </div>
         </div>
       `
@@ -4312,6 +4834,249 @@
             <a href="staopstoelen.html" class="btn-consumer-secondary" target="_top">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <span>Bekijk 30+ Stoelen op Voorraad</span>
+            </a>
+          </div>
+        </div>
+      `
+    }
+  ];
+
+  // NIEUW: Inspectie, Revisie & Zitadvies Video (mode=revisie) met alle werkplaatsfoto's, Zitadvies Stoel-Iconen & Eindproduct
+  const REVISIE_SCENES = [
+    {
+      align: "left",
+      shortTag: "1. Demontage & 30-Punts Scan",
+      kicker: "FASE 1 • VOLLEDIGE DEMONTAGE",
+      title: "Gestript tot op het Stalen Fitform Frame",
+      subtitle: "",
+      metric: "",
+      caption: "Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door staopstoelen.nl exact op uw lichaam afgesteld. Zo zit uw stoel weer echt als nieuw, voor jarenlang zorgeloos zitcomfort.",
+      voiceText: "Elke stoel krijgt een dertig-punten keuring, ozon-dieptereiniging en wordt door staopstoelen punt nl exact op uw lichaam afgesteld. Zo zit uw stoel weer echt als nieuw, voor jarenlang zorgeloos zitcomfort.",
+      bg: "assets/revisie_scene1_wide.jpg?v=20261024_1",
+      audio: "assets/audio/consumer_scene_3.m4a?v=eleven_2",
+      durationSec: 12.27,
+      visualHtml: `
+        <div class="chair-anatomy-card" onclick="event.stopPropagation()">
+          <div class="anatomy-top-bar">
+            <span class="anatomy-badge-verified">&#10003; 30-Punts Keuring &amp; Stoel-Anatomie</span>
+            <span class="anatomy-step-counter">Punt <span id="anatomy-step-idx">1</span> / 5</span>
+          </div>
+          <div class="anatomy-stage-grid">
+            <div class="anatomy-chair-canvas">
+              <svg viewBox="0 0 400 380" id="anatomy-chair-svg">
+                <defs>
+                  <linearGradient id="anatChairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2e6022" />
+                    <stop offset="100%" stop-color="#1b3f14" />
+                  </linearGradient>
+                  <linearGradient id="anatChairActive" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4b8f24" />
+                    <stop offset="100%" stop-color="#2e6022" />
+                  </linearGradient>
+                </defs>
+                <path id="anat-part-back" d="M140 70 C140 45, 175 40, 205 45 C230 50, 235 75, 230 180 C228 200, 215 220, 200 230 L160 225 C145 205, 140 120, 140 70 Z" fill="url(#anatChairGrad)" stroke="#14310d" stroke-width="3" />
+                <path id="anat-part-seat" d="M150 220 C180 225, 250 225, 305 210 C315 215, 318 235, 310 248 C290 262, 210 268, 150 252 Z" fill="url(#anatChairGrad)" stroke="#14310d" stroke-width="3" />
+                <path id="anat-part-arm" d="M125 150 C125 130, 260 135, 280 155 C290 165, 285 240, 275 255 C270 265, 135 265, 125 245 Z" fill="url(#anatChairGrad)" opacity="0.92" stroke="#14310d" stroke-width="3" />
+                <path id="anat-part-legrest" d="M305 225 L325 300 C315 305, 290 305, 280 295 L275 255 Z" fill="url(#anatChairGrad)" stroke="#14310d" stroke-width="2.5" />
+                <path id="anat-part-base" d="M100 330 L330 330 C335 330, 338 335, 335 340 L320 345 L95 345 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+                <rect id="anat-part-motor" x="180" y="275" width="50" height="22" rx="4" fill="#475569" stroke="#334155" stroke-width="2" />
+                <circle cx="205" cy="286" r="4" fill="#22c55e" />
+                <line x1="205" y1="286" x2="295" y2="245" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+                <line x1="205" y1="286" x2="165" y2="180" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+                <circle cx="120" cy="348" r="7" fill="#334155" />
+                <circle cx="310" cy="348" r="7" fill="#334155" />
+              </svg>
+              <button type="button" onclick="selectAnatomyHotspot(1, true)" id="anat-hs-1" style="top: 72%; left: 50%;" class="anatomy-hotspot active">1</button>
+              <button type="button" onclick="selectAnatomyHotspot(2, true)" id="anat-hs-2" style="top: 57%; left: 62%;" class="anatomy-hotspot">2</button>
+              <button type="button" onclick="selectAnatomyHotspot(3, true)" id="anat-hs-3" style="top: 34%; left: 46%;" class="anatomy-hotspot">3</button>
+              <button type="button" onclick="selectAnatomyHotspot(4, true)" id="anat-hs-4" style="top: 44%; left: 34%;" class="anatomy-hotspot">4</button>
+              <button type="button" onclick="selectAnatomyHotspot(5, true)" id="anat-hs-5" style="top: 82%; left: 28%;" class="anatomy-hotspot">5</button>
+            </div>
+            <div class="anatomy-detail-box">
+              <div class="anatomy-detail-cat" id="anat-detail-cat">1 &bull; Aandrijftechniek</div>
+              <h4 class="anatomy-detail-title" id="anat-detail-title">3 Onafhankelijke Linak Motoren</h4>
+              <p class="anatomy-detail-desc" id="anat-detail-desc">Deense Linak motoren getest onder 150 kg belasting op geruisloze en soepele werking.</p>
+              <div class="anatomy-meta-box">
+                <div class="anatomy-meta-row">
+                  <span class="anatomy-meta-lbl">Controle:</span>
+                  <span class="anatomy-meta-val" id="anat-detail-check">Spindel, relais &amp; printplaat</span>
+                </div>
+                <div class="anatomy-meta-row">
+                  <span class="anatomy-meta-lbl">Actie:</span>
+                  <span class="anatomy-meta-val" id="anat-detail-action">&#10003; 100% Gekeurd &amp; Gesmeerd</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="anatomy-pills-row">
+            <button type="button" onclick="selectAnatomyHotspot(1, true)" id="anat-pill-1" class="anatomy-pill-btn active">1. Motoren</button>
+            <button type="button" onclick="selectAnatomyHotspot(2, true)" id="anat-pill-2" class="anatomy-pill-btn">2. Inmeting</button>
+            <button type="button" onclick="selectAnatomyHotspot(3, true)" id="anat-pill-3" class="anatomy-pill-btn">3. Lenden</button>
+            <button type="button" onclick="selectAnatomyHotspot(4, true)" id="anat-pill-4" class="anatomy-pill-btn">4. Hygiëne</button>
+            <button type="button" onclick="selectAnatomyHotspot(5, true)" id="anat-pill-5" class="anatomy-pill-btn">5. Noodaccu</button>
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "right",
+      shortTag: "2. Nieuw Schuim & Revisie",
+      kicker: "FASE 2 • VAKMANSCHAP OP DE WERKBANK",
+      title: "Nieuw Koudschuim, Bekleding & Motortest",
+      subtitle: "",
+      metric: "",
+      caption: "Van nieuw koudschuim en verse stoffering tot een 24-uurs belastingstest van de drie Linak motoren: elke stoel verlaat onze werkplaats technisch als nieuw.",
+      voiceText: "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
+      bg: "assets/revisie_scene2_wide.jpg?v=20261024_1",
+      audio: "assets/audio/consumer_scene_2.m4a?v=eleven_2",
+      durationSec: 10.67,
+      visualHtml: `
+        <div class="revisie-process-card" id="revisie-process-widget" onclick="event.stopPropagation()">
+          <div class="anatomy-top-bar">
+            <span class="anatomy-badge-verified">&#128295; Live Werkplaats &amp; Revisie Dossier</span>
+            <span class="anatomy-step-counter">Stap <span id="revisie-step-idx">1</span> / 4</span>
+          </div>
+          <div class="revisie-stage-grid">
+            <div class="revisie-photo-frame">
+              <img src="assets/revisie_stap3.jpg" alt="Revisiestap" id="revisie-step-img">
+              <div class="revisie-photo-badge" id="revisie-step-badge">01 &bull; DEMONTAGE</div>
+            </div>
+            <div class="revisie-detail-col">
+              <div class="anatomy-detail-cat" id="revisie-detail-cat">STAP 01 &bull; CHASSIS &amp; SCHUIMKERN</div>
+              <h4 class="anatomy-detail-title" id="revisie-detail-title">Volledig Gestript tot op het Stalen Frame</h4>
+              <p class="anatomy-detail-desc" id="revisie-detail-desc">Wij verwijderen alle bekleding om het metalen schaarmechaniek, houtwerk en de schuimkern tot in de kern te inspecteren.</p>
+              <div class="anatomy-meta-box">
+                <div class="anatomy-meta-row">
+                  <span class="anatomy-meta-lbl">Werkplaats:</span>
+                  <span class="anatomy-meta-val" id="revisie-detail-check">Frame, scharnierpunten &amp; schuim</span>
+                </div>
+                <div class="anatomy-meta-row">
+                  <span class="anatomy-meta-lbl">Status:</span>
+                  <span class="anatomy-meta-val" id="revisie-detail-action">&#10003; Gekeurd in Dordrecht</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="revisie-thumbs-row">
+            <button type="button" onclick="selectRevisieStep(1, true)" id="rev-btn-1" class="revisie-thumb-btn active">1. Demontage</button>
+            <button type="button" onclick="selectRevisieStep(2, true)" id="rev-btn-2" class="revisie-thumb-btn">2. Nieuw Schuim</button>
+            <button type="button" onclick="selectRevisieStep(3, true)" id="rev-btn-3" class="revisie-thumb-btn">3. Motortest</button>
+            <button type="button" onclick="selectRevisieStep(4, true)" id="rev-btn-4" class="revisie-thumb-btn">4. Eindproduct</button>
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "left",
+      shortTag: "3. Zitadvies Formulier",
+      kicker: "FASE 3 • MAATWERK INMETING",
+      title: "Het Zitadvies-Formulier: Hoogte, Diepte & Lenden",
+      subtitle: "",
+      metric: "",
+      caption: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
+      voiceText: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
+      bg: "assets/geertjan_advies_showroom_right.jpg?v=20261024_1",
+      audio: "assets/audio/afspraak_scene_2.m4a?v=eleven_1",
+      durationSec: 10.44,
+      visualHtml: `
+        <div class="zitadvies-form-card" id="zitadvies-form-widget" onclick="event.stopPropagation()">
+          <div class="zitadvies-top-bar">
+            <span class="zitadvies-form-tag">&#9745; Maatwerk Zitadvies- &amp; Intakeformulier</span>
+            <span class="zitadvies-step-pill">Meting <span id="zitadvies-step-idx">1</span> / 5</span>
+          </div>
+          <div class="zitadvies-main-grid">
+            <div class="zitadvies-icon-stage">
+              <div class="zitadvies-svg-wrap" id="zitadvies-svg-container"></div>
+              <div class="zitadvies-measure-badge" id="zitadvies-measure-badge">&#8597; Zithoogte A: 46 cm</div>
+            </div>
+            <div class="zitadvies-form-right">
+              <div class="zitadvies-active-header">
+                <div class="zitadvies-active-title" id="zitadvies-active-title">1. Zithoogte (Maat A &bull; Knieholte tot vloer)</div>
+                <div class="zitadvies-active-desc" id="zitadvies-active-desc">Voeten plat op de vloer, knieholte vrij van druk voor optimale doorbloeding.</div>
+              </div>
+              <div class="zitadvies-ABCD-grid">
+                <div class="zitadvies-field active" id="zit-field-1" onclick="selectZitadviesStep(1, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Zithoogte</span>
+                  <span class="zitadvies-field-val">46 cm &#8597;</span>
+                </div>
+                <div class="zitadvies-field" id="zit-field-2" onclick="selectZitadviesStep(2, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Zitdiepte</span>
+                  <span class="zitadvies-field-val">48 cm &#8596;</span>
+                </div>
+                <div class="zitadvies-field" id="zit-field-4" onclick="selectZitadviesStep(4, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armhoogte</span>
+                  <span class="zitadvies-field-val">22 cm &#8597;</span>
+                </div>
+                <div class="zitadvies-field" id="zit-field-3" onclick="selectZitadviesStep(3, true)" style="cursor:pointer;">
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lendensteun</span>
+                  <span class="zitadvies-field-val">S-Curve &#8596;</span>
+                </div>
+              </div>
+              <div class="zitadvies-checks-strip">
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Onderrugsteun</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Ontspannen nek</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Soepel opstaan</span>
+              </div>
+            </div>
+          </div>
+          <div class="zitadvies-tabs-row">
+            <button type="button" onclick="selectZitadviesStep(1, true)" id="zit-tab-1" class="zitadvies-tab-btn active">1. Hoogte &#8597;</button>
+            <button type="button" onclick="selectZitadviesStep(2, true)" id="zit-tab-2" class="zitadvies-tab-btn">2. Diepte &#8596;</button>
+            <button type="button" onclick="selectZitadviesStep(3, true)" id="zit-tab-3" class="zitadvies-tab-btn">3. Lenden &#8596;</button>
+            <button type="button" onclick="selectZitadviesStep(4, true)" id="zit-tab-4" class="zitadvies-tab-btn">4. Arm &#8597;</button>
+            <button type="button" onclick="selectZitadviesStep(5, true)" id="zit-tab-5" class="zitadvies-tab-btn">5. Sta-op &#8593;</button>
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "right",
+      shortTag: "4. Het Eindproduct",
+      kicker: "HET EINDPRODUCT • 2 JAAR GARANTIE",
+      title: "100% Als Nieuw Bekleed & Direct Leverbaar",
+      subtitle: "",
+      metric: "",
+      caption: "Het resultaat: een 100% gereviseerde Fitform 570 met 24 maanden garantie aan huis. Kom vrijblijvend proefzitten in Dordrecht of vraag een demonstratie aan huis aan!",
+      voiceText: "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht, of vraag een demonstratie aan huis aan. Bel nul zeven acht, zes drie een, vier acht vijf acht, of kijk op staopstoelen punt nl.",
+      bg: "assets/revisie_scene4_eindproduct_wide.jpg?v=20261024_1",
+      audio: "assets/audio/consumer_scene_4.m4a?v=eleven_2",
+      durationSec: 12.48,
+      visualHtml: `
+        <div class="eindproduct-showcase-card" id="eindproduct-showcase-widget" onclick="event.stopPropagation()">
+          <div class="anatomy-top-bar">
+            <span class="anatomy-badge-verified">&#10024; Voor &amp; Na Revisie + 4-Standen Test</span>
+            <span class="anatomy-step-counter" id="eindproduct-stand-pill">Stand 1 / 4: Zitstand</span>
+          </div>
+          <div class="eindproduct-top-grid">
+            <div class="eindproduct-before-after">
+              <div class="eindproduct-ba-box">
+                <img src="assets/revisie_stap3.jpg" alt="Voor Revisie">
+                <div class="eindproduct-ba-lbl">VOOR: GESTRIPT</div>
+              </div>
+              <div class="eindproduct-ba-box after">
+                <img src="assets/revisie_stap4.jpg" alt="Eindproduct Fitform 570">
+                <div class="eindproduct-ba-lbl">&#10003; EINDPRODUCT</div>
+              </div>
+            </div>
+            <div class="eindproduct-motion-mini" onclick="cycleEindproductStand(true)" style="cursor:pointer;" title="Klik om door de 4 standen te schakelen">
+              <img src="assets/faq_chair_closed.png" alt="4-Standen Beweging" id="eindproduct-motion-img">
+              <span class="eindproduct-motion-lbl" id="eindproduct-motion-lbl">1. Zitstand (90&deg;)</span>
+            </div>
+          </div>
+          <div class="revisie-thumbs-row">
+            <button type="button" onclick="selectEindproductStand(1, true)" id="ep-stand-1" class="revisie-thumb-btn active">1. Zitstand</button>
+            <button type="button" onclick="selectEindproductStand(2, true)" id="ep-stand-2" class="revisie-thumb-btn">2. Relaxstand</button>
+            <button type="button" onclick="selectEindproductStand(3, true)" id="ep-stand-3" class="revisie-thumb-btn">3. Ligstand</button>
+            <button type="button" onclick="selectEindproductStand(4, true)" id="ep-stand-4" class="revisie-thumb-btn">4. Sta-op Lift</button>
+          </div>
+          <div class="eindproduct-cta-row">
+            <a href="afspraak.html#bookingCard" class="btn-consumer-primary" target="_top" onclick="return handleKiesDatumClick(event)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Gratis Zitmeting</span>
+            </a>
+            <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn-consumer-secondary" target="_top">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>30+ Occasions</span>
             </a>
           </div>
         </div>
@@ -4514,12 +5279,262 @@
       thumb.style.left = `${globalPct}%`;
     }
     const s = scenes[currentScene];
-    if (s && s.durationSec > 0 && document.getElementById('anatomy-chair-svg') && !anatomyManualOverride) {
-      const stepIdx = Math.min(5, Math.max(1, Math.floor((currentSceneElapsedSec / s.durationSec) * 5) + 1));
-      if (stepIdx !== currentAnatomyHotspot) {
-        selectAnatomyHotspot(stepIdx, false);
+    if (s && s.durationSec > 0) {
+      if (document.getElementById('anatomy-chair-svg') && !anatomyManualOverride) {
+        const stepIdx = Math.min(5, Math.max(1, Math.floor((currentSceneElapsedSec / s.durationSec) * 5) + 1));
+        if (stepIdx !== currentAnatomyHotspot) selectAnatomyHotspot(stepIdx, false);
+      }
+      if (document.getElementById('zitadvies-form-widget') && !zitadviesManualOverride) {
+        const zitIdx = Math.min(5, Math.max(1, Math.floor((currentSceneElapsedSec / s.durationSec) * 5) + 1));
+        if (zitIdx !== currentZitadviesStep) selectZitadviesStep(zitIdx, false);
+      }
+      if (document.getElementById('revisie-process-widget') && !revisieManualOverride) {
+        const revIdx = Math.min(4, Math.max(1, Math.floor((currentSceneElapsedSec / s.durationSec) * 4) + 1));
+        if (revIdx !== currentRevisieStep) selectRevisieStep(revIdx, false);
+      }
+      if (document.getElementById('eindproduct-showcase-widget') && !eindproductManualOverride) {
+        const standIdx = Math.min(4, Math.max(1, Math.floor((currentSceneElapsedSec / s.durationSec) * 4) + 1));
+        if (standIdx !== currentEindproductStand) selectEindproductStand(standIdx, false);
       }
     }
+  }
+
+  // 1. Zitadvies Formulier met 5 Stoel-Iconen (Hoogte, Diepte, Lenden, Arm, Sta-op)
+  const ZITADVIES_DATA = {
+    1: {
+      title: "1. Zithoogte (Maat A • Knieholte tot vloer)",
+      desc: "Voeten rusten plat op de vloer, knieholte vrij van druk voor optimale doorbloeding.",
+      badge: "↕ Zithoogte A: 46 cm",
+      field: "zit-field-1",
+      svg: `<svg viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 18 C26 12 36 10 44 12 C52 14 54 22 53 50 C52 55 50 62 46 64 L34 63 C29 57 26 34 26 18 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M29 61 C38 63 60 63 74 58 C78 60 80 66 77 70 C71 74 48 76 29 71 Z" fill="#4b8f24" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M22 42 C22 36 60 38 66 43 C69 46 68 67 65 71 C64 74 25 74 22 68 Z" fill="#2e6022" opacity="0.88" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M74 62 L80 84 C77 86 69 86 67 83 L65 71 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.5"/>
+        <path d="M16 93 L84 93 C86 93 87 95 86 97 L81 99 L14 99 Z" fill="#1e293b"/>
+        <!-- Zithoogte Pijl (Oranje Verticaal) -->
+        <line x1="88" y1="64" x2="88" y2="94" stroke="#f39223" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="88,60 84,66 92,66" fill="#f39223"/>
+        <polygon points="88,98 84,92 92,92" fill="#f39223"/>
+      </svg>`
+    },
+    2: {
+      title: "2. Zitdiepte (Maat B • Bil tot knieholte)",
+      desc: "2 tot 3 vingers ruimte tussen zitkussen en knieholte voorkomt afknelling en onderuitzakken.",
+      badge: "↔ Zitdiepte B: 48 cm",
+      field: "zit-field-2",
+      svg: `<svg viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 18 C26 12 36 10 44 12 C52 14 54 22 53 50 C52 55 50 62 46 64 L34 63 C29 57 26 34 26 18 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M29 61 C38 63 60 63 74 58 C78 60 80 66 77 70 C71 74 48 76 29 71 Z" fill="#f39223" stroke="#b45309" stroke-width="1.8"/>
+        <path d="M22 42 C22 36 60 38 66 43 C69 46 68 67 65 71 C64 74 25 74 22 68 Z" fill="#2e6022" opacity="0.88" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M74 62 L80 84 C77 86 69 86 67 83 L65 71 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.5"/>
+        <path d="M16 93 L84 93 C86 93 87 95 86 97 L81 99 L14 99 Z" fill="#1e293b"/>
+        <!-- Zitdiepte Pijl (Oranje Horizontaal) -->
+        <line x1="32" y1="52" x2="72" y2="52" stroke="#f39223" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="28,52 34,48 34,56" fill="#f39223"/>
+        <polygon points="76,52 70,48 70,56" fill="#f39223"/>
+      </svg>`
+    },
+    3: {
+      title: "3. Pneumatische Lendensteun (S-Curve onderrug)",
+      desc: "Luchtkamer in de rugleuning vult de holling van uw onderrug exact op zonder overstrekking.",
+      badge: "↔ Lendensteun: Op Lichaamsdruk",
+      field: "zit-field-3",
+      svg: `<svg viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 18 C26 12 36 10 44 12 C52 14 54 22 53 50 C52 55 50 62 46 64 L34 63 C29 57 26 34 26 18 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M29 61 C38 63 60 63 74 58 C78 60 80 66 77 70 C71 74 48 76 29 71 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.8"/>
+        <!-- Lendensteun luchtkussen highlight -->
+        <ellipse cx="43" cy="46" rx="8" ry="11" fill="#f39223" stroke="#b45309" stroke-width="1.5"/>
+        <path d="M22 42 C22 36 60 38 66 43 C69 46 68 67 65 71 C64 74 25 74 22 68 Z" fill="#2e6022" opacity="0.8" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M16 93 L84 93 C86 93 87 95 86 97 L81 99 L14 99 Z" fill="#1e293b"/>
+        <!-- Lendensteun Pijl -->
+        <line x1="43" y1="46" x2="68" y2="46" stroke="#f39223" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="72,46 66,42 66,50" fill="#f39223"/>
+      </svg>`
+    },
+    4: {
+      title: "4. Armleggerhoogte (Maat C • Elleboog tot zitvlak)",
+      desc: "Schouders ontspannen laten hangen, armen in een hoek van 90 graden ondersteund.",
+      badge: "↕ Armhoogte C: 22 cm",
+      field: "zit-field-4",
+      svg: `<svg viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 18 C26 12 36 10 44 12 C52 14 54 22 53 50 C52 55 50 62 46 64 L34 63 C29 57 26 34 26 18 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.8"/>
+        <path d="M29 61 C38 63 60 63 74 58 C78 60 80 66 77 70 C71 74 48 76 29 71 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.8"/>
+        <!-- Armlegger Highlight -->
+        <path d="M22 42 C22 36 60 38 66 43 C69 46 68 67 65 71 C64 74 25 74 22 68 Z" fill="#f39223" stroke="#b45309" stroke-width="2"/>
+        <path d="M16 93 L84 93 C86 93 87 95 86 97 L81 99 L14 99 Z" fill="#1e293b"/>
+        <!-- Armlegger Hoogte Pijl -->
+        <line x1="16" y1="40" x2="16" y2="66" stroke="#f39223" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="16,36 12,42 20,42" fill="#f39223"/>
+        <polygon points="16,70 12,64 20,64" fill="#f39223"/>
+      </svg>`
+    },
+    5: {
+      title: "5. Sta-op Lift & Kanteling (Veilig en soepel uitstappen)",
+      desc: "De stoel tilt u rustig en stabiel omhoog, zodat uw knieën en heupen niet worden overbelast.",
+      badge: "↑ 3-Motorig: Veilig Opstaan",
+      field: "zit-field-1",
+      svg: `<svg viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="rotate(-12 50 60)">
+          <path d="M26 18 C26 12 36 10 44 12 C52 14 54 22 53 50 C52 55 50 62 46 64 L34 63 C29 57 26 34 26 18 Z" fill="#2e6022" stroke="#1b3f14" stroke-width="1.8"/>
+          <path d="M29 61 C38 63 60 63 74 58 C78 60 80 66 77 70 C71 74 48 76 29 71 Z" fill="#4b8f24" stroke="#1b3f14" stroke-width="1.8"/>
+          <path d="M22 42 C22 36 60 38 66 43 C69 46 68 67 65 71 C64 74 25 74 22 68 Z" fill="#2e6022" opacity="0.88" stroke="#1b3f14" stroke-width="1.8"/>
+        </g>
+        <path d="M16 93 L84 93 C86 93 87 95 86 97 L81 99 L14 99 Z" fill="#1e293b"/>
+        <!-- Opwaartse Lift Pijl -->
+        <line x1="50" y1="92" x2="50" y2="28" stroke="#f39223" stroke-width="3.5" stroke-linecap="round"/>
+        <polygon points="50,22 43,32 57,32" fill="#f39223"/>
+      </svg>`
+    }
+  };
+
+  let currentZitadviesStep = 1;
+  let zitadviesManualOverride = false;
+  let zitadviesTimeout = null;
+
+  function selectZitadviesStep(id, isManual = false) {
+    const d = ZITADVIES_DATA[id];
+    if (!d) return;
+    currentZitadviesStep = id;
+    if (isManual) {
+      zitadviesManualOverride = true;
+      if (zitadviesTimeout) clearTimeout(zitadviesTimeout);
+      zitadviesTimeout = setTimeout(() => { zitadviesManualOverride = false; }, 4500);
+    }
+    const idxEl = document.getElementById('zitadvies-step-idx');
+    if (idxEl) idxEl.textContent = id;
+    const titleEl = document.getElementById('zitadvies-active-title');
+    if (titleEl) titleEl.textContent = d.title;
+    const descEl = document.getElementById('zitadvies-active-desc');
+    if (descEl) descEl.textContent = d.desc;
+    const badgeEl = document.getElementById('zitadvies-measure-badge');
+    if (badgeEl) badgeEl.textContent = d.badge;
+    const svgEl = document.getElementById('zitadvies-svg-container');
+    if (svgEl) svgEl.innerHTML = d.svg;
+
+    for (let i = 1; i <= 5; i++) {
+      const tab = document.getElementById('zit-tab-' + i);
+      if (tab) tab.classList.toggle('active', i === id);
+    }
+    ['zit-field-1', 'zit-field-2', 'zit-field-3', 'zit-field-4'].forEach(fid => {
+      const f = document.getElementById(fid);
+      if (f) f.classList.toggle('active', fid === d.field);
+    });
+  }
+
+  // 2. Revisie Process Scanner met de 4 echte werkplaatsfoto's
+  const REVISIE_STEP_DATA = {
+    1: {
+      img: "assets/revisie_stap3.jpg",
+      badge: "01 • DEMONTAGE TOT OP HET FRAME",
+      cat: "STAP 01 • CHASSIS & SCHUIMKERN",
+      title: "Volledig Gestript tot op het Stalen Frame",
+      desc: "Alle oude bekleding en schuim worden verwijderd. Het massief stalen schaarmechaniek en alle lasnaden worden gecontroleerd.",
+      check: "Frame, spindels & scharnierpunten",
+      action: "✓ 100% Gekeurd in Dordrecht"
+    },
+    2: {
+      img: "assets/revisie_stap2.jpg",
+      badge: "02 • NIEUW KOUDSCHUIM & ARMLEGGERS",
+      cat: "STAP 02 • ERGONOMISCH KOUDSCHUIM",
+      title: "Nieuw HR-Koudschuim & Verse Stoffering",
+      desc: "Nieuwe armleggers met verchroomde pennen, ademende HR-koudschuim zitting en rugpaneel worden met de hand opnieuw bekleed.",
+      check: "HR-koudschuim & meubelstof/leder",
+      action: "✓ Nieuw materiaal op de werkbank"
+    },
+    3: {
+      img: "assets/revisie_stap1.jpg",
+      badge: "03 • LINAK 150 KG BELASTINGSTEST",
+      cat: "STAP 03 • MOTOR- & ELEKTRONICA KEURING",
+      title: "24-Uurs Duurtest van de 3 Linak Motoren",
+      desc: "De Deense Linak motoren worden onder 150 kg dynamische belasting getest op printplaat, relais, handbediening en geluid.",
+      check: "3 Linak motoren, trafo & kabels",
+      action: "✓ 150 kg belastingtest doorstaan"
+    },
+    4: {
+      img: "assets/revisie_stap4.jpg",
+      badge: "04 • HET EINDPRODUCT MET 24 MND GARANTIE",
+      cat: "STAP 04 • OZON-EXTRACTIE & EINDCONTROLE",
+      title: "Het Eindproduct: 100% Als Nieuw Bekleed",
+      desc: "De gereviseerde Fitform 570 wordt ozon-gedesinfecteerd, verzegeld met het keurmerk en geleverd inclusief 2 jaar garantie aan huis.",
+      check: "Ozon-dieptereiniging & keurmerk",
+      action: "✓ Klaar voor proefzitten & levering"
+    }
+  };
+
+  let currentRevisieStep = 1;
+  let revisieManualOverride = false;
+  let revisieTimeout = null;
+
+  function selectRevisieStep(id, isManual = false) {
+    const d = REVISIE_STEP_DATA[id];
+    if (!d) return;
+    currentRevisieStep = id;
+    if (isManual) {
+      revisieManualOverride = true;
+      if (revisieTimeout) clearTimeout(revisieTimeout);
+      revisieTimeout = setTimeout(() => { revisieManualOverride = false; }, 4500);
+    }
+    const idxEl = document.getElementById('revisie-step-idx');
+    if (idxEl) idxEl.textContent = id;
+    const imgEl = document.getElementById('revisie-step-img');
+    if (imgEl) imgEl.src = d.img;
+    const badgeEl = document.getElementById('revisie-step-badge');
+    if (badgeEl) badgeEl.textContent = d.badge;
+    const catEl = document.getElementById('revisie-detail-cat');
+    if (catEl) catEl.textContent = d.cat;
+    const titleEl = document.getElementById('revisie-detail-title');
+    if (titleEl) titleEl.textContent = d.title;
+    const descEl = document.getElementById('revisie-detail-desc');
+    if (descEl) descEl.textContent = d.desc;
+    const checkEl = document.getElementById('revisie-detail-check');
+    if (checkEl) checkEl.textContent = d.check;
+    const actionEl = document.getElementById('revisie-detail-action');
+    if (actionEl) actionEl.textContent = d.action;
+
+    for (let i = 1; i <= 4; i++) {
+      const btn = document.getElementById('rev-btn-' + i);
+      if (btn) btn.classList.toggle('active', i === id);
+    }
+  }
+
+  // 3. Eindproduct 4-Standen Beweging Showcase
+  const EINDPRODUCT_STANDEN = {
+    1: { name: "1. Zitstand (90°)", pill: "Stand 1 / 4: Zitstand", img: "assets/faq_chair_closed.png" },
+    2: { name: "2. Relaxstand (Benen omhoog)", pill: "Stand 2 / 4: Relaxstand", img: "assets/faq_chair_legsup.png" },
+    3: { name: "3. Ligstand (Hart-balans)", pill: "Stand 3 / 4: Ligstand", img: "assets/faq_chair_lieflat.png" },
+    4: { name: "4. Sta-opstand (Lift)", pill: "Stand 4 / 4: Sta-opstand", img: "assets/faq_chair_elevated.png" }
+  };
+
+  let currentEindproductStand = 1;
+  let eindproductManualOverride = false;
+  let eindproductTimeout = null;
+
+  function selectEindproductStand(id, isManual = false) {
+    const st = EINDPRODUCT_STANDEN[id];
+    if (!st) return;
+    currentEindproductStand = id;
+    if (isManual) {
+      eindproductManualOverride = true;
+      if (eindproductTimeout) clearTimeout(eindproductTimeout);
+      eindproductTimeout = setTimeout(() => { eindproductManualOverride = false; }, 4500);
+    }
+    const pill = document.getElementById('eindproduct-stand-pill');
+    if (pill) pill.textContent = st.pill;
+    const lbl = document.getElementById('eindproduct-motion-lbl');
+    if (lbl) lbl.textContent = st.name;
+    const img = document.getElementById('eindproduct-motion-img');
+    if (img) img.src = st.img;
+
+    for (let i = 1; i <= 4; i++) {
+      const btn = document.getElementById('ep-stand-' + i);
+      if (btn) btn.classList.toggle('active', i === id);
+    }
+  }
+
+  function cycleEindproductStand(isManual = true) {
+    const nextId = (currentEindproductStand % 4) + 1;
+    selectEindproductStand(nextId, isManual);
   }
 
   function startFallbackTimer(totalDurationSec, startOffsetSec = 0) {
@@ -4679,6 +5694,24 @@
     } else if (anatomyIdleTimer) {
       clearInterval(anatomyIdleTimer);
       anatomyIdleTimer = null;
+    }
+
+    if (document.getElementById('zitadvies-form-widget')) {
+      zitadviesManualOverride = false;
+      const initZit = s.durationSec > 0 ? Math.min(5, Math.max(1, Math.floor((currentSceneOffsetSec / s.durationSec) * 5) + 1)) : 1;
+      selectZitadviesStep(initZit, false);
+    }
+
+    if (document.getElementById('revisie-process-widget')) {
+      revisieManualOverride = false;
+      const initRev = s.durationSec > 0 ? Math.min(4, Math.max(1, Math.floor((currentSceneOffsetSec / s.durationSec) * 4) + 1)) : 1;
+      selectRevisieStep(initRev, false);
+    }
+
+    if (document.getElementById('eindproduct-showcase-widget')) {
+      eindproductManualOverride = false;
+      const initStand = s.durationSec > 0 ? Math.min(4, Math.max(1, Math.floor((currentSceneOffsetSec / s.durationSec) * 4) + 1)) : 1;
+      selectEindproductStand(initStand, false);
     }
 
     const metricEl = document.getElementById('scene-metric');
@@ -5226,16 +6259,28 @@
 
     const btnInv = document.getElementById('btn-mode-investor');
     const btnCons = document.getElementById('btn-mode-consumer');
+    const btnRev = document.getElementById('btn-mode-revisie');
+    const btnAfsp = document.getElementById('btn-mode-afspraak');
     const heroKicker = document.getElementById('hero-kicker-text');
     const heroTitle = document.getElementById('hero-title');
     const heroLead = document.getElementById('hero-lead');
 
-    if (mode === 'afspraak') {
+    [btnInv, btnCons, btnRev, btnAfsp].forEach(b => { if (b) b.classList.remove('active'); });
+
+    if (mode === 'revisie') {
+      document.body.classList.add('mode-consumer');
+      document.body.classList.remove('mode-investor');
+      scenes = REVISIE_SCENES;
+      if (btnRev) btnRev.classList.add('active');
+      if (heroKicker) heroKicker.innerHTML = 'INSPECTIE, REVISIE &amp; ZITADVIES &bull; 45-SECONDEN VIDEO';
+      if (heroTitle) heroTitle.innerHTML = 'Hoe reviseren wij een <span class="title-highlight">Fitform Stoel</span>?';
+      if (heroLead) heroLead.textContent = 'Ontdek ons complete 4-stappen inspectie- en revisieproces in Dordrecht: demontage tot op het frame, nieuw koudschuim, linak motortests, zitadvies op maat en het eindproduct.';
+    } else if (mode === 'afspraak') {
       document.body.classList.add('mode-consumer');
       document.body.classList.remove('mode-investor');
       scenes = AFSPRAAK_SCENES;
-      if (btnCons) btnCons.classList.add('active');
-      if (btnInv) btnInv.classList.remove('active');
+      if (btnAfsp) btnAfsp.classList.add('active');
+      else if (btnCons) btnCons.classList.add('active');
       if (heroKicker) heroKicker.innerHTML = 'PERSOONLIJK ZITADVIES &bull; 38-SECONDEN VIDEO';
       if (heroTitle) heroTitle.innerHTML = 'Hoe werkt <span class="title-highlight">Gratis Proefzitten</span>?';
       if (heroLead) heroLead.textContent = 'Ontdek hoe bewegingstechnoloog Geertjan uw zithoogte, zitdiepte en lendensteun tot op de millimeter nauwkeurig op uw lichaam afstelt.';
@@ -5244,7 +6289,6 @@
       document.body.classList.remove('mode-investor');
       scenes = CONSUMER_SCENES;
       if (btnCons) btnCons.classList.add('active');
-      if (btnInv) btnInv.classList.remove('active');
       if (heroKicker) heroKicker.innerHTML = 'WAAROM KIEZEN VOOR CERTIFIED FITFORM? &bull; 45-SECONDEN VIDEO';
       if (heroTitle) heroTitle.innerHTML = 'Waarom <span class="title-highlight">Certified Fitform</span>?';
       if (heroLead) heroLead.textContent = 'Ontdek waarom een Certified Fitform de slimste keuze is: medische topkwaliteit en 24 maanden garantie voor minder dan de helft van de prijs.';
@@ -5253,7 +6297,6 @@
       document.body.classList.remove('mode-consumer');
       scenes = INVESTOR_SCENES;
       if (btnInv) btnInv.classList.add('active');
-      if (btnCons) btnCons.classList.remove('active');
       if (heroKicker) heroKicker.innerHTML = 'STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL';
       if (heroTitle) heroTitle.innerHTML = 'Certified Fitform <span class="title-highlight">Video Pitch</span>';
       if (heroLead) heroLead.textContent = 'De complete commerciële propositie en overnamestructuur in 60 seconden: marktvacuüm, 30-punts revisie, 42% marge en een gezonde hefboom van € 7.800 extra cashflow per maand.';
@@ -5284,7 +6327,9 @@
     document.body.classList.add('is-embedded');
   }
   const initialModeParam = (urlParams.get('mode') || '').toLowerCase();
-  if (initialModeParam === 'afspraak' || initialModeParam === 'zitmeting' || initialModeParam === 'proefzitten') {
+  if (initialModeParam === 'revisie' || initialModeParam === 'inspectie') {
+    switchReelMode('revisie');
+  } else if (initialModeParam === 'afspraak' || initialModeParam === 'zitmeting' || initialModeParam === 'proefzitten') {
     switchReelMode('afspraak');
   } else if (initialModeParam === 'consumer' || initialModeParam === 'klant' || initialModeParam === 'consument') {
     switchReelMode('consumer');

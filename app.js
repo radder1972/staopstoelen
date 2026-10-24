@@ -2253,7 +2253,14 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   const linkEl = document.getElementById("videoLightboxMoreLink");
   const iframe = document.getElementById("videoLightboxIframe");
 
-  if (mode === "afspraak") {
+  if (mode === "revisie") {
+    if (titleEl) titleEl.textContent = "Video: Inspectie, Revisie & Zitadvies (45s)";
+    if (linkEl) {
+      linkEl.href = "revisie.html#revisie";
+      linkEl.innerHTML = "Bekijk alle 4 revisiefases &rarr;";
+      linkEl.onclick = null;
+    }
+  } else if (mode === "afspraak") {
     if (titleEl) titleEl.textContent = "Video: Hoe werkt Gratis Proefzitten & Zitmeting? (38s)";
     if (linkEl) {
       linkEl.href = "afspraak.html#bookingCard";
@@ -2279,7 +2286,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   }
 
   if (iframe) {
-    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.18`;
+    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.20`;
   }
 
   overlay.classList.add("active");
