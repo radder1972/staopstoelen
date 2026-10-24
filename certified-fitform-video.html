@@ -2227,21 +2227,38 @@
       flex-direction: column !important;
       overflow: hidden !important;
     }
-    body.is-embedded .stage-split-wrapper {
-      flex: 1 1 auto !important;
-      height: auto !important;
-      min-height: 0 !important;
-      max-height: none !important;
-    }
     @media (min-width: 681px) {
+      body.is-embedded .stage-split-wrapper {
+        flex: 1 1 0% !important;
+        height: calc(100vh - 68px) !important;
+        min-height: calc(100vh - 68px) !important;
+        max-height: calc(100vh - 68px) !important;
+      }
       body.is-embedded .companion-panel {
-        height: calc(100% - 28px) !important;
-        min-height: 0 !important;
-        max-height: 536px !important;
+        height: min(536px, calc(100vh - 96px)) !important;
+        min-height: min(536px, calc(100vh - 96px)) !important;
+        max-height: min(536px, calc(100vh - 96px)) !important;
+      }
+    }
+    @media (max-width: 680px) {
+      body.is-embedded .stage-split-wrapper {
+        flex: 1 1 0% !important;
+        height: calc(100vh - 68px) !important;
+        min-height: calc(100vh - 68px) !important;
+        max-height: calc(100vh - 68px) !important;
+        overflow: hidden !important;
+      }
+      body.is-embedded .stage-split-wrapper .companion-panel {
+        height: calc(100vh - 308px) !important;
+        min-height: calc(100vh - 308px) !important;
+        max-height: calc(100vh - 308px) !important;
+        overflow-y: auto !important;
       }
     }
     body.is-embedded .yt-bottom-bar {
-      flex: 0 0 auto !important;
+      flex: 0 0 68px !important;
+      height: 68px !important;
+      box-sizing: border-box !important;
     }
 
     /* Video Reel Mode Switcher (Klantversie vs Investeerderspitch) */
@@ -4020,7 +4037,7 @@
       metric: "",
       caption: "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht, of vraag een demonstratie aan huis aan. Bel 078 - 631 4858 of kijk op staopstoelen.nl.",
       voiceText: "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht, of vraag een demonstratie aan huis aan. Bel nul zeven acht, zes drie een, vier acht vijf acht, of kijk op staopstoelen punt nl.",
-      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      bg: "assets/certified_fitform_occasion_showroom_left.jpg?v=20261024_1",
       audio: "assets/audio/consumer_scene_4.m4a?v=eleven_2",
       durationSec: 12.48,
       visualHtml: `
@@ -4113,7 +4130,7 @@
       metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg> Gediplomeerd Bewegingstechnoloog',
       caption: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
       voiceText: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
-      bg: "assets/geert_in_de_winkel.jpg",
+      bg: "assets/geert_in_de_winkel_left.jpg?v=20261024_1",
       audio: "assets/audio/afspraak_scene_2.m4a?v=eleven_1",
       durationSec: 10.44,
       visualHtml: `
@@ -4235,7 +4252,7 @@
       metric: "",
       caption: "U parkeert gratis voor de deur aan de Merwedestraat 239 in Dordrecht, of wij komen vrijblijvend bij u thuis. Kies hieronder uw gewenste datum!",
       voiceText: "U parkeert gratis voor de deur aan de Merwedestraat 239 in Dordrecht, of wij komen vrijblijvend bij u thuis. Kies hieronder uw gewenste datum!",
-      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      bg: "assets/certified_fitform_occasion_showroom_left.jpg?v=20261024_1",
       audio: "assets/audio/afspraak_scene_4.m4a?v=eleven_1",
       durationSec: 9.04,
       visualHtml: `
