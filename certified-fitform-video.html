@@ -2299,35 +2299,36 @@
     .consumer-cta-card {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 9px;
       background: #ffffff;
       border: 1.5px solid rgba(75, 143, 36, 0.25);
       border-radius: 14px;
-      padding: 16px 18px;
+      padding: 13px 16px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     }
     @media (min-width: 681px) and (max-width: 800px) {
       .consumer-cta-intro { display: none; }
     }
     .consumer-cta-intro {
-      font-size: 0.84rem;
-      line-height: 1.4;
+      font-size: 0.81rem;
+      line-height: 1.35;
       color: #475569;
       text-align: left;
     }
     .consumer-cta-intro strong { color: var(--color-forest-dark); font-weight: 800; }
     .consumer-cta-badge-row {
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 6px;
+      flex-wrap: nowrap;
     }
     .consumer-tag {
-      font-size: 0.72rem;
+      font-size: 0.64rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 4px 10px;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
       border-radius: 6px;
+      white-space: nowrap;
     }
     .consumer-tag.green {
       background: rgba(75, 143, 36, 0.12);
@@ -2342,67 +2343,64 @@
     .consumer-cta-details {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding: 8px 0;
+      gap: 7px;
+      padding: 7px 0;
       border-top: 1px solid #f1f5f9;
       border-bottom: 1px solid #f1f5f9;
     }
     .consumer-cta-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 0.88rem;
+      gap: 10px;
+      font-size: 0.84rem;
       color: var(--color-dark);
       text-align: left;
     }
     .consumer-cta-actions {
       display: flex;
-      gap: 9px;
+      gap: 7px;
       flex-direction: column;
     }
-    /* Laatste klantscène: compacter zodat de extra subtitel + knoppen zonder afkappen in het paneel passen (desktop/liggend) */
+    /* Laatste klantscène: compacter zodat de witte box ruim binnen de groene box valt */
     @media (min-width: 681px) {
-      body.mode-consumer .companion-panel[data-scene="3"] .panel-title { margin-bottom: 6px; }
-      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-intro { font-size: 0.8rem; line-height: 1.35; }
-      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-card { gap: 7px; padding: 10px 16px; }
+      body.mode-consumer .companion-panel[data-scene="3"] .panel-title { margin-bottom: 8px; }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-intro { font-size: 0.79rem; line-height: 1.32; }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-card { gap: 8px; padding: 12px 15px; }
       body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-details { gap: 6px; padding: 6px 0; }
       body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-actions { gap: 7px; }
-      body.mode-consumer .companion-panel[data-scene="3"] .btn-consumer-primary,
-      body.mode-consumer .companion-panel[data-scene="3"] .btn-consumer-secondary { padding-top: 9px; padding-bottom: 9px; }
     }
-    .btn-consumer-primary {
+    .btn-consumer-primary,
+    .btn-consumer-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 12px 18px;
-      background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-dark) 100%);
-      color: #ffffff;
+      gap: 8px;
+      height: 40px;
+      padding: 0 14px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.85rem;
       font-weight: 700;
       border-radius: 10px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.3);
+      white-space: nowrap;
+      box-sizing: border-box;
       transition: all 0.2s ease;
+    }
+    .btn-consumer-primary {
+      background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-dark) 100%);
+      color: #ffffff;
+      border: 1.5px solid transparent;
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.3);
     }
     .btn-consumer-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 6px 16px rgba(75, 143, 36, 0.4);
     }
     .btn-consumer-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px 18px;
       background: rgba(243, 146, 35, 0.1);
       color: #b45309;
       border: 1.5px solid rgba(243, 146, 35, 0.35);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      border-radius: 10px;
+    }
       text-decoration: none;
       transition: all 0.2s ease;
     }
@@ -3828,27 +3826,27 @@
           </div>
           <div class="consumer-cta-details">
             <div class="consumer-cta-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5" style="flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <div>
                 <strong>Merwedestraat 239, Dordrecht</strong>
-                <div style="font-size: 0.78rem; color: #64748b;">Gratis parkeren direct voor de deur &bull; Rolstoelvriendelijk</div>
+                <div style="font-size: 0.74rem; color: #64748b;">Gratis parkeren voor de deur &bull; Rolstoelvriendelijk</div>
               </div>
             </div>
             <div class="consumer-cta-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <div>
                 <strong>078 - 631 4858</strong>
-                <div style="font-size: 0.78rem; color: #64748b;">Spreek direct met een gediplomeerd bewegingstechnoloog</div>
+                <div style="font-size: 0.74rem; color: #64748b;">Direct contact met onze bewegingstechnoloog</div>
               </div>
             </div>
           </div>
           <div class="consumer-cta-actions">
             <a href="afspraak.html" class="btn-consumer-primary" target="_top">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span>Plan Gratis Zitmeting in Dordrecht</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Gratis Zitmeting in Dordrecht</span>
             </a>
             <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn-consumer-secondary" target="_top">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <span>Bekijk 30+ Occasions op Voorraad</span>
             </a>
           </div>
