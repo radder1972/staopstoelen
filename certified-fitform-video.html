@@ -1960,6 +1960,32 @@
       height: 26px;
     }
 
+    .btn-yt-voice-choice {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      padding: 3px 9px;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      white-space: nowrap;
+      margin-left: 2px;
+    }
+    .btn-yt-voice-choice:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: #fbbf24;
+      transform: translateY(-1px);
+    }
+    .btn-yt-voice-choice .voice-badge-icon {
+      font-size: 0.75rem;
+    }
+
     .time-display {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.84rem;
@@ -2493,7 +2519,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.5</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.6</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2662,8 +2688,13 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
           <!-- Geluid / Voiceover Button (YouTube Luidspreker) -->
-          <button class="btn-yt" id="btn-voice" onclick="toggleVoice()" title="Nederlandse Vrouwenstem (m)">
+          <button class="btn-yt" id="btn-voice" onclick="toggleVoice()" title="Voice-over dempen of aanzetten (m)">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="voice-icon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+          <!-- Stem Keuze Toggle (Fenna Vrouw / Maarten Man) -->
+          <button class="btn-yt-voice-choice" id="btn-voice-choice" onclick="toggleVoiceGender()" title="Wissel stem: Fenna (Vrouw, NL) / Maarten (Man, NL)">
+            <span class="voice-badge-icon">🎙️</span>
+            <span id="voice-choice-label">Fenna (V)</span>
           </button>
           <!-- Tijdweergave -->
           <div class="time-display">
@@ -2678,7 +2709,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.5
+            <span class="version-dot"></span> v2.6.6
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -2901,8 +2932,8 @@
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "Een nieuwe ergonomische sta-op stoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
       bg: "assets/senior_chair_dilemma_v3.jpg?v=20261024_05",
-      audio: "assets/audio/scene_1.m4a",
-      durationSec: 12.9,
+      audio: "assets/audio/scene_1.m4a?v=2.6.6",
+      durationSec: 12.82,
       visualHtml: `
         <div class="battle-stack">
           <div class="battle-row bad">
@@ -2947,8 +2978,8 @@
       caption: "staopstoelen.nl overbrugt dit gat met Certified Fitform: Nederlandse topkwaliteit voor 1.550 euro, mét 24 maanden volledige omruilgarantie.",
       voiceText: "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
       bg: "assets/certified_fitform_living_room_v1.jpg",
-      audio: "assets/audio/scene_2.m4a",
-      durationSec: 12.7,
+      audio: "assets/audio/scene_2.m4a?v=2.6.6",
+      durationSec: 11.35,
       visualHtml: `
         <div class="sweet-price-box">
           <div class="sweet-price-hero">
@@ -2991,8 +3022,8 @@
       caption: "Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door staopstoelen.nl exact op maat afgesteld.",
       voiceText: "Elke stoel krijgt een dertig-punten keuring, ozon-dieptereiniging en wordt door staopstoelen punt nl exact op maat afgesteld. Retouren zijn minder dan twee procent.",
       bg: "assets/dutch_technician_fitform_workshop_v2.jpg?v=20261024_02",
-      audio: "assets/audio/scene_3.m4a",
-      durationSec: 10.7,
+      audio: "assets/audio/scene_3.m4a?v=2.6.6",
+      durationSec: 10.66,
       visualHtml: `
         <div class="check-grid">
           <div class="check-row">
@@ -3047,7 +3078,7 @@
       caption: "De bedrijfskundige cijfers zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over per verkochte stoel.",
       voiceText: "De bedrijfskundige cijfers zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over per verkochte stoel. Goed voor 7800 euro cashflow per maand.",
       bg: "assets/unit_economics_fitform_showroom_v4.jpg?v=20261024_10",
-      audio: "assets/audio/scene_4.m4a",
+      audio: "assets/audio/scene_4.m4a?v=2.6.6",
       durationSec: 12.65,
       visualHtml: `
         <!-- 1. Visuele Waterval / Omzetverdeling Balk (Stacked Proportional Bar) -->
@@ -3175,8 +3206,8 @@
       caption: "Met 50% overheidsgarantie en een verkoperslening is slechts 40.000 euro eigen inbreng vereist. Terugverdiend binnen een jaar.",
       voiceText: "Met 50 procent overheidsgarantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inleg nodig. Binnen een jaar terugverdiend.",
       bg: "assets/schipper_partnership_handshake_v3.jpg?v=20261024_05",
-      audio: "assets/audio/scene_5.m4a",
-      durationSec: 9.9,
+      audio: "assets/audio/scene_5.m4a?v=2.6.6",
+      durationSec: 9.86,
       visualHtml: `
         <div class="deal-stack-box">
           <div class="stack-tier bank">
@@ -3316,13 +3347,36 @@
     }, tickInterval);
   }
 
+  let currentVoiceGender = 'fenna'; // 'fenna' (Vrouw, NL Neural) of 'maarten' (Man, NL Neural)
+
+  function toggleVoiceGender() {
+    currentVoiceGender = currentVoiceGender === 'fenna' ? 'maarten' : 'fenna';
+    const label = document.getElementById('voice-choice-label');
+    if (label) {
+      label.textContent = currentVoiceGender === 'fenna' ? 'Fenna (V)' : 'Maarten (M)';
+    }
+    const btn = document.getElementById('btn-voice-choice');
+    if (btn) {
+      btn.title = currentVoiceGender === 'fenna'
+        ? "Huidige stem: Fenna (Vrouw, NL) • Klik voor Maarten (Man, NL)"
+        : "Huidige stem: Maarten (Man, NL) • Klik voor Fenna (Vrouw, NL)";
+    }
+    if (isPlaying) {
+      playSceneAudio(currentScene);
+    }
+  }
+
   function playSceneAudio(idx) {
     stopAudio();
     if (!isPlaying) return;
 
     const s = scenes[idx];
     if (s.audio && voiceEnabled) {
-      currentAudio = new Audio(s.audio);
+      let audioPath = s.audio;
+      if (currentVoiceGender === 'maarten') {
+        audioPath = audioPath.replace('/scene_', '/maarten_scene_');
+      }
+      currentAudio = new Audio(audioPath);
 
       currentAudio.ontimeupdate = () => {
         if (!isPlaying || !currentAudio || !currentAudio.duration) return;
