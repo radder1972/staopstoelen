@@ -4006,7 +4006,7 @@
             </div>
           </div>
           <div class="consumer-cta-actions">
-            <a href="afspraak.html#bookingCard" class="btn-consumer-primary" target="_top">
+            <a href="afspraak.html#bookingCard" class="btn-consumer-primary" target="_top" onclick="return handleKiesDatumClick(event)">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
               <span>Kies Datum in Kalender</span>
             </a>
@@ -4321,20 +4321,59 @@
     }
   }
 
+  let videoEnded = false;
+
+  function handleKiesDatumClick(e) {
+    try {
+      if (window.parent && window.parent !== window && typeof window.parent.closeCertifiedVideoModal === 'function') {
+        const parentBooking = window.parent.document.getElementById('bookingCard');
+        if (parentBooking) {
+          if (e) e.preventDefault();
+          window.parent.closeCertifiedVideoModal();
+          parentBooking.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return false;
+        }
+      }
+    } catch (err) {}
+    return true;
+  }
+
   function advanceScene() {
     currentSceneOffsetSec = 0;
     if (currentScene < scenes.length - 1) {
       currentScene++;
       renderScene(currentScene);
     } else {
-      pause();
-      currentScene = 0;
-      renderScene(0);
-      updateTotalTimeDisplay(0);
+      // Blijf op de laatste slide staan zodat de bezoeker rustig op de knoppen kan klikken!
+      videoEnded = true;
+      isPlaying = false;
+      stopAudio();
+      const stage = document.getElementById('stage-split-wrapper');
+      if (stage) stage.classList.remove('playing');
+      const pIcon = document.getElementById('play-icon');
+      if (pIcon) pIcon.innerHTML = '<polygon points="6 4 20 12 6 20"></polygon>';
+      const btn = document.getElementById('btn-play');
+      if (btn) btn.title = "Opnieuw afspelen (k / spatie)";
+
+      const lastIdx = scenes.length - 1;
+      for (let i = 0; i < scenes.length; i++) {
+        const fill = document.getElementById('fill-' + i);
+        if (fill) {
+          fill.style.width = '100%';
+          if (fill.parentElement) fill.parentElement.className = 'seg completed';
+        }
+      }
+      currentSceneOffsetSec = scenes[lastIdx].durationSec;
+      updateTotalTimeDisplay(scenes[lastIdx].durationSec);
     }
   }
 
   function play() {
+    if (videoEnded || (currentScene === scenes.length - 1 && currentSceneOffsetSec >= scenes[currentScene].durationSec - 0.25)) {
+      videoEnded = false;
+      currentScene = 0;
+      currentSceneOffsetSec = 0;
+    }
     isPlaying = true;
     const stage = document.getElementById('stage-split-wrapper');
     if (stage) stage.classList.add('playing');
@@ -4390,6 +4429,7 @@
   }
 
   function jumpToScene(idx, offsetSec = 0) {
+    videoEnded = false;
     currentScene = idx;
     currentSceneOffsetSec = offsetSec;
     stopAudio();
@@ -4577,6 +4617,7 @@
     const mapped = mapRatioToSceneAndOffset(ratio);
 
     const sceneChanged = mapped.sceneIdx !== currentScene;
+    videoEnded = false;
     currentScene = mapped.sceneIdx;
     currentSceneOffsetSec = mapped.offsetSec;
 
@@ -4748,6 +4789,7 @@
     currentReelMode = mode;
     stopAudio();
     isPlaying = false;
+    videoEnded = false;
     currentScene = 0;
     currentSceneOffsetSec = 0;
 

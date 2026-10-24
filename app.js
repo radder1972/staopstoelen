@@ -2257,18 +2257,29 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     if (titleEl) titleEl.textContent = "Video: Hoe werkt Gratis Proefzitten & Zitmeting? (38s)";
     if (linkEl) {
       linkEl.href = "afspraak.html#bookingCard";
-      linkEl.innerHTML = "Direct afspraak inplannen &rarr;";
+      linkEl.innerHTML = "Kies Datum in Kalender &rarr;";
+      linkEl.onclick = function(e) {
+        const bookingCard = document.getElementById("bookingCard");
+        if (bookingCard) {
+          e.preventDefault();
+          window.closeCertifiedVideoModal();
+          setTimeout(() => {
+            bookingCard.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 100);
+        }
+      };
     }
   } else {
     if (titleEl) titleEl.textContent = "Video: Waarom Certified Fitform? (45s)";
     if (linkEl) {
       linkEl.href = "waarom-certified-fitform.html";
       linkEl.innerHTML = "Bekijk vergelijkingstabel &amp; keurmerk &rarr;";
+      linkEl.onclick = null;
     }
   }
 
   if (iframe) {
-    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.13`;
+    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.14`;
   }
 
   overlay.classList.add("active");
