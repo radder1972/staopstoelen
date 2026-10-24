@@ -526,15 +526,16 @@
       pointer-events: none;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.94);
+      gap: 9px;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1.5px solid rgba(243, 146, 35, 0.55);
-      border-radius: 8px;
-      padding: 6px 14px;
+      border-radius: 999px;
+      padding: 6px 16px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
       transition: all 0.35s ease;
+      line-height: 1;
     }
 
     .stage-split-wrapper.box-left .video-brand-watermark {
@@ -546,17 +547,24 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: 0.88rem;
-      color: #2e6819;
+      color: #122b07;
       letter-spacing: -0.4px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
     }
 
     .watermark-logo span {
       color: #f39223;
     }
 
-    .watermark-divider {
-      color: #d1d5db;
-      font-size: 0.8rem;
+    .watermark-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #f39223;
+      display: inline-block;
+      flex-shrink: 0;
     }
 
     .watermark-sub {
@@ -564,20 +572,11 @@
       font-size: 0.72rem;
       font-weight: 800;
       color: #122b07;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
+      line-height: 1;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-    }
-
-    .watermark-sub::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #f39223;
     }
 
     .cinema-captions {
@@ -750,6 +749,8 @@
 
     @media (max-width: 640px) {
       .panel-title { font-size: 1.15rem; }
+      .sweet-sticker-img { width: 72px; height: 72px; }
+      .sweet-price-hero { font-size: 1.85rem; }
     }
 
     .panel-visual-box {
@@ -975,7 +976,39 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
-    /* Scene 2: Sweet Spot Seal */
+    /* Scene 2: Sweet Spot Seal & Authentic Quality Sticker */
+    .sweet-sticker-layout {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 10px 0 12px 0;
+      width: 100%;
+    }
+    .sweet-sticker-col {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sweet-sticker-img {
+      width: 86px;
+      height: 86px;
+      display: block;
+      filter: drop-shadow(0 4px 14px rgba(18, 43, 7, 0.22));
+      transform: rotate(-3deg);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+      cursor: pointer;
+    }
+    .sweet-sticker-img:hover {
+      transform: scale(1.08) rotate(6deg);
+      filter: drop-shadow(0 8px 24px rgba(18, 43, 7, 0.35));
+    }
+    .sweet-price-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
     .sweet-badge-box {
       display: flex;
       align-items: center;
@@ -1008,7 +1041,7 @@
     }
     .sweet-price-hero {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.15rem;
       font-weight: 900;
       color: var(--color-forest);
       line-height: 1;
@@ -1023,6 +1056,26 @@
       color: var(--color-gray);
       text-decoration: line-through;
       white-space: nowrap !important;
+    }
+    .sweet-guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      border: 1px solid rgba(37, 102, 22, 0.35);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.74rem;
+      font-weight: 750;
+      color: #14532d;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      white-space: nowrap;
+    }
+    .sweet-guarantee-badge svg {
+      width: 13px;
+      height: 13px;
+      color: var(--color-forest);
+      flex-shrink: 0;
     }
     .sweet-tag-orange {
       font-size: 0.7rem;
@@ -1946,7 +1999,7 @@
         <!-- Broadcast Brand Watermark in Video Screen (Met officiële merkkleuren) -->
         <div class="video-brand-watermark">
           <span class="watermark-logo">staopstoelen<span>.nl</span></span>
-          <span class="watermark-divider">•</span>
+          <span class="watermark-dot" aria-hidden="true"></span>
           <span class="watermark-sub">Certified Fitform</span>
         </div>
 
@@ -2275,21 +2328,20 @@
       audio: "assets/audio/scene_2.m4a",
       durationSec: 12.0,
       visualHtml: `
-        <div class="sweet-badge-box">
-          <div class="seal-emblem">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-            Certified Fitform
+        <div class="sweet-sticker-layout">
+          <div class="sweet-sticker-col">
+            <img src="assets/sticker_certified_fitform.svg?v=2.0" alt="Certified Fitform Kwaliteitssticker" class="sweet-sticker-img" width="86" height="86" title="Officiële Certified Fitform Kwaliteitszegel">
           </div>
-          <div class="sweet-price-hero">
-            €&nbsp;1.550
-            <span class="sweet-price-sub">nieuw €&nbsp;4.500</span>
+          <div class="sweet-price-col">
+            <div class="sweet-price-hero">
+              €&nbsp;1.550
+              <span class="sweet-price-sub">nieuw €&nbsp;4.500</span>
+            </div>
+            <div class="sweet-guarantee-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              24 Mnd Volledige Omruilgarantie
+            </div>
           </div>
-        </div>
-        <div class="sweet-pills">
-          <span class="sweet-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            30-Punts Keuring
-          </span>
         </div>
       `
     },
