@@ -212,12 +212,18 @@
     .compare-table {
       width: 100%;
       min-width: 680px;
+      table-layout: fixed;
       border-collapse: separate;
       border-spacing: 0;
       text-align: left;
     }
+    .compare-table th,
+    .compare-table td {
+      width: 25%;
+      box-sizing: border-box;
+    }
     .compare-table th {
-      padding: 12px 18px;
+      padding: 14px 16px;
       font-family: var(--font-heading, 'Montserrat', sans-serif);
       font-size: 0.86rem;
       font-weight: 700;
@@ -242,7 +248,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 3px;
+      gap: 0;
     }
     .tbl-hero-badge {
       display: inline-flex;
@@ -255,9 +261,10 @@
       letter-spacing: 0.06em;
       background: var(--color-forest);
       color: #ffffff;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
       box-shadow: 0 2px 4px rgba(75, 143, 36, 0.22);
+      margin-bottom: 9px;
     }
     .tbl-hero-title {
       font-family: var(--font-heading, 'Montserrat', sans-serif);
@@ -603,15 +610,15 @@
           <thead>
             <tr>
               <th class="col-feature" style="width: 25%;">Eigenschap</th>
-              <th class="highlight-col" style="width: 35%;">
+              <th class="highlight-col" style="width: 25%;">
                 <div class="tbl-hero-header">
                   <span class="tbl-hero-badge">★ Slimste Keuze</span>
                   <div class="tbl-hero-title">Certified Fitform</div>
                   <span class="tbl-hero-sub">staopstoelen.nl</span>
                 </div>
               </th>
-              <th style="width: 20%;">Nieuw in Meubelzaak</th>
-              <th style="width: 20%;">Marktplaats Particulier</th>
+              <th style="width: 25%;">Nieuw in Meubelzaak</th>
+              <th style="width: 25%;">Marktplaats Particulier</th>
             </tr>
           </thead>
           <tbody>
