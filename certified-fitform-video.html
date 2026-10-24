@@ -849,6 +849,8 @@
     }
 
     .panel-metric-pill {
+      position: relative;
+      z-index: 5;
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -1053,76 +1055,101 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
-    /* Scene 2: Prominente Certified Fitform Kwaliteitssticker onderaan de box */
-    .scene2-seal-showcase {
+    /* Scene 2: Prominente Certified Fitform Kwaliteitssticker op 2/3 & Lichte Opsomming Links */
+    .scene2-composite-showcase {
       width: 100%;
-      margin-top: 10px;
+      margin-top: 8px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+    }
+    .scene2-points-col {
+      flex: 1;
+      padding-right: 6px;
+      margin-top: 4px;
+      z-index: 2;
+    }
+    .scene2-points-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 650;
+      color: var(--color-forest-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.2px;
+    }
+    .scene2-points-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
+      gap: 5px;
     }
-    .seal-sticker-frame {
-      position: relative;
-      display: inline-flex;
+    .scene2-points-list li {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 500;
+      color: #475569;
+      line-height: 1.35;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      gap: 6px;
     }
-    .seal-sticker-frame::before {
+    .scene2-points-list li::before {
+      content: '';
+      width: 4.5px;
+      height: 4.5px;
+      border-radius: 50%;
+      background: var(--color-forest);
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+    .scene2-sticker-col {
+      width: 142px;
+      flex-shrink: 0;
+      position: relative;
+      margin-top: -30px;
+      margin-right: -4px;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+    }
+    .scene2-sticker-col::before {
       content: '';
       position: absolute;
-      inset: -12px;
+      inset: -8px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(243, 146, 35, 0.22) 0%, rgba(75, 143, 36, 0.12) 50%, transparent 70%);
       pointer-events: none;
       filter: blur(8px);
     }
-    .scene2-prominent-sticker {
-      width: 154px;
-      height: 154px;
+    .scene2-overlap-sticker {
+      width: 142px;
+      height: 142px;
       display: block;
-      filter: drop-shadow(0 12px 24px rgba(18, 43, 7, 0.22)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.38));
+      filter: drop-shadow(0 10px 22px rgba(18, 43, 7, 0.24)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.38));
       transform: rotate(-3deg);
       transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
       animation: sealGentlePulse 4s infinite ease-in-out;
+      cursor: pointer;
     }
-    .scene2-prominent-sticker:hover {
+    .scene2-overlap-sticker:hover {
       transform: rotate(0deg) scale(1.08);
-      filter: drop-shadow(0 16px 32px rgba(18, 43, 7, 0.32)) drop-shadow(0 0 18px rgba(243, 146, 35, 0.5));
+      filter: drop-shadow(0 16px 30px rgba(18, 43, 7, 0.32)) drop-shadow(0 0 16px rgba(243, 146, 35, 0.5));
     }
     @keyframes sealGentlePulse {
       0%, 100% {
         transform: rotate(-3deg) scale(1);
-        filter: drop-shadow(0 12px 24px rgba(18, 43, 7, 0.22)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.38));
+        filter: drop-shadow(0 10px 22px rgba(18, 43, 7, 0.24)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.38));
       }
       50% {
         transform: rotate(-1.5deg) scale(1.03);
-        filter: drop-shadow(0 14px 28px rgba(18, 43, 7, 0.28)) drop-shadow(0 0 16px rgba(243, 146, 35, 0.48));
+        filter: drop-shadow(0 12px 26px rgba(18, 43, 7, 0.28)) drop-shadow(0 0 14px rgba(243, 146, 35, 0.45));
       }
-    }
-    .seal-info-meta {
-      margin-top: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-    }
-    .seal-meta-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.70rem;
-      font-weight: 900;
-      color: var(--color-forest);
-      letter-spacing: 0.9px;
-      text-transform: uppercase;
-    }
-    .seal-meta-subtitle {
-      font-size: 0.70rem;
-      font-weight: 600;
-      color: #64748b;
-      letter-spacing: 0.2px;
     }
 
     .sweet-price-box {
@@ -2450,7 +2477,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.2</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.3</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2635,7 +2662,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.2
+            <span class="version-dot"></span> v2.6.3
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -2919,13 +2946,21 @@
         </div>
       `,
       addonHtml: `
-        <div class="scene2-seal-showcase">
-          <div class="seal-sticker-frame">
-            <img src="assets/sticker_certified_fitform.svg?v=3.2" alt="Certified Fitform Keurmerk" class="scene2-prominent-sticker" width="154" height="154" title="Officieel Certified Fitform Keurmerk">
+        <div class="scene2-composite-showcase">
+          <div class="scene2-points-col">
+            <div class="scene2-points-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+              Officieel kwaliteitskeurmerk
+            </div>
+            <ul class="scene2-points-list">
+              <li>30-Punts technische inspectie</li>
+              <li>Linak motoren &amp; hefkracht getest</li>
+              <li>Ozon hygiënisch dieptereiniging</li>
+              <li>24 Mnd volledige omruilgarantie</li>
+            </ul>
           </div>
-          <div class="seal-info-meta">
-            <span class="seal-meta-title">✦ OFFICIEEL KWALITEITSKEURMERK ✦</span>
-            <span class="seal-meta-subtitle">30-Punts Inspectie &bull; Genummerd Certificaat</span>
+          <div class="scene2-sticker-col">
+            <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Keurmerk" class="scene2-overlap-sticker" width="142" height="142" title="Officieel Certified Fitform Keurmerk">
           </div>
         </div>
       `
