@@ -83,12 +83,14 @@
 
     .nav-brand strong {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      color: var(--color-forest-dark);
+      font-weight: 900;
+      color: #2e6819;
+      font-size: 1.15rem;
+      letter-spacing: -0.4px;
     }
 
     .nav-brand strong span {
-      color: var(--color-forest);
+      color: #f39223;
     }
 
     .nav-tag {
@@ -151,43 +153,6 @@
       overflow: hidden;
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
       position: relative;
-    }
-
-    /* Top Progress Segments (5 scenes x ~12 seconds = 60s) */
-    .segments-bar {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
-      padding: 10px 18px 8px;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      z-index: 10;
-    }
-
-    .seg {
-      height: 5px;
-      background: #f0f3ee;
-      border-radius: 3px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: background 0.15s ease;
-    }
-
-    .seg:hover {
-      background: rgba(243, 146, 35, 0.35);
-    }
-
-    .seg-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--color-terracotta);
-      transition: width 0.1s linear;
-    }
-
-    .seg.completed .seg-fill {
-      background: var(--color-forest);
-      width: 100%;
     }
 
     /* Main Stage Split Wrapper (Side-by-Side on desktop, stack on mobile) */
@@ -296,41 +261,52 @@
       pointer-events: none;
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      background: rgba(18, 43, 7, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(243, 146, 35, 0.5);
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(243, 146, 35, 0.55);
       border-radius: 8px;
       padding: 6px 14px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
     }
 
     .watermark-logo {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 0.84rem;
-      color: #ffffff;
-      letter-spacing: -0.3px;
+      font-weight: 900;
+      font-size: 0.88rem;
+      color: #2e6819;
+      letter-spacing: -0.4px;
     }
 
     .watermark-logo span {
-      color: #7dd964;
+      color: #f39223;
     }
 
     .watermark-divider {
-      color: rgba(255, 255, 255, 0.35);
-      font-size: 0.75rem;
-      font-weight: 300;
+      color: #d1d5db;
+      font-size: 0.8rem;
     }
 
     .watermark-sub {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--color-terracotta);
+      font-weight: 800;
+      color: #122b07;
       letter-spacing: 0.6px;
       text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .watermark-sub::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f39223;
     }
 
     .cinema-captions {
@@ -883,144 +859,251 @@
       white-space: nowrap !important;
     }
 
-    /* Player Controls Bar */
+    /* YouTube-stijl Onderbalk: Scrubber + Controls */
+    .yt-bottom-bar {
+      background: #0f172a;
+      position: relative;
+      z-index: 25;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      transition: opacity 0.25s ease;
+    }
+
+    /* De balk onder: YouTube Chapter Scrubber */
+    .yt-progress-container {
+      padding: 10px 18px 2px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .segments-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      height: 5px;
+      transition: height 0.15s ease;
+    }
+
+    .yt-progress-container:hover .segments-bar {
+      height: 8px;
+    }
+
+    .seg {
+      height: 100%;
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .seg:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .seg-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--color-terracotta);
+      transition: width 0.1s linear;
+    }
+
+    .seg.completed .seg-fill {
+      background: #2e6819;
+      width: 100%;
+    }
+
+    /* Player Controls (YouTube Stijl) */
     .player-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 20px;
-      background: #ffffff;
-      border-top: 1px solid var(--border);
+      padding: 6px 14px 10px;
+      background: transparent;
     }
 
     .ctrl-left {
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .btn-play {
-      background: linear-gradient(135deg, #f39223 0%, #ea580c 100%);
-      color: #ffffff;
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 18px rgba(243, 146, 35, 0.45);
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-    .btn-play svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .btn-play:hover {
-      transform: scale(1.08);
-      background: var(--color-terracotta-hover);
-    }
-
-    .btn-step {
-      background: #ffffff;
-      border: 1.5px solid var(--color-gray-light);
-      color: var(--color-forest-dark);
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .btn-step svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .btn-step:hover {
-      color: var(--color-forest);
-      border-color: var(--color-forest);
-      background: rgba(75, 143, 36, 0.08);
-      transform: scale(1.05);
-    }
-
-    .time-display {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text-subtle);
-    }
-
-    .time-display span {
-      color: var(--text);
+      gap: 6px;
     }
 
     .ctrl-right {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
     }
 
-    .btn-view-toggle {
-      display: inline-flex;
+    /* YouTube Control Buttons */
+    .btn-yt {
+      background: transparent;
+      border: none;
+      color: #f1f5f9;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: #ffffff;
-      border: 1.5px solid var(--border);
-      color: var(--text);
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 700;
+      justify-content: center;
       cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .btn-view-toggle svg {
-      width: 18px;
-      height: 18px;
-      color: var(--green);
+      transition: background 0.15s ease, transform 0.1s ease, color 0.15s ease;
     }
 
-    .btn-view-toggle:hover {
-      background: var(--green-light);
-      color: var(--green);
-      border-color: #bcdbb4;
-      transform: translateY(-1px);
+    .btn-yt:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
     }
 
-    .btn-audio {
-      display: inline-flex;
+    .btn-yt:active {
+      transform: scale(0.92);
+    }
+
+    .btn-yt svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .btn-yt-play {
+      color: var(--color-terracotta);
+      width: 44px;
+      height: 44px;
+    }
+    .btn-yt-play:hover {
+      color: #ff9d3b;
+    }
+    .btn-yt-play svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .time-display {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-left: 8px;
+      user-select: none;
+    }
+
+    .time-display span {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .yt-chapter-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-left: 10px;
+      padding: 2px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+      user-select: none;
+    }
+
+    @media (max-width: 700px) {
+      .yt-chapter-pill {
+        display: none;
+      }
+    }
+
+    /* YouTube-style Center Ripple on Click */
+    .cinema-screen {
+      cursor: pointer;
+    }
+
+    .yt-center-ripple {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: var(--green-light);
-      border: 1.5px solid #c8dec4;
-      color: var(--green);
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .btn-audio svg {
-      width: 18px;
-      height: 18px;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      z-index: 15;
+      color: #ffffff;
     }
 
-    .btn-audio:hover {
-      background: #dcefd7;
-      border-color: #a8d59e;
-      transform: translateY(-1px);
+    .yt-center-ripple.animate {
+      transform: translate(-50%, -50%) scale(1.25);
+      opacity: 1;
     }
 
-    .btn-audio.muted {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-      color: #64748b;
+    /* Fullscreen Mode (Scherm maximaliseren) */
+    .video-player-card.is-fullscreen,
+    .video-player-card:fullscreen {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: #000000 !important;
+      z-index: 99999 !important;
+      margin: 0 !important;
+    }
+
+    .video-player-card.is-fullscreen .stage-split-wrapper,
+    .video-player-card:fullscreen .stage-split-wrapper {
+      height: 100vh !important;
+      min-height: 100vh !important;
+      grid-template-columns: 1.25fr 0.95fr;
+    }
+
+    .video-player-card.is-fullscreen .stage-split-wrapper.mode-cinema,
+    .video-player-card:fullscreen .stage-split-wrapper.mode-cinema {
+      grid-template-columns: 1fr !important;
+    }
+
+    .video-player-card.is-fullscreen .cinema-screen,
+    .video-player-card:fullscreen .cinema-screen {
+      height: 100vh !important;
+      min-height: 100vh !important;
+    }
+
+    .video-player-card.is-fullscreen .companion-panel,
+    .video-player-card:fullscreen .companion-panel {
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .video-player-card.is-fullscreen .yt-bottom-bar,
+    .video-player-card:fullscreen .yt-bottom-bar {
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 50 !important;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.94) 100%) !important;
+      border-top: none !important;
+      padding-bottom: 12px !important;
+    }
+
+    /* YouTube Auto-Hide controls when mouse is idle in fullscreen */
+    .video-player-card.is-fullscreen.yt-autohide,
+    .video-player-card:fullscreen.yt-autohide {
+      cursor: none !important;
+    }
+
+    .video-player-card.is-fullscreen.yt-autohide .yt-bottom-bar,
+    .video-player-card:fullscreen.yt-autohide .yt-bottom-bar {
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     .story-card-header {
@@ -1232,31 +1315,27 @@
     </div>
   </div>
 
-  <!-- Video Player -->
-  <div class="video-player-card">
-
-    <!-- Top 5 Scene Progress Bars (Total 60s) -->
-    <div class="segments-bar" id="segments-bar">
-      <div class="seg" onclick="jumpToScene(0)"><div class="seg-fill" id="fill-0"></div></div>
-      <div class="seg" onclick="jumpToScene(1)"><div class="seg-fill" id="fill-1"></div></div>
-      <div class="seg" onclick="jumpToScene(2)"><div class="seg-fill" id="fill-2"></div></div>
-      <div class="seg" onclick="jumpToScene(3)"><div class="seg-fill" id="fill-3"></div></div>
-      <div class="seg" onclick="jumpToScene(4)"><div class="seg-fill" id="fill-4"></div></div>
-    </div>
+  <!-- Video Player Frame -->
+  <div class="video-player-card" id="video-player-card">
 
     <!-- Main Stage: Split Layout (Beeld 100% vrij links, Datapaneel rechts) -->
     <div class="stage-split-wrapper" id="stage-split-wrapper">
       
-      <!-- LEFT: 100% Pure Cinema Screen (In de hoogte beeldvullend!) -->
-      <div class="cinema-screen" id="cinema-screen">
+      <!-- LEFT: 100% Pure Cinema Screen met YouTube Click-to-Play -->
+      <div class="cinema-screen" id="cinema-screen" onclick="handleScreenClick(event)" title="Klik om af te spelen / te pauzeren">
         <img src="assets/senior_chair_dilemma.jpg" alt="Scene Background" class="scene-bg motion-0" id="scene-bg">
         <div class="cinema-vignette"></div>
 
-        <!-- Broadcast Brand Watermark in Video Screen -->
+        <!-- Broadcast Brand Watermark in Video Screen (Met officiële merkkleuren) -->
         <div class="video-brand-watermark">
           <span class="watermark-logo">staopstoelen<span>.nl</span></span>
-          <span class="watermark-divider">|</span>
+          <span class="watermark-divider">•</span>
           <span class="watermark-sub">Certified Fitform</span>
+        </div>
+
+        <!-- YouTube Center Ripple Indicator bij klik -->
+        <div class="yt-center-ripple" id="yt-center-ripple">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" id="yt-ripple-icon"><polygon points="6 4 20 12 6 20"></polygon></svg>
         </div>
 
         <!-- Subtitle banner aan onderzijde video (Commercial / Broadcast stijl) -->
@@ -1313,32 +1392,61 @@
 
     </div>
 
-    <!-- Controls Bar -->
-    <div class="player-controls">
-      <div class="ctrl-left">
-        <button class="btn-play" id="btn-play" onclick="togglePlay()" title="Afspelen / Pauzeren">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="play-icon"><polygon points="6 4 20 12 6 20"></polygon></svg>
-        </button>
-        <button class="btn-step" onclick="prevScene()" title="Vorige scène">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <button class="btn-step" onclick="nextScene()" title="Volgende scène">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
-        <div class="time-display">
-          <span id="current-time">0:00</span> / 1:00
+    <!-- YouTube Onderbalk: Scrubber balk onderaan + Controls -->
+    <div class="yt-bottom-bar" id="yt-bottom-bar">
+
+      <!-- De balk onder: YouTube Chapter Scrubber (5 scènes) -->
+      <div class="yt-progress-container" id="yt-progress-container" title="Klik om direct naar een scène te navigeren">
+        <div class="segments-bar" id="segments-bar">
+          <div class="seg" onclick="jumpToScene(0)" title="Scène 1: Het Marktvacuüm (0:00 – 0:13)"><div class="seg-fill" id="fill-0"></div></div>
+          <div class="seg" onclick="jumpToScene(1)" title="Scène 2: De Sweet Spot (0:13 – 0:26)"><div class="seg-fill" id="fill-1"></div></div>
+          <div class="seg" onclick="jumpToScene(2)" title="Scène 3: 30-Punts Keuring (0:26 – 0:36)"><div class="seg-fill" id="fill-2"></div></div>
+          <div class="seg" onclick="jumpToScene(3)" title="Scène 4: Unit Economics (0:36 – 0:48)"><div class="seg-fill" id="fill-3"></div></div>
+          <div class="seg" onclick="jumpToScene(4)" title="Scène 5: De Overnamedeal (0:48 – 1:00)"><div class="seg-fill" id="fill-4"></div></div>
         </div>
       </div>
 
-      <div class="ctrl-right">
-        <button class="btn-view-toggle" id="btn-view" onclick="toggleViewMode()" title="Wissel weergave">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" id="view-icon"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
-          <span id="view-label">Bioscoop Modus</span>
-        </button>
-        <button class="btn-audio" id="btn-voice" onclick="toggleVoice()" title="Nederlandse Vrouwenstem (Fenna)">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" id="voice-icon"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-          <span id="voice-label">Nederlandse Vrouw (Fenna)</span>
-        </button>
+      <!-- YouTube Controls Bar -->
+      <div class="player-controls">
+        <div class="ctrl-left">
+          <!-- Play / Pause Button -->
+          <button class="btn-yt btn-yt-play" id="btn-play" onclick="togglePlay()" title="Afspelen (k / spatie)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" id="play-icon"><polygon points="6 4 20 12 6 20"></polygon></svg>
+          </button>
+          <!-- Vorige Scène -->
+          <button class="btn-yt" onclick="prevScene()" title="Vorige scène (pijltje links)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <!-- Volgende Scène -->
+          <button class="btn-yt" onclick="nextScene()" title="Volgende scène (pijltje rechts)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <!-- Geluid / Voiceover Button (YouTube Luidspreker) -->
+          <button class="btn-yt" id="btn-voice" onclick="toggleVoice()" title="Nederlandse Vrouwenstem (m)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="voice-icon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+          <!-- Tijdweergave -->
+          <div class="time-display">
+            <span id="current-time">0:00</span> / 1:00
+          </div>
+          <!-- Hoofdstukbadge / Actieve Scène -->
+          <div class="yt-chapter-pill" id="yt-current-chapter">
+            • 1. Marktvacuüm
+          </div>
+        </div>
+
+        <div class="ctrl-right">
+          <!-- Bioscoop / Theater Modus (t) -->
+          <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" id="view-icon"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+          </button>
+          <!-- Scherm Maximaliseren / Volledig Scherm (f) -->
+          <button class="btn-yt" id="btn-fullscreen" onclick="toggleFullscreen()" title="Scherm maximaliseren (f)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="fullscreen-icon">
+              <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -1853,6 +1961,10 @@
     document.getElementById('scene-metric').innerHTML = s.metric;
     document.getElementById('caption-text').textContent = `"${s.caption}"`;
 
+    // Update YouTube hoofdstukindicator in de onderbalk
+    const chPill = document.getElementById('yt-current-chapter');
+    if (chPill) chPill.textContent = `• ${idx + 1}. ${s.shortTag}`;
+
     // Dynamische camera-beweging (Ken Burns) per scène
     const bg = document.getElementById('scene-bg');
     if (bg) {
@@ -1917,7 +2029,9 @@
     const stage = document.getElementById('stage-split-wrapper');
     if (stage) stage.classList.add('playing');
     const pIcon = document.getElementById('play-icon');
-    if (pIcon) pIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1.5"></rect><rect x="14" y="4" width="4" height="16" rx="1.5"></rect>';
+    if (pIcon) pIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect>';
+    const btn = document.getElementById('btn-play');
+    if (btn) btn.title = "Pauzeren (k / spatie)";
     renderScene(currentScene);
   }
 
@@ -1927,12 +2041,33 @@
     if (stage) stage.classList.remove('playing');
     const pIcon = document.getElementById('play-icon');
     if (pIcon) pIcon.innerHTML = '<polygon points="6 4 20 12 6 20"></polygon>';
+    const btn = document.getElementById('btn-play');
+    if (btn) btn.title = "Afspelen (k / spatie)";
     stopAudio();
   }
 
   function togglePlay() {
     if (isPlaying) pause();
     else play();
+  }
+
+  // YouTube click on video screen with center ripple
+  function handleScreenClick(e) {
+    if (e.target.closest('.cinema-captions') || e.target.closest('.video-brand-watermark')) return;
+    togglePlay();
+    const ripple = document.getElementById('yt-center-ripple');
+    const rIcon = document.getElementById('yt-ripple-icon');
+    if (ripple && rIcon) {
+      if (isPlaying) {
+        rIcon.innerHTML = '<polygon points="6 4 20 12 6 20"></polygon>';
+      } else {
+        rIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect>';
+      }
+      ripple.classList.remove('animate');
+      void ripple.offsetWidth;
+      ripple.classList.add('animate');
+      setTimeout(() => ripple.classList.remove('animate'), 380);
+    }
   }
 
   function jumpToScene(idx) {
@@ -1953,28 +2088,115 @@
     if (currentScene > 0) jumpToScene(currentScene - 1);
   }
 
+  // YouTube geluid / mute knop
   function toggleVoice() {
     voiceEnabled = !voiceEnabled;
     const btn = document.getElementById('btn-voice');
-    const label = document.getElementById('voice-label');
     const icon = document.getElementById('voice-icon');
     if (voiceEnabled) {
-      btn.className = "btn-audio";
-      label.textContent = "Nederlandse Vrouw (Fenna)";
+      if (btn) {
+        btn.classList.remove('muted');
+        btn.title = "Voice-over dempen (m)";
+      }
       if (icon) {
-        icon.innerHTML = '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line>';
+        icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
       }
       if (isPlaying) playSceneAudio(currentScene);
     } else {
-      btn.className = "btn-audio muted";
-      label.textContent = "Stem Gedempt";
+      if (btn) {
+        btn.classList.add('muted');
+        btn.title = "Voice-over aanzetten (m)";
+      }
       if (icon) {
-        icon.innerHTML = '<line x1="1" y1="1" x2="23" y2="23"></line><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V5a3 3 0 0 0-5.68-1.33"></path><path d="M19 10v2a7 7 0 0 1-.14 1.38M12 19v4M8 23h8"></path>';
+        icon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
       }
       stopAudio();
       if (isPlaying) startFallbackTimer(scenes[currentScene].durationSec);
     }
   }
+
+  // Scherm maximaliseren / Volledig scherm (Fullscreen API)
+  function toggleFullscreen() {
+    const card = document.getElementById('video-player-card');
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (card.requestFullscreen) {
+        card.requestFullscreen().catch(err => console.warn(err));
+      } else if (card.webkitRequestFullscreen) {
+        card.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(err => console.warn(err));
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+
+  function handleFullscreenChange() {
+    const card = document.getElementById('video-player-card');
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    const icon = document.getElementById('fullscreen-icon');
+    const btn = document.getElementById('btn-fullscreen');
+    if (isFs) {
+      card.classList.add('is-fullscreen');
+      if (btn) btn.title = "Volledig scherm sluiten (f / esc)";
+      if (icon) {
+        icon.innerHTML = '<path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>';
+      }
+    } else {
+      card.classList.remove('is-fullscreen');
+      card.classList.remove('yt-autohide');
+      if (btn) btn.title = "Scherm maximaliseren (f)";
+      if (icon) {
+        icon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+      }
+    }
+  }
+
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+
+  // Auto-hide controls in fullscreen after 2.5s inactivity
+  let fsIdleTimer = null;
+  const playerCard = document.getElementById('video-player-card');
+  if (playerCard) {
+    playerCard.addEventListener('mousemove', () => {
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (!isFs) return;
+      playerCard.classList.remove('yt-autohide');
+      if (fsIdleTimer) clearTimeout(fsIdleTimer);
+      if (isPlaying) {
+        fsIdleTimer = setTimeout(() => {
+          playerCard.classList.add('yt-autohide');
+        }, 2500);
+      }
+    });
+  }
+
+  // YouTube Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if (e.code === 'Space' || e.key === 'k') {
+      e.preventDefault();
+      togglePlay();
+    } else if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      toggleFullscreen();
+    } else if (e.key === 'm' || e.key === 'M') {
+      e.preventDefault();
+      toggleVoice();
+    } else if (e.key === 't' || e.key === 'T') {
+      e.preventDefault();
+      toggleViewMode();
+    } else if (e.code === 'ArrowRight') {
+      e.preventDefault();
+      nextScene();
+    } else if (e.code === 'ArrowLeft') {
+      e.preventDefault();
+      prevScene();
+    }
+  });
 
   // Initial render
   renderScene(0);
