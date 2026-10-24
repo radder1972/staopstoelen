@@ -1053,28 +1053,76 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
-    /* Scene 2: Sweet Spot Grote Sticker op Rechtsboven Hoek van de Box */
-    .has-corner-sticker .panel-title {
-      padding-right: 86px;
+    /* Scene 2: Prominente Certified Fitform Kwaliteitssticker onderaan de box */
+    .scene2-seal-showcase {
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
     }
-
-    .corner-box-sticker {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 30;
-      width: 94px;
-      height: 94px;
-      display: block;
-      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
-      transform: rotate(6deg);
-      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+    .seal-sticker-frame {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      pointer-events: auto;
     }
-    .corner-box-sticker:hover {
+    .seal-sticker-frame::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243, 146, 35, 0.22) 0%, rgba(75, 143, 36, 0.12) 50%, transparent 70%);
+      pointer-events: none;
+      filter: blur(8px);
+    }
+    .scene2-prominent-sticker {
+      width: 154px;
+      height: 154px;
+      display: block;
+      filter: drop-shadow(0 12px 24px rgba(18, 43, 7, 0.22)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.38));
+      transform: rotate(-3deg);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+      animation: sealGentlePulse 4s infinite ease-in-out;
+    }
+    .scene2-prominent-sticker:hover {
       transform: rotate(0deg) scale(1.08);
-      filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.32));
+      filter: drop-shadow(0 16px 32px rgba(18, 43, 7, 0.32)) drop-shadow(0 0 18px rgba(243, 146, 35, 0.5));
+    }
+    @keyframes sealGentlePulse {
+      0%, 100% {
+        transform: rotate(-3deg) scale(1);
+        filter: drop-shadow(0 12px 24px rgba(18, 43, 7, 0.22)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.38));
+      }
+      50% {
+        transform: rotate(-1.5deg) scale(1.03);
+        filter: drop-shadow(0 14px 28px rgba(18, 43, 7, 0.28)) drop-shadow(0 0 16px rgba(243, 146, 35, 0.48));
+      }
+    }
+    .seal-info-meta {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .seal-meta-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.70rem;
+      font-weight: 900;
+      color: var(--color-forest);
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+    }
+    .seal-meta-subtitle {
+      font-size: 0.70rem;
+      font-weight: 600;
+      color: #64748b;
+      letter-spacing: 0.2px;
     }
 
     .sweet-price-box {
@@ -2402,7 +2450,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.1</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.2</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2535,6 +2583,7 @@
             <span style="font-size: 0.86rem; color: #475569; line-height: 1.45; display: block;">Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.</span>
           </p>
           <div class="panel-metric-pill" id="scene-metric" style="display: none;"></div>
+          <div id="scene-addon-content"></div>
         </div>
       </div>
 
@@ -2586,7 +2635,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.1
+            <span class="version-dot"></span> v2.6.2
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -2866,6 +2915,17 @@
           <div class="sweet-guarantee-badge">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             24 Mnd Volledige Omruilgarantie
+          </div>
+        </div>
+      `,
+      addonHtml: `
+        <div class="scene2-seal-showcase">
+          <div class="seal-sticker-frame">
+            <img src="assets/sticker_certified_fitform.svg?v=3.2" alt="Certified Fitform Keurmerk" class="scene2-prominent-sticker" width="154" height="154" title="Officieel Certified Fitform Keurmerk">
+          </div>
+          <div class="seal-info-meta">
+            <span class="seal-meta-title">✦ OFFICIEEL KWALITEITSKEURMERK ✦</span>
+            <span class="seal-meta-subtitle">30-Punts Inspectie &bull; Genummerd Certificaat</span>
           </div>
         </div>
       `
@@ -3251,11 +3311,7 @@
         stage.classList.remove('box-left');
         stage.classList.add('box-right');
       }
-      if (idx === 1) {
-        stage.classList.add('has-corner-sticker');
-      } else {
-        stage.classList.remove('has-corner-sticker');
-      }
+      stage.classList.remove('has-corner-sticker');
     }
 
     // Update het zwevende informatiepaneel (puur reclame, zonder hoofdstuknummers)
@@ -3266,14 +3322,10 @@
     }
     document.getElementById('scene-title').innerHTML = s.title;
 
-    // Grote Certified Fitform sticker rechtsboven op de hoek van de box (in Scène 2)
+    // Corner badge leegmaken (sticker staat nu groot en prominent onderaan in Scène 2)
     const badgeEl = document.getElementById('companion-corner-badge');
     if (badgeEl) {
-      if (idx === 1) {
-        badgeEl.innerHTML = `<img src="assets/sticker_certified_fitform.svg?v=3.1" alt="Certified Fitform staopstoelen.nl" class="corner-box-sticker" width="94" height="94" title="Certified Fitform staopstoelen.nl">`;
-      } else {
-        badgeEl.innerHTML = '';
-      }
+      badgeEl.innerHTML = '';
     }
 
     const subEl = document.getElementById('scene-subtitle');
@@ -3297,6 +3349,17 @@
       } else {
         metricEl.innerHTML = '';
         metricEl.style.display = 'none';
+      }
+    }
+
+    const addonEl = document.getElementById('scene-addon-content');
+    if (addonEl) {
+      if (s.addonHtml && s.addonHtml.trim().length > 0) {
+        addonEl.innerHTML = s.addonHtml;
+        addonEl.style.display = 'block';
+      } else {
+        addonEl.innerHTML = '';
+        addonEl.style.display = 'none';
       }
     }
 
