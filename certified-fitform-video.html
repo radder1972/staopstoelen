@@ -2447,16 +2447,23 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      justify-content: space-between;
+      gap: 8px;
       width: 100%;
+      height: 258px;
+      min-height: 258px;
+      max-height: 258px;
       box-sizing: border-box;
+      overflow: hidden;
     }
     .anatomy-top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      padding-bottom: 7px;
+      height: 24px;
+      flex-shrink: 0;
+      padding-bottom: 6px;
       border-bottom: 1px solid #eef2ec;
     }
     .anatomy-badge-verified {
@@ -2483,14 +2490,20 @@
       display: grid;
       grid-template-columns: 126px 1fr;
       gap: 10px;
-      align-items: center;
+      align-items: stretch;
+      height: 158px;
+      min-height: 158px;
+      max-height: 158px;
+      flex-shrink: 0;
     }
     .anatomy-chair-canvas {
       position: relative;
       background: #f8fbf6;
       border: 1px solid rgba(75, 143, 36, 0.2);
       border-radius: 10px;
-      height: 152px;
+      height: 158px;
+      min-height: 158px;
+      max-height: 158px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2549,9 +2562,13 @@
     .anatomy-detail-box {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      justify-content: space-between;
+      height: 158px;
+      min-height: 158px;
+      max-height: 158px;
       text-align: left;
       min-width: 0;
+      box-sizing: border-box;
     }
     .anatomy-detail-cat {
       font-size: 0.62rem;
@@ -2559,31 +2576,40 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--color-terracotta);
+      line-height: 1.1;
+      flex-shrink: 0;
     }
     .anatomy-detail-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 800;
       color: var(--color-forest-dark);
-      line-height: 1.22;
+      line-height: 1.2;
+      height: 2.4em;
       margin: 0;
+      overflow: hidden;
+      flex-shrink: 0;
     }
     .anatomy-detail-desc {
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       color: #475569;
-      line-height: 1.34;
+      line-height: 1.3;
+      height: 3.9em;
       margin: 0;
+      overflow: hidden;
+      flex-shrink: 0;
     }
     .anatomy-meta-box {
-      margin-top: 3px;
+      margin-top: auto;
       background: #f4f9f1;
       border: 1px solid rgba(75, 143, 36, 0.22);
       border-radius: 8px;
-      padding: 5px 8px;
-      font-size: 0.69rem;
+      padding: 4px 8px;
+      font-size: 0.68rem;
       display: flex;
       flex-direction: column;
       gap: 2px;
+      flex-shrink: 0;
     }
     .anatomy-meta-row {
       display: flex;
