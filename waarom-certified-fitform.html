@@ -26,23 +26,9 @@
   <link rel="stylesheet" href="style.css?v=10.128">
 
   <style>
-    :root {
-      --color-forest: #4b8f24;
-      --color-forest-dark: #23541b;
-      --color-forest-light: #6ab13c;
-      --color-terracotta: #f39223;
-      --color-sky: #1fa5c9;
-      --color-sage: #91b58e;
-      --color-cream: #faf8f5;
-      --color-dark: #1e293b;
-      --color-gray: #64748b;
-      --color-gray-light: #e2e8f0;
-      --border: #e2e8f0;
-    }
-
     /* Hero Section */
     .consumer-hero {
-      padding: 44px 0 32px 0;
+      padding: 44px 0 36px 0;
       background: linear-gradient(180deg, #f8faf6 0%, #ffffff 100%);
       text-align: center;
     }
@@ -50,8 +36,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.74rem;
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -70,8 +56,8 @@
       box-shadow: 0 0 6px var(--color-terracotta);
     }
     .consumer-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.35rem;
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: clamp(2rem, 3.8vw, 2.75rem);
       font-weight: 800;
       color: var(--color-dark);
       margin: 0 0 14px 0;
@@ -85,7 +71,7 @@
       -webkit-text-fill-color: transparent;
     }
     .consumer-lead {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body, 'Outfit', sans-serif);
       font-size: 1.12rem;
       color: #475569;
       max-width: 760px;
@@ -131,71 +117,17 @@
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin: 0 auto 56px auto;
+      margin: 0 auto 20px auto;
       max-width: 900px;
     }
-    .btn-quick-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-dark) 100%);
-      color: #ffffff !important;
+    .quick-cta-bar .btn {
       padding: 14px 26px;
-      border-radius: 999px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(75, 143, 36, 0.35);
-      transition: all 0.2s ease;
-    }
-    .btn-quick-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(75, 143, 36, 0.45);
-    }
-    .btn-quick-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #ffffff;
-      color: var(--color-forest-dark) !important;
-      border: 1.5px solid rgba(75, 143, 36, 0.35);
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-quick-secondary:hover {
-      background: rgba(75, 143, 36, 0.08);
-      border-color: var(--color-forest);
-      transform: translateY(-2px);
-    }
-    .btn-quick-call {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(243, 146, 35, 0.1);
-      color: #c25e00 !important;
-      border: 1.5px solid rgba(243, 146, 35, 0.35);
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-quick-call:hover {
-      background: rgba(243, 146, 35, 0.18);
-      transform: translateY(-2px);
+      font-size: 0.98rem;
     }
 
     /* 4 Pijlers Grid */
     .pillars-section {
-      padding: 70px 0;
+      padding: 75px 0;
       background: #ffffff;
       border-top: 1px solid var(--color-gray-light);
       border-bottom: 1px solid var(--color-gray-light);
@@ -248,14 +180,14 @@
       color: var(--color-terracotta);
     }
     .pillar-title {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
       font-size: 1.15rem;
       font-weight: 700;
       color: var(--color-dark);
       margin: 0 0 10px 0;
     }
     .pillar-text {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body, 'Outfit', sans-serif);
       font-size: 0.94rem;
       color: #64748b;
       line-height: 1.55;
@@ -270,19 +202,21 @@
     .compare-table-wrapper {
       background: #ffffff;
       border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
+      overflow-x: auto;
+      border: 1px solid var(--border, #e2e8f0);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       margin-top: 36px;
+      -webkit-overflow-scrolling: touch;
     }
     .compare-table {
       width: 100%;
+      min-width: 680px;
       border-collapse: collapse;
       text-align: left;
     }
     .compare-table th {
       padding: 18px 22px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
       font-size: 0.94rem;
       font-weight: 700;
       background: #f8fafc;
@@ -298,7 +232,7 @@
     .compare-table td {
       padding: 16px 22px;
       border-bottom: 1px solid #f1f5f9;
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-body, 'Outfit', sans-serif);
       font-size: 0.95rem;
       color: #334155;
     }
@@ -333,7 +267,7 @@
     .expert-section {
       padding: 80px 0;
       background: #ffffff;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border, #e2e8f0);
     }
     .expert-grid {
       display: grid;
@@ -363,7 +297,7 @@
       position: absolute;
       bottom: 16px;
       left: 16px;
-      background: rgba(35, 84, 27, 0.9);
+      background: rgba(35, 84, 27, 0.92);
       backdrop-filter: blur(10px);
       color: #ffffff;
       padding: 8px 16px;
@@ -371,67 +305,48 @@
       font-size: 0.85rem;
       font-weight: 700;
     }
-
-    /* FAQ Section */
-    .faq-section {
-      padding: 70px 0 90px 0;
-      background: #f8fafc;
-      border-top: 1px solid var(--border);
-    }
-    .faq-accordion {
-      max-width: 820px;
-      margin: 36px auto 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .faq-item {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: border-color 0.2s ease;
-    }
-    .faq-item[open] {
-      border-color: var(--color-forest);
-      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.08);
-    }
-    .faq-summary {
-      padding: 18px 22px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.02rem;
-      font-weight: 700;
-      color: var(--color-dark);
-      cursor: pointer;
-      user-select: none;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .faq-summary::-webkit-details-marker {
-      display: none;
-    }
-    .faq-summary::after {
-      content: "+";
-      font-size: 1.4rem;
-      color: var(--color-forest);
-      font-weight: 400;
-      transition: transform 0.2s ease;
-    }
-    .faq-item[open] .faq-summary::after {
-      content: "−";
-    }
-    .faq-answer {
-      padding: 0 22px 20px 22px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.96rem;
-      color: #475569;
-      line-height: 1.6;
+    .consumer-title, .section-title {
+      text-wrap: balance;
     }
   </style>
 </head>
 <body>
+
+  <!-- Floating Contact Menu -->
+  <div class="floating-contact-wrapper" id="floatingContactWrapper">
+    <div class="floating-menu" id="floatingMenu">
+      <a href="https://wa.me/31622232964" target="_blank" class="floating-menu-item floating-whatsapp" id="btnWhatsapp">
+        <div>
+          <span class="floating-menu-item-text">WhatsApp ons</span>
+          <span class="floating-menu-item-desc">Direct antwoord</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="tel:+31786314858" class="floating-menu-item floating-phone" id="btnPhone">
+        <div>
+          <span class="floating-menu-item-text">Bellen</span>
+          <span class="floating-menu-item-desc">Spreek een BewegingsTechnoloog</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="afspraak.html" class="floating-menu-item floating-chat" id="btnCalendarLink">
+        <div>
+          <span class="floating-menu-item-text">Plan Adviesgesprek</span>
+          <span class="floating-menu-item-desc">Proefzitten in showroom</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="2" x2="16" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="2" x2="8" y2="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="10" x2="21" y2="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+    </div>
+    <button class="floating-btn floating-btn-main" id="btnFloatingMain" aria-label="Open contactopties">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
 
   <!-- Top Announcement Bar -->
   <aside class="announcement-bar-najaar" aria-label="Najaarsactie Aanbieding">
@@ -440,7 +355,7 @@
         <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="flex-shrink:0;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" fill="none"/></svg>
         Certified Fitform Occasions
       </span>
-      <span class="announcement-text">Altijd <strong>30+ direct leverbare sta-op stoelen</strong> op voorraad met 24 maanden garantie</span>
+      <span class="announcement-text">Altijd <strong>30+ direct leverbare sta-op stoelen</strong> op voorraad met 24 maanden omruilgarantie</span>
     </a>
   </aside>
 
@@ -457,7 +372,7 @@
         <div class="nav-logo-main">staopstoelen<span>.nl</span></div>
         <div class="nav-logo-strapline">Specialist in ergonomisch zitcomfort</div>
       </a>
-      <div class="navbar-top-right">
+      <div class="navbar-top-right" id="navbarTopRight">
         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="nav-top-contact-link" title="Route naar Showroom Dordrecht">
           <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Showroom Dordrecht
@@ -466,7 +381,11 @@
           <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           078 - 631 4858
         </a>
-        <a href="afspraak.html" class="btn btn-primary btn-nav-appointment">Maak een afspraak</a>
+        <a href="mailto:info@staopstoelen.nl" class="nav-top-contact-link">
+          <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@staopstoelen.nl
+        </a>
+        <a href="afspraak.html" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment">Maak een afspraak</a>
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -479,6 +398,7 @@
           <a href="revisie.html">Revisieproces</a>
           <a href="ervaringen.html">Ervaringen</a>
           <a href="faq.html">FAQ</a>
+          <a href="info.html">Over Ons</a>
         </nav>
       </div>
     </div>
@@ -510,17 +430,17 @@
         </div>
       </div>
 
-      <!-- Quick Action Buttons -->
+      <!-- Quick Action Buttons (Site Stijlset) -->
       <div class="quick-cta-bar">
-        <a href="afspraak.html" class="btn-quick-primary">
+        <a href="afspraak.html" class="btn btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
           <span>Plan Gratis Zitmeting in Dordrecht</span>
         </a>
-        <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn-quick-secondary">
+        <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn btn-secondary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <span>Bekijk 30+ Occasions op Voorraad</span>
         </a>
-        <a href="tel:+31786314858" class="btn-quick-call">
+        <a href="tel:+31786314858" class="btn btn-outline">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>078 - 631 4858</span>
         </a>
@@ -531,10 +451,10 @@
   <!-- De 4 Zekerheden (Pillars) -->
   <section class="pillars-section">
     <div class="container">
-      <div class="text-center" style="max-width: 700px; margin: 0 auto;">
-        <span class="section-tag" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest); font-weight: 700; padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; text-transform: uppercase;">Onze 4 Zekerheden</span>
-        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.95rem; font-weight: 800; color: var(--color-dark); margin: 12px 0 10px 0;">Geen Tweedehands Gok, maar Gecertificeerd Vakwerk</h2>
-        <p style="color: #64748b; font-size: 1rem; line-height: 1.55;">Elke Certified Fitform fauteuil ondergaat een intensief revisieproces in onze eigen werkplaats in Dordrecht.</p>
+      <div class="text-center" style="max-width: 740px; margin: 0 auto;">
+        <span class="section-tag">Onze 4 Zekerheden</span>
+        <h2 class="section-title">Geen Tweedehands Gok, maar Gecertificeerd Vakwerk</h2>
+        <p class="section-subtitle">Elke Certified Fitform fauteuil ondergaat een intensief revisieproces in onze eigen werkplaats in Dordrecht.</p>
       </div>
 
       <div class="pillars-grid">
@@ -552,14 +472,14 @@
           <div class="pillar-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
           </div>
-          <h3 class="pillar-title">24 Mnd Garantie</h3>
+          <h3 class="pillar-title">24 Mnd Omruilgarantie</h3>
           <p class="pillar-text">U krijgt onze unieke schriftelijke omruilgarantie van 2 jaar. Mocht er onverhoopt iets zijn, dan lossen we het direct op of ruilen we de stoel om.</p>
         </div>
 
         <!-- Pijler 3 -->
         <div class="pillar-card">
           <div class="pillar-icon-box">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7 8.7 21.3a2 2 0 0 1-2.8 0L2.7 18.1a2 2 0 0 1 0-2.8L15.3 2.7a2 2 0 0 1 2.8 0l3.2 3.2a2 2 0 0 1 0 2.8Z"/><path d="m7.5 13.5 1.5-1.5"/><path d="m10.5 16.5 1.5-1.5"/><path d="m13.5 19.5 1.5-1.5"/><path d="m10.5 10.5 1.5-1.5"/></svg>
           </div>
           <h3 class="pillar-title">100% Maatwerk</h3>
           <p class="pillar-text">Een sta-op stoel moet exact passen. Bewegingstechnoloog Geertjan stelt zithoogte, zitdiepte en armleggerhoogte tot op de millimeter af op uw lichaam.</p>
@@ -568,10 +488,10 @@
         <!-- Pijler 4 -->
         <div class="pillar-card orange">
           <div class="pillar-icon-box">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
           </div>
           <h3 class="pillar-title">Ozon Dieptereiniging</h3>
-          <p class="pillar-text">Elke stoel wordt intensief gereinigd met ozon en stoomextractie. Volledig bacterie- en geurvrij: fris, schoon en hygiënisch als nieuw.</p>
+          <p class="pillar-text">Elke stoel wordt intensief gereinigd met ozon en stoomextractie. Volledig bacterie- en geurvrij: fris, hygiënisch en schoon als nieuw.</p>
         </div>
       </div>
     </div>
@@ -580,10 +500,10 @@
   <!-- De Eerlijke Vergelijkingstabel -->
   <section class="compare-section">
     <div class="container">
-      <div class="text-center" style="max-width: 700px; margin: 0 auto;">
-        <span class="section-tag" style="background: rgba(243, 146, 35, 0.12); color: #c25e00; font-weight: 700; padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; text-transform: uppercase;">Eerlijke Vergelijking</span>
-        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.95rem; font-weight: 800; color: var(--color-dark); margin: 12px 0 10px 0;">Waarom Dit de Slimste Keuze Is</h2>
-        <p style="color: #64748b; font-size: 1rem; line-height: 1.55;">Bekijk in één oogopslag het verschil tussen Certified Fitform, fabrieksnieuw in de meubelwinkel en een tweedehands stoel op Marktplaats.</p>
+      <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+        <span class="section-tag">Eerlijke Vergelijking</span>
+        <h2 class="section-title">Waarom Certified Fitform de Slimste Keuze Is</h2>
+        <p class="section-subtitle">Bekijk in één oogopslag het verschil tussen Certified Fitform, fabrieksnieuw in de meubelzaak en een tweedehands stoel op Marktplaats.</p>
       </div>
 
       <div class="compare-table-wrapper">
@@ -656,114 +576,201 @@
           </div>
         </div>
         <div>
-          <span class="section-tag" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest); font-weight: 700; padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; text-transform: uppercase;">Persoonlijk Zitadvies</span>
-          <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.95rem; font-weight: 800; color: var(--color-dark); margin: 12px 0 16px 0;">Kom Vrijblijvend Proefzitten in Dordrecht</h2>
-          <p style="font-family: 'Outfit', sans-serif; font-size: 1.02rem; color: #475569; line-height: 1.6; margin-bottom: 16px;">
-            "Een sta-op stoel moet zitten als een maatpak. Als de zithoogte twee centimeter te hoog is, raken uw voeten de grond niet goed en worden uw bovenbenen afgekneld. Daarom meten we altijd uw exacte maten op."
+          <span class="section-tag">Persoonlijk Zitadvies</span>
+          <h2 class="section-title" style="margin-bottom: 16px;">Kom Vrijblijvend Proefzitten in Dordrecht</h2>
+          <p style="font-family: var(--font-body, 'Outfit', sans-serif); font-size: 1.02rem; color: #475569; line-height: 1.6; margin-bottom: 20px;">
+            "Een sta-op stoel moet zitten als een maatpak. Als de zithoogte twee centimeter te hoog is, raken uw voeten de grond niet goed en worden uw bovenbenen afgekneld. Daarom meten we altijd uw exacte lichaamsmaten op."
           </p>
-          <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-            <li style="display: flex; align-items: center; gap: 10px; color: var(--color-dark); font-weight: 600;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Showroom aan de Merwedestraat 239 in Dordrecht
+          <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; display: flex; flex-direction: column; gap: 12px;">
+            <li style="display: flex; align-items: center; gap: 12px; color: var(--color-dark); font-weight: 600;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.14); color: var(--color-forest); flex-shrink: 0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span>Showroom aan de Merwedestraat 239 in Dordrecht</span>
             </li>
-            <li style="display: flex; align-items: center; gap: 10px; color: var(--color-dark); font-weight: 600;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Gratis parkeren direct voor de ingang &bull; Volledig gelijkvloers
+            <li style="display: flex; align-items: center; gap: 12px; color: var(--color-dark); font-weight: 600;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.14); color: var(--color-forest); flex-shrink: 0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span>Gratis parkeren direct voor de ingang &bull; Volledig gelijkvloers</span>
             </li>
-            <li style="display: flex; align-items: center; gap: 10px; color: var(--color-dark); font-weight: 600;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Thuis proefzitten mogelijk als reizen lastig is
+            <li style="display: flex; align-items: center; gap: 12px; color: var(--color-dark); font-weight: 600;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.14); color: var(--color-forest); flex-shrink: 0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span>Thuis proefzitten mogelijk als reizen naar de winkel lastig is</span>
             </li>
           </ul>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="afspraak.html" class="btn btn-primary" style="padding: 12px 24px;">Maak een Afspraak in de Showroom</a>
-            <a href="tel:+31786314858" class="btn btn-secondary" style="padding: 12px 20px;">Bel 078 - 631 4858</a>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="afspraak.html" class="btn btn-primary">Maak een Afspraak in de Showroom</a>
+            <a href="tel:+31786314858" class="btn btn-secondary">Bel 078 - 631 4858</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- FAQ Section (Site Stijlset) -->
   <section class="faq-section">
     <div class="container">
-      <div class="text-center" style="max-width: 700px; margin: 0 auto;">
-        <span class="section-tag" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest); font-weight: 700; padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; text-transform: uppercase;">Veelgestelde Vragen</span>
-        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.95rem; font-weight: 800; color: var(--color-dark); margin: 12px 0 10px 0;">Vragen over Certified Fitform</h2>
+      <div class="text-center" style="max-width: 740px; margin: 0 auto;">
+        <span class="section-tag">Veelgestelde Vragen</span>
+        <h2 class="section-title">Vragen over Certified Fitform</h2>
+        <p class="section-subtitle">Alles wat u moet weten over keuring, afstelling, garantie en proefzitten.</p>
       </div>
 
-      <div class="faq-accordion">
-        <details class="faq-item" open>
-          <summary class="faq-summary">Wat is het verschil met een gewone tweedehands stoel?</summary>
+      <div class="faq-accordion" style="margin: 36px auto 0 auto; max-width: 820px;">
+        <div class="faq-item active">
+          <button class="faq-question" type="button">
+            <span>Wat is het verschil met een gewone tweedehands stoel?</span>
+            <span class="faq-icon"></span>
+          </button>
           <div class="faq-answer">
-            Een gewone tweedehands stoel op Marktplaats koop je zoals hij is: zonder garantie, met mogelijke verborgen motorslijtage, onbekende hygiëne en meestal in de verkeerde maat. Een <strong>Certified Fitform</strong> wordt in onze werkplaats volledig gedesinfecteerd, technisch gekeurd op 30 punten (inclusief Linak motoren en kabels), op uw lichaamsmaat afgesteld en geleverd met <strong>24 maanden volledige omruilgarantie</strong>.
+            <p>Een gewone tweedehands stoel op Marktplaats koopt u zoals hij is: zonder garantie, met mogelijke verborgen motorslijtage, onbekende hygiëne en meestal in de verkeerde maat. Een <strong>Certified Fitform</strong> van staopstoelen.nl wordt in onze eigen werkplaats volledig gedesinfecteerd, technisch gekeurd op 30 punten (inclusief Linak motoren en hefmechaniek), op uw lichaamsmaat afgesteld en geleverd met <strong>24 maanden volledige omruilgarantie</strong>.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-summary">Hoe werkt het afstellen op mijn lichaamsmaat?</summary>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Hoe werkt het afstellen op mijn lichaamsmaat?</span>
+            <span class="faq-icon"></span>
+          </button>
           <div class="faq-answer">
-            Een Fitform stoel is ergonomisch modulair ontworpen. Onze bewegingstechnoloog meet uw knieholtehoogte, bovenbeenlengte en armrusthoogte. Vervolgens passen wij de zithoogte, zitdiepte en armleggers van de stoel mechanisch aan. Zo zit u direct ontspannen en worden rug en nek optimaal ondersteund.
+            <p>Een Fitform fauteuil is ergonomisch modulair ontworpen. Onze bewegingstechnoloog meet uw knieholtehoogte, zitdiepte en armrusthoogte nauwkeurig op. Vervolgens passen wij de mechanische onderdelen van de stoel tot op de millimeter aan. Zo ervaart u direct ontlasting van wervelkolom en benen.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-summary">Kan ik ook thuis proefzitten als ik niet naar Dordrecht kan komen?</summary>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Kan ik ook thuis proefzitten als ik niet naar Dordrecht kan komen?</span>
+            <span class="faq-icon"></span>
+          </button>
           <div class="faq-answer">
-            Jazeker. Als u of uw naaste slecht ter been is, kunnen we na een telefonische intake met één of twee geselecteerde stoelen bij u thuis langskomen. U kunt dan in uw eigen vertrouwde woonkamer proefzitten.
+            <p>Jazeker. Als u of uw naaste minder mobiel is, kunnen we na een telefonische intake met één of twee geselecteerde stoelen bij u thuis langskomen. U kunt dan in uw eigen vertrouwde woonkamer rustig proefzitten en deskundig advies krijgen.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-summary">Wat houdt de 24 maanden omruilgarantie in?</summary>
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Wat houdt de 24 maanden omruilgarantie in?</span>
+            <span class="faq-icon"></span>
+          </button>
           <div class="faq-answer">
-            Onze omruilgarantie is helder en zonder kleine lettertjes: mocht er binnen 24 maanden een technisch mankement optreden dat we niet direct kunnen verhelpen, dan ruilen we de stoel kosteloos om voor een gelijkwaardig exemplaar.
+            <p>Onze schriftelijke omruilgarantie is helder en zonder kleine lettertjes: mocht er binnen 24 maanden een technisch mankement optreden dat we niet direct kunnen verhelpen, dan ruilen we de stoel kosteloos om voor een gelijkwaardig exemplaar uit onze collectie.</p>
           </div>
-        </details>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer" style="background: #111e10; color: #cbd5e1; padding: 60px 0 30px 0; border-top: 1px solid rgba(255,255,255,0.08);">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
-        <div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: #ffffff; margin-bottom: 12px;">
-            staopstoelen<span style="color: var(--color-terracotta);">.nl</span>
-          </div>
-          <p style="font-size: 0.92rem; line-height: 1.6; color: #94a3b8; max-width: 420px;">
-            Specialist in ergonomisch zitcomfort en Certified Fitform sta-op stoelen op maat. Onderdeel van Schipper Compact Wonen Dordrecht.
-          </p>
-          <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 12px;">
-            <strong style="color: #ffffff;">Showroom:</strong> Merwedestraat 239, 3313 TW Dordrecht<br>
-            <strong style="color: #ffffff;">Telefoon:</strong> 078 - 631 4858 &bull; <strong style="color: #ffffff;">E-mail:</strong> info@staopstoelen.nl
-          </p>
+  <!-- Footer Section (Exacte 1:1 Stijlset van staopstoelen.nl) -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3 style="color: var(--color-light);">staopstoelen<span style="color: var(--color-terracotta);">.nl</span></h3>
+        <p style="font-size: 0.92rem; color: var(--color-terracotta); font-weight: 700; margin-top: 10px; margin-bottom: 6px; letter-spacing: 0.2px;">
+          Zitspecialist &amp; Officieel Fitform Dealer &mdash; Showroom Dordrecht
+        </p>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-top: 0; line-height: 1.6;">
+          Maatwerk in nieuwe A-merk sta-op stoelen, ergonomische <a href="seniorenstoelen.html" style="color: rgba(255,255,255,0.85); text-decoration: underline;">senioren fauteuils</a>, <a href="seniorenstoelen.html" style="color: rgba(255,255,255,0.85); text-decoration: underline;">stoelen voor ouderen</a> en gecertificeerd gereviseerde topoccasions.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Snelle Links</h3>
+        <ul style="margin-top: 16px;">
+          <li><a href="staopstoelen.html">Sta-op Stoelen</a></li>
+          <li><a href="fitform-dealer-dordrecht.html">Fitform Dealer Dordrecht</a></li>
+          <li><a href="seniorenstoelen.html">Senioren Stoelen &amp; Fauteuils</a></li>
+          <li><a href="waarom-certified-fitform.html" style="color: #ffffff; font-weight: 700;">Waarom Certified?</a></li>
+          <li><a href="revisie.html">Revisieproces</a></li>
+          <li><a href="ervaringen.html">Klantverhalen</a></li>
+          <li><a href="faq.html">Veelgestelde vragen (FAQ)</a></li>
+          <li><a href="afspraak.html">Afspraak Inplannen</a></li>
+          <li><a href="info.html">Over Ons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact &amp; Showroom</h3>
+        <div class="footer-contact-info">
+          <strong>Showroom Dordrecht:</strong><br>
+          Merwedestraat 239<br>
+          3313 GT Dordrecht<br>
+          <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">(in het pand van Schipper Compact Wonen)</span>
         </div>
-        <div>
-          <h4 style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 1rem; margin-bottom: 14px;">Snelle Links</h4>
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
-            <li><a href="staopstoelen.html" style="color: #94a3b8; text-decoration: none;">Sta-op Stoelen Occasions</a></li>
-            <li><a href="waarom-certified-fitform.html" style="color: #ffffff; text-decoration: none; font-weight: 600;">Waarom Certified Fitform?</a></li>
-            <li><a href="revisie.html" style="color: #94a3b8; text-decoration: none;">Het 30-Punts Revisieproces</a></li>
-            <li><a href="afspraak.html" style="color: #94a3b8; text-decoration: none;">Afspraak Plannen</a></li>
-          </ul>
+        <div class="footer-contact-links">
+          <a href="tel:+31786314858">
+            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            078 - 631 4858
+          </a>
+          <a href="mailto:info@staopstoelen.nl">
+            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            info@staopstoelen.nl
+          </a>
         </div>
-        <div>
-          <h4 style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 1rem; margin-bottom: 14px;">Zekerheid</h4>
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: #94a3b8;">
-            <li>✓ 30-Punts Linak keuring</li>
-            <li>✓ 24 Maanden omruilgarantie</li>
-            <li>✓ 100% Maatwerk op uw lichaam</li>
-            <li>✓ Gratis bezorging &amp; installatie</li>
-          </ul>
+        <div class="footer-contact-info" style="margin-top: 14px;">
+          <strong>Openingstijden:</strong><br>
+          Dinsdag t/m Vrijdag: 10:00 - 16:00<br>
+          Maandag &amp; Zaterdag: Op afspraak
+        </div>
+        <ul class="footer-usp-list">
+          <li>
+            <span class="footer-usp-badge">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span><strong>Gratis parkeren</strong> voor de deur</span>
+          </li>
+          <li>
+            <span class="footer-usp-badge">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Gelijkvloers &amp; rolstoelvriendelijk</span>
+          </li>
+          <li>
+            <span class="footer-usp-badge">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>Buiten openingstijden op afspraak welkom</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regio Netwerk Footer Bar -->
+    <div style="background: rgba(0,0,0,0.22); border-top: 1px solid rgba(255,255,255,0.08); padding: 18px 0; margin-top: 24px;">
+      <div class="container">
+        <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px;">
+          Onze Service in Uw Regio (Drechtsteden, Alblasserwaard &amp; Hoeksche Waard):
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <a href="sta-op-stoel-dordrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Dordrecht</a>
+          <a href="sta-op-stoel-zwijndrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Zwijndrecht</a>
+          <a href="sta-op-stoel-papendrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Papendrecht</a>
+          <a href="sta-op-stoel-sliedrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Sliedrecht</a>
+          <a href="sta-op-stoel-hendrik-ido-ambacht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Hendrik-Ido-Ambacht</a>
+          <a href="sta-op-stoel-alblasserdam.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Alblasserdam</a>
+          <a href="sta-op-stoel-hardinxveld-giessendam.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Hardinxveld-Giessendam</a>
+          <a href="sta-op-stoel-ridderkerk.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Ridderkerk</a>
+          <a href="sta-op-stoel-barendrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Barendrecht</a>
+          <a href="sta-op-stoel-gorinchem.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Gorinchem</a>
+          <a href="sta-op-stoel-sgravendeel.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel ’s-Gravendeel</a>
+          <a href="sta-op-stoel-oud-beijerland.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Oud-Beijerland</a>
+          <a href="sta-op-stoel-strijen.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Strijen</a>
+          <a href="sta-op-stoel-puttershoek.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Puttershoek &amp; Maasdam</a>
+          <a href="sta-op-stoel-nieuw-lekkerland.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Nieuw-Lekkerland</a>
         </div>
       </div>
-      <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; color: #64748b;">
-        &copy; 2026 staopstoelen.nl &bull; Alle rechten voorbehouden.
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
+      </div>
+      <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.128
       </div>
     </div>
   </footer>
 
+  <script src="app.js?v=10.128"></script>
 </body>
 </html>
