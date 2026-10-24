@@ -3042,7 +3042,7 @@
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
     }
 
-    /* Widget C: Eindproduct Voor/Na & 4-Standen + CTA Kaart (vaste hoogte 258px) */
+    /* Widget C: Eindproduct Nieuwstaat met Certified Fitform Sticker (vaste hoogte 258px) */
     .eindproduct-showcase-card {
       background: #ffffff;
       border: 1.5px solid rgba(75, 143, 36, 0.28);
@@ -3060,86 +3060,119 @@
       box-sizing: border-box;
       overflow: hidden;
     }
-    .eindproduct-top-grid {
+    .eindproduct-stage-grid {
       display: grid;
-      grid-template-columns: 1fr 122px;
-      gap: 8px;
-      height: 122px;
-      min-height: 122px;
-      max-height: 122px;
+      grid-template-columns: 130px 1fr;
+      gap: 10px;
+      height: 156px;
+      min-height: 156px;
+      max-height: 156px;
       align-items: stretch;
     }
-    .eindproduct-before-after {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      height: 122px;
-    }
-    .eindproduct-ba-box {
+    .eindproduct-photo-card {
       position: relative;
-      border-radius: 9px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1.5px solid #cbd5e1;
-      height: 122px;
-      box-sizing: border-box;
-    }
-    .eindproduct-ba-box.after {
       border: 2px solid var(--color-forest);
-      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.18);
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.2);
+      height: 156px;
+      box-sizing: border-box;
+      background: #f8fafc;
     }
-    .eindproduct-ba-box img {
+    .eindproduct-photo-card img.main-photo {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .eindproduct-ba-lbl {
+    .eindproduct-photo-card .certified-sticker-seal {
       position: absolute;
-      bottom: 4px;
-      left: 4px;
-      right: 4px;
-      background: rgba(15, 23, 42, 0.86);
-      color: #ffffff;
+      bottom: 5px;
+      right: 5px;
+      width: 58px;
+      height: 58px;
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
+      pointer-events: none;
+      transition: transform 0.25s ease;
+      z-index: 2;
+    }
+    .eindproduct-photo-badge {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: rgba(18, 43, 7, 0.90);
+      color: #86efac;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.55rem;
+      font-size: 0.54rem;
       font-weight: 800;
-      padding: 2px 4px;
-      border-radius: 4px;
-      text-align: center;
-      white-space: nowrap;
-    }
-    .eindproduct-ba-box.after .eindproduct-ba-lbl {
-      background: rgba(20, 83, 45, 0.92);
-      border: 1px solid #86efac;
-    }
-    .eindproduct-motion-mini {
-      background: #f8fbf6;
-      border: 1.5px solid rgba(75, 143, 36, 0.25);
-      border-radius: 9px;
-      padding: 4px 6px;
-      height: 122px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .eindproduct-motion-mini img {
-      height: 76px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-      transition: opacity 0.25s ease;
-    }
-    .eindproduct-motion-lbl {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.58rem;
-      font-weight: 800;
-      color: var(--color-forest-dark);
-      background: #e7f5e1;
       padding: 2px 6px;
       border-radius: 999px;
+      border: 1px solid rgba(134, 239, 172, 0.4);
       white-space: nowrap;
+      z-index: 2;
+    }
+    .eindproduct-details-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 156px;
+      min-width: 0;
+      text-align: left;
+    }
+    .eindproduct-header-block {
+      background: #f8fafc;
+      border-left: 3px solid var(--color-forest);
+      border-radius: 0 8px 8px 0;
+      padding: 4px 8px;
+    }
+    .eindproduct-header-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .eindproduct-header-sub {
+      font-size: 0.65rem;
+      color: #64748b;
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .eindproduct-specs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin: 2px 0;
+    }
+    .eindproduct-spec-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.67rem;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.2;
+    }
+    .eindproduct-spec-pill svg {
+      color: var(--color-forest);
+      flex-shrink: 0;
+    }
+    .eindproduct-price-strip {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e7f5e1 100%);
+      border: 1px solid rgba(75, 143, 36, 0.35);
+      border-radius: 6px;
+      padding: 3px 7px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.67rem;
+      font-weight: 800;
+      color: var(--color-forest-dark);
     }
     .eindproduct-cta-row {
       display: grid;
@@ -5033,41 +5066,50 @@
       align: "right",
       shortTag: "4. Het Eindproduct",
       kicker: "FASE 4 • HET EINDPRODUCT MET 2 JAAR GARANTIE",
-      title: "100% Als Nieuw Bekleed &amp; 4 Standen Getest",
+      title: "100% Nieuwstaat &amp; Certified Fitform Keurmerk",
       subtitle: "",
       metric: "",
       caption: "Het resultaat: een prachtige Fitform sta-op stoel in absolute nieuwstaat. Ozon-gereinigd, 4 ergonomische standen getest en met twee jaar volledige garantie aan huis.",
       voiceText: "Het resultaat: een prachtige Fitform sta-op stoel in absolute nieuwstaat. Ozon-gereinigd, 4 ergonomische standen getest en met twee jaar volledige garantie aan huis.",
-      bg: "assets/revisie_scene4_eindproduct_wide.jpg?v=20261024_1",
+      bg: "assets/revisie_scene4_eindproduct_wide.jpg?v=20261025_2",
       audio: "assets/audio/revisie_scene_4.m4a?v=20261025_1",
       durationSec: 10.93,
       visualHtml: `
         <div class="eindproduct-showcase-card" id="eindproduct-showcase-widget" onclick="event.stopPropagation()">
           <div class="anatomy-top-bar">
-            <span class="anatomy-badge-verified">&#10024; Voor &amp; Na Revisie + 4-Standen Test</span>
-            <span class="anatomy-step-counter" id="eindproduct-stand-pill">Stand 1 / 4: Zitstand</span>
+            <span class="anatomy-badge-verified">&#10003; Certified Fitform • 100% Nieuwstaat</span>
+            <span class="anatomy-step-counter">2 Jaar Garantie</span>
           </div>
-          <div class="eindproduct-top-grid">
-            <div class="eindproduct-before-after">
-              <div class="eindproduct-ba-box">
-                <img src="assets/revisie_stap3.jpg" alt="Voor Revisie">
-                <div class="eindproduct-ba-lbl">VOOR: GESTRIPT</div>
+          <div class="eindproduct-stage-grid">
+            <div class="eindproduct-photo-card">
+              <img src="assets/revisie_stap4.jpg" alt="Fitform 570 Eindproduct" class="main-photo">
+              <span class="eindproduct-photo-badge">EINDPRODUCT</span>
+              <img src="assets/sticker_certified_fitform.svg" alt="Certified Fitform Sticker" class="certified-sticker-seal">
+            </div>
+            <div class="eindproduct-details-col">
+              <div class="eindproduct-header-block">
+                <div class="eindproduct-header-title">Fitform 570 Nieuwstaat</div>
+                <div class="eindproduct-header-sub">Gereviseerd in eigen werkplaats Dordrecht</div>
               </div>
-              <div class="eindproduct-ba-box after">
-                <img src="assets/revisie_stap4.jpg" alt="Eindproduct Fitform 570">
-                <div class="eindproduct-ba-lbl">&#10003; NA: EINDPRODUCT</div>
+              <div class="eindproduct-specs-list">
+                <span class="eindproduct-spec-pill">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>100% Nieuw koudschuim &amp; bekleding</span>
+                </span>
+                <span class="eindproduct-spec-pill">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>30-punts keuring &amp; ozonreiniging</span>
+                </span>
+                <span class="eindproduct-spec-pill">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Exact op uw maat afgesteld</span>
+                </span>
+              </div>
+              <div class="eindproduct-price-strip">
+                <span>Certified Occasion</span>
+                <span style="color:var(--color-terracotta); font-weight:900;">€ 1.550,-</span>
               </div>
             </div>
-            <div class="eindproduct-motion-mini" onclick="cycleEindproductStand(true)" style="cursor:pointer;" title="Klik om door de 4 standen te schakelen">
-              <img src="assets/faq_chair_closed.png" alt="4-Standen Beweging" id="eindproduct-motion-img">
-              <span class="eindproduct-motion-lbl" id="eindproduct-motion-lbl">1. Actieve Zitstand (90&deg;)</span>
-            </div>
-          </div>
-          <div class="revisie-thumbs-row">
-            <button type="button" onclick="selectEindproductStand(1, true)" id="ep-stand-1" class="revisie-thumb-btn active">1. Zitstand</button>
-            <button type="button" onclick="selectEindproductStand(2, true)" id="ep-stand-2" class="revisie-thumb-btn">2. Relaxstand</button>
-            <button type="button" onclick="selectEindproductStand(3, true)" id="ep-stand-3" class="revisie-thumb-btn">3. Ligstand</button>
-            <button type="button" onclick="selectEindproductStand(4, true)" id="ep-stand-4" class="revisie-thumb-btn">4. Sta-op Lift</button>
           </div>
           <div class="eindproduct-cta-row">
             <a href="afspraak.html#bookingCard" class="btn-consumer-primary" target="_top" onclick="return handleKiesDatumClick(event)">
@@ -5292,10 +5334,7 @@
         const revIdx = Math.min(4, Math.max(1, Math.floor((currentSceneElapsedSec / s.durationSec) * 4) + 1));
         if (revIdx !== currentRevisieStep) selectRevisieStep(revIdx, false);
       }
-      if (document.getElementById('eindproduct-showcase-widget') && !eindproductManualOverride) {
-        const standIdx = Math.min(4, Math.max(1, Math.floor((currentSceneElapsedSec / s.durationSec) * 4) + 1));
-        if (standIdx !== currentEindproductStand) selectEindproductStand(standIdx, false);
-      }
+
     }
   }
 
@@ -5708,11 +5747,7 @@
       selectRevisieStep(initRev, false);
     }
 
-    if (document.getElementById('eindproduct-showcase-widget')) {
-      eindproductManualOverride = false;
-      const initStand = s.durationSec > 0 ? Math.min(4, Math.max(1, Math.floor((currentSceneOffsetSec / s.durationSec) * 4) + 1)) : 1;
-      selectEindproductStand(initStand, false);
-    }
+
 
     const metricEl = document.getElementById('scene-metric');
     if (metricEl) {
