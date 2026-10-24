@@ -784,40 +784,178 @@
       height: 12px;
     }
 
-    /* Scene 4: Mini Waterfall */
-    .waterfall-card-box {
+    /* Scene 4: Compact Infographic Waterfall & Pitch Hero Card */
+    .wf-compact-card {
       width: 100%;
-      margin: 8px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      margin: 4px 0 10px;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
-    .wf-tile {
+    .wf-compact-card .wf-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 7px 14px;
-      background: #ffffff;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.8rem;
+      padding: 7px 12px;
+      font-size: 0.78rem;
+      border-bottom: 1px solid #f1f5f9;
     }
-    .wf-tile-left {
+    .wf-compact-card .wf-row:last-child {
+      border-bottom: none;
+    }
+    .wf-compact-card .wf-row.sub {
+      color: #64748b;
+      background: #fafbfa;
+    }
+    .wf-compact-card .wf-row.sub .wf-val {
+      color: #dc2626;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      white-space: nowrap !important;
+    }
+    .wf-compact-card .wf-row .wf-label {
       display: flex;
       align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .wf-compact-card .wf-row .wf-val.pos {
+      color: var(--color-forest);
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      white-space: nowrap !important;
+    }
+    .wf-compact-card .wf-row.total {
+      background: #fffcf8;
+      border-top: 1.5px solid rgba(243, 146, 35, 0.35);
+      padding: 9px 12px;
+    }
+    .wf-total-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .wf-total-val {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #ea580c;
+      white-space: nowrap !important;
+    }
+    .wf-badge-pct {
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: #ffedd5;
+      color: #c86914;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 146, 35, 0.4);
+      white-space: nowrap !important;
+      letter-spacing: 0.3px;
+    }
+    .pitch-kpi-banner {
+      width: 100%;
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border: 2px solid var(--color-terracotta);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 4px 16px rgba(243, 146, 35, 0.16);
+      margin-top: 2px;
+      box-sizing: border-box;
+    }
+    .pitch-kpi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .pitch-kpi-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #b45309;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .pitch-kpi-subtag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #7c2d12;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 146, 35, 0.3);
+      white-space: nowrap;
+    }
+    .pitch-kpi-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
       gap: 10px;
     }
-    .wf-tile.highlight {
-      background: #fff7ed;
-      border: 2px solid var(--color-terracotta);
-      font-weight: 800;
-      color: #92400e;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 14px rgba(243, 146, 35, 0.12);
+    .pitch-kpi-hero {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
     }
-    .wf-tile.highlight strong {
+    .pitch-hero-plus {
+      font-size: 1.15rem;
+      font-weight: 900;
       color: #ea580c;
-      font-size: 1.05rem;
+    }
+    .pitch-hero-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.68rem;
+      font-weight: 900;
+      color: #c86914;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      white-space: nowrap !important;
+    }
+    .pitch-hero-freq {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #92400e;
+    }
+    .pitch-kpi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #ffffff;
+      border: 1.5px solid rgba(46, 104, 25, 0.35);
+      color: #2e6819;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      white-space: nowrap !important;
+    }
+    .pitch-kpi-caption {
+      font-size: 0.7rem;
+      color: #78350f;
+      margin-top: 5px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .kicker-badge-orange {
+      background: var(--color-terracotta);
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     /* Scene 5: Deal Stack */
@@ -1726,51 +1864,78 @@
     },
     {
       shortTag: "Unit Economics",
-      kicker: "UNIT ECONOMICS & MARGES",
-      title: "€\u00A0650 Netto Marge per Stoel (42%)",
-      subtitle: "Conservatief doorgerekend inclusief inkoop, onderdelen, 2-mans bezorging en servicebuffers.",
-      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> +€\u00A07.800 Netto / Mnd (bij 12 stoelen)',
+      kicker: 'UNIT ECONOMICS <span class="kicker-badge-orange">42% MARGE</span>',
+      title: "€\u00A0650 Netto per Stoel",
+      subtitle: "",
+      metric: "",
       caption: "De unit economics zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over.",
       voiceText: "De unit economics zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over. Goed voor 7800 euro cashflow per maand.",
       bg: "assets/unit_economics_fitform_showroom.jpg",
       audio: "assets/audio/scene_4.m4a",
       durationSec: 12.0,
       visualHtml: `
-        <div class="waterfall-card-box">
-          <div class="wf-tile">
-            <div class="wf-tile-left">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23541b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-              <span>Verkoopprijs Certified Occasion</span>
+        <div class="wf-compact-card">
+          <div class="wf-row">
+            <div class="wf-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2e6819" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              <span>Verkoopprijs Occasion</span>
             </div>
-            <strong style="color:var(--green); font-size:0.95rem;">€&nbsp;1.550</strong>
+            <span class="wf-val pos">€&nbsp;1.550</span>
           </div>
-          <div class="wf-tile" style="color:#64748b;">
-            <div class="wf-tile-left">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          <div class="wf-row sub">
+            <div class="wf-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
               <span>Inkoop occasion Fitform</span>
             </div>
-            <strong style="color:#dc2626;">- €&nbsp;450</strong>
+            <span class="wf-val">- €&nbsp;450</span>
           </div>
-          <div class="wf-tile" style="color:#64748b;">
-            <div class="wf-tile-left">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-              <span>Revisie, onderdelen &amp; ozonbehandeling</span>
+          <div class="wf-row sub">
+            <div class="wf-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              <span>Revisie, onderdelen &amp; ozon</span>
             </div>
-            <strong style="color:#dc2626;">- €&nbsp;175</strong>
+            <span class="wf-val">- €&nbsp;175</span>
           </div>
-          <div class="wf-tile" style="color:#64748b;">
-            <div class="wf-tile-left">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              <span>2-Mans bezorging, inmeten &amp; garantiebuffer</span>
+          <div class="wf-row sub">
+            <div class="wf-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <span>2-Mans bezorging &amp; inmeten</span>
             </div>
-            <strong style="color:#dc2626;">- €&nbsp;275</strong>
+            <span class="wf-val">- €&nbsp;275</span>
           </div>
-          <div class="wf-tile highlight">
-            <div class="wf-tile-left">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-              <span>Netto Cashflow Marge per Stoel</span>
+          <div class="wf-row total">
+            <div class="wf-label" style="color: #92400e;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <strong>Netto resultaat per stoel</strong>
             </div>
-            <strong>+ €&nbsp;650 (42%)</strong>
+            <div class="wf-total-right">
+              <span class="wf-badge-pct">42% MARGE</span>
+              <span class="wf-total-val">+ €&nbsp;650</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pitch-kpi-banner">
+          <div class="pitch-kpi-header">
+            <span class="pitch-kpi-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              MAANDELIJKS CASHFLOW VOLUME
+            </span>
+            <span class="pitch-kpi-subtag">Hefboom: 12 stoelen / mnd</span>
+          </div>
+          <div class="pitch-kpi-body">
+            <div class="pitch-kpi-hero">
+              <span class="pitch-hero-plus">+</span>
+              <span class="pitch-hero-num">€&nbsp;7.800</span>
+              <span class="pitch-hero-freq">/ mnd</span>
+            </div>
+            <div class="pitch-kpi-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              €&nbsp;93.600 / jr
+            </div>
+          </div>
+          <div class="pitch-kpi-caption">
+            Gezonde extra liquiditeit bovenop de bestaande winkelbasis Dordrecht.
           </div>
         </div>
       `
@@ -1953,12 +2118,35 @@
     // Update het zwevende informatiepaneel (puur reclame, zonder hoofdstuknummers)
     const kickerEl = document.getElementById('scene-kicker');
     if (kickerEl) {
-      kickerEl.innerHTML = `<span class="kicker-dot"></span> ${s.shortTag.toUpperCase()}`;
+      const kickerText = s.kicker || s.shortTag.toUpperCase();
+      kickerEl.innerHTML = `<span class="kicker-dot"></span> ${kickerText}`;
     }
     document.getElementById('scene-title').innerHTML = s.title;
-    document.getElementById('scene-subtitle').innerHTML = s.subtitle;
+
+    const subEl = document.getElementById('scene-subtitle');
+    if (subEl) {
+      if (s.subtitle && s.subtitle.trim().length > 0) {
+        subEl.innerHTML = s.subtitle;
+        subEl.style.display = 'block';
+      } else {
+        subEl.innerHTML = '';
+        subEl.style.display = 'none';
+      }
+    }
+
     document.getElementById('scene-visual-content').innerHTML = s.visualHtml || '';
-    document.getElementById('scene-metric').innerHTML = s.metric;
+
+    const metricEl = document.getElementById('scene-metric');
+    if (metricEl) {
+      if (s.metric && s.metric.trim().length > 0) {
+        metricEl.innerHTML = s.metric;
+        metricEl.style.display = 'inline-flex';
+      } else {
+        metricEl.innerHTML = '';
+        metricEl.style.display = 'none';
+      }
+    }
+
     document.getElementById('caption-text').textContent = `"${s.caption}"`;
 
     // Update YouTube hoofdstukindicator in de onderbalk
