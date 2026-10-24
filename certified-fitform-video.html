@@ -2488,13 +2488,14 @@
     }
     .anatomy-stage-grid {
       display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 12px;
+      grid-template-columns: 125px 1fr;
+      gap: 10px;
       align-items: stretch;
       height: 215px;
       min-height: 215px;
       max-height: 215px;
       flex-shrink: 0;
+      min-width: 0;
     }
     .anatomy-chair-canvas {
       position: relative;
@@ -2601,31 +2602,38 @@
       background: #f4f9f1;
       border: 1px solid rgba(75, 143, 36, 0.22);
       border-radius: 8px;
-      padding: 6px 10px;
-      font-size: 0.72rem;
+      padding: 6px 8px;
+      font-size: 0.70rem;
       display: flex;
       flex-direction: column;
       gap: 3px;
       flex-shrink: 0;
+      box-sizing: border-box;
+      min-width: 0;
+      overflow: hidden;
     }
     .anatomy-meta-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
       gap: 6px;
-      font-size: 0.71rem;
+      font-size: 0.70rem;
       line-height: 1.25;
+      min-width: 0;
     }
     .anatomy-meta-lbl {
       color: #64748b;
       font-weight: 600;
       flex-shrink: 0;
+      font-size: 0.69rem;
     }
     .anatomy-meta-val {
       font-weight: 800;
       color: var(--color-forest-dark);
       text-align: right;
-      white-space: nowrap;
+      white-space: normal;
+      word-break: normal;
+      min-width: 0;
     }
     .anatomy-pills-row {
       display: grid;
@@ -2959,12 +2967,13 @@
     }
     .revisie-stage-grid {
       display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 12px;
+      grid-template-columns: 125px 1fr;
+      gap: 10px;
       height: 215px;
       min-height: 215px;
       max-height: 215px;
       flex-shrink: 0;
+      min-width: 0;
     }
     .revisie-photo-frame {
       position: relative;
@@ -2986,22 +2995,7 @@
       transition: transform 0.35s ease;
     }
     .revisie-photo-badge {
-      position: absolute;
-      bottom: 6px;
-      left: 6px;
-      right: 6px;
-      background: rgba(15, 28, 22, 0.92);
-      color: #ffffff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.60rem;
-      font-weight: 800;
-      padding: 4px 6px;
-      border-radius: 6px;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      border: 1px solid rgba(243, 146, 35, 0.5);
+      display: none !important;
     }
     .revisie-detail-col {
       display: flex;
@@ -4949,13 +4943,13 @@
     {
       align: "left",
       shortTag: "1. Demontage & Framecheck",
-      kicker: "FASE 1 • DEMONTAGE TOT OP HET FRAME",
+      kicker: "FASE 1 • BASISFRAME & TECHNIEK",
       title: "Gestript tot op het Stalen Frame",
       subtitle: "",
       metric: "",
       caption: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige 30-punts inspectie van motoren, bekabeling en schaarmechaniek.",
       voiceText: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige dertig-punten inspectie van motoren, bekabeling en schaarmechaniek.",
-      bg: "assets/revisie_scene1_wide.jpg?v=20261024_1",
+      bg: "assets/revisie_scene1_wide.jpg?v=20261025_2",
       audio: "assets/audio/revisie_scene_1.m4a?v=20261025_1",
       durationSec: 10.46,
       visualHtml: `
@@ -5030,7 +5024,7 @@
       metric: "",
       caption: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
       voiceText: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
-      bg: "assets/revisie_scene2_wide.jpg?v=20261024_1",
+      bg: "assets/revisie_scene2_wide.jpg?v=20261025_2",
       audio: "assets/audio/revisie_scene_2.m4a?v=20261025_1",
       durationSec: 10.25,
       visualHtml: `
@@ -5042,7 +5036,6 @@
           <div class="revisie-stage-grid">
             <div class="revisie-photo-frame">
               <img src="assets/revisie_stap3.jpg" alt="Revisiestap" id="revisie-step-img">
-              <div class="revisie-photo-badge" id="revisie-step-badge">01 &bull; DEMONTAGE TOT OP HET FRAME</div>
             </div>
             <div class="revisie-detail-col">
               <div class="anatomy-detail-cat" id="revisie-detail-cat">STAP 01 &bull; CHASSIS &amp; SCHUIMKERN</div>
@@ -5299,7 +5292,7 @@
       cat: "5 • Veiligheid & Garantie",
       title: "Nieuwe Noodaccu & Keurmerk",
       desc: "Inclusief verse back-up batterij bij stroomuitval en 24 maanden garantie aan huis.",
-      check: "Accucapaciteit & Noodcircuit",
+      check: "Accu & Noodcircuit",
       action: "✓ 24 Mnd Garantie aan huis",
       part: "anat-part-base"
     }
