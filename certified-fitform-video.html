@@ -1071,31 +1071,30 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
-    /* Scene 2: Prominente Certified Fitform Kwaliteitssticker op 2/3 & Lichte Opsomming Links */
+    /* Scene 2: Prominente Certified Fitform Kwaliteitssticker & Uitgelijnd Keurmerk Links */
     .scene2-composite-showcase {
       width: 100%;
-      margin-top: 8px;
+      margin-top: 14px;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
+      gap: 14px;
       position: relative;
     }
     .scene2-points-col {
       flex: 1;
-      padding-right: 6px;
-      margin-top: 4px;
       z-index: 2;
+      display: flex;
+      align-items: center;
     }
     .scene2-points-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 650;
+      font-size: 0.96rem;
+      font-weight: 750;
       color: var(--color-forest-dark);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      line-height: 1.35;
       letter-spacing: 0.2px;
+      margin: 0;
     }
     .scene2-points-list {
       list-style: none;
@@ -1125,29 +1124,30 @@
       opacity: 0.85;
     }
     .scene2-sticker-col {
-      width: 142px;
+      width: 130px;
       flex-shrink: 0;
       position: relative;
-      margin-top: -30px;
-      margin-right: -4px;
+      margin-top: 0;
+      margin-right: 0;
       z-index: 10;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
     .scene2-sticker-col::before {
       content: '';
       position: absolute;
-      inset: -8px;
+      inset: -6px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(243, 146, 35, 0.22) 0%, rgba(75, 143, 36, 0.12) 50%, transparent 70%);
       pointer-events: none;
       filter: blur(8px);
     }
     .scene2-overlap-sticker {
-      width: 142px;
-      height: 142px;
+      width: 130px;
+      height: 130px;
       display: block;
-      filter: drop-shadow(0 10px 22px rgba(18, 43, 7, 0.24)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.38));
+      filter: drop-shadow(0 8px 20px rgba(18, 43, 7, 0.22)) drop-shadow(0 2px 8px rgba(243, 146, 35, 0.35));
       transform: rotate(-3deg);
       transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
       animation: sealGentlePulse 4s infinite ease-in-out;
@@ -3245,19 +3245,10 @@
       addonHtml: `
         <div class="scene2-composite-showcase">
           <div class="scene2-points-col">
-            <div class="scene2-points-title">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-              Officieel kwaliteitskeurmerk
-            </div>
-            <ul class="scene2-points-list">
-              <li>30-Punts technische inspectie</li>
-              <li>Linak motoren &amp; hefkracht getest</li>
-              <li>Ozon hygiënisch dieptereiniging</li>
-              <li>24 Mnd volledige omruilgarantie</li>
-            </ul>
+            <div class="scene2-points-title">Officieel kwaliteitskeurmerk</div>
           </div>
           <div class="scene2-sticker-col">
-            <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Keurmerk" class="scene2-overlap-sticker" width="142" height="142" title="Officieel Certified Fitform Keurmerk">
+            <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Keurmerk" class="scene2-overlap-sticker" width="130" height="130" title="Officieel Certified Fitform Keurmerk">
           </div>
         </div>
       `
@@ -3577,19 +3568,10 @@
       addonHtml: `
         <div class="scene2-composite-showcase">
           <div class="scene2-points-col">
-            <div class="scene2-points-title">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-              Officieel kwaliteitskeurmerk
-            </div>
-            <ul class="scene2-points-list">
-              <li>30-Punts technische inspectie</li>
-              <li>Linak motoren &amp; hefkracht getest</li>
-              <li>Ozon hygiënisch dieptereiniging</li>
-              <li>24 Mnd volledige omruilgarantie</li>
-            </ul>
+            <div class="scene2-points-title">Officieel kwaliteitskeurmerk</div>
           </div>
           <div class="scene2-sticker-col">
-            <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Keurmerk" class="scene2-overlap-sticker" width="142" height="142" title="Officieel Certified Fitform Keurmerk">
+            <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Keurmerk" class="scene2-overlap-sticker" width="130" height="130" title="Officieel Certified Fitform Keurmerk">
           </div>
         </div>
       `
