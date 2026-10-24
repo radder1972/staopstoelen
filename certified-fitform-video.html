@@ -1854,7 +1854,7 @@
 
     /* De balk onder: Volledig interactieve YouTube Scrubber met muis- en touchcontrole */
     .yt-progress-container {
-      padding: 12px 18px 6px;
+      padding: 12px 20px 6px;
       cursor: pointer;
       position: relative;
       user-select: none;
@@ -1872,8 +1872,11 @@
     .segments-bar {
       display: flex;
       width: 100%;
-      gap: 4px;
+      gap: 0;
       height: 6px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.22);
       transition: height 0.15s ease;
     }
 
@@ -1885,22 +1888,21 @@
     .seg {
       height: 100%;
       flex: 1 1 0%;
-      background: rgba(255, 255, 255, 0.22);
-      border-radius: 3px;
+      background: transparent;
+      border-radius: 0;
       overflow: hidden;
       cursor: pointer;
-      transition: background 0.15s ease;
       position: relative;
     }
 
     .seg:hover {
-      background: rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.18);
     }
 
     .seg-fill {
       height: 100%;
       width: 0%;
-      background: var(--color-terracotta);
+      background: var(--color-terracotta, #f39223);
       transition: width 0.08s linear;
       pointer-events: none;
     }
@@ -1910,7 +1912,7 @@
     }
 
     .seg.completed .seg-fill {
-      background: var(--color-forest);
+      background: var(--color-terracotta, #f39223);
       width: 100%;
     }
 
@@ -2162,24 +2164,12 @@
     }
 
     .yt-chapter-pill {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #e5ede3;
-      margin-left: 10px;
-      padding: 2px 10px;
-      border-radius: 6px;
-      background: rgba(75, 143, 36, 0.22);
-      border: 1px solid rgba(75, 143, 36, 0.38);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 240px;
-      user-select: none;
+      display: none !important;
     }
 
     @media (max-width: 700px) {
       .yt-chapter-pill {
-        display: none;
+        display: none !important;
       }
     }
 
@@ -2230,35 +2220,45 @@
     @media (min-width: 681px) {
       body.is-embedded .stage-split-wrapper {
         flex: 1 1 0% !important;
-        height: calc(100vh - 68px) !important;
-        min-height: calc(100vh - 68px) !important;
-        max-height: calc(100vh - 68px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
       }
       body.is-embedded .companion-panel {
-        height: min(536px, calc(100vh - 96px)) !important;
-        min-height: min(536px, calc(100vh - 96px)) !important;
-        max-height: min(536px, calc(100vh - 96px)) !important;
+        height: min(520px, calc(100% - 24px)) !important;
+        min-height: 0 !important;
+        max-height: min(520px, calc(100% - 24px)) !important;
       }
     }
     @media (max-width: 680px) {
       body.is-embedded .stage-split-wrapper {
         flex: 1 1 0% !important;
-        height: calc(100vh - 68px) !important;
-        min-height: calc(100vh - 68px) !important;
-        max-height: calc(100vh - 68px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
         overflow: hidden !important;
       }
+      body.is-embedded .stage-split-wrapper .cinema-screen {
+        height: 200px !important;
+        min-height: 200px !important;
+        max-height: 200px !important;
+        flex: 0 0 200px !important;
+      }
       body.is-embedded .stage-split-wrapper .companion-panel {
-        height: calc(100vh - 308px) !important;
-        min-height: calc(100vh - 308px) !important;
-        max-height: calc(100vh - 308px) !important;
+        flex: 1 1 auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: calc(100% - 200px) !important;
         overflow-y: auto !important;
+        padding: 12px 14px 16px !important;
       }
     }
     body.is-embedded .yt-bottom-bar {
-      flex: 0 0 68px !important;
-      height: 68px !important;
+      flex: 0 0 auto !important;
+      height: auto !important;
+      min-height: 82px !important;
       box-sizing: border-box !important;
+      padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
     }
 
     /* Video Reel Mode Switcher (Klantversie vs Investeerderspitch) */
@@ -3990,11 +3990,11 @@
       <div class="yt-progress-container" id="yt-progress-container">
         <div class="yt-track-wrap" id="yt-track-wrap">
           <div class="segments-bar" id="segments-bar">
-            <div class="seg" title="Scène 1"><div class="seg-fill" id="fill-0"></div></div>
-            <div class="seg" title="Scène 2"><div class="seg-fill" id="fill-1"></div></div>
-            <div class="seg" title="Scène 3"><div class="seg-fill" id="fill-2"></div></div>
-            <div class="seg" title="Scène 4"><div class="seg-fill" id="fill-3"></div></div>
-            <div class="seg" title="Scène 5"><div class="seg-fill" id="fill-4"></div></div>
+            <div class="seg"><div class="seg-fill" id="fill-0"></div></div>
+            <div class="seg"><div class="seg-fill" id="fill-1"></div></div>
+            <div class="seg"><div class="seg-fill" id="fill-2"></div></div>
+            <div class="seg"><div class="seg-fill" id="fill-3"></div></div>
+            <div class="seg"><div class="seg-fill" id="fill-4"></div></div>
           </div>
           <div class="yt-scrubber-thumb" id="yt-scrubber-thumb"></div>
           <div class="yt-hover-tooltip" id="yt-hover-tooltip">0:00</div>
@@ -6219,8 +6219,7 @@
     const min = Math.floor(mapped.globalSec / 60);
     const sec = Math.floor(mapped.globalSec % 60);
     const timeStr = `${min}:${sec < 10 ? '0' : ''}${sec}`;
-    const s = scenes[mapped.sceneIdx];
-    tooltip.textContent = `${timeStr} • ${mapped.sceneIdx + 1}. ${s.shortTag}`;
+    tooltip.textContent = timeStr;
     const clampedPct = Math.min(92, Math.max(8, ratio * 100));
     tooltip.style.left = `${clampedPct}%`;
   }
