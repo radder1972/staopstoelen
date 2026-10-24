@@ -654,23 +654,23 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Floating Transparent Frosted Glass Companion Panel (Slanker & Luchtiger) */
+    /* Floating Transparent Frosted Glass Companion Panel (Royaler & Luchtiger) */
     .companion-panel {
       position: relative;
       z-index: 10;
-      width: 395px;
-      max-width: calc(52% - 16px);
+      width: 430px;
+      max-width: calc(54% - 16px);
       height: 536px;
       min-height: 536px;
       max-height: 536px;
       box-sizing: border-box;
-      background: linear-gradient(145deg, rgba(244, 251, 242, 0.82) 0%, rgba(234, 247, 232, 0.76) 100%);
+      background: linear-gradient(145deg, rgba(244, 251, 242, 0.86) 0%, rgba(234, 247, 232, 0.80) 100%);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1.5px solid rgba(185, 222, 175, 0.65);
-      border-radius: 18px;
+      border-radius: 20px;
       box-shadow: 0 18px 45px rgba(22, 45, 16, 0.22), 0 2px 10px rgba(0, 0, 0, 0.08);
-      padding: 14px 18px;
+      padding: 18px 22px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -2438,21 +2438,21 @@
       background: rgba(243, 146, 35, 0.2);
     }
 
-    /* 30-Punts Inspectie & Stoel-Anatomie Animatie Widget (in Scène 3 van Proefzitten-video) */
+    /* 30-Punts Inspectie & Stoel-Anatomie Animatie Widget (Royale Box) */
     .chair-anatomy-card {
       background: #ffffff;
       border: 1.5px solid rgba(75, 143, 36, 0.28);
-      border-radius: 14px;
-      padding: 11px 13px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
       width: 100%;
-      height: 258px;
-      min-height: 258px;
-      max-height: 258px;
+      height: 330px;
+      min-height: 330px;
+      max-height: 330px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2461,53 +2461,53 @@
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      height: 24px;
+      height: 26px;
       flex-shrink: 0;
       padding-bottom: 6px;
       border-bottom: 1px solid #eef2ec;
     }
     .anatomy-badge-verified {
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 800;
       color: var(--color-forest);
       background: rgba(75, 143, 36, 0.12);
       border: 1px solid rgba(75, 143, 36, 0.25);
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
       white-space: nowrap;
     }
     .anatomy-step-counter {
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 800;
       color: #c25e00;
       background: #fff7ed;
       border: 1px solid rgba(243, 146, 35, 0.35);
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
       white-space: nowrap;
     }
     .anatomy-stage-grid {
       display: grid;
-      grid-template-columns: 126px 1fr;
-      gap: 10px;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
       align-items: stretch;
-      height: 158px;
-      min-height: 158px;
-      max-height: 158px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       flex-shrink: 0;
     }
     .anatomy-chair-canvas {
       position: relative;
       background: #f8fbf6;
-      border: 1px solid rgba(75, 143, 36, 0.2);
-      border-radius: 10px;
-      height: 158px;
-      min-height: 158px;
-      max-height: 158px;
+      border: 1.5px solid rgba(75, 143, 36, 0.22);
+      border-radius: 12px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6px;
+      padding: 8px;
       box-sizing: border-box;
     }
     .anatomy-chair-canvas svg {
@@ -2522,14 +2522,14 @@
     .anatomy-hotspot {
       position: absolute;
       transform: translate(-50%, -50%);
-      width: 21px;
-      height: 21px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--color-forest);
       color: #ffffff;
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 0.66rem;
+      font-size: 0.70rem;
       border: 2px solid #ffffff;
       cursor: pointer;
       display: inline-flex;
@@ -2563,15 +2563,16 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 158px;
-      min-height: 158px;
-      max-height: 158px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       text-align: left;
       min-width: 0;
       box-sizing: border-box;
+      gap: 4px;
     }
     .anatomy-detail-cat {
-      font-size: 0.62rem;
+      font-size: 0.68rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -2581,63 +2582,63 @@
     }
     .anatomy-detail-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--color-forest-dark);
-      line-height: 1.2;
-      height: 2.4em;
+      line-height: 1.25;
       margin: 0;
-      overflow: hidden;
       flex-shrink: 0;
     }
     .anatomy-detail-desc {
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       color: #475569;
-      line-height: 1.3;
-      height: 3.9em;
+      line-height: 1.42;
       margin: 0;
+      flex: 1;
       overflow: hidden;
-      flex-shrink: 0;
     }
     .anatomy-meta-box {
-      margin-top: auto;
       background: #f4f9f1;
       border: 1px solid rgba(75, 143, 36, 0.22);
       border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 0.68rem;
+      padding: 6px 10px;
+      font-size: 0.72rem;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
       flex-shrink: 0;
     }
     .anatomy-meta-row {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 6px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 0.71rem;
+      line-height: 1.25;
     }
     .anatomy-meta-lbl {
       color: #64748b;
+      font-weight: 600;
+      flex-shrink: 0;
     }
     .anatomy-meta-val {
-      font-weight: 700;
+      font-weight: 800;
       color: var(--color-forest-dark);
-      overflow: hidden;
-      text-overflow: ellipsis;
+      text-align: right;
+      white-space: nowrap;
     }
     .anatomy-pills-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 4px;
-      padding-top: 6px;
+      padding-top: 8px;
       border-top: 1px solid #eef2ec;
+      height: 32px;
+      box-sizing: border-box;
     }
     .anatomy-pill-btn {
-      padding: 4px 2px;
-      font-size: 0.60rem;
+      padding: 5px 1px;
+      font-size: 0.62rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       border-radius: 6px;
@@ -2646,9 +2647,10 @@
       color: #475569;
       cursor: pointer;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       transition: all 0.18s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .anatomy-pill-btn.active {
       background: var(--color-forest);
@@ -2657,21 +2659,21 @@
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.28);
     }
 
-    /* Widget A: Zitadvies & Maatwerk Intakeformulier met 5 Stoel-Iconen (vaste hoogte 258px) */
+    /* Widget A: Zitadvies & Maatwerk Intakeformulier met 5 Stoel-Iconen (Royale Box) */
     .zitadvies-form-card {
       background: #ffffff;
       border: 1.5px solid rgba(75, 143, 36, 0.28);
-      border-radius: 14px;
-      padding: 10px 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 7px;
+      gap: 10px;
       width: 100%;
-      height: 258px;
-      min-height: 258px;
-      max-height: 258px;
+      height: 330px;
+      min-height: 330px;
+      max-height: 330px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2680,18 +2682,18 @@
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      height: 22px;
+      height: 26px;
       flex-shrink: 0;
-      padding-bottom: 5px;
+      padding-bottom: 6px;
       border-bottom: 1px solid #eef2ec;
     }
     .zitadvies-form-tag {
-      font-size: 0.63rem;
+      font-size: 0.68rem;
       font-weight: 800;
       color: var(--color-forest-dark);
       background: #f0fdf4;
       border: 1px solid rgba(75, 143, 36, 0.3);
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
       white-space: nowrap;
       display: inline-flex;
@@ -2699,32 +2701,32 @@
       gap: 4px;
     }
     .zitadvies-step-pill {
-      font-size: 0.63rem;
+      font-size: 0.68rem;
       font-weight: 800;
       color: #c25e00;
       background: #fff7ed;
       border: 1px solid rgba(243, 146, 35, 0.35);
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
       white-space: nowrap;
     }
     .zitadvies-main-grid {
       display: grid;
-      grid-template-columns: 124px 1fr;
+      grid-template-columns: 118px 1fr;
       gap: 10px;
-      height: 162px;
-      min-height: 162px;
-      max-height: 162px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       flex-shrink: 0;
       align-items: stretch;
     }
     .zitadvies-icon-stage {
       background: linear-gradient(180deg, #f8fbf6 0%, #eef6eb 100%);
       border: 1.5px solid rgba(75, 143, 36, 0.24);
-      border-radius: 10px;
-      height: 162px;
-      min-height: 162px;
-      max-height: 162px;
+      border-radius: 12px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2734,8 +2736,8 @@
       position: relative;
     }
     .zitadvies-svg-wrap {
-      width: 96px;
-      height: 108px;
+      width: 100px;
+      height: 145px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2749,36 +2751,37 @@
       width: 100%;
       background: #ffffff;
       border: 1px solid rgba(243, 146, 35, 0.45);
-      border-radius: 6px;
-      padding: 3px 4px;
+      border-radius: 7px;
+      padding: 3px 2px;
       text-align: center;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.64rem;
+      font-size: 0.61rem;
       font-weight: 800;
       color: #c25e00;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      box-shadow: 0 2px 5px rgba(243, 146, 35, 0.12);
+      box-shadow: 0 2px 6px rgba(243, 146, 35, 0.12);
     }
     .zitadvies-form-right {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 162px;
-      min-height: 162px;
-      max-height: 162px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       min-width: 0;
       text-align: left;
+      gap: 6px;
     }
     .zitadvies-active-header {
       background: #f8fafc;
       border-left: 3px solid var(--color-terracotta);
       border-radius: 0 8px 8px 0;
-      padding: 5px 8px;
-      height: 48px;
-      min-height: 48px;
-      max-height: 48px;
+      padding: 6px 10px;
+      height: 56px;
+      min-height: 56px;
+      max-height: 56px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -2786,18 +2789,18 @@
     }
     .zitadvies-active-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 800;
       color: var(--color-forest-dark);
-      line-height: 1.15;
+      line-height: 1.2;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .zitadvies-active-desc {
-      font-size: 0.67rem;
+      font-size: 0.70rem;
       color: #475569;
-      line-height: 1.25;
+      line-height: 1.3;
       margin-top: 2px;
       white-space: nowrap;
       overflow: hidden;
@@ -2806,20 +2809,20 @@
     .zitadvies-ABCD-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 5px;
-      height: 70px;
-      min-height: 70px;
-      max-height: 70px;
+      gap: 6px;
+      height: 74px;
+      min-height: 74px;
+      max-height: 74px;
     }
     .zitadvies-field {
       background: #ffffff;
       border: 1px solid #cbd5e1;
-      border-radius: 7px;
-      padding: 4px 7px;
+      border-radius: 8px;
+      padding: 4px 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 4px;
+      gap: 3px;
       box-sizing: border-box;
       transition: all 0.2s ease;
     }
@@ -2829,18 +2832,18 @@
       box-shadow: 0 0 0 1.5px rgba(243, 146, 35, 0.25);
     }
     .zitadvies-field-lbl {
-      font-size: 0.62rem;
+      font-size: 0.60rem;
       font-weight: 700;
       color: #475569;
       white-space: nowrap;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
     .zitadvies-field-letter {
       width: 15px;
       height: 15px;
-      border-radius: 4px;
+      border-radius: 3px;
       background: #e2e8f0;
       color: #1e293b;
       font-family: 'Montserrat', sans-serif;
@@ -2857,12 +2860,12 @@
     }
     .zitadvies-field-val {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       font-weight: 800;
       color: var(--color-forest-dark);
       background: #f0fdf4;
       border: 1px dashed rgba(75, 143, 36, 0.45);
-      padding: 1px 5px;
+      padding: 1px 4px;
       border-radius: 4px;
       white-space: nowrap;
     }
@@ -2873,47 +2876,47 @@
       gap: 4px;
       background: #f4f9f1;
       border: 1px solid rgba(75, 143, 36, 0.22);
-      border-radius: 7px;
-      padding: 4px 7px;
-      height: 28px;
-      min-height: 28px;
-      max-height: 28px;
+      border-radius: 8px;
+      padding: 5px 8px;
+      height: 32px;
+      min-height: 32px;
+      max-height: 32px;
       box-sizing: border-box;
     }
     .zitadvies-check-item {
-      font-size: 0.60rem;
+      font-size: 0.65rem;
       font-weight: 700;
       color: var(--color-forest-dark);
       display: inline-flex;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
       white-space: nowrap;
     }
     .zitadvies-check-box {
-      width: 13px;
-      height: 13px;
+      width: 14px;
+      height: 14px;
       border-radius: 3px;
       background: var(--color-forest);
       color: #ffffff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.55rem;
+      font-size: 0.58rem;
       font-weight: 900;
       flex-shrink: 0;
     }
     .zitadvies-tabs-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 4px;
-      padding-top: 5px;
+      gap: 5px;
+      padding-top: 8px;
       border-top: 1px solid #eef2ec;
-      height: 28px;
+      height: 32px;
       box-sizing: border-box;
     }
     .zitadvies-tab-btn {
-      padding: 3px 2px;
-      font-size: 0.58rem;
+      padding: 5px 2px;
+      font-size: 0.63rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       border-radius: 6px;
@@ -2925,6 +2928,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
       transition: all 0.18s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .zitadvies-tab-btn.active {
       background: var(--color-forest);
@@ -2933,39 +2939,39 @@
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
     }
 
-    /* Widget B: 4-Staps Werkplaats & Revisie Foto-Scanner (vaste hoogte 258px) */
+    /* Widget B: 4-Staps Werkplaats & Revisie Foto-Scanner (Royale Box) */
     .revisie-process-card {
       background: #ffffff;
       border: 1.5px solid rgba(75, 143, 36, 0.28);
-      border-radius: 14px;
-      padding: 10px 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 7px;
+      gap: 10px;
       width: 100%;
-      height: 258px;
-      min-height: 258px;
-      max-height: 258px;
+      height: 330px;
+      min-height: 330px;
+      max-height: 330px;
       box-sizing: border-box;
       overflow: hidden;
     }
     .revisie-stage-grid {
       display: grid;
-      grid-template-columns: 122px 1fr;
-      gap: 10px;
-      height: 158px;
-      min-height: 158px;
-      max-height: 158px;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       flex-shrink: 0;
     }
     .revisie-photo-frame {
       position: relative;
-      height: 158px;
-      min-height: 158px;
-      max-height: 158px;
-      border-radius: 10px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
+      border-radius: 12px;
       overflow: hidden;
       border: 2px solid var(--color-terracotta);
       background: #0f172a;
@@ -2981,16 +2987,16 @@
     }
     .revisie-photo-badge {
       position: absolute;
-      bottom: 5px;
-      left: 5px;
-      right: 5px;
-      background: rgba(15, 28, 22, 0.9);
+      bottom: 6px;
+      left: 6px;
+      right: 6px;
+      background: rgba(15, 28, 22, 0.92);
       color: #ffffff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.60rem;
       font-weight: 800;
-      padding: 3px 5px;
-      border-radius: 5px;
+      padding: 4px 6px;
+      border-radius: 6px;
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
@@ -3001,19 +3007,20 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 158px;
-      min-height: 158px;
-      max-height: 158px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       text-align: left;
       min-width: 0;
+      gap: 4px;
     }
     .revisie-thumbs-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-      padding-top: 5px;
+      gap: 6px;
+      padding-top: 8px;
       border-top: 1px solid #eef2ec;
-      height: 32px;
+      height: 34px;
       box-sizing: border-box;
     }
     .revisie-thumb-btn {
@@ -3021,13 +3028,13 @@
       align-items: center;
       justify-content: center;
       gap: 4px;
-      padding: 3px 4px;
+      padding: 5px 6px;
       border-radius: 6px;
       border: 1px solid #cbd5e1;
       background: #f8fafc;
       color: #475569;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.60rem;
+      font-size: 0.66rem;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
@@ -3042,40 +3049,40 @@
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
     }
 
-    /* Widget C: Eindproduct Nieuwstaat met Certified Fitform Sticker (vaste hoogte 258px) */
+    /* Widget C: Eindproduct Nieuwstaat met Certified Fitform Sticker (Royale Box) */
     .eindproduct-showcase-card {
       background: #ffffff;
       border: 1.5px solid rgba(75, 143, 36, 0.28);
-      border-radius: 14px;
-      padding: 10px 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 7px;
+      gap: 10px;
       width: 100%;
-      height: 258px;
-      min-height: 258px;
-      max-height: 258px;
+      height: 330px;
+      min-height: 330px;
+      max-height: 330px;
       box-sizing: border-box;
       overflow: hidden;
     }
     .eindproduct-stage-grid {
       display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 10px;
-      height: 156px;
-      min-height: 156px;
-      max-height: 156px;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      height: 215px;
+      min-height: 215px;
+      max-height: 215px;
       align-items: stretch;
     }
     .eindproduct-photo-card {
       position: relative;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       border: 2px solid var(--color-forest);
       box-shadow: 0 4px 14px rgba(75, 143, 36, 0.2);
-      height: 156px;
+      height: 215px;
       box-sizing: border-box;
       background: #f8fafc;
     }
@@ -3087,10 +3094,10 @@
     }
     .eindproduct-photo-card .certified-sticker-seal {
       position: absolute;
-      bottom: 5px;
-      right: 5px;
-      width: 58px;
-      height: 58px;
+      bottom: 8px;
+      right: 8px;
+      width: 66px;
+      height: 66px;
       filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
       pointer-events: none;
       transition: transform 0.25s ease;
@@ -3098,14 +3105,14 @@
     }
     .eindproduct-photo-badge {
       position: absolute;
-      top: 5px;
-      left: 5px;
+      top: 8px;
+      left: 8px;
       background: rgba(18, 43, 7, 0.90);
       color: #86efac;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.54rem;
+      font-size: 0.60rem;
       font-weight: 800;
-      padding: 2px 6px;
+      padding: 3px 8px;
       border-radius: 999px;
       border: 1px solid rgba(134, 239, 172, 0.4);
       white-space: nowrap;
@@ -3115,30 +3122,31 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 156px;
+      height: 215px;
       min-width: 0;
       text-align: left;
+      gap: 6px;
     }
     .eindproduct-header-block {
       background: #f8fafc;
       border-left: 3px solid var(--color-forest);
       border-radius: 0 8px 8px 0;
-      padding: 4px 8px;
+      padding: 6px 10px;
     }
     .eindproduct-header-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.86rem;
       font-weight: 800;
       color: var(--color-forest-dark);
-      line-height: 1.15;
+      line-height: 1.2;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .eindproduct-header-sub {
-      font-size: 0.65rem;
+      font-size: 0.70rem;
       color: #64748b;
-      margin-top: 1px;
+      margin-top: 2px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -3146,17 +3154,17 @@
     .eindproduct-specs-list {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
       margin: 2px 0;
     }
     .eindproduct-spec-pill {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.67rem;
+      gap: 6px;
+      font-size: 0.72rem;
       font-weight: 700;
       color: #1e293b;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     .eindproduct-spec-pill svg {
       color: var(--color-forest);
@@ -3165,27 +3173,27 @@
     .eindproduct-price-strip {
       background: linear-gradient(135deg, #f0fdf4 0%, #e7f5e1 100%);
       border: 1px solid rgba(75, 143, 36, 0.35);
-      border-radius: 6px;
-      padding: 3px 7px;
+      border-radius: 7px;
+      padding: 5px 9px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.67rem;
+      font-size: 0.72rem;
       font-weight: 800;
       color: var(--color-forest-dark);
     }
     .eindproduct-cta-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      height: 36px;
+      gap: 8px;
+      height: 38px;
       flex-shrink: 0;
     }
     .eindproduct-cta-row .btn-consumer-primary,
     .eindproduct-cta-row .btn-consumer-secondary {
-      height: 36px;
-      font-size: 0.72rem;
-      padding: 0 8px;
+      height: 38px;
+      font-size: 0.76rem;
+      padding: 0 10px;
     }
     .consumer-cta-phone {
       display: inline-flex;
@@ -5224,11 +5232,11 @@
       part: "anat-part-arm"
     },
     5: {
-      cat: "5 \u2022 Veiligheid & Garantie",
+      cat: "5 • Veiligheid & Garantie",
       title: "Nieuwe Noodaccu & Keurmerk",
       desc: "Inclusief verse back-up batterij bij stroomuitval en 24 maanden garantie aan huis.",
-      check: "Accucapaciteit & nooddaalcircuit",
-      action: "\u2713 24 Mnd Garantie aan Huis",
+      check: "Accucapaciteit & Noodcircuit",
+      action: "✓ 24 Mnd Garantie aan huis",
       part: "anat-part-base"
     }
   };
