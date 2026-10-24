@@ -2211,3 +2211,80 @@ function handleLeadMagnetSubmit(event) {
   if (successEmailSpan) successEmailSpan.textContent = email;
 }
 
+/* ==========================================================================
+   GLOBAL INTERACTIVE VIDEO LIGHTBOX (Certified Fitform & Proefzitten)
+   ========================================================================== */
+window.openCertifiedVideoModal = function(mode = "consumer") {
+  let overlay = document.getElementById("certifiedVideoLightbox");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "certifiedVideoLightbox";
+    overlay.className = "video-lightbox-overlay";
+    overlay.innerHTML = `
+      <div class="video-lightbox-card" onclick="event.stopPropagation()">
+        <div class="video-lightbox-header">
+          <h3 class="video-lightbox-title">
+            <span class="video-lightbox-dot"></span>
+            <span id="videoLightboxTitleText">Video: Waarom Certified Fitform? (45s)</span>
+          </h3>
+          <div class="video-lightbox-actions">
+            <a href="waarom-certified-fitform.html" id="videoLightboxMoreLink" class="video-lightbox-link">Bekijk vergelijkingstabel &amp; details &rarr;</a>
+            <button type="button" class="video-lightbox-close" onclick="closeCertifiedVideoModal()" aria-label="Sluit video">
+              <span>&#10005; Sluiten</span>
+            </button>
+          </div>
+        </div>
+        <div class="video-lightbox-frame-wrap">
+          <iframe id="videoLightboxIframe" src="" title="Interactieve Klantvideo" allow="autoplay; fullscreen"></iframe>
+        </div>
+      </div>
+    `;
+    overlay.addEventListener("click", () => window.closeCertifiedVideoModal());
+    document.body.appendChild(overlay);
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.classList.contains("active")) {
+        window.closeCertifiedVideoModal();
+      }
+    });
+  }
+
+  const titleEl = document.getElementById("videoLightboxTitleText");
+  const linkEl = document.getElementById("videoLightboxMoreLink");
+  const iframe = document.getElementById("videoLightboxIframe");
+
+  if (mode === "afspraak") {
+    if (titleEl) titleEl.textContent = "Video: Hoe werkt Gratis Proefzitten & Zitmeting? (38s)";
+    if (linkEl) {
+      linkEl.href = "afspraak.html#bookingCard";
+      linkEl.innerHTML = "Direct afspraak inplannen &rarr;";
+    }
+  } else {
+    if (titleEl) titleEl.textContent = "Video: Waarom Certified Fitform? (45s)";
+    if (linkEl) {
+      linkEl.href = "waarom-certified-fitform.html";
+      linkEl.innerHTML = "Bekijk vergelijkingstabel &amp; keurmerk &rarr;";
+    }
+  }
+
+  if (iframe) {
+    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.12`;
+  }
+
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+};
+
+window.closeCertifiedVideoModal = function() {
+  const overlay = document.getElementById("certifiedVideoLightbox");
+  if (!overlay) return;
+  overlay.classList.remove("active");
+  const iframe = document.getElementById("videoLightboxIframe");
+  if (iframe) iframe.src = "";
+  const prodModal = document.getElementById("productModal");
+  if (!prodModal || !prodModal.classList.contains("active")) {
+    document.body.style.overflow = "";
+  }
+};
+
+

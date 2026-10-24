@@ -26,7 +26,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.128">
+  <link rel="stylesheet" href="style.css?v=10.130">
   <style>
     /* Critical styles for 3-Step Process Indicator */
     .booking-steps-indicator {
@@ -258,6 +258,7 @@
                                 <nav class="nav-links" id="navLinks">
           <a href="staopstoelen.html" id="linkGoedkopeStaopstoelen">Sta-op Stoelen</a>
           <a href="seniorenstoelen.html" id="linkSeniorenstoelen">Senioren Stoelen</a>
+          <a href="waarom-certified-fitform.html" id="linkCertifiedFitform">Certified Fitform</a>
           <a href="revisie.html" id="linkRevisie">Revisieproces</a>
           <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
           <a href="faq.html" id="linkFaq">FAQ</a>
@@ -289,6 +290,29 @@
       <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray); margin-bottom: 28px; max-width: 820px;">
         U bent van harte welkom in onze showroom in Dordrecht voor deskundig zitadvies en het testen van onze sta-op stoelen. Heeft u uw ideale stoel gevonden en is deze door Bewegingstechnoloog Geertjan op maat afgesteld? Dan bezorgen en plaatsen wij de stoel geheel gratis en vakkundig bij u thuis in de regio Dordrecht, Rotterdam en omstreken.
       </p>
+
+      <!-- Video Callout: Hoe werkt Gratis Proefzitten & Zitmeting? -->
+      <div class="certified-video-callout" style="margin-bottom: 26px;">
+        <div class="certified-video-callout-left">
+          <img src="assets/stempel_geertjan.svg?v=1.1" alt="Bewegingstechnoloog Geertjan" class="certified-video-callout-stamp" width="54" height="54">
+          <div class="certified-video-callout-text">
+            <h4>Hoe werkt een Gratis Zitmeting in Dordrecht?</h4>
+            <p>Bekijk in 38 seconden hoe bewegingstechnoloog Geertjan uw zithoogte, zitdiepte en lendensteun vrijblijvend tot op de millimeter nauwkeurig inmeet.</p>
+          </div>
+        </div>
+        <div class="certified-video-callout-actions">
+          <button type="button" onclick="openCertifiedVideoModal('afspraak')" class="btn-watch-video-pill">
+            <span class="btn-watch-video-play-circle">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+            </span>
+            <span>Video: Hoe werkt Proefzitten? (38s)</span>
+          </button>
+          <button type="button" onclick="openCertifiedVideoModal('consumer')" style="background: #ffffff; border: 1.5px solid rgba(75, 143, 36, 0.35); color: var(--color-forest-dark); border-radius: 9999px; padding: 9px 15px; font-family: var(--font-heading, 'Montserrat', sans-serif); font-size: 0.82rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--color-terracotta)"><polygon points="6 4 20 12 6 20"></polygon></svg>
+            <span>Waarom Certified Fitform? (45s)</span>
+          </button>
+        </div>
+      </div>
 
       <div class="booking-card" id="bookingCard">
         <!-- Visual 3-Step Process Indicator -->
@@ -583,6 +607,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=10.128"></script>
+  <script src="app.js?v=10.130"></script>
 </body>
 </html>

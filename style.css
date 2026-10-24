@@ -5843,5 +5843,210 @@ input[type="checkbox"] {
   to { transform: rotate(360deg); }
 }
 
+/* ==========================================================================
+   CERTIFIED FITFORM VIDEO LIGHTBOX MODAL (Globaal op elke pagina)
+   ========================================================================== */
+.video-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 29, 10, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 99990;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.video-lightbox-overlay.active {
+  display: flex;
+}
+.video-lightbox-card {
+  width: 100%;
+  max-width: 1120px;
+  background: #122b07;
+  border: 2px solid rgba(75, 143, 36, 0.45);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  max-height: 94vh;
+}
+.video-lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #1b3d0d 0%, #122b07 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+.video-lightbox-title {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #ffffff;
+}
+.video-lightbox-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f39223;
+  box-shadow: 0 0 8px #f39223;
+  flex-shrink: 0;
+}
+.video-lightbox-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.video-lightbox-link {
+  color: #a7f3d0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.video-lightbox-link:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+.video-lightbox-close {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.video-lightbox-close:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+}
+.video-lightbox-frame-wrap {
+  width: 100%;
+  height: 620px;
+  background: #122b07;
+  position: relative;
+}
+.video-lightbox-frame-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+@media (max-width: 680px) {
+  .video-lightbox-overlay {
+    padding: 8px;
+  }
+  .video-lightbox-header {
+    padding: 10px 14px;
+  }
+  .video-lightbox-title {
+    font-size: 0.82rem;
+  }
+  .video-lightbox-link {
+    display: none;
+  }
+  .video-lightbox-frame-wrap {
+    height: 82vh;
+  }
+}
+
+/* Compacte Certified Fitform Video Banner in Catalogus & Product Modal */
+.certified-video-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, #f3f9ef 0%, #fffbf5 100%);
+  border: 1.5px solid rgba(75, 143, 36, 0.32);
+  border-left: 5px solid var(--color-forest, #4b8f24);
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 16px rgba(37, 102, 22, 0.07);
+}
+.certified-video-callout-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1 1 280px;
+}
+.certified-video-callout-stamp {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.14));
+}
+.certified-video-callout-text h4 {
+  margin: 0 0 3px 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-forest-dark, #1f3d10);
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+}
+.certified-video-callout-text p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.4;
+}
+.certified-video-callout-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-watch-video-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--color-forest, #4b8f24) 0%, #256616 100%);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 18px;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(75, 143, 36, 0.28);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+}
+.btn-watch-video-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(75, 143, 36, 0.38);
+}
+.btn-watch-video-play-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f39223;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
 
 

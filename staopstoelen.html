@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.128">
+  <link rel="stylesheet" href="style.css?v=10.130">
   <style>
 
     @media (max-width: 991px) {
@@ -224,6 +224,7 @@
                         <nav class="nav-links" id="navLinks">
           <a href="staopstoelen.html" class="active" id="linkGoedkopeStaopstoelen">Sta-op Stoelen</a>
           <a href="seniorenstoelen.html" id="linkSeniorenstoelen">Senioren Stoelen</a>
+          <a href="waarom-certified-fitform.html" id="linkCertifiedFitform">Certified Fitform</a>
           <a href="revisie.html" id="linkRevisie">Revisieproces</a>
           <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
           <a href="faq.html" id="linkFaq">FAQ</a>
@@ -622,6 +623,26 @@
             </button>
           </div>
 
+          <!-- Certified Fitform Video Callout boven het productoverzicht -->
+          <div class="certified-video-callout">
+            <div class="certified-video-callout-left">
+              <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Keurmerk" class="certified-video-callout-stamp" width="54" height="54">
+              <div class="certified-video-callout-text">
+                <h4>Twijfelt u tussen Nieuw (€&nbsp;4.500+) en een Occasion?</h4>
+                <p>Bekijk in 45 seconden hoe wij elke <strong>Certified Fitform</strong> op 30 punten keuren, ozon-reinigen en exact op uw maat afstellen (24 mnd garantie).</p>
+              </div>
+            </div>
+            <div class="certified-video-callout-actions">
+              <button type="button" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill">
+                <span class="btn-watch-video-play-circle">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+                </span>
+                <span>Bekijk Video (45s)</span>
+              </button>
+              <a href="waarom-certified-fitform.html" style="font-size: 0.84rem; font-weight: 700; color: var(--color-forest); text-decoration: none; white-space: nowrap;">Vergelijkingstabel &rarr;</a>
+            </div>
+          </div>
+
           <div class="catalog-grid" id="catalogGrid">
             <!-- Rendered dynamically via JavaScript -->
           </div>
@@ -906,6 +927,12 @@
             <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%;">
               Afspraak maken
             </button>
+            <button type="button" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill" style="width: 100%; margin-top: 2px;">
+              <span class="btn-watch-video-play-circle">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+              </span>
+              <span>Video (45s): Waarom Certified Fitform?</span>
+            </button>
                                     <!-- Subtiele Geertjan Micro-Conversie (Tekst rechts, grotere avatar, niet onderstreept) -->
             <a href="tel:+31786314858" class="advisor-trust-bubble" style="display: flex !important; align-items: center !important; gap: 12px !important; margin-top: 12px !important; text-decoration: none !important; color: inherit !important; box-sizing: border-box !important; width: 100% !important; background: transparent !important; border: none !important; padding: 0 !important; transition: all 0.2s ease !important;" title="Bel direct met Geertjan voor advies over dit model">
               <!-- Geertjan Pasfoto (Groter: 54px) -->
@@ -984,7 +1011,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.128"></script>
+  <script src="app.js?v=10.130"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
