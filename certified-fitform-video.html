@@ -665,12 +665,12 @@
       min-height: 520px;
       max-height: 520px;
       box-sizing: border-box;
-      background: rgba(255, 255, 255, 0.70);
+      background: linear-gradient(145deg, rgba(244, 251, 242, 0.82) 0%, rgba(234, 247, 232, 0.76) 100%);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border: 1.5px solid rgba(185, 222, 175, 0.65);
       border-radius: 18px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24), 0 2px 10px rgba(0, 0, 0, 0.10);
+      box-shadow: 0 18px 45px rgba(22, 45, 16, 0.22), 0 2px 10px rgba(0, 0, 0, 0.08);
       padding: 16px 20px;
       display: flex;
       flex-direction: column;
@@ -680,7 +680,7 @@
     }
 
     .companion-panel:hover {
-      background: rgba(255, 255, 255, 0.78);
+      background: linear-gradient(145deg, rgba(247, 253, 245, 0.88) 0%, rgba(238, 250, 236, 0.82) 100%);
     }
 
     .stage-split-wrapper.mode-cinema .companion-panel {
@@ -749,10 +749,10 @@
         text-align: left !important;
       }
       .corner-box-sticker {
-        top: -16px !important;
+        top: 12px !important;
         right: 12px !important;
-        width: 88px !important;
-        height: 88px !important;
+        width: 80px !important;
+        height: 80px !important;
       }
       .has-corner-sticker .panel-title {
         padding-right: 76px !important;
@@ -1056,26 +1056,26 @@
 
     /* Scene 2: Sweet Spot Grote Sticker op Rechtsboven Hoek van de Box */
     .has-corner-sticker .panel-title {
-      padding-right: 74px;
+      padding-right: 86px;
     }
 
     .corner-box-sticker {
       position: absolute;
-      top: -24px;
-      right: -32px;
+      top: 14px;
+      right: 14px;
       z-index: 30;
-      width: 120px;
-      height: 120px;
+      width: 94px;
+      height: 94px;
       display: block;
-      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.38)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.20));
-      transform: rotate(9deg);
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+      transform: rotate(6deg);
       transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
       cursor: pointer;
       pointer-events: auto;
     }
     .corner-box-sticker:hover {
       transform: rotate(0deg) scale(1.08);
-      filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.48));
+      filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.32));
     }
 
     .sweet-price-box {
@@ -2285,7 +2285,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.5.3</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.5.4</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2469,7 +2469,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.5.3
+            <span class="version-dot"></span> v2.5.4
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -3141,7 +3141,7 @@
     const badgeEl = document.getElementById('companion-corner-badge');
     if (badgeEl) {
       if (idx === 1) {
-        badgeEl.innerHTML = `<img src="assets/sticker_certified_fitform.svg?v=3.0" alt="Certified Fitform staopstoelen.nl" class="corner-box-sticker" width="120" height="120" title="Certified Fitform staopstoelen.nl">`;
+        badgeEl.innerHTML = `<img src="assets/sticker_certified_fitform.svg?v=3.1" alt="Certified Fitform staopstoelen.nl" class="corner-box-sticker" width="94" height="94" title="Certified Fitform staopstoelen.nl">`;
       } else {
         badgeEl.innerHTML = '';
       }
