@@ -517,56 +517,69 @@
       pointer-events: none;
     }
 
-    /* Vrij Gevormd Vlak: Organische Swoosh Wave met Authentieke Staopstoelen Kleuren */
+    /* Echte Hoek-Uitsnede (Swoosh Corner Cutout) - Wit van de pagina schijnt door de complete hoek */
     .video-corner-swoosh-badge {
       position: absolute;
-      top: 14px;
-      left: 16px;
+      top: 0;
+      left: 0;
       z-index: 12;
       pointer-events: none;
-      width: 380px;
-      height: 95px;
-      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.32)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.16));
+      width: 360px;
+      height: 125px;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .stage-split-wrapper.box-left .video-corner-swoosh-badge {
       left: auto;
-      right: 18px;
+      right: 0;
     }
 
     .swoosh-badge-svg {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       overflow: visible;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.30));
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stage-split-wrapper.box-left .swoosh-badge-svg {
+      transform: scaleX(-1);
     }
 
     .corner-swoosh-content {
       position: absolute;
-      top: 12px;
+      top: 16px;
       left: 24px;
       z-index: 5;
       display: flex;
       flex-direction: column;
       pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stage-split-wrapper.box-left .corner-swoosh-content {
+      left: auto;
+      right: 24px;
+      align-items: flex-end;
+      text-align: right;
     }
 
     .corner-logo-text {
       font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       font-weight: 900 !important;
-      font-size: 1.68rem;
+      font-size: 1.62rem;
       letter-spacing: -0.7px;
       line-height: 1.05;
       display: inline-flex;
       align-items: baseline;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
       -webkit-font-smoothing: antialiased;
     }
 
     .corner-logo-text .logo-name {
-      color: #4b8f24 !important; /* Levendig Staopstoelen Saliegroen / Merk-groen van website & logo */
+      color: #4b8f24 !important; /* Levendig Staopstoelen Merk-groen */
       font-weight: 900 !important;
     }
 
@@ -582,7 +595,7 @@
       letter-spacing: 2.2px;
       text-transform: uppercase;
       color: #122b07;
-      margin-top: 3px;
+      margin-top: 4px;
       line-height: 1;
       display: flex;
       align-items: center;
@@ -590,9 +603,9 @@
     }
 
     .corner-strapline-badge {
-      background: rgba(243, 146, 35, 0.15);
+      background: #fff0df;
       color: #b45309;
-      border: 1px solid rgba(243, 146, 35, 0.45);
+      border: 1px solid rgba(243, 146, 35, 0.40);
       padding: 1px 6px;
       border-radius: 4px;
       font-size: 0.62rem;
@@ -703,11 +716,20 @@
       }
       .video-corner-swoosh-badge,
       .stage-split-wrapper.box-left .video-corner-swoosh-badge {
-        top: 10px !important;
-        left: 10px !important;
+        top: 0 !important;
+        left: 0 !important;
         right: auto !important;
         transform: scale(0.82) !important;
         transform-origin: top left !important;
+      }
+      .stage-split-wrapper.box-left .swoosh-badge-svg {
+        transform: none !important;
+      }
+      .stage-split-wrapper.box-left .corner-swoosh-content {
+        left: 20px !important;
+        right: auto !important;
+        align-items: flex-start !important;
+        text-align: left !important;
       }
       .corner-panel-sticker {
         top: -14px !important;
@@ -2131,39 +2153,44 @@
         <img src="assets/senior_chair_dilemma.jpg" alt="Scene Background" class="scene-bg motion-0" id="scene-bg">
         <div class="cinema-vignette"></div>
 
-        <!-- Vrij Gevormd Vlak: Organische Swoosh Wave met Authentieke Staopstoelen Kleuren -->
+        <!-- Echte Hoek-Uitsnede: Wit van de achtergrond schijnt door de complete hoek zonder dat er foto onderdoor piept -->
         <div class="video-corner-swoosh-badge">
-          <svg class="swoosh-badge-svg" viewBox="0 0 380 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="swoosh-badge-svg" viewBox="0 0 360 125" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="waveFillGrad" x1="0%" y1="0%" x2="100%" y2="80%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
-                <stop offset="75%" stop-color="#ffffff" stop-opacity="0.96"/>
-                <stop offset="100%" stop-color="#f8faf6" stop-opacity="0.93"/>
+              <linearGradient id="swooshLineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4b8f24" stop-opacity="0.9"/>
+                <stop offset="50%" stop-color="#6ab13c" stop-opacity="0.95"/>
+                <stop offset="80%" stop-color="#f39223" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#f39223" stop-opacity="0.3"/>
               </linearGradient>
             </defs>
+
+            <!-- Wit uitsnijdingsvlak dat de COMPLETE hoek beslaat -->
+            <path d="M 0,0 
+                     L 350,0 
+                     C 315,22 245,68 175,80 
+                     C 105,92 45,98 0,118 
+                     Z" 
+                  fill="#ffffff"/>
+
+            <!-- Subtiel en verfijnd swoosh-kleuraccent langs de golflijn -->
+            <path d="M 0,118 
+                     C 45,98 105,92 175,80 
+                     C 245,68 315,22 350,0" 
+                  stroke="url(#swooshLineGrad)" 
+                  stroke-width="3.2" 
+                  stroke-linecap="round" 
+                  fill="none"/>
             
-            <!-- Vrij gevormd organisch vlak: stijgt vloeiend op van links-onder naar rechts-boven als een opstijgende golf -->
-            <path d="M 12,58 
-                     C 4,40 12,14 36,10 
-                     Q 180,4 310,6 
-                     C 345,6 364,15 352,32 
-                     C 310,54 235,66 160,72 
-                     C 90,78 30,82 12,58 Z" 
-                  fill="url(#waveFillGrad)" 
-                  stroke="rgba(243, 146, 35, 0.40)" 
-                  stroke-width="1.5"/>
-            
-            <!-- 4 Dynamische Liquid Swooshes: golven van links-onder naar rechts-boven en vliegen als golf uit -->
-            <g class="swoosh-motion">
-              <!-- Sky Blue -->
-              <path d="M 8,72 Q 115,74 225,54 C 290,42 345,26 376,10" stroke="#bce4f2" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.85"/>
-              <!-- Terracotta Orange -->
-              <path d="M 10,76 Q 117,78 227,58 C 292,46 343,30 372,14" stroke="#f39223" stroke-width="3.0" stroke-linecap="round" fill="none" opacity="0.95"/>
-              <!-- Sage Green -->
-              <path d="M 12,80 Q 119,82 229,62 C 294,50 341,34 368,18" stroke="#6ab13c" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.95"/>
-              <!-- Forest Green (Saliegroen / Merk-groen staopstoelen.nl) -->
-              <path d="M 14,84 Q 121,86 231,66 C 296,54 339,38 364,22" stroke="#4b8f24" stroke-width="3.8" stroke-linecap="round" fill="none"/>
-            </g>
+            <!-- Diepte-accent van een loskomende paginarand -->
+            <path d="M 0,122 
+                     C 45,102 105,96 175,84 
+                     C 245,72 315,26 354,2" 
+                  stroke="#f39223" 
+                  stroke-width="1.2" 
+                  stroke-linecap="round" 
+                  fill="none" 
+                  opacity="0.5"/>
           </svg>
 
           <div class="corner-swoosh-content">
