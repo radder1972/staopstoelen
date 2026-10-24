@@ -412,16 +412,31 @@
       position: relative;
     }
 
-    /* Main Stage Split Wrapper: Video is 100% full-bleed, transparent overlay panel floats on the right */
+    /* Main Stage Split Wrapper: Video is 100% full-bleed, transparent overlay panel floats dynamically */
     .stage-split-wrapper {
       position: relative;
       min-height: 580px;
       overflow: hidden;
       display: flex;
-      justify-content: flex-end;
       align-items: center;
       background: #0b1120;
       transition: all 0.3s ease;
+    }
+
+    /* By default / Scene 1 & 4: Card on the right (subjects on left) */
+    .stage-split-wrapper.box-right {
+      justify-content: flex-end;
+    }
+    .stage-split-wrapper.box-right .companion-panel {
+      margin: 20px 24px 20px auto;
+    }
+
+    /* Scene 2, 3 & 5: Card on the left (subjects on right/center-right) */
+    .stage-split-wrapper.box-left {
+      justify-content: flex-start;
+    }
+    .stage-split-wrapper.box-left .companion-panel {
+      margin: 20px auto 20px 24px;
     }
 
     /* Left: Cinema Screen (100% Beeldvullend in de breedte én hoogte van de hele speler!) */
@@ -519,6 +534,12 @@
       border-radius: 8px;
       padding: 6px 14px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+      transition: all 0.35s ease;
+    }
+
+    .stage-split-wrapper.box-left .video-brand-watermark {
+      left: auto;
+      right: 20px;
     }
 
     .watermark-logo {
@@ -567,10 +588,18 @@
       z-index: 8;
       pointer-events: none;
       display: flex;
+      transition: all 0.35s ease;
+    }
+
+    .stage-split-wrapper.box-left .cinema-captions {
+      left: auto;
+      right: 24px;
+      justify-content: flex-end;
     }
 
     .stage-split-wrapper.mode-cinema .cinema-captions {
       max-width: 90%;
+      left: 24px;
       right: 24px;
       justify-content: center;
     }
@@ -591,35 +620,34 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Right: Floating Transparent Frosted Glass Companion Panel */
+    /* Floating Transparent Frosted Glass Companion Panel (Slanker & Luchtiger) */
     .companion-panel {
       position: relative;
       z-index: 10;
-      width: 440px;
-      max-width: calc(48% - 20px);
-      margin: 20px 24px 20px auto;
-      background: rgba(255, 255, 255, 0.72);
+      width: 395px;
+      max-width: calc(44% - 16px);
+      background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border: 1.5px solid rgba(255, 255, 255, 0.70);
       border-radius: 18px;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28), 0 2px 10px rgba(0, 0, 0, 0.12);
-      padding: 22px 26px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24), 0 2px 10px rgba(0, 0, 0, 0.10);
+      padding: 20px 24px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: margin 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, opacity 0.25s ease;
     }
 
     .companion-panel:hover {
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.76);
     }
 
     .stage-split-wrapper.mode-cinema .companion-panel {
       position: relative;
       width: 100%;
       max-width: 100%;
-      margin: 0;
+      margin: 0 !important;
       border-radius: 0;
       border: none;
       border-top: 1.5px solid var(--border);
@@ -629,33 +657,42 @@
     }
 
     @media (max-width: 900px) {
-      .stage-split-wrapper {
-        flex-direction: column;
-        min-height: auto;
+      .stage-split-wrapper,
+      .stage-split-wrapper.box-left,
+      .stage-split-wrapper.box-right {
+        flex-direction: column !important;
+        min-height: auto !important;
+        justify-content: flex-start !important;
       }
       .stage-split-wrapper .cinema-screen {
-        position: relative;
-        height: 380px;
-        min-height: 380px;
-        width: 100%;
-      }
-      .stage-split-wrapper .cinema-captions {
-        max-width: 90%;
-        right: 20px;
-      }
-      .stage-split-wrapper .yt-center-ripple {
-        left: 50%;
+        position: relative !important;
+        height: 380px !important;
+        min-height: 380px !important;
+        width: 100% !important;
       }
       .stage-split-wrapper .companion-panel {
-        max-width: 100%;
-        width: 100%;
-        margin: 0;
-        border-radius: 0;
-        border: none;
-        border-top: 1.5px solid var(--border);
-        box-shadow: none;
-        background: #ffffff;
-        padding: 20px;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+        border-top: 1.5px solid var(--border) !important;
+        background: #ffffff !important;
+        padding: 20px !important;
+      }
+      .stage-split-wrapper.box-left .video-brand-watermark {
+        left: 16px !important;
+        right: auto !important;
+      }
+      .stage-split-wrapper.box-left .cinema-captions {
+        left: 16px !important;
+        right: 16px !important;
+        max-width: 90% !important;
+        justify-content: flex-start !important;
+      }
+      .stage-split-wrapper.box-left .yt-center-ripple,
+      .stage-split-wrapper.box-right .yt-center-ripple {
+        left: 50% !important;
       }
     }
 
@@ -1497,8 +1534,27 @@
       min-height: 100vh !important;
       width: 100vw !important;
       display: flex !important;
-      justify-content: flex-end !important;
       align-items: center !important;
+    }
+
+    .video-player-card.is-fullscreen .stage-split-wrapper.box-right,
+    .video-player-card:fullscreen .stage-split-wrapper.box-right {
+      justify-content: flex-end !important;
+    }
+
+    .video-player-card.is-fullscreen .stage-split-wrapper.box-right .companion-panel,
+    .video-player-card:fullscreen .stage-split-wrapper.box-right .companion-panel {
+      margin: 40px 60px 80px auto !important;
+    }
+
+    .video-player-card.is-fullscreen .stage-split-wrapper.box-left,
+    .video-player-card:fullscreen .stage-split-wrapper.box-left {
+      justify-content: flex-start !important;
+    }
+
+    .video-player-card.is-fullscreen .stage-split-wrapper.box-left .companion-panel,
+    .video-player-card:fullscreen .stage-split-wrapper.box-left .companion-panel {
+      margin: 40px auto 80px 60px !important;
     }
 
     .video-player-card.is-fullscreen .stage-split-wrapper.mode-cinema,
@@ -1520,7 +1576,6 @@
     .video-player-card:fullscreen .companion-panel {
       position: relative !important;
       z-index: 10 !important;
-      margin: 40px 60px 80px auto !important;
       max-height: 80vh !important;
       overflow-y: auto !important;
       background: rgba(255, 255, 255, 0.74) !important;
@@ -1798,7 +1853,7 @@
   <div class="video-player-card" id="video-player-card">
 
     <!-- Main Stage: Split Layout (Beeld 100% vrij links, Datapaneel rechts) -->
-    <div class="stage-split-wrapper" id="stage-split-wrapper">
+    <div class="stage-split-wrapper box-right" id="stage-split-wrapper">
       
       <!-- LEFT: 100% Pure Cinema Screen met YouTube Click-to-Play -->
       <div class="cinema-screen" id="cinema-screen" onclick="handleScreenClick(event)" title="Klik om af te spelen / te pauzeren">
@@ -2073,6 +2128,7 @@
 
   const scenes = [
     {
+      align: "right",
       shortTag: "Marktvacuüm",
       kicker: "HET MARKTVACUÜM",
       title: "Tussen €\u00A04.500 Nieuw & €\u00A0500 Marktplaats",
@@ -2110,6 +2166,7 @@
       `
     },
     {
+      align: "left",
       shortTag: "Sweet Spot",
       kicker: "DE SWEET SPOT",
       title: "Certified Fitform: Fabriekskwaliteit voor €\u00A01.550",
@@ -2149,6 +2206,7 @@
       `
     },
     {
+      align: "left",
       shortTag: "30-Punts Keuring",
       kicker: "30-PUNTS KEURING & REVISIE",
       title: "30-Punts Keuring & Inmeting Geertjan",
@@ -2204,6 +2262,7 @@
       `
     },
     {
+      align: "right",
       shortTag: "Unit Economics",
       kicker: 'UNIT ECONOMICS <span class="kicker-badge-orange">42% MARGE</span>',
       title: "€\u00A0650 Netto per Stoel",
@@ -2282,6 +2341,7 @@
       `
     },
     {
+      align: "left",
       shortTag: "Overnamedeal",
       kicker: "DE OVERNAMEDEAL",
       title: "€\u00A0155k Deal • Slechts €\u00A040k Eigen Inleg",
@@ -2455,6 +2515,18 @@
 
   function renderScene(idx) {
     const s = scenes[idx];
+
+    // Dynamische positie van het zwevende informatiepaneel afgestemd op het hoofdonderwerp van de scène
+    const stage = document.getElementById('stage-split-wrapper');
+    if (stage) {
+      if (s.align === 'left') {
+        stage.classList.remove('box-right');
+        stage.classList.add('box-left');
+      } else {
+        stage.classList.remove('box-left');
+        stage.classList.add('box-right');
+      }
+    }
 
     // Update het zwevende informatiepaneel (puur reclame, zonder hoofdstuknummers)
     const kickerEl = document.getElementById('scene-kicker');
