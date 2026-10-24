@@ -3049,9 +3049,10 @@
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
     }
 
-    /* Widget C: Echte Product Advertentie met Prijs & Voordeel (330px vaste hoogte) */
+    /* Product Model Card in Fase 4 (Exact conform website product modals & huisstijl) */
     .eindproduct-showcase-card,
-    .eindproduct-ad-card {
+    .eindproduct-ad-card,
+    .revisie-product-card {
       background: #ffffff;
       border: 1.5px solid rgba(75, 143, 36, 0.35);
       border-radius: 16px;
@@ -3068,7 +3069,8 @@
       box-sizing: border-box;
       overflow: hidden;
     }
-    .ad-top-bar {
+    .ad-top-bar,
+    .rpc-top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -3078,26 +3080,26 @@
       padding-bottom: 5px;
       border-bottom: 1px solid #eef2ec;
     }
-    .ad-pill-tag {
-      font-size: 0.64rem;
-      font-weight: 850;
-      color: #b45309;
-      background: #fffbeb;
-      border: 1px solid rgba(245, 158, 11, 0.45);
-      padding: 2px 8px;
+    .rpc-badge-reco {
+      font-size: 0.68rem;
+      font-weight: 750;
+      color: var(--color-forest, #4b8f24);
+      background: rgba(75, 143, 36, 0.12);
+      border: 1px solid rgba(75, 143, 36, 0.35);
+      padding: 2px 9px;
       border-radius: 999px;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
     }
-    .ad-stock-pill {
-      font-size: 0.64rem;
-      font-weight: 800;
-      color: var(--color-forest-dark);
-      background: #f0fdf4;
-      border: 1px solid rgba(75, 143, 36, 0.3);
-      padding: 2px 8px;
-      border-radius: 999px;
+    .rpc-location-pill {
+      font-size: 0.68rem;
+      font-weight: 650;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
-    .ad-stage-grid {
+    .ad-stage-grid,
+    .rpc-stage-grid {
       display: grid;
       grid-template-columns: 132px 1fr;
       gap: 12px;
@@ -3106,48 +3108,39 @@
       max-height: 220px;
       align-items: stretch;
     }
-    .ad-photo-box {
+    .ad-photo-box,
+    .rpc-photo-box {
       position: relative;
       border-radius: 12px;
       overflow: hidden;
-      border: 2px solid var(--color-forest);
-      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.2);
+      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.12);
       height: 220px;
       box-sizing: border-box;
-      background: #f8fafc;
+      background: #f8faf7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
     }
-    .ad-main-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .rpc-main-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       display: block;
     }
-    .ad-corner-ribbon {
+    .rpc-quality-stamp {
       position: absolute;
-      top: 6px;
-      left: 6px;
-      background: rgba(18, 43, 7, 0.92);
-      color: #86efac;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.54rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(134, 239, 172, 0.45);
-      z-index: 2;
-    }
-    .ad-floating-seal {
-      position: absolute;
-      bottom: 6px;
-      right: 6px;
-      width: 58px;
-      height: 58px;
-      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
+      bottom: 4px;
+      right: 4px;
+      width: 48px;
+      height: 48px;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
       pointer-events: none;
       z-index: 2;
     }
-    .ad-content-col {
+    .ad-content-col,
+    .rpc-content-col {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -3155,150 +3148,114 @@
       min-width: 0;
       text-align: left;
     }
-    .ad-title-row {
-      border-left: 3.5px solid var(--color-forest);
+    .rpc-title-block {
+      border-left: 3.5px solid var(--color-forest, #4b8f24);
       padding-left: 8px;
     }
-    .ad-product-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.94rem;
-      font-weight: 900;
-      color: var(--color-forest-dark);
+    .rpc-product-title {
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 0.95rem;
+      font-weight: 850;
+      color: var(--color-forest-dark, #122b07);
       line-height: 1.15;
       margin: 0;
     }
-    .ad-product-sub {
-      font-size: 0.67rem;
-      color: #64748b;
-      margin-top: 1px;
-      font-weight: 600;
-    }
-    .ad-price-banner {
-      background: linear-gradient(135deg, #fefce8 0%, #fff7ed 100%);
-      border: 1.5px solid rgba(243, 146, 35, 0.4);
-      border-radius: 9px;
-      padding: 5px 9px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(243, 146, 35, 0.08);
-    }
-    .ad-old-price {
-      font-size: 0.64rem;
-      color: #94a3b8;
-      font-weight: 600;
-      line-height: 1;
-    }
-    .ad-old-price span {
-      text-decoration: line-through;
-      color: #dc2626;
-      font-weight: 700;
-    }
-    .ad-main-price {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: var(--color-forest-dark);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-    .ad-main-price .ad-currency {
-      font-size: 0.82rem;
-      color: var(--color-terracotta);
-      font-weight: 800;
-    }
-    .ad-save-badge {
-      background: #dc2626;
-      color: #ffffff;
-      padding: 3px 7px;
-      border-radius: 6px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.28);
-    }
-    .ad-save-pct {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 900;
-      line-height: 1;
-    }
-    .ad-save-txt {
-      font-size: 0.52rem;
-      font-weight: 700;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      opacity: 0.95;
-    }
-    .ad-checklist {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .ad-check-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
+    .rpc-product-sub {
       font-size: 0.68rem;
+      color: #64748b;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+    .rpc-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 2px 0 4px 0;
+      border-bottom: 1px solid #f1f5f0;
+    }
+    .rpc-old-price {
+      font-size: 0.78rem;
+      color: #8a9097;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+    .rpc-main-price {
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--color-forest, #4b8f24);
+      line-height: 1;
+    }
+    .rpc-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .rpc-check-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.69rem;
       color: #334155;
       line-height: 1.22;
       font-weight: 600;
     }
-    .ad-check-item svg {
+    .rpc-check-item svg {
+      flex-shrink: 0;
+      color: var(--color-forest, #4b8f24);
+    }
+    .rpc-check-item.highlight {
+      font-weight: 750;
+      color: var(--color-forest-dark, #122b07);
+    }
+    .ad-cta-row,
+    .rpc-actions-row {
+      display: flex;
+      gap: 7px;
+      height: 36px;
       flex-shrink: 0;
     }
-    .ad-check-item.highlight {
-      color: var(--color-forest-dark);
-      background: #f0fdf4;
-      padding: 2px 6px;
-      border-radius: 5px;
-      border-left: 2px solid var(--color-forest);
-      font-size: 0.68rem;
-    }
-    .ad-cta-row {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 8px;
-      height: 38px;
-      flex-shrink: 0;
-    }
-    .btn-ad-primary {
-      background: linear-gradient(135deg, #f39223 0%, #d97706 100%);
-      color: #ffffff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.74rem;
-      font-weight: 800;
-      border-radius: 8px;
+    .btn-rpc-primary {
+      flex: 1.3;
+      background: linear-gradient(135deg, var(--color-forest, #4b8f24) 0%, #205c13 100%);
+      color: #ffffff !important;
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 0.78rem;
+      font-weight: 750;
+      border-radius: 999px;
+      padding: 0 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      text-decoration: none;
-      box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35);
-      transition: all 0.2s ease;
+      gap: 6px;
+      text-decoration: none !important;
+      box-shadow: 0 3px 10px rgba(75, 143, 36, 0.28);
+      white-space: nowrap;
+      transition: transform 0.15s ease;
     }
-    .btn-ad-primary:hover {
+    .btn-rpc-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(243, 146, 35, 0.45);
     }
-    .btn-ad-secondary {
-      background: #f8fafc;
-      color: var(--color-forest-dark);
-      border: 1.5px solid rgba(75, 143, 36, 0.35);
-      font-family: 'Montserrat', sans-serif;
+    .btn-rpc-secondary {
+      flex: 1;
+      background: #f0fdf4;
+      border: 1.5px solid rgba(75, 143, 36, 0.32);
+      color: var(--color-forest, #4b8f24) !important;
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
       font-size: 0.74rem;
-      font-weight: 800;
-      border-radius: 8px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 0 8px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 5px;
-      text-decoration: none;
-      transition: all 0.2s ease;
+      text-decoration: none !important;
+      white-space: nowrap;
+      transition: background 0.15s ease;
     }
-    .btn-ad-secondary:hover {
-      background: #f0fdf4;
-      border-color: var(--color-forest);
+    .btn-rpc-secondary:hover {
+      background: #e2f7e8;
     }
     .consumer-cta-phone {
       display: inline-flex;
@@ -5179,64 +5136,60 @@
       align: "right",
       shortTag: "4. Het Eindproduct",
       kicker: "FASE 4 • HET EINDPRODUCT MET 2 JAAR GARANTIE",
-      title: "100% Nieuwstaat &amp; Certified Fitform Keurmerk",
+      title: "Fitform 570 Vario Gereviseerd",
       subtitle: "",
       metric: "",
       caption: "Het resultaat: een prachtige Fitform sta-op stoel in absolute nieuwstaat. Ozon-gereinigd, 4 ergonomische standen getest en met twee jaar volledige garantie aan huis.",
       voiceText: "Het resultaat: een prachtige Fitform sta-op stoel in absolute nieuwstaat. Ozon-gereinigd, 4 ergonomische standen getest en met twee jaar volledige garantie aan huis.",
-      bg: "assets/revisie_scene4_eindproduct_wide.jpg?v=20261025_3",
+      bg: "assets/fitform_570_vario_revisie_eindproduct.jpg?v=20261025_1",
       audio: "assets/audio/revisie_scene_4.m4a?v=20261025_1",
       durationSec: 10.93,
       visualHtml: `
-        <div class="eindproduct-ad-card" id="eindproduct-showcase-widget" onclick="event.stopPropagation()">
-          <div class="ad-top-bar">
-            <span class="ad-pill-tag">&#9733; OCCASION IN NIEUWSTAAT</span>
-            <span class="ad-stock-pill">&#10003; Direct Leverbaar uit Showroom</span>
+        <div class="revisie-product-card" id="eindproduct-showcase-widget" onclick="event.stopPropagation()">
+          <div class="rpc-top-bar">
+            <span class="rpc-badge-reco">Gereconditioneerd</span>
+            <span class="rpc-location-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Showroom Dordrecht
+            </span>
           </div>
-          <div class="ad-stage-grid">
-            <div class="ad-photo-box">
-              <img src="assets/revisie_stap4.jpg" alt="Fitform 570 Sta-op Stoel" class="ad-main-img">
-              <span class="ad-corner-ribbon">GECERTIFICEERD</span>
-              <img src="assets/sticker_certified_fitform.svg" alt="Certified Seal" class="ad-floating-seal">
+          <div class="rpc-stage-grid">
+            <div class="rpc-photo-box">
+              <img src="assets/chair_fitform-570-vario-sta-op-stoel-gereconditioneerd-1-300x300.png" alt="Fitform 570 Vario RECO" class="rpc-main-img">
+              <img src="assets/revisie_stempel_clean.svg?v=2.0" alt="Gereviseerd Keurmerk" class="rpc-quality-stamp">
             </div>
-            <div class="ad-content-col">
-              <div class="ad-title-row">
-                <h4 class="ad-product-title">Fitform 570 Vario</h4>
-                <div class="ad-product-sub">3 Linak Motoren &bull; Volledig Gereviseerd</div>
+            <div class="rpc-content-col">
+              <div class="rpc-title-block">
+                <h4 class="rpc-product-title">Fitform 570 Vario RECO</h4>
+                <div class="rpc-product-sub">3 Linak Motoren &bull; Op maat afgesteld</div>
               </div>
-              <div class="ad-price-banner">
-                <div class="ad-price-left">
-                  <div class="ad-old-price">Nieuwprijs: <span>€ 4.580,-</span></div>
-                  <div class="ad-main-price"><span class="ad-currency">€</span> 1.550,-</div>
-                </div>
-                <div class="ad-save-badge">
-                  <span class="ad-save-pct">-66%</span>
-                  <span class="ad-save-txt">Bespaar € 3.030</span>
-                </div>
+              <div class="rpc-price-row">
+                <span class="rpc-old-price">Van € 3.450,-</span>
+                <span class="rpc-main-price">€ 1.500,-</span>
               </div>
-              <div class="ad-checklist">
-                <div class="ad-check-item">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Nieuw HR-koudschuim &amp; ozon-reiniging</span>
+              <div class="rpc-checklist">
+                <div class="rpc-check-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>30-Punts technische inspectie</span>
                 </div>
-                <div class="ad-check-item">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Exact op uw lichaamsmaat afgesteld</span>
+                <div class="rpc-check-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>100% nieuw koudschuim &amp; gereinigd</span>
                 </div>
-                <div class="ad-check-item highlight">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <strong>24 Mnd garantie aan huis &amp; gratis bezorgd</strong>
+                <div class="rpc-check-item highlight">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>2 Jaar garantie &amp; service aan huis</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="ad-cta-row">
-            <a href="afspraak.html#bookingCard" class="btn-ad-primary" target="_top" onclick="return handleKiesDatumClick(event)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span>Reserveer of Proefzitten</span>
+          <div class="rpc-actions-row">
+            <a href="afspraak.html#bookingCard" class="btn-rpc-primary" target="_top" onclick="return handleKiesDatumClick(event)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Afspraak &amp; Proefzitten</span>
             </a>
-            <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn-ad-secondary" target="_top">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn-rpc-secondary" target="_top">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <span>30+ Occasions</span>
             </a>
           </div>
