@@ -2035,6 +2035,202 @@
       }
     }
 
+    /* Embedded Mode (voor integratie op de consumentenpagina / andere pagina's) */
+    body.is-embedded {
+      background: transparent !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+    }
+    body.is-embedded .dossier-fixed-nav,
+    body.is-embedded .dossier-hero-header,
+    body.is-embedded .video-mode-switcher-wrapper,
+    body.is-embedded .collapsible-drawer,
+    body.is-embedded .btn-drawer-toggle-wrapper {
+      display: none !important;
+    }
+    body.is-embedded .container {
+      padding: 0 !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+    body.is-embedded .video-player-card {
+      border-radius: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Video Reel Mode Switcher (Klantversie vs Investeerderspitch) */
+    .video-mode-switcher-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0 24px 0;
+      width: 100%;
+    }
+    .video-mode-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 999px;
+      border: 1px solid #e2e8f0;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+      max-width: 100%;
+    }
+    .mode-switch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #64748b;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .mode-switch-btn:hover {
+      color: var(--color-forest);
+      background: rgba(255, 255, 255, 0.8);
+    }
+    .mode-switch-btn.active {
+      background: #ffffff;
+      color: var(--color-forest-dark);
+      border-color: rgba(75, 143, 36, 0.25);
+      box-shadow: 0 2px 8px rgba(75, 143, 36, 0.12), 0 1px 2px rgba(0, 0, 0, 0.04);
+      font-weight: 700;
+    }
+    .mode-switch-btn .mode-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .mode-switch-btn.active .mode-badge-dot {
+      background: var(--color-forest);
+      box-shadow: 0 0 6px rgba(75, 143, 36, 0.6);
+    }
+
+    /* Consumenten Eindkaart CTA in Scène 4 van Klantversie */
+    .consumer-cta-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #ffffff;
+      border: 1.5px solid rgba(75, 143, 36, 0.25);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+    .consumer-cta-badge-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .consumer-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .consumer-tag.green {
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest);
+      border: 1px solid rgba(75, 143, 36, 0.25);
+    }
+    .consumer-tag.orange {
+      background: rgba(243, 146, 35, 0.12);
+      color: #c25e00;
+      border: 1px solid rgba(243, 146, 35, 0.25);
+    }
+    .consumer-cta-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 8px 0;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .consumer-cta-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--color-dark);
+      text-align: left;
+    }
+    .consumer-cta-actions {
+      display: flex;
+      gap: 9px;
+      flex-direction: column;
+    }
+    .btn-consumer-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-dark) 100%);
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-consumer-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(75, 143, 36, 0.4);
+    }
+    .btn-consumer-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: rgba(243, 146, 35, 0.1);
+      color: #b45309;
+      border: 1.5px solid rgba(243, 146, 35, 0.35);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-consumer-secondary:hover {
+      background: rgba(243, 146, 35, 0.2);
+    }
+    .consumer-cta-phone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #64748b;
+      font-size: 0.84rem;
+      text-decoration: none;
+      padding-top: 4px;
+    }
+    .consumer-cta-phone strong {
+      color: var(--color-forest);
+    }
+    .consumer-cta-phone:hover strong {
+      text-decoration: underline;
+    }
+
     /* YouTube-style Center Ripple on Click */
     .cinema-screen {
       cursor: pointer;
@@ -2530,16 +2726,30 @@
 
   <!-- Gelijkgetrokken Editorial Hero Header -->
   <header class="dossier-hero-header">
-    <div class="dossier-hero-kicker">
+    <div class="dossier-hero-kicker" id="hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL
+      <span id="hero-kicker-text">STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL</span>
     </div>
-    <h1 class="dossier-hero-title">
+    <h1 class="dossier-hero-title" id="hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
     </h1>
-    <p class="dossier-hero-lead">
+    <p class="dossier-hero-lead" id="hero-lead">
       De complete commerciële propositie en overnamestructuur in 60 seconden: marktvacuüm, 30-punts revisie, 42% marge en een gezonde hefboom van €&nbsp;7.800 extra cashflow per maand.
     </p>
+
+    <!-- Versie-keuze Toggle: Investeerderspitch vs Consumentenvideo -->
+    <div class="video-mode-switcher-wrapper">
+      <div class="video-mode-switcher" id="video-mode-switcher" role="tablist" aria-label="Kies videovariatie">
+        <button type="button" class="mode-switch-btn active" id="btn-mode-investor" onclick="switchReelMode('investor')" title="60-seconden pitch deck inclusief financiële cijfers en overnamestructuur">
+          <span class="mode-badge-dot"></span>
+          <span>Investeerderspitch (60s)</span>
+        </button>
+        <button type="button" class="mode-switch-btn" id="btn-mode-consumer" onclick="switchReelMode('consumer')" title="40-seconden consumentenvideo gericht op herkenning, keuring en showroombezoek">
+          <span class="mode-badge-dot"></span>
+          <span>Klantversie (40s)</span>
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Video Player Frame -->
@@ -2711,7 +2921,7 @@
           </button>
           <!-- Tijdweergave -->
           <div class="time-display">
-            <span id="current-time">0:00</span> / 1:00
+            <span id="current-time">0:00</span> / <span id="total-time">0:53</span>
           </div>
           <!-- Hoofdstukbadge / Actieve Scène -->
           <div class="yt-chapter-pill" id="yt-current-chapter">
@@ -2722,7 +2932,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.7.1
+            <span class="version-dot"></span> v2.8.0
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -2757,10 +2967,10 @@
   <!-- Storyboard / Scene Switcher -->
   <div class="storyboard-section">
     <div class="section-title">
-      De 5 Scènes van het Reclamefilmpje <span>60 Seconden Commercial</span>
+      De Scènes van de Video <span id="storyboard-sub-title">60 Seconden Commercial</span>
     </div>
 
-    <div class="story-grid">
+    <div class="story-grid" id="story-cards-grid">
       <div class="story-card active" id="card-0" onclick="jumpToScene(0)">
         <div class="story-thumb">
           <img src="assets/senior_chair_dilemma_v3.jpg?v=20261024_05" alt="1. Het Marktvacuüm" loading="lazy">
@@ -2850,7 +3060,7 @@
           <th>Kernboodschap</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="script-table-body">
         <tr>
           <td class="script-time">0:00 - 0:13</td>
           <td>Senior &amp; dochter in dilemma voor tablet &amp; versleten fauteuil. Battle grid: € 4.500 nieuw vs. € 500 op Marktplaats.</td>
@@ -2934,7 +3144,7 @@
     }
   }
 
-  const scenes = [
+  const INVESTOR_SCENES = [
     {
       align: "right",
       shortTag: "Marktvacuüm",
@@ -3266,6 +3476,206 @@
     }
   ];
 
+  const CONSUMER_SCENES = [
+    {
+      align: "right",
+      shortTag: "Het Dilemma",
+      kicker: "HET DILEMMA IN DE MARKT",
+      title: "Tussen €\u00A04.500 Nieuw & €\u00A0500 op Marktplaats",
+      subtitle: '<strong style="color: var(--color-forest-dark); font-size: 0.98rem; font-weight: 800; line-height: 1.35; display: block; margin-bottom: 5px;">Fabrieksnieuw is voor 70% van de senioren onbetaalbaar.</strong><span style="font-size: 0.86rem; color: #475569; line-height: 1.45; display: block;">Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.</span>',
+      metric: "",
+      caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
+      voiceText: "Een nieuwe ergonomische sta-opstoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
+      bg: "assets/senior_chair_dilemma_v3.jpg?v=20261024_05",
+      audio: "assets/audio/scene_1.m4a?v=eleven_1",
+      durationSec: 11.83,
+      visualHtml: `
+        <div class="battle-stack">
+          <div class="battle-row bad">
+            <div class="battle-row-left">
+              <span class="battle-badge red">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              </span>
+              <div>
+                <strong class="battle-row-title">Nieuw Fitform</strong>
+                <div class="battle-sub">Onbetaalbaar voor 70% • 6–8 wkn levertijd</div>
+              </div>
+            </div>
+            <div class="battle-row-val">€&nbsp;4.500+</div>
+          </div>
+
+          <div class="battle-stack-vs">
+            <span>VS</span>
+          </div>
+
+          <div class="battle-row warning">
+            <div class="battle-row-left">
+              <span class="battle-badge amber">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              </span>
+              <div>
+                <strong class="battle-row-title amber">Marktplaats Risico</strong>
+                <div class="battle-sub">Onhygiënisch • Geen garantie • Verkeerde maat</div>
+              </div>
+            </div>
+            <div class="battle-row-val amber">€&nbsp;500</div>
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "left",
+      shortTag: "De Oplossing",
+      kicker: "DE SLIMME KEUZE",
+      title: "Certified Fitform: Nederlandse Topkwaliteit",
+      subtitle: "<strong>Officiële Wellco/Fitform</strong> modellen met genummerd keurmerkzegel, direct leverbaar uit de showroom in Dordrecht.",
+      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Direct Leverbaar uit Voorraad',
+      caption: "staopstoelen.nl overbrugt dit gat met Certified Fitform: Nederlandse topkwaliteit voor 1.550 euro, mét 24 maanden volledige omruilgarantie.",
+      voiceText: "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
+      bg: "assets/certified_fitform_living_room_v1.jpg",
+      audio: "assets/audio/scene_2.m4a?v=eleven_1",
+      durationSec: 10.70,
+      visualHtml: `
+        <div class="sweet-price-box">
+          <div class="sweet-price-hero">
+            €&nbsp;1.550
+            <span class="sweet-price-sub">nieuw €&nbsp;4.500</span>
+          </div>
+          <div class="sweet-guarantee-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            24 Mnd Volledige Omruilgarantie
+          </div>
+        </div>
+      `,
+      addonHtml: `
+        <div class="scene2-composite-showcase">
+          <div class="scene2-points-col">
+            <div class="scene2-points-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+              Officieel kwaliteitskeurmerk
+            </div>
+            <ul class="scene2-points-list">
+              <li>30-Punts technische inspectie</li>
+              <li>Linak motoren &amp; hefkracht getest</li>
+              <li>Ozon hygiënisch dieptereiniging</li>
+              <li>24 Mnd volledige omruilgarantie</li>
+            </ul>
+          </div>
+          <div class="scene2-sticker-col">
+            <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Keurmerk" class="scene2-overlap-sticker" width="142" height="142" title="Officieel Certified Fitform Keurmerk">
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "left",
+      shortTag: "30-Punts Keuring",
+      kicker: "ONZE KWALITEITSGARANTIE",
+      title: "30-Punts Keuring & Maatwerk staopstoelen.nl",
+      subtitle: "Linak motoren getest op 150 kg, ozon-extractie en zithoogte op de millimeter afgesteld op het lichaam van de koper.",
+      metric: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg> 100% Maatwerk Garantie',
+      caption: "Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door staopstoelen.nl exact op maat afgesteld.",
+      voiceText: "Elke stoel krijgt een dertig-punten keuring, ozon-dieptereiniging en wordt door staopstoelen punt nl exact op maat afgesteld. Retouren zijn minder dan twee procent.",
+      bg: "assets/dutch_technician_fitform_workshop_v2.jpg?v=20261024_02",
+      audio: "assets/audio/scene_3.m4a?v=eleven_1",
+      durationSec: 9.34,
+      visualHtml: `
+        <div class="check-grid">
+          <div class="check-row">
+            <div class="check-left">
+              <div class="step-num-badge orange">1</div>
+              <div class="check-text">
+                <div class="check-title">Linak Motoren &amp; Mechaniek</div>
+                <div class="check-sub">150 kg belastingtest &amp; bekabeling</div>
+              </div>
+            </div>
+            <span class="check-status orange">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              100% OK
+            </span>
+          </div>
+          <div class="check-row">
+            <div class="check-left">
+              <div class="step-num-badge orange">2</div>
+              <div class="check-text">
+                <div class="check-title">Ozon-Dieptereiniging</div>
+                <div class="check-sub">100% bacterie- &amp; geurvrij, fris als nieuw</div>
+              </div>
+            </div>
+            <span class="check-status orange">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              GEKEURD
+            </span>
+          </div>
+          <div class="check-row">
+            <div class="check-left">
+              <div class="step-num-badge green">3</div>
+              <div class="check-text">
+                <div class="check-title">100% Maatwerk Afstelling</div>
+                <div class="check-sub">Zithoogte, zitdiepte en armleggerhoogte</div>
+              </div>
+            </div>
+            <span class="check-status green">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              OP MAAT
+            </span>
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "right",
+      shortTag: "Proefzitten",
+      kicker: "ERVAAR HET ZELF",
+      title: "Kom Proefzitten in Dordrecht of Thuis",
+      subtitle: "",
+      metric: "",
+      caption: "Kom heerlijk proefzitten in onze showroom in Dordrecht of vraag een demonstratie aan huis aan. Bel 078 - 631 4858 of kijk op staopstoelen.nl.",
+      voiceText: "Kom heerlijk proefzitten in onze showroom in Dordrecht of vraag een demonstratie aan huis aan. Bel 078 - 631 4858 of kijk op staopstoelen punt nl.",
+      bg: "assets/certified_fitform_occasion_showroom.jpg",
+      audio: null,
+      durationSec: 9.0,
+      visualHtml: `
+        <div class="consumer-cta-card">
+          <div class="consumer-cta-badge-row">
+            <span class="consumer-tag green">Showroom Dordrecht</span>
+            <span class="consumer-tag orange">Thuisbezorgd &amp; Ingesteld</span>
+          </div>
+          <div class="consumer-cta-details">
+            <div class="consumer-cta-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <strong>Merwedestraat 239, Dordrecht</strong>
+                <div style="font-size: 0.78rem; color: #64748b;">Gratis parkeren direct voor de deur &bull; Rolstoelvriendelijk</div>
+              </div>
+            </div>
+            <div class="consumer-cta-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div>
+                <strong>078 - 631 4858</strong>
+                <div style="font-size: 0.78rem; color: #64748b;">Spreek direct met een gediplomeerd bewegingstechnoloog</div>
+              </div>
+            </div>
+          </div>
+          <div class="consumer-cta-actions">
+            <a href="afspraak.html" class="btn-consumer-primary" target="_top">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Plan Gratis Zitmeting in Dordrecht</span>
+            </a>
+            <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn-consumer-secondary" target="_top">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>Bekijk 30+ Occasions op Voorraad</span>
+            </a>
+          </div>
+        </div>
+      `
+    }
+  ];
+
+  let scenes = INVESTOR_SCENES;
+  let currentReelMode = 'investor';
+  let TOTAL_DURATION_SEC = scenes.reduce((acc, s) => acc + s.durationSec, 0);
+
   let currentScene = 0;
   let isPlaying = false;
   let voiceEnabled = true;
@@ -3274,8 +3684,6 @@
   let fallbackTimer = null;
   let fallbackElapsed = 0;
   let selectedFemaleVoice = null;
-
-  const TOTAL_DURATION_SEC = scenes.reduce((acc, s) => acc + s.durationSec, 0);
 
   // Zoek specifiek naar een authentiek Noord-Nederlandse vrouwenstem voor fallback (nl-NL, expliciet géén nl-BE)
   function loadFemaleVoice() {
@@ -3475,15 +3883,8 @@
     if (bg) {
       bg.className = 'scene-bg motion-' + idx;
       const targetBg = s.bg;
-      if (bg.getAttribute('src') !== targetBg) {
-        bg.style.opacity = '0.35';
-        setTimeout(() => {
-          bg.setAttribute('src', targetBg);
-          bg.style.opacity = '0.96';
-        }, 120);
-      } else {
-        bg.style.opacity = '0.96';
-      }
+      bg.setAttribute('src', targetBg);
+      bg.style.opacity = '0.96';
     }
 
     // Trigger subtiele slide-in animatie op het informatiepaneel
@@ -3497,17 +3898,18 @@
     for (let i = 0; i < scenes.length; i++) {
       const card = document.getElementById('card-' + i);
       const fill = document.getElementById('fill-' + i);
+      if (!fill) continue;
       const seg = fill.parentElement;
       if (i < idx) {
-        seg.className = "seg completed";
+        if (seg) seg.className = "seg completed";
         fill.style.width = "100%";
         if (card) card.className = "story-card";
       } else if (i === idx) {
-        seg.className = "seg";
+        if (seg) seg.className = "seg";
         fill.style.width = "0%";
         if (card) card.className = "story-card active";
       } else {
-        seg.className = "seg";
+        if (seg) seg.className = "seg";
         fill.style.width = "0%";
         if (card) card.className = "story-card";
       }
@@ -3718,13 +4120,143 @@
     }
   });
 
-  // Initial render
+  // Dynamische weergave van YouTube scrubber segmenten
+  function buildSegments() {
+    const container = document.getElementById('segments-bar');
+    if (!container) return;
+    container.innerHTML = scenes.map((s, idx) => `
+      <div class="seg" onclick="jumpToScene(${idx})" title="Scène ${idx + 1}: ${s.shortTag}">
+        <div class="seg-fill" id="fill-${idx}"></div>
+      </div>
+    `).join('');
+  }
+
+  // Dynamische weergave van de Storyboard kaarten
+  function buildStoryCards() {
+    const grid = document.getElementById('story-cards-grid');
+    const titleEl = document.getElementById('storyboard-sub-title');
+    if (titleEl) {
+      titleEl.textContent = currentReelMode === 'consumer' ? '40 Seconden Klantversie' : '60 Seconden Commercial';
+    }
+    if (!grid) return;
+    let cumSec = 0;
+    grid.innerHTML = scenes.map((s, idx) => {
+      const startSec = cumSec;
+      cumSec += s.durationSec;
+      const endSec = cumSec;
+      const sMin = Math.floor(startSec / 60);
+      const sSec = Math.floor(startSec % 60);
+      const eMin = Math.floor(endSec / 60);
+      const eSec = Math.floor(endSec % 60);
+      const timeStr = `${sMin}:${sSec < 10 ? '0' : ''}${sSec} – ${eMin}:${eSec < 10 ? '0' : ''}${eSec}`;
+      return `
+        <div class="story-card ${idx === currentScene ? 'active' : ''}" id="card-${idx}" onclick="jumpToScene(${idx})">
+          <div class="story-thumb">
+            <img src="${s.bg}" alt="${idx + 1}. ${s.shortTag}" loading="lazy">
+          </div>
+          <div class="story-card-header">
+            <div class="story-time">${timeStr}</div>
+            <div class="story-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            </div>
+          </div>
+          <div class="story-title">${idx + 1}. ${s.shortTag}</div>
+          <div class="story-desc">${s.caption || ''}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Dynamische weergave van het live draaiboek
+  function buildScriptTable() {
+    const tbody = document.getElementById('script-table-body');
+    if (!tbody) return;
+    let cumSec = 0;
+    tbody.innerHTML = scenes.map((s, idx) => {
+      const startSec = cumSec;
+      cumSec += s.durationSec;
+      const endSec = cumSec;
+      const sMin = Math.floor(startSec / 60);
+      const sSec = Math.floor(startSec % 60);
+      const eMin = Math.floor(endSec / 60);
+      const eSec = Math.floor(endSec % 60);
+      const timeStr = `${sMin}:${sSec < 10 ? '0' : ''}${sSec} - ${eMin}:${eSec < 10 ? '0' : ''}${eSec}`;
+      const msg = s.kicker || s.shortTag;
+      return `
+        <tr>
+          <td class="script-time">${timeStr}</td>
+          <td>${s.title}</td>
+          <td>"${s.voiceText || s.caption}"</td>
+          <td>${msg}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // Wissel tussen Investeerderspitch (60s) en Klantversie (40s)
+  function switchReelMode(mode) {
+    currentReelMode = mode;
+    stopAudio();
+    isPlaying = false;
+    currentScene = 0;
+
+    const btnInv = document.getElementById('btn-mode-investor');
+    const btnCons = document.getElementById('btn-mode-consumer');
+    const heroKicker = document.getElementById('hero-kicker-text');
+    const heroTitle = document.getElementById('hero-title');
+    const heroLead = document.getElementById('hero-lead');
+
+    if (mode === 'consumer') {
+      scenes = CONSUMER_SCENES;
+      if (btnCons) btnCons.classList.add('active');
+      if (btnInv) btnInv.classList.remove('active');
+      if (heroKicker) heroKicker.innerHTML = 'WAAROM KIEZEN VOOR CERTIFIED FITFORM? &bull; 40-SECONDEN VIDEO';
+      if (heroTitle) heroTitle.innerHTML = 'Waarom <span class="title-highlight">Certified Fitform</span>?';
+      if (heroLead) heroLead.textContent = 'Ontdek waarom een Certified Fitform de slimste keuze is: medische topkwaliteit en 24 maanden garantie voor minder dan de helft van de prijs.';
+    } else {
+      scenes = INVESTOR_SCENES;
+      if (btnInv) btnInv.classList.add('active');
+      if (btnCons) btnCons.classList.remove('active');
+      if (heroKicker) heroKicker.innerHTML = 'STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL';
+      if (heroTitle) heroTitle.innerHTML = 'Certified Fitform <span class="title-highlight">Video Pitch</span>';
+      if (heroLead) heroLead.textContent = 'De complete commerciële propositie en overnamestructuur in 60 seconden: marktvacuüm, 30-punts revisie, 42% marge en een gezonde hefboom van € 7.800 extra cashflow per maand.';
+    }
+
+    TOTAL_DURATION_SEC = scenes.reduce((acc, s) => acc + s.durationSec, 0);
+    const totMin = Math.floor(TOTAL_DURATION_SEC / 60);
+    const totSec = Math.floor(TOTAL_DURATION_SEC % 60);
+    const totEl = document.getElementById('total-time');
+    if (totEl) totEl.textContent = `${totMin}:${totSec < 10 ? '0' : ''}${totSec}`;
+
+    buildSegments();
+    buildStoryCards();
+    buildScriptTable();
+    updateTotalTimeDisplay(0);
+    renderScene(0);
+
+    const stage = document.getElementById('stage-split-wrapper');
+    if (stage) stage.classList.remove('playing');
+    const pIcon = document.getElementById('play-icon');
+    if (pIcon) pIcon.innerHTML = '<polygon points="6 4 20 12 6 20"></polygon>';
+  }
+
+  // Initial render & URL parameters
   const urlParams = new URLSearchParams(window.location.search);
+  const isEmbedParam = urlParams.get('embed') === '1' || window !== window.top;
+  if (isEmbedParam) {
+    document.body.classList.add('is-embedded');
+  }
+  const initialModeParam = (urlParams.get('mode') || '').toLowerCase();
+  if (initialModeParam === 'consumer' || initialModeParam === 'klant' || initialModeParam === 'consument') {
+    switchReelMode('consumer');
+  } else {
+    switchReelMode('investor');
+  }
+
   const startSceneParam = parseInt(urlParams.get('scene'), 10);
-  const initialScene = (!isNaN(startSceneParam) && startSceneParam >= 0 && startSceneParam < scenes.length) ? startSceneParam : 0;
-  currentScene = initialScene;
-  renderScene(initialScene);
-  updateTotalTimeDisplay(0);
+  if (!isNaN(startSceneParam) && startSceneParam >= 0 && startSceneParam < scenes.length) {
+    jumpToScene(startSceneParam);
+  }
 </script>
 
 </body>
