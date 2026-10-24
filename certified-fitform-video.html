@@ -108,7 +108,7 @@
     }
 
     .dossier-brand-logo .brand-green {
-      color: #2e6819;
+      color: #4b8f24;
     }
 
     .dossier-brand-logo .brand-orange {
@@ -517,66 +517,55 @@
       pointer-events: none;
     }
 
-    /* Broadcast Brand Watermark in Video Screen */
-    .video-brand-watermark {
+    /* Broadcast Brand Logo & Strapline on Video Screen: Puur Logo + Strapline, ZONDER pil-vorm */
+    .video-brand-overlay {
       position: absolute;
-      top: 18px;
-      left: 20px;
+      top: 24px;
+      left: 26px;
       z-index: 12;
       pointer-events: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(243, 146, 35, 0.55);
-      border-radius: 999px;
-      padding: 6px 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      line-height: 1;
       transition: all 0.35s ease;
-      line-height: 1;
     }
 
-    .stage-split-wrapper.box-left .video-brand-watermark {
+    .stage-split-wrapper.box-left .video-brand-overlay {
       left: auto;
-      right: 20px;
+      right: 26px;
+      align-items: flex-end;
+      text-align: right;
     }
 
-    .watermark-logo {
-      font-family: 'Montserrat', sans-serif;
+    .video-brand-logo {
+      font-family: var(--font-heading), 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 0.88rem;
-      color: #122b07;
-      letter-spacing: -0.4px;
+      font-size: 1.55rem;
+      letter-spacing: -0.6px;
+      color: #4b8f24; /* Officiële Staopstoelen Groen */
       line-height: 1;
       display: inline-flex;
-      align-items: center;
+      align-items: baseline;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.95);
     }
 
-    .watermark-logo span {
-      color: #f39223;
+    .video-brand-logo span {
+      color: #f39223; /* Officiële Terracotta Oranje */
     }
 
-    .watermark-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #f39223;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-
-    .watermark-sub {
+    .video-brand-strapline {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       font-weight: 800;
-      color: #122b07;
-      letter-spacing: 0.8px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
+      color: #ffffff;
       line-height: 1;
-      display: inline-flex;
-      align-items: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85), 0 1px 2px rgba(0, 0, 0, 0.95);
+      margin-top: 2px;
+      opacity: 0.95;
     }
 
     .cinema-captions {
@@ -680,9 +669,17 @@
         background: #ffffff !important;
         padding: 20px !important;
       }
-      .stage-split-wrapper.box-left .video-brand-watermark {
-        left: 16px !important;
+      .stage-split-wrapper.box-left .video-brand-overlay {
+        left: 18px !important;
         right: auto !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+      }
+      .video-brand-logo {
+        font-size: 1.3rem !important;
+      }
+      .video-brand-strapline {
+        font-size: 0.68rem !important;
       }
       .stage-split-wrapper.box-left .cinema-captions {
         left: 16px !important;
@@ -2034,7 +2031,7 @@
         </div>
         <div class="dossier-brand-badge">
           <span class="badge-dot"></span>
-          Dordrecht &bull; Overname
+          Certified Fitform
         </div>
       </a>
 
@@ -2090,10 +2087,10 @@
         <div class="cinema-vignette"></div>
 
         <!-- Broadcast Brand Watermark in Video Screen (Met officiële merkkleuren) -->
-        <div class="video-brand-watermark">
-          <span class="watermark-logo">staopstoelen<span>.nl</span></span>
-          <span class="watermark-dot" aria-hidden="true"></span>
-          <span class="watermark-sub">Certified Fitform</span>
+        <!-- Broadcast Brand Overlay in Video Screen: Puur Logo + Strapline, ZONDER pil-vorm -->
+        <div class="video-brand-overlay">
+          <div class="video-brand-logo">staopstoelen<span>.nl</span></div>
+          <div class="video-brand-strapline">Certified Fitform</div>
         </div>
 
         <!-- YouTube Center Ripple Indicator bij klik -->
@@ -2935,7 +2932,7 @@
 
   // YouTube click on video screen with center ripple
   function handleScreenClick(e) {
-    if (e.target.closest('.cinema-captions') || e.target.closest('.video-brand-watermark')) return;
+    if (e.target.closest('.cinema-captions') || e.target.closest('.video-brand-overlay')) return;
     togglePlay();
     const ripple = document.getElementById('yt-center-ripple');
     const rIcon = document.getElementById('yt-ripple-icon');
