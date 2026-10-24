@@ -719,10 +719,10 @@
       .stage-split-wrapper .companion-panel {
         max-width: 100% !important;
         width: 100% !important;
-        height: 480px !important;
-        min-height: 480px !important;
-        max-height: 480px !important;
-        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 580px !important;
+        max-height: none !important;
+        overflow: visible !important;
         margin: 0 !important;
         border-radius: 0 !important;
         border: none !important;
@@ -1965,6 +1965,19 @@
     @keyframes pulse-unmute {
       0%, 100% { transform: translateX(-50%) scale(1); }
       50% { transform: translateX(-50%) scale(1.06); }
+    }
+
+    @media (max-width: 900px) {
+      .yt-unmute-badge {
+        top: 96px;
+        left: 14px;
+        transform: none;
+        animation: none;
+        padding: 7px 12px;
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+      .yt-unmute-badge:hover { transform: none; }
     }
 
     /* Mobiel: compacte unmute-knop rechtsboven (valt niet over het logo), ondertitel breed onderin het beeld, tijd op één regel */
