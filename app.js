@@ -2223,16 +2223,9 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     overlay.innerHTML = `
       <div class="video-lightbox-card" onclick="event.stopPropagation()">
         <div class="video-lightbox-header">
-          <h3 class="video-lightbox-title">
-            <span class="video-lightbox-dot"></span>
-            <span id="videoLightboxTitleText">Video: Waarom Certified Fitform? (45s)</span>
-          </h3>
-          <div class="video-lightbox-actions">
-            <a href="waarom-certified-fitform.html" id="videoLightboxMoreLink" class="video-lightbox-link">Bekijk vergelijkingstabel &amp; details &rarr;</a>
-            <button type="button" class="video-lightbox-close" onclick="closeCertifiedVideoModal()" aria-label="Sluit video">
-              &#10005;
-            </button>
-          </div>
+          <button type="button" class="video-lightbox-close" onclick="closeCertifiedVideoModal()" aria-label="Sluit video" title="Sluit video">
+            &#10005;
+          </button>
         </div>
         <div class="video-lightbox-frame-wrap">
           <iframe id="videoLightboxIframe" src="" title="Interactieve Klantvideo" allow="autoplay; fullscreen"></iframe>
@@ -2249,44 +2242,9 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     });
   }
 
-  const titleEl = document.getElementById("videoLightboxTitleText");
-  const linkEl = document.getElementById("videoLightboxMoreLink");
   const iframe = document.getElementById("videoLightboxIframe");
-
-  if (mode === "revisie") {
-    if (titleEl) titleEl.textContent = "Video: Inspectie, Revisie & Zitadvies (45s)";
-    if (linkEl) {
-      linkEl.href = "revisie.html#revisie";
-      linkEl.innerHTML = "Bekijk alle 4 revisiefases &rarr;";
-      linkEl.onclick = null;
-    }
-  } else if (mode === "afspraak") {
-    if (titleEl) titleEl.textContent = "Video: Hoe werkt Gratis Proefzitten & Zitmeting? (38s)";
-    if (linkEl) {
-      linkEl.href = "afspraak.html#bookingCard";
-      linkEl.innerHTML = "Kies Datum in Kalender &rarr;";
-      linkEl.onclick = function(e) {
-        const bookingCard = document.getElementById("bookingCard");
-        if (bookingCard) {
-          e.preventDefault();
-          window.closeCertifiedVideoModal();
-          setTimeout(() => {
-            bookingCard.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 100);
-        }
-      };
-    }
-  } else {
-    if (titleEl) titleEl.textContent = "Video: Waarom Certified Fitform? (45s)";
-    if (linkEl) {
-      linkEl.href = "waarom-certified-fitform.html";
-      linkEl.innerHTML = "Bekijk vergelijkingstabel &amp; keurmerk &rarr;";
-      linkEl.onclick = null;
-    }
-  }
-
   if (iframe) {
-    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.20`;
+    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.21`;
   }
 
   overlay.classList.add("active");
