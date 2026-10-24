@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infographic: Certified Fitform | Strategisch Model</title>
+  <title>Infographic • Certified Fitform | staopstoelen.nl</title>
   <meta name="description" content="Visuele infographic van het Certified Fitform model voor staopstoelen.nl en Schipper Compact Wonen Dordrecht.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap">
   <style>
     :root {
-      --bg: #f8faf6;
+      --bg: #fbf9f5;
       --card-bg: #ffffff;
       --card-border: #e2e8df;
       --text: #192318;
@@ -39,13 +39,24 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding: 0 16px 60px;
+      padding: 0 0 60px;
       -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1040px;
+      width: 100%;
+      margin: 24px auto 0;
+      padding: 0 16px;
     }
 
     .canvas {
-      max-width: 1040px;
-      margin: 24px auto 0;
+      width: 100%;
+      margin: 0 auto;
       background: #ffffff;
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
@@ -901,10 +912,10 @@
     </div>
   </nav>
 
-<div class="canvas">
+<div class="container">
 
   <!-- Gelijkgetrokken Editorial Hero Header -->
-  <header class="dossier-hero-header" style="text-align: center;">
+  <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
       STRATEGISCHE INFOGRAPHIC &bull; VISUELE SNAPSHOT
@@ -912,10 +923,12 @@
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Infographic</span>
     </h1>
-    <p class="dossier-hero-lead" style="margin: 0 auto;">
+    <p class="dossier-hero-lead">
       Hoe een 22 jaar oud slapend domein (staopstoelen.nl) en een fysieke speciaalzaak in Dordrecht (Schipper Compact Wonen) samen het grootste marktvacuüm in de Nederlandse zorg- en seniorenmarkt claimen.
     </p>
   </header>
+
+  <div class="canvas">
 
   <!-- Editorial Visual Hero Banner -->
   <div style="margin-bottom: 32px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--card-border); position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
@@ -1305,6 +1318,7 @@
     </div>
   </div>
 
+</div>
 </div>
 
 <script>
