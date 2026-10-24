@@ -2279,7 +2279,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   }
 
   if (iframe) {
-    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.15`;
+    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.16`;
   }
 
   overlay.classList.add("active");
