@@ -835,18 +835,20 @@
       margin: 8px 0 0;
     }
 
-    /* Scène 4 compacte calibratie: Unit Economics heeft waterval + rijen + jackpot widget */
+    /* Scène 4 redactionele calibratie: 2-regelige kop met royale witruimte en uitgelijnd naar de onderkant */
     #companion-panel[data-scene="3"] .panel-kicker,
     .stage-split-wrapper[data-scene="3"] .panel-kicker {
-      margin-bottom: 5px !important;
+      margin-bottom: 14px !important;
     }
     #companion-panel[data-scene="3"] .panel-title,
     .stage-split-wrapper[data-scene="3"] .panel-title {
-      margin-bottom: 6px !important;
+      font-size: 1.28rem;
+      line-height: 1.22;
+      margin-bottom: 20px !important;
     }
     #companion-panel[data-scene="3"] .panel-visual-box,
     .stage-split-wrapper[data-scene="3"] .panel-visual-box {
-      margin-top: 2px !important;
+      margin-top: 4px !important;
     }
 
     .panel-subtitle {
@@ -1346,11 +1348,11 @@
     /* Scene 4: High-Impact Financial Infographic (Waterval, Marge-Balk & Vliegwiel) */
     .info-waterfall-bar-card {
       width: 100%;
-      margin: 0 0 3px;
+      margin: 0 0 6px;
       background: rgba(255, 255, 255, 0.94);
       border: 1.5px solid var(--border);
       border-radius: 9px;
-      padding: 3px 8px 3px;
+      padding: 4px 10px 4px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       box-sizing: border-box;
     }
@@ -1405,21 +1407,21 @@
       border-radius: 11px;
       overflow: hidden;
       box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-      margin-bottom: 4px;
+      margin-bottom: 7px;
       box-sizing: border-box;
     }
     .info-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2.5px 8px;
+      padding: 3.5px 10px;
       font-size: 0.74rem;
       border-bottom: 1px solid #f1f5f9;
     }
     .info-row.rev {
       background: #f8fafc;
       font-weight: 700;
-      padding: 3.5px 8px;
+      padding: 4.5px 10px;
     }
     .info-row-left {
       display: flex;
@@ -1517,7 +1519,7 @@
       background: linear-gradient(145deg, #0b1e10 0%, #123318 60%, #08170c 100%);
       border: 2px solid #f59e0b;
       border-radius: 11px;
-      padding: 5px 8px 5px;
+      padding: 6px 10px 6px;
       box-shadow: 0 4px 16px rgba(11, 30, 16, 0.35), 0 0 0 1px rgba(245, 158, 11, 0.4);
       box-sizing: border-box;
       position: relative;
@@ -2491,7 +2493,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.4</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.5</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2676,7 +2678,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.4
+            <span class="version-dot"></span> v2.6.5
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -3039,7 +3041,7 @@
       align: "right",
       shortTag: "Unit Economics",
       kicker: 'UNIT ECONOMICS <span class="kicker-badge-orange">42% MARGE</span>',
-      title: "€\u00A0650 Netto Marge per Stoel",
+      title: "€\u00A0650 Netto Marge<br>per Stoel",
       subtitle: "",
       metric: "",
       caption: "De bedrijfskundige cijfers zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over per verkochte stoel.",
