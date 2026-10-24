@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.128">
+  <link rel="stylesheet" href="style.css?v=10.129">
 
   <style>
     /* Hero Section */
@@ -108,6 +108,11 @@
     @media (max-width: 860px) {
       .video-wrapper-card {
         height: 780px;
+      }
+    }
+    @media (max-width: 680px) {
+      .video-wrapper-card {
+        height: 800px;
       }
     }
 
@@ -463,6 +468,30 @@
     }
     .consumer-title, .section-title {
       text-wrap: balance;
+    }
+
+    /* Mobiel: vergelijkingstabel past volledig in beeld (geen horizontaal scrollen / afkappen) */
+    @media (max-width: 680px) {
+      .compare-table-wrapper { overflow-x: visible; }
+      .compare-table { min-width: 0; }
+      .compare-table th, .compare-table td { width: 25%; }
+      .compare-table th { padding: 10px 6px; font-size: 0.7rem; line-height: 1.25; }
+      .compare-table th.col-feature { padding-left: 10px; }
+      .compare-table td {
+        height: auto;
+        padding: 10px 6px;
+        font-size: 0.72rem;
+        white-space: normal;
+        overflow-wrap: break-word;
+        line-height: 1.3;
+      }
+      .compare-table td.col-feature { padding-left: 10px; font-size: 0.72rem; }
+      .compare-table tbody tr { height: auto; }
+      .tbl-cell-item { flex-direction: column; align-items: flex-start; gap: 4px; font-size: 0.72rem; }
+      .tbl-price { font-size: 0.74rem; }
+      .tbl-hero-badge { font-size: 0.5rem; padding: 2px 6px; margin-bottom: 6px; white-space: nowrap; }
+      .tbl-hero-title { font-size: 0.74rem; }
+      .tbl-hero-sub { font-size: 0.62rem; }
     }
   </style>
 </head>
@@ -1042,6 +1071,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=10.128"></script>
+  <script src="app.js?v=10.129"></script>
 </body>
 </html>

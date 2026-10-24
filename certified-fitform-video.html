@@ -1967,6 +1967,36 @@
       50% { transform: translateX(-50%) scale(1.06); }
     }
 
+    /* Mobiel: compacte unmute-knop rechtsboven (valt niet over het logo), ondertitel breed onderin het beeld, tijd op één regel */
+    @media (max-width: 680px) {
+      .yt-unmute-badge {
+        top: 10px;
+        left: auto;
+        right: 10px;
+        transform: none;
+        white-space: nowrap;
+        padding: 7px 12px;
+        gap: 6px;
+        font-size: 0.78rem;
+        animation: none;
+      }
+      .yt-unmute-badge:hover { transform: none; }
+      .yt-unmute-badge svg { width: 16px; height: 16px; }
+      .cinema-captions,
+      .stage-split-wrapper.box-left .cinema-captions {
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        max-width: none !important;
+      }
+      .time-display { white-space: nowrap; margin-left: 2px; font-size: 0.78rem; }
+      .player-controls { padding: 6px 8px 8px; }
+      .ctrl-left { gap: 0; min-width: 0; }
+      .ctrl-right { gap: 0; flex-shrink: 0; }
+      .btn-yt { width: 34px; height: 34px; flex-shrink: 0; }
+      .yt-chapter-pill { display: none !important; }
+    }
+
     .btn-yt:hover {
       background: rgba(75, 143, 36, 0.28);
       color: #ffffff;
