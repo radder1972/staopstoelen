@@ -2029,6 +2029,11 @@ function initFaqAccordion() {
   const questions = document.querySelectorAll(".faq-question");
   if (!questions || questions.length === 0) return;
 
+  // Initialize any item that starts with .active
+  document.querySelectorAll(".faq-item.active .faq-answer").forEach(a => {
+    a.style.maxHeight = a.scrollHeight + "px";
+  });
+
   questions.forEach(q => {
     if (q.dataset.faqBound === "true") return;
     q.dataset.faqBound = "true";

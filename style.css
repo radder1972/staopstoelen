@@ -5312,6 +5312,7 @@ input[type="checkbox"] {
 }
 
 .faq-item.active .faq-answer {
+  max-height: 1000px;
   padding-bottom: 24px;
   border-top: 1px solid rgba(141, 169, 140, 0.1);
   padding-top: 20px;
