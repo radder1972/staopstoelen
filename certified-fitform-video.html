@@ -1982,11 +1982,17 @@
       border-color: #fbbf24;
       transform: translateY(-1px);
     }
-    .btn-yt-voice-choice.active-matthias {
+    .btn-yt-voice-choice.active-studio {
       background: linear-gradient(135deg, rgba(75, 143, 36, 0.45) 0%, rgba(243, 146, 35, 0.45) 100%);
       border-color: #fbbf24;
       color: #ffffff;
       box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+    }
+    .btn-yt-voice-choice.active-matthias {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.45) 0%, rgba(14, 165, 233, 0.45) 100%);
+      border-color: #60a5fa;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
     }
     .btn-yt-voice-choice .voice-badge-icon {
       font-size: 0.75rem;
@@ -2525,7 +2531,7 @@
   <header class="dossier-hero-header">
     <div class="dossier-hero-kicker">
       <span class="dossier-kicker-dot"></span>
-      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.6.8</span>
+      STRATEGISCHE VIDEO PITCH &bull; 60-SECONDEN REEL &bull; <span style="color: var(--color-forest); font-weight: 800;">v2.7.0</span>
     </div>
     <h1 class="dossier-hero-title">
       Certified Fitform <span class="title-highlight">Video Pitch</span>
@@ -2697,10 +2703,10 @@
           <button class="btn-yt" id="btn-voice" onclick="toggleVoice()" title="Voice-over dempen of aanzetten (m)">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" id="voice-icon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
           </button>
-          <!-- Stem Keuze Toggle (Matthias Echte Stem / Fenna Vrouw / Maarten Man) -->
-          <button class="btn-yt-voice-choice active-matthias" id="btn-voice-choice" onclick="toggleVoiceGender()" title="Wissel stem: Matthias (Echte Stem) / Fenna (Vrouw AI) / Maarten (Man AI)">
+          <!-- Stem Keuze Toggle (Studio Voice-over / Matthias Echte Stem / Maarten) -->
+          <button class="btn-yt-voice-choice active-studio" id="btn-voice-choice" onclick="toggleVoiceGender()" title="Wissel stem: Studio Voice-over (ElevenLabs) / Matthias (Echte Stem) / Maarten">
             <span class="voice-badge-icon">🎙️</span>
-            <span id="voice-choice-label">Matthias (Echte Stem)</span>
+            <span id="voice-choice-label">Studio Voice-over</span>
           </button>
           <!-- Tijdweergave -->
           <div class="time-display">
@@ -2715,7 +2721,7 @@
         <div class="ctrl-right">
           <!-- Live Versienummer Badge -->
           <span class="yt-version-badge" title="Live Speler Versie • Direct van server geladen">
-            <span class="version-dot"></span> v2.6.8
+            <span class="version-dot"></span> v2.7.0
           </span>
           <!-- Bioscoop / Theater Modus (t) -->
           <button class="btn-yt" id="btn-view" onclick="toggleViewMode()" title="Bioscoopmodus (t)">
@@ -2938,8 +2944,8 @@
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "Een nieuwe ergonomische sta-opstoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
       bg: "assets/senior_chair_dilemma_v3.jpg?v=20261024_05",
-      audio: "assets/audio/scene_1.m4a?v=2.6.6",
-      durationSec: 12.82,
+      audio: "assets/audio/scene_1.m4a?v=eleven_1",
+      durationSec: 11.83,
       visualHtml: `
         <div class="battle-stack">
           <div class="battle-row bad">
@@ -2984,8 +2990,8 @@
       caption: "staopstoelen.nl overbrugt dit gat met Certified Fitform: Nederlandse topkwaliteit voor 1.550 euro, mét 24 maanden volledige omruilgarantie.",
       voiceText: "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
       bg: "assets/certified_fitform_living_room_v1.jpg",
-      audio: "assets/audio/scene_2.m4a?v=2.6.6",
-      durationSec: 11.35,
+      audio: "assets/audio/scene_2.m4a?v=eleven_1",
+      durationSec: 10.70,
       visualHtml: `
         <div class="sweet-price-box">
           <div class="sweet-price-hero">
@@ -3028,8 +3034,8 @@
       caption: "Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door staopstoelen.nl exact op maat afgesteld.",
       voiceText: "Elke stoel krijgt een dertig-punten keuring, ozon-dieptereiniging en wordt door staopstoelen punt nl exact op maat afgesteld. Retouren zijn minder dan twee procent.",
       bg: "assets/dutch_technician_fitform_workshop_v2.jpg?v=20261024_02",
-      audio: "assets/audio/scene_3.m4a?v=2.6.6",
-      durationSec: 10.66,
+      audio: "assets/audio/scene_3.m4a?v=eleven_1",
+      durationSec: 9.34,
       visualHtml: `
         <div class="check-grid">
           <div class="check-row">
@@ -3084,8 +3090,8 @@
       caption: "De bedrijfskundige cijfers zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over per verkochte stoel.",
       voiceText: "De bedrijfskundige cijfers zijn ijzersterk: na inkoop, transport en revisie blijft 650 euro netto marge over per verkochte stoel. Goed voor 7800 euro cashflow per maand.",
       bg: "assets/unit_economics_fitform_showroom_v4.jpg?v=20261024_10",
-      audio: "assets/audio/scene_4.m4a?v=2.6.6",
-      durationSec: 12.65,
+      audio: "assets/audio/scene_4.m4a?v=eleven_1",
+      durationSec: 12.34,
       visualHtml: `
         <!-- 1. Visuele Waterval / Omzetverdeling Balk (Stacked Proportional Bar) -->
         <div class="info-waterfall-bar-card">
@@ -3212,8 +3218,8 @@
       caption: "Met 50% overheidsgarantie en een verkoperslening is slechts 40.000 euro eigen inbreng vereist. Terugverdiend binnen een jaar.",
       voiceText: "Met 50 procent overheidsgarantie en een achtergestelde verkoperslening is slechts 40.000 euro eigen inleg nodig. Binnen een jaar terugverdiend.",
       bg: "assets/schipper_partnership_handshake_v3.jpg?v=20261024_05",
-      audio: "assets/audio/scene_5.m4a?v=2.6.6",
-      durationSec: 9.86,
+      audio: "assets/audio/scene_5.m4a?v=eleven_1",
+      durationSec: 8.34,
       visualHtml: `
         <div class="deal-stack-box">
           <div class="stack-tier bank">
@@ -3353,37 +3359,37 @@
     }, tickInterval);
   }
 
-  let currentVoiceMode = 'matthias'; // 'matthias' (Echte Stem) | 'fenna' (Vrouw AI) | 'maarten' (Man AI)
+  let currentVoiceMode = 'studio'; // 'studio' (ElevenLabs Studio Voice-over) | 'matthias' (Echte Stem) | 'maarten' (Maarten)
 
   function toggleVoiceGender() {
-    if (currentVoiceMode === 'matthias') {
-      currentVoiceMode = 'fenna';
-    } else if (currentVoiceMode === 'fenna') {
+    if (currentVoiceMode === 'studio') {
+      currentVoiceMode = 'matthias';
+    } else if (currentVoiceMode === 'matthias') {
       currentVoiceMode = 'maarten';
     } else {
-      currentVoiceMode = 'matthias';
+      currentVoiceMode = 'studio';
     }
 
     const label = document.getElementById('voice-choice-label');
     const btn = document.getElementById('btn-voice-choice');
 
-    if (currentVoiceMode === 'matthias') {
+    if (currentVoiceMode === 'studio') {
+      if (label) label.textContent = 'Studio Voice-over';
+      if (btn) {
+        btn.className = 'btn-yt-voice-choice active-studio';
+        btn.title = 'Huidige stem: Studio Voice-over (ElevenLabs) • Klik voor Matthias (Echte Stem)';
+      }
+    } else if (currentVoiceMode === 'matthias') {
       if (label) label.textContent = 'Matthias (Echte Stem)';
       if (btn) {
-        btn.classList.add('active-matthias');
-        btn.title = 'Huidige stem: Matthias Radder (Echte Stem) • Klik voor Fenna (Vrouw AI)';
-      }
-    } else if (currentVoiceMode === 'fenna') {
-      if (label) label.textContent = 'Fenna (Vrouw AI)';
-      if (btn) {
-        btn.classList.remove('active-matthias');
-        btn.title = 'Huidige stem: Fenna (Vrouw AI) • Klik voor Maarten (Man AI)';
+        btn.className = 'btn-yt-voice-choice active-matthias';
+        btn.title = 'Huidige stem: Matthias Radder (Echte Stem) • Klik voor Maarten';
       }
     } else {
       if (label) label.textContent = 'Maarten (Man AI)';
       if (btn) {
-        btn.classList.remove('active-matthias');
-        btn.title = 'Huidige stem: Maarten (Man AI) • Klik voor Matthias (Echte Stem)';
+        btn.className = 'btn-yt-voice-choice';
+        btn.title = 'Huidige stem: Maarten (Man AI) • Klik voor Studio Voice-over';
       }
     }
 
