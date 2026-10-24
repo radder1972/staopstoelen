@@ -1932,6 +1932,41 @@
       transition: background 0.15s ease, transform 0.1s ease, color 0.15s ease;
     }
 
+    /* Floating Unmute Badge for Autoplay (Wanneer browser geluid aanvankelijk tegenhoudt) */
+    .yt-unmute-badge {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 95;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      background: rgba(26, 36, 33, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      border-radius: 9999px;
+      font-family: var(--font-body, 'Outfit', sans-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      animation: pulse-unmute 2.4s infinite ease-in-out;
+      transition: background-color 0.2s, transform 0.2s, border-color 0.2s;
+    }
+    .yt-unmute-badge:hover {
+      background: var(--color-forest, #4b8f24);
+      border-color: #ffffff;
+      transform: translateX(-50%) scale(1.05);
+    }
+    @keyframes pulse-unmute {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.06); }
+    }
+
     .btn-yt:hover {
       background: rgba(75, 143, 36, 0.28);
       color: #ffffff;
@@ -2781,6 +2816,14 @@
 
   <!-- Video Player Frame -->
   <div class="video-player-card" id="video-player-card">
+
+    <!-- Zwevende Unmute Badge voor Autoplay (als browser geluid initieel dempt) -->
+    <button type="button" class="yt-unmute-badge" id="yt-unmute-badge" onclick="unmuteFromAutoplay(event)" style="display: none;" title="Geluid aanzetten">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+      </svg>
+      <span>Klik voor geluid</span>
+    </button>
 
     <!-- Main Stage: Split Layout (Beeld 100% vrij links, Datapaneel rechts) -->
     <div class="stage-split-wrapper box-right" id="stage-split-wrapper">
@@ -3772,6 +3815,30 @@
     }, tickInterval);
   }
 
+  let audioAutoplayBlocked = false;
+
+  function showUnmuteBadge() {
+    const badge = document.getElementById('yt-unmute-badge');
+    if (badge) badge.style.display = 'inline-flex';
+    const vBtn = document.getElementById('btn-voice');
+    if (vBtn) vBtn.classList.add('muted');
+  }
+
+  function hideUnmuteBadge() {
+    const badge = document.getElementById('yt-unmute-badge');
+    if (badge) badge.style.display = 'none';
+    const vBtn = document.getElementById('btn-voice');
+    if (vBtn) vBtn.classList.remove('muted');
+  }
+
+  function unmuteFromAutoplay(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    audioAutoplayBlocked = false;
+    hideUnmuteBadge();
+    voiceEnabled = true;
+    playSceneAudio(currentScene);
+  }
+
   function playSceneAudio(idx) {
     stopAudio();
     if (!isPlaying) return;
@@ -3796,10 +3863,18 @@
         }, 500);
       };
 
-      currentAudio.play().catch(e => {
-        console.warn("Audio autoplay blocked, using fallback:", e);
-        startFallbackTimer(s.durationSec);
-      });
+      const playPromise = currentAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          audioAutoplayBlocked = false;
+          hideUnmuteBadge();
+        }).catch(e => {
+          console.warn("Audio autoplay blocked by browser policy, using fallback:", e);
+          audioAutoplayBlocked = true;
+          showUnmuteBadge();
+          startFallbackTimer(s.durationSec);
+        });
+      }
     } else {
       startFallbackTimer(s.durationSec);
     }
@@ -3965,7 +4040,11 @@
 
   // YouTube click on video screen with center ripple
   function handleScreenClick(e) {
-    if (e.target.closest('.cinema-captions') || e.target.closest('.video-corner-swoosh-badge')) return;
+    if (e.target.closest('.cinema-captions') || e.target.closest('.video-corner-swoosh-badge') || e.target.closest('.yt-unmute-badge')) return;
+    if (audioAutoplayBlocked) {
+      unmuteFromAutoplay(e);
+      return;
+    }
     togglePlay();
     const ripple = document.getElementById('yt-center-ripple');
     const rIcon = document.getElementById('yt-ripple-icon');
@@ -4006,6 +4085,10 @@
     const btn = document.getElementById('btn-voice');
     const icon = document.getElementById('voice-icon');
     if (voiceEnabled) {
+      if (audioAutoplayBlocked) {
+        audioAutoplayBlocked = false;
+        hideUnmuteBadge();
+      }
       if (btn) {
         btn.classList.remove('muted');
         btn.title = "Geluid dempen (m)";
@@ -4251,6 +4334,21 @@
   if (!isNaN(startSceneParam) && startSceneParam >= 0 && startSceneParam < scenes.length) {
     jumpToScene(startSceneParam);
   }
+
+  // Autoplay bij laden (probeert direct mét geluid te starten)
+  const autoplayParam = urlParams.get('autoplay') === '1' || urlParams.get('autoplay') === 'true';
+  if (autoplayParam) {
+    setTimeout(() => {
+      play();
+    }, 200);
+  }
+
+  // Als de browser geluids-autoplay blokkeert, deblokkeert elke eerste klik in het venster direct het geluid
+  window.addEventListener('click', (e) => {
+    if (audioAutoplayBlocked && !e.target.closest('.btn-yt')) {
+      unmuteFromAutoplay(e);
+    }
+  }, { capture: true });
 </script>
 
 </body>
