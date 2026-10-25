@@ -697,7 +697,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      overflow: hidden;
+      overflow: visible !important;
       transition: background 0.2s ease, opacity 0.25s ease;
     }
 
@@ -2290,6 +2290,7 @@
     }
     body.is-recording .companion-panel {
       zoom: 1.50 !important;
+      overflow: visible !important;
     }
     body.is-recording .stage-split-wrapper.box-right .companion-panel {
       margin: 0 44px 0 auto !important;
@@ -2368,7 +2369,7 @@
         min-height: 0 !important;
         max-height: calc(100% - 20px) !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
+        overflow: visible !important;
       }
     }
     @media (max-width: 680px) {
