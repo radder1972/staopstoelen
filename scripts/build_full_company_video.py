@@ -50,55 +50,55 @@ def draw_huisstijl_card(
     # 2. Kicker Pill Badge
     kw = font_kicker.getlength(kicker_text)
     pill_w = kw + 38
-    pill_h = 28
+    pill_h = 30
     pill_x = lt_x + 24
-    pill_y = lt_y + 16
+    pill_y = lt_y + 18
     if kicker_color == 'orange':
-        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(255, 247, 237, 240), outline=(243, 146, 35, 140), width=1)
-        draw.ellipse([(pill_x + 10, pill_y + 10), (pill_x + 18, pill_y + 18)], fill=(243, 146, 35, 255))
-        draw.text((pill_x + 26, pill_y + 4), kicker_text, font=font_kicker, fill=(180, 83, 9, 255))
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=15, fill=(255, 247, 237, 240), outline=(243, 146, 35, 140), width=1)
+        draw.ellipse([(pill_x + 10, pill_y + 11), (pill_x + 18, pill_y + 19)], fill=(243, 146, 35, 255))
+        draw.text((pill_x + 26, pill_y + 5), kicker_text, font=font_kicker, fill=(180, 83, 9, 255))
     else:
-        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(234, 247, 232, 240), outline=(75, 143, 36, 140), width=1)
-        draw.ellipse([(pill_x + 10, pill_y + 10), (pill_x + 18, pill_y + 18)], fill=(75, 143, 36, 255))
-        draw.text((pill_x + 26, pill_y + 4), kicker_text, font=font_kicker, fill=(35, 84, 27, 255))
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=15, fill=(234, 247, 232, 240), outline=(75, 143, 36, 140), width=1)
+        draw.ellipse([(pill_x + 10, pill_y + 11), (pill_x + 18, pill_y + 19)], fill=(75, 143, 36, 255))
+        draw.text((pill_x + 26, pill_y + 5), kicker_text, font=font_kicker, fill=(35, 84, 27, 255))
         
-    # 3. Title & Highlight
+    # 3. Title & Highlight (with more breathing room from kicker pill)
     title_x = lt_x + 24
-    title_y = lt_y + 54
+    title_y = lt_y + 70
     draw.text((title_x, title_y), title_text, font=font_title, fill=(18, 43, 7, 255))
     if title_highlight:
         tw = font_title.getlength(title_text + ' ')
         draw.text((title_x + tw, title_y), title_highlight, font=font_title, fill=title_highlight_color)
         
     # 4. Subtitle
-    draw.text((lt_x + 24, lt_y + 106), subtitle_text, font=font_sub, fill=(55, 65, 81, 255))
+    draw.text((lt_x + 24, lt_y + 124), subtitle_text, font=font_sub, fill=(55, 65, 81, 255))
     
     # 5. Action Chip / Badge on the right
     if chip_text:
         chip_w = font_pill.getlength(chip_text) + 68
         chip_w = max(215, chip_w)
-        chip_h = 52
+        chip_h = 54
         chip_x = lt_x + card_w - chip_w - 24
-        chip_y = lt_y + 52
+        chip_y = lt_y + 64
         draw.rounded_rectangle([(chip_x, chip_y), (chip_x + chip_w, chip_y + chip_h)], radius=16, fill=chip_color)
         if chip_type == 'check':
-            draw.line([(chip_x + 22, chip_y + 26), (chip_x + 30, chip_y + 36)], fill=(255, 255, 255, 255), width=3)
-            draw.line([(chip_x + 30, chip_y + 36), (chip_x + 44, chip_y + 16)], fill=(255, 255, 255, 255), width=3)
-            draw.text((chip_x + 52, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
+            draw.line([(chip_x + 22, chip_y + 27), (chip_x + 30, chip_y + 37)], fill=(255, 255, 255, 255), width=3)
+            draw.line([(chip_x + 30, chip_y + 37), (chip_x + 44, chip_y + 17)], fill=(255, 255, 255, 255), width=3)
+            draw.text((chip_x + 52, chip_y + 16), chip_text, font=font_pill, fill=(255, 255, 255, 255))
         elif chip_type == 'warning':
-            draw.ellipse([(chip_x + 18, chip_y + 14), (chip_x + 40, chip_y + 36)], outline=(255, 255, 255, 255), width=2)
-            draw.text((chip_x + 26, chip_y + 15), '!', font=font_pill, fill=(255, 255, 255, 255))
-            draw.text((chip_x + 48, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
+            draw.ellipse([(chip_x + 18, chip_y + 15), (chip_x + 40, chip_y + 37)], outline=(255, 255, 255, 255), width=2)
+            draw.text((chip_x + 26, chip_y + 16), '!', font=font_pill, fill=(255, 255, 255, 255))
+            draw.text((chip_x + 48, chip_y + 16), chip_text, font=font_pill, fill=(255, 255, 255, 255))
         elif chip_type in ('button', 'calendar'):
             # Vector Calendar Icon for Maak Afspraak
             cx = chip_x + 20
-            cy = chip_y + 17
+            cy = chip_y + 18
             draw.rounded_rectangle([(cx, cy + 3), (cx + 17, cy + 18)], radius=3, outline=(255, 255, 255, 255), width=2)
             draw.line([(cx, cy + 8), (cx + 17, cy + 8)], fill=(255, 255, 255, 255), width=2)
             draw.line([(cx + 4, cy), (cx + 4, cy + 4)], fill=(255, 255, 255, 255), width=2)
             draw.line([(cx + 13, cy), (cx + 13, cy + 4)], fill=(255, 255, 255, 255), width=2)
             draw.rectangle([(cx + 6, cy + 11), (cx + 11, cy + 15)], fill=(255, 255, 255, 255))
-            draw.text((chip_x + 48, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
+            draw.text((chip_x + 48, chip_y + 16), chip_text, font=font_pill, fill=(255, 255, 255, 255))
 
 def draw_checkmark(draw, x, y, size=16, color=(255, 255, 255, 255), width=3):
     pts = [
@@ -168,18 +168,17 @@ def render_scene1():
         # Lower Third Card (slide in at t=0.5s) on right side in open living room space
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
-            lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
+            lt_y = 838 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
             lt_x = 840
             card_w = 1000
-            card_h = 160
+            card_h = 182
             
             draw_huisstijl_card(
                 frame, lt_x, lt_y, card_w, card_h,
                 kicker_text="HET SENIOREN-DILEMMA", kicker_color='orange',
                 title_text="Het Dilemma in de Markt:", title_highlight="€ 4.500 vs. € 500", title_highlight_color=(243, 146, 35, 255),
                 subtitle_text="Nieuw is onbetaalbaar (€ 4.500+) • Marktplaats is een risico zonder garantie",
-                chip_text="MARKTVACUÜM", chip_type='warning', chip_color=(243, 146, 35, 255),
-                left_accent_color=(243, 146, 35, 255)
+                chip_text="MARKTVACUÜM", chip_type='warning', chip_color=(243, 146, 35, 255)
             )
 
         draw_watermark(frame, 'left')
@@ -266,18 +265,17 @@ def render_scene2():
         # Lower Third Card (slide in at t=0.5s)
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
-            lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
+            lt_y = 838 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
             lt_x = 80
             card_w = 1020
-            card_h = 160
+            card_h = 182
             
             draw_huisstijl_card(
                 frame, lt_x, lt_y, card_w, card_h,
                 kicker_text="OFFICIEEL FITFORM DEALER", kicker_color='green',
                 title_text="Certified Fitform Occasion", title_highlight="v.a. € 1.050,-", title_highlight_color=(75, 143, 36, 255),
                 subtitle_text="Medische topkwaliteit voor minder dan de helft van de prijs • Showroom Dordrecht",
-                chip_text="2 JAAR GARANTIE", chip_type='check', chip_color=(243, 146, 35, 255),
-                left_accent_color=(75, 143, 36, 255)
+                chip_text="2 JAAR GARANTIE", chip_type='check', chip_color=(243, 146, 35, 255)
             )
 
         draw_watermark(frame, 'right')
@@ -574,18 +572,17 @@ def render_scene3():
         # Lower Third Card
         lt_prog = min(1.0, max(0.0, (t - 0.6) / 0.5))
         if lt_prog > 0:
-            lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
+            lt_y = 838 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
             lt_x = 80
             card_w = 1020
-            card_h = 160
+            card_h = 182
             
             draw_huisstijl_card(
                 frame, lt_x, lt_y, card_w, card_h,
                 kicker_text="30-PUNTS TECHNISCHE KEURING", kicker_color='orange',
                 title_text="Geertjan Klein Haneveld", title_highlight="100% op Maat", title_highlight_color=(75, 143, 36, 255),
                 subtitle_text="Bewegingstechnoloog & Zitspecialist • Werkplaats Merwedestraat 239",
-                chip_text="100% OP MAAT", chip_type='check', chip_color=(75, 143, 36, 255),
-                left_accent_color=(75, 143, 36, 255)
+                chip_text="100% OP MAAT", chip_type='check', chip_color=(75, 143, 36, 255)
             )
 
         draw_watermark(frame, 'right')
@@ -644,17 +641,16 @@ def render_scene4():
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
             card_w = 1040
-            card_h = 160
+            card_h = 182
             lt_x = 80
-            lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
+            lt_y = 838 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
             
             draw_huisstijl_card(
                 frame, lt_x, lt_y, card_w, card_h,
                 kicker_text="SHOWROOM DORDRECHT & AAN HUIS", kicker_color='orange',
                 title_text="Kom Vrijblijvend Proefzitten", title_highlight="in Dordrecht", title_highlight_color=(75, 143, 36, 255),
                 subtitle_text="Merwedestraat 239 • Bel direct: 078 - 631 4858 • Gratis parkeren voor de deur",
-                chip_text="MAAK AFSPRAAK", chip_type='button', chip_color=(75, 143, 36, 255),
-                left_accent_color=(75, 143, 36, 255)
+                chip_text="MAAK AFSPRAAK", chip_type='button', chip_color=(75, 143, 36, 255)
             )
 
         draw_watermark(frame, 'left')
