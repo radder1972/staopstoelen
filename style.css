@@ -3639,8 +3639,9 @@ footer h3, footer h4 {
   transform: translateY(0) scale(1);
 }
 
-/* Announcement Bar Najaarsactie (Stijlvol, rustig & minimalistisch) */
+/* Announcement Bar Najaarsactie (Verborgen op verzoek) */
 .announcement-bar-najaar {
+  display: none !important;
   background: linear-gradient(90deg, #ea580c 0%, #e68a00 45%, #256616 100%);
   color: #ffffff;
   font-size: 0.86rem;
