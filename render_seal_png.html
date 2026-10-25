@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: transparent;
+      width: 600px;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .seal-svg-container {
+      width: 600px;
+      height: 600px;
+      filter: drop-shadow(0 14px 28px rgba(18, 43, 7, 0.35));
+    }
+  </style>
+</head>
+<body>
+  <div class="seal-svg-container" id="container"></div>
+  <script>
+    fetch('assets/sticker_certified_fitform.svg')
+      .then(res => res.text())
+      .then(svgText => {
+        document.getElementById('container').innerHTML = svgText;
+      });
+  </script>
+</body>
+</html>

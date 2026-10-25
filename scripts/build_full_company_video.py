@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops
 import subprocess, math, sys, os, random, time
 
 FFMPEG = '/Users/matthiasradder/Library/Python/3.14/lib/python/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1'
@@ -117,6 +117,32 @@ def draw_watermark(frame, side='left'):
         frame.alpha_composite(SWOOSH_LEFT, (0, 0))
     else:
         frame.alpha_composite(SWOOSH_RIGHT, (TW - SWOOSH_RIGHT.width, 0))
+
+SEAL_CERTIFIED = Image.open('assets/sticker_certified_fitform.png').convert('RGBA')
+SEAL_BASE = SEAL_CERTIFIED.resize((175, 175), Image.Resampling.LANCZOS).rotate(-5, resample=Image.Resampling.BICUBIC, expand=True)
+
+def draw_seal_stamp(frame, t, start_t=0.8, base_x=120, base_y=625):
+    if t < start_t:
+        return
+    prog = min(1.0, max(0.0, (t - start_t) / 0.45))
+    if prog <= 0:
+        return
+    if prog < 0.7:
+        scale_f = 1.35 - 0.45 * (prog / 0.7)
+    else:
+        scale_f = 0.90 + 0.10 * ((prog - 0.7) / 0.3)
+    cur_w = max(10, int(SEAL_BASE.width * scale_f))
+    cur_h = max(10, int(SEAL_BASE.height * scale_f))
+    cur_seal = SEAL_BASE.resize((cur_w, cur_h), Image.Resampling.LANCZOS)
+    float_y = math.sin((t - start_t - 0.6) * 1.8) * 3 if (t - start_t) > 0.6 else 0
+    pos_x = base_x - (cur_w - SEAL_BASE.width) // 2
+    pos_y = int(base_y + float_y) - (cur_h - SEAL_BASE.height) // 2
+    if prog < 1.0:
+        alpha_mask = Image.new('L', (cur_w, cur_h), int(255 * prog))
+        r, g, b, a = cur_seal.split()
+        a = ImageChops.multiply(a, alpha_mask)
+        cur_seal = Image.merge('RGBA', (r, g, b, a))
+    frame.alpha_composite(cur_seal, (pos_x, pos_y))
 
 # ==============================================================================
 # SCENE 1: HET DILEMMA (11.7s)
@@ -278,6 +304,7 @@ def render_scene2():
                 chip_text="2 JAAR GARANTIE", chip_type='check', chip_color=(243, 146, 35, 255)
             )
 
+        draw_seal_stamp(frame, t, start_t=0.8, base_x=120, base_y=625)
         draw_watermark(frame, 'right')
         proc.stdin.write(np.array(frame).tobytes())
         
@@ -653,6 +680,7 @@ def render_scene4():
                 chip_text="MAAK AFSPRAAK", chip_type='button', chip_color=(75, 143, 36, 255)
             )
 
+        draw_seal_stamp(frame, t, start_t=0.8, base_x=120, base_y=625)
         draw_watermark(frame, 'left')
         proc.stdin.write(np.array(frame).tobytes())
         
