@@ -675,9 +675,9 @@
       z-index: 10;
       width: 430px;
       max-width: calc(54% - 16px);
-      height: 536px;
-      min-height: 536px;
-      max-height: 536px;
+      height: auto;
+      min-height: 0;
+      max-height: calc(100% - 24px);
       box-sizing: border-box;
       background: linear-gradient(145deg, rgba(244, 251, 242, 0.86) 0%, rgba(234, 247, 232, 0.80) 100%);
       backdrop-filter: blur(20px);
@@ -685,11 +685,11 @@
       border: 1.5px solid rgba(185, 222, 175, 0.65);
       border-radius: 20px;
       box-shadow: 0 18px 45px rgba(22, 45, 16, 0.22), 0 2px 10px rgba(0, 0, 0, 0.08);
-      padding: 16px 18px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      overflow: visible;
+      overflow: hidden;
       transition: background 0.2s ease, opacity 0.25s ease;
     }
 
@@ -848,6 +848,10 @@
     .panel-visual-box {
       width: 100%;
       margin: 8px 0 0;
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Scène 4 redactionele calibratie: 2-regelige kop met royale witruimte en uitgelijnd naar de onderkant */
@@ -2280,11 +2284,11 @@
         align-items: center !important;
       }
       body.is-embedded .companion-panel {
-        height: min(490px, calc(100% - 24px)) !important;
-        min-height: min(490px, calc(100% - 24px)) !important;
-        max-height: min(490px, calc(100% - 24px)) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: calc(100% - 20px) !important;
         box-sizing: border-box !important;
-        overflow: visible !important;
+        overflow: hidden !important;
       }
     }
     @media (max-width: 680px) {
@@ -2567,16 +2571,17 @@
       -webkit-backdrop-filter: blur(14px);
       border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 12px 14px 18px;
+      padding: 12px 14px 14px;
       box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 6px;
       width: 100%;
-      height: 365px;
-      min-height: 365px;
-      max-height: 365px;
+      height: auto;
+      min-height: 0;
+      max-height: 100%;
+      flex: 1 1 auto;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2629,19 +2634,19 @@
       grid-template-columns: 135px 1fr;
       gap: 10px;
       align-items: stretch;
-      height: 192px;
-      min-height: 192px;
-      max-height: 192px;
-      flex-shrink: 0;
+      height: auto;
+      min-height: 0;
+      max-height: 226px;
+      flex: 1 1 auto;
     }
     .anatomy-chair-canvas {
       position: relative;
       background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(75, 143, 36, 0.18);
       border-radius: 10px;
-      height: 192px;
-      min-height: 192px;
-      max-height: 192px;
+      height: 100%;
+      min-height: 0;
+      max-height: 226px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2845,16 +2850,17 @@
       -webkit-backdrop-filter: blur(14px);
       border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 12px 14px 18px;
+      padding: 12px 14px 14px;
       box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 6px;
       width: 100%;
-      height: 365px;
-      min-height: 365px;
-      max-height: 365px;
+      height: auto;
+      min-height: 0;
+      max-height: 100%;
+      flex: 1 1 auto;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2906,18 +2912,18 @@
       display: grid;
       grid-template-columns: 135px 1fr;
       gap: 10px;
-      height: 226px;
-      min-height: 226px;
+      height: auto;
+      min-height: 0;
       max-height: 226px;
-      flex-shrink: 0;
+      flex: 1 1 auto;
       align-items: stretch;
     }
     .zitadvies-icon-stage {
       background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(75, 143, 36, 0.18);
       border-radius: 10px;
-      height: 226px;
-      min-height: 226px;
+      height: 100%;
+      min-height: 0;
       max-height: 226px;
       display: flex;
       align-items: center;
@@ -3195,16 +3201,17 @@
       -webkit-backdrop-filter: blur(14px);
       border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 12px 14px 18px;
+      padding: 12px 14px 14px;
       box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 6px;
       width: 100%;
-      height: 365px;
-      min-height: 365px;
-      max-height: 365px;
+      height: auto;
+      min-height: 0;
+      max-height: 100%;
+      flex: 1 1 auto;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -3213,15 +3220,15 @@
       grid-template-columns: 135px 1fr;
       gap: 10px;
       align-items: stretch;
-      height: 226px;
-      min-height: 226px;
+      height: auto;
+      min-height: 0;
       max-height: 226px;
-      flex-shrink: 0;
+      flex: 1 1 auto;
     }
     .revisie-photo-frame {
       position: relative;
-      height: 226px;
-      min-height: 226px;
+      height: 100%;
+      min-height: 0;
       max-height: 226px;
       border-radius: 10px;
       overflow: hidden;
@@ -3244,8 +3251,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 226px;
-      min-height: 226px;
+      height: 100%;
+      min-height: 0;
       max-height: 226px;
       text-align: left;
       min-width: 0;
