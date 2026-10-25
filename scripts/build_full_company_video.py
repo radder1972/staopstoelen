@@ -3,13 +3,101 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import subprocess, math, sys, os, random, time
 
 FFMPEG = '/Users/matthiasradder/Library/Python/3.14/lib/python/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1'
-FONT_BOLD = '/System/Library/Fonts/Supplemental/Arial Bold.ttf'
-FONT_REG = '/System/Library/Fonts/Supplemental/Arial.ttf'
+FONT_BOLD = 'assets/fonts/Montserrat-Bold.ttf'
+FONT_XBOLD = 'assets/fonts/Montserrat-ExtraBold.ttf'
+FONT_SEMI = 'assets/fonts/Montserrat-SemiBold.ttf'
+FONT_REG = 'assets/fonts/Montserrat-Regular.ttf'
+
+font_kicker = ImageFont.truetype(FONT_BOLD, 17)
+font_title = ImageFont.truetype(FONT_XBOLD, 30)
+font_sub = ImageFont.truetype(FONT_SEMI, 19)
+font_pill = ImageFont.truetype(FONT_BOLD, 17)
+font_badge = ImageFont.truetype(FONT_BOLD, 18)
 
 TW, TH = 1920, 1080
 FPS = 30
 
 os.makedirs('assets/video', exist_ok=True)
+
+def draw_huisstijl_card(
+    frame,
+    lt_x, lt_y, card_w, card_h,
+    kicker_text, kicker_color='green',
+    title_text='', title_highlight='', title_highlight_color=(75, 143, 36, 255),
+    subtitle_text='',
+    chip_text='', chip_type='check', chip_color=(243, 146, 35, 255),
+    left_accent_color=(75, 143, 36, 255)
+):
+    overlay = Image.new('RGBA', (TW, TH), (0, 0, 0, 0))
+    odraw = ImageDraw.Draw(overlay)
+    
+    # Soft drop shadow
+    odraw.rounded_rectangle(
+        [(lt_x + 2, lt_y + 6), (lt_x + card_w + 2, lt_y + card_h + 6)],
+        radius=22, fill=(0, 0, 0, 80)
+    )
+    overlay = overlay.filter(ImageFilter.GaussianBlur(radius=8))
+    frame.alpha_composite(overlay)
+    
+    draw = ImageDraw.Draw(frame)
+    
+    # 1. Main Frosted Glass Card with brand green border
+    draw.rounded_rectangle(
+        [(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)],
+        radius=22, fill=(248, 252, 247, 246), outline=(75, 143, 36, 190), width=2
+    )
+    
+    # 2. Left vertical brand accent bar
+    draw.rounded_rectangle(
+        [(lt_x + 2, lt_y + 14), (lt_x + 8, lt_y + card_h - 14)],
+        radius=4, fill=left_accent_color
+    )
+    
+    # 3. Kicker Pill Badge
+    kw = font_kicker.getlength(kicker_text)
+    pill_w = kw + 38
+    pill_h = 28
+    pill_x = lt_x + 24
+    pill_y = lt_y + 16
+    if kicker_color == 'orange':
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(255, 247, 237, 255), outline=(243, 146, 35, 160), width=1)
+        draw.ellipse([(pill_x + 10, pill_y + 10), (pill_x + 18, pill_y + 18)], fill=(243, 146, 35, 255))
+        draw.text((pill_x + 26, pill_y + 4), kicker_text, font=font_kicker, fill=(180, 83, 9, 255))
+    else:
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(234, 247, 232, 255), outline=(75, 143, 36, 160), width=1)
+        draw.ellipse([(pill_x + 10, pill_y + 10), (pill_x + 18, pill_y + 18)], fill=(75, 143, 36, 255))
+        draw.text((pill_x + 26, pill_y + 4), kicker_text, font=font_kicker, fill=(35, 84, 27, 255))
+        
+    # 4. Title & Highlight
+    title_x = lt_x + 24
+    title_y = lt_y + 54
+    draw.text((title_x, title_y), title_text, font=font_title, fill=(18, 43, 7, 255))
+    if title_highlight:
+        tw = font_title.getlength(title_text + ' ')
+        draw.text((title_x + tw, title_y), title_highlight, font=font_title, fill=title_highlight_color)
+        
+    # 5. Subtitle
+    draw.text((lt_x + 24, lt_y + 106), subtitle_text, font=font_sub, fill=(71, 85, 105, 255))
+    
+    # 6. Action Chip / Badge on the right
+    if chip_text:
+        chip_w = font_pill.getlength(chip_text) + (64 if chip_type in ('check', 'warning', 'button') else 36)
+        chip_w = max(210, chip_w)
+        chip_h = 52
+        chip_x = lt_x + card_w - chip_w - 24
+        chip_y = lt_y + 52
+        draw.rounded_rectangle([(chip_x, chip_y), (chip_x + chip_w, chip_y + chip_h)], radius=16, fill=chip_color)
+        if chip_type == 'check':
+            draw.line([(chip_x + 22, chip_y + 26), (chip_x + 30, chip_y + 36)], fill=(255, 255, 255, 255), width=3)
+            draw.line([(chip_x + 30, chip_y + 36), (chip_x + 44, chip_y + 16)], fill=(255, 255, 255, 255), width=3)
+            draw.text((chip_x + 52, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
+        elif chip_type == 'warning':
+            draw.ellipse([(chip_x + 18, chip_y + 14), (chip_x + 40, chip_y + 36)], outline=(255, 255, 255, 255), width=2)
+            draw.text((chip_x + 26, chip_y + 15), '!', font=font_pill, fill=(255, 255, 255, 255))
+            draw.text((chip_x + 48, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
+        elif chip_type == 'button':
+            draw.text((chip_x + 22, chip_y + 15), '➔', font=font_pill, fill=(255, 255, 255, 255))
+            draw.text((chip_x + 48, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
 
 def draw_checkmark(draw, x, y, size=16, color=(255, 255, 255, 255), width=3):
     pts = [
@@ -75,32 +163,23 @@ def render_scene1():
         y0 = max(0, min(bh - crop_h, cy - crop_h / 2.0))
         
         frame = base.crop((int(x0), int(y0), int(x0 + crop_w), int(y0 + crop_h))).resize((TW, TH), Image.Resampling.BILINEAR).convert('RGBA')
-        draw = ImageDraw.Draw(frame)
         
         # Lower Third Card (slide in at t=0.5s) on right side in open living room space
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
             lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
-            lt_x = 860
-            card_w = 970
-            card_h = 145
+            lt_x = 840
+            card_w = 1000
+            card_h = 160
             
-            draw.rounded_rectangle([(lt_x+4, lt_y+4), (lt_x + card_w+4, lt_y + card_h+4)], radius=16, fill=(0, 0, 0, 100))
-            draw.rounded_rectangle([(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)], radius=16, fill=(18, 24, 32, 230), outline=(243, 146, 35, 180), width=2)
-            
-            # Kicker
-            draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 370, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
-            draw.text((lt_x + 38, lt_y + 20), "DE HUIDIGE ZORGMARKT", font=font_kicker, fill=(255, 255, 255, 255))
-            
-            # Title
-            draw.text((lt_x + 24, lt_y + 54), "Het Senioren Dilemma", font=font_title, fill=(255, 255, 255, 255))
-            
-            # Subtitle
-            draw.text((lt_x + 24, lt_y + 102), "Nieuw is onbetaalbaar (€ 4.500+) • Marktplaats is een risico", font=font_sub, fill=(220, 225, 230, 240))
-            
-            # Warning chip on right
-            draw.rounded_rectangle([(lt_x + card_w - 240, lt_y + 45), (lt_x + card_w - 24, lt_y + 100)], radius=10, fill=(185, 28, 28, 230))
-            draw.text((lt_x + card_w - 215, lt_y + 60), "! ONZEKERHEID", font=font_pill, fill=(255, 255, 255, 255))
+            draw_huisstijl_card(
+                frame, lt_x, lt_y, card_w, card_h,
+                kicker_text="HET SENIOREN-DILEMMA", kicker_color='orange',
+                title_text="Het Dilemma in de Markt:", title_highlight="€ 4.500 vs. € 500", title_highlight_color=(243, 146, 35, 255),
+                subtitle_text="Nieuw is onbetaalbaar (€ 4.500+) • Marktplaats is een risico zonder garantie",
+                chip_text="MARKTVACUÜM", chip_type='warning', chip_color=(243, 146, 35, 255),
+                left_accent_color=(243, 146, 35, 255)
+            )
 
         draw_watermark(frame, 'left')
         proc.stdin.write(np.array(frame).tobytes())
@@ -187,27 +266,18 @@ def render_scene2():
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
             lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
-            lt_x = 90
-            card_w = 980
-            card_h = 145
+            lt_x = 80
+            card_w = 1020
+            card_h = 160
             
-            draw.rounded_rectangle([(lt_x+4, lt_y+4), (lt_x + card_w+4, lt_y + card_h+4)], radius=16, fill=(0, 0, 0, 100))
-            draw.rounded_rectangle([(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)], radius=16, fill=(18, 35, 18, 230), outline=(106, 177, 60, 200), width=2)
-            
-            # Kicker
-            draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 380, lt_y + 46)], radius=8, fill=(75, 143, 36, 240))
-            draw.text((lt_x + 38, lt_y + 20), "OFFICIEEL FITFORM DEALER", font=font_kicker, fill=(255, 255, 255, 255))
-            
-            # Title
-            draw.text((lt_x + 24, lt_y + 54), "Certified Fitform Occasion", font=font_title, fill=(255, 255, 255, 255))
-            
-            # Subtitle
-            draw.text((lt_x + 24, lt_y + 102), "Medische topkwaliteit voor de helft van de prijs: v.a. € 1.050,-", font=font_sub, fill=(190, 225, 180, 240))
-            
-            # Green badge on right
-            draw.rounded_rectangle([(lt_x + card_w - 240, lt_y + 42), (lt_x + card_w - 24, lt_y + 102)], radius=12, fill=(243, 146, 35, 240))
-            draw_checkmark(draw, lt_x + card_w - 220, lt_y + 58, size=24, color=(255, 255, 255, 255), width=3)
-            draw.text((lt_x + card_w - 185, lt_y + 58), "2 JAAR GARANTIE", font=font_pill, fill=(255, 255, 255, 255))
+            draw_huisstijl_card(
+                frame, lt_x, lt_y, card_w, card_h,
+                kicker_text="OFFICIEEL FITFORM DEALER", kicker_color='green',
+                title_text="Certified Fitform Occasion", title_highlight="v.a. € 1.050,-", title_highlight_color=(75, 143, 36, 255),
+                subtitle_text="Medische topkwaliteit voor minder dan de helft van de prijs • Showroom Dordrecht",
+                chip_text="2 JAAR GARANTIE", chip_type='check', chip_color=(243, 146, 35, 255),
+                left_accent_color=(75, 143, 36, 255)
+            )
 
         draw_watermark(frame, 'right')
         proc.stdin.write(np.array(frame).tobytes())
@@ -314,27 +384,18 @@ def render_scene3():
         lt_prog = min(1.0, max(0.0, (t - 0.6) / 0.5))
         if lt_prog > 0:
             lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
-            lt_x = 90
-            card_w = 980
-            card_h = 145
+            lt_x = 80
+            card_w = 1020
+            card_h = 160
             
-            draw.rounded_rectangle([(lt_x+4, lt_y+4), (lt_x + card_w+4, lt_y + card_h+4)], radius=16, fill=(0, 0, 0, 100))
-            draw.rounded_rectangle([(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)], radius=16, fill=(18, 32, 20, 230), outline=(75, 143, 36, 200), width=2)
-            
-            # Kicker
-            draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 360, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
-            draw.text((lt_x + 38, lt_y + 20), "30-PUNTS KEURING & REVISIE", font=font_kicker, fill=(255, 255, 255, 255))
-            
-            # Title
-            draw.text((lt_x + 24, lt_y + 54), "Geertjan Klein Haneveld", font=font_title, fill=(255, 255, 255, 255))
-            
-            # Subtitle
-            draw.text((lt_x + 24, lt_y + 102), "Bewegingstechnoloog & Zitspecialist • Werkplaats Dordrecht", font=font_sub, fill=(180, 220, 160, 240))
-            
-            # Graphic Checkmark Badge on right
-            draw.rounded_rectangle([(lt_x + card_w - 230, lt_y + 42), (lt_x + card_w - 24, lt_y + 102)], radius=12, fill=(75, 143, 36, 240))
-            draw_checkmark(draw, lt_x + card_w - 210, lt_y + 58, size=24, color=(255, 255, 255, 255), width=3)
-            draw.text((lt_x + card_w - 175, lt_y + 58), "100% OP MAAT", font=font_pill, fill=(255, 255, 255, 255))
+            draw_huisstijl_card(
+                frame, lt_x, lt_y, card_w, card_h,
+                kicker_text="30-PUNTS TECHNISCHE KEURING", kicker_color='orange',
+                title_text="Geertjan Klein Haneveld", title_highlight="100% op Maat", title_highlight_color=(75, 143, 36, 255),
+                subtitle_text="Bewegingstechnoloog & Zitspecialist • Werkplaats Merwedestraat 239",
+                chip_text="100% OP MAAT", chip_type='check', chip_color=(75, 143, 36, 255),
+                left_accent_color=(75, 143, 36, 255)
+            )
 
         draw_watermark(frame, 'right')
         proc.stdin.write(np.array(frame).tobytes())
@@ -391,31 +452,19 @@ def render_scene4():
         # Lower Third / Showroom CTA Card (slide up at t=0.5s)
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
-            card_w = 1100
-            card_h = 148
-            lt_x = (TW - card_w) // 2
-            lt_y = 870 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
+            card_w = 1040
+            card_h = 160
+            lt_x = 80
+            lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
             
-            draw.rounded_rectangle([(lt_x+4, lt_y+4), (lt_x + card_w+4, lt_y + card_h+4)], radius=16, fill=(0, 0, 0, 110))
-            draw.rounded_rectangle([(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)], radius=16, fill=(15, 28, 18, 235), outline=(75, 143, 36, 200), width=2)
-            
-            # Kicker
-            draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 390, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
-            draw.text((lt_x + 38, lt_y + 20), "SHOWROOM DORDRECHT", font=font_kicker, fill=(255, 255, 255, 255))
-            
-            # Title
-            draw.text((lt_x + 24, lt_y + 54), "Kom Proefzitten in Dordrecht", font=font_title, fill=(255, 255, 255, 255))
-            
-            # Subtitle
-            draw.text((lt_x + 24, lt_y + 102), "Merwedestraat 239 • Bel direct: 078 - 631 4858", font=font_sub, fill=(255, 220, 180, 240))
-            
-            # Green CTA button
-            btn_w = 230
-            btn_h = 50
-            btn_x = lt_x + card_w - btn_w - 24
-            btn_y = lt_y + 48
-            draw.rounded_rectangle([(btn_x, btn_y), (btn_x + btn_w, btn_y + btn_h)], radius=12, fill=(75, 143, 36, 240))
-            draw.text((btn_x + 24, btn_y + 14), "MAAK AFSPRAAK", font=font_pill, fill=(255, 255, 255, 255))
+            draw_huisstijl_card(
+                frame, lt_x, lt_y, card_w, card_h,
+                kicker_text="SHOWROOM DORDRECHT & AAN HUIS", kicker_color='orange',
+                title_text="Kom Vrijblijvend Proefzitten", title_highlight="in Dordrecht", title_highlight_color=(75, 143, 36, 255),
+                subtitle_text="Merwedestraat 239 • Bel direct: 078 - 631 4858 • Gratis parkeren voor de deur",
+                chip_text="MAAK AFSPRAAK", chip_type='button', chip_color=(75, 143, 36, 255),
+                left_accent_color=(75, 143, 36, 255)
+            )
 
         draw_watermark(frame, 'left')
         proc.stdin.write(np.array(frame).tobytes())
