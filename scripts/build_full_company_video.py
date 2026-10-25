@@ -347,9 +347,9 @@ def render_scene3():
 # SCENE 4: DE ZEKERHEID & AFSPRAAK (12.54s)
 # ==============================================================================
 def render_scene4():
-    print("--- Rendering Scene 4: De Zekerheid ---")
-    img_clipboard = Image.open('assets/checklist_klembord_dordrecht.jpg').convert('RGB')
-    img_handshake = Image.open('assets/schipper_partnership_handshake_v3.jpg').convert('RGB')
+    print("--- Rendering Scene 4: Geertjan in de Showroom ---")
+    base = Image.open('assets/geert_in_de_winkel_169.jpg').convert('RGB')
+    bw, bh = base.size
     
     duration = 12.54
     total_frames = int(duration * FPS)
@@ -372,77 +372,50 @@ def render_scene4():
     font_sub = ImageFont.truetype(FONT_REG, 24)
     font_pill = ImageFont.truetype(FONT_BOLD, 22)
     
-    # Transition time between clipboard and handshake: t=6.5s to 7.8s
-    t_trans_start = 6.5
-    t_trans_end = 7.8
-    
     for f in range(total_frames):
         t = f / float(FPS)
+        prog = f / float(total_frames)
         
-        # 1. Clipboard shot (t < 7.8s)
-        zoom_clip = 1.0 + 0.05 * (t / 7.0)
-        bw_c, bh_c = img_clipboard.size
-        cw_c = bw_c / zoom_clip
-        ch_c = bh_c / zoom_clip
-        cx_c = bw_c * (0.48 + 0.03 * (t / 7.0))
-        cy_c = bh_c * 0.52
-        x0_c = max(0, min(bw_c - cw_c, cx_c - cw_c / 2.0))
-        y0_c = max(0, min(bh_c - ch_c, cy_c - ch_c / 2.0))
-        frame_clip = img_clipboard.crop((int(x0_c), int(y0_c), int(x0_c + cw_c), int(y0_c + ch_c))).resize((TW, TH), Image.Resampling.BILINEAR).convert('RGBA')
+        # Gentle cinematic push-in towards Geertjan's warm smile in the showroom
+        zoom = 1.00 + 0.05 * math.sin(prog * math.pi * 0.5)
+        crop_w = bw / zoom
+        crop_h = bh / zoom
+        cx = bw * 0.50
+        cy = bh * 0.48
+        x0 = max(0, min(bw - crop_w, cx - crop_w / 2.0))
+        y0 = max(0, min(bh - crop_h, cy - crop_h / 2.0))
+        frame = base.crop((int(x0), int(y0), int(x0 + crop_w), int(y0 + crop_h))).resize((TW, TH), Image.Resampling.BILINEAR).convert('RGBA')
         
-        # 2. Handshake shot (t > 6.5s)
-        zoom_hs = 1.0 + 0.04 * ((t - 6.5) / 6.0)
-        bw_h, bh_h = img_handshake.size
-        cw_h = bw_h / zoom_hs
-        ch_h = bh_h / zoom_hs
-        cx_h = bw_h * 0.52
-        cy_h = bh_h * 0.50
-        x0_h = max(0, min(bw_h - cw_h, cx_h - cw_h / 2.0))
-        y0_h = max(0, min(bh_h - ch_h, cy_h - ch_h / 2.0))
-        frame_hs = img_handshake.crop((int(x0_h), int(y0_h), int(x0_h + cw_h), int(y0_h + ch_h))).resize((TW, TH), Image.Resampling.BILINEAR).convert('RGBA')
-        
-        # Crossfade blend
-        if t < t_trans_start:
-            frame = frame_clip
-        elif t > t_trans_end:
-            frame = frame_hs
-        else:
-            blend = (t - t_trans_start) / (t_trans_end - t_trans_start)
-            frame = Image.blend(frame_clip, frame_hs, blend)
-            
         draw = ImageDraw.Draw(frame)
         
-        # Lower Third / CTA Card
+        # Lower Third / Showroom CTA Card (slide up at t=0.5s)
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
-            lt_y = 860
-            lt_x = 90
-            card_w = 1020
-            card_h = 150
+            card_w = 1100
+            card_h = 148
+            lt_x = (TW - card_w) // 2
+            lt_y = 870 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
             
-            draw.rounded_rectangle([(lt_x+4, lt_y+4), (lt_x + card_w+4, lt_y + card_h+4)], radius=16, fill=(0, 0, 0, 100))
+            draw.rounded_rectangle([(lt_x+4, lt_y+4), (lt_x + card_w+4, lt_y + card_h+4)], radius=16, fill=(0, 0, 0, 110))
             draw.rounded_rectangle([(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)], radius=16, fill=(15, 28, 18, 235), outline=(75, 143, 36, 200), width=2)
             
-            if t < t_trans_start:
-                # Part 1: Klembord & Garantie
-                draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 360, lt_y + 46)], radius=8, fill=(75, 143, 36, 240))
-                draw.text((lt_x + 38, lt_y + 20), "OFFICIEEL DOSSIER", font=font_kicker, fill=(255, 255, 255, 255))
-                draw.text((lt_x + 24, lt_y + 54), "24 Maanden Volledige Garantie", font=font_title, fill=(255, 255, 255, 255))
-                draw.text((lt_x + 24, lt_y + 102), "Gekeurd & gecertificeerd in Dordrecht • Binnen 2-5 dagen geleverd", font=font_sub, fill=(190, 225, 180, 240))
-                
-                draw.rounded_rectangle([(lt_x + card_w - 240, lt_y + 42), (lt_x + card_w - 24, lt_y + 102)], radius=12, fill=(243, 146, 35, 240))
-                draw_checkmark(draw, lt_x + card_w - 220, lt_y + 58, size=24, color=(255, 255, 255, 255), width=3)
-                draw.text((lt_x + card_w - 185, lt_y + 58), "GEGARANDEERD", font=font_pill, fill=(255, 255, 255, 255))
-            else:
-                # Part 2: Showroom & Afspraak CTA
-                draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 380, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
-                draw.text((lt_x + 38, lt_y + 20), "SHOWROOM DORDRECHT", font=font_kicker, fill=(255, 255, 255, 255))
-                draw.text((lt_x + 24, lt_y + 54), "Kom Proefzitten in Dordrecht", font=font_title, fill=(255, 255, 255, 255))
-                draw.text((lt_x + 24, lt_y + 102), "Merwedestraat 239 • Bel direct: 078 - 631 4858", font=font_sub, fill=(255, 220, 180, 240))
-                
-                # Green CTA button
-                draw.rounded_rectangle([(lt_x + card_w - 250, lt_y + 42), (lt_x + card_w - 24, lt_y + 102)], radius=12, fill=(75, 143, 36, 240))
-                draw.text((lt_x + card_w - 230, lt_y + 58), "MAAK AFSPRAAK", font=font_pill, fill=(255, 255, 255, 255))
+            # Kicker
+            draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 390, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
+            draw.text((lt_x + 38, lt_y + 20), "SHOWROOM DORDRECHT", font=font_kicker, fill=(255, 255, 255, 255))
+            
+            # Title
+            draw.text((lt_x + 24, lt_y + 54), "Kom Proefzitten in Dordrecht", font=font_title, fill=(255, 255, 255, 255))
+            
+            # Subtitle
+            draw.text((lt_x + 24, lt_y + 102), "Merwedestraat 239 • Bel direct: 078 - 631 4858", font=font_sub, fill=(255, 220, 180, 240))
+            
+            # Green CTA button
+            btn_w = 230
+            btn_h = 50
+            btn_x = lt_x + card_w - btn_w - 24
+            btn_y = lt_y + 48
+            draw.rounded_rectangle([(btn_x, btn_y), (btn_x + btn_w, btn_y + btn_h)], radius=12, fill=(75, 143, 36, 240))
+            draw.text((btn_x + 24, btn_y + 14), "MAAK AFSPRAAK", font=font_pill, fill=(255, 255, 255, 255))
 
         draw_watermark(frame, 'left')
         proc.stdin.write(np.array(frame).tobytes())
