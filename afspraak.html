@@ -310,13 +310,16 @@
           </div>
         </div>
 
-        <div style="position: relative; width: 100%; height: 560px; max-height: 600px; min-height: 460px; border-radius: 14px; overflow: hidden; background: #122b07; box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
-          <iframe 
-            src="certified-fitform-video.html?mode=afspraak&embed=1" 
-            title="Persoonlijke Zitmeting & Proefzitten Dordrecht" 
-            allow="autoplay; fullscreen" 
-            style="width: 100%; height: 100%; border: none; display: block;">
-          </iframe>
+        <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 560px; border-radius: 14px; overflow: hidden; background: #122b07; box-shadow: 0 6px 24px rgba(0,0,0,0.14);">
+          <video 
+            controls 
+            playsinline 
+            preload="metadata" 
+            poster="assets/video/zitmeting_poster.jpg" 
+            style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px;">
+            <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4" type="video/mp4">
+            Uw browser ondersteunt geen HTML5 video.
+          </video>
         </div>
       </div>
 

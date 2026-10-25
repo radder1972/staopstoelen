@@ -2277,15 +2277,28 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   const player = document.getElementById("videoLightboxPlayer");
   const iframe = document.getElementById("videoLightboxIframe");
 
-  if (mode === "afspraak" || mode === "zitmeting" || mode === "proefzitten" || mode === "pasvorm") {
-    if (heading) heading.textContent = mode === "pasvorm" ? "Pasformulier & Stoel-Anatomie" : "Hoe werkt Proefzitten & Zitmeting?";
+  if (mode === "afspraak" || mode === "zitmeting" || mode === "proefzitten") {
+    if (heading) heading.textContent = "Persoonlijke Zitmeting & Proefzitten Dordrecht";
+    if (iframe) {
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4";
+      player.poster = "assets/video/zitmeting_poster.jpg";
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(() => {});
+    }
+  } else if (mode === "pasvorm") {
+    if (heading) heading.textContent = "Pasformulier & Stoel-Anatomie";
     if (player) {
       player.pause();
       player.style.display = "none";
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=${mode}&embed=1&autoplay=1&v=2.25`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=2.26`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Inspectie, Revisie & Zitadvies";
