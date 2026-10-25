@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: transparent;
+      width: 480px;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .video-corner-swoosh-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 480px;
+      height: 167px;
+    }
+    .swoosh-badge-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+    }
+    .corner-swoosh-content {
+      position: absolute;
+      top: 22px;
+      left: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .corner-logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2.15rem;
+      letter-spacing: -0.7px;
+      line-height: 1.05;
+      display: inline-flex;
+      align-items: baseline;
+    }
+    .logo-name { color: #4b8f24; }
+    .logo-dot-nl { color: #f39223; }
+    .corner-strapline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      color: #122b07;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    
+    /* Right variant */
+    body.is-right .video-corner-swoosh-badge {
+      left: auto;
+      right: 0;
+    }
+    body.is-right .swoosh-badge-svg {
+      transform: scaleX(-1);
+    }
+    body.is-right .corner-swoosh-content {
+      left: auto;
+      right: 32px;
+      align-items: flex-end;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-corner-swoosh-badge">
+    <svg class="swoosh-badge-svg" viewBox="0 0 360 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="swooshLineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#4b8f24" stop-opacity="0.9"/>
+          <stop offset="50%" stop-color="#6ab13c" stop-opacity="0.95"/>
+          <stop offset="80%" stop-color="#f39223" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#f39223" stop-opacity="0.3"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Het witte organische uitsnijdingsvlak -->
+      <path d="M 0,0 
+               L 350,0 
+               C 315,22 245,68 175,80 
+               C 105,92 45,98 0,118 
+               Z" 
+            fill="#ffffff"/>
+
+      <!-- Kleuraccent langs de golflijn -->
+      <path d="M 0,118 
+               C 45,98 105,92 175,80 
+               C 245,68 315,22 350,0" 
+            stroke="url(#swooshLineGrad)" 
+            stroke-width="3.2" 
+            stroke-linecap="round" 
+            fill="none"/>
+      
+      <!-- Diepte schaduw rand -->
+      <path d="M 0,118 
+               C 45,98 105,92 175,80 
+               C 245,68 315,22 350,0" 
+            stroke="rgba(0,0,0,0.12)" 
+            stroke-width="5" 
+            stroke-linecap="round" 
+            fill="none" 
+            opacity="0.5"/>
+    </svg>
+
+    <div class="corner-swoosh-content">
+      <div class="corner-logo-text">
+        <span class="logo-name">staopstoelen</span><span class="logo-dot-nl">.nl</span>
+      </div>
+      <div class="corner-strapline">
+        CERTIFIED FITFORM
+      </div>
+    </div>
+  </div>
+  <script>
+    if (window.location.search.includes('right=1')) {
+      document.body.classList.add('is-right');
+    }
+  </script>
+</body>
+</html>

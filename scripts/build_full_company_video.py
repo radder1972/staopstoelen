@@ -20,13 +20,14 @@ def draw_checkmark(draw, x, y, size=16, color=(255, 255, 255, 255), width=3):
     draw.line([pts[0], pts[1]], fill=color, width=width)
     draw.line([pts[1], pts[2]], fill=color, width=width)
 
-def draw_watermark(frame):
-    draw = ImageDraw.Draw(frame)
-    font_brand = ImageFont.truetype(FONT_BOLD, 30)
-    # Background glass pill
-    draw.rounded_rectangle([(70, 45), (370, 95)], radius=12, fill=(15, 25, 18, 180), outline=(75, 143, 36, 120), width=1)
-    draw.text((90, 52), "staopstoelen", font=font_brand, fill=(106, 177, 60, 255))
-    draw.text((290, 52), ".nl", font=font_brand, fill=(243, 146, 35, 255))
+SWOOSH_LEFT = Image.open('assets/swoosh_badge_left.png').convert('RGBA')
+SWOOSH_RIGHT = Image.open('assets/swoosh_badge_right.png').convert('RGBA')
+
+def draw_watermark(frame, side='left'):
+    if side == 'left':
+        frame.alpha_composite(SWOOSH_LEFT, (0, 0))
+    else:
+        frame.alpha_composite(SWOOSH_RIGHT, (TW - SWOOSH_RIGHT.width, 0))
 
 # ==============================================================================
 # SCENE 1: HET DILEMMA (11.7s)
@@ -101,7 +102,7 @@ def render_scene1():
             draw.rounded_rectangle([(lt_x + card_w - 240, lt_y + 42), (lt_x + card_w - 24, lt_y + 102)], radius=12, fill=(185, 28, 28, 220))
             draw.text((lt_x + card_w - 215, lt_y + 58), "! ONZEKERHEID", font=font_pill, fill=(255, 255, 255, 255))
 
-        draw_watermark(frame)
+        draw_watermark(frame, 'left')
         proc.stdin.write(np.array(frame).tobytes())
         
     proc.stdin.close()
@@ -208,7 +209,7 @@ def render_scene2():
             draw_checkmark(draw, lt_x + card_w - 220, lt_y + 58, size=24, color=(255, 255, 255, 255), width=3)
             draw.text((lt_x + card_w - 185, lt_y + 58), "2 JAAR GARANTIE", font=font_pill, fill=(255, 255, 255, 255))
 
-        draw_watermark(frame)
+        draw_watermark(frame, 'right')
         proc.stdin.write(np.array(frame).tobytes())
         
     proc.stdin.close()
@@ -335,7 +336,7 @@ def render_scene3():
             draw_checkmark(draw, lt_x + card_w - 210, lt_y + 58, size=24, color=(255, 255, 255, 255), width=3)
             draw.text((lt_x + card_w - 175, lt_y + 58), "100% OP MAAT", font=font_pill, fill=(255, 255, 255, 255))
 
-        draw_watermark(frame)
+        draw_watermark(frame, 'right')
         proc.stdin.write(np.array(frame).tobytes())
         
     proc.stdin.close()
@@ -443,7 +444,7 @@ def render_scene4():
                 draw.rounded_rectangle([(lt_x + card_w - 250, lt_y + 42), (lt_x + card_w - 24, lt_y + 102)], radius=12, fill=(75, 143, 36, 240))
                 draw.text((lt_x + card_w - 230, lt_y + 58), "MAAK AFSPRAAK", font=font_pill, fill=(255, 255, 255, 255))
 
-        draw_watermark(frame)
+        draw_watermark(frame, 'left')
         proc.stdin.write(np.array(frame).tobytes())
         
     proc.stdin.close()
