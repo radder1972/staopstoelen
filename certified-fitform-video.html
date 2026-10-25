@@ -4078,6 +4078,7 @@
       
       <!-- LEFT: 100% Pure Cinema Screen met YouTube Click-to-Play -->
       <div class="cinema-screen" id="cinema-screen" onclick="handleScreenClick(event)" title="Klik om af te spelen / te pauzeren">
+        <video src="" class="scene-bg-video" id="scene-bg-video" playsinline muted loop style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; z-index: 1;"></video>
         <img src="assets/senior_chair_dilemma_v3.jpg?v=20261024_05" alt="Scene Background" class="scene-bg motion-0" id="scene-bg">
         <img src="" alt="Scene Background Crossfade" class="scene-bg scene-bg-secondary motion-0" id="scene-bg-secondary">
         <div class="cinema-vignette"></div>
@@ -4473,6 +4474,7 @@
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "Een nieuwe ergonomische sta-opstoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
       bg: "assets/senior_chair_dilemma_v3.jpg?v=20261024_05",
+      video: "assets/video/scene1_dilemma.mp4",
       audio: "assets/audio/consumer_scene_1.m4a?v=eleven_2",
       durationSec: 11.65,
       visualHtml: `
@@ -4519,6 +4521,7 @@
       caption: "staopstoelen.nl overbrugt dit gat met Certified Fitform: Nederlandse topkwaliteit voor 1.550 euro, mét 24 maanden volledige omruilgarantie.",
       voiceText: "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
       bg: "assets/certified_fitform_living_room_v1.jpg",
+      video: "assets/video/scene2_showroom.mp4",
       audio: "assets/audio/consumer_scene_2.m4a?v=eleven_2",
       durationSec: 10.67,
       visualHtml: `
@@ -4796,6 +4799,7 @@
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "Een nieuwe ergonomische sta-opstoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
       bg: "assets/senior_chair_dilemma_v3.jpg?v=20261024_05",
+      video: "assets/video/scene1_dilemma.mp4",
       audio: "assets/audio/consumer_scene_1.m4a?v=eleven_2",
       durationSec: 11.65,
       visualHtml: `
@@ -4842,6 +4846,7 @@
       caption: "staopstoelen.nl overbrugt dit gat met Certified Fitform: Nederlandse topkwaliteit voor 1.550 euro, mét 24 maanden volledige omruilgarantie.",
       voiceText: "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét 24 maanden volledige omruilgarantie.",
       bg: "assets/certified_fitform_living_room_v1.jpg",
+      video: "assets/video/scene2_showroom.mp4",
       audio: "assets/audio/consumer_scene_2.m4a?v=eleven_2",
       durationSec: 10.67,
       visualHtml: `
@@ -4877,6 +4882,7 @@
       caption: "Elke stoel krijgt een 30-punten keuring, ozon-dieptereiniging en wordt door staopstoelen.nl exact op uw lichaam afgesteld. Zo zit uw stoel weer echt als nieuw, voor jarenlang zorgeloos zitcomfort.",
       voiceText: "Elke stoel krijgt een dertig-punten keuring, ozon-dieptereiniging en wordt door staopstoelen punt nl exact op uw lichaam afgesteld. Zo zit uw stoel weer echt als nieuw, voor jarenlang zorgeloos zitcomfort.",
       bg: "assets/dutch_technician_fitform_workshop_v2.jpg?v=20261024_02",
+      video: "assets/video/scene3_werkplaats.mp4",
       audio: "assets/audio/consumer_scene_3.m4a?v=eleven_2",
       durationSec: 12.27,
       visualHtml: `
@@ -4933,6 +4939,7 @@
       caption: "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht, of vraag een demonstratie aan huis aan. Bel 078 - 631 4858 of kijk op staopstoelen.nl.",
       voiceText: "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht, of vraag een demonstratie aan huis aan. Bel nul zeven acht, zes drie een, vier acht vijf acht, of kijk op staopstoelen punt nl.",
       bg: "assets/certified_fitform_occasion_showroom_left.jpg?v=20261024_1",
+      video: "assets/video/scene4_zekerheid.mp4",
       audio: "assets/audio/consumer_scene_4.m4a?v=eleven_2",
       durationSec: 12.48,
       visualHtml: `
@@ -5616,6 +5623,8 @@
       currentAudio = null;
     }
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    const bgVid = document.getElementById('scene-bg-video');
+    if (bgVid && !isPlaying) bgVid.pause();
   }
 
   let currentSceneOffsetSec = 0;
@@ -6281,6 +6290,25 @@
       bgSec.removeAttribute('src');
     }
 
+    // Achtergrond Video (bewegend beeld voor echte bedrijfsvideo ervaring)
+    const bgVid = document.getElementById('scene-bg-video');
+    if (bgVid) {
+      if (s.video) {
+        if (!bgVid.src.endsWith(s.video)) {
+          bgVid.src = s.video;
+          bgVid.load();
+        }
+        if (isPlaying) {
+          try { bgVid.currentTime = currentSceneOffsetSec; } catch(e){}
+          bgVid.play().catch(() => {});
+        }
+        bgVid.style.opacity = '1';
+      } else {
+        bgVid.pause();
+        bgVid.style.opacity = '0';
+      }
+    }
+
     // Trigger subtiele slide-in animatie op het informatiepaneel
     const panelContent = document.getElementById('panel-content');
     if (panelContent) {
@@ -6375,6 +6403,12 @@
     if (pIcon) pIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect>';
     const btn = document.getElementById('btn-play');
     if (btn) btn.title = "Pauzeren (k / spatie)";
+    
+    const bgVid = document.getElementById('scene-bg-video');
+    if (bgVid && scenes[currentScene] && scenes[currentScene].video) {
+      bgVid.play().catch(() => {});
+    }
+    
     renderScene(currentScene);
   }
 
@@ -6391,6 +6425,10 @@
     if (pIcon) pIcon.innerHTML = '<polygon points="6 4 20 12 6 20"></polygon>';
     const btn = document.getElementById('btn-play');
     if (btn) btn.title = "Afspelen (k / spatie)";
+    
+    const bgVid = document.getElementById('scene-bg-video');
+    if (bgVid) bgVid.pause();
+    
     stopAudio();
   }
 
