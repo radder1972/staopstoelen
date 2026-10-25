@@ -2832,8 +2832,8 @@
     }
     .zitadvies-main-grid {
       display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 8px;
+      grid-template-columns: 135px 1fr;
+      gap: 10px;
       height: 226px;
       min-height: 226px;
       max-height: 226px;
@@ -2848,16 +2848,15 @@
       min-height: 226px;
       max-height: 226px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      padding: 5px;
+      justify-content: center;
+      padding: 8px;
       box-sizing: border-box;
       position: relative;
     }
     .zitadvies-svg-wrap {
-      width: 86px;
-      height: 168px;
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2865,23 +2864,12 @@
     .zitadvies-svg-wrap svg {
       width: 100%;
       height: 100%;
+      max-width: 100%;
+      max-height: 100%;
       overflow: visible;
     }
     .zitadvies-measure-badge {
-      width: 100%;
-      background: #ffffff;
-      border: 1px solid rgba(243, 146, 35, 0.45);
-      border-radius: 7px;
-      padding: 3px 2px;
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.60rem;
-      font-weight: 800;
-      color: #c25e00;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      box-shadow: 0 2px 6px rgba(243, 146, 35, 0.12);
+      display: none !important;
     }
     .zitadvies-form-right {
       display: flex;
@@ -4947,7 +4935,6 @@
           <div class="zitadvies-main-grid">
             <div class="zitadvies-icon-stage">
               <div class="zitadvies-svg-wrap" id="zitadvies-svg-container"></div>
-              <div class="zitadvies-measure-badge" id="zitadvies-measure-badge">&#8597; Zithoogte A: 46 cm</div>
             </div>
             <div class="zitadvies-form-right">
               <div class="zitadvies-active-header">
@@ -5305,7 +5292,6 @@
           <div class="zitadvies-main-grid">
             <div class="zitadvies-icon-stage">
               <div class="zitadvies-svg-wrap" id="zitadvies-svg-container"></div>
-              <div class="zitadvies-measure-badge" id="zitadvies-measure-badge">&#8597; Zithoogte A: 46 cm</div>
             </div>
             <div class="zitadvies-form-right">
               <div class="zitadvies-active-header">
@@ -6721,6 +6707,15 @@
   const startSceneParam = parseInt(urlParams.get('scene'), 10);
   if (!isNaN(startSceneParam) && startSceneParam >= 0 && startSceneParam < scenes.length) {
     jumpToScene(startSceneParam);
+  }
+
+  const zitStepParam = parseInt(urlParams.get('zitstep'), 10);
+  if (!isNaN(zitStepParam) && zitStepParam >= 1 && zitStepParam <= 5) {
+    setTimeout(() => { selectZitadviesStep(zitStepParam, true); }, 50);
+  }
+  const anatStepParam = parseInt(urlParams.get('anatstep'), 10);
+  if (!isNaN(anatStepParam) && anatStepParam >= 1 && anatStepParam <= 5) {
+    setTimeout(() => { selectAnatomyHotspot(anatStepParam, true); }, 50);
   }
 
   // Autoplay bij laden (probeert direct mét geluid te starten)
