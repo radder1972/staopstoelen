@@ -324,7 +324,7 @@ function initializeApp() {
   if (urlInruil) {
     const notesField = document.getElementById("bookingNotes");
     if (notesField && !notesField.value.includes("Inruilpremie")) {
-      const inruilText = `Inruilservice gewenst: Oude stoel (${urlLeeftijd || 'inruil'}) inruilen voor € ${urlInruil},- Duurzaamheidspremie bij aanschaf van Fitform CPO.`;
+      const inruilText = `Inruilservice gewenst: Oude stoel (${urlLeeftijd || 'inruil'}) inruilen voor € ${urlInruil},- Duurzaamheidspremie bij aanschaf van een gereviseerde stoel.`;
       notesField.value = notesField.value ? `${notesField.value}\n${inruilText}` : inruilText;
     }
   }
@@ -2361,7 +2361,7 @@ window.closeCertifiedVideoModal = function() {
 };
 
 /* ==========================================================================
-   FITFORM CPO INRUILCALCULATOR LOGIC
+   INRUILCALCULATOR LOGIC
    ========================================================================== */
 window.initInruilCalculator = function() {
   const container = document.getElementById("inruilCalculator");
