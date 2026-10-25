@@ -2990,10 +2990,31 @@
       font-weight: 800;
       color: var(--color-forest-dark);
       background: #f0fdf4;
-      border: 1px dashed rgba(75, 143, 36, 0.45);
-      padding: 1px 6px;
-      border-radius: 4px;
+      border: 1px solid rgba(75, 143, 36, 0.28);
+      padding: 2px 7px;
+      border-radius: 5px;
+      width: 76px;
+      min-width: 76px;
+      max-width: 76px;
+      box-sizing: border-box;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .zitadvies-field-arrow {
+      color: #64748b;
+      font-size: 0.70rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-right: 4px;
+    }
+    .zitadvies-field-num {
+      color: var(--color-forest-dark);
+      font-size: 0.67rem;
+      font-weight: 800;
+      text-align: right;
+      flex: 1;
     }
     .zitadvies-checks-strip {
       display: flex;
@@ -5025,19 +5046,19 @@
               <div class="zitadvies-ABCD-grid">
                 <div class="zitadvies-field active" id="zit-field-1" onclick="selectZitadviesStep(1, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Hoogte</span>
-                  <span class="zitadvies-field-val">46 cm &#8597;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8597;</span><span class="zitadvies-field-num">46 cm</span></span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-2" onclick="selectZitadviesStep(2, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Diepte</span>
-                  <span class="zitadvies-field-val">48 cm &#8596;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8596;</span><span class="zitadvies-field-num">48 cm</span></span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-4" onclick="selectZitadviesStep(4, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armlegger</span>
-                  <span class="zitadvies-field-val">22 cm &#8597;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8597;</span><span class="zitadvies-field-num">22 cm</span></span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-3" onclick="selectZitadviesStep(3, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lenden</span>
-                  <span class="zitadvies-field-val">S-Curve &#8596;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8596;</span><span class="zitadvies-field-num">S-Curve</span></span>
                 </div>
               </div>
               <div class="zitadvies-checks-strip">
@@ -5392,19 +5413,19 @@
               <div class="zitadvies-ABCD-grid">
                 <div class="zitadvies-field active" id="zit-field-1" onclick="selectZitadviesStep(1, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Hoogte</span>
-                  <span class="zitadvies-field-val">46 cm &#8597;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8597;</span><span class="zitadvies-field-num">46 cm</span></span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-2" onclick="selectZitadviesStep(2, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Diepte</span>
-                  <span class="zitadvies-field-val">48 cm &#8596;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8596;</span><span class="zitadvies-field-num">48 cm</span></span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-4" onclick="selectZitadviesStep(4, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armlegger</span>
-                  <span class="zitadvies-field-val">22 cm &#8597;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8597;</span><span class="zitadvies-field-num">22 cm</span></span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-3" onclick="selectZitadviesStep(3, true)" style="cursor:pointer;">
                   <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lenden</span>
-                  <span class="zitadvies-field-val">S-Curve &#8596;</span>
+                  <span class="zitadvies-field-val"><span class="zitadvies-field-arrow">&#8596;</span><span class="zitadvies-field-num">S-Curve</span></span>
                 </div>
               </div>
               <div class="zitadvies-checks-strip">
