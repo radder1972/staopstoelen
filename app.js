@@ -316,6 +316,18 @@ function initializeApp() {
   initMobileMenu();
   initHeroSlideshow();
   initFaqAccordion();
+  initInruilCalculator();
+
+  // Check for prefilled inruil selection
+  const urlInruil = new URLSearchParams(window.location.search).get("inruil") || localStorage.getItem("inruil_korting");
+  const urlLeeftijd = new URLSearchParams(window.location.search).get("leeftijd") || localStorage.getItem("inruil_leeftijd");
+  if (urlInruil) {
+    const notesField = document.getElementById("bookingNotes");
+    if (notesField && !notesField.value.includes("Inruilpremie")) {
+      const inruilText = `Inruilservice gewenst: Oude stoel (${urlLeeftijd || 'inruil'}) inruilen voor € ${urlInruil},- Duurzaamheidspremie bij aanschaf van Fitform CPO.`;
+      notesField.value = notesField.value ? `${notesField.value}\n${inruilText}` : inruilText;
+    }
+  }
 
   // Check for prefilled chair selection
   const prefilled = localStorage.getItem("prefilledChair");
@@ -2307,6 +2319,48 @@ window.closeCertifiedVideoModal = function() {
   if (!prodModal || !prodModal.classList.contains("active")) {
     document.body.style.overflow = "";
   }
+};
+
+/* ==========================================================================
+   FITFORM CPO INRUILCALCULATOR LOGIC
+   ========================================================================== */
+window.initInruilCalculator = function() {
+  const container = document.getElementById("inruilCalculator");
+  if (!container) return;
+
+  const tiers = container.querySelectorAll(".inruil-tier-card");
+  const discountSpan = document.getElementById("inruilDiscountVal");
+  const totalSpan = document.getElementById("inruilTotalVal");
+  const ctaBtn = document.getElementById("inruilCtaBtn");
+  const ctaAmountSpan = document.getElementById("inruilCtaAmount");
+
+  const basePrice = 1550;
+
+  tiers.forEach(tier => {
+    tier.addEventListener("click", () => {
+      tiers.forEach(t => t.classList.remove("selected"));
+      tier.classList.add("selected");
+
+      const amount = parseInt(tier.getAttribute("data-discount"), 10) || 0;
+      const ageLabel = tier.getAttribute("data-age-label") || "";
+      const netTotal = Math.max(0, basePrice - amount);
+
+      if (discountSpan) discountSpan.textContent = `- € ${amount},-`;
+      if (totalSpan) totalSpan.textContent = `€ ${netTotal.toLocaleString('nl-NL')},-`;
+      if (ctaAmountSpan) ctaAmountSpan.textContent = `€ ${amount}`;
+
+      // Update CTA href with query params
+      if (ctaBtn) {
+        ctaBtn.href = `afspraak.html?inruil=${amount}&leeftijd=${encodeURIComponent(ageLabel)}#afspraak-planner`;
+      }
+
+      // Save to localStorage for seamless booking prefill
+      try {
+        localStorage.setItem("inruil_korting", amount);
+        localStorage.setItem("inruil_leeftijd", ageLabel);
+      } catch (e) {}
+    });
+  });
 };
 
 

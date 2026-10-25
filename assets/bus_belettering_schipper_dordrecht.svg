@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="vanSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="forestSwoosh" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#122b07" />
+      <stop offset="50%" stop-color="#256616" />
+      <stop offset="100%" stop-color="#4b8f24" />
+    </linearGradient>
+    <linearGradient id="orangeAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f39223" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <filter id="vanShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="680" fill="url(#vanSky)" />
+  
+  <!-- Canvas Header -->
+  <g transform="translate(60, 48)">
+    <rect x="0" y="0" width="280" height="28" rx="14" fill="#122b07" />
+    <text x="14" y="19" font-family="'Montserrat', sans-serif" font-size="11" font-weight="800" fill="#4ade80" letter-spacing="0.8px">
+      OFFICIËLE BELETTERING &bull; BESTELBUS DORDRECHT
+    </text>
+    <text x="0" y="62" font-family="'Montserrat', sans-serif" font-size="28" font-weight="900" fill="#122b07">
+      Livery Mockup: Circulaire Inruilservice in het Straatbeeld
+    </text>
+    <text x="0" y="88" font-family="'Outfit', sans-serif" font-size="15" fill="#475569">
+      Rijdend verkoopargument voor de regio Drechtsteden &bull; Schipper Compact Wonen / staopstoelen.nl
+    </text>
+  </g>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="600" cy="580" rx="460" ry="24" fill="#94a3b8" opacity="0.6" filter="blur(8px)" />
+
+  <!-- Delivery Van Body (Mercedes Sprinter / Transit Style Side Profile) -->
+  <g id="deliveryVan" transform="translate(140, 160)" filter="url(#vanShadow)">
+    
+    <!-- Van Chassis / Body Base -->
+    <path d="
+      M 40,320 
+      L 900,320 
+      Q 905,320 905,310 
+      L 905,100 
+      Q 905,80 885,75 
+      L 320,75 
+      L 240,110 
+      L 120,180 
+      L 25,230 
+      Q 15,236 15,250 
+      L 15,310 
+      Q 15,320 40,320 Z
+    " fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+
+    <!-- Front Bumper & Grill -->
+    <path d="M 15,250 L 5,280 L 15,315 L 45,315 L 40,290 L 25,260 Z" fill="#334155" />
+    <rect x="8" y="275" width="22" height="10" rx="3" fill="#64748b" />
+
+    <!-- Headlight -->
+    <path d="M 35,225 L 85,200 L 95,215 L 40,245 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+    <path d="M 45,220 L 75,206 L 80,215 L 50,232 Z" fill="#38bdf8" opacity="0.6" />
+
+    <!-- Windshield -->
+    <path d="M 125,175 L 235,115 L 245,115 L 235,185 L 125,185 Z" fill="#0f172a" opacity="0.85" />
+
+    <!-- Front Door Window -->
+    <path d="M 255,115 L 340,115 L 340,185 L 245,185 Z" fill="#0f172a" opacity="0.85" />
+
+    <!-- Door Seams & Panel Lines -->
+    <line x1="245" y1="110" x2="245" y2="318" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="365" y1="75" x2="365" y2="318" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="880" y1="75" x2="880" y2="318" stroke="#cbd5e1" stroke-width="2" />
+
+    <!-- Van Roof Rack / AC Ribs -->
+    <rect x="360" y="68" width="500" height="7" rx="3" fill="#e2e8f0" />
+
+    <!-- Wheel Wells -->
+    <path d="M 110,320 A 55,55 0 0,1 220,320 Z" fill="#1e293b" />
+    <path d="M 720,320 A 55,55 0 0,1 830,320 Z" fill="#1e293b" />
+
+    <!-- Front Wheel -->
+    <g transform="translate(165, 320)">
+      <circle cx="0" cy="0" r="50" fill="#1e293b" />
+      <circle cx="0" cy="0" r="32" fill="#94a3b8" stroke="#64748b" stroke-width="3" />
+      <circle cx="0" cy="0" r="16" fill="#334155" />
+      <!-- Lug nuts -->
+      <circle cx="0" cy="-10" r="3" fill="#f8fafc" />
+      <circle cx="10" cy="0" r="3" fill="#f8fafc" />
+      <circle cx="0" cy="10" r="3" fill="#f8fafc" />
+      <circle cx="-10" cy="0" r="3" fill="#f8fafc" />
+    </g>
+
+    <!-- Rear Wheel -->
+    <g transform="translate(775, 320)">
+      <circle cx="0" cy="0" r="50" fill="#1e293b" />
+      <circle cx="0" cy="0" r="32" fill="#94a3b8" stroke="#64748b" stroke-width="3" />
+      <circle cx="0" cy="0" r="16" fill="#334155" />
+      <circle cx="0" cy="-10" r="3" fill="#f8fafc" />
+      <circle cx="10" cy="0" r="3" fill="#f8fafc" />
+      <circle cx="0" cy="10" r="3" fill="#f8fafc" />
+      <circle cx="-10" cy="0" r="3" fill="#f8fafc" />
+    </g>
+
+    <!-- Door Handle -->
+    <rect x="330" y="195" width="28" height="8" rx="4" fill="#334155" />
+    <rect x="385" y="195" width="28" height="8" rx="4" fill="#334155" />
+
+    <!-- ==============================================
+         LIVERY GRAPHIC: DE BRANDING & CIRCULAIRE SLOGAN
+         ============================================== -->
+    
+    <!-- Flowing Brand Green Swoosh Wave (Across side body) -->
+    <path d="
+      M 365,270 
+      Q 520,220 700,260 
+      Q 810,285 905,250 
+      L 905,315 
+      L 365,315 Z
+    " fill="url(#forestSwoosh)" opacity="0.95" />
+
+    <!-- Orange Accent Wave Ribbon -->
+    <path d="
+      M 365,268 
+      Q 520,217 700,257 
+      Q 810,282 905,247 
+      L 905,253 
+      Q 810,288 700,263 
+      Q 520,223 365,274 Z
+    " fill="url(#orangeAccent)" />
+
+    <!-- Primary Logo on Side Body: staopstoelen.nl -->
+    <g transform="translate(400, 110)">
+      <text x="0" y="32" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="34" font-weight="900" fill="#122b07" letter-spacing="-0.5px">
+        staopstoelen<tspan fill="#f39223">.nl</tspan>
+      </text>
+      <text x="2" y="48" font-family="'Montserrat', sans-serif" font-size="10" font-weight="800" fill="#4b8f24" letter-spacing="1.5px">
+        SPECIALIST IN ERGONOMISCH ZITCOMFORT &bull; DORDRECHT
+      </text>
+    </g>
+
+    <!-- KEY CAMPAIGN HEADLINE (As requested: "Uw oude stoel is geld waard") -->
+    <g transform="translate(400, 175)">
+      <!-- Orange Badge Header -->
+      <rect x="0" y="0" width="230" height="22" rx="4" fill="#f39223" />
+      <text x="10" y="15" font-family="'Montserrat', sans-serif" font-size="10.5" font-weight="900" fill="#ffffff" letter-spacing="0.5px">
+        CIRCULAIRE INRUILSERVICE
+      </text>
+
+      <!-- Big Catchy Street Slogan -->
+      <text x="0" y="44" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="21" font-weight="900" fill="#122b07">
+        Uw oude sta-opstoel is geld waard!
+      </text>
+      <text x="0" y="64" font-family="'Outfit', sans-serif" font-size="13" font-weight="600" fill="#334155">
+        Wij nemen hem <tspan font-weight="800" fill="#122b07">duurzaam retour</tspan> &amp; leveren direct op maat afgesteld.
+      </text>
+    </g>
+
+    <!-- Fitform CPO Circulair Seal Stamp on the Van -->
+    <g transform="translate(790, 105)">
+      <circle cx="36" cy="36" r="34" fill="#122b07" stroke="#4ade80" stroke-width="2" />
+      <text x="36" y="27" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="7.5" font-weight="900" fill="#ffffff">FITFORM</text>
+      <text x="36" y="40" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="11.5" font-weight="900" fill="#f39223">CPO</text>
+      <text x="36" y="52" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="5.5" font-weight="800" fill="#a7f3d0" letter-spacing="0.5px">CIRCULAIR</text>
+    </g>
+
+    <!-- Driver Door Info: Showroom Dordrecht & Telefoon -->
+    <g transform="translate(258, 220)">
+      <rect x="0" y="0" width="98" height="52" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+      <text x="8" y="16" font-family="'Montserrat', sans-serif" font-size="8" font-weight="800" fill="#122b07">SHOWROOM:</text>
+      <text x="8" y="28" font-family="'Outfit', sans-serif" font-size="8" font-weight="600" fill="#475569">Merwedestraat 239</text>
+      <text x="8" y="42" font-family="'Montserrat', sans-serif" font-size="9" font-weight="800" fill="#f39223">078 - 631 4858</text>
+    </g>
+
+    <!-- Bottom White Van Striping: USPs -->
+    <g transform="translate(400, 298)">
+      <text x="0" y="0" font-family="'Montserrat', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff" letter-spacing="0.5px">
+        &bull; 24 MND GARANTIE  &bull; OP LICHAAMSMAAT  &bull; GRATIS BEZORGD &amp; RETOUR
+      </text>
+    </g>
+  </g>
+</svg>
