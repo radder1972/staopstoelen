@@ -787,7 +787,7 @@
         <h2 class="section-title">Waarom € 4.500 Nieuw Betalen of Gokken op Marktplaats?</h2>
         <p class="section-subtitle" style="margin-bottom: 26px;">Met <strong>Certified Fitform</strong> kiest u voor Nederlandse topkwaliteit met 30-punts keuring, ozon-dieptereiniging en 24 maanden omruilgarantie — exact op uw lichaam afgesteld.</p>
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-          <button type="button" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill">
+          <button type="button" onclick="playHomeInlineVideo()" class="btn-watch-video-pill">
             <span class="btn-watch-video-play-circle">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
             </span>
@@ -797,19 +797,41 @@
           <a href="revisie.html" class="btn btn-outline" style="font-size: 0.92rem; padding: 12px 20px;">Over het Revisieproces</a>
         </div>
 
-        <!-- Video Preview Teaser Card met directe Play trigger -->
-        <div class="hero-video-teaser-card" onclick="openCertifiedVideoModal('consumer')" role="button" tabindex="0" title="Klik om de 47-seconden video te bekijken">
-          <img src="assets/video/video_poster_scene2.jpg" alt="Certified Fitform Video Dordrecht" class="teaser-poster-img">
-          <div class="teaser-overlay">
+        <!-- Video Player rechtstreeks in de pagina -->
+        <div class="hero-video-teaser-card" id="homeVideoCard">
+          <video 
+            id="homeInlineVideo" 
+            controls 
+            playsinline 
+            preload="metadata"
+            poster="assets/video/video_poster_scene2.jpg" 
+            style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4" type="video/mp4">
+            Uw browser ondersteunt geen video.
+          </video>
+          
+          <div class="teaser-overlay" id="homeVideoOverlay" onclick="playHomeInlineVideo()" role="button" tabindex="0" title="Klik om de video direct in de pagina af te spelen">
             <div class="teaser-play-badge">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 3px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
             </div>
             <div class="teaser-title-pill">
               <span class="teaser-live-dot"></span>
-              <span>Bekijk Bedrijfsvideo Dordrecht &bull; 47 sec</span>
+              <span>Waarom Certified Fitform &bull; 47 sec</span>
             </div>
           </div>
         </div>
+
+        <script>
+          function playHomeInlineVideo() {
+            const overlay = document.getElementById("homeVideoOverlay");
+            const video = document.getElementById("homeInlineVideo");
+            if (overlay) overlay.style.display = "none";
+            if (video) {
+              video.play().catch(e => console.log("Autoplay:", e));
+              video.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          }
+        </script>
       </div>
     </div>
   </section>

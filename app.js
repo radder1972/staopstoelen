@@ -2225,7 +2225,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-header">
           <div class="video-lightbox-title">
             <span class="video-lightbox-dot"></span>
-            <span id="videoLightboxHeading">Waarom Certified Fitform? &bull; 47 sec</span>
+            <span id="videoLightboxHeading">Waarom Certified Fitform</span>
           </div>
           <div class="video-lightbox-actions">
             <a href="afspraak.html" class="video-lightbox-cta-btn" onclick="closeCertifiedVideoModal()">
