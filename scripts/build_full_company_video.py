@@ -221,7 +221,7 @@ def render_scene2():
 # ==============================================================================
 def render_scene3():
     print("--- Rendering Scene 3: De Werkplaats ---")
-    base = Image.open('assets/dutch_technician_fitform_workshop_v4.jpg').convert('RGB')
+    base = Image.open('assets/dutch_technician_fitform_workshop_v5.jpg').convert('RGB')
     bw, bh = base.size
     
     duration = 12.33
