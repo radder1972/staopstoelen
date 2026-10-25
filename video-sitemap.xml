@@ -53,21 +53,4 @@
     </video:video>
   </url>
 
-  <!-- Keurmerk & Vergelijking -->
-  <url>
-    <loc>https://staopstoelen.nl/waarom-certified-fitform.html</loc>
-    <video:video>
-      <video:thumbnail_loc>https://staopstoelen.nl/assets/video/video_poster_scene2.jpg</video:thumbnail_loc>
-      <video:title>Wat Maakt een Stoel 'Certified Fitform'? Het Officiële Keurmerk Uitgelegd | Staopstoelen.nl</video:title>
-      <video:description>Ontdek de zekerheden van het Certified Fitform keurmerk van Schipper Compact Wonen Dordrecht: 30-punts technische inspectie, hygiënisch diep gereinigd, ergonomisch op maat en 2 jaar garantie aan huis.</video:description>
-      <video:content_loc>https://staopstoelen.nl/assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4</video:content_loc>
-      <video:player_loc>https://staopstoelen.nl/certified-fitform-video.html?mode=consumer</video:player_loc>
-      <video:duration>47</video:duration>
-      <video:publication_date>2026-10-25T22:56:00+01:00</video:publication_date>
-      <video:family_friendly>yes</video:family_friendly>
-      <video:requires_subscription>no</video:requires_subscription>
-      <video:live>no</video:live>
-    </video:video>
-  </url>
-
 </urlset>
