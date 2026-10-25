@@ -679,7 +679,7 @@
       border: 1.5px solid rgba(185, 222, 175, 0.65);
       border-radius: 20px;
       box-shadow: 0 18px 45px rgba(22, 45, 16, 0.22), 0 2px 10px rgba(0, 0, 0, 0.08);
-      padding: 18px 22px;
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -830,7 +830,7 @@
       color: var(--color-forest-dark);
       line-height: 1.25;
       letter-spacing: -0.3px;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
 
     @media (max-width: 640px) {
@@ -2355,16 +2355,18 @@
       box-shadow: 0 0 6px rgba(75, 143, 36, 0.6);
     }
 
-    /* Consumenten Eindkaart CTA in Scène 4 van Klantversie */
+    /* Consumenten Eindkaart CTA in Scène 4 van Klantversie (Naadloos in studio-paneel) */
     .consumer-cta-card {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      background: #ffffff;
-      border: 1.5px solid rgba(75, 143, 36, 0.25);
-      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
       padding: 12px 14px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       width: 100%;
       box-sizing: border-box;
       overflow: hidden;
@@ -2474,21 +2476,23 @@
       background: rgba(243, 146, 35, 0.2);
     }
 
-    /* 30-Punts Inspectie & Stoel-Anatomie Animatie Widget (Royale Box) */
+    /* 30-Punts Inspectie & Stoel-Anatomie Animatie Widget (Naadloos in studio-paneel) */
     .chair-anatomy-card {
-      background: #ffffff;
-      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 14px 16px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      padding: 10px 12px;
+      box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       width: 100%;
-      height: 330px;
-      min-height: 330px;
-      max-height: 330px;
+      height: 335px;
+      min-height: 335px;
+      max-height: 335px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2497,10 +2501,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      height: 26px;
+      height: 24px;
       flex-shrink: 0;
-      padding-bottom: 6px;
-      border-bottom: 1px solid #eef2ec;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(75, 143, 36, 0.12);
     }
     .anatomy-badge-verified {
       font-size: 0.68rem;
@@ -2524,26 +2528,26 @@
     }
     .anatomy-stage-grid {
       display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 12px;
+      grid-template-columns: 135px 1fr;
+      gap: 10px;
       align-items: stretch;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      height: 220px;
+      min-height: 220px;
+      max-height: 220px;
       flex-shrink: 0;
     }
     .anatomy-chair-canvas {
       position: relative;
-      background: #f8fbf6;
-      border: 1.5px solid rgba(75, 143, 36, 0.22);
-      border-radius: 12px;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid rgba(75, 143, 36, 0.18);
+      border-radius: 10px;
+      height: 220px;
+      min-height: 220px;
+      max-height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px;
+      padding: 6px;
       box-sizing: border-box;
     }
     .anatomy-chair-canvas svg {
@@ -2599,9 +2603,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      height: 220px;
+      min-height: 220px;
+      max-height: 220px;
       text-align: left;
       min-width: 0;
       box-sizing: border-box;
@@ -2634,10 +2638,10 @@
       overflow: hidden;
     }
     .anatomy-meta-box {
-      background: #f4f9f1;
-      border: 1px solid rgba(75, 143, 36, 0.22);
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid rgba(75, 143, 36, 0.16);
       border-radius: 8px;
-      padding: 6px 10px;
+      padding: 6px 9px;
       font-size: 0.72rem;
       display: flex;
       flex-direction: column;
@@ -2667,8 +2671,8 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 4px;
-      padding-top: 8px;
-      border-top: 1px solid #eef2ec;
+      padding-top: 6px;
+      border-top: 1px solid rgba(75, 143, 36, 0.12);
       height: 32px;
       box-sizing: border-box;
     }
@@ -2678,8 +2682,8 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      background: rgba(255, 255, 255, 0.90);
       color: #475569;
       cursor: pointer;
       white-space: nowrap;
@@ -2695,21 +2699,23 @@
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.28);
     }
 
-    /* Widget A: Zitadvies & Maatwerk Intakeformulier met 5 Stoel-Iconen (Royale Box) */
+    /* Widget A: Zitadvies & Maatwerk Intakeformulier met 5 Stoel-Iconen (Naadloos in studio-paneel) */
     .zitadvies-form-card {
-      background: #ffffff;
-      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 14px 16px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      padding: 10px 12px;
+      box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       width: 100%;
-      height: 330px;
-      min-height: 330px;
-      max-height: 330px;
+      height: 335px;
+      min-height: 335px;
+      max-height: 335px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2718,10 +2724,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      height: 26px;
+      height: 24px;
       flex-shrink: 0;
-      padding-bottom: 6px;
-      border-bottom: 1px solid #eef2ec;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(75, 143, 36, 0.12);
     }
     .zitadvies-form-tag {
       font-size: 0.68rem;
@@ -2748,32 +2754,32 @@
     }
     .zitadvies-main-grid {
       display: grid;
-      grid-template-columns: 118px 1fr;
-      gap: 10px;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      grid-template-columns: 96px 1fr;
+      gap: 8px;
+      height: 220px;
+      min-height: 220px;
+      max-height: 220px;
       flex-shrink: 0;
       align-items: stretch;
     }
     .zitadvies-icon-stage {
-      background: linear-gradient(180deg, #f8fbf6 0%, #eef6eb 100%);
-      border: 1.5px solid rgba(75, 143, 36, 0.24);
-      border-radius: 12px;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid rgba(75, 143, 36, 0.18);
+      border-radius: 10px;
+      height: 220px;
+      min-height: 220px;
+      max-height: 220px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 6px;
+      padding: 5px;
       box-sizing: border-box;
       position: relative;
     }
     .zitadvies-svg-wrap {
-      width: 100px;
-      height: 145px;
+      width: 86px;
+      height: 152px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2791,7 +2797,7 @@
       padding: 3px 2px;
       text-align: center;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.61rem;
+      font-size: 0.60rem;
       font-weight: 800;
       color: #c25e00;
       white-space: nowrap;
@@ -2803,21 +2809,22 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      height: 220px;
+      min-height: 220px;
+      max-height: 220px;
       min-width: 0;
       text-align: left;
-      gap: 6px;
+      gap: 5px;
     }
     .zitadvies-active-header {
-      background: #f8fafc;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(75, 143, 36, 0.16);
       border-left: 3px solid var(--color-terracotta);
       border-radius: 0 8px 8px 0;
-      padding: 6px 10px;
-      height: 56px;
-      min-height: 56px;
-      max-height: 56px;
+      padding: 5px 9px;
+      height: 52px;
+      min-height: 52px;
+      max-height: 52px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -2845,15 +2852,15 @@
     .zitadvies-ABCD-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-      height: 74px;
-      min-height: 74px;
-      max-height: 74px;
+      gap: 5px;
+      height: 76px;
+      min-height: 76px;
+      max-height: 76px;
     }
     .zitadvies-field {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      border-radius: 7px;
       padding: 4px 6px;
       display: flex;
       align-items: center;
@@ -2863,7 +2870,7 @@
       transition: all 0.2s ease;
     }
     .zitadvies-field.active {
-      background: #fff7ed;
+      background: #fff8f0;
       border-color: var(--color-terracotta);
       box-shadow: 0 0 0 1.5px rgba(243, 146, 35, 0.25);
     }
@@ -2910,8 +2917,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 4px;
-      background: #f4f9f1;
-      border: 1px solid rgba(75, 143, 36, 0.22);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(75, 143, 36, 0.16);
       border-radius: 8px;
       padding: 5px 8px;
       height: 32px;
@@ -3085,23 +3092,25 @@
       box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
     }
 
-    /* Product Model Card in Fase 4 (Exact conform website product modals & huisstijl) */
+    /* Product Model Card in Fase 4 (Naadloos in studio-paneel) */
     .eindproduct-showcase-card,
     .eindproduct-ad-card,
     .revisie-product-card {
-      background: #ffffff;
-      border: 1.5px solid rgba(75, 143, 36, 0.35);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 13px 15px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(75, 143, 36, 0.12);
+      padding: 11px 13px;
+      box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 8px;
       width: 100%;
-      height: 330px;
-      min-height: 330px;
-      max-height: 330px;
+      height: 335px;
+      min-height: 335px;
+      max-height: 335px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -4826,26 +4835,26 @@
               </div>
               <div class="zitadvies-ABCD-grid">
                 <div class="zitadvies-field active" id="zit-field-1" onclick="selectZitadviesStep(1, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Zithoogte</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Hoogte</span>
                   <span class="zitadvies-field-val">46 cm &#8597;</span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-2" onclick="selectZitadviesStep(2, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Zitdiepte</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Diepte</span>
                   <span class="zitadvies-field-val">48 cm &#8596;</span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-4" onclick="selectZitadviesStep(4, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armhoogte</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armlegger</span>
                   <span class="zitadvies-field-val">22 cm &#8597;</span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-3" onclick="selectZitadviesStep(3, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lendensteun</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lenden</span>
                   <span class="zitadvies-field-val">S-Curve &#8596;</span>
                 </div>
               </div>
               <div class="zitadvies-checks-strip">
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Onderrugsteun</span>
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Ontspannen nek</span>
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Soepel opstaan</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Onderrug</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Neksteun</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Sta-op</span>
               </div>
             </div>
           </div>
@@ -5139,25 +5148,25 @@
               </div>
               <div class="zitadvies-ABCD-grid">
                 <div class="zitadvies-field active" id="zit-field-1" onclick="selectZitadviesStep(1, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Zithoogte</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">A</span> Hoogte</span>
                   <span class="zitadvies-field-val">46 cm &#8597;</span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-2" onclick="selectZitadviesStep(2, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Zitdiepte</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">B</span> Diepte</span>
                   <span class="zitadvies-field-val">48 cm &#8596;</span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-4" onclick="selectZitadviesStep(4, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armhoogte</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">C</span> Armlegger</span>
                   <span class="zitadvies-field-val">22 cm &#8597;</span>
                 </div>
                 <div class="zitadvies-field" id="zit-field-3" onclick="selectZitadviesStep(3, true)" style="cursor:pointer;">
-                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lendensteun</span>
+                  <span class="zitadvies-field-lbl"><span class="zitadvies-field-letter">D</span> Lenden</span>
                   <span class="zitadvies-field-val">S-Curve &#8596;</span>
                 </div>
               </div>
               <div class="zitadvies-checks-strip">
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Wervelkolom ontlast</span>
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Schouders ontspannen</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Wervelkolom</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Schouders</span>
                 <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Veilig opstaan</span>
               </div>
             </div>
