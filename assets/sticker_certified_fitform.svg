@@ -17,13 +17,13 @@
   <!-- Inner thin dark green border -->
   <circle cx="150" cy="150" r="76" fill="none" stroke="#122b07" stroke-width="3" />
   
-  <!-- Text paths -->
-  <!-- Top text path (clockwise, R=89) -->
-  <path id="text-path-top" d="M 61,150 A 89,89 0 0,1 239,150" fill="none" />
-  <!-- Bottom text path (counter-clockwise, R=99) -->
-  <path id="text-path-bottom" d="M 51,150 A 99,99 0 0,0 249,150" fill="none" />
+  <!-- Mathematically symmetrical text paths (Centered precisely between R=76 and R=112) -->
+  <!-- Top text path (clockwise, R=86.2) -->
+  <path id="text-path-top" d="M 63.8,150 A 86.2,86.2 0 0,1 236.2,150" fill="none" />
+  <!-- Bottom text path (counter-clockwise, R=101.8) -->
+  <path id="text-path-bottom" d="M 48.2,150 A 101.8,101.8 0 0,0 251.8,150" fill="none" />
   
-  <!-- Text elements (Extra Bold 900 with stroke enhancement) -->
+  <!-- Text elements (Extra Bold 900 with stroke enhancement, perfectly centered) -->
   <text fill="#122b07" stroke="#122b07" stroke-width="1.6" stroke-linejoin="round" font-family="'Montserrat', sans-serif" font-weight="900" font-size="21.2" letter-spacing="1.4">
     <textPath href="#text-path-top" startOffset="50%" text-anchor="middle">
       CERTIFIED FITFORM
