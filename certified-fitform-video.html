@@ -862,10 +862,17 @@
 
     .panel-subtitle {
       font-size: 0.84rem;
-      color: var(--color-gray);
+      color: #475569;
       line-height: 1.45;
-      margin-top: 6px;
+      margin-top: 8px;
       margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.74);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 4px 16px rgba(18, 43, 7, 0.05);
     }
 
     .panel-subtitle strong {
@@ -879,15 +886,18 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #fff7ed;
-      border: 2px solid var(--color-terracotta);
-      padding: 7px 16px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      border-left: 4px solid var(--color-terracotta);
+      padding: 8px 16px;
       border-radius: 10px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 800;
       color: #b45309;
-      box-shadow: 0 2px 10px rgba(243, 146, 35, 0.15);
+      box-shadow: 0 4px 14px rgba(243, 146, 35, 0.12);
     }
     .panel-metric-pill svg {
       width: 18px;
@@ -968,13 +978,13 @@
       color: #1e40af;
     }
 
-    /* Scene 1: Battle Stack (Verticaal uitgelijnd, 100% passend binnen de box) */
+    /* Scene 1: Battle Stack (Naadloos in studio-paneel) */
     .battle-stack {
       display: flex;
       flex-direction: column;
       gap: 8px;
       width: 100%;
-      margin: 12px 0 14px;
+      margin: 10px 0 12px;
     }
     .battle-row {
       display: flex;
@@ -982,24 +992,26 @@
       justify-content: space-between;
       gap: 12px;
       padding: 10px 14px;
-      border-radius: 12px;
-      border: 1.5px solid;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border-radius: 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 6px 20px rgba(22, 45, 16, 0.07), 0 1px 3px rgba(0, 0, 0, 0.03);
       width: 100%;
       box-sizing: border-box;
+      transition: all 0.2s ease;
     }
     .battle-row.bad {
-      border-color: #cbd5e1;
+      border-color: rgba(255, 255, 255, 0.95);
       border-left: 4px solid #94a3b8;
+      background: rgba(255, 255, 255, 0.74);
     }
     .battle-row.warning {
-      background: rgba(255, 250, 243, 0.95);
-      border-color: rgba(243, 146, 35, 0.55);
+      background: rgba(255, 255, 255, 0.82);
+      border-color: rgba(255, 255, 255, 0.95);
       border-left: 4px solid var(--color-terracotta);
-      box-shadow: 0 4px 14px rgba(243, 146, 35, 0.12);
+      box-shadow: 0 6px 20px rgba(243, 146, 35, 0.10), 0 1px 3px rgba(0, 0, 0, 0.03);
     }
     .battle-row-left {
       display: flex;
@@ -1018,9 +1030,9 @@
       flex-shrink: 0;
     }
     .battle-badge.red {
-      background: #f1f5f9;
+      background: rgba(241, 245, 249, 0.85);
       color: #64748b;
-      border: 1px solid #cbd5e1;
+      border: 1px solid rgba(203, 213, 225, 0.8);
     }
     .battle-badge.amber {
       background: #fff7ed;
@@ -1042,7 +1054,7 @@
     }
     .battle-sub {
       font-size: 0.72rem;
-      color: var(--color-gray);
+      color: #475569;
       line-height: 1.35;
       margin-top: 2px;
     }
@@ -1063,21 +1075,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: -2px 0;
+      margin: -3px 0;
       position: relative;
       z-index: 2;
     }
     .battle-stack-vs span {
-      background: #ffffff;
-      border: 1.5px solid rgba(243, 146, 35, 0.45);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1.5px solid rgba(255, 255, 255, 0.98);
       color: var(--color-terracotta);
       font-family: 'Montserrat', sans-serif;
       font-size: 0.65rem;
       font-weight: 900;
-      padding: 2px 10px;
+      padding: 3px 12px;
       border-radius: 999px;
       letter-spacing: 0.8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     }
 
     /* Scene 2: Prominente Certified Fitform Kwaliteitssticker & Uitgelijnd Keurmerk Links */
@@ -4790,7 +4802,7 @@
             <div class="battle-row-val amber">Risico</div>
           </div>
           <div class="battle-stack-vs"><span>VS</span></div>
-          <div class="battle-row" style="border-left: 4px solid var(--color-forest); background: rgba(246, 252, 243, 0.96);">
+          <div class="battle-row" style="border-left: 4px solid var(--color-forest); background: rgba(255, 255, 255, 0.82);">
             <div class="battle-row-left">
               <span class="battle-badge" style="background: rgba(75,143,36,0.14); color: var(--color-forest);">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
