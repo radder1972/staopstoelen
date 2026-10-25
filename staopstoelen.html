@@ -2751,27 +2751,6 @@
       } else {
         renderCatalog();
       }
-
-      // FAQ Accordion interactive toggles
-      const faqQuestions = document.querySelectorAll(".faq-question");
-      faqQuestions.forEach(q => {
-        q.addEventListener("click", () => {
-          const item = q.parentElement;
-          const answer = q.nextElementSibling;
-          const isActive = item.classList.contains("active");
-          
-          document.querySelectorAll(".faq-item").forEach(el => {
-            el.classList.remove("active");
-            const ans = el.querySelector(".faq-answer");
-            if (ans) ans.style.maxHeight = null;
-          });
-          
-          if (!isActive) {
-            item.classList.add("active");
-            if (answer) answer.style.maxHeight = answer.scrollHeight + "px";
-          }
-        });
-      });
     });
   </script>
 </body>

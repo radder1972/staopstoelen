@@ -717,31 +717,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=10.128"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const questions = document.querySelectorAll(".faq-question");
-      
-      questions.forEach(q => {
-        q.addEventListener("click", () => {
-          const item = q.parentElement;
-          const answer = q.nextElementSibling;
-          const isActive = item.classList.contains("active");
-          
-          // Close all FAQ items
-          document.querySelectorAll(".faq-item").forEach(el => {
-            el.classList.remove("active");
-            el.querySelector(".faq-answer").style.maxHeight = null;
-          });
-          
-          // Toggle clicked item
-          if (!isActive) {
-            item.classList.add("active");
-            answer.style.maxHeight = answer.scrollHeight + "px";
-          }
-        });
-      });
-    });
-  </script>
+  <script src="app.js?v=10.130"></script>
 </body>
 </html>
