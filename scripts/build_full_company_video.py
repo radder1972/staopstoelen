@@ -376,11 +376,11 @@ def render_scene4():
         t = f / float(FPS)
         prog = f / float(total_frames)
         
-        # Gentle cinematic push-in towards Geertjan's warm smile in the showroom
+        # Gentle cinematic push-in towards Geertjan's warm smile in the showroom (centering on Geertjan at ~65% width)
         zoom = 1.00 + 0.05 * math.sin(prog * math.pi * 0.5)
         crop_w = bw / zoom
         crop_h = bh / zoom
-        cx = bw * 0.50
+        cx = bw * 0.65
         cy = bh * 0.48
         x0 = max(0, min(bw - crop_w, cx - crop_w / 2.0))
         y0 = max(0, min(bh - crop_h, cy - crop_h / 2.0))

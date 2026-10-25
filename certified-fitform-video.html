@@ -2454,13 +2454,39 @@
       flex-direction: column;
       width: 100%;
     }
-    /* Laatste klantscène: compacter zodat de witte box ruim binnen de groene box valt */
+    /* Laatste klantscène: compacter en naar rechts uitgelijnd zodat Geertjan's borstlogo staopstoelen.nl volledig vrij blijft */
     @media (min-width: 681px) {
-      body.mode-consumer .companion-panel[data-scene="3"] .panel-title { margin-bottom: 8px; }
-      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-intro { font-size: 0.78rem; line-height: 1.3; }
-      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-card { gap: 7px; padding: 11px 13px; }
-      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-details { gap: 5px; padding: 5px 0; }
-      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-actions { gap: 6px; }
+      body.mode-consumer .companion-panel[data-scene="3"],
+      .stage-split-wrapper.box-right .companion-panel[data-scene="3"] {
+        width: 350px !important;
+        max-width: 350px !important;
+        margin: 0 12px 0 auto !important;
+        padding: 14px 16px !important;
+      }
+      body.mode-consumer .companion-panel[data-scene="3"] .panel-title,
+      .stage-split-wrapper.box-right .companion-panel[data-scene="3"] .panel-title { 
+        font-size: 1.15rem !important;
+        margin-bottom: 8px !important; 
+      }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-intro,
+      .stage-split-wrapper.box-right .companion-panel[data-scene="3"] .consumer-cta-intro { 
+        font-size: 0.77rem !important; 
+        line-height: 1.28 !important; 
+      }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-card,
+      .stage-split-wrapper.box-right .companion-panel[data-scene="3"] .consumer-cta-card { 
+        gap: 6px !important; 
+        padding: 10px 12px !important; 
+      }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-details,
+      .stage-split-wrapper.box-right .companion-panel[data-scene="3"] .consumer-cta-details { 
+        gap: 5px !important; 
+        padding: 4px 0 !important; 
+      }
+      body.mode-consumer .companion-panel[data-scene="3"] .consumer-cta-actions,
+      .stage-split-wrapper.box-right .companion-panel[data-scene="3"] .consumer-cta-actions { 
+        gap: 6px !important; 
+      }
     }
     .btn-consumer-primary,
     .btn-consumer-secondary {
