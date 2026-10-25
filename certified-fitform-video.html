@@ -543,6 +543,7 @@
       pointer-events: none;
       width: 360px;
       height: 125px;
+      zoom: 1.20;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -758,6 +759,7 @@
         top: 0 !important;
         left: 0 !important;
         right: auto !important;
+        zoom: 1 !important;
         transform: scale(0.82) !important;
         transform-origin: top left !important;
       }
@@ -2291,6 +2293,9 @@
     body.is-recording .companion-panel {
       zoom: 1.50 !important;
       overflow: visible !important;
+    }
+    body.is-recording .video-corner-swoosh-badge {
+      zoom: 1.50 !important;
     }
     body.is-recording .stage-split-wrapper.box-right .companion-panel {
       margin: 0 44px 0 auto !important;

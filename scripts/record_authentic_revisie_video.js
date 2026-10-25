@@ -137,10 +137,16 @@ async function main() {
 
     const ffmpegProc = spawn(FFMPEG_PATH, ffmpegArgs);
     ffmpegProc.stderr.on('data', () => {});
+    ffmpegProc.stdin.on('error', (err) => {
+      if (err.code !== 'EPIPE') console.warn('FFmpeg stdin warning:', err.message);
+    });
 
     const sceneStartTime = Date.now();
 
     for (let frame = 0; frame < numFrames; frame++) {
+      if (!ffmpegProc.stdin.writable) {
+        break;
+      }
       const timeSec = frame / FPS;
 
       await send('Runtime.evaluate', {
@@ -153,9 +159,11 @@ async function main() {
       });
 
       const imgBuf = Buffer.from(shot.data, 'base64');
-      const canWrite = ffmpegProc.stdin.write(imgBuf);
-      if (!canWrite) {
-        await new Promise(r => ffmpegProc.stdin.once('drain', r));
+      if (ffmpegProc.stdin.writable) {
+        const canWrite = ffmpegProc.stdin.write(imgBuf);
+        if (!canWrite) {
+          await new Promise(r => ffmpegProc.stdin.once('drain', r));
+        }
       }
 
       if (frame % 30 === 0 || frame === numFrames - 1) {
@@ -164,7 +172,9 @@ async function main() {
     }
 
     console.log('\n  Flushing stream to FFmpeg...');
-    ffmpegProc.stdin.end();
+    if (ffmpegProc.stdin.writable) {
+      ffmpegProc.stdin.end();
+    }
 
     await new Promise((resolve, reject) => {
       ffmpegProc.on('close', code => {
