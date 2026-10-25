@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>A4 Sheet Only for High-Res Composite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-sage: #6ab13c;
+      --color-terracotta: #f39223;
+      --color-dark: #1d2024;
+      --color-gray: #5e6368;
+      --color-gray-light: #e2e4e6;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-hand: 'Caveat', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background: transparent;
+      margin: 0;
+      padding: 0;
+      width: 1240px;
+      height: 1754px;
+      overflow: hidden;
+    }
+
+    .sheet {
+      width: 1240px;
+      height: 1754px;
+      background: #ffffff;
+      padding: 150px 80px 40px 80px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    /* Header Styling */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      border-bottom: 4px solid var(--color-forest);
+      position: relative;
+    }
+
+    .brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--color-forest);
+      text-decoration: none;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .logo-text span {
+      color: var(--color-terracotta);
+    }
+
+    .logo-subtitle {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .doc-title-box {
+      text-align: right;
+    }
+
+    .doc-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .doc-subtitle {
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--color-terracotta);
+      margin-top: 3px;
+    }
+
+    .brand-stamp {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+    }
+
+    /* Klantgegevens Grid */
+    .client-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 45px;
+      background: #fafaf9;
+      border: 1.5px solid var(--color-gray-light);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin: 12px 0;
+    }
+
+    .input-line {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+    .input-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .input-label {
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      white-space: nowrap;
+      min-width: 210px;
+    }
+
+    .input-fill {
+      flex: 1;
+      border-bottom: 2px dotted #94a3b8;
+      padding: 0 8px;
+      font-family: var(--font-hand);
+      font-size: 26px;
+      font-weight: 700;
+      color: #1e3a8a; /* Echte blauwe balpen inkt */
+      line-height: 1.1;
+    }
+
+    /* Sectie Boxen */
+    .section-box {
+      margin-bottom: 12px;
+      border: 1.5px solid var(--color-gray-light);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .section-header {
+      background: var(--color-forest);
+      color: #ffffff;
+      padding: 8px 18px;
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-header.orange {
+      background: var(--color-terracotta);
+    }
+
+    .section-body {
+      padding: 12px 18px;
+    }
+
+    /* 4 Maatwerk Kaarten (A, B, C, D) */
+    .maten-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .maat-card {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 12px 8px;
+      text-align: center;
+      position: relative;
+    }
+
+    .maat-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      margin-bottom: 4px;
+    }
+
+    .maat-input {
+      background: #ffffff;
+      border: 2px solid var(--color-forest);
+      border-radius: 8px;
+      padding: 4px 8px;
+      margin: 4px auto;
+      width: 128px;
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 800;
+      color: #1e3a8a;
+      text-align: center;
+      background: #f0fdf4;
+    }
+
+    .maat-desc {
+      font-size: 15px;
+      color: var(--color-gray);
+      margin-top: 4px;
+      line-height: 1.15;
+    }
+
+    /* Checklist 3x3 Grid */
+    .checklist-grid-3x3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px 18px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .real-check-box {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #64748b;
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+    }
+
+    .real-check-box.checked {
+      border-color: var(--color-forest);
+      background: #f0fdf4;
+    }
+
+    .real-check-box svg {
+      display: none;
+      width: 18px;
+      height: 18px;
+      stroke: #1e3a8a;
+      stroke-width: 3.5;
+    }
+    .real-check-box.checked svg {
+      display: block;
+    }
+
+    .check-text strong {
+      color: #1e293b;
+    }
+    .check-text span {
+      color: #64748b;
+      font-size: 16px;
+    }
+
+    /* Opties 2 Kolommen */
+    .checklist-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 30px;
+    }
+
+    /* Gekozen Stoelmodel Tabel */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 19px;
+    }
+    .specs-table td {
+      padding: 6px 0;
+      vertical-align: middle;
+    }
+    .specs-table .label-td {
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      width: 30%;
+    }
+
+    .pen-written {
+      font-family: var(--font-hand);
+      font-size: 27px;
+      font-weight: 700;
+      color: #1e3a8a;
+      letter-spacing: 0.3px;
+    }
+
+    .notes-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 10px 16px;
+      background: #fbfbfb;
+      min-height: 55px;
+      font-family: var(--font-hand);
+      font-size: 24px;
+      color: #1e3a8a;
+      line-height: 1.3;
+      margin-top: 6px;
+    }
+
+    /* Handtekeningen */
+    .sign-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 2px solid var(--color-gray-light);
+    }
+
+    .sign-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .sign-box {
+      height: 65px;
+      border: 1.5px solid #e2e8f0;
+      background: #fafaf9;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .signature-svg {
+      width: 190px;
+      height: 55px;
+      color: #1e3a8a;
+    }
+
+    /* Stempel "100% GECERTIFICEERD" */
+    .certified-rubber-stamp {
+      position: absolute;
+      bottom: 110px;
+      right: 70px;
+      transform: rotate(-9deg);
+      border: 4.5px solid #2e7d32;
+      border-radius: 12px;
+      padding: 8px 18px;
+      color: #2e7d32;
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+      background: rgba(240, 253, 244, 0.88);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Footer Pill */
+    .sheet-footer {
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .footer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: #f0fdf4;
+      border: 1.5px solid rgba(75, 143, 36, 0.25);
+      border-radius: 999px;
+      padding: 8px 24px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    
+    <!-- 1. Header met Logo & Documenttitel -->
+    <div>
+      <div class="sheet-header">
+        <div class="brand-col">
+          <div class="logo-text">staopstoelen<span>.nl</span></div>
+          <div class="logo-subtitle">Specialist in ergonomisch zitcomfort</div>
+        </div>
+
+        <div class="header-badge">
+          <div class="doc-title-box">
+            <div class="doc-title">Intake &amp; Afvinkformulier</div>
+            <div class="doc-subtitle">Ergonomisch Zitadvies &amp; Maatbepaling</div>
+          </div>
+          <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Dordrecht" class="brand-stamp">
+        </div>
+      </div>
+
+      <!-- 2. Klant- & Afspraakgegevens -->
+      <div class="client-details-grid">
+        <div>
+          <div class="input-line">
+            <span class="input-label">Naam cliënt:</span>
+            <span class="input-fill">Mevr. H.J. van den Berg - de Jong</span>
+          </div>
+          <div class="input-line">
+            <span class="input-label">Adres:</span>
+            <span class="input-fill">Dubbeldamseweg Zuid 42</span>
+          </div>
+          <div class="input-line">
+            <span class="input-label">Postcode / Woonplaats:</span>
+            <span class="input-fill">3314 JH Dordrecht</span>
+          </div>
+        </div>
+        <div>
+          <div class="input-line">
+            <span class="input-label">Telefoon:</span>
+            <span class="input-fill">078 - 614 29 18</span>
+          </div>
+          <div class="input-line">
+            <span class="input-label">Datum passing:</span>
+            <span class="input-fill">24 oktober 2026</span>
+          </div>
+          <div class="input-line">
+            <span class="input-label">Adviseur / Technoloog:</span>
+            <span class="input-fill">Geertjan Klein Haneveld</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Exacte Lichaamsmaten -->
+      <div class="section-box">
+        <div class="section-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          1. Exacte Lichaamsmaten (In te meten met meetlint)
+        </div>
+        <div class="section-body">
+          <div class="maten-grid">
+            <div class="maat-card">
+              <div class="maat-title">Zithoogte (A)</div>
+              <div class="maat-input">&#8597; 46 cm</div>
+              <div class="maat-desc">Knieholte tot hiel (cm)</div>
+            </div>
+            <div class="maat-card">
+              <div class="maat-title">Zitdiepte (B)</div>
+              <div class="maat-input">&#8596; 48 cm</div>
+              <div class="maat-desc">Achterzijde bil tot knieholte</div>
+            </div>
+            <div class="maat-card">
+              <div class="maat-title">Armleggerhoogte (C)</div>
+              <div class="maat-input">&#8597; 22 cm</div>
+              <div class="maat-desc">Zitting tot onderarm (cm)</div>
+            </div>
+            <div class="maat-card">
+              <div class="maat-title">Zitbreedte (D)</div>
+              <div class="maat-input">&#8596; 49 cm</div>
+              <div class="maat-desc">Heupbreedte + speling</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Fysieke Klachten -->
+      <div class="section-box">
+        <div class="section-header orange">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          2. Fysieke Aandachtspunten &amp; Ondersteuningsprofiel
+        </div>
+        <div class="section-body">
+          <div class="checklist-grid-3x3">
+            <div class="check-item"><div class="real-check-box checked"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Lage rugklachten</strong> <span>/ lumbaalsteun</span></div></div>
+            <div class="check-item"><div class="real-check-box checked"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Nek- &amp; schouderpijn</strong> <span>/ Topswing</span></div></div>
+            <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Evenwichtsproblemen</strong> <span>/ balans</span></div></div>
+            <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Hernia / artrose</strong> <span>/ bekkensteun</span></div></div>
+            <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Oedeem / vochtbenen</strong> <span>/ hart-balans</span></div></div>
+            <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Zijwaartse instabiliteit</strong> <span>/ rompsteun</span></div></div>
+            <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Kyfose</strong> <span>/ bolle rugprofiel</span></div></div>
+            <div class="check-item"><div class="real-check-box checked"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Moeite met opstaan</strong> <span>/ sta-op lift</span></div></div>
+            <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Gevoelige stuit</strong> <span>/ decubitus</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Gewenste Functies -->
+      <div class="section-box">
+        <div class="section-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          3. Gewenste Uitvoering &amp; Opties
+        </div>
+        <div class="section-body">
+          <div class="checklist-columns">
+            <div>
+              <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 5px; font-size: 16px; text-transform: uppercase;">Aandrijving &amp; Motoren:</div>
+              <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>1-motorig:</strong> <span>synchroon</span></div></div>
+              <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>2-motorig:</strong> <span>onafhankelijk</span></div></div>
+              <div class="check-item"><div class="real-check-box checked"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>3-motorig:</strong> <span>incl. kantelstand</span></div></div>
+              <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Accu-pakket:</strong> <span>snoerloos</span></div></div>
+            </div>
+            <div>
+              <div style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 5px; font-size: 16px; text-transform: uppercase;">Bekleding &amp; Extra's:</div>
+              <div class="check-item"><div class="real-check-box checked"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Leder:</strong> <span>duurzaam &amp; reinigbaar</span></div></div>
+              <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Zacht Meubelstof:</strong> <span>ademend</span></div></div>
+              <div class="check-item"><div class="real-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Draaivoet:</strong> <span>met blokkering</span></div></div>
+              <div class="check-item"><div class="real-check-box checked"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div class="check-text"><strong>Wielsysteem / Verrijdbaar:</strong> <span>rempedaal</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Geselecteerde Stoel -->
+      <div class="section-box">
+        <div class="section-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          4. Gekozen Stoelmodel &amp; Afspraken
+        </div>
+        <div class="section-body">
+          <table class="specs-table">
+            <tr>
+              <td class="label-td">Merk &amp; Model stoel:</td>
+              <td style="width: 70%;">
+                <span class="pen-written">Fitform 570 Vario &bull; ILP (Maat M &bull; Cognac Leer)</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="label-td">Conditie:</td>
+              <td>
+                <span style="font-weight: 700; color: var(--color-forest); display: inline-flex; align-items: center; gap: 6px;">
+                  <span style="display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--color-forest);"></span>
+                  100% Gecertificeerd Gereviseerd (Als Nieuw)
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="label-td">Geadviseerde Aanpassingen:</td>
+              <td>
+                <span class="pen-written">ILP lendenpomp geactiveerd &bull; Armleggers op 22 cm vastgezet</span>
+              </td>
+            </tr>
+          </table>
+
+          <div style="margin-top: 10px;">
+            <span style="font-size: 16px; font-weight: 700; color: var(--color-forest-dark); text-transform: uppercase;">Bijzonderheden &amp; Afleverwensen:</span>
+            <div class="notes-box">
+              Levering binnen 3 dagen op begane grond in Dordrecht. Inclusief 24 maanden volledige omruilgarantie aan huis en persoonlijke demonstratie door Geertjan.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stempel GOEDGEKEURD -->
+      <div class="certified-rubber-stamp">
+        ★ 100% GECERTIFICEERD ★<br>
+        <span style="font-size: 15px; font-weight: 700; letter-spacing: 1px;">WERKPLAATS DORDRECHT</span>
+      </div>
+
+      <!-- 7. Handtekeningen -->
+      <div class="sign-row">
+        <div class="sign-col">
+          <div class="sign-title">Handtekening Adviseur / BewegingsTechnoloog:</div>
+          <div class="sign-box">
+            <svg class="signature-svg" viewBox="0 0 120 36" fill="none" stroke="#1e3a8a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 24 C16 12 24 8 30 18 C34 26 38 28 44 14 C48 8 52 20 58 24 C64 26 72 16 80 18 C88 20 95 12 108 14"/>
+              <path d="M22 28 C40 26 75 27 105 25"/>
+            </svg>
+          </div>
+          <div style="font-size: 15px; color: var(--color-gray);">
+            Naam: <strong>Geertjan Klein Haneveld</strong>
+          </div>
+        </div>
+        <div class="sign-col">
+          <div class="sign-title">Voor akkoord / gezien door cliënt:</div>
+          <div class="sign-box">
+            <svg class="signature-svg" viewBox="0 0 120 36" fill="none" stroke="#1e3a8a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 16 C20 10 28 8 32 18 C36 28 42 12 48 16 C55 20 62 14 70 22 C78 30 88 12 102 18"/>
+            </svg>
+          </div>
+          <div style="font-size: 15px; color: var(--color-gray);">
+            Datum &amp; Plaats: <strong>Dordrecht, 24-10-2026</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Footer Pill -->
+    <footer class="sheet-footer">
+      <div class="footer-pill">
+        <span>www.staopstoelen.nl</span>
+        <span>&bull;</span>
+        <span>078 - 631 4858</span>
+        <span>&bull;</span>
+        <span>Merwedestraat 239, Dordrecht</span>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
