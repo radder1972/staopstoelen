@@ -11,7 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap">
   <script>
-    if (window.location.search.indexOf('embed=1') !== -1 || window !== window.top) {
+    if (window.location.search.indexOf('record=1') !== -1) {
+      document.documentElement.classList.add('is-recording');
+    } else if (window.location.search.indexOf('embed=1') !== -1 || window !== window.top) {
       document.documentElement.classList.add('is-embedded');
     }
   </script>
@@ -2224,6 +2226,73 @@
       .yt-chapter-pill {
         display: none !important;
       }
+    }
+
+    /* Recording Mode: Pure 16:9 full-bleed video stage, no header, no bottom bar */
+    html.is-recording,
+    body.is-recording,
+    html:has(body.is-recording) {
+      background: #000 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+    }
+    body.is-recording .dossier-fixed-nav,
+    body.is-recording .dossier-hero-header,
+    body.is-recording .video-mode-switcher-wrapper,
+    body.is-recording .collapsible-drawer,
+    body.is-recording .drawer-toggle-wrapper,
+    body.is-recording .btn-drawer-toggle-wrapper,
+    body.is-recording #btn-toggle-drawer,
+    body.is-recording .yt-version-badge,
+    body.is-recording .yt-bottom-bar,
+    body.is-recording .cinema-captions {
+      display: none !important;
+    }
+    body.is-recording .container {
+      padding: 0 !important;
+      max-width: 100vw !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    body.is-recording .video-player-card {
+      border-radius: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+      max-width: 100vw !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+      flex: 1 1 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+    }
+    body.is-recording .stage-split-wrapper {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+      overflow: hidden !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    body.is-recording .stage-split-wrapper.box-right .companion-panel {
+      margin: 0 44px 0 auto !important;
+    }
+    body.is-recording .stage-split-wrapper.box-left .companion-panel {
+      margin: 0 auto 0 44px !important;
     }
 
     /* Embedded Mode (voor integratie in lightbox iframe & consumentenpagina) */
@@ -5616,11 +5685,11 @@
               <div class="rpc-checklist">
                 <div class="rpc-check-item">
                   <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                  <span>30-Punts technische inspectie</span>
+                  <span>Technische inspectie</span>
                 </div>
                 <div class="rpc-check-item">
                   <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                  <span>100% nieuw koudschuim &amp; gereinigd</span>
+                  <span>Nieuw koudschuim &amp; gereinigd</span>
                 </div>
                 <div class="rpc-check-item highlight">
                   <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
@@ -6585,6 +6654,39 @@
     updateTotalTimeDisplay(offsetSec);
   }
 
+  window.setRecordingFrame = function(idx, timeSec, totalSec) {
+    if (currentScene !== idx) {
+      jumpToScene(idx, 0);
+    }
+    const bg = document.getElementById('scene-bg');
+    if (bg) {
+      bg.style.transition = 'none';
+      bg.style.animation = 'none';
+    }
+    const p = totalSec > 0 ? Math.min(1, Math.max(0, timeSec / totalSec)) : 0;
+    const ease = 1 - Math.pow(1 - p, 2);
+
+    if (bg) {
+      if (idx === 0) {
+        bg.style.transform = `scale(${1 + 0.08 * ease}) translate(${-1.5 * ease}%, ${-1.0 * ease}%)`;
+      } else if (idx === 1) {
+        bg.style.transform = `scale(${1.06 - 0.06 * ease}) translate(${1 - 2 * ease}%, 0)`;
+        if (typeof selectZitadviesStep === 'function') {
+          const step = Math.min(4, Math.floor(p * 4) + 1);
+          selectZitadviesStep(step, false);
+        }
+      } else if (idx === 2) {
+        bg.style.transform = `scale(${1 + 0.08 * ease}) translate(${1 * ease}%, ${1 - 2 * ease}%)`;
+        if (typeof selectAnatomyHotspot === 'function') {
+          const pt = Math.min(4, Math.floor(p * 4) + 1);
+          selectAnatomyHotspot(pt, false);
+        }
+      } else if (idx === 3) {
+        bg.style.transform = `scale(${1.06 - 0.06 * ease}) translate(${-1 + 2 * ease}%, 0)`;
+      }
+    }
+  };
+
   function nextScene() {
     if (currentScene < scenes.length - 1) jumpToScene(currentScene + 1, 0);
   }
@@ -7016,6 +7118,11 @@
 
   // Initial render & URL parameters
   const urlParams = new URLSearchParams(window.location.search);
+  const isRecordParam = urlParams.get('record') === '1';
+  if (isRecordParam) {
+    document.documentElement.classList.add('is-recording');
+    document.body.classList.add('is-recording');
+  }
   const isEmbedParam = urlParams.get('embed') === '1' || window !== window.top;
   if (isEmbedParam) {
     document.documentElement.classList.add('is-embedded');
