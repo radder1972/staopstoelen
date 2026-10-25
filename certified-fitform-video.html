@@ -3021,9 +3021,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.58rem;
-      font-weight: 900;
       flex-shrink: 0;
+    }
+    .zitadvies-check-box svg {
+      width: 9px;
+      height: 9px;
+      stroke: #ffffff;
+      stroke-width: 3.5;
     }
     .zitadvies-tabs-row {
       display: grid;
@@ -3160,6 +3164,48 @@
       text-align: left;
       min-width: 0;
       gap: 4px;
+    }
+    .revisie-result-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #f0fdf4;
+      border: 1px solid rgba(75, 143, 36, 0.32);
+      border-radius: 8px;
+      padding: 5px 9px;
+      margin-top: auto;
+      box-shadow: 0 1px 3px rgba(75, 143, 36, 0.08);
+      max-width: 100%;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    .brand-check-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-forest, #2e6022);
+      color: #ffffff;
+      flex-shrink: 0;
+      box-shadow: 0 1px 2px rgba(46, 96, 34, 0.25);
+    }
+    .brand-check-badge svg {
+      width: 9px;
+      height: 9px;
+      stroke: #ffffff;
+      stroke-width: 3.5;
+    }
+    .revisie-result-text {
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 0.72rem;
+      font-weight: 750;
+      color: var(--color-forest-dark, #122b07);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: -0.2px;
     }
     .revisie-thumbs-row {
       display: grid;
@@ -4988,9 +5034,9 @@
                 </div>
               </div>
               <div class="zitadvies-checks-strip">
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Onderrug</span>
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Neksteun</span>
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Sta-op</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Onderrug</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Neksteun</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Sta-op</span>
               </div>
             </div>
           </div>
@@ -5079,7 +5125,7 @@
                 </div>
                 <div class="anatomy-meta-row">
                   <span class="anatomy-meta-lbl">Actie:</span>
-                  <span class="anatomy-meta-val" id="anat-detail-action">&#10003; 100% Gekeurd &amp; Gesmeerd</span>
+                  <span class="anatomy-meta-val" id="anat-detail-action"><span class="brand-check-badge" style="width:13px;height:13px;margin-right:4px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> 100% Gekeurd &amp; Gesmeerd</span>
                 </div>
               </div>
             </div>
@@ -5221,7 +5267,7 @@
                 </div>
                 <div class="anatomy-meta-row">
                   <span class="anatomy-meta-lbl">Actie:</span>
-                  <span class="anatomy-meta-val" id="anat-detail-action">&#10003; 100% Gekeurd &amp; Gesmeerd</span>
+                  <span class="anatomy-meta-val" id="anat-detail-action"><span class="brand-check-badge" style="width:13px;height:13px;margin-right:4px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> 100% Gekeurd &amp; Gesmeerd</span>
                 </div>
               </div>
             </div>
@@ -5277,15 +5323,11 @@
               <div class="anatomy-detail-cat" id="revisie-detail-cat">STAP 01 &bull; CHASSIS &amp; SCHUIMKERN</div>
               <h4 class="anatomy-detail-title" id="revisie-detail-title">Volledig Gestript tot op het Stalen Frame</h4>
               <p class="anatomy-detail-desc" id="revisie-detail-desc">Alle oude bekleding en schuimlagen verwijderd. Inspectie van stalen chassis, scharnierpunten en lasnaden.</p>
-              <div class="anatomy-meta-box">
-                <div class="anatomy-meta-row">
-                  <span class="anatomy-meta-lbl">Onderdeel:</span>
-                  <span class="anatomy-meta-val" id="revisie-detail-check">Frame, spindels &amp; kabels</span>
-                </div>
-                <div class="anatomy-meta-row">
-                  <span class="anatomy-meta-lbl">Resultaat:</span>
-                  <span class="anatomy-meta-val" id="revisie-detail-action">&#10003; 100% Spelingvrij Gekeurd</span>
-                </div>
+              <div class="revisie-result-row">
+                <span class="brand-check-badge">
+                  <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="revisie-result-text" id="revisie-detail-result">Resultaat 100% Gekeurd</span>
               </div>
             </div>
           </div>
@@ -5356,9 +5398,9 @@
                 </div>
               </div>
               <div class="zitadvies-checks-strip">
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Wervelkolom</span>
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Schouders</span>
-                <span class="zitadvies-check-item"><span class="zitadvies-check-box">&#10003;</span> Veilig opstaan</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Wervelkolom</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Schouders</span>
+                <span class="zitadvies-check-item"><span class="zitadvies-check-box"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Veilig opstaan</span>
               </div>
             </div>
           </div>
@@ -5424,15 +5466,15 @@
               </div>
               <div class="rpc-checklist">
                 <div class="rpc-check-item">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
                   <span>30-Punts technische inspectie</span>
                 </div>
                 <div class="rpc-check-item">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
                   <span>100% nieuw koudschuim &amp; gereinigd</span>
                 </div>
                 <div class="rpc-check-item highlight">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
                   <span>2 Jaar garantie &amp; service aan huis</span>
                 </div>
               </div>
@@ -5551,35 +5593,35 @@
   // 30-Punts Inspectie & Stoel-Anatomie Data (voor Scène 3 van Proefzitten-video)
   const ANATOMY_DATA = {
     1: {
-      cat: "1 \u2022 Aandrijftechniek",
+      cat: "1 • Aandrijftechniek",
       title: "3 Onafhankelijke Linak Motoren",
       desc: "Deense Linak motoren getest onder 150 kg belasting op geruisloze en soepele werking.",
       check: "Spindel, relais & printplaat",
-      action: "\u2713 100% Gekeurd & Gesmeerd",
+      action: "100% Gekeurd & Gesmeerd",
       part: "anat-part-motor"
     },
     2: {
-      cat: "2 \u2022 Ergonomie op Maat",
+      cat: "2 • Ergonomie op Maat",
       title: "Maatwerk Inmeting door Geertjan",
-      desc: "Zithoogte (40\u201360 cm), zitdiepte en armleggers exact afgesteld op uw beenlengte.",
+      desc: "Zithoogte (40–60 cm), zitdiepte en armleggers exact afgesteld op uw beenlengte.",
       check: "Zithoogte, zitdiepte & armhoek",
-      action: "\u2713 Millimeterwerk op uw lichaam",
+      action: "Millimeterwerk op uw lichaam",
       part: "anat-part-seat"
     },
     3: {
-      cat: "3 \u2022 Wervelkolom & Rug",
+      cat: "3 • Wervelkolom & Rug",
       title: "Pneumatische Lendensteun",
       desc: "Regelbare luchtkamer in de rugleuning ondersteunt de natuurlijke S-curve van uw rug.",
       check: "Luchtdichtheid balg & pompklep",
-      action: "\u2713 Optimale onderrugsteun",
+      action: "Optimale onderrugsteun",
       part: "anat-part-back"
     },
     4: {
-      cat: "4 \u2022 Hygi\u00ebne & Bekleding",
+      cat: "4 • Hygiëne & Bekleding",
       title: "Ozon- & Dieptereiniging",
       desc: "Professionele extractie- en ozonbehandeling voor 100% bacterie-, vlek- en geurvrij comfort.",
       check: "Koudschuim, leder & stiksel",
-      action: "\u2713 Fris & hygi\u00ebnisch als nieuw",
+      action: "Fris & hygiënisch als nieuw",
       part: "anat-part-arm"
     },
     5: {
@@ -5587,7 +5629,7 @@
       title: "Nieuwe Noodaccu & Keurmerk",
       desc: "Inclusief verse back-up batterij bij stroomuitval en 24 maanden garantie aan huis.",
       check: "Accucapaciteit & Noodcircuit",
-      action: "✓ 24 Mnd Garantie aan huis",
+      action: "24 Mnd Garantie aan huis",
       part: "anat-part-base"
     }
   };
@@ -5621,7 +5663,9 @@
     const checkEl = document.getElementById('anat-detail-check');
     if (checkEl) checkEl.textContent = d.check;
     const actionEl = document.getElementById('anat-detail-action');
-    if (actionEl) actionEl.textContent = d.action;
+    if (actionEl) {
+      actionEl.innerHTML = `<span class="brand-check-badge" style="width:13px;height:13px;margin-right:4px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> ` + d.action;
+    }
 
     for (let i = 1; i <= 5; i++) {
       const hs = document.getElementById('anat-hs-' + i);
@@ -5828,8 +5872,7 @@
       cat: "STAP 01 • CHASSIS & SCHUIMKERN",
       title: "Volledig Gestript tot op het Stalen Frame",
       desc: "Alle oude bekleding en schuim worden verwijderd. Het massief stalen schaarmechaniek en alle lasnaden worden gecontroleerd.",
-      check: "Frame, spindels & scharnierpunten",
-      action: "✓ 100% Gekeurd in Dordrecht"
+      result: "Resultaat 100% Gekeurd"
     },
     2: {
       img: "assets/revisie_stap2.jpg",
@@ -5837,8 +5880,7 @@
       cat: "STAP 02 • ERGONOMISCH KOUDSCHUIM",
       title: "Nieuw HR-Koudschuim & Verse Stoffering",
       desc: "Nieuwe armleggers met verchroomde pennen, ademende HR-koudschuim zitting en rugpaneel worden met de hand opnieuw bekleed.",
-      check: "HR-koudschuim & meubelstof/leder",
-      action: "✓ Nieuw materiaal op de werkbank"
+      result: "Resultaat 100% Nieuw Schuim"
     },
     3: {
       img: "assets/revisie_stap1.jpg",
@@ -5846,8 +5888,7 @@
       cat: "STAP 03 • MOTOR- & ELEKTRONICA KEURING",
       title: "24-Uurs Duurtest van de 3 Linak Motoren",
       desc: "De Deense Linak motoren worden onder 150 kg dynamische belasting getest op printplaat, relais, handbediening en geluid.",
-      check: "3 Linak motoren, trafo & kabels",
-      action: "✓ 150 kg belastingtest doorstaan"
+      result: "Resultaat 100% Geslaagd"
     },
     4: {
       img: "assets/revisie_stap4.jpg",
@@ -5855,8 +5896,7 @@
       cat: "STAP 04 • OZON-EXTRACTIE & EINDCONTROLE",
       title: "Het Eindproduct: 100% Als Nieuw Bekleed",
       desc: "De gereviseerde Fitform 570 wordt ozon-gedesinfecteerd, verzegeld met het keurmerk en geleverd inclusief 2 jaar garantie aan huis.",
-      check: "Ozon-dieptereiniging & keurmerk",
-      action: "✓ Klaar voor proefzitten & levering"
+      result: "Resultaat 100% Als Nieuw"
     }
   };
 
@@ -5885,10 +5925,8 @@
     if (titleEl) titleEl.textContent = d.title;
     const descEl = document.getElementById('revisie-detail-desc');
     if (descEl) descEl.textContent = d.desc;
-    const checkEl = document.getElementById('revisie-detail-check');
-    if (checkEl) checkEl.textContent = d.check;
-    const actionEl = document.getElementById('revisie-detail-action');
-    if (actionEl) actionEl.textContent = d.action;
+    const resultEl = document.getElementById('revisie-detail-result');
+    if (resultEl) resultEl.textContent = d.result;
 
     for (let i = 1; i <= 4; i++) {
       const btn = document.getElementById('rev-btn-' + i);
