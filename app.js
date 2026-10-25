@@ -2273,19 +2273,42 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     });
   }
 
+  const heading = document.getElementById("videoLightboxHeading");
   const player = document.getElementById("videoLightboxPlayer");
   const iframe = document.getElementById("videoLightboxIframe");
 
-  if (mode === "interactive" || mode === "dossier") {
+  if (mode === "afspraak" || mode === "zitmeting" || mode === "proefzitten" || mode === "pasvorm") {
+    if (heading) heading.textContent = mode === "pasvorm" ? "Pasformulier & Stoel-Anatomie" : "Hoe werkt Proefzitten & Zitmeting?";
     if (player) {
       player.pause();
       player.style.display = "none";
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=2.22`;
+      iframe.src = `certified-fitform-video.html?mode=${mode}&embed=1&autoplay=1&v=2.25`;
+    }
+  } else if (mode === "revisie" || mode === "inspectie") {
+    if (heading) heading.textContent = "Inspectie, Revisie & Zitadvies";
+    if (player) {
+      player.pause();
+      player.style.display = "none";
+    }
+    if (iframe) {
+      iframe.style.display = "block";
+      iframe.src = `certified-fitform-video.html?mode=revisie&embed=1&autoplay=1&v=2.25`;
+    }
+  } else if (mode === "interactive" || mode === "dossier") {
+    if (heading) heading.textContent = "Waarom Certified Fitform • Interactief";
+    if (player) {
+      player.pause();
+      player.style.display = "none";
+    }
+    if (iframe) {
+      iframe.style.display = "block";
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=2.25`;
     }
   } else {
+    if (heading) heading.textContent = "Waarom Certified Fitform";
     if (iframe) {
       iframe.src = "";
       iframe.style.display = "none";
