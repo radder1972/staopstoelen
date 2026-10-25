@@ -424,22 +424,42 @@
         Bij staopstoelen.nl geloven we in duurzaamheid, medische verantwoording en topkwaliteit. Onze gediplomeerde BewegingsTechnologen reviseren premium A-merk sta-op stoelen (zoals Fitform en Doge) tot in het kleinste detail. Van het reinigen en controleren van de motoren tot het vernieuwen van de vulling en de bekleding: elke stoel verlaat onze werkplaats als nieuw. Bekijk hieronder stap voor stap hoe ons zorgvuldige revisieproces verloopt.
       </p>
 
-      <!-- Certified Fitform Revisie Video Callout (Huisstijl) -->
-      <div class="certified-video-callout" style="margin-bottom: 32px;">
-        <div class="certified-video-callout-left">
-          <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Revisie" class="certified-video-callout-stamp" width="54" height="54">
-          <div class="certified-video-callout-text">
-            <h4>Bekijk het volledige revisieproces in beeld</h4>
-            <p>Van kaal stalen frame en 150 kg Linak motortest tot nieuw koudschuim en levering op maat.</p>
+      <!-- Video Showcase: Het Volledige Revisieproces (Inline Speler) -->
+      <div class="revisie-video-showcase" style="margin-bottom: 34px; background: #ffffff; border: 1.5px solid rgba(75, 143, 36, 0.25); border-radius: 18px; padding: 20px; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="position: relative; width: 48px; height: 48px; flex-shrink: 0;">
+              <img src="assets/sticker_certified_fitform.svg?v=3.3" alt="Certified Fitform Revisie" style="width: 48px; height: 48px; display: block;">
+            </div>
+            <div>
+              <span style="font-size: 0.74rem; font-weight: 800; color: var(--color-forest); text-transform: uppercase; letter-spacing: 0.8px; display: block; margin-bottom: 2px;">In 42 seconden &bull; Vakmanschap &amp; Garantie</span>
+              <h3 style="margin: 0; font-size: 1.3rem; color: var(--color-forest-dark);">Het Volledige Revisieproces: Van Kaal Frame tot Nieuwstaat</h3>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="display: inline-flex; align-items: center; gap: 8px; background: #f0fdf4; border: 1.5px solid rgba(75, 143, 36, 0.35); padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; color: var(--color-forest-dark);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>30-Punts Keuring &bull; 150 kg Motortest &bull; 2 Jaar Garantie</span>
+            </span>
+            <button type="button" onclick="openCertifiedVideoModal('revisie')" class="btn-watch-video-pill" style="padding: 6px 14px; font-size: 0.82rem; height: auto;">
+              <span class="btn-watch-video-play-circle" style="width: 20px; height: 20px;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+              </span>
+              <span>Groot Scherm</span>
+            </button>
           </div>
         </div>
-        <div class="certified-video-callout-actions">
-          <button type="button" onclick="openCertifiedVideoModal('revisie')" class="btn-watch-video-pill">
-            <span class="btn-watch-video-play-circle">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
-            </span>
-            <span>Bekijk Video: Van kaal frame tot nieuwstaat</span>
-          </button>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 560px; border-radius: 14px; overflow: hidden; background: #122b07; box-shadow: 0 6px 24px rgba(0,0,0,0.14);">
+          <video 
+            controls 
+            playsinline 
+            preload="metadata" 
+            poster="assets/video/revisie_poster.jpg" 
+            style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px;">
+            <source src="assets/video/revisie_proces_dordrecht.mp4" type="video/mp4">
+            Uw browser ondersteunt geen HTML5 video.
+          </video>
         </div>
       </div>
 

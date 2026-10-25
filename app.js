@@ -2301,14 +2301,17 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=2.26`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
-    if (heading) heading.textContent = "Inspectie, Revisie & Zitadvies";
-    if (player) {
-      player.pause();
-      player.style.display = "none";
-    }
+    if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
     if (iframe) {
-      iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=revisie&embed=1&autoplay=1&v=2.25`;
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.src = "assets/video/revisie_proces_dordrecht.mp4";
+      player.poster = "assets/video/revisie_poster.jpg";
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(() => {});
     }
   } else if (mode === "interactive" || mode === "dossier") {
     if (heading) heading.textContent = "Waarom Certified Fitform • Interactief";
