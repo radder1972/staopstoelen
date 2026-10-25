@@ -3835,9 +3835,9 @@
           <span class="mode-badge-dot"></span>
           <span>Proefzitten &amp; Zitadvies (38s)</span>
         </button>
-        <button type="button" class="mode-switch-btn" id="btn-mode-pasvorm" onclick="switchReelMode('pasvorm')" title="Stoel-Anatomie & Pasformulier: Uitsluitend de 30-punts techniek en de persoonlijke zitmeting (20s)">
+        <button type="button" class="mode-switch-btn" id="btn-mode-pasvorm" onclick="switchReelMode('pasvorm')" title="Pasformulier & Stoel-Anatomie: Eerst de persoonlijke zitmeting en daarna de 30-punts techniek (20s)">
           <span class="mode-badge-dot"></span>
-          <span>Stoel &amp; Pasformulier (20s)</span>
+          <span>Pasformulier &amp; Stoel (20s)</span>
         </button>
       </div>
     </div>
@@ -5238,22 +5238,8 @@
     }
   ];
 
-  // NIEUW: Stoel-Anatomie & Pasformulier Video (mode=pasvorm): Uitsluitend de 30-punts techniek & de persoonlijke zitmeting (20s)
+  // NIEUW: Pasformulier & Stoel-Anatomie Video (mode=pasvorm): Eerst de persoonlijke zitmeting, daarna de 30-punts techniek (20s)
   const PASVORM_SCENES = [
-    {
-      align: "left",
-      shortTag: "Stoel-Anatomie",
-      kicker: "30-PUNTS KEURING • STOEL-ANATOMIE",
-      title: "30-Punts Keuring & Stoel-Anatomie",
-      subtitle: "",
-      metric: "",
-      caption: "Elke Fitform stoel wordt tot in detail gekeurd en afgesteld: motoren, schaarmechaniek, lendensteun, koudschuim en noodstroomvoorziening.",
-      voiceText: "Elke Fitform stoel wordt tot in detail gekeurd en afgesteld: Linak motoren, schaarmechaniek, lendensteun, koudschuim en noodstroomvoorziening.",
-      bg: "assets/dutch_technician_fitform_workshop_v2.jpg?v=20261024_02",
-      audio: "assets/audio/afspraak_scene_3.m4a?v=eleven_1",
-      durationSec: 9.54,
-      visualHtml: AFSPRAAK_SCENES[2].visualHtml
-    },
     {
       align: "right",
       shortTag: "Het Pasformulier",
@@ -5267,6 +5253,20 @@
       audio: "assets/audio/afspraak_scene_2.m4a?v=eleven_1",
       durationSec: 10.44,
       visualHtml: AFSPRAAK_SCENES[1].visualHtml
+    },
+    {
+      align: "left",
+      shortTag: "Stoel-Anatomie",
+      kicker: "30-PUNTS KEURING • STOEL-ANATOMIE",
+      title: "30-Punts Keuring & Stoel-Anatomie",
+      subtitle: "",
+      metric: "",
+      caption: "Elke Fitform stoel wordt tot in detail gekeurd en afgesteld: motoren, schaarmechaniek, lendensteun, koudschuim en noodstroomvoorziening.",
+      voiceText: "Elke Fitform stoel wordt tot in detail gekeurd en afgesteld: Linak motoren, schaarmechaniek, lendensteun, koudschuim en noodstroomvoorziening.",
+      bg: "assets/dutch_technician_fitform_workshop_v2.jpg?v=20261024_02",
+      audio: "assets/audio/afspraak_scene_3.m4a?v=eleven_1",
+      durationSec: 9.54,
+      visualHtml: AFSPRAAK_SCENES[2].visualHtml
     }
   ];
 
@@ -6452,9 +6452,9 @@
       scenes = PASVORM_SCENES;
       if (btnPasv) btnPasv.classList.add('active');
       else if (btnAfsp) btnAfsp.classList.add('active');
-      if (heroKicker) heroKicker.innerHTML = 'STOEL-ANATOMIE &amp; PASFORMULIER &bull; 20-SECONDEN VIDEO';
-      if (heroTitle) heroTitle.innerHTML = 'Stoel-Anatomie &amp; <span class="title-highlight">Pasformulier</span>';
-      if (heroLead) heroLead.textContent = 'Ontdek de 30-punts technische keuring van onze Fitform stoelen en zie hoe bewegingstechnoloog Geertjan uw zithoogte, zitdiepte en lendensteun via ons pasformulier exact op lichaamsmaat afstelt.';
+      if (heroKicker) heroKicker.innerHTML = 'PASFORMULIER &amp; STOEL-ANATOMIE &bull; 20-SECONDEN VIDEO';
+      if (heroTitle) heroTitle.innerHTML = 'Pasformulier &amp; <span class="title-highlight">Stoel-Anatomie</span>';
+      if (heroLead) heroLead.textContent = 'Ontdek hoe bewegingstechnoloog Geertjan uw stoel via ons pasformulier exact op lichaamsmaat afstelt, en bekijk de 30-punts technische keuring van onze Fitform stoelen.';
     } else if (mode === 'revisie') {
       document.body.classList.add('mode-consumer');
       document.body.classList.remove('mode-investor');
