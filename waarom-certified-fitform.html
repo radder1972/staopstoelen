@@ -80,6 +80,39 @@
     }
 
     /* Embedded Video Frame */
+    .video-view-toggle-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .video-view-toggle-btn {
+      background: #ffffff;
+      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      color: #122b07;
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    .video-view-toggle-btn:hover {
+      border-color: var(--color-forest, #4b8f24);
+      background: #f4faee;
+      transform: translateY(-1px);
+    }
+    .video-view-toggle-btn.active {
+      background: var(--color-forest, #4b8f24);
+      color: #ffffff;
+      border-color: var(--color-forest, #4b8f24);
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.28);
+    }
     .video-wrapper-card {
       background: #0f1c0d;
       border-radius: 20px;
@@ -89,12 +122,32 @@
       position: relative;
       margin: 0 auto 36px auto;
       max-width: 1040px;
+      transition: all 0.3s ease;
+    }
+    .video-wrapper-card.mode-video {
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+    .video-wrapper-card.mode-dossier {
       height: 620px;
+    }
+    .video-native-holder {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #000000;
+    }
+    .video-native-holder video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
     .video-iframe-holder {
       position: relative;
       width: 100%;
       height: 100%;
+      display: none;
     }
     .video-iframe-holder iframe {
       position: absolute;
@@ -106,13 +159,20 @@
       display: block;
     }
     @media (max-width: 860px) {
-      .video-wrapper-card {
+      .video-wrapper-card.mode-dossier {
         height: 620px;
       }
     }
     @media (max-width: 680px) {
-      .video-wrapper-card {
+      .video-wrapper-card.mode-dossier {
         height: 980px;
+      }
+      .video-view-toggle-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .video-view-toggle-btn {
+        justify-content: center;
       }
       .video-intro-row .consumer-kicker { display: none; }
     }
@@ -609,17 +669,78 @@
     <div class="container">
       <a href="index.html" class="back-link" style="margin-bottom: 20px; display: inline-block;">← Terug naar Home</a>
 
+      <!-- Toggle Selector tussen Film en Dossier -->
+      <div class="video-view-toggle-bar">
+        <button type="button" class="video-view-toggle-btn active" id="tabVideoFilm" onclick="switchVideoView('video')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+          <span>Bedrijfsvideo Dordrecht (47 sec)</span>
+        </button>
+        <button type="button" class="video-view-toggle-btn" id="tabVideoDossier" onclick="switchVideoView('dossier')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line></svg>
+          <span>Interactief Dossier &amp; Cijfers</span>
+        </button>
+      </div>
+
       <!-- De Klantvideo Player (Rechtstreeks ingeladen in Klantmodus) -->
-      <div class="video-wrapper-card">
-        <div class="video-iframe-holder">
+      <div class="video-wrapper-card mode-video" id="mainVideoCard">
+        <!-- Native 16:9 Master Bedrijfsvideo -->
+        <div class="video-native-holder" id="holderNativeVideo">
+          <video 
+            id="pageNativeVideoPlayer" 
+            controls 
+            playsinline 
+            preload="metadata"
+            poster="assets/video/video_poster_scene2.jpg" 
+            title="Certified Fitform Bedrijfsvideo Dordrecht">
+            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4" type="video/mp4">
+            Uw browser ondersteunt geen HTML5-video.
+          </video>
+        </div>
+
+        <!-- Optioneel: Interactief HTML Dossier -->
+        <div class="video-iframe-holder" id="holderDossierIframe">
           <iframe 
-            src="certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=2.18" 
-            title="Waarom Certified Fitform? 45-Seconden Klantvideo" 
+            id="dossierIframeEl"
+            src="" 
+            data-src="certified-fitform-video.html?mode=consumer&embed=1&autoplay=0&v=2.22" 
+            title="Waarom Certified Fitform? Dossier &amp; Berekeningen" 
             allow="autoplay; fullscreen"
-            loading="eager">
+            loading="lazy">
           </iframe>
         </div>
       </div>
+
+      <script>
+        function switchVideoView(view) {
+          const card = document.getElementById('mainVideoCard');
+          const btnVideo = document.getElementById('tabVideoFilm');
+          const btnDossier = document.getElementById('tabVideoDossier');
+          const holderVideo = document.getElementById('holderNativeVideo');
+          const holderIframe = document.getElementById('holderDossierIframe');
+          const videoEl = document.getElementById('pageNativeVideoPlayer');
+          const iframeEl = document.getElementById('dossierIframeEl');
+
+          if (view === 'dossier') {
+            card.classList.remove('mode-video');
+            card.classList.add('mode-dossier');
+            btnVideo.classList.remove('active');
+            btnDossier.classList.add('active');
+            holderVideo.style.display = 'none';
+            holderIframe.style.display = 'block';
+            if (videoEl) videoEl.pause();
+            if (iframeEl && !iframeEl.src) {
+              iframeEl.src = iframeEl.getAttribute('data-src');
+            }
+          } else {
+            card.classList.remove('mode-dossier');
+            card.classList.add('mode-video');
+            btnDossier.classList.remove('active');
+            btnVideo.classList.add('active');
+            holderIframe.style.display = 'none';
+            holderVideo.style.display = 'block';
+          }
+        }
+      </script>
 
       <!-- Quick Action Buttons (Site Stijlset) -->
       <div class="quick-cta-bar">

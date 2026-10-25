@@ -2223,12 +2223,31 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     overlay.innerHTML = `
       <div class="video-lightbox-card" onclick="event.stopPropagation()">
         <div class="video-lightbox-header">
-          <button type="button" class="video-lightbox-close" onclick="closeCertifiedVideoModal()" aria-label="Sluit video" title="Sluit video">
-            &#10005;
-          </button>
+          <div class="video-lightbox-title">
+            <span class="video-lightbox-dot"></span>
+            <span id="videoLightboxHeading">Waarom Certified Fitform? &bull; 47 sec</span>
+          </div>
+          <div class="video-lightbox-actions">
+            <a href="afspraak.html" class="video-lightbox-cta-btn" onclick="closeCertifiedVideoModal()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Afspraak Inplannen</span>
+            </a>
+            <button type="button" class="video-lightbox-close" onclick="closeCertifiedVideoModal()" aria-label="Sluit video" title="Sluit video">
+              &#10005;
+            </button>
+          </div>
         </div>
         <div class="video-lightbox-frame-wrap">
-          <iframe id="videoLightboxIframe" src="" title="Interactieve Klantvideo" allow="autoplay; fullscreen"></iframe>
+          <video 
+            id="videoLightboxPlayer" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4" 
+            poster="assets/video/video_poster_scene2.jpg" 
+            controls 
+            playsinline 
+            preload="auto"
+            style="width: 100%; height: 100%; object-fit: contain; background: #000; display: block;">
+          </video>
+          <iframe id="videoLightboxIframe" src="" title="Interactieve Klantvideo" allow="autoplay; fullscreen" style="width: 100%; height: 100%; border: none; display: none;"></iframe>
         </div>
       </div>
     `;
@@ -2242,9 +2261,28 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     });
   }
 
+  const player = document.getElementById("videoLightboxPlayer");
   const iframe = document.getElementById("videoLightboxIframe");
-  if (iframe) {
-    iframe.src = `certified-fitform-video.html?mode=${encodeURIComponent(mode)}&embed=1&autoplay=1&v=2.21`;
+
+  if (mode === "interactive" || mode === "dossier") {
+    if (player) {
+      player.pause();
+      player.style.display = "none";
+    }
+    if (iframe) {
+      iframe.style.display = "block";
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=2.22`;
+    }
+  } else {
+    if (iframe) {
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(err => console.log("Autoplay notice:", err));
+    }
   }
 
   overlay.classList.add("active");
@@ -2255,8 +2293,16 @@ window.closeCertifiedVideoModal = function() {
   const overlay = document.getElementById("certifiedVideoLightbox");
   if (!overlay) return;
   overlay.classList.remove("active");
+
+  const player = document.getElementById("videoLightboxPlayer");
+  if (player) {
+    player.pause();
+    player.currentTime = 0;
+  }
   const iframe = document.getElementById("videoLightboxIframe");
-  if (iframe) iframe.src = "";
+  if (iframe) {
+    iframe.src = "";
+  }
   const prodModal = document.getElementById("productModal");
   if (!prodModal || !prodModal.classList.contains("active")) {
     document.body.style.overflow = "";
