@@ -505,8 +505,14 @@
       height: 100%;
       object-fit: cover;
       opacity: 0.96;
-      transition: opacity 0.3s ease;
-      will-change: transform;
+      transition: opacity 1.1s ease-in-out;
+      will-change: transform, opacity;
+      z-index: 1;
+    }
+    .scene-bg-secondary {
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
     }
 
     .stage-split-wrapper.playing .scene-bg.motion-0 { animation: cameraMotion0 13s ease-out forwards; }
@@ -4052,6 +4058,7 @@
       <!-- LEFT: 100% Pure Cinema Screen met YouTube Click-to-Play -->
       <div class="cinema-screen" id="cinema-screen" onclick="handleScreenClick(event)" title="Klik om af te spelen / te pauzeren">
         <img src="assets/senior_chair_dilemma_v3.jpg?v=20261024_05" alt="Scene Background" class="scene-bg motion-0" id="scene-bg">
+        <img src="" alt="Scene Background Crossfade" class="scene-bg scene-bg-secondary motion-0" id="scene-bg-secondary">
         <div class="cinema-vignette"></div>
 
         <!-- Echte Hoek-Uitsnede: Wit van de achtergrond schijnt door de complete hoek zonder dat er foto onderdoor piept -->
@@ -5216,7 +5223,10 @@
       metric: "",
       caption: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige 30-punts inspectie van motoren, bekabeling en schaarmechaniek.",
       voiceText: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige dertig-punten inspectie van motoren, bekabeling en schaarmechaniek.",
-      bg: "assets/revisie_scene1_wide.jpg?v=20261025_3",
+      bg: "assets/revisie_scene1_photo1.jpg?v=20261025_4",
+      bgFadeList: [
+        { timeSec: 4.8, bg: "assets/revisie_scene1_photo2.jpg?v=20261025_4" }
+      ],
       audio: "assets/audio/revisie_scene_1.m4a?v=20261025_1",
       durationSec: 10.46,
       visualHtml: `
@@ -5306,7 +5316,7 @@
       metric: "",
       caption: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
       voiceText: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
-      bg: "assets/revisie_scene2_wide.jpg?v=20261025_2",
+      bg: "assets/revisie_scene2_stap1.jpg?v=20261025_4",
       audio: "assets/audio/revisie_scene_2.m4a?v=20261025_1",
       durationSec: 10.25,
       visualHtml: `
@@ -5868,6 +5878,7 @@
   const REVISIE_STEP_DATA = {
     1: {
       img: "assets/revisie_stap3.jpg",
+      wideBg: "assets/revisie_scene2_stap1.jpg?v=20261025_4",
       badge: "01 • DEMONTAGE TOT OP HET FRAME",
       cat: "STAP 01 • CHASSIS & SCHUIMKERN",
       title: "Volledig Gestript tot op het Stalen Frame",
@@ -5876,6 +5887,7 @@
     },
     2: {
       img: "assets/revisie_stap2.jpg",
+      wideBg: "assets/revisie_scene2_stap2.jpg?v=20261025_4",
       badge: "02 • NIEUW KOUDSCHUIM & ARMLEGGERS",
       cat: "STAP 02 • ERGONOMISCH KOUDSCHUIM",
       title: "Nieuw HR-Koudschuim & Verse Stoffering",
@@ -5884,6 +5896,7 @@
     },
     3: {
       img: "assets/revisie_stap1.jpg",
+      wideBg: "assets/revisie_scene2_stap3.jpg?v=20261025_4",
       badge: "03 • LINAK 150 KG BELASTINGSTEST",
       cat: "STAP 03 • MOTOR- & ELEKTRONICA KEURING",
       title: "24-Uurs Duurtest van de 3 Linak Motoren",
@@ -5892,6 +5905,7 @@
     },
     4: {
       img: "assets/revisie_stap4.jpg",
+      wideBg: "assets/revisie_scene2_stap4.jpg?v=20261025_4",
       badge: "04 • HET EINDPRODUCT MET 24 MND GARANTIE",
       cat: "STAP 04 • OZON-EXTRACTIE & EINDCONTROLE",
       title: "Het Eindproduct: 100% Als Nieuw Bekleed",
@@ -5927,6 +5941,10 @@
     if (descEl) descEl.textContent = d.desc;
     const resultEl = document.getElementById('revisie-detail-result');
     if (resultEl) resultEl.textContent = d.result;
+
+    if (d.wideBg) {
+      crossfadeSceneBg(d.wideBg);
+    }
 
     for (let i = 1; i <= 4; i++) {
       const btn = document.getElementById('rev-btn-' + i);
@@ -5986,6 +6004,7 @@
       const fill = document.getElementById('fill-' + currentScene);
       if (fill) fill.style.width = `${Math.min(100, pct)}%`;
       updateTotalTimeDisplay(fallbackElapsed / 1000);
+      checkInSceneTransitions(fallbackElapsed / 1000);
 
       if (fallbackElapsed >= totalMs) {
         clearInterval(fallbackTimer);
@@ -6044,6 +6063,7 @@
         const fill = document.getElementById('fill-' + currentScene);
         if (fill) fill.style.width = `${Math.min(100, progressPct)}%`;
         updateTotalTimeDisplay(currentAudio.currentTime);
+        checkInSceneTransitions(currentAudio.currentTime);
       };
 
       currentAudio.onended = () => {
@@ -6070,6 +6090,56 @@
       }
     } else {
       startFallbackTimer(s.durationSec, startOffsetSec);
+    }
+  }
+
+  let activeBgSlot = 1; // 1 = #scene-bg, 2 = #scene-bg-secondary
+  let currentDisplayedBg = '';
+
+  function crossfadeSceneBg(newUrl) {
+    if (!newUrl || newUrl === currentDisplayedBg) return;
+    const bg1 = document.getElementById('scene-bg');
+    const bg2 = document.getElementById('scene-bg-secondary');
+    if (!bg1 || !bg2) return;
+
+    currentDisplayedBg = newUrl;
+    if (activeBgSlot === 1) {
+      bg2.setAttribute('src', newUrl);
+      bg2.style.opacity = '0.96';
+      bg1.style.opacity = '0';
+      activeBgSlot = 2;
+    } else {
+      bg1.setAttribute('src', newUrl);
+      bg1.style.opacity = '0.96';
+      bg2.style.opacity = '0';
+      activeBgSlot = 1;
+    }
+  }
+
+  function checkInSceneTransitions(curSec) {
+    const s = scenes[currentScene];
+    if (!s) return;
+
+    // 1. In-scene achtergrond crossfade (bijv. Revisie Scène 1: Demontage 3/4 -> Front view)
+    if (s.bgFadeList && s.bgFadeList.length > 0) {
+      let targetBg = s.bg;
+      for (const fItem of s.bgFadeList) {
+        if (curSec >= fItem.timeSec) {
+          targetBg = fItem.bg;
+        }
+      }
+      if (targetBg && targetBg !== currentDisplayedBg) {
+        crossfadeSceneBg(targetBg);
+      }
+    }
+
+    // 2. Revisie Scène 2: Automatisch meelopen van de 4 stappen tijdens audio playback
+    if (currentReelMode === 'revisie' && currentScene === 1 && !revisieManualOverride) {
+      const stepDuration = s.durationSec / 4;
+      const targetStep = Math.min(4, Math.max(1, Math.floor(curSec / stepDuration) + 1));
+      if (targetStep !== currentRevisieStep) {
+        selectRevisieStep(targetStep, false);
+      }
     }
   }
 
@@ -6174,13 +6244,20 @@
     const chPill = document.getElementById('yt-current-chapter');
     if (chPill) chPill.textContent = `• ${idx + 1}. ${s.shortTag}`;
 
-    // Dynamische camera-beweging (Ken Burns) per scène
+    // Dynamische camera-beweging (Ken Burns) per scène met soepele crossfade reset
+    activeBgSlot = 1;
+    currentDisplayedBg = s.bg;
     const bg = document.getElementById('scene-bg');
     if (bg) {
       bg.className = 'scene-bg motion-' + idx;
-      const targetBg = s.bg;
-      bg.setAttribute('src', targetBg);
+      bg.setAttribute('src', s.bg);
       bg.style.opacity = '0.96';
+    }
+    const bgSec = document.getElementById('scene-bg-secondary');
+    if (bgSec) {
+      bgSec.className = 'scene-bg scene-bg-secondary motion-' + idx;
+      bgSec.style.opacity = '0';
+      bgSec.removeAttribute('src');
     }
 
     // Trigger subtiele slide-in animatie op het informatiepaneel
@@ -6539,6 +6616,7 @@
 
     updateTotalTimeDisplay(currentSceneOffsetSec);
     updateHoverTooltip(clientX);
+    checkInSceneTransitions(currentSceneOffsetSec);
 
     if (commitAudio && isPlaying) {
       playSceneAudio(currentScene, currentSceneOffsetSec);
