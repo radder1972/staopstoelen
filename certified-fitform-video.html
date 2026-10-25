@@ -1009,15 +1009,16 @@
       transition: all 0.2s ease;
     }
     .battle-row.bad {
-      border-color: rgba(255, 255, 255, 0.95);
-      border-left: 4px solid #94a3b8;
-      background: rgba(255, 255, 255, 0.74);
+      border-color: rgba(239, 68, 68, 0.25);
+      border-left: 4px solid #ef4444;
+      background: linear-gradient(135deg, rgba(254, 242, 242, 0.90) 0%, rgba(255, 255, 255, 0.85) 100%);
+      box-shadow: 0 4px 16px rgba(239, 68, 68, 0.08);
     }
     .battle-row.warning {
-      background: rgba(255, 255, 255, 0.82);
-      border-color: rgba(255, 255, 255, 0.95);
+      background: linear-gradient(135deg, rgba(255, 247, 237, 0.90) 0%, rgba(255, 255, 255, 0.85) 100%);
+      border-color: rgba(243, 146, 35, 0.35);
       border-left: 4px solid var(--color-terracotta);
-      box-shadow: 0 6px 20px rgba(243, 146, 35, 0.10), 0 1px 3px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 4px 16px rgba(243, 146, 35, 0.12);
     }
     .battle-row-left {
       display: flex;
@@ -1036,9 +1037,9 @@
       flex-shrink: 0;
     }
     .battle-badge.red {
-      background: rgba(241, 245, 249, 0.85);
-      color: #64748b;
-      border: 1px solid rgba(203, 213, 225, 0.8);
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.35);
     }
     .battle-badge.amber {
       background: #fff7ed;
@@ -1054,6 +1055,9 @@
       line-height: 1.25;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+    }
+    .battle-row-title.red {
+      color: #991b1b;
     }
     .battle-row-title.amber {
       color: #b45309;
@@ -1073,6 +1077,9 @@
       white-space: nowrap !important;
       flex-shrink: 0;
     }
+    .battle-row-val.red {
+      color: #dc2626;
+    }
     .battle-row-val.amber {
       color: var(--color-terracotta);
       font-size: 1.35rem;
@@ -1086,16 +1093,16 @@
       z-index: 2;
     }
     .battle-stack-vs span {
-      background: rgba(255, 255, 255, 0.94);
-      border: 1.5px solid rgba(255, 255, 255, 0.98);
+      background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+      border: 1.5px solid var(--color-terracotta);
       color: var(--color-terracotta);
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 900;
-      padding: 3px 12px;
+      padding: 3px 14px;
       border-radius: 999px;
       letter-spacing: 0.8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(243, 146, 35, 0.25);
     }
 
     #scene-addon-content {
@@ -2454,6 +2461,32 @@
       flex-direction: column;
       width: 100%;
     }
+    /* Scène 1 (Het Dilemma): Rijke staopstoelen.nl huisstijl met warme merkcontrasten en de Oplossing-box */
+    body.mode-consumer .companion-panel[data-scene="0"],
+    .stage-split-wrapper[data-scene="0"] .companion-panel {
+      border: 1.5px solid rgba(75, 143, 36, 0.45) !important;
+      box-shadow: 0 18px 45px rgba(22, 45, 16, 0.22), 0 0 0 1px rgba(75, 143, 36, 0.18) !important;
+      background: linear-gradient(145deg, rgba(246, 252, 245, 0.92) 0%, rgba(238, 249, 236, 0.86) 100%) !important;
+    }
+    body.mode-consumer .companion-panel[data-scene="0"] .panel-title,
+    .stage-split-wrapper[data-scene="0"] .panel-title {
+      color: var(--color-forest-dark);
+      font-size: 1.20rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    body.mode-consumer .companion-panel[data-scene="0"] .panel-subtitle,
+    .companion-panel[data-scene="0"] .panel-subtitle {
+      background: linear-gradient(135deg, rgba(240, 249, 237, 0.96) 0%, rgba(255, 250, 245, 0.94) 100%) !important;
+      border: 1.5px solid rgba(75, 143, 36, 0.35) !important;
+      border-left: 4px solid var(--color-forest) !important;
+      border-radius: 14px !important;
+      padding: 10px 14px !important;
+      box-shadow: 0 6px 20px rgba(75, 143, 36, 0.10), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+      margin-top: 10px !important;
+      margin-bottom: 6px !important;
+    }
+
     /* Laatste klantscène: compacter en naar rechts uitgelijnd zodat Geertjan's borstlogo staopstoelen.nl volledig vrij blijft */
     @media (min-width: 681px) {
       body.mode-consumer .companion-panel[data-scene="3"],
@@ -4178,10 +4211,10 @@
         <div id="companion-corner-badge"></div>
         <div class="panel-inner scene-anim" id="panel-content">
           <div class="panel-kicker" id="scene-kicker">
-            <span class="kicker-dot"></span> MARKTVACUÜM
+            <span class="kicker-dot"></span> HET SENIOREN-DILEMMA
           </div>
           <h2 class="panel-title" id="scene-title">
-            Kiezen tussen €&nbsp;4.500 Nieuw &amp; €&nbsp;500 op Marktplaats
+            Kiezen tussen <span style="color: #dc2626; font-weight: 900;">€&nbsp;4.500 Nieuw</span> &amp; <span style="color: var(--color-terracotta); font-weight: 900;">€&nbsp;500 op Marktplaats</span>
           </h2>
           <div id="scene-visual-content" class="panel-visual-box">
             <div class="battle-stack">
@@ -4191,11 +4224,11 @@
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
                   </span>
                   <div>
-                    <strong class="battle-row-title">Nieuw Fitform</strong>
-                    <div class="battle-sub">Onbetaalbaar voor 70% • 6–8 wkn levertijd</div>
+                    <strong class="battle-row-title red">1. Nieuw in Meubelzaak</strong>
+                    <div class="battle-sub">Onbetaalbaar voor 70% van senioren • 6–8 wkn wachten</div>
                   </div>
                 </div>
-                <div class="battle-row-val">€&nbsp;4.500+</div>
+                <div class="battle-row-val red">€&nbsp;4.500+</div>
               </div>
 
               <div class="battle-stack-vs">
@@ -4208,18 +4241,39 @@
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   </span>
                   <div>
-                    <strong class="battle-row-title amber">Marktplaats Risico</strong>
-                    <div class="battle-sub">Onhygiënisch • Geen garantie • Verkeerde maat</div>
+                    <strong class="battle-row-title amber">2. Marktplaats Tweedehands</strong>
+                    <div class="battle-sub">Onhygiënisch • Geen garantie • Verkeerde lichaamsmaat</div>
                   </div>
                 </div>
                 <div class="battle-row-val amber">€&nbsp;500</div>
               </div>
             </div>
           </div>
-          <p class="panel-subtitle" id="scene-subtitle">
-            <strong style="color: var(--color-forest-dark); font-size: 0.98rem; font-weight: 800; line-height: 1.35; display: block; margin-bottom: 5px;">Fabrieksnieuw is voor 70% van de senioren onbetaalbaar.</strong>
-            <span style="font-size: 0.86rem; color: #475569; line-height: 1.45; display: block;">Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.</span>
-          </p>
+          <div class="panel-subtitle" id="scene-subtitle">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; padding-bottom: 5px; border-bottom: 1px solid rgba(75, 143, 36, 0.22);">
+              <div style="display: flex; align-items: center; gap: 7px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; border-radius: 50%; background: var(--color-forest); color: #ffffff; flex-shrink: 0;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span style="font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 800; color: var(--color-forest-dark);">
+                  De Oplossing: <span style="color: var(--color-forest);">staop</span><span style="color: var(--color-terracotta);">stoelen.nl</span>
+                </span>
+              </div>
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 0.66rem; font-weight: 800; color: var(--color-forest); background: rgba(75, 143, 36, 0.14); padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(75, 143, 36, 0.28);">
+                DE SWEET SPOT
+              </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.77rem; line-height: 1.35; color: #334155;">
+              <div style="display: flex; align-items: flex-start; gap: 6px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; background: #fee2e2; color: #dc2626; font-size: 0.68rem; font-weight: 900; flex-shrink: 0; line-height: 1;">&times;</span>
+                <span><strong>Het Dilemma:</strong> Nieuw is onbetaalbaar (€&nbsp;4.500), Marktplaats een risico.</span>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 6px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; background: rgba(75, 143, 36, 0.16); color: var(--color-forest); font-size: 0.68rem; font-weight: 900; flex-shrink: 0; line-height: 1;">&#10003;</span>
+                <span><strong>Certified Fitform:</strong> Fabriekskwaliteit voor €&nbsp;1.550 met 2 jaar garantie.</span>
+              </div>
+            </div>
+          </div>
           <div class="panel-metric-pill" id="scene-metric" style="display: none;"></div>
           <div id="scene-addon-content"></div>
         </div>
@@ -4818,9 +4872,35 @@
     {
       align: "right",
       shortTag: "Het Dilemma",
-      kicker: "HET DILEMMA IN DE MARKT",
-      title: "Kiezen tussen €\u00A04.500 Nieuw & €\u00A0500 op Marktplaats",
-      subtitle: '<strong style="color: var(--color-forest-dark); font-size: 0.98rem; font-weight: 800; line-height: 1.35; display: block; margin-bottom: 5px;">Fabrieksnieuw is voor 70% van de senioren onbetaalbaar.</strong><span style="font-size: 0.86rem; color: #475569; line-height: 1.45; display: block;">Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.</span>',
+      kicker: "HET SENIOREN-DILEMMA",
+      title: "Kiezen tussen <span style=\"color: #dc2626; font-weight: 900;\">€\u00A04.500 Nieuw</span> &amp; <span style=\"color: var(--color-terracotta); font-weight: 900;\">€\u00A0500 op Marktplaats</span>",
+      subtitle: `
+        <div class="dilemma-brand-solution">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; padding-bottom: 5px; border-bottom: 1px solid rgba(75, 143, 36, 0.22);">
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; border-radius: 50%; background: var(--color-forest); color: #ffffff; flex-shrink: 0;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 800; color: var(--color-forest-dark);">
+                De Oplossing: <span style="color: var(--color-forest);">staop</span><span style="color: var(--color-terracotta);">stoelen.nl</span>
+              </span>
+            </div>
+            <span style="font-family: 'Montserrat', sans-serif; font-size: 0.66rem; font-weight: 800; color: var(--color-forest); background: rgba(75, 143, 36, 0.14); padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(75, 143, 36, 0.28);">
+              DE SWEET SPOT
+            </span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.77rem; line-height: 1.35; color: #334155;">
+            <div style="display: flex; align-items: flex-start; gap: 6px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; background: #fee2e2; color: #dc2626; font-size: 0.68rem; font-weight: 900; flex-shrink: 0; line-height: 1;">&times;</span>
+              <span><strong>Het Dilemma:</strong> Nieuw is onbetaalbaar (€&nbsp;4.500), Marktplaats een risico.</span>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 6px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; background: rgba(75, 143, 36, 0.16); color: var(--color-forest); font-size: 0.68rem; font-weight: 900; flex-shrink: 0; line-height: 1;">&#10003;</span>
+              <span><strong>Certified Fitform:</strong> Fabriekskwaliteit voor €&nbsp;1.550 met 2 jaar garantie.</span>
+            </div>
+          </div>
+        </div>
+      `,
       metric: "",
       caption: "De seniorenmarkt zit klem tussen torenhoge nieuwprijzen en gevaarlijke Marktplaats-gokjes.",
       voiceText: "Een nieuwe ergonomische sta-opstoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
@@ -4836,11 +4916,11 @@
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
               </span>
               <div>
-                <strong class="battle-row-title">Nieuw Fitform</strong>
-                <div class="battle-sub">Onbetaalbaar voor 70% • 6–8 wkn levertijd</div>
+                <strong class="battle-row-title red">1. Nieuw in Meubelzaak</strong>
+                <div class="battle-sub">Onbetaalbaar voor 70% van senioren • 6–8 wkn wachten</div>
               </div>
             </div>
-            <div class="battle-row-val">€&nbsp;4.500+</div>
+            <div class="battle-row-val red">€&nbsp;4.500+</div>
           </div>
 
           <div class="battle-stack-vs">
@@ -4853,8 +4933,8 @@
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
               </span>
               <div>
-                <strong class="battle-row-title amber">Marktplaats Risico</strong>
-                <div class="battle-sub">Onhygiënisch • Geen garantie • Verkeerde maat</div>
+                <strong class="battle-row-title amber">2. Marktplaats Tweedehands</strong>
+                <div class="battle-sub">Onhygiënisch • Geen garantie • Verkeerde lichaamsmaat</div>
               </div>
             </div>
             <div class="battle-row-val amber">€&nbsp;500</div>
