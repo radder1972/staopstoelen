@@ -26,49 +26,43 @@ def draw_huisstijl_card(
     title_text='', title_highlight='', title_highlight_color=(75, 143, 36, 255),
     subtitle_text='',
     chip_text='', chip_type='check', chip_color=(243, 146, 35, 255),
-    left_accent_color=(75, 143, 36, 255)
+    left_accent_color=None
 ):
     overlay = Image.new('RGBA', (TW, TH), (0, 0, 0, 0))
     odraw = ImageDraw.Draw(overlay)
     
     # Soft drop shadow
     odraw.rounded_rectangle(
-        [(lt_x + 2, lt_y + 6), (lt_x + card_w + 2, lt_y + card_h + 6)],
-        radius=22, fill=(0, 0, 0, 80)
+        [(lt_x + 2, lt_y + 8), (lt_x + card_w + 2, lt_y + card_h + 8)],
+        radius=22, fill=(0, 0, 0, 55)
     )
     overlay = overlay.filter(ImageFilter.GaussianBlur(radius=8))
     frame.alpha_composite(overlay)
     
     draw = ImageDraw.Draw(frame)
     
-    # 1. Main Frosted Glass Card with brand green border
+    # 1. Main Frosted Glass Card: NO GREEN BORDERS, lightly translucent
     draw.rounded_rectangle(
         [(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)],
-        radius=22, fill=(248, 252, 247, 246), outline=(75, 143, 36, 190), width=2
+        radius=22, fill=(255, 255, 255, 195), outline=(255, 255, 255, 160), width=1
     )
     
-    # 2. Left vertical brand accent bar
-    draw.rounded_rectangle(
-        [(lt_x + 2, lt_y + 14), (lt_x + 8, lt_y + card_h - 14)],
-        radius=4, fill=left_accent_color
-    )
-    
-    # 3. Kicker Pill Badge
+    # 2. Kicker Pill Badge
     kw = font_kicker.getlength(kicker_text)
     pill_w = kw + 38
     pill_h = 28
     pill_x = lt_x + 24
     pill_y = lt_y + 16
     if kicker_color == 'orange':
-        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(255, 247, 237, 255), outline=(243, 146, 35, 160), width=1)
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(255, 247, 237, 240), outline=(243, 146, 35, 140), width=1)
         draw.ellipse([(pill_x + 10, pill_y + 10), (pill_x + 18, pill_y + 18)], fill=(243, 146, 35, 255))
         draw.text((pill_x + 26, pill_y + 4), kicker_text, font=font_kicker, fill=(180, 83, 9, 255))
     else:
-        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(234, 247, 232, 255), outline=(75, 143, 36, 160), width=1)
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w, pill_y + pill_h)], radius=14, fill=(234, 247, 232, 240), outline=(75, 143, 36, 140), width=1)
         draw.ellipse([(pill_x + 10, pill_y + 10), (pill_x + 18, pill_y + 18)], fill=(75, 143, 36, 255))
         draw.text((pill_x + 26, pill_y + 4), kicker_text, font=font_kicker, fill=(35, 84, 27, 255))
         
-    # 4. Title & Highlight
+    # 3. Title & Highlight
     title_x = lt_x + 24
     title_y = lt_y + 54
     draw.text((title_x, title_y), title_text, font=font_title, fill=(18, 43, 7, 255))
@@ -76,13 +70,13 @@ def draw_huisstijl_card(
         tw = font_title.getlength(title_text + ' ')
         draw.text((title_x + tw, title_y), title_highlight, font=font_title, fill=title_highlight_color)
         
-    # 5. Subtitle
-    draw.text((lt_x + 24, lt_y + 106), subtitle_text, font=font_sub, fill=(71, 85, 105, 255))
+    # 4. Subtitle
+    draw.text((lt_x + 24, lt_y + 106), subtitle_text, font=font_sub, fill=(55, 65, 81, 255))
     
-    # 6. Action Chip / Badge on the right
+    # 5. Action Chip / Badge on the right
     if chip_text:
-        chip_w = font_pill.getlength(chip_text) + (64 if chip_type in ('check', 'warning', 'button') else 36)
-        chip_w = max(210, chip_w)
+        chip_w = font_pill.getlength(chip_text) + 68
+        chip_w = max(215, chip_w)
         chip_h = 52
         chip_x = lt_x + card_w - chip_w - 24
         chip_y = lt_y + 52
@@ -95,8 +89,15 @@ def draw_huisstijl_card(
             draw.ellipse([(chip_x + 18, chip_y + 14), (chip_x + 40, chip_y + 36)], outline=(255, 255, 255, 255), width=2)
             draw.text((chip_x + 26, chip_y + 15), '!', font=font_pill, fill=(255, 255, 255, 255))
             draw.text((chip_x + 48, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
-        elif chip_type == 'button':
-            draw.text((chip_x + 22, chip_y + 15), '➔', font=font_pill, fill=(255, 255, 255, 255))
+        elif chip_type in ('button', 'calendar'):
+            # Vector Calendar Icon for Maak Afspraak
+            cx = chip_x + 20
+            cy = chip_y + 17
+            draw.rounded_rectangle([(cx, cy + 3), (cx + 17, cy + 18)], radius=3, outline=(255, 255, 255, 255), width=2)
+            draw.line([(cx, cy + 8), (cx + 17, cy + 8)], fill=(255, 255, 255, 255), width=2)
+            draw.line([(cx + 4, cy), (cx + 4, cy + 4)], fill=(255, 255, 255, 255), width=2)
+            draw.line([(cx + 13, cy), (cx + 13, cy + 4)], fill=(255, 255, 255, 255), width=2)
+            draw.rectangle([(cx + 6, cy + 11), (cx + 11, cy + 15)], fill=(255, 255, 255, 255))
             draw.text((chip_x + 48, chip_y + 15), chip_text, font=font_pill, fill=(255, 255, 255, 255))
 
 def draw_checkmark(draw, x, y, size=16, color=(255, 255, 255, 255), width=3):
@@ -311,14 +312,14 @@ def render_cad_blueprint_animation(frame, t, wire_im):
     overlay = Image.new('RGBA', (TW, TH), (0, 0, 0, 0))
     odraw = ImageDraw.Draw(overlay)
     
-    # 1. Background Glass Panel
-    panel_alpha = int(215 * entry_ease)
+    # 1. Background Glass Panel (lightly translucent, no harsh green border)
+    panel_alpha = int(205 * entry_ease)
     odraw.rounded_rectangle(
         [(panel_x, panel_y), (panel_x + panel_w, panel_y + panel_h)],
         radius=18,
         fill=(12, 28, 16, panel_alpha),
-        outline=(75, 180, 50, int(180 * entry_ease)),
-        width=2
+        outline=(255, 255, 255, int(60 * entry_ease)),
+        width=1
     )
     
     # 2. Grid lines
@@ -451,8 +452,8 @@ def render_cad_blueprint_animation(frame, t, wire_im):
     ]:
         dx = -1 if bx > panel_x + 50 else 1
         dy = -1 if by > panel_y + 50 else 1
-        odraw.line([(bx, by), (bx + dx * cb_len, by)], fill=(75, 220, 100, int(255 * entry_ease)), width=2)
-        odraw.line([(bx, by), (bx, by + dy * cb_len)], fill=(75, 220, 100, int(255 * entry_ease)), width=2)
+        odraw.line([(bx, by), (bx + dx * cb_len, by)], fill=(200, 235, 210, int(130 * entry_ease)), width=1)
+        odraw.line([(bx, by), (bx, by + dy * cb_len)], fill=(200, 235, 210, int(130 * entry_ease)), width=1)
         
     # 11. Bottom Status Bar (t >= 9.5s)
     if t >= 9.5:
