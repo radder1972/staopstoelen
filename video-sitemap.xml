@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- Revisieproces Video -->
+  <url>
+    <loc>https://staopstoelen.nl/revisie.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://staopstoelen.nl/assets/video/revisie_poster.jpg</video:thumbnail_loc>
+      <video:title>Het Volledige Revisieproces van een Fitform Sta-op Stoel | Staopstoelen.nl Dordrecht</video:title>
+      <video:description>Ontdek hoe elke Fitform sta-op stoel in onze werkplaats in Dordrecht tot op het stalen frame wordt gestript, voorzien van nieuw koudschuim, getest onder 150 kg en op maat wordt afgesteld met 2 jaar garantie aan huis.</video:description>
+      <video:content_loc>https://staopstoelen.nl/assets/video/revisie_proces_dordrecht.mp4</video:content_loc>
+      <video:player_loc>https://staopstoelen.nl/certified-fitform-video.html?mode=revisie</video:player_loc>
+      <video:duration>42</video:duration>
+      <video:publication_date>2026-10-25T22:50:00+01:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+
+  <!-- Hoofd-Bedrijfsvideo: Waarom Certified Fitform -->
+  <url>
+    <loc>https://staopstoelen.nl/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://staopstoelen.nl/assets/video/video_poster_scene2.jpg</video:thumbnail_loc>
+      <video:title>Waarom Certified Fitform? De Slimme Keuze voor Sta-op Stoelen | Staopstoelen.nl</video:title>
+      <video:description>Ontdek waarom een Certified Fitform sta-op stoel de slimme sweet spot is: de zekerheid van Nederlandse topkwaliteit met 30-punts keuring, grondige ozon-reiniging, ergonomische zitafstelling en 2 jaar garantie aan huis.</video:description>
+      <video:content_loc>https://staopstoelen.nl/assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4</video:content_loc>
+      <video:player_loc>https://staopstoelen.nl/certified-fitform-video.html?mode=consumer</video:player_loc>
+      <video:duration>47</video:duration>
+      <video:publication_date>2026-10-25T22:56:00+01:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+
+  <!-- Ergonomische Zitmeting & Proefzitten -->
+  <url>
+    <loc>https://staopstoelen.nl/afspraak.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://staopstoelen.nl/assets/video/zitmeting_poster.jpg</video:thumbnail_loc>
+      <video:title>Persoonlijke Ergonomische Zitmeting &amp; Proefzitten in Dordrecht | Staopstoelen.nl</video:title>
+      <video:description>Een sta-op stoel moet zitten als een maatkostuum. Bewegingstechnoloog Geertjan legt uit hoe zithoogte, zitdiepte, armleggers en lendensteun exact op uw lichaamsbouw worden afgesteld voor pijnvrij zitcomfort.</video:description>
+      <video:content_loc>https://staopstoelen.nl/assets/video/zitmeting_proefzitten_dordrecht.mp4</video:content_loc>
+      <video:player_loc>https://staopstoelen.nl/certified-fitform-video.html?mode=afspraak</video:player_loc>
+      <video:duration>37</video:duration>
+      <video:publication_date>2026-10-25T22:54:00+01:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+
+  <!-- Keurmerk & Vergelijking -->
+  <url>
+    <loc>https://staopstoelen.nl/waarom-certified-fitform.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://staopstoelen.nl/assets/video/video_poster_scene2.jpg</video:thumbnail_loc>
+      <video:title>Wat Maakt een Stoel 'Certified Fitform'? Het Officiële Keurmerk Uitgelegd | Staopstoelen.nl</video:title>
+      <video:description>Ontdek de zekerheden van het Certified Fitform keurmerk van Schipper Compact Wonen Dordrecht: 30-punts technische inspectie, hygiënisch diep gereinigd, ergonomisch op maat en 2 jaar garantie aan huis.</video:description>
+      <video:content_loc>https://staopstoelen.nl/assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4</video:content_loc>
+      <video:player_loc>https://staopstoelen.nl/certified-fitform-video.html?mode=consumer</video:player_loc>
+      <video:duration>47</video:duration>
+      <video:publication_date>2026-10-25T22:56:00+01:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+
+</urlset>
