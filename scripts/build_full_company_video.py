@@ -34,7 +34,7 @@ def draw_watermark(frame, side='left'):
 # ==============================================================================
 def render_scene1():
     print("--- Rendering Scene 1: Het Dilemma ---")
-    base = Image.open('assets/senior_chair_dilemma_v3.jpg').convert('RGB')
+    base = Image.open('assets/senior_chair_dilemma_v4.jpg').convert('RGB')
     bw, bh = base.size
     
     duration = 11.70
@@ -63,12 +63,12 @@ def render_scene1():
         prog = f / float(total_frames)
         
         # Slow cinematic push-in on the father & daughter at the table
-        zoom = 1.00 + 0.08 * math.sin(prog * math.pi * 0.5)
+        zoom = 1.00 + 0.06 * math.sin(prog * math.pi * 0.5)
         crop_w = bw / zoom
         crop_h = bh / zoom
         
-        # Camera tracks slightly left towards them
-        cx = bw * (0.42 - 0.03 * prog)
+        # Natural framing centered on father & daughter
+        cx = bw * 0.46
         cy = bh * 0.50
         
         x0 = max(0, min(bw - crop_w, cx - crop_w / 2.0))
@@ -77,20 +77,20 @@ def render_scene1():
         frame = base.crop((int(x0), int(y0), int(x0 + crop_w), int(y0 + crop_h))).resize((TW, TH), Image.Resampling.BILINEAR).convert('RGBA')
         draw = ImageDraw.Draw(frame)
         
-        # Lower Third Card (slide in at t=0.5s)
+        # Lower Third Card (slide in at t=0.5s) on right side in open living room space
         lt_prog = min(1.0, max(0.0, (t - 0.5) / 0.5))
         if lt_prog > 0:
             lt_y = 860 + int((1.0 - math.pow(lt_prog, 0.4)) * 120)
-            lt_x = 90
-            card_w = 980
+            lt_x = 860
+            card_w = 970
             card_h = 145
             
             draw.rounded_rectangle([(lt_x+4, lt_y+4), (lt_x + card_w+4, lt_y + card_h+4)], radius=16, fill=(0, 0, 0, 100))
             draw.rounded_rectangle([(lt_x, lt_y), (lt_x + card_w, lt_y + card_h)], radius=16, fill=(18, 24, 32, 230), outline=(243, 146, 35, 180), width=2)
             
             # Kicker
-            draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 360, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
-            draw.text((lt_x + 38, lt_y + 20), "DE HUIDIGE ZORGMART", font=font_kicker, fill=(255, 255, 255, 255))
+            draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 370, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
+            draw.text((lt_x + 38, lt_y + 20), "DE HUIDIGE ZORGMARKT", font=font_kicker, fill=(255, 255, 255, 255))
             
             # Title
             draw.text((lt_x + 24, lt_y + 54), "Het Senioren Dilemma", font=font_title, fill=(255, 255, 255, 255))
@@ -99,8 +99,8 @@ def render_scene1():
             draw.text((lt_x + 24, lt_y + 102), "Nieuw is onbetaalbaar (€ 4.500+) • Marktplaats is een risico", font=font_sub, fill=(220, 225, 230, 240))
             
             # Warning chip on right
-            draw.rounded_rectangle([(lt_x + card_w - 240, lt_y + 42), (lt_x + card_w - 24, lt_y + 102)], radius=12, fill=(185, 28, 28, 220))
-            draw.text((lt_x + card_w - 215, lt_y + 58), "! ONZEKERHEID", font=font_pill, fill=(255, 255, 255, 255))
+            draw.rounded_rectangle([(lt_x + card_w - 240, lt_y + 45), (lt_x + card_w - 24, lt_y + 100)], radius=10, fill=(185, 28, 28, 230))
+            draw.text((lt_x + card_w - 215, lt_y + 60), "! ONZEKERHEID", font=font_pill, fill=(255, 255, 255, 255))
 
         draw_watermark(frame, 'left')
         proc.stdin.write(np.array(frame).tobytes())
