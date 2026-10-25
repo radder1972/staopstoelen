@@ -221,7 +221,7 @@ def render_scene2():
 # ==============================================================================
 def render_scene3():
     print("--- Rendering Scene 3: De Werkplaats ---")
-    base = Image.open('assets/dutch_technician_fitform_workshop_v2.jpg').convert('RGB')
+    base = Image.open('assets/dutch_technician_fitform_workshop_v3.jpg').convert('RGB')
     bw, bh = base.size
     
     duration = 12.33
@@ -240,18 +240,18 @@ def render_scene3():
     ]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
     
-    # Steam particles
-    num_particles = 50
+    # Subtle steam particles near fabric/chair
+    num_particles = 40
     particles = []
     for i in range(num_particles):
         particles.append({
-            'x': random.uniform(500, 680),
-            'y': random.uniform(350, 650),
-            'vx': random.uniform(-0.8, 1.2),
-            'vy': random.uniform(-2.5, -4.5),
-            'radius': random.uniform(25, 75),
-            'growth': random.uniform(0.6, 1.4),
-            'alpha': random.uniform(0.18, 0.48),
+            'x': random.uniform(bw * 0.60, bw * 0.85),
+            'y': random.uniform(bh * 0.40, bh * 0.70),
+            'vx': random.uniform(-0.6, 0.8),
+            'vy': random.uniform(-2.0, -3.8),
+            'radius': random.uniform(20, 60),
+            'growth': random.uniform(0.5, 1.2),
+            'alpha': random.uniform(0.12, 0.35),
             'phase': random.uniform(0, math.pi * 2)
         })
     
@@ -265,12 +265,12 @@ def render_scene3():
         t = f / float(FPS)
         prog = f / float(total_frames)
         
-        zoom = 1.0 + 0.08 * prog
+        zoom = 1.0 + 0.05 * math.sin(prog * math.pi * 0.5)
         crop_w = bw / zoom
         crop_h = bh / zoom
         
-        cx = bw * (0.48 + 0.04 * math.sin(prog * math.pi * 0.7))
-        cy = bh * (0.50 + 0.02 * math.cos(prog * math.pi * 0.5))
+        cx = bw * 0.54
+        cy = bh * 0.50
         
         x0 = max(0, min(bw - crop_w, cx - crop_w / 2.0))
         y0 = max(0, min(bh - crop_h, cy - crop_h / 2.0))
@@ -282,14 +282,14 @@ def render_scene3():
         steam_draw = ImageDraw.Draw(steam_overlay)
         
         for p in particles:
-            px = p['x'] + p['vx'] * t * 15 + math.sin(t * 2.0 + p['phase']) * 12
+            px = p['x'] + p['vx'] * t * 15 + math.sin(t * 2.0 + p['phase']) * 10
             py = p['y'] + p['vy'] * t * 15
             cycle_y = (py - 150) % 550 + 150
             cycle_prog = (650 - cycle_y) / 500.0
-            rad = p['radius'] + cycle_prog * p['growth'] * 60
+            rad = p['radius'] + cycle_prog * p['growth'] * 50
             curr_alpha = int(255 * p['alpha'] * math.sin(cycle_prog * math.pi))
-            sx = (px / bw) * TW + 100
-            sy = (cycle_y / bh) * TH - 40
+            sx = (px / bw) * TW
+            sy = (cycle_y / bh) * TH
             if curr_alpha > 5:
                 steam_draw.ellipse([(sx - rad, sy - rad), (sx + rad, sy + rad)], fill=(245, 250, 255, max(0, min(255, curr_alpha))))
         
@@ -298,17 +298,17 @@ def render_scene3():
         
         draw = ImageDraw.Draw(frame)
         
-        # Holographic Measurement Scan Line (t=2.5s to 8.5s)
+        # Holographic Measurement Scan Line (t=2.5s to 8.5s) across armrest & seat
         if 2.5 <= t <= 8.5:
             scan_prog = (t - 2.5) / 6.0
-            scan_y = int(TH * 0.42 + math.sin(scan_prog * math.pi * 3) * 110)
-            scan_x_start = int(TW * 0.48)
-            scan_x_end = int(TW * 0.88)
-            scan_alpha = int(180 * math.sin(scan_prog * math.pi))
+            scan_y = int(TH * 0.55 + math.sin(scan_prog * math.pi * 3) * 35)
+            scan_x_start = int(TW * 0.58)
+            scan_x_end = int(TW * 0.92)
+            scan_alpha = int(200 * math.sin(scan_prog * math.pi))
             draw.line([(scan_x_start, scan_y), (scan_x_end, scan_y)], fill=(75, 255, 75, scan_alpha), width=2)
             
             draw.rectangle([(scan_x_end - 340, scan_y - 32), (scan_x_end, scan_y - 4)], fill=(18, 43, 7, 210))
-            draw.text((scan_x_end - 325, scan_y - 28), "Zithoogte: 46 cm • Linak 150 kg OK", font=font_badge, fill=(106, 177, 60, 240))
+            draw.text((scan_x_end - 325, scan_y - 28), "Zithoogte: 46 cm • 100% Maatwerk", font=font_badge, fill=(106, 177, 60, 240))
         
         # Lower Third Card
         lt_prog = min(1.0, max(0.0, (t - 0.6) / 0.5))
