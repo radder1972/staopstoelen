@@ -3098,43 +3098,46 @@
       color: #ffffff;
     }
 
-    /* Widget B: 4-Staps Werkplaats & Revisie Foto-Scanner (Royale Box) */
+    /* Widget B: 4-Staps Werkplaats & Revisie Foto-Scanner (Naadloos in studio-paneel) */
     .revisie-process-card {
-      background: #ffffff;
-      border: 1.5px solid rgba(75, 143, 36, 0.28);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 14px 16px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      padding: 12px 14px 18px;
+      box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
+      gap: 6px;
       width: 100%;
-      height: 330px;
-      min-height: 330px;
-      max-height: 330px;
+      height: 365px;
+      min-height: 365px;
+      max-height: 365px;
       box-sizing: border-box;
       overflow: hidden;
     }
     .revisie-stage-grid {
       display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 12px;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      grid-template-columns: 135px 1fr;
+      gap: 10px;
+      align-items: stretch;
+      height: 226px;
+      min-height: 226px;
+      max-height: 226px;
       flex-shrink: 0;
     }
     .revisie-photo-frame {
       position: relative;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
-      border-radius: 12px;
+      height: 226px;
+      min-height: 226px;
+      max-height: 226px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 2px solid var(--color-terracotta);
+      border: 1.5px solid rgba(75, 143, 36, 0.25);
       background: #0f172a;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
     }
     .revisie-photo-frame img {
@@ -3145,30 +3148,15 @@
       transition: transform 0.35s ease;
     }
     .revisie-photo-badge {
-      position: absolute;
-      bottom: 6px;
-      left: 6px;
-      right: 6px;
-      background: rgba(15, 28, 22, 0.92);
-      color: #ffffff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.60rem;
-      font-weight: 800;
-      padding: 4px 6px;
-      border-radius: 6px;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      border: 1px solid rgba(243, 146, 35, 0.5);
+      display: none !important;
     }
     .revisie-detail-col {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 215px;
-      min-height: 215px;
-      max-height: 215px;
+      height: 226px;
+      min-height: 226px;
+      max-height: 226px;
       text-align: left;
       min-width: 0;
       gap: 4px;
@@ -3176,36 +3164,69 @@
     .revisie-thumbs-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      padding-top: 8px;
-      border-top: 1px solid #eef2ec;
-      height: 34px;
+      gap: 5px;
+      padding-top: 10px;
+      margin-bottom: 2px;
+      border-top: 1px solid rgba(75, 143, 36, 0.14);
+      min-height: 48px;
       box-sizing: border-box;
+      align-items: stretch;
     }
     .revisie-thumb-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 5px 6px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
+      padding: 5px 2px 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       color: #475569;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.66rem;
-      font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       transition: all 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      box-sizing: border-box;
+    }
+    .revisie-thumb-btn:hover {
+      border-color: var(--color-forest);
+      background: #ffffff;
+      color: var(--color-forest-dark);
     }
     .revisie-thumb-btn.active {
       background: var(--color-forest);
+      border-color: var(--color-forest-dark);
       color: #ffffff;
-      border-color: var(--color-forest);
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+      box-shadow: 0 3px 8px rgba(46, 96, 34, 0.28);
+    }
+    .rev-tab-dot {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.65rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .revisie-thumb-btn.active .rev-tab-dot {
+      background: #ffffff;
+      color: var(--color-forest);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+    }
+    .rev-tab-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .revisie-thumb-btn.active .rev-tab-lbl {
+      color: #ffffff;
     }
 
     /* Product Model Card in Fase 4 (Naadloos in studio-paneel) */
@@ -5239,19 +5260,18 @@
       metric: "",
       caption: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
       voiceText: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
-      bg: "assets/revisie_scene2_wide.jpg?v=20261024_1",
+      bg: "assets/revisie_scene2_wide.jpg?v=20261025_2",
       audio: "assets/audio/revisie_scene_2.m4a?v=20261025_1",
       durationSec: 10.25,
       visualHtml: `
         <div class="revisie-process-card" id="revisie-process-widget" onclick="event.stopPropagation()">
           <div class="anatomy-top-bar">
-            <span class="anatomy-badge-verified">&#128295; Werkplaats Dossier Dordrecht</span>
+            <span class="anatomy-badge-verified"><img src="assets/werkplaats_sleutel_icon.svg?v=1.0" class="anatomy-badge-seal" alt="Werkplaats"> Werkplaats Dossier Dordrecht</span>
             <span class="anatomy-step-counter">Stap <span id="revisie-step-idx">1</span> / 4</span>
           </div>
           <div class="revisie-stage-grid">
             <div class="revisie-photo-frame">
               <img src="assets/revisie_stap3.jpg" alt="Revisiestap" id="revisie-step-img">
-              <div class="revisie-photo-badge" id="revisie-step-badge">01 &bull; DEMONTAGE TOT OP HET FRAME</div>
             </div>
             <div class="revisie-detail-col">
               <div class="anatomy-detail-cat" id="revisie-detail-cat">STAP 01 &bull; CHASSIS &amp; SCHUIMKERN</div>
@@ -5270,10 +5290,22 @@
             </div>
           </div>
           <div class="revisie-thumbs-row">
-            <button type="button" onclick="selectRevisieStep(1, true)" id="rev-btn-1" class="revisie-thumb-btn active">1. Demontage</button>
-            <button type="button" onclick="selectRevisieStep(2, true)" id="rev-btn-2" class="revisie-thumb-btn">2. Nieuw Schuim</button>
-            <button type="button" onclick="selectRevisieStep(3, true)" id="rev-btn-3" class="revisie-thumb-btn">3. Motortest</button>
-            <button type="button" onclick="selectRevisieStep(4, true)" id="rev-btn-4" class="revisie-thumb-btn">4. Eindproduct</button>
+            <button type="button" onclick="selectRevisieStep(1, true)" id="rev-btn-1" class="revisie-thumb-btn active">
+              <span class="rev-tab-dot">1</span>
+              <span class="rev-tab-lbl">Demontage</span>
+            </button>
+            <button type="button" onclick="selectRevisieStep(2, true)" id="rev-btn-2" class="revisie-thumb-btn">
+              <span class="rev-tab-dot">2</span>
+              <span class="rev-tab-lbl">Nieuw Schuim</span>
+            </button>
+            <button type="button" onclick="selectRevisieStep(3, true)" id="rev-btn-3" class="revisie-thumb-btn">
+              <span class="rev-tab-dot">3</span>
+              <span class="rev-tab-lbl">Motortest</span>
+            </button>
+            <button type="button" onclick="selectRevisieStep(4, true)" id="rev-btn-4" class="revisie-thumb-btn">
+              <span class="rev-tab-dot">4</span>
+              <span class="rev-tab-lbl">Eindproduct</span>
+            </button>
           </div>
         </div>
       `
@@ -6723,6 +6755,10 @@
   const anatStepParam = parseInt(urlParams.get('anatstep'), 10);
   if (!isNaN(anatStepParam) && anatStepParam >= 1 && anatStepParam <= 5) {
     setTimeout(() => { selectAnatomyHotspot(anatStepParam, true); }, 50);
+  }
+  const revStepParam = parseInt(urlParams.get('revstep'), 10);
+  if (!isNaN(revStepParam) && revStepParam >= 1 && revStepParam <= 4) {
+    setTimeout(() => { selectRevisieStep(revStepParam, true); }, 50);
   }
 
   // Autoplay bij laden (probeert direct mét geluid te starten)
