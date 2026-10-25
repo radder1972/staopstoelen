@@ -221,7 +221,7 @@ def render_scene2():
 # ==============================================================================
 def render_scene3():
     print("--- Rendering Scene 3: De Werkplaats ---")
-    base = Image.open('assets/dutch_technician_fitform_workshop_v3.jpg').convert('RGB')
+    base = Image.open('assets/dutch_technician_fitform_workshop_v4.jpg').convert('RGB')
     bw, bh = base.size
     
     duration = 12.33
@@ -240,18 +240,18 @@ def render_scene3():
     ]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
     
-    # Subtle steam particles near fabric/chair
-    num_particles = 40
+    # Subtle steam particles near chair
+    num_particles = 30
     particles = []
     for i in range(num_particles):
         particles.append({
-            'x': random.uniform(bw * 0.60, bw * 0.85),
+            'x': random.uniform(bw * 0.65, bw * 0.88),
             'y': random.uniform(bh * 0.40, bh * 0.70),
-            'vx': random.uniform(-0.6, 0.8),
-            'vy': random.uniform(-2.0, -3.8),
-            'radius': random.uniform(20, 60),
-            'growth': random.uniform(0.5, 1.2),
-            'alpha': random.uniform(0.12, 0.35),
+            'vx': random.uniform(-0.5, 0.6),
+            'vy': random.uniform(-1.8, -3.2),
+            'radius': random.uniform(15, 45),
+            'growth': random.uniform(0.4, 1.0),
+            'alpha': random.uniform(0.10, 0.25),
             'phase': random.uniform(0, math.pi * 2)
         })
     
@@ -269,7 +269,7 @@ def render_scene3():
         crop_w = bw / zoom
         crop_h = bh / zoom
         
-        cx = bw * 0.54
+        cx = bw * 0.58
         cy = bh * 0.50
         
         x0 = max(0, min(bw - crop_w, cx - crop_w / 2.0))
@@ -282,11 +282,11 @@ def render_scene3():
         steam_draw = ImageDraw.Draw(steam_overlay)
         
         for p in particles:
-            px = p['x'] + p['vx'] * t * 15 + math.sin(t * 2.0 + p['phase']) * 10
+            px = p['x'] + p['vx'] * t * 15 + math.sin(t * 2.0 + p['phase']) * 8
             py = p['y'] + p['vy'] * t * 15
             cycle_y = (py - 150) % 550 + 150
             cycle_prog = (650 - cycle_y) / 500.0
-            rad = p['radius'] + cycle_prog * p['growth'] * 50
+            rad = p['radius'] + cycle_prog * p['growth'] * 40
             curr_alpha = int(255 * p['alpha'] * math.sin(cycle_prog * math.pi))
             sx = (px / bw) * TW
             sy = (cycle_y / bh) * TH
@@ -301,9 +301,9 @@ def render_scene3():
         # Holographic Measurement Scan Line (t=2.5s to 8.5s) across armrest & seat
         if 2.5 <= t <= 8.5:
             scan_prog = (t - 2.5) / 6.0
-            scan_y = int(TH * 0.55 + math.sin(scan_prog * math.pi * 3) * 35)
-            scan_x_start = int(TW * 0.58)
-            scan_x_end = int(TW * 0.92)
+            scan_y = int(TH * 0.56 + math.sin(scan_prog * math.pi * 3) * 15)
+            scan_x_start = int(TW * 0.55)
+            scan_x_end = int(TW * 0.88)
             scan_alpha = int(200 * math.sin(scan_prog * math.pi))
             draw.line([(scan_x_start, scan_y), (scan_x_end, scan_y)], fill=(75, 255, 75, scan_alpha), width=2)
             
