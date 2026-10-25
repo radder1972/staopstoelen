@@ -2495,16 +2495,16 @@
       -webkit-backdrop-filter: blur(14px);
       border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 10px 12px;
+      padding: 12px 14px 18px;
       box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px;
       width: 100%;
-      height: 335px;
-      min-height: 335px;
-      max-height: 335px;
+      height: 365px;
+      min-height: 365px;
+      max-height: 365px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2513,20 +2513,34 @@
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      height: 24px;
+      height: auto;
+      min-height: 26px;
       flex-shrink: 0;
-      padding-bottom: 5px;
-      border-bottom: 1px solid rgba(75, 143, 36, 0.12);
+      padding-bottom: 2px;
+      border-bottom: none;
     }
     .anatomy-badge-verified {
       font-size: 0.68rem;
       font-weight: 800;
-      color: var(--color-forest);
-      background: rgba(75, 143, 36, 0.12);
+      color: var(--color-forest-dark);
+      background: rgba(75, 143, 36, 0.10);
       border: 1px solid rgba(75, 143, 36, 0.25);
-      padding: 3px 9px;
+      padding: 3px 10px 3px 5px;
       border-radius: 999px;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1;
+      box-shadow: 0 1px 3px rgba(75, 143, 36, 0.08);
+    }
+    .anatomy-badge-seal {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
     }
     .anatomy-step-counter {
       font-size: 0.68rem;
@@ -2543,9 +2557,9 @@
       grid-template-columns: 135px 1fr;
       gap: 10px;
       align-items: stretch;
-      height: 220px;
-      min-height: 220px;
-      max-height: 220px;
+      height: 192px;
+      min-height: 192px;
+      max-height: 192px;
       flex-shrink: 0;
     }
     .anatomy-chair-canvas {
@@ -2553,9 +2567,9 @@
       background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(75, 143, 36, 0.18);
       border-radius: 10px;
-      height: 220px;
-      min-height: 220px;
-      max-height: 220px;
+      height: 192px;
+      min-height: 192px;
+      max-height: 192px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2615,9 +2629,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 220px;
-      min-height: 220px;
-      max-height: 220px;
+      height: 192px;
+      min-height: 192px;
+      max-height: 192px;
       text-align: left;
       min-width: 0;
       box-sizing: border-box;
@@ -2682,33 +2696,74 @@
     .anatomy-pills-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 4px;
-      padding-top: 6px;
-      border-top: 1px solid rgba(75, 143, 36, 0.12);
-      height: 32px;
+      gap: 5px;
+      padding-top: 10px;
+      margin-bottom: 2px;
+      border-top: 1px solid rgba(75, 143, 36, 0.14);
+      min-height: 48px;
       box-sizing: border-box;
+      align-items: stretch;
     }
     .anatomy-pill-btn {
-      padding: 5px 1px;
-      font-size: 0.62rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      border-radius: 6px;
-      border: 1px solid rgba(203, 213, 225, 0.8);
-      background: rgba(255, 255, 255, 0.90);
+      padding: 5px 2px 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       color: #475569;
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.18s ease;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 3px;
+      box-sizing: border-box;
+      min-height: 44px;
+    }
+    .anatomy-pill-btn:hover {
+      background: #ffffff;
+      border-color: rgba(75, 143, 36, 0.4);
+      transform: translateY(-1px);
+    }
+    .anat-pill-dot {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #334155;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.62rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+    .anat-pill-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.59rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #475569;
+      transition: color 0.18s ease;
+      text-align: center;
     }
     .anatomy-pill-btn.active {
       background: var(--color-forest);
-      color: #ffffff;
       border-color: var(--color-forest);
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.28);
+      box-shadow: 0 3px 8px rgba(75, 143, 36, 0.32);
+    }
+    .anatomy-pill-btn.active .anat-pill-dot {
+      background: #ffffff;
+      color: var(--color-forest);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+    }
+    .anatomy-pill-btn.active .anat-pill-lbl {
+      color: #ffffff;
     }
 
     /* Widget A: Zitadvies & Maatwerk Intakeformulier met 5 Stoel-Iconen (Naadloos in studio-paneel) */
@@ -2736,10 +2791,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      height: 24px;
+      height: auto;
+      min-height: 26px;
       flex-shrink: 0;
-      padding-bottom: 5px;
-      border-bottom: 1px solid rgba(75, 143, 36, 0.12);
+      padding-bottom: 2px;
+      border-bottom: none;
     }
     .zitadvies-form-tag {
       font-size: 0.68rem;
@@ -4895,7 +4951,7 @@
       visualHtml: `
         <div class="chair-anatomy-card" onclick="event.stopPropagation()">
           <div class="anatomy-top-bar">
-            <span class="anatomy-badge-verified">&#10003; 30-Punts Keuring &amp; Stoel-Anatomie</span>
+            <span class="anatomy-badge-verified"><img src="assets/revisie_stempel_clean.svg?v=2.0" class="anatomy-badge-seal" alt="Keurmerk"> 30-Punts Keuring &amp; Stoel-Anatomie</span>
             <span class="anatomy-step-counter">Punt <span id="anatomy-step-idx">1</span> / 5</span>
           </div>
           <div class="anatomy-stage-grid">
@@ -4946,11 +5002,26 @@
             </div>
           </div>
           <div class="anatomy-pills-row">
-            <button type="button" onclick="selectAnatomyHotspot(1, true)" id="anat-pill-1" class="anatomy-pill-btn active">1. Motoren</button>
-            <button type="button" onclick="selectAnatomyHotspot(2, true)" id="anat-pill-2" class="anatomy-pill-btn">2. Inmeting</button>
-            <button type="button" onclick="selectAnatomyHotspot(3, true)" id="anat-pill-3" class="anatomy-pill-btn">3. Lenden</button>
-            <button type="button" onclick="selectAnatomyHotspot(4, true)" id="anat-pill-4" class="anatomy-pill-btn">4. Hygiëne</button>
-            <button type="button" onclick="selectAnatomyHotspot(5, true)" id="anat-pill-5" class="anatomy-pill-btn">5. Noodaccu</button>
+            <button type="button" onclick="selectAnatomyHotspot(1, true)" id="anat-pill-1" class="anatomy-pill-btn active">
+              <span class="anat-pill-dot">1</span>
+              <span class="anat-pill-lbl">Motoren</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(2, true)" id="anat-pill-2" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">2</span>
+              <span class="anat-pill-lbl">Inmeting</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(3, true)" id="anat-pill-3" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">3</span>
+              <span class="anat-pill-lbl">Lenden</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(4, true)" id="anat-pill-4" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">4</span>
+              <span class="anat-pill-lbl">Hygiëne</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(5, true)" id="anat-pill-5" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">5</span>
+              <span class="anat-pill-lbl">Noodaccu</span>
+            </button>
           </div>
         </div>
       `
@@ -5022,7 +5093,7 @@
       visualHtml: `
         <div class="chair-anatomy-card" onclick="event.stopPropagation()">
           <div class="anatomy-top-bar">
-            <span class="anatomy-badge-verified">&#10003; 30-Punts Inspectie &amp; Stoel-Anatomie</span>
+            <span class="anatomy-badge-verified"><img src="assets/revisie_stempel_clean.svg?v=2.0" class="anatomy-badge-seal" alt="Keurmerk"> 30-Punts Inspectie &amp; Stoel-Anatomie</span>
             <span class="anatomy-step-counter">Keuring <span id="anatomy-step-idx">1</span> / 5</span>
           </div>
           <div class="anatomy-stage-grid">
@@ -5073,11 +5144,26 @@
             </div>
           </div>
           <div class="anatomy-pills-row">
-            <button type="button" onclick="selectAnatomyHotspot(1, true)" id="anat-pill-1" class="anatomy-pill-btn active">1. Motoren</button>
-            <button type="button" onclick="selectAnatomyHotspot(2, true)" id="anat-pill-2" class="anatomy-pill-btn">2. Inmeting</button>
-            <button type="button" onclick="selectAnatomyHotspot(3, true)" id="anat-pill-3" class="anatomy-pill-btn">3. Lenden</button>
-            <button type="button" onclick="selectAnatomyHotspot(4, true)" id="anat-pill-4" class="anatomy-pill-btn">4. Hygiëne</button>
-            <button type="button" onclick="selectAnatomyHotspot(5, true)" id="anat-pill-5" class="anatomy-pill-btn">5. Noodaccu</button>
+            <button type="button" onclick="selectAnatomyHotspot(1, true)" id="anat-pill-1" class="anatomy-pill-btn active">
+              <span class="anat-pill-dot">1</span>
+              <span class="anat-pill-lbl">Motoren</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(2, true)" id="anat-pill-2" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">2</span>
+              <span class="anat-pill-lbl">Inmeting</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(3, true)" id="anat-pill-3" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">3</span>
+              <span class="anat-pill-lbl">Lenden</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(4, true)" id="anat-pill-4" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">4</span>
+              <span class="anat-pill-lbl">Hygiëne</span>
+            </button>
+            <button type="button" onclick="selectAnatomyHotspot(5, true)" id="anat-pill-5" class="anatomy-pill-btn">
+              <span class="anat-pill-dot">5</span>
+              <span class="anat-pill-lbl">Noodaccu</span>
+            </button>
           </div>
         </div>
       `
