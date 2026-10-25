@@ -10,6 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap">
+  <script>
+    if (window.location.search.indexOf('embed=1') !== -1 || window !== window.top) {
+      document.documentElement.classList.add('is-embedded');
+    }
+  </script>
   <style>
     :root {
       --color-forest: #4b8f24; /* Brand Green from staopstoelen.nl logo */
@@ -41,6 +46,10 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+    }
 
     body {
       font-family: 'Outfit', sans-serif;
@@ -2173,15 +2182,18 @@
       }
     }
 
-    /* Embedded Mode (voor integratie op de consumentenpagina / andere pagina's) */
+    /* Embedded Mode (voor integratie in lightbox iframe & consumentenpagina) */
     html.is-embedded,
-    body.is-embedded {
+    body.is-embedded,
+    html:has(body.is-embedded) {
       background: transparent !important;
       padding: 0 !important;
       margin: 0 !important;
       overflow: hidden !important;
       width: 100% !important;
       height: 100% !important;
+      min-height: 100% !important;
+      max-height: 100% !important;
     }
     body.is-embedded .dossier-fixed-nav,
     body.is-embedded .dossier-hero-header,
@@ -2204,6 +2216,10 @@
       margin: 0 !important;
       width: 100% !important;
       height: 100% !important;
+      min-height: 100% !important;
+      max-height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
     }
     body.is-embedded .video-player-card {
       border-radius: 0 !important;
@@ -2213,50 +2229,70 @@
       max-width: 100% !important;
       width: 100% !important;
       height: 100% !important;
+      min-height: 100% !important;
+      max-height: 100% !important;
+      flex: 1 1 100% !important;
       display: flex !important;
       flex-direction: column !important;
       overflow: hidden !important;
     }
     @media (min-width: 681px) {
       body.is-embedded .stage-split-wrapper {
-        flex: 1 1 0% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
+        flex: 1 1 auto !important;
+        height: calc(100% - 82px) !important;
+        min-height: calc(100% - 82px) !important;
+        max-height: calc(100% - 82px) !important;
+        overflow: hidden !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
       }
       body.is-embedded .companion-panel {
-        height: min(520px, calc(100% - 24px)) !important;
-        min-height: 0 !important;
-        max-height: min(520px, calc(100% - 24px)) !important;
+        height: min(490px, calc(100% - 24px)) !important;
+        min-height: min(490px, calc(100% - 24px)) !important;
+        max-height: min(490px, calc(100% - 24px)) !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
       }
     }
     @media (max-width: 680px) {
       body.is-embedded .stage-split-wrapper {
-        flex: 1 1 0% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
+        flex: 1 1 auto !important;
+        height: calc(100% - 82px) !important;
+        min-height: calc(100% - 82px) !important;
+        max-height: calc(100% - 82px) !important;
         overflow: hidden !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
       }
       body.is-embedded .stage-split-wrapper .cinema-screen {
-        height: 200px !important;
-        min-height: 200px !important;
-        max-height: 200px !important;
-        flex: 0 0 200px !important;
+        position: relative !important;
+        height: 180px !important;
+        min-height: 180px !important;
+        max-height: 180px !important;
+        flex: 0 0 180px !important;
+        width: 100% !important;
       }
       body.is-embedded .stage-split-wrapper .companion-panel {
         flex: 1 1 auto !important;
-        height: auto !important;
+        height: calc(100% - 180px) !important;
         min-height: 0 !important;
-        max-height: calc(100% - 200px) !important;
+        max-height: calc(100% - 180px) !important;
         overflow-y: auto !important;
         padding: 12px 14px 16px !important;
+        box-sizing: border-box !important;
+        border-radius: 0 !important;
+        border: none !important;
+        border-top: 1.5px solid var(--border) !important;
       }
     }
     body.is-embedded .yt-bottom-bar {
-      flex: 0 0 auto !important;
-      height: auto !important;
+      flex: 0 0 82px !important;
+      height: 82px !important;
       min-height: 82px !important;
+      max-height: 82px !important;
       box-sizing: border-box !important;
       padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
     }
@@ -6430,6 +6466,7 @@
   const urlParams = new URLSearchParams(window.location.search);
   const isEmbedParam = urlParams.get('embed') === '1' || window !== window.top;
   if (isEmbedParam) {
+    document.documentElement.classList.add('is-embedded');
     document.body.classList.add('is-embedded');
   }
   const initialModeParam = (urlParams.get('mode') || '').toLowerCase();
