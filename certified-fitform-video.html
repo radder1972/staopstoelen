@@ -2773,16 +2773,16 @@
       -webkit-backdrop-filter: blur(14px);
       border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      padding: 10px 12px;
+      padding: 12px 14px 18px;
       box-shadow: 0 8px 24px rgba(22, 45, 16, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px;
       width: 100%;
-      height: 335px;
-      min-height: 335px;
-      max-height: 335px;
+      height: 365px;
+      min-height: 365px;
+      max-height: 365px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -2824,9 +2824,9 @@
       display: grid;
       grid-template-columns: 96px 1fr;
       gap: 8px;
-      height: 220px;
-      min-height: 220px;
-      max-height: 220px;
+      height: 192px;
+      min-height: 192px;
+      max-height: 192px;
       flex-shrink: 0;
       align-items: stretch;
     }
@@ -2834,9 +2834,9 @@
       background: rgba(255, 255, 255, 0.90);
       border: 1px solid rgba(75, 143, 36, 0.18);
       border-radius: 10px;
-      height: 220px;
-      min-height: 220px;
-      max-height: 220px;
+      height: 192px;
+      min-height: 192px;
+      max-height: 192px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2847,7 +2847,7 @@
     }
     .zitadvies-svg-wrap {
       width: 86px;
-      height: 152px;
+      height: 136px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2877,9 +2877,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 220px;
-      min-height: 220px;
-      max-height: 220px;
+      height: 192px;
+      min-height: 192px;
+      max-height: 192px;
       min-width: 0;
       text-align: left;
       gap: 5px;
@@ -3020,34 +3020,73 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 5px;
-      padding-top: 8px;
-      border-top: 1px solid #eef2ec;
-      height: 32px;
+      padding-top: 10px;
+      margin-bottom: 2px;
+      border-top: 1px solid rgba(75, 143, 36, 0.14);
+      min-height: 48px;
       box-sizing: border-box;
+      align-items: stretch;
     }
     .zitadvies-tab-btn {
-      padding: 5px 2px;
-      font-size: 0.63rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
+      padding: 5px 2px 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       color: #475569;
       cursor: pointer;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       transition: all 0.18s ease;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 3px;
+      box-sizing: border-box;
+      min-height: 44px;
+    }
+    .zitadvies-tab-btn:hover {
+      background: #ffffff;
+      border-color: rgba(75, 143, 36, 0.4);
+      transform: translateY(-1px);
+    }
+    .zit-tab-dot {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #334155;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.62rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+    .zit-tab-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.59rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #475569;
+      transition: color 0.18s ease;
+      text-align: center;
     }
     .zitadvies-tab-btn.active {
       background: var(--color-forest);
-      color: #ffffff;
       border-color: var(--color-forest);
-      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+      box-shadow: 0 3px 8px rgba(75, 143, 36, 0.32);
+    }
+    .zitadvies-tab-btn.active .zit-tab-dot {
+      background: #ffffff;
+      color: var(--color-forest);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+    }
+    .zitadvies-tab-btn.active .zit-tab-lbl {
+      color: #ffffff;
     }
 
     /* Widget B: 4-Staps Werkplaats & Revisie Foto-Scanner (Royale Box) */
@@ -4927,11 +4966,26 @@
             </div>
           </div>
           <div class="zitadvies-tabs-row">
-            <button type="button" onclick="selectZitadviesStep(1, true)" id="zit-tab-1" class="zitadvies-tab-btn active">1. Hoogte &#8597;</button>
-            <button type="button" onclick="selectZitadviesStep(2, true)" id="zit-tab-2" class="zitadvies-tab-btn">2. Diepte &#8596;</button>
-            <button type="button" onclick="selectZitadviesStep(3, true)" id="zit-tab-3" class="zitadvies-tab-btn">3. Lenden &#8596;</button>
-            <button type="button" onclick="selectZitadviesStep(4, true)" id="zit-tab-4" class="zitadvies-tab-btn">4. Arm &#8597;</button>
-            <button type="button" onclick="selectZitadviesStep(5, true)" id="zit-tab-5" class="zitadvies-tab-btn">5. Sta-op &#8593;</button>
+            <button type="button" onclick="selectZitadviesStep(1, true)" id="zit-tab-1" class="zitadvies-tab-btn active">
+              <span class="zit-tab-dot">1</span>
+              <span class="zit-tab-lbl">Hoogte</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(2, true)" id="zit-tab-2" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">2</span>
+              <span class="zit-tab-lbl">Diepte</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(3, true)" id="zit-tab-3" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">3</span>
+              <span class="zit-tab-lbl">Lenden</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(4, true)" id="zit-tab-4" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">4</span>
+              <span class="zit-tab-lbl">Armlegger</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(5, true)" id="zit-tab-5" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">5</span>
+              <span class="zit-tab-lbl">Sta-op</span>
+            </button>
           </div>
         </div>
       `
@@ -5270,11 +5324,26 @@
             </div>
           </div>
           <div class="zitadvies-tabs-row">
-            <button type="button" onclick="selectZitadviesStep(1, true)" id="zit-tab-1" class="zitadvies-tab-btn active">1. Hoogte &#8597;</button>
-            <button type="button" onclick="selectZitadviesStep(2, true)" id="zit-tab-2" class="zitadvies-tab-btn">2. Diepte &#8596;</button>
-            <button type="button" onclick="selectZitadviesStep(3, true)" id="zit-tab-3" class="zitadvies-tab-btn">3. Lenden &#8596;</button>
-            <button type="button" onclick="selectZitadviesStep(4, true)" id="zit-tab-4" class="zitadvies-tab-btn">4. Arm &#8597;</button>
-            <button type="button" onclick="selectZitadviesStep(5, true)" id="zit-tab-5" class="zitadvies-tab-btn">5. Sta-op &#8593;</button>
+            <button type="button" onclick="selectZitadviesStep(1, true)" id="zit-tab-1" class="zitadvies-tab-btn active">
+              <span class="zit-tab-dot">1</span>
+              <span class="zit-tab-lbl">Hoogte</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(2, true)" id="zit-tab-2" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">2</span>
+              <span class="zit-tab-lbl">Diepte</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(3, true)" id="zit-tab-3" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">3</span>
+              <span class="zit-tab-lbl">Lenden</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(4, true)" id="zit-tab-4" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">4</span>
+              <span class="zit-tab-lbl">Armlegger</span>
+            </button>
+            <button type="button" onclick="selectZitadviesStep(5, true)" id="zit-tab-5" class="zitadvies-tab-btn">
+              <span class="zit-tab-dot">5</span>
+              <span class="zit-tab-lbl">Sta-op</span>
+            </button>
           </div>
         </div>
       `
