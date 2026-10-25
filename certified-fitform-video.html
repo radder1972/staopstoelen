@@ -639,18 +639,10 @@
       transition: all 0.35s ease;
     }
 
-    .stage-split-wrapper.box-left .cinema-captions {
-      left: auto;
-      right: 24px;
-      max-width: min(320px, calc(100% - 460px));
-      justify-content: flex-end;
-    }
-
+    /* In studio split-view (met zwevende product/adviesbox): verberg de donkere quote-box zodat er nooit twee boxen botsen */
+    .stage-split-wrapper.box-left .cinema-captions,
     .stage-split-wrapper.box-right .cinema-captions {
-      left: 24px;
-      right: auto;
-      max-width: min(320px, calc(100% - 460px));
-      justify-content: flex-start;
+      display: none !important;
     }
 
     .stage-split-wrapper.mode-cinema .cinema-captions {
@@ -833,6 +825,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
+      max-width: 100%;
     }
 
     .kicker-dot {
@@ -5585,7 +5579,7 @@
     {
       align: "right",
       shortTag: "4. Het Eindproduct",
-      kicker: "FASE 4 • HET EINDPRODUCT MET 2 JAAR GARANTIE",
+      kicker: "FASE 4 • HET EINDPRODUCT",
       title: "Fitform 570 Vario Gereviseerd",
       subtitle: "",
       metric: "",
