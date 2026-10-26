@@ -47,7 +47,7 @@ const SCENES = [
   {
     idx: 5,
     audio: 'assets/audio/revisie_scene_6.m4a',
-    duration: 9.97,
+    duration: 11.80,
     outVideo: 'assets/video/revisie_s6_eindproduct.mp4',
     name: 'Scene 6: 30-Punts Keuring & 2 Jaar Garantie'
   }
@@ -120,7 +120,11 @@ async function main() {
 
   const totalStartTime = Date.now();
 
-  for (const scene of SCENES) {
+  const scenesToRecord = process.argv.includes('--scene6-only')
+    ? SCENES.filter(s => s.idx === 5)
+    : SCENES;
+
+  for (const scene of scenesToRecord) {
     console.log(`\n🎬 Recording ${scene.name} (${scene.duration}s)...`);
     const numFrames = Math.ceil(scene.duration * FPS);
     const audioPath = path.resolve(scene.audio);

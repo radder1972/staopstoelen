@@ -2307,8 +2307,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=20261026_9";
-      player.poster = "assets/video/revisie_poster.jpg?v=20261026_9";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=20261026_10";
+      player.poster = "assets/video/revisie_poster.jpg?v=20261026_10";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
