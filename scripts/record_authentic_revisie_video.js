@@ -12,30 +12,44 @@ const SCENES = [
   {
     idx: 0,
     audio: 'assets/audio/revisie_scene_1.m4a',
-    duration: 10.52,
+    duration: 8.80,
     outVideo: 'assets/video/revisie_s1_demontage.mp4',
     name: 'Scene 1: Gestript tot op het Stalen Frame'
   },
   {
     idx: 1,
     audio: 'assets/audio/revisie_scene_2.m4a',
-    duration: 10.31,
-    outVideo: 'assets/video/revisie_s2_schuim_motortest.mp4',
-    name: 'Scene 2: Nieuw Koudschuim & 150 kg Duurtest'
+    duration: 8.50,
+    outVideo: 'assets/video/revisie_s2_motortest.mp4',
+    name: 'Scene 2: 3 Linak Motoren & Belastingstest'
   },
   {
     idx: 2,
     audio: 'assets/audio/revisie_scene_3.m4a',
-    duration: 9.98,
-    outVideo: 'assets/video/revisie_s3_zitadvies.mp4',
-    name: 'Scene 3: Het Zitadvies-Formulier Exact op Maat'
+    duration: 8.30,
+    outVideo: 'assets/video/revisie_s3_koudschuim.mp4',
+    name: 'Scene 3: Medisch HR-Koudschuim & Hygiëne'
   },
   {
     idx: 3,
     audio: 'assets/audio/revisie_scene_4.m4a',
-    duration: 10.98,
-    outVideo: 'assets/video/revisie_s4_eindproduct.mp4',
-    name: 'Scene 4: Fitform 570 Vario Gereviseerd'
+    duration: 7.60,
+    outVideo: 'assets/video/revisie_s4_afstelling.mp4',
+    name: 'Scene 4: Topswing & Ergonomische Fijnafstelling'
+  },
+  {
+    idx: 4,
+    audio: 'assets/audio/revisie_scene_5.m4a',
+    duration: 8.80,
+    outVideo: 'assets/video/revisie_s5_zitadvies.mp4',
+    name: 'Scene 5: Het Zitadvies-Formulier Exact op Maat'
+  },
+  {
+    idx: 5,
+    audio: 'assets/audio/revisie_scene_6.m4a',
+    duration: 9.97,
+    outVideo: 'assets/video/revisie_s6_eindproduct.mp4',
+    name: 'Scene 6: 30-Punts Keuring & 2 Jaar Garantie'
   }
 ];
 
@@ -214,11 +228,11 @@ async function main() {
 
   console.log(`  Master video generated: ${masterPath}`);
 
-  // Extract poster frame at 33.5s (Scene 4: Finished Fitform 570 Vario chair in living room with certified badge)
+  // Extract poster frame at 37.0s (Scene 5: Geertjan measuring Fitform chair with classic wooden ruler)
   console.log('📸 Extracting authentic 1080p poster frame...');
   const posterArgs = [
     '-y',
-    '-ss', '00:00:33.500',
+    '-ss', '00:00:37.000',
     '-i', masterPath,
     '-vframes', '1',
     '-q:v', '2',

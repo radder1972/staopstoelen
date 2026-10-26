@@ -5435,23 +5435,20 @@
     }
   ];
 
-  // NIEUW: Inspectie, Revisie & Zitadvies Video (mode=revisie) met alle werkplaatsfoto's, Zitadvies Stoel-Iconen & Eindproduct
+  // NIEUW: Inspectie, Revisie & Zitadvies Video (mode=revisie) in 6 complete authentieke scènes met Geertjan
   const REVISIE_SCENES = [
     {
       align: "left",
-      shortTag: "1. Demontage & Framecheck",
+      shortTag: "1. Kaal Frame",
       kicker: "FASE 1 • DEMONTAGE TOT OP HET FRAME",
       title: "Gestript tot op het Stalen Frame",
       subtitle: "",
       metric: "",
-      caption: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige 30-punts inspectie van motoren, bekabeling en schaarmechaniek.",
-      voiceText: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige dertig-punten inspectie van motoren, bekabeling en schaarmechaniek.",
-      bg: "assets/revisie_scene1_photo1.jpg?v=20261025_4",
-      bgFadeList: [
-        { timeSec: 4.8, bg: "assets/revisie_scene1_photo2.jpg?v=20261025_4" }
-      ],
-      audio: "assets/audio/revisie_scene_1.m4a?v=20261025_1",
-      durationSec: 10.46,
+      caption: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige inspectie van de complete constructie.",
+      voiceText: "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige inspectie van de complete constructie.",
+      bg: "assets/revisie_scene1_photo1.jpg?v=20261026_6",
+      audio: "assets/audio/revisie_scene_1.m4a?v=20261026_1",
+      durationSec: 8.80,
       visualHtml: `
         <div class="chair-anatomy-card" onclick="event.stopPropagation()">
           <div class="anatomy-top-bar">
@@ -5531,72 +5528,155 @@
       `
     },
     {
-      align: "right",
-      shortTag: "2. Nieuw Schuim & Motortest",
-      kicker: "FASE 2 • VAKMANSCHAP IN DE WERKPLAATS",
-      title: "Nieuw Koudschuim &amp; 150 kg Duurtest",
+      align: "left",
+      shortTag: "2. Linak Motortest",
+      kicker: "FASE 2 • AANDRIJFTECHNIEK & MOTOREN",
+      title: "3 Linak Motoren &amp; 150 kg Belastingstest",
       subtitle: "",
       metric: "",
-      caption: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
-      voiceText: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. De drie Deense Linak motoren ondergaan een zware 150 kilo belastingstest voor geruisloze kracht.",
-      bg: "assets/revisie_scene2_stap1.jpg?v=20261025_4",
-      audio: "assets/audio/revisie_scene_2.m4a?v=20261025_1",
-      durationSec: 10.25,
+      caption: "De drie Deense Linak motoren en alle bekabeling worden onder honderdvijftig kilo belasting doorgemeten op geruisloze en soepele werking.",
+      voiceText: "De drie Deense Linak motoren en alle bekabeling worden onder honderdvijftig kilo belasting doorgemeten op geruisloze en soepele werking.",
+      bg: "assets/geertjan_werkplaats_motortest.jpg?v=20261026_6",
+      audio: "assets/audio/revisie_scene_2.m4a?v=20261026_1",
+      durationSec: 8.50,
       visualHtml: `
-        <div class="revisie-process-card" id="revisie-process-widget" onclick="event.stopPropagation()">
+        <div class="revisie-process-card" onclick="event.stopPropagation()">
           <div class="anatomy-top-bar">
-            <span class="anatomy-badge-verified"><img src="assets/werkplaats_sleutel_icon.svg?v=1.0" class="anatomy-badge-seal" alt="Werkplaats"> Werkplaats Dossier Dordrecht</span>
-            <span class="anatomy-step-counter">Stap <span id="revisie-step-idx">1</span> / 4</span>
+            <span class="anatomy-badge-verified"><img src="assets/staopstoelen_huisstijl_icon.svg?v=1.0" class="anatomy-badge-seal" alt="Keurmerk"> Fase 2 • Aandrijftechniek &amp; Motoren</span>
+            <span class="anatomy-step-counter">Keuring 100%</span>
           </div>
-          <div class="revisie-stage-grid">
-            <div class="revisie-photo-frame">
-              <img src="assets/revisie_stap3.jpg" alt="Revisiestap" id="revisie-step-img">
-            </div>
-            <div class="revisie-detail-col">
-              <div class="anatomy-detail-cat" id="revisie-detail-cat">FASE 01 &bull; BELASTINGSTEST TOT 150 KG</div>
-              <h4 class="anatomy-detail-title" id="revisie-detail-title">Technische 30-Punts Keuring</h4>
-              <p class="anatomy-detail-desc" id="revisie-detail-desc">Elke fauteuil wordt technisch volledig doorgelicht. Belangrijke onderdelen zoals de bekabeling, handbediening en Linak motoren worden getest onder 150 kg belasting.</p>
-              <div class="revisie-result-row">
-                <span class="brand-check-badge">
-                  <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <span class="revisie-result-text" id="revisie-detail-result">Resultaat 100% Gekeurd</span>
+          <div class="anatomy-detail-box" style="margin-top:4px;">
+            <div class="anatomy-detail-cat">3 LINAK MOTOREN &bull; 150 KG BELASTINGSTEST</div>
+            <h4 class="anatomy-detail-title">Deense Linak Aandrijftechniek</h4>
+            <p class="anatomy-detail-desc">Elke Linak motor wordt doorgemeten onder 150 kg dynamische belasting voor geruisloze, soepele en betrouwbare kracht.</p>
+            <div class="rpc-checklist" style="margin-top:6px;">
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Kantelmotor (Tilt):</strong> Spindel gevet &amp; lagers getest</span>
+              </div>
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Rug-actuator:</strong> Volledig doorgemeten op ampèrage</span>
+              </div>
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Bekabeling:</strong> Relais, printplaat &amp; spiraalsnoer 100%</span>
               </div>
             </div>
           </div>
-          <div class="revisie-thumbs-row">
-            <button type="button" onclick="selectRevisieStep(1, true)" id="rev-btn-1" class="revisie-thumb-btn active">
-              <span class="rev-tab-dot">1</span>
-              <span class="rev-tab-lbl">30-Punts</span>
-            </button>
-            <button type="button" onclick="selectRevisieStep(2, true)" id="rev-btn-2" class="revisie-thumb-btn">
-              <span class="rev-tab-dot">2</span>
-              <span class="rev-tab-lbl">Dieptereiniging</span>
-            </button>
-            <button type="button" onclick="selectRevisieStep(3, true)" id="rev-btn-3" class="revisie-thumb-btn">
-              <span class="rev-tab-dot">3</span>
-              <span class="rev-tab-lbl">Maatwerk</span>
-            </button>
-            <button type="button" onclick="selectRevisieStep(4, true)" id="rev-btn-4" class="revisie-thumb-btn">
-              <span class="rev-tab-dot">4</span>
-              <span class="rev-tab-lbl">Certificering</span>
-            </button>
+          <div class="revisie-result-row" style="margin-top:6px;">
+            <span class="brand-check-badge">
+              <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span class="revisie-result-text">150 kg Belastingstest Geslaagd &bull; Geruisloos</span>
           </div>
         </div>
       `
     },
     {
       align: "left",
-      shortTag: "3. Het Zitadvies-Formulier",
-      kicker: "FASE 3 • PERSOONLIJKE INMETING OP MAAT",
+      shortTag: "3. Nieuw Koudschuim",
+      kicker: "FASE 3 • NIEUW SCHUIM & DIEPTEREINIGING",
+      title: "Medisch HR-Koudschuim &amp; Hygiëne",
+      subtitle: "",
+      metric: "",
+      caption: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. Na een professionele dieptereiniging voelt de stoel weer als fabrieksnieuw.",
+      voiceText: "Oud schuim wordt vervangen door gecertificeerd nieuw HR-koudschuim. Na een professionele dieptereiniging voelt de stoel weer als fabrieksnieuw.",
+      bg: "assets/geertjan_werkplaats_koudschuim.jpg?v=20261026_6",
+      audio: "assets/audio/revisie_scene_3.m4a?v=20261026_1",
+      durationSec: 8.30,
+      visualHtml: `
+        <div class="revisie-process-card" onclick="event.stopPropagation()">
+          <div class="anatomy-top-bar">
+            <span class="anatomy-badge-verified"><img src="assets/staopstoelen_huisstijl_icon.svg?v=1.0" class="anatomy-badge-seal" alt="Keurmerk"> Fase 3 • Vulling &amp; Dieptereiniging</span>
+            <span class="anatomy-step-counter">Nieuwstaat</span>
+          </div>
+          <div class="anatomy-detail-box" style="margin-top:4px;">
+            <div class="anatomy-detail-cat">MEDISCH HR-KOUDSCHUIM &bull; DIEPTEREINIGING</div>
+            <h4 class="anatomy-detail-title">Optimale Drukverdeling &amp; Hygiëne</h4>
+            <p class="anatomy-detail-desc">Oud schuim wordt vervangen door gecertificeerd HR-koudschuim met hoge veerkracht. De bekleding wordt diep gereinigd en bacterievrij gemaakt.</p>
+            <div class="rpc-checklist" style="margin-top:6px;">
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Zitting &amp; Rug:</strong> Nieuw gecertificeerd HR-koudschuim</span>
+              </div>
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Anti-Kuilgarantie:</strong> Blijvende veerkracht en steun</span>
+              </div>
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Ozonbehandeling:</strong> 100% bacterie-, geur- en vlekvrij</span>
+              </div>
+            </div>
+          </div>
+          <div class="revisie-result-row" style="margin-top:6px;">
+            <span class="brand-check-badge">
+              <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span class="revisie-result-text">100% Hygiënisch Fris &amp; Fabrieksnieuw</span>
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "left",
+      shortTag: "4. Fijnafstelling",
+      kicker: "FASE 4 • MECHANISCHE FIJNAFSTELLING",
+      title: "Topswing &amp; Verstelbare Lendensteun",
+      subtitle: "",
+      metric: "",
+      caption: "Bewegingstechnoloog Geertjan stelt de topswing-neksteun en de lendenpomp met millimeter-precisie af voor een optimale rughouding.",
+      voiceText: "Bewegingstechnoloog Geertjan stelt de topswing-neksteun en de lendenpomp met millimeter-precisie af voor een optimale rughouding.",
+      bg: "assets/geertjan_werkplaats_afstelling.jpg?v=20261026_6",
+      audio: "assets/audio/revisie_scene_4.m4a?v=20261026_1",
+      durationSec: 7.60,
+      visualHtml: `
+        <div class="revisie-process-card" onclick="event.stopPropagation()">
+          <div class="anatomy-top-bar">
+            <span class="anatomy-badge-verified"><img src="assets/staopstoelen_huisstijl_icon.svg?v=1.0" class="anatomy-badge-seal" alt="Keurmerk"> Fase 4 • Ergonomische Fijnafstelling</span>
+            <span class="anatomy-step-counter">Maatwerk</span>
+          </div>
+          <div class="anatomy-detail-box" style="margin-top:4px;">
+            <div class="anatomy-detail-cat">TOP-SWING &bull; VERSTELBARE LENDENSTEUN</div>
+            <h4 class="anatomy-detail-title">Ergonomische Rughouding</h4>
+            <p class="anatomy-detail-desc">Bewegingstechnoloog Geertjan stelt met inbussleutel en meetlat het lendenmechaniek en de topswing nekondersteuning nauwkeurig af.</p>
+            <div class="rpc-checklist" style="margin-top:6px;">
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Topswing neksteun:</strong> Handmatig instelbaar voor lezen/tv</span>
+              </div>
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Lendenpomp:</strong> Traploos instelbaar op de natuurlijke S-curve</span>
+              </div>
+              <div class="rpc-check-item">
+                <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span><strong>Kantelfunctie:</strong> 15° ontlastende hartbalans-positie</span>
+              </div>
+            </div>
+          </div>
+          <div class="revisie-result-row" style="margin-top:6px;">
+            <span class="brand-check-badge">
+              <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span class="revisie-result-text">Millimeter-Precisie Afstelling door Geertjan</span>
+          </div>
+        </div>
+      `
+    },
+    {
+      align: "left",
+      shortTag: "5. Zitadvies Inmeting",
+      kicker: "FASE 5 • PERSOONLIJKE INMETING OP MAAT",
       title: "Het Zitadvies-Formulier: Exact op Maat",
       subtitle: "",
       metric: "",
-      caption: "Een sta-op stoel moet zitten als een maatkostuum. Met ons zitadvies-formulier stellen we zithoogte, zitdiepte en de lendensteun exact af op uw lichaamsbouw.",
-      voiceText: "Een sta-op stoel moet zitten als een maatkostuum. Met ons zitadvies-formulier stellen we zithoogte, zitdiepte en de lendensteun exact af op uw lichaamsbouw.",
-      bg: "assets/geertjan_advies_showroom_right.jpg?v=20261024_1",
-      audio: "assets/audio/revisie_scene_3.m4a?v=20261025_1",
-      durationSec: 9.92,
+      caption: "Een sta-op stoel moet passen als een maatkostuum. Met de duimstok meten we zithoogte, zitdiepte en armleggers exact op uw lichaam af.",
+      voiceText: "Een sta-op stoel moet passen als een maatkostuum. Met de duimstok meten we zithoogte, zitdiepte en armleggers exact op uw lichaam af.",
+      bg: "assets/dutch_technician_fitform_workshop_v5.jpg?v=20261026_6",
+      audio: "assets/audio/revisie_scene_5.m4a?v=20261026_1",
+      durationSec: 8.80,
       visualHtml: `
         <div class="zitadvies-form-card" id="zitadvies-form-widget" onclick="event.stopPropagation()">
           <div class="zitadvies-top-bar">
@@ -5658,17 +5738,20 @@
       `
     },
     {
-      align: "right",
-      shortTag: "4. Het Eindproduct",
-      kicker: "FASE 4 • HET EINDPRODUCT",
-      title: "Fitform 570 Vario Gereviseerd",
+      align: "left",
+      shortTag: "6. Keuring & Garantie",
+      kicker: "FASE 6 • 30-PUNTS KEURING & EINDPRODUCT",
+      title: "100% Gekeurd &amp; 2 Jaar Garantie aan Huis",
       subtitle: "",
       metric: "",
-      caption: "Het resultaat: een prachtige Fitform sta-op stoel in absolute nieuwstaat. Ozon-gereinigd, 4 ergonomische standen getest en met twee jaar volledige garantie aan huis.",
-      voiceText: "Het resultaat: een prachtige Fitform sta-op stoel in absolute nieuwstaat. Ozon-gereinigd, 4 ergonomische standen getest en met twee jaar volledige garantie aan huis.",
-      bg: "assets/fitform_570_vario_revisie_eindproduct.jpg?v=20261025_2",
-      audio: "assets/audio/revisie_scene_4.m4a?v=20261025_1",
-      durationSec: 10.93,
+      caption: "Pas na onze dertig-punts eindcontrole en veiligheidstest is de stoel rijklaar: inclusief twee jaar volledige garantie aan huis. Welkom in Dordrecht.",
+      voiceText: "Pas na onze dertig-punts eindcontrole en veiligheidstest is de stoel rijklaar: inclusief twee jaar volledige garantie aan huis. Welkom in Dordrecht.",
+      bg: "assets/geertjan_werkplaats_keuring.jpg?v=20261026_6",
+      bgFadeList: [
+        { timeSec: 4.8, bg: "assets/fitform_570_vario_revisie_eindproduct.jpg?v=20261026_6" }
+      ],
+      audio: "assets/audio/revisie_scene_6.m4a?v=20261026_1",
+      durationSec: 9.97,
       visualHtml: `
         <div class="revisie-product-card" id="eindproduct-showcase-widget" onclick="event.stopPropagation()">
           <div class="rpc-top-bar">
@@ -5694,11 +5777,11 @@
               <div class="rpc-checklist">
                 <div class="rpc-check-item">
                   <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                  <span>Technische inspectie</span>
+                  <span>30-Punts inspectie voltooid</span>
                 </div>
                 <div class="rpc-check-item">
                   <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                  <span>Gereinigd</span>
+                  <span>Ozon- &amp; diepgereinigd</span>
                 </div>
                 <div class="rpc-check-item highlight">
                   <span class="brand-check-badge" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
@@ -6096,8 +6179,8 @@
   // 2. Revisie Process Scanner met de 4 echte werkplaatsfoto's
   const REVISIE_STEP_DATA = {
     1: {
-      img: "assets/revisie_stap3.jpg",
-      wideBg: "assets/revisie_scene2_stap1.jpg?v=20261025_4",
+      img: "assets/geertjan_werkplaats_motortest.jpg",
+      wideBg: "assets/geertjan_werkplaats_motortest.jpg",
       badge: "01 • TECHNISCHE 30-PUNTS KEURING",
       cat: "FASE 01 • BELASTINGSTEST TOT 150 KG",
       title: "Technische 30-Punts Keuring",
@@ -6105,30 +6188,30 @@
       result: "Resultaat 100% Gekeurd"
     },
     2: {
-      img: "assets/revisie_stap2.jpg",
-      wideBg: "assets/revisie_scene2_stap2.jpg?v=20261025_4",
+      img: "assets/geertjan_werkplaats_koudschuim.jpg",
+      wideBg: "assets/geertjan_werkplaats_koudschuim.jpg",
       badge: "02 • KLINISCHE DIEPTEREINIGING",
       cat: "FASE 02 • OZON & STOOMEXTRACTIE",
-      title: "Klinische Dieptereiniging",
-      desc: "Intensieve stoomextractie en ozon-dieptereiniging maken bekleding bacterie- en geurvrij. Verse stoffering en nieuw HR-koudschuim.",
+      title: "Klinische Dieptereiniging & Koudschuim",
+      desc: "Intensieve stoomextractie en ozon-dieptereiniging maken bekleding bacterie- en geurvrij. Verse stoffering en nieuw gecertificeerd HR-koudschuim.",
       result: "Resultaat 100% Hygiënisch"
     },
     3: {
-      img: "assets/revisie_stap1.jpg",
-      wideBg: "assets/revisie_scene2_stap3.jpg?v=20261025_4",
+      img: "assets/dutch_technician_fitform_workshop_v5.jpg",
+      wideBg: "assets/dutch_technician_fitform_workshop_v5.jpg",
       badge: "03 • MAATWERK AFSTELLING",
       cat: "FASE 03 • BEWEGINGSTECHNOLOOG",
       title: "Maatwerk Afstelling",
-      desc: "Mechanisch aangepast op de nieuwe eigenaar: zithoogte (knieholte), zitdiepte en armrusthoogte tot op de millimeter afgesteld.",
+      desc: "Exact op maat van de gebruiker: zithoogte, zitdiepte en armrusthoogte worden door bewegingstechnoloog Geertjan op de millimeter nagemeten.",
       result: "Resultaat 100% Ergonomisch"
     },
     4: {
-      img: "assets/revisie_stap4.jpg",
-      wideBg: "assets/revisie_scene2_stap4.jpg?v=20261025_4",
+      img: "assets/geertjan_werkplaats_keuring.jpg",
+      wideBg: "assets/geertjan_werkplaats_keuring.jpg",
       badge: "04 • CERTIFICERING & UITLEVERING",
       cat: "FASE 04 • 24 MND OMRUILGARANTIE",
-      title: "Certificering & Uitlevering",
-      desc: "Zodra keuring, reiniging en afstelling zijn doorstaan, volgt certificering en uitlevering (binnen 2-5 dagen) met 24 mnd omruilgarantie.",
+      title: "Certificering & 24 Mnd Garantie",
+      desc: "Zodra alle 30 keuringspunten zijn afgevinkt, volgt certificering en uitlevering (binnen 2-5 dagen) met 24 mnd omruilgarantie.",
       result: "Resultaat 100% Gecertificeerd"
     }
   };
@@ -7110,7 +7193,7 @@
       document.body.classList.remove('mode-investor');
       scenes = REVISIE_SCENES;
       if (btnRev) btnRev.classList.add('active');
-      if (heroKicker) heroKicker.innerHTML = 'INSPECTIE, REVISIE &amp; ZITADVIES &bull; 45-SECONDEN VIDEO';
+      if (heroKicker) heroKicker.innerHTML = 'INSPECTIE, REVISIE &amp; ZITADVIES &bull; 52-SECONDEN VIDEO';
       if (heroTitle) heroTitle.innerHTML = 'Van Kaal Frame tot <span class="title-highlight">Nieuwstaat</span>';
       if (heroLead) heroLead.textContent = 'Kijk binnen in onze werkplaats in Dordrecht: ontdek hoe wij een Fitform stoel tot op het staal strippen, voorzien van nieuw koudschuim en Linak motortests, en via ons officiële zitadvies-formulier exact op uw lichaam afstellen.';
     } else if (mode === 'afspraak') {
