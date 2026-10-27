@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Officieel 30-Punts Keuringsrapport &amp; Revisiecertificaat | staopstoelen.nl</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-sage: #6ab13c;
+      --color-terracotta: #f39223;
+      --color-cream: #fbf9f5;
+      --color-cream-dark: #f3efe6;
+      --color-dark: #1d2024;
+      --color-gray: #5e6368;
+      --color-gray-light: #e2e4e6;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: #f1f3f5;
+      padding: 20px;
+      line-height: 1.3;
+      font-size: 11.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    input, textarea, select, button {
+      font-family: var(--font-body);
+    }
+
+    /* Print toolbar */
+    .no-print-bar {
+      max-width: 900px;
+      margin: 0 auto 16px auto;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      flex-wrap: wrap;
+    }
+
+    .btn-back {
+      color: var(--color-forest);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.2);
+    }
+
+    .btn-print {
+      background: var(--color-forest);
+      color: #ffffff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.25);
+    }
+    .btn-print:hover {
+      background: #3d751d;
+      transform: translateY(-1px);
+    }
+
+    .btn-action-pill {
+      background: transparent;
+      color: var(--color-gray);
+      border: 1px solid var(--color-gray-light);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-action-pill:hover {
+      background: #f8fafc;
+      color: var(--color-dark);
+      border-color: #cbd5e1;
+    }
+
+    /* A4 Sheet Canvas */
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 10mm 13mm 8mm 13mm;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    /* Sheet Header */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--color-forest);
+    }
+
+    .brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--color-forest);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .logo-text span {
+      color: var(--color-terracotta);
+    }
+    .logo-subtitle {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .doc-title-box {
+      text-align: right;
+    }
+    .doc-title {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      letter-spacing: 0.2px;
+      line-height: 1.2;
+    }
+    .doc-subtitle {
+      font-size: 10.5px;
+      color: var(--color-terracotta);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .brand-stamp {
+      width: 68px;
+      height: 68px;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(18, 43, 7, 0.12));
+    }
+
+    /* Meta Info Grid */
+    .chair-meta-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
+      background-color: var(--color-cream);
+      border: 1px solid var(--color-cream-dark);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+
+    .meta-line {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .meta-line:last-child {
+      margin-bottom: 0;
+    }
+    .meta-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      white-space: nowrap;
+      min-width: 90px;
+    }
+    .meta-fill {
+      flex: 1;
+      border-bottom: 1px dotted #8c939c;
+      height: 16px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .meta-fill input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-dark);
+      padding: 0 2px;
+      outline: none;
+    }
+
+    /* 2-Column Inspection Grid (3 modules left, 3 modules right) */
+    .modules-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+      flex-grow: 1;
+    }
+
+    .module-card {
+      border: 1px solid var(--color-gray-light);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .module-header {
+      background: linear-gradient(90deg, var(--color-forest) 0%, var(--color-sage) 100%);
+      color: #ffffff;
+      padding: 4px 8px;
+      font-family: var(--font-heading);
+      font-size: 10.5px;
+      font-weight: 750;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .module-header.orange {
+      background: linear-gradient(90deg, var(--color-terracotta) 0%, #f6a644 100%);
+    }
+
+    .module-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+    }
+    .module-table tr {
+      border-bottom: 1px solid #f1f3f5;
+    }
+    .module-table tr:last-child {
+      border-bottom: none;
+    }
+    .module-table td {
+      padding: 3.5px 6px;
+      vertical-align: middle;
+    }
+    .col-num {
+      width: 18px;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      text-align: center;
+      background: #fbfdfa;
+      border-right: 1px solid #f1f3f5;
+    }
+    .col-title {
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.25;
+    }
+    .col-desc {
+      font-size: 9px;
+      color: #64748b;
+      font-weight: 400;
+      display: block;
+    }
+    .col-status {
+      width: 68px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .status-check {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 13px;
+      height: 13px;
+      border: 1.2px solid #94a3b8;
+      border-radius: 3px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      margin-left: 2px;
+      position: relative;
+    }
+    .status-check:checked {
+      background-color: var(--color-forest);
+      border-color: var(--color-forest);
+    }
+    .status-check:checked::after {
+      content: '✓';
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .status-check.opt-r:checked {
+      background-color: var(--color-terracotta);
+      border-color: var(--color-terracotta);
+    }
+    .status-check.opt-r:checked::after {
+      content: 'R';
+      font-size: 8.5px;
+    }
+
+    /* Bottom Signatures & Seal Section */
+    .cert-footer-box {
+      margin-top: 8px;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 6px;
+      background: #fafbfa;
+      padding: 6px 12px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .cert-verklaring {
+      font-size: 9.5px;
+      color: #334155;
+      line-height: 1.35;
+    }
+    .cert-verklaring strong {
+      color: var(--color-forest-dark);
+    }
+
+    .sign-box {
+      border-bottom: 1px solid #1e293b;
+      height: 28px;
+      display: flex;
+      align-items: flex-end;
+      font-size: 10px;
+      font-style: italic;
+      color: #334155;
+      padding-bottom: 2px;
+    }
+    .sign-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* Footer Pill */
+    .sheet-footer {
+      margin-top: 6px;
+      display: flex;
+      justify-content: center;
+    }
+    .footer-pill {
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.25);
+      border-radius: 9999px;
+      padding: 5px 24px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #1e293b;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer-pill strong {
+      color: var(--color-forest-dark);
+    }
+
+    /* Print settings */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+      .sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        padding: 8mm 12mm 6mm 12mm !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      .status-check:checked {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .module-header {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .footer-pill {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Top Toolbar -->
+  <div class="no-print-bar">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <a href="stoel-anatomie.html" class="btn-back">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Terug naar Stoel-Anatomie
+      </a>
+      <div style="font-weight: 700; color: var(--color-forest-dark); font-size: 0.92rem;">
+        ✓ Officieel 30-Punts Keuringsrapport &amp; Revisiecertificaat (A4)
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <button type="button" class="btn-action-pill" onclick="vulVoorbeeldIn()">
+        Voorbeeld Invullen
+      </button>
+      <button type="button" class="btn-action-pill" onclick="wisFormulier()">
+        Wissen
+      </button>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Afdrukken / Opslaan als PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- A4 Printable Sheet -->
+  <div class="sheet">
+
+    <!-- 1. Header -->
+    <div>
+      <div class="sheet-header">
+        <div class="brand-col">
+          <div class="logo-text">staopstoelen<span>.nl</span></div>
+          <div class="logo-subtitle">Specialist in ergonomisch zitcomfort &bull; Fitform Dealer</div>
+        </div>
+
+        <div class="header-badge">
+          <div class="doc-title-box">
+            <div class="doc-title">30-Punts Technisch Keuringsrapport</div>
+            <div class="doc-subtitle">Certified Fitform Revisie &bull; Werkplaats Dordrecht</div>
+          </div>
+          <img src="assets/revisie_stempel_clean.svg?v=2.0" alt="Certified Fitform Keurmerk" class="brand-stamp">
+        </div>
+      </div>
+
+      <!-- 2. Stoel- & Keuringsgegevens -->
+      <div class="chair-meta-grid">
+        <div>
+          <div class="meta-line">
+            <label class="meta-label">Model &amp; Uitvoering:</label>
+            <div class="meta-fill"><input type="text" id="inpModel" placeholder="bijv. Fitform 570 Vario (3-motorig)"></div>
+          </div>
+          <div class="meta-line">
+            <label class="meta-label">Serienummer / ID:</label>
+            <div class="meta-fill"><input type="text" id="inpSerial" placeholder="bijv. FF-2024-88492"></div>
+          </div>
+          <div class="meta-line">
+            <label class="meta-label">Zitmaten (H&times;D&times;B):</label>
+            <div class="meta-fill"><input type="text" id="inpMaten" placeholder="bijv. 46 cm &times; 51 cm &times; 51 cm"></div>
+          </div>
+        </div>
+        <div>
+          <div class="meta-line">
+            <label class="meta-label">Keuringsdatum:</label>
+            <div class="meta-fill"><input type="text" id="inpDatum" placeholder="bijv. 27-10-2026"></div>
+          </div>
+          <div class="meta-line">
+            <label class="meta-label">Keurmeester:</label>
+            <div class="meta-fill"><input type="text" id="inpKeurmeester" value="G. Schipper (BewegingsTechnoloog)"></div>
+          </div>
+          <div class="meta-line">
+            <label class="meta-label">Garantiezegel-Nr:</label>
+            <div class="meta-fill"><input type="text" id="inpZegel" placeholder="bijv. CF-DOR-0492" style="font-weight: 800; color: var(--color-forest);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. De 30 Inspectiepunten (6 Clusters) -->
+    <div class="modules-container">
+
+      <!-- Kolom Links -->
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+
+        <!-- Module 1: Linak Motoren & Aandrijving (1 t/m 6) -->
+        <div class="module-card">
+          <div class="module-header">
+            <span>1. Linak Motoren &amp; Aandrijftechniek</span>
+            <span style="font-size: 8.5px; opacity: 0.9;">150 kg Belastingstest</span>
+          </div>
+          <table class="module-table">
+            <tr>
+              <td class="col-num">01</td>
+              <td class="col-title">Kantelmotor (Linak actuator)
+                <span class="col-desc">Belastingstest 150 kg, stroompiek- &amp; relaiscontrole</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">02</td>
+              <td class="col-title">Rugverstellingsmotor
+                <span class="col-desc">Spindelspeling, koolborstels &amp; geluidstrilling</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">03</td>
+              <td class="col-title">Voetsteun-/beenslagmotor
+                <span class="col-desc">Eindafslagschakelaars &amp; synchrone hefuitslag</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">04</td>
+              <td class="col-title">Handbediening &amp; Spiraalsnoer
+                <span class="col-desc">Toetsrespons, trekontlasting &amp; kabelbreukcheck</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">05</td>
+              <td class="col-title">Centrale Controlebox (CB-printplaat)
+                <span class="col-desc">Transformator, zekeringen &amp; interne diodes</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">06</td>
+              <td class="col-title">Noodstroomcircuit &amp; Back-up Accu
+                <span class="col-desc">Verse 9V/loodaccu geplaatst; nooddaaltest</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Module 2: Stalen Frame & Hefmechaniek (7 t/m 11) -->
+        <div class="module-card">
+          <div class="module-header">
+            <span>2. Chassis &amp; Hefmechaniek</span>
+            <span style="font-size: 8.5px; opacity: 0.9;">Torsie &amp; Lagers</span>
+          </div>
+          <table class="module-table">
+            <tr>
+              <td class="col-num">07</td>
+              <td class="col-title">Hoofdchassis &amp; Lasverbindingen
+                <span class="col-desc">Inspectie op torsie, metaalmoeheid en haarscheuren</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">08</td>
+              <td class="col-title">Schaarmechaniek &amp; Hefarmen
+                <span class="col-desc">Parallelliteit onder asymmetrische 150 kg druk</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">09</td>
+              <td class="col-title">Scharnierpennen &amp; Teflonbussen
+                <span class="col-desc">Spelingsvrije lagering zonder mechanisch kraken</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">10</td>
+              <td class="col-title">Smering Mechanische Draaipunten
+                <span class="col-desc">Volledig gereinigd en gesmeerd met industrieel PTFE-vet</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">11</td>
+              <td class="col-title">Stelvoeten &amp; Wielmechanisme
+                <span class="col-desc">Vloerbeschermers intact; remblokkering getest</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Module 3: Ergonomische Maatvoering (12 t/m 16) -->
+        <div class="module-card">
+          <div class="module-header">
+            <span>3. Ergonomie &amp; Maatwerkinstelling</span>
+            <span style="font-size: 8.5px; opacity: 0.9;">Insteekbussen &amp; Slede</span>
+          </div>
+          <table class="module-table">
+            <tr>
+              <td class="col-num">12</td>
+              <td class="col-title">Zithoogte-insteekbussen
+                <span class="col-desc">Borgbouten gecontroleerd; bereik 40 t/m 60 cm vrij</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">13</td>
+              <td class="col-title">Zitdiepte-slede &amp; Rugplaat
+                <span class="col-desc">Verstelbaar in 43, 45, 48, 51 of 53 cm zonder speling</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">14</td>
+              <td class="col-title">Armleggerhoogte-verstelling
+                <span class="col-desc">Parallelle hoogte-instelling links/rechts geborgd</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">15</td>
+              <td class="col-title">Topswing Nekverstelling
+                <span class="col-desc">Kogelgewricht &amp; frictieremming traploos instelbaar</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">16</td>
+              <td class="col-title">Fysiologische Kantelhoek (15&deg;)
+                <span class="col-desc">Behoud van 90&deg; heuphoek tijdens kantelen gewaarborgd</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Kolom Rechts -->
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+
+        <!-- Module 4: Wervelkolom, Lendenbalg & Schuim (17 t/m 21) -->
+        <div class="module-card">
+          <div class="module-header orange">
+            <span>4. Wervelkolom, Lendensteun &amp; Schuim</span>
+            <span style="font-size: 8.5px; opacity: 0.9;">Koudschuim HR50+</span>
+          </div>
+          <table class="module-table">
+            <tr>
+              <td class="col-num">17</td>
+              <td class="col-title">Pneumatische Lendenpomp &amp; Ventiel
+                <span class="col-desc">Handpompbeker &amp; metalen ontluchtingsventiel lekvrij</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">18</td>
+              <td class="col-title">Lumbale Luchtkamer
+                <span class="col-desc">Drukbehoudstest 24 uur onder continue rugbelasting</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">19</td>
+              <td class="col-title">Zittingschuim &amp; Veerkracht
+                <span class="col-desc">Koudschuim HR 50/60 densiteitstest; geen kuilvorming</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">20</td>
+              <td class="col-title">Rugleuningschuim &amp; Laterale Steun
+                <span class="col-desc">Anatomische zijsteun voor wervelkolomstabilisatie</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">21</td>
+              <td class="col-title">Anti-Decubitus &amp; Stuitontlasting
+                <span class="col-desc">Stuitvrije uitsparing &amp; drukherverdelende toplaag</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Module 5: Klinische Hygiëne & Bekleding (22 t/m 26) -->
+        <div class="module-card">
+          <div class="module-header orange">
+            <span>5. Hygiëne, Textiel &amp; Lederconditie</span>
+            <span style="font-size: 8.5px; opacity: 0.9;">Ozon &amp; Stoom</span>
+          </div>
+          <table class="module-table">
+            <tr>
+              <td class="col-num">22</td>
+              <td class="col-title">Thermische Stoomextractie
+                <span class="col-desc">Dieptereiniging op 140&deg;C tot in het binnenwerk</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">23</td>
+              <td class="col-title">Ozonisatie-Behandeling
+                <span class="col-desc">Gegarandeerd 100% bacterie-, virus- en geurneutraal</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">24</td>
+              <td class="col-title">Leder- of Stofvoeding
+                <span class="col-desc">Leder gevoed met bijenwas; stof ge&iuml;mpregneerd</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">25</td>
+              <td class="col-title">Stiknaden &amp; Bieswerk
+                <span class="col-desc">Trekproef stiksels en slijtagevrij bieswerk rondom</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">26</td>
+              <td class="col-title">Ritsen &amp; Stoffeerdersbeslag
+                <span class="col-desc">Ritsen gesmeerd en klittenbanden vernieuwd</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Module 6: Veiligheid, Zegel & Vrijgave (27 t/m 30) -->
+        <div class="module-card">
+          <div class="module-header">
+            <span>6. Veiligheid, Zegel &amp; Certificering</span>
+            <span style="font-size: 8.5px; opacity: 0.9;">24 Mnd Garantie</span>
+          </div>
+          <table class="module-table">
+            <tr>
+              <td class="col-num">27</td>
+              <td class="col-title">Knelbeveiliging Onderzijde
+                <span class="col-desc">Mechanisch afschermrooster vrij van beknellingsrisico</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">28</td>
+              <td class="col-title">Dynamische Proefbelasting (150 kg)
+                <span class="col-desc">Volledige op- en neerwaartse cyclus onder werklast</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">29</td>
+              <td class="col-title">Genummerd Certified Fitform Zegel
+                <span class="col-desc">Onvervalsbaar garantiezegel fysiek op het frame geplaatst</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">30</td>
+              <td class="col-title">Vrijgave &amp; 24 Mnd Garantiebewijs
+                <span class="col-desc">Officieel gecertificeerd voor aflevering aan huis</span>
+              </td>
+              <td class="col-status">
+                <label title="Goedgekeurd"><input type="checkbox" class="status-check" checked></label>
+                <label title="Gereviseerd"><input type="checkbox" class="status-check opt-r"></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 4. Afsluiting & Garantieafgifte -->
+    <div>
+      <div class="cert-footer-box">
+        <div class="cert-verklaring">
+          <strong>Kwaliteitsverklaring staopstoelen.nl:</strong><br>
+          Ondergetekende verklaart dat bovenstaande Fitform sta-opstoel aan alle 30 inspectie- en revisienormen voldoet. De stoel is 100% veilig, hygiënisch dieptereinigd en wordt geleverd inclusief <strong>24 maanden volledige omruilgarantie aan huis</strong>.
+        </div>
+        <div>
+          <div class="sign-box" id="signKeurmeester">G. Schipper</div>
+          <div class="sign-label">Handtekening Keurmeester</div>
+        </div>
+        <div>
+          <div class="sign-box" id="signZegelStatus">✓ Gecertificeerd</div>
+          <div class="sign-label">Status Kwaliteitszegel</div>
+        </div>
+      </div>
+
+      <!-- 5. Footer Pill -->
+      <div class="sheet-footer">
+        <div class="footer-pill">
+          <span><strong>staopstoelen.nl</strong> &bull; Dordrecht</span>
+          <span>Merwedestraat 239, 3313 GT</span>
+          <span>Tel: <strong>078 - 631 4858</strong></span>
+          <span>info@staopstoelen.nl</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function vulVoorbeeldIn() {
+      document.getElementById('inpModel').value = 'Fitform 570 Vario (3-motorig + kantel)';
+      document.getElementById('inpSerial').value = 'FF-2024-88492';
+      document.getElementById('inpMaten').value = 'ZH 47 cm × ZD 49 cm × ZB 51 cm';
+      document.getElementById('inpDatum').value = new Date().toLocaleDateString('nl-NL');
+      document.getElementById('inpKeurmeester').value = 'G. Schipper (BewegingsTechnoloog)';
+      document.getElementById('inpZegel').value = 'CF-DOR-0492';
+      
+      document.querySelectorAll('.status-check').forEach((cb, idx) => {
+        if (!cb.classList.contains('opt-r')) {
+          cb.checked = true;
+        } else {
+          cb.checked = false;
+        }
+      });
+    }
+
+    function wisFormulier() {
+      document.getElementById('inpModel').value = '';
+      document.getElementById('inpSerial').value = '';
+      document.getElementById('inpMaten').value = '';
+      document.getElementById('inpDatum').value = '';
+      document.getElementById('inpZegel').value = '';
+      document.querySelectorAll('.status-check').forEach(cb => cb.checked = false);
+    }
+  </script>
+</body>
+</html>
