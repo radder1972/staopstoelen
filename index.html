@@ -412,29 +412,16 @@
   <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container navbar-container">
-      <!-- Beautiful Overlapping Liquid Waves behind the logo with aftakking under the menu into the corner swoosh -->
-      <svg class="logo-swoosh logo-swoosh-connected" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 180" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="branchFlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3"/>
-            <stop offset="15%" stop-color="#14310d" stop-opacity="0.85"/>
-            <stop offset="50%" stop-color="#4b8f24" stop-opacity="0.95"/>
-            <stop offset="85%" stop-color="#6ab13c" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#f39223" stop-opacity="1"/>
-          </linearGradient>
-        </defs>
-
-        <!-- 1. Horizontale golven achter het logo (bovenste rij) -->
-        <path d="M 0,80 Q 250,115 500,85 T 1200,90" fill="none" stroke="var(--color-sky)" stroke-width="7" stroke-linecap="round" opacity="0.45"/>
-        <path d="M 0,90 Q 250,70 500,95 T 1200,98" fill="none" stroke="var(--color-terracotta)" stroke-width="5" stroke-linecap="round" opacity="0.65"/>
-        <path d="M 0,98 Q 250,120 500,92 T 1200,105" fill="none" stroke="var(--color-sage)" stroke-width="5.5" stroke-linecap="round" opacity="0.65"/>
-        <path d="M 0,106 Q 250,85 500,105 T 1200,110" fill="none" stroke="var(--color-forest)" stroke-width="7" stroke-linecap="round" opacity="0.75"/>
-
-        <!-- 2. De Aftakking: Vloeiend onder het menu door naar de swoosh -->
-        <!-- Terracotta parallel accentlijn -->
-        <path d="M 0,105 C 10,125 15,176 30,176 L 753,176 C 756,176 760,177.5 767,182" fill="none" stroke="var(--color-terracotta)" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
-        <!-- Hoofdader: Levendige vloeiende golf onder het menu door die naadloos overvloeit in Geertjan's swoosh -->
-        <path d="M 0,112 C 12,135 18,178 35,178 L 753,178 C 756,178 760,179.5 767,184" fill="none" stroke="url(#branchFlowGrad)" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Beautiful Overlapping Liquid Waves behind the logo -->
+      <svg class="logo-swoosh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <!-- Wave 1: Sky Blue -->
+        <path d="M 0,90 Q 250,160 500,100 T 1000,110" fill="none" stroke="var(--color-sky)" stroke-width="8" stroke-linecap="round" opacity="0.6"></path>
+        <!-- Wave 2: Terracotta Orange -->
+        <path d="M 0,110 Q 250,70 500,120 T 1000,130" fill="none" stroke="var(--color-terracotta)" stroke-width="6" stroke-linecap="round" opacity="0.75"></path>
+        <!-- Wave 3: Sage Green -->
+        <path d="M 0,125 Q 250,170 500,115 T 1000,140" fill="none" stroke="var(--color-sage)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>
+        <!-- Wave 4: Forest Green -->
+        <path d="M 0,140 Q 250,100 500,145 T 1000,150" fill="none" stroke="var(--color-forest)" stroke-width="10" stroke-linecap="round" opacity="0.95"></path>
       </svg>
             <a href="index.html" class="nav-text-logo" id="navTextLogo">
               <div class="nav-logo-main">staopstoelen<span>.nl</span></div>
