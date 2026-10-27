@@ -528,10 +528,16 @@
         <!-- Mode Toggle (Marktplaats vs Certified) -->
         <div class="mode-switch-box" role="tablist">
           <button id="btn-certified" onclick="setMode('certified')" class="mode-switch-btn active-cert" role="tab" aria-selected="true">
-            ✓ Certified Fitform
+            <span style="display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Certified Fitform</span>
+            </span>
           </button>
           <button id="btn-marktplaats" onclick="setMode('marktplaats')" class="mode-switch-btn inactive" role="tab" aria-selected="false">
-            ⚠️ Marktplaats Stoel
+            <span style="display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>Marktplaats Stoel</span>
+            </span>
           </button>
         </div>
       </div>
@@ -542,7 +548,10 @@
         <!-- Left: Interactive SVG Chair -->
         <div class="chair-canvas-box">
           <div id="canvas-badge" class="canvas-status-badge cert">
-            ✓ 100% Gekeurd &amp; Gecertificeerd
+            <span style="display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% Gekeurd &amp; Gecertificeerd</span>
+            </span>
           </div>
 
           <div class="chair-svg-wrapper">
@@ -597,8 +606,9 @@
             <button type="button" onclick="selectHotspot(5)" id="hs-5" style="top: 82%; left: 28%; background-color: var(--color-forest);" class="hotspot-btn" aria-label="Punt 5: Noodstroom Accu & Keurmerk">5</button>
           </div>
 
-          <div style="font-size: 0.78rem; color: #64748b; margin-top: 14px; text-align: center;">
-            💡 Klik op de nummers op de stoel of gebruik de knoppen hieronder
+          <div style="font-size: 0.8rem; color: #64748b; margin-top: 14px; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta, #f39223)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>Klik op de nummers op de stoel of gebruik de knoppen hieronder</span>
           </div>
         </div>
 
@@ -632,8 +642,10 @@
           </div>
 
           <div id="risk-benefit-box" class="risk-benefit-box cert">
-            <div style="font-weight: 800; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
-              <span id="risk-benefit-icon">✓</span>
+            <div style="font-weight: 800; display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span id="risk-benefit-icon" style="display: inline-flex; align-items: center;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
               <span id="risk-benefit-title">Het Certified Fitform Voordeel:</span>
             </div>
             <p id="risk-benefit-text" style="margin: 0;">
@@ -685,42 +697,59 @@
       </h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px;">
         
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-          <div style="width: 36px; height: 36px; border-radius: 10px; background: #f0fdf4; color: #166534; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 12px;">
-            ⚡
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(37, 102, 22, 0.1); color: var(--color-forest, #2e6022); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
           </div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; margin: 0 0 6px 0;">Geen Motordefecten</h4>
-          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0;">
+          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; color: var(--color-forest-dark, #122b07); margin: 0 0 6px 0;">Geen Motordefecten</h4>
+          <p style="font-size: 0.88rem; color: #64748b; line-height: 1.55; margin: 0;">
             De motoren worden getest onder 150 kg belasting. Geen versleten spindels of printplaten die na een paar weken dienst weigeren.
           </p>
         </div>
 
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-          <div style="width: 36px; height: 36px; border-radius: 10px; background: #f0fdf4; color: #166534; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 12px;">
-            📏
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(37, 102, 22, 0.1); color: var(--color-forest, #2e6022); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.3 8.7 8.7 21.3a2 2 0 0 1-2.8 0L2.7 18.1a2 2 0 0 1 0-2.8L15.3 2.7a2 2 0 0 1 2.8 0l3.2 3.2a2 2 0 0 1 0 2.8Z"/>
+              <path d="m7.5 13.5 1.5-1.5"/>
+              <path d="m10.5 16.5 1.5-1.5"/>
+              <path d="m13.5 19.5 1.5-1.5"/>
+              <path d="m10.5 10.5 1.5-1.5"/>
+            </svg>
           </div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; margin: 0 0 6px 0;">Exact op Lichaamsmaat</h4>
-          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0;">
+          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; color: var(--color-forest-dark, #122b07); margin: 0 0 6px 0;">Exact op Lichaamsmaat</h4>
+          <p style="font-size: 0.88rem; color: #64748b; line-height: 1.55; margin: 0;">
             Een sta-opstoel die te diep of te hoog is, veroorzaakt rugpijn en afknelling. Wij stellen de zithoogte en zitdiepte exact op uw lichaam af.
           </p>
         </div>
 
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-          <div style="width: 36px; height: 36px; border-radius: 10px; background: #f0fdf4; color: #166534; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 12px;">
-            🌿
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(37, 102, 22, 0.1); color: var(--color-forest, #2e6022); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/>
+              <path d="M5 3v4"/>
+              <path d="M3 5h4"/>
+              <path d="M19 17v4"/>
+              <path d="M17 19h4"/>
+            </svg>
           </div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; margin: 0 0 6px 0;">Hygiënisch &amp; Geurloos</h4>
-          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0;">
+          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; color: var(--color-forest-dark, #122b07); margin: 0 0 6px 0;">Hygiënisch &amp; Geurloos</h4>
+          <p style="font-size: 0.88rem; color: #64748b; line-height: 1.55; margin: 0;">
             Extractie-dieptereiniging met stoom en ozon neutraliseert alle bacteriën en geuren. 100% fris en hygiënisch als nieuw.
           </p>
         </div>
 
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-          <div style="width: 36px; height: 36px; border-radius: 10px; background: #f0fdf4; color: #166534; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 12px;">
-            🛡️
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(37, 102, 22, 0.1); color: var(--color-forest, #2e6022); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
           </div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; margin: 0 0 6px 0;">2 Jaar Garantie aan Huis</h4>
-          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0;">
+          <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 750; color: var(--color-forest-dark, #122b07); margin: 0 0 6px 0;">2 Jaar Garantie aan Huis</h4>
+          <p style="font-size: 0.88rem; color: #64748b; line-height: 1.55; margin: 0;">
             Geen gesleep met zware stoelen: mocht er binnen 24 maanden iets zijn, dan komt onze monteur het kosteloos bij u thuis oplossen.
           </p>
         </div>
@@ -919,12 +948,12 @@
 
       if (currentMode === 'marktplaats') {
         box.className = 'risk-benefit-box mp';
-        icon.textContent = '⚠️';
+        icon.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
         title.textContent = 'Het Marktplaats Risico:';
         text.textContent = d.risk;
       } else {
         box.className = 'risk-benefit-box cert';
-        icon.textContent = '✓';
+        icon.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
         title.textContent = 'Het Certified Fitform Voordeel:';
         text.textContent = d.benefit;
       }
@@ -945,7 +974,7 @@
         btnCert.setAttribute('aria-selected', 'false');
 
         badge.className = 'canvas-status-badge mp';
-        badge.innerHTML = '⚠️ Ongekeurde Marktplaats Stoel';
+        badge.innerHTML = '<span style="display:inline-flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Ongekeurde Marktplaats Stoel</span></span>';
 
         chairSvg.querySelectorAll('path').forEach(p => {
           if (p.id === 'part-arm' || p.id === 'part-seat' || p.id === 'part-back' || p.id === 'part-legrest') {
@@ -961,7 +990,7 @@
         btnMp.setAttribute('aria-selected', 'false');
 
         badge.className = 'canvas-status-badge cert';
-        badge.innerHTML = '✓ 100% Gekeurd &amp; Gecertificeerd';
+        badge.innerHTML = '<span style="display:inline-flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>100% Gekeurd &amp; Gecertificeerd</span></span>';
 
         chairSvg.querySelectorAll('path').forEach(p => {
           if (p.id === 'part-arm' || p.id === 'part-seat' || p.id === 'part-back' || p.id === 'part-legrest') {
