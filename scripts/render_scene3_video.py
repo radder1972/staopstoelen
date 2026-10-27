@@ -151,7 +151,7 @@ def render_scene3():
             draw.line([(scan_x_start, scan_y-1), (scan_x_end, scan_y-1)], fill=(200, 255, 200, int(scan_alpha * 0.6)), width=1)
             
             # Measurement badge following the scan line
-            badge_text = f"Zithoogte: 46 cm • Linak 150 kg OK"
+            badge_text = f"Zithoogte: 46 cm • Linak Motoren OK"
             draw.rectangle([(scan_x_end - 340, scan_y - 32), (scan_x_end, scan_y - 4)], fill=(18, 43, 7, 210))
             draw.text((scan_x_end - 325, scan_y - 28), badge_text, font=font_badge, fill=(106, 177, 60, 240))
         

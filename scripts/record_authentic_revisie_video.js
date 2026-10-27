@@ -21,7 +21,7 @@ const SCENES = [
     audio: 'assets/audio/revisie_scene_2.m4a',
     duration: 8.50,
     outVideo: 'assets/video/revisie_s2_motortest.mp4',
-    name: 'Scene 2: 3 Linak Motoren & Belastingstest'
+    name: 'Scene 2: 3 Linak Motoren & Technische Functietest'
   },
   {
     idx: 2,
@@ -120,9 +120,12 @@ async function main() {
 
   const totalStartTime = Date.now();
 
-  const scenesToRecord = process.argv.includes('--scene6-only')
-    ? SCENES.filter(s => s.idx === 5)
-    : SCENES;
+  let scenesToRecord = SCENES;
+  if (process.argv.includes('--scene6-only')) {
+    scenesToRecord = SCENES.filter(s => s.idx === 5);
+  } else if (process.argv.includes('--scene2-only')) {
+    scenesToRecord = SCENES.filter(s => s.idx === 1);
+  }
 
   for (const scene of scenesToRecord) {
     console.log(`\n🎬 Recording ${scene.name} (${scene.duration}s)...`);
