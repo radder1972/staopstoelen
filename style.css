@@ -748,104 +748,97 @@ section[id], section {
 }
 
 /* 2. QUOTE & CTA NETJES ONDER DE SWOOSH */
-.hero-swoosh-subcard,
-.geertjan-under-swoosh {
-  width: 100%;
-  max-width: 380px;
-  margin-top: 14px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid rgba(75, 143, 36, 0.16);
-  box-shadow: 0 10px 28px rgba(18, 43, 7, 0.08);
-  padding: 16px 20px 18px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.hero-swoosh-subcard:hover,
-.geertjan-under-swoosh:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(18, 43, 7, 0.12);
-}
-
-/* Spraakballon (Speech Bubble) met staartje naar boven richting Geertjan */
-.expert-speech-bubble,
-.expert-quote-compact {
+/* 2. VRIJSTAANDE SPRAAKBUBBEL (Geen witte buitenste container meer) */
+.hero-speech-bubble-separated,
+.expert-speech-bubble {
   position: relative;
   background: #f4f9f0;
-  border: 1.5px solid rgba(75, 143, 36, 0.28);
-  border-radius: 14px;
-  padding: 11px 15px;
-  margin-bottom: 12px;
-  text-align: left;
+  border: 1.5px solid rgba(75, 143, 36, 0.35);
+  border-radius: 16px;
+  padding: 12px 18px;
+  width: 100%;
+  max-width: 390px;
   box-sizing: border-box;
+  margin-top: 8px; /* Dicht onder de swoosh */
+  box-shadow: 0 6px 18px rgba(18, 43, 7, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Staartje naar boven-rechts richting Geertjan's avatar */
-.expert-speech-bubble::before,
-.expert-quote-compact::before {
+.hero-speech-bubble-separated:hover,
+.expert-speech-bubble:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(18, 43, 7, 0.10);
+}
+
+/* Staartje wijst exact naar het midden van Geertjan's avatar */
+.hero-speech-bubble-separated::before,
+.expert-speech-bubble::before {
   content: "";
   position: absolute;
-  top: -9px;
-  right: 32px;
+  top: -12px;
+  right: 44px;
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 9px solid rgba(75, 143, 36, 0.28);
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 12px solid rgba(75, 143, 36, 0.35);
 }
 
-.expert-speech-bubble::after,
-.expert-quote-compact::after {
+.hero-speech-bubble-separated::after,
+.expert-speech-bubble::after {
   content: "";
   position: absolute;
-  top: -7px;
-  right: 33px;
+  top: -10px;
+  right: 45px;
   width: 0;
   height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 8px solid #f4f9f0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 11px solid #f4f9f0;
 }
 
-.expert-speech-bubble p,
-.expert-quote-compact p {
-  font-size: 0.84rem;
-  color: #2d3748;
-  line-height: 1.45;
-  font-style: italic;
+.hero-speech-bubble-separated p,
+.expert-speech-bubble p {
   margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #1a3311;
+  font-style: italic;
   font-weight: 500;
 }
 
+/* 3. APARTE ZITCHECK CTA KNOP */
+.hero-cta-separated,
 .expert-cta-compact {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  max-width: 390px;
+  margin-top: 10px;
+  background: #ffffff;
   border: 1.5px solid rgba(243, 146, 35, 0.45);
-  border-radius: 12px;
-  padding: 9px 12px;
+  border-radius: 14px;
+  padding: 11px 16px;
   text-decoration: none;
-  text-align: left;
   box-sizing: border-box;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(243, 146, 35, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+.hero-cta-separated:hover,
 .expert-cta-compact:hover {
-  background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
   border-color: var(--color-terracotta);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(243, 146, 35, 0.16);
 }
 
+.hero-cta-separated .cta-icon-box,
 .expert-cta-icon {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 9px;
   background: var(--color-terracotta);
   color: #ffffff;
   display: flex;
@@ -853,20 +846,23 @@ section[id], section {
   justify-content: center;
 }
 
+.hero-cta-separated .cta-text-title,
 .expert-cta-title {
+  display: block;
   font-family: var(--font-heading);
-  font-size: 0.80rem;
+  font-size: 0.84rem;
   font-weight: 800;
   color: #7c2d12;
-  display: block;
   line-height: 1.25;
 }
 
+.hero-cta-separated .cta-text-sub,
 .expert-cta-sub {
-  font-size: 0.70rem;
+  display: block;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--color-terracotta);
-  display: block;
+  margin-top: 1px;
 }
 
 @media (max-width: 768px) {
@@ -899,9 +895,12 @@ section[id], section {
     height: 52px !important;
   }
   .hero-swoosh-subcard,
-  .geertjan-under-swoosh {
+  .geertjan-under-swoosh,
+  .hero-speech-bubble-separated,
+  .hero-cta-separated {
     max-width: 360px !important;
-    margin: 10px auto 0 auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 
