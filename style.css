@@ -664,8 +664,8 @@ section[id], section {
 /* De gekleurde Swoosh aan de bovenzijde */
 .hero-swoosh-banner {
   position: relative;
-  height: 98px;
-  background: linear-gradient(135deg, #18380f 0%, #29571e 55%, #3d7e29 100%);
+  height: 104px;
+  background: linear-gradient(145deg, #10280b 0%, #1a3e11 60%, #244f18 100%);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -675,7 +675,7 @@ section[id], section {
   bottom: -1px;
   left: 0;
   width: 100%;
-  height: 48px;
+  height: 65px;
   pointer-events: none;
 }
 
@@ -718,7 +718,7 @@ section[id], section {
   font-weight: 700;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .hero-swoosh-top-seal {
     display: none;
   }
