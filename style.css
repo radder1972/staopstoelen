@@ -3078,7 +3078,7 @@ section[id], section {
 /* Floating Direct Contact Panel */
 .floating-contact-wrapper {
   position: fixed;
-  bottom: 24px;
+  bottom: 80px;
   right: 24px;
   z-index: 1000;
   display: flex;
@@ -4133,7 +4133,7 @@ input[type="checkbox"] {
 
 @media (max-width: 600px) {
   .floating-contact-wrapper {
-    bottom: 16px !important;
+    bottom: 70px !important;
     right: 16px !important;
   }
   .floating-btn {
