@@ -508,38 +508,59 @@
         </div>
       </div>
       <div class="hero-image-wrapper">
-        <!-- Geertjan Expert Spotlight (zonder box, direct op achtergrond conform verzoek) -->
-        <div class="hero-expert-spotlight" style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 360px; margin-left: auto;">
-          <div style="position: relative; width: 112px; height: 112px; margin-bottom: 12px;">
-            <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog &amp; Zitspecialist" width="112" height="112" loading="lazy" decoding="async" style="width: 112px; height: 112px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-forest); box-shadow: 0 4px 14px rgba(18, 43, 7, 0.12); display: block;">
-            <span style="position: absolute; bottom: -2px; right: -2px; background: var(--color-forest); color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.15);" title="Gecertificeerd bewegingstechnoloog">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
+        <!-- Geertjan Expert Spotlight Card met Merk-Swoosh -->
+        <div class="hero-expert-swoosh-card">
+          <!-- Gekleurde Swoosh Header -->
+          <div class="hero-swoosh-banner">
+            <div class="hero-swoosh-top-badge">
+              <span class="badge-dot"></span>
+              <span>1-op-1 Zitadvies</span>
+            </div>
+            <div class="hero-swoosh-top-seal">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <span>Dordrecht</span>
+            </div>
+            <svg class="hero-swoosh-svg" viewBox="0 0 380 50" preserveAspectRatio="none">
+              <!-- Terracotta golflijn accent -->
+              <path d="M 0,32 C 90,44 190,12 280,32 C 320,40 355,30 380,24" fill="none" stroke="#f39223" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+              <path d="M 0,38 C 90,50 190,18 280,38 C 320,46 355,36 380,30" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+              <!-- Wit vlak dat eronderuit steekt ("zodat er wit onder uitsteekt") -->
+              <path d="M 0,36 C 90,48 190,16 280,36 C 320,44 355,34 380,28 L 380,50 L 0,50 Z" fill="#ffffff"/>
+            </svg>
           </div>
-          <div style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--color-forest); letter-spacing: -0.3px; line-height: 1.2;">
-            Geertjan Klein Haneveld
+
+          <!-- Witte inhoud die eronderuit steekt -->
+          <div class="hero-swoosh-content">
+            <div class="hero-swoosh-avatar-anchor">
+              <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog &amp; Zitspecialist" width="96" height="96" loading="lazy" decoding="async">
+              <span class="hero-swoosh-avatar-badge" title="Gecertificeerd bewegingstechnoloog">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+
+            <h3 class="hero-swoosh-name">Geertjan Klein Haneveld</h3>
+            <div class="hero-swoosh-title">Bewegingstechnoloog &amp; Zitspecialist</div>
+
+            <div class="hero-swoosh-quote">
+              <p>&ldquo;Wij brengen uw stoel naar de woonkamer, stellen hem in, en gaan pas weg als de stoel perfect zit.&rdquo;</p>
+            </div>
+
+            <a href="#zithouding-checklist" class="hero-swoosh-cta" title="Twijfelt u over uw zithouding? Doe de gratis check in 5 minuten">
+              <span class="hero-swoosh-cta-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </span>
+              <span class="hero-swoosh-cta-body">
+                <strong class="hero-swoosh-cta-heading">Twijfelt u over uw zithouding?</strong>
+                <span class="hero-swoosh-cta-sub">Doe de gratis check in 5 minuten &rarr;</span>
+              </span>
+            </a>
           </div>
-          <div style="font-family: var(--font-heading); font-size: 0.78rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.6px; margin-top: 3px; margin-bottom: 10px;">
-            Bewegingstechnoloog &amp; Zitspecialist
-          </div>
-          <p style="font-size: 0.98rem; color: #4b5563; line-height: 1.55; margin: 0; font-style: italic; font-weight: 500;">
-            &ldquo;Wij brengen uw stoel naar de woonkamer, stellen hem in, en gaan pas weg als de stoel perfect zit.&rdquo;
-          </p>
-          <a href="#zithouding-checklist" class="hero-geertjan-cta" title="Twijfelt u over uw zithouding? Doe de gratis check in 5 minuten">
-            <span class="hero-geertjan-cta-badge">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-            </span>
-            <span class="hero-geertjan-cta-body">
-              <span class="hero-geertjan-cta-title">Twijfelt u over uw zithouding?</span>
-              <span class="hero-geertjan-cta-sub">Doe de gratis check in 5 minuten</span>
-            </span>
-          </a>
         </div>
         <div class="hero-image-container" id="heroImageContainer" style="display: none !important;">
           <div class="hero-slideshow" id="heroSlideshow">
