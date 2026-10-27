@@ -628,151 +628,117 @@ section[id], section {
 /* ==============================================================
    Geertjan Expert Spotlight Card met Merk-Swoosh
    ============================================================== */
-.hero-expert-swoosh-card {
+/* ============================================================== */
+/* HERO HOEKJE-SWOOSH (DIRECT ONDER DE MENUBALK EN RECHTS UITGELIJND) */
+/* Conform video-stijl (render_swoosh.html / certified-fitform-video) */
+/* ============================================================== */
+.hero-corner-swoosh {
   position: relative;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 14px 38px rgba(20, 49, 13, 0.09), 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1.5px solid rgba(75, 143, 36, 0.20);
-  overflow: hidden;
-  max-width: 380px;
-  width: 100%;
+  width: 410px;
+  max-width: 100%;
+  height: 470px;
   margin-left: auto;
-  box-sizing: border-box;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-
-.hero-expert-swoosh-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 48px rgba(20, 49, 13, 0.13), 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 768px) {
-  .hero-image-wrapper {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 20px auto 0 auto !important;
-    box-sizing: border-box !important;
-  }
-  .hero-expert-swoosh-card {
-    margin: 0 auto !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-}
-
-/* De gekleurde Swoosh aan de bovenzijde */
-.hero-swoosh-banner {
-  position: relative;
-  height: 104px;
-  background: linear-gradient(145deg, #10280b 0%, #1a3e11 60%, #244f18 100%);
-  overflow: hidden;
+  margin-top: -10px; /* Sluit direct naadloos aan op de onderkant van de menubalk */
+  filter: drop-shadow(-6px 12px 24px rgba(20, 49, 13, 0.09));
   box-sizing: border-box;
 }
 
-.hero-swoosh-svg {
+.hero-corner-swoosh .corner-swoosh-shape {
   position: absolute;
-  bottom: -1px;
-  left: 0;
+  top: 0;
+  right: 0;
   width: 100%;
-  height: 65px;
+  height: 100%;
+  overflow: visible;
   pointer-events: none;
 }
 
-.hero-swoosh-top-badge {
+.hero-corner-content {
   position: absolute;
-  top: 12px;
-  left: 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-}
-
-.hero-swoosh-top-badge .badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #f39223;
-  box-shadow: 0 0 6px #f39223;
-}
-
-.hero-swoosh-top-seal {
-  position: absolute;
-  top: 10px;
-  right: 16px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: rgba(255, 255, 255, 0.90);
-  font-size: 0.70rem;
-  font-weight: 700;
-}
-
-@media (max-width: 480px) {
-  .hero-swoosh-top-seal {
-    display: none;
-  }
-}
-
-/* Witte body die eronderuit steekt */
-.hero-swoosh-content {
-  position: relative;
-  padding: 0 20px 20px 20px;
+  top: 18px;
+  right: 18px;
+  width: 325px;
+  max-width: calc(100% - 36px);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: #ffffff;
+  z-index: 5;
+  box-sizing: border-box;
 }
 
-.hero-swoosh-avatar-anchor {
+.corner-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.corner-pill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #14310d;
+  background: rgba(75, 143, 36, 0.12);
+  padding: 3px 9px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.corner-pill .badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-terracotta);
+}
+
+.corner-location {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.corner-avatar-wrap {
   position: relative;
-  margin-top: -48px; /* Overlapt de swoosh golf */
-  margin-bottom: 10px;
-  width: 96px;
-  height: 96px;
-  z-index: 3;
+  width: 86px;
+  height: 86px;
+  margin-bottom: 8px;
 }
 
-.hero-swoosh-avatar-anchor img {
-  width: 96px;
-  height: 96px;
+.corner-avatar-wrap img {
+  width: 86px;
+  height: 86px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #ffffff;
-  box-shadow: 0 6px 18px rgba(18, 43, 7, 0.22);
+  border: 3px solid #14310d;
+  box-shadow: 0 4px 12px rgba(20, 49, 13, 0.15);
   display: block;
 }
 
-.hero-swoosh-avatar-badge {
+.corner-avatar-badge {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: var(--color-forest);
+  background: #14310d;
   color: #ffffff;
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.hero-swoosh-name {
+.corner-name {
   font-family: var(--font-heading);
-  font-size: 1.16rem;
+  font-size: 1.12rem;
   font-weight: 800;
   color: #14310d;
   letter-spacing: -0.3px;
@@ -780,52 +746,50 @@ section[id], section {
   margin: 0;
 }
 
-.hero-swoosh-title {
-  font-size: 0.76rem;
+.corner-title {
+  font-size: 0.72rem;
   font-weight: 800;
   color: var(--color-terracotta);
   text-transform: uppercase;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.6px;
   margin-top: 3px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-/* Citaatblok met subtiele styling */
-.hero-swoosh-quote {
+.corner-quote {
   position: relative;
   background: #f7faf5;
-  border: 1px solid rgba(75, 143, 36, 0.18);
+  border: 1px solid rgba(75, 143, 36, 0.16);
   border-radius: 12px;
-  padding: 10px 14px 10px 32px;
-  margin-bottom: 14px;
+  padding: 8px 12px 8px 26px;
+  margin-bottom: 11px;
   text-align: left;
   width: 100%;
   box-sizing: border-box;
 }
 
-.hero-swoosh-quote::before {
+.corner-quote::before {
   content: "“";
   position: absolute;
-  top: 1px;
-  left: 10px;
+  top: 0;
+  left: 7px;
   font-family: Georgia, serif;
-  font-size: 1.85rem;
-  line-height: 1;
-  color: var(--color-forest);
+  font-size: 1.65rem;
+  color: #14310d;
   opacity: 0.55;
+  line-height: 1;
 }
 
-.hero-swoosh-quote p {
-  font-size: 0.88rem;
+.corner-quote p {
+  font-size: 0.83rem;
   color: #374151;
-  line-height: 1.45;
+  line-height: 1.4;
   margin: 0;
   font-style: italic;
   font-weight: 500;
 }
 
-/* Interactieve Checklist Actieknop */
-.hero-swoosh-cta {
+.corner-cta {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -833,24 +797,24 @@ section[id], section {
   background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
   border: 1.5px solid rgba(243, 146, 35, 0.42);
   border-radius: 12px;
-  padding: 9px 12px;
+  padding: 8px 11px;
   text-decoration: none;
   box-sizing: border-box;
   transition: all 0.25s ease;
   text-align: left;
 }
 
-.hero-swoosh-cta:hover {
+.corner-cta:hover {
   background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
   border-color: var(--color-terracotta);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(243, 146, 35, 0.20);
+  box-shadow: 0 4px 12px rgba(243, 146, 35, 0.18);
 }
 
-.hero-swoosh-cta-icon {
-  width: 34px;
-  height: 34px;
-  min-width: 34px;
+.corner-cta-icon {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
   border-radius: 8px;
   background: var(--color-terracotta);
   color: #ffffff;
@@ -860,27 +824,54 @@ section[id], section {
   flex-shrink: 0;
 }
 
-.hero-swoosh-cta-body {
+.corner-cta-body {
   display: flex;
   flex-direction: column;
   gap: 1px;
 }
 
-.hero-swoosh-cta-heading {
+.corner-cta-heading {
   font-family: var(--font-heading);
-  font-size: 0.84rem;
+  font-size: 0.79rem;
   font-weight: 800;
   color: #7c2d12;
   line-height: 1.25;
 }
 
-.hero-swoosh-cta-sub {
-  font-size: 0.74rem;
+.corner-cta-sub {
+  font-size: 0.70rem;
   font-weight: 600;
   color: var(--color-terracotta);
-  display: flex;
-  align-items: center;
-  gap: 3px;
+}
+
+@media (max-width: 900px) {
+  .hero-corner-swoosh {
+    margin: 20px auto 0 auto;
+    width: 100%;
+    max-width: 360px;
+    height: 460px;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(20, 49, 13, 0.08);
+  }
+  .hero-corner-content {
+    right: 50%;
+    transform: translateX(50%);
+    width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-corner-swoosh {
+    max-width: 340px;
+    height: 440px;
+  }
+  .hero-corner-content {
+    width: 280px;
+  }
+  .corner-location {
+    display: none;
+  }
 }
 
 #zithouding-checklist {
