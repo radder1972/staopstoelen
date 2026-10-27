@@ -508,98 +508,94 @@
         </div>
       </div>
       <div class="hero-image-wrapper">
-        <!-- Geertjan Expert Corner Swoosh (Direct onder menubalk, rechts uitgelijnd conform video-stijl) -->
-        <div class="hero-corner-swoosh">
-          <svg class="corner-swoosh-shape" viewBox="0 0 410 470" fill="none" preserveAspectRatio="none">
+        <!-- 1. Echte Video-Swoosh Hoek-Badge (Direct onder menubalk, rechtsboven) -->
+        <div class="hero-video-swoosh-badge">
+          <svg class="hero-video-swoosh-svg" viewBox="0 0 360 125" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="cornerSwooshGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#14310d" stop-opacity="1"/>
-                <stop offset="35%" stop-color="#4b8f24" stop-opacity="1"/>
-                <stop offset="65%" stop-color="#84cc16" stop-opacity="1"/>
-                <stop offset="90%" stop-color="#f39223" stop-opacity="1"/>
-                <stop offset="100%" stop-color="#38bdf8" stop-opacity="1"/>
+              <linearGradient id="videoSwooshGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4b8f24" stop-opacity="0.9"/>
+                <stop offset="50%" stop-color="#6ab13c" stop-opacity="0.95"/>
+                <stop offset="80%" stop-color="#f39223" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#f39223" stop-opacity="0.3"/>
               </linearGradient>
             </defs>
 
-            <!-- Wit uitsnijdingsvlak (hoekje uit de pagina zoals in de video uitsnede) -->
-            <path d="M 50,0 
-                     L 410,0 
-                     L 410,440 
-                     C 350,465 240,460 160,410 
-                     C 80,350 30,230 40,120 
-                     C 45,60 48,25 50,0 
+            <!-- Wit organisch uitsnijdingsvlak (exact uit de video render_swoosh.html) -->
+            <path d="M 0,0 
+                     L 350,0 
+                     C 315,22 245,68 175,80 
+                     C 105,92 45,98 0,118 
                      Z" 
                   fill="#ffffff"/>
 
-            <!-- Hemelsblauw lint langs de uitsnede -->
-            <path d="M 44,0 
-                     C 42,25 39,60 34,120 
-                     C 24,230 74,350 154,410 
-                     C 234,460 346,465 410,440" 
-                  stroke="#38bdf8" 
-                  stroke-width="3" 
+            <!-- Kleuraccent langs de golflijn -->
+            <path d="M 0,118 
+                     C 45,98 105,92 175,80 
+                     C 245,68 315,22 350,0" 
+                  stroke="url(#videoSwooshGrad)" 
+                  stroke-width="3.6" 
                   stroke-linecap="round" 
-                  opacity="0.8"/>
-
-            <!-- De meerkleurige hoofdswoosh conform video-stijl -->
-            <path d="M 50,0 
-                     C 48,25 45,60 40,120 
-                     C 30,230 80,350 160,410 
-                     C 240,460 350,465 410,440" 
-                  stroke="url(#cornerSwooshGrad)" 
-                  stroke-width="5" 
-                  stroke-linecap="round"/>
-
-            <!-- Terracotta dieptelijn accent -->
-            <path d="M 56,0 
-                     C 54,25 51,60 46,120 
-                     C 36,230 86,350 166,410 
-                     C 246,460 354,465 410,442" 
+                  fill="none"/>
+            
+            <!-- Diepte-accent van loskomende rand -->
+            <path d="M 0,122 
+                     C 45,102 105,96 175,84 
+                     C 245,72 315,26 354,2" 
                   stroke="#f39223" 
-                  stroke-width="2" 
+                  stroke-width="1.2" 
                   stroke-linecap="round" 
+                  fill="none" 
                   opacity="0.5"/>
           </svg>
 
-          <!-- Inhoud binnen het witte hoekvlak -->
-          <div class="hero-corner-content">
-            <div class="corner-top-row">
-              <span class="corner-pill"><span class="badge-dot"></span>1-op-1 Zitadvies</span>
-              <span class="corner-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                Dordrecht
-              </span>
+          <!-- Tekst binnen de video-swoosh -->
+          <div class="hero-video-swoosh-text">
+            <div class="swoosh-brand-title">
+              <span class="brand-name">staopstoelen</span><span class="brand-dot-nl">.nl</span>
             </div>
-
-            <div class="corner-avatar-wrap">
-              <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog &amp; Zitspecialist" width="86" height="86" loading="lazy" decoding="async">
-              <span class="corner-avatar-badge" title="Gecertificeerd bewegingstechnoloog">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </span>
+            <div class="swoosh-brand-sub">
+              1-OP-1 ZITADVIES &bull; DORDRECHT
             </div>
-
-            <h3 class="corner-name">Geertjan Klein Haneveld</h3>
-            <div class="corner-title">Bewegingstechnoloog &amp; Zitspecialist</div>
-
-            <div class="corner-quote">
-              <p>&ldquo;Wij brengen uw stoel naar de woonkamer, stellen hem in, en gaan pas weg als de stoel perfect zit.&rdquo;</p>
-            </div>
-
-            <a href="#zithouding-checklist" class="corner-cta" title="Twijfelt u over uw zithouding? Doe de gratis check in 5 minuten">
-              <span class="corner-cta-icon">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-              </span>
-              <span class="corner-cta-body">
-                <strong class="corner-cta-heading">Twijfelt u over uw zithouding?</strong>
-                <span class="corner-cta-sub">Doe de gratis check in 5 minuten &rarr;</span>
-              </span>
-            </a>
           </div>
+        </div>
+
+        <!-- 2. Geertjan er netjes onder (ingekorte, heldere tekst) -->
+        <div class="geertjan-under-swoosh">
+          <div class="expert-head">
+            <div class="expert-head-avatar">
+              <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog &amp; Zitspecialist" width="68" height="68" loading="lazy" decoding="async">
+              <span class="check-badge" title="Gecertificeerd bewegingstechnoloog">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="expert-head-info">
+              <span class="expert-head-name">Geertjan Klein Haneveld</span>
+              <span class="expert-head-role">Bewegingstechnoloog &amp; Zitspecialist</span>
+              <span class="expert-head-loc">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                Persoonlijk advies aan huis of showroom
+              </span>
+            </div>
+          </div>
+
+          <div class="expert-quote-compact">
+            <p>&ldquo;Wij stellen uw stoel exact op maat in en gaan pas weg als hij perfect zit.&rdquo;</p>
+          </div>
+
+          <a href="#zithouding-checklist" class="expert-cta-compact" title="Twijfelt u over uw zithouding? Doe de gratis check in 5 minuten">
+            <span class="expert-cta-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </span>
+            <span>
+              <strong class="expert-cta-title">Twijfelt u over uw zithouding?</strong>
+              <span class="expert-cta-sub">Doe de gratis check in 5 minuten &rarr;</span>
+            </span>
+          </a>
         </div>
         <div class="hero-image-container" id="heroImageContainer" style="display: none !important;">
           <div class="hero-slideshow" id="heroSlideshow">
