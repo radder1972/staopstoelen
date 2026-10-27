@@ -747,115 +747,149 @@ section[id], section {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* 2. QUOTE & CTA NETJES ONDER DE SWOOSH */
-/* 2. VRIJSTAANDE SPRAAKBUBBEL (Geen witte buitenste container meer) */
+/* 2. QUOTE & CTA NETJES ONDER DE SWOOSH (VRIJSTAAND & HOOGWAARDIG) */
+
+/* 2. DE LUXE VRIJSTAANDE SPRAAKBUBBEL */
+.hero-expert-quote-bubble,
 .hero-speech-bubble-separated,
 .expert-speech-bubble {
   position: relative;
-  background: #f4f9f0;
-  border: 1.5px solid rgba(75, 143, 36, 0.35);
-  border-radius: 16px;
-  padding: 12px 18px;
+  background: linear-gradient(150deg, #ffffff 0%, #f5f9f2 100%);
+  border: 1.5px solid rgba(75, 143, 36, 0.28);
+  border-radius: 18px;
+  padding: 16px 20px 14px 22px;
   width: 100%;
-  max-width: 390px;
+  max-width: 395px;
   box-sizing: border-box;
-  margin-top: 8px; /* Dicht onder de swoosh */
-  box-shadow: 0 6px 18px rgba(18, 43, 7, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 10px;
+  box-shadow: 0 10px 25px -4px rgba(18, 43, 7, 0.08), 0 3px 8px rgba(0, 0, 0, 0.02);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.hero-expert-quote-bubble:hover,
 .hero-speech-bubble-separated:hover,
 .expert-speech-bubble:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(18, 43, 7, 0.10);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -4px rgba(18, 43, 7, 0.12);
 }
 
-/* Staartje wijst exact naar het midden van Geertjan's avatar */
-.hero-speech-bubble-separated::before,
-.expert-speech-bubble::before {
-  content: "";
+/* Het elegante aanhalingsteken-icoontje linksboven */
+.hero-quote-badge-icon {
+  position: absolute;
+  top: -11px;
+  left: 18px;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-sage) 100%);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(20, 49, 13, 0.22);
+}
+
+/* Organisch gebogen spraakballon-staartje direct naar het midden van Geertjan's avatar */
+.hero-quote-tail {
   position: absolute;
   top: -12px;
   right: 44px;
-  width: 0;
-  height: 0;
-  border-left: 11px solid transparent;
-  border-right: 11px solid transparent;
-  border-bottom: 12px solid rgba(75, 143, 36, 0.35);
+  width: 20px;
+  height: 14px;
+  pointer-events: none;
 }
 
-.hero-speech-bubble-separated::after,
-.expert-speech-bubble::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  right: 45px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 11px solid #f4f9f0;
-}
-
+.hero-quote-text,
 .hero-speech-bubble-separated p,
 .expert-speech-bubble p {
-  margin: 0;
-  font-size: 0.88rem;
+  margin: 0 0 8px 0;
+  font-size: 0.90rem;
   line-height: 1.45;
-  color: #1a3311;
+  color: #122b07;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.15px;
 }
 
-/* 3. APARTE ZITCHECK CTA KNOP */
+.hero-quote-trust-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.70rem;
+  font-weight: 800;
+  color: var(--color-forest);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  background: rgba(75, 143, 36, 0.10);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* 3. DE AANTREKKELIJKE INTERACTIEVE ZITCHECK CTA */
+.hero-zitcheck-action-card,
 .hero-cta-separated,
 .expert-cta-compact {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   width: 100%;
-  max-width: 390px;
+  max-width: 395px;
   margin-top: 10px;
-  background: #ffffff;
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
   border: 1.5px solid rgba(243, 146, 35, 0.45);
-  border-radius: 14px;
-  padding: 11px 16px;
+  border-radius: 16px;
+  padding: 12px 16px;
   text-decoration: none;
   box-sizing: border-box;
-  box-shadow: 0 4px 14px rgba(243, 146, 35, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 6px 18px rgba(243, 146, 35, 0.09);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.hero-zitcheck-action-card:hover,
 .hero-cta-separated:hover,
 .expert-cta-compact:hover {
   border-color: var(--color-terracotta);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(243, 146, 35, 0.16);
+  box-shadow: 0 10px 28px rgba(243, 146, 35, 0.18);
+  background: #ffffff;
 }
 
+.hero-zitcheck-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-zitcheck-icon,
 .hero-cta-separated .cta-icon-box,
 .expert-cta-icon {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  border-radius: 9px;
-  background: var(--color-terracotta);
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f39223 0%, #ea580c 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 3px 10px rgba(243, 146, 35, 0.35);
 }
 
+.hero-zitcheck-title,
 .hero-cta-separated .cta-text-title,
 .expert-cta-title {
   display: block;
   font-family: var(--font-heading);
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   font-weight: 800;
   color: #7c2d12;
   line-height: 1.25;
 }
 
+.hero-zitcheck-subtitle,
 .hero-cta-separated .cta-text-sub,
 .expert-cta-sub {
   display: block;
@@ -865,40 +899,47 @@ section[id], section {
   margin-top: 1px;
 }
 
+.hero-zitcheck-arrow {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: #fff7ed;
+  color: var(--color-terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.hero-zitcheck-action-card:hover .hero-zitcheck-arrow,
+.hero-cta-separated:hover .hero-zitcheck-arrow {
+  transform: translateX(4px);
+  background: var(--color-terracotta);
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
   .hero-image-wrapper {
     align-items: center !important;
     margin: 20px auto 0 auto !important;
+    width: 100% !important;
   }
   .hero-video-swoosh-badge {
-    max-width: 360px !important;
-    height: 125px !important;
+    width: 100% !important;
+    max-width: 395px !important;
+    height: auto !important;
+    aspect-ratio: 360 / 125 !important;
     margin: 0 auto !important;
-  }
-  .video-swoosh-expert-overlay {
-    right: 14px !important;
-    top: 14px !important;
-    gap: 10px !important;
-  }
-  .swoosh-expert-name {
-    font-size: 0.95rem !important;
-  }
-  .swoosh-expert-title {
-    font-size: 0.62rem !important;
-  }
-  .swoosh-expert-avatar {
-    width: 52px !important;
-    height: 52px !important;
-  }
-  .swoosh-expert-avatar img {
-    width: 52px !important;
-    height: 52px !important;
   }
   .hero-swoosh-subcard,
   .geertjan-under-swoosh,
+  .hero-expert-quote-bubble,
+  .hero-zitcheck-action-card,
   .hero-speech-bubble-separated,
   .hero-cta-separated {
-    max-width: 360px !important;
+    max-width: 395px !important;
+    width: 100% !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
@@ -948,8 +989,17 @@ section[id], section {
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 30px 0 26px 0;
+  width: 100%;
+}
+
+.hero-buttons .btn {
+  min-width: 220px;
+  padding: 13px 28px;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
