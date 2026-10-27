@@ -362,36 +362,85 @@
       color: #991b1b;
     }
 
-    /* Quick Nav Pills */
+    /* Quick Nav Pills (5-Col Grid) */
     .pills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 26px;
       padding-top: 20px;
       border-top: 1px solid #e2e8f0;
+      box-sizing: border-box;
     }
+    @media (max-width: 900px) {
+      .pills-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .pills-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .quick-pill {
-      padding: 8px 14px;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border: 1px solid #cbd5e1;
+      padding: 12px 10px;
+      border-radius: 12px;
+      border: 1.5px solid #cbd5e1;
       background: #ffffff;
       color: #334155;
       cursor: pointer;
-      transition: all 0.18s ease;
-      font-family: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-sizing: border-box;
+      min-height: 66px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
     .quick-pill:hover {
       border-color: var(--color-forest, #2e6022);
-      color: var(--color-forest, #2e6022);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .quick-pill-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #334155;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .quick-pill-lbl {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 750;
+      line-height: 1.25;
+      color: #334155;
+      transition: color 0.2s ease;
     }
     .quick-pill.active-pill {
       background: var(--color-forest, #2e6022);
-      color: #ffffff;
       border-color: var(--color-forest, #2e6022);
-      box-shadow: 0 2px 6px rgba(46, 96, 34, 0.25);
+      box-shadow: 0 4px 14px rgba(46, 96, 34, 0.28);
+    }
+    .quick-pill.active-pill .quick-pill-dot {
+      background: #ffffff;
+      color: var(--color-forest, #2e6022);
+    }
+    .quick-pill.active-pill .quick-pill-lbl {
+      color: #ffffff;
     }
 
     /* Video Callout Bar */
@@ -658,11 +707,26 @@
 
       <!-- Quick Navigation Pills -->
       <div class="pills-container">
-        <button type="button" onclick="selectHotspot(1)" id="pill-1" class="quick-pill active-pill">1. Linak Motoren (150 kg test)</button>
-        <button type="button" onclick="selectHotspot(2)" id="pill-2" class="quick-pill">2. Inmeting Maatwerk (Zithoogte &amp; Zitdiepte)</button>
-        <button type="button" onclick="selectHotspot(3)" id="pill-3" class="quick-pill">3. Pneumatische Lendensteun</button>
-        <button type="button" onclick="selectHotspot(4)" id="pill-4" class="quick-pill">4. Ozon &amp; Dieptereiniging</button>
-        <button type="button" onclick="selectHotspot(5)" id="pill-5" class="quick-pill">5. Noodstroom Accu &amp; Keurmerk</button>
+        <button type="button" onclick="selectHotspot(1)" id="pill-1" class="quick-pill active-pill">
+          <span class="quick-pill-dot">1</span>
+          <span class="quick-pill-lbl">Linak Motoren</span>
+        </button>
+        <button type="button" onclick="selectHotspot(2)" id="pill-2" class="quick-pill">
+          <span class="quick-pill-dot">2</span>
+          <span class="quick-pill-lbl">Maatwerk Inmeting</span>
+        </button>
+        <button type="button" onclick="selectHotspot(3)" id="pill-3" class="quick-pill">
+          <span class="quick-pill-dot">3</span>
+          <span class="quick-pill-lbl">Lendensteun</span>
+        </button>
+        <button type="button" onclick="selectHotspot(4)" id="pill-4" class="quick-pill">
+          <span class="quick-pill-dot">4</span>
+          <span class="quick-pill-lbl">Dieptereiniging</span>
+        </button>
+        <button type="button" onclick="selectHotspot(5)" id="pill-5" class="quick-pill">
+          <span class="quick-pill-dot">5</span>
+          <span class="quick-pill-lbl">Noodaccu &amp; Zegel</span>
+        </button>
       </div>
 
       <!-- Werkplaatsvideo Callout -->
