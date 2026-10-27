@@ -662,50 +662,92 @@ section[id], section {
   transform: scaleX(-1); /* Spiegelen naar de rechterhoek, exact conform render_swoosh.html */
 }
 
-.hero-video-swoosh-text {
+/* Geertjan's pasfoto + korte titel in de video-swoosh uitsnede */
+.video-swoosh-expert-overlay {
   position: absolute;
   top: 18px;
-  right: 28px;
+  right: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
   z-index: 10;
 }
 
-.swoosh-brand-title {
+.swoosh-expert-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.swoosh-expert-name {
   font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: 1.65rem;
-  letter-spacing: -0.6px;
-  line-height: 1.1;
-  display: inline-flex;
-  align-items: baseline;
-}
-
-.swoosh-brand-title .brand-name {
-  color: #4b8f24;
-}
-
-.swoosh-brand-title .brand-dot-nl {
-  color: #f39223;
-}
-
-.swoosh-brand-sub {
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 2px;
+  font-size: 1.05rem;
   color: #122b07;
-  text-transform: uppercase;
-  margin-top: 4px;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
 }
 
-/* 2. GEERTJAN ERONDER (Netjes, overzichtelijk en met ingekorte tekst) */
+.swoosh-expert-title {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--color-terracotta);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.swoosh-expert-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.swoosh-expert-avatar {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.swoosh-expert-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid var(--color-forest);
+  box-shadow: 0 3px 10px rgba(18, 43, 7, 0.16);
+  display: block;
+}
+
+.swoosh-expert-avatar .avatar-check {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  background: var(--color-forest);
+  color: #ffffff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* 2. QUOTE & CTA NETJES ONDER DE SWOOSH */
+.hero-swoosh-subcard,
 .geertjan-under-swoosh {
   width: 100%;
   max-width: 380px;
-  margin-top: 12px;
+  margin-top: 14px;
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid rgba(75, 143, 36, 0.16);
@@ -713,89 +755,14 @@ section[id], section {
   padding: 16px 20px 18px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   box-sizing: border-box;
-  position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.hero-swoosh-subcard:hover,
 .geertjan-under-swoosh:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 34px rgba(18, 43, 7, 0.12);
-}
-
-.expert-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  text-align: left;
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.expert-head-avatar {
-  position: relative;
-  width: 68px;
-  height: 68px;
-  flex-shrink: 0;
-}
-
-.expert-head-avatar img {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2.5px solid var(--color-forest);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-  display: block;
-}
-
-.expert-head-avatar .check-badge {
-  position: absolute;
-  bottom: -1px;
-  right: -1px;
-  background: var(--color-forest);
-  color: #ffffff;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #ffffff;
-}
-
-.expert-head-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.expert-head-name {
-  font-family: var(--font-heading);
-  font-size: 1.08rem;
-  font-weight: 800;
-  color: #122b07;
-  line-height: 1.2;
-}
-
-.expert-head-role {
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--color-terracotta);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  margin-top: 2px;
-}
-
-.expert-head-loc {
-  font-size: 0.70rem;
-  color: #64748b;
-  font-weight: 600;
-  margin-top: 2px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
 }
 
 .expert-quote-compact {
@@ -877,13 +844,26 @@ section[id], section {
     height: 125px !important;
     margin: 0 auto !important;
   }
-  .hero-video-swoosh-text {
-    right: 20px !important;
+  .video-swoosh-expert-overlay {
+    right: 14px !important;
     top: 14px !important;
+    gap: 10px !important;
   }
-  .swoosh-brand-title {
-    font-size: 1.35rem !important;
+  .swoosh-expert-name {
+    font-size: 0.95rem !important;
   }
+  .swoosh-expert-title {
+    font-size: 0.62rem !important;
+  }
+  .swoosh-expert-avatar {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .swoosh-expert-avatar img {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .hero-swoosh-subcard,
   .geertjan-under-swoosh {
     max-width: 360px !important;
     margin: 10px auto 0 auto !important;
