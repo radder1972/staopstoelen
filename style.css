@@ -6712,7 +6712,7 @@ input[type="checkbox"] {
   border-color: var(--color-forest);
 }
 
-.btn-callout-inruil {
+.btn-callout-afspraak {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -6720,17 +6720,17 @@ input[type="checkbox"] {
   font-size: 0.88rem;
   font-weight: 750;
   border-radius: 999px;
-  background: var(--color-terracotta);
+  background: var(--color-forest);
   color: #ffffff;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(243, 146, 35, 0.28);
+  box-shadow: 0 4px 12px rgba(75, 143, 36, 0.28);
 }
 
-.btn-callout-inruil:hover {
-  background: var(--color-terracotta-hover);
+.btn-callout-afspraak:hover {
+  background: var(--color-forest-dark);
   transform: translateY(-1px);
 }
 
