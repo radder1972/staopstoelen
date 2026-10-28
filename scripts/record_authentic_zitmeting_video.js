@@ -35,7 +35,7 @@ const SCENES = [
     audio: 'assets/audio/afspraak_scene_4.m4a',
     duration: 9.10,
     outVideo: 'assets/video/afspraak_s4_afspraak.mp4',
-    name: 'Scene 4: Gratis Parkeren in Dordrecht of Thuisbezoek'
+    name: 'Scene 4: Gratis Parkeren voor de Deur in Dordrecht'
   }
 ];
 

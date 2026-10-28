@@ -1286,9 +1286,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.149"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.149" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>

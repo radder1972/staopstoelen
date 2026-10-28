@@ -81,7 +81,11 @@ TASKS = [
         "text": "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét één jaar volledige garantie aan huis.",
         "duration": 11.00,
         "delay_ms": 200,
-        "out_files": ["assets/audio/consumer_scene_2.m4a"]
+        "out_files": [
+            "assets/audio/consumer_scene_2.m4a",
+            "assets/audio/scene_2.m4a",
+            "assets/audio/scene_2.mp3"
+        ]
     },
     {
         "name": "Consumer Scene 3 (15-Punts Kwaliteitskeuring & Reiniging)",
@@ -96,10 +100,38 @@ TASKS = [
     },
     {
         "name": "Consumer Scene 4 (Kom Proefzitten in Dordrecht)",
-        "text": "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht, of vraag een demonstratie aan huis aan. Bel nul zeven acht, zes drie een, vier acht vijf acht, of kijk op staopstoelen punt nl.",
-        "duration": 15.00,
+        "text": "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht. Bel nul zeven acht, zes drie een, vier acht vijf acht, of kijk op staopstoelen punt nl.",
+        "duration": 14.00,
         "delay_ms": 200,
         "out_files": ["assets/audio/consumer_scene_4.m4a"]
+    },
+    {
+        "name": "Afspraak Scene 1 (Waarom een Sta-op Stoel op Maat Moet Passen)",
+        "text": "Een verkeerde zithoogte of zitdiepte geeft rugpijn en vermoeide benen. Daarom koopt u een sta-op stoel nooit ongezien uit een doos.",
+        "duration": 8.36,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/afspraak_scene_1.m4a"]
+    },
+    {
+        "name": "Afspraak Scene 2 (Persoonlijke Zitmeting door Geertjan)",
+        "text": "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
+        "duration": 10.50,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/afspraak_scene_2.m4a"]
+    },
+    {
+        "name": "Afspraak Scene 3 (30+ Stoelen Vrijblijvend Uitproberen)",
+        "text": "U probeert rustig meer dan dertig nieuwe én Certified Fitform stoelen uit. Wij stellen de stoel ter plekke op uw lichaam af, zodat u direct het verschil voelt.",
+        "duration": 9.59,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/afspraak_scene_3.m4a"]
+    },
+    {
+        "name": "Afspraak Scene 4 (Gratis Parkeren in Dordrecht)",
+        "text": "U parkeert gratis voor de deur aan de Merwedestraat 239 in Dordrecht, of kies hieronder direct uw gewenste dag en tijdstip in onze online agenda.",
+        "duration": 9.10,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/afspraak_scene_4.m4a"]
     }
 ]
 

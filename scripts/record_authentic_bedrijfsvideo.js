@@ -33,9 +33,9 @@ const SCENES = [
   {
     idx: 3,
     audio: 'assets/audio/consumer_scene_4.m4a',
-    duration: 15.00,
+    duration: 14.00,
     outVideo: 'assets/video/scene4_zekerheid.mp4',
-    name: 'Scene 4: Kom Proefzitten in Dordrecht of Thuis'
+    name: 'Scene 4: Kom Proefzitten in de Showroom Dordrecht'
   }
 ];
 
