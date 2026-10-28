@@ -312,6 +312,7 @@ function initializeApp() {
   initWizard();
   initSlider();
   initCalendar();
+  initAppointmentModal();
   initFloatingMenu();
   initMobileMenu();
   initHeroSlideshow();
@@ -1214,19 +1215,106 @@ function renderWizardResults() {
   });
 }
 
-// Helper to prefill details and jump to the scheduling calendar
+// Helper to prefill details and jump to the scheduling calendar or open modal
 window.prefillBooking = function(chairName) {
-  const notesField = document.getElementById("bookingNotes");
-  if (notesField) {
-    notesField.value = `Ik wil deze stoel graag uitproberen tijdens mijn afspraak: ${chairName}.`;
-  }
-  
-  // Jump smoothly to scheduling section
-  const section = document.getElementById("afspraak-planner");
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
+  const appModal = document.getElementById("appointmentModal");
+  if (appModal) {
+    if (typeof openAppointmentModal === "function") {
+      openAppointmentModal(null, chairName);
+    }
+  } else {
+    const notesField = document.getElementById("bookingNotes");
+    if (notesField) {
+      notesField.value = `Ik wil deze stoel graag uitproberen tijdens mijn afspraak: ${chairName}.`;
+    }
+    
+    // Jump smoothly to scheduling section if present, else redirect
+    const section = document.getElementById("afspraak-planner");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    } else {
+      localStorage.setItem("prefilledChair", chairName);
+      window.location.href = "afspraak.html";
+    }
   }
 };
+
+/* ==========================================================================
+   SPLIT-SCREEN APPOINTMENT MODAL LOGIC
+   ========================================================================== */
+window.openAppointmentModal = function(e, chairName) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  // Close mobile nav drawer if open
+  const navDrawer = document.getElementById("navMenu");
+  const navToggle = document.getElementById("menuToggle");
+  if (navDrawer && navDrawer.classList.contains("active")) {
+    navDrawer.classList.remove("active");
+  }
+  if (navToggle && navToggle.classList.contains("active")) {
+    navToggle.classList.remove("active");
+  }
+
+  const modal = document.getElementById("appointmentModal");
+  if (!modal) {
+    window.location.href = "afspraak.html";
+    return;
+  }
+
+  if (chairName) {
+    const notesField = document.getElementById("bookingNotes");
+    if (notesField) {
+      notesField.value = `Ik wil deze stoel graag uitproberen tijdens mijn afspraak: ${chairName}.`;
+    }
+  }
+
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+
+  // Re-render calendar so current month and available days are fresh
+  if (typeof renderCalendar === "function") renderCalendar();
+  if (typeof renderTimeSlots === "function") renderTimeSlots();
+
+  modal.focus();
+};
+
+window.closeAppointmentModal = function() {
+  const modal = document.getElementById("appointmentModal");
+  if (modal) {
+    modal.classList.remove("active");
+  }
+  document.body.style.overflow = "";
+
+  // Pause video if playing
+  const vid = document.getElementById("appointmentModalVideo");
+  if (vid) {
+    try {
+      vid.pause();
+    } catch(err) {}
+  }
+};
+
+function initAppointmentModal() {
+  const modal = document.getElementById("appointmentModal");
+  if (!modal) return;
+
+  // Backdrop click closes modal
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal || e.target.classList.contains("appointment-modal-overlay")) {
+      closeAppointmentModal();
+    }
+  });
+
+  // Escape key closes modal
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (modal.classList.contains("active")) {
+        closeAppointmentModal();
+      }
+    }
+  });
+}
+
 
 
 /* ==========================================================================
@@ -1470,58 +1558,65 @@ function initCalendar() {
   }
   
   // Month toggles
-  prevMonth.addEventListener("click", () => {
-    state.currentDate.setMonth(state.currentDate.getMonth() - 1);
-    renderCalendar();
-  });
+  if (prevMonth) {
+    prevMonth.addEventListener("click", () => {
+      state.currentDate.setMonth(state.currentDate.getMonth() - 1);
+      renderCalendar();
+    });
+  }
   
-  nextMonth.addEventListener("click", () => {
-    state.currentDate.setMonth(state.currentDate.getMonth() + 1);
-    renderCalendar();
-  });
+  if (nextMonth) {
+    nextMonth.addEventListener("click", () => {
+      state.currentDate.setMonth(state.currentDate.getMonth() + 1);
+      renderCalendar();
+    });
+  }
   
   // Reset booking form
-  resetBookingBtn.addEventListener("click", () => {
-    interactiveArea.style.display = "block";
-    // Reset step indicator
-    const s1 = document.getElementById("stepIndicator1");
-    const s2 = document.getElementById("stepIndicator2");
-    const s3 = document.getElementById("stepIndicator3");
-    if (s1) { s1.className = "booking-step active"; }
-    if (s2) { s2.className = "booking-step"; }
-    if (s3) { s3.className = "booking-step highlight"; }
+  if (resetBookingBtn) {
+    resetBookingBtn.addEventListener("click", () => {
+      interactiveArea.style.display = "block";
+      // Reset step indicator
+      const s1 = document.getElementById("stepIndicator1");
+      const s2 = document.getElementById("stepIndicator2");
+      const s3 = document.getElementById("stepIndicator3");
+      if (s1) { s1.className = "booking-step active"; }
+      if (s2) { s2.className = "booking-step"; }
+      if (s3) { s3.className = "booking-step highlight"; }
 
-    // Reset selections
-    state.selectedDate = null;
-    state.selectedTimeSlot = null;
-    
-    document.getElementById("bookingName").value = "";
-    document.getElementById("bookingPhone").value = "";
-    document.getElementById("bookingEmail").value = "";
-    document.getElementById("bookingAddress").value = "";
-    document.getElementById("bookingNotes").value = "";
-    
-    if (postcodeField) postcodeField.value = "";
-    if (houseNumberField) houseNumberField.value = "";
-    if (addressFeedback) addressFeedback.textContent = "";
-    if (addressField) {
-      addressField.readOnly = true;
-      addressField.style.backgroundColor = "var(--color-light)";
-      addressField.style.cursor = "not-allowed";
-      addressField.placeholder = "Voer postcode en huisnummer in voor automatische controle...";
-    }
-    
-    const successMapIframe = document.getElementById("successMapIframe");
-    if (successMapIframe) successMapIframe.src = "";
-    const successRouteInfo = document.getElementById("successRouteInfo");
-    if (successRouteInfo) successRouteInfo.style.display = "none";
-    
-    renderCalendar();
-    renderTimeSlots();
-  });
+      // Reset selections
+      state.selectedDate = null;
+      state.selectedTimeSlot = null;
+      
+      document.getElementById("bookingName").value = "";
+      document.getElementById("bookingPhone").value = "";
+      document.getElementById("bookingEmail").value = "";
+      document.getElementById("bookingAddress").value = "";
+      document.getElementById("bookingNotes").value = "";
+      
+      if (postcodeField) postcodeField.value = "";
+      if (houseNumberField) houseNumberField.value = "";
+      if (addressFeedback) addressFeedback.textContent = "";
+      if (addressField) {
+        addressField.readOnly = true;
+        addressField.style.backgroundColor = "var(--color-light)";
+        addressField.style.cursor = "not-allowed";
+        addressField.placeholder = "Voer postcode en huisnummer in voor automatische controle...";
+      }
+      
+      const successMapIframe = document.getElementById("successMapIframe");
+      if (successMapIframe) successMapIframe.src = "";
+      const successRouteInfo = document.getElementById("successRouteInfo");
+      if (successRouteInfo) successRouteInfo.style.display = "none";
+      
+      renderCalendar();
+      renderTimeSlots();
+    });
+  }
   
   // Submit Action
-  submitBookingBtn.addEventListener("click", (e) => {
+  if (submitBookingBtn) {
+    submitBookingBtn.addEventListener("click", (e) => {
     e.preventDefault();
     
     const name = document.getElementById("bookingName").value.trim();
@@ -1780,6 +1875,7 @@ function initCalendar() {
       setTimeout(transitionToSuccess, 1000);
     }
   });
+}
   
   // Render Initial View
   renderCalendar();
