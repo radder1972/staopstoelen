@@ -875,12 +875,13 @@ section[id], section {
   text-underline-offset: 3px;
 }
 
-/* Dealer Trust in left column */
-.hero-content .hero-dealer-trust-wrapper {
+/* Dealer Trust gecentreerd onder de hero */
+.hero-dealer-trust-wrapper {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 22px;
 }
 
 @media (max-width: 768px) {
