@@ -142,7 +142,13 @@ img {
 }
 
 section {
-  padding: 80px 0;
+  padding: 60px 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 44px 0;
+  }
 }
 
 .subpage-section {
@@ -151,6 +157,10 @@ section {
 
 .bg-alt {
   background-color: var(--color-cream-dark);
+}
+
+.bg-light {
+  background-color: var(--color-light);
 }
 
 /* Buttons */
