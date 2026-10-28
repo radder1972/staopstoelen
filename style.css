@@ -588,6 +588,9 @@ section[id], section {
 
 .hero-content {
   z-index: 2;
+  align-self: flex-start;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .hero-tag {
@@ -600,6 +603,7 @@ section[id], section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-top: 0;
   margin-bottom: 24px;
   text-decoration: none;
   border: 1px solid rgba(75, 143, 36, 0.2);
@@ -633,6 +637,8 @@ section[id], section {
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
+  align-self: flex-start;
+  padding-top: 0;
 }
 
 @media (min-width: 769px) {
