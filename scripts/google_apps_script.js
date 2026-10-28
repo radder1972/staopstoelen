@@ -159,20 +159,26 @@ function doPost(e) {
     if (appointmentType === "checklist_download" || payload.action === "checklist_download") {
       if (email && payload.emailHtml) {
         const customerSubject = payload.emailSubject || `Uw Zithouding Checklist (PDF) - ${brandConfig.brandName}`;
+        const plainDownloadBody = `Beste ${name},\n\nHartelijk dank voor uw download van de Zithouding Checklist (PDF).\nBekijk de checklist via: ${brandConfig.websiteUrl}\n\nMet vriendelijke groet,\n${senderName}\n${brandConfig.websiteDomain}`;
         try {
-          GmailApp.sendEmail(email, customerSubject, "", {
+          MailApp.sendEmail({
+            to: email,
+            subject: customerSubject,
+            body: plainDownloadBody,
             htmlBody: payload.emailHtml,
             name: senderName,
             replyTo: replyToEmail
           });
         } catch (e1) {
-          MailApp.sendEmail({
-            to: email,
-            subject: customerSubject,
-            htmlBody: payload.emailHtml,
-            name: senderName,
-            replyTo: replyToEmail
-          });
+          try {
+            GmailApp.sendEmail(email, customerSubject, plainDownloadBody, {
+              htmlBody: payload.emailHtml,
+              name: senderName,
+              replyTo: replyToEmail
+            });
+          } catch (e2) {
+            Logger.log("Fout bij verzenden checklist downloadmail: " + e2.toString());
+          }
         }
       }
 
@@ -242,6 +248,12 @@ function doPost(e) {
     // 2. Bevestigingsmail naar de klant
     if (email) {
       const emailSubject = payload.emailSubject || brandConfig.defaultSubject;
+      const plainTextBody = `Beste ${name},\n\nHartelijk dank voor uw aanvraag voor een ${typeTitle}.\n` +
+        (date ? `Datum: ${date}\n` : '') +
+        (timeSlot ? `Tijdvak: ${timeSlot}\n` : '') +
+        `Locatie: ${address}\n\n` +
+        `Geertjan Klein Haneveld zal contact met u opnemen om de afspraak te bevestigen.\n\n` +
+        `Met vriendelijke groet,\n${senderName}\n${brandConfig.websiteDomain}`;
       
       const emailHtml = payload.emailHtml || `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #2e382b; max-width: 620px; margin: 0 auto; border: 1px solid ${brandConfig.borderColor}; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
@@ -291,19 +303,24 @@ function doPost(e) {
       `;
 
       try {
-        GmailApp.sendEmail(email, emailSubject, "", {
+        MailApp.sendEmail({
+          to: email,
+          subject: emailSubject,
+          body: plainTextBody,
           htmlBody: emailHtml,
           name: senderName,
           replyTo: replyToEmail
         });
       } catch (e1) {
-        MailApp.sendEmail({
-          to: email,
-          subject: emailSubject,
-          htmlBody: emailHtml,
-          name: senderName,
-          replyTo: replyToEmail
-        });
+        try {
+          GmailApp.sendEmail(email, emailSubject, plainTextBody, {
+            htmlBody: emailHtml,
+            name: senderName,
+            replyTo: replyToEmail
+          });
+        } catch (e2) {
+          Logger.log("Fout bij verzenden klantbevestiging: " + e2.toString());
+        }
       }
     }
 
