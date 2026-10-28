@@ -12,42 +12,42 @@ const SCENES = [
   {
     idx: 0,
     audio: 'assets/audio/revisie_scene_1.m4a',
-    duration: 10.20,
+    duration: 10.60,
     outVideo: 'assets/video/revisie_s1_demontage.mp4',
     name: 'Scene 1: Gestript tot op het Stalen Frame'
   },
   {
     idx: 1,
     audio: 'assets/audio/revisie_scene_2.m4a',
-    duration: 8.00,
+    duration: 8.20,
     outVideo: 'assets/video/revisie_s2_motortest.mp4',
     name: 'Scene 2: 3 Linak Motoren & Technische Functietest'
   },
   {
     idx: 2,
     audio: 'assets/audio/revisie_scene_3.m4a',
-    duration: 10.30,
+    duration: 9.40,
     outVideo: 'assets/video/revisie_s3_koudschuim.mp4',
     name: 'Scene 3: Professionele Reiniging & Koudschuim'
   },
   {
     idx: 3,
     audio: 'assets/audio/revisie_scene_4.m4a',
-    duration: 10.80,
+    duration: 9.80,
     outVideo: 'assets/video/revisie_s4_zitadvies.mp4',
     name: 'Scene 4: Het Zitadvies-Formulier Exact op Maat'
   },
   {
     idx: 4,
     audio: 'assets/audio/revisie_scene_5.m4a',
-    duration: 8.80,
+    duration: 8.50,
     outVideo: 'assets/video/revisie_s5_afstelling.mp4',
     name: 'Scene 5: Topswing & Ergonomische Fijnafstelling'
   },
   {
     idx: 5,
     audio: 'assets/audio/revisie_scene_6.m4a',
-    duration: 11.20,
+    duration: 10.00,
     outVideo: 'assets/video/revisie_s6_eindproduct.mp4',
     name: 'Scene 6: 15-Punts Keuring & 1 Jaar Garantie'
   }
