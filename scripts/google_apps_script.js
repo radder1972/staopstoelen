@@ -248,11 +248,13 @@ function doPost(e) {
     // 2. Bevestigingsmail naar de klant
     if (email) {
       const emailSubject = payload.emailSubject || brandConfig.defaultSubject;
-      const plainTextBody = `Beste ${name},\n\nHartelijk dank voor uw aanvraag voor een ${typeTitle}.\n` +
-        (date ? `Datum: ${date}\n` : '') +
-        (timeSlot ? `Tijdvak: ${timeSlot}\n` : '') +
-        `Locatie: ${address}\n\n` +
-        `Geertjan Klein Haneveld zal contact met u opnemen om de afspraak te bevestigen.\n\n` +
+      const plainTextBody = `Beste ${name},\n\nHartelijk dank voor uw aanvraag voor een ${typeTitle}.\n\n` +
+        `Uw afspraakgegevens:\n` +
+        (date ? `• Datum: ${date}\n` : '') +
+        (timeSlot ? `• Tijdvak: ${timeSlot}\n` : '') +
+        (phone && phone !== 'Onbekend' ? `• Telefoonnummer: ${phone}\n` : '') +
+        `• Locatie: ${address}\n\n` +
+        `Geertjan Klein Haneveld zal contact met u opnemen op ${phone} om de afspraak te bevestigen en eventuele details door te nemen.\n\n` +
         `Met vriendelijke groet,\n${senderName}\n${brandConfig.websiteDomain}`;
       
       const emailHtml = payload.emailHtml || `
@@ -270,13 +272,14 @@ function doPost(e) {
               <p style="margin: 4px 0;"><strong>Type afspraak:</strong> ${typeTitle}</p>
               ${date ? `<p style="margin: 4px 0;"><strong>Datum:</strong> ${date}</p>` : ''}
               ${timeSlot ? `<p style="margin: 4px 0;"><strong>Tijdvak:</strong> ${timeSlot}</p>` : ''}
+              ${phone && phone !== 'Onbekend' ? `<p style="margin: 4px 0;"><strong>Uw telefoonnummer:</strong> ${phone}</p>` : ''}
               <p style="margin: 4px 0;"><strong>Locatie:</strong> ${address}</p>
               ${notes && notes !== '-' ? `<p style="margin: 4px 0;"><strong>Uw opmerkingen:</strong> ${notes}</p>` : ''}
             </div>
 
             <h3 style="color: ${brandConfig.primaryColor}; margin-top: 24px; margin-bottom: 8px; font-size: 17px;">Hoe nu verder?</h3>
             <p style="margin-top: 0;">
-              Ik zal telefonisch contact met u opnemen om de afspraak te bevestigen en eventuele details door te nemen.
+              Geertjan zal telefonisch contact met u opnemen op <strong>${phone}</strong> om de afspraak te bevestigen en eventuele details door te nemen.
             </p>
 
             <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #eee;">
