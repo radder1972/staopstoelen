@@ -107,29 +107,29 @@ TASKS = [
     },
     {
         "name": "Afspraak Scene 1 (Waarom een Sta-op Stoel op Maat Moet Passen)",
-        "text": "Een verkeerde zithoogte of zitdiepte geeft rugpijn en vermoeide benen. Daarom koopt u een sta-op stoel nooit ongezien uit een doos.",
-        "duration": 8.36,
+        "text": "Een verkeerde zithoogte of zitdiepte geeft rugpijn en vermoeide benen. Daarom koopt u een sta-op stoel nooit zomaar ongezien uit een doos!",
+        "duration": 10.46,
         "delay_ms": 200,
         "out_files": ["assets/audio/afspraak_scene_1.m4a"]
     },
     {
         "name": "Afspraak Scene 2 (Persoonlijke Zitmeting door Geertjan)",
         "text": "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
-        "duration": 10.50,
+        "duration": 12.04,
         "delay_ms": 200,
         "out_files": ["assets/audio/afspraak_scene_2.m4a"]
     },
     {
         "name": "Afspraak Scene 3 (30+ Stoelen Vrijblijvend Uitproberen)",
-        "text": "U probeert rustig meer dan dertig nieuwe én Certified Fitform stoelen uit. Wij stellen de stoel ter plekke op uw lichaam af, zodat u direct het verschil voelt.",
-        "duration": 9.59,
+        "text": "U probeert rustig meer dan dertig nieuwe én Certified Fitform stoelen uit. Wij stellen de stoel ter plekke op uw lichaam af, zodat u direct het verschil voelt!",
+        "duration": 10.32,
         "delay_ms": 200,
         "out_files": ["assets/audio/afspraak_scene_3.m4a"]
     },
     {
         "name": "Afspraak Scene 4 (Gratis Parkeren in Dordrecht)",
-        "text": "U parkeert gratis voor de deur aan de Merwedestraat 239 in Dordrecht, of kies hieronder direct uw gewenste dag en tijdstip in onze online agenda.",
-        "duration": 9.10,
+        "text": "U parkeert gratis voor de deur aan de Merwedestraat 239 in Dordrecht. Of kies hieronder direct uw gewenste dag en tijdstip in onze online agenda!",
+        "duration": 10.51,
         "delay_ms": 200,
         "out_files": ["assets/audio/afspraak_scene_4.m4a"]
     }
