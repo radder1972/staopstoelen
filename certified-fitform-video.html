@@ -5225,7 +5225,7 @@
       `
     },
     {
-      align: "right",
+      align: "left",
       shortTag: "De Zitmeting",
       kicker: "STAP 1 • HET ZITADVIES-FORMULIER",
       title: "Persoonlijke Zitmeting door Geertjan",
@@ -5233,7 +5233,7 @@
       metric: "",
       caption: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
       voiceText: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
-      bg: "assets/geert_en_dame_showroom_169.jpg?v=20261028_2",
+      bg: "assets/geertjan_advies_showroom_right.jpg?v=20261028_3",
       audio: "assets/audio/afspraak_scene_2.m4a?v=eleven_1",
       durationSec: 10.44,
       visualHtml: `
@@ -5809,7 +5809,7 @@
   // NIEUW: Pasformulier & Stoel-Anatomie Video (mode=pasvorm): Eerst de persoonlijke zitmeting, daarna de 30-punts techniek (20s)
   const PASVORM_SCENES = [
     {
-      align: "right",
+      align: "left",
       shortTag: "Het Pasformulier",
       kicker: "MAATWERK • HET PASFORMULIER",
       title: "Persoonlijke Zitmeting & Pasformulier",
@@ -5817,7 +5817,7 @@
       metric: "",
       caption: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
       voiceText: "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
-      bg: "assets/geert_en_dame_showroom_169.jpg?v=20261028_2",
+      bg: "assets/geertjan_advies_showroom_right.jpg?v=20261028_3",
       audio: "assets/audio/afspraak_scene_2.m4a?v=eleven_1",
       durationSec: 10.44,
       visualHtml: AFSPRAAK_SCENES[1].visualHtml
@@ -6795,6 +6795,8 @@
     if (bg) {
       if (idx % 2 === 0) {
         bg.style.transform = `scale(${1 + 0.08 * ease}) translate(${-1.5 * ease}%, ${-1.0 * ease}%)`;
+      } else if (idx === 1 && (currentReelMode === 'afspraak' || currentReelMode === 'pasvorm')) {
+        bg.style.transform = `scale(${1.04 - 0.03 * ease}) translate(${2.5 - 0.8 * ease}%, 0)`;
       } else {
         bg.style.transform = `scale(${1.06 - 0.06 * ease}) translate(${1 - 2 * ease}%, 0)`;
       }

@@ -200,7 +200,7 @@ def render_afspraak_scene1():
 # ==============================================================================
 def render_afspraak_scene2():
     print("--- Rendering Afspraak Scene 2: Persoonlijke Zitmeting ---")
-    base = Image.open('assets/geert_en_dame_showroom_169.jpg').convert('RGB')
+    base = Image.open('assets/geertjan_advies_showroom_right.jpg').convert('RGB')
     bw, bh = base.size
     
     duration = 10.50
