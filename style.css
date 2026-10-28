@@ -1096,12 +1096,13 @@ section[id], section {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 20px 40px var(--color-shadow);
-  aspect-ratio: 1/1;
+  aspect-ratio: 4 / 5;
   background-color: var(--color-sage-light);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 460px;
 }
 
 .hero-image-container img,
@@ -4550,8 +4551,8 @@ input[type="checkbox"] {
 
   .hero-image-container {
     width: 100% !important;
-    max-width: 320px !important;
-    aspect-ratio: 1/1 !important;
+    max-width: 350px !important;
+    aspect-ratio: 4 / 5 !important;
   }
 
   .hero-quality-sticker-link {
@@ -5027,7 +5028,7 @@ input[type="checkbox"] {
 
   /* Prevent the hero image from growing too large on tablet and mobile viewports */
   .hero-image-wrapper {
-    max-width: 400px;
+    max-width: 380px;
     width: 100%;
     margin: 0 auto;
   }
@@ -5036,7 +5037,7 @@ input[type="checkbox"] {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    aspect-ratio: 1/1; /* Show the full square image without cropping on smaller screens */
+    aspect-ratio: 4 / 5;
   }
 
   .hero-quality-sticker-link {
