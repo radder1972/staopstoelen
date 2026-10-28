@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.179">
+  <link rel="stylesheet" href="style.css?v=10.180">
   <style>
 
     @media (max-width: 991px) {
@@ -677,7 +677,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.179
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.180
       </div>
     </div>
   </footer>
@@ -842,24 +842,24 @@
         </button>
       </div>
 
-      <!-- Dynamic Panels Stage: Strak Gelijke Hoogte Tussen Keuzes -->
-      <div class="appointment-panels-stage">
-        <!-- PANEEL 1: BEL MIJ TERUG (Standaard actief) -->
-        <div id="appointmentPanelCallback" class="appointment-panel active">
-          <div class="appointment-quick-location-tag">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="location-tag-icon">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <span>Merwedestraat 239, Dordrecht &bull; Gratis voor de deur parkeren</span>
-          </div>
+      <!-- Merwedestraat netjes als tekst met icoon onder de opties (geen lompe box) -->
+      <div class="appointment-location-line">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="location-line-icon">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>Merwedestraat 239, Dordrecht &bull; Gratis parkeren voor de deur</span>
+      </div>
 
-          <form id="quickAppointmentForm" class="appointment-quick-form" onsubmit="return handleQuickAppointmentSubmit(event)" novalidate>
-            <input type="hidden" id="quickChairNotes" name="chair_notes" value="">
+      <!-- PANEEL 1: BEL MIJ TERUG (Zelfde box styling als Agenda) -->
+      <div id="appointmentPanelCallback" class="appointment-panel active">
+        <form id="quickAppointmentForm" class="appointment-choice-card" onsubmit="return handleQuickAppointmentSubmit(event)" novalidate>
+          <input type="hidden" id="quickChairNotes" name="chair_notes" value="">
 
+          <div class="form-content-top">
             <!-- Stoel Context Badge (indien geklikt vanuit specifieke stoel) -->
             <div id="quickChairBadge" class="appointment-chair-tag" style="display: none;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               <span>Gekozen stoel: <strong id="quickChairBadgeName"></strong></span>
             </div>
 
@@ -895,7 +895,16 @@
               <span class="appointment-field-error" id="quickPhoneError"></span>
             </div>
 
-            <!-- Primaire Actie: Opvallende Knop in Huisstijlkleur -->
+            <div class="appointment-callback-hint">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
+              <span>Geertjan belt u vandaag of uiterlijk binnen 1 werkdag terug om uw wensen en datum af te stemmen.</span>
+            </div>
+          </div>
+
+          <div class="card-content-bottom">
             <button type="submit" id="btnQuickSubmit" class="btn appointment-quick-submit-btn">
               <span class="btn-text">Bel mij voor een afspraak</span>
               <span class="btn-spinner" style="display: none;">
@@ -904,7 +913,6 @@
               </span>
             </button>
 
-            <!-- Microcopy (Trust): Veiligheid & Privacy met Slot-icoon -->
             <div class="appointment-trust-microcopy">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -912,91 +920,75 @@
               </svg>
               <span>Uw gegevens zijn veilig en worden alleen gebruikt voor deze afspraak.</span>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
+      </div>
 
-        <!-- PANEEL 2: ZELF INPLANNEN IN DE AGENDA -->
-        <div id="appointmentPanelAgenda" class="appointment-panel" style="display: none;">
-          <div class="appointment-agenda-preview-card">
-            <div>
-              <div class="agenda-preview-badge">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                <span>Kies direct uw eigen tijdslot</span>
-              </div>
-
-              <h4 class="agenda-preview-title">Zelf een moment kiezen in de showroom-agenda</h4>
-              <p class="agenda-preview-desc">
-                Kies direct een datum en tijdstip dat u het beste uitkomt. Geertjan reserveert de showroom voor u en zorgt dat de koffie klaarstaat.
-              </p>
-
-              <ul class="agenda-preview-features">
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Direct inzicht in alle beschikbare dagen &amp; tijden</span>
-                </li>
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Showroom Dordrecht: Merwedestraat 239 (gratis parkeren)</span>
-                </li>
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Rustig 30+ modellen proefzitten met deskundig zitadvies</span>
-                </li>
-              </ul>
+      <!-- PANEEL 2: ZELF INPLANNEN IN DE AGENDA (Exact zelfde box styling) -->
+      <div id="appointmentPanelAgenda" class="appointment-panel" style="display: none;">
+        <div class="appointment-choice-card">
+          <div class="agenda-content-top">
+            <div class="agenda-badge-new">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Kies direct uw eigen tijdslot</span>
             </div>
 
-            <div>
-              <a href="afspraak.html#bookingCard" class="btn btn-primary appointment-agenda-cta-btn" onclick="goToOnlineAgenda(event)">
-                <span>Zelf datum &amp; tijd kiezen in agenda</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
+            <h4 class="agenda-title-new">Zelf een moment kiezen in de showroom</h4>
+            <p class="agenda-desc-new">
+              Kies direct een dag en tijdstip dat u uitkomt. Geertjan reserveert de showroom voor u en zorgt dat de koffie klaarstaat.
+            </p>
 
-              <div class="appointment-trust-microcopy" style="margin-top: 14px;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Geen account nodig &bull; Directe bevestiging in uw mailbox</span>
-              </div>
+            <ul class="agenda-features-new">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Direct inzicht in alle beschikbare dagen &amp; tijden</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Rustig 30+ modellen proefzitten met deskundig zitadvies</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Persoonlijk 1-op-1 advies van Bewegingstechnoloog Geertjan</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-content-bottom">
+            <a href="afspraak.html#bookingCard" class="btn btn-primary appointment-agenda-cta-btn" onclick="goToOnlineAgenda(event)">
+              <span>Zelf datum &amp; tijd kiezen in agenda</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+
+            <div class="appointment-trust-microcopy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Geen account nodig &bull; Directe bevestiging in uw mailbox</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Dedicated Direct Contact Card: Gedeeld tussen beide opties (Beweegt NOOIT!) -->
-      <div class="appointment-direct-box">
-        <div class="appointment-direct-head">
-          <span class="appointment-direct-badge">
-            <span class="direct-pulse-dot"></span>
-            Direct contact
-          </span>
-          <span class="appointment-direct-title">Liever meteen persoonlijk contact?</span>
-        </div>
-        <div class="appointment-direct-grid">
-          <a href="tel:0786314858" class="appointment-direct-card-btn appointment-btn-phone" title="Bel direct naar de showroom">
-            <span class="direct-card-icon-wrap phone-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-            </span>
-            <span class="direct-card-text">
-              <span class="direct-card-sublabel">Bellen &bull; Showroom</span>
-              <strong class="direct-card-value">078 &ndash; 631 4858</strong>
-            </span>
+      <!-- Direct Contact Footer: Schoon, zelfde font, zelfde grootte, eigen iconen -->
+      <div class="appointment-direct-footer">
+        <div class="direct-footer-title">Liever direct contact met Geertjan?</div>
+        <div class="direct-footer-grid">
+          <a href="tel:0786314858" class="direct-footer-link direct-link-phone" title="Bel direct naar de showroom">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>078 &ndash; 631 4858</span>
           </a>
 
-          <a href="https://wa.me/31622232964?text=Hallo%20Geertjan,%20ik%20heb%20een%20vraag%20over%20een%20sta-op%20stoel" target="_blank" rel="noopener noreferrer" class="appointment-direct-card-btn appointment-btn-whatsapp" title="Stuur Geertjan direct een WhatsApp bericht">
-            <span class="direct-card-icon-wrap wa-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-              </svg>
-            </span>
-            <span class="direct-card-text">
-              <span class="direct-card-sublabel">WhatsApp &bull; Geertjan</span>
-              <strong class="direct-card-value">06 &ndash; 2223 2964</strong>
-            </span>
+          <a href="https://wa.me/31622232964?text=Hallo%20Geertjan,%20ik%20heb%20een%20vraag%20over%20een%20sta-op%20stoel" target="_blank" rel="noopener noreferrer" class="direct-footer-link direct-link-wa" title="Stuur Geertjan direct een WhatsApp bericht">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span>06 &ndash; 2223 2964</span>
           </a>
         </div>
       </div>
@@ -1060,7 +1052,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.179"></script>
+  <script src="app.js?v=10.180"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
