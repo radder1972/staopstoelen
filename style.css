@@ -7492,6 +7492,43 @@ input[type="checkbox"] {
   background: #f1f5f9;
 }
 
+.choice-btn-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.choice-btn-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: left;
+}
+
+.choice-btn-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.choice-btn-sub {
+  font-size: 0.74rem;
+  color: #64748b;
+  line-height: 1.25;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
 .appointment-choice-btn#btnChoiceCallback.active,
 #btnChoiceCallback.active {
   border-color: #f39223 !important;
@@ -7873,77 +7910,171 @@ input[type="checkbox"] {
   flex-shrink: 0;
 }
 
-/* Direct Contact Footer: Schoon, zelfde font, zelfde grootte, eigen iconen */
-.appointment-direct-footer {
+/* ==========================================================================
+   DEDICATED DIRECT CONTACT BOX (PERMANENT MODAL FOOTER MET EIGEN HUISSTIJL ICONEN)
+   ========================================================================== */
+.appointment-direct-box {
   margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid #e5e7eb;
+  padding: 13px 14px 14px;
+  background: linear-gradient(180deg, #fcfbfa 0%, #f7f5f0 100%);
+  border: 1.5px solid rgba(75, 143, 36, 0.22);
+  border-radius: 14px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-.direct-footer-title {
-  font-size: 0.80rem;
-  font-weight: 700;
-  color: #64748b;
-  text-align: center;
-  margin-bottom: 8px;
+.appointment-direct-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.appointment-direct-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 0.72rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 9999px;
   font-family: inherit;
 }
 
-.direct-footer-grid {
+.direct-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+  display: inline-block;
+  animation: directPulse 2s infinite ease-in-out;
+}
+
+@keyframes directPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.appointment-direct-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  text-align: center;
+  font-family: inherit;
+}
+
+.appointment-direct-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
 @media (max-width: 440px) {
-  .direct-footer-grid {
+  .appointment-direct-grid {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 }
 
-.direct-footer-link {
+.appointment-direct-card-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 12px;
+  padding: 9px 12px;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  font-family: inherit;
+}
+
+.appointment-direct-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.appointment-btn-phone:hover {
+  border-color: var(--color-forest, #4b8f24);
+  background-color: #f7fee7;
+}
+
+.appointment-btn-whatsapp:hover {
+  border-color: #25D366;
+  background-color: #f0fdf4;
+}
+
+.appointment-direct-card-btn:active {
+  transform: translateY(0);
+}
+
+.direct-card-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 10px;
-  border: 1.5px solid #e2e8f0;
-  background: #f8fafc;
-  color: #1e293b;
-  text-decoration: none;
-  font-family: inherit;
-  font-size: 0.88rem;
-  font-weight: 700;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-}
-
-.direct-footer-link svg {
   flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
-.direct-link-phone svg {
-  color: var(--color-forest, #256616);
+.phone-icon-wrap {
+  background: #eef8eb;
+  border: 1.5px solid #b7e3a8;
+  color: var(--color-forest, #4b8f24);
 }
 
-.direct-link-phone:hover {
-  border-color: var(--color-forest, #256616);
-  background: #f0fdf4;
-  color: var(--color-forest-dark, #122b07);
+.appointment-btn-phone:hover .phone-icon-wrap {
+  background: var(--color-forest, #4b8f24);
+  border-color: var(--color-forest, #4b8f24);
+  color: #ffffff;
 }
 
-.direct-link-wa svg {
+.wa-icon-wrap {
+  background: #eafaf1;
+  border: 1.5px solid #a3e9c0;
   color: #25D366;
 }
 
-.direct-link-wa:hover {
+.appointment-btn-whatsapp:hover .wa-icon-wrap {
+  background: #25D366;
   border-color: #25D366;
-  background: #f0fdf4;
-  color: #15803d;
+  color: #ffffff;
+}
+
+.direct-card-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.direct-card-sublabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-family: inherit;
+}
+
+.direct-card-value {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: #0f172a;
+  font-family: inherit;
 }
 
 /* Success View Inside Modal */
