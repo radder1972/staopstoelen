@@ -28,14 +28,21 @@ ctx = ssl._create_unverified_context()
 
 TASKS = [
     {
-        "name": "Revisie Scene 2 (Motortest & Techniek)",
+        "name": "Revisie Scene 1 (Kaal Frame & Demontage)",
+        "text": "Wij demonteren elke Fitform stoel tot op het stalen basisframe. Geen cosmetisch poetswerk, maar een grondige inspectie van de complete constructie.",
+        "duration": 8.80,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/revisie_scene_1.m4a"]
+    },
+    {
+        "name": "Revisie Scene 2 (Linak Motortest & Techniek)",
         "text": "De drie Deense Linak motoren en alle bekabeling worden technisch volledig doorgemeten op geruisloze en soepele werking.",
         "duration": 8.50,
         "delay_ms": 200,
         "out_files": ["assets/audio/revisie_scene_2.m4a"]
     },
     {
-        "name": "Revisie Scene 3 (Reiniging & Bekleding & Koudschuim)",
+        "name": "Revisie Scene 3 (Professionele Reiniging & Koudschuim)",
         "text": "De stoel wordt grondig professioneel gereinigd en waar nodig wordt de bekleding vervangen. Het koudschuim wordt gecontroleerd op actieve veerkracht.",
         "duration": 8.30,
         "delay_ms": 200,
@@ -47,6 +54,13 @@ TASKS = [
         "duration": 7.60,
         "delay_ms": 200,
         "out_files": ["assets/audio/revisie_scene_4.m4a"]
+    },
+    {
+        "name": "Revisie Scene 5 (Persoonlijk Zitadvies & Duimstok)",
+        "text": "Een sta-op stoel moet passen als een maatkostuum. Met de duimstok meten we zithoogte, zitdiepte en armleggers exact op uw lichaam af.",
+        "duration": 8.80,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/revisie_scene_5.m4a"]
     },
     {
         "name": "Revisie Scene 6 (15-Punts Keuring & 1 Jaar Garantie)",
