@@ -677,8 +677,8 @@ section[id], section {
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 5;
-  background: rgba(255, 255, 255, 0.94);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 9999px;
@@ -687,9 +687,23 @@ section[id], section {
   align-items: center;
   gap: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  pointer-events: none;
+  border: 1.5px solid rgba(75, 143, 36, 0.25);
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0.2, 1);
   animation: heroPillFadeIn 0.8s ease backwards;
+}
+
+.hero-expert-trust-pill:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(20, 49, 13, 0.22);
+  border-color: var(--color-terracotta, #f39223);
+  background: #ffffff;
+}
+
+.hero-expert-trust-pill:hover .hero-expert-trust-name {
+  color: var(--color-terracotta, #f39223);
 }
 
 @keyframes heroPillFadeIn {

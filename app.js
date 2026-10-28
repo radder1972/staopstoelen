@@ -309,15 +309,15 @@ async function loadWizardChairs() {
 // DOM Elements Initialization Helper
 function initializeApp() {
   // Initialize Components
-  initWizard();
-  initSlider();
-  initCalendar();
-  initAppointmentModal();
-  initFloatingMenu();
-  initMobileMenu();
-  initHeroSlideshow();
-  initFaqAccordion();
-  initInruilCalculator();
+  if (typeof initWizard === 'function') initWizard();
+  if (typeof initSlider === 'function') initSlider();
+  if (typeof initCalendar === 'function') initCalendar();
+  if (typeof initAppointmentModal === 'function') initAppointmentModal();
+  if (typeof initFloatingMenu === 'function') initFloatingMenu();
+  if (typeof initMobileMenu === 'function') initMobileMenu();
+  if (typeof initHeroSlideshow === 'function') initHeroSlideshow();
+  if (typeof initFaqAccordion === 'function') initFaqAccordion();
+  if (typeof initInruilCalculator === 'function') initInruilCalculator();
 
   // Check for prefilled inruil selection
   const urlInruil = new URLSearchParams(window.location.search).get("inruil") || localStorage.getItem("inruil_korting");
@@ -466,7 +466,7 @@ function initHeroSlideshow() {
   // Slide click navigation
   slides.forEach(slide => {
     slide.addEventListener("click", (e) => {
-      if (e.target.closest(".slideshow-ctrl") || e.target.closest(".slideshow-actie-badge")) return;
+      if (e.target.closest(".slideshow-ctrl") || e.target.closest(".slideshow-actie-badge") || e.target.closest(".hero-expert-trust-pill")) return;
       const url = slide.getAttribute("data-url");
       if (url) {
         window.location.href = url;
@@ -2459,7 +2459,8 @@ window.closeCertifiedVideoModal = function() {
 /* ==========================================================================
    INRUILCALCULATOR LOGIC
    ========================================================================== */
-window.initInruilCalculator = function() {
+function initInruilCalculator() {
+  window.initInruilCalculator = initInruilCalculator;
   const container = document.getElementById("inruilCalculator");
   if (!container) return;
 
