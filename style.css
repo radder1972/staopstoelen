@@ -623,364 +623,299 @@ section[id], section {
    Geertjan Expert Spotlight Card met Merk-Swoosh
    ============================================================== */
 /* ============================================================== */
-/* HERO VIDEO-SWOOSH + GEERTJAN ERONDER                          */
-/* Exacte video-swoosh hoek-badge (render_swoosh.html) rechtsboven */
-/* Met Geertjan en zithoudingscheck compact en netjes eronder     */
+/* HERO SECTION: BALANCED, CALM & WARM (OPTION A: FOCUS ON COLLECTIE) */
 /* ============================================================== */
 .hero-image-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-/* Zorg dat de swoosh-badge en de gehele golfcurve rechts naadloos doorloopt tot aan de schermrand */
 @media (min-width: 769px) {
   .hero-image-wrapper {
-    position: static !important;
-    padding-top: clamp(125px, 10vw, 145px) !important;
-    align-items: flex-end !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-right: 0 !important;
-    transition: margin-right 0.2s ease;
-  }
-  .hero-video-swoosh-badge {
-    position: absolute !important;
-    top: -1px !important;
-    right: 0 !important;
-    width: clamp(400px, 32vw, 520px) !important;
-    aspect-ratio: 360 / 125 !important;
-    z-index: 10 !important;
-    overflow: visible !important;
-    margin: 0 !important;
-  }
-  .hero-expert-quote-bubble,
-  .hero-zitcheck-action-card,
-  .hero-speech-bubble-separated,
-  .hero-cta-separated {
-    margin-right: 0 !important;
-    max-width: 440px !important;
-    width: 100% !important;
-  }
-  .hero-quote-tail {
-    right: 20px !important;
+    max-width: 100%;
+    justify-content: flex-end;
   }
 }
 
-@media (min-width: 1200px) {
-  .hero-image-wrapper {
-    margin-right: calc(-1 * min(140px, (100vw - 1200px) / 2)) !important;
-  }
-}
-
-/* 1. DE EXACTE VIDEO-SWOOSH HOEK-BADGE */
-.hero-video-swoosh-badge {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  aspect-ratio: 360 / 125;
-  margin-top: -1px; /* Sluit direct naadloos aan op de onderkant van de menubalk */
-  overflow: visible;
-  container-type: inline-size;
-  container-name: swoosh;
-}
-
-.hero-video-swoosh-svg {
+/* Floating Geertjan Expert Trust Pill on the warm chair visual */
+.hero-expert-trust-pill {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.10));
-  transform: scaleX(-1); /* Spiegelen naar de rechterhoek, exact conform render_swoosh.html */
-}
-
-/* Geertjan's pasfoto + korte titel in de video-swoosh uitsnede (vloeiend schalend zodat het altijd in de box blijft) */
-.video-swoosh-expert-overlay {
-  position: absolute;
-  top: clamp(8px, 3.8cqw, 16px);
-  right: clamp(10px, 4.2cqw, 18px);
-  display: flex;
-  align-items: center;
-  gap: clamp(6px, 2.8cqw, 12px);
-  text-align: right;
-  z-index: 10;
-}
-
-.swoosh-expert-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.swoosh-expert-name {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: clamp(0.78rem, 4.1cqw, 1.04rem);
-  color: #122b07;
-  letter-spacing: -0.3px;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-
-.swoosh-expert-title {
-  font-family: var(--font-heading);
-  font-size: clamp(0.54rem, 2.7cqw, 0.68rem);
-  font-weight: 800;
-  letter-spacing: clamp(0.3px, 1.5cqw, 0.6px);
-  color: var(--color-terracotta);
-  text-transform: uppercase;
-  margin-top: 2px;
-  white-space: nowrap;
-}
-
-.swoosh-expert-pill {
-  font-size: clamp(0.52rem, 2.5cqw, 0.65rem);
-  font-weight: 700;
-  color: #64748b;
-  margin-top: 3px;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  padding: 6px 14px 6px 6px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  white-space: nowrap;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+  animation: heroPillFadeIn 0.8s ease backwards;
 }
 
-.swoosh-expert-avatar {
+@keyframes heroPillFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-expert-trust-avatar {
   position: relative;
-  width: clamp(40px, 14cqw, 58px);
-  height: clamp(40px, 14cqw, 58px);
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
 }
 
-.swoosh-expert-avatar img {
-  width: 100%;
-  height: 100%;
+.hero-expert-trust-avatar img {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2.5px solid var(--color-forest);
-  box-shadow: 0 3px 10px rgba(18, 43, 7, 0.16);
+  border: 2px solid var(--color-forest);
   display: block;
 }
 
-.swoosh-expert-avatar .avatar-check {
+.hero-expert-trust-check {
   position: absolute;
-  bottom: -1px;
-  right: -1px;
+  bottom: -2px;
+  right: -2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
   background: var(--color-forest);
   color: #ffffff;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid #ffffff;
 }
 
-/* 2. QUOTE & CTA NETJES ONDER DE SWOOSH (VRIJSTAAND & HOOGWAARDIG) */
-
-/* 2. DE LUXE VRIJSTAANDE SPRAAKBUBBEL */
-.hero-expert-quote-bubble,
-.hero-speech-bubble-separated,
-.expert-speech-bubble {
-  position: relative;
-  background: linear-gradient(150deg, #ffffff 0%, #f5f9f2 100%);
-  border: 1.5px solid rgba(75, 143, 36, 0.28);
-  border-radius: 18px;
-  padding: 16px 20px 14px 22px;
-  width: 100%;
-  max-width: 395px;
-  box-sizing: border-box;
-  margin-top: 10px;
-  box-shadow: 0 10px 25px -4px rgba(18, 43, 7, 0.08), 0 3px 8px rgba(0, 0, 0, 0.02);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.hero-expert-quote-bubble:hover,
-.hero-speech-bubble-separated:hover,
-.expert-speech-bubble:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px -4px rgba(18, 43, 7, 0.12);
-}
-
-/* Het elegante aanhalingsteken-icoontje linksboven */
-.hero-quote-badge-icon {
-  position: absolute;
-  top: -11px;
-  left: 18px;
-  width: 25px;
-  height: 25px;
-  background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-sage) 100%);
-  color: #ffffff;
-  border-radius: 50%;
+.hero-expert-trust-info {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  font-family: Georgia, serif;
-  font-weight: 700;
-  box-shadow: 0 3px 8px rgba(20, 49, 13, 0.22);
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: left;
 }
 
-/* Organisch gebogen spraakballon-staartje direct naar het midden van Geertjan's avatar */
-.hero-quote-tail {
-  position: absolute;
-  top: -12px;
-  right: 44px;
-  width: 20px;
-  height: 14px;
-  pointer-events: none;
+.hero-expert-trust-name {
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--color-forest-dark);
+  letter-spacing: -0.2px;
 }
 
-.hero-quote-text,
-.hero-speech-bubble-separated p,
-.expert-speech-bubble p {
-  margin: 0 0 8px 0;
-  font-size: 0.90rem;
-  line-height: 1.45;
-  color: #122b07;
-  font-style: italic;
+.hero-expert-trust-role {
+  font-size: 0.72rem;
+  color: #4b5563;
   font-weight: 600;
-  letter-spacing: -0.15px;
 }
 
-.hero-quote-trust-tag {
+@media (max-width: 480px) {
+  .hero-expert-trust-pill {
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px 5px 5px;
+    gap: 8px;
+  }
+  .hero-expert-trust-avatar {
+    width: 36px;
+    height: 36px;
+  }
+  .hero-expert-trust-avatar img {
+    width: 36px;
+    height: 36px;
+  }
+  .hero-expert-trust-name {
+    font-size: 0.78rem;
+  }
+  .hero-expert-trust-role {
+    font-size: 0.68rem;
+  }
+}
+
+/* Option A: Hero Buttons (Aligned in content column, distinct hierarchy) */
+.hero-content .hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 14px;
+  margin: 24px 0 14px 0;
+  width: 100%;
+}
+
+.hero-btn-occasions {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 13px 24px !important;
+  font-weight: 700 !important;
+  font-size: 1.02rem !important;
+  background: var(--color-forest) !important;
+  color: #ffffff !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 6px 18px rgba(75, 143, 36, 0.32) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.hero-btn-occasions:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px rgba(75, 143, 36, 0.42) !important;
+  background: var(--color-forest-dark) !important;
+}
+
+.hero-btn-badge {
+  background: rgba(255, 255, 255, 0.24);
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.80rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.hero-btn-nieuw {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 13px 22px !important;
+  font-weight: 700 !important;
+  font-size: 1.02rem !important;
+  border-radius: var(--radius-sm) !important;
+  transition: transform 0.2s ease, background 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.hero-btn-nieuw:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* Sublink under CTAs (Zithouding check soft conversion) */
+.hero-sublink-wrapper {
+  margin: 6px 0 18px 0;
+}
+
+.hero-usp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.hero-usp-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  line-height: 1.45;
+}
+
+.hero-usp-icon {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.70rem;
-  font-weight: 800;
-  color: var(--color-forest);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  background: rgba(75, 143, 36, 0.10);
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-/* 3. DE AANTREKKELIJKE INTERACTIEVE ZITCHECK CTA */
-.hero-zitcheck-action-card,
-.hero-cta-separated,
-.expert-cta-compact {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 395px;
-  margin-top: 10px;
-  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
-  border: 1.5px solid rgba(243, 146, 35, 0.45);
-  border-radius: 16px;
-  padding: 12px 16px;
-  text-decoration: none;
-  box-sizing: border-box;
-  box-shadow: 0 6px 18px rgba(243, 146, 35, 0.09);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-zitcheck-action-card:hover,
-.hero-cta-separated:hover,
-.expert-cta-compact:hover {
-  border-color: var(--color-terracotta);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(243, 146, 35, 0.18);
-  background: #ffffff;
-}
-
-.hero-zitcheck-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.hero-zitcheck-icon,
-.hero-cta-separated .cta-icon-box,
-.expert-cta-icon {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #f39223 0%, #ea580c 100%);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 10px rgba(243, 146, 35, 0.35);
-}
-
-.hero-zitcheck-title,
-.hero-cta-separated .cta-text-title,
-.expert-cta-title {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 0.86rem;
-  font-weight: 800;
-  color: #7c2d12;
-  line-height: 1.25;
-}
-
-.hero-zitcheck-subtitle,
-.hero-cta-separated .cta-text-sub,
-.expert-cta-sub {
-  display: block;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: var(--color-terracotta);
-  margin-top: 1px;
-}
-
-.hero-zitcheck-arrow {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: #fff7ed;
-  color: var(--color-terracotta);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  background: rgba(75, 143, 36, 0.13);
+  color: var(--color-forest);
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
-.hero-zitcheck-action-card:hover .hero-zitcheck-arrow,
-.hero-cta-separated:hover .hero-zitcheck-arrow {
-  transform: translateX(4px);
-  background: var(--color-terracotta);
-  color: #ffffff;
+.hero-usp-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.hero-sublink {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-size: 0.88rem;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+}
+
+.hero-sublink:hover {
+  color: var(--color-forest);
+}
+
+.hero-sublink strong {
+  color: var(--color-forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Dealer Trust in left column */
+.hero-content .hero-dealer-trust-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
-  .hero-image-wrapper {
-    position: relative !important;
-    padding-top: 0 !important;
-    align-items: center !important;
-    margin: 20px auto 0 auto !important;
-    width: 100% !important;
+  .hero-content .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
   }
-  .hero-video-swoosh-badge {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    max-width: 395px !important;
-    height: auto !important;
-    aspect-ratio: 360 / 125 !important;
-    margin: 0 auto 16px auto !important;
+  .hero-content .hero-buttons .btn {
+    width: 100%;
+    min-height: 50px;
+    justify-content: center;
   }
-  .hero-swoosh-subcard,
-  .geertjan-under-swoosh,
-  .hero-expert-quote-bubble,
-  .hero-zitcheck-action-card,
-  .hero-speech-bubble-separated,
-  .hero-cta-separated {
-    max-width: 395px !important;
-    width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  .hero-sublink-wrapper {
+    text-align: center;
+    margin: 10px 0 16px 0;
+  }
+  .hero-content .hero-dealer-trust-wrapper {
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px !important;
+  }
+  .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.2 !important;
+  }
+  .hero-usp-list {
+    gap: 9px !important;
+  }
+  .hero-usp-list li {
+    font-size: 0.90rem !important;
+    line-height: 1.4 !important;
+  }
+  .hero-btn-occasions,
+  .hero-btn-nieuw {
+    font-size: 0.96rem !important;
+    padding: 12px 18px !important;
   }
 }
 

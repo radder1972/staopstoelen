@@ -49,7 +49,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.128">
+  <link rel="stylesheet" href="style.css?v=10.131">
   <!-- Schema.org LocalBusiness & MedicalBusiness Structured Data (Lokale Dominantie) -->
   <script type="application/ld+json">
   {
@@ -447,268 +447,158 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero" style="padding: 0 0 18px 0;">
+  <section class="hero" style="padding: 10px 0 32px 0;">
     <div class="container hero-container">
       <div class="hero-grid">
-      <div class="hero-content" style="padding-top: 20px;">
-        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="hero-tag" id="heroTag" title="Bekijk route naar Showroom Dordrecht (Merwedestraat 239)" style="margin-bottom: 26px;">
-          <svg style="width: 16px; height: 16px; stroke: var(--color-terracotta); fill: none; flex-shrink: 0;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Showroom Dordrecht | Merwedestraat 239</span>
-        </a>
-        <h1 class="hero-title" id="heroTitle" style="font-weight: 800; letter-spacing: -0.8px; margin-bottom: 16px;">
-          Heerlijk zitten<br><span>en makkelijk opstaan</span>
-        </h1>
-        <div class="hero-description" id="heroDesc" style="margin-bottom: 0;">
-          <ul class="hero-usp-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px;">
-            <li style="display: flex; align-items: flex-start; gap: 11px; line-height: 1.45;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.13); color: var(--color-forest); flex-shrink: 0; margin-top: 2px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <span><strong style="color: var(--color-dark);">Occasions v.a. <span class="dynamic-lowest-occasion-price">€ 1.050,-</span> &amp; nieuw maatwerk</strong> &mdash; Ruime collectie Fitform &amp; Doge</span>
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 11px; line-height: 1.45;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.13); color: var(--color-forest); flex-shrink: 0; margin-top: 2px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <span><strong style="color: var(--color-dark);">Exact op uw lichaamsmaten afgesteld</strong> door Bewegingstechnoloog Geertjan</span>
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 11px; line-height: 1.45;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(75, 143, 36, 0.13); color: var(--color-forest); flex-shrink: 0; margin-top: 2px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <span><strong style="color: var(--color-dark);">Gratis parkeren voor de deur</strong> in Dordrecht &amp; <strong style="color: var(--color-dark);">gratis thuisbezorgd</strong></span>
-            </li>
-          </ul>
-        </div>
-        <div class="hero-stats" id="heroStats" style="display: none !important;">
-          <div class="stat-item">
-            <div class="stat-number">4.8/5</div>
-            <p>Klanttevredenheid</p>
+        <!-- Left Column: Content, USPs, Primary CTAs & Dealer Trust -->
+        <div class="hero-content" style="padding-top: 10px;">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" class="hero-tag" id="heroTag" title="Bekijk route naar Showroom Dordrecht (Merwedestraat 239)" style="margin-bottom: 20px;">
+            <svg style="width: 16px; height: 16px; stroke: var(--color-terracotta); fill: none; flex-shrink: 0;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Showroom Dordrecht | Merwedestraat 239</span>
+          </a>
+          <h1 class="hero-title" id="heroTitle" style="font-weight: 800; letter-spacing: -0.8px; margin-bottom: 18px;">
+            Heerlijk zitten<br><span>en makkelijk opstaan</span>
+          </h1>
+          <div class="hero-description" id="heroDesc" style="margin-bottom: 22px;">
+            <ul class="hero-usp-list">
+              <li>
+                <span class="hero-usp-icon">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="hero-usp-text"><strong style="color: var(--color-dark);">Occasions v.a. <span class="dynamic-lowest-occasion-price">€ 1.050,-</span> &amp; nieuw maatwerk</strong> &mdash; Ruime collectie Fitform &amp; Doge</span>
+              </li>
+              <li>
+                <span class="hero-usp-icon">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="hero-usp-text"><strong style="color: var(--color-dark);">Exact op uw lichaamsmaten afgesteld</strong> door Bewegingstechnoloog Geertjan</span>
+              </li>
+              <li>
+                <span class="hero-usp-icon">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="hero-usp-text"><strong style="color: var(--color-dark);">Gratis parkeren voor de deur</strong> in Dordrecht &amp; <strong style="color: var(--color-dark);">gratis thuisbezorgd</strong></span>
+              </li>
+            </ul>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <p>Op Maat Gemeten</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Gratis</div>
-            <p>Vakkundig Bezorgd</p>
-          </div>
-        </div>
-      </div>
-      <div class="hero-image-wrapper">
-        <!-- 1. Echte Video-Swoosh Hoek-Badge (Direct onder menubalk, rechtsboven) -->
-        <div class="hero-video-swoosh-badge">
-          <svg class="hero-video-swoosh-svg" viewBox="0 0 360 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="videoSwooshGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#4b8f24" stop-opacity="0.9"/>
-                <stop offset="50%" stop-color="#6ab13c" stop-opacity="0.95"/>
-                <stop offset="80%" stop-color="#f39223" stop-opacity="1"/>
-                <stop offset="100%" stop-color="#f39223" stop-opacity="0.3"/>
-              </linearGradient>
-            </defs>
 
-            <!-- Wit organisch uitsnijdingsvlak (exact uit de video render_swoosh.html) -->
-            <path d="M 0,0 
-                     L 350,0 
-                     C 315,22 245,68 175,80 
-                     C 105,92 45,98 0,118 
-                     Z" 
-                  fill="#ffffff"/>
+          <!-- Option A: Primary Collection Focus with Occasions as Hero CTA -->
+          <div class="hero-buttons" id="heroButtons">
+            <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn btn-primary hero-btn-occasions" id="btnHeroOccasions">
+              <span>Bekijk Occasions</span>
+              <span class="hero-btn-badge">v.a. <span class="dynamic-lowest-occasion-price">€ 1.050,-</span></span>
+            </a>
+            <a href="staopstoelen.html?condition=nieuw#catalogGrid" class="btn btn-secondary hero-btn-nieuw" id="btnHeroWizard">
+              <span>Nieuw op Maat</span>
+            </a>
+          </div>
 
-            <!-- Kleuraccent langs de golflijn -->
-            <path d="M 0,118 
-                     C 45,98 105,92 175,80 
-                     C 245,68 315,22 350,0" 
-                  stroke="url(#videoSwooshGrad)" 
-                  stroke-width="3.6" 
-                  stroke-linecap="round" 
-                  fill="none"/>
+          <!-- Subtle Zithouding-check micro-link (gentle micro-conversion) -->
+          <div class="hero-sublink-wrapper">
+            <a href="#zithouding-checklist" class="hero-sublink" title="Doe de 5-minuten zithouding checklist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <span>Twijfelt u over uw zithouding? <strong>Doe de gratis 5-minuten check &darr;</strong></span>
+            </a>
+          </div>
+
+          <!-- Officieel Fitform Dealer Trust Badge -->
+          <div class="hero-dealer-trust-wrapper">
+            <a href="fitform-dealer-dordrecht.html" class="hero-dealer-trust" title="Bekijk onze officiële Fitform Dealer pagina in Dordrecht" style="display: inline-flex; align-items: center; gap: 14px; background: transparent; padding: 4px 0; border: none; box-shadow: none; max-width: 100%; box-sizing: border-box; text-decoration: none; transition: opacity 0.2s ease;">
+              <img src="assets/fitform_logo_terracotta.png" alt="Officieel Fitform Dealer" width="76" height="38" style="height: 34px; width: auto; display: block; flex-shrink: 0;">
+              <div style="height: 26px; width: 1.5px; background: #d5d0c8; flex-shrink: 0;"></div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg style="width: 18px; height: 18px; fill: var(--color-forest); flex-shrink: 0; display: block;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; line-height: 1.2; text-align: left;">
+                  <span style="font-size: 0.90rem; font-weight: 800; color: var(--color-forest-dark);">Officieel Fitform Dealer</span>
+                  <span style="font-size: 0.76rem; color: var(--color-gray); font-weight: 500;">Gecertificeerd Maatwerkspecialist</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Sfeervolle Huiskamer Beeldpresentatie met Geertjan Expert Badge -->
+        <div class="hero-image-wrapper">
+          <div class="hero-image-container" id="heroImageContainer">
+            <div class="hero-slideshow" id="heroSlideshow">
+              <!-- 1. Fitform 570 Vario - LCP Image in sfeervol interieur -->
+              <div class="hero-slide active" data-brand="fitform" data-url="staopstoelen.html#sta-op-stoel-fitform-570-vario" style="cursor: pointer;">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_570_reco_cozy_mobile.avif" type="image/avif">
+                  <source srcset="assets/stoelen/chair_fitform_570_reco_cozy.avif" type="image/avif">
+                  <img src="assets/stoelen/chair_fitform_570_reco_cozy.jpg" alt="Fitform 570 Vario sta-op stoel in sfeervolle woonkamer" width="450" height="450" fetchpriority="high" decoding="sync">
+                </picture>
+                <div class="slide-caption">Fitform 570 Vario &bull; Op Maat</div>
+              </div>
+              <!-- 2. Sta-op Stoel Dordrecht -->
+              <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-dordrecht" style="cursor: pointer;">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="assets/stoelen/chair_dordrecht_cozy_mobile.avif" type="image/avif">
+                  <source srcset="assets/stoelen/chair_dordrecht_cozy.avif" type="image/avif">
+                  <img src="assets/stoelen/chair_dordrecht_cozy.jpg" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht" width="450" height="450" loading="lazy" decoding="async">
+                </picture>
+                <div class="slide-caption">Sta-op Stoel Dordrecht</div>
+              </div>
+              <!-- 3. Fitform 574 Vario -->
+              <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html#sta-op-stoel-fitform-574-vario" style="cursor: pointer;">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_574_cozy_mobile.avif" type="image/avif">
+                  <source srcset="assets/stoelen/chair_fitform_574_cozy.avif" type="image/avif">
+                  <img src="assets/stoelen/chair_fitform_574_cozy.jpg" alt="Fitform 574 Vario sta-op stoel op maat" width="450" height="450" loading="lazy" decoding="async">
+                </picture>
+                <div class="slide-caption">Fitform 574 Vario &bull; Op Maat</div>
+              </div>
+              <!-- 4. Draaibare Sta-op Stoel Zwijndrecht -->
+              <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-draaibaar-zwijndrecht" style="cursor: pointer;">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="assets/stoelen/chair_zwijndrecht_cozy_mobile.avif" type="image/avif">
+                  <source srcset="assets/stoelen/chair_zwijndrecht_cozy.avif" type="image/avif">
+                  <img src="assets/stoelen/chair_zwijndrecht_cozy.jpg" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht" width="450" height="450" loading="lazy" decoding="async">
+                </picture>
+                <div class="slide-caption">Draaibare Sta-op Stoel Zwijndrecht</div>
+              </div>
+              <!-- 5. Fitform 580 Vario -->
+              <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html#sta-op-stoel-fitform-580-elevo" style="cursor: pointer;">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_580_cozy_mobile.avif" type="image/avif">
+                  <source srcset="assets/stoelen/chair_fitform_580_cozy.avif" type="image/avif">
+                  <img src="assets/stoelen/chair_fitform_580_cozy.jpg" alt="Fitform 580 Vario ergonomische fauteuil" width="450" height="450" loading="lazy" decoding="async">
+                </picture>
+                <div class="slide-caption">Fitform 580 Vario &bull; Op Maat</div>
+              </div>
+              <!-- 6. Lederen Sta-op Stoel Rotterdam -->
+              <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-rotterdam" style="cursor: pointer;">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="assets/stoelen/chair_rotterdam_cozy_mobile.avif" type="image/avif">
+                  <source srcset="assets/stoelen/chair_rotterdam_cozy.avif" type="image/avif">
+                  <img src="assets/stoelen/chair_rotterdam_cozy.jpg" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam" width="450" height="450" loading="lazy" decoding="async">
+                </picture>
+                <div class="slide-caption">Lederen Sta-op Stoel Rotterdam</div>
+              </div>
+            </div>
             
-            <!-- Diepte-accent van loskomende rand -->
-            <path d="M 0,122 
-                     C 45,102 105,96 175,84 
-                     C 245,72 315,26 354,2" 
-                  stroke="#f39223" 
-                  stroke-width="1.2" 
-                  stroke-linecap="round" 
-                  fill="none" 
-                  opacity="0.5"/>
-          </svg>
+            <!-- Slideshow Controls -->
+            <button class="slideshow-ctrl ctrl-prev" id="slideshowPrev" aria-label="Vorige afbeelding">&#10094;</button>
+            <button class="slideshow-ctrl ctrl-next" id="slideshowNext" aria-label="Volgende afbeelding">&#10095;</button>
 
-          <!-- Geertjan's pasfoto + korte titel in de swoosh (rechts uitgelijnd, zitspecialist weg) -->
-          <div class="video-swoosh-expert-overlay">
-            <div class="swoosh-expert-info">
-              <span class="swoosh-expert-name">Geertjan Klein Haneveld</span>
-              <span class="swoosh-expert-title">BEWEGINGSTECHNOLOOG</span>
-              <span class="swoosh-expert-pill">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f39223" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                1-op-1 Zitadvies
-              </span>
-            </div>
-            <div class="swoosh-expert-avatar">
-              <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" width="60" height="60" loading="lazy" decoding="async">
-              <span class="avatar-check" title="Gecertificeerd bewegingstechnoloog">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </span>
+            <!-- Geertjan Expert Trust Badge (Luxe zwevende pil op het sfeerbeeld) -->
+            <div class="hero-expert-trust-pill">
+              <div class="hero-expert-trust-avatar">
+                <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" width="42" height="42" loading="lazy">
+                <span class="hero-expert-trust-check" title="Gecertificeerd Bewegingstechnoloog">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </div>
+              <div class="hero-expert-trust-info">
+                <span class="hero-expert-trust-name">Geertjan Klein Haneveld</span>
+                <span class="hero-expert-trust-role">Bewegingstechnoloog &bull; 100% Maatwerk</span>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- 2. Luxe Vrijstaande Spraakbubbel (gericht op Geertjan) -->
-        <div class="hero-expert-quote-bubble">
-          <div class="hero-quote-badge-icon">&ldquo;</div>
-          <svg class="hero-quote-tail" viewBox="0 0 20 14" fill="none" aria-hidden="true">
-            <path d="M 2 14 C 8 14 17 9 19 0 C 13 6 8 9 0 10 Z" fill="#ffffff" stroke="rgba(75, 143, 36, 0.28)" stroke-width="1.2"/>
-            <path d="M 2 13 C 8 13 17 8 18 1 C 13 6 8 9 1 10 Z" fill="#ffffff"/>
-          </svg>
-          <p class="hero-quote-text">&ldquo;Wij stellen uw stoel exact op maat in en gaan pas weg als hij perfect zit.&rdquo;</p>
-          <div class="hero-quote-trust-tag">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            100% Maatwerk garantie
-          </div>
-        </div>
-
-        <!-- 3. Aantrekkelijke Zitcheck Actiecard -->
-        <a href="#zithouding-checklist" class="hero-zitcheck-action-card" title="Twijfelt u over uw zithouding? Doe de gratis check in 5 minuten">
-          <div class="hero-zitcheck-left">
-            <div class="hero-zitcheck-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 11l3 3L22 4"/>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-              </svg>
-            </div>
-            <div>
-              <strong class="hero-zitcheck-title">Twijfelt u over uw zithouding?</strong>
-              <span class="hero-zitcheck-subtitle">Doe de gratis check in 5 minuten</span>
-            </div>
-          </div>
-          <div class="hero-zitcheck-arrow">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
-        </a>
-        <div class="hero-image-container" id="heroImageContainer" style="display: none !important;">
-          <div class="hero-slideshow" id="heroSlideshow">
-            <!-- 1. Fitform 570 Vario - LCP Image -->
-            <div class="hero-slide active" data-brand="fitform" data-url="staopstoelen.html#sta-op-stoel-fitform-570-vario" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_570_reco_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_fitform_570_reco_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_fitform_570_reco_cozy.jpg" alt="Fitform 570 Vario sta-op stoel op maat" width="450" height="450" fetchpriority="high" decoding="sync">
-              </picture>
-              <div class="slide-caption">Fitform 570 Vario &bull; Op Maat</div>
-            </div>
-            <!-- 2. Sta-op Stoel Dordrecht -->
-            <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-dordrecht" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_dordrecht_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_dordrecht_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_dordrecht_cozy.jpg" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Sta-op Stoel Dordrecht</div>
-            </div>
-            <!-- 3. Fitform 574 Vario -->
-            <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html#sta-op-stoel-fitform-574-vario" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_574_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_fitform_574_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_fitform_574_cozy.jpg" alt="Fitform 574 Vario sta-op stoel op maat" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Fitform 574 Vario &bull; Op Maat</div>
-            </div>
-            <!-- 4. Draaibare Sta-op Stoel Zwijndrecht -->
-            <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-draaibaar-zwijndrecht" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_zwijndrecht_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_zwijndrecht_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_zwijndrecht_cozy.jpg" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Draaibare Sta-op Stoel Zwijndrecht</div>
-            </div>
-            <!-- 5. Fitform 580 Vario -->
-            <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html#sta-op-stoel-fitform-580-elevo" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_580_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_fitform_580_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_fitform_580_cozy.jpg" alt="Fitform 580 Vario ergonomische fauteuil" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Fitform 580 Vario &bull; Op Maat</div>
-            </div>
-            <!-- 6. Lederen Sta-op Stoel Rotterdam -->
-            <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-rotterdam" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_rotterdam_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_rotterdam_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_rotterdam_cozy.jpg" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Lederen Sta-op Stoel Rotterdam</div>
-            </div>
-            <!-- 7. Fitform 552 Elevo -->
-            <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html#catalogGrid" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_552_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_fitform_552_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_fitform_552_cozy.jpg" alt="Fitform 552 Elevo sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Fitform 552 Elevo &bull; Op Maat</div>
-            </div>
-            <!-- 8. Doge Bellino Royal -->
-            <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-doge-bellino" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_bellino_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_bellino_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_bellino_cozy.jpg" alt="Elegant interieur met de comfortabele Doge Bellino Royal" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Doge Bellino Royal</div>
-            </div>
-            <!-- 9. Fitform 570 RECO -->
-            <div class="hero-slide" data-brand="fitform" data-url="staopstoelen.html#sta-op-stoel-fitform-570-vario-reco" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_fitform_570_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_fitform_570_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_fitform_570_cozy.jpg" alt="Fitform 570 Vario RECO" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Fitform 570 RECO &bull; Gereconditioneerd</div>
-            </div>
-            <!-- 10. Doge Modulair Zorgstoel -->
-            <div class="hero-slide" data-url="staopstoelen.html#sta-op-stoel-doge-modulair" style="cursor: pointer;">
-              <picture>
-                <source media="(max-width: 640px)" srcset="assets/stoelen/chair_doge_modulair_cozy_mobile.avif" type="image/avif">
-                <source srcset="assets/stoelen/chair_doge_modulair_cozy.avif" type="image/avif">
-                <img src="assets/stoelen/chair_doge_modulair_cozy.jpg" alt="Comfortabele zithoek met de Doge Modulair Zorgstoel" width="450" height="450" loading="lazy" decoding="async">
-              </picture>
-              <div class="slide-caption">Doge Modulair Zorgstoel</div>
-            </div>
-          </div>
-          
-          <!-- Slideshow Controls -->
-          <button class="slideshow-ctrl ctrl-prev" id="slideshowPrev" aria-label="Vorige afbeelding">&#10094;</button>
-          <button class="slideshow-ctrl ctrl-next" id="slideshowNext" aria-label="Volgende afbeelding">&#10095;</button>
         </div>
       </div>
     </div>
-    <div class="hero-buttons" id="heroButtons">
-      <a href="staopstoelen.html?condition=nieuw#catalogGrid" class="btn btn-secondary" id="btnHeroWizard">Nieuwe stoelen</a>
-      <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn btn-primary" id="btnHeroOccasions">Occasions</a>
-    </div>
-    <div class="hero-dealer-trust-wrapper" style="display: flex; justify-content: center; width: 100%; margin-top: 0 !important;">
-      <a href="fitform-dealer-dordrecht.html" class="hero-dealer-trust" title="Bekijk onze officiële Fitform Dealer pagina in Dordrecht" style="display: inline-flex; align-items: center; gap: 18px; background: transparent; padding: 4px 0; border: none; box-shadow: none; max-width: 100%; box-sizing: border-box; text-decoration: none; transition: opacity 0.2s ease, transform 0.2s ease;">
-        <img src="assets/fitform_logo_terracotta.png" alt="Officieel Fitform Dealer" width="82" height="42" style="height: 42px; width: auto; display: block; flex-shrink: 0;">
-        <div style="height: 34px; width: 1.5px; background: #d5d0c8; flex-shrink: 0;"></div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <svg style="width: 20px; height: 20px; fill: var(--color-forest); flex-shrink: 0; display: block;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; line-height: 1.25; text-align: left;">
-            <span style="font-size: 0.98rem; font-weight: 800; color: var(--color-forest-dark);">Officieel Fitform Dealer</span>
-            <span style="font-size: 0.82rem; color: var(--color-gray); font-weight: 500; margin-left: 0 !important;">Gecertificeerd Maatwerkspecialist</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Aanbiedingen Section -->
   <section id="aanbiedingen" class="bg-alt" style="padding: 30px 0 60px 0; border-top: 1px solid var(--color-gray-light); border-bottom: 1px solid var(--color-gray-light);">
@@ -716,7 +606,7 @@
       <div class="text-center" style="max-width: 100%; margin: 0 auto 22px auto; text-align: center;">
         <span class="section-tag">Direct Leverbaar</span>
         <h2 class="section-title">Top 3 Aanbiedingen</h2>
-        <p class="section-subtitle" style="font-size: 1.12rem; color: var(--color-gray); max-width: 100%; margin: 10px auto 0 auto; line-height: 1.6; white-space: nowrap;">Nieuwe en gereviseerde A-merk sta-op stoelen, direct op uw maat afgesteld.</p>
+        <p class="section-subtitle" style="font-size: 1.12rem; color: var(--color-gray); max-width: 100%; margin: 10px auto 0 auto; line-height: 1.6;">Nieuwe en gereviseerde A-merk sta-op stoelen, direct op uw maat afgesteld.</p>
       </div>
       
       <!-- Catalog Grid for Offers -->
