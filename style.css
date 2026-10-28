@@ -235,13 +235,7 @@ section[id], section {
 }
 
 .logo-swoosh {
-  position: absolute;
-  top: 66px; /* Positioned below the aligned-top text logo + strapline */
-  left: 0;
-  width: 100%;
-  height: 50px; /* Compact height to fit in the whitespace under the logo */
-  z-index: 1;
-  pointer-events: none;
+  display: none !important;
 }
 
 .navbar-row-2 {
@@ -641,7 +635,7 @@ section[id], section {
   width: 100%;
 }
 
-/* Zorg dat het swoosh vlak aan de rechterkant direct doorloopt tot de rand van de container (net als de bovenlijnen) */
+/* Zorg dat het swoosh vlak aan de rechterkant direct doorloopt tot aan de randen van de pagina en het scherm */
 @media (min-width: 769px) {
   .hero-image-wrapper {
     margin-right: -24px !important;
@@ -651,6 +645,17 @@ section[id], section {
   }
   .hero-video-swoosh-badge {
     margin-right: 0 !important;
+  }
+  /* Wit vlak loopt rechts naadloos door tot aan de schermrand */
+  .hero-video-swoosh-badge::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 99%;
+    width: 100vw;
+    height: 100%;
+    background: #ffffff;
+    pointer-events: none;
   }
   .hero-expert-quote-bubble,
   .hero-zitcheck-action-card,
