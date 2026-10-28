@@ -169,47 +169,78 @@ section {
   align-items: center;
   justify-content: center;
   padding: 14px 28px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-full);
   gap: 8px;
   font-size: 1rem;
   min-height: 48px; /* Senior friendly */
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn-primary {
-  background-color: var(--color-forest);
-  color: var(--color-light);
-  box-shadow: 0 4px 14px rgba(30, 63, 32, 0.2);
+  background-color: var(--color-forest, #4b8f24);
+  color: #ffffff !important;
+  border: 1.5px solid var(--color-forest, #4b8f24);
+  box-shadow: 0 4px 14px rgba(75, 143, 36, 0.28);
 }
 
-.btn-primary:hover {
-  background-color: var(--color-sage);
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--color-sage, #6ab13c) !important; /* Licht fris groen op */
+  border-color: var(--color-sage, #6ab13c) !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(30, 63, 32, 0.3);
+  box-shadow: 0 8px 22px rgba(106, 177, 60, 0.45);
+}
+
+.btn-primary * {
+  color: inherit;
 }
 
 .btn-secondary {
-  background-color: var(--color-terracotta);
-  color: var(--color-light);
-  box-shadow: 0 4px 14px rgba(200, 123, 72, 0.2);
+  background-color: var(--color-terracotta, #f39223);
+  color: #ffffff !important;
+  border: 1.5px solid var(--color-terracotta, #f39223);
+  box-shadow: 0 4px 14px rgba(243, 146, 35, 0.28);
 }
 
-.btn-secondary:hover {
-  background-color: var(--color-terracotta-hover);
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background-color: #ff9e24 !important; /* Licht stralend oranje op */
+  border-color: #ff9e24 !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(200, 123, 72, 0.3);
+  box-shadow: 0 8px 22px rgba(243, 146, 35, 0.45);
+}
+
+.btn-secondary * {
+  color: inherit;
 }
 
 .btn-outline {
   border: 2px solid var(--color-forest);
   color: var(--color-forest);
+  background-color: transparent;
 }
 
 .btn-outline:hover {
   background-color: var(--color-forest);
+  border-color: var(--color-forest);
   color: var(--color-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(30, 63, 32, 0.3);
 }
 
 /* Navigation Bar */
@@ -339,7 +370,6 @@ section[id], section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
 }
 
 /* Hide specific desktop menu items from the second row menu on desktop */
@@ -826,38 +856,53 @@ section[id], section {
   max-width: 100%;
 }
 
-.hero-btn-occasions {
+.hero-btn-occasions,
+.hero-btn-nieuw {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
-  padding: 13px 22px !important;
-  min-height: 50px !important;
+  height: 52px !important;
+  min-height: 52px !important;
+  width: 212px !important;
+  min-width: 212px !important;
+  max-width: 212px !important;
+  padding: 0 16px !important;
   box-sizing: border-box !important;
-  min-width: 195px !important;
   font-weight: 700 !important;
   font-size: 0.98rem !important;
-  background: var(--color-forest) !important;
-  color: #ffffff !important;
-  border: 1.5px solid var(--color-forest) !important;
   border-radius: var(--radius-full) !important;
-  box-shadow: 0 6px 18px rgba(75, 143, 36, 0.32) !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
   text-decoration: none !important;
   white-space: nowrap !important;
   flex-shrink: 0 !important;
+  cursor: pointer !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
 }
 
-.hero-btn-occasions:hover {
+.hero-btn-occasions {
+  gap: 8px !important;
+  background: var(--color-forest) !important;
+  color: #ffffff !important;
+  border: 1.5px solid var(--color-forest) !important;
+  box-shadow: 0 4px 14px rgba(37, 102, 22, 0.28) !important;
+}
+
+.hero-btn-occasions:hover,
+.hero-btn-occasions:focus-visible {
   transform: translateY(-2px) !important;
-  box-shadow: 0 10px 24px rgba(75, 143, 36, 0.42) !important;
-  background: var(--color-forest-dark) !important;
-  border-color: var(--color-forest-dark) !important;
+  box-shadow: 0 8px 24px rgba(106, 177, 60, 0.45) !important;
+  background: var(--color-sage, #6ab13c) !important; /* Licht fris groen op net als download checklist */
+  border-color: var(--color-sage, #6ab13c) !important;
+  color: #ffffff !important;
+}
+
+.hero-btn-occasions:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 3px 10px rgba(37, 102, 22, 0.3) !important;
 }
 
 .hero-btn-badge {
   background: rgba(255, 255, 255, 0.24);
-  padding: 3px 9px;
+  padding: 3px 8px;
   border-radius: 9999px;
   font-size: 0.80rem;
   font-weight: 800;
@@ -866,32 +911,24 @@ section[id], section {
 }
 
 .hero-btn-nieuw {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 13px 24px !important;
-  min-height: 50px !important;
-  box-sizing: border-box !important;
-  min-width: 195px !important;
-  font-weight: 700 !important;
-  font-size: 0.98rem !important;
-  border-radius: var(--radius-full) !important;
   background: var(--color-terracotta, #f39223) !important;
   color: #ffffff !important;
   border: 1.5px solid var(--color-terracotta, #f39223) !important;
-  box-shadow: 0 6px 18px rgba(243, 146, 35, 0.35) !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
-  text-decoration: none !important;
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
+  box-shadow: 0 4px 14px rgba(243, 146, 35, 0.32) !important;
 }
 
-.hero-btn-nieuw:hover {
+.hero-btn-nieuw:hover,
+.hero-btn-nieuw:focus-visible {
   transform: translateY(-2px) !important;
-  box-shadow: 0 10px 24px rgba(243, 146, 35, 0.45) !important;
-  background: #d9480f !important;
-  border-color: #d9480f !important;
+  box-shadow: 0 8px 24px rgba(243, 146, 35, 0.45) !important;
+  background: #ff9e24 !important; /* Licht stralend oranje op */
+  border-color: #ff9e24 !important;
   color: #ffffff !important;
+}
+
+.hero-btn-nieuw:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 3px 10px rgba(243, 146, 35, 0.3) !important;
 }
 
 /* Sublink under CTAs: Accented pill centered under the button cluster */
@@ -2055,14 +2092,20 @@ section[id], section {
   font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   box-shadow: 0 4px 14px rgba(75, 143, 36, 0.35);
 }
 
-.btn-wizard-primary:hover {
-  background: #3e771d;
-  transform: translateY(-1.5px);
-  box-shadow: 0 6px 18px rgba(75, 143, 36, 0.45);
+.btn-wizard-primary:hover,
+.btn-wizard-primary:focus-visible {
+  background: var(--color-sage, #6ab13c) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(106, 177, 60, 0.45);
+}
+
+.btn-wizard-primary:active {
+  transform: translateY(0);
 }
 
 .btn-wizard-secondary {
@@ -2078,13 +2121,19 @@ section[id], section {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-wizard-secondary:hover {
   background: #ffffff;
   border-color: var(--color-forest);
   color: var(--color-forest);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.btn-wizard-secondary:active {
+  transform: translateY(0);
 }
 
 /* Step 4: Compact Results & Tailored Advice */
@@ -2353,17 +2402,23 @@ section[id], section {
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-card-details:hover {
   background: var(--color-forest);
   color: #ffffff;
   border-color: var(--color-forest);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 63, 32, 0.25);
+}
+
+.btn-card-details:active {
+  transform: translateY(0);
 }
 
 .btn-card-book {
-  background: var(--color-terracotta);
+  background: var(--color-terracotta, #f39223);
   color: #ffffff;
   border: none;
   padding: 6px 12px;
@@ -2371,11 +2426,20 @@ section[id], section {
   font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  box-shadow: 0 2px 8px rgba(243, 146, 35, 0.25);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-card-book:hover {
-  background: var(--color-terracotta-hover);
+.btn-card-book:hover,
+.btn-card-book:focus-visible {
+  background: #ff9e24 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(243, 146, 35, 0.45);
+}
+
+.btn-card-book:active {
+  transform: translateY(0);
 }
 
 
@@ -7028,11 +7092,12 @@ input[type="checkbox"] {
   box-sizing: border-box;
 }
 
-.inruil-calc-cta-btn:hover {
-  background: #ea580c;
+.inruil-calc-cta-btn:hover,
+.inruil-calc-cta-btn:focus-visible {
+  background: #ff9e24 !important;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(234, 88, 12, 0.45);
-  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(243, 146, 35, 0.45);
+  color: #ffffff !important;
 }
 
 @media (max-width: 768px) {
@@ -7550,15 +7615,22 @@ input[type="checkbox"] {
   justify-content: center;
   gap: 9px;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(37, 102, 22, 0.28);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 102, 22, 0.28);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   box-sizing: border-box;
 }
 
-.appointment-agenda-cta-btn:hover {
-  background-color: var(--color-forest-dark, #122b07) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(18, 43, 7, 0.35);
+.appointment-agenda-cta-btn:hover,
+.appointment-agenda-cta-btn:focus-visible {
+  background-color: var(--color-sage, #6ab13c) !important; /* Licht fris groen op */
+  border-color: var(--color-sage, #6ab13c) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(106, 177, 60, 0.45);
+}
+
+.appointment-agenda-cta-btn:active {
+  transform: translateY(0);
 }
 
 @media (max-width: 480px) {
@@ -7663,7 +7735,7 @@ input[type="checkbox"] {
   font-size: 1.15rem;
   font-weight: 800;
   border-radius: 10px;
-  background-color: var(--color-terracotta, #c84513) !important;
+  background-color: var(--color-terracotta, #f39223) !important;
   border: none !important;
   color: #ffffff !important;
   cursor: pointer;
@@ -7672,14 +7744,17 @@ input[type="checkbox"] {
   justify-content: center;
   gap: 10px;
   margin-top: 6px;
-  box-shadow: 0 6px 18px rgba(200, 69, 19, 0.35);
-  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(243, 146, 35, 0.32);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.appointment-quick-submit-btn:hover {
-  background-color: #b03a0d !important;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(200, 69, 19, 0.45);
+.appointment-quick-submit-btn:hover,
+.appointment-quick-submit-btn:focus-visible {
+  background-color: #ff9e24 !important; /* Licht stralend oranje op */
+  border-color: #ff9e24 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(243, 146, 35, 0.45);
 }
 
 .appointment-quick-submit-btn:active {
@@ -7704,110 +7779,211 @@ input[type="checkbox"] {
   flex-shrink: 0;
 }
 
-/* Direct Contact met Geertjan: Rustig, Groot & Duidelijk (Zonder Knop-stijl) */
-.appointment-direct-contact-wrap {
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid #e2e8f0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-}
-
-.appointment-direct-label {
-  font-size: 0.96rem;
-  color: #475569;
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: -0.1px;
-}
-
-.appointment-direct-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
+/* Panels Stage & Strict Height Synchronization (Geen springende box tussen keuzes) */
+.appointment-panels-stage {
+  min-height: 404px;
+  position: relative;
   width: 100%;
 }
 
-.appointment-direct-link {
+.appointment-panel {
+  min-height: 404px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.appointment-panel:not(.active) {
+  display: none !important;
+}
+
+.appointment-panel.active {
+  display: flex !important;
+}
+
+.appointment-panel #quickAppointmentForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.appointment-agenda-preview-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0 !important;
+  padding: 16px 18px;
+  background: #fdfbf7;
+  border: 1.5px solid rgba(75, 143, 36, 0.25);
+  border-radius: 12px;
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   DEDICATED DIRECT CONTACT BOX (PERMANENT MODAL FOOTER MET EIGEN HUISSTIJL ICONEN)
+   ========================================================================== */
+.appointment-direct-box {
+  margin-top: 14px;
+  padding: 13px 14px 14px;
+  background: linear-gradient(180deg, #fcfbfa 0%, #f7f5f0 100%);
+  border: 1.5px solid rgba(75, 143, 36, 0.22);
+  border-radius: 14px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.appointment-direct-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.appointment-direct-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 1.08rem;
-  text-decoration: none;
-  transition: color 0.15s ease, transform 0.15s ease;
-  white-space: nowrap;
-}
-
-.appointment-direct-link svg {
-  flex-shrink: 0;
-  transition: transform 0.15s ease;
-}
-
-.appointment-direct-link:hover svg {
-  transform: scale(1.12);
-}
-
-.appointment-link-phone {
-  color: var(--color-forest, #256616);
-}
-
-.appointment-link-phone strong {
+  gap: 6px;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--color-forest-dark, #1b4d10);
-  border-bottom: 1.5px solid rgba(37, 102, 22, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 9999px;
 }
 
-.appointment-link-phone:hover {
-  color: var(--color-forest-dark, #1b4d10);
+.direct-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+  display: inline-block;
+  animation: directPulse 2s infinite ease-in-out;
 }
 
-.appointment-link-phone:hover strong {
-  border-bottom-color: var(--color-forest-dark, #1b4d10);
+@keyframes directPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
-.appointment-link-whatsapp {
-  color: #128c7e;
+.appointment-direct-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  text-align: center;
 }
 
-.appointment-link-whatsapp svg {
+.appointment-direct-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 440px) {
+  .appointment-direct-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.appointment-direct-card-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 12px;
+  padding: 9px 12px;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.appointment-direct-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.appointment-btn-phone:hover {
+  border-color: var(--color-forest, #4b8f24);
+  background-color: #f7fee7;
+}
+
+.appointment-btn-whatsapp:hover {
+  border-color: #25D366;
+  background-color: #f0fdf4;
+}
+
+.appointment-direct-card-btn:active {
+  transform: translateY(0);
+}
+
+.direct-card-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.phone-icon-wrap {
+  background: #eef8eb;
+  border: 1.5px solid #b7e3a8;
+  color: var(--color-forest, #4b8f24);
+}
+
+.appointment-btn-phone:hover .phone-icon-wrap {
+  background: var(--color-forest, #4b8f24);
+  border-color: var(--color-forest, #4b8f24);
+  color: #ffffff;
+}
+
+.wa-icon-wrap {
+  background: #eafaf1;
+  border: 1.5px solid #a3e9c0;
   color: #25D366;
 }
 
-.appointment-link-whatsapp strong {
+.appointment-btn-whatsapp:hover .wa-icon-wrap {
+  background: #25D366;
+  border-color: #25D366;
+  color: #ffffff;
+}
+
+.direct-card-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.direct-card-sublabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.direct-card-value {
+  font-size: 0.94rem;
   font-weight: 800;
-  color: #075e54;
-  border-bottom: 1.5px solid rgba(37, 211, 102, 0.45);
-}
-
-.appointment-link-whatsapp:hover {
-  color: #075e54;
-}
-
-.appointment-link-whatsapp:hover strong {
-  border-bottom-color: #075e54;
-}
-
-.appointment-direct-divider {
-  color: #cbd5e1;
-  font-size: 1.1rem;
-}
-
-@media (max-width: 480px) {
-  .appointment-direct-links {
-    flex-direction: column;
-    gap: 9px;
-  }
-  .appointment-direct-divider {
-    display: none;
-  }
-  .appointment-direct-link {
-    font-size: 1.02rem;
-  }
+  color: #0f172a;
 }
 
 /* Success View Inside Modal */
