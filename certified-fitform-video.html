@@ -6868,16 +6868,7 @@
     }
 
     // Automatische animatie van interactieve widgets op basis van opnametijd
-    if (document.getElementById('revisie-process-widget') && typeof selectRevisieStep === 'function') {
-      const step = Math.min(4, Math.floor(p * 4) + 1);
-      selectRevisieStep(step, false);
-    } else if (document.getElementById('zitadvies-form-widget') && typeof selectZitadviesStep === 'function') {
-      const step = Math.min(4, Math.floor(p * 4) + 1);
-      selectZitadviesStep(step, false);
-    } else if (document.getElementById('anatomy-chair-svg') && typeof selectAnatomyHotspot === 'function') {
-      const pt = Math.min(5, Math.floor(p * 5) + 1);
-      selectAnatomyHotspot(pt, false);
-    }
+    checkInSceneTransitions(timeSec);
   };
 
   function nextScene() {

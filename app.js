@@ -1274,15 +1274,15 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.149"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.173"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.149" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.173" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
         <div class="appointment-modal-video-caption">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
-          <span>Bekijk in 38 sec hoe een persoonlijke zitmeting bij Geertjan verloopt</span>
+          <span>Bekijk in 45 sec hoe een persoonlijke zitmeting bij Geertjan verloopt</span>
         </div>
       </div>
 

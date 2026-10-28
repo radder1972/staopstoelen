@@ -12,28 +12,28 @@ const SCENES = [
   {
     idx: 0,
     audio: 'assets/audio/afspraak_scene_1.m4a',
-    duration: 8.36,
+    duration: 10.56,
     outVideo: 'assets/video/afspraak_s1_waarom.mp4',
     name: 'Scene 1: Waarom een Sta-op Stoel op Maat Moet Passen'
   },
   {
     idx: 1,
     audio: 'assets/audio/afspraak_scene_2.m4a',
-    duration: 10.50,
+    duration: 12.33,
     outVideo: 'assets/video/afspraak_s2_zitmeting.mp4',
     name: 'Scene 2: Persoonlijke Zitmeting door Geertjan'
   },
   {
     idx: 2,
     audio: 'assets/audio/afspraak_scene_3.m4a',
-    duration: 9.59,
+    duration: 11.35,
     outVideo: 'assets/video/afspraak_s3_proefzitten.mp4',
     name: 'Scene 3: 30+ Stoelen Vrijblijvend Uitproberen'
   },
   {
     idx: 3,
     audio: 'assets/audio/afspraak_scene_4.m4a',
-    duration: 9.10,
+    duration: 10.98,
     outVideo: 'assets/video/afspraak_s4_afspraak.mp4',
     name: 'Scene 4: Gratis Parkeren voor de Deur in Dordrecht'
   }

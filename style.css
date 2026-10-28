@@ -801,28 +801,32 @@ section[id], section {
 /* Option A: Hero Buttons (Aligned in content column, distinct hierarchy) */
 .hero-content .hero-buttons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: stretch;
-  gap: 14px;
-  margin: 24px 0 14px 0;
-  width: 100%;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 12px 0;
+  width: auto;
+  max-width: 100%;
 }
 
 .hero-btn-occasions {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 10px !important;
-  padding: 13px 26px !important;
+  gap: 8px !important;
+  padding: 12px 22px !important;
+  min-width: 0 !important;
   font-weight: 700 !important;
-  font-size: 1.02rem !important;
+  font-size: 0.98rem !important;
   background: var(--color-forest) !important;
   color: #ffffff !important;
   border-radius: var(--radius-full) !important;
   box-shadow: 0 6px 18px rgba(75, 143, 36, 0.32) !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
   text-decoration: none !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
 .hero-btn-occasions:hover {
@@ -833,35 +837,45 @@ section[id], section {
 
 .hero-btn-badge {
   background: rgba(255, 255, 255, 0.24);
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 9999px;
   font-size: 0.80rem;
   font-weight: 800;
   letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
 .hero-btn-nieuw {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 13px 26px !important;
+  padding: 12px 22px !important;
+  min-width: 0 !important;
   font-weight: 700 !important;
-  font-size: 1.02rem !important;
+  font-size: 0.98rem !important;
   border-radius: var(--radius-full) !important;
-  transition: transform 0.2s ease, background 0.2s ease !important;
+  background: #ffffff !important;
+  color: var(--color-forest-dark) !important;
+  border: 1.5px solid var(--color-forest) !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06) !important;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease !important;
   text-decoration: none !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
 .hero-btn-nieuw:hover {
   transform: translateY(-2px) !important;
+  background: #f0f7ee !important;
+  border-color: var(--color-forest-dark) !important;
 }
 
 /* Sublink under CTAs: Accented pill centered under the button cluster */
 .hero-sublink-wrapper {
   display: flex;
-  justify-content: center;
-  max-width: 520px;
-  margin: 14px 0 18px 0;
+  justify-content: flex-start;
+  max-width: 540px;
+  margin: 10px 0 0 0;
   width: 100%;
 }
 
@@ -1041,7 +1055,7 @@ section[id], section {
   font-size: 1.125rem;
   color: var(--color-gray);
   margin-bottom: 36px;
-  max-width: 540px;
+  max-width: 580px;
 }
 
 .hero-buttons {
