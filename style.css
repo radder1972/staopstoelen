@@ -332,8 +332,25 @@ section[id], section {
 
 .btn-nav-appointment {
   position: relative;
-  padding: 10px 24px;
+  padding: 9px 20px;
   min-height: auto;
+  background-color: var(--color-forest, #256616) !important;
+  color: #ffffff !important;
+  border: 1.5px solid var(--color-forest-dark, #122b07) !important;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-sm, 6px);
+  box-shadow: 0 2px 8px rgba(37, 102, 22, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-nav-appointment:hover {
+  background-color: var(--color-forest-dark, #122b07) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(18, 43, 7, 0.35);
 }
 
 /* Hide specific desktop menu items from the second row menu on desktop */
@@ -3725,6 +3742,65 @@ footer h3, footer h4 {
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+/* Subtiel inklapbaar regio-overzicht in footer (SEO) */
+.footer-region-wrapper {
+  padding: 14px 0 4px 0;
+  margin-top: 10px;
+}
+
+.footer-region-details {
+  width: 100%;
+}
+
+.footer-region-summary {
+  list-style: none;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.footer-region-summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer-region-summary:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-region-chevron {
+  transition: transform 0.2s ease;
+  opacity: 0.7;
+}
+
+.footer-region-details[open] .footer-region-chevron {
+  transform: rotate(180deg);
+}
+
+.footer-region-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 10px;
+  padding: 6px 0;
+}
+
+.footer-region-links a {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-region-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .footer-copyright {
@@ -7137,7 +7213,7 @@ input[type="checkbox"] {
 }
 
 /* ==========================================================================
-   SPLIT-SCREEN APPOINTMENT MODAL
+   SENIOR-FRIENDLY AFSPRAAK-OVERLAY (GEERTJAN PROEFZIT SNELFORMULIER)
    ========================================================================== */
 .appointment-modal-overlay {
   position: fixed;
@@ -7145,7 +7221,7 @@ input[type="checkbox"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(18, 43, 7, 0.6);
+  background-color: rgba(15, 23, 42, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
@@ -7154,7 +7230,7 @@ input[type="checkbox"] {
   z-index: 10005;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 16px;
   box-sizing: border-box;
 }
@@ -7162,6 +7238,326 @@ input[type="checkbox"] {
 .appointment-modal-overlay.active {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* Focused White Card */
+.appointment-quick-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 490px;
+  padding: 34px 30px 26px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  position: relative;
+  transform: scale(0.94);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  max-height: 94vh;
+  overflow-y: auto;
+}
+
+.appointment-modal-overlay.active .appointment-quick-card {
+  transform: scale(1);
+}
+
+/* Header: Geertjan Avatar + Title & Subtitle */
+.appointment-quick-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.appointment-quick-avatar-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.appointment-quick-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid var(--color-forest, #256616);
+  box-shadow: 0 4px 12px rgba(37, 102, 22, 0.2);
+  display: block;
+}
+
+.appointment-quick-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 22px;
+  height: 22px;
+  background: var(--color-forest, #256616);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+}
+
+.appointment-quick-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-forest-dark, #122b07);
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.appointment-quick-subtitle {
+  font-size: 0.92rem;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Showroom Location Tag (Clean SVG Pin, No Emoji) */
+.appointment-quick-location-tag {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 9px 12px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: #334155;
+  line-height: 1.35;
+}
+
+.location-tag-icon {
+  color: var(--color-forest, #256616);
+  flex-shrink: 0;
+}
+
+/* Chair Badge Context */
+.appointment-chair-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+  color: #166534;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+}
+
+/* Accessible High-Contrast Form Inputs (18px+) */
+.appointment-field-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.appointment-field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 7px;
+}
+
+.appointment-field-required {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-terracotta, #c84513);
+}
+
+.appointment-field-input {
+  width: 100%;
+  height: 56px;
+  min-height: 56px;
+  font-size: 18px !important;
+  line-height: 1.4;
+  padding: 0 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #0f172a;
+  box-sizing: border-box;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.appointment-field-input:focus {
+  border-color: var(--color-forest, #256616);
+  box-shadow: 0 0 0 3px rgba(37, 102, 22, 0.18);
+}
+
+.appointment-field-error {
+  display: block;
+  font-size: 0.82rem;
+  color: #dc2626;
+  margin-top: 4px;
+  min-height: 16px;
+  font-weight: 600;
+}
+
+/* Action Button: "Bel mij voor een afspraak" */
+.appointment-quick-submit-btn {
+  width: 100%;
+  height: 58px;
+  min-height: 58px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  border-radius: 10px;
+  background-color: var(--color-terracotta, #c84513) !important;
+  border: none !important;
+  color: #ffffff !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+  box-shadow: 0 6px 18px rgba(200, 69, 19, 0.35);
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.appointment-quick-submit-btn:hover {
+  background-color: #b03a0d !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(200, 69, 19, 0.45);
+}
+
+.appointment-quick-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Trust Microcopy with Padlock SVG */
+.appointment-trust-microcopy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.appointment-trust-microcopy svg {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+/* Alternative: Sleek SVG Phone Link */
+.appointment-quick-alternative {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: #64748b;
+  text-align: center;
+}
+
+.appointment-alt-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-forest, #256616);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.appointment-alt-phone:hover {
+  background: #f0fdf4;
+  color: var(--color-forest-dark, #122b07);
+}
+
+.appointment-alt-phone svg {
+  fill: currentColor;
+}
+
+/* Success View Inside Modal */
+.appointment-quick-success {
+  text-align: center;
+  padding: 16px 8px 8px;
+}
+
+.appointment-success-icon-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(37, 102, 22, 0.12);
+  border: 2.5px solid var(--color-forest, #256616);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.appointment-success-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-forest-dark, #122b07);
+  margin: 0 0 8px 0;
+}
+
+.appointment-success-desc {
+  font-size: 0.96rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+}
+
+.appointment-success-note {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.appointment-success-close-btn {
+  padding: 10px 24px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 540px) {
+  .appointment-quick-card {
+    padding: 24px 18px 20px;
+    border-radius: 14px;
+  }
+  .appointment-quick-avatar {
+    width: 52px;
+    height: 52px;
+  }
+  .appointment-quick-avatar-wrap {
+    width: 52px;
+    height: 52px;
+  }
+  .appointment-quick-title {
+    font-size: 1.25rem;
+  }
+  .appointment-quick-subtitle {
+    font-size: 0.88rem;
+  }
+  .appointment-field-input {
+    height: 52px;
+    font-size: 18px !important;
+  }
+  .appointment-quick-submit-btn {
+    height: 54px;
+    font-size: 1.08rem;
+  }
 }
 
 .appointment-modal-card {

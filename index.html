@@ -49,7 +49,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.141">
+  <link rel="stylesheet" href="style.css?v=10.143">
   <!-- Schema.org LocalBusiness & MedicalBusiness Structured Data (Lokale Dominantie) -->
   <script type="application/ld+json">
   {
@@ -424,7 +424,10 @@
           <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           info@staopstoelen.nl
         </a>
-        <a href="afspraak.html" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment" onclick="openAppointmentModal(event)">Maak een afspraak</a>
+        <a href="afspraak.html" class="btn btn-nav-appointment" id="btnNavAppointment" onclick="openAppointmentModal(event)">
+          <svg style="width: 15px; height: 15px; fill: none; stroke: currentColor; margin-right: 4px;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Maak afspraak met Geertjan
+        </a>
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
         <span></span>
@@ -439,7 +442,7 @@
           <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
           <a href="faq.html" id="linkFaq">FAQ</a>
           <a href="info.html" id="linkOverOns">Over Ons</a>
-          <a href="afspraak.html" class="nav-desktop-hide" id="linkAfspraak" onclick="openAppointmentModal(event)">Afspraak Maken</a>
+          <a href="afspraak.html" class="nav-desktop-hide" id="linkAfspraak" onclick="openAppointmentModal(event)">Maak afspraak met Geertjan</a>
         </nav>
         
       </div>
@@ -485,12 +488,13 @@
           <!-- Primary Collection CTAs & Zithouding Check Micro-conversion -->
           <div class="hero-cta-group">
             <div class="hero-buttons" id="heroButtons">
-              <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn btn-primary hero-btn-occasions" id="btnHeroOccasions">
+              <a href="afspraak.html" class="btn btn-primary hero-btn-appointment" id="btnHeroAppointment" onclick="openAppointmentModal(event)">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: -3px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Plan een proefzit-afspraak</span>
+              </a>
+              <a href="staopstoelen.html?condition=occasion#catalogGrid" class="btn btn-secondary hero-btn-occasions" id="btnHeroOccasions">
                 <span>Bekijk Occasions</span>
                 <span class="hero-btn-badge">v.a. <span class="dynamic-lowest-occasion-price">€ 1.050,-</span></span>
-              </a>
-              <a href="staopstoelen.html?condition=nieuw#catalogGrid" class="btn btn-secondary hero-btn-nieuw" id="btnHeroWizard">
-                <span>Nieuw op Maat</span>
               </a>
             </div>
 
@@ -938,29 +942,32 @@
         </ul>
       </div>
     </div>
-    <!-- Regio Netwerk Footer Bar -->
-    <div style="background: rgba(0,0,0,0.22); border-top: 1px solid rgba(255,255,255,0.08); padding: 18px 0; margin-top: 24px;">
+    <!-- Subtiel inklapbaar regio-overzicht (discreet & rustig voor het oog) -->
+    <div class="footer-region-wrapper">
       <div class="container">
-        <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px;">
-          Onze Service in Uw Regio (Drechtsteden, Alblasserwaard &amp; Hoeksche Waard):
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <a href="sta-op-stoel-dordrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Dordrecht</a>
-          <a href="sta-op-stoel-zwijndrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Zwijndrecht</a>
-          <a href="sta-op-stoel-papendrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Papendrecht</a>
-          <a href="sta-op-stoel-sliedrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Sliedrecht</a>
-          <a href="sta-op-stoel-hendrik-ido-ambacht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Hendrik-Ido-Ambacht</a>
-          <a href="sta-op-stoel-alblasserdam.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Alblasserdam</a>
-          <a href="sta-op-stoel-hardinxveld-giessendam.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Hardinxveld-Giessendam</a>
-          <a href="sta-op-stoel-ridderkerk.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Ridderkerk</a>
-          <a href="sta-op-stoel-barendrecht.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Barendrecht</a>
-          <a href="sta-op-stoel-gorinchem.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Gorinchem</a>
-          <a href="sta-op-stoel-sgravendeel.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel ’s-Gravendeel</a>
-          <a href="sta-op-stoel-oud-beijerland.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Oud-Beijerland</a>
-          <a href="sta-op-stoel-strijen.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Strijen</a>
-          <a href="sta-op-stoel-puttershoek.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Puttershoek &amp; Maasdam</a>
-          <a href="sta-op-stoel-nieuw-lekkerland.html" style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; font-size: 0.82rem; display: inline-block;">Sta-op stoel Nieuw-Lekkerland</a>
-        </div>
+        <details class="footer-region-details">
+          <summary class="footer-region-summary">
+            <span>Werkgebied &amp; omliggende gemeenten</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="footer-region-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="footer-region-links">
+            <a href="sta-op-stoel-dordrecht.html">Dordrecht</a>
+            <a href="sta-op-stoel-zwijndrecht.html">Zwijndrecht</a>
+            <a href="sta-op-stoel-papendrecht.html">Papendrecht</a>
+            <a href="sta-op-stoel-sliedrecht.html">Sliedrecht</a>
+            <a href="sta-op-stoel-hendrik-ido-ambacht.html">Hendrik-Ido-Ambacht</a>
+            <a href="sta-op-stoel-alblasserdam.html">Alblasserdam</a>
+            <a href="sta-op-stoel-hardinxveld-giessendam.html">Hardinxveld-Giessendam</a>
+            <a href="sta-op-stoel-ridderkerk.html">Ridderkerk</a>
+            <a href="sta-op-stoel-barendrecht.html">Barendrecht</a>
+            <a href="sta-op-stoel-gorinchem.html">Gorinchem</a>
+            <a href="sta-op-stoel-sgravendeel.html">’s-Gravendeel</a>
+            <a href="sta-op-stoel-oud-beijerland.html">Oud-Beijerland</a>
+            <a href="sta-op-stoel-strijen.html">Strijen</a>
+            <a href="sta-op-stoel-puttershoek.html">Puttershoek &amp; Maasdam</a>
+            <a href="sta-op-stoel-nieuw-lekkerland.html">Nieuw-Lekkerland</a>
+          </div>
+        </details>
       </div>
     </div>
     <div class="container footer-bottom">
@@ -968,7 +975,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.130
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.143
       </div>
     </div>
   </footer>
@@ -1062,183 +1069,132 @@
     </div>
   </div>
 
-  <!-- Split-Screen Appointment Modal -->
+  <!-- Senior-Friendly Afspraak-Overlay (Geertjan Proefzit Snelformulier) -->
   <div class="appointment-modal-overlay" id="appointmentModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="appointmentModalTitle">
-    <div class="appointment-modal-card">
+    <div class="appointment-quick-card">
       <button type="button" class="appointment-modal-close" onclick="closeAppointmentModal()" aria-label="Sluit afspraakvenster" title="Sluit venster">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
 
-      <div class="appointment-modal-grid">
-        <!-- Linker kolom: Video & Zekerheden -->
-        <div class="appointment-modal-left">
-          <span class="appointment-modal-tag">Persoonlijke Zitmeting</span>
-          <h3 id="appointmentModalTitle" class="appointment-modal-heading">Wat kunt u verwachten?</h3>
-          <p class="appointment-modal-subheading">In 38 seconden legt Bewegingstechnoloog Geertjan uit hoe wij uw sta-op stoel exact op uw lichaam afstellen:</p>
+      <!-- Kop & Vertrouwen: Profielfoto Geertjan + Titel & Geruststellende Subtitel -->
+      <div class="appointment-quick-header">
+        <div class="appointment-quick-avatar-wrap">
+          <img src="assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" class="appointment-quick-avatar" width="64" height="64" loading="eager">
+          <span class="appointment-quick-badge" title="Gecertificeerd Bewegingstechnoloog">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+        </div>
+        <div class="appointment-quick-title-group">
+          <h3 id="appointmentModalTitle" class="appointment-quick-title">Plan uw proefzit-afspraak</h3>
+          <p class="appointment-quick-subtitle">Laat uw nummer achter, dan belt Geertjan u om de tijd af te stemmen.</p>
+        </div>
+      </div>
 
-          <div class="appointment-modal-video-wrapper">
-            <video 
-              id="appointmentModalVideo" 
-              controls 
-              playsinline 
-              preload="metadata" 
-              poster="assets/video/zitmeting_poster.jpg" 
-              style="width: 100%; height: 100%; object-fit: cover; display: block;">
-              <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4" type="video/mp4">
-              Uw browser ondersteunt geen video.
-            </video>
-          </div>
+      <!-- Showroom Dordrecht Info Tag (Sleek SVG Pin, NO emoji) -->
+      <div class="appointment-quick-location-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="location-tag-icon">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span><strong>Showroom Dordrecht:</strong> Merwedestraat 239 &bull; Gratis voor de deur parkeren</span>
+      </div>
 
-          <div class="appointment-modal-trust-list">
-            <div class="appointment-trust-item">
-              <span class="appointment-trust-icon">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <div><strong>100% Vrijblijvend advies</strong> &mdash; Geen aankoopverplichting, geen opdringerige verkoop.</div>
-            </div>
-            <div class="appointment-trust-item">
-              <span class="appointment-trust-icon">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <div><strong>Gratis voor de deur parkeren</strong> &mdash; Merwedestraat 239 in Dordrecht, rolstoeltoegankelijk.</div>
-            </div>
-            <div class="appointment-trust-item">
-              <span class="appointment-trust-icon">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <div><strong>Verse koffie &amp; thee</strong> &mdash; Rustig proefzitten en testen in een ontspannen sfeer.</div>
-            </div>
-          </div>
+      <!-- Quick Appointment Form: Enkel Naam & Telefoonnummer (Toegankelijk & 18px+) -->
+      <form id="quickAppointmentForm" class="appointment-quick-form" onsubmit="return handleQuickAppointmentSubmit(event)" novalidate>
+        <input type="hidden" id="quickChairNotes" name="chair_notes" value="">
 
-          <div class="appointment-modal-phone-fallback">
-            <span style="font-size: 0.85rem; color: var(--color-gray);">Liever direct bellen?</span>
-            <a href="tel:0786314858" class="appointment-phone-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
-              <span>078 &ndash; 631 4858</span>
-            </a>
-          </div>
+        <!-- Stoel Context Badge (indien geklikt vanuit specifieke stoel) -->
+        <div id="quickChairBadge" class="appointment-chair-tag" style="display: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Gekozen stoel: <strong id="quickChairBadgeName"></strong></span>
         </div>
 
-        <!-- Rechter kolom: Kalender & Direct Boeken Formulier -->
-        <div class="appointment-modal-right">
-          <div class="appointment-modal-right-header">
-            <h3 class="appointment-modal-form-title">Plan direct uw afspraak</h3>
-            <p class="appointment-modal-form-sub">Kies een datum en tijdstip voor uw winkelbezoek in Dordrecht of gratis thuispassing.</p>
-          </div>
+        <div class="appointment-field-group">
+          <label for="quickAppointName" class="appointment-field-label">
+            <span>Uw naam <span class="appointment-field-required">*</span></span>
+          </label>
+          <input 
+            type="text" 
+            id="quickAppointName" 
+            name="name" 
+            required 
+            placeholder="Bijv. Mevrouw De Vries of Dhr. Jansen" 
+            autocomplete="name" 
+            class="appointment-field-input"
+          >
+          <span class="appointment-field-error" id="quickNameError"></span>
+        </div>
 
-          <!-- Type Select (Showroom of Thuis) -->
-          <div class="booking-type-select" style="margin-bottom: 18px;">
-            <div class="booking-type-card selected" id="typeShowroom">
-              <input type="radio" name="appointmentType" value="showroom" checked style="display:none;">
-              <div class="booking-type-info">
-                <div style="font-weight: 700; color: var(--color-forest-dark); font-size: 0.95rem; margin-bottom: 2px;">📍 Showroom Dordrecht</div>
-                <div style="font-size: 0.82rem; color: var(--color-gray);">Merwedestraat 239 &bull; Gratis parkeren voor de deur</div>
-              </div>
-            </div>
-            <div class="booking-type-card" id="typeHome">
-              <input type="radio" name="appointmentType" value="home" style="display:none;">
-              <div class="booking-type-info">
-                <div style="font-weight: 700; color: var(--color-forest-dark); font-size: 0.95rem; margin-bottom: 2px;">🚐 Gratis Thuispassing</div>
-                <div style="font-size: 0.82rem; color: var(--color-gray);">Wij komen vrijblijvend met stoelen bij u langs</div>
-              </div>
-            </div>
-          </div>
+        <div class="appointment-field-group">
+          <label for="quickAppointPhone" class="appointment-field-label">
+            <span>Uw telefoonnummer <span class="appointment-field-required">*</span></span>
+          </label>
+          <input 
+            type="tel" 
+            id="quickAppointPhone" 
+            name="phone" 
+            required 
+            placeholder="Bijv. 06 - 1234 5678" 
+            autocomplete="tel" 
+            class="appointment-field-input"
+          >
+          <span class="appointment-field-error" id="quickPhoneError"></span>
+        </div>
 
-          <!-- Form elements container -->
-          <div id="bookingInteractiveArea">
-            <div class="calendar-grid modal-cal-grid">
-              <!-- Calendar Panel -->
-              <div class="calendar-selector-container">
-                <div class="calendar-month-header">
-                  <button type="button" class="calendar-nav-btn" id="btnPrevMonth">◀</button>
-                  <span class="calendar-month-name" id="currentMonthName">Juni 2026</span>
-                  <button type="button" class="calendar-nav-btn" id="btnNextMonth">▶</button>
-                </div>
-                <div class="calendar-days-grid" id="calendarDays">
-                  <!-- Generated via JS -->
-                </div>
-              </div>
+        <!-- Primaire Actie: Opvallende Knop in Huisstijlkleur -->
+        <button type="submit" id="btnQuickSubmit" class="btn appointment-quick-submit-btn">
+          <span class="btn-text">Bel mij voor een afspraak</span>
+          <span class="btn-spinner" style="display: none;">
+            <svg class="spinner-icon" viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"></circle></svg>
+            Even geduld...
+          </span>
+        </button>
 
-              <!-- Time Slot Panel -->
-              <div class="time-slots-container">
-                <h4 id="timeSlotsTitle" style="font-size: 0.92rem; margin-bottom: 10px; font-weight: 700; color: var(--color-forest-dark);">Beschikbare tijden voor <span id="selectedDateText" style="font-weight: 600; color: var(--color-terracotta);">kies datum</span>:</h4>
-                <div class="time-slots-grid" id="timeSlotsGrid">
-                  <!-- Generated via JS -->
-                </div>
-              </div>
-            </div>
+        <!-- Microcopy (Trust): Veiligheid & Privacy met Slot-icoon -->
+        <div class="appointment-trust-microcopy">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Uw gegevens zijn veilig en worden alleen gebruikt voor het maken van deze afspraak.</span>
+        </div>
 
-            <!-- Customer Details Form -->
-            <div class="booking-form" style="margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--color-gray-light);">
-              <div class="booking-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
-                <div class="form-group">
-                  <label for="bookingName">Naam *</label>
-                  <input type="text" id="bookingName" required placeholder="Bijv. Mevrouw Jansen" style="width: 100%;">
-                </div>
-                <div class="form-group">
-                  <label for="bookingPhone">Telefoonnummer *</label>
-                  <input type="tel" id="bookingPhone" required placeholder="Bijv. 06 12345678" style="width: 100%;">
-                </div>
-                <div class="form-group" style="grid-column: span 2;">
-                  <label for="bookingEmail">E-mailadres *</label>
-                  <input type="email" id="bookingEmail" required placeholder="Bijv. naam@domein.nl" style="width: 100%;">
-                </div>
+        <!-- Direct Bellen Fallback met Strak Telefoon SVG Icoon -->
+        <div class="appointment-quick-alternative">
+          <span>Liever nu direct contact met Geertjan?</span>
+          <a href="tel:0786314858" class="appointment-alt-phone">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            <span>Bel <strong>078 &ndash; 631 4858</strong></span>
+          </a>
+        </div>
+      </form>
 
-                <!-- Address Section (only shown for home visits) -->
-                <div class="form-group form-group-full" id="homeAddressWrapper" style="display: none; grid-column: span 2;">
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
-                    <div>
-                      <label for="bookingPostcode">Postcode *</label>
-                      <input type="text" id="bookingPostcode" placeholder="1234AB" maxlength="7" style="width: 100%;">
-                    </div>
-                    <div>
-                      <label for="bookingHouseNumber">Huisnummer *</label>
-                      <input type="text" id="bookingHouseNumber" placeholder="Bijv. 239" style="width: 100%;">
-                    </div>
-                  </div>
-                  <div>
-                    <label for="bookingAddress" id="addressLabel">Adres *</label>
-                    <input type="text" id="bookingAddress" readonly style="background-color: var(--color-light); cursor: not-allowed; width: 100%;">
-                    <span id="addressFeedback" style="font-size: 0.82rem; min-height: 18px; display: block; margin-top: 2px;"></span>
-                  </div>
-                </div>
-
-                <div class="form-group form-group-full" style="grid-column: span 2;">
-                  <label for="bookingNotes">Aanvullende opmerkingen (bijv. gewenst model of zitwensen)</label>
-                  <textarea id="bookingNotes" rows="2" placeholder="Laat ons weten waar we eventueel rekening mee kunnen houden..." style="width: 100%;"></textarea>
-                </div>
-              </div>
-
-              <div style="margin-top: 14px; text-align: right;">
-                <button type="button" class="btn btn-primary" id="btnSubmitBooking" style="width: 100%; padding: 13px 28px; font-size: 1rem; font-weight: 800;">Bevestig Mijn Afspraak &rarr;</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Success Screen (Initially hidden) -->
-          <div id="bookingSuccessScreen" style="display: none;" class="booking-success-message">
-            <div style="text-align: center; padding: 24px 0;">
-              <span style="width: 60px; height: 60px; border-radius: 50%; background: rgba(75, 143, 36, 0.12); display: inline-flex; align-items: center; justify-content: center; border: 2.5px solid var(--color-forest); margin-bottom: 14px;">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--color-forest)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </span>
-              <h3 style="margin-bottom: 8px; font-size: 1.5rem; color: var(--color-forest-dark);">Uw afspraak staat gepland!</h3>
-              <p style="color: var(--color-gray); font-size: 0.92rem; max-width: 440px; margin: 0 auto 20px auto;" id="successSummary">
-                We hebben uw aanvraag ontvangen. Geertjan Klein Haneveld neemt spoedig telefonisch contact met u op om de afspraak te bevestigen.
-              </p>
-              <div style="display: flex; gap: 10px; justify-content: center;">
-                <button type="button" class="btn btn-secondary" onclick="closeAppointmentModal()">Sluit Venster</button>
-                <button type="button" class="btn btn-outline" id="btnResetBooking" style="display: none;">Nieuwe Afspraak</button>
-              </div>
-            </div>
-          </div>
+      <!-- Instant Bevestiging Na Verzending -->
+      <div id="quickAppointmentSuccess" class="appointment-quick-success" style="display: none;">
+        <div class="appointment-success-icon-wrap">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#256616" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="appointment-success-title">Bedankt, <span id="quickSuccessName"></span>!</h3>
+        <p class="appointment-success-desc">
+          Geertjan belt u zo snel mogelijk om de proefzit-afspraak af te stemmen.
+        </p>
+        <div class="appointment-success-note">
+          <span id="quickAutoCloseNote">Dit venster sluit automatisch over <span id="quickAutoCloseSeconds">4</span> seconden...</span>
+        </div>
+        <div style="margin-top: 18px; text-align: center;">
+          <button type="button" class="btn btn-secondary appointment-success-close-btn" onclick="closeAppointmentModal()">
+            Sluit venster
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="app.js?v=10.141" defer></script>
+  <script src="app.js?v=10.143" defer></script>
   <script>
     // Load and render top 5 offers on home page
     function getGridDescriptionPreview(htmlStr) {

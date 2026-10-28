@@ -70,22 +70,36 @@ TASKS = [
         "out_files": ["assets/audio/revisie_scene_6.m4a"]
     },
     {
+        "name": "Consumer Scene 1 (Het Senioren-Dilemma)",
+        "text": "Een nieuwe ergonomische sta-opstoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
+        "duration": 12.80,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/consumer_scene_1.m4a"]
+    },
+    {
         "name": "Consumer Scene 2 (Sweet Spot - 1 Jaar Garantie)",
         "text": "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét één jaar volledige garantie aan huis.",
-        "duration": 10.67,
+        "duration": 11.00,
         "delay_ms": 200,
         "out_files": ["assets/audio/consumer_scene_2.m4a"]
     },
     {
         "name": "Consumer Scene 3 (15-Punts Kwaliteitskeuring & Reiniging)",
         "text": "Elke stoel krijgt een vijftien-punts kwaliteitskeuring, professionele reiniging en wordt door staopstoelen punt nl exact op uw lichaam afgesteld. Zo zit uw stoel weer echt als nieuw, voor jarenlang zorgeloos zitcomfort.",
-        "duration": 12.33,
+        "duration": 14.60,
         "delay_ms": 200,
         "out_files": [
             "assets/audio/consumer_scene_3.m4a",
             "assets/audio/scene_3.m4a",
             "assets/audio/scene_3.mp3"
         ]
+    },
+    {
+        "name": "Consumer Scene 4 (Kom Proefzitten in Dordrecht)",
+        "text": "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht, of vraag een demonstratie aan huis aan. Bel nul zeven acht, zes drie een, vier acht vijf acht, of kijk op staopstoelen punt nl.",
+        "duration": 15.00,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/consumer_scene_4.m4a"]
     }
 ]
 
@@ -115,10 +129,12 @@ def generate_voice(text: str) -> bytes:
         return resp.read()
 
 def main():
-    print("🎙️ Starting ElevenLabs clean voiceover generation...")
+    filter_arg = sys.argv[1].lower() if len(sys.argv) > 1 else ""
+    tasks_to_run = [t for t in TASKS if filter_arg in t["name"].lower()] if filter_arg else TASKS
+    print(f"🎙️ Starting ElevenLabs clean voiceover generation ({len(tasks_to_run)} tasks)...")
     os.makedirs("/tmp/eleven_clean", exist_ok=True)
 
-    for i, t in enumerate(TASKS, 1):
+    for i, t in enumerate(tasks_to_run, 1):
         print(f"\n[{i}/{len(TASKS)}] Generating: {t['name']}")
         print(f"  Tekst: \"{t['text']}\"")
         mp3_bytes = generate_voice(t["text"])

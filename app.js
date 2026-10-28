@@ -347,6 +347,13 @@ function initializeApp() {
       }
     }
   }
+
+  // Check for auto-open modal query or hash
+  if (window.location.hash === "#afspraak" || window.location.search.includes("openAfspraak=true")) {
+    setTimeout(() => {
+      if (typeof openAppointmentModal === "function") openAppointmentModal();
+    }, 200);
+  }
 }
 
 function initHeroSlideshow() {
@@ -1240,7 +1247,7 @@ window.prefillBooking = function(chairName) {
 };
 
 /* ==========================================================================
-   SPLIT-SCREEN APPOINTMENT MODAL LOGIC
+   SENIOR-FRIENDLY AFSPRAAK-OVERLAY LOGIC (GEERTJAN PROEFZIT SNELFORMULIER)
    ========================================================================== */
 window.openAppointmentModal = function(e, chairName) {
   if (e && e.preventDefault) e.preventDefault();
@@ -1261,21 +1268,54 @@ window.openAppointmentModal = function(e, chairName) {
     return;
   }
 
+  // Reset form and errors
+  const form = document.getElementById("quickAppointmentForm");
+  const successBox = document.getElementById("quickAppointmentSuccess");
+  if (form) {
+    form.style.display = "block";
+    form.reset();
+  }
+  if (successBox) {
+    successBox.style.display = "none";
+  }
+
+  const nameErr = document.getElementById("quickNameError");
+  const phoneErr = document.getElementById("quickPhoneError");
+  if (nameErr) nameErr.textContent = "";
+  if (phoneErr) phoneErr.textContent = "";
+
+  const submitBtn = document.getElementById("btnQuickSubmit");
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    const txt = submitBtn.querySelector(".btn-text");
+    const spin = submitBtn.querySelector(".btn-spinner");
+    if (txt) txt.style.display = "inline";
+    if (spin) spin.style.display = "none";
+  }
+
+  // Handle chair interest context if triggered from a chair card
+  const chairNotesInput = document.getElementById("quickChairNotes");
+  const chairBadge = document.getElementById("quickChairBadge");
+  const chairBadgeName = document.getElementById("quickChairBadgeName");
   if (chairName) {
-    const notesField = document.getElementById("bookingNotes");
-    if (notesField) {
-      notesField.value = `Ik wil deze stoel graag uitproberen tijdens mijn afspraak: ${chairName}.`;
+    if (chairNotesInput) chairNotesInput.value = chairName;
+    if (chairBadge && chairBadgeName) {
+      chairBadgeName.textContent = chairName;
+      chairBadge.style.display = "flex";
     }
+  } else {
+    if (chairNotesInput) chairNotesInput.value = "";
+    if (chairBadge) chairBadge.style.display = "none";
   }
 
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 
-  // Re-render calendar so current month and available days are fresh
-  if (typeof renderCalendar === "function") renderCalendar();
-  if (typeof renderTimeSlots === "function") renderTimeSlots();
-
-  modal.focus();
+  // Auto-focus on Naam field (UX requirement)
+  setTimeout(() => {
+    const nameField = document.getElementById("quickAppointName");
+    if (nameField) nameField.focus();
+  }, 100);
 };
 
 window.closeAppointmentModal = function() {
@@ -1285,13 +1325,130 @@ window.closeAppointmentModal = function() {
   }
   document.body.style.overflow = "";
 
-  // Pause video if playing
-  const vid = document.getElementById("appointmentModalVideo");
-  if (vid) {
-    try {
-      vid.pause();
-    } catch(err) {}
+  if (window._quickCloseTimer) {
+    clearTimeout(window._quickCloseTimer);
+    window._quickCloseTimer = null;
   }
+  if (window._quickCloseCountdown) {
+    clearInterval(window._quickCloseCountdown);
+    window._quickCloseCountdown = null;
+  }
+};
+
+window.handleQuickAppointmentSubmit = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  const nameInput = document.getElementById("quickAppointName");
+  const phoneInput = document.getElementById("quickAppointPhone");
+  const chairNotesInput = document.getElementById("quickChairNotes");
+  const nameErr = document.getElementById("quickNameError");
+  const phoneErr = document.getElementById("quickPhoneError");
+  const submitBtn = document.getElementById("btnQuickSubmit");
+  const form = document.getElementById("quickAppointmentForm");
+  const successBox = document.getElementById("quickAppointmentSuccess");
+
+  if (nameErr) nameErr.textContent = "";
+  if (phoneErr) phoneErr.textContent = "";
+
+  const name = nameInput ? nameInput.value.trim() : "";
+  const phone = phoneInput ? phoneInput.value.trim() : "";
+  const chair = chairNotesInput ? chairNotesInput.value.trim() : "";
+
+  let hasError = false;
+  if (!name) {
+    if (nameErr) nameErr.textContent = "Vul alstublieft uw naam in.";
+    if (nameInput) nameInput.focus();
+    hasError = true;
+  } else if (!phone || phone.replace(/\D/g, "").length < 8) {
+    if (phoneErr) phoneErr.textContent = "Vul alstublieft een geldig telefoonnummer in (minimaal 8 cijfers).";
+    if (phoneInput) phoneInput.focus();
+    hasError = true;
+  }
+
+  if (hasError) return false;
+
+  // Show loading spinner on button
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    const txt = submitBtn.querySelector(".btn-text");
+    const spin = submitBtn.querySelector(".btn-spinner");
+    if (txt) txt.style.display = "none";
+    if (spin) spin.style.display = "inline-flex";
+  }
+
+  const payload = {
+    type: "quick_appointment_call_me",
+    appointmentType: "showroom",
+    name: name,
+    phone: phone,
+    email: "belmij@staopstoelen.nl",
+    notes: chair 
+      ? `Snelafspraak via overlay: Klant wil gebeld worden door Geertjan voor proefzitten. Gekozen stoel: ${chair}` 
+      : "Snelafspraak via overlay: Klant wil gebeld worden door Geertjan om een proefzit-afspraak in te plannen.",
+    source: "Afspraak-Overlay Snelformulier (Bel mij)",
+    pageUrl: window.location.href,
+    timestamp: new Date().toISOString()
+  };
+
+  // 1. Post to Webhook (Google Apps Script / Email / Calendar notification)
+  if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
+    fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(payload)
+    })
+    .then(res => console.log("Quick appointment webhook response:", res))
+    .catch(err => console.warn("Quick appointment webhook error:", err));
+  }
+
+  // 2. Analytics & Conversion Tracking
+  try {
+    if (typeof logCustomVisitEvent === "function") {
+      logCustomVisitEvent('booking_conversion', { type: 'quick_appointment', name: name, phone: phone, chair: chair });
+    }
+    if (typeof trackGoogleAdsConversion === "function") {
+      trackGoogleAdsConversion('appointment', { name: name, phone: phone });
+    }
+    if (typeof gtag === "function") {
+      gtag('event', 'generate_lead', {
+        event_category: 'Afspraak',
+        event_label: 'Snelafspraak Bel Mij Geertjan',
+        value: 1.0,
+        currency: 'EUR'
+      });
+    }
+  } catch(err) {
+    console.warn("Analytics error:", err);
+  }
+
+  // 3. Show Instant Success View Inside Modal
+  if (form) form.style.display = "none";
+  if (successBox) {
+    const successNameEl = document.getElementById("quickSuccessName");
+    if (successNameEl) successNameEl.textContent = name;
+    successBox.style.display = "block";
+
+    // Auto-close countdown (4 seconds)
+    let secondsLeft = 4;
+    const secEl = document.getElementById("quickAutoCloseSeconds");
+    if (secEl) secEl.textContent = secondsLeft;
+
+    if (window._quickCloseCountdown) clearInterval(window._quickCloseCountdown);
+    window._quickCloseCountdown = setInterval(() => {
+      secondsLeft -= 1;
+      if (secEl) secEl.textContent = Math.max(0, secondsLeft);
+      if (secondsLeft <= 0) {
+        clearInterval(window._quickCloseCountdown);
+      }
+    }, 1000);
+
+    if (window._quickCloseTimer) clearTimeout(window._quickCloseTimer);
+    window._quickCloseTimer = setTimeout(() => {
+      closeAppointmentModal();
+    }, 4200);
+  }
+
+  return false;
 };
 
 function initAppointmentModal() {
