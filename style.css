@@ -764,12 +764,12 @@ section[id], section {
   align-items: center !important;
   justify-content: center !important;
   gap: 10px !important;
-  padding: 13px 24px !important;
+  padding: 13px 26px !important;
   font-weight: 700 !important;
   font-size: 1.02rem !important;
   background: var(--color-forest) !important;
   color: #ffffff !important;
-  border-radius: var(--radius-sm) !important;
+  border-radius: var(--radius-full) !important;
   box-shadow: 0 6px 18px rgba(75, 143, 36, 0.32) !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
   text-decoration: none !important;
@@ -783,8 +783,8 @@ section[id], section {
 
 .hero-btn-badge {
   background: rgba(255, 255, 255, 0.24);
-  padding: 3px 8px;
-  border-radius: 999px;
+  padding: 4px 10px;
+  border-radius: 9999px;
   font-size: 0.80rem;
   font-weight: 800;
   letter-spacing: 0.2px;
@@ -794,10 +794,10 @@ section[id], section {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 13px 22px !important;
+  padding: 13px 26px !important;
   font-weight: 700 !important;
   font-size: 1.02rem !important;
-  border-radius: var(--radius-sm) !important;
+  border-radius: var(--radius-full) !important;
   transition: transform 0.2s ease, background 0.2s ease !important;
   text-decoration: none !important;
 }
