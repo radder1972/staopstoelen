@@ -2252,8 +2252,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4" 
-            poster="assets/video/video_poster_scene2.jpg" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=20261028_clean" 
+            poster="assets/video/video_poster_scene2.jpg?v=20261028_clean" 
             controls 
             playsinline 
             preload="auto"
@@ -2307,8 +2307,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=20261026_10";
-      player.poster = "assets/video/revisie_poster.jpg?v=20261026_10";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=20261028_clean";
+      player.poster = "assets/video/revisie_poster.jpg?v=20261028_clean";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
