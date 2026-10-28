@@ -1248,8 +1248,287 @@ window.prefillBooking = function(chairName) {
 
 /* ==========================================================================
    SENIOR-FRIENDLY AFSPRAAK-OVERLAY LOGIC (GEERTJAN PROEFZIT SNELFORMULIER)
+   MET 2 KEUZES: 1) BEL MIJ TERUG OF 2) ZELF TIJD KIEZEN IN DE AGENDA
    ========================================================================== */
-window.openAppointmentModal = function(e, chairName) {
+
+window.getBasePath = function() {
+  return window.location.pathname.includes('/stoelen/') ? '../' : '';
+};
+
+window.getAppointmentModalHtml = function() {
+  const base = window.getBasePath();
+  return `
+  <div class="appointment-modal-overlay" id="appointmentModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="appointmentModalTitle">
+    <div class="appointment-quick-card">
+      <button type="button" class="appointment-modal-close" onclick="closeAppointmentModal()" aria-label="Sluit afspraakvenster" title="Sluit venster">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <!-- Kop & Vertrouwen: Profielfoto Geertjan + Titel & Showroom Info -->
+      <div class="appointment-quick-header">
+        <div class="appointment-quick-avatar-wrap">
+          <img src="${base}assets/flyer/geert_pasfoto.png" alt="Geertjan Klein Haneveld - Bewegingstechnoloog" class="appointment-quick-avatar" width="64" height="64" loading="eager">
+          <span class="appointment-quick-badge" title="Gecertificeerd Bewegingstechnoloog">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+        </div>
+        <div class="appointment-quick-title-group">
+          <h3 id="appointmentModalTitle" class="appointment-quick-title">Plan uw proefzit-afspraak</h3>
+          <p class="appointment-quick-subtitle">Showroom Dordrecht &bull; Persoonlijk advies door Geertjan</p>
+        </div>
+      </div>
+
+      <!-- Keuze Intro & 2 Knoppen: Linksaf (Bel mij) of Rechtsaf (Agenda) -->
+      <div class="appointment-choice-intro">Hoe wilt u uw afspraak inplannen?</div>
+      <div class="appointment-choice-selector" role="tablist" aria-label="Kies afspraakmethode">
+        <!-- Keuze 1: Bel mij terug (Linksaf) -->
+        <button type="button" class="appointment-choice-btn active" id="btnChoiceCallback" role="tab" aria-selected="true" onclick="switchAppointmentMode('callback')">
+          <div class="choice-btn-icon-wrap">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <div class="choice-btn-text">
+            <strong class="choice-btn-title">Bel mij terug</strong>
+            <span class="choice-btn-sub">Geertjan stemt de tijd af</span>
+          </div>
+        </button>
+
+        <!-- Keuze 2: Zelf tijd kiezen in agenda (Rechtsaf) -->
+        <button type="button" class="appointment-choice-btn" id="btnChoiceAgenda" role="tab" aria-selected="false" onclick="switchAppointmentMode('agenda')">
+          <div class="choice-btn-icon-wrap">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="choice-btn-text">
+            <strong class="choice-btn-title">Zelf tijd kiezen</strong>
+            <span class="choice-btn-sub">Direct in de agenda</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- PANEEL 1: BEL MIJ TERUG (Standaard actief) -->
+      <div id="appointmentPanelCallback" class="appointment-panel active">
+        <div class="appointment-quick-location-tag">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="location-tag-icon">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Merwedestraat 239, Dordrecht &bull; Gratis voor de deur parkeren</span>
+        </div>
+
+        <form id="quickAppointmentForm" class="appointment-quick-form" onsubmit="return handleQuickAppointmentSubmit(event)" novalidate>
+          <input type="hidden" id="quickChairNotes" name="chair_notes" value="">
+
+          <div id="quickChairBadge" class="appointment-chair-tag" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Gekozen stoel: <strong id="quickChairBadgeName"></strong></span>
+          </div>
+
+          <div class="appointment-field-group">
+            <label for="quickAppointName" class="appointment-field-label">
+              <span>Uw naam <span class="appointment-field-required">*</span></span>
+            </label>
+            <input 
+              type="text" 
+              id="quickAppointName" 
+              name="name" 
+              required 
+              placeholder="Bijv. Mevrouw De Vries of Dhr. Jansen" 
+              autocomplete="name" 
+              class="appointment-field-input"
+            >
+            <span class="appointment-field-error" id="quickNameError"></span>
+          </div>
+
+          <div class="appointment-field-group">
+            <label for="quickAppointPhone" class="appointment-field-label">
+              <span>Uw telefoonnummer <span class="appointment-field-required">*</span></span>
+            </label>
+            <input 
+              type="tel" 
+              id="quickAppointPhone" 
+              name="phone" 
+              required 
+              placeholder="Bijv. 06 - 1234 5678" 
+              autocomplete="tel" 
+              class="appointment-field-input"
+            >
+            <span class="appointment-field-error" id="quickPhoneError"></span>
+          </div>
+
+          <button type="submit" id="btnQuickSubmit" class="btn appointment-quick-submit-btn">
+            <span class="btn-text">Bel mij voor een afspraak</span>
+            <span class="btn-spinner" style="display: none;">
+              <svg class="spinner-icon" viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"></circle></svg>
+              Even geduld...
+            </span>
+          </button>
+
+          <div class="appointment-trust-microcopy">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Uw gegevens zijn veilig en worden alleen gebruikt voor deze afspraak.</span>
+          </div>
+
+          <div class="appointment-quick-alternative">
+            <span>Liever nu direct contact met Geertjan?</span>
+            <a href="tel:0786314858" class="appointment-alt-phone">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <span>Bel <strong>078 &ndash; 631 4858</strong></span>
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <!-- PANEEL 2: ZELF INPLANNEN IN DE AGENDA -->
+      <div id="appointmentPanelAgenda" class="appointment-panel" style="display: none;">
+        <div class="appointment-agenda-preview-card">
+          <div class="agenda-preview-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Kies direct uw eigen tijdslot</span>
+          </div>
+
+          <h4 class="agenda-preview-title">Zelf een moment kiezen in de showroom-agenda</h4>
+          <p class="agenda-preview-desc">
+            Kies direct een datum en tijdstip dat u het beste uitkomt. Geertjan reserveert de showroom voor u en zorgt dat de koffie klaarstaat.
+          </p>
+
+          <ul class="agenda-preview-features">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Direct inzicht in alle beschikbare dagen &amp; tijden</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Showroom Dordrecht: Merwedestraat 239 (gratis parkeren)</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Rustig 30+ modellen proefzitten met deskundig zitadvies</span>
+            </li>
+          </ul>
+
+          <a href="${base}afspraak.html#bookingCard" class="btn btn-primary appointment-agenda-cta-btn" onclick="goToOnlineAgenda(event)">
+            <span>Zelf datum &amp; tijd kiezen in agenda</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+
+          <div style="margin-top: 14px; text-align: center;">
+            <button type="button" onclick="switchAppointmentMode('callback')" style="background: none; border: none; color: var(--color-forest, #256616); font-weight: 600; font-size: 0.9rem; cursor: pointer; text-decoration: underline;">
+              &larr; Of laat Geertjan u terugbellen
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instant Bevestiging Na Verzending -->
+      <div id="quickAppointmentSuccess" class="appointment-quick-success" style="display: none;">
+        <div class="appointment-success-icon-wrap">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#256616" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="appointment-success-title">Bedankt, <span id="quickSuccessName"></span>!</h3>
+        <p class="appointment-success-desc">
+          Geertjan belt u zo snel mogelijk om de proefzit-afspraak af te stemmen.
+        </p>
+        <div class="appointment-success-note">
+          <span id="quickAutoCloseNote">Dit venster sluit automatisch over <span id="quickAutoCloseSeconds">4</span> seconden...</span>
+        </div>
+        <div style="margin-top: 18px; text-align: center;">
+          <button type="button" class="btn btn-secondary appointment-success-close-btn" onclick="closeAppointmentModal()">
+            Sluit venster
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+};
+
+window.ensureAppointmentModalExists = function() {
+  let modal = document.getElementById("appointmentModal");
+  if (!modal) {
+    const div = document.createElement("div");
+    div.innerHTML = window.getAppointmentModalHtml();
+    modal = div.firstElementChild;
+    document.body.appendChild(modal);
+
+    modal.addEventListener("click", function(e) {
+      if (e.target === modal) {
+        window.closeAppointmentModal();
+      }
+    });
+  }
+  return modal;
+};
+
+window.switchAppointmentMode = function(mode) {
+  const btnCallback = document.getElementById("btnChoiceCallback");
+  const btnAgenda = document.getElementById("btnChoiceAgenda");
+  const panelCallback = document.getElementById("appointmentPanelCallback");
+  const panelAgenda = document.getElementById("appointmentPanelAgenda");
+
+  if (mode === "agenda") {
+    if (btnCallback) {
+      btnCallback.classList.remove("active");
+      btnCallback.setAttribute("aria-selected", "false");
+    }
+    if (btnAgenda) {
+      btnAgenda.classList.add("active");
+      btnAgenda.setAttribute("aria-selected", "true");
+    }
+    if (panelCallback) panelCallback.style.display = "none";
+    if (panelAgenda) panelAgenda.style.display = "block";
+  } else {
+    if (btnCallback) {
+      btnCallback.classList.add("active");
+      btnCallback.setAttribute("aria-selected", "true");
+    }
+    if (btnAgenda) {
+      btnAgenda.classList.remove("active");
+      btnAgenda.setAttribute("aria-selected", "false");
+    }
+    if (panelCallback) panelCallback.style.display = "block";
+    if (panelAgenda) panelAgenda.style.display = "none";
+
+    const nameField = document.getElementById("quickAppointName");
+    if (nameField && document.getElementById("appointmentModal")?.classList.contains("active")) {
+      setTimeout(() => nameField.focus(), 80);
+    }
+  }
+};
+
+window.goToOnlineAgenda = function(e) {
+  const isAfspraakPage = window.location.pathname.endsWith("afspraak.html") || 
+                         window.location.pathname.endsWith("/afspraak") || 
+                         window.location.pathname === "/afspraak";
+  if (isAfspraakPage) {
+    if (e && e.preventDefault) e.preventDefault();
+    window.closeAppointmentModal();
+    const target = document.getElementById("bookingCard") || document.getElementById("bookingInteractiveArea");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    if (e && e.preventDefault) {
+      window.location.href = "afspraak.html#bookingCard";
+    }
+  }
+};
+
+window.openAppointmentModal = function(e, chairName, mode) {
   if (e && e.preventDefault) e.preventDefault();
 
   // Close mobile nav drawer if open
@@ -1262,11 +1541,11 @@ window.openAppointmentModal = function(e, chairName) {
     navToggle.classList.remove("active");
   }
 
-  const modal = document.getElementById("appointmentModal");
-  if (!modal) {
-    window.location.href = "afspraak.html";
-    return;
-  }
+  const modal = window.ensureAppointmentModalExists();
+  if (!modal) return;
+
+  // Set mode: 'callback' or 'agenda'
+  window.switchAppointmentMode(mode || "callback");
 
   // Reset form and errors
   const form = document.getElementById("quickAppointmentForm");
@@ -1311,11 +1590,12 @@ window.openAppointmentModal = function(e, chairName) {
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 
-  // Auto-focus on Naam field (UX requirement)
-  setTimeout(() => {
-    const nameField = document.getElementById("quickAppointName");
-    if (nameField) nameField.focus();
-  }, 100);
+  if ((mode || "callback") === "callback") {
+    setTimeout(() => {
+      const nameField = document.getElementById("quickAppointName");
+      if (nameField) nameField.focus();
+    }, 100);
+  }
 };
 
 window.closeAppointmentModal = function() {
@@ -1334,6 +1614,40 @@ window.closeAppointmentModal = function() {
     window._quickCloseCountdown = null;
   }
 };
+
+// Global Delegated Click & Keyboard Listeners for Appointment Modal
+document.addEventListener("click", function(e) {
+  const trigger = e.target.closest(
+    '.btn-nav-appointment, #btnNavAppointment, .hero-btn-appointment, #btnHeroAppointment, #linkAfspraak, .floating-chat, a[onclick*="openAppointmentModal"], [data-appointment-modal]'
+  );
+  if (trigger) {
+    if (trigger.classList.contains("btn-nav-appointment") || 
+        trigger.id === "btnNavAppointment" || 
+        trigger.id === "btnHeroAppointment" || 
+        trigger.classList.contains("hero-btn-appointment") ||
+        trigger.id === "linkAfspraak" ||
+        trigger.classList.contains("floating-chat") ||
+        (trigger.getAttribute("onclick") && trigger.getAttribute("onclick").includes("openAppointmentModal")) ||
+        trigger.hasAttribute("data-appointment-modal")) {
+      e.preventDefault();
+      window.openAppointmentModal(e);
+    }
+  }
+
+  const modal = document.getElementById("appointmentModal");
+  if (modal && e.target === modal) {
+    window.closeAppointmentModal();
+  }
+});
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    const modal = document.getElementById("appointmentModal");
+    if (modal && modal.classList.contains("active")) {
+      window.closeAppointmentModal();
+    }
+  }
+});
 
 window.handleQuickAppointmentSubmit = function(e) {
   if (e && e.preventDefault) e.preventDefault();
