@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-forest: #4b8f24;
@@ -814,6 +814,49 @@
       border-bottom: 2px solid #0f172a !important;
     }
 
+    /* Handschrift Geertjan Modus */
+    .sheet.handwriting-mode .form-input,
+    .sheet.handwriting-mode .spec-input,
+    .sheet.handwriting-mode .write-input-desc,
+    .sheet.handwriting-mode .meta-inline-input,
+    .sheet.handwriting-mode .sign-line-input,
+    .sheet.handwriting-mode .total-price-cell input {
+      font-family: 'Caveat', 'Kalam', cursive !important;
+      font-weight: 600 !important;
+      color: #1a3a60 !important; /* Diep authentiek balpenblauw van Geertjan */
+      letter-spacing: 0.3px;
+    }
+
+    .sheet.handwriting-mode .form-input {
+      font-size: 17px !important;
+      padding-bottom: 0 !important;
+      line-height: 1.1;
+    }
+
+    .sheet.handwriting-mode .spec-input {
+      font-size: 17.5px !important;
+      padding-bottom: 0 !important;
+      line-height: 1.1;
+    }
+
+    .sheet.handwriting-mode .write-input-desc {
+      font-size: 18px !important;
+      padding-bottom: 0 !important;
+      line-height: 1.1;
+    }
+
+    .sheet.handwriting-mode .total-price-cell input {
+      font-size: 22px !important;
+      font-weight: 700 !important;
+      color: #1a3a60 !important;
+      line-height: 1.1;
+    }
+
+    .sheet.handwriting-mode .sign-line-input {
+      font-size: 17px !important;
+      line-height: 1.1;
+    }
+
     /* Checkboxes & Radios */
     .checkbox-row {
       display: flex;
@@ -994,7 +1037,7 @@
     }
 
     .sign-detail-item.fixed-date {
-      width: 120px;
+      width: 135px;
       flex: none;
     }
 
@@ -1291,7 +1334,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Orderbon</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.161</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.162</span>
           </div>
         </div>
 
@@ -1315,6 +1358,10 @@
           <span>A4 enkelzijdig • Direct printbaar met pen of digitaal in te vullen met automatische berekening</span>
         </div>
         <div class="toolbar-actions">
+          <button type="button" class="btn-action" id="btnToggleFont" onclick="toggleHandwritingFont()" title="Wissel tussen Handschrift Geertjan en Drukletter" style="background: rgba(75, 143, 36, 0.08); font-weight: 600;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
+            <span id="btnToggleFontText">✍️ Handschrift Geert</span>
+          </button>
           <button type="button" class="btn-action" id="btnFillDemo">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             Voorbeeld Inladen
@@ -1338,7 +1385,7 @@
   </header>
 
   <!-- A4 Sheet Canvas -->
-  <div class="sheet brand-mode-schipper" id="sheetCanvas">
+  <div class="sheet brand-mode-schipper handwriting-mode" id="sheetCanvas">
 
     <!-- 1. Header -->
     <header class="sheet-header">
@@ -1822,6 +1869,17 @@
         input.addEventListener('change', saveToStorage);
       });
     });
+
+    function toggleHandwritingFont() {
+      const sheet = document.getElementById('sheetCanvas');
+      const btn = document.getElementById('btnToggleFont');
+      const txt = document.getElementById('btnToggleFontText');
+      if (!sheet) return;
+      sheet.classList.toggle('handwriting-mode');
+      const isHand = sheet.classList.contains('handwriting-mode');
+      if (txt) txt.textContent = isHand ? '✍️ Handschrift Geert' : '🔤 Drukletters';
+      if (btn) btn.style.background = isHand ? 'rgba(75, 143, 36, 0.08)' : '';
+    }
 
     // Knoppen functionaliteit
     document.getElementById('btnClearForm').addEventListener('click', () => {
