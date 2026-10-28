@@ -641,6 +641,28 @@ section[id], section {
   width: 100%;
 }
 
+/* Zorg dat het swoosh vlak aan de rechterkant direct doorloopt tot de rand van de container (net als de bovenlijnen) */
+@media (min-width: 769px) {
+  .hero-image-wrapper {
+    margin-right: -24px !important;
+    width: calc(100% + 24px) !important;
+    max-width: calc(100% + 24px) !important;
+    align-items: flex-end !important;
+  }
+  .hero-video-swoosh-badge {
+    margin-right: 0 !important;
+  }
+  .hero-expert-quote-bubble,
+  .hero-zitcheck-action-card,
+  .hero-speech-bubble-separated,
+  .hero-cta-separated {
+    margin-right: 24px !important;
+  }
+  .hero-quote-tail {
+    right: 20px !important;
+  }
+}
+
 /* 1. DE EXACTE VIDEO-SWOOSH HOEK-BADGE */
 .hero-video-swoosh-badge {
   position: relative;
@@ -1038,14 +1060,6 @@ section[id], section {
 .stat-item p {
   font-size: 0.875rem;
   color: var(--color-gray);
-}
-
-/* Hero Image Wrapper */
-.hero-image-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 /* Header container for quality stamp in the white space above slideshow */
