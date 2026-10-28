@@ -7704,13 +7704,11 @@ input[type="checkbox"] {
   flex-shrink: 0;
 }
 
-/* Alternative: Direct Contact met Geertjan (Bellen + WhatsApp) */
-.appointment-quick-alternative {
-  margin-top: 16px;
-  padding: 13px 15px;
-  background: #f7faf5;
-  border: 1.5px solid #e1ede0;
-  border-radius: 14px;
+/* Direct Contact met Geertjan: Rustig, Groot & Duidelijk (Zonder Knop-stijl) */
+.appointment-direct-contact-wrap {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7718,73 +7716,97 @@ input[type="checkbox"] {
   text-align: center;
 }
 
-.appointment-alt-heading {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: #334155;
-  letter-spacing: -0.2px;
+.appointment-direct-label {
+  font-size: 0.96rem;
+  color: #475569;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.1px;
 }
 
-.appointment-alt-buttons {
+.appointment-direct-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 16px;
   width: 100%;
 }
 
-.appointment-alt-btn {
-  flex: 1;
+.appointment-direct-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  text-decoration: none !important;
-  transition: all 0.2s ease;
+  gap: 8px;
+  font-size: 1.08rem;
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
   white-space: nowrap;
 }
 
-.appointment-alt-btn svg {
+.appointment-direct-link svg {
   flex-shrink: 0;
+  transition: transform 0.15s ease;
 }
 
-.appointment-alt-phone {
-  background: #ffffff;
-  color: var(--color-forest, #256616) !important;
-  border: 1.5px solid var(--color-forest, #256616);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+.appointment-direct-link:hover svg {
+  transform: scale(1.12);
 }
 
-.appointment-alt-phone:hover {
-  background: #f0f7ee;
-  transform: translateY(-1px);
+.appointment-link-phone {
+  color: var(--color-forest, #256616);
 }
 
-.appointment-alt-whatsapp {
-  background: #25D366;
-  color: #ffffff !important;
-  border: 1.5px solid #25D366;
-  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.28);
+.appointment-link-phone strong {
+  font-weight: 800;
+  color: var(--color-forest-dark, #1b4d10);
+  border-bottom: 1.5px solid rgba(37, 102, 22, 0.35);
 }
 
-.appointment-alt-whatsapp:hover {
-  background: #20bd5a;
-  border-color: #20bd5a;
-  color: #ffffff !important;
-  transform: translateY(-1px);
+.appointment-link-phone:hover {
+  color: var(--color-forest-dark, #1b4d10);
 }
 
-@media (max-width: 420px) {
-  .appointment-alt-buttons {
+.appointment-link-phone:hover strong {
+  border-bottom-color: var(--color-forest-dark, #1b4d10);
+}
+
+.appointment-link-whatsapp {
+  color: #128c7e;
+}
+
+.appointment-link-whatsapp svg {
+  color: #25D366;
+}
+
+.appointment-link-whatsapp strong {
+  font-weight: 800;
+  color: #075e54;
+  border-bottom: 1.5px solid rgba(37, 211, 102, 0.45);
+}
+
+.appointment-link-whatsapp:hover {
+  color: #075e54;
+}
+
+.appointment-link-whatsapp:hover strong {
+  border-bottom-color: #075e54;
+}
+
+.appointment-direct-divider {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+  .appointment-direct-links {
     flex-direction: column;
-    gap: 8px;
+    gap: 9px;
   }
-  .appointment-alt-btn {
-    width: 100%;
+  .appointment-direct-divider {
+    display: none;
+  }
+  .appointment-direct-link {
+    font-size: 1.02rem;
   }
 }
 
