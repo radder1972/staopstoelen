@@ -16,7 +16,7 @@
       "image": "assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_ravi_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg",
         "assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg",
@@ -103,7 +103,7 @@
       "image": "assets/stoelen/Sta-op-stoel-ALFRED-1-scaled.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-ALFRED-2-scaled.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_alfred_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-ALFRED-1-scaled.jpg",
         "assets/stoelen/Sta-op-stoel-ALFRED-2-scaled.jpg",
@@ -144,7 +144,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Refitto-EA-326-724x1024.png",
       "imageUp": "assets/stoelen/Sta-op-stoel-Refitto-EA-326-e1757503359302.png",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_refitto_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Refitto-EA-326-724x1024.png",
         "assets/stoelen/Sta-op-stoel-Refitto-EA-326-e1757503359302.png",
@@ -190,7 +190,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Industro-CV-120-724x1024.png",
       "imageUp": "assets/stoelen/Sta-op-stoel-Industro-CV-120-e1757503299967.png",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_industro_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Industro-CV-120-724x1024.png",
         "assets/stoelen/Sta-op-stoel-Industro-CV-120-e1757503299967.png",
@@ -238,7 +238,7 @@
       "image": "assets/stoelen/Sta-op-stoel-DORDRECHT-1.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-DORDRECHT-2.jpg",
       "imageLie": null,
-      "ambientImage": "assets/stoelen/Sta-op-stoel-DORDRECHT-interior.png",
+      "ambientImage": "assets/stoelen/chair_dordrecht_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-DORDRECHT-1.jpg",
         "assets/stoelen/Sta-op-stoel-DORDRECHT-2.jpg",
@@ -279,7 +279,7 @@
       "image": "assets/stoelen/Staop-stoel-ROTTERDAM-1-min-scaled.jpg",
       "imageUp": "assets/stoelen/Staop-stoel-ROTTERDAM-3-min-2-scaled.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_rotterdam_cozy.png",
       "gallery": [
         "assets/stoelen/Staop-stoel-ROTTERDAM-1-min-scaled.jpg",
         "assets/stoelen/Staop-stoel-ROTTERDAM-3-min-2-scaled.jpg",
@@ -360,7 +360,7 @@
       "image": "assets/stoelen/Sta-op-stoel-HK-Ridderkerk-1-scaled.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-HK-Ridderkerk-2-scaled.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_ridderkerk_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-HK-Ridderkerk-1-scaled.jpg",
         "assets/stoelen/Sta-op-stoel-HK-Ridderkerk-2-scaled.jpg",
@@ -405,7 +405,7 @@
       "image": "assets/stoelen/Sta-op-stoel-BARENDRECHT-1-min-scaled-e1760613493995.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-BARENDRECHT-2-min-2-scaled.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_barendrecht_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-BARENDRECHT-1-min-scaled-e1760613493995.jpg",
         "assets/stoelen/Sta-op-stoel-BARENDRECHT-2-min-2-scaled.jpg",
@@ -446,7 +446,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Mecam-DEGAS-1.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Mecam-DEGAS-2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_degas_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Mecam-DEGAS-1.jpg",
         "assets/stoelen/Sta-op-stoel-Mecam-DEGAS-2.jpg",
@@ -493,7 +493,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Doge-Bellino-3.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Doge-Bellino-1.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_bellino_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Doge-Bellino-3.jpg",
         "assets/stoelen/Sta-op-stoel-Doge-Bellino-1.jpg"
@@ -535,7 +535,7 @@
       "image": "assets/stoelen/sta-op-stoel-Doge-Modulair-4.jpg",
       "imageUp": "assets/stoelen/sta-op-stoel-Doge-Modulair-1.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_doge_modulair_cozy.png",
       "gallery": [
         "assets/stoelen/sta-op-stoel-Doge-Modulair-4.jpg",
         "assets/stoelen/sta-op-stoel-Doge-Modulair-1.jpg",
@@ -661,7 +661,7 @@
       "image": "assets/Sta-op_stoel_Refitto_draaibaar_1.jpg",
       "imageUp": "assets/Sta-op_stoel_Refitto_draaibaar_2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_refitto_cozy.png",
       "gallery": null,
       "features": [
         "Modern design met stervoet",
@@ -698,7 +698,7 @@
       "image": "assets/stoelen/Sta-op-stoel-DFM-Bentley-open-1-Copy.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-DFM-Bentley-open-2-Copy.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_bentley_open_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-DFM-Bentley-open-1-Copy.jpg",
         "assets/stoelen/Sta-op-stoel-DFM-Bentley-open-2-Copy.jpg",
@@ -740,7 +740,7 @@
       "image": "assets/stoelen/Senioren-sta-op-stoel-HK-Dordt-1.jpg",
       "imageUp": null,
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_hk_dordt_cozy.png",
       "gallery": [
         "assets/stoelen/Senioren-sta-op-stoel-HK-Dordt-1.jpg",
         "assets/stoelen/Senioren-sta-op-stoel-HK-Dordt-2.jpg",
@@ -862,7 +862,7 @@
       "image": "assets/stoelen/Sta-op-stoel-DFM-Bentley-dicht-1-Copy.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-DFM-Bentley-dicht-2-Copy.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_bentley_dicht_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-DFM-Bentley-dicht-1-Copy.jpg",
         "assets/stoelen/Sta-op-stoel-DFM-Bentley-dicht-2-Copy.jpg",
@@ -904,7 +904,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-III-5.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-III-4.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-III-5.jpg",
         "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-III-2.jpg",
@@ -951,7 +951,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-574-Vario-2.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Fitform-574-Vario-6.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_574_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Fitform-574-Vario-2.jpg",
         "assets/stoelen/Sta-op-stoel-Fitform-574-Vario-6.jpg",
@@ -997,7 +997,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-5.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-1-1.jpg",
       "imageLie": null,
-      "ambientImage": "assets/stoelen/580-neutraal-sfeer-staand-2.jpg",
+      "ambientImage": "assets/stoelen/chair_fitform_580_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-5.jpg",
         "assets/stoelen/Sta-op-stoel-Fitform-580-Elevo-III-1-1.jpg",
@@ -1042,7 +1042,7 @@
       "image": "assets/DEMO_Sta_op_stoel_Fitform_570_Vario_ILP_main.jpeg",
       "imageUp": "assets/Sta-op_stoel_Fitform_570_ILP_rugleuning_2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_cozy.png",
       "gallery": [
         "assets/DEMO_Sta_op_stoel_Fitform_570_Vario_ILP_main.jpeg",
         "assets/Sta-op_stoel_Fitform_570_ILP_rugleuning_2.jpg"
@@ -1084,7 +1084,7 @@
       "image": "assets/stoelen/Sta-op-stoel-draaibaar-Sliedrecht-1.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-draaibaar-Sliedrecht-2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_sliedrecht_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-draaibaar-Sliedrecht-1.jpg",
         "assets/stoelen/Sta-op-stoel-draaibaar-Sliedrecht-2.jpg",
@@ -1205,7 +1205,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Mecam-Athena-1.jpg",
       "imageUp": null,
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_athena_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Mecam-Athena-1.jpg",
         "assets/stoelen/Sta-op-stoel-Mecam-Athena-2-.jpg",
@@ -1246,7 +1246,7 @@
       "image": "assets/stoelen/Sta-op-stoel-ZWIJNDRECHT-1-e1772115887824.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-ZWIJNDRECHT-2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_zwijndrecht_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-ZWIJNDRECHT-1-e1772115887824.jpg",
         "assets/stoelen/Sta-op-stoel-ZWIJNDRECHT-2.jpg",
@@ -1287,7 +1287,7 @@
       "image": "assets/stoelen/Fitform-570-Vario-sta-op-stoel-GERECONDITIONEERD-1.jpg",
       "imageUp": "assets/stoelen/Fitform-570-Vario-sta-op-stoel-GERECONDITIONEERD-2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
       "gallery": [
         "assets/stoelen/Fitform-570-Vario-sta-op-stoel-GERECONDITIONEERD-1.jpg",
         "assets/stoelen/Fitform-570-Vario-sta-op-stoel-GERECONDITIONEERD-2.jpg"
@@ -1327,7 +1327,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-570-XL-extra-breed-scaled.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Winkel-1-scaled-e1775121347680.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Fitform-570-XL-extra-breed-scaled.jpg",
         "assets/stoelen/Sta-op-stoel-Winkel-1-scaled-e1775121347680.jpg"
@@ -1369,7 +1369,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-XL-zand-1-Copy.jpg",
       "imageUp": "assets/Sta-op_stoel_Fitform_570_ILP_rugleuning_2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_cozy.png",
       "gallery": [
         "assets/Occasion_Sta-op_stoel_Fitform_570_Vario_Zand_1.jpg",
         "assets/Occasion_Sta-op_stoel_Fitform_570_Vario_Zand_2.jpg",
@@ -1414,7 +1414,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-570-ILP-rugleuning-scaled.jpg",
       "imageUp": "assets/Sta-op_stoel_Fitform_570_ILP_rugleuning_2.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_cozy.png",
       "gallery": [
         "assets/Occasion_Sta-op_stoel_Fitform_570_ILP_rugleuning_1.jpg",
         "assets/Occasion_Sta-op_stoel_Fitform_570_ILP_rugleuning_2.jpg",
@@ -1460,7 +1460,7 @@
       "image": "assets/Sta-op_stoel_Fitform_571_MINI_Kyphoserug_1.jpg",
       "imageUp": "assets/Sta-op_stoel_Fitform_571_MINI_Kyphoserug_5.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
       "gallery": [
         "assets/Sta-op_stoel_Fitform_571_MINI_Kyphoserug_1.jpg",
         "assets/Sta-op_stoel_Fitform_571_MINI_Kyphoserug_5.jpg",
@@ -1505,7 +1505,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-RECO-0.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-RECO-7.jpg",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-RECO-0.jpg",
         "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-RECO-7.jpg",
@@ -1555,7 +1555,7 @@
       "image": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-XL-zand-zitten.png",
       "imageUp": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-XL-zand-staop.png",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-XL-zand-zitten.png",
         "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-XL-zand-staop.png",
@@ -1598,7 +1598,7 @@
       "image": "assets/RECO_Sta-op_stoel_Fitform_570_Smal_1.jpg",
       "imageUp": "assets/stoelen/Sta-op-stoel-Fitform-570-Vario-Smal-RECO-staop.png",
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
       "gallery": [
         "assets/RECO_Sta-op_stoel_Fitform_570_Smal_1.jpg",
         "assets/RECO_Sta-op_stoel_Fitform_570_Smal_2.jpg",
@@ -1641,7 +1641,7 @@
       "image": "assets/Sta-op_stoel_Fitform_571_MINI_kuiprug_1.jpg",
       "imageUp": null,
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
       "gallery": [
         "assets/Sta-op_stoel_Fitform_571_MINI_kuiprug_1.jpg",
         "assets/Sta-op_stoel_Fitform_571_MINI_kuiprug_2.jpg",
@@ -1687,7 +1687,7 @@
       "image": "assets/stoelen/Sta-op-stoel-RECO-Fitform-570-Vario-smal-Board-1-Copy.jpg",
       "imageUp": null,
       "imageLie": null,
-      "ambientImage": null,
+      "ambientImage": "assets/stoelen/chair_fitform_570_reco_cozy.png",
       "gallery": [
         "assets/stoelen/Sta-op-stoel-RECO-Fitform-570-Vario-smal-Board-1-Copy.jpg"
       ],
