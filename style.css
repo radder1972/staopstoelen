@@ -231,7 +231,7 @@ section[id], section {
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  padding-top: 124px; /* Space for absolute text logo + strapline and Maak een afspraak button */
+  padding-top: 92px; /* Ruime, elegante afstand onder logo en afspraak-knop */
 }
 
 .logo-swoosh {
@@ -4439,6 +4439,10 @@ input[type="checkbox"] {
   /* Brand text logo font size scaling for tablets */
   .nav-text-logo {
     font-size: 1.85rem !important;
+  }
+
+  .navbar-container {
+    padding-top: 80px !important;
   }
 
   /* Fitform Advertentie Tablet: Foto & tekst strak NAAST elkaar in 2 kolommen */
