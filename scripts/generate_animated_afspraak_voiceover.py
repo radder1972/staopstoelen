@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Genereert een geanimeerde, warme en energieke voice-over voor de Afspraak-video
-(stem: Alexander - Warm, Natural Dutch Narrator met verhoogde dynamiek en expressie).
-Zorgt dat GEEN ENKELE zin wordt afgekapt door natuurlijke audio-afsluiting en adempauze.
+Genereert een UITERST DYNAMISCHE, levendige en enthousiaste voice-over voor de Afspraak-video
+(stem: Alexander - Warm, Natural Dutch Narrator met hoge expressie en energie).
+Geen enkele zin wordt afgekapt door automatische duratiemeting en 0.8s adempauze aan het slot.
 """
 
 import os
@@ -38,32 +38,33 @@ AFSPRAAK_SCENES = [
     {
         "num": 2,
         "name": "De Zitmeting door Geertjan",
-        "text": "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig op te meten.",
+        "text": "In onze showroom in Dordrecht neemt bewegingstechnoloog Geertjan uitgebreid de tijd om uw zithoogte, zitdiepte en armleggerhoogte tot op de millimeter nauwkeurig in te meten.",
         "out_file": "assets/audio/afspraak_scene_2.m4a"
     },
     {
         "num": 3,
         "name": "30+ Stoelen Proefzitten",
-        "text": "U probeert rustig meer dan dertig nieuwe én Certified Fitform stoelen uit. Wij stellen de stoel ter plekke op uw lichaam af, zodat u direct het verschil voelt!",
+        "text": "U probeert rustig meer dan dertig nieuwe én Certified Fitform stoelen uit! Wij stellen de stoel ter plekke op uw lichaam af, zodat u direct het verschil voelt!",
         "out_file": "assets/audio/afspraak_scene_3.m4a"
     },
     {
         "num": 4,
-        "name": "Afspraak Plannen & Gratis Parkeren",
-        "text": "U parkeert gratis voor de deur aan de Merwedestraat 239 in Dordrecht. Of kies hieronder direct uw gewenste dag en tijdstip in onze online agenda!",
+        "name": "Afspraak Plannen & Showroom",
+        "text": "U parkeert gratis voor de deur aan de Merwedestraat 239 in Dordrecht! Of kies hieronder direct uw gewenste dag en tijdstip in onze online agenda.",
         "out_file": "assets/audio/afspraak_scene_4.m4a"
     }
 ]
 
 def generate_voice(text: str) -> bytes:
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
+    # Hoge dynamiek: stability lager voor intonatie-variatie, style hoog voor expressie & verkoop-energie
     payload = {
         "text": text,
         "model_id": "eleven_multilingual_v2",
         "voice_settings": {
-            "stability": 0.35,          # Iets losser / dynamischer voor levendige intonatie
-            "similarity_boost": 0.78,   # Heldere stemdefinitie
-            "style": 0.25,              # Levendiger, warmer en expressiever ("geanimeerder")
+            "stability": 0.22,          # Veel expressiever, sprankelend en gevarieerd
+            "similarity_boost": 0.78,   # Stemkarakter behouden
+            "style": 0.52,              # Hoge dynamiek en levendige storytelling
             "use_speaker_boost": True
         }
     }
@@ -90,8 +91,8 @@ def get_audio_duration(file_path: str) -> float:
     return 0.0
 
 def main():
-    print("🎙️ Starten met opnieuw inspreken van de afspraak-video voice-over...")
-    tmp_dir = "/tmp/afspraak_animated"
+    print("🎙️ Starten met genereren van EXTRA DYNAMISCHE voice-overs...")
+    tmp_dir = "/tmp/afspraak_high_dynamic"
     os.makedirs(tmp_dir, exist_ok=True)
     
     measured_durations = {}
@@ -109,10 +110,9 @@ def main():
         raw_dur = get_audio_duration(raw_path)
         print(f"  ✓ ElevenLabs audio ontvangen: {raw_dur:.2f}s")
         
-        # Voeg 200ms delay toe aan het begin en 600ms adempauze aan het einde.
-        # CRUCIAAL: GEEN harde '-t' afkapping, zodat NOOIT een woord wordt afgekapt!
+        # 150ms delay aan begin, 800ms adempauze aan einde, absoluut GEEN harde -t cut
         out_path = s["out_file"]
-        filter_str = "adelay=200|200,apad=pad_dur=0.6"
+        filter_str = "adelay=150|150,apad=pad_dur=0.8"
         
         cmd = [
             FFMPEG, "-y",
