@@ -895,18 +895,19 @@
     .delivery-meta-strip {
       background: #fafbfc;
       border-bottom: 1px solid #e2e8f0;
-      padding: 7px 12px;
+      padding: 8px 14px;
       display: grid;
-      grid-template-columns: 1.25fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 26px;
       align-items: center;
-      gap: 12px;
       font-size: 11px;
     }
 
     .delivery-info-line {
-      line-height: 1.4;
+      line-height: 1.2;
       display: flex;
       align-items: center;
+      white-space: nowrap;
     }
 
     /* Handtekeningen grid */
@@ -1290,7 +1291,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Orderbon</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.160</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.161</span>
           </div>
         </div>
 
@@ -1489,18 +1490,16 @@
         <span style="font-size: 9.5px; opacity: 0.95;">Eigen Bezorg- &amp; Instelservice Dordrecht</span>
       </div>
 
-      <!-- Bovenste strook: Levering & Woonsituatie -->
+      <!-- Bovenste strook: Levering & Woonsituatie (50/50 symmetrisch uitgelijnd met handtekeningen) -->
       <div class="delivery-meta-strip">
         <div class="delivery-info-line">
-          <div><strong>Bezorging:</strong> Inclusief vakkundige levering, plaatsing &amp; ergonomisch instellen aan huis.</div>
+          <span><strong>Bezorging:</strong> Inclusief levering, plaatsing &amp; instellen aan huis.</span>
         </div>
-        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
-          <strong style="color: var(--color-forest-dark); font-size: 11px;">Woning / etage:</strong>
-          <div style="display: flex; gap: 10px; font-size: 11px;">
-            <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
-            <label class="custom-check"><input type="checkbox" id="chkLift"> Lift</label>
-            <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap</label>
-          </div>
+        <div style="display: flex; align-items: center; gap: 12px; white-space: nowrap;">
+          <strong style="color: var(--color-forest-dark);">Woning:</strong>
+          <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
+          <label class="custom-check"><input type="checkbox" id="chkLift"> Lift</label>
+          <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap</label>
         </div>
       </div>
 
