@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.184">
+  <link rel="stylesheet" href="style.css?v=10.185">
   <style>
 
     @media (max-width: 991px) {
@@ -677,7 +677,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.184
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.185
       </div>
     </div>
   </footer>
@@ -928,14 +928,6 @@
       <div id="appointmentPanelAgenda" class="appointment-panel" style="display: none;">
         <div class="appointment-choice-card">
           <div class="agenda-content-top">
-            <div class="agenda-badge-new">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <span>Kies direct uw eigen tijdslot</span>
-            </div>
-
             <h4 class="agenda-title-new">Zelf een moment kiezen in de showroom</h4>
             <p class="agenda-desc-new">
               Kies direct een dag en tijdstip dat u uitkomt. Geertjan reserveert de showroom voor u en zorgt dat de koffie klaarstaat.
@@ -958,16 +950,6 @@
           </div>
 
           <div class="card-content-bottom">
-            <div class="appointment-pre-cta-line">
-              <svg class="pre-cta-icon-green" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <span>Kies direct zelf uw gewenste dag en tijdslot</span>
-            </div>
-
             <a href="afspraak.html#bookingCard" class="btn btn-primary appointment-agenda-cta-btn" onclick="goToOnlineAgenda(event)">
               <span>Zelf datum &amp; tijd kiezen in agenda</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1078,7 +1060,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.184"></script>
+  <script src="app.js?v=10.185"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
