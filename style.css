@@ -7770,6 +7770,7 @@ input[type="checkbox"] {
   margin-bottom: 10px;
 }
 
+.appointment-pre-cta-line,
 .appointment-callback-hint {
   display: flex !important;
   align-items: center !important;
@@ -7784,22 +7785,42 @@ input[type="checkbox"] {
   color: #4b5563;
   line-height: 1.3;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 2px;
+  margin: 14px 0 12px 0 !important;
   white-space: nowrap;
+  font-weight: 500;
+  height: 20px;
+  box-sizing: border-box;
 }
 
+.appointment-pre-cta-line svg,
 .appointment-callback-hint svg {
-  color: #ea580c;
   flex-shrink: 0;
   margin-top: 0;
 }
 
+.pre-cta-icon-orange,
+.appointment-callback-hint svg {
+  color: #ea580c;
+}
+
+.pre-cta-icon-green {
+  color: #256616;
+}
+
 @media (max-width: 480px) {
+  .appointment-pre-cta-line,
   .appointment-callback-hint {
     font-size: 0.77rem;
     gap: 5px;
+    margin: 10px 0 10px 0 !important;
   }
+}
+
+.card-content-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: auto;
 }
 
 /* Agenda Content in Card */

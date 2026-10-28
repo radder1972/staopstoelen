@@ -1374,8 +1374,8 @@ window.getAppointmentModalHtml = function() {
           </div>
 
           <div class="card-content-bottom">
-            <div class="appointment-callback-hint" style="background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="appointment-pre-cta-line">
+              <svg class="pre-cta-icon-orange" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 14 14"></polyline>
               </svg>
@@ -1435,6 +1435,16 @@ window.getAppointmentModalHtml = function() {
           </div>
 
           <div class="card-content-bottom">
+            <div class="appointment-pre-cta-line">
+              <svg class="pre-cta-icon-green" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Kies direct zelf uw gewenste dag en tijdslot</span>
+            </div>
+
             <a href="afspraak.html#bookingCard" class="btn btn-primary appointment-agenda-cta-btn" onclick="goToOnlineAgenda(event)">
               <span>Zelf datum &amp; tijd kiezen in agenda</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
