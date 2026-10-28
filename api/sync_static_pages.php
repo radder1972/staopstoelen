@@ -14,9 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 function get_fitform_actie_info($chair) {
-    if (!$chair || !is_array($chair)) {
-        return null;
-    }
+    // Najaarsactie verlopen / gedeactiveerd
+    return null;
     $condition = strtolower($chair['condition'] ?? '');
     $badge_type = strtolower($chair['badgeType'] ?? '');
     $badge = strtolower($chair['badge'] ?? '');
