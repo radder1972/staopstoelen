@@ -231,7 +231,7 @@ section[id], section {
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  padding-top: 92px; /* Ruime, elegante afstand onder logo en afspraak-knop */
+  padding-top: 104px; /* Ruime, elegante afstand onder logo en afspraak-knop */
 }
 
 .logo-swoosh {
@@ -4442,7 +4442,7 @@ input[type="checkbox"] {
   }
 
   .navbar-container {
-    padding-top: 80px !important;
+    padding-top: 88px !important;
   }
 
   /* Fitform Advertentie Tablet: Foto & tekst strak NAAST elkaar in 2 kolommen */
