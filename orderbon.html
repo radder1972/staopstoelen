@@ -1290,7 +1290,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Orderbon</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.159</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.160</span>
           </div>
         </div>
 
@@ -1365,25 +1365,25 @@
           <div class="form-col">
             <div class="form-row">
               <span class="form-lbl">Naam cliënt:</span>
-              <div class="form-fill"><input type="text" id="klantNaam" class="form-input"></div>
+              <div class="form-fill"><input type="text" id="klantNaam" class="form-input" value="Dhr. van Pelt C.J."></div>
             </div>
             <div class="form-row">
               <span class="form-lbl">Adres:</span>
-              <div class="form-fill"><input type="text" id="klantAdres" class="form-input"></div>
+              <div class="form-fill"><input type="text" id="klantAdres" class="form-input" value="Bootjessteeg 28"></div>
             </div>
             <div class="form-row">
               <span class="form-lbl">Postcode &amp; Plaats:</span>
               <div class="form-fill">
-                <input type="text" id="klantPostcode" class="form-input" style="width: 75px; flex: none;">
+                <input type="text" id="klantPostcode" class="form-input" style="width: 75px; flex: none;" value="3331 HB">
                 <span style="color: var(--color-gray); padding: 0 4px;">-</span>
-                <input type="text" id="klantPlaats" class="form-input">
+                <input type="text" id="klantPlaats" class="form-input" value="Zwijndrecht">
               </div>
             </div>
           </div>
           <div class="form-col">
             <div class="form-row">
               <span class="form-lbl">Telefoonnummer:</span>
-              <div class="form-fill"><input type="text" id="klantTelefoon" class="form-input"></div>
+              <div class="form-fill"><input type="text" id="klantTelefoon" class="form-input" value="06 - 30 35 10 38"></div>
             </div>
             <div class="form-row">
               <span class="form-lbl">E-mailadres:</span>
@@ -1410,11 +1410,11 @@
         <div class="specs-grid" style="margin-bottom: 8px; padding-bottom: 7px; border-bottom: 1.5px solid #e2e8f0; grid-template-columns: 1fr 1fr; gap: 20px;">
           <div class="spec-line">
             <span class="spec-label" style="width: auto; min-width: 95px; flex: 0 0 auto;">Stoel / Model:</span>
-            <input type="text" id="stoelModel" class="spec-input" placeholder="">
+            <input type="text" id="stoelModel" class="spec-input" placeholder="" value="Sta-op / relaxfauteuil RENE">
           </div>
           <div class="spec-line">
             <span class="spec-label" style="width: auto; min-width: 120px; flex: 0 0 auto;">Bekleding &amp; Kleur:</span>
-            <input type="text" id="stoelBekleding" class="spec-input" placeholder="">
+            <input type="text" id="stoelBekleding" class="spec-input" placeholder="" value="Stof Paola 16 caramel">
           </div>
         </div>
 
@@ -1427,19 +1427,19 @@
           <div class="writing-rows-container">
             <div class="writing-row">
               <span class="row-bullet">1.</span>
-              <input type="text" id="row1Desc" class="write-input-desc" placeholder="">
+              <input type="text" id="row1Desc" class="write-input-desc" placeholder="" value="Sta-op / relaxfauteuil RENE">
             </div>
             <div class="writing-row">
               <span class="row-bullet">2.</span>
-              <input type="text" id="row2Desc" class="write-input-desc" placeholder="">
+              <input type="text" id="row2Desc" class="write-input-desc" placeholder="" value="Maat: Medium">
             </div>
             <div class="writing-row">
               <span class="row-bullet">3.</span>
-              <input type="text" id="row3Desc" class="write-input-desc" placeholder="">
+              <input type="text" id="row3Desc" class="write-input-desc" placeholder="" value="Bekleding: stof Paola 16 caramel">
             </div>
             <div class="writing-row">
               <span class="row-bullet">4.</span>
-              <input type="text" id="row4Desc" class="write-input-desc" placeholder="">
+              <input type="text" id="row4Desc" class="write-input-desc" placeholder="" value="Bediening: rechts">
             </div>
             <div class="writing-row">
               <span class="row-bullet">5.</span>
@@ -1474,7 +1474,7 @@
             <span class="total-bar-lbl">Totaalbedrag:</span>
             <div class="total-price-cell">
               <span>€</span>
-              <input type="text" id="totalPrice" onblur="formatPriceOnBlur(this)">
+              <input type="text" id="totalPrice" onblur="formatPriceOnBlur(this)" value="2.500,00">
             </div>
           </div>
         </div>
@@ -1497,7 +1497,7 @@
         <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
           <strong style="color: var(--color-forest-dark); font-size: 11px;">Woning / etage:</strong>
           <div style="display: flex; gap: 10px; font-size: 11px;">
-            <label class="custom-check"><input type="checkbox" id="chkGelijkvloers"> Begane grond</label>
+            <label class="custom-check"><input type="checkbox" id="chkGelijkvloers" checked> Begane grond</label>
             <label class="custom-check"><input type="checkbox" id="chkLift"> Lift</label>
             <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap</label>
           </div>
@@ -1519,11 +1519,11 @@
           <div class="sign-details">
             <div class="sign-detail-item">
               <span>Naam:</span>
-              <input type="text" id="signKlantNaam" class="sign-line-input">
+              <input type="text" id="signKlantNaam" class="sign-line-input" value="Dhr. van Pelt C.J.">
             </div>
             <div class="sign-detail-item fixed-date">
               <span>Datum:</span>
-              <input type="text" id="signKlantDatum" class="sign-line-input">
+              <input type="text" id="signKlantDatum" class="sign-line-input" value="28-10-2026">
             </div>
           </div>
         </div>
@@ -1754,9 +1754,50 @@
       localStorage.setItem('scw_orderbon_brand', brandKey);
     }
 
+    // Echte showroom-orderbon Geertjan (Dhr. C.J. van Pelt - Zwijndrecht)
+    function fillGeertOrderbon() {
+      document.getElementById('klantNaam').value = 'Dhr. van Pelt C.J.';
+      document.getElementById('klantAdres').value = 'Bootjessteeg 28';
+      document.getElementById('klantPostcode').value = '3331 HB';
+      document.getElementById('klantPlaats').value = 'Zwijndrecht';
+      document.getElementById('klantTelefoon').value = '06 - 30 35 10 38';
+      document.getElementById('klantEmail').value = '';
+      document.getElementById('klantContactpersoon').value = '';
+
+      document.getElementById('stoelModel').value = 'Sta-op / relaxfauteuil RENE';
+      document.getElementById('stoelBekleding').value = 'Stof Paola 16 caramel';
+
+      document.getElementById('row1Desc').value = 'Sta-op / relaxfauteuil RENE';
+      document.getElementById('row2Desc').value = 'Maat: Medium';
+      document.getElementById('row3Desc').value = 'Bekleding: stof Paola 16 caramel';
+      document.getElementById('row4Desc').value = 'Bediening: rechts';
+      document.getElementById('row5Desc').value = '';
+      document.getElementById('row6Desc').value = '';
+      document.getElementById('row7Desc').value = '';
+      document.getElementById('row8Desc').value = '';
+      document.getElementById('row9Desc').value = '';
+      document.getElementById('row10Desc').value = '';
+
+      document.getElementById('totalPrice').value = '€ 2.500,00';
+
+      const chkGelijk = document.getElementById('chkGelijkvloers');
+      if (chkGelijk) chkGelijk.checked = true;
+
+      document.getElementById('signKlantNaam').value = 'Dhr. van Pelt C.J.';
+      document.getElementById('signKlantDatum').value = '28-10-2026';
+      document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
+      document.getElementById('signShowroom').value = 'Dordrecht';
+
+      saveToStorage();
+    }
+
     // Event listeners
     document.addEventListener('DOMContentLoaded', () => {
-      clearAllFields();
+      if (localStorage.getItem(STORAGE_KEY)) {
+        loadFromStorage();
+      } else {
+        fillGeertOrderbon();
+      }
 
       try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -1788,41 +1829,9 @@
       clearAllFields();
     });
 
-    // Inladen echte showroom-order van Geertjan (Mw. Dekker-Miedema)
+    // Knop Voorbeeld Inladen -> Laadt Geertjan's tweede orderbon in
     document.getElementById('btnFillDemo').addEventListener('click', () => {
-      document.getElementById('klantNaam').value = 'Mw. Dekker - Miedema';
-      document.getElementById('klantAdres').value = 'Jasmijnstraat 4 k.20';
-      document.getElementById('klantPostcode').value = '2982 CK';
-      document.getElementById('klantPlaats').value = 'Ridderkerk';
-      document.getElementById('klantTelefoon').value = '06 - 53 36 19 83';
-      document.getElementById('klantEmail').value = 'dekker.miedema@gmail.com';
-      document.getElementById('klantContactpersoon').value = 'P. Dekker (zoon/contact)';
-
-      document.getElementById('stoelModel').value = 'Farstrup Plus (5920)';
-      document.getElementById('stoelBekleding').value = 'Stof Capture 4902 blue (hout: teak)';
-
-      document.getElementById('row1Desc').value = 'Farstrup Plus (5920) fauteuil in Stof Capture 4902 & teak beits frame';
-      document.getElementById('row2Desc').value = 'Bijpassend voetenbankje 5990 in Capture 4902 & teak beits frame';
-      document.getElementById('row3Desc').value = 'Inclusief ergonomisch nekkussen 773 & ergonomisch afstellen aan huis';
-      document.getElementById('row4Desc').value = 'iProtect 5 jaar volledige textielbescherming & vlekkenservice';
-      document.getElementById('row5Desc').value = 'Vakkundige levering, plaatsing en ergonomische instelling begane grond';
-      document.getElementById('row6Desc').value = '';
-      document.getElementById('row7Desc').value = '';
-      document.getElementById('row8Desc').value = '';
-      document.getElementById('row9Desc').value = '';
-      document.getElementById('row10Desc').value = '';
-
-      document.getElementById('totalPrice').value = '€ 2.230,00';
-
-      const chkGelijk = document.getElementById('chkGelijkvloers');
-      if (chkGelijk) chkGelijk.checked = true;
-
-      document.getElementById('signKlantNaam').value = 'P. Dekker';
-      document.getElementById('signKlantDatum').value = '28-10-2026';
-      document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
-      document.getElementById('signShowroom').value = 'Dordrecht';
-
-      saveToStorage();
+      fillGeertOrderbon();
     });
   </script>
 </body>
