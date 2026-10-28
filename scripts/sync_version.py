@@ -128,6 +128,18 @@ def main():
             content
         )
 
+        # Update orderbon / badges version
+        content = re.sub(
+            r'ORDERBON <span[^>]*>v[0-9\.]+</span>',
+            f'ORDERBON <span style="font-size: 8.5px; font-weight: 700; opacity: 0.9; margin-left: 4px; letter-spacing: 0.4px; text-transform: uppercase;">v{target_version}</span>',
+            content
+        )
+        content = re.sub(
+            r'>Versie [0-9\.]+<',
+            f'>Versie {target_version}<',
+            content
+        )
+
         if content != orig_content:
             with open(path, "w", encoding="utf-8") as f:
                 f.write(content)
