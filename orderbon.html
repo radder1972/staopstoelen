@@ -492,30 +492,30 @@
     .form-col {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 8px;
     }
 
     .form-row {
       display: flex;
       align-items: flex-end;
       gap: 8px;
-      min-height: 23px;
+      min-height: 25px;
     }
 
     .form-lbl {
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--color-forest-dark);
       white-space: nowrap;
-      width: 118px;
-      min-width: 118px;
-      flex: 0 0 118px;
+      width: 115px;
+      min-width: 115px;
+      flex: 0 0 115px;
     }
 
     .form-fill {
       flex: 1;
       border-bottom: 1px dotted #8c939c;
-      min-height: 22px;
+      min-height: 24px;
       display: flex;
       align-items: flex-end;
     }
@@ -525,12 +525,12 @@
       border: none;
       background: transparent;
       font-family: var(--font-body);
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--color-dark);
       padding: 0 2px 2px 2px;
       outline: none;
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .form-input::placeholder {
@@ -559,11 +559,11 @@
       display: flex;
       align-items: flex-end;
       gap: 8px;
-      min-height: 23px;
+      min-height: 25px;
     }
 
     .spec-label {
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--color-forest-dark);
       white-space: nowrap;
@@ -578,12 +578,12 @@
       border-bottom: 1px dotted #8c939c;
       background: transparent;
       font-family: var(--font-body);
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--color-dark);
       outline: none;
       padding: 0 2px 2px 2px;
-      min-height: 22px;
+      min-height: 24px;
       line-height: 1.2;
       box-sizing: border-box;
     }
@@ -895,19 +895,18 @@
     .delivery-meta-strip {
       background: #fafbfc;
       border-bottom: 1px solid #e2e8f0;
-      padding: 8px 12px;
+      padding: 7px 12px;
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 14px;
+      grid-template-columns: 1.25fr 1fr;
+      align-items: center;
+      gap: 12px;
       font-size: 11px;
     }
 
     .delivery-info-line {
-      line-height: 1.5;
+      line-height: 1.4;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 3px;
+      align-items: center;
     }
 
     /* Handtekeningen grid */
@@ -1291,7 +1290,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Orderbon</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.154</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.155</span>
           </div>
         </div>
 
@@ -1340,32 +1339,28 @@
   <!-- A4 Sheet Canvas -->
   <div class="sheet brand-mode-schipper" id="sheetCanvas">
 
-    <!-- 1. Header & Order Metadata -->
+    <!-- 1. Header -->
     <header class="sheet-header">
       <div class="brand-left">
         <div class="brand-name" id="brandTitle">Schipper <span>compact wonen</span></div>
         <div class="brand-subline" id="brandSubline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
       </div>
       <div class="header-right">
-        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-bottom: 3px;">
-          <div class="header-order-badge">ORDERBON <span style="font-size: 8.5px; font-weight: 700; opacity: 0.9; margin-left: 4px; letter-spacing: 0.4px; text-transform: uppercase;">v10.154</span></div>
+        <div class="header-order-badge">ORDERBON</div>
+        <div style="font-size: 10.5px; line-height: 1.45; margin-top: 5px;">
+          <strong>Showroom:</strong> Merwedestraat 239, 3313 GT Dordrecht &bull; <strong>Tel:</strong> 078 – 631 4858<br>
+          <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656 &bull; <strong>E-mail:</strong> <span id="headerEmail">info@schippercompactwonen.nl</span>
         </div>
-        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-bottom: 3px; font-size: 11px;">
-          <span><strong>Ordernr:</strong> <input type="text" id="orderNummer" class="meta-inline-input" placeholder="SCW-...." style="width: 112px; text-align: center;"></span>
-          <span><strong>Datum:</strong> <input type="text" id="orderDatum" class="meta-inline-input" placeholder="dd-mm-jjjj" style="width: 78px; text-align: center;"></span>
-        </div>
-        <strong>Showroom:</strong> Merwedestraat 239, 3313 GT Dordrecht &bull; <strong>Tel:</strong> 078 – 631 4858<br>
-        <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656 &bull; <strong>E-mail:</strong> <span id="headerEmail">info@schippercompactwonen.nl</span>
       </div>
     </header>
 
-    <!-- 2. Gegevens Klant & Contactpersoon -->
+    <!-- 2. Gegevens Klant & Contact -->
     <div class="section-wrap">
       <div class="section-head">
         <span>Gegevens Klant &amp; Contact</span>
         <span style="font-size: 9.5px; font-weight: 600; opacity: 0.95;">Particulier / Zorginstelling</span>
       </div>
-      <div class="section-body">
+      <div class="section-body" style="padding: 10px 14px;">
         <div class="grid-2col">
           <div class="form-col">
             <div class="form-row">
@@ -1391,12 +1386,12 @@
               <div class="form-fill"><input type="text" id="klantTelefoon" class="form-input"></div>
             </div>
             <div class="form-row">
-              <span class="form-lbl">Contactpersoon:</span>
-              <div class="form-fill"><input type="text" id="klantContactpersoon" class="form-input" placeholder="bijv. zoon / dochter / mantelzorger"></div>
+              <span class="form-lbl">E-mailadres:</span>
+              <div class="form-fill"><input type="text" id="klantEmail" class="form-input"></div>
             </div>
             <div class="form-row">
-              <span class="form-lbl">Tel. contact / E-mail:</span>
-              <div class="form-fill"><input type="text" id="klantEmail" class="form-input"></div>
+              <span class="form-lbl">Contactpersoon:</span>
+              <div class="form-fill"><input type="text" id="klantContactpersoon" class="form-input"></div>
             </div>
           </div>
         </div>
@@ -1411,49 +1406,19 @@
       </div>
       <div class="section-body" style="padding: 10px 14px 10px 14px;">
         
-        <!-- Basisinfo bovenaan: puur Stoel/Model, Bekleding/Kleur, Conditie en Maten -->
-        <div class="specs-grid" style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1.5px solid #e2e8f0;">
-          <div class="specs-col">
-            <div class="spec-line">
-              <span class="spec-label">Stoel / Model:</span>
-              <input type="text" id="stoelModel" class="spec-input" placeholder="">
-            </div>
-            <div class="spec-line">
-              <span class="spec-label">Bekleding &amp; Kleur:</span>
-              <input type="text" id="stoelBekleding" class="spec-input" placeholder="">
-            </div>
+        <!-- Basisinfo bovenaan: Alleen Stoel/Model en Bekleding & Kleur -->
+        <div class="specs-grid" style="margin-bottom: 8px; padding-bottom: 7px; border-bottom: 1.5px solid #e2e8f0; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="spec-line">
+            <span class="spec-label" style="width: auto; min-width: 95px; flex: 0 0 auto;">Stoel / Model:</span>
+            <input type="text" id="stoelModel" class="spec-input" placeholder="">
           </div>
-
-          <div class="specs-col">
-            <div class="spec-line">
-              <span class="spec-label">Conditie:</span>
-              <div class="checkbox-row" style="gap: 16px;">
-                <label class="custom-check"><input type="radio" name="conditie" value="gereconditioneerd"> <span>Gereconditioneerd</span></label>
-                <label class="custom-check"><input type="radio" name="conditie" value="nieuw"> <span>Nieuw</span></label>
-              </div>
-            </div>
-            <div class="maten-strip">
-              <div class="maat-mini-card">
-                <div class="maat-mini-lbl">Zithoogte</div>
-                <input type="text" id="maatZithoogte" class="maat-mini-input" placeholder=".. cm">
-              </div>
-              <div class="maat-mini-card">
-                <div class="maat-mini-lbl">Zitdiepte</div>
-                <input type="text" id="maatZitdiepte" class="maat-mini-input" placeholder=".. cm">
-              </div>
-              <div class="maat-mini-card">
-                <div class="maat-mini-lbl">Armleggers</div>
-                <input type="text" id="maatArmleggers" class="maat-mini-input" placeholder=".. cm">
-              </div>
-              <div class="maat-mini-card">
-                <div class="maat-mini-lbl">Lendensteun</div>
-                <input type="text" id="maatLenden" class="maat-mini-input" placeholder="..">
-              </div>
-            </div>
+          <div class="spec-line">
+            <span class="spec-label" style="width: auto; min-width: 120px; flex: 0 0 auto;">Bekleding &amp; Kleur:</span>
+            <input type="text" id="stoelBekleding" class="spec-input" placeholder="">
           </div>
         </div>
 
-        <!-- Ruime Vrije Schrijfruimte: 8 brede, open regels over de volle breedte -->
+        <!-- Ruime Vrije Schrijfruimte: 10 brede, open regels over de volle breedte -->
         <div class="free-writing-section">
           <div class="writing-section-head">
             <span style="font-weight: 700; color: var(--color-forest-dark); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.4px;">Omschrijving Maatwerkafspraken, Accessoires &amp; Specificaties:</span>
@@ -1492,6 +1457,14 @@
               <span class="row-bullet">8.</span>
               <input type="text" id="row8Desc" class="write-input-desc" placeholder="">
             </div>
+            <div class="writing-row">
+              <span class="row-bullet">9.</span>
+              <input type="text" id="row9Desc" class="write-input-desc" placeholder="">
+            </div>
+            <div class="writing-row">
+              <span class="row-bullet">10.</span>
+              <input type="text" id="row10Desc" class="write-input-desc" placeholder="">
+            </div>
           </div>
         </div>
 
@@ -1519,18 +1492,14 @@
       <!-- Bovenste strook: Levering & Woonsituatie -->
       <div class="delivery-meta-strip">
         <div class="delivery-info-line">
-          <div><strong>Bezorging:</strong> Inclusief 2-mans levering, plaatsing &amp; ergonomisch instellen aan huis.</div>
-          <div style="display: flex; gap: 14px; margin-top: 2px;">
-            <label class="custom-check"><input type="checkbox" id="chkChauffeurBelt" checked> Chauffeur belt 30 min. voor aankomst</label>
-            <label class="custom-check"><input type="checkbox" id="chkAfvoerenOudeStoel"> Oude stoel kosteloos retour/afvoeren</label>
-          </div>
+          <div><strong>Bezorging:</strong> Inclusief vakkundige levering, plaatsing &amp; ergonomisch instellen aan huis.</div>
         </div>
-        <div style="display: flex; flex-direction: column; justify-content: center; gap: 4px;">
-          <strong style="color: var(--color-forest-dark);">Situatie woning &amp; verdieping:</strong>
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+          <strong style="color: var(--color-forest-dark); font-size: 11px;">Woning / etage:</strong>
           <div style="display: flex; gap: 10px; font-size: 11px;">
             <label class="custom-check"><input type="checkbox" id="chkGelijkvloers"> Begane grond</label>
-            <label class="custom-check"><input type="checkbox" id="chkLift"> Lift aanwezig</label>
-            <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap / etage</label>
+            <label class="custom-check"><input type="checkbox" id="chkLift"> Lift</label>
+            <label class="custom-check"><input type="checkbox" id="chkTrap"> Trap</label>
           </div>
         </div>
       </div>
@@ -1606,7 +1575,7 @@
       </div>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; padding: 0 4px; font-size: 8.5px; color: #94a3b8;">
         <span>Document: Officiële Verkoop- &amp; Orderovereenkomst Dordrecht</span>
-        <span>Gerealiseerd door BewegingsTechnologen. | Versie 10.154</span>
+        <span>Gerealiseerd door BewegingsTechnologen.</span>
       </div>
     </footer>
 
@@ -1690,8 +1659,6 @@
       });
       
       // Herstel vaste defaults
-      const chkChauffeur = document.getElementById('chkChauffeurBelt');
-      if (chkChauffeur) chkChauffeur.checked = true;
       const adv = document.getElementById('signAdviseur');
       if (adv) adv.value = 'Geertjan Klein Haneveld';
       const show = document.getElementById('signShowroom');
@@ -1827,60 +1794,32 @@
 
     // Inladen echte showroom-order van Geertjan (Mw. Dekker-Miedema)
     document.getElementById('btnFillDemo').addEventListener('click', () => {
-      document.getElementById('orderNummer').value = 'SCW-2026-1028';
-      document.getElementById('orderDatum').value = '28-10-2026';
-
       document.getElementById('klantNaam').value = 'Mw. Dekker - Miedema';
       document.getElementById('klantAdres').value = 'Jasmijnstraat 4 k.20';
       document.getElementById('klantPostcode').value = '2982 CK';
       document.getElementById('klantPlaats').value = 'Ridderkerk';
       document.getElementById('klantTelefoon').value = '06 - 53 36 19 83';
+      document.getElementById('klantEmail').value = 'dekker.miedema@gmail.com';
       document.getElementById('klantContactpersoon').value = 'P. Dekker (zoon/contact)';
-      document.getElementById('klantEmail').value = '06 - 53 36 19 83';
 
       document.getElementById('stoelModel').value = 'Farstrup Plus (5920)';
-      document.getElementById('stoelBekleding').value = 'Stof Capture 4902 blue';
-      document.getElementById('stoelHoutkleur').value = '0122 beuken teak';
-      
-      const rNew = document.querySelector('input[name="conditie"][value="nieuw"]');
-      if (rNew) rNew.checked = true;
-      const rMaat = document.querySelector('input[name="stoelMaat"][value="M"]');
-      if (rMaat) rMaat.checked = true;
-      const rBediening = document.querySelector('input[name="bediening"][value="rechts"]');
-      if (rBediening) rBediening.checked = true;
+      document.getElementById('stoelBekleding').value = 'Stof Capture 4902 blue (hout: teak)';
 
-      document.getElementById('maatZithoogte').value = '45 cm';
-      document.getElementById('maatZitdiepte').value = '49 cm';
-      document.getElementById('maatArmleggers').value = 'std';
-      document.getElementById('maatLenden').value = 'std';
-
-      document.getElementById('row1Desc').value = 'Farstrup Plus (5920) standaard breedte / diepte';
-      document.getElementById('row1Price').value = '€ 1.645,00';
-
-      document.getElementById('row2Desc').value = 'Voetenbankje 5990 in Capture 4902 blue & teak frame';
-      document.getElementById('row2Price').value = '€ 585,00';
-
-      document.getElementById('row3Desc').value = 'Inclusief ergonomisch nekkussen 773 & zitafstelling';
-      document.getElementById('row3Price').value = '';
-
-      document.getElementById('row4Desc').value = 'iProtect (5 jaar volledige textielbescherming & vlekkenservice)';
-      document.getElementById('row4Price').value = '';
-
-      document.getElementById('row5Desc').value = 'Eigen 2-mans levering aan huis begane grond & kosteloos oude stoel afvoeren';
-      document.getElementById('row5Price').value = '';
-
+      document.getElementById('row1Desc').value = 'Farstrup Plus (5920) fauteuil in Stof Capture 4902 & teak beits frame';
+      document.getElementById('row2Desc').value = 'Bijpassend voetenbankje 5990 in Capture 4902 & teak beits frame';
+      document.getElementById('row3Desc').value = 'Inclusief ergonomisch nekkussen 773 & ergonomisch afstellen aan huis';
+      document.getElementById('row4Desc').value = 'iProtect 5 jaar volledige textielbescherming & vlekkenservice';
+      document.getElementById('row5Desc').value = 'Vakkundige levering, plaatsing en ergonomische instelling begane grond';
       document.getElementById('row6Desc').value = '';
-      document.getElementById('row6Price').value = '';
       document.getElementById('row7Desc').value = '';
-      document.getElementById('row7Price').value = '';
       document.getElementById('row8Desc').value = '';
-      document.getElementById('row8Price').value = '';
+      document.getElementById('row9Desc').value = '';
+      document.getElementById('row10Desc').value = '';
 
       document.getElementById('totalPrice').value = '€ 2.230,00';
 
-      document.getElementById('chkGelijkvloers').checked = true;
-      document.getElementById('chkAfvoerenOudeStoel').checked = true;
-      document.getElementById('chkChauffeurBelt').checked = true;
+      const chkGelijk = document.getElementById('chkGelijkvloers');
+      if (chkGelijk) chkGelijk.checked = true;
 
       document.getElementById('signKlantNaam').value = 'P. Dekker';
       document.getElementById('signKlantDatum').value = '28-10-2026';
