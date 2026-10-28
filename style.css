@@ -824,39 +824,39 @@ section[id], section {
 .hero-sublink {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: #ffffff;
-  border: 1.5px solid rgba(75, 143, 36, 0.28);
-  border-radius: var(--radius-full);
-  padding: 8px 18px 8px 12px;
-  font-size: 0.89rem;
-  color: #374151;
-  text-decoration: none;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 9px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 4px 0;
+  font-size: 0.90rem;
+  color: #4b5563;
+  text-decoration: none !important;
+  box-shadow: none;
+  transition: color 0.2s ease, transform 0.2s ease;
   box-sizing: border-box;
   max-width: 100%;
 }
 
 .hero-sublink:hover {
-  background: #fdfbf7;
-  border-color: var(--color-forest);
-  box-shadow: 0 6px 18px rgba(75, 143, 36, 0.16);
-  transform: translateY(-2px);
+  background: transparent;
+  box-shadow: none;
+  transform: translateY(-1px);
   color: var(--color-forest-dark);
+  text-decoration: none !important;
 }
 
 .hero-sublink-badge-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
   background: rgba(75, 143, 36, 0.10);
   transform: rotate(-7deg);
   flex-shrink: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.25s ease;
 }
 
@@ -867,8 +867,7 @@ section[id], section {
 .hero-sublink strong {
   color: var(--color-forest);
   font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none !important;
 }
 
 .hero-usp-list {
