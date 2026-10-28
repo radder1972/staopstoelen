@@ -1278,6 +1278,26 @@ window.getAppointmentModalHtml = function() {
         </div>
       </div>
 
+      <!-- Video: Zitmeting & Proefzitten in Dordrecht (In 38 seconden) -->
+      <div class="appointment-modal-video-card">
+        <div class="appointment-modal-video-wrap">
+          <video 
+            id="modalZitmetingVideo" 
+            controls 
+            playsinline 
+            preload="metadata" 
+            poster="${base}assets/video/zitmeting_poster.jpg"
+            class="appointment-modal-video">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4" type="video/mp4">
+            Uw browser ondersteunt geen video.
+          </video>
+        </div>
+        <div class="appointment-modal-video-caption">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+          <span>Bekijk in 38 sec hoe een persoonlijke zitmeting bij Geertjan verloopt</span>
+        </div>
+      </div>
+
       <!-- Keuze Intro & 2 Knoppen: Linksaf (Bel mij) of Rechtsaf (Agenda) -->
       <div class="appointment-choice-intro">Hoe wilt u uw afspraak inplannen?</div>
       <div class="appointment-choice-selector" role="tablist" aria-label="Kies afspraakmethode">
@@ -1604,6 +1624,11 @@ window.closeAppointmentModal = function() {
     modal.classList.remove("active");
   }
   document.body.style.overflow = "";
+
+  const modalVid = document.getElementById("modalZitmetingVideo");
+  if (modalVid) {
+    modalVid.pause();
+  }
 
   if (window._quickCloseTimer) {
     clearTimeout(window._quickCloseTimer);
