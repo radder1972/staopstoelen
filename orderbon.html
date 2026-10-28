@@ -713,12 +713,9 @@
     }
 
     .free-writing-section {
-      margin-top: 6px;
+      margin-top: 8px;
     }
     .writing-section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding-bottom: 4px;
       margin-bottom: 2px;
       border-bottom: 1.5px solid #cbd5e1;
@@ -731,13 +728,13 @@
     .writing-row {
       display: flex;
       align-items: flex-end;
-      gap: 8px;
-      min-height: 27px;
-      padding: 2px 0;
+      gap: 10px;
+      min-height: 28px;
+      padding: 3px 0;
       border-bottom: 1px dotted #8c939c;
     }
     .row-bullet {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #94a3b8;
       width: 16px;
@@ -749,60 +746,30 @@
       border: none;
       background: transparent;
       font-family: var(--font-body);
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--color-dark);
       outline: none;
       padding: 1px 4px;
-      min-width: 0;
-    }
-    .write-price-wrap {
-      display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      width: 105px;
-      flex: 0 0 105px;
-      justify-content: flex-end;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--color-forest-dark);
-    }
-    .write-input-price {
-      width: 85px;
-      border: none;
-      background: transparent;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--color-forest-dark);
-      text-align: right;
-      outline: none;
-      padding: 0 2px;
+      width: 100%;
     }
 
     .order-total-bar {
-      margin-top: 10px;
-      padding: 8px 14px;
+      margin-top: 12px;
+      padding: 6px 4px 2px 4px;
       border-top: 2px solid var(--color-forest);
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
-      background: #f7faf5;
-      border-radius: 6px;
-    }
-    .total-bar-note {
-      font-size: 10.5px;
-      color: var(--color-gray);
-      font-weight: 500;
+      background: transparent;
     }
     .total-bar-price-block {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .total-bar-lbl {
       font-family: var(--font-heading);
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.4px;
@@ -811,20 +778,20 @@
     .order-total-bar .total-price-cell {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 17px;
+      font-size: 18px;
       color: var(--color-forest-dark);
     }
     .order-total-bar .total-price-cell input {
-      width: 120px;
+      width: 140px;
       border: none;
       border-bottom: 2px solid var(--color-forest);
       background: transparent;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 17px;
+      font-size: 18px;
       color: var(--color-forest-dark);
       text-align: right;
       outline: none;
@@ -835,15 +802,12 @@
     .sheet.brand-mode-schipper .writing-row {
       border-bottom: 1px dotted #8c939c;
     }
-    .sheet.brand-mode-schipper .write-price-wrap,
-    .sheet.brand-mode-schipper .write-input-price,
     .sheet.brand-mode-schipper .total-bar-lbl,
     .sheet.brand-mode-schipper .order-total-bar .total-price-cell,
     .sheet.brand-mode-schipper .order-total-bar .total-price-cell input {
       color: #0f172a !important;
     }
     .sheet.brand-mode-schipper .order-total-bar {
-      background: #f8fafc;
       border-top: 2px solid #0f172a;
     }
     .sheet.brand-mode-schipper .order-total-bar .total-price-cell input {
@@ -1444,43 +1408,27 @@
         <span>Aankoop, Specificaties &amp; Maatwerkafspraken</span>
         <span style="font-size: 9.5px; font-weight: 600; opacity: 0.95;">100% Maatwerk &amp; Vrije Specificatie</span>
       </div>
-      <div class="section-body" style="padding: 8px 14px 10px 14px;">
+      <div class="section-body" style="padding: 10px 14px 10px 14px;">
         
-        <!-- Basisinfo bovenaan -->
+        <!-- Basisinfo bovenaan: puur Stoel/Model, Bekleding/Kleur, Conditie en Maten -->
         <div class="specs-grid" style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1.5px solid #e2e8f0;">
           <div class="specs-col">
             <div class="spec-line">
               <span class="spec-label">Stoel / Model:</span>
-              <input type="text" id="stoelModel" class="spec-input" placeholder="bijv. Farstrup 5920 / Fitform 570 / Fauteuil René">
+              <input type="text" id="stoelModel" class="spec-input" placeholder="">
             </div>
             <div class="spec-line">
               <span class="spec-label">Bekleding &amp; Kleur:</span>
-              <input type="text" id="stoelBekleding" class="spec-input" placeholder="Stof / leder + kleurnaam of code">
-            </div>
-            <div class="spec-line">
-              <span class="spec-label">Hout / Frame / Poot:</span>
-              <input type="text" id="stoelHoutkleur" class="spec-input" placeholder="bijv. Beuken teak 0122 / Naturel / Zwart">
+              <input type="text" id="stoelBekleding" class="spec-input" placeholder="">
             </div>
           </div>
 
           <div class="specs-col">
             <div class="spec-line">
               <span class="spec-label">Conditie:</span>
-              <div class="checkbox-row" style="gap: 14px;">
+              <div class="checkbox-row" style="gap: 16px;">
                 <label class="custom-check"><input type="radio" name="conditie" value="gereconditioneerd"> <span>Gereconditioneerd</span></label>
                 <label class="custom-check"><input type="radio" name="conditie" value="nieuw"> <span>Nieuw</span></label>
-              </div>
-            </div>
-            <div class="spec-line">
-              <span class="spec-label">Maat &amp; Bediening:</span>
-              <div class="checkbox-row" style="gap: 7px; font-size: 11px;">
-                <label class="custom-check"><input type="radio" name="stoelMaat" value="maatwerk"> <span>Maatwerk</span></label>
-                <label class="custom-check"><input type="radio" name="stoelMaat" value="S"> <span>S</span></label>
-                <label class="custom-check"><input type="radio" name="stoelMaat" value="M"> <span>M</span></label>
-                <label class="custom-check"><input type="radio" name="stoelMaat" value="L"> <span>L</span></label>
-                <span style="color: #cbd5e1; margin: 0 2px;">|</span>
-                <label class="custom-check"><input type="radio" name="bediening" value="rechts" checked> <span>Rechts</span></label>
-                <label class="custom-check"><input type="radio" name="bediening" value="links"> <span>Links</span></label>
               </div>
             </div>
             <div class="maten-strip">
@@ -1504,62 +1452,50 @@
           </div>
         </div>
 
-        <!-- Ruime Vrije Schrijfruimte: 8 brede regels met prijsveld rechts -->
+        <!-- Ruime Vrije Schrijfruimte: 8 brede, open regels over de volle breedte -->
         <div class="free-writing-section">
           <div class="writing-section-head">
             <span style="font-weight: 700; color: var(--color-forest-dark); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.4px;">Omschrijving Maatwerkafspraken, Accessoires &amp; Specificaties:</span>
-            <span style="font-weight: 700; color: var(--color-forest-dark); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.4px; width: 110px; text-align: right;">Bedrag (€):</span>
           </div>
 
           <div class="writing-rows-container">
             <div class="writing-row">
               <span class="row-bullet">1.</span>
               <input type="text" id="row1Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row1Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
             <div class="writing-row">
               <span class="row-bullet">2.</span>
               <input type="text" id="row2Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row2Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
             <div class="writing-row">
               <span class="row-bullet">3.</span>
               <input type="text" id="row3Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row3Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
             <div class="writing-row">
               <span class="row-bullet">4.</span>
               <input type="text" id="row4Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row4Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
             <div class="writing-row">
               <span class="row-bullet">5.</span>
               <input type="text" id="row5Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row5Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
             <div class="writing-row">
               <span class="row-bullet">6.</span>
               <input type="text" id="row6Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row6Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
             <div class="writing-row">
               <span class="row-bullet">7.</span>
               <input type="text" id="row7Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row7Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
             <div class="writing-row">
               <span class="row-bullet">8.</span>
               <input type="text" id="row8Desc" class="write-input-desc" placeholder="">
-              <div class="write-price-wrap"><span>€</span><input type="text" id="row8Price" class="write-input-price" oninput="calculateTotal()" onblur="formatPriceOnBlur(this)"></div>
             </div>
           </div>
         </div>
 
-        <!-- Totaalbedrag balk: ZONDER aanbetaling of restant -->
+        <!-- Totaalbedrag: Puur & alleen totaalbedrag met een euro, verder leeg -->
         <div class="order-total-bar">
-          <div class="total-bar-note">
-            Inclusief btw, 1 jaar garantie aan huis &amp; 15-punts technische kwaliteitskeuring.
-          </div>
           <div class="total-bar-price-block">
             <span class="total-bar-lbl">Totaalbedrag:</span>
             <div class="total-price-cell">
@@ -1672,7 +1608,7 @@
   </div>
 
   <script>
-    // Berekening Totaalbedrag
+    // Berekening & Formattering Totaalbedrag
     function parseEuro(val) {
       if (!val) return 0;
       let clean = val.replace('€', '').replace(/\s/g, '').replace('.', '').replace(',', '.');
@@ -1691,23 +1627,6 @@
         input.value = '€ ' + formatEuro(val);
       } else if (input.value.trim() === '0') {
         input.value = '€ 0,00';
-      }
-      calculateTotal();
-    }
-
-    function calculateTotal() {
-      let sum = 0;
-      let hasPrices = false;
-      for (let i = 1; i <= 8; i++) {
-        let el = document.getElementById('row' + i + 'Price');
-        if (el && el.value.trim() !== '') {
-          sum += parseEuro(el.value);
-          hasPrices = true;
-        }
-      }
-
-      if (hasPrices && sum > 0) {
-        document.getElementById('totalPrice').value = '€ ' + formatEuro(sum);
       }
       saveToStorage();
     }
