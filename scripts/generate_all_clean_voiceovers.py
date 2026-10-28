@@ -49,16 +49,16 @@ TASKS = [
         "out_files": ["assets/audio/revisie_scene_3.m4a"]
     },
     {
-        "name": "Revisie Scene 4 (Handmatige Topswing Afstelling)",
-        "text": "Bewegingstechnoloog Geertjan stelt de topswing-neksteun en de lendensteun handmatig met precisie af voor een optimale rughouding.",
-        "duration": 8.80,
+        "name": "Revisie Scene 4 (Persoonlijk Zitadvies & Duimstok)",
+        "text": "Een sta-op stoel moet passen als een maatkostuum. Met de duimstok meten we zithoogte, zitdiepte en armleggers exact op uw lichaam af.",
+        "duration": 10.80,
         "delay_ms": 200,
         "out_files": ["assets/audio/revisie_scene_4.m4a"]
     },
     {
-        "name": "Revisie Scene 5 (Persoonlijk Zitadvies & Duimstok)",
-        "text": "Een sta-op stoel moet passen als een maatkostuum. Met de duimstok meten we zithoogte, zitdiepte en armleggers exact op uw lichaam af.",
-        "duration": 10.80,
+        "name": "Revisie Scene 5 (Handmatige Topswing Afstelling)",
+        "text": "Bewegingstechnoloog Geertjan stelt de topswing-neksteun en de lendensteun handmatig met precisie af voor een optimale rughouding.",
+        "duration": 8.80,
         "delay_ms": 200,
         "out_files": ["assets/audio/revisie_scene_5.m4a"]
     },

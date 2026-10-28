@@ -33,16 +33,16 @@ const SCENES = [
   {
     idx: 3,
     audio: 'assets/audio/revisie_scene_4.m4a',
-    duration: 8.80,
-    outVideo: 'assets/video/revisie_s4_afstelling.mp4',
-    name: 'Scene 4: Topswing & Ergonomische Fijnafstelling'
+    duration: 10.80,
+    outVideo: 'assets/video/revisie_s4_zitadvies.mp4',
+    name: 'Scene 4: Het Zitadvies-Formulier Exact op Maat'
   },
   {
     idx: 4,
     audio: 'assets/audio/revisie_scene_5.m4a',
-    duration: 10.80,
-    outVideo: 'assets/video/revisie_s5_zitadvies.mp4',
-    name: 'Scene 5: Het Zitadvies-Formulier Exact op Maat'
+    duration: 8.80,
+    outVideo: 'assets/video/revisie_s5_afstelling.mp4',
+    name: 'Scene 5: Topswing & Ergonomische Fijnafstelling'
   },
   {
     idx: 5,
