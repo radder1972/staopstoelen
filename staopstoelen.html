@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.133">
+  <link rel="stylesheet" href="style.css?v=10.140">
   <style>
 
     @media (max-width: 991px) {
@@ -381,49 +381,55 @@
             </button>
           </div>
 
-          <!-- Certified Fitform Video Callout boven het productoverzicht -->
-          <div class="certified-video-callout">
-            <div class="certified-video-callout-left">
-              <div onclick="openCertifiedVideoModal('revisie')" style="position: relative; width: 74px; height: 50px; border-radius: 8px; overflow: hidden; flex-shrink: 0; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.18); border: 1.5px solid rgba(75, 143, 36, 0.4);" title="Klik om de werkplaatsvideo te bekijken">
-                <img src="assets/video/revisie_poster.jpg?v=20261028_clean" alt="Revisie Video Dordrecht" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.22); display: flex; align-items: center; justify-content: center;">
-                  <span style="width: 22px; height: 22px; border-radius: 50%; background: var(--color-forest, #4b8f24); display: flex; align-items: center; justify-content: center; color: #fff;">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
-                  </span>
+          <!-- Twee gebalanceerde blokken in de huisstijl boven de catalogus -->
+          <div class="catalog-callouts-grid">
+            <!-- Blok 1: Certified Fitform Werkplaatsvideo -->
+            <div class="catalog-callout-card">
+              <div class="catalog-callout-header">
+                <div onclick="openCertifiedVideoModal('revisie')" class="catalog-callout-thumb" title="Klik om de werkplaatsvideo te bekijken" role="button" tabindex="0">
+                  <img src="assets/video/revisie_poster.jpg?v=20261028_clean" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
+                  <div class="catalog-callout-play-overlay">
+                    <span class="catalog-callout-play-icon">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="catalog-callout-title-wrap">
+                  <span class="catalog-callout-tag">Certified Fitform</span>
+                  <h4 class="catalog-callout-title">Twijfelt u tussen Nieuw (&euro;&nbsp;4.500+) en een Occasion?</h4>
                 </div>
               </div>
-              <div class="certified-video-callout-text">
-                <h4>Twijfelt u tussen Nieuw (€&nbsp;4.500+) en een Occasion?</h4>
-                <p>Bekijk in 52 seconden hoe wij elke stoel op 30 punten keuren, van nieuw koudschuim voorzien en op lichaamsmaat afstellen (2 jaar garantie).</p>
-              </div>
-            </div>
-            <div class="certified-video-callout-actions">
-              <button type="button" onclick="openCertifiedVideoModal('revisie')" class="btn-watch-video-pill">
-                <span class="btn-watch-video-play-circle">
+              <p class="catalog-callout-desc">
+                Bekijk hoe wij elke stoel op 30 punten keuren, van nieuw koudschuim voorzien en op lichaamsmaat afstellen (2 jaar garantie).
+              </p>
+              <div class="catalog-callout-action">
+                <button type="button" onclick="openCertifiedVideoModal('revisie')" class="btn-callout-video">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
-                </span>
-                <span>Bekijk Werkplaatsvideo (52 sec)</span>
-              </button>
-              <a href="revisie.html" style="font-size: 0.84rem; font-weight: 700; color: var(--color-forest); text-decoration: none; white-space: nowrap;">30-Punts Checklist &rarr;</a>
-            </div>
-          </div>
-
-          <!-- Inruilservice & Duurzaamheidspremie Callout Banner -->
-          <div class="inruil-banner-callout" style="background: linear-gradient(135deg, #122b07 0%, #1a3e0b 100%); border-radius: 16px; padding: 18px 24px; color: #fff; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; border: 1.5px solid rgba(75, 143, 36, 0.4); box-shadow: 0 4px 18px rgba(18, 43, 7, 0.08);">
-            <div style="display: flex; align-items: center; gap: 16px;">
-              <img src="assets/revisie_stempel_clean.svg?v=2.0" alt="Inruilpremie & Garantie" style="height: 52px; width: 52px; flex-shrink: 0;">
-              <div>
-                <div style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 2px;">
-                  Oude sta-opstoel inruilen? Ontvang tot &euro; 350,- directe duurzaamheidskorting
-                </div>
-                <div style="font-size: 0.84rem; color: #cbd5e1; max-width: 620px; line-height: 1.45;">
-                  Wij hergebruiken het stalen frame circulair. Kies de leeftijd van uw oude stoel en bereken direct uw netto voordeel op een gereviseerde sta-op stoel op maat.
-                </div>
+                  <span>Bekijk Werkplaatsvideo</span>
+                </button>
               </div>
             </div>
-            <a href="afspraak.html#bookingCard" class="btn btn-sm" style="background: var(--color-terracotta, #f39223); color: #fff; border-radius: 999px; padding: 11px 22px; font-weight: 800; font-size: 0.88rem; text-decoration: none; white-space: nowrap; box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35); transition: transform 0.2s ease;">
-              Vraag Uw Inruilpremie Aan &rarr;
-            </a>
+
+            <!-- Blok 2: Oude Sta-op Stoel Inruilen -->
+            <div class="catalog-callout-card">
+              <div class="catalog-callout-header">
+                <div class="catalog-callout-stamp-wrap">
+                  <img src="assets/revisie_stempel_clean.svg?v=2.0" alt="Duurzaamheidspremie" class="catalog-callout-stamp-img">
+                </div>
+                <div class="catalog-callout-title-wrap">
+                  <span class="catalog-callout-tag" style="color: var(--color-terracotta);">Inruilservice</span>
+                  <h4 class="catalog-callout-title">Oude stoel inruilen? Tot &euro;&nbsp;350,- korting</h4>
+                </div>
+              </div>
+              <p class="catalog-callout-desc">
+                Wij hergebruiken het stalen frame circulair. Bereken direct uw netto voordeel bij aanschaf van een gereviseerde sta-op stoel op maat.
+              </p>
+              <div class="catalog-callout-action">
+                <a href="afspraak.html#bookingCard" class="btn-callout-inruil">
+                  <span>Vraag Inruilpremie Aan &rarr;</span>
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="catalog-grid" id="catalogGrid">
