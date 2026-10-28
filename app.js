@@ -1371,17 +1371,17 @@ window.getAppointmentModalHtml = function() {
               >
               <span class="appointment-field-error" id="quickPhoneError"></span>
             </div>
+          </div>
 
+          <div class="card-content-bottom">
             <div class="appointment-callback-hint">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 14 14"></polyline>
               </svg>
-              <span>Geertjan belt u vandaag of uiterlijk binnen 1 werkdag terug om uw wensen en datum af te stemmen.</span>
+              <span>Geertjan belt u vandaag of binnen 1 werkdag terug</span>
             </div>
-          </div>
 
-          <div class="card-content-bottom">
             <button type="submit" id="btnQuickSubmit" class="btn appointment-quick-submit-btn">
               <span class="btn-text">Bel mij voor een afspraak</span>
               <span class="btn-spinner" style="display: none;">
