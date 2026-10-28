@@ -153,7 +153,9 @@
       line-height: 1;
     }
     .logo-text span {
-      color: var(--color-terracotta);
+      color: #f39223;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
     .logo-subtitle {
       font-size: 10px;
@@ -182,11 +184,14 @@
       white-space: nowrap;
     }
     .doc-subtitle {
-      font-size: 10.5px;
-      color: var(--color-terracotta);
-      font-weight: 700;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      color: #f39223;
+      font-weight: 800;
       letter-spacing: 0.3px;
       white-space: nowrap;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
 
     .brand-stamp {
@@ -254,9 +259,9 @@
     .modules-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-top: 9px;
+      margin-bottom: 12px;
     }
 
     .module-card {
@@ -380,19 +385,34 @@
       border: 1.5px solid #d1d5db;
       border-radius: 10px;
       background: #fbfdfa;
-      padding: 14px 18px;
+      padding: 16px 20px;
       display: grid;
-      grid-template-columns: 1.35fr 1fr 1fr;
-      gap: 16px;
+      grid-template-columns: 1.8fr 1fr 0.92fr;
+      gap: 18px;
       align-items: center;
       position: relative;
       overflow: visible;
     }
 
     .cert-verklaring {
-      font-size: 10.5px;
+      font-size: 9.8px;
       color: #334155;
-      line-height: 1.45;
+      line-height: 1.48;
+    }
+    .cert-verklaring-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      font-size: 11px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .cert-verklaring p {
+      margin: 0 0 5px 0;
+    }
+    .cert-verklaring p:last-child {
+      margin-bottom: 0;
     }
     .cert-verklaring strong {
       color: var(--color-forest-dark);
@@ -400,7 +420,7 @@
 
     .sign-box {
       border-bottom: 1.5px solid #1e293b;
-      height: 40px;
+      height: 42px;
       display: flex;
       align-items: flex-end;
       font-size: 13.5px;
@@ -429,8 +449,8 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      transform: translateY(-46px);
-      margin-bottom: -30px;
+      transform: translateY(-44px);
+      margin-bottom: -28px;
       filter: drop-shadow(0 6px 14px rgba(18, 43, 7, 0.22));
       z-index: 10;
     }
@@ -464,10 +484,18 @@
 
     /* Print settings */
     @media print {
-      body {
+      *,
+      *::before,
+      *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      html, body {
         background: #ffffff !important;
         padding: 0 !important;
         margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       .no-print-bar {
         display: none !important;
@@ -478,13 +506,29 @@
         width: 100% !important;
         height: 100vh !important;
         max-height: 100vh !important;
-        padding: 7mm 11mm 6mm 11mm !important;
+        padding: 6.5mm 11mm 5.5mm 11mm !important;
         page-break-after: avoid !important;
         page-break-inside: avoid !important;
       }
       @page {
         size: A4 portrait;
         margin: 0;
+      }
+      /* Geen schaduwen of rasterfouten (bleed) rond boxen bij printen */
+      .module-card,
+      .chair-meta-grid,
+      .cert-footer-box,
+      .footer-pill {
+        box-shadow: none !important;
+        -webkit-filter: none !important;
+        filter: none !important;
+      }
+      /* Correcte oranje merkkleur (#f39223) voor .nl en Certified Fitform onderregel */
+      .logo-text span,
+      .doc-subtitle {
+        color: #f39223 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       .status-check:checked {
         -webkit-print-color-adjust: exact !important;
@@ -812,8 +856,13 @@
     <div style="margin-top: auto;">
       <div class="cert-footer-box">
         <div class="cert-verklaring">
-          <strong>Kwaliteitsverklaring staopstoelen.nl:</strong><br>
-          Ondergetekende verklaart dat bovenstaande Fitform sta-opstoel aan alle 15 inspectie- en kwaliteitsnormen voldoet. De stoel is 100% technisch veilig, professioneel gereinigd en wordt geleverd inclusief <strong>1 jaar volledige garantie aan huis</strong>.
+          <div class="cert-verklaring-title">Officiële Kwaliteitsverklaring &amp; Garantie:</div>
+          <p>
+            Ondergetekende verklaart dat deze Fitform sta-opstoel conform het 15-punts revisieprotocol volledig is geïnspecteerd, technisch gecertificeerd en ergonomisch op maat van de gebruiker is ingeregeld.
+          </p>
+          <p>
+            De stoel verkeert in aantoonbare nieuwstaat en is voorzien van het officiële garantiezegel. Hierop wordt <strong>1 jaar volledige garantie aan huis</strong> verleend inclusief eigen servicedienst.
+          </p>
         </div>
         <div>
           <div class="sign-box" id="signKeurmeester"></div>
