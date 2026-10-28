@@ -301,7 +301,7 @@ def render_scene2():
                 kicker_text="OFFICIEEL FITFORM DEALER", kicker_color='green',
                 title_text="Certified Fitform Occasion", title_highlight="v.a. € 1.050,-", title_highlight_color=(75, 143, 36, 255),
                 subtitle_text="Medische topkwaliteit voor minder dan de helft van de prijs • Showroom Dordrecht",
-                chip_text="2 JAAR GARANTIE", chip_type='check', chip_color=(243, 146, 35, 255)
+                chip_text="1 JAAR GARANTIE", chip_type='check', chip_color=(243, 146, 35, 255)
             )
 
         draw_seal_stamp(frame, t, start_t=0.8, base_x=120, base_y=625)
@@ -606,7 +606,7 @@ def render_scene3():
             
             draw_huisstijl_card(
                 frame, lt_x, lt_y, card_w, card_h,
-                kicker_text="30-PUNTS TECHNISCHE KEURING", kicker_color='orange',
+                kicker_text="15-PUNTS TECHNISCHE KEURING", kicker_color='orange',
                 title_text="Geertjan Klein Haneveld", title_highlight="100% op Maat", title_highlight_color=(75, 143, 36, 255),
                 subtitle_text="Bewegingstechnoloog & Zitspecialist • Werkplaats Merwedestraat 239",
                 chip_text="100% OP MAAT", chip_type='check', chip_color=(75, 143, 36, 255)

@@ -173,7 +173,7 @@ def render_scene3():
             
             # Kicker pill
             draw.rounded_rectangle([(lt_x + 24, lt_y + 16), (lt_x + 360, lt_y + 46)], radius=8, fill=(243, 146, 35, 240))
-            draw.text((lt_x + 38, lt_y + 20), "30-PUNTS KEURING & REVISIE", font=font_kicker, fill=(255, 255, 255, 255))
+            draw.text((lt_x + 38, lt_y + 20), "15-PUNTS KEURING & REVISIE", font=font_kicker, fill=(255, 255, 255, 255))
             
             # Title
             draw.text((lt_x + 24, lt_y + 54), "Geertjan Klein Haneveld", font=font_title, fill=(255, 255, 255, 255))
