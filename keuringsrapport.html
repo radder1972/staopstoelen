@@ -367,13 +367,10 @@
     .status-check:checked {
       background-color: var(--color-forest);
       border-color: var(--color-forest);
-    }
-    .status-check:checked::after {
-      content: '✓';
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 900;
-      line-height: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: 13px 13px;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     /* Bottom Signatures & Seal Section */
@@ -492,6 +489,16 @@
       .status-check:checked {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        background-color: var(--color-forest) !important;
+        border-color: var(--color-forest) !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") !important;
+        background-size: 13px 13px !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+      }
+      ::placeholder {
+        color: transparent !important;
+        opacity: 0 !important;
       }
       .module-header {
         -webkit-print-color-adjust: exact !important;
@@ -513,8 +520,9 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         Terug naar Stoel-Anatomie
       </a>
-      <div style="font-weight: 700; color: var(--color-forest-dark); font-size: 0.92rem;">
-        ✓ Officieel 15-Punts Keuringsrapport &amp; Revisiecertificaat (A4)
+      <div style="font-weight: 700; color: var(--color-forest-dark); font-size: 0.92rem; display: flex; align-items: center; gap: 6px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Officieel 15-Punts Keuringsrapport &amp; Revisiecertificaat (A4)
       </div>
     </div>
 
@@ -524,6 +532,10 @@
       </button>
       <button type="button" class="btn-action-pill" onclick="wisFormulier()">
         Wissen
+      </button>
+      <button type="button" class="btn-action-pill" onclick="afdrukkenBlanco()" title="Formulier direct blanco afdrukken om met de pen in te vullen">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line></svg>
+        Blanco Afdrukken
       </button>
       <button class="btn-print" onclick="window.print()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
@@ -725,7 +737,9 @@
             </td>
           </tr>
           <tr>
-            <td class="col-num" style="color: var(--color-forest); font-weight: 800;">✓</td>
+            <td class="col-num" style="vertical-align: middle; text-align: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; display: inline-block;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </td>
             <td class="col-title">Geur- &amp; Vlekvrij Geconditioneerd
               <span class="col-desc">Vlek- &amp; vuilafstotende professionele afwerking</span>
             </td>
@@ -858,7 +872,7 @@
     if (inpZegel) {
       inpZegel.addEventListener('input', function() {
         const badge = document.getElementById('sealBadgeNr');
-        if (badge) badge.textContent = this.value || 'CF-DOR-....';
+        if (badge) badge.textContent = this.value || 'CF-DOR-........';
       });
     }
 
@@ -887,8 +901,38 @@
       document.getElementById('inpZegel').value = '';
       document.getElementById('signKeurmeester').innerText = '';
       const badge = document.getElementById('sealBadgeNr');
-      if (badge) badge.textContent = 'CF-DOR-....';
+      if (badge) badge.textContent = 'CF-DOR-........';
       document.querySelectorAll('.status-check').forEach(cb => cb.checked = false);
+    }
+
+    function afdrukkenBlanco() {
+      const inputs = Array.from(document.querySelectorAll('.chair-meta-grid input'));
+      const savedVals = inputs.map(i => ({ el: i, val: i.value }));
+      const checks = Array.from(document.querySelectorAll('.status-check'));
+      const savedChecks = checks.map(c => ({ el: c, checked: c.checked }));
+      const signEl = document.getElementById('signKeurmeester');
+      const savedSign = signEl ? signEl.innerText : '';
+      const badge = document.getElementById('sealBadgeNr');
+      const savedBadge = badge ? badge.textContent : '';
+
+      // Maak tijdelijk alles leeg voor een zuiver blanco afdruk
+      inputs.forEach(i => i.value = '');
+      checks.forEach(c => c.checked = false);
+      if (signEl) signEl.innerText = '';
+      if (badge) badge.textContent = 'CF-DOR-........';
+
+      const restoreHandler = () => {
+        savedVals.forEach(item => item.el.value = item.val);
+        savedChecks.forEach(item => item.el.checked = item.checked);
+        if (signEl) signEl.innerText = savedSign;
+        if (badge) badge.textContent = savedBadge;
+        window.removeEventListener('afterprint', restoreHandler);
+      };
+      window.addEventListener('afterprint', restoreHandler);
+
+      setTimeout(() => {
+        window.print();
+      }, 50);
     }
   </script>
 </body>
