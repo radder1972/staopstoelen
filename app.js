@@ -1704,11 +1704,14 @@ window.handleQuickAppointmentSubmit = function(e) {
   }
 
   const payload = {
+    brand: "staopstoelen",
+    site: "staopstoelen.nl",
     type: "quick_appointment_call_me",
     appointmentType: "showroom",
     name: name,
     phone: phone,
     email: "belmij@staopstoelen.nl",
+    replyTo: "info@staopstoelen.nl",
     notes: chair 
       ? `Snelafspraak via overlay: Klant wil gebeld worden door Geertjan voor proefzitten. Gekozen stoel: ${chair}` 
       : "Snelafspraak via overlay: Klant wil gebeld worden door Geertjan om een proefzit-afspraak in te plannen.",
@@ -2295,6 +2298,8 @@ function initCalendar() {
 
     // Assemble the payload for Google Calendar webhook
     const bookingPayload = {
+      brand: "staopstoelen",
+      site: "staopstoelen.nl",
       name: name,
       phone: phone,
       email: email,
@@ -2313,6 +2318,7 @@ function initCalendar() {
       notes: notes,
       emailSubject: "Bevestiging van uw aanvraag voor een adviesgesprek - Staopstoelen.nl",
       senderName: "Geertjan Klein Haneveld - Staopstoelen.nl",
+      replyTo: "info@staopstoelen.nl",
       notificationEmail: "schipperwonen@gmail.com, info@staopstoelen.nl",
       emailHtml: customerEmailHtml,
       timestamp: new Date().toISOString()
@@ -2757,12 +2763,15 @@ function handleLeadMagnetSubmit(event) {
 
   // 3. Payload for webhook (pushes lead to inbox / CRM / notification)
   const leadPayload = {
+    brand: "staopstoelen",
+    site: "staopstoelen.nl",
     name: name || "Geïnteresseerde",
     email: email,
     phone: "",
     appointmentType: "checklist_download",
     emailSubject: "Uw Zithouding Checklist (PDF) - Staopstoelen.nl",
     senderName: "Geertjan Klein Haneveld - Staopstoelen.nl",
+    replyTo: "info@staopstoelen.nl",
     notificationEmail: "schipperwonen@gmail.com, info@staopstoelen.nl",
     emailHtml: leadEmailHtml,
     timestamp: new Date().toISOString()

@@ -79,17 +79,26 @@ function doPost(e) {
     }
 
     // Merk-detectie: Schipper Compact Wonen vs Staopstoelen.nl
-    const brandString = [
-      payload.brand,
-      payload.site,
-      payload.senderName,
-      payload.replyTo,
-      payload.emailSubject,
-      payload.notificationEmail,
-      payload.notes
-    ].filter(Boolean).join(" ");
+    // LET OP: Nooit notificationEmail gebruiken voor merk-detectie, omdat
+    // schipperwonen@gmail.com de centrale Google-inbox is voor BEIDE websites!
+    const explicitBrand = String(payload.brand || "").toLowerCase();
+    const explicitSite = String(payload.site || "").toLowerCase();
+    const explicitSender = String(payload.senderName || "").toLowerCase();
+    const explicitSubject = String(payload.emailSubject || "").toLowerCase();
 
-    const isSchipper = /schipper/i.test(brandString);
+    let isSchipper = false;
+    if (explicitBrand === "schipper" || explicitSite.includes("schipper")) {
+      isSchipper = true;
+    } else if (explicitBrand === "staopstoelen" || explicitSite.includes("staopstoelen")) {
+      isSchipper = false;
+    } else if (explicitSender.includes("staopstoelen") || explicitSubject.includes("staopstoelen")) {
+      isSchipper = false;
+    } else if (explicitSender.includes("schipper") || explicitSubject.includes("schipper")) {
+      isSchipper = true;
+    } else {
+      // Standaard fallback: Staopstoelen.nl
+      isSchipper = false;
+    }
 
     const brandConfig = isSchipper ? {
       brandName: "Schipper Compact Wonen",
