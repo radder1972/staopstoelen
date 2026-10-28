@@ -28,7 +28,7 @@ const SCENES = [
     audio: 'assets/audio/revisie_scene_3.m4a',
     duration: 8.30,
     outVideo: 'assets/video/revisie_s3_koudschuim.mp4',
-    name: 'Scene 3: Medisch HR-Koudschuim & Hygiëne'
+    name: 'Scene 3: Professionele Reiniging & Koudschuim'
   },
   {
     idx: 3,
@@ -49,7 +49,7 @@ const SCENES = [
     audio: 'assets/audio/revisie_scene_6.m4a',
     duration: 11.80,
     outVideo: 'assets/video/revisie_s6_eindproduct.mp4',
-    name: 'Scene 6: 30-Punts Keuring & 2 Jaar Garantie'
+    name: 'Scene 6: 15-Punts Keuring & 1 Jaar Garantie'
   }
 ];
 

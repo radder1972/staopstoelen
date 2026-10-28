@@ -28,7 +28,7 @@ const SCENES = [
     audio: 'assets/audio/consumer_scene_3.m4a',
     duration: 12.33,
     outVideo: 'assets/video/scene3_werkplaats.mp4',
-    name: 'Scene 3: 30-Punts Keuring & Maatwerk'
+    name: 'Scene 3: 15-Punts Keuring & Maatwerk'
   },
   {
     idx: 3,

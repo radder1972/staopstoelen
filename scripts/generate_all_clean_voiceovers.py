@@ -35,13 +35,42 @@ TASKS = [
         "out_files": ["assets/audio/revisie_scene_2.m4a"]
     },
     {
-        "name": "Consumer Scene 3 (Waarom Certified Fitform - Keuring & Reiniging)",
-        "text": "Elke stoel krijgt een dertig-punten keuring, stoom-dieptereiniging en wordt door staopstoelen punt nl exact op maat afgesteld. Retouren zijn minder dan twee procent.",
+        "name": "Revisie Scene 3 (Reiniging & Bekleding & Koudschuim)",
+        "text": "De stoel wordt grondig professioneel gereinigd en waar nodig wordt de bekleding vervangen. Het koudschuim wordt gecontroleerd op actieve veerkracht.",
+        "duration": 8.30,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/revisie_scene_3.m4a"]
+    },
+    {
+        "name": "Revisie Scene 4 (Handmatige Topswing Afstelling)",
+        "text": "Bewegingstechnoloog Geertjan stelt de topswing-neksteun en de lendensteun handmatig met precisie af voor een optimale rughouding.",
+        "duration": 7.60,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/revisie_scene_4.m4a"]
+    },
+    {
+        "name": "Revisie Scene 6 (15-Punts Keuring & 1 Jaar Garantie)",
+        "text": "Pas na onze vijftien-punts kwaliteitscontrole is de stoel weer in topstaat: inclusief één jaar volledige garantie aan huis. Welkom in Dordrecht.",
+        "duration": 11.80,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/revisie_scene_6.m4a"]
+    },
+    {
+        "name": "Consumer Scene 2 (Sweet Spot - 1 Jaar Garantie)",
+        "text": "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1550 euro, mét één jaar volledige garantie aan huis.",
+        "duration": 10.67,
+        "delay_ms": 200,
+        "out_files": ["assets/audio/consumer_scene_2.m4a"]
+    },
+    {
+        "name": "Consumer Scene 3 (15-Punts Kwaliteitskeuring & Reiniging)",
+        "text": "Elke stoel krijgt een vijftien-punts kwaliteitskeuring, professionele reiniging en wordt door staopstoelen punt nl exact op uw lichaam afgesteld. Zo zit uw stoel weer echt als nieuw, voor jarenlang zorgeloos zitcomfort.",
         "duration": 12.33,
         "delay_ms": 200,
         "out_files": [
             "assets/audio/consumer_scene_3.m4a",
-            "assets/audio/scene_3.m4a"
+            "assets/audio/scene_3.m4a",
+            "assets/audio/scene_3.mp3"
         ]
     }
 ]
@@ -91,33 +120,19 @@ def main():
 
         for out_path in t["out_files"]:
             print(f"  -> Exporting {out_path} (exact {dur}s)...")
+            codec = "libmp3lame" if out_path.endswith(".mp3") else "aac"
             cmd = [
                 FFMPEG, "-y",
                 "-i", raw_mp3,
                 "-af", filter_str,
                 "-t", str(dur),
-                "-c:a", "aac",
+                "-c:a", codec,
                 "-b:a", "192k",
                 "-ar", "44100",
                 out_path
             ]
             subprocess.run(cmd, check=True, capture_output=True)
             print(f"  ✓ Opgeslagen als {out_path}")
-
-    # Also save MP3 version of scene_3 for web compatibility
-    print("  -> Exporting assets/audio/scene_3.mp3...")
-    cmd_mp3 = [
-        FFMPEG, "-y",
-        "-i", "/tmp/eleven_clean/task_2_raw.mp3",
-        "-af", "adelay=200|200,apad=whole_dur=12.33",
-        "-t", "12.33",
-        "-c:a", "libmp3lame",
-        "-b:a", "192k",
-        "-ar", "44100",
-        "assets/audio/scene_3.mp3"
-    ]
-    subprocess.run(cmd_mp3, check=True, capture_output=True)
-    print("  ✓ Opgeslagen als assets/audio/scene_3.mp3")
 
     print("\n🎉 ALL AUDIO TRACKS SUCCESSFULLY GENERATED AND REPLACED!")
 
