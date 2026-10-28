@@ -588,8 +588,8 @@ section[id], section {
 /* Tablet & Desktop: Houd de slideshow altijd NAAST de tekst (vanaf 768px) */
 @media (min-width: 768px) {
   .hero-grid {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 24px;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 28px;
     align-items: stretch;
   }
 
@@ -598,6 +598,7 @@ section[id], section {
     flex-direction: column;
     align-self: stretch;
     height: 100%;
+    width: 100%;
   }
 
   .hero-cta-group {
@@ -609,10 +610,25 @@ section[id], section {
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-grid {
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+  }
+  .hero-image-wrapper {
+    max-width: 300px !important;
+  }
+  .hero-usp-list li {
+    font-size: 0.86rem;
+    gap: 8px;
+    line-height: 1.4;
+  }
+}
+
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 48px;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 40px;
     align-items: stretch;
   }
 }
@@ -874,7 +890,7 @@ section[id], section {
 .hero-sublink-wrapper {
   display: flex;
   justify-content: flex-start;
-  max-width: 540px;
+  max-width: 100%;
   margin: 10px 0 0 0;
   width: 100%;
 }
@@ -942,6 +958,7 @@ section[id], section {
   align-items: flex-start;
   gap: 11px;
   line-height: 1.45;
+  font-size: 1rem;
 }
 
 .hero-usp-icon {
@@ -1054,8 +1071,8 @@ section[id], section {
 .hero-description {
   font-size: 1.125rem;
   color: var(--color-gray);
-  margin-bottom: 36px;
-  max-width: 580px;
+  margin-bottom: 28px;
+  max-width: 100%;
 }
 
 .hero-buttons {

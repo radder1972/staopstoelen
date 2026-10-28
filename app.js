@@ -1598,12 +1598,8 @@ window.openAppointmentModal = function(e, chairName, mode) {
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 
-  if ((mode || "callback") === "callback") {
-    setTimeout(() => {
-      const nameField = document.getElementById("quickAppointName");
-      if (nameField) nameField.focus();
-    }, 100);
-  }
+  const quickCard = modal.querySelector(".appointment-quick-card");
+  if (quickCard) quickCard.scrollTop = 0;
 };
 
 window.closeAppointmentModal = function() {
