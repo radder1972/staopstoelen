@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.198">
+  <link rel="stylesheet" href="style.css?v=10.199">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -962,7 +962,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.198
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.199
       </div>
     </div>
   </footer>
@@ -1144,8 +1144,60 @@
 
     // Initialize on point 1
     selectHotspot(1);
+
+    // Trek de hoogte van de wisselende onderdelen gelijk (titel, omschrijving, inspectievelden en
+    // voordeel/risico-box), zodat de pagina niet verspringt als je een ander stap aanklikt.
+    // Meet de hoogste variant over alle stappen en beide modi, voor de huidige schermbreedte.
+    function equalizeDetailHeights() {
+      const steps = Object.keys(data).map(k => data[k]);
+      const eq = (el, texts) => {
+        if (!el) return;
+        el.style.minHeight = '0px';
+        let max = 0;
+        texts.forEach(t => { el.textContent = t; max = Math.max(max, el.getBoundingClientRect().height); });
+        el.style.minHeight = Math.ceil(max) + 'px';
+      };
+      // Categorieregel (nummer + label) kan op een smal scherm over 2 regels gaan
+      const catRow = document.querySelector('.detail-category-row');
+      const catLabel = document.getElementById('detail-category');
+      if (catRow && catLabel) {
+        catRow.style.minHeight = '0px';
+        let maxCat = 0;
+        steps.forEach(d => { catLabel.textContent = d.category; maxCat = Math.max(maxCat, catRow.getBoundingClientRect().height); });
+        catRow.style.minHeight = Math.ceil(maxCat) + 'px';
+      }
+      eq(document.getElementById('detail-title'), steps.map(d => d.title));
+      eq(document.getElementById('detail-desc'), steps.map(d => d.desc));
+      eq(document.getElementById('detail-check'), steps.map(d => d.check));
+      eq(document.getElementById('detail-action'), steps.map(d => d.action));
+      eq(document.getElementById('detail-warranty'), steps.map(d => d.warranty));
+
+      // Voordeel/risico-box: meet de box zelf met beide teksten per stap
+      const box = document.getElementById('risk-benefit-box');
+      const text = document.getElementById('risk-benefit-text');
+      const boxTitle = document.getElementById('risk-benefit-title');
+      if (box && text && boxTitle) {
+        box.style.minHeight = '0px';
+        let max = 0;
+        ['Het Certified Fitform Voordeel:', 'Het Marktplaats Risico:'].forEach(ti => {
+          boxTitle.textContent = ti;
+          steps.forEach(d => [d.benefit, d.risk].forEach(tx => { text.textContent = tx; max = Math.max(max, box.getBoundingClientRect().height); }));
+        });
+        box.style.minHeight = Math.ceil(max) + 'px';
+      }
+
+      // Zet de teksten van de huidige stap weer terug
+      selectHotspot(currentHotspotId);
+    }
+
+    let equalizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(equalizeTimer);
+      equalizeTimer = setTimeout(equalizeDetailHeights, 150);
+    });
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(equalizeDetailHeights);
   </script>
 
-  <script src="app.js?v=10.198"></script>
+  <script src="app.js?v=10.199"></script>
 </body>
 </html>
