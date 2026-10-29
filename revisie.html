@@ -40,7 +40,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.205">
+  <link rel="stylesheet" href="style.css?v=10.206">
   <style>
     .revisie-stappen-container {
       margin-top: 40px;
@@ -498,18 +498,12 @@
               <h3 style="margin: 0; font-size: 1.3rem; color: var(--color-forest-dark);">Het Volledige Revisieproces: Van Kaal Frame tot Nieuwstaat</h3>
             </div>
           </div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
             <span style="display: inline-flex; align-items: center; gap: 8px; background: #f0fdf4; border: 1.5px solid rgba(75, 143, 36, 0.35); padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; color: var(--color-forest-dark);">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span>15-Punts Keuring &bull; Linak Motortest &bull; 1 Jaar Garantie</span>
             </span>
-            <button type="button" onclick="openCertifiedVideoModal('revisie')" class="btn-watch-video-pill" style="padding: 6px 14px; font-size: 0.82rem; height: auto;">
-              <span class="btn-watch-video-play-circle" style="width: 20px; height: 20px;">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
-              </span>
-              <span>Groot Scherm</span>
-            </button>
-            <a href="stoel-anatomie.html" class="btn-watch-video-pill" style="padding: 6px 14px; font-size: 0.82rem; height: auto; text-decoration: none; background: #ffffff; color: var(--color-forest); border-color: rgba(75, 143, 36, 0.4);">
+            <a href="stoel-anatomie.html" style="font-size: 0.84rem; font-weight: 600; color: var(--color-forest); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; opacity: 0.88; transition: opacity 0.2s;" onmouseover="this.style.opacity='1';this.style.textDecoration='underline'" onmouseout="this.style.opacity='0.88';this.style.textDecoration='none'">
               <span>Stoel-Anatomie &rsaquo;</span>
             </a>
           </div>
@@ -522,7 +516,7 @@
             preload="metadata" 
             poster="assets/video/revisie_poster.jpg?v=10.149" 
             style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px;">
-            <source src="assets/video/revisie_proces_dordrecht.mp4?v=10.205" type="video/mp4">
+            <source src="assets/video/revisie_proces_dordrecht.mp4?v=10.206" type="video/mp4">
             Uw browser ondersteunt geen HTML5 video.
           </video>
         </div>
@@ -813,7 +807,7 @@
       <!-- Maatwerk & Zithouding Card (Autoriteit & Medisch Niveau) -->
       <div class="revisie-maatwerk-card">
         <div class="revisie-maatwerk-img">
-          <img src="assets/geertjan_advies_showroom.jpg" alt="BewegingsTechnoloog Geert-Jan stelt sta-op stoel ergonomisch op maat af voor klant in showroom Dordrecht" loading="lazy">
+          <img src="assets/geertjan_advies_showroom.jpg?v=10.206" alt="BewegingsTechnoloog Geert-Jan stelt sta-op stoel ergonomisch op maat af voor klant in showroom Dordrecht" loading="lazy">
         </div>
         <div class="revisie-maatwerk-body">
           <span class="revisie-stap-number">Medisch Verantwoord Zitten</span>
@@ -935,11 +929,11 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.205
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.206
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=10.205"></script>
+  <script src="app.js?v=10.206"></script>
 </body>
 </html>
