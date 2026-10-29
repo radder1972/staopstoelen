@@ -110,6 +110,9 @@ async function main() {
   if (process.argv.includes('--scene3-only')) {
     scenesToRecord = SCENES.filter(s => s.idx === 2);
   }
+  if (process.argv.includes('--scene2-only')) {
+    scenesToRecord = SCENES.filter(s => s.idx === 1);
+  }
 
   for (const scene of scenesToRecord) {
     console.log(`\n🎬 Recording ${scene.name} (${scene.duration}s)...`);
