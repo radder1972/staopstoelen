@@ -79,6 +79,7 @@ def main():
         # Update CSS en JS links
         regio_content = re.sub(r'style\.css\?v=[0-9\.]+', f'style.css?v={target_version}', regio_content)
         regio_content = re.sub(r'app\.js\?v=[0-9\.]+', f'app.js?v={target_version}', regio_content)
+        regio_content = re.sub(r'geertjan_advies_showroom\.jpg\?v=[0-9\.]+', f'geertjan_advies_showroom.jpg?v={target_version}', regio_content)
 
         # Update or ensure footer version string
         if "Gerealiseerd door BewegingsTechnologen. | Versie" in regio_content:
@@ -126,7 +127,7 @@ def main():
         # Update CSS, JS & media query params
         content = re.sub(r'style\.css\?v=[0-9\.]+', f'style.css?v={target_version}', content)
         content = re.sub(r'app\.js\?v=[0-9\.]+', f'app.js?v={target_version}', content)
-        content = re.sub(r'(\.(?:mp4|m4a|mp3))\?v=[0-9a-zA-Z_\.]+', rf'\1?v={target_version}', content)
+        content = re.sub(r'(\.(?:mp4|m4a|mp3|jpg))\?v=[0-9a-zA-Z_\.]+', rf'\1?v={target_version}', content)
 
         # Update footer version
         content = re.sub(
