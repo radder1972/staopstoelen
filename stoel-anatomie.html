@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.197">
+  <link rel="stylesheet" href="style.css?v=10.198">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -326,26 +326,26 @@
       min-height: 4.8rem;
     }
 
+    /* Inspectie-box: label boven, tekst eronder (max. 2 regels), met ruime witruimte */
     .detail-meta-box {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 12px;
-      padding: 14px 16px;
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      font-size: 0.85rem;
+      gap: 12px;
+      font-size: 0.88rem;
       margin-bottom: 16px;
-      min-height: 108px;
       box-sizing: border-box;
-      justify-content: center;
     }
     .detail-meta-row {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 5px;
       border-bottom: 1px dashed #e2e8f0;
-      padding-bottom: 6px;
+      padding-bottom: 12px;
     }
     .detail-meta-row:last-child {
       border-bottom: none;
@@ -354,12 +354,17 @@
     .detail-meta-lbl {
       color: #64748b;
       font-weight: 500;
-      flex-shrink: 0;
+      font-size: 0.8rem;
+      letter-spacing: 0.2px;
     }
     .detail-meta-val {
       font-weight: 750;
       color: #0f172a;
-      text-align: right;
+      text-align: left;
+      line-height: 1.45;
+      min-height: 2.9em; /* altijd ruimte voor 2 regels, zodat de box niet verspringt tussen stappen */
+      overflow-wrap: break-word;
+      text-wrap: balance;
     }
 
     .risk-benefit-box {
@@ -957,7 +962,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.197
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.198
       </div>
     </div>
   </footer>
@@ -1141,6 +1146,6 @@
     selectHotspot(1);
   </script>
 
-  <script src="app.js?v=10.197"></script>
+  <script src="app.js?v=10.198"></script>
 </body>
 </html>
