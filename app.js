@@ -42,6 +42,7 @@ window.adjustImageFit = function(img) {
     if (localStorage.getItem('staopstoelen_ignore_analytics') === 'true' || document.cookie.indexOf('staopstoelen_ignore_analytics=true') !== -1) {
       window['ga-disable-G-5KQF1CELDD'] = true;
       window['ga-disable-AW-923357429'] = true;
+      window['ga-disable-AW-18540486129'] = true;
     }
   } catch (e) {
     console.warn("Exclusion init:", e);
@@ -81,6 +82,9 @@ function logCustomVisitEvent(eventName = 'pageview') {
 }
 
 // Google Ads Conversion & Event Tracking (AW-923357429)
+// Er worden twee Google Ads-accounts gemeten: het oorspronkelijke account (AW-923357429)
+// en het account van Campaign #1 (AW-18540486129). Conversies worden naar elk account
+// gestuurd waarvoor een label is ingevuld.
 const GOOGLE_ADS_CONFIG = {
   id: 'AW-923357429',
   labels: {
@@ -90,11 +94,23 @@ const GOOGLE_ADS_CONFIG = {
   }
 };
 
+const GOOGLE_ADS_CONFIG_CAMPAIGN = {
+  id: 'AW-18540486129',
+  labels: {
+    appointment: '', // Vul conversielabel in (Google Ads -> Doelen -> Conversies)
+    phone: '',       // Vul conversielabel in voor bellen
+    whatsapp: ''     // Vul conversielabel in voor WhatsApp
+  }
+};
+
 function trackGoogleAdsConversion(conversionType, details = {}) {
   try {
     if (typeof window.gtag === 'function') {
-      const label = GOOGLE_ADS_CONFIG.labels[conversionType] || '';
-      const sendTo = label ? `${GOOGLE_ADS_CONFIG.id}/${label}` : GOOGLE_ADS_CONFIG.id;
+      const targets = [GOOGLE_ADS_CONFIG, GOOGLE_ADS_CONFIG_CAMPAIGN]
+        .filter(cfg => cfg.labels[conversionType])
+        .map(cfg => `${cfg.id}/${cfg.labels[conversionType]}`);
+      // Zonder enig label blijft het oorspronkelijke gedrag behouden (alleen account-ID)
+      const sendTo = targets.length === 0 ? GOOGLE_ADS_CONFIG.id : (targets.length === 1 ? targets[0] : targets);
       
       // Google Ads Conversie Gebeurtenis
       window.gtag('event', 'conversion', {
@@ -112,6 +128,19 @@ function trackGoogleAdsConversion(conversionType, details = {}) {
         value: details.value || 1.0,
         currency: details.currency || 'EUR'
       });
+
+      // Eigen GA4-gebeurtenis per actie, zodat die in Google Ads als conversie te importeren is
+      const ga4EventNames = {
+        appointment: 'Contactformulier_ingevuld',
+        phone: 'phone_click',
+        whatsapp: 'whatsapp_click'
+      };
+      if (ga4EventNames[conversionType]) {
+        window.gtag('event', ga4EventNames[conversionType], {
+          event_category: details.event_category || 'Lead',
+          event_label: details.event_label || conversionType
+        });
+      }
 
       console.log(`[Google Ads] Conversie geregistreerd: ${conversionType}`, details);
     }

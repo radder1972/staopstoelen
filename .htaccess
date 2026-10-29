@@ -15,6 +15,14 @@ DirectoryIndex index.html index.php
     </FilesMatch>
 </IfModule>
 
+# Afbeeldingen: browsercache van 7 dagen + Vary zodat WebP/PNG niet door elkaar lopen
+<IfModule mod_headers.c>
+    <FilesMatch "\.(png|jpe?g|webp|svg)$">
+        Header set Cache-Control "public, max-age=604800"
+        Header append Vary Accept
+    </FilesMatch>
+</IfModule>
+
 # ----------------------------------------------------------------------
 # Rewrite Engine & SEO Canonicalization
 # ----------------------------------------------------------------------
@@ -48,6 +56,12 @@ DirectoryIndex index.html index.php
     # Regio landing page aliases (e.g. /sta-op-stoelen/dordrecht or /sta-op-stoel/dordrecht -> /sta-op-stoel-dordrecht.html)
     RewriteRule ^sta-op-stoel(?:en)?/([a-zA-Z0-9-]+)/?$ /sta-op-stoel-$1.html [R=301,L]
     RewriteRule ^sta-op-stoelen-([a-zA-Z0-9-]+)/?$ /sta-op-stoel-$1.html [R=301,L]
+
+    # Rule 4b: Serveer automatisch de lichte WebP-versie (bestand.png.webp / bestand.jpg.webp)
+    # aan browsers die WebP ondersteunen. De originele PNG/JPG blijft het fallback-bestand.
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{DOCUMENT_ROOT}/$0.webp -f
+    RewriteRule ^assets/.+\.(png|jpe?g)$ $0.webp [T=image/webp,L]
 
     # Rule 5: Exclude API, assets, and actual existing files and directories
     RewriteRule ^api/ - [L]

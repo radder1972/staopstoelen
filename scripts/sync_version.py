@@ -41,10 +41,16 @@ def main():
 
     if len(sys.argv) > 1:
         arg = sys.argv[1].strip()
+        if arg in ("-h", "--help"):
+            print("Gebruik: python3 scripts/sync_version.py [--bump | <versienummer, bv. 10.198>]")
+            return
         if arg == "--bump":
             target_version = bump_version_string(get_current_version())
-        else:
+        elif re.fullmatch(r"[0-9]+(\.[0-9]+)*", arg):
             target_version = arg
+        else:
+            print(f"❌ Ongeldig versienummer: '{arg}'. Gebruik bijvoorbeeld 10.198 of --bump.")
+            sys.exit(1)
     else:
         target_version = get_current_version()
 
