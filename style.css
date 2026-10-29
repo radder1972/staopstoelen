@@ -8439,8 +8439,41 @@ input[type="checkbox"] {
   }
 }
 
-
-
-
-
-
+/* Kruimelpad (Home › ... › Pagina): zelfde stijl als de standaard terug-link */
+.breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 0 0 24px 0;
+  padding: 0 24px; /* zelfde zijmarge als .container, ook als de pagina die op 0 zet */
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-forest);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  color: var(--color-forest-dark);
+  text-decoration: underline;
+}
+.breadcrumb-sep {
+  color: var(--color-gray-light, #cbd5e1);
+}
+.breadcrumb-current {
+  font-weight: 700;
+  color: var(--color-forest-dark);
+}
+.breadcrumb-bar .back-link {
+  margin-bottom: 0;
+}
