@@ -123,9 +123,10 @@ def main():
 
         orig_content = content
 
-        # Update CSS & JS query params
+        # Update CSS, JS & media query params
         content = re.sub(r'style\.css\?v=[0-9\.]+', f'style.css?v={target_version}', content)
         content = re.sub(r'app\.js\?v=[0-9\.]+', f'app.js?v={target_version}', content)
+        content = re.sub(r'(\.(?:mp4|m4a|mp3))\?v=[0-9a-zA-Z_\.]+', rf'\1?v={target_version}', content)
 
         # Update footer version
         content = re.sub(
@@ -152,6 +153,18 @@ def main():
             updated_count += 1
 
     print(f"  ✓ {updated_count} HTML bestanden bijgewerkt met Versie {target_version}")
+
+    # 5b. Update media query params in app.js
+    app_js = os.path.join(PROJECT_ROOT, "app.js")
+    if os.path.exists(app_js):
+        with open(app_js, "r", encoding="utf-8") as f:
+            js_content = f.read()
+        js_new = re.sub(r'(\.(?:mp4|m4a|mp3|jpg))\?v=[0-9a-zA-Z_\.]+', rf'\1?v={target_version}', js_content)
+        js_new = re.sub(r'(autoplay=1&v=)[0-9\.]+', rf'\g<1>{target_version}', js_new)
+        if js_new != js_content:
+            with open(app_js, "w", encoding="utf-8") as f:
+                f.write(js_new)
+            print("  ✓ app.js media query params bijgewerkt")
 
     # 6. Regenereer de 15 regiopagina's
     if os.path.exists(regio_script):
