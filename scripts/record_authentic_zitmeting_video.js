@@ -48,7 +48,7 @@ async function main() {
   fs.mkdirSync('assets/video', { recursive: true });
 
   const url = `http://localhost:8088/certified-fitform-video.html?mode=afspraak&record=1`;
-  const chromeProc = exec(`"${CHROME_PATH}" --headless=new --remote-debugging-port=${PORT} --disable-gpu --window-size=1920,1080 "${url}"`);
+  const chromeProc = exec(`"${CHROME_PATH}" --headless=new --user-data-dir=/tmp/chrome_${PORT} --remote-debugging-port=${PORT} --disable-gpu --window-size=1920,1080 "${url}"`);
 
   await wait(1800);
 
@@ -245,6 +245,7 @@ async function main() {
 
   const totalTime = ((Date.now() - totalStartTime) / 1000).toFixed(1);
   console.log(`\n🎉 ALL DONE in ${totalTime}s! Authentic video and poster successfully created!`);
+  process.exit(0);
 }
 
 main().catch(err => {
