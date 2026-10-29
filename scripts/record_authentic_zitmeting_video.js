@@ -110,6 +110,8 @@ async function main() {
     ? SCENES.filter(s => s.idx === 1)
     : process.argv.includes('--scenes-123')
     ? SCENES.filter(s => s.idx < 3)
+    : process.argv.includes('--scenes-34')
+    ? SCENES.filter(s => s.idx === 2 || s.idx === 3)
     : SCENES;
   for (const scene of scenesToRecord) {
     console.log(`\n🎬 Recording ${scene.name} (${scene.duration}s)...`);

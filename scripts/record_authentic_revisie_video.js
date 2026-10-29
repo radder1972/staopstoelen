@@ -123,6 +123,8 @@ async function main() {
   let scenesToRecord = SCENES;
   if (process.argv.includes('--scene6-only')) {
     scenesToRecord = SCENES.filter(s => s.idx === 5);
+  } else if (process.argv.includes('--scene4-only')) {
+    scenesToRecord = SCENES.filter(s => s.idx === 3);
   } else if (process.argv.includes('--scene2-only')) {
     scenesToRecord = SCENES.filter(s => s.idx === 1);
   }

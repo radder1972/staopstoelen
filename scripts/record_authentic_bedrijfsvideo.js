@@ -107,10 +107,11 @@ async function main() {
   const totalStartTime = Date.now();
 
   let scenesToRecord = SCENES;
-  if (process.argv.includes('--scene3-only')) {
+  if (process.argv.includes('--scenes-34')) {
+    scenesToRecord = SCENES.filter(s => s.idx === 2 || s.idx === 3);
+  } else if (process.argv.includes('--scene3-only')) {
     scenesToRecord = SCENES.filter(s => s.idx === 2);
-  }
-  if (process.argv.includes('--scene2-only')) {
+  } else if (process.argv.includes('--scene2-only')) {
     scenesToRecord = SCENES.filter(s => s.idx === 1);
   }
 
