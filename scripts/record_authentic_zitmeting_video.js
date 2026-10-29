@@ -106,7 +106,9 @@ async function main() {
 
   const totalStartTime = Date.now();
 
-  const scenesToRecord = process.argv.includes('--scene2-only')
+  const scenesToRecord = process.argv.includes('--scene1-only')
+    ? SCENES.filter(s => s.idx === 0)
+    : process.argv.includes('--scene2-only')
     ? SCENES.filter(s => s.idx === 1)
     : process.argv.includes('--scenes-123')
     ? SCENES.filter(s => s.idx < 3)
