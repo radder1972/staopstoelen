@@ -128,7 +128,7 @@ TASKS = [
     },
     {
         "name": "Afspraak Scene 4 (Gratis Parkeren in Dordrecht)",
-        "text": "U parkeert gratis voor de deur aan de Merwe-de-straat tweehonderd negenendertig in Dordrecht. Of kies hieronder direct uw gewenste dag en tijdstip in onze online agenda!",
+        "text": "U parkeert gratis voor de deur aan de Merwedestraat tweehonderd negenendertig in Dordrecht. Of kies hieronder direct uw gewenste dag en tijdstip in onze online agenda!",
         "duration": 10.98,
         "delay_ms": 200,
         "out_files": ["assets/audio/afspraak_scene_4.m4a"]
