@@ -106,7 +106,8 @@ async function main() {
 
   const totalStartTime = Date.now();
 
-  for (const scene of SCENES) {
+  const scenesToRecord = process.argv.includes('--scene2-only') ? SCENES.filter(s => s.idx === 1) : SCENES;
+  for (const scene of scenesToRecord) {
     console.log(`\n🎬 Recording ${scene.name} (${scene.duration}s)...`);
     const numFrames = Math.ceil(scene.duration * FPS);
     const audioPath = path.resolve(scene.audio);
