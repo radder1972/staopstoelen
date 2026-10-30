@@ -19,7 +19,7 @@ const SCENES = [
   {
     idx: 1,
     audio: 'assets/audio/consumer_scene_2.m4a',
-    duration: 11.00,
+    duration: 13.00,
     outVideo: 'assets/video/scene2_showroom.mp4',
     name: 'Scene 2: Certified Fitform De Sweet Spot'
   },
@@ -50,15 +50,38 @@ async function main() {
   const url = `http://localhost:8088/certified-fitform-video.html?mode=consumer&record=1`;
   const chromeProc = exec(`"${CHROME_PATH}" --headless=new --user-data-dir=/tmp/chrome_${PORT} --remote-debugging-port=${PORT} --disable-gpu --window-size=1920,1080 "${url}"`);
 
-  await wait(2200);
-
-  const tabs = await new Promise((resolve, reject) => {
-    http.get(`http://127.0.0.1:${PORT}/json`, res => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(JSON.parse(data)));
-    }).on('error', reject);
-  });
+  // Retry connecting to Chrome CDP for up to 15 seconds
+  let tabs = null;
+  const maxRetries = 30;
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    await wait(500);
+    try {
+      tabs = await new Promise((resolve, reject) => {
+        const req = http.get(`http://127.0.0.1:${PORT}/json`, res => {
+          let data = '';
+          res.on('data', chunk => data += chunk);
+          res.on('end', () => {
+            try {
+              resolve(JSON.parse(data));
+            } catch (e) {
+              reject(e);
+            }
+          });
+        });
+        req.on('error', reject);
+        req.setTimeout(1000, () => {
+          req.destroy();
+          reject(new Error('timeout'));
+        });
+      });
+      if (tabs && tabs.length > 0) break;
+    } catch (e) {
+      if (attempt === maxRetries) {
+        chromeProc.kill();
+        throw new Error(`Failed to connect to Chrome at http://127.0.0.1:${PORT}/json after ${maxRetries} attempts: ${e.message}`);
+      }
+    }
+  }
 
   const tab = tabs.find(t => t.url.includes('certified-fitform-video.html'));
   if (!tab) {

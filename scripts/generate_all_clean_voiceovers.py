@@ -78,8 +78,8 @@ TASKS = [
     },
     {
         "name": "Consumer Scene 2 (Sweet Spot - 1 Jaar Garantie)",
-        "text": "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor 1500 euro, mét één jaar volledige garantie aan huis.",
-        "duration": 11.00,
+        "text": "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor slechts 1500 euro – letterlijk een derde van de nieuwprijs van 4500 euro – mét één jaar volledige garantie aan huis.",
+        "duration": 13.00,
         "delay_ms": 200,
         "out_files": [
             "assets/audio/consumer_scene_2.m4a",
