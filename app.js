@@ -1303,9 +1303,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.229"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.230"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.229" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.230" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -2658,8 +2658,8 @@ function initFloatingMenu() {
 
   const isSubdir = window.location.pathname.includes("/stoelen/");
   const base = isSubdir ? "../" : "";
-  const normalChairSrc = `${base}assets/assistent-stoel.svg`;
-  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg`;
+  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.230`;
+  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.230`;
 
   // Verberg het oude losse 3-knoppen menu (deze zitten nu geïntegreerd onderin de Digitale Assistent)
   if (oldMenu) {
@@ -3166,8 +3166,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.229" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.229" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.230" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.230" 
             controls 
             playsinline 
             preload="auto"
@@ -3198,8 +3198,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.229";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.229";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.230";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.230";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3212,7 +3212,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.229`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.230`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3221,8 +3221,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.229";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.229";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.230";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.230";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3235,7 +3235,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.229`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.230`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";

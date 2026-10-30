@@ -8609,9 +8609,9 @@ input[type="checkbox"] {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f1f8f3 65%, #e1f0e5 100%);
-  border: 2.5px solid #1f9d3f;
-  box-shadow: 0 10px 28px rgba(7, 61, 25, 0.24), 0 0 0 4px rgba(31, 157, 63, 0.12);
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%);
+  border: 2.5px solid #4b8f24;
+  box-shadow: 0 10px 28px rgba(18, 43, 7, 0.24), 0 0 0 4px rgba(75, 143, 36, 0.14);
   padding: 6px;
   display: flex;
   align-items: center;
@@ -8624,9 +8624,9 @@ input[type="checkbox"] {
 
 .floating-btn-main.assistant-chair-fab:hover {
   transform: none !important;
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #eaf6ed 65%, #d6ecdc 100%);
-  border-color: #f59e0b;
-  box-shadow: 0 12px 32px rgba(7, 61, 25, 0.3), 0 0 0 5px rgba(245, 158, 11, 0.22);
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #eef7e6 65%, #dcecd0 100%);
+  border-color: #f39223;
+  box-shadow: 0 12px 32px rgba(18, 43, 7, 0.3), 0 0 0 5px rgba(243, 146, 35, 0.22);
 }
 
 .assistant-chair-img {
@@ -8637,7 +8637,7 @@ input[type="checkbox"] {
   pointer-events: none;
   user-select: none;
   transform-origin: 50% 80%;
-  filter: drop-shadow(0 4px 8px rgba(7, 61, 25, 0.22));
+  filter: drop-shadow(0 4px 8px rgba(18, 43, 7, 0.22));
 }
 
 .assistant-online-dot {
@@ -8647,7 +8647,7 @@ input[type="checkbox"] {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #1f9d3f;
+  background: #4b8f24;
   border: 2.5px solid #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -8658,10 +8658,10 @@ input[type="checkbox"] {
   align-items: center;
   gap: 6px;
   background: #ffffff;
-  border: 1.5px solid rgba(31, 157, 63, 0.32);
+  border: 1.5px solid rgba(75, 143, 36, 0.34);
   border-radius: 999px;
   padding: 6px 10px 6px 12px;
-  box-shadow: 0 8px 24px rgba(7, 61, 25, 0.14);
+  box-shadow: 0 8px 24px rgba(18, 43, 7, 0.14);
   animation: slideInUp 0.35s ease-out;
 }
 
@@ -8682,7 +8682,7 @@ input[type="checkbox"] {
 }
 
 .assistant-teaser-badge {
-  background: linear-gradient(135deg, #1f9d3f, #146c2b);
+  background: linear-gradient(135deg, #6ab13c, #4b8f24);
   color: #ffffff;
   font-size: 0.7rem;
   font-weight: 700;
@@ -8696,12 +8696,12 @@ input[type="checkbox"] {
 .assistant-teaser-text {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #0b2914;
+  color: #122b07;
   white-space: nowrap;
 }
 
 .assistant-teaser-close {
-  background: rgba(7, 61, 25, 0.06);
+  background: rgba(18, 43, 7, 0.06);
   border: 0;
   width: 22px;
   height: 22px;
@@ -8716,8 +8716,8 @@ input[type="checkbox"] {
 }
 
 .assistant-teaser-close:hover {
-  background: rgba(7, 61, 25, 0.14);
-  color: #073d19;
+  background: rgba(18, 43, 7, 0.14);
+  color: #122b07;
 }
 
 /* Het Digitale Assistent Venster */
@@ -8729,8 +8729,8 @@ input[type="checkbox"] {
   max-height: min(600px, calc(100vh - 120px));
   background: #ffffff;
   border-radius: 20px;
-  border: 1.5px solid rgba(31, 157, 63, 0.28);
-  box-shadow: 0 20px 50px rgba(7, 61, 25, 0.24);
+  border: 1.5px solid rgba(75, 143, 36, 0.28);
+  box-shadow: 0 20px 50px rgba(18, 43, 7, 0.24);
   overflow: hidden;
   animation: slideInUp 0.25s ease-out;
 }
@@ -8744,7 +8744,7 @@ input[type="checkbox"] {
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  background: linear-gradient(135deg, #073d19 0%, #14632b 65%, #1f9d3f 100%);
+  background: linear-gradient(135deg, #122b07 0%, #2e6819 60%, #4b8f24 100%);
   color: #ffffff;
 }
 
@@ -8753,8 +8753,8 @@ input[type="checkbox"] {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #e8f5ec 100%);
-  border: 2px solid rgba(245, 158, 11, 0.85);
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #eef7e6 100%);
+  border: 2px solid rgba(243, 146, 35, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8776,7 +8776,7 @@ input[type="checkbox"] {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #22c55e;
+  background: #6ab13c;
   border: 2px solid #ffffff;
 }
 
@@ -8803,9 +8803,9 @@ input[type="checkbox"] {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  background: rgba(245, 158, 11, 0.25);
-  border: 1px solid rgba(245, 158, 11, 0.65);
-  color: #fde68a;
+  background: rgba(243, 146, 35, 0.25);
+  border: 1px solid rgba(243, 146, 35, 0.65);
+  color: #fed857;
   padding: 1px 7px;
   border-radius: 999px;
 }
@@ -8847,7 +8847,7 @@ input[type="checkbox"] {
 
 .da-body {
   padding: 14px 15px;
-  background: #f5faf6;
+  background: #f6faf2;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -8878,14 +8878,14 @@ input[type="checkbox"] {
 
 .da-msg-bot .da-msg-bubble {
   background: #ffffff;
-  color: #132a19;
-  border: 1px solid rgba(31, 157, 63, 0.2);
+  color: #122b07;
+  border: 1px solid rgba(75, 143, 36, 0.22);
   border-top-left-radius: 4px;
-  box-shadow: 0 2px 8px rgba(7, 61, 25, 0.05);
+  box-shadow: 0 2px 8px rgba(18, 43, 7, 0.05);
 }
 
 .da-msg-user .da-msg-bubble {
-  background: #1f9d3f;
+  background: #4b8f24;
   color: #ffffff;
   font-weight: 600;
   border-top-right-radius: 4px;
@@ -8901,8 +8901,8 @@ input[type="checkbox"] {
 .da-chip {
   text-align: left;
   background: #ffffff;
-  border: 1.5px solid rgba(31, 157, 63, 0.28);
-  color: #073d19;
+  border: 1.5px solid rgba(75, 143, 36, 0.28);
+  color: #122b07;
   font-family: inherit;
   font-size: 0.83rem;
   font-weight: 600;
@@ -8913,8 +8913,8 @@ input[type="checkbox"] {
 }
 
 .da-chip:hover {
-  background: #eaf6ed;
-  border-color: #1f9d3f;
+  background: #eef7e6;
+  border-color: #4b8f24;
   transform: translateX(2px);
 }
 
@@ -8930,7 +8930,7 @@ input[type="checkbox"] {
   align-items: center;
   padding: 6px 11px;
   border-radius: 8px;
-  background: #1f9d3f;
+  background: #4b8f24;
   color: #ffffff !important;
   font-size: 0.78rem;
   font-weight: 700;
@@ -8941,17 +8941,17 @@ input[type="checkbox"] {
 }
 
 .da-inline-btn:hover {
-  background: #146c2b;
+  background: #2e6819;
 }
 
 .da-inline-btn-sec {
-  background: #eef6f0;
-  color: #073d19 !important;
-  border: 1px solid rgba(31, 157, 63, 0.3);
+  background: #eef7e6;
+  color: #122b07 !important;
+  border: 1px solid rgba(75, 143, 36, 0.3);
 }
 
 .da-inline-btn-sec:hover {
-  background: #dfeee3;
+  background: #e0f0d3;
 }
 
 .da-input-bar {
@@ -8960,22 +8960,22 @@ input[type="checkbox"] {
   gap: 8px;
   padding: 10px 12px;
   background: #ffffff;
-  border-top: 1px solid #e5efe7;
+  border-top: 1px solid #e6f0de;
 }
 
 .da-input {
   flex: 1;
-  border: 1.5px solid #d5e6d9;
+  border: 1.5px solid #d5e6c8;
   border-radius: 999px;
   padding: 8px 14px;
   font-size: 0.85rem;
   font-family: inherit;
-  color: #111827;
+  color: #122b07;
 }
 
 .da-input:focus {
   outline: none;
-  border-color: #1f9d3f;
+  border-color: #4b8f24;
 }
 
 .da-send-btn {
@@ -8983,7 +8983,7 @@ input[type="checkbox"] {
   height: 36px;
   border-radius: 50%;
   border: 0;
-  background: #1f9d3f;
+  background: #4b8f24;
   color: #ffffff;
   display: inline-flex;
   align-items: center;
@@ -8993,7 +8993,7 @@ input[type="checkbox"] {
 }
 
 .da-send-btn:hover {
-  background: #146c2b;
+  background: #2e6819;
 }
 
 .da-footer-actions {
@@ -9001,8 +9001,8 @@ input[type="checkbox"] {
   grid-template-columns: 1.15fr 1fr 0.95fr;
   gap: 6px;
   padding: 9px 12px 11px;
-  background: #eef6f0;
-  border-top: 1px solid #dcebe0;
+  background: #eef7e6;
+  border-top: 1px solid #dcebd0;
 }
 
 .da-action-btn {
@@ -9019,14 +9019,14 @@ input[type="checkbox"] {
 }
 
 .da-action-primary {
-  background: #073d19;
+  background: #122b07;
   color: #ffffff !important;
 }
 
 .da-action-call {
   background: #ffffff;
-  color: #073d19 !important;
-  border: 1px solid rgba(7, 61, 25, 0.2);
+  color: #122b07 !important;
+  border: 1px solid rgba(18, 43, 7, 0.22);
 }
 
 .da-action-wa {
@@ -9037,7 +9037,7 @@ input[type="checkbox"] {
 /* Dans-animatie van de 3D Sta-op Stoel (zonder 360-graden spin) */
 .chair-dancing {
   animation: chairBoogie 3.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
-  filter: drop-shadow(0 8px 14px rgba(31, 157, 63, 0.5)) drop-shadow(0 0 10px rgba(245, 158, 11, 0.45)) !important;
+  filter: drop-shadow(0 8px 14px rgba(75, 143, 36, 0.52)) drop-shadow(0 0 10px rgba(243, 146, 35, 0.45)) !important;
 }
 
 @keyframes chairBoogie {
