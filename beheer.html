@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.226">
+  <link rel="stylesheet" href="style.css?v=10.227">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1532,7 +1532,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.226</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.227</span></div>
     </div>
   </div>
 
@@ -1542,7 +1542,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.226</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.227</span>
       </div>
 
       <div class="admin-header-right">
@@ -3676,6 +3676,7 @@
                     <select id="mpBadgeStyleSelect" class="form-control" style="font-size: 0.82rem; padding: 7px 10px; height: auto; border: 1.5px solid #4b8f24; border-radius: 6px; background: #ffffff; color: #122b07; font-weight: 700;">
                       <option value="garantie_maatwerk">⭐ 1 Jaar Garantie aan Huis • Op Maat Afgesteld</option>
                       <option value="certified_reco">🛡️ Certified Fitform • 15-Punts Gekeurd</option>
+                      <option value="website_voorraad">🌐 Bekijk 30+ Occasions • www.staopstoelen.nl</option>
                       <option value="topstaat_bezorging">🚚 Topstaat Occasion • Gratis Thuisbezorgd</option>
                       <option value="bewegingstechnoloog">📐 Bewegingstechnoloog • Gratis Maatwerk</option>
                       <option value="geen">⚪ Geen Badge (Originele Foto)</option>
@@ -3965,7 +3966,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.226</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.227</span>
     </div>
   </footer>
 
@@ -7538,6 +7539,8 @@
       const maat = specs["Maatwerk"] || "Individueel op maat instelbaar";
       const garantie = isOccasion ? "1 Jaar volledige garantie (inclusief keuringscertificaat)" : (specs["Garantie"] || "Volledige fabrieksgarantie");
 
+      const directUrl = getChairWebsiteUrl(chair, false);
+
       let priceComparison = "";
       if (chair.old_price && chair.price && chair.old_price > chair.price) {
         const diff = chair.old_price - chair.price;
@@ -7554,9 +7557,38 @@
         featuresList = "• Elektrische sta-op ondersteuning (veilig en soepel opstaan)\n• Onafhankelijke kantel- en relaxstand voor optimale ontspanning\n• Eenvoudige, overzichtelijke handbediening met grote knoppen";
       }
 
+      const bottomShowroomBlock = `BEKIJK DEZE EN AL ONZE 30+ OCCASIONS OP ONZE WEBSITE:
+🌐 ${directUrl}
+(Of klik op de knop 'Bekijk website' in deze advertentie)
+
+SHOWROOM DORDRECHT & OPENINGSTIJDEN:
+Merwedestraat 239, 3313 GT Dordrecht
+(In het pand van Schipper Compact Wonen - gratis eigen parkeerterrein voor de deur, rolstoelvriendelijk)
+
+Openingstijden:
+• Dinsdag t/m vrijdag: 10:00 - 16:00 uur
+• Maandag en zaterdag: Op afspraak geopend voor rustig proefzitten en maatwerkadvies
+
+VRAGEN OF DIRECT EEN PROEFZIT-AFSPRAAK MAKEN?
+Wilt u weten of deze stoel geschikt is voor uw situatie of die van uw ouder(s)?
+📞 Bellen: 078 - 631 4858
+📱 WhatsApp: 06 - 2223 2964
+Of stuur ons direct een bericht via Marktplaats. Wij reageren snel en denken graag met u mee!`;
+
       // VARIANT 1: MANTELZORGERS & ZEKERHEID (Empathisch, focus op veiligheid vader/moeder & ontzorging)
       if (style === "mantelzorger") {
-        return `Zoekt u voor uzelf of voor uw vader of moeder een veilige, comfortabele sta-opstoel van absolute topkwaliteit, maar wilt u niet de torenhoge nieuwprijs van € 3.500,- tot € 4.500,- betalen?
+        return `🔥 DIRECT BESTELLEN OF PROEFZITTEN IN ONZE SHOWROOM?
+👉 Bekijk 15+ grote foto's & bestel direct via: ${directUrl}
+(Of klik op de blauwe knop 'Bekijk website' in deze advertentie)
+
+✓ 1 JAAR VOLLEDIGE GARANTIE AAN HUIS (technisch 100% gekeurd)
+✓ GRATIS OP MAAT AFGESTELD op uw lichaamsmaten door Bewegingstechnoloog
+✓ GRATIS THUISBEZORGD & GEPLAATST in heel Nederland
+✓ BEKIJK ONZE ACTUELE VOORRAAD VAN 30+ OCCASIONS OP WWW.STAOPSTOELEN.NL
+
+────────────────────────────────────────────────
+
+Zoekt u voor uzelf of voor uw vader of moeder een veilige, comfortabele sta-opstoel van absolute topkwaliteit, maar wilt u niet de torenhoge nieuwprijs van € 3.500,- tot € 4.500,- betalen?
 
 Een sta-opstoel particulier op Marktplaats kopen brengt vaak veel onzekerheid met zich mee: motoren die versleten kunnen zijn, geen garantie, en de stoel is loodzwaar om zelf te vervoeren en naar binnen te tillen.
 
@@ -7577,27 +7609,23 @@ SPECIFICATIES VAN DEZE STOEL:
 ${priceComparison}
 ${featuresList}
 
-BEKIJK ALLE FOTO'S & DETAILS OP ONZE WEBSITE:
-${getChairWebsiteUrl(chair, false).replace("https://", "")}
-
-SHOWROOM DORDRECHT & OPENINGSTIJDEN:
-Merwedestraat 239, 3313 GT Dordrecht
-(In het pand van Schipper Compact Wonen - gratis eigen parkeerterrein voor de deur)
-
-Openingstijden:
-• Dinsdag t/m vrijdag: 10:00 - 16:00 uur
-• Maandag en zaterdag: Op afspraak geopend voor rustig proefzitten en maatwerkadvies
-
-VRAGEN OF DIRECT EEN PROEFZIT-AFSPRAAK MAKEN?
-Wilt u weten of deze stoel geschikt is voor uw situatie of die van uw ouder(s)?
-📞 Bellen: 078 - 631 4858
-📱 WhatsApp: 06 - 2223 2964
-Of stuur ons direct een bericht via Marktplaats. Wij reageren snel en denken graag met u mee!`;
+${bottomShowroomBlock}`;
       }
 
       // VARIANT 2: CERTIFIED KEURMERK (Technisch, 15-punts revisie & bewegingstechnologie)
       if (style === "certified") {
-        return `Op zoek naar een ergonomische sta-op stoel van de absolute topklasse, maar met de zekerheid van een specialistisch keurmerk? Deze ${fullName} maakt deel uit van onze Certified Occasion collectie en is technisch in absolute nieuwstaat.
+        return `🛡️ CERTIFIED OCCASION • 15-PUNTS GEKEURD MET 1 JAAR GARANTIE
+👉 Bekijk alle specificaties, keuringsrapport & foto's: ${directUrl}
+(Of klik op de blauwe knop 'Bekijk website' in deze advertentie)
+
+✓ 1 JAAR GARANTIE AAN HUIS (inclusief officieel keuringscertificaat)
+✓ GRATIS MAATWERK AFSTELLING door Bewegingstechnoloog Geertjan
+✓ GRATIS BEZORGING & AANSLUITING aan huis in heel Nederland
+✓ BEKIJK 30+ CERTIFIED FITFORM MODELLEN OP WWW.STAOPSTOELEN.NL
+
+────────────────────────────────────────────────
+
+Op zoek naar een ergonomische sta-op stoel van de absolute topklasse, maar met de zekerheid van een specialistisch keurmerk? Deze ${fullName} maakt deel uit van onze Certified Occasion collectie en is technisch in absolute nieuwstaat.
 
 HET STAOPSTOELEN.NL CERTIFIED 15-PUNTS REVISIEPROTOCOL:
 In tegenstelling tot particuliere Marktplaats-aanbieders wordt elke stoel bij ons door gediplomeerde vakmensen onderworpen aan het officiële 15-punts revisieprotocol:
@@ -7620,35 +7648,22 @@ TECHNISCHE SPECIFICATIES:
 ${priceComparison}
 ${featuresList}
 
-BEKIJK ALLE FOTO'S & DETAILS OP ONZE WEBSITE:
-${getChairWebsiteUrl(chair, false).replace("https://", "")}
-
-ERVAAR HET VERSCHIL IN ONZE SHOWROOM TE DORDRECHT:
-Een ergonomische stoel moet u voelen. In onze ruime showroom aan de Merwedestraat 239 in Dordrecht kunt u verschillende merken en modellen rustig met elkaar vergelijken.
-• Gratis parkeren direct voor de deur op eigen terrein
-• Volledig drempelvrij en rolstoeltoegankelijk
-• Persoonlijke meting en vrijblijvend advies
-
-Openingstijden:
-• Dinsdag t/m vrijdag: 10:00 - 16:00 uur
-• Maandag en zaterdag: Op afspraak voor een persoonlijke zitmeting
-
-CONTACT & INLICHTINGEN:
-📞 Telefoon: 078 - 631 4858
-📱 WhatsApp: 06 - 2223 2964
-Stuur ons gerust een bericht via Marktplaats. Wij reageren direct tijdens openingstijden.`;
+${bottomShowroomBlock}`;
       }
 
       // VARIANT 3: KORT & KRACHTIG (Snelle scanners, direct to the point)
-      return `Te koop aangeboden: ${fullName} sta-opstoel in absolute topstaat. Direct beschikbaar vanuit onze showroom in Dordrecht.
+      return `⚡ TE KOOP: ${fullName} (IN ABSOLUTE TOPSTAAT)
+👉 Bekijk 15+ grote foto's, maatvoering & bestel online: ${directUrl}
+(Of klik op de blauwe knop 'Bekijk website' in deze advertentie)
 
 ${priceComparison.trim()}
 
 BELANGRIJKSTE VOORDELEN:
-✓ 1 Jaar Volledige Garantie (geen particulier Marktplaats-risico)
+✓ 1 Jaar Volledige Garantie aan Huis (geen particulier Marktplaats-risico)
 ✓ Gratis op uw persoonlijke lichaamsmaten afgesteld door Bewegingstechnoloog
 ✓ Gratis thuisbezorgd, geplaatst en uitgelegd in de regio Drechtsteden & Zuid-Holland
 ✓ Vrijblijvend proefzitten in onze ruime showroom in Dordrecht
+✓ Bekijk onze actuele voorraad van 30+ occasions op: www.staopstoelen.nl
 
 SPECIFICATIES:
 • Merk: ${brand}
@@ -7659,19 +7674,7 @@ SPECIFICATIES:
 • Conditie: ${isOccasion ? "Gereviseerde top-occasion (technisch & optisch als nieuw)" : "Nieuw"}
 • Garantie: ${garantie}
 
-BEKIJK ALLE DETAILS OP ONZE WEBSITE:
-${getChairWebsiteUrl(chair, false).replace("https://", "")}
-
-SHOWROOM ADRES:
-Merwedestraat 239, 3313 GT Dordrecht
-(Pand Schipper Compact Wonen - gratis parkeren voor de deur, rolstoelvriendelijk)
-
-Openingstijden: Di t/m Vr van 10:00 tot 16:00 uur (Ma en Za op afspraak).
-
-INTERESSE OF PROEFZITTEN?
-📞 Bel direct: 078 - 631 4858
-📱 WhatsApp: 06 - 2223 2964
-Of stuur een bericht via Marktplaats.`;
+${bottomShowroomBlock}`;
     }
 
     function openMarktplaatsModalByChairId(chairId) {
@@ -8139,6 +8142,10 @@ Of stuur een bericht via Marktplaats.`;
         mainText = "🛡️ CERTIFIED FITFORM  •  15-PUNTS GEKEURD";
         subText = "1 JAAR GARANTIE AAN HUIS  •  AFGESTELD DOOR SPECIALIST  •  DORDRECHT";
         pillText = "15-PUNTS REVISIE";
+      } else if (badgeStyle === "website_voorraad") {
+        mainText = "🌐 BEKIJK 30+ OCCASIONS OP WWW.STAOPSTOELEN.NL";
+        subText = "1 JAAR GARANTIE AAN HUIS  •  GRATIS OP MAAT  •  SHOWROOM DORDRECHT";
+        pillText = "STAOPSTOELEN.NL";
       } else if (badgeStyle === "topstaat_bezorging") {
         mainText = "🚚 TOPSTAAT OCCASION  •  GRATIS THUISBEZORGD";
         subText = "1 JAAR GARANTIE AAN HUIS  •  15-PUNTS GEKEURD  •  STAOPSTOELEN.NL";
