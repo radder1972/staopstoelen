@@ -3597,26 +3597,36 @@
                   </div>
                 </div>
 
-                <!-- Veld 3: Directe Website URL voor Marktplaats -->
-                <div class="form-group" style="margin: 0; background: #ffffff; border: 1.5px solid #fed7aa; border-radius: 10px; padding: 12px 14px; box-shadow: 0 1px 4px rgba(230,92,0,0.05);">
+                <!-- Veld 3: Website Links voor Marktplaats (Huisstijl & Pro Velden) -->
+                <div class="form-group" style="margin: 0; background: #ffffff; border: 1.5px solid #a3cf95; border-radius: 12px; padding: 12px 14px; box-shadow: 0 1px 4px rgba(18,43,7,0.05);">
                   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <label class="form-label" style="margin: 0; font-weight: 800; color: #9a3412; font-size: 0.88rem; display: flex; align-items: center; gap: 6px;">
-                      <span>🔗 Website Link voor Marktplaats</span>
-                      <span style="font-weight: 500; color: #7c2d12; font-size: 0.76rem;">(Veld 'Link naar uw website')</span>
+                    <label class="form-label" style="margin: 0; font-weight: 800; color: #122b07; font-size: 0.88rem; display: flex; align-items: center; gap: 6px;">
+                      <span>🔗 Website Links voor Marktplaats</span>
+                      <span style="font-weight: 600; color: #4b8f24; font-size: 0.76rem;">(Bestemmings- &amp; Zichtbare URL)</span>
                     </label>
                     <label style="font-size: 0.76rem; color: #475569; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; user-select: none;">
-                      <input type="checkbox" id="mpUtmToggle" checked style="accent-color: #e65c00;">
+                      <input type="checkbox" id="mpUtmToggle" checked style="accent-color: #4b8f24;">
                       <span>Meetbaar met Analytics (UTM)</span>
                     </label>
                   </div>
-                  <div style="display: flex; gap: 8px;">
-                    <input type="text" class="form-control" id="mpInputUrl" readonly style="font-size: 0.84rem; font-family: monospace; background: #fff7ed; border-color: #fdba74; color: #0f172a; font-weight: 600;">
-                    <button type="button" class="btn btn-outline" id="mpBtnCopyUrl" style="padding: 8px 14px; white-space: nowrap; font-size: 0.85rem; border-color: #ea580c; color: #c2410c; background: #ffffff; font-weight: 700;">
-                      📋 Kopieer URL
-                    </button>
-                    <a id="mpBtnViewChairPage" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 8px 12px; white-space: nowrap; font-size: 0.85rem; border-color: #cbd5e1; text-decoration: none; color: #475569; font-weight: 600;" title="Bekijk deze stoelpagina op de website">
-                      ↗ Bekijk
-                    </a>
+                  <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                      <span style="font-size: 0.78rem; font-weight: 700; color: #122b07; min-width: 110px;">Bestemmings-URL:</span>
+                      <input type="text" class="form-control" id="mpInputUrl" readonly style="font-size: 0.82rem; font-family: monospace; background: #f7faf5; border-color: #c7e2bd; color: #122b07; font-weight: 600;">
+                      <button type="button" class="btn btn-primary" id="mpBtnCopyUrl" style="padding: 7px 12px; white-space: nowrap; font-size: 0.82rem; background-color: #4b8f24; border-color: #3e7b1d; font-weight: 700;">
+                        📋 Kopieer Bestemming
+                      </button>
+                      <a id="mpBtnViewChairPage" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 7px 10px; white-space: nowrap; font-size: 0.82rem; border-color: #cbd5e1; text-decoration: none; color: #475569; font-weight: 600;" title="Bekijk deze stoelpagina op de website">
+                        ↗ Bekijk
+                      </a>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                      <span style="font-size: 0.78rem; font-weight: 700; color: #122b07; min-width: 110px;">Zichtbare URL:</span>
+                      <input type="text" class="form-control" id="mpInputVisibleUrl" readonly value="staopstoelen.nl" style="font-size: 0.82rem; font-family: monospace; background: #f7faf5; border-color: #c7e2bd; color: #122b07; font-weight: 600;">
+                      <button type="button" class="btn btn-outline" id="mpBtnCopyVisibleUrl" style="padding: 7px 12px; white-space: nowrap; font-size: 0.82rem; border-color: #4b8f24; color: #122b07; background: #ffffff; font-weight: 700;">
+                        📋 Kopieer Zichtbaar
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -3656,38 +3666,39 @@
                     <span id="mpPhotoCount" style="font-size: 0.78rem; font-weight: 600; color: var(--color-gray);">0 foto's</span>
                   </div>
 
-                  <!-- Opval-Badge Generator Box -->
-                  <div style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1.5px solid #fdba74; border-radius: 10px; padding: 12px; margin-bottom: 12px;">
+                  <!-- Opval-Badge Generator Box (Staopstoelen.nl Huisstijl) -->
+                  <div style="background: linear-gradient(135deg, #f7faf5 0%, #edf5e8 100%); border: 1.5px solid #4b8f24; border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(18, 43, 7, 0.05);">
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                      <span style="font-size: 0.82rem; font-weight: 800; color: #9a3412; display: flex; align-items: center; gap: 5px;">
-                        <span>⭐ Opval-Badge voor Foto 1</span>
+                      <span style="font-size: 0.84rem; font-weight: 800; color: #122b07; display: flex; align-items: center; gap: 6px;">
+                        <span style="color: #f39223;">⭐</span> Foto 1 Opval-Badge (Huisstijl)
                       </span>
-                      <span style="font-size: 0.7rem; color: #c2410c; background: #fff; padding: 2px 6px; border-radius: 4px; font-weight: 700; border: 1px solid #fed7aa;">+80% Meer Kliks</span>
+                      <span style="font-size: 0.7rem; color: #122b07; background: #fed857; padding: 2px 7px; border-radius: 4px; font-weight: 800; border: 1px solid #e0be45;">Certified Fitform</span>
                     </div>
-                    <p style="font-size: 0.76rem; color: #7c2d12; margin: 0 0 8px 0; line-height: 1.35;">
-                      Val direct op in het Marktplaats overzicht met een subtiele keurmerk- en garantiebanner.
+                    <p style="font-size: 0.76rem; color: #2d4a1d; margin: 0 0 10px 0; line-height: 1.4;">
+                      Val direct op in het Marktplaats-overzicht met de officiële Staopstoelen.nl huisstijl: Deep Forest banner, 15-punts revisiezegel en 1 jaar garantie.
                     </p>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                      <select id="mpBadgeStyleSelect" class="form-control" style="font-size: 0.8rem; padding: 6px 8px; height: auto; border-color: #fb923c; background: #ffffff;">
-                        <option value="garantie_maatwerk">⭐ 1 Jaar Garantie • Op Maat Afgesteld</option>
-                        <option value="certified_reco">🛡️ Certified Occasion • 21-Punts Gekeurd</option>
-                        <option value="topstaat_bezorging">🚚 Topstaat • Gratis Thuisbezorgd</option>
+                      <select id="mpBadgeStyleSelect" class="form-control" style="font-size: 0.82rem; padding: 7px 10px; height: auto; border: 1.5px solid #4b8f24; border-radius: 6px; background: #ffffff; color: #122b07; font-weight: 700;">
+                        <option value="garantie_maatwerk">⭐ 1 Jaar Garantie aan Huis • Op Maat Afgesteld</option>
+                        <option value="certified_reco">🛡️ Certified Fitform • 15-Punts Gekeurd</option>
+                        <option value="topstaat_bezorging">🚚 Topstaat Occasion • Gratis Thuisbezorgd</option>
+                        <option value="bewegingstechnoloog">📐 Bewegingstechnoloog • Gratis Maatwerk</option>
+                        <option value="geen">⚪ Geen Badge (Originele Foto)</option>
                       </select>
-                      <button type="button" id="mpDownloadBadgedPhotoBtn" class="btn btn-primary" style="width: 100%; font-size: 0.84rem; padding: 9px 12px; background: linear-gradient(180deg, #ff7a1a 0%, #e65c00 100%); border-color: #c2410c; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; box-shadow: 0 2px 6px rgba(230,92,0,0.25);">
+                      <button type="button" id="mpDownloadBadgedPhotoBtn" class="btn btn-primary" style="width: 100%; font-size: 0.85rem; padding: 10px 14px; background: linear-gradient(180deg, #4b8f24 0%, #3a721b 100%); border-color: #2e5c14; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; color: #ffffff; box-shadow: 0 3px 8px rgba(75, 143, 36, 0.3); border-radius: 6px;">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                        <span>⬇️ Download Foto 1 met Badge ⭐</span>
+                        <span>⬇️ Download Foto 1 met Huisstijl-Badge ⭐</span>
                       </button>
-                      <button type="button" id="mpCopyPhotoBtn" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 7px 10px; border-color: #fdba74; background: #ffffff; color: #9a3412; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700;">
+                      <button type="button" id="mpCopyPhotoBtn" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 8px 10px; border-color: #4b8f24; background: #ffffff; color: #122b07; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; border-radius: 6px;">
                         <span>📋 Kopieer Foto (Plakken met Cmd+V)</span>
                       </button>
                     </div>
 
                     <!-- Uitleg hoe foto naar Marktplaats te slepen -->
-                    <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 9px 10px; margin-top: 10px; font-size: 0.74rem; color: #166534; line-height: 1.4;">
-                      <strong>💡 Hoe voeg je de foto toe op Marktplaats?</strong><br>
-                      • <strong>Methode 1 (Slepen):</strong> Klik op <em>Download</em>. Sleep het bestand direct vanuit je <strong>browser-downloadbalk</strong> (of Downloads-map) in het uploadvak van Marktplaats.<br>
-                      • <strong>Methode 2 (Kiezen):</strong> Klik op Marktplaats op <em>'Kies bestanden'</em> en selecteer de foto in je Downloads.<br>
-                      • <strong>Methode 3 (Plakken):</strong> Klik op <em>Kopieer Foto</em> en druk op Marktplaats op <code>Cmd + V</code> (Plakken).
+                    <div style="background: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 9px 10px; margin-top: 10px; font-size: 0.74rem; color: #166534; line-height: 1.4;">
+                      <strong>💡 Foto toevoegen op Marktplaats:</strong><br>
+                      • <strong>Downloaden:</strong> Klik op <em>Download</em>. Sleep het bestand direct vanuit je <strong>browser-downloadbalk</strong> in het Marktplaats-uploadvak.<br>
+                      • <strong>Kopiëren &amp; Plakken:</strong> Klik op <em>Kopieer Foto</em> en druk op Marktplaats op <code>Cmd + V</code>.
                     </div>
                   </div>
 
@@ -7282,16 +7293,18 @@ Wilt u weten of deze stoel geschikt is voor uw situatie of die van uw ouder(s)?
 Of stuur ons direct een bericht via Marktplaats. Wij reageren snel en denken graag met u mee!`;
       }
 
-      // VARIANT 2: CERTIFIED KEURMERK (Technisch, 21-punts revisie & bewegingstechnologie)
+      // VARIANT 2: CERTIFIED KEURMERK (Technisch, 15-punts revisie & bewegingstechnologie)
       if (style === "certified") {
-        return `Op zoek naar een ergonomische sta-op stoel van de absolute topklasse, maar met de zekerheid van een specialistisch keurmerk? Deze ${fullName} maakt deel uit van onze Certified Occasion collectie en is technisch in nieuwstaat.
+        return `Op zoek naar een ergonomische sta-op stoel van de absolute topklasse, maar met de zekerheid van een specialistisch keurmerk? Deze ${fullName} maakt deel uit van onze Certified Occasion collectie en is technisch in absolute nieuwstaat.
 
-HET STAOPSTOELEN.NL CERTIFIED KEURMERK:
-In tegenstelling tot particuliere Marktplaats-aanbieders wordt elke stoel bij ons onderworpen aan een strenge 21-punts revisie:
-✓ Motoren, transformator en kabels 100% doorgemeten en getest onder belasting
-✓ Schaarmechaniek en hefframe gecontroleerd op speling en opnieuw gesmeerd
-✓ Bekleding en vulling diepgaand gereinigd en hygiënisch gedesinfecteerd
-✓ Geleverd met 1 Jaar Volledige Garantie & officieel keuringscertificaat
+HET STAOPSTOELEN.NL CERTIFIED 15-PUNTS REVISIEPROTOCOL:
+In tegenstelling tot particuliere Marktplaats-aanbieders wordt elke stoel bij ons door gediplomeerde vakmensen onderworpen aan het officiële 15-punts revisieprotocol:
+✓ Linak motoren, hefmechaniek en elektronica 100% doorgemeten en getest onder belasting
+✓ Stalen frame, schaarlagers en lasnaden gecontroleerd op speling en PTFE-gesmeerd
+✓ Rugleuning, topswing en pneumatische lendensteun 100% luchtdicht en functioneel getest
+✓ HR koudschuim zitting getest op densiteit en veerkracht (volledig vrij van kuilvorming)
+✓ Bekleding en kussens diepgaand gereinigd en antibacterieel met stoom gedesinfecteerd
+✓ Geleverd met officieel 15-Punts Keuringsrapport & 1 Jaar Volledige Garantie aan Huis
 ✓ Kosteloze ergonomische maatwerkinstelling door Bewegingstechnoloog Geertjan Klein Haneveld
 
 TECHNISCHE SPECIFICATIES:
@@ -7558,70 +7571,74 @@ Of stuur een bericht via Marktplaats.`;
       document.body.removeChild(ta);
     }
 
-    // Helper: Badge Overlay op canvas tekenen
+    // Helper: Badge Overlay op canvas tekenen (Volledig in Staopstoelen.nl Huisstijl)
     function renderBadgeOverlay(ctx, w, h, badgeStyle) {
-      // Bottom banner dimensions (~13.5% van de hoogte)
-      const bannerH = Math.max(120, Math.round(h * 0.135));
+      if (badgeStyle === "geen") return;
+
+      // Bottom banner dimensions (~13.5% van de hoogte, minstens 125px)
+      const bannerH = Math.max(125, Math.round(h * 0.135));
       const bannerY = h - bannerH;
 
-      // Subtiele schaduw achter de balk
+      // Subtiele schaduw achter de onderbalk
       ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
-      ctx.shadowBlur = 16;
+      ctx.shadowColor = "rgba(0, 0, 0, 0.45)";
+      ctx.shadowBlur = 18;
       ctx.shadowOffsetY = -4;
 
-      // Banner achtergrond (donkergroene luxe gradient)
-      const bgGrad = ctx.createLinearGradient(0, bannerY, w, bannerY);
-      bgGrad.addColorStop(0, "rgba(17, 36, 19, 0.96)");
-      bgGrad.addColorStop(0.7, "rgba(22, 48, 26, 0.96)");
-      bgGrad.addColorStop(1, "rgba(15, 32, 17, 0.96)");
+      // Banner achtergrond: Deep Forest Dark gradient (#122b07)
+      const bgGrad = ctx.createLinearGradient(0, bannerY, 0, h);
+      bgGrad.addColorStop(0, "rgba(18, 43, 7, 0.98)");
+      bgGrad.addColorStop(1, "rgba(10, 24, 4, 0.99)");
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, bannerY, w, bannerH);
       ctx.restore();
 
-      // Gouden bovenlijn
-      ctx.fillStyle = "#f59e0b";
-      ctx.fillRect(0, bannerY, w, Math.max(5, Math.round(bannerH * 0.045)));
+      // Huisstijl Bovenlijn: Gradient van Terracotta (#f39223) naar Goud (#fed857) en Forest Green (#4b8f24)
+      const lineH = Math.max(5, Math.round(bannerH * 0.045));
+      const lineGrad = ctx.createLinearGradient(0, bannerY, w, bannerY);
+      lineGrad.addColorStop(0, "#f39223"); // Terracotta
+      lineGrad.addColorStop(0.5, "#fed857"); // Goud
+      lineGrad.addColorStop(1, "#4b8f24"); // Forest Green
+      ctx.fillStyle = lineGrad;
+      ctx.fillRect(0, bannerY, w, lineH);
 
-      // Teksten afstemmen op badgeStyle
-      let mainText = "⭐ 1 JAAR GARANTIE  •  OP MAAT AFGESTELD";
-      let subText = "21-PUNTS REVISIE  •  GRATIS BEZORGD & GEPLAATST  •  STAOPSTOELEN.NL";
-      let pillText = "TOPSTAAT OCCASION";
+      // Teksten & pill configureren per stijl
+      let mainText = "⭐ 1 JAAR GARANTIE AAN HUIS  •  OP MAAT AFGESTELD";
+      let subText = "15-PUNTS REVISIE  •  BEWEGINGSTECHNOLOOG DORDRECHT  •  STAOPSTOELEN.NL";
+      let pillText = "CERTIFIED FITFORM";
 
       if (badgeStyle === "certified_reco") {
-        mainText = "🛡️ CERTIFIED FITFORM  •  21-PUNTS GEKEURD";
-        subText = "1 JAAR GARANTIE  •  AFGESTELD DOOR BEWEGINGSTECHNOLOOG  •  DORDRECHT";
-        pillText = "100% TECHNISCH FRIS";
+        mainText = "🛡️ CERTIFIED FITFORM  •  15-PUNTS GEKEURD";
+        subText = "1 JAAR GARANTIE AAN HUIS  •  AFGESTELD DOOR SPECIALIST  •  DORDRECHT";
+        pillText = "15-PUNTS REVISIE";
       } else if (badgeStyle === "topstaat_bezorging") {
         mainText = "🚚 TOPSTAAT OCCASION  •  GRATIS THUISBEZORGD";
-        subText = "1 JAAR GARANTIE  •  VEILIG AANGESLOTEN IN HEEL ZUID-HOLLAND  •  STAOPSTOELEN.NL";
-        pillText = "GRATIS BEZORGING";
+        subText = "1 JAAR GARANTIE AAN HUIS  •  15-PUNTS GEKEURD  •  STAOPSTOELEN.NL";
+        pillText = "GRATIS GEPLAATST";
+      } else if (badgeStyle === "bewegingstechnoloog") {
+        mainText = "📐 BEWEGINGSTECHNOLOOG  •  GRATIS OP MAAT";
+        subText = "1 JAAR GARANTIE AAN HUIS  •  15-PUNTS REVISIE  •  SHOWROOM DORDRECHT";
+        pillText = "STAOPSTOELEN.NL";
       }
 
-      // Hoofdtekst (wit en groot)
-      ctx.fillStyle = "#ffffff";
-      ctx.font = `bold ${Math.round(bannerH * 0.32)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif`;
-      ctx.textBaseline = "middle";
-      ctx.textAlign = "left";
       const paddingX = Math.round(w * 0.035);
-      ctx.fillText(mainText, paddingX, bannerY + bannerH * 0.40);
 
-      // Subtekst (goud / lichtgroen)
-      ctx.fillStyle = "#fde047";
-      ctx.font = `600 ${Math.round(bannerH * 0.20)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif`;
-      ctx.fillText(subText, paddingX, bannerY + bannerH * 0.74);
-
-      // Opvallende pil-badge aan de rechterzijde van de banner
+      // 1. Pil-Badge aan de rechterzijde (Terracotta #f39223, Staopstoelen.nl Huisstijl)
       const pillFontSize = Math.round(bannerH * 0.20);
-      ctx.font = `800 ${pillFontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif`;
+      ctx.font = `900 ${pillFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
       const pillTextWidth = ctx.measureText(pillText).width;
-      const pillW = pillTextWidth + Math.round(bannerH * 0.4);
+      const pillW = pillTextWidth + Math.round(bannerH * 0.44);
       const pillH = Math.round(bannerH * 0.44);
       const pillX = w - paddingX - pillW;
       const pillY = bannerY + Math.round((bannerH - pillH) / 2);
 
       ctx.save();
-      ctx.fillStyle = "#e65c00"; // Marktplaats oranje
+      ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetY = 2;
+
+      // Terracotta pil achtergrond
+      ctx.fillStyle = "#f39223";
       ctx.beginPath();
       const r = pillH / 2;
       ctx.moveTo(pillX + r, pillY);
@@ -7632,43 +7649,236 @@ Of stuur een bericht via Marktplaats.`;
       ctx.closePath();
       ctx.fill();
 
+      // Subtiele binnenrand
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Witte tekst in pil
       ctx.fillStyle = "#ffffff";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(pillText, pillX + pillW / 2, pillY + pillH / 2 + 1);
       ctx.restore();
 
-      // Linksboven: Professioneel Specialist Keurmerk
-      const sealH = Math.round(bannerH * 0.40);
+      // Beschikbare breedte voor tekst links van de pil (zodat het NOOIT overlapt!)
+      const maxTextW = pillX - paddingX - Math.round(w * 0.02);
+
+      // 2. Hoofdtekst (Wit, Montserrat Bold met dynamische schaling)
+      let mainFontSize = Math.round(bannerH * 0.31);
+      ctx.font = `800 ${mainFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+      while (ctx.measureText(mainText).width > maxTextW && mainFontSize > 16) {
+        mainFontSize -= 1;
+        ctx.font = `800 ${mainFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+      }
+      ctx.fillStyle = "#ffffff";
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "left";
+      ctx.fillText(mainText, paddingX, bannerY + bannerH * 0.40);
+
+      // 3. Subtekst (Goudgeel #fed857, Montserrat)
+      let subFontSize = Math.round(bannerH * 0.19);
+      ctx.font = `700 ${subFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+      while (ctx.measureText(subText).width > maxTextW && subFontSize > 13) {
+        subFontSize -= 1;
+        ctx.font = `700 ${subFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+      }
+      ctx.fillStyle = "#fed857";
+      ctx.fillText(subText, paddingX, bannerY + bannerH * 0.74);
+
+      // 4. Linksboven: Certified Fitform & Staopstoelen.nl Huisstijl Zegel-Pill
+      const sealH = Math.max(50, Math.round(bannerH * 0.42));
       const sealPadX = Math.round(w * 0.035);
       const sealPadY = Math.round(h * 0.035);
-      ctx.font = `700 ${Math.round(sealH * 0.48)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif`;
-      const sealText = "✓ STAOPSTOELEN.NL SPECIALIST DORDRECHT";
-      const sealTextW = ctx.measureText(sealText).width;
-      const sealW = sealTextW + Math.round(sealH * 0.7);
+
+      const titleFont = `800 ${Math.round(sealH * 0.38)}px 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif`;
+      const subSealFont = `700 ${Math.round(sealH * 0.27)}px 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif`;
+
+      const line1 = "CERTIFIED FITFORM • STAOPSTOELEN.NL";
+      const line2 = "15-PUNTS REVISIE • 1 JAAR GARANTIE AAN HUIS";
+
+      ctx.font = titleFont;
+      const w1 = ctx.measureText(line1).width;
+      ctx.font = subSealFont;
+      const w2 = ctx.measureText(line2).width;
+      const textBlockW = Math.max(w1, w2);
+
+      const emblemR = Math.round(sealH * 0.36);
+      const sealW = Math.round(emblemR * 2 + textBlockW + sealH * 0.65);
+      const sr = Math.round(sealH / 2);
 
       ctx.save();
-      ctx.shadowColor = "rgba(0,0,0,0.3)";
-      ctx.shadowBlur = 10;
-      ctx.fillStyle = "rgba(255, 255, 255, 0.94)";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
+      ctx.shadowBlur = 14;
+      ctx.shadowOffsetY = 3;
+
+      // Witte pill achtergrond
+      ctx.fillStyle = "#ffffff";
       ctx.beginPath();
-      const sr = 8;
-      ctx.moveTo(sealPadX + sr, sealPadY);
-      ctx.arcTo(sealPadX + sealW, sealPadY, sealPadX + sealW, sealPadY + sealH, sr);
-      ctx.arcTo(sealPadX + sealW, sealPadY + sealH, sealPadX, sealPadY + sealH, sr);
-      ctx.arcTo(sealPadX, sealPadY + sealH, sealPadX, sealPadY, sr);
-      ctx.arcTo(sealPadX, sealPadY, sealPadX + sealW, sealPadY, sr);
+      ctx.arc(sealPadX + sr, sealPadY + sr, sr, Math.PI * 0.5, Math.PI * 1.5);
+      ctx.lineTo(sealPadX + sealW - sr, sealPadY);
+      ctx.arc(sealPadX + sealW - sr, sealPadY + sr, sr, Math.PI * 1.5, Math.PI * 0.5);
+      ctx.lineTo(sealPadX + sr, sealPadY + sealH);
       ctx.closePath();
       ctx.fill();
+      ctx.restore();
 
-      ctx.fillStyle = "#166534";
+      // Forest Green rand
+      ctx.save();
+      ctx.strokeStyle = "#4b8f24";
+      ctx.lineWidth = Math.max(2, Math.round(sealH * 0.04));
+      ctx.beginPath();
+      ctx.arc(sealPadX + sr, sealPadY + sr, sr, Math.PI * 0.5, Math.PI * 1.5);
+      ctx.lineTo(sealPadX + sealW - sr, sealPadY);
+      ctx.arc(sealPadX + sealW - sr, sealPadY + sr, sr, Math.PI * 1.5, Math.PI * 0.5);
+      ctx.lineTo(sealPadX + sr, sealPadY + sealH);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.restore();
+
+      // Emblem links in de pill
+      const emX = sealPadX + sr;
+      const emY = sealPadY + sr;
+
+      // Terracotta cirkel (#f39223)
+      ctx.save();
+      ctx.fillStyle = "#f39223";
+      ctx.beginPath();
+      ctx.arc(emX, emY, emblemR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Witte binnencirkel
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(emX, emY, emblemR * 0.82, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Donkergroene binnenrand (#122b07)
+      ctx.strokeStyle = "#122b07";
+      ctx.lineWidth = Math.max(1.5, emblemR * 0.09);
+      ctx.stroke();
+
+      // Forest Green vinkje / keurmerkteken (#4b8f24)
+      ctx.fillStyle = "#4b8f24";
+      ctx.font = `900 ${Math.round(emblemR * 1.15)}px 'Montserrat', sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(sealText, sealPadX + sealW / 2, sealPadY + sealH / 2);
+      ctx.fillText("✓", emX, emY + 1);
       ctx.restore();
+
+      // Teksten rechts van het logo
+      const textX = emX + emblemR + Math.round(sealH * 0.16);
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+
+      // Lijn 1: Deep Forest Dark (#122b07)
+      ctx.fillStyle = "#122b07";
+      ctx.font = titleFont;
+      ctx.fillText(line1, textX, sealPadY + sealH * 0.36);
+
+      // Lijn 2: Forest Green (#4b8f24)
+      ctx.fillStyle = "#4b8f24";
+      ctx.font = subSealFont;
+      ctx.fillText(line2, textX, sealPadY + sealH * 0.72);
     }
 
-    // Automatische Foto-1 Canvas Badge Generator (Download)
+    // Helper: Optimaliseer en download een individuele foto naar max 1280px JPEG (~180-250KB voor Marktplaats)
+    function downloadOptimizedPhoto(photoUrl, filename, onDone) {
+      const img = new Image();
+      if (photoUrl.startsWith("http")) img.crossOrigin = "anonymous";
+      img.onload = function() {
+        try {
+          const canvas = document.createElement("canvas");
+          const maxDim = 1280;
+          let w = img.naturalWidth || 1280;
+          let h = img.naturalHeight || 960;
+          if (w > maxDim || h > maxDim) {
+            if (w >= h) {
+              h = Math.round((h / w) * maxDim);
+              w = maxDim;
+            } else {
+              w = Math.round((w / h) * maxDim);
+              h = maxDim;
+            }
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, w, h);
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = filename;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              setTimeout(() => URL.revokeObjectURL(url), 2000);
+            }
+            if (onDone) onDone();
+          }, "image/jpeg", 0.84);
+        } catch (e) {
+          console.error("Optimization error:", e);
+          if (onDone) onDone();
+        }
+      };
+      img.onerror = function() {
+        if (onDone) onDone();
+      };
+      img.src = photoUrl;
+    }
+    window.downloadOptimizedPhoto = downloadOptimizedPhoto;
+
+    // Download ALLE foto's van de huidige stoel lichtgewicht (~200KB) voor Marktplaats
+    function downloadAllOptimizedPhotos() {
+      if (!currentMpChair) return;
+      const chair = currentMpChair;
+      const photos = [];
+      if (chair.image) photos.push(chair.image);
+      if (chair.imageUp && !photos.includes(chair.imageUp)) photos.push(chair.imageUp);
+      if (chair.imageLie && !photos.includes(chair.imageLie)) photos.push(chair.imageLie);
+      if (Array.isArray(chair.gallery)) {
+        chair.gallery.forEach(img => {
+          if (img && !photos.includes(img)) photos.push(img);
+        });
+      }
+      if (photos.length === 0) {
+        showToast("Geen foto's gevonden om te downloaden.", true);
+        return;
+      }
+
+      const btn = document.getElementById("mpDownloadAllPhotosBtn");
+      const origBtnHtml = btn ? btn.innerHTML : "";
+      if (btn) {
+        btn.innerHTML = `<span>⏳ Verkleinen naar ~200KB (${photos.length} foto's)...</span>`;
+        btn.style.opacity = "0.7";
+        btn.style.pointerEvents = "none";
+      }
+
+      const cleanName = `${(chair.brand || 'stoel').toLowerCase()}-${cleanModelName(chair).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+      let idx = 0;
+
+      function processNext() {
+        if (idx >= photos.length) {
+          showToast(`⚡ Alle ${photos.length} foto's zijn geoptimaliseerd gedownload! Ze uploaden nu vliegensvlug in Marktplaats.`);
+          if (btn) { btn.innerHTML = origBtnHtml; btn.style.opacity = ""; btn.style.pointerEvents = ""; }
+          return;
+        }
+        const p = photos[idx];
+        const currentNum = idx + 1;
+        const filename = `${cleanName}-marktplaats-foto${currentNum}.jpg`;
+        idx++;
+        downloadOptimizedPhoto(p, filename, () => {
+          setTimeout(processNext, 400); // 400ms rust voor browser downloads
+        });
+      }
+
+      processNext();
+    }
+    window.downloadAllOptimizedPhotos = downloadAllOptimizedPhotos;
+
+    // Automatische Foto-1 Canvas Badge Generator (Lichtgewicht & Huisstijl voor Marktplaats)
     function downloadBadgedPhoto() {
       if (!currentMpChair) return;
       const chair = currentMpChair;
@@ -7695,19 +7905,36 @@ Of stuur een bericht via Marktplaats.`;
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
 
-          const targetWidth = Math.max(1400, img.naturalWidth || 1400);
-          const targetHeight = Math.round(targetWidth * ((img.naturalHeight || 1050) / (img.naturalWidth || 1400)));
+          // Schalen naar ideale Marktplaats-afmeting: max 1280px breed (snel, haarscherp, nooit meer dan ~250KB!)
+          const maxDim = 1280;
+          let targetWidth = img.naturalWidth || 1280;
+          let targetHeight = img.naturalHeight || 960;
+          if (targetWidth > maxDim || targetHeight > maxDim) {
+            if (targetWidth >= targetHeight) {
+              targetHeight = Math.round((targetHeight / targetWidth) * maxDim);
+              targetWidth = maxDim;
+            } else {
+              targetWidth = Math.round((targetWidth / targetHeight) * maxDim);
+              targetHeight = maxDim;
+            }
+          }
+          if (targetWidth < 900) {
+            const scale = 900 / targetWidth;
+            targetWidth = 900;
+            targetHeight = Math.round(targetHeight * scale);
+          }
+
           canvas.width = targetWidth;
           canvas.height = targetHeight;
 
-          // Draw base photo
+          // Teken basis foto
           ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
 
           if (badgeStyle !== "geen") {
             renderBadgeOverlay(ctx, targetWidth, targetHeight, badgeStyle);
           }
 
-          // Converteren naar JPG blob en download triggeren
+          // Geoptimaliseerde JPEG (~200KB i.p.v. 4MB!)
           canvas.toBlob((blob) => {
             if (!blob) {
               showToast("Kon de afbeelding niet verwerken.", true);
@@ -7723,9 +7950,9 @@ Of stuur een bericht via Marktplaats.`;
             a.click();
             document.body.removeChild(a);
             setTimeout(() => URL.revokeObjectURL(fileUrl), 2000);
-            showToast("⭐ Foto 1 gedownload! Sleep vanuit je browser-downloads direct in Marktplaats.");
+            showToast("⭐ Foto 1 geoptimaliseerd gedownload (~200KB)! Uploadt direct zonder haperen.");
             if (btn) { btn.innerHTML = origBtnHtml; btn.style.opacity = ""; btn.style.pointerEvents = ""; }
-          }, "image/jpeg", 0.93);
+          }, "image/jpeg", 0.84);
 
         } catch (err) {
           console.error("Canvas badge error:", err);
@@ -7766,8 +7993,19 @@ Of stuur een bericht via Marktplaats.`;
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
 
-          const targetWidth = Math.max(1200, img.naturalWidth || 1200);
-          const targetHeight = Math.round(targetWidth * ((img.naturalHeight || 900) / (img.naturalWidth || 1200)));
+          const maxDim = 1200;
+          let targetWidth = img.naturalWidth || 1200;
+          let targetHeight = img.naturalHeight || 900;
+          if (targetWidth > maxDim || targetHeight > maxDim) {
+            if (targetWidth >= targetHeight) {
+              targetHeight = Math.round((targetHeight / targetWidth) * maxDim);
+              targetWidth = maxDim;
+            } else {
+              targetWidth = Math.round((targetWidth / targetHeight) * maxDim);
+              targetHeight = maxDim;
+            }
+          }
+
           canvas.width = targetWidth;
           canvas.height = targetHeight;
 
@@ -7829,12 +8067,18 @@ Of stuur een bericht via Marktplaats.`;
 
     document.getElementById("mpDownloadBadgedPhotoBtn")?.addEventListener("click", downloadBadgedPhoto);
     document.getElementById("mpCopyPhotoBtn")?.addEventListener("click", copyBadgedPhotoToClipboard);
+    document.getElementById("mpDownloadAllPhotosBtn")?.addEventListener("click", downloadAllOptimizedPhotos);
 
     document.getElementById("mpUtmToggle")?.addEventListener("change", updateMpUrl);
 
     document.getElementById("mpBtnCopyUrl")?.addEventListener("click", () => {
       const val = document.getElementById("mpInputUrl")?.value || "";
-      copyToClipboard(val, "✓ Website URL gekopieerd naar klembord!");
+      copyToClipboard(val, "✓ Bestemmings-URL gekopieerd! Plak in Marktplaats bij 'Bestemmings URL'.");
+    });
+
+    document.getElementById("mpBtnCopyVisibleUrl")?.addEventListener("click", () => {
+      const val = document.getElementById("mpInputVisibleUrl")?.value || "staopstoelen.nl";
+      copyToClipboard(val, "✓ Zichtbare URL (staopstoelen.nl) gekopieerd! Plak in Marktplaats bij 'Zichtbare URL'.");
     });
 
     document.getElementById("mpInputTitle")?.addEventListener("input", (e) => {
