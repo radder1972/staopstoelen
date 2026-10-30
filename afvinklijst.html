@@ -602,6 +602,44 @@
     gtag("config", "AW-18540486129");
     gtag("config", "G-5KQF1CELDD");
   </script>
+  <!-- Kale Document Weergave (standaard bij delen, tenzij ?beheer=1) -->
+  <script id="bare-doc-script">
+    (function() {
+      var s = window.location.search || "";
+      var h = window.location.hash || "";
+      if (s.indexOf("beheer=1") !== -1 || h.indexOf("vistaprint") !== -1 || h.indexOf("sheetContainer") !== -1 || h.indexOf("sheet") !== -1) {
+        document.documentElement.classList.add("beheer-mode");
+      }
+    })();
+  </script>
+  <style id="bare-doc-style">
+    html:not(.beheer-mode) .no-print-bar,
+    html:not(.beheer-mode) .screen-toolbar,
+    html:not(.beheer-mode) .print-toolbar,
+    html:not(.beheer-mode) header.toolbar,
+    html:not(.beheer-mode) .screen-header-bar,
+    html:not(.beheer-mode) .mockup-controls-bar,
+    html:not(.beheer-mode) .stage-hint,
+    html:not(.beheer-mode) .hint-bar,
+    html:not(.beheer-mode) .print-instruction-banner,
+    html:not(.beheer-mode) .flyer-label,
+    html:not(.beheer-mode) .spread-label,
+    html:not(.beheer-mode) .flyer-divider,
+    html:not(.beheer-mode) .print-hub-section,
+    html:not(.beheer-mode) .sheet-header-panel,
+    html:not(.beheer-mode) .sheet-controls-row,
+    html:not(.beheer-mode) .sheet-controls-bar,
+    html:not(.beheer-mode) .vistaprint-banner,
+    html:not(.beheer-mode) .press-banner,
+    html:not(.beheer-mode) .card-label-row,
+    html:not(.beheer-mode) .card-label,
+    html:not(.beheer-mode) #sheetContainer {
+      display: none !important;
+    }
+    html:not(.beheer-mode) main.stage {
+      padding-top: 28px !important;
+    }
+  </style>
 </head>
 <body>
 

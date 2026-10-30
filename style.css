@@ -245,7 +245,7 @@ section {
 
 /* Navigation Bar */
 .navbar {
-  background-color: rgba(251, 249, 245, 0.98);
+  background-color: #fbf9f5;
   border-bottom: 1px solid var(--color-gray-light);
   padding: 16px 0 12px 0;
   position: sticky;

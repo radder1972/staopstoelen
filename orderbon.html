@@ -1435,6 +1435,44 @@
       }
     }
   </style>
+  <!-- Kale Document Weergave (standaard bij delen, tenzij ?beheer=1) -->
+  <script id="bare-doc-script">
+    (function() {
+      var s = window.location.search || "";
+      var h = window.location.hash || "";
+      if (s.indexOf("beheer=1") !== -1 || h.indexOf("vistaprint") !== -1 || h.indexOf("sheetContainer") !== -1 || h.indexOf("sheet") !== -1) {
+        document.documentElement.classList.add("beheer-mode");
+      }
+    })();
+  </script>
+  <style id="bare-doc-style">
+    html:not(.beheer-mode) .no-print-bar,
+    html:not(.beheer-mode) .screen-toolbar,
+    html:not(.beheer-mode) .print-toolbar,
+    html:not(.beheer-mode) header.toolbar,
+    html:not(.beheer-mode) .screen-header-bar,
+    html:not(.beheer-mode) .mockup-controls-bar,
+    html:not(.beheer-mode) .stage-hint,
+    html:not(.beheer-mode) .hint-bar,
+    html:not(.beheer-mode) .print-instruction-banner,
+    html:not(.beheer-mode) .flyer-label,
+    html:not(.beheer-mode) .spread-label,
+    html:not(.beheer-mode) .flyer-divider,
+    html:not(.beheer-mode) .print-hub-section,
+    html:not(.beheer-mode) .sheet-header-panel,
+    html:not(.beheer-mode) .sheet-controls-row,
+    html:not(.beheer-mode) .sheet-controls-bar,
+    html:not(.beheer-mode) .vistaprint-banner,
+    html:not(.beheer-mode) .press-banner,
+    html:not(.beheer-mode) .card-label-row,
+    html:not(.beheer-mode) .card-label,
+    html:not(.beheer-mode) #sheetContainer {
+      display: none !important;
+    }
+    html:not(.beheer-mode) main.stage {
+      padding-top: 28px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -1453,7 +1491,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Orderbon</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.235</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.236</span>
           </div>
         </div>
 
