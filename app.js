@@ -1303,9 +1303,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.228"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.229"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.228" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.229" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -2645,31 +2645,282 @@ function renderTimeSlots() {
 
 
 /* ==========================================================================
-   FLOATING ACTION BUTTON CONTACT MENU
+   DIGITALE ZIT-ASSISTENT (SCHIPPER COMPACT WONEN 3D STA-OP STOEL AVATAR)
    ========================================================================== */
 function initFloatingMenu() {
+  const wrapper = document.getElementById("floatingContactWrapper");
   const mainBtn = document.getElementById("btnFloatingMain");
-  const menu = document.getElementById("floatingMenu");
-  
-  if (!mainBtn || !menu) return;
-  
+  const oldMenu = document.getElementById("floatingMenu");
+
+  if (!wrapper || !mainBtn) return;
+  if (wrapper.dataset.assistantInitialized === "true") return;
+  wrapper.dataset.assistantInitialized = "true";
+
+  const isSubdir = window.location.pathname.includes("/stoelen/");
+  const base = isSubdir ? "../" : "";
+  const normalChairSrc = `${base}assets/assistent-stoel.svg`;
+  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg`;
+
+  // Verberg het oude losse 3-knoppen menu (deze zitten nu geïntegreerd onderin de Digitale Assistent)
+  if (oldMenu) {
+    oldMenu.style.display = "none";
+  }
+
+  // Upgrade de zwevende hoofdknop met het 3D Sta-op Stoel icoon + live status
+  mainBtn.classList.add("assistant-chair-fab");
+  mainBtn.setAttribute("aria-label", "Open Digitale Zit-Assistent (dubbelklik om de stoel te laten dansen)");
+  mainBtn.setAttribute("title", "Digitale Zit-Assistent • Klik voor hulp, dubbelklik om te dansen");
+  mainBtn.innerHTML = `
+    <span class="assistant-fab-halo" aria-hidden="true"></span>
+    <img src="${normalChairSrc}" alt="Digitale Zit-Assistent Sta-op Stoel" class="assistant-chair-img" id="assistantFabImg">
+    <span class="assistant-online-dot" aria-hidden="true"></span>
+  `;
+
+  // Voeg welkomst-badge toe naast de zwevende stoel-knop
+  const teaser = document.createElement("div");
+  teaser.className = "assistant-teaser-pill";
+  teaser.id = "assistantTeaserPill";
+  teaser.innerHTML = `
+    <button type="button" class="assistant-teaser-open" id="assistantTeaserOpen">
+      <span class="assistant-teaser-badge">Digitale Assistent</span>
+      <span class="assistant-teaser-text">Vraag over uw zithouding of stoel?</span>
+    </button>
+    <button type="button" class="assistant-teaser-close" id="assistantTeaserClose" aria-label="Sluit melding">&times;</button>
+  `;
+
+  // Bouw het interactieve Digitale Assistent venster
+  const panel = document.createElement("div");
+  panel.className = "digital-assistant-panel";
+  panel.id = "digitalAssistantPanel";
+  panel.setAttribute("role", "dialog");
+  panel.setAttribute("aria-label", "Digitale Zit-Assistent van Staopstoelen.nl");
+  panel.innerHTML = `
+    <div class="da-header">
+      <div class="da-avatar-wrap" id="daHeaderAvatarWrap" title="Dubbelklik of klik om de stoel te laten dansen">
+        <img src="${normalChairSrc}" alt="3D Sta-op Stoel Assistent" class="da-avatar-img" id="daHeaderChairImg">
+        <span class="da-avatar-status"></span>
+      </div>
+      <div class="da-header-info">
+        <div class="da-header-title-row">
+          <strong class="da-title">Digitale Zit-Assistent</strong>
+          <span class="da-tag">Online</span>
+        </div>
+        <span class="da-subtitle">Ergonomisch advies &bull; Showroom Dordrecht</span>
+      </div>
+      <div class="da-header-actions">
+        <button type="button" class="da-dance-btn" id="daDanceTriggerBtn" title="Laat de stoel dansen" aria-label="Laat de stoel dansen">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </button>
+        <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent">&times;</button>
+      </div>
+    </div>
+
+    <div class="da-body" id="daChatBody">
+      <div class="da-msg da-msg-bot">
+        <div class="da-msg-bubble">
+          <strong>Welkom bij Staopstoelen.nl!</strong><br>
+          Ik ben uw digitale zit-assistent. Ik help u graag met uw zoektocht naar de juiste sta-op stoel, maadvies of proefzitten in Dordrecht. Waar wilt u meer over weten?
+        </div>
+      </div>
+      <div class="da-quick-chips" id="daQuickChips">
+        <button type="button" class="da-chip" data-topic="maat">Welke stoel past bij mijn lengte &amp; klachten?</button>
+        <button type="button" class="da-chip" data-topic="prijs">Wat kost een (Certified Fitform) stoel?</button>
+        <button type="button" class="da-chip" data-topic="proefzitten">Hoe werkt proefzitten of passing aan huis?</button>
+        <button type="button" class="da-chip" data-topic="vergoeding">Wordt een sta-op stoel vergoed?</button>
+      </div>
+    </div>
+
+    <form class="da-input-bar" id="daQuestionForm" autocomplete="off">
+      <input type="text" class="da-input" id="daQuestionInput" placeholder="Stel hier uw vraag (bijv. zithoogte, prijs, thuis)..." aria-label="Stel uw vraag aan de digitale assistent">
+      <button type="submit" class="da-send-btn" aria-label="Verstuur vraag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
+
+    <div class="da-footer-actions">
+      <a href="${base}afspraak.html" class="da-action-btn da-action-primary" onclick="openAppointmentModal(event)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Plan Afspraak</span>
+      </a>
+      <a href="tel:+31786314858" class="da-action-btn da-action-call">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>078 - 631 4858</span>
+      </a>
+      <a href="https://wa.me/31622232964" target="_blank" rel="noopener" class="da-action-btn da-action-wa">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  `;
+
+  wrapper.insertBefore(panel, mainBtn);
+  wrapper.insertBefore(teaser, mainBtn);
+
+  const fabImg = document.getElementById("assistantFabImg");
+  const headerImg = document.getElementById("daHeaderChairImg");
+  const chatBody = document.getElementById("daChatBody");
+  const danceTimers = new WeakMap();
+
+  function triggerChairDance(imgEl) {
+    const targets = imgEl ? [imgEl] : [fabImg, headerImg].filter(Boolean);
+    targets.forEach((img) => {
+      img.classList.remove("chair-dancing");
+      void img.offsetWidth;
+      img.src = danceChairSrc;
+      img.classList.add("chair-dancing");
+      clearTimeout(danceTimers.get(img));
+      danceTimers.set(
+        img,
+        setTimeout(() => {
+          img.classList.remove("chair-dancing");
+          img.src = normalChairSrc;
+        }, 3200)
+      );
+    });
+  }
+
+  window.triggerAssistantChairDance = () => triggerChairDance();
+
+  function openAssistant() {
+    panel.classList.add("active");
+    teaser.classList.add("hidden");
+    triggerChairDance(headerImg);
+  }
+
+  function closeAssistant() {
+    panel.classList.remove("active");
+  }
+
+  // Enkele klik opent/sluit het assistent-paneel, dubbelklik laat de stoel dansen
+  let clickTimer = null;
   mainBtn.addEventListener("click", (e) => {
-    menu.classList.toggle("active");
     e.stopPropagation();
-  });
-  
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!menu.contains(e.target) && e.target !== mainBtn) {
-      menu.classList.remove("active");
+    if (e.detail === 1) {
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => {
+        if (panel.classList.contains("active")) {
+          closeAssistant();
+        } else {
+          openAssistant();
+        }
+      }, 220);
     }
   });
-  
-  // Close menu when a link inside is clicked
-  menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("active");
+
+  mainBtn.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    clearTimeout(clickTimer);
+    triggerChairDance(fabImg);
+    if (panel.classList.contains("active")) {
+      triggerChairDance(headerImg);
+    }
+  });
+
+  document.getElementById("daHeaderAvatarWrap")?.addEventListener("click", () => triggerChairDance(headerImg));
+  document.getElementById("daDanceTriggerBtn")?.addEventListener("click", () => {
+    triggerChairDance(headerImg);
+    triggerChairDance(fabImg);
+  });
+  document.getElementById("daCloseBtn")?.addEventListener("click", closeAssistant);
+  document.getElementById("assistantTeaserOpen")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openAssistant();
+  });
+  document.getElementById("assistantTeaserClose")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    teaser.classList.add("hidden");
+    try { sessionStorage.setItem("da_teaser_dismissed", "1"); } catch {}
+  });
+
+  try {
+    if (sessionStorage.getItem("da_teaser_dismissed") === "1") {
+      teaser.classList.add("hidden");
+    }
+  } catch {}
+
+  // Antwoord-kennisbank van de Digitale Zit-Assistent
+  function getAssistantResponse(topicOrQuery) {
+    const q = String(topicOrQuery || "").toLowerCase();
+
+    if (q === "maat" || q.includes("lengte") || q.includes("maat") || q.includes("rug") || q.includes("klacht") || q.includes("welke stoel")) {
+      return {
+        question: q === "maat" ? "Welke stoel past bij mijn lengte & klachten?" : topicOrQuery,
+        html: `Een goede sta-op stoel wordt altijd op <strong>5 lichaamsmaten</strong> afgesteld: zithoogte, zitdiepte, zitbreedte, armleggerhoogte en lendensteun.<br><br>Met onze <strong>Online Keuzehulp</strong> ziet u in 3 stappen welk Fitform of seniorenmodel bij uw lengte en klachten past:`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}keuzehulp.html" class="da-inline-btn">Start Online Keuzehulp &rarr;</a><a href="${base}stoel-anatomie.html" class="da-inline-btn da-inline-btn-sec">Bekijk 5 Maatwerkcriteria</a></div>`
+      };
+    }
+
+    if (q === "prijs" || q.includes("kost") || q.includes("prijs") || q.includes("prijzen") || q.includes("occasion") || q.includes("tweedehands") || q.includes("goedkoop")) {
+      return {
+        question: q === "prijs" ? "Wat kost een (Certified Fitform) stoel?" : topicOrQuery,
+        html: `Bij ons heeft u keuze uit twee categorieën:<br>• <strong>Certified Fitform (Jong gebruikt &amp; gereviseerd):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong> (volledig 15-punts gekeurd incl. garantie).<br>• <strong>Nieuw op maat:</strong> volledig naar wens samengesteld.<br><br>Alle actuele voorraadmodellen staan direct met prijs online:`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}staopstoelen.html" class="da-inline-btn">Bekijk Collectie &amp; Prijzen &rarr;</a><a href="${base}wat-kost-een-sta-op-stoel.html" class="da-inline-btn da-inline-btn-sec">Prijsuitleg lezen</a></div>`
+      };
+    }
+
+    if (q === "proefzitten" || q.includes("proefzit") || q.includes("thuis") || q.includes("showroom") || q.includes("dordrecht") || q.includes("adres") || q.includes("parkeren") || q.includes("afspraak")) {
+      return {
+        question: q === "proefzitten" ? "Hoe werkt proefzitten of passing aan huis?" : topicOrQuery,
+        html: `U bent van harte welkom in onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> (gratis parkeren voor de deur, gelijkvloers).<br><br>Bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> doet een vrijblijvende zitmeting en stelt meerdere stoelen op uw maat in. Lukt langskomen niet? Dan komen wij kosteloos bij u thuis!`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="openAppointmentModal(event)">Plan Proefzit-Afspraak &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.openCertifiedVideoModal)openCertifiedVideoModal('zitmeting')">Bekijk Video (38 sec)</button></div>`
+      };
+    }
+
+    if (q === "vergoeding" || q.includes("vergoed") || q.includes("wmo") || q.includes("zorgverzeker") || q.includes("indicatie") || q.includes("pgb")) {
+      return {
+        question: q === "vergoeding" ? "Wordt een sta-op stoel vergoed?" : topicOrQuery,
+        html: `In specifieke medische situaties is vergoeding mogelijk via uw zorgverzekeraar of gemeente (Wmo / PGB). Veel klanten kiezen echter voor een <strong>Certified Fitform occasion</strong> omdat u dan zonder lange wachttijd direct op maat geholpen bent.<br><br>Geertjan denkt hierin graag eerlijk met u mee:`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}indicatiewijzer.html" class="da-inline-btn">Open Indicatiewijzer &rarr;</a><a href="${base}afspraak.html" class="da-inline-btn da-inline-btn-sec" onclick="openAppointmentModal(event)">Vraag Advies aan Geertjan</a></div>`
+      };
+    }
+
+    return {
+      question: topicOrQuery,
+      html: `Bedankt voor uw vraag! Omdat elk lichaam anders is, kijkt bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> graag persoonlijk met u mee. U kunt direct bellen op <strong>078 - 631 4858</strong>, een WhatsApp sturen of vrijblijvend een proefzit-afspraak plannen.`,
+      ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="openAppointmentModal(event)">Plan Adviesgesprek &rarr;</a><a href="${base}faq.html" class="da-inline-btn da-inline-btn-sec">Veelgestelde vragen</a></div>`
+    };
+  }
+
+  function appendExchange(topicOrQuery) {
+    const res = getAssistantResponse(topicOrQuery);
+    const userMsg = document.createElement("div");
+    userMsg.className = "da-msg da-msg-user";
+    userMsg.innerHTML = `<div class="da-msg-bubble">${res.question}</div>`;
+    chatBody.appendChild(userMsg);
+
+    const botMsg = document.createElement("div");
+    botMsg.className = "da-msg da-msg-bot";
+    botMsg.innerHTML = `<div class="da-msg-bubble">${res.html}${res.ctaHtml || ""}</div>`;
+    chatBody.appendChild(botMsg);
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+    triggerChairDance(headerImg);
+  }
+
+  panel.querySelectorAll(".da-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      appendExchange(chip.dataset.topic);
     });
+  });
+
+  const qForm = document.getElementById("daQuestionForm");
+  const qInput = document.getElementById("daQuestionInput");
+  if (qForm && qInput) {
+    qForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const val = qInput.value.trim();
+      if (!val) return;
+      qInput.value = "";
+      appendExchange(val);
+    });
+  }
+
+  // Sluit paneel bij klik buiten de assistent
+  document.addEventListener("click", (e) => {
+    if (!wrapper.contains(e.target)) {
+      closeAssistant();
+    }
   });
 }
 
@@ -2915,8 +3166,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.228" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.228" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.229" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.229" 
             controls 
             playsinline 
             preload="auto"
@@ -2947,8 +3198,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.228";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.228";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.229";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.229";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -2961,7 +3212,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.228`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.229`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -2970,8 +3221,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.228";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.228";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.229";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.229";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -2984,7 +3235,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.228`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.229`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";

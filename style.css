@@ -8589,3 +8589,484 @@ input[type="checkbox"] {
 .breadcrumb-bar .back-link {
   margin-bottom: 0;
 }
+
+/* ==========================================================================
+   DIGITALE ZIT-ASSISTENT (SCHIPPER COMPACT WONEN 3D STA-OP STOEL AVATAR)
+   ========================================================================== */
+.floating-contact-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.floating-btn-main.assistant-chair-fab {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f1f8f3 65%, #e1f0e5 100%);
+  border: 2.5px solid #1f9d3f;
+  box-shadow: 0 10px 28px rgba(7, 61, 25, 0.24), 0 0 0 4px rgba(31, 157, 63, 0.12);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  transform: none !important;
+  overflow: visible;
+}
+
+.floating-btn-main.assistant-chair-fab:hover {
+  transform: none !important;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #eaf6ed 65%, #d6ecdc 100%);
+  border-color: #f59e0b;
+  box-shadow: 0 12px 32px rgba(7, 61, 25, 0.3), 0 0 0 5px rgba(245, 158, 11, 0.22);
+}
+
+.assistant-chair-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  transform-origin: 50% 80%;
+  filter: drop-shadow(0 4px 8px rgba(7, 61, 25, 0.22));
+}
+
+.assistant-online-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #1f9d3f;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Teaser-pil naast/boven de zwevende stoel */
+.assistant-teaser-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid rgba(31, 157, 63, 0.32);
+  border-radius: 999px;
+  padding: 6px 10px 6px 12px;
+  box-shadow: 0 8px 24px rgba(7, 61, 25, 0.14);
+  animation: slideInUp 0.35s ease-out;
+}
+
+.assistant-teaser-pill.hidden {
+  display: none !important;
+}
+
+.assistant-teaser-open {
+  background: none;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.assistant-teaser-badge {
+  background: linear-gradient(135deg, #1f9d3f, #146c2b);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.assistant-teaser-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0b2914;
+  white-space: nowrap;
+}
+
+.assistant-teaser-close {
+  background: rgba(7, 61, 25, 0.06);
+  border: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.assistant-teaser-close:hover {
+  background: rgba(7, 61, 25, 0.14);
+  color: #073d19;
+}
+
+/* Het Digitale Assistent Venster */
+.digital-assistant-panel {
+  display: none;
+  flex-direction: column;
+  width: 380px;
+  max-width: calc(100vw - 28px);
+  max-height: min(600px, calc(100vh - 120px));
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid rgba(31, 157, 63, 0.28);
+  box-shadow: 0 20px 50px rgba(7, 61, 25, 0.24);
+  overflow: hidden;
+  animation: slideInUp 0.25s ease-out;
+}
+
+.digital-assistant-panel.active {
+  display: flex;
+}
+
+.da-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #073d19 0%, #14632b 65%, #1f9d3f 100%);
+  color: #ffffff;
+}
+
+.da-avatar-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #e8f5ec 100%);
+  border: 2px solid rgba(245, 158, 11, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.da-avatar-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  transform-origin: 50% 80%;
+}
+
+.da-avatar-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2px solid #ffffff;
+}
+
+.da-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.da-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.da-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.da-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(245, 158, 11, 0.25);
+  border: 1px solid rgba(245, 158, 11, 0.65);
+  color: #fde68a;
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+.da-subtitle {
+  display: block;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.84);
+  margin-top: 2px;
+}
+
+.da-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.da-dance-btn,
+.da-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.da-dance-btn:hover,
+.da-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.da-body {
+  padding: 14px 15px;
+  background: #f5faf6;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 310px;
+}
+
+.da-msg {
+  display: flex;
+  flex-direction: column;
+}
+
+.da-msg-bot {
+  align-items: flex-start;
+}
+
+.da-msg-user {
+  align-items: flex-end;
+}
+
+.da-msg-bubble {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  padding: 11px 14px;
+  border-radius: 14px;
+  max-width: 92%;
+}
+
+.da-msg-bot .da-msg-bubble {
+  background: #ffffff;
+  color: #132a19;
+  border: 1px solid rgba(31, 157, 63, 0.2);
+  border-top-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(7, 61, 25, 0.05);
+}
+
+.da-msg-user .da-msg-bubble {
+  background: #1f9d3f;
+  color: #ffffff;
+  font-weight: 600;
+  border-top-right-radius: 4px;
+}
+
+.da-quick-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.da-chip {
+  text-align: left;
+  background: #ffffff;
+  border: 1.5px solid rgba(31, 157, 63, 0.28);
+  color: #073d19;
+  font-family: inherit;
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.da-chip:hover {
+  background: #eaf6ed;
+  border-color: #1f9d3f;
+  transform: translateX(2px);
+}
+
+.da-inline-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.da-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 8px;
+  background: #1f9d3f;
+  color: #ffffff !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.da-inline-btn:hover {
+  background: #146c2b;
+}
+
+.da-inline-btn-sec {
+  background: #eef6f0;
+  color: #073d19 !important;
+  border: 1px solid rgba(31, 157, 63, 0.3);
+}
+
+.da-inline-btn-sec:hover {
+  background: #dfeee3;
+}
+
+.da-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border-top: 1px solid #e5efe7;
+}
+
+.da-input {
+  flex: 1;
+  border: 1.5px solid #d5e6d9;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #111827;
+}
+
+.da-input:focus {
+  outline: none;
+  border-color: #1f9d3f;
+}
+
+.da-send-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 0;
+  background: #1f9d3f;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.da-send-btn:hover {
+  background: #146c2b;
+}
+
+.da-footer-actions {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 0.95fr;
+  gap: 6px;
+  padding: 9px 12px 11px;
+  background: #eef6f0;
+  border-top: 1px solid #dcebe0;
+}
+
+.da-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 8px;
+  border-radius: 9px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.da-action-primary {
+  background: #073d19;
+  color: #ffffff !important;
+}
+
+.da-action-call {
+  background: #ffffff;
+  color: #073d19 !important;
+  border: 1px solid rgba(7, 61, 25, 0.2);
+}
+
+.da-action-wa {
+  background: #25d366;
+  color: #ffffff !important;
+}
+
+/* Dans-animatie van de 3D Sta-op Stoel (zonder 360-graden spin) */
+.chair-dancing {
+  animation: chairBoogie 3.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
+  filter: drop-shadow(0 8px 14px rgba(31, 157, 63, 0.5)) drop-shadow(0 0 10px rgba(245, 158, 11, 0.45)) !important;
+}
+
+@keyframes chairBoogie {
+  0%, 100% { transform: translate(0, 0) scale(1, 1); }
+  10% { transform: translate(-4px, -5px) rotate(-6deg) scale(1.06, 0.95); }
+  18% { transform: translate(0, 3px) rotate(0deg) scale(1.08, 0.92); }
+  28% { transform: translate(4px, -5px) rotate(6deg) scale(1.06, 0.95); }
+  36% { transform: translate(0, 3px) rotate(0deg) scale(1.08, 0.92); }
+  48% { transform: translate(-4px, -9px) rotate(-5deg) scale(0.96, 1.08); }
+  56% { transform: translate(0, 3px) rotate(0deg) scale(1.1, 0.9); }
+  68% { transform: translate(4px, -9px) rotate(5deg) scale(0.96, 1.08); }
+  78% { transform: translate(0, 3px) rotate(0deg) scale(1.1, 0.9); }
+  88% { transform: translate(0, -7px) rotate(0deg) scale(1.05, 1.05); }
+}
+
+@media (max-width: 768px) {
+  .floating-contact-wrapper {
+    bottom: 78px;
+    right: 14px;
+  }
+  .floating-btn-main.assistant-chair-fab {
+    width: 62px;
+    height: 62px;
+  }
+  .assistant-chair-img {
+    width: 48px;
+    height: 48px;
+  }
+  .assistant-teaser-text {
+    display: none;
+  }
+}
