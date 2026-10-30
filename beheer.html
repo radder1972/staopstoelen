@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.215">
+  <link rel="stylesheet" href="style.css?v=10.216">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1490,10 +1490,15 @@
       transform: translateY(-1px);
     }
     .mp-title-chip.active {
-      background: #e65c00;
-      border-color: #c2410c;
+      background: #4b8f24;
+      border-color: #3b741b;
       color: #ffffff;
-      box-shadow: 0 2px 6px rgba(230, 92, 0, 0.25);
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+    }
+    .mp-copy-style-tabs .mp-style-tab-btn.active {
+      background: #4b8f24;
+      color: #ffffff;
+      font-weight: 700;
     }
     .mp-style-tab-btn {
       padding: 6px 12px;
@@ -1527,7 +1532,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.215</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.216</span></div>
     </div>
   </div>
 
@@ -1537,7 +1542,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.215</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.216</span>
       </div>
 
       <div class="admin-header-right">
@@ -3546,191 +3551,273 @@
           </div>
 
           <!-- Modal Body (Scrollable) -->
-          <div class="modal-body" style="padding: 22px 24px; overflow-y: auto; flex: 1; background: #fafaf9;">
-            <div class="mp-modal-grid">
+          <div class="modal-body" style="padding: 20px 24px; overflow-y: auto; flex: 1; background: #f8fafc;">
+            
+            <div style="display: flex; flex-direction: column; gap: 18px; max-width: 1020px; margin: 0 auto;">
               
-              <!-- Linker Kolom: Titels, Prijzen & Tekst -->
-              <div style="display: flex; flex-direction: column; gap: 16px;">
-                
-                <!-- Veld 1: Titel met Snelle Titelvarianten -->
-                <div class="form-group" style="margin: 0;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <label class="form-label" style="margin: 0; font-weight: 700; color: var(--color-forest-dark); font-size: 0.88rem;">
-                      Marktplaats Advertentietitel <span style="font-weight: 400; color: var(--color-gray); font-size: 0.8rem;">(Max 60 tekens)</span>
-                    </label>
-                    <span id="mpTitleCount" style="font-size: 0.78rem; font-weight: 700; color: var(--color-forest);">0 / 60</span>
-                  </div>
-
-                  <!-- Titelvarianten Chips -->
-                  <div style="margin-bottom: 8px;">
-                    <div style="font-size: 0.75rem; color: #64748b; font-weight: 600; margin-bottom: 5px;">Kies een geteste invalshoek:</div>
-                    <div id="mpTitleChips" style="display: flex; gap: 6px; flex-wrap: wrap;">
-                      <!-- Populated dynamically via JS -->
-                    </div>
-                  </div>
-
-                  <div style="display: flex; gap: 8px;">
-                    <input type="text" class="form-control" id="mpInputTitle" maxlength="60" style="font-weight: 600; font-size: 0.95rem;">
-                    <button type="button" class="btn btn-outline" id="mpBtnCopyTitle" style="padding: 8px 14px; white-space: nowrap; font-size: 0.85rem; border-color: #cbd5e1; font-weight: 700;">
-                      📋 Kopieer
-                    </button>
+              <!-- BANNER: Marktplaats Volgorde Gids -->
+              <div style="background: linear-gradient(135deg, #122b07 0%, #1c450c 100%); color: #ffffff; border-radius: 12px; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 3px 10px rgba(18,43,7,0.15);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 1.2rem;">📋</span>
+                  <div>
+                    <strong style="font-size: 0.92rem; font-family: var(--font-heading); letter-spacing: 0.2px;">Exacte Marktplaats Volgorde (Stap 1 t/m 7)</strong>
+                    <div style="font-size: 0.76rem; color: #e2efe0;">Loop de stappen van boven naar beneden door terwijl u uw advertentie aanmaakt op Marktplaats.</div>
                   </div>
                 </div>
-
-                <!-- Veld 2: Prijs, Besparing & Categorie (2 Kolommen) -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                  <div class="form-group" style="margin: 0;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                      <label class="form-label" style="font-weight: 700; color: var(--color-forest-dark); margin: 0; font-size: 0.88rem;">Vraagprijs</label>
-                      <span id="mpSavingsBadge" style="display: none; font-size: 0.75rem; font-weight: 700; color: #15803d; background: #dcfce7; padding: 2px 8px; border-radius: 6px; border: 1px solid #bbf7d0;"></span>
-                    </div>
-                    <div style="display: flex; gap: 8px;">
-                      <input type="text" class="form-control" id="mpInputPrice" style="font-weight: 700; font-size: 1rem; color: #b45309;">
-                      <button type="button" class="btn btn-outline" id="mpBtnCopyPrice" style="padding: 8px 12px; white-space: nowrap; font-size: 0.85rem; border-color: #cbd5e1; font-weight: 700;">
-                        Kopieer
-                      </button>
-                    </div>
-                  </div>
-                  <div class="form-group" style="margin: 0;">
-                    <label class="form-label" style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 6px; font-size: 0.88rem;">Aanbevolen Categorie</label>
-                    <input type="text" class="form-control" id="mpCategoryText" readonly value="Zorg en Welzijn > Hulpmiddelen" style="background: #f1f5f9; font-size: 0.82rem; color: #475569;">
-                  </div>
-                </div>
-
-                <!-- Veld 3: Website Links voor Marktplaats (Huisstijl & Pro Velden) -->
-                <div class="form-group" style="margin: 0; background: #ffffff; border: 1.5px solid #a3cf95; border-radius: 12px; padding: 12px 14px; box-shadow: 0 1px 4px rgba(18,43,7,0.05);">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <label class="form-label" style="margin: 0; font-weight: 800; color: #122b07; font-size: 0.88rem; display: flex; align-items: center; gap: 6px;">
-                      <span>🔗 Website Links voor Marktplaats</span>
-                      <span style="font-weight: 600; color: #4b8f24; font-size: 0.76rem;">(Bestemmings- &amp; Zichtbare URL)</span>
-                    </label>
-                    <label style="font-size: 0.76rem; color: #475569; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; user-select: none;">
-                      <input type="checkbox" id="mpUtmToggle" checked style="accent-color: #4b8f24;">
-                      <span>Meetbaar met Analytics (UTM)</span>
-                    </label>
-                  </div>
-                  <div style="display: flex; flex-direction: column; gap: 6px;">
-                    <div style="display: flex; gap: 8px; align-items: center;">
-                      <span style="font-size: 0.78rem; font-weight: 700; color: #122b07; min-width: 110px;">Bestemmings-URL:</span>
-                      <input type="text" class="form-control" id="mpInputUrl" readonly style="font-size: 0.82rem; font-family: monospace; background: #f7faf5; border-color: #c7e2bd; color: #122b07; font-weight: 600;">
-                      <button type="button" class="btn btn-primary" id="mpBtnCopyUrl" style="padding: 7px 12px; white-space: nowrap; font-size: 0.82rem; background-color: #4b8f24; border-color: #3e7b1d; font-weight: 700;">
-                        📋 Kopieer Bestemming
-                      </button>
-                      <a id="mpBtnViewChairPage" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 7px 10px; white-space: nowrap; font-size: 0.82rem; border-color: #cbd5e1; text-decoration: none; color: #475569; font-weight: 600;" title="Bekijk deze stoelpagina op de website">
-                        ↗ Bekijk
-                      </a>
-                    </div>
-                    <div style="display: flex; gap: 8px; align-items: center;">
-                      <span style="font-size: 0.78rem; font-weight: 700; color: #122b07; min-width: 110px;">Zichtbare URL:</span>
-                      <input type="text" class="form-control" id="mpInputVisibleUrl" readonly value="staopstoelen.nl" style="font-size: 0.82rem; font-family: monospace; background: #f7faf5; border-color: #c7e2bd; color: #122b07; font-weight: 600;">
-                      <button type="button" class="btn btn-outline" id="mpBtnCopyVisibleUrl" style="padding: 7px 12px; white-space: nowrap; font-size: 0.82rem; border-color: #4b8f24; color: #122b07; background: #ffffff; font-weight: 700;">
-                        📋 Kopieer Zichtbaar
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Veld 4: Advertentietekst met Tekststijl-Tabs -->
-                <div class="form-group" style="margin: 0;">
-                  <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
-                    <div>
-                      <label class="form-label" style="margin: 0 0 6px 0; font-weight: 700; color: var(--color-forest-dark); font-size: 0.88rem;">
-                        Wervende Advertentietekst
-                      </label>
-                      <div class="mp-copy-style-tabs" style="display: inline-flex; background: #e2e8f0; padding: 3px; border-radius: 8px; gap: 3px;">
-                        <button type="button" class="mp-style-tab-btn active" data-style="mantelzorger">
-                          🎯 Mantelzorgers &amp; Zekerheid
-                        </button>
-                        <button type="button" class="mp-style-tab-btn" data-style="certified">
-                          🛡️ Certified Keurmerk
-                        </button>
-                        <button type="button" class="mp-style-tab-btn" data-style="krachtig">
-                          ⚡ Kort &amp; Krachtig
-                        </button>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="mpBtnCopyDesc" style="padding: 7px 18px; font-size: 0.85rem; background-color: #4b8f24; border-color: #3e7b1d; font-weight: 700;">
-                      📋 Kopieer Tekst
-                    </button>
-                  </div>
-                  <textarea class="form-control" id="mpInputDesc" rows="13" style="font-family: inherit; font-size: 0.87rem; line-height: 1.5; resize: vertical; background: #ffffff;"></textarea>
-                </div>
-
+                <a href="https://www.marktplaats.nl/m/plaats-advertentie" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: linear-gradient(180deg, #ff7a1a 0%, #e65c00 100%); border-color: #cc5200; font-weight: 800; font-size: 0.84rem; padding: 8px 16px; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; box-shadow: 0 2px 8px rgba(230,92,0,0.3);">
+                  <span>Open Marktplaats Tab ↗</span>
+                </a>
               </div>
 
-              <!-- Rechter Kolom: Foto's & Externe Link -->
-              <div style="display: flex; flex-direction: column; gap: 14px;">
-                <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 16px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <h4 style="margin: 0; font-size: 0.92rem; font-weight: 700; color: var(--color-forest-dark);">Foto's &amp; Opval-Badge</h4>
-                    <span id="mpPhotoCount" style="font-size: 0.78rem; font-weight: 600; color: var(--color-gray);">0 foto's</span>
-                  </div>
-
-                  <!-- Opval-Badge Generator Box (Staopstoelen.nl Huisstijl) -->
-                  <div style="background: linear-gradient(135deg, #f7faf5 0%, #edf5e8 100%); border: 1.5px solid #4b8f24; border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(18, 43, 7, 0.05);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                      <span style="font-size: 0.84rem; font-weight: 800; color: #122b07; display: flex; align-items: center; gap: 6px;">
-                        <span style="color: #f39223;">⭐</span> Foto 1 Opval-Badge (Huisstijl)
-                      </span>
-                      <span style="font-size: 0.7rem; color: #122b07; background: #fed857; padding: 2px 7px; border-radius: 4px; font-weight: 800; border: 1px solid #e0be45;">Certified Fitform</span>
-                    </div>
-                    <p style="font-size: 0.76rem; color: #2d4a1d; margin: 0 0 10px 0; line-height: 1.4;">
-                      Val direct op in het Marktplaats-overzicht met de officiële Staopstoelen.nl huisstijl: Deep Forest banner, 15-punts revisiezegel en 1 jaar garantie.
-                    </p>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                      <select id="mpBadgeStyleSelect" class="form-control" style="font-size: 0.82rem; padding: 7px 10px; height: auto; border: 1.5px solid #4b8f24; border-radius: 6px; background: #ffffff; color: #122b07; font-weight: 700;">
-                        <option value="garantie_maatwerk">⭐ 1 Jaar Garantie aan Huis • Op Maat Afgesteld</option>
-                        <option value="certified_reco">🛡️ Certified Fitform • 15-Punts Gekeurd</option>
-                        <option value="topstaat_bezorging">🚚 Topstaat Occasion • Gratis Thuisbezorgd</option>
-                        <option value="bewegingstechnoloog">📐 Bewegingstechnoloog • Gratis Maatwerk</option>
-                        <option value="geen">⚪ Geen Badge (Originele Foto)</option>
-                      </select>
-                      <button type="button" id="mpDownloadBadgedPhotoBtn" class="btn btn-primary" style="width: 100%; font-size: 0.85rem; padding: 10px 14px; background: linear-gradient(180deg, #4b8f24 0%, #3a721b 100%); border-color: #2e5c14; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; color: #ffffff; box-shadow: 0 3px 8px rgba(75, 143, 36, 0.3); border-radius: 6px;">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                        <span>⬇️ Download Foto 1 met Huisstijl-Badge ⭐</span>
-                      </button>
-                      <button type="button" id="mpCopyPhotoBtn" class="btn btn-outline" style="width: 100%; font-size: 0.8rem; padding: 8px 10px; border-color: #4b8f24; background: #ffffff; color: #122b07; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; border-radius: 6px;">
-                        <span>📋 Kopieer Foto (Plakken met Cmd+V)</span>
-                      </button>
-                    </div>
-
-                    <!-- Uitleg hoe foto naar Marktplaats te slepen -->
-                    <div style="background: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 9px 10px; margin-top: 10px; font-size: 0.74rem; color: #166534; line-height: 1.4;">
-                      <strong>💡 Foto toevoegen op Marktplaats:</strong><br>
-                      • <strong>Downloaden:</strong> Klik op <em>Download</em>. Sleep het bestand direct vanuit je <strong>browser-downloadbalk</strong> in het Marktplaats-uploadvak.<br>
-                      • <strong>Kopiëren &amp; Plakken:</strong> Klik op <em>Kopieer Foto</em> en druk op Marktplaats op <code>Cmd + V</code>.
+              <!-- STAP 1: AFBEELDINGEN (Eerste sectie op Marktplaats) -->
+              <div class="mp-step-card" style="background: #ffffff; border: 1.5px solid #a3cf95; border-radius: 14px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(18,43,7,0.04);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1.5px solid #eef6eb; padding-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #4b8f24; color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800;">1</span>
+                    <div>
+                      <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #122b07; font-family: var(--font-heading);">Afbeeldingen toevoegen</h4>
+                      <span style="font-size: 0.78rem; color: #4b8f24; font-weight: 600;">Eerste sectie op Marktplaats • Klik op 'Kopieer' en druk in Marktplaats op Cmd+V</span>
                     </div>
                   </div>
-
-                  <p style="font-size: 0.78rem; color: var(--color-gray); margin-bottom: 8px;">
-                    Klik op een foto om te openen of download de originele foto:
-                  </p>
-                  
-                  <!-- Thumbnails Grid -->
-                  <div id="mpModalThumbnails" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">
-                    <!-- Populated dynamically -->
-                  </div>
-
-                  <a id="mpDownloadMainPhotoBtn" href="#" download target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; font-size: 0.8rem; padding: 7px 10px; border-color: #cbd5e1; display: block; text-decoration: none; color: #475569;">
-                    ⬇️ Originele Hoofdfoto (zonder badge)
-                  </a>
+                  <button type="button" id="mpDownloadAllPhotosBtn" class="btn btn-outline" style="border: 1.5px solid #4b8f24; background: #f0fdf4; color: #166534; font-weight: 800; font-size: 0.82rem; padding: 7px 14px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    <span>⚡ Download Alle Foto's in 1x (~200KB per stuk)</span>
+                  </button>
                 </div>
 
-                <!-- Grote Actieknop naar Marktplaats -->
-                <a href="https://www.marktplaats.nl/m/plaats-advertentie" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; text-align: center; font-weight: 800; font-size: 0.96rem; padding: 13px; background: linear-gradient(180deg, #ff7a1a 0%, #e65c00 100%); border-color: #cc5200; text-decoration: none; box-shadow: 0 4px 14px rgba(230,92,0,0.3); display: flex; align-items: center; justify-content: center; gap: 8px;">
-                  <span>Plaatsen op Marktplaats ↗</span>
+                <!-- Foto 1 (Hoofdfoto) & Overige Foto's -->
+                <div style="display: grid; grid-template-columns: 360px 1fr; gap: 20px;">
+                  
+                  <!-- Linker Kolom: Foto 1 (Hoofdfoto met Live Huisstijl-Badge) -->
+                  <div style="background: #f7faf5; border: 1.5px solid #c7e2bd; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <span style="font-size: 0.82rem; font-weight: 800; color: #122b07;">⭐ Hoofdfoto 1 (met Badge)</span>
+                      <span style="font-size: 0.7rem; background: #fed857; color: #122b07; font-weight: 800; padding: 2px 7px; border-radius: 4px;">Certified Fitform</span>
+                    </div>
+
+                    <select id="mpBadgeStyleSelect" class="form-control" style="font-size: 0.82rem; padding: 7px 10px; height: auto; border: 1.5px solid #4b8f24; border-radius: 6px; background: #ffffff; color: #122b07; font-weight: 700;">
+                      <option value="garantie_maatwerk">⭐ 1 Jaar Garantie aan Huis • Op Maat Afgesteld</option>
+                      <option value="certified_reco">🛡️ Certified Fitform • 15-Punts Gekeurd</option>
+                      <option value="topstaat_bezorging">🚚 Topstaat Occasion • Gratis Thuisbezorgd</option>
+                      <option value="bewegingstechnoloog">📐 Bewegingstechnoloog • Gratis Maatwerk</option>
+                      <option value="geen">⚪ Geen Badge (Originele Foto)</option>
+                    </select>
+
+                    <!-- Live Preview Canvas -->
+                    <div style="position: relative; width: 100%; height: 185px; background: #122b07; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 10px rgba(0,0,0,0.3);">
+                      <canvas id="mpPhoto1PreviewCanvas" style="max-width: 100%; max-height: 100%; object-fit: contain;"></canvas>
+                      <span style="position: absolute; top: 6px; right: 6px; font-size: 0.65rem; background: rgba(0,0,0,0.65); color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Voorbeeld Foto 1</span>
+                    </div>
+
+                    <!-- Knoppen voor Foto 1 -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <button type="button" id="mpCopyPhotoBtn" class="btn btn-primary" style="width: 100%; font-size: 0.86rem; padding: 11px 14px; background: linear-gradient(180deg, #4b8f24 0%, #3a721b 100%); border-color: #2e5c14; font-weight: 800; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; box-shadow: 0 3px 8px rgba(75,143,36,0.3);">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>📋 Kopieer Foto 1 (Plakken met Cmd+V)</span>
+                      </button>
+                      <button type="button" id="mpDownloadBadgedPhotoBtn" class="btn btn-outline" style="width: 100%; font-size: 0.78rem; padding: 6px 10px; border-color: #a3cf95; background: #ffffff; color: #166534; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px;">
+                        <span>⬇️ Download Foto 1 (~200KB JPG)</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Rechter Kolom: Overige Foto's met 1-klik Kopieerknop per foto -->
+                  <div style="display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                      <span style="font-size: 0.82rem; font-weight: 800; color: #122b07;">Overige Foto's van deze stoel:</span>
+                      <span id="mpPhotoCount" style="font-size: 0.76rem; font-weight: 700; color: #64748b;">0 foto's</span>
+                    </div>
+
+                    <!-- Thumbnails Grid -->
+                    <div id="mpModalThumbnails" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 10px; max-height: 290px; overflow-y: auto; padding-right: 4px;">
+                      <!-- Dynamically populated via JS -->
+                    </div>
+
+                    <div style="background: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 9px 12px; margin-top: 12px; font-size: 0.75rem; color: #166534; line-height: 1.45;">
+                      <strong>💡 Hoe kopieert u afbeeldingen in 1 klik naar Marktplaats?</strong><br>
+                      1. Klik bij een foto op de groene knop <strong>📋 Kopieer (Cmd+V)</strong>.<br>
+                      2. Klik in uw Marktplaats-scherm en druk op <code>Cmd + V</code> (of <code>Ctrl + V</code>). De foto wordt direct ingevoegd zónder dat u bestanden hoeft op te zoeken of te slepen!
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- STAP 2: TITEL (Tweede sectie op Marktplaats) -->
+              <div class="mp-step-card" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #122b07; color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800;">2</span>
+                    <div>
+                      <h4 style="margin: 0; font-size: 1.02rem; font-weight: 800; color: #122b07; font-family: var(--font-heading);">Details: Titel</h4>
+                      <span style="font-size: 0.78rem; color: #64748b;">Marktplaats limiteert titels strikt tot 60 tekens</span>
+                    </div>
+                  </div>
+                  <span id="mpTitleCount" style="font-size: 0.85rem; font-weight: 800; color: #4b8f24; background: #f0fdf4; padding: 3px 10px; border-radius: 6px; border: 1px solid #bbf7d0;">0 / 60</span>
+                </div>
+
+                <!-- Titelvarianten Chips -->
+                <div style="margin-bottom: 10px;">
+                  <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; margin-bottom: 6px;">Kies een geteste invalshoek:</div>
+                  <div id="mpTitleChips" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <!-- Populated dynamically via JS -->
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                  <input type="text" class="form-control" id="mpInputTitle" maxlength="60" style="font-weight: 700; font-size: 0.95rem; color: #122b07; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 9px 12px;">
+                  <button type="button" class="btn btn-primary" id="mpBtnCopyTitle" style="padding: 9px 18px; white-space: nowrap; font-size: 0.88rem; background-color: #4b8f24; border-color: #3e7b1d; font-weight: 800; border-radius: 8px;">
+                    📋 Kopieer Titel
+                  </button>
+                </div>
+              </div>
+
+              <!-- STAP 3: BESCHRIJVING (Derde sectie op Marktplaats) -->
+              <div class="mp-step-card" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #122b07; color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800;">3</span>
+                    <div>
+                      <h4 style="margin: 0; font-size: 1.02rem; font-weight: 800; color: #122b07; font-family: var(--font-heading);">Details: Beschrijving</h4>
+                      <span style="font-size: 0.78rem; color: #64748b;">Kies de best passende doelgroep-invalshoek</span>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="mp-copy-style-tabs" style="display: inline-flex; background: #eef2f6; padding: 3px; border-radius: 8px; gap: 3px;">
+                      <button type="button" class="mp-style-tab-btn active" data-style="mantelzorger">
+                        🎯 Mantelzorgers &amp; Zekerheid
+                      </button>
+                      <button type="button" class="mp-style-tab-btn" data-style="certified">
+                        🛡️ Certified Fitform (15-Punts)
+                      </button>
+                      <button type="button" class="mp-style-tab-btn" data-style="krachtig">
+                        ⚡ Kort &amp; Krachtig
+                      </button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="mpBtnCopyDesc" style="padding: 8px 18px; font-size: 0.88rem; background-color: #4b8f24; border-color: #3e7b1d; font-weight: 800; border-radius: 8px;">
+                      📋 Kopieer Beschrijving
+                    </button>
+                  </div>
+                </div>
+
+                <textarea class="form-control" id="mpInputDesc" rows="12" style="font-family: inherit; font-size: 0.88rem; line-height: 1.55; resize: vertical; background: #fbfbfb; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 12px;"></textarea>
+              </div>
+
+              <!-- STAP 4: PRIJS EN LEVERING (Vierde sectie op Marktplaats) -->
+              <div class="mp-step-card" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #122b07; color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800;">4</span>
+                    <div>
+                      <h4 style="margin: 0; font-size: 1.02rem; font-weight: 800; color: #122b07; font-family: var(--font-heading);">Prijs en levering</h4>
+                      <span style="font-size: 0.78rem; color: #64748b;">Direct over te nemen in de Marktplaats-velden</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+                  <!-- Vaste prijs -->
+                  <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 12px 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                      <label style="margin: 0; font-size: 0.8rem; font-weight: 700; color: #475569;">Vaste prijs (Veld 'Met prijs')</label>
+                      <span id="mpSavingsBadge" style="display: none; font-size: 0.72rem; font-weight: 800; color: #15803d; background: #dcfce7; padding: 2px 7px; border-radius: 4px; border: 1px solid #bbf7d0;"></span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                      <input type="text" class="form-control" id="mpInputPrice" style="font-weight: 800; font-size: 1.05rem; color: #122b07; background: #fff;">
+                      <button type="button" class="btn btn-outline" id="mpBtnCopyPrice" style="padding: 7px 14px; font-size: 0.82rem; font-weight: 700; border-color: #cbd5e1;">
+                        📋 Kopieer
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Bezorgopties -->
+                  <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: center;">
+                    <span style="font-size: 0.8rem; font-weight: 800; color: #166534; display: flex; align-items: center; gap: 6px;">
+                      <span>🚚 Bezorg opties op Marktplaats</span>
+                    </span>
+                    <div style="margin-top: 4px; font-size: 0.84rem; color: #14532d; font-weight: 700;">
+                      Vink aan: <strong>Verzending</strong> &bull; Schakel <strong>Gratis verzending</strong> in
+                    </div>
+                    <div style="font-size: 0.74rem; color: #166534; margin-top: 2px;">
+                      Verzendtijd: <strong>2-5 dagen</strong> (gratis thuisbezorgd &amp; geplaatst in ZH)
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STAP 5: KENMERKEN (Vijfde sectie op Marktplaats) -->
+              <div class="mp-step-card" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #122b07; color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800;">5</span>
+                    <div>
+                      <h4 style="margin: 0; font-size: 1.02rem; font-weight: 800; color: #122b07; font-family: var(--font-heading);">Kenmerken (Aanvinken op Marktplaats)</h4>
+                      <span style="font-size: 0.78rem; color: #64748b;">Neem deze specificaties in 1 oogopslag over</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;" id="mpKenmerkenGrid">
+                  <!-- Populated dynamically via JS: Conditie, Materiaal, Merk, Aantal motoren, Postcode, Telefoon -->
+                </div>
+              </div>
+
+              <!-- STAP 6: WEBSITE LINKS (Marktplaats Pro velden) -->
+              <div class="mp-step-card" style="background: #ffffff; border: 1.5px solid #a3cf95; border-radius: 14px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(18,43,7,0.04);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1.5px solid #eef6eb; padding-bottom: 10px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #4b8f24; color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800;">6</span>
+                    <div>
+                      <h4 style="margin: 0; font-size: 1.02rem; font-weight: 800; color: #122b07; font-family: var(--font-heading);">Website Links (Marktplaats Pro)</h4>
+                      <span style="font-size: 0.78rem; color: #4b8f24; font-weight: 600;">Voor de velden 'Bestemmings URL' en 'Zichtbare URL'</span>
+                    </div>
+                  </div>
+                  <label style="font-size: 0.76rem; color: #475569; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; user-select: none;">
+                    <input type="checkbox" id="mpUtmToggle" checked style="accent-color: #4b8f24;">
+                    <span>Meetbaar met Analytics (UTM)</span>
+                  </label>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <span style="font-size: 0.82rem; font-weight: 700; color: #122b07; min-width: 140px;">Bestemmings URL:</span>
+                    <input type="text" class="form-control" id="mpInputUrl" readonly style="font-size: 0.84rem; font-family: monospace; background: #f7faf5; border-color: #c7e2bd; color: #122b07; font-weight: 600;">
+                    <button type="button" class="btn btn-primary" id="mpBtnCopyUrl" style="padding: 8px 16px; white-space: nowrap; font-size: 0.84rem; background-color: #4b8f24; border-color: #3e7b1d; font-weight: 800; border-radius: 8px;">
+                      📋 Kopieer Bestemming
+                    </button>
+                    <a id="mpBtnViewChairPage" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 8px 12px; white-space: nowrap; font-size: 0.84rem; border-color: #cbd5e1; text-decoration: none; color: #475569; font-weight: 600;" title="Bekijk deze stoelpagina op de website">
+                      ↗ Bekijk
+                    </a>
+                  </div>
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <span style="font-size: 0.82rem; font-weight: 700; color: #122b07; min-width: 140px;">Zichtbare URL:</span>
+                    <input type="text" class="form-control" id="mpInputVisibleUrl" readonly value="staopstoelen.nl" style="font-size: 0.84rem; font-family: monospace; background: #f7faf5; border-color: #c7e2bd; color: #122b07; font-weight: 600;">
+                    <button type="button" class="btn btn-outline" id="mpBtnCopyVisibleUrl" style="padding: 8px 16px; white-space: nowrap; font-size: 0.84rem; border-color: #4b8f24; color: #122b07; background: #ffffff; font-weight: 800; border-radius: 8px;">
+                      📋 Kopieer Zichtbaar
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STAP 7: AFRONDEN & PLAATSEN -->
+              <div style="display: flex; gap: 14px; align-items: center; justify-content: space-between; background: #ffffff; border: 1.5px solid #fed7aa; border-radius: 14px; padding: 16px 20px;">
+                <div>
+                  <div style="font-size: 0.95rem; font-weight: 800; color: #9a3412;">Klaar om te publiceren?</div>
+                  <div style="font-size: 0.78rem; color: #7c2d12;">Houd Marktplaats geopend in het tabblad en plak de gegevens in bovenstaande volgorde.</div>
+                </div>
+                <a href="https://www.marktplaats.nl/m/plaats-advertentie" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-weight: 800; font-size: 0.95rem; padding: 12px 24px; background: linear-gradient(180deg, #ff7a1a 0%, #e65c00 100%); border-color: #cc5200; text-decoration: none; box-shadow: 0 4px 14px rgba(230,92,0,0.3); border-radius: 8px; display: inline-flex; align-items: center; gap: 8px;">
+                  <span>Open Marktplaats Advertentie Maker ↗</span>
                 </a>
-                
-                <p style="font-size: 0.77rem; color: #64748b; text-align: center; margin: 0; line-height: 1.4;">
-                  Tip: open Marktplaats, plak de gekopieerde titel &amp; tekst en sleep de foto('s) erin!
-                </p>
               </div>
 
             </div>
           </div>
 
           <!-- Modal Footer -->
-          <div class="modal-footer" style="padding: 12px 24px; background: #ffffff; border-top: 1.5px solid #e2e8f0; display: flex; justify-content: flex-end;">
+          <div class="modal-footer" style="padding: 12px 24px; background: #ffffff; border-top: 1.5px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 0.78rem; color: #64748b;">
+              Staopstoelen.nl Marktplaats Assistent &bull; Merwedestraat 239 Dordrecht
+            </div>
             <button type="button" class="btn btn-outline" id="mpModalFooterCloseBtn" style="padding: 7px 18px; min-height: auto;">Sluiten</button>
           </div>
 
@@ -3786,7 +3873,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.215</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.216</span>
     </div>
   </footer>
 
@@ -7382,6 +7469,127 @@ Of stuur een bericht via Marktplaats.`;
     }
     window.openMarktplaatsModalByChairId = openMarktplaatsModalByChairId;
 
+    // Helper: Live Foto 1 Canvas Preview updaten met de geselecteerde badge
+    function updateMpPhoto1Preview() {
+      if (!currentMpChair) return;
+      const canvas = document.getElementById("mpPhoto1PreviewCanvas");
+      if (!canvas) return;
+      const photoSrc = currentMpChair.image || (currentMpChair.gallery && currentMpChair.gallery[0]) || "assets/chair.png";
+      const badgeStyle = document.getElementById("mpBadgeStyleSelect")?.value || "garantie_maatwerk";
+
+      const img = new Image();
+      if (photoSrc.startsWith("http")) img.crossOrigin = "anonymous";
+      img.onload = function() {
+        const maxDim = 800;
+        let w = img.naturalWidth || 800;
+        let h = img.naturalHeight || 600;
+        if (w > maxDim || h > maxDim) {
+          if (w >= h) {
+            h = Math.round((h / w) * maxDim);
+            w = maxDim;
+          } else {
+            w = Math.round((w / h) * maxDim);
+            h = maxDim;
+          }
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, w, h);
+        if (badgeStyle !== "geen") {
+          renderBadgeOverlay(ctx, w, h, badgeStyle);
+        }
+      };
+      img.src = photoSrc;
+    }
+    window.updateMpPhoto1Preview = updateMpPhoto1Preview;
+
+    // Helper: Kopieer een willekeurige foto naar het klembord met directe visuele knop-feedback
+    function copyPhotoToClipboard(photoSrc, isBadged = false, badgeStyle = "geen", btnEl = null) {
+      const origHtml = btnEl ? btnEl.innerHTML : "";
+      if (btnEl) {
+        btnEl.innerHTML = "<span>⏳ Kopiëren...</span>";
+        btnEl.style.pointerEvents = "none";
+      }
+
+      const img = new Image();
+      if (photoSrc.startsWith("http")) img.crossOrigin = "anonymous";
+      img.onload = function() {
+        try {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          const maxDim = 1200;
+          let w = img.naturalWidth || 1200;
+          let h = img.naturalHeight || 900;
+          if (w > maxDim || h > maxDim) {
+            if (w >= h) {
+              h = Math.round((h / w) * maxDim);
+              w = maxDim;
+            } else {
+              w = Math.round((w / h) * maxDim);
+              h = maxDim;
+            }
+          }
+          canvas.width = w;
+          canvas.height = h;
+          ctx.drawImage(img, 0, 0, w, h);
+
+          if (isBadged && badgeStyle !== "geen") {
+            renderBadgeOverlay(ctx, w, h, badgeStyle);
+          }
+
+          canvas.toBlob((blob) => {
+            if (!blob) {
+              showToast("Kon foto niet klaarmaken.", true);
+              if (btnEl) { btnEl.innerHTML = origHtml; btnEl.style.pointerEvents = ""; }
+              return;
+            }
+            if (navigator.clipboard && window.ClipboardItem) {
+              const item = new ClipboardItem({ "image/png": blob });
+              navigator.clipboard.write([item]).then(() => {
+                showToast("✓ Foto gekopieerd naar klembord! Ga naar Marktplaats en druk op Cmd+V (Plakken).");
+                if (btnEl) {
+                  btnEl.innerHTML = "<span>✓ Gekopieerd! Druk Cmd+V</span>";
+                  btnEl.style.background = "#22c55e";
+                  btnEl.style.color = "#ffffff";
+                  btnEl.style.borderColor = "#16a34a";
+                  setTimeout(() => {
+                    btnEl.innerHTML = origHtml;
+                    btnEl.style.background = "";
+                    btnEl.style.color = "";
+                    btnEl.style.borderColor = "";
+                    btnEl.style.pointerEvents = "";
+                  }, 3000);
+                }
+              }).catch((err) => {
+                console.error("Clipboard write error:", err);
+                const cleanName = `${(currentMpChair?.brand || 'stoel').toLowerCase()}-${cleanModelName(currentMpChair).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-foto.jpg`;
+                downloadOptimizedPhoto(photoSrc, cleanName, () => {
+                  showToast("Foto gedownload naar Downloads (klembord niet toegestaan door browser).");
+                  if (btnEl) { btnEl.innerHTML = origHtml; btnEl.style.pointerEvents = ""; }
+                });
+              });
+            } else {
+              const cleanName = `${(currentMpChair?.brand || 'stoel').toLowerCase()}-${cleanModelName(currentMpChair).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-foto.jpg`;
+              downloadOptimizedPhoto(photoSrc, cleanName, () => {
+                showToast("Foto gedownload naar Downloads.");
+                if (btnEl) { btnEl.innerHTML = origHtml; btnEl.style.pointerEvents = ""; }
+              });
+            }
+          }, "image/png");
+        } catch (err) {
+          console.error(err);
+          if (btnEl) { btnEl.innerHTML = origHtml; btnEl.style.pointerEvents = ""; }
+        }
+      };
+      img.onerror = function() {
+        showToast("Kon foto niet inladen.", true);
+        if (btnEl) { btnEl.innerHTML = origHtml; btnEl.style.pointerEvents = ""; }
+      };
+      img.src = photoSrc;
+    }
+    window.copyPhotoToClipboard = copyPhotoToClipboard;
+
     function openMarktplaatsModal(chair) {
       if (!chair) return;
       currentMpChair = chair;
@@ -7394,10 +7602,10 @@ Of stuur een bericht via Marktplaats.`;
       const descInput = document.getElementById("mpInputDesc");
       const nameHeading = document.getElementById("mpModalChairName");
       const thumbsContainer = document.getElementById("mpModalThumbnails");
-      const mainDownloadBtn = document.getElementById("mpDownloadMainPhotoBtn");
       const photoCount = document.getElementById("mpPhotoCount");
       const savingsBadge = document.getElementById("mpSavingsBadge");
       const titleChipsContainer = document.getElementById("mpTitleChips");
+      const kenmerkenGrid = document.getElementById("mpKenmerkenGrid");
 
       if (nameHeading) nameHeading.textContent = chair.name || "Sta-op stoel";
 
@@ -7418,7 +7626,6 @@ Of stuur een bericht via Marktplaats.`;
           </button>
         `).join("");
 
-        // Add event listeners to title chips
         titleChipsContainer.querySelectorAll(".mp-title-chip").forEach(btn => {
           btn.addEventListener("click", () => {
             titleChipsContainer.querySelectorAll(".mp-title-chip").forEach(b => b.classList.remove("active"));
@@ -7428,19 +7635,19 @@ Of stuur een bericht via Marktplaats.`;
               titleInput.value = newTitle;
               if (titleCount) {
                 titleCount.textContent = `${newTitle.length} / 60`;
-                titleCount.style.color = newTitle.length > 55 ? "#b45309" : "var(--color-forest)";
+                titleCount.style.color = newTitle.length > 55 ? "#b45309" : "#4b8f24";
               }
             }
           });
         });
       }
 
-      // Initial active title
+      // Actieve titel instellen
       if (titleInput) {
         titleInput.value = titles.garantie;
         if (titleCount) {
           titleCount.textContent = `${titles.garantie.length} / 60`;
-          titleCount.style.color = titles.garantie.length > 55 ? "#b45309" : "var(--color-forest)";
+          titleCount.style.color = titles.garantie.length > 55 ? "#b45309" : "#4b8f24";
         }
       }
 
@@ -7474,10 +7681,58 @@ Of stuur een bericht via Marktplaats.`;
         descInput.value = generateMarktplaatsText(chair, "mantelzorger");
       }
 
-      // 4. Website URL (met of zonder UTM-tracking)
+      // 4. Kenmerken Grid opbouwen
+      if (kenmerkenGrid) {
+        const brand = (chair.brand || "Fitform").replace(/\s*\(by Wellco\)/i, "").trim();
+        const model = cleanModelName(chair);
+        const mat = chair.material === "leer" ? "Hoogwaardig leer" : (chair.material === "stof" ? "Kwaliteitsstof" : "Comfortabele bekleding");
+        const specs = chair.specifications || {};
+        const motoren = specs["Aantal motoren"] || (chair.features && chair.features.find(f => f.toLowerCase().includes("motor"))) || "Elektrisch (onafhankelijk)";
+
+        kenmerkenGrid.innerHTML = `
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Conditie</span>
+              <strong style="font-size: 0.85rem; color: #0f172a;">Zo goed als nieuw</strong>
+            </div>
+            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('Zo goed als nieuw', 'Conditie gekopieerd!')">📋</button>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Materiaal</span>
+              <strong style="font-size: 0.85rem; color: #0f172a;">${mat}</strong>
+            </div>
+            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('${mat}', 'Materiaal gekopieerd!')">📋</button>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px;">
+            <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Merk &amp; Model</span>
+            <strong style="font-size: 0.85rem; color: #0f172a;">${brand} ${model}</strong>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px;">
+            <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Aantal motoren</span>
+            <strong style="font-size: 0.85rem; color: #0f172a;">${motoren}</strong>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Postcode</span>
+              <strong style="font-size: 0.85rem; color: #0f172a;">3313 GT</strong>
+            </div>
+            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('3313GT', 'Postcode gekopieerd!')">📋</button>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Telefoon</span>
+              <strong style="font-size: 0.85rem; color: #0f172a;">0786314858</strong>
+            </div>
+            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('0786314858', 'Telefoonnummer gekopieerd!')">📋</button>
+          </div>
+        `;
+      }
+
+      // 5. Website URL updaten
       updateMpUrl();
 
-      // 5. Foto's & Downloads
+      // 6. Foto's & Downloads
       const photos = [];
       if (chair.image) photos.push(chair.image);
       if (chair.imageUp && !photos.includes(chair.imageUp)) photos.push(chair.imageUp);
@@ -7490,26 +7745,32 @@ Of stuur een bericht via Marktplaats.`;
 
       if (photoCount) photoCount.textContent = `${photos.length} foto${photos.length === 1 ? '' : "'s"}`;
 
-      if (mainDownloadBtn) {
-        if (photos.length > 0) {
-          mainDownloadBtn.href = photos[0];
-          mainDownloadBtn.download = `${(chair.brand || 'stoel').toLowerCase()}-${cleanModelName(chair).toLowerCase()}-origineel.jpg`;
-          mainDownloadBtn.style.display = "block";
-        } else {
-          mainDownloadBtn.style.display = "none";
-        }
-      }
+      // Live Foto 1 Canvas Preview tekenen
+      setTimeout(updateMpPhoto1Preview, 50);
 
+      // Overige foto's renderen met 1-klik Kopieerknop
       if (thumbsContainer) {
-        if (photos.length === 0) {
-          thumbsContainer.innerHTML = '<span style="color:#94a3b8; font-size:0.8rem; grid-column:1/-1;">Geen foto\'s beschikbaar</span>';
+        const otherPhotos = photos.length > 1 ? photos.slice(1) : photos;
+        if (otherPhotos.length === 0) {
+          thumbsContainer.innerHTML = '<span style="color:#94a3b8; font-size:0.8rem; grid-column:1/-1;">Geen overige foto&#39;s</span>';
         } else {
-          thumbsContainer.innerHTML = photos.map((p, i) => {
-            const absUrl = new URL(p, window.location.href).href;
+          thumbsContainer.innerHTML = otherPhotos.map((p, i) => {
+            const photoNum = photos.length > 1 ? (i + 2) : 1;
+            const cleanName = `${(chair.brand || 'stoel').toLowerCase()}-${cleanModelName(chair).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-foto${photoNum}.jpg`;
             return `
-              <div style="position: relative; height: 80px; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; background: #f8fafc;">
-                <img src="${p}" draggable="true" ondragstart="try{event.dataTransfer.setData('DownloadURL', 'image/jpeg:${(chair.brand || 'stoel').toLowerCase()}-${i+1}.jpg:${absUrl}'); event.dataTransfer.setData('text/plain', '${absUrl}');}catch(e){}" title="Klik om grote foto ${i + 1} te bekijken / opslaan" style="width: 100%; height: 100%; object-fit: contain; padding: 4px; cursor: pointer;" onclick="window.open('${p}', '_blank')">
-                <span style="position: absolute; bottom: 3px; right: 3px; font-size: 0.68rem; background: rgba(0,0,0,0.65); color: #fff; padding: 1px 5px; border-radius: 4px; font-weight: 600; pointer-events: none;">Foto ${i + 1}</span>
+              <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.06);">
+                <div style="height: 105px; background: #f8fafc; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                  <img src="${p}" style="max-width: 100%; max-height: 100%; object-fit: contain; padding: 4px;">
+                  <span style="position: absolute; top: 4px; left: 4px; font-size: 0.65rem; background: rgba(18, 43, 7, 0.85); color: #fff; padding: 1px 6px; border-radius: 4px; font-weight: 800;">Foto ${photoNum}</span>
+                </div>
+                <div style="padding: 6px; display: flex; flex-direction: column; gap: 4px; background: #ffffff;">
+                  <button type="button" class="btn btn-outline" style="width: 100%; padding: 6px 6px; font-size: 0.74rem; font-weight: 800; border-color: #4b8f24; color: #166534; background: #f0fdf4; border-radius: 5px; cursor: pointer;" onclick="copyPhotoToClipboard('${p}', false, 'geen', this)" title="Kopieer foto naar klembord en plak direct met Cmd+V in Marktplaats">
+                    📋 Kopieer (Cmd+V)
+                  </button>
+                  <button type="button" class="btn btn-outline" style="width: 100%; padding: 4px 6px; font-size: 0.70rem; font-weight: 700; border-color: #cbd5e1; color: #475569; background: #ffffff; border-radius: 5px; cursor: pointer;" onclick="downloadOptimizedPhoto('${p}', '${cleanName}', () => showToast('Foto ${photoNum} opgeslagen!'))" title="Download lichte JPG (~200KB)">
+                    ⬇️ Download
+                  </button>
+                </div>
               </div>
             `;
           }).join("");
@@ -8065,9 +8326,20 @@ Of stuur een bericht via Marktplaats.`;
       });
     });
 
+    document.getElementById("mpBadgeStyleSelect")?.addEventListener("change", updateMpPhoto1Preview);
     document.getElementById("mpDownloadBadgedPhotoBtn")?.addEventListener("click", downloadBadgedPhoto);
-    document.getElementById("mpCopyPhotoBtn")?.addEventListener("click", copyBadgedPhotoToClipboard);
+    document.getElementById("mpCopyPhotoBtn")?.addEventListener("click", function() {
+      if (!currentMpChair) return;
+      const photoSrc = currentMpChair.image || (currentMpChair.gallery && currentMpChair.gallery[0]) || "assets/chair.png";
+      const badgeStyle = document.getElementById("mpBadgeStyleSelect")?.value || "garantie_maatwerk";
+      copyPhotoToClipboard(photoSrc, true, badgeStyle, this);
+    });
     document.getElementById("mpDownloadAllPhotosBtn")?.addEventListener("click", downloadAllOptimizedPhotos);
+    document.getElementById("mpBtnCopyPrice")?.addEventListener("click", () => {
+      const val = document.getElementById("mpInputPrice")?.value || "";
+      copyToClipboard(val, "✓ Prijs gekopieerd naar klembord!");
+    });
+    document.getElementById("mpModalFooterCloseBtn")?.addEventListener("click", closeMarktplaatsModal);
 
     document.getElementById("mpUtmToggle")?.addEventListener("change", updateMpUrl);
 
