@@ -72,15 +72,15 @@ TASKS = [
     {
         "name": "Consumer Scene 1 (Het Senioren-Dilemma)",
         "text": "Een nieuwe ergonomische sta-opstoel kost al snel 4500 euro. Te duur voor veel mensen. Maar op Marktplaats koop je een onhygiënische gok: zonder garantie en met de verkeerde maat.",
-        "duration": 12.80,
-        "delay_ms": 200,
+        "duration": 13.70,
+        "delay_ms": 250,
         "out_files": ["assets/audio/consumer_scene_1.m4a"]
     },
     {
         "name": "Consumer Scene 2 (Sweet Spot - 1 Jaar Garantie)",
         "text": "Staopstoelen punt nl overbrugt dit gat met Certified Fitform. Nederlandse topkwaliteit voor slechts 1500 euro – letterlijk een derde van de nieuwprijs van 4500 euro – mét één jaar volledige garantie aan huis.",
-        "duration": 13.00,
-        "delay_ms": 200,
+        "duration": 14.70,
+        "delay_ms": 250,
         "out_files": [
             "assets/audio/consumer_scene_2.m4a",
             "assets/audio/scene_2.m4a",
@@ -90,8 +90,8 @@ TASKS = [
     {
         "name": "Consumer Scene 3 (15-Punts Kwaliteitskeuring & Reiniging)",
         "text": "Elke stoel krijgt een vijftien-punts kwaliteitskeuring, professionele reiniging en wordt door staopstoelen punt nl exact op uw lichaam afgesteld. Zo zit uw stoel weer echt als nieuw, voor jarenlang zorgeloos zitcomfort.",
-        "duration": 14.60,
-        "delay_ms": 200,
+        "duration": 15.80,
+        "delay_ms": 250,
         "out_files": [
             "assets/audio/consumer_scene_3.m4a",
             "assets/audio/scene_3.m4a",
@@ -101,8 +101,8 @@ TASKS = [
     {
         "name": "Consumer Scene 4 (Kom Proefzitten in Dordrecht)",
         "text": "Voel zelf het verschil. Kom vrijblijvend proefzitten in onze showroom in Dordrecht. Bel nul zeven acht, zes drie een, vier acht vijf acht, of kijk op staopstoelen punt nl.",
-        "duration": 14.00,
-        "delay_ms": 200,
+        "duration": 12.70,
+        "delay_ms": 250,
         "out_files": ["assets/audio/consumer_scene_4.m4a"]
     },
     {
@@ -178,6 +178,20 @@ def main():
         # Master to exact duration with gentle delay and padding
         delay = t["delay_ms"]
         dur = t["duration"]
+
+        # Safety duration check
+        res = subprocess.run([FFMPEG, "-i", raw_mp3], capture_output=True, text=True)
+        raw_dur = 0.0
+        for line in res.stderr.split("\n"):
+            if "Duration:" in line:
+                parts = line.split("Duration:")[1].split(",")[0].strip().split(":")
+                raw_dur = float(parts[0])*3600 + float(parts[1])*60 + float(parts[2])
+                break
+        min_needed = round(raw_dur + (delay / 1000.0) + 0.6, 2)
+        if min_needed > dur:
+            print(f"  ⚠️ Verhoogd van {dur}s naar {min_needed}s om clipping van tekst te voorkomen (raw audio: {raw_dur:.2f}s)")
+            dur = min_needed
+
         filter_str = f"adelay={delay}|{delay},apad=whole_dur={dur}"
 
         for out_path in t["out_files"]:

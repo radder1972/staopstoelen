@@ -12,28 +12,28 @@ const SCENES = [
   {
     idx: 0,
     audio: 'assets/audio/consumer_scene_1.m4a',
-    duration: 12.80,
+    duration: 13.70,
     outVideo: 'assets/video/scene1_dilemma.mp4',
     name: 'Scene 1: Het Senioren-Dilemma'
   },
   {
     idx: 1,
     audio: 'assets/audio/consumer_scene_2.m4a',
-    duration: 13.00,
+    duration: 14.70,
     outVideo: 'assets/video/scene2_showroom.mp4',
     name: 'Scene 2: Certified Fitform De Sweet Spot'
   },
   {
     idx: 2,
     audio: 'assets/audio/consumer_scene_3.m4a',
-    duration: 14.60,
+    duration: 15.80,
     outVideo: 'assets/video/scene3_werkplaats.mp4',
     name: 'Scene 3: 15-Punts Keuring & Maatwerk'
   },
   {
     idx: 3,
     audio: 'assets/audio/consumer_scene_4.m4a',
-    duration: 14.00,
+    duration: 12.70,
     outVideo: 'assets/video/scene4_zekerheid.mp4',
     name: 'Scene 4: Kom Proefzitten in de Showroom Dordrecht'
   }
