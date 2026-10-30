@@ -1785,11 +1785,20 @@
         <form id="chairForm">
             <input type="hidden" id="formChairIndex">
             
-            <!-- Modal Tabs Header -->
-            <div class="modal-tabs" style="display: flex; border-bottom: 2px solid var(--color-gray-light); margin-bottom: 20px; gap: 8px;">
-              <button type="button" class="modal-tab-btn active" data-tab="tab-basis" style="padding: 10px 20px; font-family: var(--font-heading); font-weight: 700; border: none; background: none; border-bottom: 3px solid var(--color-terracotta); cursor: pointer; color: var(--color-forest-dark); outline: none;">Basisgegevens</button>
-              <button type="button" class="modal-tab-btn" data-tab="tab-afbeeldingen" style="padding: 10px 20px; font-family: var(--font-heading); font-weight: 700; border: none; background: none; border-bottom: 3px solid transparent; cursor: pointer; color: var(--color-gray); outline: none;">Afbeeldingen & Galerij</button>
-              <button type="button" class="modal-tab-btn" data-tab="tab-specs" style="padding: 10px 20px; font-family: var(--font-heading); font-weight: 700; border: none; background: none; border-bottom: 3px solid transparent; cursor: pointer; color: var(--color-gray); outline: none;">Specs & Badges</button>
+            <!-- Modal Tabs Header (in Huisstijl met Iconen) -->
+            <div class="modal-tabs" style="display: flex; border-bottom: 2px solid var(--color-gray-light); margin-bottom: 20px; gap: 6px; flex-wrap: wrap;">
+              <button type="button" class="modal-tab-btn active" data-tab="tab-basis" style="padding: 10px 18px; font-family: var(--font-heading); font-weight: 700; font-size: 0.88rem; border: none; background: none; border-bottom: 3px solid var(--color-forest); cursor: pointer; color: var(--color-forest-dark); outline: none; display: inline-flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+                <span>Basisgegevens</span>
+              </button>
+              <button type="button" class="modal-tab-btn" data-tab="tab-afbeeldingen" style="padding: 10px 18px; font-family: var(--font-heading); font-weight: 700; font-size: 0.88rem; border: none; background: none; border-bottom: 3px solid transparent; cursor: pointer; color: var(--color-gray); outline: none; display: inline-flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span>Afbeeldingen &amp; Galerij</span>
+              </button>
+              <button type="button" class="modal-tab-btn" data-tab="tab-specs" style="padding: 10px 18px; font-family: var(--font-heading); font-weight: 700; font-size: 0.88rem; border: none; background: none; border-bottom: 3px solid transparent; cursor: pointer; color: var(--color-gray); outline: none; display: inline-flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                <span>Specs &amp; Badges</span>
+              </button>
             </div>
 
             <!-- Tab 1: Basisgegevens -->
@@ -1876,73 +1885,136 @@
               </div>
             </div>
 
-            <!-- Tab 2: Afbeeldingen (Gevormd naar 3 heldere rollen) -->
+            <!-- Tab 2: Afbeeldingen (Opgeruimd & in Staopstoelen.nl Huisstijl) -->
             <div id="tab-afbeeldingen" class="modal-tab-content" style="display: none;">
-              <div class="upload-section-card" style="margin: 0; border: none; padding: 0; background: none; box-shadow: none;">
+              
+              <!-- 2-Koloms Bovenste Rij: 1. Hoofdfoto & 2. Sfeerfoto -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 18px;">
                 
-                <!-- 1. Hoofdfoto -->
-                <div class="upload-box">
-                  <label class="form-label" for="chairImage" style="font-weight: 700; color: var(--color-forest-dark);">1. Hoofdfoto (Productfoto)</label>
-                  <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 8px;">Standaard studiofoto van de stoel (wordt getoond op de overzichtskaarten).</p>
-                  <div style="display: flex; gap: 12px; align-items: center;">
-                    <input type="text" class="form-control" id="chairImage" required placeholder="assets/stoelen/chair_naam_main.png" style="flex: 1;">
-                    <input type="file" id="chairImageFile" accept="image/*" style="display: none;">
-                    <button type="button" class="btn btn-outline" id="btnUploadImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      Kies / Upload
+                <!-- KAART 1: HOOFDFOTO (Productfoto) -->
+                <div class="chair-upload-card" id="chairMainDropzone" style="background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 4px rgba(18,43,7,0.03); transition: border-color 0.2s, box-shadow 0.2s;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1.5px solid #f0fdf4; padding-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="background: #f0fdf4; color: #4b8f24; width: 28px; height: 28px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                      </span>
+                      <strong style="font-size: 0.92rem; color: #122b07; font-family: var(--font-heading);">1. Hoofdfoto (Product)</strong>
+                    </div>
+                    <span style="font-size: 0.70rem; font-weight: 800; background: #eef7eb; color: #2e6015; padding: 2px 7px; border-radius: 4px; border: 1px solid #c7e2bd;">Overzichtskaarten</span>
+                  </div>
+
+                  <!-- Visual Preview & Drop Area -->
+                  <div id="chairMainVisualBox" style="position: relative; min-height: 145px; background: #fbfbfb; border: 2px dashed #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 8px; text-align: center; cursor: pointer; transition: all 0.2s ease;">
+                    <div id="chairImageEmptyState" style="display: flex; flex-direction: column; align-items: center; gap: 6px; color: #64748b;">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                      <div style="font-size: 0.82rem; font-weight: 700; color: #122b07;">Klik om te kiezen / uploaden</div>
+                      <div style="font-size: 0.72rem; color: #94a3b8;">of sleep foto hierheen</div>
+                    </div>
+                    <div id="chairImagePreview" style="display: none; width: 100%; height: 100%; position: absolute; inset: 0; background: #ffffff; align-items: center; justify-content: center; padding: 6px;">
+                      <img src="" style="max-width: 100%; max-height: 130px; object-fit: contain; border-radius: 4px;">
+                    </div>
+                  </div>
+
+                  <!-- Bottom Controls & Inputs -->
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <button type="button" class="btn btn-primary" id="btnUploadImage" style="flex: 1; padding: 8px 12px; font-size: 0.84rem; font-weight: 700; background: #4b8f24; border-color: #3e7b1d; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                      <span>Kies / Upload</span>
+                    </button>
+                    <button type="button" id="btnClearMainImage" class="btn btn-outline" style="padding: 8px 10px; font-size: 0.80rem; border-color: #e2e8f0; color: #94a3b8; display: none;" title="Afbeelding wissen">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                     </button>
                   </div>
-                  <div id="chairImagePreview" style="margin-top: 10px; display: none;">
-                    <img src="" style="max-height: 90px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
-                  </div>
+
+                  <input type="text" class="form-control" id="chairImage" required placeholder="assets/stoelen/chair_naam_main.png" style="font-size: 0.76rem; font-family: monospace; padding: 5px 8px; height: auto; background: #f8fafc; border-color: #e2e8f0; color: #475569;">
+                  <input type="file" id="chairImageFile" accept="image/*" style="display: none;">
                 </div>
 
                 <!-- Hidden inputs for backward compatibility -->
                 <input type="hidden" id="chairImageUp">
                 <input type="hidden" id="chairImageLie">
 
-                <!-- 2. Sfeerfoto -->
-                <div class="upload-box" style="margin-top: 20px;">
-                  <label class="form-label" for="chairAmbientImage" style="font-weight: 700; color: var(--color-forest-dark);">2. Sfeerfoto (Interieurfoto)</label>
-                  <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 8px;">Interieurfoto in woonkamersfeer (wordt getoond bij hover op de kaart & homepage).</p>
-                  <div style="display: flex; gap: 12px; align-items: center;">
-                    <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/stoelen/chair_naam_ambient.png" style="flex: 1;">
-                    <input type="file" id="chairAmbientImageFile" accept="image/*" style="display: none;">
-                    <button type="button" class="btn btn-outline" id="btnUploadAmbientImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      Kies / Upload
+                <!-- KAART 2: SFEERFOTO (Interieurfoto) -->
+                <div class="chair-upload-card" id="chairAmbientDropzone" style="background: #ffffff; border: 1.5px solid #fed7aa; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 4px rgba(243,146,35,0.03); transition: border-color 0.2s, box-shadow 0.2s;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1.5px solid #fff7ed; padding-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="background: #fff7ed; color: #ea580c; width: 28px; height: 28px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                      </span>
+                      <strong style="font-size: 0.92rem; color: #122b07; font-family: var(--font-heading);">2. Sfeerfoto (Woonkamer)</strong>
+                    </div>
+                    <span style="font-size: 0.70rem; font-weight: 800; background: #ffedd5; color: #9a3412; padding: 2px 7px; border-radius: 4px; border: 1px solid #fed7aa;">Hover-effect</span>
+                  </div>
+
+                  <!-- Visual Preview & Drop Area -->
+                  <div id="chairAmbientVisualBox" style="position: relative; min-height: 145px; background: #fbfbfb; border: 2px dashed #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 8px; text-align: center; cursor: pointer; transition: all 0.2s ease;">
+                    <div id="chairAmbientEmptyState" style="display: flex; flex-direction: column; align-items: center; gap: 6px; color: #64748b;">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                      <div style="font-size: 0.82rem; font-weight: 700; color: #122b07;">Klik om te kiezen / uploaden</div>
+                      <div style="font-size: 0.72rem; color: #94a3b8;">of sleep foto hierheen</div>
+                    </div>
+                    <div id="chairAmbientImagePreview" style="display: none; width: 100%; height: 100%; position: absolute; inset: 0; background: #ffffff; align-items: center; justify-content: center; padding: 6px;">
+                      <img src="" style="max-width: 100%; max-height: 130px; object-fit: contain; border-radius: 4px;">
+                    </div>
+                  </div>
+
+                  <!-- Bottom Controls & Inputs -->
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <button type="button" class="btn btn-outline" id="btnUploadAmbientImage" style="flex: 1; padding: 8px 12px; font-size: 0.84rem; font-weight: 700; border-color: #ea580c; color: #c2410c; background: #fff7ed; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                      <span>Kies / Upload</span>
+                    </button>
+                    <button type="button" id="btnClearAmbientImage" class="btn btn-outline" style="padding: 8px 10px; font-size: 0.80rem; border-color: #e2e8f0; color: #94a3b8; display: none;" title="Afbeelding wissen">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                     </button>
                   </div>
-                  <div id="chairAmbientImagePreview" style="margin-top: 10px; display: none;">
-                    <img src="" style="max-height: 90px; border-radius: var(--radius-sm); border: 2px solid var(--color-gray-light); background-color: var(--color-cream); padding: 4px; object-fit: contain;">
+
+                  <input type="text" class="form-control" id="chairAmbientImage" placeholder="assets/stoelen/chair_naam_ambient.png" style="font-size: 0.76rem; font-family: monospace; padding: 5px 8px; height: auto; background: #f8fafc; border-color: #e2e8f0; color: #475569;">
+                  <input type="file" id="chairAmbientImageFile" accept="image/*" style="display: none;">
+                </div>
+
+              </div>
+
+              <!-- KAART 3: FOTOGALERIJ (Detail- & Standenfoto's) -->
+              <div style="background: #ffffff; border: 1.5px solid #d1e2cb; border-radius: 12px; padding: 18px; box-shadow: 0 1px 4px rgba(18,43,7,0.03);">
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1.5px solid #eef6eb; padding-bottom: 10px; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #122b07; color: #ffffff; width: 30px; height: 30px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </span>
+                    <div>
+                      <strong style="font-size: 0.95rem; color: #122b07; font-family: var(--font-heading); display: block;">3. Fotogalerij (Detail- &amp; Standenfoto's)</strong>
+                      <span style="font-size: 0.76rem; color: #64748b;">Sleep de foto's om de volgorde aan te passen. Te zien in de detail pop-up.</span>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span id="galleryCounterBadge" style="font-size: 0.78rem; font-weight: 800; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; padding: 3px 9px; border-radius: 6px;">0 foto's</span>
+                    <button type="button" class="btn btn-primary" id="btnUploadGalleryImage" style="padding: 7px 14px; font-size: 0.82rem; font-weight: 800; background: #4b8f24; border-color: #3e7b1d; display: inline-flex; align-items: center; gap: 6px; border-radius: 6px;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                      <span>+ Foto Toevoegen</span>
+                    </button>
+                    <input type="file" id="galleryImageFileInput" accept="image/*" style="display: none;">
                   </div>
                 </div>
 
-                <!-- 3. Fotogalerij -->
-                <div class="upload-box" style="margin-top: 20px; border-top: 1px solid var(--color-gray-light); padding-top: 20px;">
-                  <label class="form-label" style="font-weight: 700; color: var(--color-forest-dark);">3. Fotogalerij (Detail- & Standenfoto's)</label>
-                  <p style="font-size: 0.85rem; color: var(--color-gray); margin-bottom: 12px; margin-top: 4px;">Voeg alle extra foto's toe (sta-op stand, ligstand, afstandsbediening, stof/leer details) die in de pop-up getoond worden.</p>
-                  
-                  <!-- Thumbnails grid -->
-                  <div id="galleryManagerGrid" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
-                    <!-- Dynamically populated -->
-                  </div>
-                  
-                  <!-- Upload / Add row -->
-                  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <button type="button" class="btn btn-outline" id="btnUploadGalleryImage" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; margin: 0;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      + Foto Uploaden
-                    </button>
-                    <input type="file" id="galleryImageFileInput" accept="image/*" style="display: none;">
-                    
-                    <span style="font-size: 0.85rem; color: var(--color-gray);">of</span>
-                    
-                    <input type="text" id="galleryExternalUrlInput" class="form-control" placeholder="Voer externe URL in... (bijv. https://...)" style="flex: 1; margin: 0; min-height: 42px;">
-                    <button type="button" class="btn btn-secondary" id="btnLinkGalleryUrl" style="padding: 10px 16px; font-size: 0.9rem; min-height: auto; margin: 0;">Linken</button>
-                  </div>
+                <!-- Gallery Manager Grid -->
+                <div id="galleryManagerGrid" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; min-height: 110px; align-items: flex-start;">
+                  <!-- Dynamically populated via renderGalleryManager -->
+                </div>
+
+                <!-- Subtle URL Link Row -->
+                <div style="display: flex; gap: 8px; align-items: center; border-top: 1px dashed #e2e8f0; padding-top: 12px;">
+                  <span style="font-size: 0.76rem; color: #64748b; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                    Externe link:
+                  </span>
+                  <input type="text" id="galleryExternalUrlInput" class="form-control" placeholder="https://staopstoelen.nl/assets/stoelen/...jpg" style="flex: 1; font-size: 0.76rem; font-family: monospace; padding: 6px 10px; height: auto;">
+                  <button type="button" class="btn btn-outline" id="btnLinkGalleryUrl" style="padding: 6px 12px; font-size: 0.76rem; font-weight: 700; border-color: #cbd5e1; color: #475569; border-radius: 6px;">
+                    Linken
+                  </button>
                 </div>
               </div>
+
             </div>
 
             <!-- Tab 3: Specs & Badges -->
@@ -2005,16 +2077,22 @@
       <!-- Media Library Modal -->
       <div id="mediaLibraryModal" class="modal-overlay" style="display: none; align-items: center; justify-content: center; z-index: 30000; background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); position: fixed; top: 0; left: 0; right: 0; bottom: 0;">
         <div class="modal-card" style="max-width: 800px; width: 90%; max-height: 85vh; display: flex; flex-direction: column; background-color: white; border-radius: var(--radius-lg); box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden;">
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--color-gray-light); background-color: #fbf9f6;">
-            <h3 style="margin: 0; font-family: var(--font-heading); color: var(--color-forest-dark); font-size: 1.25rem; font-weight: bold;">Afbeelding Selecteren</h3>
-            <button type="button" id="mediaLibraryCloseBtn" style="background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--color-gray); line-height: 1; padding: 0;">&times;</button>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; border-bottom: 1.5px solid var(--color-gray-light); background-color: #fbf9f6;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="background: #eef7eb; color: #4b8f24; width: 32px; height: 32px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              </span>
+              <h3 style="margin: 0; font-family: var(--font-heading); color: var(--color-forest-dark); font-size: 1.25rem; font-weight: 800;">Afbeelding Selecteren</h3>
+            </div>
+            <button type="button" id="mediaLibraryCloseBtn" style="background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--color-gray); line-height: 1; padding: 0;">&times;</button>
           </div>
           
           <div style="padding: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1; overflow: hidden; min-height: 350px;">
             <!-- Top controls -->
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
-              <button type="button" class="btn btn-primary" id="btnMediaLibraryLocal" style="margin: 0; display: inline-flex; align-items: center; gap: 8px;">
-                📁 Upload Vanaf Computer
+              <button type="button" class="btn btn-primary" id="btnMediaLibraryLocal" style="margin: 0; display: inline-flex; align-items: center; gap: 8px; background: #4b8f24; border-color: #3e7b1d; font-weight: 700;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <span>Upload vanaf Computer</span>
               </button>
               
               <div style="position: relative; flex: 1; min-width: 250px;">
@@ -5010,9 +5088,9 @@
       
       grid.innerHTML = "";
       
-      if (currentGalleryImages.length === 0) {
-        grid.innerHTML = `<div style="font-size: 0.875rem; color: var(--color-gray); padding: 12px 0;">Nog geen galerij-afbeeldingen toegevoegd.</div>`;
-        return;
+      const counterEl = document.getElementById("galleryCounterBadge");
+      if (counterEl) {
+        counterEl.textContent = `${currentGalleryImages.length} foto${currentGalleryImages.length === 1 ? '' : "'s"}`;
       }
       
       currentGalleryImages.forEach((imgUrl, idx) => {
@@ -5020,24 +5098,26 @@
         itemContainer.draggable = true;
         itemContainer.dataset.index = idx;
         itemContainer.style.position = "relative";
-        itemContainer.style.width = "90px";
-        itemContainer.style.height = "105px";
-        itemContainer.style.border = "2px solid var(--color-gray-light)";
-        itemContainer.style.borderRadius = "var(--radius-sm)";
+        itemContainer.style.width = "105px";
+        itemContainer.style.height = "128px";
+        itemContainer.style.border = "1.5px solid #d1e2cb";
+        itemContainer.style.borderRadius = "10px";
         itemContainer.style.overflow = "hidden";
-        itemContainer.style.backgroundColor = "var(--color-cream)";
+        itemContainer.style.backgroundColor = "#ffffff";
         itemContainer.style.display = "flex";
         itemContainer.style.flexDirection = "column";
         itemContainer.style.alignItems = "center";
         itemContainer.style.justifyContent = "space-between";
-        itemContainer.style.padding = "4px";
+        itemContainer.style.padding = "5px";
         itemContainer.style.cursor = "grab";
+        itemContainer.style.boxShadow = "0 1px 4px rgba(18,43,7,0.05)";
+        itemContainer.style.transition = "transform 0.15s, border-color 0.15s, box-shadow 0.15s";
         itemContainer.title = "Sleep of gebruik de pijltjes om de volgorde aan te passen";
 
         // Drag & Drop events
         itemContainer.addEventListener("dragstart", (e) => {
           draggedGalleryIdx = idx;
-          itemContainer.style.opacity = "0.5";
+          itemContainer.style.opacity = "0.4";
           e.dataTransfer.effectAllowed = "move";
         });
 
@@ -5049,16 +5129,19 @@
         itemContainer.addEventListener("dragover", (e) => {
           e.preventDefault();
           e.dataTransfer.dropEffect = "move";
-          itemContainer.style.borderColor = "var(--color-terracotta)";
+          itemContainer.style.borderColor = "#4b8f24";
+          itemContainer.style.transform = "scale(1.03)";
         });
 
         itemContainer.addEventListener("dragleave", () => {
-          itemContainer.style.borderColor = "var(--color-gray-light)";
+          itemContainer.style.borderColor = "#d1e2cb";
+          itemContainer.style.transform = "none";
         });
 
         itemContainer.addEventListener("drop", (e) => {
           e.preventDefault();
-          itemContainer.style.borderColor = "var(--color-gray-light)";
+          itemContainer.style.borderColor = "#d1e2cb";
+          itemContainer.style.transform = "none";
           if (draggedGalleryIdx !== null && draggedGalleryIdx !== idx) {
             moveGalleryImage(draggedGalleryIdx, idx);
           }
@@ -5067,52 +5150,65 @@
         // Image preview wrapper
         const imgWrapper = document.createElement("div");
         imgWrapper.style.width = "100%";
-        imgWrapper.style.height = "65px";
+        imgWrapper.style.height = "76px";
         imgWrapper.style.display = "flex";
         imgWrapper.style.alignItems = "center";
         imgWrapper.style.justifyContent = "center";
         imgWrapper.style.overflow = "hidden";
+        imgWrapper.style.backgroundColor = "#fbfbfb";
+        imgWrapper.style.borderRadius = "6px";
 
         const img = document.createElement("img");
         img.src = imgUrl;
         img.style.maxWidth = "100%";
         img.style.maxHeight = "100%";
         img.style.objectFit = "contain";
+        img.style.padding = "2px";
         imgWrapper.appendChild(img);
 
         // Position Badge #1, #2...
         const badge = document.createElement("div");
         badge.textContent = `#${idx + 1}`;
         badge.style.position = "absolute";
-        badge.style.top = "3px";
-        badge.style.left = "3px";
-        badge.style.backgroundColor = "var(--color-forest)";
-        badge.style.color = "#fff";
+        badge.style.top = "4px";
+        badge.style.left = "4px";
+        badge.style.backgroundColor = "rgba(18, 43, 7, 0.9)";
+        badge.style.color = "#ffffff";
         badge.style.fontSize = "10px";
-        badge.style.fontWeight = "bold";
-        badge.style.padding = "1px 5px";
+        badge.style.fontWeight = "800";
+        badge.style.padding = "1px 6px";
         badge.style.borderRadius = "4px";
+        badge.style.zIndex = "2";
 
-        // Remove button (top right)
+        // Remove button (top right with clean SVG trash/x)
         const removeBtn = document.createElement("button");
         removeBtn.type = "button";
-        removeBtn.innerHTML = "&times;";
+        removeBtn.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
         removeBtn.title = "Foto verwijderen";
         removeBtn.style.position = "absolute";
-        removeBtn.style.top = "3px";
-        removeBtn.style.right = "3px";
-        removeBtn.style.width = "18px";
-        removeBtn.style.height = "18px";
+        removeBtn.style.top = "4px";
+        removeBtn.style.right = "4px";
+        removeBtn.style.width = "20px";
+        removeBtn.style.height = "20px";
         removeBtn.style.borderRadius = "50%";
-        removeBtn.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
+        removeBtn.style.backgroundColor = "rgba(220, 38, 38, 0.88)";
         removeBtn.style.color = "white";
         removeBtn.style.border = "none";
         removeBtn.style.display = "flex";
         removeBtn.style.alignItems = "center";
         removeBtn.style.justifyContent = "center";
-        removeBtn.style.fontSize = "12px";
-        removeBtn.style.fontWeight = "bold";
         removeBtn.style.cursor = "pointer";
+        removeBtn.style.zIndex = "2";
+        removeBtn.style.transition = "transform 0.1s, background-color 0.1s";
+
+        removeBtn.addEventListener("mouseover", () => {
+          removeBtn.style.transform = "scale(1.15)";
+          removeBtn.style.backgroundColor = "#dc2626";
+        });
+        removeBtn.addEventListener("mouseout", () => {
+          removeBtn.style.transform = "none";
+          removeBtn.style.backgroundColor = "rgba(220, 38, 38, 0.88)";
+        });
 
         removeBtn.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -5120,27 +5216,29 @@
           renderGalleryManager();
         });
 
-        // Bottom Controls Bar (Arrow Left & Arrow Right)
+        // Bottom Controls Bar with SVG arrows
         const ctrlBar = document.createElement("div");
         ctrlBar.style.width = "100%";
         ctrlBar.style.display = "flex";
         ctrlBar.style.justifyContent = "space-between";
         ctrlBar.style.gap = "4px";
-        ctrlBar.style.paddingTop = "2px";
+        ctrlBar.style.paddingTop = "4px";
 
         const btnLeft = document.createElement("button");
         btnLeft.type = "button";
-        btnLeft.innerHTML = "◄";
+        btnLeft.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>`;
         btnLeft.title = "Naar links verplaatsen";
         btnLeft.disabled = (idx === 0);
         btnLeft.style.flex = "1";
         btnLeft.style.height = "22px";
-        btnLeft.style.border = "1px solid var(--color-gray-light)";
-        btnLeft.style.borderRadius = "3px";
-        btnLeft.style.backgroundColor = idx === 0 ? "#f0f0f0" : "#fff";
-        btnLeft.style.color = idx === 0 ? "#ccc" : "var(--color-dark)";
+        btnLeft.style.border = "1px solid #e2e8f0";
+        btnLeft.style.borderRadius = "4px";
+        btnLeft.style.backgroundColor = idx === 0 ? "#f8fafc" : "#ffffff";
+        btnLeft.style.color = idx === 0 ? "#cbd5e1" : "#122b07";
         btnLeft.style.cursor = idx === 0 ? "default" : "pointer";
-        btnLeft.style.fontSize = "10px";
+        btnLeft.style.display = "flex";
+        btnLeft.style.alignItems = "center";
+        btnLeft.style.justifyContent = "center";
 
         btnLeft.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -5149,17 +5247,19 @@
 
         const btnRight = document.createElement("button");
         btnRight.type = "button";
-        btnRight.innerHTML = "►";
+        btnRight.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
         btnRight.title = "Naar rechts verplaatsen";
         btnRight.disabled = (idx === currentGalleryImages.length - 1);
         btnRight.style.flex = "1";
         btnRight.style.height = "22px";
-        btnRight.style.border = "1px solid var(--color-gray-light)";
-        btnRight.style.borderRadius = "3px";
-        btnRight.style.backgroundColor = idx === currentGalleryImages.length - 1 ? "#f0f0f0" : "#fff";
-        btnRight.style.color = idx === currentGalleryImages.length - 1 ? "#ccc" : "var(--color-dark)";
+        btnRight.style.border = "1px solid #e2e8f0";
+        btnRight.style.borderRadius = "4px";
+        btnRight.style.backgroundColor = idx === currentGalleryImages.length - 1 ? "#f8fafc" : "#ffffff";
+        btnRight.style.color = idx === currentGalleryImages.length - 1 ? "#cbd5e1" : "#122b07";
         btnRight.style.cursor = idx === currentGalleryImages.length - 1 ? "default" : "pointer";
-        btnRight.style.fontSize = "10px";
+        btnRight.style.display = "flex";
+        btnRight.style.alignItems = "center";
+        btnRight.style.justifyContent = "center";
 
         btnRight.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -5175,6 +5275,39 @@
         itemContainer.appendChild(ctrlBar);
         grid.appendChild(itemContainer);
       });
+
+      // Quick "+ Foto Toevoegen" card at end of grid
+      const addTile = document.createElement("div");
+      addTile.style.width = "105px";
+      addTile.style.height = "128px";
+      addTile.style.border = "2px dashed #4b8f24";
+      addTile.style.borderRadius = "10px";
+      addTile.style.backgroundColor = "#f0fdf4";
+      addTile.style.display = "flex";
+      addTile.style.flexDirection = "column";
+      addTile.style.alignItems = "center";
+      addTile.style.justifyContent = "center";
+      addTile.style.gap = "6px";
+      addTile.style.cursor = "pointer";
+      addTile.style.color = "#166534";
+      addTile.style.transition = "all 0.15s ease";
+      addTile.title = "Voeg nog een foto toe aan de galerij";
+      addTile.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <span style="font-size: 0.74rem; font-weight: 800; font-family: var(--font-heading);">+ Toevoegen</span>
+      `;
+      addTile.onmouseover = () => {
+        addTile.style.backgroundColor = "#dcfce7";
+        addTile.style.transform = "scale(1.03)";
+      };
+      addTile.onmouseout = () => {
+        addTile.style.backgroundColor = "#f0fdf4";
+        addTile.style.transform = "none";
+      };
+      addTile.onclick = () => {
+        document.getElementById("btnUploadGalleryImage")?.click();
+      };
+      grid.appendChild(addTile);
     }
     
     function resetForm() {
@@ -5649,17 +5782,85 @@
       }));
     }
 
-    // Update preview helper function
+    // Update preview helper function (met live weergave van lege status & wisknop)
     function updatePreview(input, previewDiv) {
+      if (!previewDiv) return;
+      const isMain = (previewDiv.id === "chairImagePreview");
+      const emptyState = document.getElementById(isMain ? "chairImageEmptyState" : "chairAmbientEmptyState");
+      const clearBtn = document.getElementById(isMain ? "btnClearMainImage" : "btnClearAmbientImage");
       const img = previewDiv.querySelector("img");
-      if (input.value && (input.value.startsWith("http") || input.value.startsWith("assets/"))) {
-        img.src = input.value;
-        previewDiv.style.display = "block";
+      
+      const val = input.value ? input.value.trim() : "";
+      if (val && (val.startsWith("http") || val.startsWith("assets/") || val.startsWith("data:"))) {
+        if (img) img.src = val;
+        previewDiv.style.display = "flex";
+        if (emptyState) emptyState.style.display = "none";
+        if (clearBtn) clearBtn.style.display = "inline-flex";
       } else {
-        img.src = "";
+        if (img) img.src = "";
         previewDiv.style.display = "none";
+        if (emptyState) emptyState.style.display = "flex";
+        if (clearBtn) clearBtn.style.display = "none";
       }
     }
+
+    // Wis knoppen voor hoofdfoto & sfeerfoto
+    document.getElementById("btnClearMainImage")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (chairImage) {
+        chairImage.value = "";
+        updatePreview(chairImage, chairImagePreview);
+      }
+    });
+
+    document.getElementById("btnClearAmbientImage")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (chairAmbientImage) {
+        chairAmbientImage.value = "";
+        updatePreview(chairAmbientImage, chairAmbientImagePreview);
+      }
+    });
+
+    // Klikken op visual dropzone vakje opent direct de media kiezer
+    document.getElementById("chairMainVisualBox")?.addEventListener("click", (e) => {
+      if (e.target.closest("#btnClearMainImage")) return;
+      btnUploadImage?.click();
+    });
+
+    document.getElementById("chairAmbientVisualBox")?.addEventListener("click", (e) => {
+      if (e.target.closest("#btnClearAmbientImage")) return;
+      btnUploadAmbientImage?.click();
+    });
+
+    // Directe Drag & Drop op visual boxes
+    [
+      { boxId: "chairMainVisualBox", fileInput: chairImageFile, textInput: chairImage, previewDiv: chairImagePreview, btn: btnUploadImage },
+      { boxId: "chairAmbientVisualBox", fileInput: chairAmbientImageFile, textInput: chairAmbientImage, previewDiv: chairAmbientImagePreview, btn: btnUploadAmbientImage }
+    ].forEach(item => {
+      const box = document.getElementById(item.boxId);
+      if (!box) return;
+      box.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        box.style.borderColor = "#4b8f24";
+        box.style.backgroundColor = "#f0fdf4";
+      });
+      box.addEventListener("dragleave", () => {
+        box.style.borderColor = "#cbd5e1";
+        box.style.backgroundColor = "#fbfbfb";
+      });
+      box.addEventListener("drop", (e) => {
+        e.preventDefault();
+        box.style.borderColor = "#cbd5e1";
+        box.style.backgroundColor = "#fbfbfb";
+        const file = e.dataTransfer?.files?.[0];
+        if (file && file.type.startsWith("image/")) {
+          const dt = new DataTransfer();
+          dt.items.add(file);
+          item.fileInput.files = dt.files;
+          handleFileUpload(item.fileInput, item.textInput, item.previewDiv, item.btn);
+        }
+      });
+    });
 
     // Input event listeners for manual URLs typing/pasting
     if (chairImage && chairImagePreview) {
