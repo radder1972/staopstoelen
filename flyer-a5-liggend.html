@@ -20,20 +20,22 @@
 
   <style>
     /* ==========================================================================
-       HUISSTIJL VARIABELEN & BASISINSTELLINGEN
+       HUISSTIJL VARIABELEN & BASISINSTELLINGEN (GEEN BLAUW!)
        ========================================================================== */
     :root {
       --color-forest: #4b8f24;
       --color-forest-dark: #122b07;
       --color-forest-deep: #0a1804;
+      --color-forest-mid: #2e6022;
       --color-forest-light: #eaf5e6;
       --color-terracotta: #f39223;
       --color-terracotta-dark: #d97706;
       --color-gold: #fed857;
+      --color-gold-dark: #ca8a04;
       --color-cream: #fbf9f5;
       --color-cream-subtle: #f5f3ec;
-      --color-dark: #1e293b;
-      --color-gray: #475569;
+      --color-dark: #0f172a;
+      --color-gray: #334155;
       --color-gray-light: #64748b;
       --color-border: #e2e8f0;
       
@@ -50,7 +52,7 @@
     }
 
     body {
-      background-color: #0f172a;
+      background-color: #0b1120;
       color: var(--color-dark);
       font-family: var(--font-body);
       line-height: 1.35;
@@ -280,23 +282,23 @@
        ========================================================================== */
     .flyer-front {
       background: #ffffff;
-      padding: 7.5mm 9mm 0mm 9mm;
+      padding: 6.5mm 9mm 0mm 9mm;
     }
 
-    /* Bovenbalk: Logo, Tagline & Direct Contact */
+    /* Bovenbalk: Logo, Tagline & Subtiele Compacte Contact Pill */
     .front-top-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1.5px solid var(--color-border);
-      padding-bottom: 2.2mm;
-      margin-bottom: 3.0mm;
+      padding-bottom: 2.0mm;
+      margin-bottom: 2.8mm;
     }
 
     .brand-block {
       display: flex;
       flex-direction: column;
-      gap: 0.5mm;
+      gap: 0.4mm;
     }
 
     .brand-logo {
@@ -320,45 +322,51 @@
       letter-spacing: 0.4px;
     }
 
+    /* Compacte, subtiele pill met 078 en dicht bij Dordrecht gehouden */
     .top-contact-pill {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 3.5mm;
-      background: var(--color-forest-light);
-      border: 1px solid var(--color-forest);
-      padding: 1.6mm 3.5mm;
+      gap: 2mm;
+      background: #f4faf1;
+      border: 1px solid #c7e5bd;
+      padding: 1.1mm 2.8mm;
       border-radius: 9999px;
     }
 
     .top-phone {
       font-family: var(--font-heading);
-      font-size: 3.3mm;
-      font-weight: 900;
+      font-size: 2.8mm;
+      font-weight: 800;
       color: var(--color-forest-dark);
       display: flex;
       align-items: center;
-      gap: 1.5mm;
+      gap: 1.2mm;
       text-decoration: none;
     }
     .top-phone-icon {
-      width: 4.0mm;
-      height: 4.0mm;
+      width: 3.4mm;
+      height: 3.4mm;
       color: var(--color-forest);
     }
 
+    .top-pill-divider {
+      color: #94a3b8;
+      font-size: 2.3mm;
+      font-weight: 700;
+    }
+
     .top-address-tag {
-      font-size: 2.5mm;
+      font-family: var(--font-heading);
+      font-size: 2.45mm;
       font-weight: 700;
       color: #334155;
-      border-left: 1px solid #cbd5e1;
-      padding-left: 3.2mm;
       display: flex;
       align-items: center;
-      gap: 1.2mm;
+      gap: 1.1mm;
     }
     .top-pin-icon {
-      width: 3.6mm;
-      height: 3.6mm;
+      width: 3.2mm;
+      height: 3.2mm;
       color: var(--color-terracotta);
     }
 
@@ -381,23 +389,24 @@
 
     .front-hero-headline {
       font-family: var(--font-heading);
-      font-size: 5.6mm;
+      font-size: 5.7mm;
       font-weight: 900;
-      line-height: 1.15;
+      line-height: 1.18;
       color: var(--color-forest-dark);
       letter-spacing: -0.3px;
-      margin-bottom: 1.8mm;
+      margin-bottom: 2.0mm;
     }
     .front-hero-headline span {
       color: var(--color-terracotta);
       display: inline;
     }
 
+    /* Senior-vriendelijke grotere intro tekst */
     .front-intro-lead {
-      font-size: 2.85mm;
+      font-size: 3.3mm;
       font-weight: 500;
-      color: #334155;
-      line-height: 1.35;
+      color: var(--color-dark);
+      line-height: 1.40;
       margin-bottom: 2.6mm;
     }
     .front-intro-lead strong {
@@ -405,62 +414,67 @@
       font-weight: 800;
     }
 
-    /* De 4 Zekerheden (Met Rijke Vector Iconen) */
+    /* De 4 Zekerheden (Met Rijke Vector Iconen & Grote Seniorvriendelijke Letters) */
     .four-guarantees-list {
       display: flex;
       flex-direction: column;
-      gap: 1.8mm;
+      gap: 2.0mm;
       background: var(--color-cream);
       border: 1px solid #e5e3da;
-      border-left: 3.5px solid var(--color-forest);
-      padding: 2.5mm 3.2mm;
+      border-left: 3.8mm solid var(--color-forest);
+      padding: 2.6mm 3.4mm;
       border-radius: 2.2mm;
     }
 
     .guarantee-item {
       display: flex;
       align-items: center;
-      gap: 2.6mm;
+      gap: 2.8mm;
     }
 
-    /* Luxe Icon Badges */
+    /* Luxe Icon Badges in authentieke huisstijlkleuren (Geen blauw!) */
     .guarantee-icon {
-      width: 5.8mm;
-      height: 5.8mm;
-      min-width: 5.8mm;
-      min-height: 5.8mm;
-      border-radius: 1.6mm;
+      width: 6.2mm;
+      height: 6.2mm;
+      min-width: 6.2mm;
+      min-height: 6.2mm;
+      border-radius: 1.8mm;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.14);
     }
     .guarantee-icon svg {
-      width: 3.8mm;
-      height: 3.8mm;
+      width: 4.0mm;
+      height: 4.0mm;
     }
 
+    /* 1. Garantie: Forest Green */
     .guarantee-icon.icon-shield {
       background: linear-gradient(135deg, #4b8f24 0%, #3a701c 100%);
       color: #ffffff;
     }
+    /* 2. Maatwerk: Terracotta Oranje */
     .guarantee-icon.icon-ruler {
       background: linear-gradient(135deg, #f39223 0%, #d97706 100%);
       color: #ffffff;
     }
+    /* 3. Voordeel: Warm Goud/Amber */
     .guarantee-icon.icon-tag {
-      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
       color: #ffffff;
     }
+    /* 4. Bezorging: Diep Forest Groen (Geen blauw!) */
     .guarantee-icon.icon-truck {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      background: linear-gradient(135deg, #2e6022 0%, #1a3d13 100%);
       color: #ffffff;
     }
 
+    /* Seniorvriendelijke grotere bodytekst voor de zekerheden */
     .guarantee-text {
-      font-size: 2.65mm;
-      line-height: 1.25;
-      color: #1e293b;
+      font-size: 3.15mm;
+      line-height: 1.28;
+      color: #0f172a;
     }
     .guarantee-text strong {
       font-family: var(--font-heading);
@@ -469,9 +483,10 @@
     }
     .guarantee-sub {
       display: block;
-      font-size: 2.25mm;
-      color: var(--color-gray);
-      margin-top: 0.2mm;
+      font-size: 2.65mm;
+      line-height: 1.32;
+      color: #334155;
+      margin-top: 0.3mm;
     }
 
     /* Rechter Kolom: Prachtige Productfoto & Kwaliteitszegel */
@@ -484,7 +499,7 @@
       border: 1.2px solid var(--color-border);
       background: #ffffff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      height: 96mm;
+      height: 98mm;
     }
 
     .front-chair-photo {
@@ -513,8 +528,8 @@
       left: 2.8mm;
       background: rgba(18, 43, 7, 0.94);
       color: #ffffff;
-      padding: 1.8mm 3.2mm;
-      border-radius: 1.8mm;
+      padding: 2.0mm 3.6mm;
+      border-radius: 2.0mm;
       border: 1px solid rgba(254, 216, 87, 0.6);
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       backdrop-filter: blur(4px);
@@ -523,7 +538,7 @@
     }
     .front-deal-label {
       font-family: var(--font-heading);
-      font-size: 2.1mm;
+      font-size: 2.2mm;
       font-weight: 800;
       color: var(--color-gold);
       text-transform: uppercase;
@@ -534,13 +549,13 @@
     }
     .front-deal-price {
       font-family: var(--font-heading);
-      font-size: 3.8mm;
+      font-size: 4.1mm;
       font-weight: 900;
       color: #ffffff;
       line-height: 1.1;
     }
     .front-deal-sub {
-      font-size: 2.0mm;
+      font-size: 2.3mm;
       color: #e2e8f0;
     }
 
@@ -549,7 +564,7 @@
       margin: 3.0mm -9mm 0 -9mm;
       background: linear-gradient(135deg, var(--color-forest-dark) 0%, var(--color-forest-deep) 100%);
       color: #ffffff;
-      padding: 2.6mm 9mm;
+      padding: 2.8mm 9mm;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -564,51 +579,52 @@
 
     .showroom-title {
       font-family: var(--font-heading);
-      font-size: 2.85mm;
+      font-size: 3.1mm;
       font-weight: 800;
       color: var(--color-gold);
       display: flex;
       align-items: center;
-      gap: 1.6mm;
+      gap: 1.8mm;
       letter-spacing: 0.2px;
     }
     .showroom-title-icon {
-      width: 3.8mm;
-      height: 3.8mm;
+      width: 4.0mm;
+      height: 4.0mm;
       color: var(--color-gold);
     }
 
     .showroom-desc {
-      font-size: 2.35mm;
-      color: #e2e8f0;
-      line-height: 1.25;
+      font-size: 2.75mm;
+      color: #f1f5f9;
+      line-height: 1.30;
       display: flex;
       flex-direction: column;
-      gap: 0.4mm;
+      gap: 0.5mm;
     }
 
     .showroom-meta-line {
       display: flex;
       align-items: center;
-      gap: 3mm;
+      gap: 3.5mm;
       color: #cbd5e1;
-      font-size: 2.1mm;
+      font-size: 2.45mm;
+      font-weight: 600;
     }
     .meta-tag {
       display: flex;
       align-items: center;
-      gap: 1mm;
+      gap: 1.2mm;
     }
     .meta-tag svg {
-      width: 2.8mm;
-      height: 2.8mm;
+      width: 3.0mm;
+      height: 3.0mm;
       color: #86efac;
     }
 
     .footer-right-action {
       display: flex;
       align-items: center;
-      gap: 3.5mm;
+      gap: 3.8mm;
     }
 
     .footer-website-box {
@@ -618,20 +634,20 @@
     }
     .footer-web-url {
       font-family: var(--font-heading);
-      font-size: 3.4mm;
+      font-size: 3.6mm;
       font-weight: 900;
       color: #ffffff;
       letter-spacing: 0.2px;
     }
     .footer-web-tag {
-      font-size: 2.1mm;
+      font-size: 2.3mm;
       color: var(--color-gold);
       font-weight: 700;
     }
 
     .footer-qr-img {
-      width: 14.5mm;
-      height: 14.5mm;
+      width: 14.8mm;
+      height: 14.8mm;
       background: #ffffff;
       padding: 0.8mm;
       border-radius: 1.5mm;
@@ -643,7 +659,7 @@
        ========================================================================== */
     .flyer-back {
       background: #ffffff;
-      padding: 7.5mm 9mm 0mm 9mm;
+      padding: 6.5mm 9mm 0mm 9mm;
     }
 
     .back-header-row {
@@ -652,21 +668,22 @@
       align-items: center;
       border-bottom: 1.5px solid var(--color-border);
       padding-bottom: 2mm;
-      margin-bottom: 3mm;
+      margin-bottom: 2.8mm;
     }
 
     .back-title-block h2 {
       font-family: var(--font-heading);
-      font-size: 4.8mm;
+      font-size: 5.0mm;
       font-weight: 900;
       color: var(--color-forest-dark);
       letter-spacing: -0.2px;
       line-height: 1.15;
     }
     .back-title-block p {
-      font-size: 2.45mm;
-      color: var(--color-gray);
-      margin-top: 0.5mm;
+      font-size: 2.85mm;
+      color: #334155;
+      margin-top: 0.6mm;
+      font-weight: 500;
     }
 
     .back-usps-grid {
@@ -679,12 +696,12 @@
     .back-usp-card {
       background: var(--color-cream);
       border: 1px solid #e2ded4;
-      border-top: 2.5px solid var(--color-forest);
+      border-top: 2.8mm solid var(--color-forest);
       border-radius: 2.2mm;
-      padding: 2.5mm 2.8mm;
+      padding: 2.8mm 3.0mm;
       display: flex;
       flex-direction: column;
-      gap: 1.2mm;
+      gap: 1.4mm;
     }
 
     .back-usp-header {
@@ -693,12 +710,12 @@
       gap: 2mm;
     }
 
-    /* Grote ronde vector iconen voor de 3 USP's */
+    /* Grote ronde vector iconen voor de 3 USP's (Geen blauw!) */
     .back-usp-icon-badge {
-      width: 7.2mm;
-      height: 7.2mm;
-      min-width: 7.2mm;
-      min-height: 7.2mm;
+      width: 7.6mm;
+      height: 7.6mm;
+      min-width: 7.6mm;
+      min-height: 7.6mm;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -707,35 +724,37 @@
     .back-usp-icon-badge.badge-green {
       background: var(--color-forest-light);
       color: var(--color-forest);
-      border: 1px solid var(--color-forest);
+      border: 1.2px solid var(--color-forest);
     }
     .back-usp-icon-badge.badge-orange {
       background: #fff7ed;
       color: var(--color-terracotta);
-      border: 1px solid var(--color-terracotta);
+      border: 1.2px solid var(--color-terracotta);
     }
-    .back-usp-icon-badge.badge-blue {
-      background: #eff6ff;
-      color: #2563eb;
-      border: 1px solid #3b82f6;
+    /* Vaste Huisstijl Groen voor USP 3 (Vervangt het oude blauw) */
+    .back-usp-icon-badge.badge-forest {
+      background: #f0f7ed;
+      color: var(--color-forest-mid);
+      border: 1.2px solid var(--color-forest-mid);
     }
     .back-usp-icon-badge svg {
-      width: 4.2mm;
-      height: 4.2mm;
+      width: 4.4mm;
+      height: 4.4mm;
     }
 
     .back-usp-header h3 {
       font-family: var(--font-heading);
-      font-size: 2.75mm;
+      font-size: 3.0mm;
       font-weight: 800;
       color: var(--color-forest-dark);
       line-height: 1.15;
     }
 
     .back-usp-card p {
-      font-size: 2.25mm;
-      color: #334155;
-      line-height: 1.35;
+      font-size: 2.65mm;
+      color: #0f172a;
+      line-height: 1.38;
+      font-weight: 450;
     }
 
     /* Middenstuk achterzijde: De Revisie Checklist + Geertjan */
@@ -744,66 +763,66 @@
       grid-template-columns: 1fr 64mm;
       gap: 4mm;
       background: var(--color-forest-light);
-      border: 1px solid var(--color-forest);
+      border: 1.2px solid var(--color-forest);
       border-radius: 2.5mm;
-      padding: 3mm 3.8mm;
+      padding: 3.2mm 4.0mm;
       align-items: center;
       flex: 1;
     }
 
     .checklist-title {
       font-family: var(--font-heading);
-      font-size: 3.1mm;
+      font-size: 3.2mm;
       font-weight: 900;
       color: var(--color-forest-dark);
-      margin-bottom: 2.0mm;
+      margin-bottom: 2.2mm;
       display: flex;
       align-items: center;
       gap: 1.8mm;
     }
     .checklist-title svg {
-      width: 4.0mm;
-      height: 4.0mm;
+      width: 4.2mm;
+      height: 4.2mm;
       color: var(--color-forest);
     }
 
     .checklist-items {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.4mm 3mm;
+      gap: 1.6mm 3mm;
     }
 
     .chk-item {
       display: flex;
       align-items: center;
       gap: 1.8mm;
-      font-size: 2.35mm;
+      font-size: 2.75mm;
       font-weight: 600;
-      color: #1e293b;
+      color: #0f172a;
     }
     .chk-svg {
-      width: 3.4mm;
-      height: 3.4mm;
-      min-width: 3.4mm;
+      width: 3.6mm;
+      height: 3.6mm;
+      min-width: 3.6mm;
       color: var(--color-forest);
     }
 
     .back-geertjan-card {
       background: #ffffff;
       border: 1.2px solid #cbd5e1;
-      border-radius: 2mm;
-      padding: 2.2mm 2.6mm;
+      border-radius: 2.2mm;
+      padding: 2.4mm 2.8mm;
       display: flex;
       align-items: center;
-      gap: 2.6mm;
+      gap: 2.8mm;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .geertjan-avatar {
-      width: 14mm;
-      height: 14mm;
+      width: 14.5mm;
+      height: 14.5mm;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid var(--color-forest);
+      border: 1.6px solid var(--color-forest);
     }
     .geertjan-info {
       display: flex;
@@ -812,28 +831,28 @@
     }
     .geertjan-name {
       font-family: var(--font-heading);
-      font-size: 2.65mm;
+      font-size: 2.9mm;
       font-weight: 800;
       color: var(--color-forest-dark);
     }
     .geertjan-role {
-      font-size: 2.1mm;
+      font-size: 2.3mm;
       font-weight: 700;
       color: var(--color-terracotta-dark);
     }
     .geertjan-quote {
-      font-size: 2.05mm;
+      font-size: 2.4mm;
       font-style: italic;
-      color: #64748b;
-      line-height: 1.2;
+      color: #475569;
+      line-height: 1.28;
     }
 
-    /* Achterzijde Footer */
+    /* Achterzijde Footer met Vector Contact Iconen */
     .back-footer-bar {
       margin: 3.0mm -9mm 0 -9mm;
       background: var(--color-cream-subtle);
       border-top: 1.2px solid var(--color-border);
-      padding: 2.5mm 9mm;
+      padding: 2.6mm 9mm;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -842,9 +861,9 @@
     .back-address-block {
       display: flex;
       align-items: center;
-      gap: 4mm;
-      font-size: 2.35mm;
-      color: #334155;
+      gap: 4.5mm;
+      font-size: 2.75mm;
+      color: #1e293b;
     }
     .back-address-block strong {
       color: var(--color-forest-dark);
@@ -852,29 +871,29 @@
     .back-contact-item {
       display: flex;
       align-items: center;
-      gap: 1.2mm;
+      gap: 1.4mm;
     }
     .back-contact-item svg {
-      width: 3.4mm;
-      height: 3.4mm;
+      width: 3.6mm;
+      height: 3.6mm;
     }
 
     .back-cta-button {
       background: var(--color-forest);
       color: #ffffff;
       font-family: var(--font-heading);
-      font-size: 2.65mm;
+      font-size: 2.85mm;
       font-weight: 800;
-      padding: 1.6mm 4.2mm;
+      padding: 1.8mm 4.4mm;
       border-radius: 9999px;
       display: flex;
       align-items: center;
-      gap: 1.5mm;
+      gap: 1.6mm;
       text-decoration: none;
     }
     .back-cta-button svg {
-      width: 3.2mm;
-      height: 3.2mm;
+      width: 3.4mm;
+      height: 3.4mm;
     }
 
     /* ==========================================================================
@@ -1009,7 +1028,7 @@
   <main class="stage">
     
     <div class="stage-hint no-print">
-      <span>💡 <strong>Above the Fold Formaat (210 × 148.5 mm):</strong> Perfect voor brievenbussen en kranteninstekers. Liggend heeft de headline en de stoel direct de volle breedte zonder vouwen.</span>
+      <span>💡 <strong>Above the Fold Formaat (210 × 148.5 mm):</strong> Seniorvriendelijke grote letters, 100% huisstijlkleuren (geen blauw) en een compacte telefoon-pill.</span>
       <span>• Tip: Kies <code>A4 Drukvel (2x A5)</code> om 2 flyers tegelijk op 1 vel A4 te printen!</span>
     </div>
 
@@ -1022,23 +1041,23 @@
         
         <article class="flyer-container flyer-front" id="flyerFront">
           
-          <!-- Bovenbalk: Logo & Snel Contact -->
+          <!-- Bovenbalk: Logo & Subtiele Compacte Contact Pill (078 + Dordrecht) -->
           <header class="front-top-header">
             <div class="brand-block">
               <div class="brand-logo">staopstoelen<span>.nl</span></div>
               <div class="brand-sub">Specialist in Ergonomisch Zitcomfort • Fitform Dealer Dordrecht</div>
             </div>
 
+            <!-- Compacte contact pill: dicht bij Dordrecht gehouden -->
             <div class="top-contact-pill">
               <span class="top-phone">
-                <!-- Telefoon Vector Icon -->
                 <svg class="top-phone-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 078 - 631 4858
               </span>
+              <span class="top-pill-divider">•</span>
               <span class="top-address-tag">
-                <!-- Locatiepin Vector Icon -->
                 <svg class="top-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                Merwedestraat 239, Dordrecht
+                Dordrecht (Merwedestraat 239)
               </span>
             </div>
           </header>
@@ -1058,10 +1077,10 @@
                 </p>
               </div>
 
-              <!-- De 4 Zekerheden met Echte Vector Iconen -->
+              <!-- De 4 Zekerheden met Echte Vector Iconen (Geen blauw!) -->
               <div class="four-guarantees-list">
                 
-                <!-- 1. Garantie Icon (Schild) -->
+                <!-- 1. Garantie Icon (Schild - Forest Green) -->
                 <div class="guarantee-item">
                   <div class="guarantee-icon icon-shield" title="1 Jaar Volledige Garantie">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
@@ -1072,7 +1091,7 @@
                   </div>
                 </div>
 
-                <!-- 2. Maatwerk Icon (Liniaal & Meetlint) -->
+                <!-- 2. Maatwerk Icon (Liniaal & Meetlint - Terracotta) -->
                 <div class="guarantee-item">
                   <div class="guarantee-icon icon-ruler" title="Gratis op Maat">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4M7 8v8M12 9v6M17 8v8"></path></svg>
@@ -1083,7 +1102,7 @@
                   </div>
                 </div>
 
-                <!-- 3. Voordeel Icon (Prijslabel & Korting) -->
+                <!-- 3. Voordeel Icon (Prijslabel & Korting - Warm Goud) -->
                 <div class="guarantee-item">
                   <div class="guarantee-icon icon-tag" title="Voordeel Occasions">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><circle cx="7" cy="7" r="1.5" fill="currentColor"></circle></svg>
@@ -1094,7 +1113,7 @@
                   </div>
                 </div>
 
-                <!-- 4. Bezorging Icon (Vrachtwagen) -->
+                <!-- 4. Bezorging Icon (Vrachtwagen - Diep Forest Groen, Geen blauw!) -->
                 <div class="guarantee-item">
                   <div class="guarantee-icon icon-truck" title="Gratis Bezorgd">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -1181,7 +1200,7 @@
             <div class="brand-logo" style="font-size: 5.5mm;">staopstoelen<span>.nl</span></div>
           </header>
 
-          <!-- 3 Beloftes Grid met Rijke Vector Badges -->
+          <!-- 3 Beloftes Grid met Rijke Vector Badges (Geen blauw!) -->
           <div class="back-usps-grid">
             
             <div class="back-usp-card">
@@ -1204,10 +1223,11 @@
               <p>Onze gediplomeerd Bewegingstechnoloog Geertjan stelt de zithoogte en zitdiepte exact af op uw knieholte en ruglengte.</p>
             </div>
 
+            <!-- USP 3: Huisstijl Groen i.p.v. blauw -->
             <div class="back-usp-card">
               <div class="back-usp-header">
-                <div class="back-usp-icon-badge badge-blue">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <div class="back-usp-icon-badge badge-forest">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                 </div>
                 <h3>Service aan Huis</h3>
               </div>
