@@ -1453,7 +1453,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Orderbon</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.222</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.223</span>
           </div>
         </div>
 
@@ -1646,7 +1646,7 @@
               <div class="aih-price-wrap">
                 <span class="aih-price-lbl">Bedrag:</span>
                 <span class="aih-euro">€</span>
-                <input type="text" id="allInHousePrice" class="aih-price-input" onblur="formatPriceOnBlur(this)" value="79,00">
+                <input type="text" id="allInHousePrice" class="aih-price-input" onblur="handleAihPriceChange(this)" value="79,00">
               </div>
             </div>
           </div>
@@ -1772,6 +1772,81 @@
       return num.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    let lastAihActivePrice = 79.0;
+
+    function handleAihPriceChange(input) {
+      if (!input) return;
+      formatPriceOnBlur(input);
+      let newPrice = parseEuro(input.value);
+      const chkWel = document.getElementById('chkAllInHouseWel');
+      const totalInput = document.getElementById('totalPrice');
+      
+      if (chkWel && chkWel.checked) {
+        let oldP = (lastAihActivePrice > 0) ? lastAihActivePrice : 0;
+        let diff = newPrice - oldP;
+        lastAihActivePrice = newPrice;
+        if (totalInput && totalInput.value) {
+          let curTotal = parseEuro(totalInput.value);
+          if (curTotal > 0) {
+            totalInput.value = formatEuro(Math.max(0, curTotal + diff));
+          }
+        }
+      } else if (newPrice > 0) {
+        lastAihActivePrice = newPrice;
+      }
+      saveToStorage();
+    }
+
+    function handleAihChoice(changedChoice) {
+      const chkWel = document.getElementById('chkAllInHouseWel');
+      const chkNiet = document.getElementById('chkAllInHouseNiet');
+      const priceInput = document.getElementById('allInHousePrice');
+      const totalInput = document.getElementById('totalPrice');
+      if (!chkWel || !chkNiet || !priceInput) return;
+
+      let curTotal = totalInput ? parseEuro(totalInput.value) : 0;
+      let currentPriceVal = parseEuro(priceInput.value);
+
+      if (changedChoice === 'wel') {
+        if (chkWel.checked) {
+          // Wel aangevinkt
+          let wasNiet = chkNiet.checked;
+          chkNiet.checked = false;
+          let restorePrice = (lastAihActivePrice > 0) ? lastAihActivePrice : 79.0;
+          priceInput.value = formatEuro(restorePrice);
+          if (totalInput) {
+            let base = curTotal > 0 ? curTotal : 0;
+            totalInput.value = formatEuro(base + restorePrice);
+          }
+        } else {
+          // Wel uitgevinkt (geen keuze)
+          let deduct = (currentPriceVal > 0) ? currentPriceVal : lastAihActivePrice;
+          if (totalInput && curTotal > 0 && deduct > 0) {
+            totalInput.value = formatEuro(Math.max(0, curTotal - deduct));
+          }
+          priceInput.value = formatEuro(lastAihActivePrice > 0 ? lastAihActivePrice : 79.0);
+        }
+      } else if (changedChoice === 'niet') {
+        if (chkNiet.checked) {
+          // Niet aangevinkt
+          let wasWel = chkWel.checked;
+          chkWel.checked = false;
+          if (currentPriceVal > 0) {
+            lastAihActivePrice = currentPriceVal;
+          }
+          priceInput.value = '0,00';
+          if (wasWel && totalInput && curTotal > 0 && lastAihActivePrice > 0) {
+            totalInput.value = formatEuro(Math.max(0, curTotal - lastAihActivePrice));
+          }
+        } else {
+          // Niet uitgevinkt (geen keuze)
+          priceInput.value = formatEuro(lastAihActivePrice > 0 ? lastAihActivePrice : 79.0);
+        }
+      }
+
+      saveToStorage();
+    }
+
     function formatPriceOnBlur(input) {
       if (!input || !input.value) return;
       let val = parseEuro(input.value);
@@ -1825,6 +1900,10 @@
             }
           }
         });
+        const aihPrice = document.getElementById('allInHousePrice');
+        if (aihPrice && parseEuro(aihPrice.value) > 0) {
+          lastAihActivePrice = parseEuro(aihPrice.value);
+        }
       } catch (e) {
         console.error('Error loading storage', e);
       }
@@ -1843,6 +1922,7 @@
       if (show) show.value = 'Dordrecht';
       const aihPrice = document.getElementById('allInHousePrice');
       if (aihPrice) aihPrice.value = '79,00';
+      lastAihActivePrice = 79.0;
 
       const btn1 = document.getElementById('btnFillBon1');
       const btn2 = document.getElementById('btnFillBon2');
@@ -1977,6 +2057,7 @@
       if (chkAllNiet) chkAllNiet.checked = false;
       const aihPrice = document.getElementById('allInHousePrice');
       if (aihPrice) aihPrice.value = '79,00';
+      lastAihActivePrice = 79.0;
 
       document.getElementById('signKlantNaam').value = 'P. Dekker';
       document.getElementById('signKlantDatum').value = '28-10-2026';
@@ -2024,7 +2105,8 @@
       const chkAllNiet = document.getElementById('chkAllInHouseNiet');
       if (chkAllNiet) chkAllNiet.checked = true;
       const aihPrice2 = document.getElementById('allInHousePrice');
-      if (aihPrice2) aihPrice2.value = '79,00';
+      if (aihPrice2) aihPrice2.value = '0,00';
+      lastAihActivePrice = 79.0;
 
       document.getElementById('signKlantNaam').value = 'Dhr. van Pelt C.J.';
       document.getElementById('signKlantDatum').value = '28-10-2026';
@@ -2075,14 +2157,8 @@
       const chkWel = document.getElementById('chkAllInHouseWel');
       const chkNiet = document.getElementById('chkAllInHouseNiet');
       if (chkWel && chkNiet) {
-        chkWel.addEventListener('change', () => {
-          if (chkWel.checked) chkNiet.checked = false;
-          saveToStorage();
-        });
-        chkNiet.addEventListener('change', () => {
-          if (chkNiet.checked) chkWel.checked = false;
-          saveToStorage();
-        });
+        chkWel.addEventListener('change', () => handleAihChoice('wel'));
+        chkNiet.addEventListener('change', () => handleAihChoice('niet'));
       }
     });
 
