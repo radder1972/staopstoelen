@@ -1303,9 +1303,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.233"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.234"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.233" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.234" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -2658,12 +2658,42 @@ function initFloatingMenu() {
 
   const isSubdir = window.location.pathname.includes("/stoelen/");
   const base = isSubdir ? "../" : "";
-  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.233`;
-  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.233`;
+  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.234`;
+  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.234`;
 
   // Preload de dansende SVG zodat hij bij de allereerste klik/dubbelklik zonder enige vertraging start
   const preloadDance = new Image();
   preloadDance.src = danceChairSrc;
+
+  // Zorg dat het 3D Sta-op Stoel icoon ook direct als SVG-favicon actief is in het browsertabblad
+  if (!document.querySelector('link[rel="icon"][type="image/svg+xml"]')) {
+    const fav = document.createElement("link");
+    fav.rel = "icon";
+    fav.type = "image/svg+xml";
+    fav.href = `${base}favicon.svg?v=10.234`;
+    document.head.appendChild(fav);
+  }
+
+  // Injecteer kritieke CSS ook direct in <head> zodat gecachete stylesheets nooit een te grote SVG tonen
+  if (!document.getElementById("da-inline-styles")) {
+    const st = document.createElement("style");
+    st.id = "da-inline-styles";
+    st.textContent = `
+      .nav-text-logo.has-chair-logo { display: inline-flex !important; align-items: center !important; gap: 11px !important; top: 4px !important; }
+      .nav-chair-logo-icon { width: 56px !important; height: 56px !important; max-width: 56px !important; max-height: 56px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; transform-origin: 50% 80%; filter: drop-shadow(0 4px 8px rgba(18,43,7,0.16)); cursor: pointer; }
+      .nav-logo-text-group { display: flex !important; flex-direction: column !important; color: var(--color-forest, #4b8f24) !important; }
+      .floating-btn-main.assistant-chair-fab { position: relative !important; width: 72px !important; height: 72px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 2.5px solid #4b8f24 !important; box-shadow: 0 10px 28px rgba(18,43,7,0.24), 0 0 0 4px rgba(75,143,36,0.14) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; }
+      .assistant-chair-img { width: 58px !important; height: 58px !important; max-width: 58px !important; max-height: 58px !important; object-fit: contain !important; display: block !important; pointer-events: none; transform-origin: 50% 80%; }
+      .da-avatar-img { width: 44px !important; height: 44px !important; max-width: 44px !important; max-height: 44px !important; object-fit: contain !important; transform-origin: 50% 80%; }
+      @media (max-width: 768px) {
+        .nav-text-logo.has-chair-logo { top: 6px !important; gap: 8px !important; }
+        .nav-chair-logo-icon { width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; }
+        .floating-btn-main.assistant-chair-fab { width: 62px !important; height: 62px !important; }
+        .assistant-chair-img { width: 48px !important; height: 48px !important; max-width: 48px !important; max-height: 48px !important; }
+      }
+    `;
+    document.head.appendChild(st);
+  }
 
   // Plaats het 3D Sta-op Stoel logo direct naast "staopstoelen.nl" in de navigatiebalk
   const navLogo = document.getElementById("navTextLogo") || document.querySelector(".nav-text-logo");
@@ -2671,9 +2701,10 @@ function initFloatingMenu() {
   if (navLogo && !navLogo.querySelector(".nav-chair-logo-icon")) {
     const existingInner = navLogo.innerHTML;
     navLogo.classList.add("has-chair-logo");
+    navLogo.style.cssText += ";display:inline-flex !important;align-items:center !important;gap:11px !important;";
     navLogo.innerHTML = `
-      <img src="${normalChairSrc}" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg" title="Dubbelklik om de stoel te laten dansen">
-      <div class="nav-logo-text-group">${existingInner}</div>
+      <img src="${normalChairSrc}" width="56" height="56" style="width:56px;height:56px;max-width:56px;max-height:56px;flex-shrink:0;display:block;object-fit:contain;" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg" title="Dubbelklik om de stoel te laten dansen">
+      <div class="nav-logo-text-group" style="display:flex;flex-direction:column;">${existingInner}</div>
     `;
     navChairImg = document.getElementById("navChairLogoImg");
   }
@@ -2689,7 +2720,7 @@ function initFloatingMenu() {
   mainBtn.setAttribute("title", "Digitale Zit-Assistent • Klik voor hulp, dubbelklik om te dansen");
   mainBtn.innerHTML = `
     <span class="assistant-fab-halo" aria-hidden="true"></span>
-    <img src="${normalChairSrc}" alt="Digitale Zit-Assistent Sta-op Stoel" class="assistant-chair-img" id="assistantFabImg">
+    <img src="${normalChairSrc}" width="58" height="58" style="width:58px;height:58px;max-width:58px;max-height:58px;object-fit:contain;display:block;" alt="Digitale Zit-Assistent Sta-op Stoel" class="assistant-chair-img" id="assistantFabImg">
     <span class="assistant-online-dot" aria-hidden="true"></span>
   `;
 
@@ -3331,8 +3362,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.233" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.233" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.234" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.234" 
             controls 
             playsinline 
             preload="auto"
@@ -3363,8 +3394,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.233";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.233";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.234";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.234";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3377,7 +3408,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.233`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.234`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3386,8 +3417,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.233";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.233";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.234";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.234";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3400,7 +3431,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.233`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.234`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";

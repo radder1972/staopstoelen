@@ -7927,10 +7927,6 @@ input[type="checkbox"] {
   gap: 0 !important;
   margin-top: auto !important;
 }
-  flex-direction: column;
-  gap: 0;
-  margin-top: auto;
-}
 
 /* Agenda Content in Card */
 .agenda-content-top {
