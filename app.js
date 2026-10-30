@@ -1303,9 +1303,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.231"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.232"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.231" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.232" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -2712,9 +2712,8 @@ function initFloatingMenu() {
         <span class="da-subtitle">Ergonomisch advies &bull; Showroom Dordrecht</span>
       </div>
       <div class="da-header-actions">
-        <button type="button" class="da-dance-pill-btn" id="daDanceTriggerBtn" title="Laat de stoel dansen" aria-label="Laat de stoel dansen">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          <span>Dans!</span>
+        <button type="button" class="da-dance-btn" id="daDanceTriggerBtn" title="Laat de stoel dansen met muziek" aria-label="Laat de stoel dansen met muziek">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
         </button>
         <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent">&times;</button>
       </div>
@@ -2763,10 +2762,113 @@ function initFloatingMenu() {
 
   const fabImg = document.getElementById("assistantFabImg");
   const headerImg = document.getElementById("daHeaderChairImg");
+  const danceBtn = document.getElementById("daDanceTriggerBtn");
   const chatBody = document.getElementById("daChatBody");
   const danceTimers = new WeakMap();
+  let audioCtx = null;
+  let activeNodes = [];
+  let musicTimer = null;
 
-  function triggerChairDance(imgEl) {
+  function stopChairMusic() {
+    clearTimeout(musicTimer);
+    activeNodes.forEach((n) => {
+      try { n.stop(); } catch {}
+      try { n.disconnect(); } catch {}
+    });
+    activeNodes = [];
+    danceBtn?.classList.remove("playing");
+  }
+
+  // Warm, vrolijk akoestisch marimba / Rhodes jazz-deuntje (3.2 sec, passend bij het dansritme)
+  function playChairDanceTune() {
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      if (!audioCtx) audioCtx = new AudioContextClass();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+
+      stopChairMusic();
+      danceBtn?.classList.add("playing");
+
+      const now = audioCtx.currentTime + 0.03;
+      const master = audioCtx.createGain();
+      master.gain.setValueAtTime(0.26, now);
+      master.connect(audioCtx.destination);
+
+      // Helper voor warme marimba/Rhodes noot
+      const playNote = (freq, start, dur, vol = 0.5, type = "triangle") => {
+        const osc = audioCtx.createOscillator();
+        const overtone = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, now + start);
+
+        overtone.type = "sine";
+        overtone.frequency.setValueAtTime(freq * 2, now + start);
+
+        const oGain = audioCtx.createGain();
+        oGain.gain.setValueAtTime(0.12, now + start);
+
+        gain.gain.setValueAtTime(0.0001, now + start);
+        gain.gain.exponentialRampToValueAtTime(vol, now + start + 0.025);
+        gain.gain.exponentialRampToValueAtTime(0.0008, now + start + dur);
+
+        osc.connect(gain);
+        overtone.connect(oGain);
+        oGain.connect(gain);
+        gain.connect(master);
+
+        osc.start(now + start);
+        overtone.start(now + start);
+        osc.stop(now + start + dur + 0.04);
+        overtone.stop(now + start + dur + 0.04);
+        activeNodes.push(osc, overtone);
+      };
+
+      // Vrolijke melodie (C6/G5/E5 majeur bossa-swing, 3.2 seconden)
+      const melody = [
+        [523.25, 0.00, 0.22, 0.55], // C5
+        [659.25, 0.20, 0.22, 0.55], // E5
+        [783.99, 0.40, 0.28, 0.62], // G5
+        [880.00, 0.68, 0.24, 0.60], // A5
+        [783.99, 0.92, 0.30, 0.55], // G5
+        [659.25, 1.24, 0.22, 0.52], // E5
+        [587.33, 1.46, 0.22, 0.52], // D5
+        [659.25, 1.68, 0.26, 0.58], // E5
+        [783.99, 1.94, 0.24, 0.62], // G5
+        [880.00, 2.18, 0.22, 0.62], // A5
+        [987.77, 2.40, 0.24, 0.65], // B5
+        [1046.50, 2.64, 0.52, 0.72] // C6 (slotakkoord)
+      ];
+      melody.forEach(([f, s, d, v]) => playNote(f, s, d, v, "triangle"));
+
+      // Warme wandelende baslijn (contrabas-gevoel)
+      const bass = [
+        [130.81, 0.00, 0.42, 0.42], // C3
+        [196.00, 0.42, 0.42, 0.38], // G3
+        [220.00, 0.84, 0.40, 0.40], // A3
+        [174.61, 1.24, 0.42, 0.40], // F3
+        [196.00, 1.66, 0.46, 0.42], // G3
+        [246.94, 2.12, 0.48, 0.40], // B3
+        [261.63, 2.64, 0.55, 0.48]  // C4
+      ];
+      bass.forEach(([f, s, d, v]) => playNote(f, s, d, v, "sine"));
+
+      // Slot-harmonie (C majeur 9 akkoord op 2.64s)
+      playNote(523.25, 2.64, 0.52, 0.32, "sine"); // C5
+      playNote(659.25, 2.64, 0.52, 0.32, "sine"); // E5
+      playNote(783.99, 2.64, 0.52, 0.32, "sine"); // G5
+
+      musicTimer = setTimeout(() => {
+        danceBtn?.classList.remove("playing");
+      }, 3200);
+    } catch (err) {
+      console.warn("Audio kon niet worden afgespeeld:", err);
+    }
+  }
+
+  function triggerChairDance(imgEl, withMusic = false) {
     const targets = imgEl ? [imgEl] : [fabImg, headerImg].filter(Boolean);
     targets.forEach((img) => {
       img.classList.remove("chair-dancing");
@@ -2782,18 +2884,22 @@ function initFloatingMenu() {
         }, 3200)
       );
     });
+    if (withMusic) {
+      playChairDanceTune();
+    }
   }
 
-  window.triggerAssistantChairDance = () => triggerChairDance();
+  window.triggerAssistantChairDance = () => triggerChairDance(null, true);
 
   function openAssistant() {
     panel.classList.add("active");
     teaser.classList.add("hidden");
-    triggerChairDance(headerImg);
+    triggerChairDance(headerImg, false);
   }
 
   function closeAssistant() {
     panel.classList.remove("active");
+    stopChairMusic();
   }
 
   // Enkele klik opent/sluit het assistent-paneel, dubbelklik (of 2 klikken binnen 360ms) laat de stoel dansen
@@ -2805,9 +2911,9 @@ function initFloatingMenu() {
     if (e.detail >= 2 || now - lastClickTime < 360) {
       clearTimeout(clickTimer);
       lastClickTime = 0;
-      triggerChairDance(fabImg);
+      triggerChairDance(fabImg, true);
       if (panel.classList.contains("active")) {
-        triggerChairDance(headerImg);
+        triggerChairDance(headerImg, false);
       }
       return;
     }
@@ -2827,16 +2933,16 @@ function initFloatingMenu() {
     e.stopPropagation();
     clearTimeout(clickTimer);
     lastClickTime = 0;
-    triggerChairDance(fabImg);
+    triggerChairDance(fabImg, true);
     if (panel.classList.contains("active")) {
-      triggerChairDance(headerImg);
+      triggerChairDance(headerImg, false);
     }
   });
 
-  document.getElementById("daHeaderAvatarWrap")?.addEventListener("click", () => triggerChairDance(headerImg));
+  document.getElementById("daHeaderAvatarWrap")?.addEventListener("click", () => triggerChairDance(headerImg, true));
   document.getElementById("daDanceTriggerBtn")?.addEventListener("click", () => {
-    triggerChairDance(headerImg);
-    triggerChairDance(fabImg);
+    triggerChairDance(headerImg, true);
+    triggerChairDance(fabImg, false);
   });
   document.getElementById("daCloseBtn")?.addEventListener("click", closeAssistant);
   document.getElementById("assistantTeaserOpen")?.addEventListener("click", (e) => {
@@ -3182,8 +3288,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.231" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.231" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.232" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.232" 
             controls 
             playsinline 
             preload="auto"
@@ -3214,8 +3320,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.231";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.231";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.232";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.232";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3228,7 +3334,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.231`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.232`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3237,8 +3343,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.231";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.231";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.232";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.232";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3251,7 +3357,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.231`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.232`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
