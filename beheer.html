@@ -136,6 +136,28 @@
       color: var(--color-forest-dark);
       border: 1px solid rgba(75, 143, 36, 0.28);
     }
+    .admin-version-pill {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .admin-version-pill::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16a34a;
+    }
 
     .admin-header-right {
       display: flex;
@@ -1505,6 +1527,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.214</span></div>
     </div>
   </div>
 
@@ -1514,6 +1537,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.214</span>
       </div>
 
       <div class="admin-header-right">
@@ -3751,7 +3775,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving.
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.214</span>
     </div>
   </footer>
 

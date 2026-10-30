@@ -143,6 +143,11 @@ def main():
             content
         )
         content = re.sub(
+            r'<span class="admin-version-pill"[^>]*>v[0-9\.]+</span>',
+            f'<span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v{target_version}</span>',
+            content
+        )
+        content = re.sub(
             r'>Versie [0-9\.]+<',
             f'>Versie {target_version}<',
             content
