@@ -1303,9 +1303,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.230"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.231"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.230" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.231" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -2658,8 +2658,12 @@ function initFloatingMenu() {
 
   const isSubdir = window.location.pathname.includes("/stoelen/");
   const base = isSubdir ? "../" : "";
-  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.230`;
-  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.230`;
+  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.231`;
+  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.231`;
+
+  // Preload de dansende SVG zodat hij bij de allereerste klik/dubbelklik zonder enige vertraging start
+  const preloadDance = new Image();
+  preloadDance.src = danceChairSrc;
 
   // Verberg het oude losse 3-knoppen menu (deze zitten nu geïntegreerd onderin de Digitale Assistent)
   if (oldMenu) {
@@ -2708,8 +2712,9 @@ function initFloatingMenu() {
         <span class="da-subtitle">Ergonomisch advies &bull; Showroom Dordrecht</span>
       </div>
       <div class="da-header-actions">
-        <button type="button" class="da-dance-btn" id="daDanceTriggerBtn" title="Laat de stoel dansen" aria-label="Laat de stoel dansen">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <button type="button" class="da-dance-pill-btn" id="daDanceTriggerBtn" title="Laat de stoel dansen" aria-label="Laat de stoel dansen">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span>Dans!</span>
         </button>
         <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent">&times;</button>
       </div>
@@ -2791,26 +2796,37 @@ function initFloatingMenu() {
     panel.classList.remove("active");
   }
 
-  // Enkele klik opent/sluit het assistent-paneel, dubbelklik laat de stoel dansen
+  // Enkele klik opent/sluit het assistent-paneel, dubbelklik (of 2 klikken binnen 360ms) laat de stoel dansen
   let clickTimer = null;
+  let lastClickTime = 0;
   mainBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    if (e.detail === 1) {
+    const now = Date.now();
+    if (e.detail >= 2 || now - lastClickTime < 360) {
       clearTimeout(clickTimer);
-      clickTimer = setTimeout(() => {
-        if (panel.classList.contains("active")) {
-          closeAssistant();
-        } else {
-          openAssistant();
-        }
-      }, 220);
+      lastClickTime = 0;
+      triggerChairDance(fabImg);
+      if (panel.classList.contains("active")) {
+        triggerChairDance(headerImg);
+      }
+      return;
     }
+    lastClickTime = now;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(() => {
+      if (panel.classList.contains("active")) {
+        closeAssistant();
+      } else {
+        openAssistant();
+      }
+    }, 300);
   });
 
   mainBtn.addEventListener("dblclick", (e) => {
     e.preventDefault();
     e.stopPropagation();
     clearTimeout(clickTimer);
+    lastClickTime = 0;
     triggerChairDance(fabImg);
     if (panel.classList.contains("active")) {
       triggerChairDance(headerImg);
@@ -3166,8 +3182,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.230" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.230" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.231" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.231" 
             controls 
             playsinline 
             preload="auto"
@@ -3198,8 +3214,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.230";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.230";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.231";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.231";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3212,7 +3228,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.230`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.231`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3221,8 +3237,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.230";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.230";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.231";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.231";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3235,7 +3251,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.230`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.231`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";

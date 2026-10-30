@@ -8823,6 +8823,28 @@ input[type="checkbox"] {
   gap: 6px;
 }
 
+.da-dance-pill-btn {
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(254, 216, 87, 0.65);
+  background: rgba(243, 146, 35, 0.25);
+  color: #fed857;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.da-dance-pill-btn:hover {
+  background: rgba(243, 146, 35, 0.45);
+  transform: scale(1.04);
+}
+
 .da-dance-btn,
 .da-close-btn {
   width: 32px;
