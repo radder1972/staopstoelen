@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.216">
+  <link rel="stylesheet" href="style.css?v=10.217">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1532,7 +1532,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.216</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.217</span></div>
     </div>
   </div>
 
@@ -1542,7 +1542,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.216</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.217</span>
       </div>
 
       <div class="admin-header-right">
@@ -3576,11 +3576,11 @@
                     <span style="background: #4b8f24; color: #ffffff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800;">1</span>
                     <div>
                       <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #122b07; font-family: var(--font-heading);">Afbeeldingen toevoegen</h4>
-                      <span style="font-size: 0.78rem; color: #4b8f24; font-weight: 600;">Eerste sectie op Marktplaats • Klik op 'Kopieer' en druk in Marktplaats op Cmd+V</span>
+                      <span style="font-size: 0.78rem; color: #4b8f24; font-weight: 600;">Eerste sectie op Marktplaats • Download als lichte JPGs en selecteer via 'Kies bestanden'</span>
                     </div>
                   </div>
-                  <button type="button" id="mpDownloadAllPhotosBtn" class="btn btn-outline" style="border: 1.5px solid #4b8f24; background: #f0fdf4; color: #166534; font-weight: 800; font-size: 0.82rem; padding: 7px 14px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px;">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  <button type="button" id="mpDownloadAllPhotosBtn" class="btn btn-primary" style="border: 1.5px solid #3a721b; background: linear-gradient(180deg, #4b8f24 0%, #3a721b 100%); color: #ffffff; font-weight: 800; font-size: 0.88rem; padding: 9px 18px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 3px 10px rgba(75,143,36,0.25);">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                     <span>⚡ Download Alle Foto's in 1x (~200KB per stuk)</span>
                   </button>
                 </div>
@@ -3591,7 +3591,7 @@
                   <!-- Linker Kolom: Foto 1 (Hoofdfoto met Live Huisstijl-Badge) -->
                   <div style="background: #f7faf5; border: 1.5px solid #c7e2bd; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
                     <div style="display: flex; align-items: center; justify-content: space-between;">
-                      <span style="font-size: 0.82rem; font-weight: 800; color: #122b07;">⭐ Hoofdfoto 1 (met Badge)</span>
+                      <span style="font-size: 0.82rem; font-weight: 800; color: #122b07;">⭐ Hoofdfoto 1 (met Huisstijl-Badge)</span>
                       <span style="font-size: 0.7rem; background: #fed857; color: #122b07; font-weight: 800; padding: 2px 7px; border-radius: 4px;">Certified Fitform</span>
                     </div>
 
@@ -3611,17 +3611,17 @@
 
                     <!-- Knoppen voor Foto 1 -->
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                      <button type="button" id="mpCopyPhotoBtn" class="btn btn-primary" style="width: 100%; font-size: 0.86rem; padding: 11px 14px; background: linear-gradient(180deg, #4b8f24 0%, #3a721b 100%); border-color: #2e5c14; font-weight: 800; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; box-shadow: 0 3px 8px rgba(75,143,36,0.3);">
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        <span>📋 Kopieer Foto 1 (Plakken met Cmd+V)</span>
+                      <button type="button" id="mpDownloadBadgedPhotoBtn" class="btn btn-primary" style="width: 100%; font-size: 0.90rem; padding: 11px 14px; background: linear-gradient(180deg, #4b8f24 0%, #3a721b 100%); border-color: #2e5c14; font-weight: 800; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; box-shadow: 0 3px 8px rgba(75,143,36,0.3);">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>⬇️ Download Foto 1 met Badge (~200KB)</span>
                       </button>
-                      <button type="button" id="mpDownloadBadgedPhotoBtn" class="btn btn-outline" style="width: 100%; font-size: 0.78rem; padding: 6px 10px; border-color: #a3cf95; background: #ffffff; color: #166534; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px;">
-                        <span>⬇️ Download Foto 1 (~200KB JPG)</span>
+                      <button type="button" id="mpCopyPhotoBtn" class="btn btn-outline" style="width: 100%; font-size: 0.78rem; padding: 6px 10px; border-color: #cbd5e1; background: #ffffff; color: #475569; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px;">
+                        <span>📋 Kopieer naar Klembord (optioneel)</span>
                       </button>
                     </div>
                   </div>
 
-                  <!-- Rechter Kolom: Overige Foto's met 1-klik Kopieerknop per foto -->
+                  <!-- Rechter Kolom: Overige Foto's met 1-klik Downloadknop per foto -->
                   <div style="display: flex; flex-direction: column;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                       <span style="font-size: 0.82rem; font-weight: 800; color: #122b07;">Overige Foto's van deze stoel:</span>
@@ -3633,10 +3633,13 @@
                       <!-- Dynamically populated via JS -->
                     </div>
 
-                    <div style="background: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 9px 12px; margin-top: 12px; font-size: 0.75rem; color: #166534; line-height: 1.45;">
-                      <strong>💡 Hoe kopieert u afbeeldingen in 1 klik naar Marktplaats?</strong><br>
-                      1. Klik bij een foto op de groene knop <strong>📋 Kopieer (Cmd+V)</strong>.<br>
-                      2. Klik in uw Marktplaats-scherm en druk op <code>Cmd + V</code> (of <code>Ctrl + V</code>). De foto wordt direct ingevoegd zónder dat u bestanden hoeft op te zoeken of te slepen!
+                    <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 10px; padding: 11px 14px; margin-top: 12px; font-size: 0.78rem; color: #92400e; line-height: 1.5;">
+                      <strong>⚠️ Waarom Marktplaats soms blijft hangen op "Geüploade afbeelding...":</strong><br>
+                      Marktplaats weigert <code>Cmd + V</code> en slepen rechtstreeks uit de browser. Daardoor raakt het Marktplaats-uploadvakje van slag met een oranje draaiende laadcirkel.<br>
+                      <strong>✅ Zo uploadt u in 3 stappen gegarandeerd in 1x:</strong><br>
+                      1. Klik hierboven op <strong>"⚡ Download Alle Foto's in 1x"</strong> (de foto's zijn gecomprimeerd naar ~200KB en staan direct in uw Mac Downloads).<br>
+                      2. Klik in Marktplaats op <strong>"Kies bestanden"</strong> (het camera-icoon met het plusje).<br>
+                      3. Selecteer de foto's en klik op <strong>Openen</strong>. Binnen 1 seconde staan ze er allemaal haarscherp in!
                     </div>
                   </div>
 
@@ -3778,6 +3781,17 @@
                   </label>
                 </div>
 
+                <div style="display: flex; gap: 16px; margin-bottom: 10px; font-size: 0.80rem; font-weight: 700; color: #122b07;">
+                  <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="radio" name="mpUrlTargetType" id="mpUrlTargetChair" checked onchange="updateMpUrl()" style="accent-color: #4b8f24;">
+                    <span>Directe stoelpagina (Aanbevolen)</span>
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="radio" name="mpUrlTargetType" id="mpUrlTargetHome" onchange="updateMpUrl()" style="accent-color: #4b8f24;">
+                    <span>Homepage / Showroom</span>
+                  </label>
+                </div>
+
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                   <div style="display: flex; gap: 10px; align-items: center;">
                     <span style="font-size: 0.82rem; font-weight: 700; color: #122b07; min-width: 140px;">Bestemmings URL:</span>
@@ -3873,7 +3887,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.216</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.217</span>
     </div>
   </footer>
 
@@ -7363,7 +7377,7 @@ ${priceComparison}
 ${featuresList}
 
 BEKIJK ALLE FOTO'S & DETAILS OP ONZE WEBSITE:
-staopstoelen.nl/stoelen/${chair.id}.html
+${getChairWebsiteUrl(chair, false).replace("https://", "")}
 
 SHOWROOM DORDRECHT & OPENINGSTIJDEN:
 Merwedestraat 239, 3313 GT Dordrecht
@@ -7406,7 +7420,7 @@ ${priceComparison}
 ${featuresList}
 
 BEKIJK ALLE FOTO'S & DETAILS OP ONZE WEBSITE:
-staopstoelen.nl/stoelen/${chair.id}.html
+${getChairWebsiteUrl(chair, false).replace("https://", "")}
 
 ERVAAR HET VERSCHIL IN ONZE SHOWROOM TE DORDRECHT:
 Een ergonomische stoel moet u voelen. In onze ruime showroom aan de Merwedestraat 239 in Dordrecht kunt u verschillende merken en modellen rustig met elkaar vergelijken.
@@ -7445,7 +7459,7 @@ SPECIFICATIES:
 • Garantie: ${garantie}
 
 BEKIJK ALLE DETAILS OP ONZE WEBSITE:
-staopstoelen.nl/stoelen/${chair.id}.html
+${getChairWebsiteUrl(chair, false).replace("https://", "")}
 
 SHOWROOM ADRES:
 Merwedestraat 239, 3313 GT Dordrecht
@@ -7748,7 +7762,7 @@ Of stuur een bericht via Marktplaats.`;
       // Live Foto 1 Canvas Preview tekenen
       setTimeout(updateMpPhoto1Preview, 50);
 
-      // Overige foto's renderen met 1-klik Kopieerknop
+      // Overige foto's renderen met 1-klik Downloadknop per foto
       if (thumbsContainer) {
         const otherPhotos = photos.length > 1 ? photos.slice(1) : photos;
         if (otherPhotos.length === 0) {
@@ -7764,11 +7778,11 @@ Of stuur een bericht via Marktplaats.`;
                   <span style="position: absolute; top: 4px; left: 4px; font-size: 0.65rem; background: rgba(18, 43, 7, 0.85); color: #fff; padding: 1px 6px; border-radius: 4px; font-weight: 800;">Foto ${photoNum}</span>
                 </div>
                 <div style="padding: 6px; display: flex; flex-direction: column; gap: 4px; background: #ffffff;">
-                  <button type="button" class="btn btn-outline" style="width: 100%; padding: 6px 6px; font-size: 0.74rem; font-weight: 800; border-color: #4b8f24; color: #166534; background: #f0fdf4; border-radius: 5px; cursor: pointer;" onclick="copyPhotoToClipboard('${p}', false, 'geen', this)" title="Kopieer foto naar klembord en plak direct met Cmd+V in Marktplaats">
-                    📋 Kopieer (Cmd+V)
+                  <button type="button" class="btn btn-primary" style="width: 100%; padding: 6px 6px; font-size: 0.74rem; font-weight: 800; background: #4b8f24; border-color: #3e7b1d; color: #ffffff; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px;" onclick="downloadOptimizedPhoto('${p}', '${cleanName}', () => showToast('Foto ${photoNum} opgeslagen!'))" title="Download lichte JPG (~200KB)">
+                    ⬇️ Download Foto ${photoNum}
                   </button>
-                  <button type="button" class="btn btn-outline" style="width: 100%; padding: 4px 6px; font-size: 0.70rem; font-weight: 700; border-color: #cbd5e1; color: #475569; background: #ffffff; border-radius: 5px; cursor: pointer;" onclick="downloadOptimizedPhoto('${p}', '${cleanName}', () => showToast('Foto ${photoNum} opgeslagen!'))" title="Download lichte JPG (~200KB)">
-                    ⬇️ Download
+                  <button type="button" class="btn btn-outline" style="width: 100%; padding: 3px 6px; font-size: 0.68rem; font-weight: 600; border-color: #e2e8f0; color: #64748b; background: #ffffff; border-radius: 5px; cursor: pointer;" onclick="copyPhotoToClipboard('${p}', false, 'geen', this)" title="Kopieer foto naar klembord (optioneel)">
+                    📋 Klembord
                   </button>
                 </div>
               </div>
@@ -7783,12 +7797,64 @@ Of stuur een bericht via Marktplaats.`;
     }
     window.openMarktplaatsModal = openMarktplaatsModal;
 
+    function getChairWebsiteUrl(chair, withUtm = false) {
+      if (!chair) return "https://staopstoelen.nl/";
+      const chairSlug = (chair.id || "").trim();
+      const knownChairPages = [
+        "sta-op-stoel-dordrecht",
+        "sta-op-stoel-fitform-570-vario",
+        "sta-op-stoel-barendrecht",
+        "occasion-sta-op-stoel-fitform-570-vario-zand",
+        "occasion-sta-op-stoel-fitform-570-vario-ilp-rug",
+        "occasion-sta-op-stoel-fitform-570-vario-xl",
+        "occasion-sta-op-stoel-fitform-571-vario-kuiprugleuning",
+        "demo-sta-op-stoel-fitform-570-ilp",
+        "reco-sta-op-stoel-fitform-571-vario-iii-mini-ilp",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco-smal",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco-smal-board",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-xl-reco",
+        "sta-op-stoel-fitform-574-vario",
+        "sta-op-stoel-fitform-580-elevo",
+        "sta-op-stoel-fitform-633-wellness",
+        "sta-op-stoel-fitform-247-wellness",
+        "senioren-sta-op-stoel-hk-dordt",
+        "senioren-sta-op-stoel-mecam-athena",
+        "seniorenstoel-farstrup-applaus",
+        "seniorenstoel-farstrup-cantate",
+        "seniorenstoel-farstrup-casa",
+        "seniorenstoel-farstrup-plus",
+        "sta-op-stoel-doge-bellino",
+        "sta-op-stoel-doge-modulair",
+        "sta-op-stoel-dfm-bentley-dicht",
+        "sta-op-stoel-dfm-bentley-open",
+        "sta-op-stoel-mecam-degas",
+        "sta-op-stoel-refitto",
+        "occasion-sta-op-stoel-refitto"
+      ];
+
+      let base = "https://staopstoelen.nl/#aanbiedingen";
+      if (knownChairPages.includes(chairSlug)) {
+        base = `https://staopstoelen.nl/stoelen/${chairSlug}.html`;
+      }
+      
+      if (!withUtm) return base;
+      const utmCampaign = (chairSlug || "occasions").replace(/[^a-z0-9_-]+/gi, "-").toLowerCase();
+      return `${base}${base.includes('?') ? '&' : '?'}utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${utmCampaign}`;
+    }
+    window.getChairWebsiteUrl = getChairWebsiteUrl;
+
     function updateMpUrl() {
       if (!currentMpChair) return;
       const useUtm = document.getElementById("mpUtmToggle")?.checked;
-      const base = `https://staopstoelen.nl/stoelen/${currentMpChair.id}.html`;
+      const targetHome = document.getElementById("mpUrlTargetHome")?.checked;
+      let base = getChairWebsiteUrl(currentMpChair, false);
+      if (targetHome) {
+        base = "https://staopstoelen.nl/";
+      }
+      const chairSlug = (currentMpChair.id || "occasions").replace(/[^a-z0-9_-]+/gi, "-").toLowerCase();
       const finalUrl = useUtm 
-        ? `${base}?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=occasions`
+        ? `${base}${base.includes('?') ? '&' : '?'}utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${chairSlug}`
         : base;
       const urlInput = document.getElementById("mpInputUrl");
       if (urlInput) urlInput.value = finalUrl;
