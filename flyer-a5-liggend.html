@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A5 Flyer Liggend (Above the Fold) • Staopstoelen.nl Dordrecht</title>
+
+  <!-- Google Fonts: Montserrat & Outfit (Huisstijl Staopstoelen.nl) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style id="dynamicPrintStyle">
+    @page {
+      size: 210mm 148.5mm; /* A5 Landscape */
+      margin: 0mm !important;
+    }
+  </style>
+
+  <style>
+    /* ==========================================================================
+       HUISSTIJL VARIABELEN & BASISINSTELLINGEN
+       ========================================================================== */
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-forest-deep: #0a1804;
+      --color-forest-light: #eaf5e6;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #d97706;
+      --color-gold: #fed857;
+      --color-cream: #fbf9f5;
+      --color-cream-subtle: #f5f3ec;
+      --color-dark: #1e293b;
+      --color-gray: #475569;
+      --color-gray-light: #64748b;
+      --color-border: #e2e8f0;
+      
+      --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: var(--color-dark);
+      font-family: var(--font-body);
+      line-height: 1.35;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==========================================================================
+       TOP INTERACTIVE TOOLBAR (Alleen op beeldscherm zichtbaar)
+       ========================================================================== */
+    .print-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      border-bottom: 1px solid #334155;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      background: #334155;
+      color: #f1f5f9;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: #475569;
+      color: #ffffff;
+    }
+
+    .toolbar-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolbar-title span {
+      color: var(--color-terracotta);
+    }
+    .toolbar-pill {
+      font-size: 0.70rem;
+      font-weight: 800;
+      background: rgba(75, 143, 36, 0.35);
+      border: 1px solid var(--color-forest);
+      color: #a3e635;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .toolbar-center {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .view-selector, .margin-selector {
+      display: inline-flex;
+      background: #0f172a;
+      padding: 3px;
+      border-radius: 8px;
+      gap: 3px;
+      border: 1px solid #334155;
+    }
+
+    .btn-mode {
+      border: none;
+      background: transparent;
+      padding: 7px 14px;
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #94a3b8;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-mode:hover {
+      color: #ffffff;
+    }
+    .btn-mode.active {
+      background: var(--color-forest);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+      color: #ffffff;
+      border: none;
+      padding: 9px 20px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(243, 146, 35, 0.45);
+    }
+
+    /* ==========================================================================
+       SCREEN WORKSPACE / STAGE
+       ========================================================================== */
+    .stage {
+      padding: 30px 20px 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+      background: #0b1120;
+    }
+
+    .stage-hint {
+      margin-bottom: 22px;
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid #334155;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-size: 0.84rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .stage-hint strong {
+      color: #ffffff;
+    }
+    .stage-hint code {
+      background: #0f172a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--color-gold);
+      font-family: monospace;
+    }
+
+    .flyers-preview-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .flyer-preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flyer-label {
+      font-family: var(--font-heading);
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #94a3b8;
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 4px 16px;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       DE A5 LIGGENDE FLYER CONTAINER (210mm breed x 148.5mm hoog)
+       ========================================================================== */
+    .flyer-container {
+      width: 210mm;
+      height: 148.5mm;
+      min-width: 210mm;
+      min-height: 148.5mm;
+      max-width: 210mm;
+      max-height: 148.5mm;
+      background-color: var(--color-cream);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05);
+      border-radius: 1px;
+    }
+
+    /* Optionele printer veiligheidsmarge (4mm) via toolbar */
+    .flyer-container.with-margins {
+      padding: 4mm !important;
+      background-clip: content-box;
+    }
+
+    /* ==========================================================================
+       1. VOORZIJDE (FRONT): DE ULTIEME 'ABOVE THE FOLD' KNALLER
+       ========================================================================== */
+    .flyer-front {
+      background: #ffffff;
+      padding: 8mm 9mm 0mm 9mm;
+    }
+
+    /* Bovenbalk: Logo, Tagline & Direct Contact */
+    .front-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid var(--color-border);
+      padding-bottom: 2.2mm;
+      margin-bottom: 3.2mm;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5mm;
+    }
+
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-size: 6.8mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .brand-logo span {
+      color: var(--color-terracotta);
+    }
+
+    .brand-sub {
+      font-family: var(--font-heading);
+      font-size: 2.45mm;
+      font-weight: 700;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .top-contact-pill {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      background: var(--color-forest-light);
+      border: 1px solid var(--color-forest);
+      padding: 1.8mm 3.8mm;
+      border-radius: 9999px;
+    }
+
+    .top-phone {
+      font-family: var(--font-heading);
+      font-size: 3.3mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      text-decoration: none;
+    }
+
+    .top-address-tag {
+      font-size: 2.5mm;
+      font-weight: 700;
+      color: #334155;
+      border-left: 1px solid #cbd5e1;
+      padding-left: 3.5mm;
+    }
+
+    /* Midden: 2 Kolommen (Links Tekst & Zekerheden, Rechts Stoel & Zegel) */
+    .front-main-grid {
+      display: grid;
+      grid-template-columns: 104mm 1fr;
+      gap: 5mm;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    /* Linker Kolom: Boodschap & 4 Zekerheden */
+    .front-left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 1mm;
+    }
+
+    .front-hero-headline {
+      font-family: var(--font-heading);
+      font-size: 5.6mm;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.3px;
+      margin-bottom: 1.8mm;
+    }
+    .front-hero-headline span {
+      color: var(--color-terracotta);
+      display: inline;
+    }
+
+    .front-intro-lead {
+      font-size: 2.85mm;
+      font-weight: 500;
+      color: #334155;
+      line-height: 1.35;
+      margin-bottom: 2.8mm;
+    }
+    .front-intro-lead strong {
+      color: var(--color-forest-dark);
+      font-weight: 800;
+    }
+
+    /* De 4 Zekerheden (Compacte, krachtige lijst) */
+    .four-guarantees-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6mm;
+      background: var(--color-cream);
+      border: 1px solid #e5e3da;
+      border-left: 3.5px solid var(--color-forest);
+      padding: 2.4mm 3mm;
+      border-radius: 2mm;
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2mm;
+    }
+
+    .guarantee-icon {
+      width: 4.4mm;
+      height: 4.4mm;
+      min-width: 4.4mm;
+      min-height: 4.4mm;
+      background: var(--color-forest);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4mm;
+      font-weight: 900;
+      margin-top: 0.3mm;
+    }
+
+    .guarantee-text {
+      font-size: 2.65mm;
+      line-height: 1.25;
+      color: #1e293b;
+    }
+    .guarantee-text strong {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+    .guarantee-sub {
+      display: block;
+      font-size: 2.25mm;
+      color: var(--color-gray);
+      margin-top: 0.2mm;
+    }
+
+    /* Rechter Kolom: Prachtige Productfoto & Kwaliteitszegel */
+    .front-right-col {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: 2.8mm;
+      overflow: hidden;
+      border: 1.2px solid var(--color-border);
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      height: 96mm;
+    }
+
+    .front-chair-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      display: block;
+    }
+
+    /* Rond Certified Fitform Zegel (Rechtsboven over de foto) */
+    .front-seal-badge {
+      position: absolute;
+      top: 2.5mm;
+      right: 2.5mm;
+      width: 24mm;
+      height: 24mm;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));
+      z-index: 10;
+      animation: subtlePulse 4s infinite ease-in-out;
+    }
+
+    /* Prijsvoordeel Badge op de foto (Linksonder) */
+    .front-deal-pill {
+      position: absolute;
+      bottom: 2.8mm;
+      left: 2.8mm;
+      background: rgba(18, 43, 7, 0.94);
+      color: #ffffff;
+      padding: 1.8mm 3.2mm;
+      border-radius: 1.8mm;
+      border: 1px solid rgba(254, 216, 87, 0.6);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+    }
+    .front-deal-label {
+      font-family: var(--font-heading);
+      font-size: 2.1mm;
+      font-weight: 800;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .front-deal-price {
+      font-family: var(--font-heading);
+      font-size: 3.8mm;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+    .front-deal-sub {
+      font-size: 2.0mm;
+      color: #e2e8f0;
+    }
+
+    /* Volle Breedte Voetbalk (Deep Forest Dark) */
+    .front-footer-bar {
+      margin: 3.2mm -9mm 0 -9mm;
+      background: linear-gradient(135deg, var(--color-forest-dark) 0%, var(--color-forest-deep) 100%);
+      color: #ffffff;
+      padding: 2.6mm 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1.2mm solid var(--color-terracotta);
+    }
+
+    .footer-showroom-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5mm;
+    }
+
+    .showroom-title {
+      font-family: var(--font-heading);
+      font-size: 2.85mm;
+      font-weight: 800;
+      color: var(--color-gold);
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      letter-spacing: 0.2px;
+    }
+
+    .showroom-desc {
+      font-size: 2.35mm;
+      color: #e2e8f0;
+      line-height: 1.25;
+    }
+
+    .footer-right-action {
+      display: flex;
+      align-items: center;
+      gap: 3.5mm;
+    }
+
+    .footer-website-box {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+    .footer-web-url {
+      font-family: var(--font-heading);
+      font-size: 3.4mm;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 0.2px;
+    }
+    .footer-web-tag {
+      font-size: 2.1mm;
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    .footer-qr-img {
+      width: 14mm;
+      height: 14mm;
+      background: #ffffff;
+      padding: 0.8mm;
+      border-radius: 1.5mm;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* ==========================================================================
+       2. ACHTERZIJDE (BACK): HET COMPLETE VERTROUWENS- & MAATWERKVERHAAL
+       ========================================================================== */
+    .flyer-back {
+      background: #ffffff;
+      padding: 8mm 9mm 0mm 9mm;
+    }
+
+    .back-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid var(--color-border);
+      padding-bottom: 2mm;
+      margin-bottom: 3mm;
+    }
+
+    .back-title-block h2 {
+      font-family: var(--font-heading);
+      font-size: 4.8mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.2px;
+      line-height: 1.15;
+    }
+    .back-title-block p {
+      font-size: 2.45mm;
+      color: var(--color-gray);
+      margin-top: 0.5mm;
+    }
+
+    .back-usps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5mm;
+      margin-bottom: 3.2mm;
+    }
+
+    .back-usp-card {
+      background: var(--color-cream);
+      border: 1px solid #e2ded4;
+      border-top: 2.5px solid var(--color-forest);
+      border-radius: 2mm;
+      padding: 2.4mm 2.6mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+    }
+
+    .back-usp-header {
+      display: flex;
+      align-items: center;
+      gap: 1.8mm;
+    }
+    .back-usp-badge {
+      font-size: 3.2mm;
+    }
+    .back-usp-header h3 {
+      font-family: var(--font-heading);
+      font-size: 2.75mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+      line-height: 1.15;
+    }
+
+    .back-usp-card p {
+      font-size: 2.25mm;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    /* Middenstuk achterzijde: De Revisie Checklist + Geertjan */
+    .back-middle-grid {
+      display: grid;
+      grid-template-columns: 1fr 64mm;
+      gap: 4mm;
+      background: var(--color-forest-light);
+      border: 1px solid var(--color-sage-border);
+      border-radius: 2.5mm;
+      padding: 3mm 3.5mm;
+      align-items: center;
+      flex: 1;
+    }
+
+    .checklist-title {
+      font-family: var(--font-heading);
+      font-size: 3.1mm;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      margin-bottom: 1.8mm;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+    }
+
+    .checklist-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4mm 3mm;
+    }
+
+    .chk-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      font-size: 2.35mm;
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .chk-dot {
+      color: var(--color-forest);
+      font-weight: 900;
+      font-size: 2.6mm;
+    }
+
+    .back-geertjan-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 2mm;
+      padding: 2.2mm 2.5mm;
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .geertjan-avatar {
+      width: 14mm;
+      height: 14mm;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.2px solid var(--color-forest);
+    }
+    .geertjan-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3mm;
+    }
+    .geertjan-name {
+      font-family: var(--font-heading);
+      font-size: 2.65mm;
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+    .geertjan-role {
+      font-size: 2.1mm;
+      font-weight: 700;
+      color: var(--color-terracotta-dark);
+    }
+    .geertjan-quote {
+      font-size: 2.05mm;
+      font-style: italic;
+      color: #64748b;
+      line-height: 1.2;
+    }
+
+    /* Achterzijde Footer */
+    .back-footer-bar {
+      margin: 3.2mm -9mm 0 -9mm;
+      background: var(--color-cream-subtle);
+      border-top: 1.2px solid var(--color-border);
+      padding: 2.4mm 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-address-block {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      font-size: 2.35mm;
+      color: #334155;
+    }
+    .back-address-block strong {
+      color: var(--color-forest-dark);
+    }
+
+    .back-cta-button {
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 2.65mm;
+      font-weight: 800;
+      padding: 1.6mm 4mm;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       3. A4 DRUKVEL MODUS (2x A5 Liggend Boven Elkaar op 1 vel A4 Staand)
+       ========================================================================== */
+    .sheet-a4-wrapper {
+      width: 210mm;
+      height: 297mm;
+      min-width: 210mm;
+      min-height: 297mm;
+      max-width: 210mm;
+      max-height: 297mm;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .sheet-cut-line {
+      position: absolute;
+      top: 148.5mm;
+      left: 0;
+      right: 0;
+      height: 0;
+      border-top: 0.5px dashed #94a3b8;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .sheet-cut-badge {
+      position: absolute;
+      top: -3.5mm;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border: 0.5px solid #cbd5e1;
+      font-size: 2.0mm;
+      font-weight: 700;
+      color: #64748b;
+      padding: 0.5mm 3mm;
+      border-radius: 9999px;
+      letter-spacing: 0.4px;
+    }
+
+    /* ==========================================================================
+       PRINT MEDIA QUERIES (100% Pixelperfect voor Epson ET-8550 & PDF Export)
+       ========================================================================== */
+    @media print {
+      body {
+        background: transparent !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print, .print-toolbar, .stage-hint, .flyer-label {
+        display: none !important;
+      }
+      .stage {
+        padding: 0 !important;
+        background: transparent !important;
+      }
+      .flyers-preview-wrap {
+        gap: 0 !important;
+        width: auto !important;
+      }
+      .flyer-preview-item {
+        gap: 0 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      .flyer-preview-item:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+      .flyer-container {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+      }
+      .sheet-a4-wrapper {
+        box-shadow: none !important;
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Interactieve Beheer Toolbar -->
+  <header class="print-toolbar no-print">
+    <div class="toolbar-left">
+      <a href="beheer.html#huisstijl" class="btn-back" title="Terug naar het beheerportaal">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Beheer</span>
+      </a>
+      <div class="toolbar-title">
+        🌿 <span>staopstoelen.nl</span> • A5 Flyer Liggend
+        <span class="toolbar-pill">Above the Fold</span>
+      </div>
+    </div>
+
+    <div class="toolbar-center">
+      <!-- Weergave / Pagina Kiezer -->
+      <div class="view-selector">
+        <button type="button" class="btn-mode" id="btnModeFront" onclick="setViewMode('front')">Voorzijde</button>
+        <button type="button" class="btn-mode" id="btnModeBack" onclick="setViewMode('back')">Achterzijde</button>
+        <button type="button" class="btn-mode active" id="btnModeBoth" onclick="setViewMode('both')">Beide Zijden</button>
+        <button type="button" class="btn-mode" id="btnModeSheet" onclick="setViewMode('sheet')" title="Print 2 liggende flyers op 1 vel A4 staand!">A4 Drukvel (2x A5)</button>
+      </div>
+
+      <!-- Marge Schakelaar (Aflopend vs Printer Witrand) -->
+      <div class="margin-selector">
+        <button type="button" class="btn-mode active" id="btnMarginBleed" onclick="setMarginMode('bleed')" title="100% aflopend tot de rand (ideaal voor randloos fotopapier op Epson ET-8550)">
+          ✨ 100% Aflopend
+        </button>
+        <button type="button" class="btn-mode" id="btnMarginSafe" onclick="setMarginMode('safe')" title="4mm printermarge rondom (als je printer niet randloos print)">
+          📐 +4mm Witrand
+        </button>
+      </div>
+    </div>
+
+    <div class="toolbar-right">
+      <button type="button" class="btn-print" onclick="window.print()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Afdrukken (Cmd + P)
+      </button>
+    </div>
+  </header>
+
+  <!-- Werkveld -->
+  <main class="stage">
+    
+    <div class="stage-hint no-print">
+      <span>💡 <strong>Above the Fold Formaat (210 × 148.5 mm):</strong> Perfect voor brievenbussen en kranteninstekers. Liggend heeft de headline en de stoel direct de volle breedte zonder vouwen.</span>
+      <span>• Tip: Kies <code>A4 Drukvel (2x A5)</code> om 2 flyers tegelijk op 1 vel A4 te printen!</span>
+    </div>
+
+    <!-- Reguliere A5 Weergave (Voor- en Achterzijde) -->
+    <div class="flyers-preview-wrap" id="standardWrap">
+      
+      <!-- 1. VOORZIJDE -->
+      <div class="flyer-preview-item" id="itemFront">
+        <span class="flyer-label no-print">1. Voorzijde • Actie &amp; Voordeel (Above the Fold)</span>
+        
+        <article class="flyer-container flyer-front" id="flyerFront">
+          
+          <!-- Bovenbalk: Logo & Snel Contact -->
+          <header class="front-top-header">
+            <div class="brand-block">
+              <div class="brand-logo">staopstoelen<span>.nl</span></div>
+              <div class="brand-sub">Specialist in Ergonomisch Zitcomfort • Fitform Dealer Dordrecht</div>
+            </div>
+
+            <div class="top-contact-pill">
+              <span class="top-phone">
+                📞 078 - 631 4858
+              </span>
+              <span class="top-address-tag">
+                📍 Merwedestraat 239, Dordrecht
+              </span>
+            </div>
+          </header>
+
+          <!-- 2 Kolommen Hoofdgrid -->
+          <div class="front-main-grid">
+            
+            <!-- Linker Kolom: Boodschap & 4 Harde Zekerheden -->
+            <div class="front-left-col">
+              <div>
+                <h1 class="front-hero-headline">
+                  Moeite met opstaan?<br>
+                  <span>Ervaar ultiem zitcomfort op uw persoonlijke maat.</span>
+                </h1>
+                <p class="front-intro-lead">
+                  Veilig en moeiteloos zelfstandig overeind. Geen torenhoge nieuwprijzen van € 3.500,- tot € 4.500,-, maar de <strong>zekerheid van 100% Nederlandse topkwaliteit</strong> met volledige ontzorging.
+                </p>
+              </div>
+
+              <!-- De 4 Zekerheden -->
+              <div class="four-guarantees-list">
+                <div class="guarantee-item">
+                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-text">
+                    <strong>1 Jaar Volledige Garantie aan Huis</strong>
+                    <span class="guarantee-sub">15-punts technisch gekeurd (Linak motoren &amp; frame 100% fris)</span>
+                  </div>
+                </div>
+
+                <div class="guarantee-item">
+                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-text">
+                    <strong>Gratis op Lichaamsmaat Afgesteld</strong>
+                    <span class="guarantee-sub">Zithoogte, zitdiepte &amp; armleggers op maat door Bewegingstechnoloog Geertjan</span>
+                  </div>
+                </div>
+
+                <div class="guarantee-item">
+                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-text">
+                    <strong>Bespaar tot 70% t.o.v. Nieuw</strong>
+                    <span class="guarantee-sub">Ruim 30+ jonge top-occasions direct leverbaar vanaf € 750,-</span>
+                  </div>
+                </div>
+
+                <div class="guarantee-item">
+                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-text">
+                    <strong>Gratis Thuisbezorgd &amp; Veilig Geplaatst</strong>
+                    <span class="guarantee-sub">Netjes in uw woonkamer neergezet inclusief rustige bedieningsuitleg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rechter Kolom: Foto van de Stoel op Visgraatvloer met Zegel -->
+            <div class="front-right-col">
+              <img src="assets/stoelen/fitform_570_zand_visgraatvloer.jpg" alt="Fitform 570 Vario sta-opstoel op warme visgraatvloer" class="front-chair-photo">
+              
+              <!-- Officiële Ronde Certified Fitform Kwaliteitszegel -->
+              <img src="assets/sticker_certified_fitform.svg" alt="Certified Fitform Kwaliteitszegel" class="front-seal-badge">
+
+              <!-- Prijsvoordeel Pill linksonder op foto -->
+              <div class="front-deal-pill">
+                <div class="front-deal-label">Direct Leverbaar</div>
+                <div class="front-deal-price">Occasions v.a. € 750,-</div>
+                <div class="front-deal-sub">1/3e van de nieuwprijs • 1 Jr Garantie</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Volle Breedte Voetbalk -->
+          <footer class="front-footer-bar">
+            <div class="footer-showroom-info">
+              <div class="showroom-title">
+                ☕ VRIJBLIJVEND PROEFZITTEN IN ONZE SHOWROOM
+              </div>
+              <div class="showroom-desc">
+                <strong>Merwedestraat 239, 3313 GT Dordrecht</strong> (bij Schipper Compact Wonen)<br>
+                Di t/m vr: 10:00 - 16:00 • Ma &amp; za op afspraak • Gratis parkeren voor de deur • Rolstoeltoegankelijk
+              </div>
+            </div>
+
+            <div class="footer-right-action">
+              <div class="footer-website-box">
+                <span class="footer-web-url">www.staopstoelen.nl</span>
+                <span class="footer-web-tag">Bekijk direct 30+ modellen online</span>
+              </div>
+              <img src="assets/qr_staopstoelen.svg" alt="Scan QR code voor website" class="footer-qr-img">
+            </div>
+          </footer>
+
+        </article>
+      </div>
+
+      <!-- 2. ACHTERZIJDE -->
+      <div class="flyer-preview-item" id="itemBack">
+        <span class="flyer-label no-print">2. Achterzijde • Zekerheid, Revisie &amp; Maatwerk</span>
+
+        <article class="flyer-container flyer-back" id="flyerBack">
+          
+          <header class="back-header-row">
+            <div class="back-title-block">
+              <h2>Waarom u kiest voor de Zekerheid van Staopstoelen.nl</h2>
+              <p>Een sta-opstoel particulier op Marktplaats brengt risico's mee. Wij bieden 100% veiligheid en comfort.</p>
+            </div>
+            <div class="brand-logo" style="font-size: 5.5mm;">staopstoelen<span>.nl</span></div>
+          </header>
+
+          <!-- 3 Beloftes Grid -->
+          <div class="back-usps-grid">
+            <div class="back-usp-card">
+              <div class="back-usp-header">
+                <span class="back-usp-badge">🛡️</span>
+                <h3>15-Punts Revisie</h3>
+              </div>
+              <p>Alle 3 de Linak motoren, stuurkasten, kabels en stalen scharnieren worden grondig doorgemeten en getest onder belasting.</p>
+            </div>
+
+            <div class="back-usp-card">
+              <div class="back-usp-header">
+                <span class="back-usp-badge">📐</span>
+                <h3>Ergonomisch Maatwerk</h3>
+              </div>
+              <p>Onze gediplomeerd Bewegingstechnoloog Geertjan stelt de zithoogte en zitdiepte exact af op uw knieholte en ruglengte.</p>
+            </div>
+
+            <div class="back-usp-card">
+              <div class="back-usp-header">
+                <span class="back-usp-badge">🚚</span>
+                <h3>Volledige Service aan Huis</h3>
+              </div>
+              <p>1 Jaar volledige garantie inclusief eigen monteur aan huis. Geen gedoe met zwaar tillen; wij verzorgen alles van A tot Z.</p>
+            </div>
+          </div>
+
+          <!-- Midden: Revisie Checklist + Bewegingstechnoloog Geertjan -->
+          <div class="back-middle-grid">
+            <div>
+              <div class="checklist-title">
+                <span>📋</span> HET GECERTIFICEERDE 15-PUNTS KEURMERK:
+              </div>
+              <div class="checklist-items">
+                <div class="chk-item"><span class="chk-dot">✓</span> 3 Motoren doorgemeten</div>
+                <div class="chk-item"><span class="chk-dot">✓</span> Kabelbreuk &amp; relais test</div>
+                <div class="chk-item"><span class="chk-dot">✓</span> Hefmechaniek gesmeerd</div>
+                <div class="chk-item"><span class="chk-dot">✓</span> Hygiënische dieptereiniging</div>
+                <div class="chk-item"><span class="chk-dot">✓</span> Kantelfunctie getest</div>
+                <div class="chk-item"><span class="chk-dot">✓</span> Zwenkwielen spelingvrij</div>
+                <div class="chk-item"><span class="chk-dot">✓</span> Noodstroomvoorziening</div>
+                <div class="chk-item"><span class="chk-dot">✓</span> Gratis maatwerkinstelling</div>
+              </div>
+            </div>
+
+            <div class="back-geertjan-card">
+              <img src="assets/flyer/geert_pasfoto_cutout.png" alt="Bewegingstechnoloog Geertjan" class="geertjan-avatar">
+              <div class="geertjan-info">
+                <span class="geertjan-name">Geertjan</span>
+                <span class="geertjan-role">Bewegingstechnoloog</span>
+                <span class="geertjan-quote">„Een goed afgestelde stoel voorkomt rugpijn en afknelling van de benen.”</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achterzijde Footer -->
+          <footer class="back-footer-bar">
+            <div class="back-address-block">
+              <div>📍 <strong>Showroom Dordrecht:</strong> Merwedestraat 239</div>
+              <div>📞 <strong>Bellen:</strong> 078 - 631 4858</div>
+              <div>📱 <strong>WhatsApp:</strong> 06 - 2223 2964</div>
+            </div>
+
+            <a href="https://staopstoelen.nl" class="back-cta-button">
+              <span>Ontdek het actuele aanbod op www.staopstoelen.nl</span>
+              <span>➔</span>
+            </a>
+          </footer>
+
+        </article>
+      </div>
+
+    </div>
+
+    <!-- 3. A4 DRUKVEL WEERGAVE (2x A5 Liggend Boven Elkaar) -->
+    <div class="sheet-a4-wrapper" id="sheetWrap">
+      <div class="sheet-cut-line">
+        <span class="sheet-cut-badge">✂️ SNIJLIJN (148.5 mm)</span>
+      </div>
+
+      <!-- Flyer 1 (Boven) -->
+      <div id="sheetTopFlyerSlot"></div>
+
+      <!-- Flyer 2 (Onder) -->
+      <div id="sheetBottomFlyerSlot"></div>
+    </div>
+
+  </main>
+
+  <script>
+    // View Selector Logic
+    function setViewMode(mode) {
+      const btnFront = document.getElementById('btnModeFront');
+      const btnBack = document.getElementById('btnModeBack');
+      const btnBoth = document.getElementById('btnModeBoth');
+      const btnSheet = document.getElementById('btnModeSheet');
+      
+      const itemFront = document.getElementById('itemFront');
+      const itemBack = document.getElementById('itemBack');
+      const standardWrap = document.getElementById('standardWrap');
+      const sheetWrap = document.getElementById('sheetWrap');
+      const dynamicStyle = document.getElementById('dynamicPrintStyle');
+
+      [btnFront, btnBack, btnBoth, btnSheet].forEach(b => b?.classList.remove('active'));
+
+      if (mode === 'front') {
+        btnFront.classList.add('active');
+        standardWrap.style.display = 'flex';
+        sheetWrap.style.display = 'none';
+        itemFront.style.display = 'flex';
+        itemBack.style.display = 'none';
+        dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
+      } else if (mode === 'back') {
+        btnBack.classList.add('active');
+        standardWrap.style.display = 'flex';
+        sheetWrap.style.display = 'none';
+        itemFront.style.display = 'none';
+        itemBack.style.display = 'flex';
+        dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
+      } else if (mode === 'both') {
+        btnBoth.classList.add('active');
+        standardWrap.style.display = 'flex';
+        sheetWrap.style.display = 'none';
+        itemFront.style.display = 'flex';
+        itemBack.style.display = 'flex';
+        dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
+      } else if (mode === 'sheet') {
+        btnSheet.classList.add('active');
+        standardWrap.style.display = 'none';
+        sheetWrap.style.display = 'flex';
+        
+        // Clone flyers into A4 sheet slots
+        const flyerFrontClone1 = document.getElementById('flyerFront').cloneNode(true);
+        const flyerFrontClone2 = document.getElementById('flyerFront').cloneNode(true);
+        
+        const topSlot = document.getElementById('sheetTopFlyerSlot');
+        const botSlot = document.getElementById('sheetBottomFlyerSlot');
+        
+        topSlot.innerHTML = '';
+        botSlot.innerHTML = '';
+        
+        topSlot.appendChild(flyerFrontClone1);
+        botSlot.appendChild(flyerFrontClone2);
+
+        dynamicStyle.innerHTML = `@page { size: 210mm 297mm; margin: 0mm !important; }`;
+      }
+    }
+
+    // Margin Mode (Full Bleed Aflopend vs +4mm Safe Margin)
+    function setMarginMode(mode) {
+      const btnBleed = document.getElementById('btnMarginBleed');
+      const btnSafe = document.getElementById('btnMarginSafe');
+      const containers = document.querySelectorAll('.flyer-container');
+
+      [btnBleed, btnSafe].forEach(b => b?.classList.remove('active'));
+
+      if (mode === 'bleed') {
+        btnBleed.classList.add('active');
+        containers.forEach(c => c.classList.remove('with-margins'));
+      } else {
+        btnSafe.classList.add('active');
+        containers.forEach(c => c.classList.add('with-margins'));
+      }
+    }
+  </script>
+</body>
+</html>
