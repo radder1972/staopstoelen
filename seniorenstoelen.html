@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.225">
+  <link rel="stylesheet" href="style.css?v=10.226">
   <!-- Schema.org FAQPage Structured Data for Google & AI Engines -->
   <script type="application/ld+json">
   {
@@ -714,32 +714,51 @@
 
         <!-- Product Grid -->
         <main>
-          <!-- Mobile Shop Controls (Filter & Sorteer Bar) -->
+          <!-- Mobile Shop Controls (Filter & Sorteer Bar - Sierlijk, Licht, Ruim & Informatief) -->
           <div class="mobile-shop-controls" id="mobileShopControls">
-            <button type="button" class="btn-mobile-pill" id="btnOpenMobileFilters" onclick="openMobileFilters()" aria-label="Open filters">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
-                <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
-                <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
-                <line x1="17" y1="16" x2="23" y2="16"/>
-              </svg>
-              <span>Filteren</span>
-              <span class="mobile-filter-badge" id="mobileFilterBadge" style="display: none;">0</span>
-            </button>
+            <div class="mobile-nav-meta">
+              <div class="mobile-nav-count">
+                <span class="pulse-dot"></span>
+                <span id="mobileResultsCount"><strong>Stoelen laden...</strong></span>
+              </div>
+              <button type="button" onclick="showAllChairs(false)" class="mobile-nav-reset" id="mobileNavReset" style="display: none;">
+                Wis filters
+              </button>
+            </div>
 
-            <span class="mobile-results-count" id="mobileResultsCount">Stoelen laden...</span>
+            <div class="mobile-nav-actions">
+              <button type="button" class="mobile-nav-btn mobile-filter-btn" id="btnOpenMobileFilters" onclick="openMobileFilters()" aria-label="Open filters">
+                <div class="btn-icon-wrap">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
+                    <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
+                    <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
+                    <line x1="17" y1="16" x2="23" y2="16"/>
+                  </svg>
+                </div>
+                <div class="btn-text-wrap">
+                  <span class="btn-title">Filters</span>
+                  <span class="btn-subtitle" id="mobileFilterSubtitle">Alle keuzes</span>
+                </div>
+                <span class="mobile-filter-badge" id="mobileFilterBadge" style="display: none;">0</span>
+              </button>
 
-            <button type="button" class="btn-mobile-pill btn-mobile-sort" id="btnOpenMobileSort" onclick="openMobileSort()" aria-label="Open sorteeropties">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11 5h10M11 9h7M11 13h4"/>
-                <path d="M3 17l3 3 3-3M6 18V4"/>
-              </svg>
-              <span id="mobileSortBtnLabel">Sorteren</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
-            </button>
+              <button type="button" class="mobile-nav-btn mobile-sort-btn" id="btnOpenMobileSort" onclick="openMobileSort()" aria-label="Open sorteeropties">
+                <div class="btn-icon-wrap">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 5h10M11 9h7M11 13h4"/>
+                    <path d="M3 17l3 3 3-3M6 18V4"/>
+                  </svg>
+                </div>
+                <div class="btn-text-wrap">
+                  <span class="btn-title">Sorteer</span>
+                  <span class="btn-subtitle" id="mobileSortBtnLabel">Laagste prijs</span>
+                </div>
+              </button>
+            </div>
+
+            <div class="mobile-active-chips" id="mobileActiveChips" style="display: none;"></div>
           </div>
 
           <!-- Actief filter notificatie bar -->
@@ -1002,7 +1021,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.225
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.226
       </div>
     </div>
   </footer>
@@ -1122,7 +1141,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.225"></script>
+  <script src="app.js?v=10.226"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
@@ -1833,8 +1852,8 @@
     let currentSortValue = "price-asc";
 
     const sortDisplayLabels = {
-      "price-asc": "Prijs: Laag - Hoog",
-      "price-desc": "Prijs: Hoog - Laag",
+      "price-asc": "Laagste prijs",
+      "price-desc": "Hoogste prijs",
       "recommended": "Aanbevolen",
       "brand-asc": "Merk: A - Z",
       "newest": "Nieuwste"
@@ -1882,18 +1901,10 @@
       const sortLabel = document.getElementById("mobileSortBtnLabel");
       const sortBtn = document.getElementById("btnOpenMobileSort");
       if (sortLabel) {
-        if (sortKey === "price-asc") {
-          sortLabel.textContent = "Sorteren";
-        } else {
-          sortLabel.textContent = sortDisplayLabels[sortKey] || "Sorteren";
-        }
+        sortLabel.textContent = sortDisplayLabels[sortKey] || "Laagste prijs";
       }
       if (sortBtn) {
-        if (sortKey !== "price-asc") {
-          sortBtn.classList.add("is-sorted");
-        } else {
-          sortBtn.classList.remove("is-sorted");
-        }
+        sortBtn.classList.toggle("has-active", sortKey !== "price-asc");
       }
     }
 
@@ -1931,10 +1942,10 @@
       if (count > 0) {
         badge.textContent = count;
         badge.style.display = "inline-flex";
-        filterBtn.classList.add("has-active-filters");
+        filterBtn.classList.add("has-active");
       } else {
         badge.style.display = "none";
-        filterBtn.classList.remove("has-active-filters");
+        filterBtn.classList.remove("has-active");
       }
     }
 
@@ -2078,8 +2089,77 @@
       const resultsCountEl = document.getElementById("mobileResultsCount");
       const applyCountEl = document.getElementById("mobileApplyChairCount");
       const chairCountText = filtered.length === 1 ? "1 stoel" : `${filtered.length} stoelen`;
-      if (resultsCountEl) resultsCountEl.innerHTML = '<strong>' + filtered.length + '</strong> stoelen';
+      if (resultsCountEl) {
+        resultsCountEl.innerHTML = '<strong>' + filtered.length + '</strong> ' + (filtered.length === 1 ? 'senioren stoel' : 'senioren stoelen');
+      }
       if (applyCountEl) applyCountEl.textContent = 'Toon ' + chairCountText;
+
+      // Update mobile reset button & subtitle
+      const mobileNavReset = document.getElementById("mobileNavReset");
+      if (mobileNavReset) {
+        mobileNavReset.style.display = activeFilterCount > 0 ? "inline-block" : "none";
+      }
+      const filterSubtitle = document.getElementById("mobileFilterSubtitle");
+      if (filterSubtitle) {
+        if (activeFilterCount === 0) {
+          filterSubtitle.textContent = "Alle keuzes";
+        } else if (activeFilterCount === 1) {
+          if (checkedConditions.length === 1) {
+            filterSubtitle.textContent = checkedConditions[0] === 'nieuw' ? 'Nieuw' : 'Occasion';
+          } else if (checkedBrands.length === 1) {
+            filterSubtitle.textContent = checkedBrands[0];
+          } else if (checkedPrices.length === 1) {
+            filterSubtitle.textContent = 'Prijsfilter';
+          } else if (checkedMaterials.length === 1) {
+            filterSubtitle.textContent = checkedMaterials[0].charAt(0).toUpperCase() + checkedMaterials[0].slice(1);
+          } else {
+            filterSubtitle.textContent = "1 filter";
+          }
+        } else {
+          filterSubtitle.textContent = activeFilterCount + " filters";
+        }
+      }
+      const mobileFilterBtn = document.getElementById("btnOpenMobileFilters");
+      if (mobileFilterBtn) {
+        mobileFilterBtn.classList.toggle("has-active", activeFilterCount > 0);
+      }
+
+      // Update mobile active chips
+      const mobileChipsContainer = document.getElementById("mobileActiveChips");
+      if (mobileChipsContainer) {
+        let mobileChipsHtml = "";
+        checkedConditions.forEach(c => {
+          const label = c.charAt(0).toUpperCase() + c.slice(1);
+          mobileChipsHtml += '<button type="button" class="mobile-chip" onclick="removeSingleFilter(\'condition\', \'' + c + '\')"><span>' + label + '</span> <span class="chip-x">&times;</span></button>';
+        });
+        checkedBrands.forEach(b => {
+          mobileChipsHtml += '<button type="button" class="mobile-chip" onclick="removeSingleFilter(\'brand\', \'' + b + '\')"><span>' + b + '</span> <span class="chip-x">&times;</span></button>';
+        });
+        checkedPrices.forEach(p => {
+          let pLabel = p;
+          if (p === 'under-1500') pLabel = 'Onder € 1.500';
+          else if (p === '1500-2500') pLabel = '€ 1.500 - € 2.500';
+          else if (p === 'over-2500') pLabel = 'Boven € 2.500';
+          mobileChipsHtml += '<button type="button" class="mobile-chip" onclick="removeSingleFilter(\'price\', \'' + p + '\')"><span>' + pLabel + '</span> <span class="chip-x">&times;</span></button>';
+        });
+        checkedMaterials.forEach(m => {
+          const label = m.charAt(0).toUpperCase() + m.slice(1);
+          mobileChipsHtml += '<button type="button" class="mobile-chip" onclick="removeSingleFilter(\'material\', \'' + m + '\')"><span>' + label + '</span> <span class="chip-x">&times;</span></button>';
+        });
+        if (!relaxDefaultChecked) {
+          checkedTypes.forEach(t => {
+            const label = t === 'relax' ? 'Senioren Stoel' : 'Sta-op Stoel';
+            mobileChipsHtml += '<button type="button" class="mobile-chip" onclick="removeSingleFilter(\'type\', \'' + t + '\')"><span>' + label + '</span> <span class="chip-x">&times;</span></button>';
+          });
+        }
+        if (mobileChipsHtml) {
+          mobileChipsContainer.innerHTML = mobileChipsHtml;
+          mobileChipsContainer.style.display = "flex";
+        } else {
+          mobileChipsContainer.innerHTML = "";
+          mobileChipsContainer.style.display = "none";
+        }
+      }
 
       // Update desktop results count & sidebar reset button
       const desktopNumEl = document.getElementById("catalogResultsNum");

@@ -1453,7 +1453,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             <span>Orderbon</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.225</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.226</span>
           </div>
         </div>
 
@@ -1643,10 +1643,10 @@
                   <label class="custom-check" style="font-weight: 600; color: #64748b;"><input type="checkbox" id="chkAllInHouseNiet"> Niet</label>
                 </div>
               </div>
-              <div class="aih-price-wrap">
+              <div class="aih-price-wrap" id="aihPriceWrap" style="display: none;">
                 <span class="aih-price-lbl">Bedrag:</span>
                 <span class="aih-euro">€</span>
-                <input type="text" id="allInHousePrice" class="aih-price-input" onblur="handleAihPriceChange(this)" value="79,00">
+                <input type="text" id="allInHousePrice" class="aih-price-input" onblur="handleAihPriceChange(this)" value="">
               </div>
             </div>
           </div>
@@ -1772,7 +1772,15 @@
       return num.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    let lastAihActivePrice = 79.0;
+    function updateAihVisibility() {
+      const chkWel = document.getElementById('chkAllInHouseWel');
+      const wrap = document.getElementById('aihPriceWrap');
+      if (wrap) {
+        wrap.style.display = (chkWel && chkWel.checked) ? 'inline-flex' : 'none';
+      }
+    }
+
+    let lastAihActivePrice = 0;
 
     function handleAihPriceChange(input) {
       if (!input) return;
@@ -1787,7 +1795,7 @@
         lastAihActivePrice = newPrice;
         if (totalInput && totalInput.value) {
           let curTotal = parseEuro(totalInput.value);
-          if (curTotal > 0) {
+          if (curTotal > 0 || diff > 0) {
             totalInput.value = formatEuro(Math.max(0, curTotal + diff));
           }
         }
@@ -1809,41 +1817,40 @@
 
       if (changedChoice === 'wel') {
         if (chkWel.checked) {
-          // Wel aangevinkt
-          let wasNiet = chkNiet.checked;
           chkNiet.checked = false;
-          let restorePrice = (lastAihActivePrice > 0) ? lastAihActivePrice : 79.0;
-          priceInput.value = formatEuro(restorePrice);
-          if (totalInput) {
-            let base = curTotal > 0 ? curTotal : 0;
-            totalInput.value = formatEuro(base + restorePrice);
+          if (lastAihActivePrice > 0) {
+            priceInput.value = formatEuro(lastAihActivePrice);
+            if (totalInput && curTotal > 0) {
+              totalInput.value = formatEuro(curTotal + lastAihActivePrice);
+            }
+          } else {
+            priceInput.value = '';
           }
         } else {
-          // Wel uitgevinkt (geen keuze)
-          let deduct = (currentPriceVal > 0) ? currentPriceVal : lastAihActivePrice;
-          if (totalInput && curTotal > 0 && deduct > 0) {
-            totalInput.value = formatEuro(Math.max(0, curTotal - deduct));
+          // Wel uitgevinkt
+          if (currentPriceVal > 0) {
+            lastAihActivePrice = currentPriceVal;
+            if (totalInput && curTotal > 0) {
+              totalInput.value = formatEuro(Math.max(0, curTotal - currentPriceVal));
+            }
           }
-          priceInput.value = formatEuro(lastAihActivePrice > 0 ? lastAihActivePrice : 79.0);
+          priceInput.value = '';
         }
       } else if (changedChoice === 'niet') {
         if (chkNiet.checked) {
-          // Niet aangevinkt
           let wasWel = chkWel.checked;
           chkWel.checked = false;
           if (currentPriceVal > 0) {
             lastAihActivePrice = currentPriceVal;
+            if (wasWel && totalInput && curTotal > 0) {
+              totalInput.value = formatEuro(Math.max(0, curTotal - currentPriceVal));
+            }
           }
-          priceInput.value = '0,00';
-          if (wasWel && totalInput && curTotal > 0 && lastAihActivePrice > 0) {
-            totalInput.value = formatEuro(Math.max(0, curTotal - lastAihActivePrice));
-          }
-        } else {
-          // Niet uitgevinkt (geen keuze)
-          priceInput.value = formatEuro(lastAihActivePrice > 0 ? lastAihActivePrice : 79.0);
+          priceInput.value = '';
         }
       }
 
+      updateAihVisibility();
       saveToStorage();
     }
 
@@ -1904,6 +1911,7 @@
         if (aihPrice && parseEuro(aihPrice.value) > 0) {
           lastAihActivePrice = parseEuro(aihPrice.value);
         }
+        updateAihVisibility();
       } catch (e) {
         console.error('Error loading storage', e);
       }
@@ -1921,8 +1929,13 @@
       const show = document.getElementById('signShowroom');
       if (show) show.value = 'Dordrecht';
       const aihPrice = document.getElementById('allInHousePrice');
-      if (aihPrice) aihPrice.value = '79,00';
-      lastAihActivePrice = 79.0;
+      if (aihPrice) aihPrice.value = '';
+      lastAihActivePrice = 0;
+
+      const totalInput = document.getElementById('totalPrice');
+      if (totalInput) totalInput.value = '';
+
+      updateAihVisibility();
 
       const btn1 = document.getElementById('btnFillBon1');
       const btn2 = document.getElementById('btnFillBon2');
@@ -2052,12 +2065,13 @@
       if (chkGelijk) chkGelijk.checked = true;
 
       const chkAllWel = document.getElementById('chkAllInHouseWel');
-      if (chkAllWel) chkAllWel.checked = true;
+      if (chkAllWel) chkAllWel.checked = false;
       const chkAllNiet = document.getElementById('chkAllInHouseNiet');
       if (chkAllNiet) chkAllNiet.checked = false;
       const aihPrice = document.getElementById('allInHousePrice');
-      if (aihPrice) aihPrice.value = '79,00';
-      lastAihActivePrice = 79.0;
+      if (aihPrice) aihPrice.value = '';
+      lastAihActivePrice = 0;
+      updateAihVisibility();
 
       document.getElementById('signKlantNaam').value = 'P. Dekker';
       document.getElementById('signKlantDatum').value = '28-10-2026';
@@ -2105,8 +2119,9 @@
       const chkAllNiet = document.getElementById('chkAllInHouseNiet');
       if (chkAllNiet) chkAllNiet.checked = true;
       const aihPrice2 = document.getElementById('allInHousePrice');
-      if (aihPrice2) aihPrice2.value = '0,00';
-      lastAihActivePrice = 79.0;
+      if (aihPrice2) aihPrice2.value = '';
+      lastAihActivePrice = 0;
+      updateAihVisibility();
 
       document.getElementById('signKlantNaam').value = 'Dhr. van Pelt C.J.';
       document.getElementById('signKlantDatum').value = '28-10-2026';
@@ -2126,7 +2141,9 @@
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const bonParam = urlParams.get('bon');
-        if (bonParam === '2' || bonParam === 'vanpelt' || bonParam === 'pelt') {
+        if (bonParam === 'blanco' || bonParam === 'blank' || bonParam === 'leeg') {
+          clearAllFields();
+        } else if (bonParam === '2' || bonParam === 'vanpelt' || bonParam === 'pelt') {
           fillBon2VanPelt();
         } else {
           fillBon1Dekker();
