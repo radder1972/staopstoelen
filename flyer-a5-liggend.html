@@ -280,7 +280,7 @@
        ========================================================================== */
     .flyer-front {
       background: #ffffff;
-      padding: 8mm 9mm 0mm 9mm;
+      padding: 7.5mm 9mm 0mm 9mm;
     }
 
     /* Bovenbalk: Logo, Tagline & Direct Contact */
@@ -290,7 +290,7 @@
       align-items: center;
       border-bottom: 1.5px solid var(--color-border);
       padding-bottom: 2.2mm;
-      margin-bottom: 3.2mm;
+      margin-bottom: 3.0mm;
     }
 
     .brand-block {
@@ -323,10 +323,10 @@
     .top-contact-pill {
       display: flex;
       align-items: center;
-      gap: 4mm;
+      gap: 3.5mm;
       background: var(--color-forest-light);
       border: 1px solid var(--color-forest);
-      padding: 1.8mm 3.8mm;
+      padding: 1.6mm 3.5mm;
       border-radius: 9999px;
     }
 
@@ -340,13 +340,26 @@
       gap: 1.5mm;
       text-decoration: none;
     }
+    .top-phone-icon {
+      width: 4.0mm;
+      height: 4.0mm;
+      color: var(--color-forest);
+    }
 
     .top-address-tag {
       font-size: 2.5mm;
       font-weight: 700;
       color: #334155;
       border-left: 1px solid #cbd5e1;
-      padding-left: 3.5mm;
+      padding-left: 3.2mm;
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+    }
+    .top-pin-icon {
+      width: 3.6mm;
+      height: 3.6mm;
+      color: var(--color-terracotta);
     }
 
     /* Midden: 2 Kolommen (Links Tekst & Zekerheden, Rechts Stoel & Zegel) */
@@ -385,45 +398,63 @@
       font-weight: 500;
       color: #334155;
       line-height: 1.35;
-      margin-bottom: 2.8mm;
+      margin-bottom: 2.6mm;
     }
     .front-intro-lead strong {
       color: var(--color-forest-dark);
       font-weight: 800;
     }
 
-    /* De 4 Zekerheden (Compacte, krachtige lijst) */
+    /* De 4 Zekerheden (Met Rijke Vector Iconen) */
     .four-guarantees-list {
       display: flex;
       flex-direction: column;
-      gap: 1.6mm;
+      gap: 1.8mm;
       background: var(--color-cream);
       border: 1px solid #e5e3da;
       border-left: 3.5px solid var(--color-forest);
-      padding: 2.4mm 3mm;
-      border-radius: 2mm;
+      padding: 2.5mm 3.2mm;
+      border-radius: 2.2mm;
     }
 
     .guarantee-item {
       display: flex;
-      align-items: flex-start;
-      gap: 2mm;
+      align-items: center;
+      gap: 2.6mm;
     }
 
+    /* Luxe Icon Badges */
     .guarantee-icon {
-      width: 4.4mm;
-      height: 4.4mm;
-      min-width: 4.4mm;
-      min-height: 4.4mm;
-      background: var(--color-forest);
-      color: #ffffff;
-      border-radius: 50%;
+      width: 5.8mm;
+      height: 5.8mm;
+      min-width: 5.8mm;
+      min-height: 5.8mm;
+      border-radius: 1.6mm;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.4mm;
-      font-weight: 900;
-      margin-top: 0.3mm;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+    .guarantee-icon svg {
+      width: 3.8mm;
+      height: 3.8mm;
+    }
+
+    .guarantee-icon.icon-shield {
+      background: linear-gradient(135deg, #4b8f24 0%, #3a701c 100%);
+      color: #ffffff;
+    }
+    .guarantee-icon.icon-ruler {
+      background: linear-gradient(135deg, #f39223 0%, #d97706 100%);
+      color: #ffffff;
+    }
+    .guarantee-icon.icon-tag {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+    }
+    .guarantee-icon.icon-truck {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
     }
 
     .guarantee-text {
@@ -473,7 +504,6 @@
       height: 24mm;
       filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));
       z-index: 10;
-      animation: subtlePulse 4s infinite ease-in-out;
     }
 
     /* Prijsvoordeel Badge op de foto (Linksonder) */
@@ -488,6 +518,8 @@
       border: 1px solid rgba(254, 216, 87, 0.6);
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
     }
     .front-deal-label {
       font-family: var(--font-heading);
@@ -496,6 +528,9 @@
       color: var(--color-gold);
       text-transform: uppercase;
       letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
     }
     .front-deal-price {
       font-family: var(--font-heading);
@@ -511,7 +546,7 @@
 
     /* Volle Breedte Voetbalk (Deep Forest Dark) */
     .front-footer-bar {
-      margin: 3.2mm -9mm 0 -9mm;
+      margin: 3.0mm -9mm 0 -9mm;
       background: linear-gradient(135deg, var(--color-forest-dark) 0%, var(--color-forest-deep) 100%);
       color: #ffffff;
       padding: 2.6mm 9mm;
@@ -524,7 +559,7 @@
     .footer-showroom-info {
       display: flex;
       flex-direction: column;
-      gap: 0.5mm;
+      gap: 0.6mm;
     }
 
     .showroom-title {
@@ -534,14 +569,40 @@
       color: var(--color-gold);
       display: flex;
       align-items: center;
-      gap: 1.5mm;
+      gap: 1.6mm;
       letter-spacing: 0.2px;
+    }
+    .showroom-title-icon {
+      width: 3.8mm;
+      height: 3.8mm;
+      color: var(--color-gold);
     }
 
     .showroom-desc {
       font-size: 2.35mm;
       color: #e2e8f0;
       line-height: 1.25;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4mm;
+    }
+
+    .showroom-meta-line {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      color: #cbd5e1;
+      font-size: 2.1mm;
+    }
+    .meta-tag {
+      display: flex;
+      align-items: center;
+      gap: 1mm;
+    }
+    .meta-tag svg {
+      width: 2.8mm;
+      height: 2.8mm;
+      color: #86efac;
     }
 
     .footer-right-action {
@@ -569,8 +630,8 @@
     }
 
     .footer-qr-img {
-      width: 14mm;
-      height: 14mm;
+      width: 14.5mm;
+      height: 14.5mm;
       background: #ffffff;
       padding: 0.8mm;
       border-radius: 1.5mm;
@@ -582,7 +643,7 @@
        ========================================================================== */
     .flyer-back {
       background: #ffffff;
-      padding: 8mm 9mm 0mm 9mm;
+      padding: 7.5mm 9mm 0mm 9mm;
     }
 
     .back-header-row {
@@ -619,8 +680,8 @@
       background: var(--color-cream);
       border: 1px solid #e2ded4;
       border-top: 2.5px solid var(--color-forest);
-      border-radius: 2mm;
-      padding: 2.4mm 2.6mm;
+      border-radius: 2.2mm;
+      padding: 2.5mm 2.8mm;
       display: flex;
       flex-direction: column;
       gap: 1.2mm;
@@ -629,11 +690,40 @@
     .back-usp-header {
       display: flex;
       align-items: center;
-      gap: 1.8mm;
+      gap: 2mm;
     }
-    .back-usp-badge {
-      font-size: 3.2mm;
+
+    /* Grote ronde vector iconen voor de 3 USP's */
+    .back-usp-icon-badge {
+      width: 7.2mm;
+      height: 7.2mm;
+      min-width: 7.2mm;
+      min-height: 7.2mm;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    .back-usp-icon-badge.badge-green {
+      background: var(--color-forest-light);
+      color: var(--color-forest);
+      border: 1px solid var(--color-forest);
+    }
+    .back-usp-icon-badge.badge-orange {
+      background: #fff7ed;
+      color: var(--color-terracotta);
+      border: 1px solid var(--color-terracotta);
+    }
+    .back-usp-icon-badge.badge-blue {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #3b82f6;
+    }
+    .back-usp-icon-badge svg {
+      width: 4.2mm;
+      height: 4.2mm;
+    }
+
     .back-usp-header h3 {
       font-family: var(--font-heading);
       font-size: 2.75mm;
@@ -654,9 +744,9 @@
       grid-template-columns: 1fr 64mm;
       gap: 4mm;
       background: var(--color-forest-light);
-      border: 1px solid var(--color-sage-border);
+      border: 1px solid var(--color-forest);
       border-radius: 2.5mm;
-      padding: 3mm 3.5mm;
+      padding: 3mm 3.8mm;
       align-items: center;
       flex: 1;
     }
@@ -666,10 +756,15 @@
       font-size: 3.1mm;
       font-weight: 900;
       color: var(--color-forest-dark);
-      margin-bottom: 1.8mm;
+      margin-bottom: 2.0mm;
       display: flex;
       align-items: center;
-      gap: 1.5mm;
+      gap: 1.8mm;
+    }
+    .checklist-title svg {
+      width: 4.0mm;
+      height: 4.0mm;
+      color: var(--color-forest);
     }
 
     .checklist-items {
@@ -681,25 +776,26 @@
     .chk-item {
       display: flex;
       align-items: center;
-      gap: 1.5mm;
+      gap: 1.8mm;
       font-size: 2.35mm;
       font-weight: 600;
       color: #1e293b;
     }
-    .chk-dot {
+    .chk-svg {
+      width: 3.4mm;
+      height: 3.4mm;
+      min-width: 3.4mm;
       color: var(--color-forest);
-      font-weight: 900;
-      font-size: 2.6mm;
     }
 
     .back-geertjan-card {
       background: #ffffff;
-      border: 1px solid #cbd5e1;
+      border: 1.2px solid #cbd5e1;
       border-radius: 2mm;
-      padding: 2.2mm 2.5mm;
+      padding: 2.2mm 2.6mm;
       display: flex;
       align-items: center;
-      gap: 2.5mm;
+      gap: 2.6mm;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .geertjan-avatar {
@@ -707,7 +803,7 @@
       height: 14mm;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.2px solid var(--color-forest);
+      border: 1.5px solid var(--color-forest);
     }
     .geertjan-info {
       display: flex;
@@ -734,10 +830,10 @@
 
     /* Achterzijde Footer */
     .back-footer-bar {
-      margin: 3.2mm -9mm 0 -9mm;
+      margin: 3.0mm -9mm 0 -9mm;
       background: var(--color-cream-subtle);
       border-top: 1.2px solid var(--color-border);
-      padding: 2.4mm 9mm;
+      padding: 2.5mm 9mm;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -753,6 +849,15 @@
     .back-address-block strong {
       color: var(--color-forest-dark);
     }
+    .back-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+    }
+    .back-contact-item svg {
+      width: 3.4mm;
+      height: 3.4mm;
+    }
 
     .back-cta-button {
       background: var(--color-forest);
@@ -760,12 +865,16 @@
       font-family: var(--font-heading);
       font-size: 2.65mm;
       font-weight: 800;
-      padding: 1.6mm 4mm;
+      padding: 1.6mm 4.2mm;
       border-radius: 9999px;
       display: flex;
       align-items: center;
       gap: 1.5mm;
       text-decoration: none;
+    }
+    .back-cta-button svg {
+      width: 3.2mm;
+      height: 3.2mm;
     }
 
     /* ==========================================================================
@@ -922,10 +1031,14 @@
 
             <div class="top-contact-pill">
               <span class="top-phone">
-                📞 078 - 631 4858
+                <!-- Telefoon Vector Icon -->
+                <svg class="top-phone-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                078 - 631 4858
               </span>
               <span class="top-address-tag">
-                📍 Merwedestraat 239, Dordrecht
+                <!-- Locatiepin Vector Icon -->
+                <svg class="top-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Merwedestraat 239, Dordrecht
               </span>
             </div>
           </header>
@@ -945,39 +1058,53 @@
                 </p>
               </div>
 
-              <!-- De 4 Zekerheden -->
+              <!-- De 4 Zekerheden met Echte Vector Iconen -->
               <div class="four-guarantees-list">
+                
+                <!-- 1. Garantie Icon (Schild) -->
                 <div class="guarantee-item">
-                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-icon icon-shield" title="1 Jaar Volledige Garantie">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                  </div>
                   <div class="guarantee-text">
                     <strong>1 Jaar Volledige Garantie aan Huis</strong>
                     <span class="guarantee-sub">15-punts technisch gekeurd (Linak motoren &amp; frame 100% fris)</span>
                   </div>
                 </div>
 
+                <!-- 2. Maatwerk Icon (Liniaal & Meetlint) -->
                 <div class="guarantee-item">
-                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-icon icon-ruler" title="Gratis op Maat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4M7 8v8M12 9v6M17 8v8"></path></svg>
+                  </div>
                   <div class="guarantee-text">
                     <strong>Gratis op Lichaamsmaat Afgesteld</strong>
                     <span class="guarantee-sub">Zithoogte, zitdiepte &amp; armleggers op maat door Bewegingstechnoloog Geertjan</span>
                   </div>
                 </div>
 
+                <!-- 3. Voordeel Icon (Prijslabel & Korting) -->
                 <div class="guarantee-item">
-                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-icon icon-tag" title="Voordeel Occasions">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><circle cx="7" cy="7" r="1.5" fill="currentColor"></circle></svg>
+                  </div>
                   <div class="guarantee-text">
                     <strong>Bespaar tot 70% t.o.v. Nieuw</strong>
                     <span class="guarantee-sub">Ruim 30+ jonge top-occasions direct leverbaar vanaf € 750,-</span>
                   </div>
                 </div>
 
+                <!-- 4. Bezorging Icon (Vrachtwagen) -->
                 <div class="guarantee-item">
-                  <div class="guarantee-icon">✓</div>
+                  <div class="guarantee-icon icon-truck" title="Gratis Bezorgd">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                  </div>
                   <div class="guarantee-text">
                     <strong>Gratis Thuisbezorgd &amp; Veilig Geplaatst</strong>
                     <span class="guarantee-sub">Netjes in uw woonkamer neergezet inclusief rustige bedieningsuitleg</span>
                   </div>
                 </div>
+
               </div>
             </div>
 
@@ -990,7 +1117,10 @@
 
               <!-- Prijsvoordeel Pill linksonder op foto -->
               <div class="front-deal-pill">
-                <div class="front-deal-label">Direct Leverbaar</div>
+                <div class="front-deal-label">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
+                  Direct Leverbaar
+                </div>
                 <div class="front-deal-price">Occasions v.a. € 750,-</div>
                 <div class="front-deal-sub">1/3e van de nieuwprijs • 1 Jr Garantie</div>
               </div>
@@ -1002,11 +1132,26 @@
           <footer class="front-footer-bar">
             <div class="footer-showroom-info">
               <div class="showroom-title">
-                ☕ VRIJBLIJVEND PROEFZITTEN IN ONZE SHOWROOM
+                <!-- Koffiekopje Vector Icon -->
+                <svg class="showroom-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                VRIJBLIJVEND PROEFZITTEN IN ONZE SHOWROOM
               </div>
               <div class="showroom-desc">
-                <strong>Merwedestraat 239, 3313 GT Dordrecht</strong> (bij Schipper Compact Wonen)<br>
-                Di t/m vr: 10:00 - 16:00 • Ma &amp; za op afspraak • Gratis parkeren voor de deur • Rolstoeltoegankelijk
+                <div><strong>Merwedestraat 239, 3313 GT Dordrecht</strong> (in het pand van Schipper Compact Wonen)</div>
+                <div class="showroom-meta-line">
+                  <span class="meta-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Di t/m vr 10:00 - 16:00 (Ma &amp; za op afspraak)
+                  </span>
+                  <span class="meta-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path></svg>
+                    Gratis parkeren voor de deur
+                  </span>
+                  <span class="meta-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="4" r="2"></circle><path d="M18 19v-2a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v2"></path></svg>
+                    Drempelvrij &amp; rolstoelvriendelijk
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -1036,11 +1181,14 @@
             <div class="brand-logo" style="font-size: 5.5mm;">staopstoelen<span>.nl</span></div>
           </header>
 
-          <!-- 3 Beloftes Grid -->
+          <!-- 3 Beloftes Grid met Rijke Vector Badges -->
           <div class="back-usps-grid">
+            
             <div class="back-usp-card">
               <div class="back-usp-header">
-                <span class="back-usp-badge">🛡️</span>
+                <div class="back-usp-icon-badge badge-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                </div>
                 <h3>15-Punts Revisie</h3>
               </div>
               <p>Alle 3 de Linak motoren, stuurkasten, kabels en stalen scharnieren worden grondig doorgemeten en getest onder belasting.</p>
@@ -1048,7 +1196,9 @@
 
             <div class="back-usp-card">
               <div class="back-usp-header">
-                <span class="back-usp-badge">📐</span>
+                <div class="back-usp-icon-badge badge-orange">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4M7 8v8M12 9v6M17 8v8"></path></svg>
+                </div>
                 <h3>Ergonomisch Maatwerk</h3>
               </div>
               <p>Onze gediplomeerd Bewegingstechnoloog Geertjan stelt de zithoogte en zitdiepte exact af op uw knieholte en ruglengte.</p>
@@ -1056,28 +1206,56 @@
 
             <div class="back-usp-card">
               <div class="back-usp-header">
-                <span class="back-usp-badge">🚚</span>
-                <h3>Volledige Service aan Huis</h3>
+                <div class="back-usp-icon-badge badge-blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                </div>
+                <h3>Service aan Huis</h3>
               </div>
               <p>1 Jaar volledige garantie inclusief eigen monteur aan huis. Geen gedoe met zwaar tillen; wij verzorgen alles van A tot Z.</p>
             </div>
+
           </div>
 
           <!-- Midden: Revisie Checklist + Bewegingstechnoloog Geertjan -->
           <div class="back-middle-grid">
             <div>
               <div class="checklist-title">
-                <span>📋</span> HET GECERTIFICEERDE 15-PUNTS KEURMERK:
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                HET GECERTIFICEERDE 15-PUNTS KEURMERK:
               </div>
               <div class="checklist-items">
-                <div class="chk-item"><span class="chk-dot">✓</span> 3 Motoren doorgemeten</div>
-                <div class="chk-item"><span class="chk-dot">✓</span> Kabelbreuk &amp; relais test</div>
-                <div class="chk-item"><span class="chk-dot">✓</span> Hefmechaniek gesmeerd</div>
-                <div class="chk-item"><span class="chk-dot">✓</span> Hygiënische dieptereiniging</div>
-                <div class="chk-item"><span class="chk-dot">✓</span> Kantelfunctie getest</div>
-                <div class="chk-item"><span class="chk-dot">✓</span> Zwenkwielen spelingvrij</div>
-                <div class="chk-item"><span class="chk-dot">✓</span> Noodstroomvoorziening</div>
-                <div class="chk-item"><span class="chk-dot">✓</span> Gratis maatwerkinstelling</div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  3 Motoren doorgemeten
+                </div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  Kabelbreuk &amp; relais test
+                </div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  Hefmechaniek gesmeerd
+                </div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  Hygiënische dieptereiniging
+                </div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  Kantelfunctie getest
+                </div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  Zwenkwielen spelingvrij
+                </div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  Noodstroomvoorziening
+                </div>
+                <div class="chk-item">
+                  <svg class="chk-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  Gratis maatwerkinstelling
+                </div>
               </div>
             </div>
 
@@ -1091,17 +1269,26 @@
             </div>
           </div>
 
-          <!-- Achterzijde Footer -->
+          <!-- Achterzijde Footer met Vector Contact Iconen -->
           <footer class="back-footer-bar">
             <div class="back-address-block">
-              <div>📍 <strong>Showroom Dordrecht:</strong> Merwedestraat 239</div>
-              <div>📞 <strong>Bellen:</strong> 078 - 631 4858</div>
-              <div>📱 <strong>WhatsApp:</strong> 06 - 2223 2964</div>
+              <div class="back-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-terracotta);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span><strong>Showroom:</strong> Merwedestraat 239 Dordrecht</span>
+              </div>
+              <div class="back-contact-item">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-forest);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>078 - 631 4858</span>
+              </div>
+              <div class="back-contact-item">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="color: #25d366;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                <span>06 - 2223 2964</span>
+              </div>
             </div>
 
             <a href="https://staopstoelen.nl" class="back-cta-button">
               <span>Ontdek het actuele aanbod op www.staopstoelen.nl</span>
-              <span>➔</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </footer>
 
