@@ -4866,106 +4866,110 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 6px;
     position: sticky;
     top: 62px;
     z-index: 95;
-    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1.5px solid rgba(214, 90, 49, 0.28);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 9999px;
-    padding: 7px 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 18px rgba(18, 43, 7, 0.08), 0 2px 6px rgba(214, 90, 49, 0.08);
+    padding: 5px 6px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 18px rgba(18, 43, 7, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
   .btn-mobile-pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 15px;
-    background: linear-gradient(135deg, #256616 0%, #1e5512 100%);
+    gap: 5px;
+    padding: 7px 12px;
+    background: var(--color-forest, #256616);
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.86rem;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.82rem;
+    border: none;
     border-radius: 9999px;
     cursor: pointer;
     transition: all 0.18s ease;
     white-space: nowrap;
     text-decoration: none;
     line-height: 1.2;
-    box-shadow: 0 2px 8px rgba(37, 102, 22, 0.28);
+    box-shadow: 0 2px 8px rgba(37, 102, 22, 0.25);
     -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
   }
   .btn-mobile-pill:active {
     transform: scale(0.96);
-    box-shadow: 0 1px 4px rgba(37, 102, 22, 0.2);
   }
   .btn-mobile-pill svg {
     stroke: #ffffff;
   }
   .btn-mobile-pill.has-active-filters {
-    background: linear-gradient(135deg, #17420c 0%, #256616 100%);
-    box-shadow: 0 3px 12px rgba(37, 102, 22, 0.4);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: #17420c;
   }
   .mobile-filter-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ea580c 0%, #d65a31 100%);
+    background: var(--color-terracotta, #f39223);
     color: #ffffff;
     font-size: 0.72rem;
     font-weight: 800;
-    min-width: 20px;
-    height: 20px;
-    padding: 0 5px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
     border-radius: 9999px;
     line-height: 1;
     border: 1.5px solid #ffffff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   }
   .mobile-results-count {
     font-size: 0.82rem;
-    font-weight: 700;
-    color: #1e5512;
-    background: #edf7e8;
-    border: 1px solid rgba(37, 102, 22, 0.22);
-    padding: 5px 12px;
-    border-radius: 9999px;
+    font-weight: 600;
+    color: #475569;
+    background: none;
+    border: none;
+    padding: 0 2px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+    box-shadow: none;
   }
-  /* Sorteren knop in de exacte terracotta huiskleur #f39223 */
+  .mobile-results-count strong {
+    color: var(--color-forest-dark, #122b07);
+    font-weight: 800;
+  }
+  /* Sorteren knop in rustige stijl */
   .btn-mobile-sort {
-    background-color: var(--color-terracotta, #f39223);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 2px 8px rgba(243, 146, 35, 0.35);
+    background: #ffffff;
+    color: var(--color-forest-dark, #122b07);
+    border: 1.5px solid #cbd5e1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    padding: 7px 10px;
+    font-size: 0.82rem;
+    flex-shrink: 0;
   }
   .btn-mobile-sort svg {
-    stroke: #ffffff !important;
+    stroke: var(--color-forest, #256616) !important;
   }
   .btn-mobile-sort:hover {
-    background-color: var(--color-terracotta-hover, #dc8019);
+    background-color: #f8fafc;
+    border-color: var(--color-forest, #256616);
   }
   .btn-mobile-sort:active {
     transform: scale(0.96);
-    background-color: var(--color-terracotta-hover, #dc8019);
   }
   .btn-mobile-sort.is-sorted {
-    background-color: var(--color-terracotta-hover, #dc8019);
-    border-color: #ffffff;
-    color: #ffffff;
-    box-shadow: 0 3px 12px rgba(220, 128, 25, 0.45);
+    background: rgba(37, 102, 22, 0.08);
+    border-color: var(--color-forest, #256616);
+    color: var(--color-forest, #256616);
+    box-shadow: none;
   }
   .btn-mobile-sort.is-sorted svg {
-    stroke: #ffffff !important;
+    stroke: var(--color-forest, #256616) !important;
   }
 
   /* Filter sidebar becomes off-canvas drawer */

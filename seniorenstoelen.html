@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.224">
+  <link rel="stylesheet" href="style.css?v=10.225">
   <!-- Schema.org FAQPage Structured Data for Google & AI Engines -->
   <script type="application/ld+json">
   {
@@ -82,23 +82,61 @@
         grid-template-columns: 260px 1fr;
       }
     }
+    /* Redesigned Modern Filter Sidebar */
     .filter-sidebar {
-      background-color: var(--color-light);
-      border: 1px solid var(--color-gray-light);
-      border-radius: var(--radius-md);
-      padding: 24px;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 22px;
       height: fit-content;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
     @media (min-width: 992px) {
       .filter-sidebar {
         position: sticky;
-        top: 130px;
+        top: 110px;
       }
     }
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1.5px solid #f1f5f9;
+    }
+    .sidebar-header-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--color-forest-dark, #122b07);
+      letter-spacing: 0.2px;
+    }
+    .sidebar-header-title svg {
+      color: var(--color-forest, #256616);
+    }
+    .btn-sidebar-reset {
+      background: rgba(37, 102, 22, 0.08);
+      border: 1px solid rgba(37, 102, 22, 0.2);
+      color: var(--color-forest, #256616);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-sidebar-reset:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #b91c1c;
+    }
     .filter-group {
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--color-gray-light);
-      padding-bottom: 20px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 16px;
     }
     .filter-group:last-child {
       margin-bottom: 0;
@@ -106,40 +144,225 @@
       padding-bottom: 0;
     }
     .filter-group-title {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 12px;
-      color: var(--color-forest);
+      font-weight: 800;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+      color: #64748b;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
     }
     .checkbox-label {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--color-dark, #1f2937);
+      padding: 6px 10px;
+      margin-bottom: 3px;
+      border-radius: 8px;
       cursor: pointer;
       user-select: none;
-      transition: color 0.15s ease;
+      transition: all 0.15s ease;
     }
     .checkbox-label:hover {
-      color: var(--color-forest);
+      background-color: #f8fafc;
+      color: var(--color-forest-dark, #122b07);
     }
-    .checkbox-label input {
+    .checkbox-label:has(input:checked) {
+      background-color: rgba(37, 102, 22, 0.08);
+      color: var(--color-forest-dark, #122b07);
+      font-weight: 700;
+    }
+    .checkbox-label input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
       width: 19px;
       height: 19px;
+      border: 1.8px solid #cbd5e1;
+      border-radius: 5px;
+      background-color: #ffffff;
+      display: inline-grid;
+      place-content: center;
+      margin: 0;
       cursor: pointer;
-      accent-color: var(--color-forest, #256616);
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+      position: relative;
     }
-    .sort-select {
-      width: 100%;
-      padding: 10px;
-      border-radius: var(--radius-sm);
-      border: 2px solid var(--color-gray-light);
-      font-family: var(--font-body);
+    .checkbox-label input[type="checkbox"]::after {
+      content: "";
+      width: 10px;
+      height: 6px;
+      border-left: 2.2px solid #ffffff;
+      border-bottom: 2.2px solid #ffffff;
+      transform: rotate(-45deg) translate(1px, -1px);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .checkbox-label input[type="checkbox"]:hover {
+      border-color: var(--color-forest, #256616);
+      background-color: #f8fafc;
+    }
+    .checkbox-label input[type="checkbox"]:checked {
+      background-color: var(--color-forest, #256616);
+      border-color: var(--color-forest, #256616);
+      box-shadow: 0 1px 4px rgba(37, 102, 22, 0.25);
+    }
+    .checkbox-label input[type="checkbox"]:checked::after {
+      opacity: 1;
+    }
+    .checkbox-label input[type="checkbox"]:focus-visible {
+      outline: 2px solid var(--color-forest);
+      outline-offset: 2px;
+    }
+    
+    /* Modern Desktop Catalog Toolbar */
+    .catalog-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 14px 20px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+    .catalog-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      flex: 1;
+      min-width: 240px;
+    }
+    .catalog-results-headline {
       font-size: 0.95rem;
-      background-color: var(--color-light);
+      color: #475569;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .catalog-results-headline strong {
+      color: var(--color-forest-dark, #122b07);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .active-filter-chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .active-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 11px;
+      background-color: rgba(37, 102, 22, 0.08);
+      border: 1px solid rgba(37, 102, 22, 0.22);
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-forest-dark, #122b07);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .active-chip:hover {
+      background-color: #fee2e2;
+      border-color: #fca5a5;
+      color: #b91c1c;
+    }
+    .active-chip .chip-remove {
+      font-size: 1.1rem;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--color-forest, #256616);
+      transition: color 0.15s ease;
+    }
+    .active-chip:hover .chip-remove {
+      color: #b91c1c;
+    }
+    .btn-clear-chips {
+      background: none;
+      border: none;
+      color: #64748b;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .btn-clear-chips:hover {
+      color: #dc2626;
+      background: #fef2f2;
+    }
+    .desktop-sort-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .desktop-sort-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #475569;
+      white-space: nowrap;
+    }
+    .desktop-sort-label svg {
+      color: var(--color-forest, #256616);
+    }
+    .desktop-sort-select-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .desktop-sort-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 9999px;
+      padding: 9px 38px 9px 16px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-dark, #1d2024);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      outline: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .desktop-sort-select:hover {
+      background-color: #ffffff;
+      border-color: var(--color-forest, #256616);
+    }
+    .desktop-sort-select:focus {
+      background-color: #ffffff;
+      border-color: var(--color-forest, #256616);
+      box-shadow: 0 0 0 3.5px rgba(37, 102, 22, 0.12);
+    }
+    .desktop-sort-chevron {
+      position: absolute;
+      right: 14px;
+      pointer-events: none;
+      color: var(--color-forest, #256616);
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 991px) {
+      .catalog-toolbar {
+        display: none;
+      }
     }
     .catalog-grid {
       display: grid;
@@ -400,23 +623,21 @@
           </div>
 
           <div class="filter-sidebar-scroll">
-            <!-- Knop om alle filters te wissen en alle stoelen te tonen (Desktop) -->
-            <div class="filter-group desktop-only-filter" style="padding-bottom: 16px; margin-bottom: 18px; border-bottom: 1.5px solid var(--color-gray-light);">
-              <button type="button" onclick="showAllChairs()" class="btn btn-secondary" style="width: 100%; padding: 11px 14px; font-size: 0.9rem; font-weight: 700; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                <span>Toon alle stoelen</span>
+            <!-- Desktop Sidebar Header -->
+            <div class="sidebar-header desktop-only-filter">
+              <div class="sidebar-header-title">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
+                  <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
+                  <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
+                  <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
+                  <line x1="17" y1="16" x2="23" y2="16"/>
+                </svg>
+                <span>Filters</span>
+              </div>
+              <button type="button" onclick="showAllChairs(false)" class="btn-sidebar-reset" id="btnSidebarReset" style="display: none;">
+                Wis alles
               </button>
-            </div>
-
-            <div class="filter-group">
-              <h3 class="filter-group-title">Sorteer Op</h3>
-              <select class="sort-select" id="sortSelect">
-                <option value="price-asc" selected>Prijs: Laag naar Hoog (Standaard)</option>
-                <option value="price-desc">Prijs: Hoog naar Laag</option>
-                <option value="recommended">Aanbevolen</option>
-                <option value="brand-asc">Merk: A tot Z</option>
-                <option value="newest">Nieuwste aanbod</option>
-              </select>
             </div>
 
             <div class="filter-group">
@@ -514,7 +735,7 @@
                 <path d="M11 5h10M11 9h7M11 13h4"/>
                 <path d="M3 17l3 3 3-3M6 18V4"/>
               </svg>
-              <span id="mobileSortBtnLabel">Prijs: Laag - Hoog</span>
+              <span id="mobileSortBtnLabel">Sorteren</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9"/>
               </svg>
@@ -530,6 +751,36 @@
             <button type="button" onclick="showAllChairs()" class="btn btn-sm btn-secondary" style="padding: 8px 18px; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-full); cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
               <span>✕ Toon alle stoelen</span>
             </button>
+          </div>
+
+                    <!-- Moderne Catalogus Toolbar (Desktop & Tablet) -->
+          <div class="catalog-toolbar" id="catalogToolbar">
+            <div class="catalog-toolbar-left">
+              <span class="catalog-results-headline" id="catalogResultsHeadline">
+                <strong id="catalogResultsNum">Stoelen laden...</strong> senioren stoelen
+              </span>
+              <div class="active-filter-chips" id="activeFilterChips"></div>
+            </div>
+            <div class="catalog-toolbar-right">
+              <div class="desktop-sort-wrapper">
+                <label for="sortSelect" class="desktop-sort-label">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h10M11 9h7M11 13h4"/><path d="M3 17l3 3 3-3M6 18V4"/></svg>
+                  <span>Sorteer op:</span>
+                </label>
+                <div class="desktop-sort-select-wrap">
+                  <select class="desktop-sort-select" id="sortSelect">
+                    <option value="price-asc" selected>Prijs: Laag naar Hoog (Standaard)</option>
+                    <option value="price-desc">Prijs: Hoog naar Laag</option>
+                    <option value="recommended">Aanbevolen door Geertjan</option>
+                    <option value="brand-asc">Merk: A tot Z</option>
+                    <option value="newest">Nieuwste collectie</option>
+                  </select>
+                  <span class="desktop-sort-chevron">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="catalog-grid" id="catalogGrid">
@@ -751,7 +1002,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.224
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.225
       </div>
     </div>
   </footer>
@@ -871,7 +1122,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.224"></script>
+  <script src="app.js?v=10.225"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
@@ -1631,7 +1882,11 @@
       const sortLabel = document.getElementById("mobileSortBtnLabel");
       const sortBtn = document.getElementById("btnOpenMobileSort");
       if (sortLabel) {
-        sortLabel.textContent = sortDisplayLabels[sortKey] || "Sorteren";
+        if (sortKey === "price-asc") {
+          sortLabel.textContent = "Sorteren";
+        } else {
+          sortLabel.textContent = sortDisplayLabels[sortKey] || "Sorteren";
+        }
       }
       if (sortBtn) {
         if (sortKey !== "price-asc") {
@@ -1681,6 +1936,26 @@
         badge.style.display = "none";
         filterBtn.classList.remove("has-active-filters");
       }
+    }
+
+    function removeSingleFilter(type, value) {
+      if (type === 'brand') {
+        const cb = document.querySelector('.brand-filter[value="' + value + '"]');
+        if (cb) cb.checked = false;
+      } else if (type === 'price') {
+        const cb = document.querySelector('.price-filter[value="' + value + '"]');
+        if (cb) cb.checked = false;
+      } else if (type === 'condition') {
+        const cb = document.querySelector('.condition-filter[value="' + value + '"]');
+        if (cb) cb.checked = false;
+      } else if (type === 'type') {
+        const cb = document.querySelector('.type-filter[value="' + value + '"]');
+        if (cb) cb.checked = false;
+      } else if (type === 'material') {
+        const cb = document.querySelector('.material-filter[value="' + value + '"]');
+        if (cb) cb.checked = false;
+      }
+      renderCatalog();
     }
 
     // Render Logic
@@ -1803,8 +2078,67 @@
       const resultsCountEl = document.getElementById("mobileResultsCount");
       const applyCountEl = document.getElementById("mobileApplyChairCount");
       const chairCountText = filtered.length === 1 ? "1 stoel" : `${filtered.length} stoelen`;
-      if (resultsCountEl) resultsCountEl.textContent = chairCountText;
-      if (applyCountEl) applyCountEl.textContent = `Toon ${chairCountText}`;
+      if (resultsCountEl) resultsCountEl.innerHTML = '<strong>' + filtered.length + '</strong> stoelen';
+      if (applyCountEl) applyCountEl.textContent = 'Toon ' + chairCountText;
+
+      // Update desktop results count & sidebar reset button
+      const desktopNumEl = document.getElementById("catalogResultsNum");
+      if (desktopNumEl) {
+        desktopNumEl.textContent = filtered.length;
+      }
+      const sidebarResetBtn = document.getElementById("btnSidebarReset");
+      if (sidebarResetBtn) {
+        sidebarResetBtn.style.display = activeFilterCount > 0 ? "inline-block" : "none";
+      }
+
+      // Update active filter chips
+      const chipsContainer = document.getElementById("activeFilterChips");
+      if (chipsContainer) {
+        let chipsHtml = "";
+        
+        // Conditions
+        checkedConditions.forEach(c => {
+          const label = c.charAt(0).toUpperCase() + c.slice(1);
+          chipsHtml += '<button type="button" class="active-chip" onclick="removeSingleFilter(\'condition\', \'' + c + '\')"><span>' + label + '</span> <span class="chip-remove">&times;</span></button>';
+        });
+
+        // Brands
+        checkedBrands.forEach(b => {
+          chipsHtml += '<button type="button" class="active-chip" onclick="removeSingleFilter(\'brand\', \'' + b + '\')"><span>' + b + '</span> <span class="chip-remove">&times;</span></button>';
+        });
+
+        // Prices
+        checkedPrices.forEach(p => {
+          let pLabel = p;
+          if (p === 'under-1500') pLabel = 'Onder € 1.500';
+          else if (p === '1500-2500') pLabel = '€ 1.500 - € 2.500';
+          else if (p === 'over-2500') pLabel = 'Boven € 2.500';
+          chipsHtml += '<button type="button" class="active-chip" onclick="removeSingleFilter(\'price\', \'' + p + '\')"><span>' + pLabel + '</span> <span class="chip-remove">&times;</span></button>';
+        });
+
+        // Materials
+        checkedMaterials.forEach(m => {
+          const label = m.charAt(0).toUpperCase() + m.slice(1);
+          chipsHtml += '<button type="button" class="active-chip" onclick="removeSingleFilter(\'material\', \'' + m + '\')"><span>' + label + '</span> <span class="chip-remove">&times;</span></button>';
+        });
+
+        // Types if non-default
+        if (!relaxDefaultChecked) {
+          checkedTypes.forEach(t => {
+            const label = t === 'relax' ? 'Senioren Stoel' : 'Sta-op Stoel';
+            chipsHtml += '<button type="button" class="active-chip" onclick="removeSingleFilter(\'type\', \'' + t + '\')"><span>' + label + '</span> <span class="chip-remove">&times;</span></button>';
+          });
+        }
+
+        if (chipsHtml) {
+          chipsHtml += '<button type="button" onclick="showAllChairs(false)" class="btn-clear-chips">Wis alle filters</button>';
+          chipsContainer.innerHTML = chipsHtml;
+          chipsContainer.style.display = "flex";
+        } else {
+          chipsContainer.innerHTML = "";
+          chipsContainer.style.display = "none";
+        }
+      }
 
       // Manage selected chair banner
       let bannerContainer = document.getElementById("selectedChairBanner");
