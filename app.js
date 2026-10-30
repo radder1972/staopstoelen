@@ -1303,9 +1303,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.232"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.233"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.232" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.233" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -2658,12 +2658,25 @@ function initFloatingMenu() {
 
   const isSubdir = window.location.pathname.includes("/stoelen/");
   const base = isSubdir ? "../" : "";
-  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.231`;
-  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.231`;
+  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.233`;
+  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.233`;
 
   // Preload de dansende SVG zodat hij bij de allereerste klik/dubbelklik zonder enige vertraging start
   const preloadDance = new Image();
   preloadDance.src = danceChairSrc;
+
+  // Plaats het 3D Sta-op Stoel logo direct naast "staopstoelen.nl" in de navigatiebalk
+  const navLogo = document.getElementById("navTextLogo") || document.querySelector(".nav-text-logo");
+  let navChairImg = null;
+  if (navLogo && !navLogo.querySelector(".nav-chair-logo-icon")) {
+    const existingInner = navLogo.innerHTML;
+    navLogo.classList.add("has-chair-logo");
+    navLogo.innerHTML = `
+      <img src="${normalChairSrc}" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg" title="Dubbelklik om de stoel te laten dansen">
+      <div class="nav-logo-text-group">${existingInner}</div>
+    `;
+    navChairImg = document.getElementById("navChairLogoImg");
+  }
 
   // Verberg het oude losse 3-knoppen menu (deze zitten nu geïntegreerd onderin de Digitale Assistent)
   if (oldMenu) {
@@ -2869,7 +2882,7 @@ function initFloatingMenu() {
   }
 
   function triggerChairDance(imgEl, withMusic = false) {
-    const targets = imgEl ? [imgEl] : [fabImg, headerImg].filter(Boolean);
+    const targets = imgEl ? [imgEl] : [fabImg, headerImg, navChairImg].filter(Boolean);
     targets.forEach((img) => {
       img.classList.remove("chair-dancing");
       void img.offsetWidth;
@@ -2887,6 +2900,36 @@ function initFloatingMenu() {
     if (withMusic) {
       playChairDanceTune();
     }
+  }
+
+  // Dubbelklik op het stoel-logo naast staopstoelen.nl in de header laat hem ook dansen met muziek
+  if (navLogo && navChairImg) {
+    let navLogoClickTimer = null;
+    let navLogoLastClick = 0;
+    navLogo.addEventListener("click", (e) => {
+      if (e.target.closest(".nav-chair-logo-icon")) {
+        e.preventDefault();
+        const now = Date.now();
+        if (e.detail >= 2 || now - navLogoLastClick < 360) {
+          clearTimeout(navLogoClickTimer);
+          navLogoLastClick = 0;
+          triggerChairDance(navChairImg, true);
+          return;
+        }
+        navLogoLastClick = now;
+        clearTimeout(navLogoClickTimer);
+        navLogoClickTimer = setTimeout(() => {
+          const href = navLogo.getAttribute("href");
+          if (href) window.location.href = href;
+        }, 300);
+      }
+    });
+    navLogo.addEventListener("dblclick", (e) => {
+      e.preventDefault();
+      clearTimeout(navLogoClickTimer);
+      navLogoLastClick = 0;
+      triggerChairDance(navChairImg, true);
+    });
   }
 
   window.triggerAssistantChairDance = () => triggerChairDance(null, true);
@@ -3288,8 +3331,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.232" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.232" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.233" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.233" 
             controls 
             playsinline 
             preload="auto"
@@ -3320,8 +3363,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.232";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.232";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.233";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.233";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3334,7 +3377,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.232`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.233`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3343,8 +3386,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.232";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.232";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.233";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.233";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3357,7 +3400,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.232`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.233`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";

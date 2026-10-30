@@ -9050,6 +9050,46 @@ input[type="checkbox"] {
   color: #ffffff !important;
 }
 
+/* 3D Sta-op Stoel Logo naast staopstoelen.nl in de navigatiebalk */
+.nav-text-logo.has-chair-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 11px !important;
+  top: 4px !important;
+}
+
+.nav-text-logo.has-chair-logo:hover {
+  opacity: 1 !important;
+}
+
+.nav-chair-logo-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+  transform-origin: 50% 80%;
+  filter: drop-shadow(0 4px 8px rgba(18, 43, 7, 0.16));
+  cursor: pointer;
+}
+
+.nav-logo-text-group {
+  display: flex !important;
+  flex-direction: column !important;
+  color: var(--color-forest) !important;
+}
+
+@media (max-width: 768px) {
+  .nav-text-logo.has-chair-logo {
+    top: 6px !important;
+    gap: 8px !important;
+  }
+  .nav-chair-logo-icon {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 /* Dans-animatie van de 3D Sta-op Stoel (zonder 360-graden spin) */
 .chair-dancing {
   animation: chairBoogie 3.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
