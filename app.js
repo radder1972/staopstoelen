@@ -2712,8 +2712,9 @@ function initFloatingMenu() {
 
   const isSubdir = window.location.pathname.includes("/stoelen/");
   const base = isSubdir ? "../" : "";
-  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.234`;
-  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.234`;
+  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.235`;
+  const logoChairSrc = `${base}assets/assistent-stoel-static.svg?v=10.235`;
+  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.235`;
 
   // Preload de dansende SVG zodat hij bij de allereerste klik/dubbelklik zonder enige vertraging start
   const preloadDance = new Image();
@@ -2734,7 +2735,7 @@ function initFloatingMenu() {
     st.id = "da-inline-styles";
     st.textContent = `
       .nav-text-logo.has-chair-logo { display: inline-flex !important; align-items: center !important; gap: 11px !important; top: 4px !important; }
-      .nav-chair-logo-icon { width: 56px !important; height: 56px !important; max-width: 56px !important; max-height: 56px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; transform-origin: 50% 80%; filter: drop-shadow(0 4px 8px rgba(18,43,7,0.16)); cursor: pointer; }
+      .nav-chair-logo-icon { width: 56px !important; height: 56px !important; max-width: 56px !important; max-height: 56px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; transform-origin: 50% 80%; filter: drop-shadow(0 4px 8px rgba(18,43,7,0.16)); cursor: pointer; animation: none !important; }
       .nav-logo-text-group { display: flex !important; flex-direction: column !important; color: var(--color-forest, #4b8f24) !important; }
       .nav-logo-text-group span, .nav-text-logo span, .footer-col h3 span { color: #f39223 !important; }
       .floating-btn-main.assistant-chair-fab { position: relative !important; width: 72px !important; height: 72px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 2.5px solid #4b8f24 !important; box-shadow: 0 10px 28px rgba(18,43,7,0.24), 0 0 0 4px rgba(75,143,36,0.14) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; }
@@ -2795,7 +2796,7 @@ function initFloatingMenu() {
     navLogo.classList.add("has-chair-logo");
     navLogo.style.cssText += ";display:inline-flex !important;align-items:center !important;gap:11px !important;";
     navLogo.innerHTML = `
-      <img src="${normalChairSrc}" width="56" height="56" style="width:56px;height:56px;max-width:56px;max-height:56px;flex-shrink:0;display:block;object-fit:contain;" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg" title="Dubbelklik om de stoel te laten dansen">
+      <img src="${logoChairSrc}" width="56" height="56" style="width:56px;height:56px;max-width:56px;max-height:56px;flex-shrink:0;display:block;object-fit:contain;" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg">
       <div class="nav-logo-text-group" style="display:flex;flex-direction:column;">${existingInner}</div>
     `;
     navChairImg = document.getElementById("navChairLogoImg");
@@ -3023,8 +3024,10 @@ function initFloatingMenu() {
   }
 
   function triggerChairDance(imgEl, withMusic = false) {
-    const targets = imgEl ? [imgEl] : [fabImg, headerImg, navChairImg].filter(Boolean);
+    // Stoeltje in het logo animeert nooit; alle andere stoelen (zoals de zwevende assistent en panel avatar) wel
+    const targets = imgEl ? [imgEl] : [fabImg, headerImg].filter(Boolean);
     targets.forEach((img) => {
+      if (img === navChairImg) return;
       img.classList.remove("chair-dancing");
       void img.offsetWidth;
       img.src = danceChairSrc;
@@ -3043,34 +3046,9 @@ function initFloatingMenu() {
     }
   }
 
-  // Dubbelklik op het stoel-logo naast staopstoelen.nl in de header laat hem ook dansen met muziek
+  // Het logo in de navigatiebalk is puur een rustige, statische link naar de homepage (geen dans)
   if (navLogo && navChairImg) {
-    let navLogoClickTimer = null;
-    let navLogoLastClick = 0;
-    navLogo.addEventListener("click", (e) => {
-      if (e.target.closest(".nav-chair-logo-icon")) {
-        e.preventDefault();
-        const now = Date.now();
-        if (e.detail >= 2 || now - navLogoLastClick < 360) {
-          clearTimeout(navLogoClickTimer);
-          navLogoLastClick = 0;
-          triggerChairDance(navChairImg, true);
-          return;
-        }
-        navLogoLastClick = now;
-        clearTimeout(navLogoClickTimer);
-        navLogoClickTimer = setTimeout(() => {
-          const href = navLogo.getAttribute("href");
-          if (href) window.location.href = href;
-        }, 300);
-      }
-    });
-    navLogo.addEventListener("dblclick", (e) => {
-      e.preventDefault();
-      clearTimeout(navLogoClickTimer);
-      navLogoLastClick = 0;
-      triggerChairDance(navChairImg, true);
-    });
+    navChairImg.style.pointerEvents = "auto";
   }
 
   window.triggerAssistantChairDance = () => triggerChairDance(null, true);
