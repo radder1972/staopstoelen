@@ -8929,7 +8929,7 @@ input[type="checkbox"] {
 
 .da-body {
   padding: 14px 15px;
-  background: #f6faf2;
+  background: #f4f7f2;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -8953,24 +8953,26 @@ input[type="checkbox"] {
 .da-msg-bubble {
   font-size: 0.88rem;
   line-height: 1.5;
-  padding: 11px 14px;
-  border-radius: 14px;
-  max-width: 92%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 90%;
+  word-wrap: break-word;
 }
 
 .da-msg-bot .da-msg-bubble {
   background: #ffffff;
   color: #122b07;
-  border: 1px solid rgba(75, 143, 36, 0.22);
-  border-top-left-radius: 4px;
-  box-shadow: 0 2px 8px rgba(18, 43, 7, 0.05);
+  border: 1px solid rgba(75, 143, 36, 0.18);
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 2px 8px rgba(18, 43, 7, 0.06);
 }
 
 .da-msg-user .da-msg-bubble {
-  background: #4b8f24;
+  background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%);
   color: #ffffff;
-  font-weight: 600;
-  border-top-right-radius: 4px;
+  font-weight: 500;
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 3px 10px rgba(75, 143, 36, 0.22);
 }
 
 .da-msg-typing .da-msg-bubble {
@@ -8979,8 +8981,8 @@ input[type="checkbox"] {
   gap: 8px;
   padding: 10px 14px;
   background: #ffffff;
-  border: 1px solid rgba(75, 143, 36, 0.22);
-  border-top-left-radius: 4px;
+  border: 1px solid rgba(75, 143, 36, 0.18);
+  border-radius: 18px 18px 18px 4px;
   color: #4b8f24;
   font-size: 0.82rem;
   font-weight: 600;
@@ -9083,7 +9085,7 @@ input[type="checkbox"] {
 
 .da-input-wrapper {
   background: #ffffff;
-  border-top: 1.5px solid #e3edd9;
+  border-top: 1.5px solid #e1ebda;
   padding: 10px 14px 8px;
 }
 
@@ -9102,19 +9104,19 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #fcfefc;
+  background: #ffffff;
   border: 2px solid #4b8f24;
-  border-radius: 999px;
-  padding: 4px 6px 4px 16px;
+  border-radius: 10px;
+  padding: 5px 6px 5px 14px;
   min-height: 48px;
-  box-shadow: 0 4px 14px rgba(75, 143, 36, 0.16);
+  box-shadow: 0 2px 10px rgba(75, 143, 36, 0.12);
   transition: all 0.2s ease;
 }
 
 .da-input-bar:focus-within {
   background: #ffffff;
   border-color: #2e6819;
-  box-shadow: 0 4px 18px rgba(46, 104, 25, 0.28);
+  box-shadow: 0 3px 14px rgba(46, 104, 25, 0.24);
 }
 
 .da-input {
@@ -9139,9 +9141,9 @@ input[type="checkbox"] {
 }
 
 .da-send-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
   border: 0;
   background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%);
   color: #ffffff;
@@ -9150,66 +9152,58 @@ input[type="checkbox"] {
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  box-shadow: 0 2px 7px rgba(18, 43, 7, 0.22);
+  box-shadow: 0 2px 6px rgba(18, 43, 7, 0.2);
   transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .da-send-btn:hover {
-  transform: scale(1.06);
+  transform: scale(1.05);
   background: #2e6819;
 }
 
 .da-footer-sub {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 14px 8px;
-  background: #f8fafc;
-  border-top: 1px solid #edf2f7;
-  gap: 6px;
-}
-
-.da-sub-hint {
-  font-size: 0.68rem;
-  color: #94a3b8;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+  display: block;
+  padding: 8px 14px 10px;
+  background: #fbfdfa;
+  border-top: 1px solid #e7eee4;
 }
 
 .da-sub-actions {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  width: 100%;
 }
 
 .da-sub-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-size: 0.68rem;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: #64748b !important;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  color: #274818 !important;
+  background: #edf3eb;
+  border: 1px solid #c9d8c3;
   text-decoration: none !important;
-  transition: all 0.15s ease;
   line-height: 1.3;
+  transition: all 0.18s ease;
   white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04);
 }
 
 .da-sub-btn:hover {
-  background: #f1f5f9;
-  color: #1e293b !important;
-  border-color: #cbd5e1;
+  background: #e2ede0;
+  color: #17300c !important;
+  border-color: #a8c49e;
+  transform: translateY(-1px);
 }
 
 .da-sub-btn svg {
-  opacity: 0.75;
+  flex-shrink: 0;
+  opacity: 0.88;
 }
 
 /* 3D Sta-op Stoel Logo naast staopstoelen.nl in de navigatiebalk */

@@ -2745,24 +2745,28 @@ function initFloatingMenu() {
       .da-status-line { display: inline-flex !important; align-items: center !important; gap: 5px !important; font-size: 0.68rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #a7f3d0 !important; line-height: 1 !important; }
       .da-status-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #34d399 !important; box-shadow: 0 0 6px rgba(52, 211, 153, 0.9) !important; }
       .da-title { font-size: 0.95rem !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+      .da-body { background: #f4f7f2 !important; }
+      .da-msg-bubble { font-size: 0.88rem !important; line-height: 1.5 !important; max-width: 90% !important; word-wrap: break-word !important; }
+      .da-msg-bot .da-msg-bubble { background: #ffffff !important; color: #122b07 !important; border: 1px solid rgba(75, 143, 36, 0.18) !important; border-radius: 18px 18px 18px 4px !important; box-shadow: 0 2px 8px rgba(18, 43, 7, 0.06) !important; padding: 12px 16px !important; }
+      .da-msg-user .da-msg-bubble { background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%) !important; color: #ffffff !important; font-weight: 500 !important; border-radius: 18px 18px 4px 18px !important; box-shadow: 0 3px 10px rgba(75, 143, 36, 0.22) !important; padding: 11px 16px !important; }
+      .da-msg-typing .da-msg-bubble { border-radius: 18px 18px 18px 4px !important; background: #ffffff !important; border: 1px solid rgba(75, 143, 36, 0.18) !important; padding: 10px 14px !important; }
       .da-quick-chips { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; margin-top: 10px !important; }
-      .da-chip { width: 100% !important; padding: 7px 9px !important; border-radius: 9px !important; border: 1px solid #d4e7c7 !important; background: #f7fbf4 !important; color: #122b07 !important; font-size: 0.74rem !important; font-weight: 600 !important; text-align: left !important; cursor: pointer !important; line-height: 1.25 !important; transition: all 0.15s ease !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
+      .da-chip { width: 100% !important; padding: 7px 9px !important; border-radius: 9px !important; border: 1px solid #d4e7c7 !important; background: #ffffff !important; color: #122b07 !important; font-size: 0.74rem !important; font-weight: 600 !important; text-align: left !important; cursor: pointer !important; line-height: 1.25 !important; transition: all 0.15s ease !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
       .da-chip:hover { background: #e9f4e2 !important; border-color: #4b8f24 !important; }
-      .da-input-wrapper { background: #ffffff !important; border-top: 1.5px solid #e3edd9 !important; padding: 10px 14px 8px !important; }
+      .da-input-wrapper { background: #ffffff !important; border-top: 1.5px solid #e1ebda !important; padding: 10px 14px 8px !important; }
       .da-input-callout { display: flex !important; align-items: center !important; gap: 6px !important; font-size: 0.73rem !important; font-weight: 700 !important; color: #2e6819 !important; margin-bottom: 6px !important; }
-      .da-input-bar { display: flex !important; align-items: center !important; gap: 8px !important; background: #fcfefc !important; border: 2px solid #4b8f24 !important; border-radius: 999px !important; padding: 4px 6px 4px 16px !important; min-height: 48px !important; box-shadow: 0 4px 14px rgba(75, 143, 36, 0.16) !important; transition: all 0.2s ease !important; }
-      .da-input-bar:focus-within { background: #ffffff !important; border-color: #2e6819 !important; box-shadow: 0 4px 18px rgba(46, 104, 25, 0.28) !important; }
+      .da-input-bar { display: flex !important; align-items: center !important; gap: 8px !important; background: #ffffff !important; border: 2px solid #4b8f24 !important; border-radius: 10px !important; padding: 5px 6px 5px 14px !important; min-height: 48px !important; box-shadow: 0 2px 10px rgba(75, 143, 36, 0.12) !important; transition: all 0.2s ease !important; }
+      .da-input-bar:focus-within { background: #ffffff !important; border-color: #2e6819 !important; box-shadow: 0 3px 14px rgba(46, 104, 25, 0.24) !important; }
       .da-input { flex: 1 !important; border: none !important; background: transparent !important; padding: 8px 0 !important; font-size: 0.98rem !important; font-family: inherit !important; color: #122b07 !important; font-weight: 500 !important; }
       .da-input::placeholder { color: #64748b !important; font-size: 0.88rem !important; font-weight: 400 !important; }
       .da-input:focus { outline: none !important; }
-      .da-send-btn { width: 40px !important; height: 40px !important; border-radius: 50% !important; border: 0 !important; background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%) !important; color: #ffffff !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; flex-shrink: 0 !important; box-shadow: 0 2px 7px rgba(18, 43, 7, 0.22) !important; transition: transform 0.15s ease, background 0.15s ease !important; }
-      .da-send-btn:hover { transform: scale(1.06) !important; background: #2e6819 !important; }
-      .da-footer-sub { display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 6px 14px 8px !important; background: #f8fafc !important; border-top: 1px solid #edf2f7 !important; gap: 6px !important; }
-      .da-sub-hint { font-size: 0.68rem !important; color: #94a3b8 !important; font-weight: 600 !important; letter-spacing: 0.02em !important; white-space: nowrap !important; }
-      .da-sub-actions { display: flex !important; align-items: center !important; gap: 5px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
-      .da-sub-btn { display: inline-flex !important; align-items: center !important; gap: 4px !important; padding: 3px 8px !important; border-radius: 999px !important; font-size: 0.68rem !important; font-weight: 600 !important; color: #64748b !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; text-decoration: none !important; line-height: 1.3 !important; transition: all 0.15s ease !important; white-space: nowrap !important; }
-      .da-sub-btn:hover { background: #f1f5f9 !important; color: #1e293b !important; border-color: #cbd5e1 !important; }
-      .da-sub-btn svg { opacity: 0.75 !important; }
+      .da-send-btn { width: 38px !important; height: 38px !important; border-radius: 8px !important; border: 0 !important; background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%) !important; color: #ffffff !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; flex-shrink: 0 !important; box-shadow: 0 2px 6px rgba(18, 43, 7, 0.2) !important; transition: transform 0.15s ease, background 0.15s ease !important; }
+      .da-send-btn:hover { transform: scale(1.05) !important; background: #2e6819 !important; }
+      .da-footer-sub { display: block !important; padding: 8px 14px 10px !important; background: #fbfdfa !important; border-top: 1px solid #e7eee4 !important; }
+      .da-sub-actions { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; width: 100% !important; }
+      .da-sub-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; padding: 7px 8px !important; border-radius: 8px !important; font-size: 0.78rem !important; font-weight: 600 !important; color: #274818 !important; background: #edf3eb !important; border: 1px solid #c9d8c3 !important; text-decoration: none !important; line-height: 1.3 !important; transition: all 0.18s ease !important; white-space: nowrap !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
+      .da-sub-btn:hover { background: #e2ede0 !important; border-color: #a8c49e !important; color: #17300c !important; transform: translateY(-1px) !important; }
+      .da-sub-btn svg { flex-shrink: 0 !important; opacity: 0.88 !important; }
       @media (max-width: 768px) {
         .nav-text-logo.has-chair-logo { top: 6px !important; gap: 8px !important; }
         .nav-chair-logo-icon { width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; }
@@ -2870,18 +2874,17 @@ function initFloatingMenu() {
     </div>
 
     <div class="da-footer-sub">
-      <span class="da-sub-hint">Direct contact:</span>
       <div class="da-sub-actions">
         <a href="${base}afspraak.html" class="da-sub-btn" onclick="openAppointmentModal(event)" title="Plan een proefzit-afspraak">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           <span>Afspraak</span>
         </a>
         <a href="tel:+31786314858" class="da-sub-btn" title="Bel direct: 078 - 631 4858">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>Bellen</span>
         </a>
         <a href="https://wa.me/31622232964" target="_blank" rel="noopener" class="da-sub-btn" title="WhatsApp met Geertjan">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.06 0C5.46 0 .09 5.37.09 11.97c0 2.11.55 4.16 1.6 5.98L0 24l6.23-1.63a11.9 11.9 0 0 0 5.83 1.51h.01c6.6 0 11.97-5.37 11.97-11.97 0-3.2-1.25-6.21-3.52-8.43zm-8.46 18.42h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.64-.23-.37a9.93 9.93 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.94-9.94 2.65 0 5.15 1.03 7.02 2.91a9.88 9.88 0 0 1 2.91 7.03c0 5.48-4.46 9.94-9.96 9.94zm5.45-7.44c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.24 5.13 4.54.72.31 1.28.5 1.71.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
           <span>WhatsApp</span>
         </a>
       </div>
