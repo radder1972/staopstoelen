@@ -2753,10 +2753,11 @@ function initFloatingMenu() {
       .da-msg-bot .da-msg-bubble { background: #ffffff !important; color: #122b07 !important; border: 1px solid rgba(75, 143, 36, 0.18) !important; border-radius: 18px 18px 18px 4px !important; box-shadow: 0 2px 8px rgba(18, 43, 7, 0.06) !important; padding: 12px 16px !important; }
       .da-msg-user .da-msg-bubble { background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%) !important; color: #ffffff !important; font-weight: 500 !important; border-radius: 18px 18px 4px 18px !important; box-shadow: 0 3px 10px rgba(75, 143, 36, 0.22) !important; padding: 11px 16px !important; }
       .da-msg-typing .da-msg-bubble { border-radius: 18px 18px 18px 4px !important; background: #ffffff !important; border: 1px solid rgba(75, 143, 36, 0.18) !important; padding: 10px 14px !important; }
-      .da-quick-chips { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; margin-top: 10px !important; }
-      .da-chip { display: inline-flex !important; align-items: center !important; gap: 7px !important; width: 100% !important; padding: 8px 10px !important; border-radius: 9px !important; border: 1px solid #d4e7c7 !important; background: #ffffff !important; color: #122b07 !important; font-size: 0.74rem !important; font-weight: 600 !important; text-align: left !important; cursor: pointer !important; line-height: 1.25 !important; transition: all 0.15s ease !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
+      .da-quick-chips { display: grid !important; grid-template-columns: 1fr 1fr !important; grid-auto-rows: 1fr !important; gap: 8px !important; margin-top: 10px !important; }
+      .da-chip { display: flex !important; align-items: center !important; justify-content: flex-start !important; gap: 8px !important; width: 100% !important; height: 100% !important; min-height: 52px !important; box-sizing: border-box !important; padding: 8px 10px !important; border-radius: 10px !important; border: 1px solid #d4e7c7 !important; background: #ffffff !important; color: #122b07 !important; font-size: 0.74rem !important; font-weight: 600 !important; text-align: left !important; cursor: pointer !important; line-height: 1.25 !important; transition: all 0.15s ease !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
       .da-chip:hover { background: #e9f4e2 !important; border-color: #4b8f24 !important; transform: translateY(-1px) !important; }
-      .da-chip svg { flex-shrink: 0 !important; stroke: #4b8f24 !important; }
+      .da-chip svg { flex-shrink: 0 !important; width: 16px !important; height: 16px !important; stroke: #4b8f24 !important; }
+      .da-chip span { flex: 1 1 auto !important; display: block !important; }
       .da-input-wrapper { flex-shrink: 0 !important; background: #ffffff !important; border-top: 1.5px solid #e1ebda !important; padding: 10px 14px 8px !important; }
       .da-input-callout { display: flex !important; align-items: center !important; gap: 6px !important; font-size: 0.73rem !important; font-weight: 700 !important; color: #2e6819 !important; margin-bottom: 6px !important; }
       .da-input-bar { display: flex !important; align-items: center !important; gap: 8px !important; background: #ffffff !important; border: 2px solid #4b8f24 !important; border-radius: 10px !important; padding: 5px 6px 5px 14px !important; min-height: 48px !important; box-shadow: 0 2px 10px rgba(75, 143, 36, 0.12) !important; transition: all 0.2s ease !important; }
@@ -2768,7 +2769,7 @@ function initFloatingMenu() {
       .da-send-btn:hover { transform: scale(1.05) !important; background: #2e6819 !important; }
       .da-footer-sub { flex-shrink: 0 !important; display: block !important; padding: 8px 14px 10px !important; background: #fbfdfa !important; border-top: 1px solid #e7eee4 !important; }
       .da-sub-actions { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; width: 100% !important; }
-      .da-sub-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; padding: 8px 6px !important; border-radius: 8px !important; font-size: 0.78rem !important; font-weight: 600 !important; color: #274818 !important; background: #edf3eb !important; border: 1px solid #c9d8c3 !important; text-decoration: none !important; line-height: 1.3 !important; transition: all 0.18s ease !important; white-space: nowrap !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
+      .da-sub-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; padding: 8px 6px !important; border-radius: 8px !important; font-size: 0.78rem !important; font-weight: 600 !important; color: #274818 !important; background: #edf3eb !important; border: 1px solid #c9d8c3 !important; text-decoration: none !important; line-height: 1.3 !important; transition: all 0.18s ease !important; white-space: nowrap !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; height: 100% !important; min-height: 38px !important; box-sizing: border-box !important; }
       .da-sub-btn:hover { background: #e2ede0 !important; border-color: #a8c49e !important; color: #17300c !important; transform: translateY(-1px) !important; }
       .da-sub-btn svg { flex-shrink: 0 !important; opacity: 0.9 !important; }
       @media (max-width: 768px) {
@@ -2858,19 +2859,19 @@ function initFloatingMenu() {
       </div>
       <div class="da-quick-chips" id="daQuickChips">
         <button type="button" class="da-chip" data-topic="maat">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-4 3h2m-5-9a5 5 0 1 1 8 0c0 2-2 3-2 4H10c0-1-2-2-2-4z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-4 3h2m-5-9a5 5 0 1 1 8 0c0 2-2 3-2 4H10c0-1-2-2-2-4z"/></svg>
           <span>Welke maat past bij mij?</span>
         </button>
         <button type="button" class="da-chip" data-topic="prijs">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           <span>Wat kost een stoel?</span>
         </button>
         <button type="button" class="da-chip" data-topic="proefzitten">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>Proefzitten showroom</span>
         </button>
         <button type="button" class="da-chip" data-topic="vergoeding">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           <span>Vergoeding &amp; Wmo</span>
         </button>
       </div>
