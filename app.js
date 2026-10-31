@@ -2243,6 +2243,10 @@ function initCalendar() {
     let endTime = "";
     let startISO = "";
     let endISO = "";
+    let startDateObj = null;
+    let endDateObj = null;
+    let gcalDates = "";
+
     if (state.selectedTimeSlot && state.selectedTimeSlot.includes(" - ")) {
       const timeParts = state.selectedTimeSlot.split(" - ");
       startTime = timeParts[0].trim();
@@ -2256,8 +2260,8 @@ function initCalendar() {
         const [startH, startM] = startTime.split(":").map(Number);
         const [endH, endM] = endTime.split(":").map(Number);
         
-        const startDateObj = new Date(year, month, day, startH, startM, 0);
-        const endDateObj = new Date(year, month, day, endH, endM, 0);
+        startDateObj = new Date(year, month, day, startH, startM, 0);
+        endDateObj = new Date(year, month, day, endH, endM, 0);
         
         const toLocalISO = (d) => {
           const offset = -d.getTimezoneOffset();
@@ -2275,6 +2279,10 @@ function initCalendar() {
         
         startISO = toLocalISO(startDateObj);
         endISO = toLocalISO(endDateObj);
+
+        // UTC timestamp format for Google Calendar link: YYYYMMDDTHHMMSSZ
+        const toGCalISO = (d) => d.toISOString().replace(/-|:|\.\d+/g, "");
+        gcalDates = `${toGCalISO(startDateObj)}/${toGCalISO(endDateObj)}`;
       } catch (err) {
         console.error("Error formatting ISO dates:", err);
       }
@@ -2289,6 +2297,17 @@ function initCalendar() {
       month: 'long',
       year: 'numeric'
     }) : "";
+
+    // Dynamic Google Calendar one-click add link
+    const gcalTitle = encodeURIComponent(`${typeLabel} - Staopstoelen.nl`);
+    const gcalDetails = encodeURIComponent(`Afspraak met Bewegingstechnoloog Geertjan Klein Haneveld.\nType: ${typeLabel}\nLocatie: ${locationStr}\nContact: 06 - 22 23 29 64 / 078 - 631 4858\nWebsite: https://staopstoelen.nl`);
+    const gcalLocation = encodeURIComponent(locationStr);
+    const gcalUrl = gcalDates ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gcalTitle}&dates=${gcalDates}&details=${gcalDetails}&location=${gcalLocation}` : "";
+
+    // Dynamic subject line: concrete date and start time
+    const dynamicSubject = state.appointmentType === "home"
+      ? `Bevestiging passing aan huis: ${formattedBookingDate} om ${startTime || state.selectedTimeSlot} uur`
+      : `Bevestiging afspraak Showroom Dordrecht: ${formattedBookingDate} om ${startTime || state.selectedTimeSlot} uur`;
 
     const customerEmailHtml = `
       <div style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #222222; max-width: 600px; margin: 0 auto; padding: 24px 20px; background-color: #ffffff;">
@@ -2307,33 +2326,63 @@ function initCalendar() {
         </p>
 
         <!-- Overzicht afspraak: rustig en overzichtelijk -->
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px; line-height: 1.6;">
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px; line-height: 1.6;">
           <tr>
-            <td style="padding: 6px 0; color: #666666; width: 140px;">Type afspraak:</td>
+            <td style="padding: 6px 0; color: #666666; width: 140px; vertical-align: top;">Type afspraak:</td>
             <td style="padding: 6px 0; color: #111111; font-weight: bold;">${typeLabel}</td>
           </tr>
           <tr>
-            <td style="padding: 6px 0; color: #666666;">Datum:</td>
+            <td style="padding: 6px 0; color: #666666; vertical-align: top;">Datum:</td>
             <td style="padding: 6px 0; color: #111111; font-weight: bold;">${formattedBookingDate}</td>
           </tr>
           <tr>
-            <td style="padding: 6px 0; color: #666666;">Tijdstip:</td>
+            <td style="padding: 6px 0; color: #666666; vertical-align: top;">Tijdstip:</td>
             <td style="padding: 6px 0; color: #111111; font-weight: bold;">${state.selectedTimeSlot}</td>
           </tr>
           <tr>
-            <td style="padding: 6px 0; color: #666666;">Adres / Locatie:</td>
-            <td style="padding: 6px 0; color: #111111;">${locationStr}</td>
+            <td style="padding: 6px 0; color: #666666; vertical-align: top;">Adres / Locatie:</td>
+            <td style="padding: 6px 0; color: #111111;">
+              ${locationStr}
+              ${state.appointmentType === "showroom" ? `
+              <div style="margin-top: 4px;">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Merwedestraat+239,+Dordrecht" target="_blank" style="color: #4b8f24; font-size: 13px; font-weight: 700; text-decoration: underline;">
+                  📍 Route plannen in Google Maps &rarr;
+                </a>
+              </div>` : ''}
+            </td>
           </tr>
           <tr>
-            <td style="padding: 6px 0; color: #666666;">Telefoonnummer:</td>
+            <td style="padding: 6px 0; color: #666666; vertical-align: top;">Telefoonnummer:</td>
             <td style="padding: 6px 0; color: #111111;">${phone}</td>
           </tr>
           ${notes && notes !== '-' ? `
           <tr>
-            <td style="padding: 6px 0; color: #666666;">Uw opmerkingen:</td>
+            <td style="padding: 6px 0; color: #666666; vertical-align: top;">Uw opmerkingen:</td>
             <td style="padding: 6px 0; color: #111111;">${notes}</td>
           </tr>` : ''}
         </table>
+
+        ${gcalUrl ? `
+        <!-- Direct Toevoegen aan Agenda Knop -->
+        <div style="margin: 20px 0 24px 0; padding: 14px 18px; background-color: #f7faf5; border: 1px solid #d5e5cf; border-radius: 8px;">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="vertical-align: middle; padding-right: 12px;">
+                <div style="font-size: 13.5px; color: #2e5714; font-weight: 700;">
+                  📅 Wilt u deze afspraak direct opslaan?
+                </div>
+                <div style="font-size: 12.5px; color: #555555; margin-top: 2px;">
+                  Voeg de afspraak met één klik toe aan uw Google Agenda.
+                </div>
+              </td>
+              <td style="vertical-align: middle; text-align: right; width: 190px;">
+                <a href="${gcalUrl}" target="_blank" style="background-color: #4b8f24; color: #ffffff; padding: 9px 15px; border-radius: 6px; font-size: 13px; font-weight: bold; text-decoration: none; display: inline-block; white-space: nowrap;">
+                  + In Google Agenda
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>` : ''}
 
         <p style="margin: 20px 0 6px 0; font-weight: bold; color: #111111;">Hoe nu verder?</p>
         <p style="margin: 0 0 20px 0; color: #333333;">
@@ -2342,10 +2391,15 @@ function initCalendar() {
 
         ${state.appointmentType === "showroom" ? `
         <p style="margin: 20px 0 6px 0; font-weight: bold; color: #111111;">Praktische informatie showroombezoek:</p>
-        <p style="margin: 0 0 24px 0; color: #333333;">
+        <p style="margin: 0 0 14px 0; color: #333333;">
           Adres: Merwedestraat 239, 3313 GT Dordrecht.<br>
           U kunt gratis direct voor de deur parkeren. Onze showroom is rolstoeltoegankelijk en de koffie staat klaar!
-        </p>` : ''}
+        </p>
+        <div style="margin-bottom: 24px;">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Merwedestraat+239,+Dordrecht" target="_blank" style="display: inline-block; background-color: #ffffff; color: #4b8f24; border: 1.5px solid #4b8f24; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: bold; text-decoration: none;">
+            📍 Routebeschrijving in Google Maps bekijken &rarr;
+          </a>
+        </div>` : ''}
 
         <!-- Handtekening met pasfoto van Geertjan (gebaseerd op visitekaartje) -->
         <div style="margin-top: 32px; color: #111111; font-size: 14px; line-height: 1.6;">
@@ -2390,7 +2444,7 @@ function initCalendar() {
       appointmentType: state.appointmentType,
       address: state.appointmentType === "home" ? address : "Merwedestraat 239, Dordrecht (Showroom)",
       notes: notes,
-      emailSubject: "Bevestiging van uw aanvraag voor een adviesgesprek - Staopstoelen.nl",
+      emailSubject: dynamicSubject,
       senderName: "Geertjan Klein Haneveld - Staopstoelen.nl",
       replyTo: "info@staopstoelen.nl",
       notificationEmail: "schipperwonen@gmail.com, info@staopstoelen.nl",
