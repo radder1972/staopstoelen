@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Scene 2 - De Drie Deuren Realiteit</title>
+  <title>Scene 2 - De Olifant in de Kamer: TPM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,11 +20,10 @@
     .ambient-glow {
       position: absolute;
       top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1000px;
+      right: 200px;
+      width: 900px;
       height: 600px;
-      background: radial-gradient(circle, rgba(239, 68, 68, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.2) 0%, rgba(11, 15, 25, 0) 70%);
       pointer-events: none;
     }
     .header {
@@ -54,118 +53,117 @@
 
     .main-content {
       height: 840px;
-      padding: 40px 80px 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .title-area {
-      text-align: center;
-      max-width: 1200px;
-      margin: 0 auto 30px;
-    }
-    .kicker {
-      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px;
-      color: #F87171; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;
-    }
-    .main-title {
-      font-family: 'Montserrat', sans-serif; font-size: 46px; font-weight: 900; letter-spacing: -0.5px;
+      padding: 50px 80px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 60px;
+      align-items: center;
     }
 
-    .doors-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-bottom: 30px;
-    }
-    .door-card {
-      background: rgba(30, 41, 59, 0.65);
+    .contract-card {
+      background: rgba(30, 41, 59, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
+      border-radius: 28px;
+      padding: 44px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
-    .door-card::before {
+    .contract-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; height: 6px;
-      background: #EF4444;
+      background: linear-gradient(90deg, #EF4444, #F97316);
     }
-    .door-icon-circle {
-      width: 64px; height: 64px;
-      border-radius: 18px;
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    .door-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 12px;
-    }
-    .door-desc {
-      font-size: 17px;
-      line-height: 1.5;
-      color: #CBD5E1;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-    .door-stat-pill {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      padding: 12px 18px;
-      border-radius: 14px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 16px;
+    .contract-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: rgba(239, 68, 68, 0.2);
       color: #FCA5A5;
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .contract-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 68px;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .contract-sub {
+      font-size: 20px;
+      color: #94A3B8;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .year-calc {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .year-label { font-size: 16px; color: #CBD5E1; }
+    .year-val { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; color: #F87171; }
+
+    .warning-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 16px 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      color: #FCA5A5;
+      font-weight: 600;
+      display: flex;
+      gap: 12px;
+      align-items: center;
     }
 
-    .alert-banner {
-      background: linear-gradient(90deg, rgba(239, 68, 68, 0.2), rgba(245, 158, 11, 0.2));
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      border-radius: 20px;
-      padding: 24px 36px;
+    .breakdown-side {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      backdrop-filter: blur(10px);
+      flex-direction: column;
+      gap: 24px;
     }
-    .alert-lead {
+    .kicker {
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px;
+      color: #EF4444; text-transform: uppercase; letter-spacing: 2px;
+    }
+    .main-title {
+      font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900;
+      line-height: 1.15; color: #FFFFFF;
+    }
+    .pain-points {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .pain-item {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: flex;
       gap: 20px;
+      align-items: flex-start;
     }
-    .alert-icon { font-size: 36px; }
-    .alert-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #FFFFFF;
+    .pain-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(239, 68, 68, 0.15); color: #EF4444;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
     }
-    .alert-sub { font-size: 16px; color: #E2E8F0; }
-    .alert-metrics {
-      display: flex;
-      gap: 36px;
+    .pain-title {
+      font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 800;
+      color: #FFFFFF; margin-bottom: 4px;
     }
-    .metric-item { text-align: right; }
-    .metric-val {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 32px;
-      font-weight: 900;
-      color: #EF4444;
-    }
-    .metric-lbl { font-size: 13px; color: #94A3B8; font-weight: 600; text-transform: uppercase; }
+    .pain-text { font-size: 15px; color: #94A3B8; line-height: 1.4; }
 
     .subtitle-bar {
       position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
@@ -189,76 +187,63 @@
     </div>
     <div class="scene-badge">
       <span class="scene-dot"></span>
-      Scene 2: De Realiteit aan de Voordeur
+      Scene 2: De Olifant in de Kamer
     </div>
   </div>
 
   <div class="main-content">
-    <div class="title-area">
-      <div class="kicker">Huis-aan-Huis Verspreiding Analyse</div>
-      <h1 class="main-title">Waar verdwijnt de € 1.250,- eigenlijk naartoe?</h1>
-    </div>
+    <div class="contract-card">
+      <div class="contract-badge">Huidige Uitgave aan Extern Bureau (TPM)</div>
+      <div class="contract-amount">€ 400,-</div>
+      <div class="contract-sub">per maand vaste retainer</div>
 
-    <div class="doors-grid">
-      <!-- Deur 1 -->
-      <div class="door-card">
-        <div class="door-icon-circle">🚫</div>
-        <div class="door-title">Nee/Nee Stickers</div>
-        <div class="door-desc">
-          In Dordrecht en omliggende gemeenten weigert ruim 42% van de huishoudens ongeadresseerd reclamedrukwerk. Jouw flyer mag er niet eens in.
-        </div>
-        <div class="door-stat-pill">
-          <span>Weigering Drukwerk:</span>
-          <span>42% van alle deuren</span>
-        </div>
+      <div class="year-calc">
+        <span class="year-label">Jaarlijkse kostenpost:</span>
+        <span class="year-val">€ 4.800,- per jaar</span>
       </div>
 
-      <!-- Deur 2 -->
-      <div class="door-card">
-        <div class="door-icon-circle">🗑️</div>
-        <div class="door-title">Jonge Gezinnen & Starters</div>
-        <div class="door-desc">
-          Geen rugklachten of senioren in huis. De flyer ligt samen met pizzabrochures en supermarktfolders binnen 3 seconden in de papierbak.
-        </div>
-        <div class="door-stat-pill">
-          <span>Relevantie:</span>
-          <span>0% Koopintentie</span>
-        </div>
-      </div>
-
-      <!-- Deur 3 -->
-      <div class="door-card">
-        <div class="door-icon-circle">🏢</div>
-        <div class="door-title">Seniorenflats & Complexen</div>
-        <div class="door-desc">
-          Dé doelgroep woont vaak in appartementencomplexen met gesloten centrale entree. Bezorgers kunnen vaak niet naar binnen.
-        </div>
-        <div class="door-stat-pill">
-          <span>Toegankelijkheid:</span>
-          <span>Vaak onbereikbaar</span>
-        </div>
+      <div class="warning-box">
+        <span>⚠️</span>
+        <span>Vaste factuur zonder garantie op showroomafspraken of stoelverkoop</span>
       </div>
     </div>
 
-    <div class="alert-banner">
-      <div class="alert-lead">
-        <div class="alert-icon">⚠️</div>
-        <div>
-          <div class="alert-title">Slechts 1 à 2 Showroombezoekers uit 10.000 flyers</div>
-          <div class="alert-sub">>98,5% belandt direct ongelezen bij het oud papier</div>
-        </div>
+    <div class="breakdown-side">
+      <div>
+        <div class="kicker">Huidige Situatie Afzetten</div>
+        <h1 class="main-title">Wat levert die € 4.800,- per jaar je werkelijk op?</h1>
       </div>
-      <div class="alert-metrics">
-        <div class="metric-item">
-          <div class="metric-val">€ 625 - € 1.250</div>
-          <div class="metric-lbl">Kosten per showroombezoeker</div>
+
+      <div class="pain-points">
+        <div class="pain-item">
+          <div class="pain-icon">📊</div>
+          <div>
+            <div class="pain-title">Vage Rapporten over 'Vertoningen'</div>
+            <div class="pain-text">Veel grafieken over impressies en kliks, maar wie kwam er nu écht binnenlopen in Dordrecht?</div>
+          </div>
+        </div>
+
+        <div class="pain-item">
+          <div class="pain-icon">🛋️</div>
+          <div>
+            <div class="pain-title">Nul Showroom Garantie</div>
+            <div class="pain-text">Of er nu 0 of 5 stoelen verkocht worden: de factuur van € 400,- tikt elke maand genadeloos door.</div>
+          </div>
+        </div>
+
+        <div class="pain-item">
+          <div class="pain-icon">💸</div>
+          <div>
+            <div class="pain-title">Geen Grip op Jouw Eigen Cijfers</div>
+            <div class="pain-text">Geen directe inzage in welke stoelzoekers converteren en welke zoektermen renderen.</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="subtitle-bar">
-    "42% Nee-Nee stickers, jonge gezinnen gooien het weg. Eén showroombezoeker kost je € 600 tot € 1.250!"
+    "Elke maand € 400 aan TPM: € 4.800 per jaar vol vage kliks en nul garantie op echte showroomklanten."
   </div>
 </body>
 </html>

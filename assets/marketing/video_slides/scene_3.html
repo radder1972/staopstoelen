@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Scene 3 - Het Externe Bureau (TPM)</title>
+  <title>Scene 3 - Het Sorteren op de Deurmat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,10 +20,11 @@
     .ambient-glow {
       position: absolute;
       top: -200px;
-      right: 200px;
-      width: 900px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
       height: 600px;
-      background: radial-gradient(circle, rgba(234, 88, 12, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
       pointer-events: none;
     }
     .header {
@@ -46,123 +47,108 @@
     .brand-sub { font-size: 14px; color: #94A3B8; }
     .scene-badge {
       display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px;
-      border-radius: 999px; background: rgba(234, 88, 12, 0.15); border: 1px solid rgba(234, 88, 12, 0.4);
-      color: #FDBA74; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
+      border-radius: 999px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #FDE047; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
     }
-    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #EA580C; box-shadow: 0 0 10px #EA580C; }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #F59E0B; box-shadow: 0 0 10px #F59E0B; }
 
     .main-content {
       height: 840px;
-      padding: 50px 80px 40px;
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .contract-card {
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 28px;
-      padding: 44px;
-      position: relative;
-      overflow: hidden;
-    }
-    .contract-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 6px;
-      background: linear-gradient(90deg, #F97316, #EF4444);
-    }
-    .contract-badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 8px;
-      background: rgba(234, 88, 12, 0.2);
-      color: #FB923C;
-      font-weight: 800;
-      font-size: 14px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .contract-amount {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 64px;
-      font-weight: 900;
-      color: #FFFFFF;
-      margin-bottom: 8px;
-    }
-    .contract-sub {
-      font-size: 20px;
-      color: #94A3B8;
-      font-weight: 600;
-      margin-bottom: 30px;
-    }
-    .year-calc {
-      background: rgba(15, 23, 42, 0.8);
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-    .year-label { font-size: 16px; color: #CBD5E1; }
-    .year-val { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: #F87171; }
-
-    .warning-box {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 16px 20px;
-      border-radius: 14px;
-      font-size: 15px;
-      color: #FCA5A5;
-      font-weight: 600;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .breakdown-side {
+      padding: 40px 80px 30px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      justify-content: space-between;
+    }
+    .title-area {
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto 24px;
     }
     .kicker {
       font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px;
-      color: #F97316; text-transform: uppercase; letter-spacing: 2px;
+      color: #F59E0B; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;
     }
     .main-title {
-      font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900;
-      line-height: 1.15; color: #FFFFFF;
+      font-family: 'Montserrat', sans-serif; font-size: 46px; font-weight: 900; letter-spacing: -0.5px;
     }
-    .pain-points {
+
+    .doors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+    .door-card {
+      background: rgba(30, 41, 59, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 32px 28px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
     }
-    .pain-item {
-      background: rgba(30, 41, 59, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+    .door-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 6px;
+      background: #F59E0B;
+    }
+    .door-icon-circle {
+      width: 64px; height: 64px;
       border-radius: 18px;
-      padding: 20px 24px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .pain-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: rgba(239, 68, 68, 0.15); color: #EF4444;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; flex-shrink: 0;
+      font-size: 32px;
+      margin-bottom: 20px;
     }
-    .pain-title {
-      font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 800;
-      color: #FFFFFF; margin-bottom: 4px;
+    .door-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 12px;
     }
-    .pain-text { font-size: 15px; color: #94A3B8; line-height: 1.4; }
+    .door-desc {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #CBD5E1;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .door-stat-pill {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: #FDE047;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .alert-banner {
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.2), rgba(245, 158, 11, 0.2));
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 20px;
+      padding: 24px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+    }
+    .alert-lead { display: flex; align-items: center; gap: 20px; }
+    .alert-icon { font-size: 36px; }
+    .alert-title { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: #FFFFFF; }
+    .alert-sub { font-size: 16px; color: #E2E8F0; }
+    .alert-metrics { display: flex; gap: 36px; }
+    .metric-item { text-align: right; }
+    .metric-val { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #EF4444; }
+    .metric-lbl { font-size: 13px; color: #94A3B8; font-weight: 600; text-transform: uppercase; }
 
     .subtitle-bar {
       position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
@@ -186,63 +172,76 @@
     </div>
     <div class="scene-badge">
       <span class="scene-dot"></span>
-      Scene 3: Het Externe Bureau
+      Scene 3: Het Sorteren op de Deurmat
     </div>
   </div>
 
   <div class="main-content">
-    <div class="contract-card">
-      <div class="contract-badge">Vaste Bureau Retainer (TPM / DPM)</div>
-      <div class="contract-amount">€ 400,-</div>
-      <div class="contract-sub">per maand vaste kosten</div>
+    <div class="title-area">
+      <div class="kicker">Oh ja, nog even over die flyers...</div>
+      <h1 class="main-title">Wat gebeurt er met 10.000 flyers op de mat?</h1>
+    </div>
 
-      <div class="year-calc">
-        <span class="year-label">Jaarlijkse kostenpost:</span>
-        <span class="year-val">€ 4.800,- per jaar</span>
+    <div class="doors-grid">
+      <!-- Deur 1 -->
+      <div class="door-card">
+        <div class="door-icon-circle">🚫</div>
+        <div class="door-title">Nee/Nee Stickers</div>
+        <div class="door-desc">
+          In Dordrecht en omliggende gemeenten weigert ruim 42% van de huishoudens ongeadresseerd drukwerk. Jouw flyer mag er niet eens in.
+        </div>
+        <div class="door-stat-pill">
+          <span>Weigering Drukwerk:</span>
+          <span>42% van alle deuren</span>
+        </div>
       </div>
 
-      <div class="warning-box">
-        <span>⚠️</span>
-        <span>Geen directe koppeling met showroombezoek of stoelverkoop</span>
+      <!-- Deur 2 -->
+      <div class="door-card">
+        <div class="door-icon-circle">🗑️</div>
+        <div class="door-title">Jonge Gezinnen & Starters</div>
+        <div class="door-desc">
+          Geen rugklachten of senioren in huis. De flyer ligt samen met pizzabrochures binnen 3 seconden in de oud-papierbak.
+        </div>
+        <div class="door-stat-pill">
+          <span>Relevantie:</span>
+          <span>0% Koopintentie</span>
+        </div>
+      </div>
+
+      <!-- Deur 3 -->
+      <div class="door-card">
+        <div class="door-icon-circle">🏢</div>
+        <div class="door-title">Seniorenflats & Complexen</div>
+        <div class="door-desc">
+          Dé doelgroep woont vaak in appartementencomplexen met gesloten centrale entree. Bezorgers kunnen vaak niet naar binnen.
+        </div>
+        <div class="door-stat-pill">
+          <span>Toegankelijkheid:</span>
+          <span>Vaak onbereikbaar</span>
+        </div>
       </div>
     </div>
 
-    <div class="breakdown-side">
-      <div>
-        <div class="kicker">Het Verleden Eerlijk Geanalyseerd</div>
-        <h1 class="main-title">Wat leverde die € 4.800,- per jaar werkelijk op?</h1>
+    <div class="alert-banner">
+      <div class="alert-lead">
+        <div class="alert-icon">⚠️</div>
+        <div>
+          <div class="alert-title">Van de € 1.250,- verdwijnt >98,5% bij het afval</div>
+          <div class="alert-sub">Slechts 1 à 2 reacties uit 10.000 verspreide exemplaren</div>
+        </div>
       </div>
-
-      <div class="pain-points">
-        <div class="pain-item">
-          <div class="pain-icon">📊</div>
-          <div>
-            <div class="pain-title">Ondoorzichtige Rapporten & Vertoningen</div>
-            <div class="pain-text">Veel cijfers over impressies en kliks, maar wie kwam er nu echt proefzitten in Dordrecht?</div>
-          </div>
-        </div>
-
-        <div class="pain-item">
-          <div class="pain-icon">🎯</div>
-          <div>
-            <div class="pain-title">Geen Focus op Actieve Koopzoekers</div>
-            <div class="pain-text">Campagnes stonden breed ingesteld, zonder directe optimalisatie op senioren en mantelzorgers.</div>
-          </div>
-        </div>
-
-        <div class="pain-item">
-          <div class="pain-icon">🛋️</div>
-          <div>
-            <div class="pain-title">Nul Showroom Garantie</div>
-            <div class="pain-text">Of er nu 0 stoelen of 10 stoelen werden verkocht: de factuur van € 400,- bleef elke maand doorlopen.</div>
-          </div>
+      <div class="alert-metrics">
+        <div class="metric-item">
+          <div class="metric-val">€ 600 - € 1.250</div>
+          <div class="metric-lbl">Kosten per showroombezoeker</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="subtitle-bar">
-    "Voorheen € 400 per maand aan een extern bureau: vage kliks en nul garantie op echte showroomklanten."
+    "42% Nee-Nee, oud papier en gesloten flats. Van de € 1.250,- verdwijnt 98% bij het afval."
   </div>
 </body>
 </html>

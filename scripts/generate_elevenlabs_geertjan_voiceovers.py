@@ -2,6 +2,7 @@
 """
 Genereert de voice-overs voor de Geertjan Keuze Video via ElevenLabs API
 Stem: Alexander - Warm, Natural Dutch Narrator (g5MYumTmZlFU9tYSmTp9)
+Verhaal: Start bij TPM afzetten -> Flyers sorteren op deurmat -> Budget beter benutten -> Sluitende businesscase -> Advies
 """
 
 import os
@@ -33,48 +34,48 @@ os.makedirs("assets/video", exist_ok=True)
 SCENES = [
     {
         "id": 1,
-        "name": "De Deurmat Realiteit",
-        "text": "Beste Geertjan. Stel je voor: tienduizend flyers vallen door de brievenbus op de deurmatten in Dordrecht en omstreken. Het ziet er schitterend uit, maar wat gebeurt er daarna écht met je investering van twaalfhonderdvijftig euro?",
+        "name": "De Flyer op de Mat & De Echte Vraag",
+        "text": "Beste Geertjan. Daar ligt hij: onze prachtige nieuwe flyer op de deurmat. Je denkt misschien: moeten we nu tienduizend flyers laten verspreiden in Dordrecht? Maar voordat we twaalfhonderdvijftig euro uitgeven aan drukwerk en bezorging, moeten we eerst eens eerlijk kijken naar waar jouw marketingbudget op dít moment naartoe gaat.",
         "image": "assets/marketing/video_slides/scene_1.png",
         "audio": "assets/marketing/video_audio/scene_1.mp3",
         "zoom_rate": 0.0004
     },
     {
         "id": 2,
-        "name": "De Realiteit aan de Voordeur (Drie Deuren)",
-        "text": "Kijk naar de realiteit aan de voordeur. Tweeënveertig procent van de huizen in Dordrecht heeft een Nee-Nee sticker. Jonge gezinnen gooien de flyer direct bij het oud papier, en bij seniorencomplexen komt de bezorger de centrale hal vaak niet eens in. Van die tienduizend stuks levert het hooguit één of twee showroombezoekers op. Dat betekent zeshonderd tot twaalfhonderdvijftig euro per bezoeker!",
+        "name": "De Olifant in de Kamer: TPM",
+        "text": "Want elke maand betaal je trouw vierhonderd euro aan een extern bureau zoals TPM. Dat is achtenveertig honderd euro per jaar aan vaste marketingkosten. Maar wat levert het jou als ondernemer nou werkelijk op? Rapporten vol marketingjargon, vage kliks, en nul garantie op echte mensen die plaatsnemen in een stoel in jouw showroom in Dordrecht.",
         "image": "assets/marketing/video_slides/scene_2.png",
         "audio": "assets/marketing/video_audio/scene_2.mp3",
-        "zoom_rate": 0.0002
-    },
-    {
-        "id": 3,
-        "name": "Het Externe Bureau (TPM)",
-        "text": "Voorheen betaalde je vierhonderd euro per maand aan een extern bureau zoals TPM. Dat is achtenveertig honderd euro per jaar. Maar wat kreeg je ervoor terug? Vage rapportages over vertoningen, algemene kliks, en nul garantie op echte mensen die plaatsnemen in een stoel in jouw showroom.",
-        "image": "assets/marketing/video_slides/scene_3.png",
-        "audio": "assets/marketing/video_audio/scene_3.mp3",
         "zoom_rate": 0.0003
     },
     {
+        "id": 3,
+        "name": "Het Sorteren op de Deurmat",
+        "text": "En hoe zit het dan met die tienduizend flyers op de deurmat? Laten we de brievenbussen in Dordrecht eens eerlijk sorteren. Tweeënveertig procent heeft een Nee-Nee sticker. Jonge gezinnen gooien hem meteen bij het oud papier, en bij seniorencomplexen komt de bezorger de centrale hal vaak niet eens in. Van die twaalfhonderdvijftig euro aan Spotta verdwijnt achtennegentig procent bij het afval. Eén enkele showroombezoeker kost je dan zeshonderd tot twaalfhonderd euro!",
+        "image": "assets/marketing/video_slides/scene_3.png",
+        "audio": "assets/marketing/video_audio/scene_3.mp3",
+        "zoom_rate": 0.0002
+    },
+    {
         "id": 4,
-        "name": "Matthias Online Marketing",
-        "text": "Kijk nu eens naar online marketing door Matthias. In slechts enkele testdagen hebben we al honderdachtenvijftig directe sessies en drieëndertig actieve zoekers via Google binnengehaald. Geen willekeurige deuren, maar mensen die nú op zoek zijn naar een sta-opstoel in de regio Dordrecht!",
+        "name": "Hoe Benutten We Dat Budget Beter?",
+        "text": "Hoe kunnen we die vierhonderd euro per maand die je nu aan TPM uitgeeft, wél maximaal laten renderen? Door datzelfde budget te investeren in gerichte online marketing via Matthias. Geen willekeurige deuren, maar mensen die nú googelen naar een sta-opstoel in Dordrecht. In de eerste testdagen hebben we al honderdachtenvijftig sessies en drieëndertig actieve zoekers binnengehaald. Voor veertig tot vijfenzeventig euro heb je een gekwalificeerde showroomafspraak.",
         "image": "assets/marketing/video_slides/scene_4.png",
         "audio": "assets/marketing/video_audio/scene_4.mp3",
         "zoom_rate": 0.0003
     },
     {
         "id": 5,
-        "name": "De Keiharde Vergelijking Matrix",
-        "text": "Zet de cijfers naast elkaar. Flyers kosten zeshonderd tot twaalfhonderdvijftig euro per bezoeker. Online marketing via Matthias kost slechts veertig tot vijfenzeventig euro per afspraak. Verkoop je één sta-opstoel, dan is het complete maandbudget al dubbel en dwars terugverdiend!",
+        "name": "De Sluitende Businesscase",
+        "text": "Laten we de businesscase keihard maken. Bij TPM ben je je vierhonderd euro kwijt zonder garantie. Met gerichte online marketing haal je maandelijks zes tot twaalf gerichte afspraken binnen. Verkoop je uit die afspraken slechts één sta-opstoel met een marge van twaalfhonderd euro? Dan is je complete marketingbudget voor bijna drie maanden al terugverdiend. Elke extra verkoop is pure winst.",
         "image": "assets/marketing/video_slides/scene_5.png",
         "audio": "assets/marketing/video_audio/scene_5.mp3",
         "zoom_rate": 0.0002
     },
     {
         "id": 6,
-        "name": "Het Definitieve Strategische Advies",
-        "text": "Ons advies aan Geertjan: gooi de flyer zeker niet weg, maar zet hem slim in! Online marketing is de motor die de mensen naar de showroom brengt. En de fysieke flyer geef je mee als dealcloser met de negenenzeventig euro All-in House voucher voor twijfelende klanten. Dát is de slimste investering voor Staopstoelen punt nl!",
+        "name": "Het Definitieve Strategische Besluit",
+        "text": "Het definitieve besluit voor Geertjan: zeg TPM op en verschuif dat maandbudget naar gerichte online marketing door Matthias. Dát is de motor die klanten binnenbrengt. En die prachtige flyer? Druk vijfhonderd stuks voor vijfendertig euro en geef hem in de showroom mee met de negenenzeventig euro voucher om twijfelaars definitief over de streep te trekken. Dát is hoe we van marketing een winstmachine maken voor Staopstoelen punt nl.",
         "image": "assets/marketing/video_slides/scene_6.png",
         "audio": "assets/marketing/video_audio/scene_6.mp3",
         "zoom_rate": 0.0003,
@@ -114,7 +115,6 @@ def get_audio_duration(file_path: str) -> float:
     res = subprocess.run(cmd, stderr=subprocess.PIPE, text=True)
     for line in res.stderr.splitlines():
         if "Duration:" in line:
-            # Duration: 00:00:12.15, start: ...
             parts = line.split("Duration:")[1].split(",")[0].strip().split(":")
             dur = float(parts[0]) * 3600 + float(parts[1]) * 60 + float(parts[2])
             return dur
@@ -169,7 +169,6 @@ def main():
             f.write(mp3_bytes)
             
         dur = get_audio_duration(audio_file)
-        # Give 0.45s delay in front + 0.8s breath/outro buffer
         scene_dur = dur + 1.3
         scene_durations.append(scene_dur)
         print(f"  ✓ Audio opgeslagen: {len(mp3_bytes)//1024} KB (Duur: {dur:.2f}s -> Scene: {scene_dur:.2f}s)")

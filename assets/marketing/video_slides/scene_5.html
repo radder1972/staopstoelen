@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Scene 5 - De Grote Vergelijking</title>
+  <title>Scene 5 - De Sluitende Businesscase</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
       transform: translateX(-50%);
       width: 1200px;
       height: 600px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
       pointer-events: none;
     }
     .header {
@@ -47,10 +47,10 @@
     .brand-sub { font-size: 14px; color: #94A3B8; }
     .scene-badge {
       display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px;
-      border-radius: 999px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4);
-      color: #93C5FD; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
+      border-radius: 999px; background: rgba(74, 222, 128, 0.15); border: 1px solid rgba(74, 222, 128, 0.4);
+      color: #86EFAC; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
     }
-    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #3B82F6; box-shadow: 0 0 10px #3B82F6; }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #4ADE80; box-shadow: 0 0 10px #4ADE80; }
 
     .main-content {
       height: 840px;
@@ -61,86 +61,104 @@
     }
     .title-area {
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .kicker {
       font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
-      color: #38BDF8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
+      color: #4ADE80; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
     }
     .main-title {
       font-family: 'Montserrat', sans-serif; font-size: 44px; font-weight: 900; letter-spacing: -0.5px;
     }
 
-    .matrix-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      border-radius: 20px;
-      overflow: hidden;
-      background: rgba(30, 41, 59, 0.5);
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.15fr;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .calc-card {
+      background: rgba(30, 41, 59, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .matrix-table th {
-      padding: 18px 24px;
+    .calc-card.hero {
+      border: 1.5px solid #4ADE80;
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(75, 143, 36, 0.15));
+      box-shadow: 0 10px 30px rgba(74, 222, 128, 0.2);
+    }
+    .c-badge {
       font-family: 'Montserrat', sans-serif;
-      font-size: 17px;
+      font-size: 12px;
       font-weight: 800;
-      text-align: left;
-      background: rgba(15, 23, 42, 0.9);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+      width: fit-content;
     }
-    .matrix-table th.col-matthias {
-      background: rgba(75, 143, 36, 0.35);
-      color: #86EFAC;
-      border-top: 3px solid #4ADE80;
-    }
-    .matrix-table td {
-      padding: 16px 24px;
-      font-size: 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      color: #E2E8F0;
-    }
-    .matrix-table tr:last-child td {
-      border-bottom: none;
-    }
-    .matrix-table td.col-matthias {
-      background: rgba(75, 143, 36, 0.12);
-      font-weight: 700;
-      color: #FFFFFF;
-    }
-    .cell-highlight {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 18px;
-    }
-    .val-bad { color: #F87171; }
-    .val-warn { color: #FBBF24; }
-    .val-good { color: #4ADE80; }
+    .c-badge.bad { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; }
+    .c-badge.warn { background: rgba(245, 158, 11, 0.2); color: #FDE047; }
+    .c-badge.good { background: rgba(74, 222, 128, 0.2); color: #86EFAC; }
 
-    .bottom-box {
-      background: linear-gradient(90deg, rgba(74, 222, 128, 0.15), rgba(56, 189, 248, 0.15));
-      border: 1px solid rgba(74, 222, 128, 0.4);
-      border-radius: 18px;
-      padding: 20px 32px;
+    .c-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .c-cost {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+    .c-desc {
+      font-size: 15px;
+      color: #CBD5E1;
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+    .c-result {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 12px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .roi-highlight-banner {
+      background: linear-gradient(90deg, #15803D, #047857);
+      border-radius: 20px;
+      padding: 24px 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(21, 128, 61, 0.3);
     }
-    .bottom-lead {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    .roi-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 4px;
     }
-    .bottom-icon { font-size: 32px; }
-    .bottom-text { font-size: 18px; font-weight: 700; color: #FFFFFF; }
-    .bottom-tag {
-      background: #4ADE80;
-      color: #0F172A;
+    .roi-sub { font-size: 16px; color: #DCFCE7; }
+    .roi-badge {
+      background: #FFFFFF;
+      color: #166534;
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 16px;
-      padding: 10px 20px;
-      border-radius: 12px;
+      font-size: 18px;
+      padding: 12px 24px;
+      border-radius: 14px;
       letter-spacing: 0.5px;
     }
 
@@ -166,72 +184,68 @@
     </div>
     <div class="scene-badge">
       <span class="scene-dot"></span>
-      Scene 5: De Keiharde Vergelijking
+      Scene 5: De Sluitende Businesscase
     </div>
   </div>
 
   <div class="main-content">
     <div class="title-area">
-      <div class="kicker">Voor- & Nadelen Matrix</div>
-      <h1 class="main-title">De 3 Opties Eerlijk Naast Elkaar Gezet</h1>
+      <div class="kicker">De Cijfers Vol en Hard Maken</div>
+      <h1 class="main-title">De Rendementsvergelijking voor Geertjan</h1>
     </div>
 
-    <table class="matrix-table">
-      <thead>
-        <tr>
-          <th>Strategische Factor</th>
-          <th>📬 Huis-aan-Huis Flyer (10.000)</th>
-          <th>🏢 Extern Bureau (TPM)</th>
-          <th class="col-matthias">🚀 Matthias Online Marketing</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Investering</strong></td>
-          <td class="cell-highlight val-bad">€ 1.250,- per run</td>
-          <td class="cell-highlight val-warn">€ 400,- per mnd (€ 4.800/jr)</td>
-          <td class="col-matthias cell-highlight val-good">€ 450 - € 500,- flexibel budget</td>
-        </tr>
-        <tr>
-          <td><strong>Doelgroep-gerichtheid</strong></td>
-          <td class="val-bad">0% (Willekeurige deuren)</td>
-          <td class="val-warn">Laag (Brede targeting)</td>
-          <td class="col-matthias val-good">100% (Actief zoekend in Dordrecht)</td>
-        </tr>
-        <tr>
-          <td><strong>Afval & Verspilling</strong></td>
-          <td class="val-bad">> 98,5% bij oud papier</td>
-          <td class="val-warn">Onbekend (Geen inzicht)</td>
-          <td class="col-matthias val-good">0% (Je betaalt alleen per klik!)</td>
-        </tr>
-        <tr>
-          <td><strong>Kosten per Showroom Lead</strong></td>
-          <td class="cell-highlight val-bad">€ 625 - € 1.250,-</td>
-          <td class="cell-highlight val-warn">€ 300 - € 600,- (geschat)</td>
-          <td class="col-matthias cell-highlight val-good">€ 40 - € 75,- per afspraak!</td>
-        </tr>
-        <tr>
-          <td><strong>Terugverdientijd</strong></td>
-          <td class="val-bad">Zeer riskant</td>
-          <td class="val-warn">Ondoorzichtig</td>
-          <td class="col-matthias val-good">1 verkochte stoel dekt de hele maand!</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="bottom-box">
-      <div class="bottom-lead">
-        <div class="bottom-icon">💡</div>
-        <div class="bottom-text">
-          Bij slechts 1 verkochte Fitform of demomodel (€ 750 - € 2.500) is je complete maandcampagne direct winstgevend!
+    <div class="calc-grid">
+      <!-- 1. Huidig TPM -->
+      <div class="calc-card">
+        <div>
+          <span class="c-badge bad">Huidig TPM</span>
+          <div class="c-title">Extern Bureau Retainer</div>
+          <div class="c-cost" style="color: #F87171;">€ 400,- /mnd</div>
+          <div class="c-desc">Vaste factuur van € 4.800/jaar zonder directe garantie op showroomafspraken of stoelverkoop.</div>
+        </div>
+        <div class="c-result" style="color: #FCA5A5;">
+          Uitkomst: Hoge kostenpost, 0 zekerheid
         </div>
       </div>
-      <div class="bottom-tag">HOOGSTE ROI</div>
+
+      <!-- 2. Huis-aan-Huis Flyer -->
+      <div class="calc-card">
+        <div>
+          <span class="c-badge warn">Spotta Flyers</span>
+          <div class="c-title">10.000 Huis-aan-Huis</div>
+          <div class="c-cost" style="color: #FBBF24;">€ 1.250,- eenmalig</div>
+          <div class="c-desc">Drukwerk + verspreiding. 42% Nee/Nee stickers en oud papier. Hooguit 1 à 2 reacties.</div>
+        </div>
+        <div class="c-result" style="color: #FDE047;">
+          Uitkomst: € 625 - € 1.250 per bezoeker
+        </div>
+      </div>
+
+      <!-- 3. Matthias Online -->
+      <div class="calc-card hero">
+        <div>
+          <span class="c-badge good">Matthias Online</span>
+          <div class="c-title">Google Ads + Marktplaats Pro</div>
+          <div class="c-cost" style="color: #4ADE80;">€ 400 - € 450,- /mnd</div>
+          <div class="c-desc">100% gericht op actieve koopzoekers in Dordrecht. Genereert maandelijks 6 tot 12 gerichte leads en afspraken.</div>
+        </div>
+        <div class="c-result" style="color: #86EFAC; border-color: rgba(74, 222, 128, 0.4);">
+          Uitkomst: € 40 - € 75 per afspraak!
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-highlight-banner">
+      <div>
+        <div class="roi-title">1 Verkochte Stoel (€ 750 - € 2.500) = Bijna 3 Maanden Marketing Terugverdiend!</div>
+        <div class="roi-sub">Verkoop je via Google of Marktplaats slechts 1 stoel per maand, dan draait je marketing al met dikke winst.</div>
+      </div>
+      <div class="roi-badge">100% WINSTGEVEND</div>
     </div>
   </div>
 
   <div class="subtitle-bar">
-    "Flyers kosten € 600 tot € 1.250 per bezoeker. Online via Matthias kost slechts € 40 tot € 75 per afspraak!"
+    "1 verkochte stoel dekt bijna 3 maanden marketing! 6 tot 12 afspraken per maand maken de businesscase keihard."
   </div>
 </body>
 </html>
