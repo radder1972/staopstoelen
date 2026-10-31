@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.255">
+  <link rel="stylesheet" href="style.css?v=10.256">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1533,7 +1533,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.255</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.256</span></div>
     </div>
   </div>
 
@@ -1543,7 +1543,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.255</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.256</span>
       </div>
 
       <div class="admin-header-right">
@@ -3683,12 +3683,15 @@
                     </div>
 
                     <select id="mpBadgeStyleSelect" class="form-control" style="font-size: 0.82rem; padding: 7px 10px; height: auto; border: 1.5px solid #4b8f24; border-radius: 6px; background: #ffffff; color: #122b07; font-weight: 700;">
+                      <option value="klik_website">🔵 Funnel: Klik op 'Bekijk website' • 15+ Foto's &amp; Maatwijzer</option>
+                      <option value="verrijdbaar">🛒 Verrijdbaar met Rempedaal • Makkelijk Verplaatsbaar</option>
+                      <option value="maatwijzer">📐 1-Minuut Maatwijzer • Perfect op Maat Afgesteld</option>
+                      <option value="leder">✨ 100% Echt Leder • In Topstaat</option>
+                      <option value="accu">⚡ Snoerloos met Accu • Vrij in de Kamer</option>
                       <option value="garantie_maatwerk">⭐ 1 Jaar Garantie aan Huis • Op Maat Afgesteld</option>
-                      <option value="klik_website">🔵 Tip: Klik op 'Bekijk website' • 15+ Foto's &amp; Maatwijzer</option>
                       <option value="certified_reco">🛡️ Certified Fitform • 15-Punts Gekeurd</option>
                       <option value="website_voorraad">🌐 Bekijk 30+ Occasions • www.staopstoelen.nl</option>
                       <option value="topstaat_bezorging">🚚 Topstaat Occasion • Gratis Thuisbezorgd</option>
-                      <option value="bewegingstechnoloog">📐 Bewegingstechnoloog • Gratis Maatwerk</option>
                       <option value="geen">⚪ Geen Badge (Originele Foto)</option>
                     </select>
 
@@ -3986,7 +3989,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.255</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.256</span>
     </div>
   </footer>
 
@@ -8027,6 +8030,30 @@ ${bottomShowroomBlock}`;
 
       if (photoCount) photoCount.textContent = `${photos.length} foto${photos.length === 1 ? '' : "'s"}`;
 
+      // 6. Slimme Hero Badge selecteren per stoel op basis van eigenschappen
+      const badgeSelect = document.getElementById("mpBadgeStyleSelect");
+      if (badgeSelect) {
+        const chairStr = JSON.stringify(chair).toLowerCase();
+        const isWiel = chairStr.includes("wiel") || chairStr.includes("verrijdbaar") || (chair.features && chair.features.some(f => f.toLowerCase().includes("wiel") || f.toLowerCase().includes("verrijdbaar")));
+        const isLeer = (chair.material && chair.material.toLowerCase().includes("leer")) || chairStr.includes("leder");
+        const isAccu = chairStr.includes("accu");
+        const isMaat = chairStr.includes("maat") || (chair.name && /s\/m\/l/i.test(chair.name));
+
+        if (isWiel) {
+          badgeSelect.value = "verrijdbaar";
+        } else if (isLeer) {
+          badgeSelect.value = "leder";
+        } else if (isAccu) {
+          badgeSelect.value = "accu";
+        } else if (isMaat) {
+          badgeSelect.value = "maatwijzer";
+        } else if (chair.brand === "Fitform") {
+          badgeSelect.value = "certified_reco";
+        } else {
+          badgeSelect.value = "klik_website";
+        }
+      }
+
       // Live Foto 1 Canvas Preview tekenen
       setTimeout(updateMpPhoto1Preview, 50);
 
@@ -8183,11 +8210,13 @@ ${bottomShowroomBlock}`;
     }
 
     // Helper: Badge Overlay op canvas tekenen (Volledig in Staopstoelen.nl Huisstijl)
+    // 1. Onderbalk: Geen oranje meer! Strak Deep Forest (#122b07) met goud & wit over de volle breedte.
+    // 2. Linksboven: De opvallende Terracotta Oranje (#f39223) badge met specifieke USP en vector icoon.
     function renderBadgeOverlay(ctx, w, h, badgeStyle) {
       if (badgeStyle === "geen") return;
 
-      // Bottom banner dimensions (~13.5% van de hoogte, minstens 125px)
-      const bannerH = Math.max(125, Math.round(h * 0.135));
+      // Bottom banner dimensions (~12.5% van de hoogte, minstens 120px)
+      const bannerH = Math.max(120, Math.round(h * 0.125));
       const bannerY = h - bannerH;
 
       // Subtiele schaduw achter de onderbalk
@@ -8213,78 +8242,68 @@ ${bottomShowroomBlock}`;
       ctx.fillStyle = lineGrad;
       ctx.fillRect(0, bannerY, w, lineH);
 
-      // Teksten & pill configureren per stijl
-      let mainText = "⭐ 1 JAAR GARANTIE AAN HUIS  •  OP MAAT AFGESTELD";
-      let subText = "15-PUNTS REVISIE  •  BEWEGINGSTECHNOLOOG DORDRECHT  •  STAOPSTOELEN.NL";
-      let pillText = "CERTIFIED FITFORM";
+      // Teksten & USP's configureren per stijl
+      let badgeTitle = "1 JAAR GARANTIE AAN HUIS";
+      let badgeSub = "GRATIS OP MAAT AFGESTELD • 15-PUNTS REVISIE";
+      let iconType = "shield";
+      let mainText = "KLIK OP 'BEKIJK WEBSITE' VOOR 15+ FOTO'S & MAATWIJZER";
+      let subText = "1 JAAR GARANTIE AAN HUIS  •  BEWEGINGSTECHNOLOOG DORDRECHT";
 
-      if (badgeStyle === "klik_website") {
-        mainText = "🔵 KLIK OP 'BEKIJK WEBSITE' VOOR 15+ FOTO'S & MAAT";
-        subText = "1 JAAR GARANTIE  •  GRATIS OP MAAT  •  SHOWROOM DORDRECHT";
-        pillText = "STAOPSTOELEN.NL";
+      if (badgeStyle === "verrijdbaar") {
+        badgeTitle = "VERRIJDBAAR MET REMPEDAAL";
+        badgeSub = "MAKKELIJK VERPLAATSBAAR • 1 JAAR GARANTIE";
+        iconType = "wheel";
+        mainText = "KLIK OP 'BEKIJK WEBSITE' VOOR 15+ FOTO'S & MAATWIJZER";
+        subText = "VERRIJDBAAR MET REMPEDAAL  •  1 JAAR GARANTIE  •  SHOWROOM DORDRECHT";
+      } else if (badgeStyle === "maatwijzer") {
+        badgeTitle = "1-MINUUT MAATWIJZER";
+        badgeSub = "OP UW MAAT AFGESTELD • PERFECTE PASVORM";
+        iconType = "ruler";
+        mainText = "KLIK OP 'BEKIJK WEBSITE' VOOR DE 1-MINUUT MAATWIJZER";
+        subText = "GRATIS OP UW MAAT AFGESTELD  •  1 JAAR GARANTIE AAN HUIS";
+      } else if (badgeStyle === "leder") {
+        badgeTitle = "100% ECHT LEDER • TOPKWALITEIT";
+        badgeSub = "LUXE BEKLEDING • 15-PUNTS GEKEURDE OCCASION";
+        iconType = "star";
+        mainText = "KLIK OP 'BEKIJK WEBSITE' VOOR 15+ FOTO'S & DETAILS";
+        subText = "100% ECHT LEDER  •  1 JAAR GARANTIE  •  SHOWROOM DORDRECHT";
+      } else if (badgeStyle === "accu") {
+        badgeTitle = "SNOERLOOS MET ACCU";
+        badgeSub = "VRIJSTAAND IN DE RUIMTE • GEEN KABELS";
+        iconType = "bolt";
+        mainText = "KLIK OP 'BEKIJK WEBSITE' VOOR 15+ FOTO'S & DETAILS";
+        subText = "SNOERLOOS MET ACCU  •  1 JAAR GARANTIE AAN HUIS  •  DORDRECHT";
+      } else if (badgeStyle === "klik_website") {
+        badgeTitle = "KLIK OP 'BEKIJK WEBSITE'";
+        badgeSub = "VOOR 15+ FOTO'S • MAATWIJZER • VIDEO'S";
+        iconType = "cursor";
+        mainText = "KLIK OP 'BEKIJK WEBSITE' VOOR 15+ FOTO'S & MAATWIJZER";
+        subText = "1 JAAR GARANTIE AAN HUIS  •  OP UW MAAT AFGESTELD  •  DORDRECHT";
       } else if (badgeStyle === "certified_reco") {
-        mainText = "🛡️ CERTIFIED FITFORM  •  15-PUNTS GEKEURD";
-        subText = "1 JAAR GARANTIE AAN HUIS  •  AFGESTELD DOOR SPECIALIST  •  DORDRECHT";
-        pillText = "15-PUNTS REVISIE";
+        badgeTitle = "CERTIFIED FITFORM OCCASION";
+        badgeSub = "15-PUNTS REVISIE • 1 JAAR GARANTIE AAN HUIS";
+        iconType = "check";
+        mainText = "KLIK OP 'BEKIJK WEBSITE' VOOR 15+ FOTO'S & MAATWIJZER";
+        subText = "15-PUNTS REVISIE  •  GRATIS OP MAAT AFGESTELD  •  DORDRECHT";
       } else if (badgeStyle === "website_voorraad") {
-        mainText = "🌐 BEKIJK 30+ OCCASIONS OP WWW.STAOPSTOELEN.NL";
+        badgeTitle = "30+ OCCASIONS OP VOORRAAD";
+        badgeSub = "BEKIJK VOLLEDIGE COLLECTIE OP WEBSITE";
+        iconType = "cursor";
+        mainText = "BEKIJK 30+ OCCASIONS OP WWW.STAOPSTOELEN.NL";
         subText = "1 JAAR GARANTIE AAN HUIS  •  GRATIS OP MAAT  •  SHOWROOM DORDRECHT";
-        pillText = "STAOPSTOELEN.NL";
       } else if (badgeStyle === "topstaat_bezorging") {
-        mainText = "🚚 TOPSTAAT OCCASION  •  GRATIS THUISBEZORGD";
+        badgeTitle = "TOPSTAAT OCCASION";
+        badgeSub = "GRATIS THUISBEZORGD & GEPLAATST";
+        iconType = "shield";
+        mainText = "TOPSTAAT OCCASION • GRATIS THUISBEZORGD";
         subText = "1 JAAR GARANTIE AAN HUIS  •  15-PUNTS GEKEURD  •  STAOPSTOELEN.NL";
-        pillText = "GRATIS GEPLAATST";
-      } else if (badgeStyle === "bewegingstechnoloog") {
-        mainText = "📐 BEWEGINGSTECHNOLOOG  •  GRATIS OP MAAT";
-        subText = "1 JAAR GARANTIE AAN HUIS  •  15-PUNTS REVISIE  •  SHOWROOM DORDRECHT";
-        pillText = "STAOPSTOELEN.NL";
       }
 
-      const paddingX = Math.round(w * 0.035);
+      const paddingX = Math.round(w * 0.04);
+      const maxTextW = w - (2 * paddingX);
 
-      // 1. Pil-Badge aan de rechterzijde (Terracotta #f39223, Staopstoelen.nl Huisstijl)
-      const pillFontSize = Math.round(bannerH * 0.20);
-      ctx.font = `900 ${pillFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
-      const pillTextWidth = ctx.measureText(pillText).width;
-      const pillW = pillTextWidth + Math.round(bannerH * 0.44);
-      const pillH = Math.round(bannerH * 0.44);
-      const pillX = w - paddingX - pillW;
-      const pillY = bannerY + Math.round((bannerH - pillH) / 2);
-
-      ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
-      ctx.shadowBlur = 10;
-      ctx.shadowOffsetY = 2;
-
-      // Terracotta pil achtergrond
-      ctx.fillStyle = "#f39223";
-      ctx.beginPath();
-      const r = pillH / 2;
-      ctx.moveTo(pillX + r, pillY);
-      ctx.arcTo(pillX + pillW, pillY, pillX + pillW, pillY + pillH, r);
-      ctx.arcTo(pillX + pillW, pillY + pillH, pillX, pillY + pillH, r);
-      ctx.arcTo(pillX, pillY + pillH, pillX, pillY, r);
-      ctx.arcTo(pillX, pillY, pillX + pillW, pillY, r);
-      ctx.closePath();
-      ctx.fill();
-
-      // Subtiele binnenrand
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      // Witte tekst in pil
-      ctx.fillStyle = "#ffffff";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(pillText, pillX + pillW / 2, pillY + pillH / 2 + 1);
-      ctx.restore();
-
-      // Beschikbare breedte voor tekst links van de pil (zodat het NOOIT overlapt!)
-      const maxTextW = pillX - paddingX - Math.round(w * 0.02);
-
-      // 2. Hoofdtekst (Wit, Montserrat Bold met dynamische schaling)
-      let mainFontSize = Math.round(bannerH * 0.31);
+      // 1. Hoofdtekst in onderbalk (Wit, Montserrat ExtraBold met dynamische schaling)
+      let mainFontSize = Math.round(bannerH * 0.28);
       ctx.font = `800 ${mainFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
       while (ctx.measureText(mainText).width > maxTextW && mainFontSize > 16) {
         mainFontSize -= 1;
@@ -8293,9 +8312,9 @@ ${bottomShowroomBlock}`;
       ctx.fillStyle = "#ffffff";
       ctx.textBaseline = "middle";
       ctx.textAlign = "left";
-      ctx.fillText(mainText, paddingX, bannerY + bannerH * 0.40);
+      ctx.fillText(mainText, paddingX, bannerY + bannerH * 0.38);
 
-      // 3. Subtekst (Goudgeel #fed857, Montserrat)
+      // 2. Subtekst in onderbalk (Goudgeel #fed857, Montserrat Bold)
       let subFontSize = Math.round(bannerH * 0.19);
       ctx.font = `700 ${subFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
       while (ctx.measureText(subText).width > maxTextW && subFontSize > 13) {
@@ -8303,104 +8322,160 @@ ${bottomShowroomBlock}`;
         ctx.font = `700 ${subFontSize}px 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
       }
       ctx.fillStyle = "#fed857";
-      ctx.fillText(subText, paddingX, bannerY + bannerH * 0.74);
+      ctx.fillText(subText, paddingX, bannerY + bannerH * 0.72);
 
-      // 4. Linksboven: Certified Fitform & Staopstoelen.nl Huisstijl Zegel-Pill
-      const sealH = Math.max(50, Math.round(bannerH * 0.42));
-      const sealPadX = Math.round(w * 0.035);
-      const sealPadY = Math.round(h * 0.035);
+      // 3. Linksboven: De opvallende Terracotta Oranje (#f39223) Badge!
+      const bx = Math.round(w * 0.035);
+      const by = Math.round(h * 0.035);
+      const badgeH = Math.max(56, Math.round(bannerH * 0.50));
 
-      const titleFont = `800 ${Math.round(sealH * 0.38)}px 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif`;
-      const subSealFont = `700 ${Math.round(sealH * 0.27)}px 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif`;
-
-      const line1 = "CERTIFIED FITFORM • STAOPSTOELEN.NL";
-      const line2 = "15-PUNTS REVISIE • 1 JAAR GARANTIE AAN HUIS";
+      const titleFont = `800 ${Math.round(badgeH * 0.38)}px 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif`;
+      const subBadgeFont = `700 ${Math.round(badgeH * 0.25)}px 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif`;
 
       ctx.font = titleFont;
-      const w1 = ctx.measureText(line1).width;
-      ctx.font = subSealFont;
-      const w2 = ctx.measureText(line2).width;
+      const w1 = ctx.measureText(badgeTitle).width;
+      ctx.font = subBadgeFont;
+      const w2 = ctx.measureText(badgeSub).width;
       const textBlockW = Math.max(w1, w2);
 
-      const emblemR = Math.round(sealH * 0.36);
-      const sealW = Math.round(emblemR * 2 + textBlockW + sealH * 0.65);
-      const sr = Math.round(sealH / 2);
+      const emblemR = Math.round(badgeH * 0.33);
+      const badgeW = Math.round(emblemR * 2 + textBlockW + badgeH * 0.75);
+      const br = Math.round(badgeH / 2);
 
       ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.40)";
       ctx.shadowBlur = 14;
-      ctx.shadowOffsetY = 3;
+      ctx.shadowOffsetY = 4;
 
-      // Witte pill achtergrond
-      ctx.fillStyle = "#ffffff";
+      // Terracotta Oranje achtergrond (#f39223)
+      ctx.fillStyle = "#f39223";
       ctx.beginPath();
-      ctx.arc(sealPadX + sr, sealPadY + sr, sr, Math.PI * 0.5, Math.PI * 1.5);
-      ctx.lineTo(sealPadX + sealW - sr, sealPadY);
-      ctx.arc(sealPadX + sealW - sr, sealPadY + sr, sr, Math.PI * 1.5, Math.PI * 0.5);
-      ctx.lineTo(sealPadX + sr, sealPadY + sealH);
+      ctx.arc(bx + br, by + br, br, Math.PI * 0.5, Math.PI * 1.5);
+      ctx.lineTo(bx + badgeW - br, by);
+      ctx.arc(bx + badgeW - br, by + br, br, Math.PI * 1.5, Math.PI * 0.5);
+      ctx.lineTo(bx + br, by + badgeH);
       ctx.closePath();
       ctx.fill();
       ctx.restore();
 
-      // Forest Green rand
+      // Witte rand rond de badge
       ctx.save();
-      ctx.strokeStyle = "#4b8f24";
-      ctx.lineWidth = Math.max(2, Math.round(sealH * 0.04));
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.95)";
+      ctx.lineWidth = Math.max(2, Math.round(badgeH * 0.04));
       ctx.beginPath();
-      ctx.arc(sealPadX + sr, sealPadY + sr, sr, Math.PI * 0.5, Math.PI * 1.5);
-      ctx.lineTo(sealPadX + sealW - sr, sealPadY);
-      ctx.arc(sealPadX + sealW - sr, sealPadY + sr, sr, Math.PI * 1.5, Math.PI * 0.5);
-      ctx.lineTo(sealPadX + sr, sealPadY + sealH);
+      ctx.arc(bx + br, by + br, br, Math.PI * 0.5, Math.PI * 1.5);
+      ctx.lineTo(bx + badgeW - br, by);
+      ctx.arc(bx + badgeW - br, by + br, br, Math.PI * 1.5, Math.PI * 0.5);
+      ctx.lineTo(bx + br, by + badgeH);
       ctx.closePath();
       ctx.stroke();
       ctx.restore();
 
-      // Emblem links in de pill
-      const emX = sealPadX + sr;
-      const emY = sealPadY + sr;
+      // Wit embleem links in de pill
+      const emX = bx + br;
+      const emY = by + br;
 
-      // Terracotta cirkel (#f39223)
       ctx.save();
-      ctx.fillStyle = "#f39223";
+      ctx.fillStyle = "#ffffff";
       ctx.beginPath();
       ctx.arc(emX, emY, emblemR, 0, Math.PI * 2);
       ctx.fill();
 
-      // Witte binnencirkel
-      ctx.fillStyle = "#ffffff";
-      ctx.beginPath();
-      ctx.arc(emX, emY, emblemR * 0.82, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Donkergroene binnenrand (#122b07)
+      // Vector icoon in het embleem tekenen
       ctx.strokeStyle = "#122b07";
-      ctx.lineWidth = Math.max(1.5, emblemR * 0.09);
-      ctx.stroke();
+      ctx.fillStyle = "#122b07";
+      ctx.lineWidth = Math.max(2, Math.round(emblemR * 0.16));
 
-      // Forest Green vinkje / keurmerkteken (#4b8f24)
-      ctx.fillStyle = "#4b8f24";
-      ctx.font = `900 ${Math.round(emblemR * 1.15)}px 'Montserrat', sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("✓", emX, emY + 1);
+      if (iconType === "wheel") {
+        // Wiel met velg en spaken
+        ctx.beginPath();
+        ctx.arc(emX, emY, emblemR * 0.65, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(emX, emY, emblemR * 0.22, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(emX - emblemR * 0.65, emY); ctx.lineTo(emX + emblemR * 0.65, emY);
+        ctx.moveTo(emX, emY - emblemR * 0.65); ctx.lineTo(emX, emY + emblemR * 0.65);
+        ctx.stroke();
+      } else if (iconType === "ruler") {
+        // Meetlat met maatstreepjes
+        const rw = emblemR * 1.1;
+        const rh = emblemR * 0.55;
+        ctx.fillRect(emX - rw / 2, emY - rh / 2, rw, rh);
+        ctx.strokeStyle = "#fed857";
+        ctx.lineWidth = Math.max(1, Math.round(emblemR * 0.09));
+        for (let i = -rw / 2 + 3; i < rw / 2; i += rw / 5) {
+          ctx.beginPath();
+          ctx.moveTo(emX + i, emY - rh / 2);
+          ctx.lineTo(emX + i, emY - rh / 2 + rh * 0.45);
+          ctx.stroke();
+        }
+      } else if (iconType === "star") {
+        // 4-punts glans ster
+        ctx.beginPath();
+        ctx.moveTo(emX, emY - emblemR * 0.7);
+        ctx.lineTo(emX + emblemR * 0.2, emY - emblemR * 0.2);
+        ctx.lineTo(emX + emblemR * 0.7, emY);
+        ctx.lineTo(emX + emblemR * 0.2, emY + emblemR * 0.2);
+        ctx.lineTo(emX, emY + emblemR * 0.7);
+        ctx.lineTo(emX - emblemR * 0.2, emY + emblemR * 0.2);
+        ctx.lineTo(emX - emblemR * 0.7, emY);
+        ctx.lineTo(emX - emblemR * 0.2, emY - emblemR * 0.2);
+        ctx.closePath();
+        ctx.fill();
+      } else if (iconType === "bolt") {
+        // Bliksem / accu symbool
+        ctx.beginPath();
+        ctx.moveTo(emX + 1, emY - emblemR * 0.65);
+        ctx.lineTo(emX - emblemR * 0.4, emY);
+        ctx.lineTo(emX, emY);
+        ctx.lineTo(emX - 1, emY + emblemR * 0.65);
+        ctx.lineTo(emX + emblemR * 0.4, emY);
+        ctx.lineTo(emX, emY);
+        ctx.closePath();
+        ctx.fill();
+      } else if (iconType === "cursor") {
+        // Cursor pijl
+        ctx.beginPath();
+        ctx.moveTo(emX - emblemR * 0.4, emY - emblemR * 0.6);
+        ctx.lineTo(emX - emblemR * 0.4, emY + emblemR * 0.5);
+        ctx.lineTo(emX - emblemR * 0.1, emY + emblemR * 0.2);
+        ctx.lineTo(emX + emblemR * 0.4, emY + emblemR * 0.5);
+        ctx.lineTo(emX + emblemR * 0.5, emY + emblemR * 0.3);
+        ctx.lineTo(emX, emY);
+        ctx.lineTo(emX + emblemR * 0.35, emY - emblemR * 0.1);
+        ctx.closePath();
+        ctx.fill();
+      } else {
+        // Forest Green vinkje ✓
+        ctx.strokeStyle = "#4b8f24";
+        ctx.lineWidth = Math.max(2.5, Math.round(emblemR * 0.22));
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        ctx.moveTo(emX - emblemR * 0.45, emY);
+        ctx.lineTo(emX - emblemR * 0.1, emY + emblemR * 0.35);
+        ctx.lineTo(emX + emblemR * 0.48, emY - emblemR * 0.38);
+        ctx.stroke();
+      }
       ctx.restore();
 
-      // Teksten rechts van het logo
-      const textX = emX + emblemR + Math.round(sealH * 0.16);
+      // Teksten in de badge rechts van het embleem
+      const textX = emX + emblemR + Math.round(badgeH * 0.18);
       ctx.textAlign = "left";
       ctx.textBaseline = "middle";
 
-      // Lijn 1: Deep Forest Dark (#122b07)
-      ctx.fillStyle = "#122b07";
+      // Lijn 1: Wit (#ffffff) Montserrat ExtraBold
+      ctx.fillStyle = "#ffffff";
       ctx.font = titleFont;
-      ctx.fillText(line1, textX, sealPadY + sealH * 0.36);
+      ctx.fillText(badgeTitle, textX, by + badgeH * 0.35);
 
-      // Lijn 2: Forest Green (#4b8f24)
-      ctx.fillStyle = "#4b8f24";
-      ctx.font = subSealFont;
-      ctx.fillText(line2, textX, sealPadY + sealH * 0.72);
+      // Lijn 2: Goudgeel (#fed857) Montserrat Bold
+      ctx.fillStyle = "#fed857";
+      ctx.font = subBadgeFont;
+      ctx.fillText(badgeSub, textX, by + badgeH * 0.72);
     }
-
     // Helper: Optimaliseer en download een individuele foto naar max 1280px JPEG (~180-250KB voor Marktplaats)
     function downloadOptimizedPhoto(photoUrl, filename, onDone) {
       const img = new Image();
