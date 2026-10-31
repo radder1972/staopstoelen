@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Scene 2 - Geanimeerde Groeicurve &amp; Dagboek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-bright: #5cb82f;
+      --color-forest-dark: #1a420b;
+      --color-terracotta: #f39223;
+      --color-forest-sub: #8cb878;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #060911;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #F8FAFC;
+      position: relative;
+    }
+
+    /* AMBIENT GLOWS */
+    .glow-green {
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      width: 900px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(92, 184, 47, 0.18) 0%, rgba(6, 9, 17, 0) 70%);
+      pointer-events: none;
+    }
+    .glow-orange {
+      position: absolute;
+      bottom: 10%;
+      left: 10%;
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(243, 146, 35, 0.15) 0%, rgba(6, 9, 17, 0) 70%);
+      pointer-events: none;
+    }
+
+    /* TOP HEADER */
+    .header {
+      height: 90px;
+      padding: 0 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(11, 17, 32, 0.92);
+      backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 20;
+    }
+    .brand-block { display: flex; flex-direction: column; gap: 2px; }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--color-forest-bright) !important;
+      letter-spacing: -0.8px;
+      line-height: 1;
+    }
+    .brand-logo span { color: var(--color-terracotta) !important; }
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-forest-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .badge-scene {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px;
+      border-radius: 999px; background: rgba(92, 184, 47, 0.18); border: 1.5px solid var(--color-forest-bright);
+      color: #86efac; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px;
+      letter-spacing: 1px; text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(92, 184, 47, 0.35);
+    }
+    .badge-dot { width: 10px; height: 10px; border-radius: 50%; background: #5cb82f; box-shadow: 0 0 10px #5cb82f; }
+
+    /* MAIN CONTAINER */
+    .stage {
+      height: 915px;
+      padding: 24px 70px 95px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* 7-DAY TIMELINE SELECTOR BAR */
+    .timeline-bar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 8px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .t-pill {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .t-date { font-size: 11px; font-weight: 600; color: #94A3B8; }
+    .t-day { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800; color: #CBD5E1; }
+    .t-pill.active {
+      background: linear-gradient(135deg, rgba(75, 143, 36, 0.85), rgba(26, 66, 11, 0.95));
+      border: 1.5px solid var(--color-forest-bright);
+      box-shadow: 0 0 25px rgba(92, 184, 47, 0.5);
+    }
+    .t-pill.active .t-date { color: #bbf7d0; }
+    .t-pill.active .t-day { color: #ffffff; }
+
+    /* 4 TOP KPI CARDS */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .kpi-card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 16px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #94A3B8; margin-bottom: 4px; }
+    .kpi-val { font-family: 'Montserrat', sans-serif; font-size: 34px; font-weight: 900; line-height: 1.1; margin-bottom: 4px; }
+    .kpi-sub { font-size: 12px; font-weight: 600; color: #64748B; }
+
+    /* MIDDLE SPLIT: STORY & FUNNEL */
+    .mid-row {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+    }
+    .story-card {
+      background: rgba(15, 23, 42, 0.92);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .story-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .day-badge-wrap { display: flex; align-items: center; gap: 12px; }
+    .day-circle {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--color-forest-bright);
+      color: #060911; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 15px rgba(92, 184, 47, 0.6);
+    }
+    .day-headline { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 800; color: #ffffff; }
+    .day-tag {
+      background: rgba(92, 184, 47, 0.15); border: 1px solid var(--color-forest-bright);
+      color: #86efac; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px;
+    }
+    .story-desc {
+      font-size: 14px; line-height: 1.5; color: #CBD5E1; margin-bottom: 10px;
+    }
+    .compare-pill {
+      background: rgba(2, 6, 23, 0.75);
+      border-left: 4px solid var(--color-terracotta);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: #E2E8F0;
+    }
+
+    /* FUNNEL BOX */
+    .funnel-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+      border: 1.5px solid rgba(92, 184, 47, 0.4);
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 30px rgba(92, 184, 47, 0.2);
+    }
+    .funnel-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+      color: #94A3B8; text-align: center; margin-bottom: 8px;
+    }
+    .funnel-steps {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+    .f-step { text-align: center; }
+    .f-num { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; line-height: 1.1; }
+    .f-lbl { font-size: 11px; font-weight: 700; color: #94A3B8; margin-top: 2px; }
+    .f-arr { font-size: 22px; color: #64748B; }
+    .f-roi-box {
+      background: linear-gradient(90deg, #1A420B, #2E6819);
+      border: 1.5px solid var(--color-forest-bright);
+      padding: 8px 16px; border-radius: 10px; text-align: center;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; color: #86efac;
+      box-shadow: 0 0 15px rgba(92, 184, 47, 0.35);
+    }
+
+    /* THE ANIMATED GROWTH CURVE CHART */
+    .chart-container {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 16px 24px 10px;
+      position: relative;
+    }
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .chart-title {
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 1px;
+      color: #ffffff; display: flex; align-items: center; gap: 8px;
+    }
+    .chart-legend { display: flex; align-items: center; gap: 20px; font-size: 12px; font-weight: 700; }
+    .leg-item { display: flex; align-items: center; gap: 6px; }
+    .leg-dot-green { width: 10px; height: 10px; border-radius: 50%; background: #5cb82f; box-shadow: 0 0 8px #5cb82f; }
+    .leg-dot-orange { width: 10px; height: 10px; border-radius: 50%; background: #f39223; box-shadow: 0 0 8px #f39223; }
+
+    /* SVG CANVAS */
+    .chart-svg {
+      width: 100%;
+      height: 180px;
+      overflow: visible;
+    }
+
+    /* SUBTITLE BAR */
+    .subtitle-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 75px;
+      background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(10px);
+      border-top: 1.5px solid rgba(75, 143, 36, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px; font-size: 19px; font-weight: 700; color: #F8FAFC; text-align: center;
+      z-index: 30;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-green"></div>
+  <div class="glow-orange"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
+    </div>
+    <div class="badge-scene">
+      <span class="badge-dot"></span>
+      Het 7-Dagen Groei-Dagboek
+    </div>
+  </div>
+
+  <div class="stage">
+    
+    <!-- 7-DAY TIMELINE PILLS -->
+    <div class="timeline-bar">
+      <div class="t-pill" id="pill-1"><div class="t-date">25 okt</div><div class="t-day">Dag 1</div></div>
+      <div class="t-pill" id="pill-2"><div class="t-date">26 okt</div><div class="t-day">Dag 2</div></div>
+      <div class="t-pill" id="pill-3"><div class="t-date">27 okt</div><div class="t-day">Dag 3</div></div>
+      <div class="t-pill" id="pill-4"><div class="t-date">28 okt</div><div class="t-day">Dag 4</div></div>
+      <div class="t-pill" id="pill-5"><div class="t-date">29 okt</div><div class="t-day">Dag 5 (MP)</div></div>
+      <div class="t-pill" id="pill-6"><div class="t-date">30 okt</div><div class="t-day">Dag 6</div></div>
+      <div class="t-pill active" id="pill-7"><div class="t-date">31 okt</div><div class="t-day">Dag 7 (Nu)</div></div>
+    </div>
+
+    <!-- 4 TOP KPI CARDS (ANIMATED COUNTERS) -->
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-title">Vertoningen (Bereik)</div>
+        <div class="kpi-val" id="cntImp" style="color: var(--color-forest-bright);">8.610</div>
+        <div class="kpi-sub">Stoelzoekers bereikt</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Gerichte Kliks</div>
+        <div class="kpi-val" id="cntClicks" style="color: var(--color-terracotta);">95</div>
+        <div class="kpi-sub">Doelgerichte proefzitter kliks</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Kosten per Klik (CPC)</div>
+        <div class="kpi-val" id="cntCpc" style="color: #ffffff;">€ 0,15</div>
+        <div class="kpi-sub">Slechts 15 cent per zoeker!</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Besteed Budget</div>
+        <div class="kpi-val" id="cntSpend" style="color: #38bdf8;">€ 14,25</div>
+        <div class="kpi-sub">Totaal in 3 dagen</div>
+      </div>
+    </div>
+
+    <!-- MIDDLE ROW: STORY & FUNNEL -->
+    <div class="mid-row">
+      <div class="story-card">
+        <div class="story-header">
+          <div class="day-badge-wrap">
+            <div class="day-circle" id="dayCircle">7</div>
+            <div class="day-headline" id="storyTitle">De Sluitende Businesscase: 8.610 Vertoningen &amp; 95 Kliks voor € 14,25</div>
+          </div>
+          <div class="day-tag" id="storyTag">✓ Geverifieerd Live Bewijs</div>
+        </div>
+        <div class="story-desc" id="storyDesc">
+          Het keiharde bewijs via Marktplaats Zakelijk: in 3 dagen zagen 8.610 gerichte stoelzoekers onze advertenties. 95 mensen klikten actief door (5 direct naar de website). Totale advertentiekosten: amper € 0,15 per bezoeker!
+        </div>
+        <div class="compare-pill" id="storyCompare">
+          💡 <strong>De vergelijking voor Geertjan:</strong> TPM kostte € 400/mnd (€ 13,33 per dag!) voor vage PDF-rapportjes. Wij haalden voor exact datzelfde bedrag in 3 dagen 95 proefzitter kliks naar Schipper Wonen!
+        </div>
+      </div>
+
+      <!-- FUNNEL CARD -->
+      <div class="funnel-card">
+        <div class="funnel-title">Marktplaats Zakelijk Funnel</div>
+        <div class="funnel-steps">
+          <div class="f-step">
+            <div class="f-num" id="fImp" style="color: var(--color-forest-bright);">8.610</div>
+            <div class="f-lbl">Vertoningen</div>
+          </div>
+          <div class="f-arr">➔</div>
+          <div class="f-step">
+            <div class="f-num" id="fClicks" style="color: var(--color-terracotta);">95</div>
+            <div class="f-lbl">Stoelkliks</div>
+          </div>
+          <div class="f-arr">➔</div>
+          <div class="f-step">
+            <div class="f-num" style="color: #ffffff;">84x ROI</div>
+            <div class="f-lbl">1 Stoel = € 1.200</div>
+          </div>
+        </div>
+        <div class="f-roi-box">
+          ✨ 1 stoelkoper dekt de hele campagne 84 keer!
+        </div>
+      </div>
+    </div>
+
+    <!-- THE ANIMATED GROWTH CURVE CHART -->
+    <div class="chart-container">
+      <div class="chart-header">
+        <div class="chart-title">
+          <span>📈</span> GROEICURVE VERTONINGEN &amp; KLIKS (DAG 1 T/M 7)
+        </div>
+        <div class="chart-legend">
+          <div class="leg-item"><div class="leg-dot-green"></div><span>Vertoningen (x100)</span></div>
+          <div class="leg-item"><div class="leg-dot-orange"></div><span>Kliks</span></div>
+        </div>
+      </div>
+
+      <svg class="chart-svg" viewBox="0 0 1700 170" id="chartSvg">
+        <defs>
+          <linearGradient id="gradGreen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5cb82f" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#5cb82f" stop-opacity="0.0"/>
+          </linearGradient>
+          <linearGradient id="gradOrange" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f39223" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#f39223" stop-opacity="0.0"/>
+          </linearGradient>
+
+          <!-- Clip path that reveals the area fill dynamically as curve grows -->
+          <clipPath id="chartClip">
+            <rect id="clipRect" x="0" y="0" width="1700" height="170" />
+          </clipPath>
+
+          <!-- Glow Filter -->
+          <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Grid Lines -->
+        <line x1="80" y1="20" x2="1640" y2="20" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="1640" y2="65" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1.5" />
+        <line x1="80" y1="110" x2="1640" y2="110" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1.5" />
+        <line x1="80" y1="150" x2="1640" y2="150" stroke="#334155" stroke-width="2" />
+
+        <!-- Area Fills (revealed by clipRect) -->
+        <g clip-path="url(#chartClip)">
+          <!-- Green area -->
+          <polygon id="areaGreen" points="80,150 80,150 340,150 600,145 860,135 1120,105 1380,50 1640,20 1640,150" fill="url(#gradGreen)" />
+          <!-- Orange area -->
+          <polygon id="areaOrange" points="80,150 80,150 340,148 600,138 860,120 1120,108 1380,72 1640,38 1640,150" fill="url(#gradOrange)" />
+        </g>
+
+        <!-- Dynamic Animated Paths -->
+        <path id="pathGreen" d="M 80 150 L 340 150 L 600 145 L 860 135 L 1120 105 L 1380 50 L 1640 20"
+              fill="none" stroke="#5cb82f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" />
+
+        <path id="pathOrange" d="M 80 150 L 340 148 L 600 138 L 860 120 L 1120 108 L 1380 72 L 1640 38"
+              fill="none" stroke="#f39223" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" />
+
+        <!-- Day Points & Labels -->
+        <circle id="dot-1" cx="80" cy="150" r="5" fill="#64748b" />
+        <text x="80" y="168" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">D1</text>
+
+        <circle id="dot-2" cx="340" cy="150" r="5" fill="#64748b" />
+        <text x="340" y="168" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">D2</text>
+
+        <circle id="dot-3" cx="600" cy="145" r="5" fill="#64748b" />
+        <text x="600" y="168" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">D3</text>
+
+        <circle id="dot-4" cx="860" cy="135" r="6" fill="#64748b" />
+        <text x="860" y="168" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">D4</text>
+
+        <!-- D5: MARKTPLAATS LANCERING! -->
+        <circle id="dot-5" cx="1120" cy="105" r="8" fill="#38bdf8" />
+        <text x="1120" y="168" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="800">D5 (MP)</text>
+
+        <!-- D6 -->
+        <circle id="dot-6" cx="1380" cy="72" r="8" fill="#f39223" />
+        <text x="1380" y="168" text-anchor="middle" fill="#f39223" font-size="12" font-weight="800">D6</text>
+
+        <!-- D7: HET LIVE RESULTAAT -->
+        <circle id="dot-7" cx="1640" cy="20" r="10" fill="#5cb82f" stroke="#ffffff" stroke-width="3" />
+        <text x="1640" y="168" text-anchor="middle" fill="#5cb82f" font-size="13" font-weight="900">D7 (Nu)</text>
+
+        <!-- Dynamic Leading Beacon Dots -->
+        <circle id="beaconGreen" cx="80" cy="150" r="14" fill="none" stroke="#5cb82f" stroke-width="2.5" opacity="0.8" />
+        <circle id="beaconGreenInner" cx="80" cy="150" r="5" fill="#ffffff" />
+
+        <circle id="beaconOrange" cx="80" cy="150" r="11" fill="none" stroke="#f39223" stroke-width="2" opacity="0.8" />
+        <circle id="beaconOrangeInner" cx="80" cy="150" r="4" fill="#ffffff" />
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- SUBTITLE BAR -->
+  <div class="subtitle-bar" id="subBar">
+    "Van stilstand bij TPM naar een actieve machine: in zeven dagen tijd naar 8.610 vertoningen en 95 actieve kliks!"
+  </div>
+
+  <script>
+    const pathG = document.getElementById('pathGreen');
+    const pathO = document.getElementById('pathOrange');
+    const lenG = pathG.getTotalLength();
+    const lenO = pathO.getTotalLength();
+
+    pathG.style.strokeDasharray = lenG;
+    pathO.style.strokeDasharray = lenO;
+
+    const clipRect = document.getElementById('clipRect');
+    const beaconG = document.getElementById('beaconGreen');
+    const beaconGIn = document.getElementById('beaconGreenInner');
+    const beaconO = document.getElementById('beaconOrange');
+    const beaconOIn = document.getElementById('beaconOrangeInner');
+
+    const cntImp = document.getElementById('cntImp');
+    const cntClicks = document.getElementById('cntClicks');
+    const cntCpc = document.getElementById('cntCpc');
+    const cntSpend = document.getElementById('cntSpend');
+    const fImp = document.getElementById('fImp');
+    const fClicks = document.getElementById('fClicks');
+
+    const dayCircle = document.getElementById('dayCircle');
+    const storyTitle = document.getElementById('storyTitle');
+    const storyTag = document.getElementById('storyTag');
+    const storyDesc = document.getElementById('storyDesc');
+    const storyCompare = document.getElementById('storyCompare');
+    const subBar = document.getElementById('subBar');
+
+    const STORIES = {
+      1: {
+        circle: "1",
+        title: "De Nulsituatie: TPM & Vaste Fee Stilstand",
+        tag: "⚠️ Oude Situatie",
+        desc: "Geertjan betaalde maandelijks € 400,- vaste fee aan bureau TPM. Nul actieve Google sturing op Dordrecht, nul Marktplaats advertenties en geen meetbare proefzitters.",
+        compare: "TPM stuurde één keer per kwartaal een vage PDF-rapportage, terwijl de Merwedestraat leeg bleef.",
+        sub: "Waar we bij TPM begonnen met stilstand en vierhonderd euro vaste kosten..."
+      },
+      2: {
+        circle: "3",
+        title: "Google Search Campagne Live & Meetfundament",
+        tag: "⚙️ Google Ads Live",
+        desc: "Matthias bouwt het fundament: GA4 doelen en de eerste Google Search advertenties op 'sta op stoel dordrecht'. Eerste actieve zoekers stromen binnen voor € 0,35.",
+        compare: "Voor het eerst direct inzicht in zoekintentie uit Dordrecht, Papendrecht en Zwijndrecht.",
+        sub: "bouwden we in zeven dagen een actieve machine: van de eerste Google zoekers..."
+      },
+      3: {
+        circle: "5",
+        title: "De Explosie op Marktplaats Pro!",
+        tag: "🚀 Marktplaats Lancering",
+        desc: "29 oktober: De Certified Fitform advertenties gaan live op Marktplaats Zakelijk. Binnen 24 uur exploderen de vertoningen over de 4.000 met tientallen directe stoelkliks!",
+        compare: "In 1 dag haalden we meer gerichte proefzitters binnen dan TPM in 3 maanden!",
+        sub: "naar een enorme explosie op Marktplaats..."
+      },
+      4: {
+        circle: "7",
+        title: "De Sluitende Businesscase: 8.610 Vertoningen & 95 Kliks voor € 14,25",
+        tag: "✓ Geverifieerd Live Bewijs",
+        desc: "Het keiharde bewijs via Marktplaats Zakelijk: in 3 dagen tijd zagen 8.610 gerichte stoelzoekers onze advertenties. 95 mensen klikten door (5 direct naar website) voor amper € 0,15 per klik!",
+        compare: "TPM kostte € 400/mnd (€ 13,33 per dag!). Voor datzelfde bedrag (€ 14,25) pakken we 95 stoelzoekers. 1 stoel verkocht = 84x ROI!",
+        sub: "In één week tijd van nul naar meer dan achtduizend zeshonderd vertoningen en vijfennegentig actieve kliks!"
+      }
+    };
+
+    window.setAnimationProgress = function(p) {
+      p = Math.max(0, Math.min(1, p));
+
+      // 1. Draw curves
+      pathG.style.strokeDashoffset = lenG * (1 - p);
+      pathO.style.strokeDashoffset = lenO * (1 - p);
+
+      // 2. Expand Area Clip
+      const currentX = 80 + (1640 - 80) * p;
+      clipRect.setAttribute('width', currentX);
+
+      // 3. Move Leading Beacon Dots to current tip position
+      const pointG = pathG.getPointAtLength(lenG * p);
+      beaconG.setAttribute('cx', pointG.x);
+      beaconG.setAttribute('cy', pointG.y);
+      beaconGIn.setAttribute('cx', pointG.x);
+      beaconGIn.setAttribute('cy', pointG.y);
+
+      const pointO = pathO.getPointAtLength(lenO * p);
+      beaconO.setAttribute('cx', pointO.x);
+      beaconO.setAttribute('cy', pointO.y);
+      beaconOIn.setAttribute('cx', pointO.x);
+      beaconOIn.setAttribute('cy', pointO.y);
+
+      // 4. Update KPI Counters
+      const currentImp = Math.round(8610 * Math.pow(p, 1.8));
+      const currentClicks = Math.round(95 * Math.pow(p, 1.6));
+      const currentSpend = (14.25 * Math.pow(p, 1.6)).toFixed(2).replace('.', ',');
+
+      cntImp.textContent = currentImp.toLocaleString('nl-NL');
+      cntClicks.textContent = currentClicks.toString();
+      cntSpend.textContent = "€ " + currentSpend;
+      fImp.textContent = currentImp.toLocaleString('nl-NL');
+      fClicks.textContent = currentClicks.toString();
+
+      // 5. Timeline pills (Days 1 to 7)
+      const dayIndex = Math.min(7, Math.floor(p * 7) + 1);
+      for (let i = 1; i <= 7; i++) {
+        const pill = document.getElementById('pill-' + i);
+        if (pill) {
+          pill.className = (i === dayIndex) ? "t-pill active" : "t-pill";
+        }
+      }
+
+      // 6. Dynamic story transitions
+      let storyKey = 1;
+      if (p >= 0.22 && p < 0.55) storyKey = 2;
+      else if (p >= 0.55 && p < 0.82) storyKey = 3;
+      else if (p >= 0.82) storyKey = 4;
+
+      const st = STORIES[storyKey];
+      if (st) {
+        dayCircle.textContent = st.circle;
+        storyTitle.textContent = st.title;
+        storyTag.textContent = st.tag;
+        storyDesc.textContent = st.desc;
+        storyCompare.innerHTML = "💡 <strong>De vergelijking voor Geertjan:</strong> " + st.compare;
+        subBar.textContent = `"${st.sub}"`;
+      }
+    };
+
+    window.setAnimationProgress(1.0);
+  </script>
+</body>
+</html>

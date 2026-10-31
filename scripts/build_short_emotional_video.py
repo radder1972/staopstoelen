@@ -36,7 +36,7 @@ SCENES = [
     {
         "id": 1,
         "name": "We Genereren Écht Verkeer!",
-        "text": "Geertjan, besef even wat we hier samen aan het doen zijn. We doen iets heel bijzonders: WE GENEREREN ÉCHT VERKEER! Kijk naar de afgelopen drie dagen op Marktplaats: meer dan achtduizend driehonderd vertoningen en negenentachtig mensen die doelgericht op jouw stoelen hebben geklikt!",
+        "text": "Geertjan, besef even wat we hier samen aan het doen zijn. We doen iets heel bijzonders: WE GENEREREN ÉCHT VERKEER! Kijk naar de afgelopen drie dagen op Marktplaats: meer dan achtduizend zeshonderd vertoningen en vijfennegentig mensen die doelgericht op jouw stoelen hebben geklikt!",
         "image": "assets/marketing/video_slides/short_scene_1.png",
         "audio": "assets/marketing/video_audio/short_scene_1.mp3",
         "zoom_rate": 0.0004
@@ -44,7 +44,7 @@ SCENES = [
     {
         "id": 2,
         "name": "Het 7-Dagen Groei-Dagboek",
-        "text": "Kijk naar ons dagboek van de afgelopen zeven dagen. Waar we bij TPM begonnen met stilstand en vierhonderd euro vaste kosten, bouwden we in zeven dagen een actieve machine. Van de eerste Google zoekers naar een explosie op Marktplaats. In één week tijd van nul naar meer dan achtduizend vertoningen en negenentachtig actieve kliks!",
+        "text": "Kijk naar ons dagboek van de afgelopen zeven dagen. Waar we bij TPM begonnen met stilstand en vierhonderd euro vaste kosten, bouwden we in zeven dagen een actieve machine. Van de eerste Google zoekers naar een explosie op Marktplaats. In één week tijd van nul naar meer dan achtduizend zeshonderd vertoningen en vijfennegentig actieve kliks!",
         "image": "assets/marketing/video_slides/short_scene_dagboek.png",
         "audio": "assets/marketing/video_audio/short_scene_dagboek.mp3",
         "zoom_rate": 0.0003
@@ -52,7 +52,7 @@ SCENES = [
     {
         "id": 3,
         "name": "De Marketing Fruitmachine & Jackpot",
-        "text": "Marketing is voor Geertjan geen gokkast meer waar je vierhonderd euro in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot: voor amper vijftien cent per klik pak je negenentachtig gerichte zoekers en twaalfhonderd euro marge op één verkochte stoel!",
+        "text": "Marketing is voor Geertjan geen gokkast meer waar je vierhonderd euro in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot: voor amper vijftien cent per klik pak je vijfennegentig gerichte zoekers en twaalfhonderd euro marge op één verkochte stoel!",
         "image": "assets/marketing/video_slides/short_scene_fruitmachine.png",
         "audio": "assets/marketing/video_audio/short_scene_fruitmachine.mp3",
         "sfx": "assets/marketing/video_audio/slot_machine_sfx.wav",
@@ -147,17 +147,26 @@ def main():
     for sc in SCENES:
         print(f"\n[Scene {sc['id']}: {sc['name']}]")
         audio_file = sc["audio"]
-        print(f"  Genereren van ElevenLabs audio...")
-        mp3_bytes = generate_voice(sc["text"])
-        with open(audio_file, "wb") as f:
-            f.write(mp3_bytes)
+        
+        # Check if audio already exists and is fresh
+        if not os.path.exists(audio_file) or os.path.getsize(audio_file) < 1000:
+            print(f"  Genereren van ElevenLabs audio...")
+            mp3_bytes = generate_voice(sc["text"])
+            with open(audio_file, "wb") as f:
+                f.write(mp3_bytes)
+        else:
+            print(f"  Gebruik bestaande audio: {audio_file}")
             
         dur = get_audio_duration(audio_file)
-        scene_dur = dur + 1.1
+        scene_dur = dur + 1.0
         scene_durations.append(scene_dur)
-        print(f"  ✓ Audio gereed: {len(mp3_bytes)//1024} KB (Duur: {dur:.2f}s -> Scene: {scene_dur:.2f}s)")
+        print(f"  ✓ Audio gereed (Duur: {dur:.2f}s -> Scene: {scene_dur:.2f}s)")
         
-        if sc.get("sfx") and os.path.exists(sc["sfx"]):
+        # For Scene 2: Use the pre-rendered dynamic animation (part_2.mp4)
+        if sc["id"] == 2 and os.path.exists("assets/marketing/video_parts/part_2.mp4"):
+            print("  ✨ Gebruik geanimeerde Groeicurve video (assets/marketing/video_parts/part_2.mp4)...")
+            part_file = "assets/marketing/video_parts/part_2.mp4"
+        elif sc.get("sfx") and os.path.exists(sc["sfx"]):
             mixed_audio = f"assets/marketing/video_audio/mixed_scene_{sc['id']}.mp3"
             print(f"  🎰 Mixen van Slot Machine Sound Effects ({sc['sfx']})...")
             mix_cmd = [
