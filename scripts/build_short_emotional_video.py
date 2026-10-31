@@ -43,6 +43,14 @@ SCENES = [
     },
     {
         "id": 2,
+        "name": "Het 7-Dagen Groei-Dagboek",
+        "text": "Kijk naar ons dagboek van de afgelopen zeven dagen. Waar we bij TPM begonnen met stilstand en vierhonderd euro vaste kosten, bouwden we in zeven dagen een actieve machine. Van de eerste Google zoekers naar een explosie op Marktplaats. In één week tijd van nul naar meer dan achtduizend vertoningen en drieëntachtig actieve kliks!",
+        "image": "assets/marketing/video_slides/short_scene_dagboek.png",
+        "audio": "assets/marketing/video_audio/short_scene_dagboek.mp3",
+        "zoom_rate": 0.0003
+    },
+    {
+        "id": 3,
         "name": "De Businesscase van de Klik",
         "text": "En kijk nu naar de businesscase van die klik. Drieëntachtig geïnteresseerden hebben jou bij elkaar slechts dertien euro dertig gekost. Dat is amper zestien cent per bezoeker! Als uit al die mensen maar één iemand naar de Merwedestraat komt en een stoel koopt, pak je twaalfhonderd euro marge. Die dertien euro levert je een veelvoud aan winst op!",
         "image": "assets/marketing/video_slides/short_scene_2.png",
@@ -50,7 +58,7 @@ SCENES = [
         "zoom_rate": 0.0003
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "De Winnende Formule",
         "text": "Dát is de boodschap, Geertjan. Stop die vierhonderd euro aan TPM en stop met gokken op tienduizend flyers in de papierbak. Deze online motor brengt dagelijks échte mensen. En die flyer? Die drukken we voor vijfendertig euro als perfecte showroom-afsluiter. Dít is onze winnende formule!",
         "image": "assets/marketing/video_slides/short_scene_3.png",

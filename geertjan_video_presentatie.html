@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Presentatie: Flyers vs. Online Marketing voor Geertjan | Staopstoelen.nl</title>
+  <title>Video & Groei-Dagboek: Flyers vs. Online Marketing voor Geertjan | Staopstoelen.nl</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,9 +46,13 @@
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="geertjan_keuze_wizard.html" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold border border-white/10 transition-colors">
+        <a href="#dagboek" class="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold border border-white/10 transition-colors">
+          <span>📊</span>
+          <span>7-Dagen Dagboek</span>
+        </a>
+        <a href="geertjan_keuze_wizard.html" class="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold border border-white/10 transition-colors">
           <span>🧙‍♂️</span>
-          <span>Open Keuze-Wizard</span>
+          <span>Keuze-Wizard</span>
         </a>
         <a href="assets/video/geertjan_keuze_advies_video.mp4" download="Staopstoelen_Geertjan_Advies_Video.mp4" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#4B8F24] hover:bg-[#3D751D] text-white text-sm font-bold shadow-lg shadow-green-900/30 transition-all hover:scale-[1.02]">
           <span>📥</span>
@@ -65,19 +69,19 @@
     <div class="text-center max-w-4xl mx-auto mb-8">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        1080p HD Master Video • Speelduur: Exact 1:03 minuut • ElevenLabs Studio Audio
+        1080p HD Master Video • Speelduur: 1:24 min • 4 Hoofdstukken incl. Groei-Dagboek
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black tracking-tight text-white leading-tight mb-4">
         Geertjan, we doen iets bijzonders: <br>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-amber-300">WE GENEREREN ÉCHT VERKEER!</span>
       </h1>
       <p class="text-base sm:text-lg text-slate-300">
-        In 60 seconden de keiharde businesscase van Marktplaats Zakelijk: van € 0,16 per klik naar € 1.200 winstmarge per stoel.
+        Bekijk in de video en het interactieve dagboek hoe we in 7 dagen van stilstand naar 8.191 vertoningen en 83 actieve kliks voor € 0,16 zijn gegroeid.
       </p>
     </div>
 
     <!-- Video + Chapters Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
       
       <!-- Video Player (8 cols) -->
       <div class="lg:col-span-8 flex flex-col gap-4">
@@ -103,7 +107,7 @@
             <span>•</span>
             <span class="text-slate-300 font-semibold">🎙️ Alexander (ElevenLabs Studio)</span>
             <span>•</span>
-            <span>3 Hoofdstukken • 1:03 min</span>
+            <span>4 Hoofdstukken • 1:24 min</span>
           </div>
           <div class="flex items-center gap-2">
             <button onclick="setPlayRate(1.0)" id="rate1" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-bold text-white hover:bg-slate-700 transition">1.0x</button>
@@ -114,13 +118,13 @@
       </div>
 
       <!-- Interactive Chapter Playlist (4 cols) -->
-      <div class="lg:col-span-4 flex flex-col gap-3">
+      <div class="lg:col-span-4 flex flex-col gap-2.5">
         <div class="text-sm font-heading font-bold uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-between">
-          <span>Hoofdstukken (1 min)</span>
+          <span>Hoofdstukken (1:24 min)</span>
           <span class="text-xs text-slate-500">Klik om te springen</span>
         </div>
 
-        <button onclick="jumpTo(0)" id="chap-0" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full chapter-active">
+        <button onclick="jumpTo(0)" id="chap-0" class="chapter-btn p-3 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full chapter-active">
           <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:00</div>
           <div>
             <div class="font-heading font-bold text-sm text-white">1. We Genereren Écht Verkeer!</div>
@@ -128,26 +132,34 @@
           </div>
         </button>
 
-        <button onclick="jumpTo(19.0)" id="chap-1" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+        <button onclick="jumpTo(19.4)" id="chap-1" class="chapter-btn p-3 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
           <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:19</div>
           <div>
-            <div class="font-heading font-bold text-sm text-white">2. De Businesscase van de Klik</div>
+            <div class="font-heading font-bold text-sm text-white">2. Het 7-Dagen Groei-Dagboek</div>
+            <div class="text-xs text-slate-400 line-clamp-1">In 1 week van TPM-stilstand naar een steile groeicurve!</div>
+          </div>
+        </button>
+
+        <button onclick="jumpTo(41.8)" id="chap-2" class="chapter-btn p-3 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:42</div>
+          <div>
+            <div class="font-heading font-bold text-sm text-white">3. De Businesscase van de Klik</div>
             <div class="text-xs text-slate-400 line-clamp-1">Slechts € 0,16 per klik naar € 1.200 winst op 1 stoel!</div>
           </div>
         </button>
 
-        <button onclick="jumpTo(42.0)" id="chap-2" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:42</div>
+        <button onclick="jumpTo(63.9)" id="chap-3" class="chapter-btn p-3 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">1:04</div>
           <div>
-            <div class="font-heading font-bold text-sm text-white">3. De Winnende Formule</div>
+            <div class="font-heading font-bold text-sm text-white">4. De Winnende Formule</div>
             <div class="text-xs text-slate-400 line-clamp-1">Stop TPM, online als motor & flyer van € 35 als showroom closer.</div>
           </div>
         </button>
 
         <!-- Call to Action Card -->
-        <div class="mt-2 p-4 rounded-xl bg-gradient-to-br from-green-950/40 to-slate-900 border border-green-500/30 text-xs text-slate-300">
+        <div class="mt-2 p-3.5 rounded-xl bg-gradient-to-br from-green-950/40 to-slate-900 border border-green-500/30 text-xs text-slate-300">
           <div class="font-bold text-white mb-1">Direct bespreken met Geertjan?</div>
-          <p class="mb-3 text-slate-400">Gebruik de interactieve wizard om samen door de cijfers van Marktplaats vs. TPM vs. Flyers te lopen.</p>
+          <p class="mb-2.5 text-slate-400">Loop samen door de cijfers in de interactieve wizard of bekijk het 7-dagen dagboek hieronder.</p>
           <a href="geertjan_keuze_wizard.html" class="block text-center py-2 px-3 rounded-lg bg-green-600 hover:bg-green-500 text-white font-bold transition">
             Naar de Interactieve Wizard →
           </a>
@@ -156,7 +168,7 @@
     </div>
 
     <!-- Key Takeaway Grid: Marktplaats Live Bewijs -->
-    <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="mb-14 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="p-6 rounded-2xl bg-green-950/30 border border-green-500/40">
         <div class="text-[#5cb82f] font-heading font-black text-2xl mb-1">8.191 Impressies</div>
         <div class="text-sm font-bold text-white mb-2">83 Gerichte Kliks (29-31 Okt)</div>
@@ -176,6 +188,26 @@
       </div>
     </div>
 
+    <!-- INTERACTIEF 7-DAGEN GROEI-DAGBOEK SECTIE -->
+    <section id="dagboek" class="pt-6 border-t border-white/10">
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <span class="px-3 py-1 rounded-full bg-[#4B8F24]/20 border border-[#5cb82f]/30 text-[#5cb82f] text-xs font-bold uppercase tracking-wider">
+          📅 Interactief Groei-Dagboek
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-heading font-black text-white mt-3">
+          De Geschiedenis van de Afgelopen 7 Dagen
+        </h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Klik op een dag of gebruik de autoplay-knop om de dagelijkse groei van Google Search en Marktplaats Zakelijk te herbeleven.
+        </p>
+      </div>
+
+      <!-- Embedded Groeidagboek iFrame -->
+      <div class="w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0b1120]">
+        <iframe src="groeidagboek_7dagen.html" class="w-full border-0" style="height: 840px;" title="7-Dagen Groei Dagboek"></iframe>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -187,8 +219,9 @@
     const video = document.getElementById('mainVideo');
     const chapters = [
       { time: 0, id: 'chap-0' },
-      { time: 19.0, id: 'chap-1' },
-      { time: 42.0, id: 'chap-2' }
+      { time: 19.4, id: 'chap-1' },
+      { time: 41.8, id: 'chap-2' },
+      { time: 63.9, id: 'chap-3' }
     ];
 
     function jumpTo(seconds) {
@@ -218,10 +251,12 @@
       }
       chapters.forEach((ch, idx) => {
         const el = document.getElementById(ch.id);
-        if (idx === activeIndex) {
-          el.classList.add('chapter-active');
-        } else {
-          el.classList.remove('chapter-active');
+        if (el) {
+          if (idx === activeIndex) {
+            el.classList.add('chapter-active');
+          } else {
+            el.classList.remove('chapter-active');
+          }
         }
       });
     });

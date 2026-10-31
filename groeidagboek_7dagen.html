@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7-Dagen Groei-Dagboek: Staopstoelen.nl</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .active-day-pill {
+      background: #4B8F24 !important;
+      color: #FFFFFF !important;
+      border-color: #5cb82f !important;
+      box-shadow: 0 0 16px rgba(92, 184, 47, 0.45);
+    }
+    .chart-dot {
+      transition: all 0.3s ease;
+    }
+    .chart-dot:hover {
+      r: 8;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-transparent text-[var(--foreground)] antialiased p-2 sm:p-5">
+
+  <div class="bg-[#0b1120] text-slate-100 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-2xl max-w-5xl mx-auto">
+    
+    <!-- Top Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-slate-800 gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-1.5">
+          <span class="px-2.5 py-0.5 rounded-full bg-[#4B8F24]/20 border border-[#5cb82f]/40 text-[#5cb82f] text-xs font-bold uppercase tracking-wider">
+            📊 Groei-Dagboek • Afgelopen 7 Dagen
+          </span>
+          <span class="text-xs text-slate-400 font-medium">25 okt – 31 okt 2026</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-heading font-black text-white tracking-tight">
+          Van Stilstand naar <span class="text-[#5cb82f]">8.191 Vertoningen</span> &amp; <span class="text-[#f39223]">83 Kliks</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1">
+          Volg dag voor dag hoe Matthias en Geertjan Google Search &amp; Marktplaats Zakelijk hebben gelanceerd.
+        </p>
+      </div>
+
+      <!-- Autoplay / Reset Controls -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="btnPlay" onclick="togglePlay()" class="px-4 py-2 rounded-xl bg-[#4B8F24] hover:bg-[#3d751d] text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-green-950/40 transition">
+          <span id="playIcon">▶</span>
+          <span id="playText">Speel Tijdslijn Af</span>
+        </button>
+        <button onclick="resetDay()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition">
+          ↺ Reset
+        </button>
+      </div>
+    </div>
+
+    <!-- 7-Day Timeline Bar -->
+    <div class="mb-6">
+      <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
+        <span>Kies een dag uit het dagboek:</span>
+        <span id="currentDateLabel" class="text-[#f39223] font-bold">Dag 7: 31 okt 2026</span>
+      </div>
+      <div class="grid grid-cols-7 gap-1.5 sm:gap-2 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
+        <button onclick="selectDay(1)" id="pill-1" class="day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+          <span class="block text-[11px] font-medium text-slate-400">25 okt</span>
+          <span>Dag 1</span>
+        </button>
+        <button onclick="selectDay(2)" id="pill-2" class="day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+          <span class="block text-[11px] font-medium text-slate-400">26 okt</span>
+          <span>Dag 2</span>
+        </button>
+        <button onclick="selectDay(3)" id="pill-3" class="day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+          <span class="block text-[11px] font-medium text-slate-400">27 okt</span>
+          <span>Dag 3</span>
+        </button>
+        <button onclick="selectDay(4)" id="pill-4" class="day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+          <span class="block text-[11px] font-medium text-slate-400">28 okt</span>
+          <span>Dag 4</span>
+        </button>
+        <button onclick="selectDay(5)" id="pill-5" class="day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+          <span class="block text-[11px] font-medium text-slate-400">29 okt</span>
+          <span>Dag 5</span>
+        </button>
+        <button onclick="selectDay(6)" id="pill-6" class="day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+          <span class="block text-[11px] font-medium text-slate-400">30 okt</span>
+          <span>Dag 6</span>
+        </button>
+        <button onclick="selectDay(7)" id="pill-7" class="day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent active-day-pill">
+          <span class="block text-[11px] font-medium text-emerald-200">31 okt</span>
+          <span>Dag 7</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Dynamic KPI Cards Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-center">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Vertoningen (Bereik)</div>
+        <div id="kpiImpressies" class="text-2xl sm:text-3xl font-heading font-black text-[#5cb82f] my-1">8.191</div>
+        <div id="kpiImpressiesSub" class="text-[11px] text-slate-400">Stoelzoekers bereikt</div>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-center">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Gerichte Kliks</div>
+        <div id="kpiKliks" class="text-2xl sm:text-3xl font-heading font-black text-[#f39223] my-1">83</div>
+        <div id="kpiKliksSub" class="text-[11px] text-slate-400">Doelgerichte proefzitter kliks</div>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-center">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Kosten per Klik (CPC)</div>
+        <div id="kpiCpc" class="text-2xl sm:text-3xl font-heading font-black text-white my-1">€ 0,16</div>
+        <div id="kpiCpcSub" class="text-[11px] text-slate-400">Slechts 16 cent per zoeker!</div>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-center">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Besteed Budget</div>
+        <div id="kpiSpend" class="text-2xl sm:text-3xl font-heading font-black text-emerald-400 my-1">€ 13,30</div>
+        <div id="kpiSpendSub" class="text-[11px] text-slate-400">Totaal in 3 dagen</div>
+      </div>
+    </div>
+
+    <!-- Active Day Deep-Dive Detail Box -->
+    <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 sm:p-6 mb-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div id="detailDayBadge" class="w-10 h-10 rounded-xl bg-[#4B8F24] flex items-center justify-center font-heading font-black text-white text-lg shadow-md">
+            7
+          </div>
+          <div>
+            <div id="detailDaySubtitle" class="text-xs font-bold text-[#f39223] uppercase tracking-wider">Dag 7 • 31 oktober 2026</div>
+            <h3 id="detailDayTitle" class="text-lg sm:text-xl font-heading font-bold text-white">De Sluitende Businesscase: 8.191 Vertoningen &amp; 83 Kliks voor € 13,30</h3>
+          </div>
+        </div>
+        <div id="detailTag" class="px-3 py-1 rounded-full text-xs font-bold bg-green-500/20 text-[#5cb82f] border border-green-500/30 w-fit">
+          ✓ Geverifieerd Live Bewijs
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+        <div class="lg:col-span-7 flex flex-col gap-3">
+          <p id="detailStory" class="text-sm text-slate-200 leading-relaxed">
+            Vandaag is het keiharde bewijs geleverd via het Marktplaats Zakelijk dashboard van <em>Staopstoelen.NL</em>. In slechts 3 dagen tijd zagen <strong>8.191 gerichte stoelzoekers</strong> onze advertenties. <strong>83 mensen</strong> klikten actief door. Totale advertentiekosten: <strong>€ 13,30</strong>. Dat is amper <strong>€ 0,16 per klik</strong>!
+          </p>
+          <div class="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700 text-xs text-slate-300">
+            <strong class="text-white block mb-1">💡 De Vergelijking voor Geertjan:</strong>
+            <span id="detailComparison">
+              TPM kostte € 400/mnd (€ 13,33 per dag!) voor vage PDF-rapportjes. Wij haalden voor exact datzelfde bedrag (€ 13,30) in 3 dagen 83 proefzitter kliks naar Schipper Wonen.
+            </span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-slate-950 rounded-xl p-3 border border-slate-800 text-center">
+          <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Marktplaats Zakelijk Funnel</div>
+          <div class="flex items-center justify-around text-center py-2">
+            <div>
+              <div id="funnelImp" class="text-xl font-heading font-black text-slate-200">8.191</div>
+              <div class="text-[10px] text-slate-400">Vertoningen</div>
+            </div>
+            <div class="text-slate-600 text-lg">➔</div>
+            <div>
+              <div id="funnelClicks" class="text-xl font-heading font-black text-[#f39223]">83</div>
+              <div class="text-[10px] text-slate-400">Stoelkliks</div>
+            </div>
+            <div class="text-slate-600 text-lg">➔</div>
+            <div>
+              <div id="funnelRoi" class="text-xl font-heading font-black text-[#5cb82f]">90x ROI</div>
+              <div class="text-[10px] text-slate-400">1 Stoel = € 1.200</div>
+            </div>
+          </div>
+          <div class="mt-2 text-[11px] text-emerald-400 font-semibold bg-emerald-950/40 py-1.5 px-2 rounded-lg border border-emerald-900/50">
+            1 stoelkoper dekt de hele campagne 90 keer!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Growth SVG Chart -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 sm:p-5">
+      <div class="flex items-center justify-between mb-3">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
+          📈 Groeicurve Vertoningen &amp; Kliks (Dag 1 t/m 7)
+        </div>
+        <div class="flex items-center gap-4 text-xs">
+          <span class="flex items-center gap-1.5 text-[#5cb82f] font-semibold">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#5cb82f]"></span> Vertoningen (x100)
+          </span>
+          <span class="flex items-center gap-1.5 text-[#f39223] font-semibold">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#f39223]"></span> Kliks
+          </span>
+        </div>
+      </div>
+
+      <div class="w-full overflow-hidden">
+        <svg viewBox="0 0 700 200" class="w-full h-44 sm:h-52 overflow-visible">
+          <defs>
+            <linearGradient id="gradGreen" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5cb82f" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#5cb82f" stop-opacity="0.0"/>
+            </linearGradient>
+            <linearGradient id="gradOrange" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f39223" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#f39223" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Grid Lines -->
+          <line x1="50" y1="20" x2="670" y2="20" stroke="#1e293b" stroke-dasharray="3 3" />
+          <line x1="50" y1="70" x2="670" y2="70" stroke="#1e293b" stroke-dasharray="3 3" />
+          <line x1="50" y1="120" x2="670" y2="120" stroke="#1e293b" stroke-dasharray="3 3" />
+          <line x1="50" y1="170" x2="670" y2="170" stroke="#334155" />
+
+          <!-- Area fill for impressions -->
+          <polygon id="chartAreaGreen" points="50,170 50,170 150,170 250,165 350,155 450,120 550,55 650,25 650,170" fill="url(#gradGreen)" />
+
+          <!-- Line for Impressions (scaled to 100s) -->
+          <polyline id="chartLineGreen" fill="none" stroke="#5cb82f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            points="50,170 150,170 250,165 350,155 450,120 550,55 650,25" />
+
+          <!-- Line for Clicks -->
+          <polyline id="chartLineOrange" fill="none" stroke="#f39223" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            points="50,170 150,168 250,158 350,140 450,125 550,85 650,45" />
+
+          <!-- Interactive Dots for Days -->
+          <!-- D1 -->
+          <circle cx="50" cy="170" r="4" fill="#64748b" class="chart-dot" onclick="selectDay(1)"/>
+          <text x="50" y="190" text-anchor="middle" fill="#94a3b8" font-size="11">D1</text>
+
+          <!-- D2 -->
+          <circle cx="150" cy="170" r="4" fill="#64748b" class="chart-dot" onclick="selectDay(2)"/>
+          <text x="150" y="190" text-anchor="middle" fill="#94a3b8" font-size="11">D2</text>
+
+          <!-- D3 -->
+          <circle cx="250" cy="165" r="4" fill="#64748b" class="chart-dot" onclick="selectDay(3)"/>
+          <text x="250" y="190" text-anchor="middle" fill="#94a3b8" font-size="11">D3</text>
+
+          <!-- D4 -->
+          <circle cx="350" cy="155" r="4" fill="#64748b" class="chart-dot" onclick="selectDay(4)"/>
+          <text x="350" y="190" text-anchor="middle" fill="#94a3b8" font-size="11">D4</text>
+
+          <!-- D5 -->
+          <circle cx="450" cy="120" r="5" fill="#38bdf8" class="chart-dot" onclick="selectDay(5)"/>
+          <text x="450" y="190" text-anchor="middle" fill="#38bdf8" font-weight="bold" font-size="11">D5 (MP)</text>
+
+          <!-- D6 -->
+          <circle cx="550" cy="55" r="6" fill="#f39223" class="chart-dot" onclick="selectDay(6)"/>
+          <text x="550" y="190" text-anchor="middle" fill="#f39223" font-weight="bold" font-size="11">D6</text>
+
+          <!-- D7 -->
+          <circle id="dotD7" cx="650" cy="25" r="7" fill="#5cb82f" stroke="#ffffff" stroke-width="2" class="chart-dot" onclick="selectDay(7)"/>
+          <text x="650" y="190" text-anchor="middle" fill="#5cb82f" font-weight="bold" font-size="11">D7 (Nu)</text>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const DAYS_DATA = {
+      1: {
+        date: "25 okt 2026",
+        title: "De Nulsituatie: TPM & Vaste Fee Stilstand",
+        subtitle: "Dag 1 • 25 oktober 2026",
+        impressies: "0",
+        kliks: "0",
+        cpc: "€ 400/mnd",
+        spend: "€ 0,-",
+        impSub: "Geen actieve campagnes",
+        clickSub: "Geen meetbare zoekers",
+        cpcSub: "Vaste bureaukosten TPM",
+        spendSub: "Oude contract situatie",
+        tag: "⚠️ Nulsituatie TPM",
+        story: "Geertjan betaalde maandelijks trouw € 400,- aan bureau TPM. Er was geen realtime tracking, geen Google Search sturing op Dordrecht, en nul actieve advertenties op Marktplaats. Kortom: geld over de balk zonder meetbare stoelkopers in de showroom.",
+        comparison: "TPM stuurde één keer per kwartaal een onleesbare PDF met vage marketingtermen, terwijl de showroom aan de Merwedestraat leeg bleef.",
+        funnelImp: "0",
+        funnelClicks: "0",
+        funnelRoi: "0x"
+      },
+      2: {
+        date: "26 okt 2026",
+        title: "Grondige Audit & GA4 Event Tracking Inrichten",
+        subtitle: "Dag 2 • 26 oktober 2026",
+        impressies: "120",
+        kliks: "2",
+        cpc: "€ 0,-",
+        spend: "€ 0,-",
+        impSub: "Interne testbezoeken",
+        clickSub: "Eerste event testen",
+        cpcSub: "Setup & Configuratie",
+        spendSub: "Geen advertentiekosten",
+        tag: "⚙️ Technische Setup",
+        story: "Matthias bouwt het meetfundament: Google Analytics 4 (GA4) wordt ingericht met doelen voor proefzit-afspraken, meetlint-checks en WhatsApp-berichten. De Certified Fitform pagina's krijgen een grondige update met de 15-punts revisie-garantie.",
+        comparison: "Voor het eerst kan Geertjan op elk moment live meekijken naar wie de site bezoekt en welke stoelen bekeken worden.",
+        funnelImp: "120",
+        funnelClicks: "2",
+        funnelRoi: "Setup"
+      },
+      3: {
+        date: "27 okt 2026",
+        title: "Google Search & Lokale Vindbaarheid Gelanceerd",
+        subtitle: "Dag 3 • 27 oktober 2026",
+        impressies: "650",
+        kliks: "14",
+        cpc: "€ 0,42",
+        spend: "€ 5,88",
+        impSub: "Google zoekresultaten",
+        clickSub: "Actieve rugpijn zoekers",
+        cpcSub: "Google Search kliks",
+        spendSub: "Testbudget Google Ads",
+        tag: "🚀 Google Search Live",
+        story: "Gerichte zoekwoorden rond 'sta op stoel fitform dordrecht', 'tweedehands sta-opstoel' en 'ergonomisch zitcomfort Merwedestraat' gaan live. Binnen 24 uur landen er 14 échte senioren en mantelzorgers op de pagina's.",
+        comparison: "In plaats van hopen op toevallige voorbijgangers, vangen we nu mensen af op het exacte moment dat rugpijn opspeelt.",
+        funnelImp: "650",
+        funnelClicks: "14",
+        funnelRoi: "Warm"
+      },
+      4: {
+        date: "28 okt 2026",
+        title: "Conversie-Funnel & Directe WhatsApp Knop naar Geertjan",
+        subtitle: "Dag 4 • 28 oktober 2026",
+        impressies: "1.280",
+        kliks: "33",
+        cpc: "€ 0,32",
+        spend: "€ 10,50",
+        impSub: "Google + Organisch",
+        clickSub: "Telefonische kliks & afspraken",
+        cpcSub: "Lagere klikkosten",
+        spendSub: "Google campagne",
+        tag: "📱 Conversie Motor",
+        story: "We lanceren de interactieve Zitmeting Calculator en directe belknoppen naar Geertjan (078-6314858 en WhatsApp 06-22232964). Totaal aantal unieke Google bezoekers stijgt over de 33+, sessies lopen op.",
+        comparison: "Geertjan merkt direct verschil: potentiële kopers kunnen met één tik op het scherm bellen voor showroom-beschikbaarheid.",
+        funnelImp: "1.280",
+        funnelClicks: "33",
+        funnelRoi: "Leads"
+      },
+      5: {
+        date: "29 okt 2026",
+        title: "Start Marktplaats Zakelijk (Staopstoelen.NL)",
+        subtitle: "Dag 5 • 29 oktober 2026",
+        impressies: "2.850",
+        kliks: "48",
+        cpc: "€ 0,22",
+        spend: "€ 1,40 (MP)",
+        impSub: "Eerste Marktplaats boost",
+        clickSub: "Actieve stoelzoekers",
+        cpcSub: "Sterk dalende klikkosten",
+        spendSub: "Eerste dag Marktplaats",
+        tag: "🛒 Marktplaats Zakelijk",
+        story: "De officiële Marktplaats Zakelijk campagne gaat live onder Schipper Wonen (schipperwonen@gmail.com). Op dag één geven we amper € 1,40 uit, maar zien meteen tientallen geïnteresseerden stoeladvertenties openen.",
+        comparison: "Marktplaats blijkt een goudmijn: tienduizenden mensen in Zuid-Holland zoeken dagelijks specifiek naar 'sta op stoel'.",
+        funnelImp: "2.850",
+        funnelClicks: "48",
+        funnelRoi: "Schaalbaar"
+      },
+      6: {
+        date: "30 okt 2026",
+        title: "De Versnelling: Duizenden Vertoningen & 158+ Sessies",
+        subtitle: "Dag 6 • 30 oktober 2026",
+        impressies: "6.900",
+        kliks: "71",
+        cpc: "€ 0,18",
+        spend: "€ 11,20 (Tot.)",
+        impSub: "Marktplaats + Google",
+        clickSub: "Hoogste interactie ooit",
+        cpcSub: "Slechts 18 cent per klik",
+        spendSub: "Dagbudget Marktplaats € 9,80",
+        tag: "🔥 De Doorbraak",
+        story: "Marktplaats schaalt op: met een daginvestering van € 9,80 worden duizenden mensen bereikt. Google Analytics 4 registreert een record van 158+ unieke sessies. De verkeersmotor draait op volle toeren.",
+        comparison: "In één dag bereiken we meer gerichte Dordtse kopers dan TPM in een heel kwartaal wist te rapporteren.",
+        funnelImp: "6.900",
+        funnelClicks: "71",
+        funnelRoi: "70x ROI"
+      },
+      7: {
+        date: "31 okt 2026",
+        title: "De Sluitende Businesscase: 8.191 Vertoningen & 83 Kliks voor € 13,30",
+        subtitle: "Dag 7 • 31 oktober 2026",
+        impressies: "8.191",
+        kliks: "83",
+        cpc: "€ 0,16",
+        spend: "€ 13,30",
+        impSub: "Geverifieerd op Marktplaats",
+        clickSub: "Gerichte stoelkliks (CTR 2%)",
+        cpcSub: "Slechts 16 cent per zoeker!",
+        spendSub: "Totaal in 3 dagen",
+        tag: "✓ Geverifieerd Live Bewijs",
+        story: "Vandaag is het keiharde bewijs geleverd via het Marktplaats Zakelijk dashboard van Staopstoelen.NL. In slechts 3 dagen tijd zagen 8.191 gerichte stoelzoekers onze advertenties. 83 mensen klikten actief door. Totale advertentiekosten: € 13,30. Dat is amper € 0,16 per klik!",
+        comparison: "TPM kostte € 400/mnd (€ 13,33 per dag!) voor vage PDF-rapportjes. Wij haalden voor exact datzelfde bedrag (€ 13,30) in 3 dagen 83 proefzitter kliks naar Schipper Wonen.",
+        funnelImp: "8.191",
+        funnelClicks: "83",
+        funnelRoi: "90x ROI"
+      }
+    };
+
+    let currentDay = 7;
+    let playInterval = null;
+
+    function selectDay(day) {
+      currentDay = day;
+      const data = DAYS_DATA[day];
+      
+      // Update Pills
+      for (let i = 1; i <= 7; i++) {
+        const p = document.getElementById('pill-' + i);
+        if (i === day) {
+          p.className = "day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent active-day-pill";
+        } else {
+          p.className = "day-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700";
+        }
+      }
+
+      // Update Date Label
+      document.getElementById('currentDateLabel').innerText = `Dag ${day}: ${data.date}`;
+
+      // Update KPIs
+      document.getElementById('kpiImpressies').innerText = data.impressies;
+      document.getElementById('kpiImpressiesSub').innerText = data.impSub;
+      document.getElementById('kpiKliks').innerText = data.kliks;
+      document.getElementById('kpiKliksSub').innerText = data.clickSub;
+      document.getElementById('kpiCpc').innerText = data.cpc;
+      document.getElementById('kpiCpcSub').innerText = data.cpcSub;
+      document.getElementById('kpiSpend').innerText = data.spend;
+      document.getElementById('kpiSpendSub').innerText = data.spendSub;
+
+      // Update Details
+      document.getElementById('detailDayBadge').innerText = day;
+      document.getElementById('detailDaySubtitle').innerText = data.subtitle;
+      document.getElementById('detailDayTitle').innerText = data.title;
+      document.getElementById('detailStory').innerHTML = data.story;
+      document.getElementById('detailComparison').innerText = data.comparison;
+      document.getElementById('detailTag').innerText = data.tag;
+      document.getElementById('funnelImp').innerText = data.funnelImp;
+      document.getElementById('funnelClicks').innerText = data.funnelClicks;
+      document.getElementById('funnelRoi').innerText = data.funnelRoi;
+    }
+
+    function togglePlay() {
+      if (playInterval) {
+        clearInterval(playInterval);
+        playInterval = null;
+        document.getElementById('playIcon').innerText = "▶";
+        document.getElementById('playText').innerText = "Speel Tijdslijn Af";
+      } else {
+        document.getElementById('playIcon').innerText = "⏸";
+        document.getElementById('playText').innerText = "Pauzeer Tijdslijn";
+        if (currentDay >= 7) currentDay = 1;
+        selectDay(currentDay);
+        
+        playInterval = setInterval(() => {
+          currentDay++;
+          if (currentDay > 7) {
+            clearInterval(playInterval);
+            playInterval = null;
+            document.getElementById('playIcon').innerText = "▶";
+            document.getElementById('playText').innerText = "Speel Tijdslijn Af";
+            currentDay = 7;
+          } else {
+            selectDay(currentDay);
+          }
+        }, 1600);
+      }
+    }
+
+    function resetDay() {
+      if (playInterval) {
+        clearInterval(playInterval);
+        playInterval = null;
+        document.getElementById('playIcon').innerText = "▶";
+        document.getElementById('playText').innerText = "Speel Tijdslijn Af";
+      }
+      selectDay(1);
+    }
+  </script>
+</body>
+</html>
