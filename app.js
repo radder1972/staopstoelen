@@ -2739,21 +2739,25 @@ function initFloatingMenu() {
       .floating-btn-main.assistant-chair-fab { position: relative !important; width: 72px !important; height: 72px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 2.5px solid #4b8f24 !important; box-shadow: 0 10px 28px rgba(18,43,7,0.24), 0 0 0 4px rgba(75,143,36,0.14) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; }
       .assistant-chair-img { width: 58px !important; height: 58px !important; max-width: 58px !important; max-height: 58px !important; object-fit: contain !important; display: block !important; pointer-events: none; transform-origin: 50% 80%; }
       .da-avatar-img { width: 32px !important; height: 32px !important; max-width: 32px !important; max-height: 32px !important; object-fit: contain !important; transform-origin: 50% 80%; }
+      .digital-assistant-panel { display: none; flex-direction: column !important; width: 380px !important; max-width: calc(100vw - 28px) !important; height: 560px !important; max-height: min(600px, calc(100vh - 90px)) !important; background: #ffffff !important; border-radius: 20px !important; border: 1.5px solid rgba(75, 143, 36, 0.28) !important; box-shadow: 0 20px 50px rgba(18, 43, 7, 0.24) !important; overflow: hidden !important; }
+      .digital-assistant-panel.active { display: flex !important; }
       .floating-contact-wrapper.panel-open .floating-btn-main,
       .digital-assistant-panel.active ~ .floating-btn-main { display: none !important; }
+      .da-header { flex-shrink: 0 !important; }
       .da-header-info { display: flex !important; flex-direction: column !important; align-items: flex-start !important; justify-content: center !important; gap: 2px !important; }
       .da-status-line { display: inline-flex !important; align-items: center !important; gap: 5px !important; font-size: 0.68rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #a7f3d0 !important; line-height: 1 !important; }
       .da-status-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #34d399 !important; box-shadow: 0 0 6px rgba(52, 211, 153, 0.9) !important; }
       .da-title { font-size: 0.95rem !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
-      .da-body { background: #f4f7f2 !important; }
+      .da-body { flex: 1 1 auto !important; min-height: 0 !important; max-height: none !important; overflow-y: auto !important; background: #f4f7f2 !important; padding: 14px 15px !important; display: flex !important; flex-direction: column !important; gap: 10px !important; -webkit-overflow-scrolling: touch !important; }
       .da-msg-bubble { font-size: 0.88rem !important; line-height: 1.5 !important; max-width: 90% !important; word-wrap: break-word !important; }
       .da-msg-bot .da-msg-bubble { background: #ffffff !important; color: #122b07 !important; border: 1px solid rgba(75, 143, 36, 0.18) !important; border-radius: 18px 18px 18px 4px !important; box-shadow: 0 2px 8px rgba(18, 43, 7, 0.06) !important; padding: 12px 16px !important; }
       .da-msg-user .da-msg-bubble { background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%) !important; color: #ffffff !important; font-weight: 500 !important; border-radius: 18px 18px 4px 18px !important; box-shadow: 0 3px 10px rgba(75, 143, 36, 0.22) !important; padding: 11px 16px !important; }
       .da-msg-typing .da-msg-bubble { border-radius: 18px 18px 18px 4px !important; background: #ffffff !important; border: 1px solid rgba(75, 143, 36, 0.18) !important; padding: 10px 14px !important; }
       .da-quick-chips { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; margin-top: 10px !important; }
-      .da-chip { width: 100% !important; padding: 7px 9px !important; border-radius: 9px !important; border: 1px solid #d4e7c7 !important; background: #ffffff !important; color: #122b07 !important; font-size: 0.74rem !important; font-weight: 600 !important; text-align: left !important; cursor: pointer !important; line-height: 1.25 !important; transition: all 0.15s ease !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
-      .da-chip:hover { background: #e9f4e2 !important; border-color: #4b8f24 !important; }
-      .da-input-wrapper { background: #ffffff !important; border-top: 1.5px solid #e1ebda !important; padding: 10px 14px 8px !important; }
+      .da-chip { display: inline-flex !important; align-items: center !important; gap: 7px !important; width: 100% !important; padding: 8px 10px !important; border-radius: 9px !important; border: 1px solid #d4e7c7 !important; background: #ffffff !important; color: #122b07 !important; font-size: 0.74rem !important; font-weight: 600 !important; text-align: left !important; cursor: pointer !important; line-height: 1.25 !important; transition: all 0.15s ease !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
+      .da-chip:hover { background: #e9f4e2 !important; border-color: #4b8f24 !important; transform: translateY(-1px) !important; }
+      .da-chip svg { flex-shrink: 0 !important; stroke: #4b8f24 !important; }
+      .da-input-wrapper { flex-shrink: 0 !important; background: #ffffff !important; border-top: 1.5px solid #e1ebda !important; padding: 10px 14px 8px !important; }
       .da-input-callout { display: flex !important; align-items: center !important; gap: 6px !important; font-size: 0.73rem !important; font-weight: 700 !important; color: #2e6819 !important; margin-bottom: 6px !important; }
       .da-input-bar { display: flex !important; align-items: center !important; gap: 8px !important; background: #ffffff !important; border: 2px solid #4b8f24 !important; border-radius: 10px !important; padding: 5px 6px 5px 14px !important; min-height: 48px !important; box-shadow: 0 2px 10px rgba(75, 143, 36, 0.12) !important; transition: all 0.2s ease !important; }
       .da-input-bar:focus-within { background: #ffffff !important; border-color: #2e6819 !important; box-shadow: 0 3px 14px rgba(46, 104, 25, 0.24) !important; }
@@ -2762,11 +2766,11 @@ function initFloatingMenu() {
       .da-input:focus { outline: none !important; }
       .da-send-btn { width: 38px !important; height: 38px !important; border-radius: 8px !important; border: 0 !important; background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%) !important; color: #ffffff !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; flex-shrink: 0 !important; box-shadow: 0 2px 6px rgba(18, 43, 7, 0.2) !important; transition: transform 0.15s ease, background 0.15s ease !important; }
       .da-send-btn:hover { transform: scale(1.05) !important; background: #2e6819 !important; }
-      .da-footer-sub { display: block !important; padding: 8px 14px 10px !important; background: #fbfdfa !important; border-top: 1px solid #e7eee4 !important; }
+      .da-footer-sub { flex-shrink: 0 !important; display: block !important; padding: 8px 14px 10px !important; background: #fbfdfa !important; border-top: 1px solid #e7eee4 !important; }
       .da-sub-actions { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; width: 100% !important; }
-      .da-sub-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; padding: 7px 8px !important; border-radius: 8px !important; font-size: 0.78rem !important; font-weight: 600 !important; color: #274818 !important; background: #edf3eb !important; border: 1px solid #c9d8c3 !important; text-decoration: none !important; line-height: 1.3 !important; transition: all 0.18s ease !important; white-space: nowrap !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
+      .da-sub-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; padding: 8px 6px !important; border-radius: 8px !important; font-size: 0.78rem !important; font-weight: 600 !important; color: #274818 !important; background: #edf3eb !important; border: 1px solid #c9d8c3 !important; text-decoration: none !important; line-height: 1.3 !important; transition: all 0.18s ease !important; white-space: nowrap !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
       .da-sub-btn:hover { background: #e2ede0 !important; border-color: #a8c49e !important; color: #17300c !important; transform: translateY(-1px) !important; }
-      .da-sub-btn svg { flex-shrink: 0 !important; opacity: 0.88 !important; }
+      .da-sub-btn svg { flex-shrink: 0 !important; opacity: 0.9 !important; }
       @media (max-width: 768px) {
         .nav-text-logo.has-chair-logo { top: 6px !important; gap: 8px !important; }
         .nav-chair-logo-icon { width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; }
@@ -2853,10 +2857,22 @@ function initFloatingMenu() {
         </div>
       </div>
       <div class="da-quick-chips" id="daQuickChips">
-        <button type="button" class="da-chip" data-topic="maat">💡 Welke maat past bij mij?</button>
-        <button type="button" class="da-chip" data-topic="prijs">💰 Wat kost een stoel?</button>
-        <button type="button" class="da-chip" data-topic="proefzitten">📍 Proefzitten Dordrecht</button>
-        <button type="button" class="da-chip" data-topic="vergoeding">📋 Vergoeding &amp; Wmo</button>
+        <button type="button" class="da-chip" data-topic="maat">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-4 3h2m-5-9a5 5 0 1 1 8 0c0 2-2 3-2 4H10c0-1-2-2-2-4z"/></svg>
+          <span>Welke maat past bij mij?</span>
+        </button>
+        <button type="button" class="da-chip" data-topic="prijs">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          <span>Wat kost een stoel?</span>
+        </button>
+        <button type="button" class="da-chip" data-topic="proefzitten">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Proefzitten showroom</span>
+        </button>
+        <button type="button" class="da-chip" data-topic="vergoeding">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Vergoeding &amp; Wmo</span>
+        </button>
       </div>
     </div>
 

@@ -8778,7 +8778,8 @@ input[type="checkbox"] {
   flex-direction: column;
   width: 380px;
   max-width: calc(100vw - 28px);
-  max-height: min(600px, calc(100vh - 120px));
+  height: 560px;
+  max-height: min(600px, calc(100vh - 90px));
   background: #ffffff;
   border-radius: 20px;
   border: 1.5px solid rgba(75, 143, 36, 0.28);
@@ -8798,6 +8799,7 @@ input[type="checkbox"] {
 }
 
 .da-header {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -8928,13 +8930,15 @@ input[type="checkbox"] {
 }
 
 .da-body {
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 14px 15px;
   background: #f4f7f2;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 310px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .da-msg {
@@ -9025,20 +9029,28 @@ input[type="checkbox"] {
 }
 
 .da-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   width: 100%;
   text-align: left;
-  background: #f7fbf4;
+  background: #ffffff;
   border: 1px solid #d4e7c7;
   color: #122b07;
   font-family: inherit;
   font-size: 0.74rem;
   font-weight: 600;
-  padding: 7px 9px;
+  padding: 8px 10px;
   border-radius: 9px;
   cursor: pointer;
   line-height: 1.25;
   transition: all 0.15s ease;
   box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04);
+}
+
+.da-chip svg {
+  flex-shrink: 0;
+  stroke: #4b8f24;
 }
 
 .da-chip:hover {
@@ -9084,6 +9096,7 @@ input[type="checkbox"] {
 }
 
 .da-input-wrapper {
+  flex-shrink: 0;
   background: #ffffff;
   border-top: 1.5px solid #e1ebda;
   padding: 10px 14px 8px;
@@ -9162,6 +9175,7 @@ input[type="checkbox"] {
 }
 
 .da-footer-sub {
+  flex-shrink: 0;
   display: block;
   padding: 8px 14px 10px;
   background: #fbfdfa;
