@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategische Beslis-Wizard voor Geertjan • Staopstoelen.nl</title>
+
+  <!-- Google Fonts: Montserrat & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #1a420b;
+      --color-forest-light: #eef7eb;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #d97706;
+      --color-gold: #fed857;
+      --color-dark: #0f172a;
+      --color-card-bg: #1e293b;
+      --color-border: rgba(255, 255, 255, 0.12);
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0b1120;
+      color: #f1f5f9;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    /* TOP HEADER */
+    .wizard-header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.35rem;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo span {
+      color: var(--color-terracotta);
+    }
+    .brand-badge {
+      background: rgba(243, 146, 35, 0.15);
+      border: 1px solid rgba(243, 146, 35, 0.4);
+      color: var(--color-gold);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* WIZARD PROGRESS TRACKER */
+    .progress-bar-container {
+      background: #0f172a;
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 28px;
+      display: flex;
+      justify-content: center;
+    }
+    .wizard-steps {
+      display: flex;
+      align-items: center;
+      max-width: 980px;
+      width: 100%;
+      position: relative;
+    }
+    .step-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .step-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #1e293b;
+      border: 2px solid #475569;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      transition: all 0.25s ease;
+    }
+    .step-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-align: center;
+      white-space: nowrap;
+      transition: color 0.25s ease;
+    }
+    .step-item.active .step-circle {
+      background: var(--color-forest);
+      border-color: #86efac;
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(75, 143, 36, 0.6);
+      transform: scale(1.1);
+    }
+    .step-item.active .step-label {
+      color: #ffffff;
+      font-weight: 800;
+    }
+    .step-item.completed .step-circle {
+      background: #15803d;
+      border-color: #4ade80;
+      color: #ffffff;
+    }
+    .step-item.completed .step-label {
+      color: #86efac;
+    }
+
+    .step-track-line {
+      position: absolute;
+      top: 19px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: #334155;
+      z-index: 1;
+    }
+    .step-track-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-terracotta), var(--color-forest));
+      transition: width 0.35s ease;
+    }
+
+    /* WIZARD MAIN STAGE */
+    main.wizard-stage {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* SLIDE CARD */
+    .wizard-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 36px 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      display: none;
+      animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .wizard-card.active {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* CARD HEADER */
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+    .card-step-tag {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--color-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+    }
+    .card-badge-right {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    /* CARD CONTENT LAYOUTS */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .split-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+    }
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .hero-photo-wrap:hover img {
+      transform: scale(1.02);
+    }
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 90%);
+      padding: 20px 16px 12px 16px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
+    .photo-caption strong {
+      color: #ffffff;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.86rem;
+    }
+
+    /* INTERACTIVE DOOR SELECTOR (STAP 1) */
+    .door-selector-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .door-prompt {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 14px;
+    }
+    .door-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .btn-door {
+      background: #334155;
+      border: 1.5px solid #475569;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 12px 8px;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .btn-door:hover {
+      border-color: var(--color-terracotta);
+      background: #3f4e65;
+    }
+    .btn-door.active {
+      background: rgba(243, 146, 35, 0.2);
+      border-color: var(--color-terracotta);
+      color: var(--color-gold);
+    }
+    .door-reveal-panel {
+      background: #0f172a;
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      min-height: 95px;
+    }
+
+    /* BULLET LIST WITH ICONS */
+    .story-points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .story-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 12px 16px;
+      border-radius: 10px;
+      border-left: 3px solid var(--color-forest);
+    }
+    .story-point.danger {
+      border-left-color: #ef4444;
+    }
+    .story-point.warning {
+      border-left-color: var(--color-terracotta);
+    }
+    .story-point.success {
+      border-left-color: #22c55e;
+    }
+    .point-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .point-text {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+    .point-text strong {
+      color: #ffffff;
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+
+    /* TPM VS MATTHIAS GRAPHICS (STAP 2 & 3) */
+    .metric-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .metric-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .m-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+    }
+    .m-num {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .m-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* PROS & CONS TABLE (STAP 4) */
+    .pros-cons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 860px) {
+      .pros-cons-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .opt-col {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .opt-col.highlight {
+      background: rgba(75, 143, 36, 0.12);
+      border-color: var(--color-forest);
+      box-shadow: 0 10px 30px rgba(75, 143, 36, 0.25);
+    }
+    .opt-header {
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+    .opt-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .opt-price {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+    .opt-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+    }
+    .opt-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .opt-item.pro { color: #86efac; }
+    .opt-item.con { color: #fca5a5; }
+
+    .opt-verdict {
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .opt-col.highlight .opt-verdict {
+      background: var(--color-forest);
+      color: #ffffff;
+    }
+    .opt-col:not(.highlight) .opt-verdict {
+      background: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+    }
+
+    /* FINAL ADVICE (STAP 5) */
+    .advice-hero-box {
+      background: linear-gradient(135deg, rgba(75, 143, 36, 0.25) 0%, rgba(26, 66, 11, 0.4) 100%);
+      border: 1.5px solid var(--color-forest);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+    .advice-hero-box h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .advice-hero-box p {
+      color: #bbf7d0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .action-steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 768px) {
+      .action-steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .action-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .action-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .action-badge.online { background: #15803d; color: #ffffff; }
+    .action-badge.flyer { background: var(--color-terracotta-dark); color: #ffffff; }
+
+    .action-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .action-card p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    /* WIZARD NAVIGATION FOOTER */
+    .wizard-footer {
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid var(--color-border);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+    }
+    .btn-nav {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-prev {
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-prev:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+    .btn-prev:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .btn-next {
+      background: linear-gradient(135deg, var(--color-forest) 0%, #387317 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(75, 143, 36, 0.4);
+    }
+    .btn-next:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(75, 143, 36, 0.55);
+    }
+
+    .key-hint {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="wizard-header">
+    <div class="brand-wrap">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <span class="brand-badge">Strategische Beslis-Wizard voor Geertjan</span>
+    </div>
+    <div style="font-size: 0.85rem; color: #94a3b8;">
+      Gemaakt door: <strong>Matthias Radder</strong>
+    </div>
+  </header>
+
+  <!-- PROGRESS TRACKER -->
+  <nav class="progress-bar-container" aria-label="Wizard Voortgang">
+    <div class="wizard-steps">
+      <div class="step-track-line">
+        <div class="step-track-fill" id="trackFill"></div>
+      </div>
+
+      <div class="step-item active" onclick="goToStep(1)">
+        <div class="step-circle">1</div>
+        <span class="step-label">De Deurmat</span>
+      </div>
+
+      <div class="step-item" onclick="goToStep(2)">
+        <div class="step-circle">2</div>
+        <span class="step-label">Het Externe Bureau (TPM)</span>
+      </div>
+
+      <div class="step-item" onclick="goToStep(3)">
+        <div class="step-circle">3</div>
+        <span class="step-label">Matthias Online</span>
+      </div>
+
+      <div class="step-item" onclick="goToStep(4)">
+        <div class="step-circle">4</div>
+        <span class="step-label">Voor- &amp; Nadelen</span>
+      </div>
+
+      <div class="step-item" onclick="goToStep(5)">
+        <div class="step-circle">5</div>
+        <span class="step-label">Het Definitieve Advies</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN WIZARD CARDS -->
+  <main class="wizard-stage">
+
+    <!-- ========================================================================
+         STAP 1: HET VERHAAL VAN DE FLYER OP DE DEURMAT
+         ======================================================================== -->
+    <div class="wizard-card active" id="card-1">
+      <div class="card-header-row">
+        <div>
+          <span class="card-step-tag">Stap 1 van 5 &bull; De Realiteit</span>
+          <h2 class="card-title">De Flyer op de Deurmat: Wat gebeurt er écht?</h2>
+        </div>
+        <div class="card-badge-right">📬 Huis-aan-Huis Verspreiding</div>
+      </div>
+
+      <div class="split-layout">
+        <!-- LINKER KOLOM: DE AUTHENTIEKE FOTO -->
+        <div class="hero-photo-wrap">
+          <img src="assets/marketing/flyer_op_deurmat.jpg" alt="Flyer van Staopstoelen.nl op de deurmat">
+          <div class="photo-caption">
+            <strong>Kijk, de flyer is een juweel van vakmanschap!</strong>
+            Hij ligt prachtig op de mat. Maar wie bukt er om hem op te pakken?
+          </div>
+        </div>
+
+        <!-- RECHTER KOLOM: INTERACTIEVE DEURMAT REALITEIT -->
+        <div>
+          <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 16px;">
+            Stel, Geertjan: we laten <strong>10.000 flyers</strong> drukken en verspreiden in Dordrecht en Zwijndrecht. Kosten: <strong>~€ 1.250,-</strong>.
+            <br><br>
+            Klik hieronder op de drie typische deuren in de straat om te zien waar jouw € 1.250,- heengaat:
+          </p>
+
+          <div class="door-selector-box">
+            <div class="door-prompt">👉 Klik op een voordeur en ontdek het resultaat:</div>
+            
+            <div class="door-buttons">
+              <button type="button" class="btn-door active" onclick="revealDoor(1)">
+                🚪 Deur 1<br><small>(Jong Gezin)</small>
+              </button>
+              <button type="button" class="btn-door" onclick="revealDoor(2)">
+                🚪 Deur 2<br><small>(Nee/Nee Sticker)</small>
+              </button>
+              <button type="button" class="btn-door" onclick="revealDoor(3)">
+                🚪 Deur 3<br><small>(Seniorenflat)</small>
+              </button>
+            </div>
+
+            <div class="door-reveal-panel" id="doorPanel">
+              <span style="color: #f87171; font-weight: 800; display: block; margin-bottom: 4px;">❌ 40% van de deuren: Jong gezin / studenten</span>
+              Hier wonen Peter (32) en Sanne (29). Kerngezond, druk met werk en kinderen. De flyer wordt binnen 15 seconden samen met de reclamefolder van de lokale supermarkt <strong>direct in de blauwe papiercontainer</strong> gegooid. <em>Nul interesse, geld verdampt.</em>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 12px 16px; font-size: 0.85rem; color: #fca5a5;">
+            ⚠️ <strong>De Harde Conclusie van Huis-aan-Huis:</strong> Slechts 0,01% tot 0,02% van de huishoudens heeft <em>op dít exacte moment</em> een sta-opstoel nodig. Je betaalt dus <strong>€ 600,- tot € 1.250,-</strong> aan druk- en bezorgkosten voor 1 enkel showroombezoek!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         STAP 2: DE OUDE PARTIJ (TPM / EXTERNE MARKETING)
+         ======================================================================== -->
+    <div class="wizard-card" id="card-2">
+      <div class="card-header-row">
+        <div>
+          <span class="card-step-tag">Stap 2 van 5 &bull; Het Verleden</span>
+          <h2 class="card-title">Investeren in een Extern Bureau (zoals TPM)</h2>
+        </div>
+        <div class="card-badge-right">📉 € 400,- per maand vaste fee</div>
+      </div>
+
+      <div style="max-width: 860px; margin: 0 auto;">
+        <p style="color: #cbd5e1; font-size: 1.05rem; margin-bottom: 24px; text-align: center;">
+          Geertjan heeft de afgelopen periode maandelijks <strong>€ 400,- betaald aan TPM</strong>. Maar wat kreeg hij daar eigenlijk voor terug?
+        </p>
+
+        <div class="story-points" style="margin-bottom: 24px;">
+          <div class="story-point danger">
+            <span class="point-icon">📦</span>
+            <div class="point-text">
+              <strong>De 'Black Box' fee: € 4.800,- per jaar gegarandeerd kwijt</strong>
+              Of er nu 10 stoelen werden verkocht of nul, de factuur van € 400,- per maand kwam altijd stipt binnen. Het bureau loopt geen enkel risico, Geertjan betaalt.
+            </div>
+          </div>
+
+          <div class="story-point warning">
+            <span class="point-icon">📑</span>
+            <div class="point-text">
+              <strong>Vage rapportages vol 'vertoningen' in plaats van proefzitters</strong>
+              Veel vaktermen als impressies, reach en kliks, maar in de showroom aan de Merwedestraat merkte Geertjan er bar weinig van.
+            </div>
+          </div>
+
+          <div class="story-point danger">
+            <span class="point-icon">🐢</span>
+            <div class="point-text">
+              <strong>Trage reactietijd en nul affiniteit met de zorgconsument</strong>
+              Voor elke kleine wijziging of actie ben je afhankelijk van een accountmanager die de stoelenbranche en de Dordtse markt niet kent.
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center;">
+          <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 6px;">DE VRAAG AAN GEERTJAN:</div>
+          <div style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #ffffff;">
+            "Wil je maandelijks € 400,- overmaken aan een bureau voor 'beheer', of wil je dat elke euro direct verandert in proefzit-afspraken?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         STAP 3: DE NIEUWE AANPAK: ONLINE MARKETING DOOR MATTHIAS
+         ======================================================================== -->
+    <div class="wizard-card" id="card-3">
+      <div class="card-header-row">
+        <div>
+          <span class="card-step-tag">Stap 3 van 5 &bull; Het Heden &amp; De Feiten</span>
+          <h2 class="card-title">De Kracht van Matthias Online: Directe Zoekintentie</h2>
+        </div>
+        <div class="card-badge-right">🚀 Google Ads + Marktplaats Pro</div>
+      </div>
+
+      <div style="max-width: 900px; margin: 0 auto;">
+        <p style="color: #cbd5e1; font-size: 1.02rem; margin-bottom: 20px;">
+          Kijk wat er gebeurt als Matthias de marketing overneemt en de knoppen direct richt op mensen die <strong>NU actief zoeken</strong>:
+        </p>
+
+        <!-- LIVE BEWIJS METRICS -->
+        <div class="metric-cards-grid">
+          <div class="m-card" style="border-color: #38bdf8;">
+            <div class="m-num" style="color: #38bdf8;">158</div>
+            <div class="m-label">Directe Sessies in dagen</div>
+          </div>
+          <div class="m-card" style="border-color: #4ade80;">
+            <div class="m-num" style="color: #4ade80;">33+</div>
+            <div class="m-label">Google Organic Bezoekers</div>
+          </div>
+          <div class="m-card" style="border-color: var(--color-gold);">
+            <div class="m-num" style="color: var(--color-gold);">&gt; 1 Mnd TPM</div>
+            <div class="m-label">In slechts een paar dagen!</div>
+          </div>
+        </div>
+
+        <div class="story-points">
+          <div class="story-point success">
+            <span class="point-icon">🎯</span>
+            <div class="point-text">
+              <strong>100% Mensen met een Acute Zorgbehoefte</strong>
+              Geen willekeurige deuren. Matthias vangt mensen af die op Google intikken: <em>'sta op stoel fitform dordrecht'</em>, <em>'tweedehands sta-opstoel kopen'</em>, of kinderen die met spoed een stoel voor hun moeder zoeken.
+            </div>
+          </div>
+
+          <div class="story-point success">
+            <span class="point-icon">📞</span>
+            <div class="point-text">
+              <strong>Directe Telefoontjes &amp; WhatsApps naar de Showroom</strong>
+              Met knoppen naar <code>078 - 631 4858</code> en <code>06 - 2223 2964</code> staat Geertjan binnen enkele seconden in direct contact met een warme koper.
+            </div>
+          </div>
+
+          <div class="story-point success">
+            <span class="point-icon">💰</span>
+            <div class="point-text">
+              <strong>Elke Euro is Meetbaar in Google Analytics</strong>
+              Geertjan kan op elk moment live zien hoeveel zoekers er zijn binnengekomen en wat elke klik heeft gekost. Geen geheimen, 100% open kaart.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         STAP 4: VOOR- EN NADELEN MATRIX (DE VERGELIJKING)
+         ======================================================================== -->
+    <div class="wizard-card" id="card-4">
+      <div class="card-header-row">
+        <div>
+          <span class="card-step-tag">Stap 4 van 5 &bull; Objectieve Analyse</span>
+          <h2 class="card-title">De 3 Opties Naast Elkaar: Voor- en Nadelen</h2>
+        </div>
+        <div class="card-badge-right">⚖️ Afweging voor Geertjan</div>
+      </div>
+
+      <div class="pros-cons-grid">
+        
+        <!-- OPTIE A: FLYERS -->
+        <div class="opt-col">
+          <div class="opt-header">
+            <div class="opt-title">1. Huis-aan-Huis Flyer</div>
+            <div class="opt-price">~€ 1.250,- per verspreiding</div>
+          </div>
+          <div class="opt-items">
+            <div class="opt-item pro"><span>+</span> Tastbaar papier in de hand</div>
+            <div class="opt-item pro"><span>+</span> Ziet er professioneel uit</div>
+            <div class="opt-item con"><span>&minus;</span> 98,5% belandt in oud papier</div>
+            <div class="opt-item con"><span>&minus;</span> Bereikt geen actieve zoekers</div>
+            <div class="opt-item con"><span>&minus;</span> Zeer hoge kosten per bezoeker (€600+)</div>
+            <div class="opt-item con"><span>&minus;</span> Eenmalig: stopt na 1 week</div>
+          </div>
+          <div class="opt-verdict">Oordeel: Te duur als massamedium</div>
+        </div>
+
+        <!-- OPTIE B: TPM BUREAU -->
+        <div class="opt-col">
+          <div class="opt-header">
+            <div class="opt-title">2. Extern Bureau (TPM)</div>
+            <div class="opt-price">€ 400,- per maand vast</div>
+          </div>
+          <div class="opt-items">
+            <div class="opt-item pro"><span>+</span> Je hoeft zelf niets te doen</div>
+            <div class="opt-item con"><span>&minus;</span> Vaste retainer (€4.800/jr)</div>
+            <div class="opt-item con"><span>&minus;</span> Nauwelijks meetbare verkopen</div>
+            <div class="opt-item con"><span>&minus;</span> Weinig gevoel bij sta-opstoelen</div>
+            <div class="opt-item con"><span>&minus;</span> Trage communicatie</div>
+            <div class="opt-item con"><span>&minus;</span> Bureau incasseert, Geertjan riskeert</div>
+          </div>
+          <div class="opt-verdict">Oordeel: Lage ROI, zonde van fee</div>
+        </div>
+
+        <!-- OPTIE C: MATTHIAS ONLINE -->
+        <div class="opt-col highlight">
+          <div class="opt-header">
+            <div class="opt-title" style="color: #86efac;">3. Matthias Online</div>
+            <div class="opt-price" style="color: #bbf7d0;">€ 450 - € 500 per maand</div>
+          </div>
+          <div class="opt-items">
+            <div class="opt-item pro"><span>+</span> 100% gerichte zoekers (acute nood)</div>
+            <div class="opt-item pro"><span>+</span> 6 tot 12 concrete afspraken/mnd</div>
+            <div class="opt-item pro"><span>+</span> Lage kosten per bezoeker (€40 - €75)</div>
+            <div class="opt-item pro"><span>+</span> 1 verkochte stoel dekt de hele maand</div>
+            <div class="opt-item pro"><span>+</span> Dagelijks realtime bijsturen</div>
+            <div class="opt-item pro"><span>+</span> Bewezen in recente data!</div>
+          </div>
+          <div class="opt-verdict">⭐ Oordeel: Hoogste Rendement!</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         STAP 5: HET DEFINITIEVE ADVIES (DE HYBRIDE STRATEGIE)
+         ======================================================================== -->
+    <div class="wizard-card" id="card-5">
+      <div class="card-header-row">
+        <div>
+          <span class="card-step-tag">Stap 5 van 5 &bull; Het Eindadvies</span>
+          <h2 class="card-title">Het Slimme Advies: De Gouden Hybride Strategie</h2>
+        </div>
+        <div class="card-badge-right" style="background: var(--color-forest); color: #ffffff;">🏆 Geen verlies, maximale winst</div>
+      </div>
+
+      <div>
+        <div class="advice-hero-box">
+          <h3>Geertjan, we gooien de flyer niet weg... We zetten hem slim in!</h3>
+          <p>
+            Het is zonde om € 1.250,- te verbranden door flyers lukraak door Dordtse brievenbussen te douwen. En het is zonde om maandelijks € 400,- aan TPM te betalen. 
+            <br><br>
+            <strong>Dit is het winnende plan:</strong>
+          </p>
+        </div>
+
+        <div class="action-steps-grid">
+          
+          <div class="action-card">
+            <span class="action-badge online">Deel 1: De Motor (Online door Matthias)</span>
+            <h4>Zet het marketingbudget 100% online in</h4>
+            <p>
+              Laat Matthias via Google Ads en Marktplaats Pro de actieve zoekers naar de Merwedestraat sturen. Dit zorgt voor een constante, wekelijkse stroom van warme proefzitters in je showroom.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <span class="action-badge flyer">Deel 2: De Dealcloser (De Fysieke Flyer)</span>
+            <h4>Gebruik de flyer als Showroom Meeneem-Voucher!</h4>
+            <p>
+              Klant komt proefzitten, maar twijfelt nog even met zoon of dochter? Geef ze de prachtige fysieke flyer mee! De <strong>€ 79,- All in House Waardebon</strong> met actiecode trekt de twijfelaars binnen 14 dagen over de streep.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <span class="action-badge flyer">Deel 3: Gerichte Zorgverspreiding (€0,- kosten)</span>
+            <h4>Leg stapeltjes bij fysiotherapeuten &amp; zorgcentra</h4>
+            <p>
+              In plaats van Spotta betalen, leggen we stapeltjes flyers neer in de wachtkamers van fysiotherapeuten, ergotherapeuten en seniorencomplexen in Dordrecht. 100% raak bij de juiste doelgroep, nul verspreidingskosten.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <span class="action-badge online">Deel 4: Het Resultaat voor Geertjan</span>
+            <h4>Gemoedsrust, volle showroom &amp; winst</h4>
+            <p>
+              Geertjan doet waar hij het allerbeste in is: vakkundig advies geven, stoelen op maat afstellen en tevreden senioren helpen. Matthias zorgt dat de deurbel blijft rinkelen.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- SLUITSTUK CALL TO ACTION -->
+        <div style="background: rgba(0,0,0,0.4); border: 1.5px solid var(--color-forest); border-radius: 14px; padding: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: #ffffff;">
+              Klaar om dit met Geertjan te bespreken?
+            </div>
+            <div style="font-size: 0.85rem; color: #94a3b8;">
+              Met deze data en de hybride strategie is de keuze voor Geertjan een no-brainer.
+            </div>
+          </div>
+          <button type="button" class="btn-nav btn-next" onclick="goToStep(1)">
+            🔄 Begin Opnieuw (Vanaf Stap 1)
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- WIZARD NAVIGATION FOOTER -->
+  <footer class="wizard-footer">
+    <button type="button" class="btn-nav btn-prev" id="btnPrev" onclick="navigateStep(-1)" disabled>
+      &larr; Vorige Stap
+    </button>
+
+    <div class="key-hint">
+      Tip: Gebruik <kbd style="background: #334155; padding: 2px 6px; border-radius: 4px; color: #fff;">&larr;</kbd> en <kbd style="background: #334155; padding: 2px 6px; border-radius: 4px; color: #fff;">&rarr;</kbd> pijltjestoetsen om te navigeren
+    </div>
+
+    <button type="button" class="btn-nav btn-next" id="btnNext" onclick="navigateStep(1)">
+      Volgende Stap &rarr;
+    </button>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    // STEP NAVIGATION
+    function goToStep(step) {
+      if (step < 1 || step > totalSteps) return;
+      currentStep = step;
+      updateWizardUI();
+    }
+
+    function navigateStep(direction) {
+      goToStep(currentStep + direction);
+    }
+
+    function updateWizardUI() {
+      // Cards visibility
+      for (let i = 1; i <= totalSteps; i++) {
+        const card = document.getElementById('card-' + i);
+        if (card) {
+          card.classList.toggle('active', i === currentStep);
+        }
+      }
+
+      // Step indicators
+      const stepItems = document.querySelectorAll('.step-item');
+      stepItems.forEach((item, idx) => {
+        const stepNum = idx + 1;
+        item.classList.remove('active', 'completed');
+        if (stepNum === currentStep) {
+          item.classList.add('active');
+        } else if (stepNum < currentStep) {
+          item.classList.add('completed');
+        }
+      });
+
+      // Track fill line
+      const percent = ((currentStep - 1) / (totalSteps - 1)) * 100;
+      document.getElementById('trackFill').style.width = percent + '%';
+
+      // Buttons
+      document.getElementById('btnPrev').disabled = (currentStep === 1);
+      const btnNext = document.getElementById('btnNext');
+      if (currentStep === totalSteps) {
+        btnNext.innerHTML = '🏁 Klaar / Begin Opnieuw';
+        btnNext.setAttribute('onclick', 'goToStep(1)');
+      } else {
+        btnNext.innerHTML = 'Volgende Stap &rarr;';
+        btnNext.setAttribute('onclick', 'navigateStep(1)');
+      }
+
+      // Scroll smoothly to top of stage
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // STAP 1: DOOR SELECTOR REVEAL
+    function revealDoor(doorNum) {
+      document.querySelectorAll('.btn-door').forEach((b, idx) => {
+        b.classList.toggle('active', (idx + 1) === doorNum);
+      });
+
+      const panel = document.getElementById('doorPanel');
+      if (doorNum === 1) {
+        panel.innerHTML = `
+          <span style="color: #f87171; font-weight: 800; display: block; margin-bottom: 4px;">❌ 40% van de deuren: Jong gezin / starters</span>
+          Hier wonen Peter (32) en Sanne (29). Kerngezond, druk met werk en kinderen. De flyer wordt binnen 15 seconden samen met de reclamefolder van de lokale supermarkt <strong>direct in de blauwe papiercontainer</strong> gegooid. <em>Nul interesse, geld verdampt.</em>
+        `;
+      } else if (doorNum === 2) {
+        panel.innerHTML = `
+          <span style="color: #f87171; font-weight: 800; display: block; margin-bottom: 4px;">❌ 45% van de deuren: Nee/Nee of Nee/Ja sticker</span>
+          De postbezorger gooit de flyer niet eens naar binnen óf de bewoner deponeert ongeadresseerd drukwerk direct ongeopend in de prullenbak. <em>Geen bereik, wel voor betaald.</em>
+        `;
+      } else {
+        panel.innerHTML = `
+          <span style="color: #4ade80; font-weight: 800; display: block; margin-bottom: 4px;">🎯 14% Senioren &bull; Maar slechts 0,1% heeft NU direct een stoel nodig</span>
+          Hier woont mevrouw De Bruin (79). Ze leest de flyer misschien wel... maar ze zit nu nog prima. Ze legt hem op een stapeltje of gooit hem na 3 dagen alsnog weg. Slechts 1 op de 5.000 à 10.000 brievenbussen leidt tot een directe aankoop!
+        `;
+      }
+    }
+
+    // KEYBOARD NAVIGATION (Arrows Left & Right)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        navigateStep(1);
+      } else if (e.key === 'ArrowLeft') {
+        navigateStep(-1);
+      }
+    });
+  </script>
+</body>
+</html>
