@@ -2798,13 +2798,16 @@ function initFloatingMenu() {
   panel.setAttribute("aria-label", "Digitale Zit-Assistent van Staopstoelen.nl");
   panel.innerHTML = `
     <div class="da-header">
-      <div class="da-avatar-wrap" id="daHeaderAvatarWrap" title="Digitale Zit-Assistent">
-        <img src="${normalChairSrc}" alt="Digitale Zit-Assistent" class="da-avatar-img" id="daHeaderChairImg">
+      <div class="da-avatar-wrap" id="daHeaderAvatarWrap" title="Digitale Zitassistent">
+        <img src="${normalChairSrc}" alt="Digitale Zitassistent" class="da-avatar-img" id="daHeaderChairImg">
         <span class="da-avatar-status"></span>
       </div>
       <div class="da-header-info">
-        <strong class="da-title">Digitale Zit-Assistent</strong>
-        <span class="da-tag">Online</span>
+        <div class="da-status-line">
+          <span class="da-status-dot"></span>
+          <span>Online</span>
+        </div>
+        <strong class="da-title">Digitale Zitassistent</strong>
       </div>
       <div class="da-header-actions">
         <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent">&times;</button>
@@ -2815,37 +2818,43 @@ function initFloatingMenu() {
       <div class="da-msg da-msg-bot">
         <div class="da-msg-bubble">
           <strong>Welkom bij Staopstoelen.nl!</strong><br>
-          Ik ben uw digitale zit-assistent. Ik help u graag met uw zoektocht naar de juiste sta-op stoel, maadvies of proefzitten in Dordrecht. Waar wilt u meer over weten?
+          Ik ben uw digitale zitassistent. U kunt mij <strong>vrij elke vraag stellen</strong> over zitmaten, lichamelijke klachten, onze voorraad of proefzitten.<br><br>
+          <em>Typ gerust uw vraag hieronder in het chatveld!</em>
         </div>
       </div>
       <div class="da-quick-chips" id="daQuickChips">
-        <button type="button" class="da-chip" data-topic="maat">Welke stoel past bij mijn lengte &amp; klachten?</button>
-        <button type="button" class="da-chip" data-topic="prijs">Wat kost een (Certified Fitform) stoel?</button>
-        <button type="button" class="da-chip" data-topic="proefzitten">Hoe werkt proefzitten of passing aan huis?</button>
-        <button type="button" class="da-chip" data-topic="vergoeding">Wordt een sta-op stoel vergoed?</button>
+        <button type="button" class="da-chip" data-topic="maat">💡 Welke stoel past bij mijn lengte &amp; klachten?</button>
+        <button type="button" class="da-chip" data-topic="prijs">💰 Wat kost een (Certified Fitform) stoel?</button>
+        <button type="button" class="da-chip" data-topic="proefzitten">📍 Hoe werkt proefzitten in de showroom of aan huis?</button>
+        <button type="button" class="da-chip" data-topic="vergoeding">📋 Wordt een sta-op stoel vergoed?</button>
       </div>
     </div>
 
-    <form class="da-input-bar" id="daQuestionForm" autocomplete="off">
-      <input type="text" class="da-input" id="daQuestionInput" placeholder="Stel hier uw vraag (bijv. zithoogte, prijs, thuis)..." aria-label="Stel uw vraag aan de digitale assistent">
-      <button type="submit" class="da-send-btn" aria-label="Verstuur vraag">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
-    </form>
+    <div class="da-input-wrapper">
+      <form class="da-input-bar" id="daQuestionForm" autocomplete="off">
+        <input type="text" class="da-input" id="daQuestionInput" placeholder="Stel hier vrij uw vraag (bijv. welke maat bij 1.70m?)..." aria-label="Stel uw vraag aan de digitale zitassistent">
+        <button type="submit" class="da-send-btn" aria-label="Verstuur vraag" title="Verstuur vraag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
 
-    <div class="da-footer-actions">
-      <a href="${base}afspraak.html" class="da-action-btn da-action-primary" onclick="openAppointmentModal(event)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span>Plan Afspraak</span>
-      </a>
-      <a href="tel:+31786314858" class="da-action-btn da-action-call">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>078 - 631 4858</span>
-      </a>
-      <a href="https://wa.me/31622232964" target="_blank" rel="noopener" class="da-action-btn da-action-wa">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        <span>WhatsApp</span>
-      </a>
+    <div class="da-footer-sub">
+      <span class="da-sub-hint">Of direct contact:</span>
+      <div class="da-sub-actions">
+        <a href="${base}afspraak.html" class="da-sub-btn" onclick="openAppointmentModal(event)" title="Plan een proefzit-afspraak">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Afspraak</span>
+        </a>
+        <a href="tel:+31786314858" class="da-sub-btn" title="Bel direct: 078 - 631 4858">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Bellen</span>
+        </a>
+        <a href="https://wa.me/31622232964" target="_blank" rel="noopener" class="da-sub-btn" title="WhatsApp met Geertjan">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+      </div>
     </div>
   `;
 
