@@ -294,422 +294,412 @@
     /* ==========================================================================
        1. VOORZIJDE (FRONT): DE ULTIEME 'ABOVE THE FOLD' KNALLER
        ========================================================================== */
+    
+    /* ==========================================================================
+       1. VOORZIJDE (FRONT): A6 TWEEDELING (105mm + 105mm) - 100% FOLDABLE
+       Geen overloop meer van linkerkolom naar rechterkolom!
+       ========================================================================== */
     .flyer-front {
       background: #ffffff;
-      padding: 5.4mm 9.5mm 0mm 9.5mm;
+      padding: 0 !important;
+      display: grid;
+      grid-template-columns: 105mm 105mm;
+      width: 210mm;
+      height: 148.5mm;
+      max-height: 148.5mm;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
     }
 
-    /* Bovenbalk: Logo in GROEN + ORANJE */
-    .front-top-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1.5px solid var(--color-forest-border);
-      padding-bottom: 1.8mm;
-      margin-bottom: 2.0mm;
+    /* Subtiele rustige middellijn op de voorzijde conform achterzijde */
+    .front-center-divider {
+      position: absolute;
+      left: 105mm;
+      top: 4.0mm;
+      bottom: 4.0mm;
+      width: 0;
+      border-left: 1px solid #e2e8f0;
+      z-index: 20;
     }
 
-    .brand-block {
+    /* Linker A6 Paneel (0 - 105mm) */
+    .front-panel-left {
+      padding: 5.2mm 4.5mm 4.8mm 6.5mm;
       display: flex;
       flex-direction: column;
-      gap: 0.3mm;
+      justify-content: space-between;
+      height: 148.5mm;
+      max-height: 148.5mm;
+      box-sizing: border-box;
+      position: relative;
+      background: #ffffff;
     }
 
-    /* HET ECHTE LOGO: GROEN MET ORANJE (NOOIT ZWART!) */
-    .brand-logo {
+    /* Rechter A6 Paneel (105 - 210mm) */
+    .front-panel-right {
+      padding: 5.2mm 6.5mm 4.8mm 4.5mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 148.5mm;
+      max-height: 148.5mm;
+      box-sizing: border-box;
+      position: relative;
+      background: #ffffff;
+    }
+
+    /* Bovenbalken met EXACT gelijke hoogte (10.5mm) */
+    .fpanel-header-left,
+    .fpanel-header-right {
+      height: 10.5mm;
+      max-height: 10.5mm;
+      box-sizing: border-box;
+      border-bottom: 1.2px solid var(--color-forest-border);
+      padding-bottom: 1.2mm;
+      display: flex;
+      align-items: center;
+    }
+    .fpanel-header-left {
+      justify-content: flex-start;
+    }
+    .fpanel-header-right {
+      justify-content: space-between;
+    }
+
+    .fpanel-brand-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2mm;
+    }
+    .fpanel-brand-logo {
       font-family: var(--font-heading);
-      font-size: 7.2mm;
+      font-size: 5.5mm;
       font-weight: 900;
-      color: #4b8f24 !important; /* VIBRANT STAOPSTOELEN GROEN */
-      letter-spacing: -0.5px;
+      color: #4b8f24 !important;
+      letter-spacing: -0.4px;
       line-height: 1;
     }
-    .brand-logo span {
-      color: #f39223 !important; /* VIBRANT TERRCOTTA ORANJE */
+    .fpanel-brand-logo span {
+      color: #f39223 !important;
     }
-
-    .brand-sub {
+    .fpanel-brand-sub {
       font-family: var(--font-heading);
-      font-size: 2.45mm;
+      font-size: 2.1mm;
       font-weight: 700;
       color: var(--color-forest-mid);
+      letter-spacing: 0.3px;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
     }
 
-    /* Compacte, subtiele pill met 078 en dicht bij Dordrecht gehouden */
-    .top-contact-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 1.8mm;
-      background: var(--color-forest-light);
-      border: 1px solid var(--color-forest);
-      padding: 1.0mm 2.8mm;
-      border-radius: 9999px;
-    }
-
-    .top-phone {
+    .fpanel-dealer-tag {
       font-family: var(--font-heading);
-      font-size: 2.85mm;
+      font-size: 2.25mm;
       font-weight: 800;
-      color: var(--color-forest-dark);
-      display: flex;
-      align-items: center;
-      gap: 1.2mm;
-      text-decoration: none;
-    }
-    .top-phone-icon {
-      width: 3.4mm;
-      height: 3.4mm;
       color: var(--color-forest);
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
     }
-
-    .top-pill-divider {
-      color: #82a873;
-      font-size: 2.2mm;
-      font-weight: 700;
-    }
-
-    .top-address-tag {
+    .fpanel-voorraad-pill {
+      background: #fed7aa;
+      color: #9a3412;
       font-family: var(--font-heading);
-      font-size: 2.45mm;
-      font-weight: 700;
-      color: #1e293b;
-      display: flex;
-      align-items: center;
-      gap: 1.1mm;
-    }
-    .top-pin-icon {
-      width: 3.2mm;
-      height: 3.2mm;
-      color: var(--color-terracotta);
+      font-size: 2.05mm;
+      font-weight: 800;
+      padding: 0.6mm 2.2mm;
+      border-radius: 9999px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
     }
 
-    /* Midden: 2 Kolommen (Links Tekst & Zekerheden, Rechts Stoel & Zegel) */
-    .front-main-grid {
-      display: grid;
-      grid-template-columns: 104mm 1fr;
-      gap: 4.8mm;
-      align-items: stretch;
-      flex: 1;
-    }
-
-    /* Linker Kolom */
-    .front-left-col {
+    /* Linker Paneel Content Wrap */
+    .fpanel-left-content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-right: 0.5mm;
+      flex: 1;
+      padding: 2.0mm 0 2.2mm 0;
+      box-sizing: border-box;
     }
 
-    .front-hero-headline {
+    .fpanel-hero-headline {
       font-family: var(--font-heading);
-      font-size: 5.6mm;
+      font-size: 4.5mm;
       font-weight: 900;
       line-height: 1.18;
       color: var(--color-forest-dark);
-      letter-spacing: -0.3px;
-      margin-bottom: 1.8mm;
+      letter-spacing: -0.2px;
+      margin-bottom: 1.2mm;
     }
-    .front-hero-headline span {
+    .fpanel-hero-headline span {
       color: var(--color-terracotta);
-      display: inline;
     }
-
-    .front-intro-lead {
-      font-size: 3.45mm;
+    .fpanel-intro-lead {
+      font-size: 2.85mm;
       font-weight: 500;
       color: var(--color-dark);
-      line-height: 1.38;
-      margin-bottom: 2.2mm;
+      line-height: 1.34;
+      margin-bottom: 2.0mm;
     }
-    .front-intro-lead strong {
+    .fpanel-intro-lead strong {
       color: var(--color-forest-mid);
       font-weight: 800;
     }
 
-    /* De 4 Zekerheden (Luchtig, zonder zware box) */
-    .four-guarantees-list {
+    /* De 4 Zekerheden */
+    .fpanel-guarantees {
       display: flex;
       flex-direction: column;
-      gap: 1.9mm;
-      background: transparent;
-      border: none;
-      padding: 0;
+      gap: 1.8mm;
     }
-
-    .guarantee-item {
+    .fpanel-guarantee-item {
       display: flex;
       align-items: center;
-      gap: 2.8mm;
+      gap: 2.4mm;
     }
-
-    .guarantee-icon {
-      width: 6.0mm;
-      height: 6.0mm;
-      min-width: 6.0mm;
-      min-height: 6.0mm;
-      border-radius: 1.8mm;
+    .fpanel-guarantee-icon {
+      width: 5.4mm;
+      height: 5.4mm;
+      min-width: 5.4mm;
+      min-height: 5.4mm;
+      border-radius: 1.4mm;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
-    .guarantee-icon svg {
-      width: 3.8mm;
-      height: 3.8mm;
+    .fpanel-guarantee-icon svg {
+      width: 3.4mm;
+      height: 3.4mm;
     }
-
-    .guarantee-icon.icon-shield {
+    .fpanel-guarantee-icon.icon-shield {
       background: linear-gradient(135deg, #4b8f24 0%, #3a701c 100%);
       color: #ffffff;
     }
-    .guarantee-icon.icon-ruler {
+    .fpanel-guarantee-icon.icon-ruler {
       background: linear-gradient(135deg, #f39223 0%, #d97706 100%);
       color: #ffffff;
     }
-    .guarantee-icon.icon-tag {
+    .fpanel-guarantee-icon.icon-tag {
       background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
       color: #ffffff;
     }
-    /* Diep Forest Groen (Geen blauw!) */
-    .guarantee-icon.icon-truck {
+    .fpanel-guarantee-icon.icon-truck {
       background: linear-gradient(135deg, #2e6022 0%, #1a3d13 100%);
       color: #ffffff;
     }
-
-    .guarantee-text {
-      font-size: 3.15mm;
-      line-height: 1.25;
+    .fpanel-guarantee-text {
+      font-size: 2.75mm;
+      line-height: 1.22;
       color: #0f172a;
     }
-    .guarantee-text strong {
+    .fpanel-guarantee-text strong {
       font-family: var(--font-heading);
       font-weight: 800;
       color: var(--color-forest-dark);
-    }
-    .guarantee-sub {
       display: block;
-      font-size: 2.65mm;
-      line-height: 1.30;
-      color: #334155;
-      margin-top: 0.2mm;
+    }
+    .fpanel-guarantee-sub {
+      display: block;
+      font-size: 2.3mm;
+      color: #475569;
+      line-height: 1.25;
     }
 
-    /* Rechter Kolom: Prachtige Productfoto met Ruime Badges */
-    .front-right-col {
+    /* Rechter Paneel Foto Wrap */
+    .fpanel-photo-wrap {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      border-radius: 2.8mm;
+      border-radius: 2.4mm;
       overflow: hidden;
       border: 1.2px solid var(--color-border);
-      background: #ffffff;
-      height: 94mm;
+      height: 97mm;
+      margin: 2.0mm 0 2.2mm 0;
+      background: #f8fafc;
+      flex: 1;
     }
-
-    .front-chair-photo {
+    .fpanel-chair-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center bottom;
       display: block;
     }
-
-    /* Losse 'Direct Leverbaar' Badge in het goede Oranje */
-    .front-stock-tag {
+    .fpanel-stock-tag {
       position: absolute;
-      top: 3.0mm;
-      left: 3.0mm;
+      top: 2.6mm;
+      left: 2.6mm;
       background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
       color: #ffffff;
-      padding: 1.4mm 3.4mm;
+      padding: 1.2mm 3.0mm;
       border-radius: 9999px;
       font-family: var(--font-heading);
-      font-size: 2.45mm;
+      font-size: 2.2mm;
       font-weight: 800;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.3px;
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 1.5mm;
-      border: 1px solid rgba(255,255,255,0.35);
+      gap: 1.2mm;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.20);
       z-index: 10;
     }
-    .front-stock-tag svg {
-      width: 3.4mm;
-      height: 3.4mm;
+    .fpanel-stock-tag svg {
+      width: 2.8mm;
+      height: 2.8mm;
     }
-
-    /* Ruime, Chique Deal Box onderop de foto */
-    .front-deal-box {
+    .fpanel-deal-box {
       position: absolute;
-      bottom: 3.0mm;
-      left: 3.0mm;
-      right: 3.0mm;
+      bottom: 2.6mm;
+      left: 2.6mm;
+      right: 2.6mm;
       background: #143309;
-      border: 1.4px solid var(--color-terracotta);
-      border-radius: 2.4mm;
-      padding: 2.4mm 3.6mm;
+      border: 1.2px solid var(--color-terracotta);
+      border-radius: 2.0mm;
+      padding: 2.0mm 3.2mm;
       display: flex;
       flex-direction: column;
-      gap: 1.2mm;
+      gap: 0.8mm;
       z-index: 10;
     }
-    .front-deal-top-row {
+    .fpanel-deal-top {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
     }
-    .front-deal-label-text {
+    .fpanel-deal-label {
       font-family: var(--font-heading);
-      font-size: 2.4mm;
+      font-size: 2.2mm;
       font-weight: 700;
       color: #e2e8f0;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.3px;
     }
-    .front-deal-price-text {
+    .fpanel-deal-price {
       font-family: var(--font-heading);
-      font-size: 4.4mm;
+      font-size: 3.8mm;
       font-weight: 900;
       color: #ffffff;
       line-height: 1;
     }
-    .front-deal-sub-row {
+    .fpanel-deal-sub {
       display: flex;
       align-items: center;
-      gap: 1.8mm;
+      gap: 1.4mm;
       border-top: 1px solid rgba(255,255,255,0.18);
-      padding-top: 1.2mm;
-      font-size: 2.5mm;
+      padding-top: 1.0mm;
+      font-size: 2.2mm;
       font-weight: 700;
       color: var(--color-gold);
     }
-    .custom-textiel-icon {
-      width: 4.4mm;
-      height: 4.4mm;
-      min-width: 4.4mm;
-      color: var(--color-terracotta);
-      background: #ffffff;
-      border-radius: 50%;
-      padding: 0.6mm;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(0,0,0,0.08);
-    }
 
-    /* Schipper Compact V2 Huisstijl Swoosh Decoratie */
-    .front-footer-swoosh-wrap {
-      width: calc(100% + 19mm);
-      margin-left: -9.5mm;
-      margin-right: -9.5mm;
-      margin-top: 1.4mm;
-      margin-bottom: -1px;
-      height: 4.4mm;
-      display: block;
-      overflow: hidden;
-      line-height: 0;
-    }
-    .front-swoosh-svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* Volle Breedte Voetbalk in Levendig Merk-Groen */
-    .front-footer-bar {
-      margin: 0 -9.5mm 0 -9.5mm;
+    /* Onderbalken met EXACT gelijke hoogte (14.5mm) */
+    .fpanel-footer-left,
+    .fpanel-footer-right {
+      height: 14.5mm;
+      max-height: 14.5mm;
+      box-sizing: border-box;
       background: #38761d;
       color: #ffffff;
-      padding: 2.0mm 9.5mm 2.4mm 9.5mm;
+      border-radius: 1.8mm;
+      padding: 1.5mm 2.8mm;
       display: flex;
-      justify-content: space-between;
       align-items: center;
     }
+    .fpanel-footer-left {
+      justify-content: space-between;
+    }
+    .fpanel-footer-right {
+      justify-content: space-between;
+      gap: 2.0mm;
+    }
 
-    .footer-showroom-info {
+    .fpanel-fleft-info {
       display: flex;
       flex-direction: column;
-      gap: 0.8mm;
-      min-width: 0;
+      gap: 0.4mm;
     }
-
-    .showroom-title {
+    .fpanel-fleft-title {
       font-family: var(--font-heading);
-      font-size: 3.1mm;
+      font-size: 2.3mm;
       font-weight: 800;
       color: var(--color-gold);
+      letter-spacing: 0.2px;
       display: flex;
       align-items: center;
-      gap: 1.8mm;
+      gap: 1.2mm;
+    }
+    .fpanel-fleft-sub {
+      font-size: 2.05mm;
+      color: #f1f5f9;
+      line-height: 1.15;
+    }
+    .fpanel-fleft-phone {
+      font-family: var(--font-heading);
+      font-size: 2.7mm;
+      font-weight: 900;
+      color: #ffffff;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 1.4mm;
+      padding: 1.0mm 2.0mm;
+      display: flex;
+      align-items: center;
+      gap: 1.0mm;
+      white-space: nowrap;
+    }
+
+    .fpanel-fright-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2mm;
+      min-width: 0;
+    }
+    .fpanel-fright-heading {
+      font-family: var(--font-heading);
+      font-size: 2.35mm;
+      font-weight: 800;
+      color: var(--color-gold);
       letter-spacing: 0.2px;
       white-space: nowrap;
     }
-    .showroom-title-icon {
-      width: 4.0mm;
-      height: 4.0mm;
-      color: var(--color-gold);
+    .fpanel-fright-address {
+      font-size: 2.05mm;
+      color: #f1f5f9;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .fpanel-qr-group {
+      display: flex;
+      align-items: center;
+      gap: 1.8mm;
       flex-shrink: 0;
     }
-
-    /* Alles op 1 rustige regel voor maximale senior-vriendelijkheid */
-    .showroom-single-line {
-      display: flex;
-      align-items: center;
-      gap: 2.0mm;
-      color: #f1f5f9;
-      font-size: 2.45mm;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .showroom-single-line span {
-      white-space: nowrap;
-    }
-    .showroom-single-line strong {
-      color: #ffffff;
-      font-weight: 800;
-    }
-    .dot-sep {
-      color: var(--color-gold);
-      opacity: 0.85;
-      font-weight: 800;
-    }
-
-    .footer-right-action {
-      display: flex;
-      align-items: center;
-      gap: 3.8mm;
-    }
-
-    .footer-website-box {
+    .fpanel-qr-text {
       display: flex;
       flex-direction: column;
       text-align: right;
     }
-    .footer-web-url {
+    .fpanel-qr-url {
       font-family: var(--font-heading);
-      font-size: 3.6mm;
+      font-size: 2.35mm;
       font-weight: 900;
       color: #ffffff;
-      letter-spacing: 0.2px;
+      line-height: 1.1;
     }
-    .footer-web-tag {
-      font-size: 2.3mm;
+    .fpanel-qr-sub {
+      font-size: 1.85mm;
       color: var(--color-gold);
       font-weight: 700;
     }
-
-    .footer-qr-img {
-      width: 14.5mm;
-      height: 14.5mm;
+    .fpanel-qr-img {
+      width: 10.5mm;
+      height: 10.5mm;
       background: #ffffff;
-      padding: 0.8mm;
-      border-radius: 1.5mm;
-      border: 1px solid #ffffff;
+      padding: 0.6mm;
+      border-radius: 1.2mm;
+      display: block;
     }
-
-    /* ==========================================================================
+/* ==========================================================================
        2. ACHTERZIJDE (BACK): HALVE DRAAI A6 TWEEDELING (CERTIFICAAT + WAARDEBON)
        ========================================================================== */
     .flyer-back {
@@ -1731,163 +1721,148 @@
         <span class="flyer-label no-print">1. Voorzijde • Actie &amp; Voordeel (Above the Fold)</span>
         
         <article class="flyer-container flyer-front" id="flyerFront">
-          
-          <!-- Bovenbalk: Logo in GROEN + ORANJE & Subtiele Compacte Contact Pill -->
-          <header class="front-top-header">
-            <div class="brand-block">
-              <!-- HET ECHTE LOGO: GROEN MET ORANJE (NOOIT ZWART!) -->
-              <div class="brand-logo">staopstoelen<span>.nl</span></div>
-              <div class="brand-sub">Specialist in Ergonomisch Zitcomfort • Fitform Dealer Dordrecht</div>
-            </div>
+          <!-- Subtiele rustige middellijn conform achterzijde -->
+          <div class="front-center-divider"></div>
 
-            <!-- Compacte contact pill: 078 dicht bij Dordrecht -->
-            <div class="top-contact-pill">
-              <span class="top-phone">
-                <svg class="top-phone-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                078 - 631 4858
-              </span>
-              <span class="top-pill-divider">•</span>
-              <span class="top-address-tag">
-                <svg class="top-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                Dordrecht (Merwedestraat 239)
-              </span>
-            </div>
-          </header>
-
-          <!-- 2 Kolommen Hoofdgrid -->
-          <div class="front-main-grid">
+          <!-- ================================================================
+               LINKER PANEEL VOORZIJDE (A6 - 105 x 148.5mm): BOODSCHAP & ZEKERHEDEN
+               ================================================================ -->
+          <div class="front-panel-left">
             
-            <!-- Linker Kolom: Boodschap, Feestdagen Actielint & 4 Zekerheden -->
-            <div class="front-left-col">
-              <div>
-                <h1 class="front-hero-headline">
-                  Moeite met opstaan?<br>
-                  <span>Ervaar ultiem zitcomfort op uw persoonlijke maat.</span>
-                </h1>
+            <!-- Bovenbalk: Logo & Sub -->
+            <div class="fpanel-header-left">
+              <div class="fpanel-brand-wrap">
+                <div class="fpanel-brand-logo">
+                  staopstoelen<span>.nl</span>
+                </div>
+                <div class="fpanel-brand-sub">Specialist in Ergonomisch Zitcomfort</div>
+              </div>
+            </div>
 
-                <p class="front-intro-lead">
-                  Veilig en moeiteloos zelfstandig overeind. Geen torenhoge nieuwprijzen van € 3.500,- tot € 4.500,-, maar de <strong>zekerheid van 100% Nederlandse topkwaliteit</strong> met deskundig maatwerk en volledige service aan huis.
+            <!-- Boodschap, Intro & Zekerheden -->
+            <div class="fpanel-left-content">
+              <div>
+                <h1 class="fpanel-hero-headline">
+                  Moeite met opstaan?<br>
+                  <span>Ervaar ultiem zitcomfort op uw maat.</span>
+                </h1>
+                <p class="fpanel-intro-lead">
+                  Veilig en moeiteloos zelfstandig overeind. De <strong>zekerheid van 100% Nederlandse kwaliteit</strong> met deskundig maatwerk en service aan huis.
                 </p>
               </div>
 
-              <!-- De 4 Zekerheden met Echte Vector Iconen (GEEN LINAK • ALLE MOTOREN GETEST) -->
-              <div class="four-guarantees-list">
-                
-                <!-- 1. Garantie Icon (Schild - Forest Green) -->
-                <div class="guarantee-item">
-                  <div class="guarantee-icon icon-shield" title="1 Jaar Volledige Garantie">
+              <!-- De 4 Zekerheden (Volledig binnen linkerpaneel) -->
+              <div class="fpanel-guarantees">
+                <div class="fpanel-guarantee-item">
+                  <div class="fpanel-guarantee-icon icon-shield">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
                   </div>
-                  <div class="guarantee-text">
+                  <div class="fpanel-guarantee-text">
                     <strong>1 Jaar Volledige Garantie aan Huis</strong>
-                    <span class="guarantee-sub">15-punts technisch gekeurd (alle motoren &amp; hefmechaniek 100% getest)</span>
+                    <span class="fpanel-guarantee-sub">15-punts technisch gekeurd &amp; 100% getest</span>
                   </div>
                 </div>
 
-                <!-- 2. Maatwerk Icon (Liniaal & Meetlint - Terracotta) -->
-                <div class="guarantee-item">
-                  <div class="guarantee-icon icon-ruler" title="Gratis op Maat">
+                <div class="fpanel-guarantee-item">
+                  <div class="fpanel-guarantee-icon icon-ruler">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4M7 8v8M12 9v6M17 8v8"></path></svg>
                   </div>
-                  <div class="guarantee-text">
+                  <div class="fpanel-guarantee-text">
                     <strong>Gratis op Lichaamsmaat Afgesteld</strong>
-                    <span class="guarantee-sub">Zithoogte, zitdiepte &amp; armleggers op maat door Bewegingstechnoloog Geertjan</span>
+                    <span class="fpanel-guarantee-sub">Zithoogte, zitdiepte &amp; armleggers op maat</span>
                   </div>
                 </div>
 
-                <!-- 3. Voordeel Icon (Prijslabel & Korting - Warm Goud) -->
-                <div class="guarantee-item">
-                  <div class="guarantee-icon icon-tag" title="Voordeel Occasions">
+                <div class="fpanel-guarantee-item">
+                  <div class="fpanel-guarantee-icon icon-tag">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><circle cx="7" cy="7" r="1.5" fill="currentColor"></circle></svg>
                   </div>
-                  <div class="guarantee-text">
+                  <div class="fpanel-guarantee-text">
                     <strong>Bespaar tot 70% t.o.v. Nieuw</strong>
-                    <span class="guarantee-sub">Ruim 30+ jonge top-occasions direct leverbaar vanaf € 750,-</span>
+                    <span class="fpanel-guarantee-sub">30+ jonge top-occasions v.a. € 750,-</span>
                   </div>
                 </div>
 
-                <!-- 4. Bezorging Icon (Vrachtwagen - Diep Forest Groen) -->
-                <div class="guarantee-item">
-                  <div class="guarantee-icon icon-truck" title="Gratis Bezorgd">
+                <div class="fpanel-guarantee-item">
+                  <div class="fpanel-guarantee-icon icon-truck">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                   </div>
-                  <div class="guarantee-text">
-                    <strong>Gratis Thuisbezorgd &amp; Veilig Geplaatst</strong>
-                    <span class="guarantee-sub">Netjes in uw woonkamer neergezet inclusief rustige bedieningsuitleg</span>
+                  <div class="fpanel-guarantee-text">
+                    <strong>Gratis Thuisbezorgd &amp; Geplaatst</strong>
+                    <span class="fpanel-guarantee-sub">Inclusief rustige bedieningsuitleg</span>
                   </div>
                 </div>
-
               </div>
             </div>
 
-            <!-- Rechter Kolom: Foto van de Stoel op Visgraatvloer met Ruime Badges -->
-            <div class="front-right-col">
-              <img src="assets/stoelen/fitform_570_zand_visgraatvloer.jpg" alt="Fitform 570 Vario sta-opstoel op warme visgraatvloer" class="front-chair-photo">
+            <!-- Linker Footer: Showroom & Bellen -->
+            <div class="fpanel-footer-left">
+              <div class="fpanel-fleft-info">
+                <span class="fpanel-fleft-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="3.2mm" height="3.2mm"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                  Vrijblijvend Proefzitten
+                </span>
+                <span class="fpanel-fleft-sub">Merwedestraat 239 Dordrecht</span>
+              </div>
+              <div class="fpanel-fleft-phone">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="3.0mm" height="3.0mm"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                078 - 631 4858
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ================================================================
+               RECHTER PANEEL VOORZIJDE (A6 - 105 x 148.5mm): FOTO, ACTIE & SHOWROOM
+               ================================================================ -->
+          <div class="front-panel-right">
+            
+            <!-- Rechter Header -->
+            <div class="fpanel-header-right">
+              <span class="fpanel-dealer-tag">FITFORM DEALER DORDRECHT</span>
+              <span class="fpanel-voorraad-pill">30+ OP VOORRAAD</span>
+            </div>
+
+            <!-- Stoelfoto met Badges -->
+            <div class="fpanel-photo-wrap">
+              <img src="assets/stoelen/fitform_570_zand_visgraatvloer.jpg" alt="Fitform 570 Vario sta-opstoel op warme visgraatvloer" class="fpanel-chair-img">
               
-              <!-- Losse 'Direct Leverbaar' Badge in Merkkleur Oranje -->
-              <div class="front-stock-tag">
+              <div class="fpanel-stock-tag">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-                <span>Direct leverbaar uit voorraad</span>
+                <span>Direct leverbaar</span>
               </div>
 
-              <!-- Ruime, Chique Deal Box onderop de foto -->
-              <div class="front-deal-box">
-                <div class="front-deal-top-row">
-                  <span class="front-deal-label-text">Jonge Occasions v.a.</span>
-                  <span class="front-deal-price-text">€ 750,-</span>
+              <div class="fpanel-deal-box">
+                <div class="fpanel-deal-top">
+                  <span class="fpanel-deal-label">Jonge Occasions v.a.</span>
+                  <span class="fpanel-deal-price">€ 750,-</span>
                 </div>
-                <div class="front-deal-sub-row">
-                  <!-- Custom Icon voor Kwaliteit (Schild met Vinkje in Oranje) -->
-                  <div class="custom-textiel-icon">
+                <div class="fpanel-deal-sub">
+                  <div class="custom-textiel-icon" style="width: 3.8mm; height: 3.8mm; min-width: 3.8mm; padding: 0.4mm;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                   </div>
-                  <span><strong>100% Gekeurd &amp; Gereviseerd</strong> • 1 Jaar Garantie</span>
+                  <span><strong>100% Gekeurd</strong> • 1 Jaar Garantie</span>
                 </div>
               </div>
             </div>
 
-          </div>
-
-          <!-- Schipper Compact V2 Huisstijl Swoosh Decoratie -->
-          <div class="front-footer-swoosh-wrap" aria-hidden="true">
-            <svg class="front-swoosh-svg" viewBox="0 0 1000 40" preserveAspectRatio="none">
-              <!-- Ondergrond vullend groen passend op de balk eronder -->
-              <path d="M 0,22 Q 260,38 520,16 T 1000,22 L 1000,40 L 0,40 Z" fill="#38761d"/>
-              <path d="M 0,16 Q 260,34 520,10 T 1000,16" fill="none" stroke="#f39223" stroke-width="4.5" opacity="0.95"/>
-              <path d="M 0,22 Q 260,38 520,16 T 1000,22" fill="none" stroke="#fed857" stroke-width="3" opacity="0.9"/>
-              <path d="M 0,28 Q 260,42 520,22 T 1000,28" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85"/>
-            </svg>
-          </div>
-
-          <!-- Volle Breedte Voetbalk in Levendig Merk-Groen -->
-          <footer class="front-footer-bar">
-            <div class="footer-showroom-info">
-              <div class="showroom-title">
-                <!-- Koffiekopje Vector Icon -->
-                <svg class="showroom-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
-                VRIJBLIJVEND PROEFZITTEN IN ONZE SHOWROOM
+            <!-- Rechter Footer: Showroom & QR -->
+            <div class="fpanel-footer-right">
+              <div class="fpanel-fright-info">
+                <div class="fpanel-fright-heading">Openingstijden Showroom</div>
+                <div class="fpanel-fright-address">Di-Vr 10-16u • Gratis parkeren</div>
               </div>
-              <div class="showroom-single-line">
-                <span><strong>Merwedestraat 239 Dordrecht</strong></span>
-                <span class="dot-sep">•</span>
-                <span>Di t/m vr 10:00 - 16:00</span>
-                <span class="dot-sep">•</span>
-                <span>Gratis parkeren</span>
-                <span class="dot-sep">•</span>
-                <span>Rolstoelvriendelijk</span>
+              <div class="fpanel-qr-group">
+                <div class="fpanel-qr-text">
+                  <span class="fpanel-qr-url">staopstoelen.nl</span>
+                  <span class="fpanel-qr-sub">Scan voor 30+ stoelen</span>
+                </div>
+                <img src="assets/qr_staopstoelen.svg" alt="Scan QR code voor website" class="fpanel-qr-img">
               </div>
             </div>
 
-            <div class="footer-right-action">
-              <div class="footer-website-box">
-                <span class="footer-web-url">www.staopstoelen.nl</span>
-                <span class="footer-web-tag">Bekijk direct 30+ modellen online</span>
-              </div>
-              <img src="assets/qr_staopstoelen.svg" alt="Scan QR code voor website" class="footer-qr-img">
-            </div>
-          </footer>
-
-        </article>
+          </div>
+</article>
       </div>
 
       <!-- 2. ACHTERZIJDE: A6 TWEEDELING (KWALITEITSCERTIFICAAT + GROTE WAARDEBON) -->
