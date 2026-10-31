@@ -3132,20 +3132,148 @@ function initFloatingMenu() {
     };
   }
 
-  function appendExchange(topicOrQuery) {
-    const res = getAssistantResponse(topicOrQuery);
+  const chatHistory = [];
+
+  function formatAiMarkdown(text) {
+    if (!text) return "";
+    let html = text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    // Bold: **tekst** of __tekst__
+    html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(/__(.*?)__/g, "<strong>$1</strong>");
+    // Cursief: *tekst* of _tekst_
+    html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
+    // Opsommingspunten
+    html = html.replace(/^[•\-\*]\s+(.*)$/gm, "• $1");
+    // Witregels naar <br>
+    html = html.replace(/\n\n+/g, "<br><br>").replace(/\n/g, "<br>");
+    return html;
+  }
+
+  function getActionButtonsHtml(actions) {
+    if (!Array.isArray(actions) || actions.length === 0) return "";
+    const actionDefs = {
+      afspraak: {
+        label: "Plan Proefzit-Afspraak &rarr;",
+        href: `${base}afspraak.html`,
+        onclick: "openAppointmentModal(event)",
+        primary: true
+      },
+      keuzehulp: {
+        label: "Online Keuzehulp &rarr;",
+        href: `${base}keuzehulp.html`,
+        primary: true
+      },
+      collectie: {
+        label: "Bekijk 30+ Occasions &rarr;",
+        href: `${base}staopstoelen.html`,
+        primary: true
+      },
+      bellen: {
+        label: "📞 Bel 078 - 631 4858",
+        href: "tel:+31786314858",
+        primary: false
+      },
+      whatsapp: {
+        label: "💬 WhatsApp met Geertjan",
+        href: "https://wa.me/31622232964",
+        target: "_blank",
+        primary: false
+      }
+    };
+
+    const btns = actions.map((act) => {
+      const def = actionDefs[act];
+      if (!def) return "";
+      const cls = def.primary ? "da-inline-btn" : "da-inline-btn da-inline-btn-sec";
+      const onclickAttr = def.onclick ? ` onclick="${def.onclick}"` : "";
+      const targetAttr = def.target ? ` target="${def.target}" rel="noopener"` : "";
+      return `<a href="${def.href}" class="${cls}"${onclickAttr}${targetAttr}>${def.label}</a>`;
+    }).filter(Boolean);
+
+    if (btns.length === 0) return "";
+    return `<div class="da-inline-ctas">${btns.join("")}</div>`;
+  }
+
+  async function appendExchange(topicOrQuery) {
+    const chipLabels = {
+      maat: "Welke stoel past bij mijn lengte & klachten?",
+      prijs: "Wat kost een (Certified Fitform) stoel?",
+      proefzitten: "Hoe werkt proefzitten of passing aan huis?",
+      vergoeding: "Wordt een sta-op stoel vergoed?"
+    };
+    const userText = chipLabels[topicOrQuery] || topicOrQuery;
+
+    // 1. Toon direct het gebruikersbericht
     const userMsg = document.createElement("div");
     userMsg.className = "da-msg da-msg-user";
-    userMsg.innerHTML = `<div class="da-msg-bubble">${res.question}</div>`;
+    userMsg.innerHTML = `<div class="da-msg-bubble">${userText}</div>`;
     chatBody.appendChild(userMsg);
-
-    const botMsg = document.createElement("div");
-    botMsg.className = "da-msg da-msg-bot";
-    botMsg.innerHTML = `<div class="da-msg-bubble">${res.html}${res.ctaHtml || ""}</div>`;
-    chatBody.appendChild(botMsg);
-
     chatBody.scrollTop = chatBody.scrollHeight;
-    triggerChairDance(headerImg);
+
+    // 2. Typindicator toevoegen
+    const typingMsg = document.createElement("div");
+    typingMsg.className = "da-msg da-msg-bot da-msg-typing";
+    typingMsg.innerHTML = `
+      <div class="da-msg-bubble">
+        <span>Zit-assistent denkt na</span>
+        <div class="da-typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    `;
+    chatBody.appendChild(typingMsg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    const renderBotResponse = (htmlContent, ctaContent = "") => {
+      if (typingMsg.parentNode) typingMsg.remove();
+      const botMsg = document.createElement("div");
+      botMsg.className = "da-msg da-msg-bot";
+      botMsg.innerHTML = `<div class="da-msg-bubble">${htmlContent}${ctaContent}</div>`;
+      chatBody.appendChild(botMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      triggerChairDance(headerImg);
+    };
+
+    const doFallback = () => {
+      const res = getAssistantResponse(topicOrQuery);
+      renderBotResponse(res.html, res.ctaHtml || "");
+      chatHistory.push({ role: "user", text: userText });
+      chatHistory.push({ role: "model", text: res.html.replace(/<[^>]*>/g, "") });
+    };
+
+    try {
+      const response = await fetch(`${base}api/chat.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userText,
+          history: chatHistory.slice(-6)
+        })
+      });
+
+      if (!response.ok) {
+        doFallback();
+        return;
+      }
+
+      const data = await response.json();
+      if (data && data.status === "success" && data.reply) {
+        const formattedText = formatAiMarkdown(data.reply);
+        const actionHtml = getActionButtonsHtml(data.actions);
+        renderBotResponse(formattedText, actionHtml);
+
+        chatHistory.push({ role: "user", text: userText });
+        chatHistory.push({ role: "model", text: data.reply });
+      } else {
+        doFallback();
+      }
+    } catch (err) {
+      console.warn("Gemini Chat API kon niet worden bereikt, lokale fallback actief:", err);
+      doFallback();
+    }
   }
 
   panel.querySelectorAll(".da-chip").forEach((chip) => {

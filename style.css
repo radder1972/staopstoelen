@@ -8959,6 +8959,48 @@ input[type="checkbox"] {
   border-top-right-radius: 4px;
 }
 
+.da-msg-typing .da-msg-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid rgba(75, 143, 36, 0.22);
+  border-top-left-radius: 4px;
+  color: #4b8f24;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.da-typing-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.da-typing-dots span {
+  width: 7px;
+  height: 7px;
+  background: #4b8f24;
+  border-radius: 50%;
+  display: inline-block;
+  animation: daBounce 1.3s infinite ease-in-out both;
+}
+
+.da-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.da-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes daBounce {
+  0%, 80%, 100% {
+    transform: scale(0.3);
+    opacity: 0.35;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .da-quick-chips {
   display: flex;
   flex-direction: column;
