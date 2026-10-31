@@ -1323,25 +1323,12 @@
       left: 0;
       right: 0;
       height: 0;
-      border-top: 1.2px dashed #f97316;
+      border-top: 0.25mm solid #86efac;
       z-index: 100;
       pointer-events: none;
     }
     .sheet-cut-badge {
-      position: absolute;
-      top: -3.6mm;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff7ed;
-      border: 1px solid var(--color-terracotta);
-      font-family: var(--font-heading);
-      font-size: 2.1mm;
-      font-weight: 800;
-      color: #9a3412;
-      padding: 0.6mm 3.2mm;
-      border-radius: 9999px;
-      letter-spacing: 0.4px;
-      white-space: nowrap;
+      display: none;
     }
 
     /* Print Instructie Banner */
@@ -1407,7 +1394,7 @@
         height: auto !important;
         min-height: 0 !important;
       }
-      .no-print, .print-toolbar, .stage-hint, .flyer-label, .sheet-label, .sheet-cut-line, .sheet-cut-badge, .print-instruction-banner {
+      .no-print, .print-toolbar, .stage-hint, .flyer-label, .sheet-label, .sheet-cut-badge, .print-instruction-banner {
         display: none !important;
       }
 
@@ -1507,6 +1494,20 @@
         box-shadow: none !important;
         border: none !important;
         overflow: hidden !important;
+      }
+      body.mode-sheet-duplex .sheet-cut-line {
+        display: block !important;
+        position: absolute !important;
+        top: 148.5mm !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 0 !important;
+        border-top: 0.25mm solid #86efac !important;
+        z-index: 999 !important;
+        pointer-events: none !important;
+      }
+      body.mode-sheet-duplex .sheet-cut-badge {
+        display: none !important;
       }
     }
   </style>
