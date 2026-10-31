@@ -2738,7 +2738,7 @@ function initFloatingMenu() {
       .nav-logo-text-group { display: flex !important; flex-direction: column !important; color: var(--color-forest, #4b8f24) !important; }
       .floating-btn-main.assistant-chair-fab { position: relative !important; width: 72px !important; height: 72px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 2.5px solid #4b8f24 !important; box-shadow: 0 10px 28px rgba(18,43,7,0.24), 0 0 0 4px rgba(75,143,36,0.14) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; }
       .assistant-chair-img { width: 58px !important; height: 58px !important; max-width: 58px !important; max-height: 58px !important; object-fit: contain !important; display: block !important; pointer-events: none; transform-origin: 50% 80%; }
-      .da-avatar-img { width: 44px !important; height: 44px !important; max-width: 44px !important; max-height: 44px !important; object-fit: contain !important; transform-origin: 50% 80%; }
+      .da-avatar-img { width: 32px !important; height: 32px !important; max-width: 32px !important; max-height: 32px !important; object-fit: contain !important; transform-origin: 50% 80%; }
       @media (max-width: 768px) {
         .nav-text-logo.has-chair-logo { top: 6px !important; gap: 8px !important; }
         .nav-chair-logo-icon { width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; }
@@ -2798,21 +2798,15 @@ function initFloatingMenu() {
   panel.setAttribute("aria-label", "Digitale Zit-Assistent van Staopstoelen.nl");
   panel.innerHTML = `
     <div class="da-header">
-      <div class="da-avatar-wrap" id="daHeaderAvatarWrap" title="Dubbelklik of klik om de stoel te laten dansen">
-        <img src="${normalChairSrc}" alt="3D Sta-op Stoel Assistent" class="da-avatar-img" id="daHeaderChairImg">
+      <div class="da-avatar-wrap" id="daHeaderAvatarWrap" title="Digitale Zit-Assistent">
+        <img src="${normalChairSrc}" alt="Digitale Zit-Assistent" class="da-avatar-img" id="daHeaderChairImg">
         <span class="da-avatar-status"></span>
       </div>
       <div class="da-header-info">
-        <div class="da-header-title-row">
-          <strong class="da-title">Digitale Zit-Assistent</strong>
-          <span class="da-tag">Online</span>
-        </div>
-        <span class="da-subtitle">Ergonomisch advies &bull; Showroom Dordrecht</span>
+        <strong class="da-title">Digitale Zit-Assistent</strong>
+        <span class="da-tag">Online</span>
       </div>
       <div class="da-header-actions">
-        <button type="button" class="da-dance-btn" id="daDanceTriggerBtn" title="Laat de stoel dansen met muziek" aria-label="Laat de stoel dansen met muziek">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-        </button>
         <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent">&times;</button>
       </div>
     </div>
