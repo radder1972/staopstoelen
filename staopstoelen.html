@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.240">
+  <link rel="stylesheet" href="style.css?v=10.241">
   <style>
 
     @media (max-width: 991px) {
@@ -177,23 +177,23 @@
       outline-offset: 2px;
     }
     
-    /* Duidelijke, Laagdrempelige Filter & Sorteerbalk (Zonder opsmuk, flinke iconen) */
+    /* Duidelijke, Laagdrempelige Filter & Sorteerbalk in een rustige afgeronde box (zonder verspringen) */
     .catalog-toolbar {
       display: none !important;
     }
     .clean-icon-toolbar {
       display: block !important;
       background: #ffffff !important;
-      border: none !important;
-      border-bottom: 1.5px solid #e5ebe2 !important;
-      border-radius: 0 !important;
-      padding: 12px 6px 14px 6px !important;
+      border: 1.5px solid #e2ebe0 !important;
+      border-radius: 16px !important;
+      padding: 14px 22px !important;
       margin-bottom: 24px !important;
-      box-shadow: none !important;
-      position: sticky !important;
-      top: 64px !important;
-      z-index: 95 !important;
+      box-shadow: 0 4px 18px rgba(18, 43, 7, 0.05) !important;
+      position: relative !important;
+      top: auto !important;
+      z-index: 20 !important;
       width: 100% !important;
+      box-sizing: border-box !important;
     }
     .clean-toolbar-row {
       display: flex;
@@ -201,6 +201,7 @@
       justify-content: space-between;
       gap: 12px;
       width: 100%;
+      min-height: 64px;
     }
     .clean-toolbar-count {
       display: inline-flex;
@@ -213,6 +214,8 @@
       color: #374151;
       font-family: var(--font-heading, 'Montserrat', sans-serif);
       flex-shrink: 0;
+      min-width: 92px;
+      font-variant-numeric: tabular-nums;
       transition: color 0.15s ease;
     }
     .clean-toolbar-count:hover {
@@ -223,6 +226,7 @@
       flex-direction: column;
       align-items: flex-start;
       line-height: 1.05;
+      min-width: 48px;
     }
     .clean-count-num {
       font-size: 2rem;
@@ -230,6 +234,7 @@
       color: #374151;
       letter-spacing: -0.5px;
       line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
     .clean-count-sub {
       font-family: var(--font-body, 'Outfit', sans-serif);
@@ -246,60 +251,56 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .clean-toolbar-actions::-webkit-scrollbar {
-      display: none;
     }
     .clean-icon-btn {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 7px;
+      gap: 6px;
       background: transparent;
-      border: none;
-      padding: 8px 16px;
+      border: 1.5px solid transparent;
+      padding: 8px 14px;
+      min-width: 98px;
+      height: 64px;
       border-radius: 12px;
       cursor: pointer;
       color: #4b5563;
       font-family: var(--font-body, 'Outfit', sans-serif);
-      transition: all 0.16s ease;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
       position: relative;
       flex-shrink: 0;
+      box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
     .clean-icon-btn:hover {
       background: #f4f8f2;
       color: var(--color-forest-dark, #122b07);
     }
-    .clean-icon-btn:active {
-      transform: scale(0.96);
-    }
     .clean-icon-btn.has-active,
     .clean-icon-btn.is-active {
       color: var(--color-forest, #4b8f24);
       background: rgba(75, 143, 36, 0.08);
+      border-color: rgba(75, 143, 36, 0.25);
     }
     .clean-icon-box {
       position: relative;
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       color: inherit;
     }
     .clean-icon-box svg {
-      width: 28px;
-      height: 28px;
+      width: 27px;
+      height: 27px;
       stroke: currentColor;
     }
     .clean-icon-label {
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #374151;
       line-height: 1.15;
@@ -308,7 +309,6 @@
     .clean-icon-btn.has-active .clean-icon-label,
     .clean-icon-btn.is-active .clean-icon-label {
       color: var(--color-forest-dark, #122b07);
-      font-weight: 700;
     }
     .clean-icon-badge {
       position: absolute;
@@ -443,8 +443,11 @@
     }
     @media (max-width: 640px) {
       .clean-icon-toolbar {
-        top: 58px !important;
-        padding: 10px 2px 12px 2px !important;
+        top: auto !important;
+        padding: 12px 14px !important;
+      }
+      .clean-toolbar-count {
+        min-width: 68px;
       }
       .clean-count-num {
         font-size: 1.55rem;
@@ -453,19 +456,21 @@
         font-size: 0.74rem;
       }
       .clean-icon-btn {
-        padding: 6px 9px;
-        gap: 5px;
+        padding: 6px 6px;
+        min-width: 68px;
+        height: 58px;
+        gap: 4px;
       }
       .clean-icon-box {
-        width: 28px;
-        height: 28px;
+        width: 26px;
+        height: 26px;
       }
       .clean-icon-box svg {
-        width: 25px;
-        height: 25px;
+        width: 24px;
+        height: 24px;
       }
       .clean-icon-label {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
       }
     }
     .catalog-grid {
@@ -773,27 +778,16 @@
                   </span>
                   <span class="clean-icon-label">Nieuw</span>
                 </button>
-
-                <!-- 5. Wis filters (verschijnt zodra er filters actief zijn) -->
-                <button type="button" class="clean-icon-btn" id="mobileNavReset" onclick="showAllChairs(false)" style="display: none;" aria-label="Wis alle filters">
-                  <span class="clean-icon-box">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                      <path d="M3 3v5h5"/>
-                    </svg>
-                  </span>
-                  <span class="clean-icon-label">Alles tonen</span>
-                </button>
               </div>
             </div>
-
-            <div class="mobile-active-chips" id="mobileActiveChips" style="display: none;"></div>
           </div>
 
           <!-- Verborgen hooks voor achterwaartse compatibiliteit -->
           <div class="catalog-toolbar" id="catalogToolbar" style="display: none;">
             <span id="catalogResultsHeadline"><strong id="catalogResultsNum"></strong></span>
             <div id="activeFilterChips"></div>
+            <div id="mobileActiveChips"></div>
+            <button type="button" id="mobileNavReset" onclick="showAllChairs(false)"></button>
             <select id="sortSelect">
               <option value="price-asc" selected>Prijs: Laag naar Hoog (Standaard)</option>
               <option value="price-desc">Prijs: Hoog naar Laag</option>
@@ -824,7 +818,7 @@
             <div class="catalog-callout-card">
               <div class="catalog-callout-header">
                 <div onclick="openCertifiedVideoModal('revisie')" class="catalog-callout-thumb" title="Klik om de werkplaatsvideo te bekijken" role="button" tabindex="0">
-                  <img src="assets/video/revisie_poster.jpg?v=10.240" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
+                  <img src="assets/video/revisie_poster.jpg?v=10.241" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
                   <div class="catalog-callout-play-overlay">
                     <span class="catalog-callout-play-icon">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
@@ -1110,7 +1104,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.240
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.241
       </div>
     </div>
   </footer>
@@ -1230,9 +1224,9 @@
             controls 
             playsinline 
             preload="metadata" 
-            poster="assets/video/zitmeting_poster.jpg?v=10.240"
+            poster="assets/video/zitmeting_poster.jpg?v=10.241"
             class="appointment-modal-video">
-            <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.240" type="video/mp4">
+            <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.241" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -1493,7 +1487,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.240"></script>
+  <script src="app.js?v=10.241"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
