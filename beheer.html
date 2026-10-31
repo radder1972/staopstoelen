@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.241">
+  <link rel="stylesheet" href="style.css?v=10.242">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1533,7 +1533,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.241</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.242</span></div>
     </div>
   </div>
 
@@ -1543,7 +1543,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.241</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.242</span>
       </div>
 
       <div class="admin-header-right">
@@ -3869,10 +3869,14 @@
                   </label>
                 </div>
 
-                <div style="display: flex; gap: 16px; margin-bottom: 10px; font-size: 0.80rem; font-weight: 700; color: #122b07;">
+                <div style="display: flex; gap: 16px; margin-bottom: 10px; font-size: 0.80rem; font-weight: 700; color: #122b07; flex-wrap: wrap;">
                   <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
                     <input type="radio" name="mpUrlTargetType" id="mpUrlTargetChair" checked onchange="updateMpUrl()" style="accent-color: #4b8f24;">
                     <span>Directe stoelpagina (Aanbevolen)</span>
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="radio" name="mpUrlTargetType" id="mpUrlTargetCatalog" onchange="updateMpUrl()" style="accent-color: #4b8f24;">
+                    <span>Catalogus 30+ Occasions (staopstoelen.html)</span>
                   </label>
                   <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
                     <input type="radio" name="mpUrlTargetType" id="mpUrlTargetHome" onchange="updateMpUrl()" style="accent-color: #4b8f24;">
@@ -3900,6 +3904,9 @@
                   </div>
                   <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 8px; padding: 8px 12px; margin-top: 4px; font-size: 0.78rem; color: #166534; display: flex; align-items: center; gap: 8px;">
                     <span>💡 <strong>Marktplaats Pro Biedstrategie Tip:</strong> Kies altijd <strong>Auto (Top)</strong>. Vermijd handmatige biedingen zoals € 1,00 om budgetverspilling te voorkomen. Met Auto staat u automatisch voor circa 5 tot 9 cent op pagina 1!</span>
+                  </div>
+                  <div style="background: #eff6ff; border: 1.5px solid #93c5fd; border-radius: 8px; padding: 8px 12px; font-size: 0.78rem; color: #1e40af; display: flex; align-items: center; gap: 8px;">
+                    <span>📊 <strong>Google Analytics Inzicht:</strong> Dankzij de actieve campagnelink (<code>utm_source=marktplaats&amp;utm_medium=vermelding</code>) ziet u in GA4 exact welke bezoekers en showroom-afspraken via deze advertentie binnenkomen, in plaats van onherleidbaar direct verkeer!</span>
                   </div>
                 </div>
               </div>
@@ -3978,7 +3985,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.241</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.242</span>
     </div>
   </footer>
 
@@ -7551,7 +7558,25 @@
       const maat = specs["Maatwerk"] || "Individueel op maat instelbaar";
       const garantie = isOccasion ? "1 Jaar volledige garantie (inclusief keuringscertificaat)" : (specs["Garantie"] || "Volledige fabrieksgarantie");
 
-      const directUrl = getChairWebsiteUrl(chair, false);
+      const useUtm = document.getElementById("mpUtmToggle") ? document.getElementById("mpUtmToggle").checked : true;
+      const targetCatalog = document.getElementById("mpUrlTargetCatalog")?.checked;
+      const targetHome = document.getElementById("mpUrlTargetHome")?.checked;
+      const chairSlug = (chair.id || "occasions").replace(/[^a-z0-9_-]+/gi, "-").toLowerCase();
+
+      let directUrl = getChairWebsiteUrl(chair, useUtm);
+      if (targetCatalog) {
+        directUrl = useUtm 
+          ? `https://staopstoelen.nl/staopstoelen.html?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${chairSlug}_catalogus`
+          : "https://staopstoelen.nl/staopstoelen.html";
+      } else if (targetHome) {
+        directUrl = useUtm
+          ? `https://staopstoelen.nl/?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${chairSlug}_home`
+          : "https://staopstoelen.nl/";
+      }
+
+      const catalogUrl = useUtm
+        ? "https://staopstoelen.nl/staopstoelen.html?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=voorraad_30plus"
+        : "https://staopstoelen.nl/staopstoelen.html";
 
       let priceComparison = "";
       if (chair.old_price && chair.price && chair.old_price > chair.price) {
@@ -7570,7 +7595,8 @@
       }
 
       const bottomShowroomBlock = `BEKIJK DEZE EN AL ONZE 30+ OCCASIONS OP ONZE WEBSITE:
-🌐 ${directUrl}
+🌐 Directe link: ${directUrl}
+🌐 Complete collectie (30+ stoelen): ${catalogUrl}
 (Of klik op de knop 'Bekijk website' in deze advertentie)
 
 SHOWROOM DORDRECHT & OPENINGSTIJDEN:
@@ -7596,7 +7622,7 @@ Of stuur ons direct een bericht via Marktplaats. Wij reageren snel en denken gra
 ✓ 1 JAAR VOLLEDIGE GARANTIE AAN HUIS (technisch 100% gekeurd)
 ✓ GRATIS OP MAAT AFGESTELD op uw lichaamsmaten door Bewegingstechnoloog
 ✓ GRATIS THUISBEZORGD & GEPLAATST in heel Nederland
-✓ BEKIJK ONZE ACTUELE VOORRAAD VAN 30+ OCCASIONS OP WWW.STAOPSTOELEN.NL
+✓ BEKIJK ONZE ACTUELE VOORRAAD VAN 30+ OCCASIONS OP: ${catalogUrl}
 
 ────────────────────────────────────────────────
 
@@ -7633,7 +7659,7 @@ ${bottomShowroomBlock}`;
 ✓ 1 JAAR GARANTIE AAN HUIS (inclusief officieel keuringscertificaat)
 ✓ GRATIS MAATWERK AFSTELLING door Bewegingstechnoloog Geertjan
 ✓ GRATIS BEZORGING & AANSLUITING aan huis in heel Nederland
-✓ BEKIJK 30+ CERTIFIED FITFORM MODELLEN OP WWW.STAOPSTOELEN.NL
+✓ BEKIJK 30+ CERTIFIED FITFORM MODELLEN OP: ${catalogUrl}
 
 ────────────────────────────────────────────────
 
@@ -7675,7 +7701,7 @@ BELANGRIJKSTE VOORDELEN:
 ✓ Gratis op uw persoonlijke lichaamsmaten afgesteld door Bewegingstechnoloog
 ✓ Gratis thuisbezorgd, geplaatst en uitgelegd in de regio Drechtsteden & Zuid-Holland
 ✓ Vrijblijvend proefzitten in onze ruime showroom in Dordrecht
-✓ Bekijk onze actuele voorraad van 30+ occasions op: www.staopstoelen.nl
+✓ Bekijk onze actuele voorraad van 30+ occasions op: ${catalogUrl}
 
 SPECIFICATIES:
 • Merk: ${brand}
@@ -7960,6 +7986,10 @@ ${bottomShowroomBlock}`;
       }
 
       // 5. Website URL updaten
+      const targetChairRadio = document.getElementById("mpUrlTargetChair");
+      if (targetChairRadio) targetChairRadio.checked = true;
+      const utmToggle = document.getElementById("mpUtmToggle");
+      if (utmToggle) utmToggle.checked = true;
       updateMpUrl();
 
       // 6. Foto's & Downloads
@@ -8013,8 +8043,8 @@ ${bottomShowroomBlock}`;
     }
     window.openMarktplaatsModal = openMarktplaatsModal;
 
-    function getChairWebsiteUrl(chair, withUtm = false) {
-      if (!chair) return "https://staopstoelen.nl/";
+    function getChairWebsiteUrl(chair, withUtm = true) {
+      if (!chair) return "https://staopstoelen.nl/staopstoelen.html?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=voorraad_30plus";
       const chairSlug = (chair.id || "").trim();
       const knownChairPages = [
         "sta-op-stoel-dordrecht",
@@ -8049,7 +8079,7 @@ ${bottomShowroomBlock}`;
         "occasion-sta-op-stoel-refitto"
       ];
 
-      let base = "https://staopstoelen.nl/#aanbiedingen";
+      let base = "https://staopstoelen.nl/staopstoelen.html";
       if (knownChairPages.includes(chairSlug)) {
         base = `https://staopstoelen.nl/stoelen/${chairSlug}.html`;
       }
@@ -8062,20 +8092,36 @@ ${bottomShowroomBlock}`;
 
     function updateMpUrl() {
       if (!currentMpChair) return;
-      const useUtm = document.getElementById("mpUtmToggle")?.checked;
+      const useUtm = document.getElementById("mpUtmToggle") ? document.getElementById("mpUtmToggle").checked : true;
+      const targetCatalog = document.getElementById("mpUrlTargetCatalog")?.checked;
       const targetHome = document.getElementById("mpUrlTargetHome")?.checked;
-      let base = getChairWebsiteUrl(currentMpChair, false);
-      if (targetHome) {
-        base = "https://staopstoelen.nl/";
-      }
       const chairSlug = (currentMpChair.id || "occasions").replace(/[^a-z0-9_-]+/gi, "-").toLowerCase();
+
+      let base = getChairWebsiteUrl(currentMpChair, false);
+      let campaign = chairSlug;
+
+      if (targetCatalog) {
+        base = "https://staopstoelen.nl/staopstoelen.html";
+        campaign = `${chairSlug}_catalogus`;
+      } else if (targetHome) {
+        base = "https://staopstoelen.nl/";
+        campaign = `${chairSlug}_home`;
+      }
+
       const finalUrl = useUtm 
-        ? `${base}${base.includes('?') ? '&' : '?'}utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${chairSlug}`
+        ? `${base}${base.includes('?') ? '&' : '?'}utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${campaign}`
         : base;
+
       const urlInput = document.getElementById("mpInputUrl");
       if (urlInput) urlInput.value = finalUrl;
       const viewBtn = document.getElementById("mpBtnViewChairPage");
-      if (viewBtn) viewBtn.href = base;
+      if (viewBtn) viewBtn.href = finalUrl;
+
+      // Update direct ook de advertentiebeschrijving zodat de links synchroon blijven
+      const descInput = document.getElementById("mpInputDesc");
+      if (descInput) {
+        descInput.value = generateMarktplaatsText(currentMpChair, currentMpStyle);
+      }
     }
     window.updateMpUrl = updateMpUrl;
 
@@ -8628,6 +8674,9 @@ ${bottomShowroomBlock}`;
     document.getElementById("mpModalFooterCloseBtn")?.addEventListener("click", closeMarktplaatsModal);
 
     document.getElementById("mpUtmToggle")?.addEventListener("change", updateMpUrl);
+    document.getElementById("mpUrlTargetChair")?.addEventListener("change", updateMpUrl);
+    document.getElementById("mpUrlTargetCatalog")?.addEventListener("change", updateMpUrl);
+    document.getElementById("mpUrlTargetHome")?.addEventListener("change", updateMpUrl);
 
     document.getElementById("mpBtnCopyUrl")?.addEventListener("click", () => {
       const val = document.getElementById("mpInputUrl")?.value || "";
