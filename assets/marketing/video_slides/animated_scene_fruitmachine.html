@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Geanimeerde Fruitmachine Scene - Staopstoelen.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-bright: #5cb82f;
+      --color-forest-dark: #1a420b;
+      --color-terracotta: #f39223;
+      --color-forest-sub: #8cb878;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #060911;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #F8FAFC;
+      position: relative;
+    }
+    
+    /* AMBIENT GLOWS */
+    .ambient-glow-gold {
+      position: absolute;
+      top: 15%;
+      left: 12%;
+      width: 850px;
+      height: 750px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(6, 9, 17, 0) 70%);
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+    .ambient-glow-green {
+      position: absolute;
+      bottom: 5%;
+      right: 12%;
+      width: 750px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(92, 184, 47, 0.18) 0%, rgba(6, 9, 17, 0) 70%);
+      pointer-events: none;
+    }
+
+    /* TOP HEADER */
+    .header {
+      height: 95px;
+      padding: 0 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(10, 16, 29, 0.88);
+      backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 10;
+    }
+    .brand-block { display: flex; flex-direction: column; gap: 2px; }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--color-forest-bright) !important;
+      letter-spacing: -0.8px;
+      line-height: 1;
+    }
+    .brand-logo span { color: var(--color-terracotta) !important; }
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-forest-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scene-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px;
+      border-radius: 999px; background: rgba(245, 158, 11, 0.2); border: 1.5px solid #f59e0b;
+      color: #fbbf24; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px;
+      letter-spacing: 1px; text-transform: uppercase;
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
+      transition: all 0.3s;
+    }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #fbbf24; box-shadow: 0 0 10px #fbbf24; }
+
+    /* 2-COLUMN MAIN CONTENT */
+    .main-grid {
+      height: 910px;
+      padding: 25px 70px 95px;
+      display: grid;
+      grid-template-columns: 570px 1fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* LEFT: REAL ANIMATED SLOT MACHINE */
+    .slot-hero-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .slot-cabinet {
+      width: 530px;
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 40%, #090e17 100%);
+      border: 4px solid #d97706;
+      border-radius: 32px;
+      padding: 16px 20px 20px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(245, 158, 11, 0.35), inset 0 2px 6px rgba(255, 255, 255, 0.3);
+      position: relative;
+      transition: box-shadow 0.3s;
+    }
+    .slot-cabinet.jackpot-glow {
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 70px rgba(92, 184, 47, 0.7), inset 0 0 20px rgba(251, 191, 36, 0.5);
+      border-color: #5cb82f;
+    }
+
+    /* Marquee Top */
+    .slot-marquee {
+      background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      border: 2px solid #f59e0b;
+      border-radius: 20px;
+      padding: 12px 16px;
+      text-align: center;
+      box-shadow: inset 0 0 20px rgba(245, 158, 11, 0.25), 0 0 20px rgba(245, 158, 11, 0.3);
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .marquee-lights {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 6px;
+    }
+    .m-bulb {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #78350f;
+      box-shadow: none;
+      transition: background 0.1s, box-shadow 0.1s;
+    }
+    .m-bulb.active {
+      background: #fbbf24;
+      box-shadow: 0 0 12px #fbbf24, 0 0 20px #f59e0b;
+    }
+    .m-bulb.active-green {
+      background: #4ade80;
+      box-shadow: 0 0 12px #4ade80, 0 0 20px #22c55e;
+    }
+    .slot-neon-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: #fbbf24;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+      line-height: 1.1;
+    }
+    .slot-neon-sub {
+      font-size: 11px;
+      font-weight: 800;
+      color: #86efac;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* Digital LED Counters */
+    .slot-digital-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .digital-box {
+      background: #020617;
+      border: 1.5px solid #334155;
+      border-radius: 12px;
+      padding: 8px 12px;
+      text-align: center;
+      box-shadow: inset 0 4px 12px rgba(0,0,0,0.9);
+    }
+    .digital-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .digital-number {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 32px;
+      font-weight: 900;
+      color: #fbbf24;
+      letter-spacing: 2px;
+      text-shadow: 0 0 12px rgba(251, 191, 36, 0.8);
+      line-height: 1.1;
+    }
+    .digital-number.green {
+      color: #4ade80;
+      text-shadow: 0 0 12px rgba(74, 222, 128, 0.8);
+    }
+
+    /* REEL VIEWPORT & STAGE */
+    .reels-stage {
+      background: linear-gradient(180deg, #090d16 0%, #020617 100%);
+      border: 3px solid #64748b;
+      border-radius: 20px;
+      padding: 12px 10px;
+      position: relative;
+      box-shadow: inset 0 20px 35px rgba(0,0,0,0.98), inset 0 -20px 35px rgba(0,0,0,0.98);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .reels-flex {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    
+    /* Individual Reel Frame */
+    .reel-col {
+      height: 145px;
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+      border: 2px solid #475569;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .reel-col.locked-green {
+      border: 2.5px solid var(--color-forest-bright);
+      box-shadow: 0 0 25px rgba(92, 184, 47, 0.6), inset 0 0 15px rgba(92, 184, 47, 0.3);
+    }
+    .reel-col.locked-orange {
+      border: 2.5px solid var(--color-terracotta);
+      box-shadow: 0 0 25px rgba(243, 146, 35, 0.6), inset 0 0 15px rgba(243, 146, 35, 0.3);
+    }
+    .reel-col.locked-jackpot {
+      border: 2.5px solid #fbbf24;
+      background: linear-gradient(180deg, #0f2e09 0%, #1a420b 50%, #0f2e09 100%);
+      box-shadow: 0 0 35px rgba(251, 191, 36, 0.8), inset 0 0 20px rgba(92, 184, 47, 0.6);
+    }
+
+    /* Continuous reel vertical strip */
+    .reel-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      will-change: transform;
+    }
+    .reel-item {
+      height: 145px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 6px;
+      text-align: center;
+    }
+    .r-icon { font-size: 38px; margin-bottom: 4px; display: block; line-height: 1; }
+    .r-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 2px;
+    }
+    .r-sub {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94A3B8;
+    }
+
+    /* Horizontal Payline Wire */
+    .payline-wire {
+      position: absolute;
+      top: 50%;
+      left: 6px;
+      right: 6px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #fbbf24 15%, #fbbf24 85%, transparent 100%);
+      box-shadow: 0 0 12px #fbbf24;
+      pointer-events: none;
+      transform: translateY(-50%);
+      z-index: 10;
+      opacity: 0.7;
+      transition: all 0.3s;
+    }
+    .payline-wire.active {
+      opacity: 1;
+      height: 4px;
+      box-shadow: 0 0 25px #fbbf24, 0 0 45px #f59e0b;
+    }
+
+    /* Mechanical Side Lever */
+    .lever-assembly {
+      position: absolute;
+      right: -32px;
+      top: 48%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: 50% 120px;
+    }
+    .lever-knob {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b);
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.6);
+      margin-bottom: -8px; z-index: 3;
+    }
+    .lever-shaft {
+      width: 14px; height: 115px;
+      background: linear-gradient(90deg, #e2e8f0, #94a3b8, #64748b);
+      border-radius: 6px;
+    }
+    .lever-pivot {
+      width: 38px; height: 28px;
+      background: #334155;
+      border: 2px solid #64748b;
+      border-radius: 8px;
+      margin-top: -6px;
+    }
+
+    /* Coin Tray with Gold Euro Coins */
+    .coin-tray {
+      background: linear-gradient(180deg, #090d16 0%, #1e293b 100%);
+      border: 3px solid #64748b;
+      border-radius: 16px;
+      padding: 10px 16px;
+      text-align: center;
+      position: relative;
+      box-shadow: inset 0 8px 16px rgba(0,0,0,0.8);
+      overflow: hidden;
+    }
+    .tray-coins {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      font-size: 24px;
+      transition: transform 0.2s;
+    }
+    .tray-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      color: #fbbf24;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* Falling coin particles during jackpot */
+    .jackpot-coin {
+      position: absolute;
+      font-size: 26px;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* RIGHT: BUSINESS CASE & COPYWRITING */
+    .copy-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .kicker {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--color-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      background: rgba(243, 146, 35, 0.15);
+      padding: 6px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 146, 35, 0.35);
+      align-self: flex-start;
+    }
+    .headline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+    }
+    .headline span.glow {
+      color: var(--color-forest-bright);
+      text-shadow: 0 0 30px rgba(92, 184, 47, 0.4);
+    }
+
+    /* 3 COMPARISON CARDS */
+    .cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 5px;
+    }
+    .comp-card {
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 16px 22px;
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-columns: 46px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .comp-card.bad {
+      border-left: 5px solid #ef4444;
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.08) 0%, rgba(15, 23, 42, 0.88) 100%);
+    }
+    .comp-card.warn {
+      border-left: 5px solid var(--color-terracotta);
+      background: linear-gradient(90deg, rgba(243, 146, 35, 0.08) 0%, rgba(15, 23, 42, 0.88) 100%);
+    }
+    .comp-card.jackpot {
+      border-left: 5px solid var(--color-forest-bright);
+      border-top: 1.5px solid rgba(92, 184, 47, 0.4);
+      border-right: 1.5px solid rgba(92, 184, 47, 0.4);
+      border-bottom: 1.5px solid rgba(92, 184, 47, 0.4);
+      background: linear-gradient(90deg, rgba(26, 66, 11, 0.45) 0%, rgba(15, 23, 42, 0.95) 100%);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 30px rgba(92, 184, 47, 0.35);
+    }
+    .comp-card.jackpot.celebrate {
+      box-shadow: 0 15px 45px rgba(0,0,0,0.7), 0 0 50px rgba(92, 184, 47, 0.8);
+      border-color: #5cb82f;
+      transform: scale(1.02);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-body h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+    .card-body p {
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 1.35;
+    }
+    .card-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .tag-bad { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .tag-warn { background: rgba(243, 146, 35, 0.2); color: #fbbf24; border: 1px solid rgba(243, 146, 35, 0.4); }
+    .tag-jackpot {
+      background: linear-gradient(90deg, #1A420B, #2E6819);
+      color: #86efac;
+      border: 1px solid var(--color-forest-bright);
+      box-shadow: 0 0 15px rgba(92, 184, 47, 0.4);
+      font-size: 14px;
+    }
+
+    /* METRICS STRIP */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 5px;
+    }
+    .m-pill {
+      background: rgba(2, 6, 23, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 10px 16px;
+      text-align: center;
+    }
+    .m-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+    .m-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* BOTTOM SUBTITLE BAR */
+    .subtitle-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 75px;
+      background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(10px);
+      border-top: 1.5px solid rgba(75, 143, 36, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px; font-size: 20px; font-weight: 700; color: #F8FAFC; text-align: center;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow-gold" id="ambientGold"></div>
+  <div class="ambient-glow-green" id="ambientGreen"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
+    </div>
+    <div class="scene-badge" id="sceneBadge">
+      <span class="scene-dot"></span>
+      De Marketing Fruitmachine &amp; Jackpot
+    </div>
+  </div>
+
+  <!-- MAIN 2-COL -->
+  <div class="main-grid">
+    
+    <!-- LEFT: REAL ANIMATED SLOT MACHINE -->
+    <div class="slot-hero-col">
+      <div class="slot-cabinet" id="slotCabinet">
+        
+        <!-- Marquee Top Arch -->
+        <div class="slot-marquee">
+          <div class="marquee-lights" id="marqueeLights">
+            <div class="m-bulb"></div><div class="m-bulb"></div><div class="m-bulb"></div>
+            <div class="m-bulb"></div><div class="m-bulb"></div><div class="m-bulb"></div>
+            <div class="m-bulb"></div><div class="m-bulb"></div><div class="m-bulb"></div>
+          </div>
+          <div class="slot-neon-title" id="marqueeTitle">★ STAOPSTOELEN JACKPOT ★</div>
+          <div class="slot-neon-sub" id="marqueeSub">HOOFDPRIJS: € 1.200 MARGE OP 1 STOEL</div>
+        </div>
+
+        <!-- DIGITAL COUNTER DISPLAYS -->
+        <div class="slot-digital-row">
+          <div class="digital-box">
+            <div class="digital-label">Vertoningen (Live)</div>
+            <div class="digital-number green" id="counterVertoningen">0</div>
+          </div>
+          <div class="digital-box">
+            <div class="digital-label">Stoelkliks (Live)</div>
+            <div class="digital-number" id="counterKliks">0</div>
+          </div>
+        </div>
+
+        <!-- REELS WINDOW WITH PAYLINE -->
+        <div class="reels-stage" id="reelsStage">
+          <div class="payline-wire" id="payline"></div>
+          <div class="reels-flex">
+            
+            <!-- Reel 1: Stoel -->
+            <div class="reel-col" id="reelCol1">
+              <div class="reel-strip" id="reelStrip1">
+                <!-- Repeated symbols for spinning loop -->
+              </div>
+            </div>
+
+            <!-- Reel 2: Stoelkliks -->
+            <div class="reel-col" id="reelCol2">
+              <div class="reel-strip" id="reelStrip2">
+                <!-- Repeated symbols for spinning loop -->
+              </div>
+            </div>
+
+            <!-- Reel 3: Jackpot Marge -->
+            <div class="reel-col" id="reelCol3">
+              <div class="reel-strip" id="reelStrip3">
+                <!-- Repeated symbols for spinning loop -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Mechanical Pull Lever -->
+        <div class="lever-assembly" id="leverAssembly">
+          <div class="lever-knob"></div>
+          <div class="lever-shaft"></div>
+          <div class="lever-pivot"></div>
+        </div>
+
+        <!-- Overspilling Coin Tray -->
+        <div class="coin-tray" id="coinTray">
+          <div class="tray-coins" id="trayCoins">🪙 🪙 🪙 🪙 🪙</div>
+          <div class="tray-text" id="trayText">INZET: € 14,55 IN 3 DAGEN</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: COPYWRITING & CARDS -->
+    <div class="copy-col">
+      <span class="kicker">Marketing is voor Geertjan geen gokkast meer</span>
+      <h1 class="headline">
+        Stop met Gokken op TPM... <br>
+        <span class="glow">Trek aan de hendel van de Online Jackpot!</span>
+      </h1>
+
+      <div class="cards-stack">
+        <!-- Card 1: TPM -->
+        <div class="comp-card bad" id="cardTPM">
+          <div class="card-icon">❌</div>
+          <div class="card-body">
+            <h4 style="color: #f87171;">De Oude TPM Gok</h4>
+            <p>€ 400,- per maand vaste fee (€ 13,33/dag) voor een vage PDF. Nul gegarandeerde proefzitters in de Merwedestraat.</p>
+          </div>
+          <div class="card-tag tag-bad">Geld Verdampen</div>
+        </div>
+
+        <!-- Card 2: Flyer -->
+        <div class="comp-card warn" id="cardFlyer">
+          <div class="card-icon">📬</div>
+          <div class="card-body">
+            <h4 style="color: #fbbf24;">De 10.000 Flyer Huis-aan-Huis Gok</h4>
+            <p>€ 1.250,- drukkosten &amp; Spotta. 45% heeft Nee/Nee sticker, 40% is jong gezin. 98% belandt in de papierbak.</p>
+          </div>
+          <div class="card-tag tag-warn">Hoge Inzet, Lage Kans</div>
+        </div>
+
+        <!-- Card 3: Jackpot -->
+        <div class="comp-card jackpot" id="cardJackpot">
+          <div class="card-icon">💎</div>
+          <div class="card-body">
+            <h4 style="color: var(--color-forest-bright);">De Online Jackpot (Marktplaats &amp; Google)</h4>
+            <p>Voor amper € 14,55 al 97 gerichte stoelkliks (€ 0,15/klik). <strong>1 Fitform stoel verkocht (€ 1.200 winst) dekt de inzet 82x terug!</strong></p>
+          </div>
+          <div class="card-tag tag-jackpot">82× ROI JACKPOT</div>
+        </div>
+      </div>
+
+      <!-- METRICS BAR -->
+      <div class="metrics-bar">
+        <div class="m-pill">
+          <div class="m-num" style="color: #60a5fa;" id="statVertoningen">8.710</div>
+          <div class="m-lbl">Vertoningen (Live)</div>
+        </div>
+        <div class="m-pill">
+          <div class="m-num" style="color: var(--color-forest-bright);" id="statKliks">97</div>
+          <div class="m-lbl">Gerichte Stoelkliks</div>
+        </div>
+        <div class="m-pill">
+          <div class="m-num" style="color: #fbbf24;">€ 0,15</div>
+          <div class="m-lbl">Kosten per Klik (CPC)</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SUBTITLE BAR -->
+  <div class="subtitle-bar" id="subtitleText">
+    "Marketing is voor Geertjan geen gokkast waar je € 400 in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot!"
+  </div>
+
+  <script>
+    const DURATION = 17.97; // exact seconds matching Alexander's voiceover
+
+    // SYMBOLS DATA FOR REELS (145px height each)
+    const SYMBOLS_REEL_1 = [
+      { icon: "🪑", title: "Fitform Stoel", sub: "Inzet: € 0,15/klik", color: "var(--color-forest-bright)", isTarget: true },
+      { icon: "❌", title: "TPM Stilstand", sub: "€ 400/mnd kwijt", color: "#f87171" },
+      { icon: "📬", title: "10.000 Flyers", sub: "98% Papierbak", color: "#fbbf24" },
+      { icon: "💶", title: "€ 13,33 / dag", sub: "Geen garantie", color: "#94a3b8" },
+      { icon: "🪑", title: "Fitform Stoel", sub: "Inzet: € 0,15/klik", color: "var(--color-forest-bright)", isTarget: true }
+    ];
+
+    const SYMBOLS_REEL_2 = [
+      { icon: "🎯", title: "97 Stoelkliks", sub: "8.710 Bereikt", color: "var(--color-terracotta)", isTarget: true },
+      { icon: "❌", title: "0 Proefzitters", sub: "Vage beloftes", color: "#f87171" },
+      { icon: "📬", title: "Nee/Nee Sticker", sub: "45% Afval", color: "#fbbf24" },
+      { icon: "💸", title: "€ 400 Factuur", sub: "Nul omzet", color: "#94a3b8" },
+      { icon: "🎯", title: "97 Stoelkliks", sub: "8.710 Bereikt", color: "var(--color-terracotta)", isTarget: true }
+    ];
+
+    const SYMBOLS_REEL_3 = [
+      { icon: "💎", title: "€ 1.200 Marge", sub: "82x ROI Jackpot", color: "#ffffff", isTarget: true },
+      { icon: "❌", title: "Vage PDF", sub: "Geen klanten", color: "#f87171" },
+      { icon: "📬", title: "Huis-aan-Huis", sub: "€ 1.250 Druk", color: "#fbbf24" },
+      { icon: "❓", title: "Hoop & Gok", sub: "Geen controle", color: "#94a3b8" },
+      { icon: "💎", title: "€ 1.200 Marge", sub: "82x ROI Jackpot", color: "#ffffff", isTarget: true }
+    ];
+
+    const ITEM_HEIGHT = 145;
+
+    // Build DOM for each reel strip with 12 repeating items
+    function populateStrip(stripEl, symbols) {
+      stripEl.innerHTML = "";
+      for (let cycle = 0; cycle < 10; cycle++) {
+        symbols.forEach(sym => {
+          const div = document.createElement("div");
+          div.className = "reel-item";
+          div.innerHTML = `
+            <span class="r-icon">${sym.icon}</span>
+            <div class="r-title" style="color: ${sym.color};">${sym.title}</div>
+            <div class="r-sub">${sym.sub}</div>
+          `;
+          stripEl.appendChild(div);
+        });
+      }
+    }
+
+    const strip1 = document.getElementById("reelStrip1");
+    const strip2 = document.getElementById("reelStrip2");
+    const strip3 = document.getElementById("reelStrip3");
+
+    populateStrip(strip1, SYMBOLS_REEL_1);
+    populateStrip(strip2, SYMBOLS_REEL_2);
+    populateStrip(strip3, SYMBOLS_REEL_3);
+
+    // Grab elements
+    const bulbs = Array.from(document.querySelectorAll(".m-bulb"));
+    const leverAssembly = document.getElementById("leverAssembly");
+    const counterVertoningen = document.getElementById("counterVertoningen");
+    const counterKliks = document.getElementById("counterKliks");
+    const payline = document.getElementById("payline");
+    const slotCabinet = document.getElementById("slotCabinet");
+    const cardJackpot = document.getElementById("cardJackpot");
+    const trayCoins = document.getElementById("trayCoins");
+    const trayText = document.getElementById("trayText");
+    const marqueeTitle = document.getElementById("marqueeTitle");
+    const sceneBadge = document.getElementById("sceneBadge");
+    const reelCol1 = document.getElementById("reelCol1");
+    const reelCol2 = document.getElementById("reelCol2");
+    const reelCol3 = document.getElementById("reelCol3");
+
+    // Easing helper
+    function easeOutBack(x) {
+      const c1 = 1.70158;
+      const c3 = c1 + 1;
+      return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+    }
+
+    // MAIN ANIMATION FUNCTION
+    window.setAnimationProgress = function(p) {
+      const t = p * DURATION;
+
+      // 1. CHASER BULBS ON MARQUEE
+      const bulbSpeed = (t >= 6.4 && t < 14.8) ? 14 : (t >= 14.8 ? 20 : 4);
+      const activeBulbIdx = Math.floor(t * bulbSpeed) % bulbs.length;
+      bulbs.forEach((b, idx) => {
+        if (t >= 14.8) {
+          // Full strobe jackpot mode
+          const on = Math.sin(t * 18 + idx) > 0;
+          b.className = on ? "m-bulb active-green" : "m-bulb active";
+        } else {
+          b.className = (idx === activeBulbIdx || (idx + 3) % bulbs.length === activeBulbIdx) ? "m-bulb active" : "m-bulb";
+        }
+      });
+
+      // 2. MECHANICAL LEVER MOVEMENT (5.8s - 6.8s)
+      if (t < 5.8) {
+        leverAssembly.style.transform = "translateY(-50%) rotate(0deg)";
+      } else if (t >= 5.8 && t < 6.3) {
+        // Pulling down
+        const pullP = (t - 5.8) / 0.5;
+        const deg = pullP * 46;
+        leverAssembly.style.transform = `translateY(-50%) rotate(${deg}deg)`;
+      } else if (t >= 6.3 && t < 6.8) {
+        // Rebound snap back up
+        const snapP = (t - 6.3) / 0.5;
+        const deg = 46 * (1 - snapP) + Math.sin(snapP * Math.PI * 4) * (4 * (1 - snapP));
+        leverAssembly.style.transform = `translateY(-50%) rotate(${deg}deg)`;
+      } else {
+        leverAssembly.style.transform = "translateY(-50%) rotate(0deg)";
+      }
+
+      // 3. DIGITAL COUNTERS ROLL UP (6.4s - 10.5s)
+      if (t < 6.4) {
+        counterVertoningen.textContent = "8.191";
+        counterKliks.textContent = "83";
+      } else if (t >= 6.4 && t < 10.5) {
+        const rollP = (t - 6.4) / 4.1;
+        const curV = Math.round(8191 + rollP * (8710 - 8191));
+        const curK = Math.round(83 + rollP * (97 - 83));
+        counterVertoningen.textContent = curV.toLocaleString('nl-NL');
+        counterKliks.textContent = String(curK);
+      } else {
+        counterVertoningen.textContent = "8.710";
+        counterKliks.textContent = "97";
+      }
+
+      // 4. REEL 1 SPINNING & STOP (Stop at 10.5s)
+      const targetOffset1 = 0; // Symbol 0 is Fitform Stoel
+      if (t < 6.4) {
+        strip1.style.transform = `translateY(${targetOffset1}px)`;
+        strip1.style.filter = "none";
+        reelCol1.className = "reel-col";
+      } else if (t >= 6.4 && t < 9.8) {
+        // High speed blur spin
+        const spinDist = ((t - 6.4) * 2200) % (ITEM_HEIGHT * 4);
+        strip1.style.transform = `translateY(-${spinDist}px)`;
+        strip1.style.filter = "blur(3px)";
+        reelCol1.className = "reel-col";
+      } else if (t >= 9.8 && t < 10.5) {
+        // Decelerating to stop
+        const decP = (t - 9.8) / 0.7;
+        const eased = easeOutBack(Math.min(decP, 1.0));
+        const startY = - (ITEM_HEIGHT * 3);
+        const curY = startY + eased * (targetOffset1 - startY);
+        strip1.style.transform = `translateY(${curY}px)`;
+        strip1.style.filter = `blur(${Math.max(0, 3 * (1 - decP))}px)`;
+        reelCol1.className = "reel-col";
+      } else {
+        // Locked in place!
+        strip1.style.transform = `translateY(${targetOffset1}px)`;
+        strip1.style.filter = "none";
+        reelCol1.className = "reel-col locked-green";
+      }
+
+      // 5. REEL 2 SPINNING & STOP (Stop at 12.5s)
+      const targetOffset2 = 0; // Symbol 0 is 97 Stoelkliks
+      if (t < 6.4) {
+        strip2.style.transform = `translateY(${targetOffset2}px)`;
+        strip2.style.filter = "none";
+        reelCol2.className = "reel-col";
+      } else if (t >= 6.4 && t < 11.8) {
+        // High speed blur spin
+        const spinDist = ((t - 6.4) * 2400) % (ITEM_HEIGHT * 4);
+        strip2.style.transform = `translateY(-${spinDist}px)`;
+        strip2.style.filter = "blur(3.5px)";
+        reelCol2.className = "reel-col";
+      } else if (t >= 11.8 && t < 12.5) {
+        // Decelerating to stop
+        const decP = (t - 11.8) / 0.7;
+        const eased = easeOutBack(Math.min(decP, 1.0));
+        const startY = - (ITEM_HEIGHT * 3);
+        const curY = startY + eased * (targetOffset2 - startY);
+        strip2.style.transform = `translateY(${curY}px)`;
+        strip2.style.filter = `blur(${Math.max(0, 3.5 * (1 - decP))}px)`;
+        reelCol2.className = "reel-col";
+      } else {
+        // Locked in place!
+        strip2.style.transform = `translateY(${targetOffset2}px)`;
+        strip2.style.filter = "none";
+        reelCol2.className = "reel-col locked-orange";
+      }
+
+      // 6. REEL 3 SPINNING & STOP (Stop at 14.8s - JACKPOT!)
+      const targetOffset3 = 0; // Symbol 0 is € 1.200 Marge
+      if (t < 6.4) {
+        strip3.style.transform = `translateY(${targetOffset3}px)`;
+        strip3.style.filter = "none";
+        reelCol3.className = "reel-col";
+      } else if (t >= 6.4 && t < 14.0) {
+        // High speed blur spin
+        const spinDist = ((t - 6.4) * 2600) % (ITEM_HEIGHT * 4);
+        strip3.style.transform = `translateY(-${spinDist}px)`;
+        strip3.style.filter = "blur(4px)";
+        reelCol3.className = "reel-col";
+      } else if (t >= 14.0 && t < 14.8) {
+        // Dramatic slow deceleration into jackpot
+        const decP = (t - 14.0) / 0.8;
+        const eased = easeOutBack(Math.min(decP, 1.0));
+        const startY = - (ITEM_HEIGHT * 3.5);
+        const curY = startY + eased * (targetOffset3 - startY);
+        strip3.style.transform = `translateY(${curY}px)`;
+        strip3.style.filter = `blur(${Math.max(0, 4 * (1 - decP))}px)`;
+        reelCol3.className = "reel-col";
+      } else {
+        // JACKPOT LOCKED!
+        strip3.style.transform = `translateY(${targetOffset3}px)`;
+        strip3.style.filter = "none";
+        reelCol3.className = "reel-col locked-jackpot";
+      }
+
+      // 7. JACKPOT CELEBRATION (14.8s - 18.0s)
+      if (t >= 14.8) {
+        slotCabinet.className = "slot-cabinet jackpot-glow";
+        payline.className = "payline-wire active";
+        cardJackpot.className = "comp-card jackpot celebrate";
+        marqueeTitle.textContent = "💰 JACKPOT GEVALEN! 💰";
+        marqueeTitle.style.color = "#4ade80";
+        trayText.textContent = "JACKPOT UITBETALING: 82x ROI!";
+        trayText.style.color = "#4ade80";
+        sceneBadge.style.boxShadow = "0 0 35px #5cb82f";
+        sceneBadge.style.borderColor = "#5cb82f";
+        sceneBadge.style.color = "#86efac";
+
+        // Coin shake in tray
+        const shake = Math.sin(t * 25) * 4;
+        trayCoins.style.transform = `scale(1.15) translateY(${shake}px)`;
+      } else {
+        slotCabinet.className = "slot-cabinet";
+        payline.className = "payline-wire";
+        cardJackpot.className = "comp-card jackpot";
+        marqueeTitle.textContent = "★ STAOPSTOELEN JACKPOT ★";
+        marqueeTitle.style.color = "#fbbf24";
+        trayText.textContent = "INZET: € 14,55 IN 3 DAGEN";
+        trayText.style.color = "#fbbf24";
+        trayCoins.style.transform = "none";
+      }
+    };
+
+    // Default at start
+    window.setAnimationProgress(0);
+  </script>
+</body>
+</html>
