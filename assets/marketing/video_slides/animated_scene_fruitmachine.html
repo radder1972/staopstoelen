@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Geanimeerde Fruitmachine Scene - Staopstoelen.nl</title>
+  <title>Geanimeerde Fruitmachine Scene - Staopstoelen.nl (3 Kerngetallen)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
     .ambient-glow-gold {
       position: absolute;
       top: 15%;
-      left: 12%;
+      left: 10%;
       width: 850px;
       height: 750px;
       background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(6, 9, 17, 0) 70%);
@@ -39,10 +39,10 @@
     .ambient-glow-green {
       position: absolute;
       bottom: 5%;
-      right: 12%;
-      width: 750px;
-      height: 650px;
-      background: radial-gradient(circle, rgba(92, 184, 47, 0.18) 0%, rgba(6, 9, 17, 0) 70%);
+      right: 10%;
+      width: 800px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(92, 184, 47, 0.20) 0%, rgba(6, 9, 17, 0) 70%);
       pointer-events: none;
     }
 
@@ -142,7 +142,7 @@
       width: 10px; height: 10px; border-radius: 50%;
       background: #78350f;
       box-shadow: none;
-      transition: background 0.1s, box-shadow 0.1s;
+      transition: background 0.08s, box-shadow 0.08s;
     }
     .m-bulb.active {
       background: #fbbf24;
@@ -233,18 +233,18 @@
       position: relative;
       overflow: hidden;
     }
-    .reel-col.locked-green {
-      border: 2.5px solid var(--color-forest-bright);
-      box-shadow: 0 0 25px rgba(92, 184, 47, 0.6), inset 0 0 15px rgba(92, 184, 47, 0.3);
+    .reel-col.locked-blue {
+      border: 2.5px solid #60a5fa;
+      box-shadow: 0 0 25px rgba(96, 165, 250, 0.6), inset 0 0 15px rgba(96, 165, 250, 0.3);
     }
     .reel-col.locked-orange {
       border: 2.5px solid var(--color-terracotta);
       box-shadow: 0 0 25px rgba(243, 146, 35, 0.6), inset 0 0 15px rgba(243, 146, 35, 0.3);
     }
     .reel-col.locked-jackpot {
-      border: 2.5px solid #fbbf24;
+      border: 2.5px solid #4ade80;
       background: linear-gradient(180deg, #0f2e09 0%, #1a420b 50%, #0f2e09 100%);
-      box-shadow: 0 0 35px rgba(251, 191, 36, 0.8), inset 0 0 20px rgba(92, 184, 47, 0.6);
+      box-shadow: 0 0 35px rgba(74, 222, 128, 0.8), inset 0 0 20px rgba(92, 184, 47, 0.6);
     }
 
     /* Continuous reel vertical strip */
@@ -297,7 +297,7 @@
     .payline-wire.active {
       opacity: 1;
       height: 4px;
-      box-shadow: 0 0 25px #fbbf24, 0 0 45px #f59e0b;
+      box-shadow: 0 0 30px #fbbf24, 0 0 50px #4ade80;
     }
 
     /* Mechanical Side Lever */
@@ -359,20 +359,12 @@
       margin-top: 3px;
     }
 
-    /* Falling coin particles during jackpot */
-    .jackpot-coin {
-      position: absolute;
-      font-size: 26px;
-      pointer-events: none;
-      z-index: 15;
-    }
-
-    /* RIGHT: BUSINESS CASE & COPYWRITING */
+    /* RIGHT: 3 KERNGETALLEN & DIRECT NAAR DE TOP */
     .copy-col {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 20px;
+      gap: 16px;
     }
     .kicker {
       display: inline-block;
@@ -390,7 +382,7 @@
     }
     .headline {
       font-family: 'Montserrat', sans-serif;
-      font-size: 42px;
+      font-size: 40px;
       font-weight: 900;
       letter-spacing: -0.8px;
       line-height: 1.15;
@@ -400,111 +392,107 @@
       text-shadow: 0 0 30px rgba(92, 184, 47, 0.4);
     }
 
-    /* 3 COMPARISON CARDS */
-    .cards-stack {
+    /* 3 KERNGETALLEN CARDS (STAP VOOR STAP) */
+    .funnel-stack {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-top: 5px;
+      gap: 12px;
     }
-    .comp-card {
-      background: rgba(15, 23, 42, 0.88);
+    .kpi-row-card {
+      background: rgba(15, 23, 42, 0.90);
       backdrop-filter: blur(10px);
       border-radius: 16px;
-      padding: 16px 22px;
+      padding: 14px 20px;
       border: 1.5px solid rgba(255, 255, 255, 0.08);
       display: grid;
-      grid-template-columns: 46px 1fr auto;
+      grid-template-columns: 90px 1fr auto;
       gap: 16px;
       align-items: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       transition: all 0.3s;
     }
-    .comp-card.bad {
-      border-left: 5px solid #ef4444;
-      background: linear-gradient(90deg, rgba(239, 68, 68, 0.08) 0%, rgba(15, 23, 42, 0.88) 100%);
+    .kpi-row-card.active-1 {
+      border-left: 5px solid #60a5fa;
+      background: linear-gradient(90deg, rgba(96, 165, 250, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%);
     }
-    .comp-card.warn {
+    .kpi-row-card.active-2 {
       border-left: 5px solid var(--color-terracotta);
-      background: linear-gradient(90deg, rgba(243, 146, 35, 0.08) 0%, rgba(15, 23, 42, 0.88) 100%);
+      background: linear-gradient(90deg, rgba(243, 146, 35, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%);
     }
-    .comp-card.jackpot {
-      border-left: 5px solid var(--color-forest-bright);
-      border-top: 1.5px solid rgba(92, 184, 47, 0.4);
-      border-right: 1.5px solid rgba(92, 184, 47, 0.4);
-      border-bottom: 1.5px solid rgba(92, 184, 47, 0.4);
-      background: linear-gradient(90deg, rgba(26, 66, 11, 0.45) 0%, rgba(15, 23, 42, 0.95) 100%);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 30px rgba(92, 184, 47, 0.35);
+    .kpi-row-card.active-3 {
+      border-left: 5px solid #4ade80;
+      background: linear-gradient(90deg, rgba(74, 222, 128, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border-top: 1px solid rgba(74, 222, 128, 0.3);
+      border-right: 1px solid rgba(74, 222, 128, 0.3);
+      border-bottom: 1px solid rgba(74, 222, 128, 0.3);
     }
-    .comp-card.jackpot.celebrate {
-      box-shadow: 0 15px 45px rgba(0,0,0,0.7), 0 0 50px rgba(92, 184, 47, 0.8);
-      border-color: #5cb82f;
+    .kpi-row-card.active-3.celebrate {
+      box-shadow: 0 0 35px rgba(74, 222, 128, 0.6);
       transform: scale(1.02);
     }
 
-    .card-icon {
-      font-size: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .kpi-big-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1;
+      text-align: center;
     }
-    .card-body h4 {
+    .kpi-body h4 {
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       font-weight: 800;
+      color: #FFFFFF;
       margin-bottom: 2px;
     }
-    .card-body p {
-      font-size: 13px;
+    .kpi-body p {
+      font-size: 12px;
       color: #94A3B8;
-      line-height: 1.35;
+      font-weight: 600;
     }
-    .card-tag {
+    .kpi-badge {
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       padding: 6px 14px;
       border-radius: 8px;
-      text-align: right;
       white-space: nowrap;
-    }
-    .tag-bad { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
-    .tag-warn { background: rgba(243, 146, 35, 0.2); color: #fbbf24; border: 1px solid rgba(243, 146, 35, 0.4); }
-    .tag-jackpot {
-      background: linear-gradient(90deg, #1A420B, #2E6819);
-      color: #86efac;
-      border: 1px solid var(--color-forest-bright);
-      box-shadow: 0 0 15px rgba(92, 184, 47, 0.4);
-      font-size: 14px;
+      text-align: right;
     }
 
-    /* METRICS STRIP */
-    .metrics-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 5px;
+    /* THE GRAND FINALE BOX */
+    .grand-finale-box {
+      background: linear-gradient(90deg, rgba(26, 66, 11, 0.6) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 2px solid var(--color-forest-bright);
+      border-radius: 18px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 25px rgba(92, 184, 47, 0.3);
     }
-    .m-pill {
-      background: rgba(2, 6, 23, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 10px 16px;
-      text-align: center;
+    .finale-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      color: #FFFFFF;
     }
-    .m-num {
+    .finale-sub {
+      font-size: 12px;
+      color: #86efac;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .finale-tag {
       font-family: 'Montserrat', sans-serif;
       font-size: 22px;
       font-weight: 900;
       color: #ffffff;
-      line-height: 1.1;
-    }
-    .m-lbl {
-      font-size: 11px;
-      font-weight: 700;
-      color: #94A3B8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      background: #1A420B;
+      border: 1.5px solid var(--color-forest-bright);
+      padding: 8px 18px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(92, 184, 47, 0.5);
     }
 
     /* BOTTOM SUBTITLE BAR */
@@ -530,14 +518,14 @@
     </div>
     <div class="scene-badge" id="sceneBadge">
       <span class="scene-dot"></span>
-      De Marketing Fruitmachine &amp; Jackpot
+      De 3 Kerngetallen &amp; Jackpot
     </div>
   </div>
 
   <!-- MAIN 2-COL -->
   <div class="main-grid">
     
-    <!-- LEFT: REAL ANIMATED SLOT MACHINE -->
+    <!-- LEFT: REAL HIGH-SPEED ANIMATED SLOT MACHINE -->
     <div class="slot-hero-col">
       <div class="slot-cabinet" id="slotCabinet">
         
@@ -555,12 +543,12 @@
         <!-- DIGITAL COUNTER DISPLAYS -->
         <div class="slot-digital-row">
           <div class="digital-box">
-            <div class="digital-label">Vertoningen (Live)</div>
-            <div class="digital-number green" id="counterVertoningen">0</div>
+            <div class="digital-label">Vertoningen (Views)</div>
+            <div class="digital-number green" id="counterVertoningen">8.710</div>
           </div>
           <div class="digital-box">
-            <div class="digital-label">Stoelkliks (Live)</div>
-            <div class="digital-number" id="counterKliks">0</div>
+            <div class="digital-label">Stoelkliks (Kliks)</div>
+            <div class="digital-number" id="counterKliks">97</div>
           </div>
         </div>
 
@@ -569,25 +557,19 @@
           <div class="payline-wire" id="payline"></div>
           <div class="reels-flex">
             
-            <!-- Reel 1: Stoel -->
+            <!-- Reel 1: 8.710 Views -->
             <div class="reel-col" id="reelCol1">
-              <div class="reel-strip" id="reelStrip1">
-                <!-- Repeated symbols for spinning loop -->
-              </div>
+              <div class="reel-strip" id="reelStrip1"></div>
             </div>
 
-            <!-- Reel 2: Stoelkliks -->
+            <!-- Reel 2: 97 Kliks -->
             <div class="reel-col" id="reelCol2">
-              <div class="reel-strip" id="reelStrip2">
-                <!-- Repeated symbols for spinning loop -->
-              </div>
+              <div class="reel-strip" id="reelStrip2"></div>
             </div>
 
-            <!-- Reel 3: Jackpot Marge -->
+            <!-- Reel 3: 5 Websitebezoekers & Jackpot -->
             <div class="reel-col" id="reelCol3">
-              <div class="reel-strip" id="reelStrip3">
-                <!-- Repeated symbols for spinning loop -->
-              </div>
+              <div class="reel-strip" id="reelStrip3"></div>
             </div>
 
           </div>
@@ -609,59 +591,54 @@
       </div>
     </div>
 
-    <!-- RIGHT: COPYWRITING & CARDS -->
+    <!-- RIGHT: 3 KERNGETALLEN & DIRECT NAAR DE TOP -->
     <div class="copy-col">
-      <span class="kicker">Marketing is voor Geertjan geen gokkast meer</span>
+      <span class="kicker">Geen vage marketing maar 3 harde kerngetallen</span>
       <h1 class="headline">
-        Stop met Gokken op TPM... <br>
-        <span class="glow">Trek aan de hendel van de Online Jackpot!</span>
+        Van Kijkers naar Klikkers... <br>
+        <span class="glow">Rechtstreeks naar de Showroom!</span>
       </h1>
 
-      <div class="cards-stack">
-        <!-- Card 1: TPM -->
-        <div class="comp-card bad" id="cardTPM">
-          <div class="card-icon">❌</div>
-          <div class="card-body">
-            <h4 style="color: #f87171;">De Oude TPM Gok</h4>
-            <p>€ 400,- per maand vaste fee (€ 13,33/dag) voor een vage PDF. Nul gegarandeerde proefzitters in de Merwedestraat.</p>
+      <div class="funnel-stack">
+        <!-- 1. VIEWS -->
+        <div class="kpi-row-card active-1" id="cardKpi1">
+          <div class="kpi-big-num" style="color: #60a5fa;">8.710</div>
+          <div class="kpi-body">
+            <h4>1. Views (Bereik in de Regio)</h4>
+            <p>Senioren en mantelzorgers zagen de advertentie vóór het klikken.</p>
           </div>
-          <div class="card-tag tag-bad">Geld Verdampen</div>
+          <div class="kpi-badge" style="background: rgba(96, 165, 250, 0.2); color: #93c5fd;">Kijkers</div>
         </div>
 
-        <!-- Card 2: Flyer -->
-        <div class="comp-card warn" id="cardFlyer">
-          <div class="card-icon">📬</div>
-          <div class="card-body">
-            <h4 style="color: #fbbf24;">De 10.000 Flyer Huis-aan-Huis Gok</h4>
-            <p>€ 1.250,- drukkosten &amp; Spotta. 45% heeft Nee/Nee sticker, 40% is jong gezin. 98% belandt in de papierbak.</p>
+        <!-- 2. KLIKS -->
+        <div class="kpi-row-card active-2" id="cardKpi2">
+          <div class="kpi-big-num" style="color: var(--color-terracotta);">97</div>
+          <div class="kpi-body">
+            <h4>2. Advertentiekliks (€ 0,15/klik)</h4>
+            <p>Doelgerichte stoelzoekers bekeken actief specificaties en foto's.</p>
           </div>
-          <div class="card-tag tag-warn">Hoge Inzet, Lage Kans</div>
+          <div class="kpi-badge" style="background: rgba(243, 146, 35, 0.2); color: #fbbf24;">Interesse</div>
         </div>
 
-        <!-- Card 3: Jackpot -->
-        <div class="comp-card jackpot" id="cardJackpot">
-          <div class="card-icon">💎</div>
-          <div class="card-body">
-            <h4 style="color: var(--color-forest-bright);">De Online Jackpot (Marktplaats &amp; Google)</h4>
-            <p>Voor amper € 14,55 al 97 gerichte stoelkliks (€ 0,15/klik). <strong>1 Fitform stoel verkocht (€ 1.200 winst) dekt de inzet 82x terug!</strong></p>
+        <!-- 3. WEBSITE BEZOEKERS (FOCUS OP AFSPRAAK) -->
+        <div class="kpi-row-card active-3" id="cardKpi3">
+          <div class="kpi-big-num" style="color: #4ade80;">5</div>
+          <div class="kpi-body">
+            <h4>3. Websitebezoekers (Focus: Afspraak!) ⭐</h4>
+            <p>Gekwalificeerde kopers verlieten Marktplaats direct naar Staopstoelen.nl.</p>
           </div>
-          <div class="card-tag tag-jackpot">82× ROI JACKPOT</div>
+          <div class="kpi-badge" style="background: rgba(74, 222, 128, 0.25); color: #86efac; border: 1px solid var(--color-forest-bright);">Showroom-Check</div>
         </div>
       </div>
 
-      <!-- METRICS BAR -->
-      <div class="metrics-bar">
-        <div class="m-pill">
-          <div class="m-num" style="color: #60a5fa;" id="statVertoningen">8.710</div>
-          <div class="m-lbl">Vertoningen (Live)</div>
+      <!-- GRAND FINALE: CONVERSIE NAAR VERKOOP -->
+      <div class="grand-finale-box" id="finaleBox">
+        <div>
+          <div class="finale-title">Conversie naar Showroom-Afspraak</div>
+          <div class="finale-sub">1 stoel verkocht (€ 1.200 winst) = 82× Rendement op de hele inzet!</div>
         </div>
-        <div class="m-pill">
-          <div class="m-num" style="color: var(--color-forest-bright);" id="statKliks">97</div>
-          <div class="m-lbl">Gerichte Stoelkliks</div>
-        </div>
-        <div class="m-pill">
-          <div class="m-num" style="color: #fbbf24;">€ 0,15</div>
-          <div class="m-lbl">Kosten per Klik (CPC)</div>
+        <div class="finale-tag">
+          82× ROI JACKPOT
         </div>
       </div>
 
@@ -677,37 +654,35 @@
   <script>
     const DURATION = 17.97; // exact seconds matching Alexander's voiceover
 
-    // SYMBOLS DATA FOR REELS (145px height each)
+    // SYMBOLS FOR REEL 1: Views
     const SYMBOLS_REEL_1 = [
-      { icon: "🪑", title: "Fitform Stoel", sub: "Inzet: € 0,15/klik", color: "var(--color-forest-bright)", isTarget: true },
-      { icon: "❌", title: "TPM Stilstand", sub: "€ 400/mnd kwijt", color: "#f87171" },
+      { icon: "👁️", title: "8.710 Views", sub: "Marktplaats Bereik", color: "#60a5fa" },
+      { icon: "❌", title: "TPM Stilstand", sub: "€ 400 kwijt", color: "#f87171" },
       { icon: "📬", title: "10.000 Flyers", sub: "98% Papierbak", color: "#fbbf24" },
-      { icon: "💶", title: "€ 13,33 / dag", sub: "Geen garantie", color: "#94a3b8" },
-      { icon: "🪑", title: "Fitform Stoel", sub: "Inzet: € 0,15/klik", color: "var(--color-forest-bright)", isTarget: true }
+      { icon: "👁️", title: "8.710 Views", sub: "Marktplaats Bereik", color: "#60a5fa" }
     ];
 
+    // SYMBOLS FOR REEL 2: Kliks
     const SYMBOLS_REEL_2 = [
-      { icon: "🎯", title: "97 Stoelkliks", sub: "8.710 Bereikt", color: "var(--color-terracotta)", isTarget: true },
+      { icon: "🎯", title: "97 Stoelkliks", sub: "Inzet: € 0,15", color: "var(--color-terracotta)" },
       { icon: "❌", title: "0 Proefzitters", sub: "Vage beloftes", color: "#f87171" },
-      { icon: "📬", title: "Nee/Nee Sticker", sub: "45% Afval", color: "#fbbf24" },
-      { icon: "💸", title: "€ 400 Factuur", sub: "Nul omzet", color: "#94a3b8" },
-      { icon: "🎯", title: "97 Stoelkliks", sub: "8.710 Bereikt", color: "var(--color-terracotta)", isTarget: true }
+      { icon: "📬", title: "Nee/Nee", sub: "Afvalbak", color: "#fbbf24" },
+      { icon: "🎯", title: "97 Stoelkliks", sub: "Inzet: € 0,15", color: "var(--color-terracotta)" }
     ];
 
+    // SYMBOLS FOR REEL 3: Website & Jackpot
     const SYMBOLS_REEL_3 = [
-      { icon: "💎", title: "€ 1.200 Marge", sub: "82x ROI Jackpot", color: "#ffffff", isTarget: true },
+      { icon: "💎", title: "€ 1.200 Marge", sub: "5 Websitebezoekers!", color: "#4ade80" },
       { icon: "❌", title: "Vage PDF", sub: "Geen klanten", color: "#f87171" },
-      { icon: "📬", title: "Huis-aan-Huis", sub: "€ 1.250 Druk", color: "#fbbf24" },
-      { icon: "❓", title: "Hoop & Gok", sub: "Geen controle", color: "#94a3b8" },
-      { icon: "💎", title: "€ 1.200 Marge", sub: "82x ROI Jackpot", color: "#ffffff", isTarget: true }
+      { icon: "📬", title: "Huis-aan-Huis", sub: "Geen conversie", color: "#fbbf24" },
+      { icon: "💎", title: "€ 1.200 Marge", sub: "5 Websitebezoekers!", color: "#4ade80" }
     ];
 
     const ITEM_HEIGHT = 145;
 
-    // Build DOM for each reel strip with 12 repeating items
     function populateStrip(stripEl, symbols) {
       stripEl.innerHTML = "";
-      for (let cycle = 0; cycle < 10; cycle++) {
+      for (let cycle = 0; cycle < 12; cycle++) {
         symbols.forEach(sym => {
           const div = document.createElement("div");
           div.className = "reel-item";
@@ -729,14 +704,14 @@
     populateStrip(strip2, SYMBOLS_REEL_2);
     populateStrip(strip3, SYMBOLS_REEL_3);
 
-    // Grab elements
     const bulbs = Array.from(document.querySelectorAll(".m-bulb"));
     const leverAssembly = document.getElementById("leverAssembly");
     const counterVertoningen = document.getElementById("counterVertoningen");
     const counterKliks = document.getElementById("counterKliks");
     const payline = document.getElementById("payline");
     const slotCabinet = document.getElementById("slotCabinet");
-    const cardJackpot = document.getElementById("cardJackpot");
+    const cardKpi3 = document.getElementById("cardKpi3");
+    const finaleBox = document.getElementById("finaleBox");
     const trayCoins = document.getElementById("trayCoins");
     const trayText = document.getElementById("trayText");
     const marqueeTitle = document.getElementById("marqueeTitle");
@@ -745,48 +720,45 @@
     const reelCol2 = document.getElementById("reelCol2");
     const reelCol3 = document.getElementById("reelCol3");
 
-    // Easing helper
     function easeOutBack(x) {
-      const c1 = 1.70158;
+      const c1 = 1.9;
       const c3 = c1 + 1;
       return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
     }
 
-    // MAIN ANIMATION FUNCTION
     window.setAnimationProgress = function(p) {
       const t = p * DURATION;
 
-      // 1. CHASER BULBS ON MARQUEE
-      const bulbSpeed = (t >= 6.4 && t < 14.8) ? 14 : (t >= 14.8 ? 20 : 4);
+      // 1. CHASER BULBS ON MARQUEE (Ultra high speed)
+      const bulbSpeed = (t >= 6.4 && t < 14.8) ? 22 : (t >= 14.8 ? 28 : 6);
       const activeBulbIdx = Math.floor(t * bulbSpeed) % bulbs.length;
       bulbs.forEach((b, idx) => {
         if (t >= 14.8) {
-          // Full strobe jackpot mode
-          const on = Math.sin(t * 18 + idx) > 0;
+          const on = Math.sin(t * 22 + idx) > 0;
           b.className = on ? "m-bulb active-green" : "m-bulb active";
         } else {
-          b.className = (idx === activeBulbIdx || (idx + 3) % bulbs.length === activeBulbIdx) ? "m-bulb active" : "m-bulb";
+          b.className = (idx === activeBulbIdx || (idx + 4) % bulbs.length === activeBulbIdx) ? "m-bulb active" : "m-bulb";
         }
       });
 
-      // 2. MECHANICAL LEVER MOVEMENT (5.8s - 6.8s)
+      // 2. SNAPPY MECHANICAL LEVER MOVEMENT (5.8s - 6.6s)
       if (t < 5.8) {
         leverAssembly.style.transform = "translateY(-50%) rotate(0deg)";
-      } else if (t >= 5.8 && t < 6.3) {
-        // Pulling down
-        const pullP = (t - 5.8) / 0.5;
-        const deg = pullP * 46;
+      } else if (t >= 5.8 && t < 6.2) {
+        // Fast hard pull
+        const pullP = (t - 5.8) / 0.4;
+        const deg = pullP * 48;
         leverAssembly.style.transform = `translateY(-50%) rotate(${deg}deg)`;
-      } else if (t >= 6.3 && t < 6.8) {
-        // Rebound snap back up
-        const snapP = (t - 6.3) / 0.5;
-        const deg = 46 * (1 - snapP) + Math.sin(snapP * Math.PI * 4) * (4 * (1 - snapP));
+      } else if (t >= 6.2 && t < 6.6) {
+        // Snappy recoil release
+        const snapP = (t - 6.2) / 0.4;
+        const deg = 48 * (1 - snapP) + Math.sin(snapP * Math.PI * 5) * (5 * (1 - snapP));
         leverAssembly.style.transform = `translateY(-50%) rotate(${deg}deg)`;
       } else {
         leverAssembly.style.transform = "translateY(-50%) rotate(0deg)";
       }
 
-      // 3. DIGITAL COUNTERS ROLL UP (6.4s - 10.5s)
+      // 3. FAST DIGITAL COUNTERS ROLL UP (6.4s - 10.5s)
       if (t < 6.4) {
         counterVertoningen.textContent = "8.191";
         counterKliks.textContent = "83";
@@ -801,85 +773,78 @@
         counterKliks.textContent = "97";
       }
 
-      // 4. REEL 1 SPINNING & STOP (Stop at 10.5s)
-      const targetOffset1 = 0; // Symbol 0 is Fitform Stoel
+      // 4. REEL 1 SPINNING & STOP (HIGH SPEED: 4200 px/sec!)
+      const targetOffset1 = 0;
       if (t < 6.4) {
         strip1.style.transform = `translateY(${targetOffset1}px)`;
         strip1.style.filter = "none";
         reelCol1.className = "reel-col";
-      } else if (t >= 6.4 && t < 9.8) {
-        // High speed blur spin
-        const spinDist = ((t - 6.4) * 2200) % (ITEM_HEIGHT * 4);
+      } else if (t >= 6.4 && t < 10.0) {
+        // Blazing spin speed
+        const spinDist = ((t - 6.4) * 4200) % (ITEM_HEIGHT * 3);
         strip1.style.transform = `translateY(-${spinDist}px)`;
-        strip1.style.filter = "blur(3px)";
+        strip1.style.filter = "blur(4.5px)";
         reelCol1.className = "reel-col";
-      } else if (t >= 9.8 && t < 10.5) {
-        // Decelerating to stop
-        const decP = (t - 9.8) / 0.7;
+      } else if (t >= 10.0 && t < 10.5) {
+        // Snappy deceleration
+        const decP = (t - 10.0) / 0.5;
         const eased = easeOutBack(Math.min(decP, 1.0));
-        const startY = - (ITEM_HEIGHT * 3);
+        const startY = - (ITEM_HEIGHT * 2.5);
         const curY = startY + eased * (targetOffset1 - startY);
         strip1.style.transform = `translateY(${curY}px)`;
-        strip1.style.filter = `blur(${Math.max(0, 3 * (1 - decP))}px)`;
+        strip1.style.filter = `blur(${Math.max(0, 4 * (1 - decP))}px)`;
         reelCol1.className = "reel-col";
       } else {
-        // Locked in place!
         strip1.style.transform = `translateY(${targetOffset1}px)`;
         strip1.style.filter = "none";
-        reelCol1.className = "reel-col locked-green";
+        reelCol1.className = "reel-col locked-blue";
       }
 
-      // 5. REEL 2 SPINNING & STOP (Stop at 12.5s)
-      const targetOffset2 = 0; // Symbol 0 is 97 Stoelkliks
+      // 5. REEL 2 SPINNING & STOP (HIGH SPEED: 4500 px/sec!)
+      const targetOffset2 = 0;
       if (t < 6.4) {
         strip2.style.transform = `translateY(${targetOffset2}px)`;
         strip2.style.filter = "none";
         reelCol2.className = "reel-col";
-      } else if (t >= 6.4 && t < 11.8) {
-        // High speed blur spin
-        const spinDist = ((t - 6.4) * 2400) % (ITEM_HEIGHT * 4);
+      } else if (t >= 6.4 && t < 12.0) {
+        const spinDist = ((t - 6.4) * 4500) % (ITEM_HEIGHT * 3);
         strip2.style.transform = `translateY(-${spinDist}px)`;
-        strip2.style.filter = "blur(3.5px)";
+        strip2.style.filter = "blur(5px)";
         reelCol2.className = "reel-col";
-      } else if (t >= 11.8 && t < 12.5) {
-        // Decelerating to stop
-        const decP = (t - 11.8) / 0.7;
+      } else if (t >= 12.0 && t < 12.5) {
+        const decP = (t - 12.0) / 0.5;
         const eased = easeOutBack(Math.min(decP, 1.0));
-        const startY = - (ITEM_HEIGHT * 3);
+        const startY = - (ITEM_HEIGHT * 2.5);
         const curY = startY + eased * (targetOffset2 - startY);
         strip2.style.transform = `translateY(${curY}px)`;
-        strip2.style.filter = `blur(${Math.max(0, 3.5 * (1 - decP))}px)`;
+        strip2.style.filter = `blur(${Math.max(0, 4.5 * (1 - decP))}px)`;
         reelCol2.className = "reel-col";
       } else {
-        // Locked in place!
         strip2.style.transform = `translateY(${targetOffset2}px)`;
         strip2.style.filter = "none";
         reelCol2.className = "reel-col locked-orange";
       }
 
-      // 6. REEL 3 SPINNING & STOP (Stop at 14.8s - JACKPOT!)
-      const targetOffset3 = 0; // Symbol 0 is € 1.200 Marge
+      // 6. REEL 3 SPINNING & STOP (HIGH SPEED: 4800 px/sec!)
+      const targetOffset3 = 0;
       if (t < 6.4) {
         strip3.style.transform = `translateY(${targetOffset3}px)`;
         strip3.style.filter = "none";
         reelCol3.className = "reel-col";
-      } else if (t >= 6.4 && t < 14.0) {
-        // High speed blur spin
-        const spinDist = ((t - 6.4) * 2600) % (ITEM_HEIGHT * 4);
+      } else if (t >= 6.4 && t < 14.2) {
+        const spinDist = ((t - 6.4) * 4800) % (ITEM_HEIGHT * 3);
         strip3.style.transform = `translateY(-${spinDist}px)`;
-        strip3.style.filter = "blur(4px)";
+        strip3.style.filter = "blur(5.5px)";
         reelCol3.className = "reel-col";
-      } else if (t >= 14.0 && t < 14.8) {
-        // Dramatic slow deceleration into jackpot
-        const decP = (t - 14.0) / 0.8;
+      } else if (t >= 14.2 && t < 14.8) {
+        const decP = (t - 14.2) / 0.6;
         const eased = easeOutBack(Math.min(decP, 1.0));
-        const startY = - (ITEM_HEIGHT * 3.5);
+        const startY = - (ITEM_HEIGHT * 3);
         const curY = startY + eased * (targetOffset3 - startY);
         strip3.style.transform = `translateY(${curY}px)`;
-        strip3.style.filter = `blur(${Math.max(0, 4 * (1 - decP))}px)`;
+        strip3.style.filter = `blur(${Math.max(0, 5 * (1 - decP))}px)`;
         reelCol3.className = "reel-col";
       } else {
-        // JACKPOT LOCKED!
         strip3.style.transform = `translateY(${targetOffset3}px)`;
         strip3.style.filter = "none";
         reelCol3.className = "reel-col locked-jackpot";
@@ -889,7 +854,7 @@
       if (t >= 14.8) {
         slotCabinet.className = "slot-cabinet jackpot-glow";
         payline.className = "payline-wire active";
-        cardJackpot.className = "comp-card jackpot celebrate";
+        cardKpi3.className = "kpi-row-card active-3 celebrate";
         marqueeTitle.textContent = "💰 JACKPOT GEVALEN! 💰";
         marqueeTitle.style.color = "#4ade80";
         trayText.textContent = "JACKPOT UITBETALING: 82x ROI!";
@@ -898,13 +863,12 @@
         sceneBadge.style.borderColor = "#5cb82f";
         sceneBadge.style.color = "#86efac";
 
-        // Coin shake in tray
-        const shake = Math.sin(t * 25) * 4;
-        trayCoins.style.transform = `scale(1.15) translateY(${shake}px)`;
+        const shake = Math.sin(t * 30) * 5;
+        trayCoins.style.transform = `scale(1.18) translateY(${shake}px)`;
       } else {
         slotCabinet.className = "slot-cabinet";
         payline.className = "payline-wire";
-        cardJackpot.className = "comp-card jackpot";
+        cardKpi3.className = "kpi-row-card active-3";
         marqueeTitle.textContent = "★ STAOPSTOELEN JACKPOT ★";
         marqueeTitle.style.color = "#fbbf24";
         trayText.textContent = "INZET: € 14,55 IN 3 DAGEN";
@@ -913,7 +877,6 @@
       }
     };
 
-    // Default at start
     window.setAnimationProgress(0);
   </script>
 </body>
