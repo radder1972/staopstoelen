@@ -2743,7 +2743,7 @@ function initFloatingMenu() {
       .digital-assistant-panel.active { display: flex !important; }
       .floating-contact-wrapper.panel-open .floating-btn-main,
       .digital-assistant-panel.active ~ .floating-btn-main { display: none !important; }
-      .da-header { flex-shrink: 0 !important; background: linear-gradient(135deg, #4b8f24 0%, #386f1a 100%) !important; color: #ffffff !important; }
+      .da-header { flex-shrink: 0 !important; background: #4b8f24 !important; color: #ffffff !important; }
       .da-header-info { display: flex !important; flex-direction: column !important; align-items: flex-start !important; justify-content: center !important; gap: 2px !important; }
       .da-status-line { display: inline-flex !important; align-items: center !important; gap: 5px !important; font-size: 0.68rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #a7f3d0 !important; line-height: 1 !important; }
       .da-status-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #34d399 !important; box-shadow: 0 0 6px rgba(52, 211, 153, 0.9) !important; }
