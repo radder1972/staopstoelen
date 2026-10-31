@@ -342,6 +342,7 @@ function initializeApp() {
   if (typeof initSlider === 'function') initSlider();
   if (typeof initCalendar === 'function') initCalendar();
   if (typeof initAppointmentModal === 'function') initAppointmentModal();
+  if (typeof initMarktplaatsExperience === 'function') initMarktplaatsExperience();
   if (typeof initFloatingMenu === 'function') initFloatingMenu();
   if (typeof initMobileMenu === 'function') initMobileMenu();
   if (typeof initHeroSlideshow === 'function') initHeroSlideshow();
@@ -1617,6 +1618,15 @@ window.goToOnlineAgenda = function(e) {
 window.openAppointmentModal = function(e, chairName, mode) {
   if (e && e.preventDefault) e.preventDefault();
 
+  // If visitor arrived from Marktplaats, prioritize the frictionless callback mode
+  const isMp = typeof sessionStorage !== "undefined" && sessionStorage.getItem("staop_from_marktplaats") === "true";
+  if (isMp && !mode) {
+    mode = "callback";
+  }
+  if (!chairName && isMp && typeof sessionStorage !== "undefined" && sessionStorage.getItem("staop_mp_chair_hint")) {
+    chairName = sessionStorage.getItem("staop_mp_chair_hint");
+  }
+
   // Close mobile nav drawer if open
   const navDrawer = document.getElementById("navMenu");
   const navToggle = document.getElementById("menuToggle");
@@ -1777,19 +1787,20 @@ window.handleQuickAppointmentSubmit = function(e) {
     if (spin) spin.style.display = "inline-flex";
   }
 
+  const isFromMp = typeof sessionStorage !== "undefined" && sessionStorage.getItem("staop_from_marktplaats") === "true";
   const payload = {
     brand: "staopstoelen",
     site: "staopstoelen.nl",
-    type: "quick_appointment_call_me",
+    type: isFromMp ? "marktplaats_1click_callback" : "quick_appointment_call_me",
     appointmentType: "showroom",
     name: name,
     phone: phone,
     email: "belmij@staopstoelen.nl",
     replyTo: "info@staopstoelen.nl",
     notes: chair 
-      ? `Snelafspraak via overlay: Klant wil gebeld worden door Geertjan voor proefzitten. Gekozen stoel: ${chair}` 
-      : "Snelafspraak via overlay: Klant wil gebeld worden door Geertjan om een proefzit-afspraak in te plannen.",
-    source: "Afspraak-Overlay Snelformulier (Bel mij)",
+      ? `Snelafspraak: Klant wil gebeld worden door Geertjan voor proefzitten. Gekozen stoel: ${chair}` 
+      : (isFromMp ? "Marktplaats lead: bezoeker wil z.s.m. door Geertjan gebeld worden over stoelen / proefzitten." : "Snelafspraak via overlay: Klant wil gebeld worden door Geertjan om een proefzit-afspraak in te plannen."),
+    source: isFromMp ? "Marktplaats Zakelijk Lead (1-klik Terugbelverzoek)" : "Afspraak-Overlay Snelformulier (Bel mij)",
     pageUrl: window.location.href,
     timestamp: new Date().toISOString()
   };
@@ -1808,15 +1819,15 @@ window.handleQuickAppointmentSubmit = function(e) {
   // 2. Analytics & Conversion Tracking
   try {
     if (typeof logCustomVisitEvent === "function") {
-      logCustomVisitEvent('booking_conversion', { type: 'quick_appointment', name: name, phone: phone, chair: chair });
+      logCustomVisitEvent(isFromMp ? 'marktplaats_callback_conversion' : 'booking_conversion', { type: 'quick_appointment', name: name, phone: phone, chair: chair });
     }
     if (typeof trackGoogleAdsConversion === "function") {
       trackGoogleAdsConversion('appointment', { name: name, phone: phone });
     }
     if (typeof gtag === "function") {
       gtag('event', 'generate_lead', {
-        event_category: 'Afspraak',
-        event_label: 'Snelafspraak Bel Mij Geertjan',
+        event_category: isFromMp ? 'Marktplaats' : 'Afspraak',
+        event_label: isFromMp ? 'Marktplaats 1-klik Callback' : 'Snelafspraak Bel Mij Geertjan',
         value: 1.0,
         currency: 'EUR'
       });
@@ -3737,6 +3748,170 @@ window.closeCertifiedVideoModal = function() {
   const prodModal = document.getElementById("productModal");
   if (!prodModal || !prodModal.classList.contains("active")) {
     document.body.style.overflow = "";
+  }
+};
+
+/* ==========================================================================
+   MARKTPLAATS ZAKELIJK VISITOR CONVERSION SUITE
+   ========================================================================== */
+
+window.getMarktplaatsVisitorContext = function() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const ref = (document.referrer || "").toLowerCase();
+    const utmSource = (params.get("utm_source") || "").toLowerCase();
+    const utmMedium = (params.get("utm_medium") || "").toLowerCase();
+    const utmCampaign = (params.get("utm_campaign") || "").toLowerCase();
+    const customRef = (params.get("ref") || "").toLowerCase();
+    const mpParam = params.get("mp") || params.get("marktplaats");
+
+    const isMp = ref.includes("marktplaats") ||
+                 utmSource.includes("marktplaats") ||
+                 utmMedium.includes("marktplaats") ||
+                 utmCampaign.includes("marktplaats") ||
+                 customRef.includes("marktplaats") ||
+                 mpParam === "1" || mpParam === "true";
+
+    if (isMp) {
+      sessionStorage.setItem("staop_from_marktplaats", "true");
+      let chairHint = params.get("stoel") || params.get("chair") || "";
+      if (!chairHint && utmCampaign) {
+        const clean = utmCampaign.replace(/(_catalogus|_home|_vermelding|_voorraad)/gi, "").replace(/[-_]/g, " ").trim();
+        if (clean.toLowerCase().includes("fitform") || clean.toLowerCase().includes("570") || clean.toLowerCase().includes("vario") || clean.toLowerCase().includes("reco") || clean.toLowerCase().includes("571")) {
+          chairHint = clean.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+        }
+      }
+      if (chairHint) {
+        sessionStorage.setItem("staop_mp_chair_hint", chairHint);
+      }
+      return { isMp: true, chairHint: chairHint || sessionStorage.getItem("staop_mp_chair_hint") || "" };
+    }
+
+    const wasMp = sessionStorage.getItem("staop_from_marktplaats") === "true";
+    return {
+      isMp: wasMp,
+      chairHint: sessionStorage.getItem("staop_mp_chair_hint") || ""
+    };
+  } catch (e) {
+    return { isMp: false, chairHint: "" };
+  }
+};
+
+window.openMarktplaatsCallbackModal = function(chairName) {
+  const mpCtx = window.getMarktplaatsVisitorContext();
+  const targetChair = chairName || mpCtx.chairHint || "";
+
+  if (typeof window.openAppointmentModal === "function") {
+    window.openAppointmentModal(null, targetChair, "callback");
+
+    const chairBadge = document.getElementById("quickChairBadge");
+    const chairBadgeName = document.getElementById("quickChairBadgeName");
+    const notesInput = document.getElementById("quickChairNotes");
+
+    if (chairBadge && chairBadgeName) {
+      chairBadgeName.textContent = targetChair ? `Marktplaats: ${targetChair}` : "Gezien op Marktplaats";
+      chairBadge.style.display = "flex";
+    }
+
+    if (notesInput) {
+      notesInput.value = targetChair
+        ? `Marktplaats lead: interesse in ${targetChair}. Verzoekt z.s.m. telefonisch contact door Geertjan.`
+        : `Marktplaats doorklikker: verzoekt z.s.m. telefonisch contact met Geertjan over stoelen en proefzitten.`;
+    }
+
+    setTimeout(() => {
+      const phoneInput = document.getElementById("quickAppointPhone");
+      if (phoneInput) phoneInput.focus();
+    }, 250);
+  }
+};
+
+window.closeMarktplaatsBanner = function() {
+  const banner = document.getElementById("mpSmartBanner");
+  if (banner) {
+    banner.style.display = "none";
+    try {
+      sessionStorage.setItem("staop_mp_banner_closed", "true");
+    } catch (e) {}
+  }
+};
+
+window.initMarktplaatsExperience = function() {
+  const ctx = window.getMarktplaatsVisitorContext();
+  if (!ctx.isMp) return;
+
+  document.body.classList.add("mp-active-visitor");
+
+  const isDismissed = sessionStorage.getItem("staop_mp_banner_closed") === "true";
+  if (!isDismissed && !document.getElementById("mpSmartBanner")) {
+    const banner = document.createElement("div");
+    banner.id = "mpSmartBanner";
+    banner.className = "mp-smart-banner";
+    banner.setAttribute("role", "region");
+    banner.setAttribute("aria-label", "Marktplaats bezoeker actie");
+
+    const subText = ctx.chairHint
+      ? `Vragen over de <strong>${ctx.chairHint}</strong> of wilt u direct langskomen om proef te zitten in Dordrecht?`
+      : `Vragen over onze gecertificeerde Fitform sta-op stoelen of wilt u direct proefzitten in Dordrecht?`;
+
+    banner.innerHTML = `
+      <div class="mp-banner-inner">
+        <div class="mp-banner-content">
+          <span class="mp-badge-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Marktplaats
+          </span>
+          <div class="mp-banner-text">
+            <strong class="mp-banner-title">Gezien op Marktplaats? Welkom bij Staopstoelen.nl!</strong>
+            <span class="mp-banner-sub">${subText}</span>
+          </div>
+        </div>
+        <div class="mp-banner-actions">
+          <a href="tel:0786314858" class="mp-action-btn mp-btn-call" title="Bel direct met Zitspecialist Geertjan">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Bel Geertjan: <strong>078 &ndash; 631 4858</strong></span>
+          </a>
+          <a href="https://wa.me/31622232964?text=${encodeURIComponent('Hallo Geertjan, ik zag uw advertentie op Marktplaats' + (ctx.chairHint ? ' (' + ctx.chairHint + ')' : '') + ' en heb een vraag...')}" target="_blank" rel="noopener noreferrer" class="mp-action-btn mp-btn-wa" title="Stuur Geertjan direct een WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span>WhatsApp Geertjan</span>
+          </a>
+          <button type="button" class="mp-action-btn mp-btn-callback" onclick="openMarktplaatsCallbackModal('${ctx.chairHint || ''}')" title="Geertjan belt u z.s.m. terug">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span>Bel mij terug (1 klik)</span>
+          </button>
+          <button type="button" class="mp-btn-close" onclick="closeMarktplaatsBanner()" aria-label="Sluit Marktplaats welkomstbalk">&times;</button>
+        </div>
+      </div>
+    `;
+
+    const navbar = document.querySelector(".navbar");
+    if (navbar && navbar.parentNode) {
+      navbar.parentNode.insertBefore(banner, navbar);
+    } else {
+      document.body.prepend(banner);
+    }
+  }
+
+  if (!document.getElementById("mpMobileQuickbar")) {
+    const mobileBar = document.createElement("nav");
+    mobileBar.id = "mpMobileQuickbar";
+    mobileBar.className = "mp-mobile-quickbar";
+    mobileBar.setAttribute("aria-label", "Marktplaats mobiele contactopties");
+    mobileBar.innerHTML = `
+      <a href="tel:0786314858" class="mp-mobile-btn mp-mobile-btn-call" title="Bel direct">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>078 - 631 4858</span>
+      </a>
+      <a href="https://wa.me/31622232964?text=${encodeURIComponent('Hallo Geertjan, ik zag uw advertentie op Marktplaats' + (ctx.chairHint ? ' (' + ctx.chairHint + ')' : '') + ' en heb een vraag...')}" target="_blank" rel="noopener noreferrer" class="mp-mobile-btn mp-mobile-btn-wa" title="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <button type="button" class="mp-mobile-btn mp-mobile-btn-callback" onclick="openMarktplaatsCallbackModal('${ctx.chairHint || ''}')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span>Bel mij terug</span>
+      </button>
+    `;
+    document.body.appendChild(mobileBar);
   }
 };
 

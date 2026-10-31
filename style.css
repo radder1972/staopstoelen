@@ -9400,3 +9400,240 @@ input[type="checkbox"] {
     font-size: 0.76rem !important;
   }
 }
+
+/* ==========================================================================
+   Marktplaats Zakelijk Visitor Conversion Suite
+   ========================================================================== */
+
+/* Top Smart Banner */
+.mp-smart-banner {
+  background: linear-gradient(135deg, #183a12 0%, #10260c 100%);
+  color: #fdfbf7;
+  padding: 10px 18px;
+  position: relative;
+  z-index: 9999;
+  border-bottom: 2px solid #e09f3e;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-body, 'Outfit', sans-serif);
+  animation: slideDownMp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDownMp {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mp-banner-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mp-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 340px;
+}
+
+.mp-badge-tag {
+  background: #f39223;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(243, 146, 35, 0.4);
+}
+
+.mp-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mp-banner-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.mp-banner-sub {
+  font-size: 0.82rem;
+  color: #d1dfcb;
+  line-height: 1.25;
+}
+
+.mp-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mp-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.mp-btn-call {
+  background: #256616;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.mp-btn-call:hover {
+  background: #2f821c;
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.mp-btn-wa {
+  background: #25D366;
+  color: #ffffff !important;
+}
+.mp-btn-wa:hover {
+  background: #20ba5a;
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.mp-btn-callback {
+  background: #f39223;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(243, 146, 35, 0.35);
+}
+.mp-btn-callback:hover {
+  background: #e07f12;
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.mp-btn-close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+.mp-btn-close:hover {
+  color: #ffffff;
+}
+
+/* Mobile Sticky Bottom Quick-Bar */
+.mp-mobile-quickbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mp-smart-banner {
+    padding: 10px 12px;
+  }
+  .mp-banner-actions {
+    width: 100%;
+    justify-content: stretch;
+    gap: 6px;
+  }
+  .mp-banner-actions .mp-action-btn {
+    flex: 1 1 calc(50% - 4px);
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 8px 8px;
+  }
+  .mp-banner-actions .mp-btn-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+  }
+  
+  /* Show sticky bottom bar on mobile for maximum conversion */
+  .mp-mobile-quickbar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99997;
+    background: #ffffff;
+    border-top: 2px solid #183a12;
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px));
+    gap: 8px;
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.14);
+  }
+  
+  .mp-mobile-quickbar .mp-mobile-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 4px;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: none;
+    gap: 3px;
+    border: none;
+    cursor: pointer;
+    line-height: 1.1;
+    font-family: inherit;
+  }
+  
+  .mp-mobile-btn-call {
+    background: #183a12;
+    color: #ffffff !important;
+  }
+  .mp-mobile-btn-wa {
+    background: #25D366;
+    color: #ffffff !important;
+  }
+  .mp-mobile-btn-callback {
+    background: #f39223;
+    color: #ffffff !important;
+  }
+  
+  /* Elevate floating buttons so they don't cover the bottom bar */
+  body.mp-active-visitor .floating-contact-wrapper {
+    bottom: 80px !important;
+  }
+  
+  body.mp-active-visitor {
+    padding-bottom: 74px !important;
+  }
+}
+
