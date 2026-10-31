@@ -3112,7 +3112,7 @@ function initFloatingMenu() {
     if (q === "proefzitten" || q.includes("proefzit") || q.includes("thuis") || q.includes("showroom") || q.includes("dordrecht") || q.includes("adres") || q.includes("parkeren") || q.includes("afspraak")) {
       return {
         question: q === "proefzitten" ? "Hoe werkt proefzitten of passing aan huis?" : topicOrQuery,
-        html: `U bent van harte welkom in onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> (gratis parkeren voor de deur, gelijkvloers).<br><br>Bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> doet een vrijblijvende zitmeting en stelt meerdere stoelen op uw maat in. Lukt langskomen niet? Dan komen wij kosteloos bij u thuis!`,
+        html: `U bent van harte welkom in onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> (gratis parkeren voor de deur, gelijkvloers).<br><br>Bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> doet een vrijblijvende zitmeting en stelt meerdere stoelen op uw maat in. Woont u in de <strong>regio Dordrecht (Drechtsteden)</strong> en lukt langskomen niet? Dan komt Geertjan kosteloos bij u thuis proefpassen!`,
         ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="openAppointmentModal(event)">Plan Proefzit-Afspraak &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.openCertifiedVideoModal)openCertifiedVideoModal('zitmeting')">Bekijk Video (38 sec)</button></div>`
       };
     }
