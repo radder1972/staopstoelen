@@ -347,7 +347,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.236">
+  <link rel="stylesheet" href="../style.css?v=10.237">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -405,19 +405,28 @@ function sync_static_chair_pages($chairs = null) {
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       min-height: 420px;
     }
-    .main-image-frame img {
+    .main-image-frame img,
+    .main-image-frame img.has-photo-bg {
+      width: auto;
+      height: auto;
       max-width: 100%;
       max-height: 440px;
       object-fit: contain;
+      border-radius: 16px !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       transition: opacity 0.25s ease;
     }
-    .main-image-frame img.has-photo-bg,
-    .main-image-frame img:not([src*=".png"]) {
-      border-radius: 16px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    .gallery-thumbnail {
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      padding: 0 !important;
     }
     .gallery-thumbnail img {
-      border-radius: 4px;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      border-radius: 8px !important;
+      display: block;
     }
     .trust-bullets-box {
       background: #fbf9f5;
@@ -512,7 +521,7 @@ function sync_static_chair_pages($chairs = null) {
           <span class="badge ' . $condition_badge_class . '" style="position: absolute; top: 16px; left: 16px; z-index: 2;">
             ' . $condition_label . '
           </span>
-          <img id="detailMainImg"' . ((strpos(strtolower($main_image_url), '.png') === false) ? ' class="has-photo-bg"' : '') . ' src="' . htmlspecialchars($main_image_url, ENT_QUOTES) . '" alt="' . $chair_name . '">
+          <img id="detailMainImg" class="has-photo-bg" src="' . htmlspecialchars($main_image_url, ENT_QUOTES) . '" alt="' . $chair_name . '">
         </div>
         
         ' . $gallery_html . '
@@ -714,7 +723,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.236
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.237
       </div>
     </div>
   </footer>
@@ -726,11 +735,7 @@ function sync_static_chair_pages($chairs = null) {
         mainImg.style.opacity = "0.3";
         setTimeout(() => {
           mainImg.src = imgUrl;
-          if (/\.png(\?|$)/i.test(imgUrl)) {
-            mainImg.classList.remove("has-photo-bg");
-          } else {
-            mainImg.classList.add("has-photo-bg");
-          }
+          mainImg.classList.add("has-photo-bg");
           mainImg.style.opacity = "1";
         }, 150);
       }

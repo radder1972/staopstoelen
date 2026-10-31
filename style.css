@@ -2310,7 +2310,11 @@ section[id], section {
 .match-card-img-wrap img {
   max-height: 100%;
   max-width: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .match-score-badge {
@@ -2465,9 +2469,12 @@ section[id], section {
   }
 }
 
-/* Stoelfoto's in Aanbiedingen box met afgeronde hoeken */
+/* Stoelfoto's in Aanbiedingen box en catalogus met afgeronde hoeken */
+.product-image img:not(.quality-stamp),
 #offersGrid .product-image img:not(.quality-stamp),
-.offers-top3-grid .product-image img:not(.quality-stamp) {
+.offers-top3-grid .product-image img:not(.quality-stamp),
+.results-container .product-image img:not(.quality-stamp),
+.model-card-img {
   width: auto !important;
   height: auto !important;
   max-width: 100% !important;
@@ -2478,17 +2485,28 @@ section[id], section {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Stoelfoto's op productpagina's en modal met winkelachtergrond afgeronde hoeken net als op home */
+/* Stoelfoto's op productpagina's en modal altijd met afgeronde hoeken (ook .png foto's) */
+.main-image-frame img,
 .main-image-frame img.has-photo-bg,
-.main-image-frame img:not([src*=".png"]),
+.modal-image-wrapper img:not(.quality-stamp),
 .modal-image-wrapper img.has-photo-bg,
-.modal-image-wrapper img:not([src*=".png"]):not(.quality-stamp) {
-  border-radius: 16px;
+#detailMainImg,
+#modalProductImage {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  border-radius: 16px !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
+.gallery-thumbnail {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
 .gallery-thumbnail img {
-  border-radius: 4px;
+  border-radius: 8px !important;
+  object-fit: cover !important;
 }
 
 .results-container {
@@ -5517,11 +5535,14 @@ input[type="checkbox"] {
   }
 }
 
-.modal-image-wrapper img {
+.modal-image-wrapper img:not(.quality-stamp) {
   max-height: 100%;
   max-width: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  border-radius: var(--radius-sm);
+  border-radius: 16px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   transition: opacity 0.2s ease;
 }
 
@@ -5595,13 +5616,14 @@ input[type="checkbox"] {
 .gallery-thumbnail {
   width: 56px;
   height: 56px;
-  object-fit: contain;
+  object-fit: cover;
   border: 2px solid var(--color-gray-light);
-  border-radius: var(--radius-sm);
+  border-radius: 10px;
+  overflow: hidden;
   cursor: pointer;
   background-color: var(--color-light);
   transition: var(--transition-smooth);
-  padding: 4px;
+  padding: 0;
   flex-shrink: 0;
   box-shadow: 0 1px 3px var(--color-shadow);
 }

@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.234">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.236">
+  <link rel="stylesheet" href="../style.css?v=10.237">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -79,19 +79,28 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       min-height: 420px;
     }
-    .main-image-frame img {
+    .main-image-frame img,
+    .main-image-frame img.has-photo-bg {
+      width: auto;
+      height: auto;
       max-width: 100%;
       max-height: 440px;
       object-fit: contain;
+      border-radius: 16px !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       transition: opacity 0.25s ease;
     }
-    .main-image-frame img.has-photo-bg,
-    .main-image-frame img:not([src*=".png"]) {
-      border-radius: 16px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    .gallery-thumbnail {
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      padding: 0 !important;
     }
     .gallery-thumbnail img {
-      border-radius: 4px;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      border-radius: 8px !important;
+      display: block;
     }
     .trust-bullets-box {
       background: #fbf9f5;
@@ -435,7 +444,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.236
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.237
       </div>
     </div>
   </footer>
@@ -460,6 +469,6 @@
     }
   </script>
 
-  <script src="../app.js?v=10.236" defer></script>
+  <script src="../app.js?v=10.237" defer></script>
 </body>
 </html>
