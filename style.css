@@ -1284,32 +1284,30 @@ section[id], section {
   transform: scale(1.07);
 }
 
-/* Slide Caption (Rich Schipper2-style overlay with category, title, price & CTA) */
+/* Slide Caption: Strakke balk onderin met stoelnaam links en prijs rechts */
 .slide-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(0deg, rgba(8, 28, 10, 0.92) 0%, rgba(8, 28, 10, 0.68) 58%, transparent 100%);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  color: #ffffff;
-  padding: 56px 20px 18px;
-  border-radius: 0;
+  position: absolute !important;
+  bottom: 14px !important;
+  left: 14px !important;
+  right: 14px !important;
+  background: rgba(18, 43, 7, 0.88) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: #ffffff !important;
+  padding: 10px 14px !important;
+  border-radius: 14px !important;
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 500;
-  z-index: 3;
-  box-shadow: none;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 3px;
-  text-align: left;
-  transform: translateY(10px);
+  z-index: 3 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  transform: translateY(8px);
   opacity: 0;
-  transition: transform 0.55s ease 0.15s, opacity 0.55s ease 0.15s;
+  transition: transform 0.45s ease, opacity 0.45s ease;
 }
 
 .hero-slide.active .slide-caption {
@@ -1317,85 +1315,28 @@ section[id], section {
   opacity: 1;
 }
 
-.slide-caption em {
-  font-style: normal;
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #ffc247;
-  line-height: 1.2;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.slide-caption b {
+.slide-caption-name {
   font-family: var(--font-heading);
-  font-size: 1.32rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: #ffffff;
-  line-height: 1.2;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.slide-caption small {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.94);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 3px;
-  line-height: 1.35;
-  width: 100%;
-}
-
-.slide-caption .sl-old {
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: line-through;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.slide-caption .sl-price {
-  color: #ffc247;
-  font-weight: 800;
-  font-size: 0.98rem;
-  background: rgba(255, 194, 71, 0.16);
-  border: 1px solid rgba(255, 194, 71, 0.42);
-  padding: 1px 8px;
-  border-radius: 6px;
-}
-
-.slide-caption .sl-cta {
-  margin-left: auto;
+  font-size: 0.95rem;
   font-weight: 700;
-  font-size: 0.84rem;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  padding: 3px 10px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide-caption-price {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #122b07;
+  background: #ffc247;
+  padding: 4px 12px;
   border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.hero-slide:hover .slide-caption .sl-cta {
-  background: var(--color-terracotta, #f39223);
-  border-color: var(--color-terracotta, #f39223);
-}
-
-.slide-caption .sl-cta i {
-  font-style: normal;
-  display: inline-block;
-  transition: transform 0.25s ease;
-}
-
-.hero-slide:hover .slide-caption .sl-cta i {
-  transform: translateX(4px);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 /* Slideshow Controls */

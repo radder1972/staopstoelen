@@ -50,7 +50,51 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.238">
+  <link rel="stylesheet" href="style.css?v=10.239">
+  <style>
+    .slide-caption {
+      position: absolute !important;
+      bottom: 14px !important;
+      left: 14px !important;
+      right: 14px !important;
+      background: rgba(18, 43, 7, 0.88) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      color: #ffffff !important;
+      padding: 10px 14px !important;
+      border-radius: 14px !important;
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24) !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      z-index: 3 !important;
+    }
+    .slide-caption-name {
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .slide-caption-price {
+      font-family: var(--font-heading, 'Montserrat', sans-serif);
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #122b07;
+      background: #ffc247;
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+  </style>
   <!-- Schema.org LocalBusiness & MedicalBusiness Structured Data (Lokale Dominantie) -->
   <script type="application/ld+json">
   {
@@ -531,9 +575,8 @@
                   <img src="assets/stoelen/chair_fitform_570_reco_cozy.jpg" alt="Fitform 570 Vario RECO sta-op stoel in sfeervolle woonkamer" width="450" height="450" fetchpriority="high" decoding="sync">
                 </picture>
                 <div class="slide-caption">
-                  <em>Certified Fitform &bull; 3-Motorig Op Maat</em>
-                  <b>Fitform 570 Vario RECO</b>
-                  <small><span class="sl-price">€ 1.500,-</span> <span>&middot; Circulair &amp; garantie</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Fitform 570 Vario RECO</span>
+                  <span class="slide-caption-price">€ 1.500,-</span>
                 </div>
               </div>
               <!-- 2. Sta-op Stoel Dordrecht -->
@@ -544,9 +587,8 @@
                   <img src="assets/stoelen/chair_dordrecht_cozy.jpg" alt="Sfeervol interieur met de comfortabele Sta-op Stoel Dordrecht" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Sta-op Stoelen &bull; Eenvoudig Model</em>
-                  <b>Sta-op Stoel Dordrecht</b>
-                  <small><span class="sl-price">€ 700,-</span> <span>&middot; Direct leverbaar</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Dordrecht</span>
+                  <span class="slide-caption-price">€ 700,-</span>
                 </div>
               </div>
               <!-- 3. Fitform 574 Vario -->
@@ -557,9 +599,8 @@
                   <img src="assets/stoelen/chair_fitform_574_cozy.jpg" alt="Fitform 574 Vario sta-op stoel op maat" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Fitform Maatwerk &bull; 10 Jaar Garantie</em>
-                  <b>Fitform 574 Vario</b>
-                  <small><s class="sl-old">€ 3.699,-</s> <span class="sl-price">€ 3.199,-</span> <span>&middot; 3-motorig op maat</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Fitform 574 Vario</span>
+                  <span class="slide-caption-price">€ 3.199,-</span>
                 </div>
               </div>
               <!-- 4. Draaibare Sta-op Stoel Zwijndrecht -->
@@ -570,9 +611,8 @@
                   <img src="assets/stoelen/chair_zwijndrecht_cozy.jpg" alt="Modern interieur met de draaibare Sta-op Stoel Zwijndrecht" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Sta-op Stoelen &bull; Draaivoet met Rem</em>
-                  <b>Draaibare Sta-op Stoel Zwijndrecht</b>
-                  <small><span class="sl-price">€ 1.350,-</span> <span>&middot; 2-motorig comfort</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Zwijndrecht</span>
+                  <span class="slide-caption-price">€ 1.350,-</span>
                 </div>
               </div>
               <!-- 5. Fitform 580 Vario -->
@@ -583,9 +623,8 @@
                   <img src="assets/stoelen/chair_fitform_580_cozy.jpg" alt="Fitform 580 Vario ergonomische fauteuil" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Fitform Maatwerk &bull; Op Maat Gemaakt</em>
-                  <b>Fitform 580 Elevo</b>
-                  <small><s class="sl-old">€ 2.895,-</s> <span class="sl-price">€ 2.595,-</span> <span>&middot; 3-motorig comfort</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Fitform 580 Elevo</span>
+                  <span class="slide-caption-price">€ 2.595,-</span>
                 </div>
               </div>
               <!-- 6. Lederen Sta-op Stoel Rotterdam -->
@@ -596,126 +635,112 @@
                   <img src="assets/stoelen/chair_rotterdam_cozy.jpg" alt="Luxe lederen interieur met de Sta-op Stoel Rotterdam" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Luxe Leder &bull; 4-Motorig Topcomfort</em>
-                  <b>Lederen Sta-op Stoel Rotterdam</b>
-                  <small><span class="sl-price">€ 1.485,-</span> <span>&middot; Incl. lenden- &amp; neksteun</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Rotterdam</span>
+                  <span class="slide-caption-price">€ 1.485,-</span>
                 </div>
               </div>
               <!-- 7. Senioren Sta-op Stoel HK Dordt -->
               <div class="hero-slide" data-chair-id="senioren-sta-op-stoel-hk-dordt" data-url="staopstoelen.html#senioren-sta-op-stoel-hk-dordt" style="cursor: pointer;">
                 <img src="assets/chair_hk_dordt_cozy.png" alt="Sfeervol interieur met de Senioren Sta-op Stoel HK Dordt" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Hjort Knudsen &bull; Premium Leer</em>
-                  <b>Senioren Sta-op Stoel HK Dordt</b>
-                  <small><s class="sl-old">€ 1.145,-</s> <span class="sl-price">€ 995,-</span> <span>&middot; Deens design</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Senioren Stoel HK Dordt</span>
+                  <span class="slide-caption-price">€ 995,-</span>
                 </div>
               </div>
               <!-- 8. Senioren Sta-op Stoel Mecam Athena -->
               <div class="hero-slide" data-chair-id="senioren-sta-op-stoel-mecam-athena" data-url="staopstoelen.html#senioren-sta-op-stoel-mecam-athena" style="cursor: pointer;">
                 <img src="assets/chair_athena_cozy.png" alt="Sfeervol interieur met de Mecam Athena sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Mecam &bull; Zonder Motoren</em>
-                  <b>Senioren Sta-op Stoel Mecam Athena</b>
-                  <small><s class="sl-old">€ 1.189,-</s> <span class="sl-price">€ 1.045,-</span> <span>&middot; Belgisch vakmanschap</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Mecam Athena</span>
+                  <span class="slide-caption-price">€ 1.045,-</span>
                 </div>
               </div>
               <!-- 9. Draaibare Sta-op Stoel Sliedrecht -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-draaibaar-sliedrecht" data-url="staopstoelen.html#sta-op-stoel-draaibaar-sliedrecht" style="cursor: pointer;">
                 <img src="assets/chair_sliedrecht_cozy.png" alt="Sfeervol interieur met de draaibare Sta-op Stoel Sliedrecht" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Sta-op Stoelen &bull; 360° Draaibaar</em>
-                  <b>Draaibare Sta-op Stoel Sliedrecht</b>
-                  <small><span class="sl-price">€ 1.395,-</span> <span>&middot; Automatische opstarem</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Sliedrecht</span>
+                  <span class="slide-caption-price">€ 1.395,-</span>
                 </div>
               </div>
               <!-- 10. Sta-op Stoel Ridderkerk -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-ridderkerk" data-url="staopstoelen.html#sta-op-stoel-ridderkerk" style="cursor: pointer;">
                 <img src="assets/chair_ridderkerk_cozy.png" alt="Sfeervol interieur met de Sta-op Stoel Ridderkerk" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Hjort Knudsen &bull; Stoelverwarming</em>
-                  <b>Sta-op Stoel Ridderkerk</b>
-                  <small><span class="sl-price">€ 1.495,-</span> <span>&middot; 2-motorig &amp; verwarmd</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Ridderkerk</span>
+                  <span class="slide-caption-price">€ 1.495,-</span>
                 </div>
               </div>
               <!-- 11. Sta-op Stoel Barendrecht -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-barendrecht" data-url="staopstoelen.html#sta-op-stoel-barendrecht" style="cursor: pointer;">
                 <img src="assets/chair_barendrecht_cozy.png" alt="Sfeervol interieur met de Sta-op Stoel Barendrecht" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Draadloos Gemak &bull; Met Accu</em>
-                  <b>Sta-op Stoel Barendrecht</b>
-                  <small><span class="sl-price">€ 1.565,-</span> <span>&middot; Geen snoeren op de vloer</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Barendrecht</span>
+                  <span class="slide-caption-price">€ 1.565,-</span>
                 </div>
               </div>
               <!-- 12. Sta-op Stoel Alfred -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-alfred" data-url="staopstoelen.html#sta-op-stoel-alfred" style="cursor: pointer;">
                 <img src="assets/chair_alfred_cozy.png" alt="Sfeervol interieur met de Sta-op Stoel Alfred" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>De Eiken Zetel &bull; 2-Motorig</em>
-                  <b>Sta-op Stoel Alfred</b>
-                  <small><span class="sl-price">€ 1.775,-</span> <span>&middot; S / M / L maatvoering</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Alfred</span>
+                  <span class="slide-caption-price">€ 1.775,-</span>
                 </div>
               </div>
               <!-- 13. Sta-op Stoel Mecam Movie -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-mecam-movie" data-url="staopstoelen.html#sta-op-stoel-mecam-movie" style="cursor: pointer;">
                 <img src="assets/chair_movie_cozy.png" alt="Sfeervol interieur met de Mecam Movie sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Mecam &bull; Klassiek Comfort</em>
-                  <b>Sta-op Stoel Mecam Movie</b>
-                  <small><span class="sl-price">€ 1.925,-</span> <span>&middot; Diverse maatvoeringen</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Mecam Movie</span>
+                  <span class="slide-caption-price">€ 1.925,-</span>
                 </div>
               </div>
               <!-- 14. Sta-op Stoel Ravi -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-ravi" data-url="staopstoelen.html#sta-op-stoel-ravi" style="cursor: pointer;">
                 <img src="assets/chair_ravi_cozy.png" alt="Sfeervol interieur met de Sta-op Stoel Ravi" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>DFM Design &bull; Draaibaar</em>
-                  <b>Sta-op Stoel Ravi</b>
-                  <small><span class="sl-price">€ 1.945,-</span> <span>&middot; Leverbaar in S / M / L</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Ravi</span>
+                  <span class="slide-caption-price">€ 1.945,-</span>
                 </div>
               </div>
               <!-- 15. DFM Bentley (dicht) -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-dfm-bentley-dicht" data-url="staopstoelen.html#sta-op-stoel-dfm-bentley-dicht" style="cursor: pointer;">
                 <img src="assets/chair_bentley_dicht_cozy.png" alt="Sfeervol interieur met de DFM Bentley sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>DFM Collection &bull; Premium Leer</em>
-                  <b>Sta-op Stoel DFM Bentley (Dicht)</b>
-                  <small><span class="sl-price">€ 1.945,-</span> <span>&middot; Luxe design op maat</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">DFM Bentley (Dicht)</span>
+                  <span class="slide-caption-price">€ 1.945,-</span>
                 </div>
               </div>
               <!-- 16. DFM Bentley (open) -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-dfm-bentley-open" data-url="staopstoelen.html#sta-op-stoel-dfm-bentley-open" style="cursor: pointer;">
                 <img src="assets/chair_bentley_open_cozy.png" alt="Sfeervol interieur met de DFM Bentley in relaxstand" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>DFM Collection &bull; Optimale Relaxstand</em>
-                  <b>Sta-op Stoel DFM Bentley (Open)</b>
-                  <small><s class="sl-old">€ 2.123,-</s> <span class="sl-price">€ 1.945,-</span> <span>&middot; Premium leer</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">DFM Bentley (Open)</span>
+                  <span class="slide-caption-price">€ 1.945,-</span>
                 </div>
               </div>
               <!-- 17. Mecam Barney -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-mecam-barney" data-url="staopstoelen.html#sta-op-stoel-mecam-barney" style="cursor: pointer;">
                 <img src="assets/chair_barney_cozy.png" alt="Sfeervol interieur met de Mecam Barney draaibare stoel" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Mecam &bull; Slimme Draaivoet</em>
-                  <b>Sta-op Stoel Mecam Barney</b>
-                  <small><span class="sl-price">€ 2.045,-</span> <span>&middot; 2-motorig met rem</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Mecam Barney</span>
+                  <span class="slide-caption-price">€ 2.045,-</span>
                 </div>
               </div>
               <!-- 18. Mecam Degas -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-mecam-degas" data-url="staopstoelen.html#sta-op-stoel-mecam-degas" style="cursor: pointer;">
                 <img src="assets/chair_degas_cozy.png" alt="Sfeervol interieur met de Mecam Degas sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Mecam &bull; Stoelverwarming</em>
-                  <b>Sta-op Stoel Mecam Degas</b>
-                  <small><s class="sl-old">€ 2.301,-</s> <span class="sl-price">€ 2.155,-</span> <span>&middot; Subliem zitcomfort</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Mecam Degas</span>
+                  <span class="slide-caption-price">€ 2.155,-</span>
                 </div>
               </div>
               <!-- 19. Sta-op Stoel Refitto -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-refitto" data-url="staopstoelen.html#sta-op-stoel-refitto" style="cursor: pointer;">
                 <img src="assets/chair_refitto_cozy.png" alt="Sfeervol interieur met de Sta-op Stoel Refitto" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Releazz &bull; XL Model</em>
-                  <b>Sta-op Stoel Refitto</b>
-                  <small><span class="sl-price">€ 2.345,-</span> <span>&middot; Extra beveiligd</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Refitto</span>
+                  <span class="slide-caption-price">€ 2.345,-</span>
                 </div>
               </div>
               <!-- 20. Doge Bellino -->
@@ -726,18 +751,16 @@
                   <img src="assets/stoelen/chair_bellino_cozy.jpg" alt="Sfeervol interieur met de Doge Bellino sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Doge Collection &bull; Hart-ligstand</em>
-                  <b>Sta-op Stoel Doge Bellino</b>
-                  <small><span class="sl-price">€ 2.395,-</span> <span>&middot; 3-motorig topsegment</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Doge Bellino</span>
+                  <span class="slide-caption-price">€ 2.395,-</span>
                 </div>
               </div>
               <!-- 21. De Toekomst Fiji -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-de-toekomst-fiji" data-url="staopstoelen.html#sta-op-stoel-de-toekomst-fiji" style="cursor: pointer;">
                 <img src="assets/chair_fiji_cozy.png" alt="Sfeervol interieur met de De Toekomst Fiji draaibare sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>De Toekomst &bull; Draaibaar &amp; Veilig</em>
-                  <b>Sta-op Stoel De Toekomst Fiji</b>
-                  <small><span class="sl-price">€ 2.445,-</span> <span>&middot; Nederlands fabricaat</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">De Toekomst Fiji</span>
+                  <span class="slide-caption-price">€ 2.445,-</span>
                 </div>
               </div>
               <!-- 22. Fitform 552 Elevo -->
@@ -748,18 +771,16 @@
                   <img src="assets/stoelen/chair_fitform_552_cozy.jpg" alt="Fitform 552 Elevo sta-op stoel op maat" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Fitform &bull; 3-Motorig Comfort</em>
-                  <b>Fitform 552 Elevo</b>
-                  <small><span class="sl-price">€ 2.500,-</span> <span>&middot; Volledig op maat</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Fitform 552 Elevo</span>
+                  <span class="slide-caption-price">€ 2.500,-</span>
                 </div>
               </div>
               <!-- 23. Sta-op Stoel Industro -->
               <div class="hero-slide" data-chair-id="sta-op-stoel-industro" data-url="staopstoelen.html#sta-op-stoel-industro" style="cursor: pointer;">
                 <img src="assets/chair_industro_cozy.png" alt="Sfeervol interieur met de Sta-op Stoel Industro" width="450" height="450" loading="lazy" decoding="async">
                 <div class="slide-caption">
-                  <em>Releazz &bull; Robuust XL Model</em>
-                  <b>Sta-op Stoel Industro</b>
-                  <small><span class="sl-price">€ 2.845,-</span> <span>&middot; Stoer design</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Industro</span>
+                  <span class="slide-caption-price">€ 2.845,-</span>
                 </div>
               </div>
               <!-- 24. Fitform 570 Vario -->
@@ -770,9 +791,8 @@
                   <img src="assets/stoelen/chair_fitform_570_cozy.jpg" alt="Fitform 570 Vario maatwerk sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Fitform Maatwerk &bull; 3-Motorig Comfort</em>
-                  <b>Fitform 570 Vario</b>
-                  <small><s class="sl-old">€ 3.877,-</s> <span class="sl-price">€ 3.577,-</span> <span>&middot; Maatwerk specialist</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Fitform 570 Vario</span>
+                  <span class="slide-caption-price">€ 3.577,-</span>
                 </div>
               </div>
               <!-- 25. Doge Modulair -->
@@ -783,9 +803,8 @@
                   <img src="assets/stoelen/chair_doge_modulair_cozy.jpg" alt="Sfeervol interieur met de Doge Modulair sta-op stoel" width="450" height="450" loading="lazy" decoding="async">
                 </picture>
                 <div class="slide-caption">
-                  <em>Doge Collection &bull; 3-Motorig</em>
-                  <b>Sta-op Stoel Doge Modulair</b>
-                  <small><span class="sl-price">€ 3.995,-</span> <span>&middot; Volledig aanpasbaar</span> <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+                  <span class="slide-caption-name">Sta-op Stoel Doge Modulair</span>
+                  <span class="slide-caption-price">€ 3.995,-</span>
                 </div>
               </div>
             </div>
@@ -872,9 +891,9 @@
             controls 
             playsinline 
             preload="metadata"
-            poster="assets/video/video_poster_scene2.jpg?v=10.238" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.239" 
             style="width: 100%; height: 100%; object-fit: cover; display: block;">
-            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.238" type="video/mp4">
+            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.239" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
           
@@ -1185,7 +1204,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.238
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.239
       </div>
     </div>
   </footer>
@@ -1308,9 +1327,9 @@
             controls 
             playsinline 
             preload="metadata" 
-            poster="assets/video/zitmeting_poster.jpg?v=10.238"
+            poster="assets/video/zitmeting_poster.jpg?v=10.239"
             class="appointment-modal-video">
-            <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.238" type="video/mp4">
+            <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.239" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -1535,7 +1554,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=10.238" defer></script>
+  <script src="app.js?v=10.239" defer></script>
   <script>
     // Load and render top 5 offers on home page
     function getGridDescriptionPreview(htmlStr) {
@@ -1992,7 +2011,7 @@
       }
     });
 
-    // Dynamically syncs live prices/old_prices from api/chairs.php into existing Hero Slideshow captions
+    // Dynamically syncs live prices from api/chairs.php into existing Hero Slideshow captions
     function renderDynamicHeroSlideshow(chairs) {
       const container = document.getElementById("heroSlideshow");
       if (!container || !Array.isArray(chairs) || chairs.length === 0) return;
@@ -2006,25 +2025,9 @@
           const cid = slide.getAttribute("data-chair-id") || (slide.getAttribute("data-url") || "").split("#").pop();
           const item = byId[cid];
           if (!item || !item.price) return;
-          const cap = slide.querySelector(".slide-caption");
-          if (!cap) return;
-          const priceSpan = cap.querySelector(".sl-price");
+          const priceSpan = slide.querySelector(".slide-caption-price");
           if (priceSpan) {
             priceSpan.textContent = `€ ${Number(item.price).toLocaleString("nl-NL")},-`;
-          }
-          const smallEl = cap.querySelector("small");
-          if (smallEl) {
-            let oldEl = smallEl.querySelector(".sl-old");
-            if (item.old_price && Number(item.old_price) > Number(item.price)) {
-              if (!oldEl) {
-                oldEl = document.createElement("s");
-                oldEl.className = "sl-old";
-                smallEl.insertBefore(oldEl, smallEl.firstChild);
-              }
-              oldEl.textContent = `€ ${Number(item.old_price).toLocaleString("nl-NL")},-`;
-            } else if (oldEl) {
-              oldEl.remove();
-            }
           }
         });
         return;
@@ -2048,20 +2051,15 @@
 
         const catalogPage = (item.type === "relax") ? "seniorenstoelen.html" : "staopstoelen.html";
         const productUrl = `${catalogPage}#${encodeURIComponent(item.id)}`;
-        const tagLine = [item.brand || (item.type === "relax" ? "Seniorenstoelen" : "Sta-op Stoelen"), item.badge || (item.condition === "occasion" ? "Gereviseerd" : "Op Maat")].filter(Boolean).join(" • ");
-        const oldPriceHtml = (item.old_price && Number(item.old_price) > Number(item.price))
-          ? `<s class="sl-old">€ ${Number(item.old_price).toLocaleString("nl-NL")},-</s> `
-          : "";
-        const priceHtml = item.price
-          ? `<span class="sl-price">€ ${Number(item.price).toLocaleString("nl-NL")},-</span>`
-          : `<span class="sl-price">Op aanvraag</span>`;
+        const priceText = item.price
+          ? `€ ${Number(item.price).toLocaleString("nl-NL")},-`
+          : `Op aanvraag`;
 
         slide.innerHTML = `
           <img src="${item.ambientImage}" alt="Sfeervol interieur met de ${item.name}">
           <div class="slide-caption">
-            <em>${tagLine}</em>
-            <b>${item.name}</b>
-            <small>${oldPriceHtml}${priceHtml} <span class="sl-cta">Bekijk <i>&rarr;</i></span></small>
+            <span class="slide-caption-name">${item.name}</span>
+            <span class="slide-caption-price">${priceText}</span>
           </div>
         `;
 
