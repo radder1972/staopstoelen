@@ -772,11 +772,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 7.5mm;
+      height: 7.2mm;
       box-sizing: border-box;
       border-bottom: 1px solid var(--color-forest-border);
       padding-bottom: 1.5mm;
-      margin-bottom: 1.6mm;
+      margin-bottom: 1.8mm;
     }
     .cert-pill-badge {
       font-family: var(--font-heading);
@@ -791,23 +791,35 @@
       text-transform: uppercase;
     }
 
+    .cert-header-section {
+      margin-bottom: 0;
+    }
+
+    .cert-top-intro-block {
+      height: 27.5mm;
+      max-height: 27.5mm;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 1.8mm;
+    }
     .cert-header-text {
       text-align: left;
-      margin-bottom: 2.0mm;
     }
     .cert-title {
       font-family: var(--font-heading);
-      font-size: 4.0mm;
+      font-size: 3.9mm;
       font-weight: 900;
       color: var(--color-forest-dark);
       line-height: 1.15;
       letter-spacing: -0.2px;
     }
     .cert-subtitle {
-      font-size: 2.5mm;
+      font-size: 2.4mm;
       color: var(--color-forest-mid);
       font-weight: 700;
-      margin-top: 0.4mm;
+      margin-top: 0.3mm;
     }
 
     /* Geertjan Expert Blok op Certificaat */
@@ -816,17 +828,18 @@
       border: 1px solid var(--color-forest-border);
       border-left: 2.8mm solid var(--color-forest);
       border-radius: 2.0mm;
-      padding: 2.0mm 2.4mm;
+      padding: 1.6mm 2.2mm;
       display: flex;
       align-items: center;
-      gap: 2.6mm;
-      margin-bottom: 2.0mm;
+      gap: 2.4mm;
+      margin-bottom: 0;
+      box-sizing: border-box;
     }
     .cert-expert-photo {
-      width: 13.5mm;
-      height: 13.5mm;
-      min-width: 13.5mm;
-      min-height: 13.5mm;
+      width: 13.0mm;
+      height: 13.0mm;
+      min-width: 13.0mm;
+      min-height: 13.0mm;
       border-radius: 50%;
       object-fit: cover;
       border: 1.5px solid var(--color-forest);
@@ -834,52 +847,57 @@
     .cert-expert-info {
       display: flex;
       flex-direction: column;
-      gap: 0.3mm;
+      gap: 0.2mm;
     }
     .cert-expert-name {
       font-family: var(--font-heading);
-      font-size: 2.9mm;
+      font-size: 2.8mm;
       font-weight: 800;
       color: var(--color-forest-dark);
       line-height: 1.15;
     }
     .cert-expert-role {
-      font-size: 2.35mm;
+      font-size: 2.25mm;
       font-weight: 800;
       color: var(--color-terracotta-dark);
     }
     .cert-expert-quote {
-      font-size: 2.75mm;
+      font-size: 2.65mm;
       font-weight: 600;
       color: #1e293b;
-      line-height: 1.30;
-      margin-top: 0.3mm;
+      line-height: 1.25;
+      margin-top: 0.2mm;
     }
 
-    /* 15-Punts Keurmerk Checklist */
+    /* 15-Punts Keurmerk Checklist (Zone 3: 54.0mm) */
     .cert-check-section {
       background: #ffffff;
       border: 1px solid var(--color-forest-border);
       border-radius: 2.0mm;
-      padding: 2.2mm 2.6mm;
-      margin-bottom: 2.0mm;
+      padding: 2.0mm 2.6mm;
+      height: 54.0mm;
+      max-height: 54.0mm;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 1.8mm;
     }
     .cert-check-title {
       font-family: var(--font-heading);
-      font-size: 2.65mm;
+      font-size: 2.6mm;
       font-weight: 800;
       color: var(--color-forest-dark);
       display: flex;
       align-items: center;
       gap: 1.6mm;
-      margin-bottom: 1.6mm;
       border-bottom: 1px solid var(--color-forest-border);
-      padding-bottom: 1.0mm;
+      padding-bottom: 0.8mm;
     }
     .cert-check-title-icon {
-      width: 4.2mm;
-      height: 4.2mm;
-      min-width: 4.2mm;
+      width: 4.0mm;
+      height: 4.0mm;
+      min-width: 4.0mm;
       background: var(--color-forest-light);
       border: 1px solid var(--color-forest-border);
       border-radius: 50%;
@@ -889,21 +907,23 @@
       color: var(--color-forest);
     }
     .cert-check-title-icon svg {
-      width: 2.6mm;
-      height: 2.6mm;
+      width: 2.5mm;
+      height: 2.5mm;
     }
     .cert-check-list {
       display: flex;
       flex-direction: column;
-      gap: 1.5mm;
+      justify-content: space-between;
+      flex: 1;
+      padding-top: 0.6mm;
     }
     .cert-check-row {
       display: flex;
       align-items: center;
-      gap: 2.2mm;
-      font-size: 2.65mm;
+      gap: 2.0mm;
+      font-size: 2.55mm;
       color: #0f172a;
-      line-height: 1.22;
+      line-height: 1.2;
     }
     .cert-check-row strong {
       font-family: var(--font-heading);
@@ -911,10 +931,10 @@
       color: var(--color-forest-dark);
     }
     .cert-check-badge {
-      width: 4.4mm;
-      height: 4.4mm;
-      min-width: 4.4mm;
-      min-height: 4.4mm;
+      width: 4.2mm;
+      height: 4.2mm;
+      min-width: 4.2mm;
+      min-height: 4.2mm;
       background: #4b8f24;
       border-radius: 50%;
       display: flex;
@@ -923,14 +943,14 @@
       flex-shrink: 0;
     }
     .cert-check-badge svg {
-      width: 2.7mm;
-      height: 2.7mm;
+      width: 2.6mm;
+      height: 2.6mm;
       color: #ffffff;
       stroke: #ffffff;
       stroke-width: 3.2;
     }
 
-    /* Keurmerk Stempel & Garantie Box (Strak en solide met Ons Zegel) */
+    /* Keurmerk Stempel & Garantie Box (Zone 4: 22.0mm) */
     .cert-seal-box {
       display: flex;
       align-items: center;
@@ -938,14 +958,17 @@
       background: #ffffff;
       border: 1.2px solid var(--color-forest-border);
       border-radius: 2.0mm;
-      padding: 1.6mm 2.4mm;
-      margin-bottom: 1.6mm;
+      padding: 1.5mm 2.4mm;
+      height: 22.0mm;
+      max-height: 22.0mm;
+      box-sizing: border-box;
+      margin-bottom: 1.8mm;
     }
     .cert-brand-seal-wrap {
-      width: 17.5mm;
-      height: 17.5mm;
-      min-width: 17.5mm;
-      min-height: 17.5mm;
+      width: 18.0mm;
+      height: 18.0mm;
+      min-width: 18.0mm;
+      min-height: 18.0mm;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -973,16 +996,31 @@
       line-height: 1.25;
     }
 
-    /* Certificaat Footer */
+    /* Certificaat Footer (Zone 5: 15.0mm) */
     .cert-footer-line {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.8mm;
+      border-top: 1px solid var(--color-forest-border);
+      padding-top: 1.6mm;
+      height: 15.0mm;
+      max-height: 15.0mm;
+      box-sizing: border-box;
+      font-size: 2.35mm;
+      color: #334155;
+      font-weight: 600;
+      margin-top: auto;
+    }
+    .cert-footer-row-1 {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 2.45mm;
-      color: #334155;
-      font-weight: 600;
-      border-top: 1px solid var(--color-forest-border);
-      padding-top: 1.4mm;
+    }
+    .cert-footer-row-2 {
+      font-size: 2.15mm;
+      color: var(--color-forest-mid);
+      font-weight: 700;
     }
     .cert-footer-item {
       display: inline-flex;
@@ -1027,11 +1065,12 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      height: 7.5mm;
+      height: 7.2mm;
+      max-height: 7.2mm;
       box-sizing: border-box;
       border-bottom: 1px solid #fed7aa;
       padding-bottom: 1.5mm;
-      margin-bottom: 1.6mm;
+      margin-bottom: 1.8mm;
     }
     .voucher-pre-tag {
       font-family: var(--font-heading);
@@ -1047,20 +1086,25 @@
       background: linear-gradient(135deg, #fff3e0 0%, #ffe8cc 100%);
       border: 1.4px solid var(--color-terracotta);
       border-radius: 2.6mm;
-      padding: 3.6mm 3.6mm;
+      padding: 1.8mm 3.6mm;
       text-align: center;
-      margin-bottom: 2.4mm;
+      height: 27.5mm;
+      max-height: 27.5mm;
+      box-sizing: border-box;
+      margin-bottom: 1.8mm;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
     .voucher-label-sub {
       font-family: var(--font-heading);
-      font-size: 2.9mm;
+      font-size: 2.7mm;
       font-weight: 800;
       color: #9a3412;
       text-transform: uppercase;
       letter-spacing: 0.6px;
+      line-height: 1.1;
     }
     .voucher-hero-amount {
       display: flex;
@@ -1068,17 +1112,17 @@
       justify-content: center;
       gap: 1.4mm;
       line-height: 1;
-      margin: 1.2mm 0;
+      margin: 0.8mm 0;
     }
     .voucher-euro {
       font-family: var(--font-heading);
-      font-size: 7.2mm;
+      font-size: 6.8mm;
       font-weight: 800;
       color: #c2410c;
     }
     .voucher-number {
       font-family: var(--font-heading);
-      font-size: 11.2mm;
+      font-size: 10.6mm;
       font-weight: 900;
       color: #9a3412;
       letter-spacing: -0.8px;
@@ -1087,21 +1131,21 @@
       background: var(--color-gold);
       color: #7c2d12;
       font-family: var(--font-heading);
-      font-size: 3.2mm;
+      font-size: 3.0mm;
       font-weight: 900;
-      padding: 1.0mm 2.8mm;
+      padding: 0.8mm 2.4mm;
       border-radius: 1.4mm;
-      margin-left: 2.2mm;
+      margin-left: 2.0mm;
       letter-spacing: 0.4px;
     }
     .voucher-condition {
       font-family: var(--font-heading);
-      font-size: 2.65mm;
+      font-size: 2.5mm;
       font-weight: 800;
       color: #9a3412;
       text-transform: uppercase;
       letter-spacing: 0.4px;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     /* Product Showcase Zonder Box (Luchtig, Royaal & Open - Foto meer naar het midden) */
@@ -1109,15 +1153,19 @@
       background: transparent;
       border: none;
       padding: 0.5mm 1.0mm 0.5mm 8.5mm;
-      margin-bottom: 2.0mm;
+      height: 54.0mm;
+      max-height: 54.0mm;
+      box-sizing: border-box;
+      margin-bottom: 1.8mm;
       display: grid;
-      grid-template-columns: 34mm 1fr;
+      grid-template-columns: 36mm 1fr;
       gap: 4.5mm;
       align-items: center;
     }
     .voucher-set-img {
-      width: 34mm;
-      height: 40mm;
+      width: 36mm;
+      height: 46mm;
+      max-height: 46mm;
       object-fit: contain;
       display: block;
       justify-self: center;
@@ -1147,12 +1195,12 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 1.1mm;
+      gap: 1.0mm;
     }
     .set-bullets li {
       font-size: 2.45mm;
       color: #334155;
-      line-height: 1.26;
+      line-height: 1.25;
       display: flex;
       align-items: center;
       gap: 1.6mm;
@@ -1172,8 +1220,11 @@
       justify-content: space-between;
       background: transparent;
       border: none;
-      padding: 0.5mm 0;
-      margin-bottom: 2.0mm;
+      padding: 1.0mm 2.0mm;
+      height: 22.0mm;
+      max-height: 22.0mm;
+      box-sizing: border-box;
+      margin-bottom: 1.8mm;
     }
     .voucher-barcode-wrap {
       display: flex;
@@ -1183,7 +1234,7 @@
     }
     .svg-barcode {
       width: 38mm;
-      height: 6.8mm;
+      height: 7.2mm;
       display: block;
     }
     .barcode-text {
@@ -1207,16 +1258,20 @@
       justify-content: space-between;
       align-items: center;
       gap: 2.2mm;
+      height: 15.0mm;
+      max-height: 15.0mm;
+      box-sizing: border-box;
       border-top: 1px solid #fed7aa;
-      padding-top: 1.5mm;
+      padding-top: 1.6mm;
+      margin-top: auto;
     }
     .voucher-contact-left {
       display: flex;
       flex-direction: column;
-      gap: 0.7mm;
-      font-size: 2.35mm;
+      gap: 0.5mm;
+      font-size: 2.3mm;
       color: #334155;
-      line-height: 1.26;
+      line-height: 1.22;
     }
     .v-contact-row {
       display: flex;
@@ -1253,20 +1308,22 @@
       gap: 0.4mm;
     }
     .voucher-qr-img {
-      width: 12.5mm;
-      height: 12.5mm;
-      min-width: 12.5mm;
-      min-height: 12.5mm;
+      width: 10.5mm;
+      height: 10.5mm;
+      min-width: 10.5mm;
+      min-height: 10.5mm;
       background: #ffffff;
-      padding: 0.6mm;
+      padding: 0.4mm;
       border-radius: 1.2mm;
       border: 1px solid #fed7aa;
+      box-sizing: border-box;
     }
     .voucher-qr-label {
-      font-size: 1.65mm;
+      font-size: 1.6mm;
       font-weight: 700;
       color: #64748b;
       white-space: nowrap;
+      line-height: 1.1;
     }
 
     /* ==========================================================================
@@ -1836,27 +1893,27 @@
           <div class="cert-panel">
             <div class="cert-card">
               
-              <!-- Certificaat Header met Groen/Oranje Logo -->
-              <div class="cert-header-section">
-                <div class="cert-brand-row">
-                  <div class="brand-logo" style="font-size: 5.2mm; color: #4b8f24 !important;">
-                    staopstoelen<span style="color: #f39223 !important;">.nl</span>
-                  </div>
-                  <span class="cert-pill-badge">OFFICIEEL CERTIFICAAT</span>
+              <!-- Zone 1: Certificaat Header Brand Row (7.2mm) -->
+              <div class="cert-brand-row">
+                <div class="brand-logo" style="font-size: 5.2mm; color: #4b8f24 !important;">
+                  staopstoelen<span style="color: #f39223 !important;">.nl</span>
                 </div>
+                <span class="cert-pill-badge">OFFICIEEL CERTIFICAAT</span>
+              </div>
+
+              <!-- Zone 2: Introductie Titel & Expert Card (27.5mm) -->
+              <div class="cert-top-intro-block">
                 <div class="cert-header-text">
                   <h2 class="cert-title">Kwaliteitscertificaat &amp; Keurmerk</h2>
                   <div class="cert-subtitle">100% Veilige occasions • Technisch gekeurd</div>
                 </div>
-              </div>
-
-              <!-- Geertjan Expert Card (Bewegingstechnoloog) -->
-              <div class="cert-expert-card">
-                <img src="assets/flyer/geert_pasfoto_cutout.png" alt="Geertjan" class="cert-expert-photo">
-                <div class="cert-expert-info">
-                  <div class="cert-expert-name">Geertjan</div>
-                  <div class="cert-expert-role">Gediplomeerd Bewegingstechnoloog</div>
-                  <div class="cert-expert-quote">„Elke stoel wordt op meer dan 15 vitale punten gekeurd en op maat van uw lichaam ingesteld.”</div>
+                <div class="cert-expert-card">
+                  <img src="assets/flyer/geert_pasfoto_cutout.png" alt="Geertjan" class="cert-expert-photo">
+                  <div class="cert-expert-info">
+                    <div class="cert-expert-name">Geertjan</div>
+                    <div class="cert-expert-role">Gediplomeerd Bewegingstechnoloog</div>
+                    <div class="cert-expert-quote">„Elke stoel wordt op meer dan 15 vitale punten gekeurd en op maat van uw lichaam ingesteld.”</div>
+                  </div>
                 </div>
               </div>
 
@@ -1940,15 +1997,20 @@
                 </div>
               </div>
 
-              <!-- Certificaat Footer (Consistente vector iconen met voucher paneel) -->
+              <!-- Zone 5: Certificaat Footer (15.0mm) -->
               <div class="cert-footer-line">
-                <div class="cert-footer-item">
-                  <svg class="v-icon v-icon-loc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Merwedestraat 239 Dordrecht</span>
+                <div class="cert-footer-row-1">
+                  <div class="cert-footer-item">
+                    <svg class="v-icon v-icon-loc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Merwedestraat 239 Dordrecht</span>
+                  </div>
+                  <div class="cert-footer-item">
+                    <svg class="v-icon v-icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span><strong>078 - 631 4858</strong></span>
+                  </div>
                 </div>
-                <div class="cert-footer-item">
-                  <svg class="v-icon v-icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  <span><strong>078 - 631 4858</strong></span>
+                <div class="cert-footer-row-2">
+                  <span>Eigen bezorg- &amp; montagedienst aan huis in heel Nederland</span>
                 </div>
               </div>
 
@@ -2236,6 +2298,56 @@
       }
     });
 
+    // Alignment measurement helper
+    function updateAlignmentReport() {
+      const cCard = document.querySelector('#flyerBack .cert-card');
+      const vCard = document.querySelector('#flyerBack .voucher-card');
+      if (!cCard || !vCard) return;
+      const cRect = cCard.getBoundingClientRect();
+      const vRect = vCard.getBoundingClientRect();
+
+      const zones = [
+        { name: 'Zone 1 (Header)', left: '.cert-brand-row', right: '.voucher-top-bar' },
+        { name: 'Zone 2 (Hero/Intro)', left: '.cert-top-intro-block', right: '.voucher-hero-block' },
+        { name: 'Zone 3 (Check/Product)', left: '.cert-check-section', right: '.voucher-product-showcase' },
+        { name: 'Zone 4 (Seal/Barcode)', left: '.cert-seal-box', right: '.voucher-barcode-row' },
+        { name: 'Zone 5 (Footer)', left: '.cert-footer-line', right: '.voucher-contact-box' },
+      ];
+
+      const report = {
+        cCard: { top: cRect.top, bottom: cRect.bottom, height: cRect.height },
+        vCard: { top: vRect.top, bottom: vRect.bottom, height: vRect.height },
+        diffCardTop: cRect.top - vRect.top,
+        diffCardBottom: cRect.bottom - vRect.bottom,
+        zones: zones.map(z => {
+          const elL = cCard.querySelector(z.left);
+          const elR = vCard.querySelector(z.right);
+          const rL = elL ? elL.getBoundingClientRect() : null;
+          const rR = elR ? elR.getBoundingClientRect() : null;
+          return {
+            name: z.name,
+            leftTop: rL ? +(rL.top - cRect.top).toFixed(2) : null,
+            rightTop: rR ? +(rR.top - vRect.top).toFixed(2) : null,
+            leftBottom: rL ? +(rL.bottom - cRect.top).toFixed(2) : null,
+            rightBottom: rR ? +(rR.bottom - vRect.top).toFixed(2) : null,
+            leftHeight: rL ? +rL.height.toFixed(2) : null,
+            rightHeight: rR ? +rR.height.toFixed(2) : null,
+            diffTopPx: (rL && rR) ? +(rL.top - rR.top).toFixed(2) : null,
+            diffBottomPx: (rL && rR) ? +(rL.bottom - rR.bottom).toFixed(2) : null,
+          };
+        })
+      };
+
+      let el = document.getElementById('alignment-report-json');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'alignment-report-json';
+        el.style.display = 'none';
+        document.body.appendChild(el);
+      }
+      el.textContent = JSON.stringify(report, null, 2);
+    }
+
     // Auto-detect mode from URL query parameter (e.g. ?mode=sheetDuplex of ?mode=a4)
     function initModeFromUrl() {
       populateDuplexSheets();
@@ -2244,9 +2356,11 @@
       if (m) {
         setViewMode(m);
       }
+      updateAlignmentReport();
     }
     initModeFromUrl();
     window.addEventListener('DOMContentLoaded', initModeFromUrl);
+    window.addEventListener('load', updateAlignmentReport);
   </script>
 </body>
 </html>
