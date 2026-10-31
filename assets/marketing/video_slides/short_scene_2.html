@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Scene 2 - De Businesscase van de Klik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-bright: #5cb82f;
+      --color-forest-dark: #1a420b;
+      --color-terracotta: #f39223;
+      --color-forest-sub: #8cb878;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #080C16;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #F8FAFC;
+      position: relative;
+    }
+    .ambient-glow {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(243, 146, 35, 0.22) 0%, rgba(8, 12, 22, 0) 70%);
+      pointer-events: none;
+    }
+    .header {
+      height: 105px;
+      padding: 0 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+    }
+    .brand-block { display: flex; flex-direction: column; gap: 2px; }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--color-forest-bright) !important;
+      letter-spacing: -0.8px;
+      line-height: 1;
+    }
+    .brand-logo span { color: var(--color-terracotta) !important; }
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-forest-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scene-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px;
+      border-radius: 999px; background: rgba(243, 146, 35, 0.18); border: 1.5px solid var(--color-terracotta);
+      color: var(--color-terracotta); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-terracotta); box-shadow: 0 0 10px var(--color-terracotta); }
+
+    .main-content {
+      height: 835px;
+      padding: 40px 80px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-banner { text-align: center; margin-bottom: 20px; }
+    .hero-kicker {
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
+      color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px;
+    }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif; font-size: 50px; font-weight: 900; letter-spacing: -0.5px;
+    }
+
+    .funnel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.25fr;
+      gap: 30px;
+      margin-bottom: 24px;
+    }
+    .funnel-card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .funnel-card.winner {
+      border: 2px solid var(--color-forest-bright);
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(75, 143, 36, 0.2));
+      box-shadow: 0 15px 40px rgba(75, 143, 36, 0.25);
+    }
+    .step-tag {
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 8px;
+      display: inline-block; width: fit-content; margin-bottom: 16px;
+    }
+    .step-tag.orange { background: rgba(243, 146, 35, 0.2); color: var(--color-terracotta); }
+    .step-tag.blue { background: rgba(56, 189, 248, 0.2); color: #38BDF8; }
+    .step-tag.green { background: rgba(75, 143, 36, 0.25); color: var(--color-forest-bright); }
+
+    .card-metric {
+      font-family: 'Montserrat', sans-serif; font-size: 46px; font-weight: 900;
+      line-height: 1; margin-bottom: 12px;
+    }
+    .card-title {
+      font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800;
+      color: #FFFFFF; margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 16px; color: #CBD5E1; line-height: 1.45;
+    }
+
+    .bottom-recap-banner {
+      background: linear-gradient(90deg, #1A420B, #2E6819);
+      border: 1.5px solid var(--color-forest-bright);
+      border-radius: 20px;
+      padding: 24px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(75, 143, 36, 0.35);
+    }
+    .recap-title {
+      font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #FFFFFF; margin-bottom: 4px;
+    }
+    .recap-sub { font-size: 16px; color: #DCFCE7; }
+    .recap-badge {
+      background: var(--color-terracotta); color: #FFFFFF; font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 18px; padding: 12px 28px; border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(243, 146, 35, 0.4);
+    }
+
+    .subtitle-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 75px;
+      background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px);
+      border-top: 1.5px solid rgba(75, 143, 36, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px; font-size: 21px; font-weight: 700; color: #F8FAFC; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
+    </div>
+    <div class="scene-badge">
+      <span class="scene-dot"></span>
+      De Businesscase van de Klik
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="hero-banner">
+      <span class="hero-kicker">Geen vage rapporten • Geen geld over de balk</span>
+      <h1 class="hero-title">Van een klik van een paar dubbeltjes... <br><span style="color: var(--color-terracotta);">naar een verkochte stoel in Dordrecht!</span></h1>
+    </div>
+
+    <div class="funnel-grid">
+      <!-- Stap 1: De Klik -->
+      <div class="funnel-card">
+        <div>
+          <span class="step-tag orange">Stap 1 • De Klik</span>
+          <div class="card-metric" style="color: var(--color-terracotta);">€ 0,40 - € 0,60</div>
+          <div class="card-title">Kosten per gerichte klik</div>
+          <div class="card-desc">Geen € 400,- per maand weggegooid aan vage TPM-impressies. Je betaalt alleen als iemand écht zoekt.</div>
+        </div>
+      </div>
+
+      <!-- Stap 2: De Bezoeker -->
+      <div class="funnel-card">
+        <div>
+          <span class="step-tag blue">Stap 2 • De Afspraak</span>
+          <div class="card-metric" style="color: #38BDF8;">6 tot 12</div>
+          <div class="card-title">Proefzitter Leads per Maand</div>
+          <div class="card-desc">Senioren en kinderen die bellen of de showroom binnenlopen om stoelen te passen aan de Merwedestraat.</div>
+        </div>
+      </div>
+
+      <!-- Stap 3: De Winst -->
+      <div class="funnel-card winner">
+        <div>
+          <span class="step-tag green">Stap 3 • De Winst</span>
+          <div class="card-metric" style="color: var(--color-forest-bright);">1 Stoel = Winst</div>
+          <div class="card-title">Dekt 3 Maanden Marketing!</div>
+          <div class="card-desc">Verkoop je uit al die bezoekers <strong>slechts 1 stoel</strong> (€ 750 - € 2.500 marge)? Dan is je hele marketingbudget al terugverdiend!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-recap-banner">
+      <div>
+        <div class="recap-title">De Conclusie van de Cijfers: Dit is pure winst</div>
+        <div class="recap-sub">Elke extra verkochte stoel via Google of Marktplaats gaat direct naar jouw bedrijfsresultaat.</div>
+      </div>
+      <div class="recap-badge">SLUITENDE BUSINESSCASE</div>
+    </div>
+  </div>
+
+  <div class="subtitle-bar">
+    "Elke klik kost een paar dubbeltjes. Verkoop je uit die bezoekers maar 1 stoel, dan is je hele marketing al terugverdiend!"
+  </div>
+</body>
+</html>

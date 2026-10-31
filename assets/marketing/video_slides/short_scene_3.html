@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Scene 3 - De Winnende Boodschap voor Geertjan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-bright: #5cb82f;
+      --color-forest-dark: #1a420b;
+      --color-terracotta: #f39223;
+      --color-forest-sub: #8cb878;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #080C16;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #F8FAFC;
+      position: relative;
+    }
+    .ambient-glow {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(75, 143, 36, 0.3) 0%, rgba(8, 12, 22, 0) 70%);
+      pointer-events: none;
+    }
+    .header {
+      height: 105px;
+      padding: 0 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+    }
+    .brand-block { display: flex; flex-direction: column; gap: 2px; }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--color-forest-bright) !important;
+      letter-spacing: -0.8px;
+      line-height: 1;
+    }
+    .brand-logo span { color: var(--color-terracotta) !important; }
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-forest-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scene-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px;
+      border-radius: 999px; background: rgba(75, 143, 36, 0.2); border: 1.5px solid var(--color-forest-bright);
+      color: var(--color-forest-bright); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+      letter-spacing: 1px; text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(92, 184, 47, 0.3);
+    }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-forest-bright); box-shadow: 0 0 10px var(--color-forest-bright); }
+
+    .main-content {
+      height: 835px;
+      padding: 40px 80px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-banner { text-align: center; margin-bottom: 24px; }
+    .hero-kicker {
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
+      color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px;
+    }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: -0.5px;
+    }
+
+    .two-pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 24px;
+    }
+    .pillar-card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .pillar-card.motor {
+      border: 2px solid var(--color-forest-bright);
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(75, 143, 36, 0.2));
+      box-shadow: 0 20px 50px rgba(75, 143, 36, 0.25);
+    }
+    .pillar-card.closer {
+      border: 2px solid var(--color-terracotta);
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(243, 146, 35, 0.18));
+      box-shadow: 0 20px 50px rgba(243, 146, 35, 0.2);
+    }
+
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .pillar-badge-num {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900;
+    }
+    .pillar-badge-num.green { background: var(--color-forest-bright); color: #081905; }
+    .pillar-badge-num.orange { background: var(--color-terracotta); color: #FFFFFF; }
+
+    .pillar-title {
+      font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #FFFFFF;
+    }
+    .pillar-text {
+      font-size: 18px; line-height: 1.55; color: #CBD5E1; margin-bottom: 20px;
+    }
+
+    .pillar-tag-bar {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .final-triumph-banner {
+      background: linear-gradient(90deg, #1A420B, #2E6819);
+      border: 2px solid var(--color-forest-bright);
+      border-radius: 20px;
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 40px rgba(75, 143, 36, 0.4);
+    }
+    .triumph-text {
+      font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #FFFFFF;
+    }
+    .triumph-sub { font-size: 16px; color: #DCFCE7; margin-top: 4px; }
+    .triumph-badge {
+      background: var(--color-terracotta); color: #FFFFFF; font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 18px; padding: 14px 32px; border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(243, 146, 35, 0.5);
+    }
+
+    .subtitle-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 75px;
+      background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px);
+      border-top: 1.5px solid rgba(75, 143, 36, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px; font-size: 21px; font-weight: 700; color: #F8FAFC; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
+    </div>
+    <div class="scene-badge">
+      <span class="scene-dot"></span>
+      De Boodschap voor Geertjan
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="hero-banner">
+      <span class="hero-kicker">Het Definitieve Besluit</span>
+      <h1 class="hero-title">Online is de motor die leeft. <br><span style="color: var(--color-forest-bright);">En de flyer sluit de deal in de showroom!</span></h1>
+    </div>
+
+    <div class="two-pillars-grid">
+      <!-- Pijler 1: De Motor -->
+      <div class="pillar-card motor">
+        <div>
+          <div class="pillar-header">
+            <div class="pillar-badge-num green">1</div>
+            <div class="pillar-title">Stop TPM • Start Online</div>
+          </div>
+          <p class="pillar-text">
+            Zeg de € 400,- per maand aan TPM op en verplaats dat budget naar gerichte online advertenties via Matthias. Dát is de motor die dagelijks echte proefzitters naar Dordrecht haalt.
+          </p>
+        </div>
+        <div class="pillar-tag-bar" style="color: var(--color-forest-bright); border: 1px solid rgba(75, 143, 36, 0.4);">
+          <span>De Verkeersmotor:</span>
+          <span>100% Actieve Zoekers</span>
+        </div>
+      </div>
+
+      <!-- Pijler 2: De Closer -->
+      <div class="pillar-card closer">
+        <div>
+          <div class="pillar-header">
+            <div class="pillar-badge-num orange">2</div>
+            <div class="pillar-title">Druk 500 Flyers (€ 35,-)</div>
+          </div>
+          <p class="pillar-text">
+            Niet 10.000 flyers bij het oud papier, maar 500 stuks in de showroom! Geef de flyer mee aan twijfelende klanten: de <strong>€ 79,- All-in House voucher</strong> trekt hen definitief over de streep.
+          </p>
+        </div>
+        <div class="pillar-tag-bar" style="color: var(--color-terracotta); border: 1px solid rgba(243, 146, 35, 0.4);">
+          <span>De Showroom Closer:</span>
+          <span>Maximale Conversie</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="final-triumph-banner">
+      <div>
+        <div class="triumph-text">Dit is onze winnende formule voor Staopstoelen.nl</div>
+        <div class="triumph-sub">Van passieve bureaukosten naar een marketingmachine die stoelen verkoopt.</div>
+      </div>
+      <div class="triumph-badge">AAN DE SLAG</div>
+    </div>
+  </div>
+
+  <div class="subtitle-bar">
+    "Stop TPM, online is de motor die dagelijks verkeer brengt, en de flyer sluit de deal in de showroom!"
+  </div>
+</body>
+</html>

@@ -62,16 +62,17 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-1 w-full">
     
     <!-- Title Bar -->
-    <div class="text-center max-w-3xl mx-auto mb-8">
+    <div class="text-center max-w-4xl mx-auto mb-8">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        1080p HD Master Video • Speelduur: 2:43 • Studio Voice ElevenLabs
+        1080p HD Master Video • Speelduur: Exact 1:00 minuut • ElevenLabs Studio Audio
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black tracking-tight text-white leading-tight mb-4">
-        Flyers op de Deurmat of <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">Online Marketing?</span>
+        Geertjan, we doen iets bijzonders: <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-amber-300">WE GENEREREN ÉCHT VERKEER!</span>
       </h1>
       <p class="text-base sm:text-lg text-slate-300">
-        In minder dan 3 minuten de sluitende businesscase voor Geertjan: hoe we het huidige TPM-budget (€ 400/mnd) omzetten in keiharde showroomverkopen.
+        In 60 seconden de keiharde businesscase van de kliks van de afgelopen dagen: van een paar dubbeltjes per actieve zoeker naar directe showroomverkopen in Dordrecht.
       </p>
     </div>
 
@@ -86,7 +87,7 @@
             class="w-full h-full object-cover" 
             controls 
             preload="metadata" 
-            poster="assets/marketing/video_slides/scene_1.png"
+            poster="assets/marketing/video_slides/short_scene_1.png"
             playsinline>
             <source src="assets/video/geertjan_keuze_advies_video.mp4" type="video/mp4">
             Je browser ondersteunt geen HTML5 video.
@@ -100,9 +101,9 @@
               <span class="text-emerald-400">●</span> 1920 × 1080p Full HD
             </span>
             <span>•</span>
-            <span class="text-slate-300 font-semibold">🎙️ Voice-over: Alexander (ElevenLabs Studio)</span>
+            <span class="text-slate-300 font-semibold">🎙️ Alexander (ElevenLabs Studio)</span>
             <span>•</span>
-            <span>6 Hoofdstukken</span>
+            <span>3 Hoofdstukken • 60 sec</span>
           </div>
           <div class="flex items-center gap-2">
             <button onclick="setPlayRate(1.0)" id="rate1" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-bold text-white hover:bg-slate-700 transition">1.0x</button>
@@ -115,54 +116,30 @@
       <!-- Interactive Chapter Playlist (4 cols) -->
       <div class="lg:col-span-4 flex flex-col gap-3">
         <div class="text-sm font-heading font-bold uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-between">
-          <span>Hoofdstukken in deze video</span>
+          <span>Hoofdstukken (60 sec)</span>
           <span class="text-xs text-slate-500">Klik om te springen</span>
         </div>
 
         <button onclick="jumpTo(0)" id="chap-0" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full chapter-active">
           <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:00</div>
           <div>
-            <div class="font-heading font-bold text-sm text-white">1. De Flyer op de Mat & De Vraag</div>
-            <div class="text-xs text-slate-400 line-clamp-1">Daar ligt de flyer... maar waar gaat je budget nú naartoe?</div>
+            <div class="font-heading font-bold text-sm text-white">1. We Genereren Écht Verkeer!</div>
+            <div class="text-xs text-slate-400 line-clamp-1">158+ actieve zoekers in slechts een paar testdagen.</div>
           </div>
         </button>
 
-        <button onclick="jumpTo(21.9)" id="chap-1" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:22</div>
+        <button onclick="jumpTo(15.7)" id="chap-1" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:16</div>
           <div>
-            <div class="font-heading font-bold text-sm text-white">2. De Olifant in de Kamer: TPM</div>
-            <div class="text-xs text-slate-400 line-clamp-1">€ 400,- per maand vaste fee (€ 4.800/jaar) zonder garantie.</div>
+            <div class="font-heading font-bold text-sm text-white">2. De Businesscase van de Klik</div>
+            <div class="text-xs text-slate-400 line-clamp-1">Van een paar dubbeltjes naar € 1.200 winst op 1 stoel!</div>
           </div>
         </button>
 
-        <button onclick="jumpTo(45.9)" id="chap-2" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:46</div>
+        <button onclick="jumpTo(38.2)" id="chap-2" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:38</div>
           <div>
-            <div class="font-heading font-bold text-sm text-white">3. Het Sorteren op de Deurmat</div>
-            <div class="text-xs text-slate-400 line-clamp-1">42% Nee/Nee, oud papier en >98,5% afval van de € 1.250,-.</div>
-          </div>
-        </button>
-
-        <button onclick="jumpTo(76.7)" id="chap-3" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">1:17</div>
-          <div>
-            <div class="font-heading font-bold text-sm text-white">4. Hoe Benutten We Dat Beter?</div>
-            <div class="text-xs text-slate-400 line-clamp-1">Matthias Online: 158 sessies & actieve zoekers in GA4.</div>
-          </div>
-        </button>
-
-        <button onclick="jumpTo(107.1)" id="chap-4" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">1:47</div>
-          <div>
-            <div class="font-heading font-bold text-sm text-white">5. De Sluitende Businesscase</div>
-            <div class="text-xs text-slate-400 line-clamp-1">1 verkochte stoel dekt bijna 3 maanden complete marketing!</div>
-          </div>
-        </button>
-
-        <button onclick="jumpTo(134.1)" id="chap-5" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">2:14</div>
-          <div>
-            <div class="font-heading font-bold text-sm text-white">6. Het Definitieve Besluit</div>
+            <div class="font-heading font-bold text-sm text-white">3. De Winnende Formule</div>
             <div class="text-xs text-slate-400 line-clamp-1">Stop TPM, online als motor & flyer met € 79 voucher als closer.</div>
           </div>
         </button>
@@ -170,7 +147,7 @@
         <!-- Call to Action Card -->
         <div class="mt-2 p-4 rounded-xl bg-gradient-to-br from-green-950/40 to-slate-900 border border-green-500/30 text-xs text-slate-300">
           <div class="font-bold text-white mb-1">Direct presenteren aan Geertjan?</div>
-          <p class="mb-3 text-slate-400">Gebruik de interactieve wizard om tijdens het gesprek interactief op de cijfers en deuren in te zoomen.</p>
+          <p class="mb-3 text-slate-400">Gebruik de interactieve wizard om tijdens het gesprek interactief op de cijfers en opties in te zoomen.</p>
           <a href="geertjan_keuze_wizard.html" class="block text-center py-2 px-3 rounded-lg bg-green-600 hover:bg-green-500 text-white font-bold transition">
             Naar de Interactieve Wizard →
           </a>
@@ -180,14 +157,24 @@
 
     <!-- Key Takeaway Grid -->
     <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10">
-        <div class="text-red-400 font-heading font-black text-2xl mb-1">€ 600 - € 1.250</div>
-        <div class="text-sm font-bold text-white mb-2">Kosten per bezoeker via Huis-aan-Huis Flyer</div>
-        <div class="text-xs text-slate-400">Door 42% Nee/Nee stickers en oud papier belandt >98,5% in de afvalbak zonder actieve koopintentie.</div>
+      <div class="p-6 rounded-2xl bg-green-950/30 border border-green-500/40">
+        <div class="text-green-400 font-heading font-black text-2xl mb-1">158+ Bezoekers</div>
+        <div class="text-sm font-bold text-white mb-2">In slechts enkele testdagen</div>
+        <div class="text-xs text-slate-300">Mensen met actieve rugpijn en mobiliteitsproblemen in Dordrecht die nú stoelen zoeken.</div>
       </div>
 
       <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10">
-        <div class="text-amber-400 font-heading font-black text-2xl mb-1">€ 4.800 per jaar</div>
+        <div class="text-amber-400 font-heading font-black text-2xl mb-1">€ 0,40 - € 0,60</div>
+        <div class="text-sm font-bold text-white mb-2">Kosten per gerichte klik</div>
+        <div class="text-xs text-slate-400">Geen € 400,-/mnd weg aan vage TPM rapporten of € 1.250 aan oud papier: je betaalt alleen per klik.</div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10">
+        <div class="text-emerald-400 font-heading font-black text-2xl mb-1">1 Stoel = 3 Maanden</div>
+        <div class="text-sm font-bold text-white mb-2">Terugverdientijd van de businesscase</div>
+        <div class="text-xs text-slate-300">Verkoop je uit 6 tot 12 afspraken per maand slechts 1 stoel, dan is je hele marketing direct winstgevend.</div>
+      </div>
+    </div>
         <div class="text-sm font-bold text-white mb-2">Kosten extern bureau (TPM)</div>
         <div class="text-xs text-slate-400">Vaste maandelijkse retainer van € 400,- zonder duidelijke relatie tot verkochte stoelen in Dordrecht.</div>
       </div>
@@ -209,11 +196,8 @@
     const video = document.getElementById('mainVideo');
     const chapters = [
       { time: 0, id: 'chap-0' },
-      { time: 21.9, id: 'chap-1' },
-      { time: 45.9, id: 'chap-2' },
-      { time: 76.7, id: 'chap-3' },
-      { time: 107.1, id: 'chap-4' },
-      { time: 134.1, id: 'chap-5' }
+      { time: 15.7, id: 'chap-1' },
+      { time: 38.2, id: 'chap-2' }
     ];
 
     function jumpTo(seconds) {
