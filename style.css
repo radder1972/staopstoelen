@@ -8804,7 +8804,7 @@ input[type="checkbox"] {
   align-items: center;
   gap: 10px;
   padding: 9px 14px;
-  background: linear-gradient(135deg, #122b07 0%, #2e6819 60%, #4b8f24 100%);
+  background: linear-gradient(135deg, #4b8f24 0%, #386f1a 100%);
   color: #ffffff;
 }
 
