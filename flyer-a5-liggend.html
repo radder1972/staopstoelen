@@ -1009,116 +1009,107 @@
 
     .voucher-top-bar {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       border-bottom: 1px solid #fed7aa;
       padding-bottom: 1.4mm;
-      margin-bottom: 1.6mm;
+      margin-bottom: 1.8mm;
     }
     .voucher-pre-tag {
       font-family: var(--font-heading);
-      font-size: 2.1mm;
+      font-size: 2.2mm;
       font-weight: 800;
       color: var(--color-terracotta-dark);
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
     }
-    .voucher-festive-tag {
-      background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
-      color: #ffffff;
-      font-family: var(--font-heading);
-      font-size: 2.1mm;
-      font-weight: 800;
-      padding: 0.6mm 2.4mm;
-      border-radius: 9999px;
-      letter-spacing: 0.3px;
-    }
 
-    /* Grote Waarde Knaller */
+    /* Grote Waarde Knaller (Royaal, Groter & Vullend) */
     .voucher-hero-block {
       background: linear-gradient(135deg, #fff3e0 0%, #ffe8cc 100%);
-      border: 1.3px solid var(--color-terracotta);
-      border-radius: 2.2mm;
-      padding: 2.2mm 2.8mm;
+      border: 1.4px solid var(--color-terracotta);
+      border-radius: 2.6mm;
+      padding: 3.6mm 3.6mm;
       text-align: center;
-      margin-bottom: 1.8mm;
+      margin-bottom: 2.4mm;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .voucher-label-sub {
       font-family: var(--font-heading);
-      font-size: 2.3mm;
+      font-size: 2.9mm;
       font-weight: 800;
       color: #9a3412;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
     }
     .voucher-hero-amount {
       display: flex;
       align-items: baseline;
       justify-content: center;
-      gap: 1.0mm;
+      gap: 1.4mm;
       line-height: 1;
-      margin: 0.6mm 0;
+      margin: 1.2mm 0;
     }
     .voucher-euro {
       font-family: var(--font-heading);
-      font-size: 5.2mm;
+      font-size: 7.2mm;
       font-weight: 800;
       color: #c2410c;
     }
     .voucher-number {
       font-family: var(--font-heading);
-      font-size: 8.0mm;
+      font-size: 11.2mm;
       font-weight: 900;
       color: #9a3412;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.8px;
     }
     .voucher-free-tag {
       background: var(--color-gold);
       color: #7c2d12;
       font-family: var(--font-heading);
-      font-size: 2.5mm;
+      font-size: 3.2mm;
       font-weight: 900;
-      padding: 0.6mm 2.0mm;
-      border-radius: 1.2mm;
-      margin-left: 1.4mm;
+      padding: 1.0mm 2.8mm;
+      border-radius: 1.4mm;
+      margin-left: 2.2mm;
+      letter-spacing: 0.4px;
     }
     .voucher-condition {
       font-family: var(--font-heading);
-      font-size: 2.25mm;
+      font-size: 2.65mm;
       font-weight: 800;
       color: #9a3412;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
+      line-height: 1.2;
     }
 
-    /* Product Showcase Box met Echte All in House Set Foto */
+    /* Product Showcase Zonder Box (Luchtig, Royaal & Open) */
     .voucher-product-showcase {
-      background: #ffffff;
-      border: 1.2px solid #fed7aa;
-      border-radius: 2.2mm;
-      padding: 2.0mm 2.6mm;
+      background: transparent;
+      border: none;
+      padding: 0.5mm 0;
       margin-bottom: 2.0mm;
       display: grid;
-      grid-template-columns: 28mm 1fr;
-      gap: 2.6mm;
+      grid-template-columns: 34mm 1fr;
+      gap: 3.5mm;
       align-items: center;
     }
     .voucher-set-img {
-      width: 28mm;
-      height: 33mm;
+      width: 34mm;
+      height: 40mm;
       object-fit: contain;
       display: block;
     }
     .voucher-set-details {
       display: flex;
       flex-direction: column;
-      gap: 0.5mm;
+      gap: 0.8mm;
     }
     .set-badge {
-      font-size: 2.1mm;
+      font-size: 2.2mm;
       font-weight: 800;
       color: var(--color-terracotta-dark);
       text-transform: uppercase;
@@ -1126,66 +1117,65 @@
     }
     .set-title {
       font-family: var(--font-heading);
-      font-size: 2.85mm;
+      font-size: 3.35mm;
       font-weight: 900;
       color: #1e293b;
       line-height: 1.15;
     }
     .set-bullets {
-      margin: 0.5mm 0 0 0;
+      margin: 0.8mm 0 0 0;
       padding: 0;
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.8mm;
+      gap: 1.1mm;
     }
     .set-bullets li {
-      font-size: 2.25mm;
+      font-size: 2.45mm;
       color: #334155;
-      line-height: 1.24;
+      line-height: 1.26;
       display: flex;
       align-items: center;
-      gap: 1.4mm;
+      gap: 1.6mm;
       font-weight: 600;
     }
     .set-bullets li::before {
       content: "✓";
       color: var(--color-forest);
       font-weight: 900;
-      font-size: 2.4mm;
+      font-size: 2.6mm;
     }
 
-    /* Barcode & Actiecode Strip */
+    /* Barcode & Actiecode Strip Zonder Box (Luchtig & Open) */
     .voucher-barcode-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #fafaf9;
-      border: 1px solid #e7e5e4;
-      border-radius: 1.8mm;
-      padding: 1.4mm 2.4mm;
-      margin-bottom: 1.8mm;
+      background: transparent;
+      border: none;
+      padding: 0.5mm 0;
+      margin-bottom: 2.0mm;
     }
     .voucher-barcode-wrap {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.4mm;
+      gap: 0.6mm;
     }
     .svg-barcode {
-      width: 32mm;
-      height: 5.5mm;
+      width: 38mm;
+      height: 6.8mm;
       display: block;
     }
     .barcode-text {
       font-family: monospace;
-      font-size: 1.95mm;
+      font-size: 2.1mm;
       font-weight: 700;
       color: #44403c;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
     }
     .voucher-inlever-tag {
-      font-size: 2.1mm;
+      font-size: 2.35mm;
       font-weight: 700;
       color: var(--color-terracotta-dark);
       text-align: right;
@@ -1763,10 +1753,9 @@
           <div class="voucher-panel">
             <div class="voucher-card">
               
-              <!-- Voucher Bovenbalk (Chique & Solide) -->
+              <!-- Voucher Bovenbalk (Links Uitgelijnd, Zonder Feestdagen Actie) -->
               <div class="voucher-top-bar">
                 <span class="voucher-pre-tag">OFFICIËLE WAARDEBON</span>
-                <span class="voucher-festive-tag">🎁 FEESTDAGEN ACTIE</span>
               </div>
 
               <!-- Grote Waarde Knaller: € 79,- CADEAU -->
@@ -1825,7 +1814,7 @@
                     <rect x="149" y="0" width="2" height="32" fill="#1e293b"/>
                     <rect x="154" y="0" width="3" height="32" fill="#1e293b"/>
                   </svg>
-                  <span class="barcode-text">ACTIECODE: FEEST-79-DORDT</span>
+                  <span class="barcode-text">ACTIECODE: ACTIE-79-DORDT</span>
                 </div>
                 <div class="voucher-inlever-tag">
                   Geldig bij aankoop van<br>een nieuwe sta-opstoel
