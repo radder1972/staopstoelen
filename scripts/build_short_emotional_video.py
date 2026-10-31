@@ -36,7 +36,7 @@ SCENES = [
     {
         "id": 1,
         "name": "We Genereren Écht Verkeer!",
-        "text": "Geertjan, besef even wat we hier samen aan het doen zijn. We doen iets heel bijzonders: WE GENEREREN ÉCHT VERKEER! Kijk naar de afgelopen drie dagen op Marktplaats: meer dan achtduizend vertoningen en drieëntachtig mensen die doelgericht op jouw stoelen hebben geklikt!",
+        "text": "Geertjan, besef even wat we hier samen aan het doen zijn. We doen iets heel bijzonders: WE GENEREREN ÉCHT VERKEER! Kijk naar de afgelopen drie dagen op Marktplaats: meer dan achtduizend driehonderd vertoningen en negenentachtig mensen die doelgericht op jouw stoelen hebben geklikt!",
         "image": "assets/marketing/video_slides/short_scene_1.png",
         "audio": "assets/marketing/video_audio/short_scene_1.mp3",
         "zoom_rate": 0.0004
@@ -44,7 +44,7 @@ SCENES = [
     {
         "id": 2,
         "name": "Het 7-Dagen Groei-Dagboek",
-        "text": "Kijk naar ons dagboek van de afgelopen zeven dagen. Waar we bij TPM begonnen met stilstand en vierhonderd euro vaste kosten, bouwden we in zeven dagen een actieve machine. Van de eerste Google zoekers naar een explosie op Marktplaats. In één week tijd van nul naar meer dan achtduizend vertoningen en drieëntachtig actieve kliks!",
+        "text": "Kijk naar ons dagboek van de afgelopen zeven dagen. Waar we bij TPM begonnen met stilstand en vierhonderd euro vaste kosten, bouwden we in zeven dagen een actieve machine. Van de eerste Google zoekers naar een explosie op Marktplaats. In één week tijd van nul naar meer dan achtduizend vertoningen en negenentachtig actieve kliks!",
         "image": "assets/marketing/video_slides/short_scene_dagboek.png",
         "audio": "assets/marketing/video_audio/short_scene_dagboek.mp3",
         "zoom_rate": 0.0003
@@ -52,7 +52,7 @@ SCENES = [
     {
         "id": 3,
         "name": "De Businesscase van de Klik",
-        "text": "En kijk nu naar de businesscase van die klik. Drieëntachtig geïnteresseerden hebben jou bij elkaar slechts dertien euro dertig gekost. Dat is amper zestien cent per bezoeker! Als uit al die mensen maar één iemand naar de Merwedestraat komt en een stoel koopt, pak je twaalfhonderd euro marge. Die dertien euro levert je een veelvoud aan winst op!",
+        "text": "En kijk nu naar de businesscase van die klik. Negenentachtig geïnteresseerden hebben jou bij elkaar nog geen veertien euro gekost. Dat is amper vijftien cent per bezoeker! Als uit al die mensen maar één iemand naar de Merwedestraat komt en een stoel koopt, pak je twaalfhonderd euro marge. Die veertien euro levert je een veelvoud aan winst op!",
         "image": "assets/marketing/video_slides/short_scene_2.png",
         "audio": "assets/marketing/video_audio/short_scene_2.mp3",
         "zoom_rate": 0.0003
