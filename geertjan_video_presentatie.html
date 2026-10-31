@@ -22,8 +22,8 @@
       box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
     .chapter-active {
-      border-color: #4ADE80 !important;
-      background: rgba(74, 222, 128, 0.15) !important;
+      border-color: #5cb82f !important;
+      background: rgba(92, 184, 47, 0.18) !important;
       color: #FFFFFF !important;
     }
   </style>
@@ -65,14 +65,14 @@
     <div class="text-center max-w-4xl mx-auto mb-8">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        1080p HD Master Video • Speelduur: Exact 1:00 minuut • ElevenLabs Studio Audio
+        1080p HD Master Video • Speelduur: Exact 1:03 minuut • ElevenLabs Studio Audio
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black tracking-tight text-white leading-tight mb-4">
         Geertjan, we doen iets bijzonders: <br>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-amber-300">WE GENEREREN ÉCHT VERKEER!</span>
       </h1>
       <p class="text-base sm:text-lg text-slate-300">
-        In 60 seconden de keiharde businesscase van de kliks van de afgelopen dagen: van een paar dubbeltjes per actieve zoeker naar directe showroomverkopen in Dordrecht.
+        In 60 seconden de keiharde businesscase van Marktplaats Zakelijk: van € 0,16 per klik naar € 1.200 winstmarge per stoel.
       </p>
     </div>
 
@@ -103,7 +103,7 @@
             <span>•</span>
             <span class="text-slate-300 font-semibold">🎙️ Alexander (ElevenLabs Studio)</span>
             <span>•</span>
-            <span>3 Hoofdstukken • 60 sec</span>
+            <span>3 Hoofdstukken • 1:03 min</span>
           </div>
           <div class="flex items-center gap-2">
             <button onclick="setPlayRate(1.0)" id="rate1" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-bold text-white hover:bg-slate-700 transition">1.0x</button>
@@ -116,7 +116,7 @@
       <!-- Interactive Chapter Playlist (4 cols) -->
       <div class="lg:col-span-4 flex flex-col gap-3">
         <div class="text-sm font-heading font-bold uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-between">
-          <span>Hoofdstukken (60 sec)</span>
+          <span>Hoofdstukken (1 min)</span>
           <span class="text-xs text-slate-500">Klik om te springen</span>
         </div>
 
@@ -124,30 +124,30 @@
           <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:00</div>
           <div>
             <div class="font-heading font-bold text-sm text-white">1. We Genereren Écht Verkeer!</div>
-            <div class="text-xs text-slate-400 line-clamp-1">158+ actieve zoekers in slechts een paar testdagen.</div>
+            <div class="text-xs text-slate-400 line-clamp-1">8.191 vertoningen & 83 actieve stoelzoekers in 3 dagen.</div>
           </div>
         </button>
 
-        <button onclick="jumpTo(15.7)" id="chap-1" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:16</div>
+        <button onclick="jumpTo(19.0)" id="chap-1" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:19</div>
           <div>
             <div class="font-heading font-bold text-sm text-white">2. De Businesscase van de Klik</div>
-            <div class="text-xs text-slate-400 line-clamp-1">Van een paar dubbeltjes naar € 1.200 winst op 1 stoel!</div>
+            <div class="text-xs text-slate-400 line-clamp-1">Slechts € 0,16 per klik naar € 1.200 winst op 1 stoel!</div>
           </div>
         </button>
 
-        <button onclick="jumpTo(38.2)" id="chap-2" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
-          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:38</div>
+        <button onclick="jumpTo(42.0)" id="chap-2" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:42</div>
           <div>
             <div class="font-heading font-bold text-sm text-white">3. De Winnende Formule</div>
-            <div class="text-xs text-slate-400 line-clamp-1">Stop TPM, online als motor & flyer met € 79 voucher als closer.</div>
+            <div class="text-xs text-slate-400 line-clamp-1">Stop TPM, online als motor & flyer van € 35 als showroom closer.</div>
           </div>
         </button>
 
         <!-- Call to Action Card -->
         <div class="mt-2 p-4 rounded-xl bg-gradient-to-br from-green-950/40 to-slate-900 border border-green-500/30 text-xs text-slate-300">
-          <div class="font-bold text-white mb-1">Direct presenteren aan Geertjan?</div>
-          <p class="mb-3 text-slate-400">Gebruik de interactieve wizard om tijdens het gesprek interactief op de cijfers en opties in te zoomen.</p>
+          <div class="font-bold text-white mb-1">Direct bespreken met Geertjan?</div>
+          <p class="mb-3 text-slate-400">Gebruik de interactieve wizard om samen door de cijfers van Marktplaats vs. TPM vs. Flyers te lopen.</p>
           <a href="geertjan_keuze_wizard.html" class="block text-center py-2 px-3 rounded-lg bg-green-600 hover:bg-green-500 text-white font-bold transition">
             Naar de Interactieve Wizard →
           </a>
@@ -155,36 +155,27 @@
       </div>
     </div>
 
-    <!-- Key Takeaway Grid -->
+    <!-- Key Takeaway Grid: Marktplaats Live Bewijs -->
     <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="p-6 rounded-2xl bg-green-950/30 border border-green-500/40">
-        <div class="text-green-400 font-heading font-black text-2xl mb-1">158+ Bezoekers</div>
-        <div class="text-sm font-bold text-white mb-2">In slechts enkele testdagen</div>
-        <div class="text-xs text-slate-300">Mensen met actieve rugpijn en mobiliteitsproblemen in Dordrecht die nú stoelen zoeken.</div>
+        <div class="text-[#5cb82f] font-heading font-black text-2xl mb-1">8.191 Impressies</div>
+        <div class="text-sm font-bold text-white mb-2">83 Gerichte Kliks (29-31 Okt)</div>
+        <div class="text-xs text-slate-300">Geverifieerd in Marktplaats Zakelijk: 83 actieve senioren en mantelzorgers zochten doelgericht naar jouw sta-opstoelen.</div>
       </div>
 
       <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10">
-        <div class="text-amber-400 font-heading font-black text-2xl mb-1">€ 0,40 - € 0,60</div>
-        <div class="text-sm font-bold text-white mb-2">Kosten per gerichte klik</div>
-        <div class="text-xs text-slate-400">Geen € 400,-/mnd weg aan vage TPM rapporten of € 1.250 aan oud papier: je betaalt alleen per klik.</div>
+        <div class="text-[#f39223] font-heading font-black text-2xl mb-1">€ 0,16 per klik</div>
+        <div class="text-sm font-bold text-white mb-2">Slechts € 13,30 Totaal Besteed</div>
+        <div class="text-xs text-slate-400">Geen € 400,-/mnd weg aan TPM (€ 13/dag voor vage rapporten). Je betaalt 16 cent puur wanneer iemand je stoel bekijkt!</div>
       </div>
 
       <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10">
-        <div class="text-emerald-400 font-heading font-black text-2xl mb-1">1 Stoel = 3 Maanden</div>
-        <div class="text-sm font-bold text-white mb-2">Terugverdientijd van de businesscase</div>
-        <div class="text-xs text-slate-300">Verkoop je uit 6 tot 12 afspraken per maand slechts 1 stoel, dan is je hele marketing direct winstgevend.</div>
+        <div class="text-emerald-400 font-heading font-black text-2xl mb-1">1 Stoel = 90x ROI</div>
+        <div class="text-sm font-bold text-white mb-2">€ 1.200,- Marge dekt campagne dik</div>
+        <div class="text-xs text-slate-300">Komt er uit die 83 kliks maar 1 iemand proefzitten aan de Merwedestraat die koopt, dan verdien je die € 13,30 negentig keer terug!</div>
       </div>
     </div>
-        <div class="text-sm font-bold text-white mb-2">Kosten extern bureau (TPM)</div>
-        <div class="text-xs text-slate-400">Vaste maandelijkse retainer van € 400,- zonder duidelijke relatie tot verkochte stoelen in Dordrecht.</div>
-      </div>
 
-      <div class="p-6 rounded-2xl bg-green-950/30 border border-green-500/30">
-        <div class="text-green-400 font-heading font-black text-2xl mb-1">€ 40 - € 75 per afspraak</div>
-        <div class="text-sm font-bold text-white mb-2">Matthias Online Marketing</div>
-        <div class="text-xs text-slate-300">100% actieve zoekers. Bij slechts 1 verkochte stoel (€ 750 - € 2.500) is de hele maandcampagne direct terugverdiend.</div>
-      </div>
-    </div>
   </main>
 
   <!-- Footer -->
@@ -196,8 +187,8 @@
     const video = document.getElementById('mainVideo');
     const chapters = [
       { time: 0, id: 'chap-0' },
-      { time: 15.7, id: 'chap-1' },
-      { time: 38.2, id: 'chap-2' }
+      { time: 19.0, id: 'chap-1' },
+      { time: 42.0, id: 'chap-2' }
     ];
 
     function jumpTo(seconds) {

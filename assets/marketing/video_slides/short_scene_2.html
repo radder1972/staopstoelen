@@ -72,7 +72,7 @@
 
     .main-content {
       height: 835px;
-      padding: 40px 80px 30px;
+      padding: 36px 80px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -81,19 +81,20 @@
     .hero-kicker {
       display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
       color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px;
+      background: rgba(243, 146, 35, 0.15); padding: 5px 18px; border-radius: 999px; border: 1px solid rgba(243, 146, 35, 0.3);
     }
     .hero-title {
-      font-family: 'Montserrat', sans-serif; font-size: 50px; font-weight: 900; letter-spacing: -0.5px;
+      font-family: 'Montserrat', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: -0.5px;
     }
 
     .funnel-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1.25fr;
       gap: 30px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
     .funnel-card {
-      background: rgba(30, 41, 59, 0.7);
+      background: rgba(30, 41, 59, 0.75);
       border: 1.5px solid rgba(255, 255, 255, 0.1);
       border-radius: 24px;
       padding: 32px 28px;
@@ -104,44 +105,47 @@
     }
     .funnel-card.winner {
       border: 2px solid var(--color-forest-bright);
-      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(75, 143, 36, 0.2));
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(75, 143, 36, 0.22));
       box-shadow: 0 15px 40px rgba(75, 143, 36, 0.25);
     }
     .step-tag {
       font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800;
       text-transform: uppercase; padding: 4px 12px; border-radius: 8px;
-      display: inline-block; width: fit-content; margin-bottom: 16px;
+      display: inline-block; width: fit-content; margin-bottom: 14px;
     }
     .step-tag.orange { background: rgba(243, 146, 35, 0.2); color: var(--color-terracotta); }
     .step-tag.blue { background: rgba(56, 189, 248, 0.2); color: #38BDF8; }
     .step-tag.green { background: rgba(75, 143, 36, 0.25); color: var(--color-forest-bright); }
 
     .card-metric {
-      font-family: 'Montserrat', sans-serif; font-size: 46px; font-weight: 900;
-      line-height: 1; margin-bottom: 12px;
+      font-family: 'Montserrat', sans-serif; font-size: 50px; font-weight: 900;
+      line-height: 1; margin-bottom: 10px;
+    }
+    .card-metric-sub {
+      font-size: 15px; color: #94A3B8; font-weight: 700; margin-bottom: 10px;
     }
     .card-title {
-      font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800;
+      font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: 800;
       color: #FFFFFF; margin-bottom: 8px;
     }
     .card-desc {
-      font-size: 16px; color: #CBD5E1; line-height: 1.45;
+      font-size: 15px; color: #CBD5E1; line-height: 1.45;
     }
 
     .bottom-recap-banner {
       background: linear-gradient(90deg, #1A420B, #2E6819);
       border: 1.5px solid var(--color-forest-bright);
       border-radius: 20px;
-      padding: 24px 36px;
+      padding: 22px 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 10px 30px rgba(75, 143, 36, 0.35);
     }
     .recap-title {
-      font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #FFFFFF; margin-bottom: 4px;
+      font-family: 'Montserrat', sans-serif; font-size: 23px; font-weight: 900; color: #FFFFFF; margin-bottom: 4px;
     }
-    .recap-sub { font-size: 16px; color: #DCFCE7; }
+    .recap-sub { font-size: 15px; color: #DCFCE7; }
     .recap-badge {
       background: var(--color-terracotta); color: #FFFFFF; font-family: 'Montserrat', sans-serif;
       font-weight: 900; font-size: 18px; padding: 12px 28px; border-radius: 14px;
@@ -150,8 +154,8 @@
 
     .subtitle-bar {
       position: absolute; bottom: 0; left: 0; right: 0; height: 75px;
-      background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px);
-      border-top: 1.5px solid rgba(75, 143, 36, 0.3);
+      background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(8px);
+      border-top: 1.5px solid rgba(75, 143, 36, 0.35);
       display: flex; align-items: center; justify-content: center;
       padding: 0 60px; font-size: 21px; font-weight: 700; color: #F8FAFC; text-align: center;
     }
@@ -173,53 +177,56 @@
 
   <div class="main-content">
     <div class="hero-banner">
-      <span class="hero-kicker">Geen vage rapporten • Geen geld over de balk</span>
-      <h1 class="hero-title">Van een klik van een paar dubbeltjes... <br><span style="color: var(--color-terracotta);">naar een verkochte stoel in Dordrecht!</span></h1>
+      <span class="hero-kicker">Geen gissingen • De harde cijfers van afgelopen dagen</span>
+      <h1 class="hero-title">Slechts <span style="color: var(--color-terracotta);">€ 0,16 per klik</span> op Marktplaats... <br>naar <span style="color: var(--color-forest-bright);">€ 1.200,- winst</span> per verkochte stoel!</h1>
     </div>
 
     <div class="funnel-grid">
       <!-- Stap 1: De Klik -->
       <div class="funnel-card">
         <div>
-          <span class="step-tag orange">Stap 1 • De Klik</span>
-          <div class="card-metric" style="color: var(--color-terracotta);">€ 0,40 - € 0,60</div>
-          <div class="card-title">Kosten per gerichte klik</div>
-          <div class="card-desc">Geen € 400,- per maand weggegooid aan vage TPM-impressies. Je betaalt alleen als iemand écht zoekt.</div>
+          <span class="step-tag orange">Stap 1 • Keiharde Cijfers</span>
+          <div class="card-metric" style="color: var(--color-terracotta);">€ 0,16</div>
+          <div class="card-metric-sub">83 kliks voor slechts € 13,30</div>
+          <div class="card-title">Kosten per Gerichte Klik</div>
+          <div class="card-desc">Geen € 400,- per maand naar TPM voor vage rapporten. Je betaalt 16 cent puur wanneer iemand je stoel bekijkt!</div>
         </div>
       </div>
 
       <!-- Stap 2: De Bezoeker -->
       <div class="funnel-card">
         <div>
-          <span class="step-tag blue">Stap 2 • De Afspraak</span>
-          <div class="card-metric" style="color: #38BDF8;">6 tot 12</div>
-          <div class="card-title">Proefzitter Leads per Maand</div>
-          <div class="card-desc">Senioren en kinderen die bellen of de showroom binnenlopen om stoelen te passen aan de Merwedestraat.</div>
+          <span class="step-tag blue">Stap 2 • De Intentie</span>
+          <div class="card-metric" style="color: #38BDF8;">1 Koper</div>
+          <div class="card-metric-sub">Uit tientallen gerichte zoekers</div>
+          <div class="card-title">Naar de Merwedestraat</div>
+          <div class="card-desc">Senioren en mantelzorgers met rugpijn. Als er uit die 83 kliks maar <strong>één iemand</strong> proefzit en koopt...</div>
         </div>
       </div>
 
       <!-- Stap 3: De Winst -->
       <div class="funnel-card winner">
         <div>
-          <span class="step-tag green">Stap 3 • De Winst</span>
-          <div class="card-metric" style="color: var(--color-forest-bright);">1 Stoel = Winst</div>
-          <div class="card-title">Dekt 3 Maanden Marketing!</div>
-          <div class="card-desc">Verkoop je uit al die bezoekers <strong>slechts 1 stoel</strong> (€ 750 - € 2.500 marge)? Dan is je hele marketingbudget al terugverdiend!</div>
+          <span class="step-tag green">Stap 3 • De Winstmarge</span>
+          <div class="card-metric" style="color: var(--color-forest-bright);">€ 1.200,-</div>
+          <div class="card-metric-sub">Gemiddelde marge per stoel</div>
+          <div class="card-title">90x Rendement op Investering!</div>
+          <div class="card-desc">Met één verkochte stoel verdien je die € 13,30 advertentiekosten <strong>negentig keer</strong> terug. Sluitender wordt het niet.</div>
         </div>
       </div>
     </div>
 
     <div class="bottom-recap-banner">
       <div>
-        <div class="recap-title">De Conclusie van de Cijfers: Dit is pure winst</div>
-        <div class="recap-sub">Elke extra verkochte stoel via Google of Marktplaats gaat direct naar jouw bedrijfsresultaat.</div>
+        <div class="recap-title">De Conclusie van de Cijfers: Dit is een goudmijn die al draait</div>
+        <div class="recap-sub">TPM kost € 13,- per dág voor nul inzicht. Wij haalden voor € 13,30 in 3 dagen al 83 gerichte stoelkliks!</div>
       </div>
-      <div class="recap-badge">SLUITENDE BUSINESSCASE</div>
+      <div class="recap-badge">90x ROI BUSINESSCASE</div>
     </div>
   </div>
 
   <div class="subtitle-bar">
-    "Elke klik kost een paar dubbeltjes. Verkoop je uit die bezoekers maar 1 stoel, dan is je hele marketing al terugverdiend!"
+    "Drieëntachtig kliks voor slechts dertien euro dertig. Verkoop je één stoel, dan is je investering al negentig keer terugverdiend!"
   </div>
 </body>
 </html>

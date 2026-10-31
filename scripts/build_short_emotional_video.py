@@ -36,7 +36,7 @@ SCENES = [
     {
         "id": 1,
         "name": "We Genereren Écht Verkeer!",
-        "text": "Geertjan, besef even wat we hier samen aan het doen zijn. We doen iets wat maar weinig lokale ondernemers lukt: we genereren écht gericht verkeer! In slechts een paar dagen tijd al meer dan honderdvijftig actieve bezoekers naar jouw stoelen!",
+        "text": "Geertjan, besef even wat we hier samen aan het doen zijn. We doen iets heel bijzonders: WE GENEREREN ÉCHT VERKEER! Kijk naar de afgelopen drie dagen op Marktplaats: meer dan achtduizend vertoningen en drieëntachtig mensen die doelgericht op jouw stoelen hebben geklikt!",
         "image": "assets/marketing/video_slides/short_scene_1.png",
         "audio": "assets/marketing/video_audio/short_scene_1.mp3",
         "zoom_rate": 0.0004
@@ -44,7 +44,7 @@ SCENES = [
     {
         "id": 2,
         "name": "De Businesscase van de Klik",
-        "text": "Kijk naar de businesscase van die kliks. Elke klik kost een paar dubbeltjes. Dat zijn échte mensen in Dordrecht met rugpijn die nú een sta-opstoel zoeken. Als uit al die bezoekers maar één iemand plaatsneemt in jouw showroom en een stoel koopt, heb je met een marge van twaalfhonderd euro je complete marketing al dik terugverdiend!",
+        "text": "En kijk nu naar de businesscase van die klik. Drieëntachtig geïnteresseerden hebben jou bij elkaar slechts dertien euro dertig gekost. Dat is amper zestien cent per bezoeker! Als uit al die mensen maar één iemand naar de Merwedestraat komt en een stoel koopt, pak je twaalfhonderd euro marge. Die dertien euro levert je een veelvoud aan winst op!",
         "image": "assets/marketing/video_slides/short_scene_2.png",
         "audio": "assets/marketing/video_audio/short_scene_2.mp3",
         "zoom_rate": 0.0003
@@ -52,7 +52,7 @@ SCENES = [
     {
         "id": 3,
         "name": "De Winnende Formule",
-        "text": "Dit is de boodschap, Geertjan. Stop die vierhonderd euro aan TPM en stop met gokken op tienduizend flyers in de papierbak. Online marketing is onze motor die leeft en dagelijks verkeer brengt. En die prachtige flyer? Die drukken we voor vijfendertig euro om in de showroom de deal te sluiten. Dit is onze winnende formule!",
+        "text": "Dát is de boodschap, Geertjan. Stop die vierhonderd euro aan TPM en stop met gokken op tienduizend flyers in de papierbak. Deze online motor brengt dagelijks échte mensen. En die flyer? Die drukken we voor vijfendertig euro als perfecte showroom-afsluiter. Dít is onze winnende formule!",
         "image": "assets/marketing/video_slides/short_scene_3.png",
         "audio": "assets/marketing/video_audio/short_scene_3.mp3",
         "zoom_rate": 0.0003,
