@@ -9,9 +9,9 @@ const FFMPEG = "/Users/matthiasradder/.local/bin/ffmpeg";
 const FRAMES_DIR = path.resolve("assets/marketing/video_frames/scene_3");
 fs.mkdirSync(FRAMES_DIR, { recursive: true });
 
-const DURATION = 17.97; // seconds matching Alexander voiceover
+const DURATION = 18.57; // seconds matching Alexander voiceover
 const FPS = 25;
-const TOTAL_FRAMES = Math.round(DURATION * FPS); // 449 frames
+const TOTAL_FRAMES = Math.round(DURATION * FPS); // 464 frames
 
 console.log(`🎬 Rendering Animated Fruitmachine Scene (${DURATION}s @ ${FPS}fps = ${TOTAL_FRAMES} frames)...`);
 

@@ -9,9 +9,9 @@ const FFMPEG = "/Users/matthiasradder/.local/bin/ffmpeg";
 const FRAMES_DIR = path.resolve("assets/marketing/video_frames/scene_2");
 fs.mkdirSync(FRAMES_DIR, { recursive: true });
 
-const DURATION = 24.72; // seconds
+const DURATION = 29.02; // seconds
 const FPS = 25;
-const TOTAL_FRAMES = Math.round(DURATION * FPS); // 618 frames
+const TOTAL_FRAMES = Math.round(DURATION * FPS); // 726 frames
 
 console.log(`🎬 Rendering Animated Groeicurve Scene (${DURATION}s @ ${FPS}fps = ${TOTAL_FRAMES} frames)...`);
 

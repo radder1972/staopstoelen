@@ -35,24 +35,24 @@ os.makedirs("assets/video", exist_ok=True)
 SCENES = [
     {
         "id": 1,
-        "name": "We Genereren Écht Verkeer!",
-        "text": "Geertjan, besef even wat we hier samen aan het doen zijn. We doen iets heel bijzonders: WE GENEREREN ÉCHT VERKEER! Kijk naar de afgelopen drie dagen op Marktplaats: meer dan achtduizend zeshonderd vertoningen en vijfennegentig mensen die doelgericht op jouw stoelen hebben geklikt!",
+        "name": "De 3 Kerngetallen (Rustig Uitgelegd)",
+        "text": "Geertjan, laten we er eens heel rustig naar kijken. Wat we hier samen neerzetten draait om drie heldere kerngetallen. Eén: het bereik vóór de klik. Bijna negenduizend gerichte stoelzoekers in de regio zagen jouw advertenties. Twee: de advertentiekliks. Zevenennegentig mensen klikten bewust door voor vijftien cent per stuk. En drie: de websitebezoekers. Dat zien we nu ook zwart-op-wit terug in Google Analytics. We genereren écht verkeer naar Staopstoelen punt nl.",
         "image": "assets/marketing/video_slides/short_scene_1.png",
         "audio": "assets/marketing/video_audio/short_scene_1.mp3",
-        "zoom_rate": 0.0004
+        "zoom_rate": 0.0003
     },
     {
         "id": 2,
-        "name": "Het 7-Dagen Groei-Dagboek",
-        "text": "Kijk naar ons dagboek van de afgelopen zeven dagen. Waar we bij TPM begonnen met stilstand en vierhonderd euro vaste kosten, bouwden we in zeven dagen een actieve machine. Van de eerste Google zoekers naar een explosie op Marktplaats. In één week tijd van nul naar meer dan achtduizend zeshonderd vertoningen en vijfennegentig actieve kliks!",
+        "name": "Het Bewijs in Google Analytics (GA4 vs TPM)",
+        "text": "Kijk rustig naar de keiharde feiten in Google Analytics. TPM kost Geertjan vierhonderd euro per maand. In de afgelopen vijf dagen bracht die TPM-banner welgeteld drie bezoekers naar de website. Dat is meer dan tweeëntwintig euro per bezoeker! Terwijl onze eigen advertenties zevenennegentig gerichte proefzitters trokken voor amper vijftien cent per klik. Honderdachtenveertig keer goedkoper én zwart-op-wit bewezen in Analytics.",
         "image": "assets/marketing/video_slides/short_scene_dagboek.png",
         "audio": "assets/marketing/video_audio/short_scene_dagboek.mp3",
         "zoom_rate": 0.0003
     },
     {
         "id": 3,
-        "name": "De Marketing Fruitmachine & Jackpot",
-        "text": "Marketing is voor Geertjan geen gokkast meer waar je vierhonderd euro in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot: voor amper vijftien cent per klik pak je vijfennegentig gerichte zoekers en twaalfhonderd euro marge op één verkochte stoel!",
+        "name": "De Marketing Gokkast & Jackpot",
+        "text": "Marketing is voor Geertjan geen gokkast meer waar je vierhonderd euro in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot: voor amper vijftien cent per klik pak je zevenennegentig gerichte proefzitters en twaalfhonderd euro marge op één verkochte stoel!",
         "image": "assets/marketing/video_slides/short_scene_fruitmachine.png",
         "audio": "assets/marketing/video_audio/short_scene_fruitmachine.mp3",
         "sfx": "assets/marketing/video_audio/slot_machine_sfx.wav",
@@ -60,8 +60,8 @@ SCENES = [
     },
     {
         "id": 4,
-        "name": "De Winnende Formule",
-        "text": "Dát is de boodschap, Geertjan. Zeg die vierhonderd euro per maand aan TPM direct op. Onze online motor bewijst het al binnen drie dagen: bijna negenduizend vertoningen, zevenennegentig gerichte kliks en vijf directe websitebezoekers. Komt er uit die mensen maar één proefzitter naar de Merwedestraat die een stoel koopt, dan verdien je die vijftien euro al tweeëntachtig keer terug. Dít is onze winnende formule!",
+        "name": "De Conclusie (Vul de Showroom)",
+        "text": "De conclusie is glashelder, Geertjan. Zeg die vierhonderd euro per maand aan TPM direct op. Zet dat budget in op onze eigen online machine en leid elke bezoeker naar een afspraak in jouw showroom aan de Merwedestraat. Eén extra verkochte stoel dekt de complete advertentiekosten al tweeëntachtig keer terug. Dít is onze winnende formule!",
         "image": "assets/marketing/video_slides/short_scene_3.png",
         "audio": "assets/marketing/video_audio/short_scene_3.mp3",
         "zoom_rate": 0.0003,
