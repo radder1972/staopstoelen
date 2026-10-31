@@ -137,7 +137,7 @@
           </div>
           <div>
             <div id="detailDaySubtitle" class="text-xs font-bold text-[#f39223] uppercase tracking-wider">Dag 7 • 31 oktober 2026</div>
-            <h3 id="detailDayTitle" class="text-lg sm:text-xl font-heading font-bold text-white">De Sluitende Businesscase: 8.191 Vertoningen &amp; 83 Kliks voor € 13,30</h3>
+            <h3 id="detailDayTitle" class="text-lg sm:text-xl font-heading font-bold text-white">De Sluitende Businesscase: 8.710 Vertoningen &amp; 97 Kliks voor € 14,55</h3>
           </div>
         </div>
         <div id="detailTag" class="px-3 py-1 rounded-full text-xs font-bold bg-green-500/20 text-[#5cb82f] border border-green-500/30 w-fit">
@@ -148,12 +148,12 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
         <div class="lg:col-span-7 flex flex-col gap-3">
           <p id="detailStory" class="text-sm text-slate-200 leading-relaxed">
-            Vandaag is het keiharde bewijs geleverd via het Marktplaats Zakelijk dashboard van <em>Staopstoelen.NL</em>. In slechts 3 dagen tijd zagen <strong>8.191 gerichte stoelzoekers</strong> onze advertenties. <strong>83 mensen</strong> klikten actief door. Totale advertentiekosten: <strong>€ 13,30</strong>. Dat is amper <strong>€ 0,16 per klik</strong>!
+            Vandaag is het keiharde bewijs geleverd via het live Marktplaats Zakelijk dashboard van <em>Staopstoelen.NL</em>. In slechts 3 dagen tijd zagen <strong>8.710 gerichte stoelzoekers</strong> onze advertenties. <strong>97 mensen</strong> klikten actief door (waarvan <strong>5 direct doorklikten naar Staopstoelen.nl</strong>). Totale advertentiekosten: <strong>€ 14,55</strong>. Dat is amper <strong>€ 0,15 per klik</strong>!
           </p>
           <div class="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700 text-xs text-slate-300">
             <strong class="text-white block mb-1">💡 De Vergelijking voor Geertjan:</strong>
             <span id="detailComparison">
-              TPM kostte € 400/mnd (€ 13,33 per dag!) voor vage PDF-rapportjes. Wij haalden voor exact datzelfde bedrag (€ 13,30) in 3 dagen 83 proefzitter kliks naar Schipper Wonen.
+              TPM kostte € 400/mnd (€ 13,33 per dag!) voor vage PDF-rapportjes. Wij haalden voor exact datzelfde bedrag (€ 14,55) in 3 dagen 97 gerichte proefzitter kliks én 5 directe websitebezoeken naar Schipper Wonen.
             </span>
           </div>
         </div>
@@ -162,22 +162,27 @@
           <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Marktplaats Zakelijk Funnel</div>
           <div class="flex items-center justify-around text-center py-2">
             <div>
-              <div id="funnelImp" class="text-xl font-heading font-black text-slate-200">8.191</div>
+              <div id="funnelImp" class="text-lg font-heading font-black text-slate-200">8.710</div>
               <div class="text-[10px] text-slate-400">Vertoningen</div>
             </div>
-            <div class="text-slate-600 text-lg">➔</div>
+            <div class="text-slate-600 text-sm">➔</div>
             <div>
-              <div id="funnelClicks" class="text-xl font-heading font-black text-[#f39223]">83</div>
+              <div id="funnelClicks" class="text-lg font-heading font-black text-[#f39223]">97</div>
               <div class="text-[10px] text-slate-400">Stoelkliks</div>
             </div>
-            <div class="text-slate-600 text-lg">➔</div>
+            <div class="text-slate-600 text-sm">➔</div>
             <div>
-              <div id="funnelRoi" class="text-xl font-heading font-black text-[#5cb82f]">90x ROI</div>
+              <div id="funnelWeb" class="text-lg font-heading font-black text-sky-400">5</div>
+              <div class="text-[10px] text-slate-400">Naar Website</div>
+            </div>
+            <div class="text-slate-600 text-sm">➔</div>
+            <div>
+              <div id="funnelRoi" class="text-lg font-heading font-black text-[#5cb82f]">82x ROI</div>
               <div class="text-[10px] text-slate-400">1 Stoel = € 1.200</div>
             </div>
           </div>
           <div class="mt-2 text-[11px] text-emerald-400 font-semibold bg-emerald-950/40 py-1.5 px-2 rounded-lg border border-emerald-900/50">
-            1 stoelkoper dekt de hele campagne 90 keer!
+            1 stoelkoper dekt de hele campagne 82 keer!
           </div>
         </div>
       </div>
@@ -396,6 +401,7 @@
         comparison: "TPM kostte € 400/mnd (€ 13,33 per dag!) voor vage PDF-rapportjes. Wij haalden voor exact datzelfde bedrag (€ 14,55) in 3 dagen 97 proefzitter kliks naar Schipper Wonen.",
         funnelImp: "8.710",
         funnelClicks: "97",
+        funnelWeb: "5",
         funnelRoi: "82x ROI"
       }
     };
@@ -439,6 +445,7 @@
       document.getElementById('detailTag').innerText = data.tag;
       document.getElementById('funnelImp').innerText = data.funnelImp;
       document.getElementById('funnelClicks').innerText = data.funnelClicks;
+      document.getElementById('funnelWeb').innerText = data.funnelWeb || '–';
       document.getElementById('funnelRoi').innerText = data.funnelRoi;
     }
 
