@@ -544,7 +544,7 @@
         <div class="slot-digital-row">
           <div class="digital-box">
             <div class="digital-label">Vertoningen (Views)</div>
-            <div class="digital-number green" id="counterVertoningen">8.710</div>
+            <div class="digital-number green" id="counterVertoningen">8.995</div>
           </div>
           <div class="digital-box">
             <div class="digital-label">Stoelkliks (Kliks)</div>
@@ -557,7 +557,7 @@
           <div class="payline-wire" id="payline"></div>
           <div class="reels-flex">
             
-            <!-- Reel 1: 8.710 Views -->
+            <!-- Reel 1: 8.995 Views -->
             <div class="reel-col" id="reelCol1">
               <div class="reel-strip" id="reelStrip1"></div>
             </div>
@@ -602,10 +602,10 @@
       <div class="funnel-stack">
         <!-- 1. VIEWS -->
         <div class="kpi-row-card active-1" id="cardKpi1">
-          <div class="kpi-big-num" style="color: #60a5fa;">8.710</div>
+          <div class="kpi-big-num" style="color: #60a5fa;">8.995</div>
           <div class="kpi-body">
             <h4>1. Views (Bereik in de Regio)</h4>
-            <p>Senioren en mantelzorgers zagen de advertentie vóór het klikken.</p>
+            <p>Bijna 9.000 senioren en mantelzorgers zagen de advertentie.</p>
           </div>
           <div class="kpi-badge" style="background: rgba(96, 165, 250, 0.2); color: #93c5fd;">Kijkers</div>
         </div>
@@ -656,10 +656,10 @@
 
     // SYMBOLS FOR REEL 1: Views
     const SYMBOLS_REEL_1 = [
-      { icon: "👁️", title: "8.710 Views", sub: "Marktplaats Bereik", color: "#60a5fa" },
+      { icon: "👁️", title: "8.995 Views", sub: "Marktplaats Bereik", color: "#60a5fa" },
       { icon: "❌", title: "TPM Stilstand", sub: "€ 400 kwijt", color: "#f87171" },
       { icon: "📬", title: "10.000 Flyers", sub: "98% Papierbak", color: "#fbbf24" },
-      { icon: "👁️", title: "8.710 Views", sub: "Marktplaats Bereik", color: "#60a5fa" }
+      { icon: "👁️", title: "8.995 Views", sub: "Marktplaats Bereik", color: "#60a5fa" }
     ];
 
     // SYMBOLS FOR REEL 2: Kliks
@@ -764,12 +764,12 @@
         counterKliks.textContent = "83";
       } else if (t >= 6.4 && t < 10.5) {
         const rollP = (t - 6.4) / 4.1;
-        const curV = Math.round(8191 + rollP * (8710 - 8191));
+        const curV = Math.round(8191 + rollP * (8995 - 8191));
         const curK = Math.round(83 + rollP * (97 - 83));
         counterVertoningen.textContent = curV.toLocaleString('nl-NL');
         counterKliks.textContent = String(curK);
       } else {
-        counterVertoningen.textContent = "8.710";
+        counterVertoningen.textContent = "8.995";
         counterKliks.textContent = "97";
       }
 
