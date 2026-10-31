@@ -1252,8 +1252,37 @@
     }
 
     /* ==========================================================================
-       3. A4 DRUKVEL MODUS (2x A5 Liggend Boven Elkaar op 1 vel A4 Staand)
+       3. A4 DRUKVEL MODUS (2x A5 Liggend Dubbelzijdig op 2 Vellen A4 Staand)
        ========================================================================== */
+    .sheets-duplex-wrap {
+      display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12mm;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0 auto;
+    }
+
+    .sheet-a4-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sheet-label {
+      font-family: var(--font-heading);
+      font-size: 2.8mm;
+      font-weight: 800;
+      color: #475569;
+      margin-bottom: 2.5mm;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+    }
+
     .sheet-a4-wrapper {
       width: 210mm;
       height: 297mm;
@@ -1264,9 +1293,28 @@
       background: #ffffff;
       position: relative;
       overflow: hidden;
-      display: none;
+      display: flex;
       flex-direction: column;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+      border-radius: 1px;
+    }
+
+    .sheet-slot {
+      width: 210mm;
+      height: 148.5mm;
+      min-height: 148.5mm;
+      max-height: 148.5mm;
+      overflow: hidden;
+      position: relative;
+      background: #ffffff;
+    }
+    .sheet-slot .flyer-container {
+      width: 210mm !important;
+      height: 148.5mm !important;
+      max-height: 148.5mm !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
     }
 
     .sheet-cut-line {
@@ -1275,23 +1323,71 @@
       left: 0;
       right: 0;
       height: 0;
-      border-top: 0.5px dashed #94a3b8;
+      border-top: 1.2px dashed #f97316;
       z-index: 100;
       pointer-events: none;
     }
     .sheet-cut-badge {
       position: absolute;
-      top: -3.5mm;
+      top: -3.6mm;
       left: 50%;
       transform: translateX(-50%);
-      background: #ffffff;
-      border: 0.5px solid #cbd5e1;
-      font-size: 2.0mm;
-      font-weight: 700;
-      color: #64748b;
-      padding: 0.5mm 3mm;
+      background: #fff7ed;
+      border: 1px solid var(--color-terracotta);
+      font-family: var(--font-heading);
+      font-size: 2.1mm;
+      font-weight: 800;
+      color: #9a3412;
+      padding: 0.6mm 3.2mm;
       border-radius: 9999px;
       letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+
+    /* Print Instructie Banner */
+    .print-instruction-banner {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1.2px solid #86efac;
+      border-radius: 2mm;
+      padding: 2.0mm 3.8mm;
+      margin: 2mm auto 4mm auto;
+      max-width: 210mm;
+      color: #14532d;
+      font-size: 2.5mm;
+      line-height: 1.35;
+      display: flex;
+      flex-direction: column;
+      gap: 1.0mm;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .banner-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 2.7mm;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      color: #14532d;
+    }
+    .banner-steps {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2.0mm;
+      font-weight: 600;
+      color: #166534;
+    }
+    .banner-steps strong {
+      color: #14532d;
+    }
+    .btn-sheet-highlight {
+      background: #f39223 !important;
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      border-color: #d97706 !important;
+    }
+    .btn-sheet-highlight:hover {
+      background: #ea580c !important;
     }
 
     /* ==========================================================================
@@ -1311,17 +1407,19 @@
         height: auto !important;
         min-height: 0 !important;
       }
-      .no-print, .print-toolbar, .stage-hint, .flyer-label {
+      .no-print, .print-toolbar, .stage-hint, .flyer-label, .sheet-label, .sheet-cut-line, .sheet-cut-badge, .print-instruction-banner {
         display: none !important;
       }
-      .flyers-preview-wrap {
+
+      /* 1. Standaard A5 Modus (wanneer NIET in A4 drukvel modus) */
+      body:not(.mode-sheet-duplex) .flyers-preview-wrap {
         display: block !important;
         gap: 0 !important;
         width: 210mm !important;
         margin: 0 !important;
         padding: 0 !important;
       }
-      .flyer-preview-item {
+      body:not(.mode-sheet-duplex) .flyer-preview-item {
         display: block !important;
         width: 210mm !important;
         height: 148.5mm !important;
@@ -1334,11 +1432,11 @@
         page-break-after: always !important;
         break-after: page !important;
       }
-      .flyer-preview-item:last-child {
+      body:not(.mode-sheet-duplex) .flyer-preview-item:last-child {
         page-break-after: avoid !important;
         break-after: avoid !important;
       }
-      .flyer-container {
+      body:not(.mode-sheet-duplex) .flyer-container {
         width: 210mm !important;
         height: 148.5mm !important;
         max-height: 148.5mm !important;
@@ -1349,8 +1447,66 @@
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
-      .sheet-a4-wrapper {
+      body:not(.mode-sheet-duplex) .sheets-duplex-wrap,
+      body:not(.mode-sheet-duplex) .sheet-a4-wrapper {
         display: none !important;
+      }
+
+      /* 2. A4 Drukvel Dubbelzijdig Modus */
+      body.mode-sheet-duplex .flyers-preview-wrap {
+        display: none !important;
+      }
+      body.mode-sheet-duplex .sheets-duplex-wrap {
+        display: block !important;
+        width: 210mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      body.mode-sheet-duplex .sheet-a4-item {
+        display: block !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+      body.mode-sheet-duplex .sheet-a4-item:last-child {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+      body.mode-sheet-duplex .sheet-a4-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        overflow: hidden !important;
+      }
+      body.mode-sheet-duplex .sheet-slot {
+        width: 210mm !important;
+        height: 148.5mm !important;
+        max-height: 148.5mm !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      body.mode-sheet-duplex .sheet-slot .flyer-container {
+        width: 210mm !important;
+        height: 148.5mm !important;
+        max-height: 148.5mm !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        overflow: hidden !important;
       }
     }
   </style>
@@ -1413,17 +1569,18 @@
     <div class="toolbar-center">
       <!-- Weergave / Pagina Kiezer -->
       <div class="view-selector">
-        <button type="button" class="btn-mode" id="btnModeFront" onclick="setViewMode('front')">Voorzijde</button>
-        <button type="button" class="btn-mode" id="btnModeBack" onclick="setViewMode('back')">Achterzijde (A6 Tweedeling)</button>
-        <button type="button" class="btn-mode active" id="btnModeBoth" onclick="setViewMode('both')">Beide Zijden</button>
-        <button type="button" class="btn-mode" id="btnModeSheet" onclick="setViewMode('sheet')" title="Print 2x Voorzijde op 1 vel A4 staand!">A4 Drukvel (Voor)</button>
-        <button type="button" class="btn-mode" id="btnModeSheetBack" onclick="setViewMode('sheetBack')" title="Print 2x Achterzijde op 1 vel A4 staand!">A4 Drukvel (Achter)</button>
+        <button type="button" class="btn-mode active" id="btnModeBoth" onclick="setViewMode('both')" title="Standaard A5 liggend (2 pagina's: voor &amp; achter)">A5 Los (2 Pagina's)</button>
+        <button type="button" class="btn-mode btn-sheet-highlight" id="btnModeSheetDuplex" onclick="setViewMode('sheetDuplex')" title="Print 2 complete flyers tegelijk op 1 vel A4 dubbelzijdig!">
+          📄 A4 Drukvel (2x A5 Dubbelzijdig)
+        </button>
+        <button type="button" class="btn-mode" id="btnModeFront" onclick="setViewMode('front')">Alleen Voorzijde</button>
+        <button type="button" class="btn-mode" id="btnModeBack" onclick="setViewMode('back')">Alleen Achterzijde</button>
       </div>
 
       <!-- Marge Schakelaar (Aflopend vs Printer Witrand) -->
       <div class="margin-selector">
-        <button type="button" class="btn-mode active" id="btnMarginBleed" onclick="setMarginMode('bleed')" title="100% aflopend tot de rand (ideaal voor randloos fotopapier op Epson ET-8550)">
-          ✨ 100% Aflopend
+        <button type="button" class="btn-mode active" id="btnMarginBleed" onclick="setMarginMode('bleed')" title="100% aflopend tot de rand (ideaal voor randloos printen op Epson ET-8550)">
+          ✨ 100% Aflopend (Randloos)
         </button>
         <button type="button" class="btn-mode" id="btnMarginSafe" onclick="setMarginMode('safe')" title="4mm printermarge rondom (als je printer niet randloos print)">
           📐 +4mm Witrand
@@ -1438,6 +1595,22 @@
       </button>
     </div>
   </header>
+
+  <!-- Duplex Print Instructie Banner (Zichtbaar bij A4 Drukvel Modus) -->
+  <div class="print-instruction-banner no-print" id="duplexHintBanner" style="display: none;">
+    <div class="banner-title">
+      🖨️ <strong>Epson ET-8550 Printinstellingen voor 2x A5 op A4 Dubbelzijdig Aflopend:</strong>
+    </div>
+    <div class="banner-steps">
+      <span>1. <strong>Papierformaat:</strong> A4 Randloos (Aflopend / Borderless)</span>
+      <span>•</span>
+      <span>2. <strong>Dubbelzijdig:</strong> Aan (Omdraaien over lange zijde)</span>
+      <span>•</span>
+      <span>3. <strong>Schaal:</strong> 100% (Werkelijke grootte / Pas niet aan)</span>
+      <span>•</span>
+      <span>4. <strong>Resultaat:</strong> Snijd het vel doormidden op 148,5 mm voor 2 perfecte flyers!</span>
+    </div>
+  </div>
 
   <!-- Werkveld -->
   <main class="stage">
@@ -1855,97 +2028,123 @@
 
     </div>
 
-    <!-- 3. A4 DRUKVEL WEERGAVE (2x A5 Liggend Boven Elkaar) -->
-    <div class="sheet-a4-wrapper" id="sheetWrap">
-      <div class="sheet-cut-line">
-        <span class="sheet-cut-badge">✂️ SNIJLIJN (148.5 mm)</span>
+    <!-- 3. A4 DRUKVEL WEERGAVE (2 Vellen A4 voor Dubbelzijdig Printen: 2x A5 Boven Elkaar) -->
+    <div class="sheets-duplex-wrap" id="sheetsDuplexWrap">
+      
+      <!-- Vel 1: Voorkant Drukvel (2x A5 Voorzijde) -->
+      <div class="sheet-a4-item" id="sheetPageFront">
+        <span class="sheet-label no-print">📄 A4 Drukvel Pagina 1: Voorkant (2x A5 Liggend)</span>
+        <div class="sheet-a4-wrapper">
+          <div class="sheet-cut-line">
+            <span class="sheet-cut-badge">✂️ SNIJLIJN (148.5 mm)</span>
+          </div>
+          <!-- Flyer 1 Boven -->
+          <div class="sheet-slot top" id="sheetFrontTop"></div>
+          <!-- Flyer 2 Onder -->
+          <div class="sheet-slot bottom" id="sheetFrontBottom"></div>
+        </div>
       </div>
 
-      <!-- Flyer 1 (Boven) -->
-      <div id="sheetTopFlyerSlot"></div>
+      <!-- Vel 2: Achterkant Drukvel (2x A5 Achterzijde) -->
+      <div class="sheet-a4-item" id="sheetPageBack">
+        <span class="sheet-label no-print">📄 A4 Drukvel Pagina 2: Achterkant (2x A5 Liggend)</span>
+        <div class="sheet-a4-wrapper">
+          <div class="sheet-cut-line">
+            <span class="sheet-cut-badge">✂️ SNIJLIJN (148.5 mm)</span>
+          </div>
+          <!-- Flyer 1 Boven -->
+          <div class="sheet-slot top" id="sheetBackTop"></div>
+          <!-- Flyer 2 Onder -->
+          <div class="sheet-slot bottom" id="sheetBackBottom"></div>
+        </div>
+      </div>
 
-      <!-- Flyer 2 (Onder) -->
-      <div id="sheetBottomFlyerSlot"></div>
     </div>
 
   </main>
 
   <script>
+    // Clone & Populate 2x A5 Flyers into the 2 A4 Sheets (Duplex Ready)
+    function populateDuplexSheets() {
+      const frontTop = document.getElementById('sheetFrontTop');
+      const frontBottom = document.getElementById('sheetFrontBottom');
+      const backTop = document.getElementById('sheetBackTop');
+      const backBottom = document.getElementById('sheetBackBottom');
+
+      const flyerFront = document.getElementById('flyerFront');
+      const flyerBack = document.getElementById('flyerBack');
+
+      if (!frontTop || !frontBottom || !backTop || !backBottom || !flyerFront || !flyerBack) return;
+
+      frontTop.innerHTML = '';
+      frontBottom.innerHTML = '';
+      backTop.innerHTML = '';
+      backBottom.innerHTML = '';
+
+      const f1 = flyerFront.cloneNode(true);
+      const f2 = flyerFront.cloneNode(true);
+      const b1 = flyerBack.cloneNode(true);
+      const b2 = flyerBack.cloneNode(true);
+
+      f1.removeAttribute('id');
+      f2.removeAttribute('id');
+      b1.removeAttribute('id');
+      b2.removeAttribute('id');
+
+      frontTop.appendChild(f1);
+      frontBottom.appendChild(f2);
+      backTop.appendChild(b1);
+      backBottom.appendChild(b2);
+    }
+
     // View Selector Logic
     function setViewMode(mode) {
+      const btnBoth = document.getElementById('btnModeBoth');
+      const btnSheetDuplex = document.getElementById('btnModeSheetDuplex');
       const btnFront = document.getElementById('btnModeFront');
       const btnBack = document.getElementById('btnModeBack');
-      const btnBoth = document.getElementById('btnModeBoth');
-      const btnSheet = document.getElementById('btnModeSheet');
-      const btnSheetBack = document.getElementById('btnModeSheetBack');
       
       const itemFront = document.getElementById('itemFront');
       const itemBack = document.getElementById('itemBack');
       const standardWrap = document.getElementById('standardWrap');
-      const sheetWrap = document.getElementById('sheetWrap');
+      const sheetsDuplexWrap = document.getElementById('sheetsDuplexWrap');
       const dynamicStyle = document.getElementById('dynamicPrintStyle');
+      const duplexHintBanner = document.getElementById('duplexHintBanner');
 
-      [btnFront, btnBack, btnBoth, btnSheet, btnSheetBack].forEach(b => b?.classList.remove('active'));
+      [btnBoth, btnSheetDuplex, btnFront, btnBack].forEach(b => b?.classList.remove('active'));
+      document.body.classList.remove('mode-sheet-duplex');
+      if (duplexHintBanner) duplexHintBanner.style.display = 'none';
 
-      if (mode === 'front') {
-        btnFront.classList.add('active');
+      if (mode === 'sheetDuplex' || mode === 'sheet' || mode === 'a4' || mode === 'duplex' || mode === 'sheetFront' || mode === 'sheetBack') {
+        btnSheetDuplex?.classList.add('active');
+        document.body.classList.add('mode-sheet-duplex');
+        standardWrap.style.display = 'none';
+        sheetsDuplexWrap.style.display = 'flex';
+        populateDuplexSheets();
+        if (duplexHintBanner) duplexHintBanner.style.display = 'block';
+        dynamicStyle.innerHTML = `@page { size: 210mm 297mm; margin: 0mm !important; }`;
+      } else if (mode === 'front') {
+        btnFront?.classList.add('active');
         standardWrap.style.display = 'flex';
-        sheetWrap.style.display = 'none';
+        sheetsDuplexWrap.style.display = 'none';
         itemFront.style.display = 'flex';
         itemBack.style.display = 'none';
         dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
       } else if (mode === 'back') {
-        btnBack.classList.add('active');
+        btnBack?.classList.add('active');
         standardWrap.style.display = 'flex';
-        sheetWrap.style.display = 'none';
+        sheetsDuplexWrap.style.display = 'none';
         itemFront.style.display = 'none';
         itemBack.style.display = 'flex';
         dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
-      } else if (mode === 'both') {
-        btnBoth.classList.add('active');
+      } else {
+        // default: both (A5 los)
+        btnBoth?.classList.add('active');
         standardWrap.style.display = 'flex';
-        sheetWrap.style.display = 'none';
+        sheetsDuplexWrap.style.display = 'none';
         itemFront.style.display = 'flex';
         itemBack.style.display = 'flex';
         dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
-      } else if (mode === 'sheet' || mode === 'sheetFront') {
-        btnSheet.classList.add('active');
-        standardWrap.style.display = 'none';
-        sheetWrap.style.display = 'flex';
-        
-        // Clone 2x Front into A4 sheet slots
-        const flyerFrontClone1 = document.getElementById('flyerFront').cloneNode(true);
-        const flyerFrontClone2 = document.getElementById('flyerFront').cloneNode(true);
-        
-        const topSlot = document.getElementById('sheetTopFlyerSlot');
-        const botSlot = document.getElementById('sheetBottomFlyerSlot');
-        
-        topSlot.innerHTML = '';
-        botSlot.innerHTML = '';
-        
-        topSlot.appendChild(flyerFrontClone1);
-        botSlot.appendChild(flyerFrontClone2);
-
-        dynamicStyle.innerHTML = `@page { size: 210mm 297mm; margin: 0mm !important; }`;
-      } else if (mode === 'sheetBack') {
-        btnSheetBack.classList.add('active');
-        standardWrap.style.display = 'none';
-        sheetWrap.style.display = 'flex';
-        
-        // Clone 2x Back into A4 sheet slots
-        const flyerBackClone1 = document.getElementById('flyerBack').cloneNode(true);
-        const flyerBackClone2 = document.getElementById('flyerBack').cloneNode(true);
-        
-        const topSlot = document.getElementById('sheetTopFlyerSlot');
-        const botSlot = document.getElementById('sheetBottomFlyerSlot');
-        
-        topSlot.innerHTML = '';
-        botSlot.innerHTML = '';
-        
-        topSlot.appendChild(flyerBackClone1);
-        botSlot.appendChild(flyerBackClone2);
-
-        dynamicStyle.innerHTML = `@page { size: 210mm 297mm; margin: 0mm !important; }`;
       }
     }
 
@@ -1958,19 +2157,27 @@
       [btnBleed, btnSafe].forEach(b => b?.classList.remove('active'));
 
       if (mode === 'bleed') {
-        btnBleed.classList.add('active');
+        btnBleed?.classList.add('active');
         containers.forEach(c => c.classList.remove('with-margins'));
       } else {
-        btnSafe.classList.add('active');
+        btnSafe?.classList.add('active');
         containers.forEach(c => c.classList.add('with-margins'));
       }
     }
 
-    // Auto-detect mode from URL query parameter (e.g. ?mode=back)
+    // Update before print
+    window.addEventListener('beforeprint', () => {
+      if (document.body.classList.contains('mode-sheet-duplex')) {
+        populateDuplexSheets();
+      }
+    });
+
+    // Auto-detect mode from URL query parameter (e.g. ?mode=sheetDuplex of ?mode=a4)
     window.addEventListener('DOMContentLoaded', () => {
+      populateDuplexSheets();
       const params = new URLSearchParams(window.location.search);
       const m = params.get('mode');
-      if (m && ['front', 'back', 'both', 'sheet', 'sheetFront', 'sheetBack'].includes(m)) {
+      if (m) {
         setViewMode(m);
       }
     });
