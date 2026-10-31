@@ -25,9 +25,12 @@
         var el = document.getElementById('dynamicPrintStyle');
         if (el) el.innerHTML = "@page { size: 210mm 297mm; margin: 0mm !important; }";
         document.documentElement.classList.add("mode-sheet-duplex");
-        if (s.indexOf("rotateBack=0") === -1) {
+        if (s.indexOf("rotateBack=1") !== -1) {
           document.documentElement.classList.add("rotate-back");
         }
+      }
+      if (s.indexOf("safe") !== -1) {
+        document.documentElement.classList.add("mode-safe-margin");
       }
     })();
   </script>
@@ -286,9 +289,21 @@
       border-radius: 1px;
     }
 
-    .flyer-container.with-margins {
-      padding: 4mm !important;
-      background-clip: content-box;
+    /* Printer-Safe Marge Modus (voor Epson ET-8550 & Duplex printing) */
+    body.mode-safe-margin .sheet-slot {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: #ffffff !important;
+    }
+    body.mode-safe-margin .sheet-slot .flyer-container {
+      transform: scale(0.955) !important;
+      transform-origin: center center !important;
+      box-shadow: 0 0 0 0.5px rgba(0,0,0,0.18) !important;
+    }
+    body.mode-safe-margin:not(.mode-sheet-duplex) .flyer-container {
+      transform: scale(0.955) !important;
+      transform-origin: center center !important;
     }
 
     /* ==========================================================================
@@ -544,7 +559,7 @@
       border-radius: 2.6mm;
       overflow: hidden;
       border: 1.2px solid var(--color-border);
-      height: 98mm;
+      height: 94.0mm;
       background: #f8fafc;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       box-sizing: border-box;
@@ -661,12 +676,14 @@
       display: block;
     }
 
-    /* Volle Breedte Voetbalk in Levendig Merk-Groen (#38761d) */
+    /* Volle Breedte Voetbalk in Levendig Merk-Groen (#38761d) met veilige printermarge */
     .front-footer-bar {
       margin: 0 -8.0mm 0 -8.0mm;
       background: #38761d;
       color: #ffffff;
-      padding: 2.0mm 8.0mm 2.4mm 8.0mm;
+      padding: 2.2mm 8.0mm 6.0mm 8.0mm;
+      min-height: 18.2mm;
+      box-sizing: border-box;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -741,8 +758,8 @@
       font-weight: 700;
     }
     .footer-qr-img {
-      width: 14.5mm;
-      height: 14.5mm;
+      width: 13.6mm;
+      height: 13.6mm;
       background: #ffffff;
       padding: 0.8mm;
       border-radius: 1.5mm;
@@ -782,7 +799,7 @@
        LINKER PANEEL A6 (105mm x 148.5mm): HET OFFICIËLE KWALITEITSCERTIFICAAT
        -------------------------------------------------------------------------- */
     .cert-panel {
-      padding: 5.2mm 4.0mm 5.2mm 6.5mm;
+      padding: 5.0mm 4.0mm 5.0mm 8.0mm;
       display: flex;
       flex-direction: column;
       height: 148.5mm;
@@ -1074,7 +1091,7 @@
        RECHTER PANEEL A6 (105mm x 148.5mm): DE GROTE FEESTDAGEN WAARDEBON
        -------------------------------------------------------------------------- */
     .voucher-panel {
-      padding: 5.2mm 6.5mm 5.2mm 4.0mm;
+      padding: 5.0mm 8.0mm 5.0mm 4.0mm;
       display: flex;
       flex-direction: column;
       height: 148.5mm;
@@ -1631,6 +1648,17 @@
         border: none !important;
         overflow: hidden !important;
       }
+      body.mode-sheet-duplex.mode-safe-margin .sheet-slot {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #ffffff !important;
+      }
+      body.mode-sheet-duplex.mode-safe-margin .sheet-slot .flyer-container {
+        transform: scale(0.955) !important;
+        transform-origin: center center !important;
+        box-shadow: 0 0 0 0.5px rgba(0,0,0,0.18) !important;
+      }
       body.mode-sheet-duplex .sheet-cut-line {
         display: block !important;
         position: absolute !important;
@@ -1715,19 +1743,19 @@
       </div>
 
       <!-- Marge Schakelaar (Aflopend vs Printer Witrand) -->
-      <div class="margin-selector">
-        <button type="button" class="btn-mode active" id="btnMarginBleed" onclick="setMarginMode('bleed')" title="100% aflopend tot de rand (ideaal voor randloos printen op Epson ET-8550)">
+      <div class="margin-selector" id="marginSelector">
+        <button type="button" class="btn-mode active" id="btnMarginBleed" onclick="setMarginMode('bleed')" title="100% aflopend tot de rand (ideaal voor randloos printen of professioneel drukwerk)">
           ✨ 100% Aflopend (Randloos)
         </button>
-        <button type="button" class="btn-mode" id="btnMarginSafe" onclick="setMarginMode('safe')" title="4mm printermarge rondom (als je printer niet randloos print)">
-          📐 +4mm Witrand
+        <button type="button" class="btn-mode" id="btnMarginSafe" onclick="setMarginMode('safe')" title="Aanbevolen voor Epson ET-8550 Auto-Duplex: voegt veilige printmarge toe zodat de printer geen groene balk afkapt!">
+          📐 Printer-Safe (+4mm Witrand)
         </button>
       </div>
 
-      <!-- Duplex Rotatie (180° Draaien voor Auto-Duplex) -->
+      <!-- Duplex Rotatie (180° Draaien voor printers die kop-staart omslaan) -->
       <div class="rotation-selector" id="rotationSelector" style="display: none;">
-        <button type="button" class="btn-mode active" id="btnRotateBack" onclick="toggleRotateBack()" title="Achterpagina 180° draaien voor automatische duplex printers (kop-staart flip)">
-          🔄 Achterzijde 180° Draaien (Auto-Duplex)
+        <button type="button" class="btn-mode" id="btnRotateBack" onclick="toggleRotateBack()" title="Achterpagina 180° draaien (alleen nodig als je printer langs de KORTE zijde omslaat)">
+          🔄 Achterzijde 180° Draaien
         </button>
       </div>
     </div>
@@ -1746,11 +1774,13 @@
       🖨️ <strong>Epson ET-8550 Printinstructie voor A4 Drukvel (2x A5 Dubbelzijdig):</strong>
     </div>
     <div class="banner-steps">
-      <span>⚙️ <strong>Automatisch Dubbelzijdig:</strong> De Epson ET-8550 schakelt bij automatisch duplex 'Randloos' uit (forceert ~3mm marge ter bescherming van de rollen). Laat <strong>🔄 Achterzijde 180° Draaien</strong> AAN staan zodat de achterkant kaarsrecht uit de printer komt!</span>
+      <span>⚙️ <strong>Automatisch Dubbelzijdig:</strong> De voettekst heeft nu 6mm ademruimte, zodat tekst en QR-code <strong>nooit</strong> meer worden afgekapt door de printer! Kies in het printvenster <strong>'Werkelijke grootte / 100%'</strong> (geen 'passend maken').</span>
       <span>•</span>
-      <span>✨ <strong>100% Randloos (Aflopend tot de rand):</strong> Druk pagina 1 af met 'A4 Randloos' (enkelzijdig), draai het vel om in de lade, en druk pagina 2 af met 'A4 Randloos'.</span>
+      <span>📐 <strong>Groene balk afgekapt?</strong> Klik hierboven op <strong>'📐 Printer-Safe (+4mm Witrand)'</strong> voor een mooie gelijkmatige witrand rondom beide flyers.</span>
       <span>•</span>
-      <span>✂️ <strong>Snijden:</strong> Snijd het vel doormidden op 148,5 mm voor 2 perfecte flyers!</span>
+      <span>🔄 <strong>Dubbelzijdig Omslaan:</strong> Kies <strong>'Lange zijde omslaan'</strong> in je printvenster (standaard). 'Achterzijde 180° Draaien' hoeft normaal <strong>NIET</strong> aan te staan.</span>
+      <span>•</span>
+      <span>✂️ <strong>Snijden:</strong> Snijd het vel eenmaal horizontaal doormidden op 148,5 mm voor 2 identieke A5 flyers!</span>
     </div>
   </div>
 
@@ -2273,9 +2303,9 @@
         if (duplexHintBanner) duplexHintBanner.style.display = 'block';
         if (rotationSelector) rotationSelector.style.display = 'inline-flex';
 
-        // Auto-duplex printers (zoals Epson) vereisen 180° rotatie van de achterkant
+        // Auto-duplex printers (zoals Epson) omslaan langs lange zijde (standaard: niet roteren)
         const params = new URLSearchParams(window.location.search);
-        const shouldRotate = params.get('rotateBack') !== '0';
+        const shouldRotate = params.get('rotateBack') === '1';
         setRotateBack(shouldRotate);
 
         dynamicStyle.innerHTML = `@page { size: 210mm 297mm; margin: 0mm !important; }`;
@@ -2328,16 +2358,17 @@
     function setMarginMode(mode) {
       const btnBleed = document.getElementById('btnMarginBleed');
       const btnSafe = document.getElementById('btnMarginSafe');
-      const containers = document.querySelectorAll('.flyer-container');
 
       [btnBleed, btnSafe].forEach(b => b?.classList.remove('active'));
 
       if (mode === 'bleed') {
         btnBleed?.classList.add('active');
-        containers.forEach(c => c.classList.remove('with-margins'));
+        document.body.classList.remove('mode-safe-margin');
+        document.documentElement.classList.remove('mode-safe-margin');
       } else {
         btnSafe?.classList.add('active');
-        containers.forEach(c => c.classList.add('with-margins'));
+        document.body.classList.add('mode-safe-margin');
+        document.documentElement.classList.add('mode-safe-margin');
       }
     }
 
@@ -2427,6 +2458,10 @@
       const m = params.get('mode');
       if (m) {
         setViewMode(m);
+      }
+      const margin = params.get('margin');
+      if (margin === 'safe' || params.get('safe') === '1' || window.location.search.indexOf('safe') !== -1) {
+        setMarginMode('safe');
       }
       updateAlignmentReport();
     }
