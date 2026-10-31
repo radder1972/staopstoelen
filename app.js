@@ -2121,14 +2121,14 @@ function initCalendar() {
   // Month toggles
   if (prevMonth) {
     prevMonth.addEventListener("click", () => {
-      state.currentDate.setMonth(state.currentDate.getMonth() - 1);
+      state.currentDate = new Date(state.currentDate.getFullYear(), state.currentDate.getMonth() - 1, 1);
       renderCalendar();
     });
   }
   
   if (nextMonth) {
     nextMonth.addEventListener("click", () => {
-      state.currentDate.setMonth(state.currentDate.getMonth() + 1);
+      state.currentDate = new Date(state.currentDate.getFullYear(), state.currentDate.getMonth() + 1, 1);
       renderCalendar();
     });
   }
