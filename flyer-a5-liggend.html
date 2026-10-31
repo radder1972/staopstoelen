@@ -18,6 +18,20 @@
     }
   </style>
 
+  <script id="early-mode-detect">
+    (function() {
+      var s = window.location.search || "";
+      if (s.indexOf("sheet") !== -1 || s.indexOf("a4") !== -1 || s.indexOf("duplex") !== -1) {
+        var el = document.getElementById('dynamicPrintStyle');
+        if (el) el.innerHTML = "@page { size: 210mm 297mm; margin: 0mm !important; }";
+        document.documentElement.classList.add("mode-sheet-duplex");
+        if (s.indexOf("rotateBack=0") === -1) {
+          document.documentElement.classList.add("rotate-back");
+        }
+      }
+    })();
+  </script>
+
   <style>
     /* ==========================================================================
        HUISSTIJL VARIABELEN (100% AUTHENTIEK GROEN & ORANJE • GEEN BLAUW!)
@@ -136,7 +150,7 @@
       flex-wrap: wrap;
     }
 
-    .view-selector, .margin-selector {
+    .view-selector, .margin-selector, .rotation-selector {
       display: inline-flex;
       background: #0f172a;
       padding: 3px;
@@ -1303,6 +1317,12 @@
       border-radius: 1px;
     }
 
+    /* 180° Kop-staart rotatie voor automatische duplex printers */
+    body.rotate-back #sheetPageBack .sheet-a4-wrapper {
+      transform: rotate(180deg);
+      transform-origin: 50% 50%;
+    }
+
     .sheet-slot {
       width: 210mm;
       height: 148.5mm;
@@ -1482,6 +1502,10 @@
         border: none !important;
         overflow: hidden !important;
       }
+      body.mode-sheet-duplex.rotate-back #sheetPageBack .sheet-a4-wrapper {
+        transform: rotate(180deg) !important;
+        transform-origin: 50% 50% !important;
+      }
       body.mode-sheet-duplex .sheet-slot {
         width: 210mm !important;
         height: 148.5mm !important;
@@ -1591,6 +1615,13 @@
           📐 +4mm Witrand
         </button>
       </div>
+
+      <!-- Duplex Rotatie (180° Draaien voor Auto-Duplex) -->
+      <div class="rotation-selector" id="rotationSelector" style="display: none;">
+        <button type="button" class="btn-mode active" id="btnRotateBack" onclick="toggleRotateBack()" title="Achterpagina 180° draaien voor automatische duplex printers (kop-staart flip)">
+          🔄 Achterzijde 180° Draaien (Auto-Duplex)
+        </button>
+      </div>
     </div>
 
     <div class="toolbar-right">
@@ -1604,16 +1635,14 @@
   <!-- Duplex Print Instructie Banner (Zichtbaar bij A4 Drukvel Modus) -->
   <div class="print-instruction-banner no-print" id="duplexHintBanner" style="display: none;">
     <div class="banner-title">
-      🖨️ <strong>Epson ET-8550 Printinstellingen voor 2x A5 op A4 Dubbelzijdig Aflopend:</strong>
+      🖨️ <strong>Epson ET-8550 Printinstructie voor A4 Drukvel (2x A5 Dubbelzijdig):</strong>
     </div>
     <div class="banner-steps">
-      <span>1. <strong>Papierformaat:</strong> A4 Randloos (Aflopend / Borderless)</span>
+      <span>⚙️ <strong>Automatisch Dubbelzijdig:</strong> De Epson ET-8550 schakelt bij automatisch duplex 'Randloos' uit (forceert ~3mm marge ter bescherming van de rollen). Laat <strong>🔄 Achterzijde 180° Draaien</strong> AAN staan zodat de achterkant kaarsrecht uit de printer komt!</span>
       <span>•</span>
-      <span>2. <strong>Dubbelzijdig:</strong> Aan (Omdraaien over lange zijde)</span>
+      <span>✨ <strong>100% Randloos (Aflopend tot de rand):</strong> Druk pagina 1 af met 'A4 Randloos' (enkelzijdig), draai het vel om in de lade, en druk pagina 2 af met 'A4 Randloos'.</span>
       <span>•</span>
-      <span>3. <strong>Schaal:</strong> 100% (Werkelijke grootte / Pas niet aan)</span>
-      <span>•</span>
-      <span>4. <strong>Resultaat:</strong> Snijd het vel doormidden op 148,5 mm voor 2 perfecte flyers!</span>
+      <span>✂️ <strong>Snijden:</strong> Snijd het vel doormidden op 148,5 mm voor 2 perfecte flyers!</span>
     </div>
   </div>
 
@@ -2115,10 +2144,13 @@
       const sheetsDuplexWrap = document.getElementById('sheetsDuplexWrap');
       const dynamicStyle = document.getElementById('dynamicPrintStyle');
       const duplexHintBanner = document.getElementById('duplexHintBanner');
+      const rotationSelector = document.getElementById('rotationSelector');
+      const btnRotateBack = document.getElementById('btnRotateBack');
 
       [btnBoth, btnSheetDuplex, btnFront, btnBack].forEach(b => b?.classList.remove('active'));
       document.body.classList.remove('mode-sheet-duplex');
       if (duplexHintBanner) duplexHintBanner.style.display = 'none';
+      if (rotationSelector) rotationSelector.style.display = 'none';
 
       if (mode === 'sheetDuplex' || mode === 'sheet' || mode === 'a4' || mode === 'duplex' || mode === 'sheetFront' || mode === 'sheetBack') {
         btnSheetDuplex?.classList.add('active');
@@ -2127,8 +2159,16 @@
         sheetsDuplexWrap.style.display = 'flex';
         populateDuplexSheets();
         if (duplexHintBanner) duplexHintBanner.style.display = 'block';
+        if (rotationSelector) rotationSelector.style.display = 'inline-flex';
+
+        // Auto-duplex printers (zoals Epson) vereisen 180° rotatie van de achterkant
+        const params = new URLSearchParams(window.location.search);
+        const shouldRotate = params.get('rotateBack') !== '0';
+        setRotateBack(shouldRotate);
+
         dynamicStyle.innerHTML = `@page { size: 210mm 297mm; margin: 0mm !important; }`;
       } else if (mode === 'front') {
+        document.body.classList.remove('rotate-back');
         btnFront?.classList.add('active');
         standardWrap.style.display = 'flex';
         sheetsDuplexWrap.style.display = 'none';
@@ -2136,6 +2176,7 @@
         itemBack.style.display = 'none';
         dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
       } else if (mode === 'back') {
+        document.body.classList.remove('rotate-back');
         btnBack?.classList.add('active');
         standardWrap.style.display = 'flex';
         sheetsDuplexWrap.style.display = 'none';
@@ -2144,12 +2185,30 @@
         dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
       } else {
         // default: both (A5 los)
+        document.body.classList.remove('rotate-back');
         btnBoth?.classList.add('active');
         standardWrap.style.display = 'flex';
         sheetsDuplexWrap.style.display = 'none';
         itemFront.style.display = 'flex';
         itemBack.style.display = 'flex';
         dynamicStyle.innerHTML = `@page { size: 210mm 148.5mm; margin: 0mm !important; }`;
+      }
+    }
+
+    // Toggle 180° Achterzijde Rotatie (voor Auto-Duplex printers)
+    function toggleRotateBack() {
+      const isCurrentlyRotated = document.body.classList.contains('rotate-back');
+      setRotateBack(!isCurrentlyRotated);
+    }
+
+    function setRotateBack(enable) {
+      const btn = document.getElementById('btnRotateBack');
+      if (enable) {
+        document.body.classList.add('rotate-back');
+        btn?.classList.add('active');
+      } else {
+        document.body.classList.remove('rotate-back');
+        btn?.classList.remove('active');
       }
     }
 
@@ -2178,14 +2237,16 @@
     });
 
     // Auto-detect mode from URL query parameter (e.g. ?mode=sheetDuplex of ?mode=a4)
-    window.addEventListener('DOMContentLoaded', () => {
+    function initModeFromUrl() {
       populateDuplexSheets();
       const params = new URLSearchParams(window.location.search);
       const m = params.get('mode');
       if (m) {
         setViewMode(m);
       }
-    });
+    }
+    initModeFromUrl();
+    window.addEventListener('DOMContentLoaded', initModeFromUrl);
   </script>
 </body>
 </html>
