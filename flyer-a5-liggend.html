@@ -439,7 +439,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
     }
     .guarantee-icon svg {
       width: 3.8mm;
@@ -491,7 +490,6 @@
       overflow: hidden;
       border: 1.2px solid var(--color-border);
       background: #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       height: 94mm;
     }
 
@@ -520,7 +518,7 @@
       display: flex;
       align-items: center;
       gap: 1.5mm;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.35);
       z-index: 10;
     }
     .front-stock-tag svg {
@@ -534,12 +532,10 @@
       bottom: 3.0mm;
       left: 3.0mm;
       right: 3.0mm;
-      background: rgba(18, 43, 7, 0.94);
-      border: 1.2px solid rgba(243, 146, 35, 0.7);
+      background: #143309;
+      border: 1.4px solid var(--color-terracotta);
       border-radius: 2.4mm;
       padding: 2.4mm 3.6mm;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
-      backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
       gap: 1.2mm;
@@ -586,7 +582,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      border: 1px solid rgba(0,0,0,0.08);
     }
 
     /* Schipper Compact V2 Huisstijl Swoosh Decoratie */
@@ -696,7 +692,7 @@
       background: #ffffff;
       padding: 0.8mm;
       border-radius: 1.5mm;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      border: 1px solid #ffffff;
     }
 
     /* ==========================================================================
@@ -755,7 +751,6 @@
       justify-content: space-between;
       height: 100%;
       box-sizing: border-box;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       position: relative;
     }
 
@@ -819,7 +814,6 @@
       border-radius: 50%;
       object-fit: cover;
       border: 1.5px solid var(--color-forest);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
     }
     .cert-expert-info {
       display: flex;
@@ -834,16 +828,16 @@
       line-height: 1.15;
     }
     .cert-expert-role {
-      font-size: 2.2mm;
-      font-weight: 700;
+      font-size: 2.35mm;
+      font-weight: 800;
       color: var(--color-terracotta-dark);
     }
     .cert-expert-quote {
-      font-size: 2.3mm;
-      font-style: italic;
-      color: #334155;
-      line-height: 1.25;
-      margin-top: 0.2mm;
+      font-size: 2.75mm;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.30;
+      margin-top: 0.3mm;
     }
 
     /* 15-Punts Keurmerk Checklist */
@@ -851,45 +845,73 @@
       background: #ffffff;
       border: 1px solid var(--color-forest-border);
       border-radius: 2.0mm;
-      padding: 2.2mm 2.5mm;
+      padding: 2.2mm 2.6mm;
       margin-bottom: 2.0mm;
     }
     .cert-check-title {
       font-family: var(--font-heading);
-      font-size: 2.6mm;
+      font-size: 2.65mm;
       font-weight: 800;
       color: var(--color-forest-dark);
       display: flex;
       align-items: center;
-      gap: 1.4mm;
+      gap: 1.6mm;
       margin-bottom: 1.6mm;
       border-bottom: 1px solid var(--color-forest-border);
       padding-bottom: 1.0mm;
     }
-    .cert-check-title svg {
-      width: 3.5mm;
-      height: 3.5mm;
+    .cert-check-title-icon {
+      width: 4.2mm;
+      height: 4.2mm;
+      min-width: 4.2mm;
+      background: var(--color-forest-light);
+      border: 1px solid var(--color-forest-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--color-forest);
+    }
+    .cert-check-title-icon svg {
+      width: 2.6mm;
+      height: 2.6mm;
     }
     .cert-check-list {
       display: flex;
       flex-direction: column;
-      gap: 1.4mm;
+      gap: 1.5mm;
     }
     .cert-check-row {
       display: flex;
       align-items: center;
-      gap: 1.8mm;
-      font-size: 2.55mm;
-      font-weight: 600;
+      gap: 2.2mm;
+      font-size: 2.65mm;
       color: #0f172a;
-      line-height: 1.20;
+      line-height: 1.22;
     }
-    .cert-check-svg {
-      width: 3.2mm;
-      height: 3.2mm;
-      min-width: 3.2mm;
-      color: var(--color-forest);
+    .cert-check-row strong {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      color: var(--color-forest-dark);
+    }
+    .cert-check-badge {
+      width: 4.4mm;
+      height: 4.4mm;
+      min-width: 4.4mm;
+      min-height: 4.4mm;
+      background: #4b8f24;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cert-check-badge svg {
+      width: 2.7mm;
+      height: 2.7mm;
+      color: #ffffff;
+      stroke: #ffffff;
+      stroke-width: 3.2;
     }
 
     /* Keurmerk Stempel & Garantie Box (Strak en solide met Ons Zegel) */
@@ -902,7 +924,6 @@
       border-radius: 2.0mm;
       padding: 1.6mm 2.4mm;
       margin-bottom: 1.6mm;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     .cert-brand-seal-wrap {
       width: 17.5mm;
@@ -912,7 +933,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
       flex-shrink: 0;
     }
     .cert-brand-seal-svg {
@@ -979,7 +999,6 @@
       justify-content: space-between;
       height: 100%;
       box-sizing: border-box;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       position: relative;
     }
 
@@ -1008,7 +1027,6 @@
       padding: 0.6mm 2.4mm;
       border-radius: 9999px;
       letter-spacing: 0.3px;
-      box-shadow: 0 1px 3px rgba(243, 146, 35, 0.3);
     }
 
     /* Grote Waarde Knaller */
@@ -1022,7 +1040,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(243, 146, 35, 0.12);
     }
     .voucher-label-sub {
       font-family: var(--font-heading);
@@ -1062,7 +1079,6 @@
       padding: 0.6mm 2.0mm;
       border-radius: 1.2mm;
       margin-left: 1.4mm;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
     .voucher-condition {
       font-family: var(--font-heading);
@@ -1084,14 +1100,12 @@
       grid-template-columns: 28mm 1fr;
       gap: 2.6mm;
       align-items: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
     .voucher-set-img {
       width: 28mm;
       height: 33mm;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
     }
     .voucher-set-details {
       display: flex;
@@ -1233,7 +1247,6 @@
       padding: 0.6mm;
       border-radius: 1.2mm;
       border: 1px solid #fed7aa;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     .voucher-qr-label {
       font-size: 1.65mm;
@@ -1289,6 +1302,11 @@
        PRINT MEDIA QUERIES (100% Pixelperfect voor Epson ET-8550 & PDF Export)
        ========================================================================== */
     @media print {
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+      }
       html, body, main.stage, .stage, html:not(.beheer-mode) main.stage {
         background: transparent !important;
         margin: 0 !important;
@@ -1639,44 +1657,42 @@
                 </div>
               </div>
 
-              <!-- 15-Punts Keurmerk Inspectielijst -->
+              <!-- 15-Punts Keurmerk Inspectielijst (Alle 15 punten transparant & helder) -->
               <div class="cert-check-section">
                 <div class="cert-check-title">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                  <span>HET 15-PUNTS INSPECTIEKEURMERK:</span>
+                  <div class="cert-check-title-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                  </div>
+                  <span>DE 15 CONTROLEPUNTEN (100% GEKEURD):</span>
                 </div>
                 <div class="cert-check-list">
                   <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Motoren &amp; sturing 100% getest</span>
+                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span><strong>Punt 01 - 03:</strong> Motoren, sturing &amp; noodstroomaccu</span>
                   </div>
                   <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Hefmechaniek &amp; frame gesmeerd</span>
+                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span><strong>Punt 04 - 06:</strong> Hefmechaniek, schaarframe &amp; smering</span>
                   </div>
                   <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Bekabeling &amp; noodstroomaccu veilig</span>
+                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span><strong>Punt 07 - 08:</strong> Zithoogte, zitdiepte &amp; armleggers op maat</span>
                   </div>
                   <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Grondige hygiënische stoomreiniging</span>
+                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span><strong>Punt 09 - 10:</strong> Pneumatische lendensteun &amp; koudschuim</span>
                   </div>
                   <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Zithoogte &amp; diepte op maat gesteld</span>
+                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span><strong>Punt 11 - 12:</strong> Geruisloze kantel- &amp; relaxstand</span>
                   </div>
                   <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Kantelfunctie &amp; relaxstand geruisloos</span>
+                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span><strong>Punt 13 - 14:</strong> Hygiënische stoomreiniging &amp; vlekvrij</span>
                   </div>
                   <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Bekleding vlekvrij diep gereinigd</span>
-                  </div>
-                  <div class="cert-check-row">
-                    <svg viewBox="0 0 24 24" class="cert-check-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>1 Jaar volledige garantie aan huis</span>
+                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span><strong>Punt 15:</strong> Eindkeuring &amp; 1 jaar volledige garantie aan huis</span>
                   </div>
                 </div>
               </div>
