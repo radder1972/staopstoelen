@@ -2744,6 +2744,8 @@ function initFloatingMenu() {
       .floating-contact-wrapper.panel-open .floating-btn-main,
       .digital-assistant-panel.active ~ .floating-btn-main { display: none !important; }
       .da-header { flex-shrink: 0 !important; background: #4b8f24 !important; color: #ffffff !important; }
+      .da-close-btn { width: 28px !important; height: 28px !important; border-radius: 50% !important; border: 1.5px solid rgba(255, 255, 255, 0.4) !important; background: #f39223 !important; color: #ffffff !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important; transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease !important; }
+      .da-close-btn:hover { background: #dc8019 !important; transform: scale(1.08) !important; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25) !important; }
       .da-header-info { display: flex !important; flex-direction: column !important; align-items: flex-start !important; justify-content: center !important; gap: 2px !important; }
       .da-status-line { display: inline-flex !important; align-items: center !important; gap: 5px !important; font-size: 0.68rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #a7f3d0 !important; line-height: 1 !important; }
       .da-status-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #34d399 !important; box-shadow: 0 0 6px rgba(52, 211, 153, 0.9) !important; }
@@ -2845,7 +2847,7 @@ function initFloatingMenu() {
         <strong class="da-title">Digitale Zitassistent</strong>
       </div>
       <div class="da-header-actions">
-        <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent">&times;</button>
+        <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
       </div>
     </div>
 
