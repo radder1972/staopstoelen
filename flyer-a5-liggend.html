@@ -1081,136 +1081,146 @@
       text-transform: uppercase;
     }
 
-    /* Grote Waarde Knaller (Royaal, Groter & Vullend) */
-    .voucher-hero-block {
-      background: linear-gradient(135deg, #fff3e0 0%, #ffe8cc 100%);
+    /* ==========================================================================
+       HET GEÏNTEGREERDE WAARDEBON VAK (83.3mm exact gelijk aan Zone 2 + 3 links)
+       Afbeelding & Aanbieding samen in één vak met minimale tekst
+       ========================================================================== */
+    .voucher-featured-box {
+      background: linear-gradient(135deg, #ffffff 0%, #fffdf9 40%, #fff6eb 80%, #ffeed9 100%);
       border: 1.4px solid var(--color-terracotta);
-      border-radius: 2.6mm;
-      padding: 1.8mm 3.6mm;
-      text-align: center;
-      height: 27.5mm;
-      max-height: 27.5mm;
-      box-sizing: border-box;
-      margin-bottom: 1.8mm;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .voucher-label-sub {
-      font-family: var(--font-heading);
-      font-size: 2.7mm;
-      font-weight: 800;
-      color: #9a3412;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      line-height: 1.1;
-    }
-    .voucher-hero-amount {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 1.4mm;
-      line-height: 1;
-      margin: 0.8mm 0;
-    }
-    .voucher-euro {
-      font-family: var(--font-heading);
-      font-size: 6.8mm;
-      font-weight: 800;
-      color: #c2410c;
-    }
-    .voucher-number {
-      font-family: var(--font-heading);
-      font-size: 10.6mm;
-      font-weight: 900;
-      color: #9a3412;
-      letter-spacing: -0.8px;
-    }
-    .voucher-free-tag {
-      background: var(--color-gold);
-      color: #7c2d12;
-      font-family: var(--font-heading);
-      font-size: 3.0mm;
-      font-weight: 900;
-      padding: 0.8mm 2.4mm;
-      border-radius: 1.4mm;
-      margin-left: 2.0mm;
-      letter-spacing: 0.4px;
-    }
-    .voucher-condition {
-      font-family: var(--font-heading);
-      font-size: 2.5mm;
-      font-weight: 800;
-      color: #9a3412;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      line-height: 1.15;
-    }
-
-    /* Product Showcase Zonder Box (Luchtig, Royaal & Open - Foto meer naar het midden) */
-    .voucher-product-showcase {
-      background: transparent;
-      border: none;
-      padding: 0.5mm 1.0mm 0.5mm 8.5mm;
-      height: 54.0mm;
-      max-height: 54.0mm;
+      border-radius: 2.8mm;
+      padding: 3.0mm 3.2mm 3.0mm 2.8mm;
+      height: 83.3mm;
+      max-height: 83.3mm;
       box-sizing: border-box;
       margin-bottom: 1.8mm;
       display: grid;
-      grid-template-columns: 36mm 1fr;
-      gap: 4.5mm;
+      grid-template-columns: 33mm 1fr;
+      gap: 3.0mm;
       align-items: center;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(243, 146, 35, 0.20), 0 2px 8px rgba(243, 146, 35, 0.06);
     }
-    .voucher-set-img {
-      width: 36mm;
-      height: 46mm;
-      max-height: 46mm;
-      object-fit: contain;
-      display: block;
-      justify-self: center;
-    }
-    .voucher-set-details {
+    .vbox-left {
       display: flex;
       flex-direction: column;
-      gap: 0.8mm;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4mm;
+      height: 100%;
     }
-    .set-badge {
+    .vbox-img {
+      width: 32mm;
+      height: 59mm;
+      max-height: 59mm;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.16));
+    }
+    .vbox-img-tag {
+      font-family: var(--font-heading);
+      font-size: 2.0mm;
+      font-weight: 800;
+      color: #9a3412;
+      background: #fed7aa;
+      padding: 0.5mm 2.2mm;
+      border-radius: 1.2mm;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .vbox-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.6mm;
+      height: 100%;
+      padding-right: 1.0mm;
+      box-sizing: border-box;
+    }
+    .vbox-pre-tag {
+      font-family: var(--font-heading);
+      font-size: 2.4mm;
+      font-weight: 800;
+      color: #9a3412;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .vbox-amount-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.0mm;
+      line-height: 1;
+      margin: 0.2mm 0;
+    }
+    .vbox-euro {
+      font-family: var(--font-heading);
+      font-size: 5.8mm;
+      font-weight: 800;
+      color: #c2410c;
+    }
+    .vbox-num {
+      font-family: var(--font-heading);
+      font-size: 9.8mm;
+      font-weight: 900;
+      color: #9a3412;
+      letter-spacing: -0.6px;
+    }
+    .vbox-cadeau {
+      background: var(--color-gold);
+      color: #7c2d12;
+      font-family: var(--font-heading);
+      font-size: 2.8mm;
+      font-weight: 900;
+      padding: 0.8mm 2.2mm;
+      border-radius: 1.4mm;
+      margin-left: 1.2mm;
+      letter-spacing: 0.4px;
+    }
+    .vbox-redeem-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6mm;
+      border-left: 2.2px solid var(--color-terracotta);
+      padding-left: 2.4mm;
+      margin: 0.8mm 0 0 0;
+    }
+    .vbox-redeem-label {
       font-size: 2.2mm;
       font-weight: 800;
-      color: var(--color-terracotta-dark);
+      color: #78350f;
       text-transform: uppercase;
       letter-spacing: 0.4px;
     }
-    .set-title {
+    .vbox-prod-title {
       font-family: var(--font-heading);
-      font-size: 3.35mm;
+      font-size: 3.4mm;
       font-weight: 900;
       color: #1e293b;
       line-height: 1.15;
     }
-    .set-bullets {
-      margin: 0.8mm 0 0 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.0mm;
-    }
-    .set-bullets li {
-      font-size: 2.45mm;
-      color: #334155;
+    .vbox-prod-sub {
+      font-size: 2.4mm;
+      color: #475569;
+      font-weight: 600;
       line-height: 1.25;
+    }
+    .vbox-notice {
+      font-size: 2.1mm;
+      font-weight: 700;
+      color: var(--color-forest);
       display: flex;
       align-items: center;
-      gap: 1.6mm;
-      font-weight: 600;
+      gap: 1.2mm;
+      margin-top: 0.6mm;
     }
-    .set-bullets li::before {
+    .vbox-notice::before {
       content: "✓";
       color: var(--color-forest);
       font-weight: 900;
-      font-size: 2.6mm;
+      font-size: 2.4mm;
     }
 
     /* Barcode & Actiecode Strip Zonder Box (Luchtig & Open) */
@@ -2028,28 +2038,33 @@
                 <span class="voucher-pre-tag">OFFICIËLE WAARDEBON</span>
               </div>
 
-              <!-- Grote Waarde Knaller: € 79,- CADEAU -->
-              <div class="voucher-hero-block">
-                <span class="voucher-label-sub">OFFICIËLE TEGOEDBON</span>
-                <div class="voucher-hero-amount">
-                  <span class="voucher-euro">€</span>
-                  <span class="voucher-number">79,-</span>
-                  <span class="voucher-free-tag">CADEAU</span>
+              <!-- Het Geïntegreerde Waardebon Vak (Afbeelding & Aanbieding samen, minimale tekst) -->
+              <div class="voucher-featured-box">
+                <!-- Links: Afbeelding van de All in House set -->
+                <div class="vbox-left">
+                  <img src="assets/flyer/allinhouse_cropped.png" alt="All in House 5 Jaar Service Set" class="vbox-img">
+                  <span class="vbox-img-tag">Verzorgingsset</span>
                 </div>
-                <div class="voucher-condition">BIJ AANKOOP VAN EEN NIEUWE STA-OPSTOEL</div>
-              </div>
 
-              <!-- Product Showcase met Echte All in House Set Foto -->
-              <div class="voucher-product-showcase">
-                <img src="assets/flyer/allinhouse_cropped.png" alt="All in House 5 Jaar Service Set" class="voucher-set-img">
-                <div class="voucher-set-details">
-                  <div class="set-badge">GRATIS BIJ NIEUWE STOEL</div>
-                  <div class="set-title">All in House® 5 Jaar Service</div>
-                  <ul class="set-bullets">
-                    <li>Textielbescherming &amp; Vlekkenset</li>
-                    <li>Optimaal vlekvrij &amp; waterafstotend</li>
-                    <li>Inclusief 5 jaar service aan huis</li>
-                  </ul>
+                <!-- Rechts: Waardebon van € 79,- en inwisseling -->
+                <div class="vbox-right">
+                  <span class="vbox-pre-tag">OFFICIËLE TEGOEDBON</span>
+                  
+                  <div class="vbox-amount-row">
+                    <span class="vbox-euro">€</span>
+                    <span class="vbox-num">79,-</span>
+                    <span class="vbox-cadeau">CADEAU</span>
+                  </div>
+
+                  <div class="vbox-redeem-block">
+                    <span class="vbox-redeem-label">In te wisselen voor:</span>
+                    <div class="vbox-prod-title">All in House® 5 Jaar Service</div>
+                    <div class="vbox-prod-sub">5 Jaar Vlekkengarantie aan Huis</div>
+                  </div>
+
+                  <div class="vbox-notice">
+                    Inclusief Textielbeschermer &amp; Vlekkenset
+                  </div>
                 </div>
               </div>
 
@@ -2308,8 +2323,7 @@
 
       const zones = [
         { name: 'Zone 1 (Header)', left: '.cert-brand-row', right: '.voucher-top-bar' },
-        { name: 'Zone 2 (Hero/Intro)', left: '.cert-top-intro-block', right: '.voucher-hero-block' },
-        { name: 'Zone 3 (Check/Product)', left: '.cert-check-section', right: '.voucher-product-showcase' },
+        { name: 'Zone 2+3 (Vak)', leftTop: '.cert-top-intro-block', leftBottom: '.cert-check-section', right: '.voucher-featured-box' },
         { name: 'Zone 4 (Seal/Barcode)', left: '.cert-seal-box', right: '.voucher-barcode-row' },
         { name: 'Zone 5 (Footer)', left: '.cert-footer-line', right: '.voucher-contact-box' },
       ];
@@ -2320,20 +2334,43 @@
         diffCardTop: cRect.top - vRect.top,
         diffCardBottom: cRect.bottom - vRect.bottom,
         zones: zones.map(z => {
-          const elL = cCard.querySelector(z.left);
+          let rLTop = null;
+          let rLBottom = null;
+          let rLHeight = null;
+
+          if (z.leftTop && z.leftBottom) {
+            const elLTop = cCard.querySelector(z.leftTop);
+            const elLBottom = cCard.querySelector(z.leftBottom);
+            if (elLTop && elLBottom) {
+              const rectTop = elLTop.getBoundingClientRect();
+              const rectBottom = elLBottom.getBoundingClientRect();
+              rLTop = rectTop.top;
+              rLBottom = rectBottom.bottom;
+              rLHeight = rectBottom.bottom - rectTop.top;
+            }
+          } else {
+            const elL = cCard.querySelector(z.left);
+            if (elL) {
+              const rect = elL.getBoundingClientRect();
+              rLTop = rect.top;
+              rLBottom = rect.bottom;
+              rLHeight = rect.height;
+            }
+          }
+
           const elR = vCard.querySelector(z.right);
-          const rL = elL ? elL.getBoundingClientRect() : null;
           const rR = elR ? elR.getBoundingClientRect() : null;
+
           return {
             name: z.name,
-            leftTop: rL ? +(rL.top - cRect.top).toFixed(2) : null,
+            leftTop: rLTop !== null ? +(rLTop - cRect.top).toFixed(2) : null,
             rightTop: rR ? +(rR.top - vRect.top).toFixed(2) : null,
-            leftBottom: rL ? +(rL.bottom - cRect.top).toFixed(2) : null,
+            leftBottom: rLBottom !== null ? +(rLBottom - cRect.top).toFixed(2) : null,
             rightBottom: rR ? +(rR.bottom - vRect.top).toFixed(2) : null,
-            leftHeight: rL ? +rL.height.toFixed(2) : null,
+            leftHeight: rLHeight !== null ? +rLHeight.toFixed(2) : null,
             rightHeight: rR ? +rR.height.toFixed(2) : null,
-            diffTopPx: (rL && rR) ? +(rL.top - rR.top).toFixed(2) : null,
-            diffBottomPx: (rL && rR) ? +(rL.bottom - rR.bottom).toFixed(2) : null,
+            diffTopPx: (rLTop !== null && rR) ? +(rLTop - rR.top).toFixed(2) : null,
+            diffBottomPx: (rLBottom !== null && rR) ? +(rLBottom - rR.bottom).toFixed(2) : null,
           };
         })
       };
