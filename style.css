@@ -3518,13 +3518,14 @@ section[id], section {
 /* Floating Direct Contact Panel */
 .floating-contact-wrapper {
   position: fixed;
-  bottom: 80px;
-  right: 24px;
-  z-index: 1000;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99999 !important;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+  pointer-events: auto;
 }
 
 .floating-btn {
@@ -8648,43 +8649,56 @@ input[type="checkbox"] {
    ========================================================================== */
 .floating-contact-wrapper {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1200;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99999 !important;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 12px;
+  pointer-events: auto;
 }
 
 .floating-btn-main.assistant-chair-fab {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%);
-  border: 2.5px solid #4b8f24;
-  box-shadow: 0 10px 28px rgba(18, 43, 7, 0.24), 0 0 0 4px rgba(75, 143, 36, 0.14);
+  border: 3px solid #4b8f24;
+  box-shadow: 0 12px 32px rgba(18, 43, 7, 0.28), 0 0 0 5px rgba(75, 143, 36, 0.16);
   padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   transform: none !important;
   overflow: visible;
+  animation: assistantPulseGlow 3.5s ease-in-out infinite;
 }
 
 .floating-btn-main.assistant-chair-fab:hover {
-  transform: none !important;
+  transform: scale(1.04) !important;
   background: radial-gradient(circle at 35% 30%, #ffffff 0%, #eef7e6 65%, #dcecd0 100%);
   border-color: #f39223;
-  box-shadow: 0 12px 32px rgba(18, 43, 7, 0.3), 0 0 0 5px rgba(243, 146, 35, 0.22);
+  box-shadow: 0 16px 40px rgba(18, 43, 7, 0.35), 0 0 0 6px rgba(243, 146, 35, 0.25);
+}
+
+@keyframes assistantPulseGlow {
+  0%, 100% {
+    box-shadow: 0 12px 32px rgba(18, 43, 7, 0.28), 0 0 0 4px rgba(75, 143, 36, 0.16);
+  }
+  50% {
+    box-shadow: 0 16px 42px rgba(18, 43, 7, 0.36), 0 0 0 9px rgba(75, 143, 36, 0.28);
+  }
 }
 
 .assistant-chair-img {
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
+  max-width: 60px;
+  max-height: 60px;
   object-fit: contain;
   display: block;
   pointer-events: none;
@@ -8697,25 +8711,33 @@ input[type="checkbox"] {
   position: absolute;
   top: 3px;
   right: 3px;
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
-  background: #4b8f24;
-  border: 2.5px solid #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background: #10b981;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* Teaser-pil naast/boven de zwevende stoel */
+/* Teaser-pil naast/boven de zwevende stoel - Altijd Prominent in Beeld */
 .assistant-teaser-pill {
   display: flex;
   align-items: center;
-  gap: 6px;
   background: #ffffff;
-  border: 1.5px solid rgba(75, 143, 36, 0.34);
+  border: 2px solid #4b8f24;
   border-radius: 999px;
-  padding: 6px 10px 6px 12px;
-  box-shadow: 0 8px 24px rgba(18, 43, 7, 0.14);
+  padding: 8px 18px 8px 14px;
+  box-shadow: 0 12px 32px rgba(18, 43, 7, 0.22), 0 0 0 4px rgba(75, 143, 36, 0.14);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
   animation: slideInUp 0.35s ease-out;
+}
+
+.assistant-teaser-pill:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: #f39223;
+  box-shadow: 0 16px 40px rgba(18, 43, 7, 0.3), 0 0 0 5px rgba(243, 146, 35, 0.24);
 }
 
 .assistant-teaser-pill.hidden {
@@ -8728,49 +8750,72 @@ input[type="checkbox"] {
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
+  color: inherit;
+}
+
+.assistant-teaser-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.assistant-teaser-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseTeaserDot 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulseTeaserDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .assistant-teaser-badge {
-  background: linear-gradient(135deg, #6ab13c, #4b8f24);
+  background: linear-gradient(135deg, #5cb82f, #3d751d);
   color: #ffffff;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.74rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 3px 8px;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
   border-radius: 999px;
   white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(18, 43, 7, 0.16);
 }
 
 .assistant-teaser-text {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #122b07;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
   white-space: nowrap;
 }
 
-.assistant-teaser-close {
-  background: rgba(18, 43, 7, 0.06);
-  border: 0;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1;
-  cursor: pointer;
+.assistant-teaser-cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #f39223;
+  white-space: nowrap;
+  margin-left: 2px;
 }
 
-.assistant-teaser-close:hover {
-  background: rgba(18, 43, 7, 0.14);
-  color: #122b07;
+.assistant-teaser-cta svg {
+  transition: transform 0.2s ease;
+}
+
+.assistant-teaser-pill:hover .assistant-teaser-cta svg {
+  transform: translateX(3px);
 }
 
 /* Het Digitale Assistent Venster */
@@ -9320,8 +9365,8 @@ input[type="checkbox"] {
 
 @media (max-width: 768px) {
   .floating-contact-wrapper {
-    bottom: 78px;
-    right: 14px;
+    bottom: 20px !important;
+    right: 14px !important;
   }
   .floating-contact-wrapper.panel-open {
     bottom: 12px !important;
@@ -9335,14 +9380,23 @@ input[type="checkbox"] {
     max-height: calc(100vh - 24px) !important;
   }
   .floating-btn-main.assistant-chair-fab {
-    width: 62px;
-    height: 62px;
+    width: 66px !important;
+    height: 66px !important;
   }
   .assistant-chair-img {
-    width: 48px;
-    height: 48px;
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+  }
+  .assistant-teaser-pill {
+    padding: 6px 12px !important;
+    gap: 6px !important;
   }
   .assistant-teaser-text {
-    display: none;
+    display: none !important;
+  }
+  .assistant-teaser-cta {
+    font-size: 0.76rem !important;
   }
 }

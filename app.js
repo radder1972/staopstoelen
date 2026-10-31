@@ -2702,19 +2702,37 @@ function renderTimeSlots() {
    DIGITALE ZIT-ASSISTENT (SCHIPPER COMPACT WONEN 3D STA-OP STOEL AVATAR)
    ========================================================================== */
 function initFloatingMenu() {
-  const wrapper = document.getElementById("floatingContactWrapper");
-  const mainBtn = document.getElementById("btnFloatingMain");
+  let wrapper = document.getElementById("floatingContactWrapper");
+  let mainBtn = document.getElementById("btnFloatingMain");
   const oldMenu = document.getElementById("floatingMenu");
 
-  if (!wrapper || !mainBtn) return;
+  // Automatische bootstrapping indien de wrapper ontbreekt op de pagina
+  if (!wrapper) {
+    wrapper = document.createElement("div");
+    wrapper.className = "floating-contact-wrapper";
+    wrapper.id = "floatingContactWrapper";
+    mainBtn = document.createElement("button");
+    mainBtn.className = "floating-btn floating-btn-main";
+    mainBtn.id = "btnFloatingMain";
+    mainBtn.setAttribute("aria-label", "Open Digitale Zit-Assistent");
+    wrapper.appendChild(mainBtn);
+    document.body.appendChild(wrapper);
+  } else if (!mainBtn) {
+    mainBtn = document.createElement("button");
+    mainBtn.className = "floating-btn floating-btn-main";
+    mainBtn.id = "btnFloatingMain";
+    mainBtn.setAttribute("aria-label", "Open Digitale Zit-Assistent");
+    wrapper.appendChild(mainBtn);
+  }
+
   if (wrapper.dataset.assistantInitialized === "true") return;
   wrapper.dataset.assistantInitialized = "true";
 
   const isSubdir = window.location.pathname.includes("/stoelen/");
   const base = isSubdir ? "../" : "";
-  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.235`;
-  const logoChairSrc = `${base}assets/assistent-stoel-static.svg?v=10.235`;
-  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.235`;
+  const normalChairSrc = `${base}assets/assistent-stoel.svg?v=10.237`;
+  const logoChairSrc = `${base}assets/assistent-stoel-static.svg?v=10.237`;
+  const danceChairSrc = `${base}assets/assistent-stoel-dance.svg?v=10.237`;
 
   // Preload de dansende SVG zodat hij bij de allereerste klik/dubbelklik zonder enige vertraging start
   const preloadDance = new Image();
@@ -2738,8 +2756,24 @@ function initFloatingMenu() {
       .nav-chair-logo-icon { width: 56px !important; height: 56px !important; max-width: 56px !important; max-height: 56px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; transform-origin: 50% 80%; filter: drop-shadow(0 4px 8px rgba(18,43,7,0.16)); cursor: pointer; animation: none !important; }
       .nav-logo-text-group { display: flex !important; flex-direction: column !important; color: var(--color-forest, #4b8f24) !important; }
       .nav-logo-text-group span, .nav-text-logo span, .footer-col h3 span { color: #f39223 !important; }
-      .floating-btn-main.assistant-chair-fab { position: relative !important; width: 72px !important; height: 72px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 2.5px solid #4b8f24 !important; box-shadow: 0 10px 28px rgba(18,43,7,0.24), 0 0 0 4px rgba(75,143,36,0.14) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; }
-      .assistant-chair-img { width: 58px !important; height: 58px !important; max-width: 58px !important; max-height: 58px !important; object-fit: contain !important; display: block !important; pointer-events: none; transform-origin: 50% 80%; }
+      .floating-contact-wrapper { position: fixed !important; bottom: 28px !important; right: 28px !important; z-index: 99999 !important; display: flex !important; flex-direction: column !important; align-items: flex-end !important; gap: 12px !important; pointer-events: auto !important; }
+      .floating-btn-main.assistant-chair-fab { position: relative !important; width: 76px !important; height: 76px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 3px solid #4b8f24 !important; box-shadow: 0 12px 32px rgba(18,43,7,0.28), 0 0 0 5px rgba(75,143,36,0.16) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; cursor: pointer !important; animation: assistantPulseGlow 3.5s ease-in-out infinite !important; overflow: visible !important; }
+      .floating-btn-main.assistant-chair-fab:hover { transform: scale(1.04) !important; border-color: #f39223 !important; box-shadow: 0 16px 40px rgba(18, 43, 7, 0.35), 0 0 0 6px rgba(243, 146, 35, 0.25) !important; }
+      @keyframes assistantPulseGlow { 0%, 100% { box-shadow: 0 12px 32px rgba(18, 43, 7, 0.28), 0 0 0 4px rgba(75, 143, 36, 0.16); } 50% { box-shadow: 0 16px 42px rgba(18, 43, 7, 0.36), 0 0 0 9px rgba(75, 143, 36, 0.28); } }
+      .assistant-chair-img { width: 60px !important; height: 60px !important; max-width: 60px !important; max-height: 60px !important; object-fit: contain !important; display: block !important; pointer-events: none !important; transform-origin: 50% 80% !important; filter: drop-shadow(0 4px 8px rgba(18, 43, 7, 0.22)) !important; }
+      .assistant-online-dot { position: absolute !important; top: 3px !important; right: 3px !important; width: 17px !important; height: 17px !important; border-radius: 50% !important; background: #10b981 !important; border: 3px solid #ffffff !important; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important; }
+      .assistant-teaser-pill { display: flex !important; align-items: center !important; background: #ffffff !important; border: 2px solid #4b8f24 !important; border-radius: 999px !important; padding: 8px 18px 8px 14px !important; box-shadow: 0 12px 32px rgba(18, 43, 7, 0.22), 0 0 0 4px rgba(75, 143, 36, 0.14) !important; cursor: pointer !important; user-select: none !important; transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, border-color 0.2s ease !important; animation: slideInUp 0.35s ease-out !important; }
+      .assistant-teaser-pill:hover { transform: translateY(-2px) scale(1.02) !important; border-color: #f39223 !important; box-shadow: 0 16px 40px rgba(18, 43, 7, 0.3), 0 0 0 5px rgba(243, 146, 35, 0.24) !important; }
+      .assistant-teaser-pill.hidden { display: none !important; }
+      .assistant-teaser-open { background: none !important; border: 0 !important; padding: 0 !important; display: flex !important; align-items: center !important; gap: 10px !important; cursor: pointer !important; text-align: left !important; font-family: inherit !important; color: inherit !important; }
+      .assistant-teaser-live { display: inline-flex !important; align-items: center !important; gap: 6px !important; }
+      .assistant-teaser-pulse-dot { width: 9px !important; height: 9px !important; border-radius: 50% !important; background: #10b981 !important; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7) !important; animation: pulseTeaserDot 2s infinite !important; flex-shrink: 0 !important; }
+      @keyframes pulseTeaserDot { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+      .assistant-teaser-badge { background: linear-gradient(135deg, #5cb82f, #3d751d) !important; color: #ffffff !important; font-size: 0.74rem !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important; padding: 4px 10px !important; border-radius: 999px !important; white-space: nowrap !important; box-shadow: 0 2px 6px rgba(18, 43, 7, 0.16) !important; }
+      .assistant-teaser-text { font-size: 0.88rem !important; font-weight: 700 !important; color: #0f172a !important; white-space: nowrap !important; }
+      .assistant-teaser-cta { display: inline-flex !important; align-items: center !important; gap: 4px !important; font-size: 0.82rem !important; font-weight: 800 !important; color: #f39223 !important; white-space: nowrap !important; margin-left: 2px !important; }
+      .assistant-teaser-cta svg { transition: transform 0.2s ease !important; }
+      .assistant-teaser-pill:hover .assistant-teaser-cta svg { transform: translateX(3px) !important; }
       .da-avatar-img { width: 32px !important; height: 32px !important; max-width: 32px !important; max-height: 32px !important; object-fit: contain !important; transform-origin: 50% 80%; }
       .digital-assistant-panel { display: none; flex-direction: column !important; width: 380px !important; max-width: calc(100vw - 28px) !important; height: 560px !important; max-height: min(600px, calc(100vh - 90px)) !important; background: #ffffff !important; border-radius: 20px !important; border: 1.5px solid rgba(75, 143, 36, 0.28) !important; box-shadow: 0 20px 50px rgba(18, 43, 7, 0.24) !important; overflow: hidden !important; }
       .digital-assistant-panel.active { display: flex !important; }
@@ -2779,10 +2813,14 @@ function initFloatingMenu() {
       @media (max-width: 768px) {
         .nav-text-logo.has-chair-logo { top: 6px !important; gap: 8px !important; }
         .nav-chair-logo-icon { width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; }
-        .floating-btn-main.assistant-chair-fab { width: 62px !important; height: 62px !important; }
-        .assistant-chair-img { width: 48px !important; height: 48px !important; max-width: 48px !important; max-height: 48px !important; }
+        .floating-contact-wrapper { bottom: 20px !important; right: 14px !important; }
+        .floating-btn-main.assistant-chair-fab { width: 66px !important; height: 66px !important; }
+        .assistant-chair-img { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; }
         .floating-contact-wrapper.panel-open { bottom: 12px !important; right: 12px !important; left: 12px !important; align-items: stretch !important; }
         .floating-contact-wrapper.panel-open .digital-assistant-panel { width: 100% !important; max-width: 100% !important; max-height: calc(100vh - 24px) !important; }
+        .assistant-teaser-pill { padding: 6px 12px !important; gap: 6px !important; }
+        .assistant-teaser-text { display: none !important; }
+        .assistant-teaser-cta { font-size: 0.76rem !important; }
       }
     `;
     document.head.appendChild(st);
@@ -2810,23 +2848,32 @@ function initFloatingMenu() {
   // Upgrade de zwevende hoofdknop met het 3D Sta-op Stoel icoon + live status
   mainBtn.classList.add("assistant-chair-fab");
   mainBtn.setAttribute("aria-label", "Open Digitale Zit-Assistent (dubbelklik om de stoel te laten dansen)");
-  mainBtn.setAttribute("title", "Digitale Zit-Assistent • Klik voor hulp, dubbelklik om te dansen");
+  mainBtn.setAttribute("title", "Digitale Zit-Assistent • Klik voor advies, dubbelklik om te dansen");
   mainBtn.innerHTML = `
     <span class="assistant-fab-halo" aria-hidden="true"></span>
-    <img src="${normalChairSrc}" width="58" height="58" style="width:58px;height:58px;max-width:58px;max-height:58px;object-fit:contain;display:block;" alt="Digitale Zit-Assistent Sta-op Stoel" class="assistant-chair-img" id="assistantFabImg">
+    <img src="${normalChairSrc}" width="60" height="60" style="width:60px;height:60px;max-width:60px;max-height:60px;object-fit:contain;display:block;" alt="Digitale Zit-Assistent Sta-op Stoel" class="assistant-chair-img" id="assistantFabImg">
     <span class="assistant-online-dot" aria-hidden="true"></span>
   `;
 
-  // Voeg welkomst-badge toe naast de zwevende stoel-knop
+  // Voeg welkomst-badge toe naast de zwevende stoel-knop - Altijd prominent in beeld
   const teaser = document.createElement("div");
   teaser.className = "assistant-teaser-pill";
   teaser.id = "assistantTeaserPill";
+  teaser.setAttribute("role", "button");
+  teaser.setAttribute("tabindex", "0");
+  teaser.setAttribute("title", "Digitale Zit-Assistent • Klik voor direct advies over maatwerk en ergonomie");
   teaser.innerHTML = `
     <button type="button" class="assistant-teaser-open" id="assistantTeaserOpen">
-      <span class="assistant-teaser-badge">Digitale Assistent</span>
-      <span class="assistant-teaser-text">Vraag over uw zithouding of stoel?</span>
+      <span class="assistant-teaser-live">
+        <span class="assistant-teaser-pulse-dot" aria-hidden="true"></span>
+        <span class="assistant-teaser-badge">Digitale Assistent</span>
+      </span>
+      <span class="assistant-teaser-text">Vraag over zithouding of stoel?</span>
+      <span class="assistant-teaser-cta">
+        <span>Stel vraag</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </span>
     </button>
-    <button type="button" class="assistant-teaser-close" id="assistantTeaserClose" aria-label="Sluit melding">&times;</button>
   `;
 
   // Bouw het interactieve Digitale Assistent venster
@@ -3067,6 +3114,7 @@ function initFloatingMenu() {
   function closeAssistant() {
     panel.classList.remove("active");
     wrapper.classList.remove("panel-open");
+    teaser.classList.remove("hidden");
     stopChairMusic();
   }
 
@@ -3113,20 +3161,20 @@ function initFloatingMenu() {
     triggerChairDance(fabImg, false);
   });
   document.getElementById("daCloseBtn")?.addEventListener("click", closeAssistant);
-  document.getElementById("assistantTeaserOpen")?.addEventListener("click", (e) => {
+  teaser.addEventListener("click", (e) => {
     e.stopPropagation();
     openAssistant();
   });
-  document.getElementById("assistantTeaserClose")?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    teaser.classList.add("hidden");
-    try { sessionStorage.setItem("da_teaser_dismissed", "1"); } catch {}
+  teaser.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openAssistant();
+    }
   });
 
+  // Zorg dat de assistent nooit onderdrukt blijft in de sessie: altijd prominent in beeld
   try {
-    if (sessionStorage.getItem("da_teaser_dismissed") === "1") {
-      teaser.classList.add("hidden");
-    }
+    sessionStorage.removeItem("da_teaser_dismissed");
   } catch {}
 
   // Antwoord-kennisbank van de Digitale Zit-Assistent
