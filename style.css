@@ -402,8 +402,9 @@ section[id], section {
   white-space: nowrap !important;
 }
 
-.nav-text-logo span {
-  color: var(--color-terracotta); /* Make .nl orange */
+.nav-text-logo span,
+.footer-col h3 span {
+  color: var(--color-terracotta, #f39223) !important; /* Make .nl terracotta orange */
   display: inline !important;
   white-space: nowrap !important;
 }
@@ -9280,6 +9281,10 @@ input[type="checkbox"] {
   display: flex !important;
   flex-direction: column !important;
   color: var(--color-forest) !important;
+}
+
+.nav-logo-text-group span {
+  color: var(--color-terracotta, #f39223) !important;
 }
 
 @media (max-width: 768px) {
