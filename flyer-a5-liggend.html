@@ -402,42 +402,33 @@
       display: inline;
     }
 
-    /* Feestdagen Actiebalk (Cadeau t.w.v. € 79,-) */
-    .feestdagen-promo-bar {
-      display: flex;
-      align-items: center;
-      gap: 2mm;
-      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-      border: 1.2px solid var(--color-terracotta);
-      border-radius: 2mm;
-      padding: 1.5mm 2.8mm;
-      margin-bottom: 2.0mm;
-      box-shadow: 0 1px 4px rgba(243, 146, 35, 0.15);
-    }
-    .feestdagen-gift-badge {
-      background: var(--color-terracotta);
-      color: #ffffff;
-      font-family: var(--font-heading);
-      font-size: 2.3mm;
-      font-weight: 900;
-      padding: 0.8mm 2.2mm;
-      border-radius: 1mm;
-      display: flex;
-      align-items: center;
-      gap: 1mm;
-      white-space: nowrap;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-    .feestdagen-promo-text {
-      font-size: 2.65mm;
-      line-height: 1.22;
-      color: #7c2d12;
-      font-weight: 600;
-    }
-    .feestdagen-promo-text strong {
+    /* Feestdagen Actielijn (Luchtig, zónder zware box!) */
+    .front-feestdagen-text {
+      font-size: 3.2mm;
+      line-height: 1.30;
       color: #9a3412;
+      margin-bottom: 2.4mm;
+      font-family: var(--font-heading);
       font-weight: 800;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.6mm;
+    }
+    .front-feestdagen-text .actie-pill {
+      background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+      color: #ffffff;
+      font-size: 2.2mm;
+      font-weight: 900;
+      padding: 0.8mm 2.4mm;
+      border-radius: 9999px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      box-shadow: 0 1px 3px rgba(243, 146, 35, 0.3);
+    }
+    .front-feestdagen-text strong {
+      color: #7c2d12;
+      font-weight: 900;
     }
 
     .front-intro-lead {
@@ -445,23 +436,21 @@
       font-weight: 500;
       color: var(--color-dark);
       line-height: 1.36;
-      margin-bottom: 2.2mm;
+      margin-bottom: 2.4mm;
     }
     .front-intro-lead strong {
       color: var(--color-forest-mid);
       font-weight: 800;
     }
 
-    /* De 4 Zekerheden (GEEN LINAK VERWIJZINGEN • ALLE MOTOREN GETEST) */
+    /* De 4 Zekerheden (Luchtig, zonder zware box) */
     .four-guarantees-list {
       display: flex;
       flex-direction: column;
-      gap: 1.8mm;
-      background: var(--color-forest-subtle);
-      border: 1px solid var(--color-forest-border);
-      border-left: 3.8mm solid var(--color-forest);
-      padding: 2.4mm 3.2mm;
-      border-radius: 2.2mm;
+      gap: 2.0mm;
+      background: transparent;
+      border: none;
+      padding: 0;
     }
 
     .guarantee-item {
@@ -522,7 +511,7 @@
       margin-top: 0.2mm;
     }
 
-    /* Rechter Kolom: Prachtige Productfoto & Kwaliteitszegel */
+    /* Rechter Kolom: Prachtige Productfoto met Ruime Badges */
     .front-right-col {
       position: relative;
       display: flex;
@@ -543,53 +532,90 @@
       display: block;
     }
 
-    .front-seal-badge {
+    /* Losse 'Direct Leverbaar' Badge in het goede Oranje */
+    .front-stock-tag {
       position: absolute;
-      top: 2.5mm;
-      right: 2.5mm;
-      width: 23mm;
-      height: 23mm;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));
-      z-index: 10;
-    }
-
-    /* Prijsvoordeel & Feestdagen Badge op de foto */
-    .front-deal-pill {
-      position: absolute;
-      bottom: 2.5mm;
-      left: 2.5mm;
-      background: rgba(18, 43, 7, 0.94);
+      top: 3.0mm;
+      left: 3.0mm;
+      background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
       color: #ffffff;
-      padding: 1.8mm 3.4mm;
-      border-radius: 1.8mm;
-      border: 1px solid rgba(254, 216, 87, 0.6);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-      display: flex;
-      flex-direction: column;
-    }
-    .front-deal-label {
+      padding: 1.4mm 3.4mm;
+      border-radius: 9999px;
       font-family: var(--font-heading);
-      font-size: 2.1mm;
+      font-size: 2.45mm;
       font-weight: 800;
-      color: var(--color-gold);
-      text-transform: uppercase;
       letter-spacing: 0.4px;
+      text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 1.2mm;
+      gap: 1.5mm;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      z-index: 10;
     }
-    .front-deal-price {
+    .front-stock-tag svg {
+      width: 3.4mm;
+      height: 3.4mm;
+    }
+
+    /* Ruime, Chique Deal Box onderop de foto */
+    .front-deal-box {
+      position: absolute;
+      bottom: 3.0mm;
+      left: 3.0mm;
+      right: 3.0mm;
+      background: rgba(18, 43, 7, 0.94);
+      border: 1.2px solid rgba(243, 146, 35, 0.7);
+      border-radius: 2.4mm;
+      padding: 2.4mm 3.6mm;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+      z-index: 10;
+    }
+    .front-deal-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .front-deal-label-text {
       font-family: var(--font-heading);
-      font-size: 3.9mm;
+      font-size: 2.4mm;
+      font-weight: 700;
+      color: #e2e8f0;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .front-deal-price-text {
+      font-family: var(--font-heading);
+      font-size: 4.4mm;
       font-weight: 900;
       color: #ffffff;
-      line-height: 1.1;
+      line-height: 1;
     }
-    .front-deal-sub {
-      font-size: 2.25mm;
-      color: #fed857;
+    .front-deal-sub-row {
+      display: flex;
+      align-items: center;
+      gap: 1.8mm;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      padding-top: 1.2mm;
+      font-size: 2.5mm;
       font-weight: 700;
+      color: var(--color-gold);
+    }
+    .custom-textiel-icon {
+      width: 4.4mm;
+      height: 4.4mm;
+      min-width: 4.4mm;
+      color: var(--color-terracotta);
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 0.6mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
 
     /* Volle Breedte Voetbalk */
@@ -706,41 +732,15 @@
       box-sizing: border-box;
     }
 
-    /* Midden Vouwlijn Gids (A6 vouw / tweedeling) */
-    .back-fold-guide {
+    /* Subtiele, rustige lichtgrijze middellijn (Geen vouwlijnaanduiding of schaartjes!) */
+    .back-center-divider {
       position: absolute;
       left: 105mm;
-      top: 0;
-      bottom: 0;
+      top: 3.5mm;
+      bottom: 3.5mm;
       width: 0;
-      border-left: 1.2px dashed #94a3b8;
-      z-index: 25;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      transform: translateX(-50%);
-    }
-    .fold-guide-badge {
-      background: #ffffff;
-      border: 1px dashed #94a3b8;
-      color: #64748b;
-      font-family: var(--font-heading);
-      font-size: 1.8mm;
-      font-weight: 700;
-      padding: 0.6mm 2.0mm;
-      border-radius: 9999px;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-    .fold-guide-badge.top {
-      margin-top: 1.8mm;
-    }
-    .fold-guide-badge.bottom {
-      margin-bottom: 1.8mm;
+      border-left: 1px solid #cbd5e1;
+      z-index: 20;
     }
 
     /* --------------------------------------------------------------------------
@@ -877,7 +877,7 @@
       align-items: center;
       gap: 1.4mm;
       margin-bottom: 1.6mm;
-      border-bottom: 1px dashed var(--color-forest-border);
+      border-bottom: 1px solid var(--color-forest-border);
       padding-bottom: 1.0mm;
     }
     .cert-check-title svg {
@@ -906,7 +906,7 @@
       color: var(--color-forest);
     }
 
-    /* Keurmerk Stempel & Garantie Box */
+    /* Keurmerk Stempel & Garantie Box (Strak en solide) */
     .cert-seal-box {
       display: flex;
       align-items: center;
@@ -918,7 +918,7 @@
       margin-bottom: 1.8mm;
     }
     .cert-stamp {
-      border: 1.4px dashed var(--color-forest);
+      border: 1.4px solid var(--color-forest);
       border-radius: 1.6mm;
       padding: 1.2mm 1.8mm;
       display: flex;
@@ -927,6 +927,7 @@
       text-align: center;
       background: #ffffff;
       min-width: 24mm;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
     .stamp-top {
       font-size: 1.6mm;
@@ -993,9 +994,12 @@
       background: var(--color-forest-subtle);
     }
 
+    /* Chique, solide afwerking (Geen stippelrandjes of schaartjes!) */
     .voucher-card {
       background: linear-gradient(135deg, #ffffff 0%, #fffdf8 45%, #fff7eb 100%);
-      border: 1.8px dashed var(--color-terracotta);
+      border: 1.4px solid var(--color-terracotta);
+      outline: 1.6px solid rgba(243, 146, 35, 0.22);
+      outline-offset: -3.0px;
       border-radius: 2.6mm;
       padding: 3.2mm 3.4mm 2.8mm 3.4mm;
       display: flex;
@@ -1011,24 +1015,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1.2px dashed #fed7aa;
+      border-bottom: 1px solid #fed7aa;
       padding-bottom: 1.4mm;
       margin-bottom: 1.6mm;
     }
-    .voucher-cut-label {
-      display: flex;
-      align-items: center;
-      gap: 1.2mm;
-      font-size: 2.05mm;
+    .voucher-pre-tag {
+      font-family: var(--font-heading);
+      font-size: 2.1mm;
       font-weight: 800;
       color: var(--color-terracotta-dark);
-      text-transform: uppercase;
       letter-spacing: 0.3px;
-    }
-    .scissors-svg {
-      width: 3.4mm;
-      height: 3.4mm;
-      color: var(--color-terracotta);
+      text-transform: uppercase;
     }
     .voucher-festive-tag {
       background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
@@ -1047,9 +1044,9 @@
       background: linear-gradient(135deg, #fff3e0 0%, #ffe8cc 100%);
       border: 1.3px solid var(--color-terracotta);
       border-radius: 2.2mm;
-      padding: 2.4mm 2.8mm;
+      padding: 2.2mm 2.8mm;
       text-align: center;
-      margin-bottom: 2.0mm;
+      margin-bottom: 1.8mm;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1057,7 +1054,7 @@
     }
     .voucher-label-sub {
       font-family: var(--font-heading);
-      font-size: 2.35mm;
+      font-size: 2.3mm;
       font-weight: 800;
       color: #9a3412;
       text-transform: uppercase;
@@ -1069,7 +1066,7 @@
       justify-content: center;
       gap: 1.0mm;
       line-height: 1;
-      margin: 0.8mm 0;
+      margin: 0.6mm 0;
     }
     .voucher-euro {
       font-family: var(--font-heading);
@@ -1079,7 +1076,7 @@
     }
     .voucher-number {
       font-family: var(--font-heading);
-      font-size: 8.2mm;
+      font-size: 8.0mm;
       font-weight: 900;
       color: #9a3412;
       letter-spacing: -0.5px;
@@ -1097,43 +1094,74 @@
     }
     .voucher-condition {
       font-family: var(--font-heading);
-      font-size: 2.3mm;
+      font-size: 2.25mm;
       font-weight: 800;
       color: #9a3412;
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
 
-    /* Productomschrijving Cadeau */
-    .voucher-product-box {
+    /* Product Showcase Box met Echte All in House Set Foto */
+    .voucher-product-showcase {
       background: #ffffff;
-      border: 1px solid #fed7aa;
-      border-radius: 2.0mm;
-      padding: 2.2mm 2.6mm;
+      border: 1.2px solid #fed7aa;
+      border-radius: 2.2mm;
+      padding: 2.0mm 2.6mm;
       margin-bottom: 2.0mm;
+      display: grid;
+      grid-template-columns: 28mm 1fr;
+      gap: 2.6mm;
+      align-items: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .voucher-set-img {
+      width: 28mm;
+      height: 33mm;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+    }
+    .voucher-set-details {
       display: flex;
       flex-direction: column;
       gap: 0.5mm;
     }
-    .gift-badge-line {
-      font-size: 2.05mm;
+    .set-badge {
+      font-size: 2.1mm;
       font-weight: 800;
       color: var(--color-terracotta-dark);
       text-transform: uppercase;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
     }
-    .gift-product-title {
+    .set-title {
       font-family: var(--font-heading);
-      font-size: 2.75mm;
-      font-weight: 800;
+      font-size: 2.85mm;
+      font-weight: 900;
       color: #1e293b;
-      line-height: 1.20;
+      line-height: 1.15;
     }
-    .gift-desc {
+    .set-bullets {
+      margin: 0.5mm 0 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8mm;
+    }
+    .set-bullets li {
       font-size: 2.25mm;
-      color: #475569;
-      line-height: 1.28;
-      margin-top: 0.4mm;
+      color: #334155;
+      line-height: 1.24;
+      display: flex;
+      align-items: center;
+      gap: 1.4mm;
+      font-weight: 600;
+    }
+    .set-bullets li::before {
+      content: "✓";
+      color: var(--color-forest);
+      font-weight: 900;
+      font-size: 2.4mm;
     }
 
     /* Barcode & Actiecode Strip */
@@ -1144,29 +1172,29 @@
       background: #fafaf9;
       border: 1px solid #e7e5e4;
       border-radius: 1.8mm;
-      padding: 1.5mm 2.4mm;
-      margin-bottom: 2.0mm;
+      padding: 1.4mm 2.4mm;
+      margin-bottom: 1.8mm;
     }
     .voucher-barcode-wrap {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.5mm;
+      gap: 0.4mm;
     }
     .svg-barcode {
-      width: 34mm;
-      height: 6.0mm;
+      width: 32mm;
+      height: 5.5mm;
       display: block;
     }
     .barcode-text {
       font-family: monospace;
-      font-size: 2.0mm;
+      font-size: 1.95mm;
       font-weight: 700;
       color: #44403c;
       letter-spacing: 0.5px;
     }
     .voucher-inlever-tag {
-      font-size: 2.15mm;
+      font-size: 2.1mm;
       font-weight: 700;
       color: var(--color-terracotta-dark);
       text-align: right;
@@ -1180,7 +1208,7 @@
       align-items: center;
       gap: 2.2mm;
       border-top: 1px solid #fed7aa;
-      padding-top: 1.6mm;
+      padding-top: 1.5mm;
     }
     .voucher-contact-left {
       display: flex;
@@ -1206,10 +1234,10 @@
       gap: 0.4mm;
     }
     .voucher-qr-img {
-      width: 13.0mm;
-      height: 13.0mm;
-      min-width: 13.0mm;
-      min-height: 13.0mm;
+      width: 12.5mm;
+      height: 12.5mm;
+      min-width: 12.5mm;
+      min-height: 12.5mm;
       background: #ffffff;
       padding: 0.6mm;
       border-radius: 1.2mm;
@@ -1217,7 +1245,7 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     .voucher-qr-label {
-      font-size: 1.7mm;
+      font-size: 1.65mm;
       font-weight: 700;
       color: #64748b;
       white-space: nowrap;
@@ -1440,14 +1468,10 @@
                   <span>Ervaar ultiem zitcomfort op uw persoonlijke maat.</span>
                 </h1>
 
-                <!-- FEESTDAGEN ACTIE: Gratis Reinigingsspray / Textielbescherming t.w.v. € 79,- -->
-                <div class="feestdagen-promo-bar">
-                  <div class="feestdagen-gift-badge">
-                    🎁 Feestdagen Actie
-                  </div>
-                  <div class="feestdagen-promo-text">
-                    Gratis <strong>Textielbescherming &amp; Vlekkenspray t.w.v. € 79,-</strong> cadeau bij uw sta-opstoel!
-                  </div>
+                <!-- FEESTDAGEN ACTIE: Luchtig & zónder zware box -->
+                <div class="front-feestdagen-text">
+                  <span class="actie-pill">🎁 Feestdagen Actie</span>
+                  <span>Gratis <strong>All in House® Textielbescherming</strong> t.w.v. € 79,- cadeau!</span>
                 </div>
 
                 <p class="front-intro-lead">
@@ -1505,21 +1529,29 @@
               </div>
             </div>
 
-            <!-- Rechter Kolom: Foto van de Stoel op Visgraatvloer met Zegel -->
+            <!-- Rechter Kolom: Foto van de Stoel op Visgraatvloer met Ruime Badges -->
             <div class="front-right-col">
               <img src="assets/stoelen/fitform_570_zand_visgraatvloer.jpg" alt="Fitform 570 Vario sta-opstoel op warme visgraatvloer" class="front-chair-photo">
               
-              <!-- Officiële Ronde Certified Fitform Kwaliteitszegel -->
-              <img src="assets/sticker_certified_fitform.svg" alt="Certified Fitform Kwaliteitszegel" class="front-seal-badge">
+              <!-- Losse 'Direct Leverbaar' Badge in Merkkleur Oranje -->
+              <div class="front-stock-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                <span>Direct leverbaar uit voorraad</span>
+              </div>
 
-              <!-- Prijsvoordeel Pill linksonder op foto -->
-              <div class="front-deal-pill">
-                <div class="front-deal-label">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
-                  Direct Leverbaar
+              <!-- Ruime, Chique Deal Box onderop de foto -->
+              <div class="front-deal-box">
+                <div class="front-deal-top-row">
+                  <span class="front-deal-label-text">Jonge Occasions v.a.</span>
+                  <span class="front-deal-price-text">€ 750,-</span>
                 </div>
-                <div class="front-deal-price">Occasions v.a. € 750,-</div>
-                <div class="front-deal-sub">🎁 Incl. Textielbescherming t.w.v. € 79,-</div>
+                <div class="front-deal-sub-row">
+                  <!-- Custom Icon voor Textielbescherming (Spray / Shield Sparkle in Oranje) -->
+                  <div class="custom-textiel-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  </div>
+                  <span><strong>Inclusief Textielbescherming</strong> t.w.v. € 79,- Cadeau!</span>
+                </div>
               </div>
             </div>
 
@@ -1564,17 +1596,14 @@
         </article>
       </div>
 
-      <!-- 2. ACHTERZIJDE: HALVE DRAAI A6 TWEEDELING (KWALITEITSCERTIFICAAT + GROTE WAARDEBON) -->
+      <!-- 2. ACHTERZIJDE: A6 TWEEDELING (KWALITEITSCERTIFICAAT + GROTE WAARDEBON) -->
       <div class="flyer-preview-item" id="itemBack">
         <span class="flyer-label no-print">2. Achterzijde • A6 Tweedeling: Kwaliteitscertificaat (Links) &amp; Grote Waardebon (Rechts)</span>
 
         <article class="flyer-container flyer-back" id="flyerBack">
           
-          <!-- Midden Vouwlijn Indicatie (voor dubbelvouwen naar A6 formaat) -->
-          <div class="back-fold-guide">
-            <span class="fold-guide-badge top">✂️ VOUWLIJN (A6)</span>
-            <span class="fold-guide-badge bottom">✂️ DUBBELVOUWEN</span>
-          </div>
+          <!-- Subtiele, rustige lichtgrijze middellijn (Geen vouwlijnaanduiding of schaartjes!) -->
+          <div class="back-center-divider"></div>
 
           <!-- ================================================================
                LINKER PANEEL (A6 - 105 x 148.5mm): HET KWALITEITSCERTIFICAAT
@@ -1676,12 +1705,9 @@
           <div class="voucher-panel">
             <div class="voucher-card">
               
-              <!-- Voucher Bovenbalk met Schaar & Feestdagen Badge -->
+              <!-- Voucher Bovenbalk (Chique & Solide) -->
               <div class="voucher-top-bar">
-                <div class="voucher-cut-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="scissors-svg"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
-                  <span>KNIPBON OF TOON IN SHOWROOM</span>
-                </div>
+                <span class="voucher-pre-tag">OFFICIËLE WAARDEBON</span>
                 <span class="voucher-festive-tag">🎁 FEESTDAGEN ACTIE</span>
               </div>
 
@@ -1696,14 +1722,17 @@
                 <div class="voucher-condition">BIJ AANKOOP VAN UW STA-OPSTOEL</div>
               </div>
 
-              <!-- Productomschrijving Cadeau -->
-              <div class="voucher-product-box">
-                <div class="gift-badge-line">GRATIS COMPLETE ONDERHOUDSSET T.W.V. € 79,-</div>
-                <div class="gift-product-title">All in House® Textielbescherming &amp; Vlekkenspray</div>
-                <div class="gift-desc">
-                  • 500ml Impregneerspray &amp; Actieve Vlekkenspray<br>
-                  • Optimale bescherming tegen koffie, thee, vet en vuil<br>
-                  • Houdt uw sta-opstoel jarenlang in showroomstaat!
+              <!-- Product Showcase met Echte All in House Set Foto -->
+              <div class="voucher-product-showcase">
+                <img src="assets/flyer/allinhouse_cropped.png" alt="All in House 5 Jaar Service Set" class="voucher-set-img">
+                <div class="voucher-set-details">
+                  <div class="set-badge">GRATIS BIJ UW STOEL</div>
+                  <div class="set-title">All in House® 5 Jaar Service</div>
+                  <ul class="set-bullets">
+                    <li>Textielbescherming &amp; Vlekkenset</li>
+                    <li>Optimaal vlekvrij &amp; waterafstotend</li>
+                    <li>Inclusief 5 jaar service aan huis</li>
+                  </ul>
                 </div>
               </div>
 
