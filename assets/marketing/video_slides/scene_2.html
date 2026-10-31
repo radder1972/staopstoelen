@@ -7,6 +7,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-bright: #5cb82f;
+      --color-terracotta: #f39223;
+      --color-forest-sub: #8cb878;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 1920px;
@@ -27,32 +33,43 @@
       pointer-events: none;
     }
     .header {
-      height: 100px;
+      height: 105px;
       padding: 0 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(15, 23, 42, 0.6);
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(12px);
     }
-    .logo-area { display: flex; align-items: center; gap: 16px; }
-    .brand-icon {
-      width: 48px; height: 48px; background: linear-gradient(135deg, #4B8F24, #2E6014);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; color: #FFFFFF;
+    .brand-block { display: flex; flex-direction: column; gap: 2px; }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--color-forest-bright) !important;
+      letter-spacing: -0.8px;
+      line-height: 1;
     }
-    .brand-text { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; }
-    .brand-sub { font-size: 14px; color: #94A3B8; }
+    .brand-logo span { color: var(--color-terracotta) !important; }
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-forest-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
     .scene-badge {
       display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px;
       border-radius: 999px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #FCA5A5; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
+      color: #FCA5A5; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+      letter-spacing: 0.5px; text-transform: uppercase;
     }
     .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #EF4444; box-shadow: 0 0 10px #EF4444; }
 
     .main-content {
-      height: 840px;
+      height: 835px;
       padding: 50px 80px 40px;
       display: grid;
       grid-template-columns: 1fr 1.15fr;
@@ -125,25 +142,16 @@
       align-items: center;
     }
 
-    .breakdown-side {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+    .breakdown-side { display: flex; flex-direction: column; gap: 24px; }
     .kicker {
-      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
       color: #EF4444; text-transform: uppercase; letter-spacing: 2px;
     }
     .main-title {
       font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900;
       line-height: 1.15; color: #FFFFFF;
     }
-    .pain-points {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 10px;
-    }
+    .pain-points { display: flex; flex-direction: column; gap: 16px; margin-top: 10px; }
     .pain-item {
       background: rgba(30, 41, 59, 0.5);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -167,7 +175,7 @@
 
     .subtitle-bar {
       position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(8px);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex; align-items: center; justify-content: center;
       padding: 0 60px; font-size: 20px; font-weight: 600; color: #F1F5F9; text-align: center;
@@ -178,12 +186,9 @@
   <div class="ambient-glow"></div>
 
   <div class="header">
-    <div class="logo-area">
-      <div class="brand-icon">S</div>
-      <div>
-        <div class="brand-text">Staopstoelen.nl</div>
-        <div class="brand-sub">Strategische Investeringsanalyse voor Geertjan</div>
-      </div>
+    <div class="brand-block">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
     </div>
     <div class="scene-badge">
       <span class="scene-dot"></span>

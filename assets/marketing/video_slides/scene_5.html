@@ -7,6 +7,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-bright: #5cb82f;
+      --color-forest-dark: #1a420b;
+      --color-terracotta: #f39223;
+      --color-forest-sub: #8cb878;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 1920px;
@@ -24,52 +31,58 @@
       transform: translateX(-50%);
       width: 1200px;
       height: 600px;
-      background: radial-gradient(circle, rgba(74, 222, 128, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
+      background: radial-gradient(circle, rgba(75, 143, 36, 0.25) 0%, rgba(11, 15, 25, 0) 70%);
       pointer-events: none;
     }
     .header {
-      height: 100px;
+      height: 105px;
       padding: 0 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(15, 23, 42, 0.6);
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(12px);
     }
-    .logo-area { display: flex; align-items: center; gap: 16px; }
-    .brand-icon {
-      width: 48px; height: 48px; background: linear-gradient(135deg, #4B8F24, #2E6014);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; color: #FFFFFF;
+    .brand-block { display: flex; flex-direction: column; gap: 2px; }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--color-forest-bright) !important;
+      letter-spacing: -0.8px;
+      line-height: 1;
     }
-    .brand-text { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; }
-    .brand-sub { font-size: 14px; color: #94A3B8; }
+    .brand-logo span { color: var(--color-terracotta) !important; }
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-forest-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
     .scene-badge {
       display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px;
-      border-radius: 999px; background: rgba(74, 222, 128, 0.15); border: 1px solid rgba(74, 222, 128, 0.4);
-      color: #86EFAC; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
+      border-radius: 999px; background: rgba(75, 143, 36, 0.18); border: 1px solid rgba(75, 143, 36, 0.45);
+      color: var(--color-forest-bright); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+      letter-spacing: 0.5px; text-transform: uppercase;
     }
-    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #4ADE80; box-shadow: 0 0 10px #4ADE80; }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-forest-bright); box-shadow: 0 0 10px var(--color-forest-bright); }
 
     .main-content {
-      height: 840px;
+      height: 835px;
       padding: 30px 80px 30px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .title-area {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+    .title-area { text-align: center; margin-bottom: 20px; }
     .kicker {
       font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
-      color: #4ADE80; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
+      color: var(--color-forest-bright); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
     }
-    .main-title {
-      font-family: 'Montserrat', sans-serif; font-size: 44px; font-weight: 900; letter-spacing: -0.5px;
-    }
+    .main-title { font-family: 'Montserrat', sans-serif; font-size: 44px; font-weight: 900; letter-spacing: -0.5px; }
 
     .calc-grid {
       display: grid;
@@ -87,61 +100,36 @@
       justify-content: space-between;
     }
     .calc-card.hero {
-      border: 1.5px solid #4ADE80;
-      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(75, 143, 36, 0.15));
-      box-shadow: 0 10px 30px rgba(74, 222, 128, 0.2);
+      border: 1.5px solid var(--color-forest-bright);
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(75, 143, 36, 0.18));
+      box-shadow: 0 10px 30px rgba(75, 143, 36, 0.25);
     }
     .c-badge {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 12px;
-      width: fit-content;
+      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 6px;
+      display: inline-block; margin-bottom: 12px; width: fit-content;
     }
     .c-badge.bad { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; }
     .c-badge.warn { background: rgba(245, 158, 11, 0.2); color: #FDE047; }
-    .c-badge.good { background: rgba(74, 222, 128, 0.2); color: #86EFAC; }
+    .c-badge.good { background: rgba(75, 143, 36, 0.25); color: var(--color-forest-bright); }
 
-    .c-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 6px;
-    }
-    .c-cost {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 38px;
-      font-weight: 900;
-      margin-bottom: 14px;
-    }
-    .c-desc {
-      font-size: 15px;
-      color: #CBD5E1;
-      line-height: 1.45;
-      margin-bottom: 16px;
-    }
+    .c-title { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: #FFFFFF; margin-bottom: 6px; }
+    .c-cost { font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; margin-bottom: 14px; }
+    .c-desc { font-size: 15px; color: #CBD5E1; line-height: 1.45; margin-bottom: 16px; }
     .c-result {
-      background: rgba(15, 23, 42, 0.8);
-      border-radius: 12px;
-      padding: 12px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 14px;
-      font-weight: 700;
+      background: rgba(15, 23, 42, 0.8); border-radius: 12px; padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05); font-size: 14px; font-weight: 700;
     }
 
     .roi-highlight-banner {
-      background: linear-gradient(90deg, #15803D, #047857);
+      background: linear-gradient(90deg, #1a420b, #2e6819);
+      border: 1.5px solid var(--color-forest);
       border-radius: 20px;
       padding: 24px 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(21, 128, 61, 0.3);
+      box-shadow: 0 10px 30px rgba(75, 143, 36, 0.35);
     }
     .roi-title {
       font-family: 'Montserrat', sans-serif;
@@ -152,19 +140,20 @@
     }
     .roi-sub { font-size: 16px; color: #DCFCE7; }
     .roi-badge {
-      background: #FFFFFF;
-      color: #166534;
+      background: var(--color-forest-bright);
+      color: #0b1f07;
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: 18px;
       padding: 12px 24px;
       border-radius: 14px;
       letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(92, 184, 47, 0.4);
     }
 
     .subtitle-bar {
       position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(8px);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex; align-items: center; justify-content: center;
       padding: 0 60px; font-size: 20px; font-weight: 600; color: #F1F5F9; text-align: center;
@@ -175,12 +164,9 @@
   <div class="ambient-glow"></div>
 
   <div class="header">
-    <div class="logo-area">
-      <div class="brand-icon">S</div>
-      <div>
-        <div class="brand-text">Staopstoelen.nl</div>
-        <div class="brand-sub">Strategische Investeringsanalyse voor Geertjan</div>
-      </div>
+    <div class="brand-block">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
     </div>
     <div class="scene-badge">
       <span class="scene-dot"></span>
@@ -226,10 +212,10 @@
         <div>
           <span class="c-badge good">Matthias Online</span>
           <div class="c-title">Google Ads + Marktplaats Pro</div>
-          <div class="c-cost" style="color: #4ADE80;">€ 400 - € 450,- /mnd</div>
+          <div class="c-cost" style="color: var(--color-forest-bright);">€ 400 - € 450,- /mnd</div>
           <div class="c-desc">100% gericht op actieve koopzoekers in Dordrecht. Genereert maandelijks 6 tot 12 gerichte leads en afspraken.</div>
         </div>
-        <div class="c-result" style="color: #86EFAC; border-color: rgba(74, 222, 128, 0.4);">
+        <div class="c-result" style="color: var(--color-forest-bright); border-color: rgba(75, 143, 36, 0.45);">
           Uitkomst: € 40 - € 75 per afspraak!
         </div>
       </div>

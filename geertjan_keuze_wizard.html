@@ -59,17 +59,31 @@
     .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
+    }
+    .brand-block {
+      display: flex;
+      flex-direction: column;
     }
     .brand-logo {
       font-family: var(--font-heading);
       font-weight: 900;
-      font-size: 1.35rem;
-      color: #ffffff;
+      font-size: 1.45rem;
+      color: #5cb82f;
       letter-spacing: -0.5px;
+      line-height: 1;
     }
     .brand-logo span {
       color: var(--color-terracotta);
+    }
+    .brand-sub {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #8cb878;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-top: 2px;
     }
     .brand-badge {
       background: rgba(243, 146, 35, 0.15);
@@ -608,7 +622,10 @@
   <!-- TOP HEADER -->
   <header class="wizard-header">
     <div class="brand-wrap">
-      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-block">
+        <div class="brand-logo">staopstoelen<span>.nl</span></div>
+        <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
+      </div>
       <span class="brand-badge">Strategische Beslis-Wizard voor Geertjan</span>
     </div>
     <div style="display: flex; align-items: center; gap: 14px;">

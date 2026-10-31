@@ -162,16 +162,20 @@ def main():
     
     for sc in SCENES:
         print(f"\n[Scene {sc['id']}: {sc['name']}]")
-        print(f"  Generating ElevenLabs audio...")
-        mp3_bytes = generate_voice(sc["text"])
         audio_file = sc["audio"]
-        with open(audio_file, "wb") as f:
-            f.write(mp3_bytes)
+        if os.path.exists(audio_file) and os.path.getsize(audio_file) > 10000:
+            print(f"  ✓ Bestaande ElevenLabs audio gebruikt: {audio_file}")
+        else:
+            print(f"  Generating ElevenLabs audio...")
+            mp3_bytes = generate_voice(sc["text"])
+            with open(audio_file, "wb") as f:
+                f.write(mp3_bytes)
             
         dur = get_audio_duration(audio_file)
         scene_dur = dur + 1.3
         scene_durations.append(scene_dur)
-        print(f"  ✓ Audio opgeslagen: {len(mp3_bytes)//1024} KB (Duur: {dur:.2f}s -> Scene: {scene_dur:.2f}s)")
+        audio_size_kb = os.path.getsize(audio_file) // 1024
+        print(f"  ✓ Audio gereed: {audio_size_kb} KB (Duur: {dur:.2f}s -> Scene: {scene_dur:.2f}s)")
         
         part_file = render_scene(sc, scene_dur)
         part_files.append(part_file)
