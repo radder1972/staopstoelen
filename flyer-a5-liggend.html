@@ -915,15 +915,15 @@
       flex-direction: column;
       justify-content: space-between;
       flex: 1;
-      padding-top: 0.6mm;
+      padding-top: 1.0mm;
     }
     .cert-check-row {
       display: flex;
       align-items: center;
-      gap: 2.0mm;
-      font-size: 2.55mm;
+      gap: 2.2mm;
+      font-size: 2.75mm;
       color: #0f172a;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     .cert-check-row strong {
       font-family: var(--font-heading);
@@ -931,10 +931,10 @@
       color: var(--color-forest-dark);
     }
     .cert-check-badge {
-      width: 4.2mm;
-      height: 4.2mm;
-      min-width: 4.2mm;
-      min-height: 4.2mm;
+      width: 4.4mm;
+      height: 4.4mm;
+      min-width: 4.4mm;
+      min-height: 4.4mm;
       background: #4b8f24;
       border-radius: 50%;
       display: flex;
@@ -943,8 +943,8 @@
       flex-shrink: 0;
     }
     .cert-check-badge svg {
-      width: 2.6mm;
-      height: 2.6mm;
+      width: 2.8mm;
+      height: 2.8mm;
       color: #ffffff;
       stroke: #ffffff;
       stroke-width: 3.2;
@@ -1089,14 +1089,14 @@
       background: linear-gradient(135deg, #ffffff 0%, #fffdf9 40%, #fff6eb 80%, #ffeed9 100%);
       border: 1.4px solid var(--color-terracotta);
       border-radius: 2.8mm;
-      padding: 3.0mm 3.2mm 3.0mm 2.8mm;
+      padding: 3.5mm 3.8mm 3.5mm 4.5mm;
       height: 83.3mm;
       max-height: 83.3mm;
       box-sizing: border-box;
       margin-bottom: 1.8mm;
       display: grid;
-      grid-template-columns: 33mm 1fr;
-      gap: 3.0mm;
+      grid-template-columns: 27mm 1fr;
+      gap: 3.5mm;
       align-items: center;
       position: relative;
       box-shadow: inset 0 0 0 1px rgba(243, 146, 35, 0.20), 0 2px 8px rgba(243, 146, 35, 0.06);
@@ -1106,24 +1106,26 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.4mm;
+      gap: 1.6mm;
       height: 100%;
+      padding: 2.0mm 0;
+      box-sizing: border-box;
     }
     .vbox-img {
-      width: 32mm;
-      height: 59mm;
-      max-height: 59mm;
+      width: 24mm;
+      height: 44mm;
+      max-height: 44mm;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.16));
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.14));
     }
     .vbox-img-tag {
       font-family: var(--font-heading);
-      font-size: 2.0mm;
+      font-size: 1.95mm;
       font-weight: 800;
       color: #9a3412;
       background: #fed7aa;
-      padding: 0.5mm 2.2mm;
+      padding: 0.5mm 2.0mm;
       border-radius: 1.2mm;
       letter-spacing: 0.4px;
       text-transform: uppercase;
@@ -1927,42 +1929,34 @@
                 </div>
               </div>
 
-              <!-- 15-Punts Keurmerk Inspectielijst (Alle 15 punten transparant & helder) -->
+              <!-- 5 Kwaliteitspijlers Inspectielijst (Rustig, overzichtelijk & krachtig) -->
               <div class="cert-check-section">
                 <div class="cert-check-title">
                   <div class="cert-check-title-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                   </div>
-                  <span>DE 15 CONTROLEPUNTEN (100% GEKEURD):</span>
+                  <span>DE 5 KWALITEITSPIJLERS (100% GEKEURD):</span>
                 </div>
                 <div class="cert-check-list">
                   <div class="cert-check-row">
                     <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <span><strong>Punt 01 - 03:</strong> Motoren, sturing &amp; noodstroomaccu</span>
+                    <span><strong>1. Elektrische keuring:</strong> Motoren, sturing &amp; noodaccu 100% veilig</span>
                   </div>
                   <div class="cert-check-row">
                     <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <span><strong>Punt 04 - 06:</strong> Hefmechaniek, schaarframe &amp; smering</span>
+                    <span><strong>2. Mechanisch schaarframe:</strong> Stabiel hefmechaniek, stil &amp; gesmeerd</span>
                   </div>
                   <div class="cert-check-row">
                     <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <span><strong>Punt 07 - 08:</strong> Zithoogte, zitdiepte &amp; armleggers op maat</span>
+                    <span><strong>3. Ergonomisch maatwerk:</strong> Zithoogte, zitdiepte &amp; armleggers op maat</span>
                   </div>
                   <div class="cert-check-row">
                     <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <span><strong>Punt 09 - 10:</strong> Pneumatische lendensteun &amp; koudschuim</span>
+                    <span><strong>4. Ondersteunend zitcomfort:</strong> Koudschuim vulling &amp; actieve lendensteun</span>
                   </div>
                   <div class="cert-check-row">
                     <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <span><strong>Punt 11 - 12:</strong> Geruisloze kantel- &amp; relaxstand</span>
-                  </div>
-                  <div class="cert-check-row">
-                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <span><strong>Punt 13 - 14:</strong> Hygiënische stoomreiniging &amp; vlekvrij</span>
-                  </div>
-                  <div class="cert-check-row">
-                    <div class="cert-check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <span><strong>Punt 15:</strong> Eindkeuring &amp; 1 jaar volledige garantie aan huis</span>
+                    <span><strong>5. Dieptereiniging &amp; garantie:</strong> Hygiënisch vlekvrij + 1 jaar garantie aan huis</span>
                   </div>
                 </div>
               </div>
