@@ -51,10 +51,11 @@ SCENES = [
     },
     {
         "id": 3,
-        "name": "De Businesscase van de Klik",
-        "text": "En kijk nu naar de businesscase van die klik. Negenentachtig geïnteresseerden hebben jou bij elkaar nog geen veertien euro gekost. Dat is amper vijftien cent per bezoeker! Als uit al die mensen maar één iemand naar de Merwedestraat komt en een stoel koopt, pak je twaalfhonderd euro marge. Die veertien euro levert je een veelvoud aan winst op!",
-        "image": "assets/marketing/video_slides/short_scene_2.png",
-        "audio": "assets/marketing/video_audio/short_scene_2.mp3",
+        "name": "De Marketing Fruitmachine & Jackpot",
+        "text": "Marketing is voor Geertjan geen gokkast meer waar je vierhonderd euro in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot: voor amper vijftien cent per klik pak je negenentachtig gerichte zoekers en twaalfhonderd euro marge op één verkochte stoel!",
+        "image": "assets/marketing/video_slides/short_scene_fruitmachine.png",
+        "audio": "assets/marketing/video_audio/short_scene_fruitmachine.mp3",
+        "sfx": "assets/marketing/video_audio/slot_machine_sfx.wav",
         "zoom_rate": 0.0003
     },
     {
@@ -156,7 +157,24 @@ def main():
         scene_durations.append(scene_dur)
         print(f"  ✓ Audio gereed: {len(mp3_bytes)//1024} KB (Duur: {dur:.2f}s -> Scene: {scene_dur:.2f}s)")
         
-        part_file = render_scene(sc, scene_dur)
+        if sc.get("sfx") and os.path.exists(sc["sfx"]):
+            mixed_audio = f"assets/marketing/video_audio/mixed_scene_{sc['id']}.mp3"
+            print(f"  🎰 Mixen van Slot Machine Sound Effects ({sc['sfx']})...")
+            mix_cmd = [
+                FFMPEG, "-y",
+                "-i", audio_file,
+                "-i", sc["sfx"],
+                "-filter_complex", "[1:a]volume=0.48[sfx]; [0:a]volume=1.0[voice]; [voice][sfx]amix=inputs=2:duration=first:dropout_transition=2",
+                "-c:a", "libmp3lame",
+                "-b:a", "192k",
+                mixed_audio
+            ]
+            subprocess.run(mix_cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            sc_render = dict(sc)
+            sc_render["audio"] = mixed_audio
+            part_file = render_scene(sc_render, scene_dur)
+        else:
+            part_file = render_scene(sc, scene_dur)
         part_files.append(part_file)
 
     concat_list_file = "assets/marketing/video_parts/concat_list.txt"

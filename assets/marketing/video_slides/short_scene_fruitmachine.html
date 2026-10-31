@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Scene - De Marketing Fruitmachine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-bright: #5cb82f;
+      --color-forest-dark: #1a420b;
+      --color-terracotta: #f39223;
+      --color-forest-sub: #8cb878;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #080C16;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #F8FAFC;
+      position: relative;
+    }
+    .ambient-glow {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, rgba(8, 12, 22, 0) 70%);
+      pointer-events: none;
+    }
+    .ambient-glow-2 {
+      position: absolute;
+      bottom: -150px;
+      right: 15%;
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(92, 184, 47, 0.25) 0%, rgba(8, 12, 22, 0) 70%);
+      pointer-events: none;
+    }
+    .header {
+      height: 105px;
+      padding: 0 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+    }
+    .brand-block { display: flex; flex-direction: column; gap: 2px; }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--color-forest-bright) !important;
+      letter-spacing: -0.8px;
+      line-height: 1;
+    }
+    .brand-logo span { color: var(--color-terracotta) !important; }
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-forest-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scene-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px;
+      border-radius: 999px; background: rgba(245, 158, 11, 0.2); border: 1.5px solid #f59e0b;
+      color: #fbbf24; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+      letter-spacing: 1px; text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #fbbf24; box-shadow: 0 0 10px #fbbf24; }
+
+    .main-content {
+      height: 835px;
+      padding: 30px 80px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-banner { text-align: center; margin-bottom: 12px; }
+    .hero-kicker {
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+      color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px;
+      background: rgba(243, 146, 35, 0.15); padding: 4px 16px; border-radius: 999px; border: 1px solid rgba(243, 146, 35, 0.3);
+    }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif; font-size: 46px; font-weight: 900; letter-spacing: -0.5px; line-height: 1.15;
+    }
+
+    /* THE SLOT MACHINE CASING */
+    .slot-machine-wrapper {
+      background: linear-gradient(180deg, #1e293b 0%, #090e17 100%);
+      border: 3.5px solid #f59e0b;
+      border-radius: 28px;
+      padding: 24px 32px 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 158, 11, 0.3);
+      position: relative;
+    }
+    .marquee-header {
+      background: #020617;
+      border: 1.5px solid #d97706;
+      border-radius: 14px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .marquee-title {
+      font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 900; color: #fbbf24; letter-spacing: 2px;
+    }
+    .marquee-jackpot {
+      background: linear-gradient(90deg, #1A420B, #2E6819);
+      color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px;
+      padding: 6px 16px; border-radius: 8px; border: 1px solid var(--color-forest-bright);
+      box-shadow: 0 0 15px rgba(92, 184, 47, 0.5);
+    }
+
+    /* REELS GRID */
+    .reels-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.25fr;
+      gap: 20px;
+      background: #020617;
+      border: 2px solid #334155;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: inset 0 10px 25px rgba(0,0,0,0.9), inset 0 -10px 25px rgba(0,0,0,0.9);
+      margin-bottom: 18px;
+    }
+    .reel-card {
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+      border: 2px solid #475569;
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+    .reel-card.jackpot {
+      border: 2.5px solid var(--color-forest-bright);
+      background: linear-gradient(180deg, #0f2e09 0%, #1a420b 100%);
+      box-shadow: 0 0 30px rgba(92, 184, 47, 0.5);
+    }
+    .reel-icon { font-size: 42px; margin-bottom: 6px; }
+    .reel-main { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; line-height: 1.1; margin-bottom: 4px; }
+    .reel-sub { font-size: 13px; font-weight: 700; color: #94A3B8; }
+
+    /* LEVER VISUAL */
+    .lever-dock {
+      position: absolute;
+      right: -36px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .l-ball {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+      margin-bottom: -10px; z-index: 2;
+    }
+    .l-bar {
+      width: 14px; height: 110px; background: linear-gradient(90deg, #cbd5e1, #64748b);
+      border-radius: 7px;
+    }
+    .l-base {
+      width: 40px; height: 30px; background: #334155; border-radius: 8px; border: 1.5px solid #64748b;
+      margin-top: -6px;
+    }
+
+    /* BOTTOM COMPARISON STRIP */
+    .compare-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.25fr;
+      gap: 18px;
+    }
+    .c-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .c-box.bad { border-left: 4px solid #ef4444; }
+    .c-box.flyer { border-left: 4px solid var(--color-terracotta); }
+    .c-box.win {
+      border-left: 4px solid var(--color-forest-bright);
+      background: rgba(75, 143, 36, 0.2);
+    }
+    .c-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; margin-bottom: 2px; }
+
+    .subtitle-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 75px;
+      background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(8px);
+      border-top: 1.5px solid rgba(75, 143, 36, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px; font-size: 21px; font-weight: 700; color: #F8FAFC; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow-2"></div>
+
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand-logo">staopstoelen<span>.nl</span></div>
+      <div class="brand-sub">Specialist in Ergonomisch Zitcomfort</div>
+    </div>
+    <div class="scene-badge">
+      <span class="scene-dot"></span>
+      De Marketing Fruitmachine
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="hero-banner">
+      <span class="hero-kicker">Marketing is voor Geertjan geen gokkast meer</span>
+      <h1 class="hero-title">Stop met Gokken op TPM &amp; Flyers... <br><span style="color: var(--color-forest-bright);">Trek aan de hendel van de Online Jackpot!</span></h1>
+    </div>
+
+    <!-- THE FRUIT MACHINE VISUAL -->
+    <div class="slot-machine-wrapper">
+      
+      <!-- Top Marquee -->
+      <div class="marquee-header">
+        <div class="marquee-title">★ STA-OP STOELEN DORDRECHT CASINO ★</div>
+        <div class="marquee-jackpot">HOOFDPRIJS: € 1.200,- MARGE OP 1 STOEL (90x ROI)</div>
+      </div>
+
+      <!-- 3 WINNING REELS -->
+      <div class="reels-grid">
+        <!-- Reel 1 -->
+        <div class="reel-card">
+          <div class="reel-icon">🛒</div>
+          <div class="reel-main" style="color: var(--color-forest-bright);">Marktplaats Pro</div>
+          <div class="reel-sub">Inzet: amper € 0,15 per klik</div>
+        </div>
+
+        <!-- Reel 2 -->
+        <div class="reel-card">
+          <div class="reel-icon">🎯</div>
+          <div class="reel-main" style="color: var(--color-terracotta);">89 Stoelkliks</div>
+          <div class="reel-sub">8.306 gerichte vertoningen</div>
+        </div>
+
+        <!-- Reel 3: Jackpot -->
+        <div class="reel-card jackpot">
+          <div class="reel-icon">💎</div>
+          <div class="reel-main" style="color: #ffffff;">€ 1.200,- Marge!</div>
+          <div class="reel-sub" style="color: #86efac; font-weight: 800;">1 Stoel = 90x Terugverdiend</div>
+        </div>
+      </div>
+
+      <!-- Side Lever Graphic -->
+      <div class="lever-dock">
+        <div class="l-ball"></div>
+        <div class="l-bar"></div>
+        <div class="l-base"></div>
+      </div>
+
+      <!-- Bottom Comparison Cards -->
+      <div class="compare-strip">
+        <div class="c-box bad">
+          <div class="c-title" style="color: #f87171;">De Oude TPM Gok</div>
+          <div>€ 400,- per maand vaste fee kwijt voor een vage PDF. Nul proefzitters gegarandeerd.</div>
+        </div>
+        <div class="c-box flyer">
+          <div class="c-title" style="color: var(--color-terracotta);">De 10.000 Flyer Gok</div>
+          <div>€ 1.250,- via Spotta naar willekeurige deuren. 98% belandt ongelezen in de papierbak.</div>
+        </div>
+        <div class="c-box win">
+          <div class="c-title" style="color: var(--color-forest-bright);">De Online Jackpot</div>
+          <div>Voor € 13,70 al 89 gerichte stoelkliks. Verkoop 1 stoel en pak € 1.200 winst!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="subtitle-bar">
+    "Marketing is geen gokkast waar je € 400 in gooit en hoopt op geluk. Met onze online motor valt gegarandeerd de jackpot!"
+  </div>
+</body>
+</html>
