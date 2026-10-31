@@ -2728,7 +2728,7 @@ function initFloatingMenu() {
     document.head.appendChild(fav);
   }
 
-  // Injecteer kritieke CSS ook direct in <head> zodat gecachete stylesheets nooit een te grote SVG tonen
+  // Injecteer kritieke CSS ook direct in <head> zodat gecachete stylesheets direct up-to-date zijn
   if (!document.getElementById("da-inline-styles")) {
     const st = document.createElement("style");
     st.id = "da-inline-styles";
@@ -2739,11 +2739,37 @@ function initFloatingMenu() {
       .floating-btn-main.assistant-chair-fab { position: relative !important; width: 72px !important; height: 72px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 2.5px solid #4b8f24 !important; box-shadow: 0 10px 28px rgba(18,43,7,0.24), 0 0 0 4px rgba(75,143,36,0.14) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; }
       .assistant-chair-img { width: 58px !important; height: 58px !important; max-width: 58px !important; max-height: 58px !important; object-fit: contain !important; display: block !important; pointer-events: none; transform-origin: 50% 80%; }
       .da-avatar-img { width: 32px !important; height: 32px !important; max-width: 32px !important; max-height: 32px !important; object-fit: contain !important; transform-origin: 50% 80%; }
+      .floating-contact-wrapper.panel-open .floating-btn-main,
+      .digital-assistant-panel.active ~ .floating-btn-main { display: none !important; }
+      .da-header-info { display: flex !important; flex-direction: column !important; align-items: flex-start !important; justify-content: center !important; gap: 2px !important; }
+      .da-status-line { display: inline-flex !important; align-items: center !important; gap: 5px !important; font-size: 0.68rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #a7f3d0 !important; line-height: 1 !important; }
+      .da-status-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #34d399 !important; box-shadow: 0 0 6px rgba(52, 211, 153, 0.9) !important; }
+      .da-title { font-size: 0.95rem !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+      .da-quick-chips { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; margin-top: 10px !important; }
+      .da-chip { width: 100% !important; padding: 7px 9px !important; border-radius: 9px !important; border: 1px solid #d4e7c7 !important; background: #f7fbf4 !important; color: #122b07 !important; font-size: 0.74rem !important; font-weight: 600 !important; text-align: left !important; cursor: pointer !important; line-height: 1.25 !important; transition: all 0.15s ease !important; box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04) !important; }
+      .da-chip:hover { background: #e9f4e2 !important; border-color: #4b8f24 !important; }
+      .da-input-wrapper { background: #ffffff !important; border-top: 1.5px solid #e3edd9 !important; padding: 10px 14px 8px !important; }
+      .da-input-callout { display: flex !important; align-items: center !important; gap: 6px !important; font-size: 0.73rem !important; font-weight: 700 !important; color: #2e6819 !important; margin-bottom: 6px !important; }
+      .da-input-bar { display: flex !important; align-items: center !important; gap: 8px !important; background: #fcfefc !important; border: 2px solid #4b8f24 !important; border-radius: 999px !important; padding: 4px 6px 4px 16px !important; min-height: 48px !important; box-shadow: 0 4px 14px rgba(75, 143, 36, 0.16) !important; transition: all 0.2s ease !important; }
+      .da-input-bar:focus-within { background: #ffffff !important; border-color: #2e6819 !important; box-shadow: 0 4px 18px rgba(46, 104, 25, 0.28) !important; }
+      .da-input { flex: 1 !important; border: none !important; background: transparent !important; padding: 8px 0 !important; font-size: 0.98rem !important; font-family: inherit !important; color: #122b07 !important; font-weight: 500 !important; }
+      .da-input::placeholder { color: #64748b !important; font-size: 0.88rem !important; font-weight: 400 !important; }
+      .da-input:focus { outline: none !important; }
+      .da-send-btn { width: 40px !important; height: 40px !important; border-radius: 50% !important; border: 0 !important; background: linear-gradient(135deg, #4b8f24 0%, #2e6819 100%) !important; color: #ffffff !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; flex-shrink: 0 !important; box-shadow: 0 2px 7px rgba(18, 43, 7, 0.22) !important; transition: transform 0.15s ease, background 0.15s ease !important; }
+      .da-send-btn:hover { transform: scale(1.06) !important; background: #2e6819 !important; }
+      .da-footer-sub { display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 6px 14px 8px !important; background: #f8fafc !important; border-top: 1px solid #edf2f7 !important; gap: 6px !important; }
+      .da-sub-hint { font-size: 0.68rem !important; color: #94a3b8 !important; font-weight: 600 !important; letter-spacing: 0.02em !important; white-space: nowrap !important; }
+      .da-sub-actions { display: flex !important; align-items: center !important; gap: 5px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
+      .da-sub-btn { display: inline-flex !important; align-items: center !important; gap: 4px !important; padding: 3px 8px !important; border-radius: 999px !important; font-size: 0.68rem !important; font-weight: 600 !important; color: #64748b !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; text-decoration: none !important; line-height: 1.3 !important; transition: all 0.15s ease !important; white-space: nowrap !important; }
+      .da-sub-btn:hover { background: #f1f5f9 !important; color: #1e293b !important; border-color: #cbd5e1 !important; }
+      .da-sub-btn svg { opacity: 0.75 !important; }
       @media (max-width: 768px) {
         .nav-text-logo.has-chair-logo { top: 6px !important; gap: 8px !important; }
         .nav-chair-logo-icon { width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; }
         .floating-btn-main.assistant-chair-fab { width: 62px !important; height: 62px !important; }
         .assistant-chair-img { width: 48px !important; height: 48px !important; max-width: 48px !important; max-height: 48px !important; }
+        .floating-contact-wrapper.panel-open { bottom: 12px !important; right: 12px !important; left: 12px !important; align-items: stretch !important; }
+        .floating-contact-wrapper.panel-open .digital-assistant-panel { width: 100% !important; max-width: 100% !important; max-height: calc(100vh - 24px) !important; }
       }
     `;
     document.head.appendChild(st);
@@ -2823,24 +2849,28 @@ function initFloatingMenu() {
         </div>
       </div>
       <div class="da-quick-chips" id="daQuickChips">
-        <button type="button" class="da-chip" data-topic="maat">💡 Welke stoel past bij mijn lengte &amp; klachten?</button>
-        <button type="button" class="da-chip" data-topic="prijs">💰 Wat kost een (Certified Fitform) stoel?</button>
-        <button type="button" class="da-chip" data-topic="proefzitten">📍 Hoe werkt proefzitten in de showroom of aan huis?</button>
-        <button type="button" class="da-chip" data-topic="vergoeding">📋 Wordt een sta-op stoel vergoed?</button>
+        <button type="button" class="da-chip" data-topic="maat">💡 Welke maat past bij mij?</button>
+        <button type="button" class="da-chip" data-topic="prijs">💰 Wat kost een stoel?</button>
+        <button type="button" class="da-chip" data-topic="proefzitten">📍 Proefzitten Dordrecht</button>
+        <button type="button" class="da-chip" data-topic="vergoeding">📋 Vergoeding &amp; Wmo</button>
       </div>
     </div>
 
     <div class="da-input-wrapper">
+      <div class="da-input-callout">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2e6819" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Stel hier vrij uw vraag:</span>
+      </div>
       <form class="da-input-bar" id="daQuestionForm" autocomplete="off">
-        <input type="text" class="da-input" id="daQuestionInput" placeholder="Stel hier vrij uw vraag (bijv. welke maat bij 1.70m?)..." aria-label="Stel uw vraag aan de digitale zitassistent">
+        <input type="text" class="da-input" id="daQuestionInput" placeholder="Typ uw vraag (bijv. welke maat bij 1.70m?)..." aria-label="Stel uw vraag aan de digitale zitassistent">
         <button type="submit" class="da-send-btn" aria-label="Verstuur vraag" title="Verstuur vraag">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
       </form>
     </div>
 
     <div class="da-footer-sub">
-      <span class="da-sub-hint">Of direct contact:</span>
+      <span class="da-sub-hint">Direct contact:</span>
       <div class="da-sub-actions">
         <a href="${base}afspraak.html" class="da-sub-btn" onclick="openAppointmentModal(event)" title="Plan een proefzit-afspraak">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -3024,12 +3054,18 @@ function initFloatingMenu() {
 
   function openAssistant() {
     panel.classList.add("active");
+    wrapper.classList.add("panel-open");
     teaser.classList.add("hidden");
     triggerChairDance(headerImg, false);
+    setTimeout(() => {
+      const inp = document.getElementById("daQuestionInput");
+      if (inp) inp.focus();
+    }, 150);
   }
 
   function closeAssistant() {
     panel.classList.remove("active");
+    wrapper.classList.remove("panel-open");
     stopChairMusic();
   }
 

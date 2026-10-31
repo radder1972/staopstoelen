@@ -8791,6 +8791,12 @@ input[type="checkbox"] {
   display: flex;
 }
 
+/* Verberg de zwevende FAB knop wanneer het assistent-venster geopend is */
+.floating-contact-wrapper.panel-open .floating-btn-main,
+.digital-assistant-panel.active ~ .floating-btn-main {
+  display: none !important;
+}
+
 .da-header {
   display: flex;
   align-items: center;
@@ -9010,30 +9016,33 @@ input[type="checkbox"] {
 }
 
 .da-quick-chips {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 8px;
 }
 
 .da-chip {
+  width: 100%;
   text-align: left;
-  background: #ffffff;
-  border: 1.5px solid rgba(75, 143, 36, 0.28);
+  background: #f7fbf4;
+  border: 1px solid #d4e7c7;
   color: #122b07;
   font-family: inherit;
-  font-size: 0.83rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 7px 9px;
+  border-radius: 9px;
   cursor: pointer;
-  transition: all 0.18s ease;
+  line-height: 1.25;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(18, 43, 7, 0.04);
 }
 
 .da-chip:hover {
-  background: #eef7e6;
+  background: #e9f4e2;
   border-color: #4b8f24;
-  transform: translateX(2px);
+  transform: translateY(-1px);
 }
 
 .da-inline-ctas {
@@ -9074,26 +9083,38 @@ input[type="checkbox"] {
 
 .da-input-wrapper {
   background: #ffffff;
-  border-top: 1.5px solid #e2ebd9;
-  padding: 10px 12px 6px;
+  border-top: 1.5px solid #e3edd9;
+  padding: 10px 14px 8px;
+}
+
+.da-input-callout {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #2e6819;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
 }
 
 .da-input-bar {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #fbfdf9;
-  border: 2px solid #65a30d;
+  background: #fcfefc;
+  border: 2px solid #4b8f24;
   border-radius: 999px;
   padding: 4px 6px 4px 16px;
-  box-shadow: 0 3px 12px rgba(75, 143, 36, 0.12);
+  min-height: 48px;
+  box-shadow: 0 4px 14px rgba(75, 143, 36, 0.16);
   transition: all 0.2s ease;
 }
 
 .da-input-bar:focus-within {
   background: #ffffff;
-  border-color: #4b8f24;
-  box-shadow: 0 4px 16px rgba(75, 143, 36, 0.25);
+  border-color: #2e6819;
+  box-shadow: 0 4px 18px rgba(46, 104, 25, 0.28);
 }
 
 .da-input {
@@ -9101,7 +9122,7 @@ input[type="checkbox"] {
   border: none;
   background: transparent;
   padding: 8px 0;
-  font-size: 0.96rem;
+  font-size: 0.98rem;
   font-family: inherit;
   color: #122b07;
   font-weight: 500;
@@ -9129,7 +9150,7 @@ input[type="checkbox"] {
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(18, 43, 7, 0.2);
+  box-shadow: 0 2px 7px rgba(18, 43, 7, 0.22);
   transition: transform 0.15s ease, background 0.15s ease;
 }
 
@@ -9142,21 +9163,26 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 14px 8px;
-  background: #ffffff;
+  padding: 6px 14px 8px;
+  background: #f8fafc;
+  border-top: 1px solid #edf2f7;
+  gap: 6px;
 }
 
 .da-sub-hint {
-  font-size: 0.70rem;
+  font-size: 0.68rem;
   color: #94a3b8;
   font-weight: 600;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .da-sub-actions {
   display: flex;
   align-items: center;
   gap: 5px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .da-sub-btn {
@@ -9168,15 +9194,16 @@ input[type="checkbox"] {
   font-size: 0.68rem;
   font-weight: 600;
   color: #64748b !important;
-  background: #f1f5f9;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
   text-decoration: none !important;
   transition: all 0.15s ease;
   line-height: 1.3;
+  white-space: nowrap;
 }
 
 .da-sub-btn:hover {
-  background: #e2e8f0;
+  background: #f1f5f9;
   color: #1e293b !important;
   border-color: #cbd5e1;
 }
@@ -9248,6 +9275,17 @@ input[type="checkbox"] {
   .floating-contact-wrapper {
     bottom: 78px;
     right: 14px;
+  }
+  .floating-contact-wrapper.panel-open {
+    bottom: 12px !important;
+    right: 12px !important;
+    left: 12px !important;
+    align-items: stretch !important;
+  }
+  .floating-contact-wrapper.panel-open .digital-assistant-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: calc(100vh - 24px) !important;
   }
   .floating-btn-main.assistant-chair-fab {
     width: 62px;
