@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Scene 5 - De Grote Vergelijking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0B0F19;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #F8FAFC;
+      position: relative;
+    }
+    .ambient-glow {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
+      pointer-events: none;
+    }
+    .header {
+      height: 100px;
+      padding: 0 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+    }
+    .logo-area { display: flex; align-items: center; gap: 16px; }
+    .brand-icon {
+      width: 48px; height: 48px; background: linear-gradient(135deg, #4B8F24, #2E6014);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; color: #FFFFFF;
+    }
+    .brand-text { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; }
+    .brand-sub { font-size: 14px; color: #94A3B8; }
+    .scene-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px;
+      border-radius: 999px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #93C5FD; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #3B82F6; box-shadow: 0 0 10px #3B82F6; }
+
+    .main-content {
+      height: 840px;
+      padding: 30px 80px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .title-area {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .kicker {
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
+      color: #38BDF8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
+    }
+    .main-title {
+      font-family: 'Montserrat', sans-serif; font-size: 44px; font-weight: 900; letter-spacing: -0.5px;
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .matrix-table th {
+      padding: 18px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      text-align: left;
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .matrix-table th.col-matthias {
+      background: rgba(75, 143, 36, 0.35);
+      color: #86EFAC;
+      border-top: 3px solid #4ADE80;
+    }
+    .matrix-table td {
+      padding: 16px 24px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #E2E8F0;
+    }
+    .matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+    .matrix-table td.col-matthias {
+      background: rgba(75, 143, 36, 0.12);
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .cell-highlight {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .val-bad { color: #F87171; }
+    .val-warn { color: #FBBF24; }
+    .val-good { color: #4ADE80; }
+
+    .bottom-box {
+      background: linear-gradient(90deg, rgba(74, 222, 128, 0.15), rgba(56, 189, 248, 0.15));
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      border-radius: 18px;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bottom-lead {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .bottom-icon { font-size: 32px; }
+    .bottom-text { font-size: 18px; font-weight: 700; color: #FFFFFF; }
+    .bottom-tag {
+      background: #4ADE80;
+      color: #0F172A;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px; font-size: 20px; font-weight: 600; color: #F1F5F9; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="header">
+    <div class="logo-area">
+      <div class="brand-icon">S</div>
+      <div>
+        <div class="brand-text">Staopstoelen.nl</div>
+        <div class="brand-sub">Strategische Investeringsanalyse voor Geertjan</div>
+      </div>
+    </div>
+    <div class="scene-badge">
+      <span class="scene-dot"></span>
+      Scene 5: De Keiharde Vergelijking
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="title-area">
+      <div class="kicker">Voor- & Nadelen Matrix</div>
+      <h1 class="main-title">De 3 Opties Eerlijk Naast Elkaar Gezet</h1>
+    </div>
+
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Strategische Factor</th>
+          <th>📬 Huis-aan-Huis Flyer (10.000)</th>
+          <th>🏢 Extern Bureau (TPM)</th>
+          <th class="col-matthias">🚀 Matthias Online Marketing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Investering</strong></td>
+          <td class="cell-highlight val-bad">€ 1.250,- per run</td>
+          <td class="cell-highlight val-warn">€ 400,- per mnd (€ 4.800/jr)</td>
+          <td class="col-matthias cell-highlight val-good">€ 450 - € 500,- flexibel budget</td>
+        </tr>
+        <tr>
+          <td><strong>Doelgroep-gerichtheid</strong></td>
+          <td class="val-bad">0% (Willekeurige deuren)</td>
+          <td class="val-warn">Laag (Brede targeting)</td>
+          <td class="col-matthias val-good">100% (Actief zoekend in Dordrecht)</td>
+        </tr>
+        <tr>
+          <td><strong>Afval & Verspilling</strong></td>
+          <td class="val-bad">> 98,5% bij oud papier</td>
+          <td class="val-warn">Onbekend (Geen inzicht)</td>
+          <td class="col-matthias val-good">0% (Je betaalt alleen per klik!)</td>
+        </tr>
+        <tr>
+          <td><strong>Kosten per Showroom Lead</strong></td>
+          <td class="cell-highlight val-bad">€ 625 - € 1.250,-</td>
+          <td class="cell-highlight val-warn">€ 300 - € 600,- (geschat)</td>
+          <td class="col-matthias cell-highlight val-good">€ 40 - € 75,- per afspraak!</td>
+        </tr>
+        <tr>
+          <td><strong>Terugverdientijd</strong></td>
+          <td class="val-bad">Zeer riskant</td>
+          <td class="val-warn">Ondoorzichtig</td>
+          <td class="col-matthias val-good">1 verkochte stoel dekt de hele maand!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="bottom-box">
+      <div class="bottom-lead">
+        <div class="bottom-icon">💡</div>
+        <div class="bottom-text">
+          Bij slechts 1 verkochte Fitform of demomodel (€ 750 - € 2.500) is je complete maandcampagne direct winstgevend!
+        </div>
+      </div>
+      <div class="bottom-tag">HOOGSTE ROI</div>
+    </div>
+  </div>
+
+  <div class="subtitle-bar">
+    "Flyers kosten € 600 tot € 1.250 per bezoeker. Online via Matthias kost slechts € 40 tot € 75 per afspraak!"
+  </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Scene 3 - Het Externe Bureau (TPM)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0B0F19;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #F8FAFC;
+      position: relative;
+    }
+    .ambient-glow {
+      position: absolute;
+      top: -200px;
+      right: 200px;
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
+      pointer-events: none;
+    }
+    .header {
+      height: 100px;
+      padding: 0 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+    }
+    .logo-area { display: flex; align-items: center; gap: 16px; }
+    .brand-icon {
+      width: 48px; height: 48px; background: linear-gradient(135deg, #4B8F24, #2E6014);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; color: #FFFFFF;
+    }
+    .brand-text { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; }
+    .brand-sub { font-size: 14px; color: #94A3B8; }
+    .scene-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px;
+      border-radius: 999px; background: rgba(234, 88, 12, 0.15); border: 1px solid rgba(234, 88, 12, 0.4);
+      color: #FDBA74; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: #EA580C; box-shadow: 0 0 10px #EA580C; }
+
+    .main-content {
+      height: 840px;
+      padding: 50px 80px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .contract-card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contract-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 6px;
+      background: linear-gradient(90deg, #F97316, #EF4444);
+    }
+    .contract-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: rgba(234, 88, 12, 0.2);
+      color: #FB923C;
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .contract-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .contract-sub {
+      font-size: 20px;
+      color: #94A3B8;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .year-calc {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .year-label { font-size: 16px; color: #CBD5E1; }
+    .year-val { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: #F87171; }
+
+    .warning-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 16px 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      color: #FCA5A5;
+      font-weight: 600;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .breakdown-side {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .kicker {
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px;
+      color: #F97316; text-transform: uppercase; letter-spacing: 2px;
+    }
+    .main-title {
+      font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900;
+      line-height: 1.15; color: #FFFFFF;
+    }
+    .pain-points {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .pain-item {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .pain-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(239, 68, 68, 0.15); color: #EF4444;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .pain-title {
+      font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 800;
+      color: #FFFFFF; margin-bottom: 4px;
+    }
+    .pain-text { font-size: 15px; color: #94A3B8; line-height: 1.4; }
+
+    .subtitle-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 60px; font-size: 20px; font-weight: 600; color: #F1F5F9; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="header">
+    <div class="logo-area">
+      <div class="brand-icon">S</div>
+      <div>
+        <div class="brand-text">Staopstoelen.nl</div>
+        <div class="brand-sub">Strategische Investeringsanalyse voor Geertjan</div>
+      </div>
+    </div>
+    <div class="scene-badge">
+      <span class="scene-dot"></span>
+      Scene 3: Het Externe Bureau
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="contract-card">
+      <div class="contract-badge">Vaste Bureau Retainer (TPM / DPM)</div>
+      <div class="contract-amount">€ 400,-</div>
+      <div class="contract-sub">per maand vaste kosten</div>
+
+      <div class="year-calc">
+        <span class="year-label">Jaarlijkse kostenpost:</span>
+        <span class="year-val">€ 4.800,- per jaar</span>
+      </div>
+
+      <div class="warning-box">
+        <span>⚠️</span>
+        <span>Geen directe koppeling met showroombezoek of stoelverkoop</span>
+      </div>
+    </div>
+
+    <div class="breakdown-side">
+      <div>
+        <div class="kicker">Het Verleden Eerlijk Geanalyseerd</div>
+        <h1 class="main-title">Wat leverde die € 4.800,- per jaar werkelijk op?</h1>
+      </div>
+
+      <div class="pain-points">
+        <div class="pain-item">
+          <div class="pain-icon">📊</div>
+          <div>
+            <div class="pain-title">Ondoorzichtige Rapporten & Vertoningen</div>
+            <div class="pain-text">Veel cijfers over impressies en kliks, maar wie kwam er nu echt proefzitten in Dordrecht?</div>
+          </div>
+        </div>
+
+        <div class="pain-item">
+          <div class="pain-icon">🎯</div>
+          <div>
+            <div class="pain-title">Geen Focus op Actieve Koopzoekers</div>
+            <div class="pain-text">Campagnes stonden breed ingesteld, zonder directe optimalisatie op senioren en mantelzorgers.</div>
+          </div>
+        </div>
+
+        <div class="pain-item">
+          <div class="pain-icon">🛋️</div>
+          <div>
+            <div class="pain-title">Nul Showroom Garantie</div>
+            <div class="pain-text">Of er nu 0 stoelen of 10 stoelen werden verkocht: de factuur van € 400,- bleef elke maand doorlopen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subtitle-bar">
+    "Voorheen € 400 per maand aan een extern bureau: vage kliks en nul garantie op echte showroomklanten."
+  </div>
+</body>
+</html>

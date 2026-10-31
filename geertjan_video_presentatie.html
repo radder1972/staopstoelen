@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Presentatie: Flyers vs. Online Marketing voor Geertjan | Staopstoelen.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #070B13;
+      color: #F8FAFC;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .video-container {
+      position: relative;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    .chapter-active {
+      border-color: #4ADE80 !important;
+      background: rgba(74, 222, 128, 0.15) !important;
+      color: #FFFFFF !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#070B13] flex flex-col justify-between selection:bg-green-500 selection:text-black">
+
+  <!-- Top Nav -->
+  <header class="border-b border-white/10 bg-[#0F172A]/70 backdrop-blur-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#4B8F24] to-[#2E6014] flex items-center justify-center font-heading font-black text-white text-xl shadow-lg shadow-green-900/40">
+            S
+          </div>
+          <div>
+            <div class="font-heading font-black text-xl tracking-tight text-white flex items-center gap-2">
+              Staopstoelen.nl
+              <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30">Voor Geertjan</span>
+            </div>
+            <div class="text-xs text-slate-400">Strategische Video Presentatie • Regio Dordrecht</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="geertjan_keuze_wizard.html" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold border border-white/10 transition-colors">
+          <span>🧙‍♂️</span>
+          <span>Open Keuze-Wizard</span>
+        </a>
+        <a href="assets/video/geertjan_keuze_advies_video.mp4" download="Staopstoelen_Geertjan_Advies_Video.mp4" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#4B8F24] hover:bg-[#3D751D] text-white text-sm font-bold shadow-lg shadow-green-900/30 transition-all hover:scale-[1.02]">
+          <span>📥</span>
+          <span>Download Video (.MP4)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero & Video Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-1 w-full">
+    
+    <!-- Title Bar -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        1080p HD Master Video • Speelduur: 1:45
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black tracking-tight text-white leading-tight mb-4">
+        Flyers op de Deurmat of <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">Online Marketing?</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300">
+        In 105 seconden het complete verhaal en de harde cijfers voor Geertjan: waarom online marketing de motor is en de fysieke flyer de deal sluit in de showroom.
+      </p>
+    </div>
+
+    <!-- Video + Chapters Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Video Player (8 cols) -->
+      <div class="lg:col-span-8 flex flex-col gap-4">
+        <div class="video-container rounded-2xl overflow-hidden bg-black aspect-video relative group">
+          <video 
+            id="mainVideo" 
+            class="w-full h-full object-cover" 
+            controls 
+            preload="metadata" 
+            poster="assets/marketing/video_slides/scene_1.png"
+            playsinline>
+            <source src="assets/video/geertjan_keuze_advies_video.mp4" type="video/mp4">
+            Je browser ondersteunt geen HTML5 video.
+          </video>
+        </div>
+
+        <!-- Video Player Quick Controls / Stats Bar -->
+        <div class="bg-slate-900/70 border border-white/10 rounded-xl p-4 flex flex-wrap items-center justify-between gap-4 text-sm">
+          <div class="flex items-center gap-4 text-slate-400">
+            <span class="flex items-center gap-1.5 text-white font-semibold">
+              <span class="text-emerald-400">●</span> 1920 × 1080p Full HD
+            </span>
+            <span>•</span>
+            <span>Voice-over: Xander (NL)</span>
+            <span>•</span>
+            <span>6 Hoofdstukken</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="setPlayRate(1.0)" id="rate1" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-bold text-white hover:bg-slate-700 transition">1.0x</button>
+            <button onclick="setPlayRate(1.25)" id="rate125" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-700 transition">1.25x</button>
+            <button onclick="setPlayRate(1.5)" id="rate15" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-700 transition">1.5x</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Chapter Playlist (4 cols) -->
+      <div class="lg:col-span-4 flex flex-col gap-3">
+        <div class="text-sm font-heading font-bold uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-between">
+          <span>Hoofdstukken in deze video</span>
+          <span class="text-xs text-slate-500">Klik om te springen</span>
+        </div>
+
+        <button onclick="jumpTo(0)" id="chap-0" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full chapter-active">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:00</div>
+          <div>
+            <div class="font-heading font-bold text-sm text-white">1. De Deurmat Realiteit</div>
+            <div class="text-xs text-slate-400 line-clamp-1">10.000 flyers op de mat & de droom vs. de realiteit.</div>
+          </div>
+        </button>
+
+        <button onclick="jumpTo(13.5)" id="chap-1" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:13</div>
+          <div>
+            <div class="font-heading font-bold text-sm text-white">2. De Realiteit van de 3 Deuren</div>
+            <div class="text-xs text-slate-400 line-clamp-1">42% Nee/Nee, oud papier en € 625 - € 1.250 per bezoeker.</div>
+          </div>
+        </button>
+
+        <button onclick="jumpTo(34.7)" id="chap-2" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:34</div>
+          <div>
+            <div class="font-heading font-bold text-sm text-white">3. Het Externe Bureau (TPM)</div>
+            <div class="text-xs text-slate-400 line-clamp-1">€ 4.800 per jaar, vage kliks en nul showroomgarantie.</div>
+          </div>
+        </button>
+
+        <button onclick="jumpTo(51.9)" id="chap-3" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">0:51</div>
+          <div>
+            <div class="font-heading font-bold text-sm text-white">4. Matthias Online Marketing</div>
+            <div class="text-xs text-slate-400 line-clamp-1">158 sessies & 33 Google zoekers in enkele dagen.</div>
+          </div>
+        </button>
+
+        <button onclick="jumpTo(67.9)" id="chap-4" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">1:07</div>
+          <div>
+            <div class="font-heading font-bold text-sm text-white">5. De Keiharde Vergelijking</div>
+            <div class="text-xs text-slate-400 line-clamp-1">Matrix: € 1.250 vs € 45 per afspraak & 1 stoel break-even.</div>
+          </div>
+        </button>
+
+        <button onclick="jumpTo(85.1)" id="chap-5" class="chapter-btn p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-slate-600 transition-all text-left flex items-start gap-3 w-full">
+          <div class="px-2 py-1 rounded bg-slate-800 text-xs font-mono font-bold text-slate-300 mt-0.5">1:25</div>
+          <div>
+            <div class="font-heading font-bold text-sm text-white">6. Het Gouden Advies</div>
+            <div class="text-xs text-slate-400 line-clamp-1">Hybride: Online trekt aan, de flyer sluit in de showroom.</div>
+          </div>
+        </button>
+
+        <!-- Call to Action Card -->
+        <div class="mt-2 p-4 rounded-xl bg-gradient-to-br from-green-950/40 to-slate-900 border border-green-500/30 text-xs text-slate-300">
+          <div class="font-bold text-white mb-1">Direct presenteren aan Geertjan?</div>
+          <p class="mb-3 text-slate-400">Gebruik de interactieve wizard om tijdens het gesprek interactief op de cijfers en deuren in te zoomen.</p>
+          <a href="geertjan_keuze_wizard.html" class="block text-center py-2 px-3 rounded-lg bg-green-600 hover:bg-green-500 text-white font-bold transition">
+            Naar de Interactieve Wizard →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Takeaway Grid -->
+    <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10">
+        <div class="text-red-400 font-heading font-black text-2xl mb-1">€ 600 - € 1.250</div>
+        <div class="text-sm font-bold text-white mb-2">Kosten per bezoeker via Huis-aan-Huis Flyer</div>
+        <div class="text-xs text-slate-400">Door 42% Nee/Nee stickers en oud papier belandt >98,5% in de afvalbak zonder actieve koopintentie.</div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10">
+        <div class="text-amber-400 font-heading font-black text-2xl mb-1">€ 4.800 per jaar</div>
+        <div class="text-sm font-bold text-white mb-2">Kosten extern bureau (TPM)</div>
+        <div class="text-xs text-slate-400">Vaste maandelijkse retainer van € 400,- zonder duidelijke relatie tot verkochte stoelen in Dordrecht.</div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-green-950/30 border border-green-500/30">
+        <div class="text-green-400 font-heading font-black text-2xl mb-1">€ 40 - € 75 per afspraak</div>
+        <div class="text-sm font-bold text-white mb-2">Matthias Online Marketing</div>
+        <div class="text-xs text-slate-300">100% actieve zoekers. Bij slechts 1 verkochte stoel (€ 750 - € 2.500) is de hele maandcampagne direct terugverdiend.</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#0B0F19] py-6 text-center text-xs text-slate-500">
+    Staopstoelen.nl • Gemaakt voor intern overleg met Geertjan • Dordrecht
+  </footer>
+
+  <script>
+    const video = document.getElementById('mainVideo');
+    const chapters = [
+      { time: 0, id: 'chap-0' },
+      { time: 13.5, id: 'chap-1' },
+      { time: 34.7, id: 'chap-2' },
+      { time: 51.9, id: 'chap-3' },
+      { time: 67.9, id: 'chap-4' },
+      { time: 85.1, id: 'chap-5' }
+    ];
+
+    function jumpTo(seconds) {
+      video.currentTime = seconds;
+      video.play();
+    }
+
+    function setPlayRate(rate) {
+      video.playbackRate = rate;
+      ['rate1', 'rate125', 'rate15'].forEach(id => {
+        document.getElementById(id).classList.remove('bg-green-600', 'text-white');
+        document.getElementById(id).classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (rate === 1.0) document.getElementById('rate1').classList.add('bg-green-600', 'text-white');
+      if (rate === 1.25) document.getElementById('rate125').classList.add('bg-green-600', 'text-white');
+      if (rate === 1.5) document.getElementById('rate15').classList.add('bg-green-600', 'text-white');
+    }
+
+    // Sync active chapter on timeupdate
+    video.addEventListener('timeupdate', () => {
+      const cur = video.currentTime;
+      let activeIndex = 0;
+      for (let i = 0; i < chapters.length; i++) {
+        if (cur >= chapters[i].time - 0.2) {
+          activeIndex = i;
+        }
+      }
+      chapters.forEach((ch, idx) => {
+        const el = document.getElementById(ch.id);
+        if (idx === activeIndex) {
+          el.classList.add('chapter-active');
+        } else {
+          el.classList.remove('chapter-active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
