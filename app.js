@@ -3915,6 +3915,15 @@ window.initMarktplaatsExperience = function() {
   }
 };
 
+// Immediate check on script load & DOM ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof window.initMarktplaatsExperience === "function") window.initMarktplaatsExperience();
+  });
+} else {
+  if (typeof window.initMarktplaatsExperience === "function") window.initMarktplaatsExperience();
+}
+
 
 
 
