@@ -61,7 +61,7 @@ SCENES = [
     {
         "id": 4,
         "name": "De Winnende Formule",
-        "text": "Dát is de boodschap, Geertjan. Stop die vierhonderd euro aan TPM en stop met gokken op tienduizend flyers in de papierbak. Deze online motor brengt dagelijks échte mensen. En die flyer? Die drukken we voor vijfendertig euro als perfecte showroom-afsluiter. Dít is onze winnende formule!",
+        "text": "Dát is de boodschap, Geertjan. Zeg die vierhonderd euro per maand aan TPM direct op. Onze online motor bewijst het al binnen drie dagen: bijna negenduizend vertoningen, zevenennegentig gerichte kliks en vijf directe websitebezoekers. Komt er uit die mensen maar één proefzitter naar de Merwedestraat die een stoel koopt, dan verdien je die vijftien euro al tweeëntachtig keer terug. Dít is onze winnende formule!",
         "image": "assets/marketing/video_slides/short_scene_3.png",
         "audio": "assets/marketing/video_audio/short_scene_3.mp3",
         "zoom_rate": 0.0003,

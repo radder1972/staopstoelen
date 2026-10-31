@@ -112,10 +112,10 @@
           <span class="text-xs text-slate-400 font-medium">Staopstoelen.nl • Resultaten Beheerpaneel</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-heading font-black text-white tracking-tight">
-          Gokken met TPM &amp; Flyers <span class="text-slate-400">vs.</span> <span class="text-[#5cb82f]">De Zekere Online Jackpot</span>
+          Stilstand bij TPM <span class="text-slate-400">vs.</span> <span class="text-[#5cb82f]">De Zekere Online Motor</span>
         </h2>
         <p class="text-xs sm:text-sm text-slate-300 mt-1">
-          Draai aan de rollen en ontdek waarom 15 cent per klik op Marktplaats een gegarandeerde 90x winstkans oplevert.
+          Draai aan de rollen en ontdek waarom 15 cent per klik op Marktplaats een gegarandeerde 82x winstkans oplevert.
         </p>
       </div>
 
@@ -232,11 +232,11 @@
                 <span class="font-heading font-black text-sm text-red-400">TPM Bureau</span>
                 <span class="text-[11px] text-slate-400">Inzet: € 400,- per maand</span>
               </div>
-              <!-- Item 2: Huis-aan-Huis Flyers (Loser) -->
+              <!-- Item 2: Geen Online Zichtbaarheid (Loser) -->
               <div class="reel-item">
-                <span class="text-2xl mb-1">📬</span>
-                <span class="font-heading font-black text-sm text-amber-400">10.000 Flyers</span>
-                <span class="text-[11px] text-slate-400">Inzet: € 1.250,- Spotta</span>
+                <span class="text-2xl mb-1">📉</span>
+                <span class="font-heading font-black text-sm text-amber-400">0 Bezoekers</span>
+                <span class="text-[11px] text-slate-400">Inzet: Geen controle</span>
               </div>
               <!-- Item 3: Google Ads & Search (Winner) -->
               <div class="reel-item">
@@ -331,11 +331,7 @@
           </button>
           <button onclick="spinPreset('tpm')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition">
             <span>🏢</span>
-            <span>TPM (€ 400 Gok)</span>
-          </button>
-          <button onclick="spinPreset('flyer')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition">
-            <span>📬</span>
-            <span>Flyer (€ 1.250 Gok)</span>
+            <span>TPM (€ 400 Stilstand)</span>
           </button>
         </div>
 
@@ -524,7 +520,7 @@
       <div>
         <div class="font-heading font-black text-sm sm:text-base text-white">De Conclusie van de Fruitmachine:</div>
         <div class="text-xs text-slate-300 mt-0.5">
-          Gok niet langer € 400,- per maand aan TPM of € 1.250 aan flyers. Zet in op de online motor die voor € 0,15 per klik de showroom vult!
+          Stop met € 400,- per maand aan TPM betalen. Zet in op de online motor die voor € 0,15 per klik de showroom vult en 82× rendement oplevert!
         </div>
       </div>
       <a href="geertjan_video_presentatie.html" class="px-5 py-2.5 rounded-xl bg-[#4B8F24] hover:bg-[#3d751d] text-white font-bold text-xs sm:text-sm shrink-0 text-center transition shadow-lg shadow-green-950/50">
@@ -687,22 +683,13 @@
           playLoseSound();
           banner.innerHTML = `⚠️ <strong class="text-red-400">HELAAS, GEEN WINNAAR:</strong> € 400,- per maand vaste fee weg naar TPM voor een vage PDF. Nul proefzitters gegarandeerd.`;
           banner.className = "mt-4 p-3.5 rounded-xl bg-red-950/80 border border-red-500/50 text-center text-sm font-bold text-red-300";
-        } else if (scenario === 'flyer') {
-          // FLYER: 10.000 Flyers (2) + 98% Papierbak (2) + € 1.250 Weg (2)
-          setReelPosition('reel1', 2);
-          setReelPosition('reel2', 2);
-          setReelPosition('reel3', 2);
-
-          playLoseSound();
-          banner.innerHTML = `🗑️ <strong class="text-amber-400">PAPIERBAK GOK:</strong> € 1.250,- besteed aan 10.000 huis-aan-huis flyers via Spotta. 98% verdwijnt bij studenten en jongeren in de vuilnisbak.`;
-          banner.className = "mt-4 p-3.5 rounded-xl bg-amber-950/80 border border-amber-500/50 text-center text-sm font-bold text-amber-300";
         }
         isSpinning = false;
       }, 700);
     }
 
     function spinRandom() {
-      const scenarios = ['matthias', 'matthias', 'tpm', 'flyer'];
+      const scenarios = ['matthias', 'matthias', 'tpm'];
       const chosen = scenarios[Math.floor(Math.random() * scenarios.length)];
       spinPreset(chosen);
     }

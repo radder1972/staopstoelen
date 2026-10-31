@@ -2,10 +2,10 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Scene 3 - De Winnende Boodschap voor Geertjan</title>
+  <title>Scene 4 - De Winnende Formule voor Geertjan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-forest: #4b8f24;
@@ -19,7 +19,7 @@
       width: 1920px;
       height: 1080px;
       overflow: hidden;
-      background: #080C16;
+      background: #060911;
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: #F8FAFC;
       position: relative;
@@ -31,23 +31,23 @@
       transform: translateX(-50%);
       width: 1200px;
       height: 600px;
-      background: radial-gradient(circle, rgba(75, 143, 36, 0.3) 0%, rgba(8, 12, 22, 0) 70%);
+      background: radial-gradient(circle, rgba(75, 143, 36, 0.3) 0%, rgba(6, 9, 17, 0) 70%);
       pointer-events: none;
     }
     .header {
-      height: 105px;
-      padding: 0 80px;
+      height: 95px;
+      padding: 0 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1.5px solid rgba(75, 143, 36, 0.25);
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(12px);
+      background: rgba(10, 16, 29, 0.88);
+      backdrop-filter: blur(14px);
     }
     .brand-block { display: flex; flex-direction: column; gap: 2px; }
     .brand-logo {
       font-family: 'Montserrat', sans-serif;
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 900;
       color: var(--color-forest-bright) !important;
       letter-spacing: -0.8px;
@@ -56,7 +56,7 @@
     .brand-logo span { color: var(--color-terracotta) !important; }
     .brand-sub {
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--color-forest-sub);
       text-transform: uppercase;
@@ -65,27 +65,27 @@
     .scene-badge {
       display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px;
       border-radius: 999px; background: rgba(75, 143, 36, 0.2); border: 1.5px solid var(--color-forest-bright);
-      color: var(--color-forest-bright); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+      color: var(--color-forest-bright); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px;
       letter-spacing: 1px; text-transform: uppercase;
       box-shadow: 0 0 20px rgba(92, 184, 47, 0.3);
     }
     .scene-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-forest-bright); box-shadow: 0 0 10px var(--color-forest-bright); }
 
     .main-content {
-      height: 835px;
-      padding: 36px 80px 24px;
+      height: 910px;
+      padding: 30px 70px 95px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .hero-banner { text-align: center; margin-bottom: 20px; }
+    .hero-banner { text-align: center; margin-bottom: 25px; }
     .hero-kicker {
-      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
+      display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px;
       color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px;
-      background: rgba(243, 146, 35, 0.15); padding: 5px 18px; border-radius: 999px; border: 1px solid rgba(243, 146, 35, 0.3);
+      background: rgba(243, 146, 35, 0.15); padding: 6px 18px; border-radius: 999px; border: 1px solid rgba(243, 146, 35, 0.35);
     }
     .hero-title {
-      font-family: 'Montserrat', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: -0.5px;
+      font-family: 'Montserrat', sans-serif; font-size: 50px; font-weight: 900; letter-spacing: -0.5px;
     }
 
     .two-pillars-grid {
@@ -95,7 +95,7 @@
       margin-bottom: 22px;
     }
     .pillar-card {
-      background: rgba(30, 41, 59, 0.75);
+      background: rgba(15, 23, 42, 0.90);
       border: 1.5px solid rgba(255, 255, 255, 0.1);
       border-radius: 28px;
       padding: 34px 32px;
@@ -111,8 +111,8 @@
     }
     .pillar-card.closer {
       border: 2px solid var(--color-terracotta);
-      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(243, 146, 35, 0.18));
-      box-shadow: 0 20px 50px rgba(243, 146, 35, 0.2);
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(243, 146, 35, 0.2));
+      box-shadow: 0 20px 50px rgba(243, 146, 35, 0.25);
     }
 
     .pillar-header {
@@ -135,25 +135,25 @@
 
     .pillar-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 26px;
+      font-size: 25px;
       font-weight: 900;
       color: #FFFFFF;
     }
     .pillar-tag {
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
     .pillar-tag.green { color: var(--color-forest-bright); }
     .pillar-tag.orange { color: var(--color-terracotta); }
 
     .pillar-body {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.5;
       color: #CBD5E1;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
     .pillar-stats-box {
       background: rgba(15, 23, 42, 0.85);
@@ -165,34 +165,35 @@
       align-items: center;
     }
     .p-stat-val { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; }
-    .p-stat-lbl { font-size: 13px; color: #94A3B8; font-weight: 600; }
+    .p-stat-lbl { font-size: 12px; color: #94A3B8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
     .bottom-recap-banner {
       background: linear-gradient(90deg, #1A420B, #2E6819);
       border: 1.5px solid var(--color-forest-bright);
       border-radius: 20px;
-      padding: 22px 36px;
+      padding: 20px 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 10px 30px rgba(75, 143, 36, 0.35);
     }
     .recap-title {
-      font-family: 'Montserrat', sans-serif; font-size: 23px; font-weight: 900; color: #FFFFFF; margin-bottom: 4px;
+      font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; color: #FFFFFF; margin-bottom: 3px;
     }
-    .recap-sub { font-size: 15px; color: #DCFCE7; }
+    .recap-sub { font-size: 14px; color: #DCFCE7; }
     .recap-badge {
       background: var(--color-terracotta); color: #FFFFFF; font-family: 'Montserrat', sans-serif;
       font-weight: 900; font-size: 18px; padding: 12px 28px; border-radius: 14px;
       box-shadow: 0 4px 14px rgba(243, 146, 35, 0.4);
+      white-space: nowrap;
     }
 
     .subtitle-bar {
       position: absolute; bottom: 0; left: 0; right: 0; height: 75px;
-      background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(8px);
       border-top: 1.5px solid rgba(75, 143, 36, 0.35);
       display: flex; align-items: center; justify-content: center;
-      padding: 0 60px; font-size: 21px; font-weight: 700; color: #F8FAFC; text-align: center;
+      padding: 0 60px; font-size: 20px; font-weight: 700; color: #F8FAFC; text-align: center;
     }
   </style>
 </head>
@@ -213,58 +214,58 @@
   <div class="main-content">
     <div class="hero-banner">
       <span class="hero-kicker">Geertjan's Strategisch Keuze-Advies</span>
-      <h1 class="hero-title">Stop TPM • Zet de Motor Aan <br><span style="color: var(--color-forest-bright);">en Sluit de Deal met de Flyer!</span></h1>
+      <h1 class="hero-title">Stop TPM • Zet de Online Motor Aan <br><span style="color: var(--color-forest-bright);">en Vul de Showroom in Dordrecht!</span></h1>
     </div>
 
     <div class="two-pillars-grid">
-      <!-- Pilaar 1: Online Marketing -->
+      <!-- Pilaar 1: Online Verkeersmotor -->
       <div class="pillar-card motor">
         <div>
           <div class="pillar-header">
             <div class="pillar-icon green">⚡</div>
             <div>
               <div class="pillar-tag green">Pilaar 1 • De Dagelijkse Verkeersmotor</div>
-              <div class="pillar-title">Online Marketing door Matthias</div>
+              <div class="pillar-title">Marktplaats &amp; Google Zoekers</div>
             </div>
           </div>
           <div class="pillar-body">
-            Vervang de € 400/mnd van TPM door onze bewezen online motor. Brengt dagelijks mensen met rugpijn uit de regio direct naar jouw stoelen voor slechts € 0,16 per klik.
+            Vervang de € 400,- per maand van TPM door onze bewezen online motor. Brengt dagelijks mensen met rugpijn uit de regio direct naar jouw stoelen voor slechts € 0,15 per klik.
           </div>
         </div>
         <div class="pillar-stats-box">
           <div>
-            <div class="p-stat-lbl">Investering per Maand</div>
-            <div class="p-stat-val" style="color: var(--color-forest-bright);">€ 150 - € 300</div>
+            <div class="p-stat-lbl">Bereik in 3 Dagen</div>
+            <div class="p-stat-val" style="color: var(--color-forest-bright);">8.995 Views</div>
           </div>
           <div style="text-align: right;">
-            <div class="p-stat-lbl">Direct Verkeer</div>
-            <div class="p-stat-val" style="color: #FFFFFF;">Dagelijks Live</div>
+            <div class="p-stat-lbl">Gerichte Kliks</div>
+            <div class="p-stat-val" style="color: #60a5fa;">97 Zoekers</div>
           </div>
         </div>
       </div>
 
-      <!-- Pilaar 2: De Flyer -->
+      <!-- Pilaar 2: Showroom Conversie & Afspraken -->
       <div class="pillar-card closer">
         <div>
           <div class="pillar-header">
-            <div class="pillar-icon orange">📄</div>
+            <div class="pillar-icon orange">🏢</div>
             <div>
-              <div class="pillar-tag orange">Pilaar 2 • De Tastbare Showroom Closer</div>
-              <div class="pillar-title">500 Flyers als Meeneem-Garantie</div>
+              <div class="pillar-tag orange">Pilaar 2 • De Showroom Conversie</div>
+              <div class="pillar-title">5 Websitebezoekers &amp; Afspraken</div>
             </div>
           </div>
           <div class="pillar-body">
-            Gooi geen € 1.250 over de balk aan 10.000 flyers bij studenten via Spotta. Druk 500 luxe flyers voor € 35,- en geef ze in de showroom mee aan senioren en hun kinderen!
+            Al 5 serieuze kopers klikten direct door naar Staopstoelen.nl voor de showroom aan de Merwedestraat. Eén Fitform stoel verkocht dekt de inzet van € 14,55 maar liefst 82 keer terug!
           </div>
         </div>
         <div class="pillar-stats-box">
           <div>
-            <div class="p-stat-lbl">Drukwerkkosten (500 stuks)</div>
-            <div class="p-stat-val" style="color: var(--color-terracotta);">€ 35,-</div>
+            <div class="p-stat-lbl">Winstmarge per Stoel</div>
+            <div class="p-stat-val" style="color: var(--color-terracotta);">€ 1.200,-</div>
           </div>
           <div style="text-align: right;">
-            <div class="p-stat-lbl">Effectiviteit</div>
-            <div class="p-stat-val" style="color: #FFFFFF;">100% Relevant</div>
+            <div class="p-stat-lbl">Rendement (ROI)</div>
+            <div class="p-stat-val" style="color: #4ade80;">82× ROI</div>
           </div>
         </div>
       </div>
@@ -272,15 +273,15 @@
 
     <div class="bottom-recap-banner">
       <div>
-        <div class="recap-title">De Conclusie voor Schipper Wonen: Wij bouwen aan rendement</div>
-        <div class="recap-sub">Bespaar € 4.800 per jaar op TPM en investeer in verkeer en verkoop dat écht meetbaar is.</div>
+        <div class="recap-title">De Conclusie voor Schipper Wonen: Wij bouwen aan direct rendement</div>
+        <div class="recap-sub">Bespaar € 4.800,- per jaar op TPM en investeer in meetbare showroom-bezoekers met 82× winstmarge.</div>
       </div>
       <div class="recap-badge">WINNENDE FORMULE</div>
     </div>
   </div>
 
   <div class="subtitle-bar">
-    "Stop TPM, zet de online motor aan en gebruik de flyer in de showroom. Dít is onze winnende formule!"
+    "Stop TPM, zet de online motor aan en vul de showroom aan de Merwedestraat. Dít is onze winnende formule!"
   </div>
 </body>
 </html>
