@@ -197,132 +197,132 @@
       </div>
     </div>
 
-    <!-- INTERACTIEVE GROEIGRAFIEK SECTIE -->
-    <section id="groeigrafiek" class="mb-10 pt-8 border-t border-white/10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+    <!-- INTERACTIEVE GROEIGRAFIEK SECTIE (VOLLEDIG BOX-VRIJ & VLOEIEND) -->
+    <section id="groeigrafiek" class="mb-14 pt-8 border-t border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-3">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4B8F24]/20 border border-[#5cb82f]/30 text-[#5cb82f] text-xs font-bold uppercase tracking-wider mb-2">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
+          <div class="inline-flex items-center gap-2 text-[#5cb82f] text-xs font-bold uppercase tracking-wider mb-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
             <span>Bewezen Groeicurve • Afgelopen 7 Dagen</span>
           </div>
           <h2 class="text-2xl sm:text-3xl font-heading font-black text-white">
-            Van Stilstand naar <span class="text-[#5cb82f]">10.967 Vertoningen</span> &amp; <span class="text-[#f39223]">112 Kliks</span>
+            Van Stilstand naar <span class="text-[#5cb82f]" id="headerLiveImp">10.967 Vertoningen</span> &amp; <span class="text-[#f39223]" id="headerLiveClicks">112 Kliks</span>
           </h2>
           <p class="text-sm text-slate-400 mt-1 max-w-2xl">
-            Kijk hoe de advertentiemotor vanaf dag 1 explodeert in bereik en gerichte stoelzoekers in de Drechtsteden zodra we overstappen van TPM naar gerichte online intentie.
+            Kijk hoe de advertentiemotor dag voor dag opbouwt zodra we stoppen met TPM en overstappen op gerichte zoekintentie in de Drechtsteden.
           </p>
         </div>
 
-        <!-- Controls: Legend & Autoplay -->
-        <div class="flex flex-wrap items-center gap-3 shrink-0">
-          <div class="flex items-center gap-3 bg-slate-900/90 border border-white/10 px-3.5 py-2 rounded-xl text-xs">
+        <!-- Controls: Legend & Opbouw Replay -->
+        <div class="flex flex-wrap items-center gap-4 shrink-0">
+          <div class="flex items-center gap-4 text-xs">
             <span class="inline-flex items-center gap-1.5 text-[#5cb82f] font-semibold">
-              <span class="w-2.5 h-2.5 rounded-full bg-[#5cb82f]"></span> Vertoningen
+              <span class="w-2.5 h-2.5 rounded-full bg-[#5cb82f]"></span> Vertoningen (10.967)
             </span>
             <span class="inline-flex items-center gap-1.5 text-[#f39223] font-semibold">
-              <span class="w-2.5 h-2.5 rounded-full bg-[#f39223]"></span> Kliks
+              <span class="w-2.5 h-2.5 rounded-full bg-[#f39223]"></span> Kliks (112)
             </span>
             <span class="inline-flex items-center gap-1.5 text-sky-400 font-semibold">
-              <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span> Websitekliks
+              <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span> Website (5)
             </span>
           </div>
 
-          <button id="btnGraphPlay" onclick="toggleGraphAutoplay()" class="px-3.5 py-2 rounded-xl bg-[#4B8F24] hover:bg-[#3d751d] text-white text-xs font-bold inline-flex items-center gap-2 shadow-lg shadow-green-950/40 transition">
-            <svg id="graphPlayIcon" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span id="graphPlayText">Speel Groeicurve Af</span>
+          <button id="btnGraphReplay" onclick="triggerGraphBuildUp()" class="px-3.5 py-2 rounded-xl bg-[#4B8F24] hover:bg-[#3d751d] text-white text-xs font-bold inline-flex items-center gap-2 shadow-lg shadow-green-950/40 transition">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            <span id="graphReplayText">Speel Opbouw Af</span>
           </button>
         </div>
       </div>
 
-      <!-- Main Graph Card -->
-      <div class="bg-gradient-to-b from-[#0f172a]/95 to-[#0b1120] border border-white/10 rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+      <!-- Pure Clean Graph Area (Geen rare box eromheen) -->
+      <div class="w-full select-none py-1">
         
-        <!-- Day Selector Timeline Pills -->
-        <div class="grid grid-cols-7 gap-1.5 sm:gap-2 mb-6 bg-slate-950/80 p-1.5 rounded-xl border border-slate-800">
-          <button onclick="selectGraphDay(1)" id="g-pill-1" class="timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
-            <span class="block text-[10px] font-medium text-slate-400">25 okt</span>
+        <!-- Day Selector Timeline Pills (Minimalist Tabs) -->
+        <div class="flex items-center justify-between gap-1 sm:gap-2 mb-3 overflow-x-auto pb-1">
+          <button onclick="selectGraphDay(1)" id="g-pill-1" class="timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <span class="block text-[10px] text-slate-500">25 okt</span>
             <span>Dag 1</span>
           </button>
-          <button onclick="selectGraphDay(2)" id="g-pill-2" class="timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
-            <span class="block text-[10px] font-medium text-slate-400">26 okt</span>
+          <button onclick="selectGraphDay(2)" id="g-pill-2" class="timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <span class="block text-[10px] text-slate-500">26 okt</span>
             <span>Dag 2</span>
           </button>
-          <button onclick="selectGraphDay(3)" id="g-pill-3" class="timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
-            <span class="block text-[10px] font-medium text-slate-400">27 okt</span>
+          <button onclick="selectGraphDay(3)" id="g-pill-3" class="timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <span class="block text-[10px] text-slate-500">27 okt</span>
             <span>Dag 3</span>
           </button>
-          <button onclick="selectGraphDay(4)" id="g-pill-4" class="timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
-            <span class="block text-[10px] font-medium text-slate-400">28 okt</span>
-            <span>Dag 4</span>
+          <button onclick="selectGraphDay(4)" id="g-pill-4" class="timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <span class="block text-[10px] text-slate-500">28 okt</span>
+            <span>Dag 4 (Ads)</span>
           </button>
-          <button onclick="selectGraphDay(5)" id="g-pill-5" class="timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
-            <span class="block text-[10px] font-medium text-sky-400">29 okt</span>
+          <button onclick="selectGraphDay(5)" id="g-pill-5" class="timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <span class="block text-[10px] text-sky-400">29 okt</span>
             <span>Dag 5 (MP)</span>
           </button>
-          <button onclick="selectGraphDay(6)" id="g-pill-6" class="timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700">
-            <span class="block text-[10px] font-medium text-amber-300">30 okt</span>
+          <button onclick="selectGraphDay(6)" id="g-pill-6" class="timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <span class="block text-[10px] text-amber-400">30 okt</span>
             <span>Dag 6</span>
           </button>
-          <button onclick="selectGraphDay(7)" id="g-pill-7" class="timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent active">
-            <span class="block text-[10px] font-medium text-emerald-200">1 nov</span>
+          <button onclick="selectGraphDay(7)" id="g-pill-7" class="timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 active transition">
+            <span class="block text-[10px] text-emerald-300">1 nov</span>
             <span>Dag 7 (Nu)</span>
           </button>
         </div>
 
-        <!-- SVG Chart Container -->
-        <div class="w-full overflow-hidden mb-6">
-          <svg viewBox="0 0 800 240" class="w-full h-52 sm:h-64 overflow-visible select-none" id="growthSvg">
+        <!-- SVG Curve Canvas (Clean, transparent, open) -->
+        <div class="w-full overflow-hidden my-1">
+          <svg viewBox="0 0 800 240" class="w-full h-56 sm:h-72 overflow-visible select-none" id="growthSvg">
             <defs>
-              <linearGradient id="gradGreenPres" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#5cb82f" stop-opacity="0.45"/>
-                <stop offset="85%" stop-color="#5cb82f" stop-opacity="0.05"/>
+              <linearGradient id="gradGreenClean" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5cb82f" stop-opacity="0.38"/>
+                <stop offset="70%" stop-color="#5cb82f" stop-opacity="0.08"/>
                 <stop offset="100%" stop-color="#5cb82f" stop-opacity="0.0"/>
               </linearGradient>
-              <linearGradient id="gradOrangePres" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#f39223" stop-opacity="0.35"/>
+              <linearGradient id="gradOrangeClean" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f39223" stop-opacity="0.25"/>
                 <stop offset="100%" stop-color="#f39223" stop-opacity="0.0"/>
               </linearGradient>
-              <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="3" result="blur" />
+              <filter id="glowGreenClean" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
                 <feComposite in="SourceGraphic" in2="blur" operator="over"/>
               </filter>
             </defs>
 
-            <!-- Background Grid Lines -->
-            <line x1="60" y1="30" x2="760" y2="30" stroke="#1e293b" stroke-dasharray="4 4" />
+            <!-- Subtle Grid Reference Lines -->
+            <line x1="60" y1="30" x2="760" y2="30" stroke="#1e293b" stroke-dasharray="3 3" opacity="0.6" />
             <text x="52" y="34" fill="#64748b" font-size="10" font-family="'Plus Jakarta Sans', sans-serif" text-anchor="end">11.000</text>
 
-            <line x1="60" y1="85" x2="760" y2="85" stroke="#1e293b" stroke-dasharray="4 4" />
+            <line x1="60" y1="85" x2="760" y2="85" stroke="#1e293b" stroke-dasharray="3 3" opacity="0.6" />
             <text x="52" y="89" fill="#64748b" font-size="10" font-family="'Plus Jakarta Sans', sans-serif" text-anchor="end">7.000</text>
 
-            <line x1="60" y1="140" x2="760" y2="140" stroke="#1e293b" stroke-dasharray="4 4" />
+            <line x1="60" y1="140" x2="760" y2="140" stroke="#1e293b" stroke-dasharray="3 3" opacity="0.6" />
             <text x="52" y="144" fill="#64748b" font-size="10" font-family="'Plus Jakarta Sans', sans-serif" text-anchor="end">3.000</text>
 
-            <line x1="60" y1="195" x2="760" y2="195" stroke="#334155" stroke-width="1.5" />
+            <line x1="60" y1="195" x2="760" y2="195" stroke="#334155" stroke-width="1.2" />
             <text x="52" y="198" fill="#64748b" font-size="10" font-family="'Plus Jakarta Sans', sans-serif" text-anchor="end">0</text>
 
             <!-- Gradient Area: Impressions (Green) -->
-            <polygon id="svgAreaImpressions" points="70,195 70,195 175,192 280,189 385,185 490,145 595,85 715,28 715,195" fill="url(#gradGreenPres)" />
+            <polygon id="svgAreaImpressions" points="70,195 70,195 175,192 280,189 385,185 490,145 595,85 715,28 715,195" fill="url(#gradGreenClean)" style="transition: opacity 0.8s ease;" />
 
             <!-- Gradient Area: Clicks (Orange) -->
-            <polygon id="svgAreaClicks" points="70,195 70,195 175,193 280,188 385,183 490,132 595,98 715,45 715,195" fill="url(#gradOrangePres)" />
+            <polygon id="svgAreaClicks" points="70,195 70,195 175,193 280,188 385,183 490,132 595,98 715,45 715,195" fill="url(#gradOrangeClean)" style="transition: opacity 0.8s ease;" />
 
             <!-- Polyline: Impressions (Green Glowing Line) -->
-            <polyline id="svgLineImpressions" fill="none" stroke="#5cb82f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
-              filter="url(#glowGreen)"
+            <polyline id="svgLineImpressions" fill="none" stroke="#5cb82f" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"
+              filter="url(#glowGreenClean)"
               points="70,195 175,192 280,189 385,185 490,145 595,85 715,28" />
 
             <!-- Polyline: Clicks (Orange Line) -->
-            <polyline id="svgLineClicks" fill="none" stroke="#f39223" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            <polyline id="svgLineClicks" fill="none" stroke="#f39223" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"
               points="70,195 175,193 280,188 385,183 490,132 595,98 715,45" />
 
-            <!-- X-Axis Labels & Vertical Ticks -->
+            <!-- X-Axis Labels -->
             <g font-size="11" font-family="'Plus Jakarta Sans', sans-serif" text-anchor="middle">
               <text x="70" y="215" fill="#64748b">D1 (TPM)</text>
               <text x="175" y="215" fill="#64748b">D2</text>
               <text x="280" y="215" fill="#64748b">D3</text>
-              <text x="385" y="215" fill="#64748b">D4 (Ads)</text>
-              <text x="490" y="215" fill="#38bdf8" font-weight="bold">D5 (MP Live)</text>
+              <text x="385" y="215" fill="#64748b">D4</text>
+              <text x="490" y="215" fill="#38bdf8" font-weight="bold">D5 (MP)</text>
               <text x="595" y="215" fill="#f39223" font-weight="bold">D6</text>
               <text x="715" y="215" fill="#5cb82f" font-weight="bold">D7 (Nu)</text>
             </g>
@@ -332,67 +332,65 @@
             <circle cx="175" cy="192" r="4.5" fill="#64748b" class="chart-point" id="g-dot-2" onclick="selectGraphDay(2)"/>
             <circle cx="280" cy="189" r="4.5" fill="#64748b" class="chart-point" id="g-dot-3" onclick="selectGraphDay(3)"/>
             <circle cx="385" cy="185" r="5" fill="#38bdf8" class="chart-point" id="g-dot-4" onclick="selectGraphDay(4)"/>
-            <circle cx="490" cy="145" r="5.5" fill="#38bdf8" class="chart-point" id="g-dot-5" onclick="selectGraphDay(5)"/>
-            <circle cx="595" cy="85" r="6" fill="#f39223" class="chart-point" id="g-dot-6" onclick="selectGraphDay(6)"/>
-            <circle cx="715" cy="28" r="8" fill="#5cb82f" stroke="#ffffff" stroke-width="2.5" class="chart-point chart-point-active" id="g-dot-7" onclick="selectGraphDay(7)"/>
+            <circle cx="490" cy="145" r="6" fill="#38bdf8" class="chart-point" id="g-dot-5" onclick="selectGraphDay(5)"/>
+            <circle cx="595" cy="85" r="6.5" fill="#f39223" class="chart-point" id="g-dot-6" onclick="selectGraphDay(6)"/>
+            <circle cx="715" cy="28" r="8" fill="#5cb82f" stroke="#ffffff" stroke-width="2.5" class="chart-point chart-point-active pulse-d7" id="g-dot-7" onclick="selectGraphDay(7)"/>
 
             <!-- Interactive Dots for Clicks (Orange) -->
-            <circle cx="70" cy="195" r="3.5" fill="#64748b" class="chart-point" onclick="selectGraphDay(1)"/>
-            <circle cx="175" cy="193" r="3.5" fill="#64748b" class="chart-point" onclick="selectGraphDay(2)"/>
-            <circle cx="280" cy="188" r="3.5" fill="#64748b" class="chart-point" onclick="selectGraphDay(3)"/>
-            <circle cx="385" cy="183" r="4" fill="#f39223" class="chart-point" onclick="selectGraphDay(4)"/>
-            <circle cx="490" cy="132" r="5" fill="#f39223" class="chart-point" onclick="selectGraphDay(5)"/>
-            <circle cx="595" cy="98" r="5.5" fill="#f39223" class="chart-point" onclick="selectGraphDay(6)"/>
-            <circle cx="715" cy="45" r="6.5" fill="#f39223" stroke="#ffffff" stroke-width="2" class="chart-point" onclick="selectGraphDay(7)"/>
+            <circle cx="70" cy="195" r="3.5" fill="#64748b" class="chart-point" id="g-cdot-1" onclick="selectGraphDay(1)"/>
+            <circle cx="175" cy="193" r="3.5" fill="#64748b" class="chart-point" id="g-cdot-2" onclick="selectGraphDay(2)"/>
+            <circle cx="280" cy="188" r="3.5" fill="#64748b" class="chart-point" id="g-cdot-3" onclick="selectGraphDay(3)"/>
+            <circle cx="385" cy="183" r="4" fill="#f39223" class="chart-point" id="g-cdot-4" onclick="selectGraphDay(4)"/>
+            <circle cx="490" cy="132" r="5" fill="#f39223" class="chart-point" id="g-cdot-5" onclick="selectGraphDay(5)"/>
+            <circle cx="595" cy="98" r="5.5" fill="#f39223" class="chart-point" id="g-cdot-6" onclick="selectGraphDay(6)"/>
+            <circle cx="715" cy="45" r="6.5" fill="#f39223" stroke="#ffffff" stroke-width="2" class="chart-point" id="g-cdot-7" onclick="selectGraphDay(7)"/>
 
             <!-- High-Impact Live Milestone Callout at D7 -->
-            <g transform="translate(565, 12)">
+            <g id="gMilestoneBadge" transform="translate(565, 12)" style="transition: all 0.5s ease;">
               <rect x="0" y="0" width="180" height="30" rx="8" fill="#0f2b07" stroke="#5cb82f" stroke-width="1.5" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.5))" />
               <text x="90" y="19" fill="#86efac" font-size="11" font-family="'Montserrat', sans-serif" font-weight="bold" text-anchor="middle">★ 10.967 Views &bull; 112 Kliks</text>
             </g>
           </svg>
         </div>
 
-        <!-- Dynamic Day Info Box -->
-        <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-start sm:items-center gap-3.5">
-            <div id="gDetailBadge" class="w-12 h-12 rounded-xl bg-[#4B8F24] flex items-center justify-center font-heading font-black text-white text-xl shadow-lg shrink-0">
+        <!-- Clean Story Line Below Graph (Geen box eromheen) -->
+        <div class="pt-3 pb-2 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div id="gDetailBadge" class="w-10 h-10 rounded-xl bg-[#4B8F24] flex items-center justify-center font-heading font-black text-white text-lg shrink-0">
               7
             </div>
             <div>
               <div class="flex items-center gap-2">
                 <span id="gDetailSubtitle" class="text-xs font-bold text-[#f39223] uppercase tracking-wider">Dag 7 • Vandaag (Live Stand)</span>
-                <span id="gDetailTag" class="px-2 py-0.5 rounded text-[11px] font-bold bg-green-500/20 text-[#5cb82f] border border-green-500/30">✓ 158x Goedkoper dan TPM!</span>
+                <span id="gDetailTag" class="text-xs font-bold text-[#5cb82f]">&bull; 158x Goedkoper dan TPM</span>
               </div>
-              <h3 id="gDetailTitle" class="text-base sm:text-lg font-heading font-bold text-white mt-0.5">
-                De Sluitende Businesscase: 10.967 Vertoningen &amp; 112 Kliks
-              </h3>
-              <p id="gDetailStory" class="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+              <p id="gDetailStory" class="text-xs sm:text-sm text-slate-300 mt-0.5 max-w-3xl leading-relaxed">
                 De live status via Marktplaats Zakelijk en Google: 10.967 gerichte stoelzoekers bereikt, 112 kliks naar Schipper Wonen en 5 directe websitebezoeken. Slechts 1 verkochte stoel dekt de inleg 76 keer terug!
               </p>
             </div>
           </div>
 
-          <!-- Quick Metrics inside Info Box -->
-          <div class="flex items-center gap-4 bg-slate-950/90 border border-slate-800 px-4 py-3 rounded-xl shrink-0 self-stretch sm:self-auto justify-around sm:justify-start">
-            <div class="text-center">
+          <!-- Quick Metrics (Minimalist, borderless) -->
+          <div class="flex items-center gap-5 shrink-0 self-start md:self-center">
+            <div>
               <div class="text-[10px] uppercase font-bold text-slate-400">Vertoningen</div>
-              <div id="gMetricImp" class="text-lg font-heading font-black text-[#5cb82f]">10.967</div>
+              <div id="gMetricImp" class="text-xl font-heading font-black text-[#5cb82f]">10.967</div>
             </div>
-            <div class="w-px h-8 bg-slate-800"></div>
-            <div class="text-center">
+            <div class="w-px h-8 bg-white/10"></div>
+            <div>
               <div class="text-[10px] uppercase font-bold text-slate-400">Kliks</div>
-              <div id="gMetricClicks" class="text-lg font-heading font-black text-[#f39223]">112</div>
+              <div id="gMetricClicks" class="text-xl font-heading font-black text-[#f39223]">112</div>
             </div>
-            <div class="w-px h-8 bg-slate-800"></div>
-            <div class="text-center">
+            <div class="w-px h-8 bg-white/10"></div>
+            <div>
               <div class="text-[10px] uppercase font-bold text-slate-400">Kosten/Klik</div>
-              <div id="gMetricCpc" class="text-lg font-heading font-black text-white">€ 0,14</div>
+              <div id="gMetricCpc" class="text-xl font-heading font-black text-white">€ 0,14</div>
             </div>
           </div>
         </div>
 
       </div>
+    </section>
     </section>
 
     <!-- Key Takeaway Grid: Marktplaats Live Bewijs -->
@@ -598,7 +596,7 @@
     };
 
     let selectedGraphDay = 7;
-    let graphAutoplayInterval = null;
+    let isBuildingUp = false;
 
     function selectGraphDay(day) {
       selectedGraphDay = day;
@@ -610,59 +608,141 @@
         const pill = document.getElementById('g-pill-' + i);
         if (pill) {
           if (i === day) {
-            pill.className = "timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent active";
+            pill.className = "timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 active transition";
           } else {
-            pill.className = "timeline-pill py-2 px-1 rounded-lg text-center font-bold text-xs transition border border-transparent bg-slate-800/80 text-slate-300 hover:bg-slate-700";
+            pill.className = "timeline-pill flex-1 py-1.5 px-1 rounded-lg text-center font-bold text-xs bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 transition";
           }
         }
         const dot = document.getElementById('g-dot-' + i);
         if (dot) {
           if (i === day) {
             dot.classList.add('chart-point-active');
+            if (i === 7) dot.classList.add('pulse-d7');
           } else {
             dot.classList.remove('chart-point-active');
+            if (i === 7) dot.classList.remove('pulse-d7');
           }
         }
       }
 
-      // Update Info Box
+      // Update Info Line
       document.getElementById('gDetailBadge').innerText = data.badge;
       document.getElementById('gDetailSubtitle').innerText = data.subtitle;
-      document.getElementById('gDetailTag').innerText = data.tag;
-      document.getElementById('gDetailTitle').innerText = data.title;
+      document.getElementById('gDetailTag').innerText = "• " + data.tag.replace(/[⚠️⚙️🎯📈🛒🔥✓]/g, '').trim();
       document.getElementById('gDetailStory').innerText = data.story;
       document.getElementById('gMetricImp').innerText = data.imp;
       document.getElementById('gMetricClicks').innerText = data.clicks;
       document.getElementById('gMetricCpc').innerText = data.cpc;
     }
 
-    function toggleGraphAutoplay() {
-      const btn = document.getElementById('btnGraphPlay');
-      const text = document.getElementById('graphPlayText');
-      if (graphAutoplayInterval) {
-        clearInterval(graphAutoplayInterval);
-        graphAutoplayInterval = null;
-        text.innerText = "Speel Groeicurve Af";
-        btn.classList.remove('bg-amber-600');
-        btn.classList.add('bg-[#4B8F24]');
-      } else {
-        text.innerText = "Pauzeer";
-        btn.classList.remove('bg-[#4B8F24]');
-        btn.classList.add('bg-amber-600');
-        let step = (selectedGraphDay >= 7) ? 1 : selectedGraphDay + 1;
-        selectGraphDay(step);
-        graphAutoplayInterval = setInterval(() => {
-          step = (step >= 7) ? 1 : step + 1;
-          selectGraphDay(step);
-          if (step === 7) {
-            clearInterval(graphAutoplayInterval);
-            graphAutoplayInterval = null;
-            text.innerText = "Speel Groeicurve Af";
-            btn.classList.remove('bg-amber-600');
-            btn.classList.add('bg-[#4B8F24]');
+    // Dynamic Graph Build-Up Animation (Opbouw)
+    function triggerGraphBuildUp() {
+      if (isBuildingUp) return;
+      isBuildingUp = true;
+
+      const lineImp = document.getElementById('svgLineImpressions');
+      const lineClicks = document.getElementById('svgLineClicks');
+      const areaImp = document.getElementById('svgAreaImpressions');
+      const areaClicks = document.getElementById('svgAreaClicks');
+      const badge = document.getElementById('gMilestoneBadge');
+      const metricImp = document.getElementById('gMetricImp');
+      const metricClicks = document.getElementById('gMetricClicks');
+      const headerImp = document.getElementById('headerLiveImp');
+      const headerClicks = document.getElementById('headerLiveClicks');
+      const replayBtnText = document.getElementById('graphReplayText');
+
+      if (replayBtnText) replayBtnText.innerText = "Bouwt op...";
+
+      const pathLength = 700;
+      lineImp.style.strokeDasharray = pathLength;
+      lineImp.style.strokeDashoffset = pathLength;
+      lineClicks.style.strokeDasharray = pathLength;
+      lineClicks.style.strokeDashoffset = pathLength;
+      areaImp.style.opacity = '0';
+      areaClicks.style.opacity = '0';
+      if (badge) badge.style.opacity = '0';
+
+      const dots = [1,2,3,4,5,6,7].map(i => document.getElementById('g-dot-' + i));
+      const cdots = [1,2,3,4,5,6,7].map(i => document.getElementById('g-cdot-' + i));
+      dots.forEach(d => { if (d) d.style.opacity = '0'; });
+      cdots.forEach(d => { if (d) d.style.opacity = '0'; });
+
+      const duration = 2200; // 2.2s smooth build-up
+      const start = performance.now();
+
+      function frame(now) {
+        const elapsed = now - start;
+        const progress = Math.min(1.0, elapsed / duration);
+        // Ease out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        const currentOffset = pathLength * (1 - ease);
+        lineImp.style.strokeDashoffset = currentOffset;
+        lineClicks.style.strokeDashoffset = currentOffset;
+
+        // Reveal day points as curve reaches them
+        const dayThresholds = [0, 0.12, 0.28, 0.44, 0.62, 0.80, 0.98];
+        dayThresholds.forEach((thresh, idx) => {
+          if (ease >= thresh) {
+            if (dots[idx]) {
+              dots[idx].style.opacity = '1';
+              dots[idx].style.transform = 'scale(1)';
+            }
+            if (cdots[idx]) cdots[idx].style.opacity = '1';
           }
-        }, 1800);
+        });
+
+        // Live counter numbers during build-up
+        const currentImp = Math.round(10967 * ease);
+        const currentClicks = Math.round(112 * ease);
+        metricImp.innerText = currentImp.toLocaleString('nl-NL');
+        metricClicks.innerText = currentClicks;
+        if (headerImp) headerImp.innerText = currentImp.toLocaleString('nl-NL') + ' Vertoningen';
+        if (headerClicks) headerClicks.innerText = currentClicks + ' Kliks';
+
+        // Area fills fade in
+        if (ease > 0.35) {
+          const areaAlpha = (ease - 0.35) / 0.65;
+          areaImp.style.opacity = areaAlpha;
+          areaClicks.style.opacity = areaAlpha * 0.8;
+        }
+
+        if (progress < 1.0) {
+          requestAnimationFrame(frame);
+        } else {
+          // Finished: lock in final apex
+          lineImp.style.strokeDashoffset = '0';
+          lineClicks.style.strokeDashoffset = '0';
+          areaImp.style.opacity = '1';
+          areaClicks.style.opacity = '1';
+          if (badge) {
+            badge.style.opacity = '1';
+            badge.style.transform = 'translate(565px, 12px) scale(1)';
+          }
+          if (replayBtnText) replayBtnText.innerText = "Herhaal Opbouw";
+          selectGraphDay(7);
+          isBuildingUp = false;
+        }
       }
+
+      requestAnimationFrame(frame);
+    }
+
+    // Trigger build-up automatically on load and when visible
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(triggerGraphBuildUp, 450);
+    });
+
+    const graphSection = document.getElementById('groeigrafiek');
+    if (graphSection && 'IntersectionObserver' in window) {
+      let hasAnimated = false;
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          triggerGraphBuildUp();
+        }
+      }, { threshold: 0.25 });
+      observer.observe(graphSection);
     }
   </script>
 

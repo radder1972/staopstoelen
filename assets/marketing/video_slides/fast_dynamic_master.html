@@ -571,14 +571,14 @@
             </div>
           </div>
 
-          <!-- Mini Inline Groeicurve in Video Slide -->
-          <div style="background: rgba(0,0,0,0.35); border: 1.5px solid rgba(92,184,47,0.35); border-radius: 16px; padding: 14px 22px; margin: 6px 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <!-- Mini Inline Groeicurve in Video Slide (Geen box eromheen) -->
+          <div style="padding: 6px 0; margin: 2px 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <span style="font-size: 13px; font-weight: 800; color: #86efac; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5cb82f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
                 7-DAGEN GROEICURVE
               </span>
-              <span style="font-size: 13px; font-weight: 900; color: #fed857;">
+              <span id="s2_curve_stats_text" style="font-size: 13px; font-weight: 900; color: #fed857;">
                 10.967 VERTONINGEN &bull; 112 KLIKS
               </span>
             </div>
@@ -591,18 +591,18 @@
               </defs>
               <line x1="10" y1="70" x2="490" y2="70" stroke="#334155" stroke-width="1.5"/>
               <line x1="10" y1="20" x2="490" y2="20" stroke="#1e293b" stroke-dasharray="3 3"/>
-              <polygon points="10,70 10,70 90,69 170,68 250,66 330,48 410,26 490,10 490,70" fill="url(#vidGradGreen)" />
-              <polyline fill="none" stroke="#5cb82f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+              <polygon id="s2_curve_area_green" points="10,70 10,70 90,69 170,68 250,66 330,48 410,26 490,10 490,70" fill="url(#vidGradGreen)" />
+              <polyline id="s2_curve_line_green" fill="none" stroke="#5cb82f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
                 points="10,70 90,69 170,68 250,66 330,48 410,26 490,10" />
-              <polyline fill="none" stroke="#f39223" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              <polyline id="s2_curve_line_orange" fill="none" stroke="#f39223" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                 points="10,70 90,69 170,67 250,65 330,45 410,32 490,18" />
-              <circle cx="10" cy="70" r="4" fill="#64748b"/>
-              <circle cx="90" cy="69" r="4" fill="#64748b"/>
-              <circle cx="170" cy="68" r="4" fill="#64748b"/>
-              <circle cx="250" cy="66" r="4" fill="#38bdf8"/>
-              <circle cx="330" cy="48" r="5" fill="#38bdf8"/>
-              <circle cx="410" cy="26" r="5.5" fill="#f39223"/>
-              <circle cx="490" cy="10" r="7" fill="#5cb82f" stroke="#ffffff" stroke-width="2"/>
+              <circle id="s2_dot_1" cx="10" cy="70" r="4" fill="#64748b"/>
+              <circle id="s2_dot_2" cx="90" cy="69" r="4" fill="#64748b"/>
+              <circle id="s2_dot_3" cx="170" cy="68" r="4" fill="#64748b"/>
+              <circle id="s2_dot_4" cx="250" cy="66" r="4" fill="#38bdf8"/>
+              <circle id="s2_dot_5" cx="330" cy="48" r="5" fill="#38bdf8"/>
+              <circle id="s2_dot_6" cx="410" cy="26" r="5.5" fill="#f39223"/>
+              <circle id="s2_dot_7" cx="490" cy="10" r="7" fill="#5cb82f" stroke="#ffffff" stroke-width="2"/>
             </svg>
           </div>
 
@@ -832,6 +832,41 @@
         const p3 = Math.min(1.0, Math.max(0, (t - 8.5) / 1.8));
         const val3 = Math.round(5 * p3);
         document.getElementById('s1_num_web').innerText = val3;
+      }
+
+      // SCENE 2 ANIMATIONS (15.0s - 31.0s) - Dynamic Groeicurve Opbouw
+      if (t >= 14.8 && t < 31.0) {
+        const lineG = document.getElementById('s2_curve_line_green');
+        const lineO = document.getElementById('s2_curve_line_orange');
+        const areaG = document.getElementById('s2_curve_area_green');
+        const textStats = document.getElementById('s2_curve_stats_text');
+
+        if (lineG && lineO) {
+          const pathLen = 500;
+          const pCurve = Math.min(1.0, Math.max(0, (t - 15.2) / 3.2));
+          // ease out
+          const easeCurve = 1 - Math.pow(1 - pCurve, 2.5);
+
+          lineG.style.strokeDasharray = pathLen;
+          lineG.style.strokeDashoffset = pathLen * (1 - easeCurve);
+          lineO.style.strokeDasharray = pathLen;
+          lineO.style.strokeDashoffset = pathLen * (1 - easeCurve);
+
+          if (areaG) areaG.style.opacity = Math.max(0, (easeCurve - 0.2) / 0.8);
+
+          // Dot reveals
+          const dayThresholds = [0, 0.14, 0.28, 0.44, 0.62, 0.80, 0.98];
+          dayThresholds.forEach((thresh, idx) => {
+            const dot = document.getElementById('s2_dot_' + (idx + 1));
+            if (dot) dot.style.opacity = easeCurve >= thresh ? '1' : '0';
+          });
+
+          if (textStats) {
+            const curImp = Math.round(10967 * easeCurve);
+            const curClicks = Math.round(112 * easeCurve);
+            textStats.innerHTML = `${curImp.toLocaleString('nl-NL')} VERTONINGEN &bull; ${curClicks} KLIKS`;
+          }
+        }
       }
 
       // SCENE 3 ANIMATIONS (31.0s - 48.0s)
