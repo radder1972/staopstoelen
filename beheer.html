@@ -2227,6 +2227,15 @@
             <div style="font-size: 1.8rem; font-weight: 800; color: #d32f2f; margin: 8px 0 4px 0;" id="kpiConversionRate">0%</div>
             <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiConversionRateSub">Aandeel boekingen</div>
           </div>
+          <!-- Card 7: Digitale Zitassistent -->
+          <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: var(--radius-sm); padding: 18px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--color-gray); letter-spacing: 0.5px; display: flex; align-items: center; justify-content: space-between;">
+              <span>Digitale Zitassistent</span>
+              <span style="background: #f3e5f5; color: #6a1b9a; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; font-weight: 800; letter-spacing: 0.3px;">AI Bot</span>
+            </div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #6a1b9a; margin: 8px 0 4px 0;" id="kpiAssistantOpens">0x</div>
+            <div style="font-size: 0.8rem; color: var(--color-gray);" id="kpiAssistantSub">0 vragen &bull; 0 doorkliks</div>
+          </div>
         </div>
 
         <!-- Dynamic Automated Business Insights Card -->
@@ -6278,6 +6287,7 @@
             .then(res => res.json())
             .then(data => {
               if (data.status === "success") {
+                try { localStorage.removeItem('staopstoelen_assistant_stats'); } catch(e){}
                 alert("De bezoekersstatistieken zijn succesvol gereset.");
                 renderStatsDashboard();
               } else {
@@ -6381,6 +6391,26 @@
           const uniques = parseInt(overview.unique_visitors) || 1;
           const convRate = Math.round((totalBookings / uniques) * 100);
           document.getElementById("kpiConversionRate").textContent = `${convRate}% (${totalBookings})`;
+          
+          // Populate Assistant metrics
+          const asst = res.assistant || {};
+          let localAsst = { opens: 0, queries: 0, ctas: 0 };
+          try {
+            localAsst = JSON.parse(localStorage.getItem('staopstoelen_assistant_stats') || '{}');
+          } catch(e){}
+
+          const totalOpens = Math.max(parseInt(asst.total_opens || 0), parseInt(localAsst.opens || 0));
+          const totalQueries = Math.max(parseInt(asst.total_queries || 0), parseInt(localAsst.queries || 0));
+          const totalCtas = Math.max(parseInt(asst.total_ctas || 0), parseInt(localAsst.ctas || 0));
+
+          const kpiAssistantOpensEl = document.getElementById("kpiAssistantOpens");
+          const kpiAssistantSubEl = document.getElementById("kpiAssistantSub");
+          if (kpiAssistantOpensEl) {
+            kpiAssistantOpensEl.textContent = `${totalOpens}x`;
+          }
+          if (kpiAssistantSubEl) {
+            kpiAssistantSubEl.textContent = `${totalQueries} vragen • ${totalCtas} doorkliks`;
+          }
           
           // 1b. Populate Dynamic Automated Business Insights
           const insightsContainer = document.getElementById("dynamicInsightsContent");
@@ -6489,7 +6519,36 @@
               </div>
             `;
 
-            insightsContainer.innerHTML = landingInsightHtml + chairInsightHtml + convInsightHtml;
+            // Card 4: Digitale Zitassistent Activiteit
+            let assistantInsightHtml = "";
+            const popularTopic = (res.assistant_topics && res.assistant_topics[0] && res.assistant_topics[0].topic) 
+              ? res.assistant_topics[0].topic 
+              : 'Maat & Klachtenadvies';
+            assistantInsightHtml = `
+              <div style="background: white; border: 1px solid #e2ebd9; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <div style="font-weight: 700; color: var(--color-forest-dark); display: flex; align-items: center; justify-content: space-between;">
+                  <span style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #f3e5f5; color: #6a1b9a;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </span>
+                    <span>Digitale Zitassistent</span>
+                  </span>
+                  <span style="font-size: 0.75rem; background: #f3e5f5; color: #6a1b9a; padding: 2px 8px; border-radius: 10px; font-weight: 700;">${totalOpens}x interactie</span>
+                </div>
+                <div style="font-size: 0.9rem; color: #333; line-height: 1.5;">
+                  Bezoekers stelden <strong style="color: #122b07;">${totalQueries} vragen</strong> aan de assistent. Dit resulteerde in <strong style="color: #6a1b9a;">${totalCtas} doorkliks</strong> naar showroomafspraken, keuzehulp of telefonisch advies.
+                </div>
+                <div style="font-size: 0.8rem; color: #666; margin-top: auto; padding-top: 8px; border-top: 1px dashed #eee; line-height: 1.4; display: flex; align-items: flex-start; gap: 6px;">
+                  <span style="display: inline-flex; align-items: center; gap: 4px; color: #6a1b9a; font-weight: 700; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Topic:
+                  </span>
+                  <span>Meest geraadpleegd: <em>${popularTopic}</em>. De assistent verlaagt de drempel voor oriënterende senioren om direct contact op te nemen.</span>
+                </div>
+              </div>
+            `;
+
+            insightsContainer.innerHTML = landingInsightHtml + chairInsightHtml + convInsightHtml + assistantInsightHtml;
           }
           
           // 2. Chart 5: Daily Visits Trend (Line Chart)

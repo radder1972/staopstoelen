@@ -33,6 +33,34 @@ try {
                            ORDER BY DATE(timestamp) ASC");
     $stmt->execute([':days' => $days]);
     $conversions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // 3b. Digitale Zitassistent Usage
+    $stmt = $pdo->prepare("SELECT 
+        COUNT(CASE WHEN event_name = 'assistant_open' THEN 1 END) as total_opens,
+        COUNT(CASE WHEN event_name = 'assistant_query' THEN 1 END) as total_queries,
+        COUNT(CASE WHEN event_name = 'assistant_cta_click' THEN 1 END) as total_ctas,
+        COUNT(DISTINCT CASE WHEN event_name LIKE 'assistant_%' THEN ip_hash END) as unique_users
+        FROM visits 
+        WHERE timestamp >= DATE_SUB(NOW(), INTERVAL :days DAY)");
+    $stmt->execute([':days' => $days]);
+    $assistant = $stmt->fetch(PDO::FETCH_ASSOC) ?: [
+        'total_opens' => 0,
+        'total_queries' => 0,
+        'total_ctas' => 0,
+        'unique_users' => 0
+    ];
+
+    // Assistant top topics / questions
+    $stmt = $pdo->prepare("SELECT utm_campaign as topic, COUNT(*) as count 
+                           FROM visits 
+                           WHERE timestamp >= DATE_SUB(NOW(), INTERVAL :days DAY) 
+                             AND event_name = 'assistant_query' 
+                             AND utm_campaign IS NOT NULL AND utm_campaign != ''
+                           GROUP BY utm_campaign 
+                           ORDER BY count DESC 
+                           LIMIT 6");
+    $stmt->execute([':days' => $days]);
+    $assistant_topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     // 4. Device breakdown
     $stmt = $pdo->prepare("SELECT device_type, COUNT(*) as count 
@@ -269,7 +297,9 @@ try {
         "top_paths" => $top_paths,
         "top_entry_pages" => $top_entry_pages,
         "top_exit_pages" => $top_exit_pages,
-        "top_chairs" => $top_chairs
+        "top_chairs" => $top_chairs,
+        "assistant" => $assistant,
+        "assistant_topics" => $assistant_topics
     ]);
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);

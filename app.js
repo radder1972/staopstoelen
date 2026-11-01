@@ -50,7 +50,7 @@ window.adjustImageFit = function(img) {
 })();
 
 // Local Visit & Event Tracking Logger
-function logCustomVisitEvent(eventName = 'pageview') {
+function logCustomVisitEvent(eventName = 'pageview', extraData = {}) {
   try {
     // Ignore logging admin dashboard views and excluded devices (own visits)
     if (window.location.pathname.includes('beheer.html') ||
@@ -62,11 +62,11 @@ function logCustomVisitEvent(eventName = 'pageview') {
 
     const params = new URLSearchParams(window.location.search);
     const logData = {
-      page_url: window.location.pathname + window.location.hash,
+      page_url: (extraData && extraData.page_url) || (window.location.pathname + window.location.hash),
       referrer_url: document.referrer || '',
-      utm_source: params.get('utm_source') || '',
-      utm_medium: params.get('utm_medium') || '',
-      utm_campaign: params.get('utm_campaign') || '',
+      utm_source: (extraData && extraData.utm_source) || params.get('utm_source') || '',
+      utm_medium: (extraData && extraData.utm_medium) || params.get('utm_medium') || '',
+      utm_campaign: (extraData && (extraData.utm_campaign || extraData.topic)) || params.get('utm_campaign') || '',
       device_type: window.innerWidth < 768 ? 'mobile' : (window.innerWidth < 1024 ? 'tablet' : 'desktop'),
       event_name: eventName
     };
@@ -80,6 +80,58 @@ function logCustomVisitEvent(eventName = 'pageview') {
     console.warn('Logging failed:', e);
   }
 }
+
+// Digitale Zitassistent Telemetrie & Analytics Tracker
+function trackAssistantEvent(action, details = {}) {
+  try {
+    // 1. Google Analytics 4 (GA4) Event
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'assistant_' + action, {
+        event_category: 'Digitale Zitassistent',
+        event_label: details.label || details.query || details.topic || details.cta || action,
+        value: details.value || 1,
+        assistant_action: action,
+        assistant_topic: details.topic || '',
+        assistant_query: details.query || '',
+        assistant_cta: details.cta || ''
+      });
+    }
+
+    // 2. Database backend visit logging
+    if (typeof logCustomVisitEvent === 'function') {
+      logCustomVisitEvent('assistant_' + action, {
+        utm_campaign: (details.topic || details.query || details.cta || action).substring(0, 50),
+        page_url: window.location.pathname + '#zitassistent'
+      });
+    }
+
+    // 3. Local aggregation in localStorage (voor live weergave in beheer.html)
+    try {
+      const statsKey = 'staopstoelen_assistant_stats';
+      let stats = JSON.parse(localStorage.getItem(statsKey) || '{"opens":0,"queries":0,"ctas":0,"lastActive":null,"recentQueries":[]}');
+      if (action === 'open') {
+        stats.opens = (stats.opens || 0) + 1;
+      } else if (action === 'query') {
+        stats.queries = (stats.queries || 0) + 1;
+        const qText = (details.query || details.topic || '').trim();
+        if (qText) {
+          stats.recentQueries = stats.recentQueries || [];
+          if (!stats.recentQueries.includes(qText)) {
+            stats.recentQueries.unshift(qText);
+            if (stats.recentQueries.length > 10) stats.recentQueries.pop();
+          }
+        }
+      } else if (action === 'cta_click') {
+        stats.ctas = (stats.ctas || 0) + 1;
+      }
+      stats.lastActive = new Date().toISOString();
+      localStorage.setItem(statsKey, JSON.stringify(stats));
+    } catch (lsErr) {}
+  } catch (err) {
+    console.warn('trackAssistantEvent error:', err);
+  }
+}
+window.trackAssistantEvent = trackAssistantEvent;
 
 // Google Ads Conversion & Event Tracking (AW-923357429)
 // Er worden twee Google Ads-accounts gemeten: het oorspronkelijke account (AW-923357429)
@@ -3116,6 +3168,9 @@ function initFloatingMenu() {
     wrapper.classList.add("panel-open");
     teaser.classList.add("hidden");
     triggerChairDance(headerImg, false);
+    if (typeof trackAssistantEvent === "function") {
+      trackAssistantEvent("open");
+    }
     setTimeout(() => {
       const inp = document.getElementById("daQuestionInput");
       if (inp) inp.focus();
@@ -3196,7 +3251,7 @@ function initFloatingMenu() {
       return {
         question: q === "maat" ? "Welke stoel past bij mijn lengte & klachten?" : topicOrQuery,
         html: `Een goede sta-op stoel wordt altijd op <strong>5 lichaamsmaten</strong> afgesteld: zithoogte, zitdiepte, zitbreedte, armleggerhoogte en lendensteun.<br><br>Met onze <strong>Online Keuzehulp</strong> ziet u in 3 stappen welk Fitform of seniorenmodel bij uw lengte en klachten past:`,
-        ctaHtml: `<div class="da-inline-ctas"><a href="${base}keuzehulp.html" class="da-inline-btn">Start Online Keuzehulp &rarr;</a><a href="${base}stoel-anatomie.html" class="da-inline-btn da-inline-btn-sec">Bekijk 5 Maatwerkcriteria</a></div>`
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}keuzehulp.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'keuzehulp'})">Start Online Keuzehulp &rarr;</a><a href="${base}stoel-anatomie.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'anatomie'})">Bekijk 5 Maatwerkcriteria</a></div>`
       };
     }
 
@@ -3204,7 +3259,7 @@ function initFloatingMenu() {
       return {
         question: q === "prijs" ? "Wat kost een (Certified Fitform) stoel?" : topicOrQuery,
         html: `Bij ons heeft u keuze uit twee categorieën:<br>• <strong>Certified Fitform (Jong gebruikt &amp; gereviseerd):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong> (volledig 15-punts gekeurd incl. garantie).<br>• <strong>Nieuw op maat:</strong> volledig naar wens samengesteld.<br><br>Alle actuele voorraadmodellen staan direct met prijs online:`,
-        ctaHtml: `<div class="da-inline-ctas"><a href="${base}staopstoelen.html" class="da-inline-btn">Bekijk Collectie &amp; Prijzen &rarr;</a><a href="${base}wat-kost-een-sta-op-stoel.html" class="da-inline-btn da-inline-btn-sec">Prijsuitleg lezen</a></div>`
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}staopstoelen.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'collectie'})">Bekijk Collectie &amp; Prijzen &rarr;</a><a href="${base}wat-kost-een-sta-op-stoel.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'prijzen'})">Prijsuitleg lezen</a></div>`
       };
     }
 
@@ -3212,7 +3267,7 @@ function initFloatingMenu() {
       return {
         question: q === "proefzitten" ? "Hoe werkt proefzitten of passing aan huis?" : topicOrQuery,
         html: `U bent van harte welkom in onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> (gratis parkeren voor de deur, gelijkvloers).<br><br>Bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> doet een vrijblijvende zitmeting en stelt meerdere stoelen op uw maat in. Woont u in de <strong>regio Dordrecht (Drechtsteden)</strong> en lukt langskomen niet? Dan komt Geertjan kosteloos bij u thuis proefpassen!`,
-        ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="openAppointmentModal(event)">Plan Proefzit-Afspraak &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.openCertifiedVideoModal)openCertifiedVideoModal('zitmeting')">Bekijk Video (38 sec)</button></div>`
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'afspraak'});openAppointmentModal(event)">Plan Proefzit-Afspraak &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'video_zitmeting'});if(window.openCertifiedVideoModal)openCertifiedVideoModal('zitmeting')">Bekijk Video (38 sec)</button></div>`
       };
     }
 
@@ -3220,14 +3275,14 @@ function initFloatingMenu() {
       return {
         question: q === "vergoeding" ? "Wordt een sta-op stoel vergoed?" : topicOrQuery,
         html: `In specifieke medische situaties is vergoeding mogelijk via uw zorgverzekeraar of gemeente (Wmo / PGB). Veel klanten kiezen echter voor een <strong>Certified Fitform occasion</strong> omdat u dan zonder lange wachttijd direct op maat geholpen bent.<br><br>Geertjan denkt hierin graag eerlijk met u mee:`,
-        ctaHtml: `<div class="da-inline-ctas"><a href="${base}indicatiewijzer.html" class="da-inline-btn">Open Indicatiewijzer &rarr;</a><a href="${base}afspraak.html" class="da-inline-btn da-inline-btn-sec" onclick="openAppointmentModal(event)">Vraag Advies aan Geertjan</a></div>`
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}indicatiewijzer.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'indicatiewijzer'})">Open Indicatiewijzer &rarr;</a><a href="${base}afspraak.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'afspraak_advies'});openAppointmentModal(event)">Vraag Advies aan Geertjan</a></div>`
       };
     }
 
     return {
       question: topicOrQuery,
       html: `Bedankt voor uw vraag! Omdat elk lichaam anders is, kijkt bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> graag persoonlijk met u mee. U kunt direct bellen op <strong>078 - 631 4858</strong>, een WhatsApp sturen of vrijblijvend een proefzit-afspraak plannen.`,
-      ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="openAppointmentModal(event)">Plan Adviesgesprek &rarr;</a><a href="${base}faq.html" class="da-inline-btn da-inline-btn-sec">Veelgestelde vragen</a></div>`
+      ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'afspraak_gesprek'});openAppointmentModal(event)">Plan Adviesgesprek &rarr;</a><a href="${base}faq.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'faq'})">Veelgestelde vragen</a></div>`
     };
   }
 
@@ -3287,7 +3342,8 @@ function initFloatingMenu() {
       const def = actionDefs[act];
       if (!def) return "";
       const cls = def.primary ? "da-inline-btn" : "da-inline-btn da-inline-btn-sec";
-      const onclickAttr = def.onclick ? ` onclick="${def.onclick}"` : "";
+      const clickCode = `if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'${act}'});${def.onclick ? def.onclick : ''}`;
+      const onclickAttr = ` onclick="${clickCode}"`;
       const targetAttr = def.target ? ` target="${def.target}" rel="noopener"` : "";
       return `<a href="${def.href}" class="${cls}"${onclickAttr}${targetAttr}>${def.label}</a>`;
     }).filter(Boolean);
@@ -3304,6 +3360,10 @@ function initFloatingMenu() {
       vergoeding: "Wordt een sta-op stoel vergoed?"
     };
     const userText = chipLabels[topicOrQuery] || topicOrQuery;
+
+    if (typeof trackAssistantEvent === "function") {
+      trackAssistantEvent("query", { query: userText, topic: topicOrQuery });
+    }
 
     // 1. Toon direct het gebruikersbericht
     const userMsg = document.createElement("div");
