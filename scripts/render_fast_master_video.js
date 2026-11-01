@@ -9,9 +9,9 @@ const FFMPEG = "/Users/matthiasradder/.local/bin/ffmpeg";
 const FRAMES_DIR = path.resolve("assets/marketing/video_frames/fast_master");
 fs.mkdirSync(FRAMES_DIR, { recursive: true });
 
-const DURATION = 43.8; // seconds matching dynamic_master_audio.mp3
+const DURATION = 60.6; // seconds matching clean_maarten_master.mp3
 const FPS = 25;
-const TOTAL_FRAMES = Math.round(DURATION * FPS); // 1095 frames
+const TOTAL_FRAMES = Math.round(DURATION * FPS); // 1515 frames
 
 console.log(`🎬 Rendering Fast Dynamic Master Video (${DURATION}s @ ${FPS}fps = ${TOTAL_FRAMES} frames)...`);
 
@@ -90,7 +90,7 @@ setTimeout(async () => {
     // Assemble with FFmpeg and mixed audio
     console.log("🎥 Encoding fast master video with FFmpeg and audio...");
     const outMp4 = "assets/video/geertjan_keuze_advies_video.mp4";
-    const audioFile = "assets/marketing/video_audio/dynamic_master_audio.mp3";
+    const audioFile = "assets/marketing/video_audio/clean_maarten_master.mp3";
 
     const ffmpegCmd = [
       "-y",

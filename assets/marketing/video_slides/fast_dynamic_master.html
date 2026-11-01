@@ -854,27 +854,27 @@
   </footer>
 
   <script>
-    // Animation timing control (Total 43.8 seconds)
-    // Scene 1: 0.0s - 10.6s
-    // Scene 2: 10.6s - 21.8s
-    // Scene 3: 21.8s - 31.6s
-    // Scene 4: 31.6s - 43.8s
+    // Animation timing control (Total 60.6 seconds - Natural Studio Voiceover)
+    // Scene 1: 0.0s - 15.0s (Live Resultaten & Kerngetallen)
+    // Scene 2: 15.0s - 31.0s (GA4 vs TPM Bewijs)
+    // Scene 3: 31.0s - 48.0s (Fruitmachine & Jackpot)
+    // Scene 4: 48.0s - 60.6s (Conclusie & Dordrecht Showroom)
 
     const scenes = [
-      { id: 'scene1', start: 0.0, end: 10.6, badge: '1. DE 3 KERNGETALLEN (LIVE BEWIJS)' },
-      { id: 'scene2', start: 10.6, end: 21.8, badge: '2. GA4 VS TPM (158X GOEDKOPER!)' },
-      { id: 'scene3', start: 21.8, end: 31.6, badge: '3. DE FRUITMACHINE & JACKPOT (82X ROI)' },
-      { id: 'scene4', start: 31.6, end: 43.8, badge: '4. DE CONCLUSIE: VUL DE SHOWROOM!' }
+      { id: 'scene1', start: 0.0, end: 15.0, badge: '1. DE 3 KERNGETALLEN (LIVE BEWIJS)' },
+      { id: 'scene2', start: 15.0, end: 31.0, badge: '2. GA4 VS TPM (158X GOEDKOPER!)' },
+      { id: 'scene3', start: 31.0, end: 48.0, badge: '3. DE FRUITMACHINE & JACKPOT (82X ROI)' },
+      { id: 'scene4', start: 48.0, end: 60.6, badge: '4. DE CONCLUSIE: VUL DE SHOWROOM!' }
     ];
 
     window.setAnimationProgress = function(progress) {
-      const totalDur = 43.8;
+      const totalDur = 60.6;
       const t = progress * totalDur;
       window.setAnimationTime(t);
     };
 
     window.setAnimationTime = function(t) {
-      const totalDur = 43.8;
+      const totalDur = 60.6;
       const pct = Math.min(100, Math.max(0, (t / totalDur) * 100));
       document.getElementById('videoProgressBar').style.width = pct + '%';
 
@@ -897,44 +897,43 @@
 
       document.getElementById('sceneBadgeText').innerText = activeScene.badge;
 
-      // SCENE 1 ANIMATIONS (0.0s - 10.6s)
-      if (t < 10.6) {
+      // SCENE 1 ANIMATIONS (0.0s - 15.0s)
+      if (t < 15.0) {
         // Counter 1: 0 -> 10.387
-        const p1 = Math.min(1.0, Math.max(0, (t - 0.4) / 1.8));
+        const p1 = Math.min(1.0, Math.max(0, (t - 0.5) / 2.5));
         const val1 = Math.round(10387 * Math.pow(p1, 0.7));
         document.getElementById('s1_num_views').innerText = val1.toLocaleString('nl-NL');
 
         // Counter 2: 0 -> 106
-        const p2 = Math.min(1.0, Math.max(0, (t - 2.8) / 1.5));
+        const p2 = Math.min(1.0, Math.max(0, (t - 4.5) / 2.2));
         const val2 = Math.round(106 * Math.pow(p2, 0.7));
         document.getElementById('s1_num_clicks').innerText = val2;
 
         // Counter 3: 0 -> 5
-        const p3 = Math.min(1.0, Math.max(0, (t - 5.5) / 1.2));
+        const p3 = Math.min(1.0, Math.max(0, (t - 8.5) / 1.8));
         const val3 = Math.round(5 * p3);
         document.getElementById('s1_num_web').innerText = val3;
       }
 
-      // SCENE 3 ANIMATIONS: FRUITMACHINE (21.8s - 31.6s)
-      if (t >= 21.0 && t <= 32.5) {
+      // SCENE 3 ANIMATIONS: FRUITMACHINE (31.0s - 48.0s)
+      if (t >= 30.0 && t <= 49.0) {
         const r1 = document.getElementById('reel1');
         const r2 = document.getElementById('reel2');
         const r3 = document.getElementById('reel3');
         const jackpot = document.getElementById('jackpotBanner');
 
-        // Reel 1 locks at 24.2s
-        if (t >= 24.2) {
+        // Reel 1 locks at 35.5s
+        if (t >= 35.5) {
           r1.classList.add('locked');
           document.getElementById('s3_r1_val').innerText = '10.387';
         } else {
           r1.classList.remove('locked');
-          // spinning blur
           const dummy = Math.round(Math.random() * 9000 + 1000);
           document.getElementById('s3_r1_val').innerText = dummy.toLocaleString('nl-NL');
         }
 
-        // Reel 2 locks at 25.5s
-        if (t >= 25.5) {
+        // Reel 2 locks at 38.5s
+        if (t >= 38.5) {
           r2.classList.add('locked');
           document.getElementById('s3_r2_val').innerText = '106';
         } else {
@@ -943,8 +942,8 @@
           document.getElementById('s3_r2_val').innerText = dummy;
         }
 
-        // Reel 3 locks at 26.8s
-        if (t >= 26.8) {
+        // Reel 3 locks at 41.5s
+        if (t >= 41.5) {
           r3.classList.add('locked');
           document.getElementById('s3_r3_val').innerText = '€ 1.200';
           jackpot.classList.add('active');
@@ -956,15 +955,15 @@
         }
       }
 
-      // SCENE 4 ANIMATIONS (31.6s - 43.8s)
-      if (t >= 31.0) {
+      // SCENE 4 ANIMATIONS (48.0s - 60.6s)
+      if (t >= 47.0) {
         const s1 = document.getElementById('s4_step_1');
         const s2 = document.getElementById('s4_step_2');
         const s3 = document.getElementById('s4_step_3');
 
-        if (t >= 32.2) s1.classList.add('highlight'); else s1.classList.remove('highlight');
-        if (t >= 34.2) s2.classList.add('highlight'); else s2.classList.remove('highlight');
-        if (t >= 36.2) s3.classList.add('highlight'); else s3.classList.remove('highlight');
+        if (t >= 49.5) s1.classList.add('highlight'); else s1.classList.remove('highlight');
+        if (t >= 52.5) s2.classList.add('highlight'); else s2.classList.remove('highlight');
+        if (t >= 55.5) s3.classList.add('highlight'); else s3.classList.remove('highlight');
       }
     };
   </script>
