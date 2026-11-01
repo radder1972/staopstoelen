@@ -31,19 +31,19 @@ ctx = ssl._create_unverified_context()
 SCRIPTS = {
     1: {
         "file": "assets/marketing/video_audio/short_scene_1.mp3",
-        "text": "Geertjan, laten we er eens heel rustig naar kijken. Wat we hier samen neerzetten draait om drie heldere kerngetallen. Eén: het bereik vóór de klik. Bijna negenduizend gerichte stoelzoekers in de regio zagen jouw advertenties. Twee: de advertentiekliks. Zevenennegentig mensen klikten bewust door voor vijftien cent per stuk. En drie: de websitebezoekers. Dat zien we nu ook zwart-op-wit terug in Google Analytics. We genereren écht verkeer naar Staopstoelen punt nl."
+        "text": "Geertjan, laten we er eens heel rustig naar kijken. Wat we hier samen neerzetten draait om drie heldere kerngetallen. Eén: het bereik vóór de klik. Ruim tienduizend driehonderd gerichte stoelzoekers op Marktplaats én ruim zeshonderd op Google zagen jouw advertenties. Twee: de advertentiekliks. Al honderdzes mensen op Marktplaats klikten bewust door voor veertien cent per stuk, plus acht directe zoekers op Google Ads. En drie: de websitebezoekers. Dat zien we nu zwart-op-wit terug in Google Analytics. We genereren écht verkeer naar Staopstoelen punt nl."
     },
     2: {
         "file": "assets/marketing/video_audio/short_scene_dagboek.mp3",
-        "text": "Kijk rustig naar de keiharde feiten in Google Analytics. TPM kost Geertjan vierhonderd euro per maand. In de afgelopen vijf dagen bracht die TPM-banner welgeteld drie bezoekers naar de website. Dat is meer dan tweeëntwintig euro per bezoeker! Terwijl onze eigen advertenties zevenennegentig gerichte proefzitters trokken voor amper vijftien cent per klik. Honderdachtenveertig keer goedkoper én zwart-op-wit bewezen in Analytics."
+        "text": "Kijk rustig naar de keiharde feiten in Google Analytics. TPM kost Geertjan vierhonderd euro per maand en leverde de afgelopen week slechts acht banner-sessies op. Onze eigen motor zorgde voor honderdvierenzeventig directe sessies, zesendertig organische Google-zoekers, tien Marktplaats-sessies en honderdzes stoelkliks voor amper veertien cent per klik. Ruim tachtig keer goedkoper én zwart-op-wit bewezen in Analytics."
     },
     3: {
         "file": "assets/marketing/video_audio/short_scene_fruitmachine.mp3",
-        "text": "Marketing is voor Geertjan geen gokkast meer waar je vierhonderd euro in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot: voor amper vijftien cent per klik pak je zevenennegentig gerichte proefzitters en twaalfhonderd euro marge op één verkochte stoel!"
+        "text": "Marketing is voor Geertjan geen gokkast meer waar je vierhonderd euro in gooit en hoopt op geluk. Met onze online motor trekken we aan de hendel en valt de jackpot: over de tienduizend vertoningen, honderdzes gerichte stoelkliks voor veertien cent per klik en twaalfhonderd euro marge op één verkochte stoel!"
     },
     4: {
         "file": "assets/marketing/video_audio/short_scene_3.mp3",
-        "text": "De conclusie is glashelder, Geertjan. Zeg die vierhonderd euro per maand aan TPM direct op. Zet dat budget in op onze eigen online machine en leid elke bezoeker naar een afspraak in jouw showroom aan de Merwedestraat. Eén extra verkochte stoel dekt de complete advertentiekosten al tweeëntachtig keer terug. Dít is onze winnende formule!"
+        "text": "De conclusie is glashelder, Geertjan. Zeg die vierhonderd euro per maand aan TPM direct op. Zet dat budget in op onze eigen online machine en leid elke bezoeker naar een afspraak in jouw showroom aan de Merwedestraat. Eén extra verkochte stoel dekt de complete advertentiekosten al ruim tachtig keer terug. Dít is onze winnende formule!"
     }
 }
 

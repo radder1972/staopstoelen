@@ -544,11 +544,11 @@
         <div class="slot-digital-row">
           <div class="digital-box">
             <div class="digital-label">Vertoningen (Views)</div>
-            <div class="digital-number green" id="counterVertoningen">8.995</div>
+            <div class="digital-number green" id="counterVertoningen">10.387</div>
           </div>
           <div class="digital-box">
             <div class="digital-label">Stoelkliks (Kliks)</div>
-            <div class="digital-number" id="counterKliks">97</div>
+            <div class="digital-number" id="counterKliks">106</div>
           </div>
         </div>
 
@@ -602,30 +602,30 @@
       <div class="funnel-stack">
         <!-- 1. VIEWS -->
         <div class="kpi-row-card active-1" id="cardKpi1">
-          <div class="kpi-big-num" style="color: #60a5fa;">8.995</div>
+          <div class="kpi-big-num" style="color: #60a5fa;">10.387</div>
           <div class="kpi-body">
-            <h4>1. Views (Bereik in de Regio)</h4>
-            <p>Bijna 9.000 senioren en mantelzorgers zagen de advertentie.</p>
+            <h4>1. Views (10.000+ Grens Doorbroken!)</h4>
+            <p>Ruim 10.387 senioren op Marktplaats (+ 628 op Google Ads) bereikt.</p>
           </div>
-          <div class="kpi-badge" style="background: rgba(96, 165, 250, 0.2); color: #93c5fd;">Kijkers</div>
+          <div class="kpi-badge" style="background: rgba(96, 165, 250, 0.2); color: #93c5fd;">10k+ Bereik</div>
         </div>
 
         <!-- 2. KLIKS -->
         <div class="kpi-row-card active-2" id="cardKpi2">
-          <div class="kpi-big-num" style="color: var(--color-terracotta);">97</div>
+          <div class="kpi-big-num" style="color: var(--color-terracotta);">106</div>
           <div class="kpi-body">
-            <h4>2. Advertentiekliks (€ 0,15/klik)</h4>
-            <p>Doelgerichte stoelzoekers bekeken actief specificaties en foto's.</p>
+            <h4>2. Advertentiekliks (€ 0,14/klik)</h4>
+            <p>106 Marktplaats-kliks + 8 Google Ads-kliks van actieve stoelzoekers.</p>
           </div>
-          <div class="kpi-badge" style="background: rgba(243, 146, 35, 0.2); color: #fbbf24;">Interesse</div>
+          <div class="kpi-badge" style="background: rgba(243, 146, 35, 0.2); color: #fbbf24;">100+ Kliks</div>
         </div>
 
         <!-- 3. WEBSITE BEZOEKERS (FOCUS OP AFSPRAAK) -->
         <div class="kpi-row-card active-3" id="cardKpi3">
           <div class="kpi-big-num" style="color: #4ade80;">5</div>
           <div class="kpi-body">
-            <h4>3. Websitebezoekers (Focus: Afspraak!) ⭐</h4>
-            <p>Gekwalificeerde kopers verlieten Marktplaats direct naar Staopstoelen.nl.</p>
+            <h4>3. Websitekliks &amp; 10 MP-Sessies in GA4 ⭐</h4>
+            <p>5 directe websitekliks (+ 174 directe &amp; 36 organische sessies in GA4).</p>
           </div>
           <div class="kpi-badge" style="background: rgba(74, 222, 128, 0.25); color: #86efac; border: 1px solid var(--color-forest-bright);">Showroom-Check</div>
         </div>
@@ -656,18 +656,18 @@
 
     // SYMBOLS FOR REEL 1: Views
     const SYMBOLS_REEL_1 = [
-      { icon: "👁️", title: "8.995 Views", sub: "Marktplaats Bereik", color: "#60a5fa" },
+      { icon: "👁️", title: "10.387 Views", sub: "Marktplaats Bereik", color: "#60a5fa" },
       { icon: "❌", title: "TPM Stilstand", sub: "€ 400 kwijt", color: "#f87171" },
       { icon: "📉", title: "0 Bezoekers", sub: "Vage Beloftes", color: "#fbbf24" },
-      { icon: "👁️", title: "8.995 Views", sub: "Marktplaats Bereik", color: "#60a5fa" }
+      { icon: "👁️", title: "10.387 Views", sub: "Marktplaats Bereik", color: "#60a5fa" }
     ];
 
     // SYMBOLS FOR REEL 2: Kliks
     const SYMBOLS_REEL_2 = [
-      { icon: "🎯", title: "97 Stoelkliks", sub: "Inzet: € 0,15", color: "var(--color-terracotta)" },
+      { icon: "🎯", title: "106 Stoelkliks", sub: "Inzet: € 0,14", color: "var(--color-terracotta)" },
       { icon: "❌", title: "0 Proefzitters", sub: "Vage beloftes", color: "#f87171" },
       { icon: "📬", title: "Nee/Nee", sub: "Afvalbak", color: "#fbbf24" },
-      { icon: "🎯", title: "97 Stoelkliks", sub: "Inzet: € 0,15", color: "var(--color-terracotta)" }
+      { icon: "🎯", title: "106 Stoelkliks", sub: "Inzet: € 0,14", color: "var(--color-terracotta)" }
     ];
 
     // SYMBOLS FOR REEL 3: Website & Jackpot
@@ -760,17 +760,17 @@
 
       // 3. FAST DIGITAL COUNTERS ROLL UP (6.4s - 10.5s)
       if (t < 6.4) {
-        counterVertoningen.textContent = "8.191";
-        counterKliks.textContent = "83";
+        counterVertoningen.textContent = "8.995";
+        counterKliks.textContent = "97";
       } else if (t >= 6.4 && t < 10.5) {
         const rollP = (t - 6.4) / 4.1;
-        const curV = Math.round(8191 + rollP * (8995 - 8191));
-        const curK = Math.round(83 + rollP * (97 - 83));
+        const curV = Math.round(8995 + rollP * (10387 - 8995));
+        const curK = Math.round(97 + rollP * (106 - 97));
         counterVertoningen.textContent = curV.toLocaleString('nl-NL');
         counterKliks.textContent = String(curK);
       } else {
-        counterVertoningen.textContent = "8.995";
-        counterKliks.textContent = "97";
+        counterVertoningen.textContent = "10.387";
+        counterKliks.textContent = "106";
       }
 
       // 4. REEL 1 SPINNING & STOP (HIGH SPEED: 4200 px/sec!)
