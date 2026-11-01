@@ -41,9 +41,7 @@ html {
   font-size: 16px;
   scrollbar-width: thin;
   scrollbar-color: rgba(37, 102, 22, 0.35) #f8fafc;
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
+  overflow-x: clip;
 }
 
 /* Global WebKit scrollbar */
@@ -73,9 +71,7 @@ body {
   background-color: var(--color-cream);
   color: var(--color-dark);
   line-height: 1.6;
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -254,9 +250,10 @@ section {
   background-color: #fbf9f5;
   border-bottom: 1px solid var(--color-gray-light);
   padding: 16px 0 12px 0;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
@@ -463,12 +460,14 @@ section[id], section {
 @media (max-width: 768px) {
   .navbar {
     padding: 0 !important;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06) !important;
   }
 
   .navbar-container {
@@ -5043,8 +5042,9 @@ input[type="checkbox"] {
     padding: 6px 8px !important;
     margin-bottom: 20px;
     box-shadow: 0 4px 22px rgba(18, 43, 7, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+    position: -webkit-sticky;
     position: sticky;
-    top: 60px;
+    top: 84px;
     z-index: 95;
     box-sizing: border-box !important;
     width: 100% !important;
@@ -9940,7 +9940,7 @@ nav.breadcrumb a {
   .product-page-container {
     padding: 0 16px !important;
     margin: 14px auto 40px auto !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
   }
