@@ -15,15 +15,15 @@
   <meta property="og:url" content="https://staopstoelen.nl/seniorenstoelen.html">
   <meta property="og:image" content="https://staopstoelen.nl/assets/stoelen/chair_fitform_570_reco_cozy.avif">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=10.290">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=10.290">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=10.290">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=10.290">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=10.295">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=10.295">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=10.295">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=10.295">
   <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.290">
+  <link rel="stylesheet" href="style.css?v=10.295">
   <!-- Schema.org FAQPage Structured Data for Google & AI Engines -->
   <script type="application/ld+json">
   {
@@ -1297,7 +1297,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.290"></script>
+  <script src="app.js?v=10.295"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
@@ -2504,8 +2504,8 @@
             }
 
             card.innerHTML = `
-              <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; height: 260px; padding: 15px; position: relative;">
-                <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; border-radius: 16px; padding: 0 !important; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);">
+              <div class="product-image ${isUnavailable ? 'is-unavailable' : ''}" style="background-color: var(--color-light); overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 100%; height: 260px; padding: 15px; position: relative; box-sizing: border-box;">
+                <img src="${item.image}" alt="${item.name}" style="max-height: 100%; max-width: 100%; width: 100%; height: 100%; object-fit: contain; border-radius: 16px; padding: 0 !important; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);">
                 ${stampHtml}
                 <div style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; z-index: 4;">
                   ${actieInfo ? `

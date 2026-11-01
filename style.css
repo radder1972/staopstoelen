@@ -2576,40 +2576,61 @@ section[id], section {
 
 .catalog-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 30px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 @media (min-width: 600px) {
   .catalog-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (min-width: 1024px) {
   .catalog-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media (min-width: 768px) {
   #offersGrid.offers-top3-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
   }
 }
 
 /* Stoelfoto's in Aanbiedingen box en catalogus met afgeronde hoeken */
+.product-card {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.product-image {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
 .product-image img:not(.quality-stamp),
 #offersGrid .product-image img:not(.quality-stamp),
 .offers-top3-grid .product-image img:not(.quality-stamp),
 .results-container .product-image img:not(.quality-stamp),
 .model-card-img {
-  width: auto !important;
-  height: auto !important;
+  width: 100% !important;
+  height: 100% !important;
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: contain !important;
   border-radius: 16px !important;
   padding: 0 !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  flex-shrink: 1 !important;
+  min-width: 0 !important;
 }
 
 /* Stoelfoto's op productpagina's en modal altijd met afgeronde hoeken (ook .png foto's) */
@@ -5002,9 +5023,12 @@ input[type="checkbox"] {
 
 @media (max-width: 991px) {
   .catalog-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 0;
     margin-top: 16px;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   /* ==========================================================================
