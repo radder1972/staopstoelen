@@ -466,34 +466,39 @@ section[id], section {
   }
 
   .navbar-container {
-    padding-top: 68px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    padding-bottom: 0 !important;
+    padding: 0 !important;
     position: relative !important;
     width: 100% !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     box-sizing: border-box !important;
   }
 
-  /* Row 1, Left: staopstoelen.nl letterlogo PINNED ABSOLUTELY to top left */
-  .nav-text-logo {
-    position: absolute !important;
-    left: 16px !important;
-    top: 14px !important;
+  /* Row 1, Left: staopstoelen.nl letterlogo in natural document flow above the contact bar */
+  .nav-text-logo,
+  .nav-text-logo.has-chair-logo {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
     right: auto !important;
     margin: 0 !important;
+    padding: 12px 16px 8px 16px !important;
+    width: 100% !important;
+    max-width: calc(100% - 56px) !important;
+    box-sizing: border-box !important;
     font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important;
     font-weight: 900 !important;
     letter-spacing: -0.5px !important;
     line-height: 1 !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
-    display: inline-flex !important;
+    display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    gap: 0 !important;
     z-index: 10 !important;
     color: var(--color-forest) !important;
+    text-decoration: none !important;
   }
 
   .nav-logo-main {
@@ -533,11 +538,11 @@ section[id], section {
   .menu-toggle {
     position: absolute !important;
     right: 16px !important;
-    top: 16px !important;
+    top: 12px !important;
     left: auto !important;
     margin: 0 !important;
     display: flex !important;
-    z-index: 20 !important;
+    z-index: 25 !important;
   }
 
   /* Row 2: Dedicated Contact & Info strip directly below top row */
@@ -545,8 +550,8 @@ section[id], section {
     position: relative !important;
     right: auto !important;
     top: auto !important;
-    width: calc(100% + 32px) !important;
-    margin: 0 -16px 0 -16px !important;
+    width: 100% !important;
+    margin: 0 !important;
     padding: 8px 16px !important;
     background: #f4f8f0 !important;
     border-top: 1px solid rgba(75, 143, 36, 0.12) !important;
@@ -556,7 +561,7 @@ section[id], section {
     align-items: center !important;
     box-sizing: border-box !important;
     gap: 12px !important;
-    z-index: 10;
+    z-index: 5 !important;
   }
 
   /* Phone link on Row 2 - prominent, clear, senior-friendly */
