@@ -2899,10 +2899,11 @@ function initFloatingMenu() {
       .da-sub-btn:hover { background: #e2ede0 !important; border-color: #a8c49e !important; color: #17300c !important; transform: translateY(-1px) !important; }
       .da-sub-btn svg { flex-shrink: 0 !important; opacity: 0.9 !important; }
       @media (max-width: 768px) {
-        .nav-text-logo.has-chair-logo { top: 10px !important; gap: 7px !important; white-space: nowrap !important; word-break: keep-all !important; }
-        .nav-chair-logo-icon { width: 36px !important; height: 36px !important; max-width: 36px !important; max-height: 36px !important; }
-        .nav-text-logo { font-size: clamp(1.15rem, 4.4vw, 1.45rem) !important; }
-        .nav-logo-strapline { font-size: 0.62rem !important; }
+        .nav-chair-logo-icon { display: none !important; }
+        .nav-text-logo.has-chair-logo { top: 14px !important; gap: 0 !important; white-space: nowrap !important; word-break: keep-all !important; }
+        .nav-text-logo { font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important; display: inline-flex !important; flex-direction: column !important; align-items: flex-start !important; }
+        .nav-logo-main { font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important; line-height: 1 !important; display: inline-flex !important; align-items: baseline !important; }
+        .nav-logo-strapline { font-size: 0.65rem !important; margin-top: 3px !important; display: block !important; line-height: 1 !important; }
         .floating-contact-wrapper { bottom: 20px !important; right: 14px !important; }
         .floating-btn-main.assistant-chair-fab { width: 66px !important; height: 66px !important; }
         .assistant-chair-img { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; }
