@@ -2829,18 +2829,18 @@ function initFloatingMenu() {
       @keyframes assistantPulseGlow { 0%, 100% { box-shadow: 0 12px 32px rgba(18, 43, 7, 0.28), 0 0 0 4px rgba(75, 143, 36, 0.16); } 50% { box-shadow: 0 16px 42px rgba(18, 43, 7, 0.36), 0 0 0 9px rgba(75, 143, 36, 0.28); } }
       .assistant-chair-img { width: 60px !important; height: 60px !important; max-width: 60px !important; max-height: 60px !important; object-fit: contain !important; display: block !important; pointer-events: none !important; transform-origin: 50% 80% !important; filter: drop-shadow(0 4px 8px rgba(18, 43, 7, 0.22)) !important; }
       .assistant-online-dot { position: absolute !important; top: 3px !important; right: 3px !important; width: 17px !important; height: 17px !important; border-radius: 50% !important; background: #10b981 !important; border: 3px solid #ffffff !important; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important; }
-      .assistant-teaser-pill { display: flex !important; align-items: center !important; background: #ffffff !important; border: 2px solid #4b8f24 !important; border-radius: 999px !important; padding: 8px 18px 8px 14px !important; box-shadow: 0 12px 32px rgba(18, 43, 7, 0.22), 0 0 0 4px rgba(75, 143, 36, 0.14) !important; cursor: pointer !important; user-select: none !important; transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, border-color 0.2s ease !important; animation: slideInUp 0.35s ease-out !important; }
-      .assistant-teaser-pill:hover { transform: translateY(-2px) scale(1.02) !important; border-color: #f39223 !important; box-shadow: 0 16px 40px rgba(18, 43, 7, 0.3), 0 0 0 5px rgba(243, 146, 35, 0.24) !important; }
+      .assistant-teaser-pill { display: flex !important; align-items: center !important; background: #ffffff !important; border: 1.5px solid #4b8f24 !important; border-radius: 999px !important; padding: 4px 11px 4px 8px !important; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.14) !important; cursor: pointer !important; user-select: none !important; transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, border-color 0.2s ease !important; animation: slideInUp 0.35s ease-out !important; }
+      .assistant-teaser-pill:hover { transform: translateY(-1px) scale(1.01) !important; border-color: #f39223 !important; box-shadow: 0 6px 20px rgba(18, 43, 7, 0.2) !important; }
       .assistant-teaser-pill.hidden { display: none !important; }
-      .assistant-teaser-open { background: none !important; border: 0 !important; padding: 0 !important; display: flex !important; align-items: center !important; gap: 10px !important; cursor: pointer !important; text-align: left !important; font-family: inherit !important; color: inherit !important; }
-      .assistant-teaser-live { display: inline-flex !important; align-items: center !important; gap: 6px !important; }
-      .assistant-teaser-pulse-dot { width: 9px !important; height: 9px !important; border-radius: 50% !important; background: #10b981 !important; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7) !important; animation: pulseTeaserDot 2s infinite !important; flex-shrink: 0 !important; }
-      @keyframes pulseTeaserDot { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-      .assistant-teaser-badge { background: linear-gradient(135deg, #5cb82f, #3d751d) !important; color: #ffffff !important; font-size: 0.74rem !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important; padding: 4px 10px !important; border-radius: 999px !important; white-space: nowrap !important; box-shadow: 0 2px 6px rgba(18, 43, 7, 0.16) !important; }
-      .assistant-teaser-text { font-size: 0.88rem !important; font-weight: 700 !important; color: #0f172a !important; white-space: nowrap !important; }
-      .assistant-teaser-cta { display: inline-flex !important; align-items: center !important; gap: 4px !important; font-size: 0.82rem !important; font-weight: 800 !important; color: #f39223 !important; white-space: nowrap !important; margin-left: 2px !important; }
-      .assistant-teaser-cta svg { transition: transform 0.2s ease !important; }
-      .assistant-teaser-pill:hover .assistant-teaser-cta svg { transform: translateX(3px) !important; }
+      .assistant-teaser-open { background: none !important; border: 0 !important; padding: 0 !important; display: flex !important; align-items: center !important; gap: 7px !important; cursor: pointer !important; text-align: left !important; font-family: inherit !important; color: inherit !important; }
+      .assistant-teaser-live { display: inline-flex !important; align-items: center !important; gap: 5px !important; }
+      .assistant-teaser-pulse-dot { width: 6px !important; height: 6px !important; border-radius: 50% !important; background: #10b981 !important; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7) !important; animation: pulseTeaserDot 2s infinite !important; flex-shrink: 0 !important; }
+      @keyframes pulseTeaserDot { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+      .assistant-teaser-badge { background: linear-gradient(135deg, #5cb82f, #3d751d) !important; color: #ffffff !important; font-size: 0.65rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.04em !important; padding: 2px 7px !important; border-radius: 999px !important; white-space: nowrap !important; box-shadow: 0 1px 3px rgba(18, 43, 7, 0.12) !important; }
+      .assistant-teaser-text { font-size: 0.78rem !important; font-weight: 600 !important; color: #1e293b !important; white-space: nowrap !important; }
+      .assistant-teaser-cta { display: inline-flex !important; align-items: center !important; gap: 3px !important; font-size: 0.72rem !important; font-weight: 700 !important; color: #f39223 !important; white-space: nowrap !important; margin-left: 2px !important; }
+      .assistant-teaser-cta svg { width: 11px !important; height: 11px !important; transition: transform 0.2s ease !important; }
+      .assistant-teaser-pill:hover .assistant-teaser-cta svg { transform: translateX(2px) !important; }
       .da-avatar-img { width: 32px !important; height: 32px !important; max-width: 32px !important; max-height: 32px !important; object-fit: contain !important; transform-origin: 50% 80%; }
       .digital-assistant-panel { display: none; flex-direction: column !important; width: 380px !important; max-width: calc(100vw - 28px) !important; height: 560px !important; max-height: min(600px, calc(100vh - 90px)) !important; background: #ffffff !important; border-radius: 20px !important; border: 1.5px solid rgba(75, 143, 36, 0.28) !important; box-shadow: 0 20px 50px rgba(18, 43, 7, 0.24) !important; overflow: hidden !important; }
       .digital-assistant-panel.active { display: flex !important; }
@@ -2885,9 +2885,9 @@ function initFloatingMenu() {
         .assistant-chair-img { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; }
         .floating-contact-wrapper.panel-open { bottom: 12px !important; right: 12px !important; left: 12px !important; align-items: stretch !important; }
         .floating-contact-wrapper.panel-open .digital-assistant-panel { width: 100% !important; max-width: 100% !important; max-height: calc(100vh - 24px) !important; }
-        .assistant-teaser-pill { padding: 6px 12px !important; gap: 6px !important; }
+        .assistant-teaser-pill { padding: 3px 8px !important; gap: 5px !important; }
         .assistant-teaser-text { display: none !important; }
-        .assistant-teaser-cta { font-size: 0.76rem !important; }
+        .assistant-teaser-cta { font-size: 0.68rem !important; }
       }
     `;
     document.head.appendChild(st);
@@ -2922,7 +2922,7 @@ function initFloatingMenu() {
     <span class="assistant-online-dot" aria-hidden="true"></span>
   `;
 
-  // Voeg welkomst-badge toe naast de zwevende stoel-knop - Altijd prominent in beeld
+  // Voeg welkomst-badge toe naast de zwevende stoel-knop - Altijd subtiel en elegant in beeld
   const teaser = document.createElement("div");
   teaser.className = "assistant-teaser-pill";
   teaser.id = "assistantTeaserPill";
@@ -2933,12 +2933,12 @@ function initFloatingMenu() {
     <button type="button" class="assistant-teaser-open" id="assistantTeaserOpen">
       <span class="assistant-teaser-live">
         <span class="assistant-teaser-pulse-dot" aria-hidden="true"></span>
-        <span class="assistant-teaser-badge">Digitale Assistent</span>
+        <span class="assistant-teaser-badge">Zitassistent</span>
       </span>
-      <span class="assistant-teaser-text">Vraag over zithouding of stoel?</span>
+      <span class="assistant-teaser-text">Vraag over stoel of maat?</span>
       <span class="assistant-teaser-cta">
         <span>Stel vraag</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </span>
     </button>
   `;

@@ -8719,15 +8719,15 @@ input[type="checkbox"] {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* Teaser-pil naast/boven de zwevende stoel - Altijd Prominent in Beeld */
+/* Teaser-pil naast/boven de zwevende stoel - Subtiel en elegant */
 .assistant-teaser-pill {
   display: flex;
   align-items: center;
   background: #ffffff;
-  border: 2px solid #4b8f24;
+  border: 1.5px solid #4b8f24;
   border-radius: 999px;
-  padding: 8px 18px 8px 14px;
-  box-shadow: 0 12px 32px rgba(18, 43, 7, 0.22), 0 0 0 4px rgba(75, 143, 36, 0.14);
+  padding: 4px 11px 4px 8px;
+  box-shadow: 0 4px 16px rgba(18, 43, 7, 0.14);
   cursor: pointer;
   user-select: none;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
@@ -8735,9 +8735,9 @@ input[type="checkbox"] {
 }
 
 .assistant-teaser-pill:hover {
-  transform: translateY(-2px) scale(1.02);
+  transform: translateY(-1px) scale(1.01);
   border-color: #f39223;
-  box-shadow: 0 16px 40px rgba(18, 43, 7, 0.3), 0 0 0 5px rgba(243, 146, 35, 0.24);
+  box-shadow: 0 6px 20px rgba(18, 43, 7, 0.2);
 }
 
 .assistant-teaser-pill.hidden {
@@ -8750,7 +8750,7 @@ input[type="checkbox"] {
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
@@ -8760,12 +8760,12 @@ input[type="checkbox"] {
 .assistant-teaser-live {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .assistant-teaser-pulse-dot {
-  width: 9px;
-  height: 9px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #10b981;
   box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
@@ -8775,47 +8775,49 @@ input[type="checkbox"] {
 
 @keyframes pulseTeaserDot {
   0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .assistant-teaser-badge {
   background: linear-gradient(135deg, #5cb82f, #3d751d);
   color: #ffffff;
-  font-size: 0.74rem;
-  font-weight: 800;
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 4px 10px;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(18, 43, 7, 0.16);
+  box-shadow: 0 1px 3px rgba(18, 43, 7, 0.12);
 }
 
 .assistant-teaser-text {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1e293b;
   white-space: nowrap;
 }
 
 .assistant-teaser-cta {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 0.82rem;
-  font-weight: 800;
+  gap: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
   color: #f39223;
   white-space: nowrap;
   margin-left: 2px;
 }
 
 .assistant-teaser-cta svg {
+  width: 11px;
+  height: 11px;
   transition: transform 0.2s ease;
 }
 
 .assistant-teaser-pill:hover .assistant-teaser-cta svg {
-  transform: translateX(3px);
+  transform: translateX(2px);
 }
 
 /* Het Digitale Assistent Venster */
@@ -9390,14 +9392,14 @@ input[type="checkbox"] {
     max-height: 50px !important;
   }
   .assistant-teaser-pill {
-    padding: 6px 12px !important;
-    gap: 6px !important;
+    padding: 3px 8px !important;
+    gap: 5px !important;
   }
   .assistant-teaser-text {
     display: none !important;
   }
   .assistant-teaser-cta {
-    font-size: 0.76rem !important;
+    font-size: 0.68rem !important;
   }
 }
 
