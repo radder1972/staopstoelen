@@ -502,8 +502,6 @@ section[id], section {
     white-space: nowrap !important;
     word-break: keep-all !important;
   }
-    margin-top: 2px !important;
-  }
 
   /* Remove swooshes/waves completely on mobile */
   .logo-swoosh {
