@@ -50,15 +50,15 @@
       pointer-events: none;
     }
 
-    /* TOP BRAND HEADER */
+    /* TOP BRAND HEADER - CLEAN & SLEEK */
     .header {
-      height: 96px;
-      padding: 0 70px;
+      height: 74px;
+      padding: 0 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid rgba(75, 143, 36, 0.35);
-      background: rgba(14, 34, 8, 0.92);
+      border-bottom: 1.5px solid rgba(75, 143, 36, 0.35);
+      background: rgba(14, 34, 8, 0.95);
       backdrop-filter: blur(16px);
       position: relative;
       z-index: 50;
@@ -67,31 +67,23 @@
     .brand-logo-container {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 14px;
     }
     .brand-logo-icon {
-      width: 52px;
-      height: 52px;
+      width: 44px;
+      height: 44px;
       object-fit: contain;
     }
     .brand-logo-text {
       font-family: 'Montserrat', sans-serif;
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 900;
       color: #5cb82f;
-      letter-spacing: -0.8px;
+      letter-spacing: -0.6px;
       line-height: 1;
     }
     .brand-logo-text span {
       color: #f39223;
-    }
-    .brand-subtext {
-      font-size: 11px;
-      font-weight: 700;
-      color: #8cb878;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-top: 3px;
     }
 
     .header-badge {
@@ -100,12 +92,12 @@
       gap: 12px;
       padding: 9px 24px;
       border-radius: 999px;
-      background: rgba(75, 143, 36, 0.22);
+      background: rgba(75, 143, 36, 0.25);
       border: 1.5px solid var(--color-forest-bright);
       color: #86efac;
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 1px;
       text-transform: uppercase;
       box-shadow: 0 0 20px rgba(75, 143, 36, 0.25);
@@ -121,7 +113,7 @@
     /* BRAND PROGRESS BAR */
     .video-progress-bar {
       position: absolute;
-      top: 94px;
+      top: 72px;
       left: 0;
       height: 4px;
       background: linear-gradient(90deg, #5cb82f, #f39223, #fed857);
@@ -130,17 +122,17 @@
       width: 0%;
     }
 
-    /* STAGE VIEWPORT */
+    /* STAGE VIEWPORT - MAXIMAL VERTICAL SPACE (1006px) */
     .stage {
       position: relative;
       width: 1920px;
-      height: 984px;
+      height: 1006px;
       overflow: hidden;
     }
     .scene {
       position: absolute;
       inset: 0;
-      padding: 36px 70px 24px;
+      padding: 40px 70px 40px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -165,8 +157,8 @@
       filter: saturate(1.1) brightness(0.85);
       pointer-events: none;
       z-index: 1;
-      mask-image: radial-gradient(circle at 65% 50%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 75%);
-      -webkit-mask-image: radial-gradient(circle at 65% 50%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 75%);
+      mask-image: radial-gradient(circle at 70% 50%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 75%);
+      -webkit-mask-image: radial-gradient(circle at 70% 50%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 75%);
     }
 
     /* TYPOGRAPHY */
@@ -174,16 +166,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       position: relative;
       z-index: 10;
     }
     .scene-eyebrow {
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       color: #8cb878;
       display: flex;
       align-items: center;
@@ -191,7 +183,7 @@
     }
     .scene-heading {
       font-family: 'Montserrat', sans-serif;
-      font-size: 42px;
+      font-size: 46px;
       font-weight: 900;
       letter-spacing: -0.8px;
       color: #FFFFFF;
@@ -206,11 +198,11 @@
 
     /* BRAND CARD BASE */
     .brand-card {
-      background: rgba(18, 43, 7, 0.85);
-      border: 1.5px solid rgba(75, 143, 36, 0.38);
-      border-radius: 24px;
+      background: rgba(18, 43, 7, 0.88);
+      border: 1.5px solid rgba(75, 143, 36, 0.4);
+      border-radius: 28px;
       backdrop-filter: blur(20px);
-      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       position: relative;
       z-index: 10;
       overflow: hidden;
@@ -220,13 +212,13 @@
     .s1-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 32px;
-      height: 550px;
+      gap: 36px;
+      height: 650px;
       position: relative;
       z-index: 10;
     }
     .s1-card {
-      padding: 40px 32px;
+      padding: 48px 36px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -234,90 +226,87 @@
       text-align: center;
     }
     .s1-card-green {
-      border-color: rgba(92, 184, 47, 0.55);
-      background: linear-gradient(180deg, rgba(24, 58, 10, 0.92), rgba(12, 30, 5, 0.96));
+      border-color: rgba(92, 184, 47, 0.6);
+      background: linear-gradient(180deg, rgba(24, 58, 10, 0.95), rgba(12, 30, 5, 0.98));
     }
     .s1-card-orange {
-      border-color: rgba(243, 146, 35, 0.55);
-      background: linear-gradient(180deg, rgba(45, 30, 8, 0.92), rgba(18, 15, 5, 0.96));
+      border-color: rgba(243, 146, 35, 0.6);
+      background: linear-gradient(180deg, rgba(48, 30, 8, 0.95), rgba(20, 14, 5, 0.98));
     }
     .s1-card-gold {
-      border-color: rgba(254, 216, 87, 0.5);
-      background: linear-gradient(180deg, rgba(35, 38, 10, 0.92), rgba(15, 18, 5, 0.96));
+      border-color: rgba(254, 216, 87, 0.55);
+      background: linear-gradient(180deg, rgba(38, 40, 10, 0.95), rgba(16, 18, 5, 0.98));
     }
     .s1-stat-badge {
-      padding: 8px 22px;
+      padding: 10px 24px;
       border-radius: 999px;
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
       font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
     .s1-big-num {
       font-family: 'Montserrat', sans-serif;
-      font-size: 86px;
+      font-size: 110px;
       font-weight: 900;
       line-height: 1;
-      margin: 20px 0 12px;
       letter-spacing: -2px;
     }
     .s1-stat-label {
       font-family: 'Montserrat', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 900;
       color: #FFFFFF;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
+      margin-top: 12px;
+      letter-spacing: 1px;
     }
     .s1-proof-pill {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1.5px solid rgba(255, 255, 255, 0.14);
-      border-radius: 999px;
-      padding: 14px 28px;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-size: 16px;
-      font-weight: 800;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 17px;
+      font-weight: 700;
       color: #E2E8F0;
     }
-
     .s1-bottom-strip {
-      margin-top: 20px;
-      padding: 18px 36px;
+      height: 84px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, rgba(75, 143, 36, 0.3), rgba(243, 146, 35, 0.3));
+      border: 1.5px solid rgba(75, 143, 36, 0.5);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-radius: 18px;
-      background: linear-gradient(90deg, rgba(75, 143, 36, 0.3), rgba(243, 146, 35, 0.25));
-      border: 2px solid rgba(92, 184, 47, 0.45);
+      padding: 0 36px;
       position: relative;
       z-index: 10;
-    }
     }
 
     /* SCENE 2 STYLES (TPM VS MOTOR) */
     .s2-grid {
       display: grid;
       grid-template-columns: 1fr 1.25fr;
-      gap: 36px;
-      height: 600px;
+      gap: 40px;
+      height: 720px;
     }
     .s2-tpm-card {
-      padding: 40px;
-      background: linear-gradient(180deg, rgba(45, 12, 12, 0.8), rgba(20, 5, 5, 0.9));
-      border: 2px solid rgba(239, 68, 68, 0.6);
+      padding: 48px;
+      background: linear-gradient(180deg, rgba(48, 12, 12, 0.85), rgba(22, 5, 5, 0.95));
+      border: 2px solid rgba(239, 68, 68, 0.65);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       text-align: center;
     }
     .s2-motor-card {
-      padding: 40px;
-      background: linear-gradient(180deg, rgba(20, 50, 10, 0.85), rgba(9, 24, 5, 0.95));
-      border: 2px solid rgba(92, 184, 47, 0.6);
-      box-shadow: 0 0 40px rgba(75, 143, 36, 0.25);
+      padding: 48px;
+      background: linear-gradient(180deg, rgba(20, 52, 10, 0.9), rgba(9, 26, 5, 0.98));
+      border: 2px solid rgba(92, 184, 47, 0.65);
+      box-shadow: 0 0 50px rgba(75, 143, 36, 0.3);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -327,14 +316,14 @@
     .s3-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
+      gap: 40px;
       align-items: center;
-      height: 620px;
+      height: 720px;
     }
     .s3-photo-frame {
       position: relative;
-      height: 600px;
-      border-radius: 24px;
+      height: 690px;
+      border-radius: 28px;
       overflow: hidden;
       border: 3px solid #fed857;
       box-shadow: 0 0 50px rgba(254, 216, 87, 0.35), 0 25px 50px rgba(0,0,0,0.6);
@@ -348,15 +337,15 @@
     }
     .s3-overlay-badge {
       position: absolute;
-      bottom: 24px;
+      bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(90deg, #f39223, #fed857);
       color: #122b07;
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 900;
-      padding: 12px 36px;
+      padding: 14px 40px;
       border-radius: 999px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
       text-transform: uppercase;
@@ -364,81 +353,47 @@
       white-space: nowrap;
     }
 
-    /* SCENE 4 STYLES (CONCLUSIE & DORDRECHT SHOWROOM) */
+    /* SCENE 4 STYLES (CONCLUSIE & ACTIEPLAN) */
     .s4-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 36px;
+      gap: 40px;
       align-items: center;
-      height: 600px;
+      height: 720px;
     }
     .s4-step-item {
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 20px 24px;
-      border-radius: 18px;
+      gap: 24px;
+      padding: 26px 30px;
+      border-radius: 20px;
       background: rgba(0, 0, 0, 0.4);
-      border: 1.5px solid rgba(75, 143, 36, 0.3);
+      border: 1.5px solid rgba(75, 143, 36, 0.35);
       transition: all 0.3s ease;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .s4-step-item.highlight {
       border-color: #f39223;
-      background: rgba(243, 146, 35, 0.2);
-      box-shadow: 0 0 30px rgba(243, 146, 35, 0.3);
+      background: rgba(243, 146, 35, 0.22);
+      box-shadow: 0 0 35px rgba(243, 146, 35, 0.35);
     }
     .s4-step-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
+      font-size: 28px;
       font-weight: 900;
       background: rgba(75, 143, 36, 0.35);
       color: #86efac;
+      flex-shrink: 0;
     }
     .s4-step-item.highlight .s4-step-badge {
       background: #f39223;
       color: #FFFFFF;
-    }
-
-    .s4-showroom-card {
-      height: 580px;
-      display: flex;
-      flex-direction: column;
-      border-color: rgba(243, 146, 35, 0.5);
-      overflow: hidden;
-    }
-    .s4-showroom-img-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 380px;
-      gap: 2px;
-      background: #000;
-    }
-    .s4-showroom-img-row img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* FOOTER STATUS BAR */
-    .status-footer {
-      height: 68px;
-      padding: 0 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1.5px solid rgba(75, 143, 36, 0.25);
-      background: rgba(9, 23, 5, 0.95);
-      position: relative;
-      z-index: 50;
-      font-size: 14px;
-      color: #8cb878;
     }
   </style>
 </head>
@@ -447,24 +402,16 @@
   <div class="ambient-glow-brand-1"></div>
   <div class="ambient-glow-brand-2"></div>
 
-  <!-- Top Brand Header -->
+  <!-- Top Brand Header - Sleek & Clean -->
   <header class="header">
     <div class="brand-logo-container">
       <img src="../../assistent-stoel-static.svg" class="brand-logo-icon" alt="Staopstoelen Logo">
-      <div>
-        <div class="brand-logo-text">staopstoelen<span>.nl</span></div>
-        <div class="brand-subtext">Specialist in Ergonomisch Zitcomfort • Showroom Dordrecht</div>
-      </div>
+      <div class="brand-logo-text">staopstoelen<span>.nl</span></div>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 24px;">
-      <div id="sceneBadge" class="header-badge">
-        <span class="pulse-dot"></span>
-        <span id="sceneBadgeText">1. DE 3 KERNGETALLEN (LIVE BEWIJS)</span>
-      </div>
-      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; color: #fed857; letter-spacing: 0.5px;">
-        VOOR GEERTJAN • INTERN OVERLEG
-      </div>
+    <div id="sceneBadge" class="header-badge">
+      <span class="pulse-dot"></span>
+      <span id="sceneBadgeText">1. LIVE BEWIJS</span>
     </div>
   </header>
 
@@ -485,8 +432,8 @@
           <h1 class="scene-heading">Geertjan, kijk naar dit <span class="brand-highlight">live bewijs!</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">TOTAAL BEREIK IN DE REGIO</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #5cb82f;">11.015 VERTONINGEN</div>
+          <div style="font-size: 13px; color: #8cb878; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">TOTAAL LIVE BEREIK</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #5cb82f;">11.015 VERTONINGEN</div>
         </div>
       </div>
 
@@ -508,7 +455,7 @@
         <!-- Card 2: Kliks -->
         <div class="brand-card s1-card s1-card-orange">
           <div class="s1-stat-badge" style="background: rgba(243, 146, 35, 0.25); color: #fdba74; border: 1px solid #f39223;">
-            2. GERIECHTE KLIKS
+            2. GERICHTE KLIKS
           </div>
           <div>
             <div class="s1-big-num" style="color: #f39223;" id="s1_num_clicks">106</div>
@@ -529,19 +476,19 @@
             <div class="s1-stat-label">WEBSITEKLIKS ⭐</div>
           </div>
           <div class="s1-proof-pill">
-            <span>🎯 Direct naar Dordrecht</span>
+            <span>🎯 Directe Bezoekers</span>
           </div>
         </div>
       </div>
 
       <div class="s1-bottom-strip">
-        <div style="display: flex; align-items: center; gap: 14px;">
-          <span style="font-size: 24px;">✨</span>
-          <span style="font-size: 19px; font-weight: 900; color: #FFFFFF; font-family: 'Montserrat', sans-serif;">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span style="font-size: 28px;">✨</span>
+          <span style="font-size: 24px; font-weight: 900; color: #FFFFFF; font-family: 'Montserrat', sans-serif;">
             "We doen iets heel bijzonders: <span style="color: #f39223;">WE GENEREREN ÉCHT VERKEER!</span>"
           </span>
         </div>
-        <div style="font-size: 14px; font-weight: 800; color: #86efac; text-transform: uppercase; letter-spacing: 1px;">
+        <div style="font-size: 16px; font-weight: 800; color: #86efac; text-transform: uppercase; letter-spacing: 1px;">
           ✓ Live geverifieerd in Marktplaats &amp; Google Ads
         </div>
       </div>
@@ -555,8 +502,8 @@
           <h1 class="scene-heading">TPM Banner vs <span class="brand-green">Onze Eigen Motor</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">HET RESULTAAT</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #fed857;">158× GOEDKOPER DAN TPM!</div>
+          <div style="font-size: 13px; color: #8cb878; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">HET RESULTAAT</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #fed857;">158× GOEDKOPER DAN TPM!</div>
         </div>
       </div>
 
@@ -564,25 +511,25 @@
         <!-- TPM Left Column -->
         <div class="brand-card s2-tpm-card">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 13px; font-weight: 800; color: #f87171; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;">OUDE BANNER KANAAL</span>
-            <span style="background: rgba(239, 68, 68, 0.25); color: #fca5a5; padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 800; border: 1px solid rgba(239,68,68,0.5);">
+            <span style="font-size: 15px; font-weight: 800; color: #f87171; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">OUDE BANNER KANAAL</span>
+            <span style="background: rgba(239, 68, 68, 0.25); color: #fca5a5; padding: 8px 20px; border-radius: 999px; font-size: 14px; font-weight: 800; border: 1px solid rgba(239,68,68,0.5);">
               ❌ € 400,- PER MAAND
             </span>
           </div>
 
           <div>
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 82px; font-weight: 900; color: #f87171; line-height: 1;">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 100px; font-weight: 900; color: #f87171; line-height: 1;">
               € 22,22
             </div>
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: #FFFFFF; margin-top: 8px;">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; color: #FFFFFF; margin-top: 10px;">
               PER BEZOEKER
             </div>
-            <div style="font-size: 15px; color: #fca5a5; font-weight: 700; margin-top: 4px;">
+            <div style="font-size: 17px; color: #fca5a5; font-weight: 700; margin-top: 6px;">
               (Slechts 8 sessies in Google Analytics)
             </div>
           </div>
 
-          <div style="background: rgba(239, 68, 68, 0.25); border: 2px solid rgba(239, 68, 68, 0.6); border-radius: 16px; padding: 18px; font-family: 'Montserrat', sans-serif; font-weight: 900; color: #FFFFFF; font-size: 18px; letter-spacing: 0.5px;">
+          <div style="background: rgba(239, 68, 68, 0.25); border: 2px solid rgba(239, 68, 68, 0.6); border-radius: 18px; padding: 22px; font-family: 'Montserrat', sans-serif; font-weight: 900; color: #FFFFFF; font-size: 22px; letter-spacing: 0.5px;">
             DRINGEND ADVIES: STOPPEN PER DIRECT!
           </div>
         </div>
@@ -590,35 +537,35 @@
         <!-- Onze Online Motor Right Column -->
         <div class="brand-card s2-motor-card">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 13px; font-weight: 800; color: #86efac; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;">STAOPSTOELEN.NL MOTOR</span>
-            <span style="background: rgba(75, 143, 36, 0.35); color: #86efac; padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 800; border: 1px solid #5cb82f;">
+            <span style="font-size: 15px; font-weight: 800; color: #86efac; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">STAOPSTOELEN.NL MOTOR</span>
+            <span style="background: rgba(75, 143, 36, 0.35); color: #86efac; padding: 8px 20px; border-radius: 999px; font-size: 14px; font-weight: 800; border: 1px solid #5cb82f;">
               ✅ GOOGLE ANALYTICS 4
             </span>
           </div>
 
-          <div style="display: flex; align-items: center; justify-content: space-around; padding: 20px 0;">
+          <div style="display: flex; align-items: center; justify-content: space-around; padding: 30px 0;">
             <div>
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 82px; font-weight: 900; color: #5cb82f; line-height: 1;">
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 100px; font-weight: 900; color: #5cb82f; line-height: 1;">
                 237
               </div>
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: #FFFFFF; margin-top: 6px;">
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: #FFFFFF; margin-top: 8px;">
                 SESSIES (+228%)
               </div>
             </div>
 
-            <div style="height: 100px; width: 2px; background: rgba(255,255,255,0.15);"></div>
+            <div style="height: 120px; width: 2px; background: rgba(255,255,255,0.15);"></div>
 
             <div>
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 82px; font-weight: 900; color: #f39223; line-height: 1;">
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 100px; font-weight: 900; color: #f39223; line-height: 1;">
                 € 0,14
               </div>
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: #FFFFFF; margin-top: 6px;">
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: #FFFFFF; margin-top: 8px;">
                 PER STOELKLIK
               </div>
             </div>
           </div>
 
-          <div style="background: rgba(75, 143, 36, 0.35); border: 2px solid #5cb82f; border-radius: 16px; padding: 18px; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 900; color: #FFFFFF; font-size: 22px;">
+          <div style="background: rgba(75, 143, 36, 0.35); border: 2px solid #5cb82f; border-radius: 18px; padding: 22px; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 900; color: #FFFFFF; font-size: 24px;">
             MARKTPLAATS IS <span style="color: #fed857;">158× GOEDKOPER</span> DAN TPM!
           </div>
         </div>
@@ -633,8 +580,8 @@
           <h1 class="scene-heading">Trek aan de hendel: <span class="brand-highlight">JACKPOT OP WINST!</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">RETURN ON INVESTMENT</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #fed857;">82× JE INLEG!</div>
+          <div style="font-size: 13px; color: #8cb878; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">RETURN ON INVESTMENT</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #fed857;">82× JE INLEG!</div>
         </div>
       </div>
 
@@ -648,33 +595,33 @@
         </div>
 
         <!-- Bold Minimal Business Case -->
-        <div class="brand-card" style="padding: 44px 36px; height: 600px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(254, 216, 87, 0.5); background: linear-gradient(180deg, rgba(20, 48, 10, 0.95), rgba(10, 24, 5, 0.98));">
+        <div class="brand-card" style="padding: 50px 42px; height: 690px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(254, 216, 87, 0.55); background: linear-gradient(180deg, rgba(20, 48, 10, 0.95), rgba(10, 24, 5, 0.98));">
           <div>
-            <div style="font-size: 13px; font-weight: 800; color: #fed857; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
+            <div style="font-size: 15px; font-weight: 800; color: #fed857; text-transform: uppercase; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">
               DE BUSINESSCASE VAN 1 STOEL
             </div>
-            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: #FFFFFF; line-height: 1.2; margin-top: 10px;">
-              Slechts 1 verkochte stoel in Dordrecht...
+            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 900; color: #FFFFFF; line-height: 1.2; margin-top: 14px;">
+              Slechts 1 verkochte stoel levert op...
             </h2>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(0,0,0,0.4); border-radius: 14px;">
-              <span style="font-size: 18px; color: #CBD5E1; font-weight: 700;">Inleg (106 kliks):</span>
-              <span style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #FFFFFF;">€ 14,38</span>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 26px; background: rgba(0,0,0,0.45); border-radius: 18px;">
+              <span style="font-size: 20px; color: #CBD5E1; font-weight: 700;">Inleg (106 kliks):</span>
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #FFFFFF;">€ 14,38</span>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(0,0,0,0.4); border-radius: 14px; border-left: 4px solid #5cb82f;">
-              <span style="font-size: 18px; color: #CBD5E1; font-weight: 700;">Marge op 1 stoel:</span>
-              <span style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #5cb82f;">+ € 1.200,-</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 26px; background: rgba(0,0,0,0.45); border-radius: 18px; border-left: 5px solid #5cb82f;">
+              <span style="font-size: 20px; color: #CBD5E1; font-weight: 700;">Marge op 1 stoel:</span>
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; color: #5cb82f;">+ € 1.200,-</span>
             </div>
           </div>
 
-          <div style="background: linear-gradient(90deg, #f39223, #fed857); padding: 22px; border-radius: 18px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 34px; font-weight: 900; color: #0d2206; line-height: 1;">
+          <div style="background: linear-gradient(90deg, #f39223, #fed857); padding: 26px; border-radius: 20px; text-align: center; box-shadow: 0 12px 35px rgba(0,0,0,0.5);">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 900; color: #0d2206; line-height: 1;">
               82× RENDEMENT!
             </div>
-            <div style="font-size: 13px; font-weight: 800; color: #1a420b; text-transform: uppercase; margin-top: 4px; letter-spacing: 0.5px;">
+            <div style="font-size: 15px; font-weight: 800; color: #1a420b; text-transform: uppercase; margin-top: 6px; letter-spacing: 0.5px;">
               1 stoel dekt de hele campagne 82 keer terug
             </div>
           </div>
@@ -682,10 +629,10 @@
       </div>
     </div>
 
-    <!-- SCENE 4: CONCLUSIE & ACTIEPLAN DORDRECHT (48.0s - 60.6s) -->
+    <!-- SCENE 4: CONCLUSIE & ACTIEPLAN (48.0s - 60.6s) -->
     <div id="scene4" class="scene">
-      <!-- Subtle Showroom Illustration in Background (No Building / Pand) -->
-      <div class="scene-bg-illustration" style="background-image: url('../../geertjan_advies_showroom.jpg'); background-position: center; opacity: 0.18;"></div>
+      <!-- Subtle Ambient Illustration in Background -->
+      <div class="scene-bg-illustration" style="background-image: url('../../geertjan_advies_showroom.jpg'); background-position: center; opacity: 0.16;"></div>
 
       <div class="scene-title-bar">
         <div>
@@ -693,15 +640,15 @@
           <h1 class="scene-heading">De eerste afspraak staat <span class="brand-highlight">voor de deur!</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">SHOWROOM LOCATIE</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #FFFFFF;">MERWEDESTRAAT 239, DORDRECHT</div>
+          <div style="font-size: 13px; color: #8cb878; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">STATUS UPDATE</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #5cb82f;">FORMULE BEWEZEN</div>
         </div>
       </div>
 
       <div class="s4-grid">
-        <!-- 3 Big Steps (Minimal Text) -->
-        <div class="brand-card" style="padding: 38px; height: 580px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div style="font-size: 13px; font-weight: 800; color: #8cb878; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
+        <!-- 3 Big Steps (Minimal Text, Large Display) -->
+        <div class="brand-card" style="padding: 44px 38px; height: 690px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="font-size: 14px; font-weight: 800; color: #8cb878; text-transform: uppercase; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">
             HET 3-STAPPEN PLAN VOOR GEERTJAN
           </div>
 
@@ -709,67 +656,71 @@
             <div class="s4-step-item" id="s4_step_1">
               <div class="s4-step-badge">1</div>
               <div>
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #FFFFFF;">Stop TPM Banner Per Direct</div>
-                <div style="font-size: 15px; color: #86efac; font-weight: 700; margin-top: 4px;">Bespaar direct € 400,- per maand</div>
+                <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #FFFFFF;">Stop TPM Banner Per Direct</div>
+                <div style="font-size: 17px; color: #86efac; font-weight: 700; margin-top: 4px;">Bespaar direct € 400,- per maand</div>
               </div>
             </div>
 
             <div class="s4-step-item" id="s4_step_2">
               <div class="s4-step-badge">2</div>
               <div>
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #FFFFFF;">Zet Onze Online Motor Vol Aan</div>
-                <div style="font-size: 15px; color: #fed857; font-weight: 700; margin-top: 4px;">Slechts € 0,14 per gerichte koper</div>
+                <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #FFFFFF;">Zet Onze Online Motor Vol Aan</div>
+                <div style="font-size: 17px; color: #fed857; font-weight: 700; margin-top: 4px;">Slechts € 0,14 per gerichte koper</div>
               </div>
             </div>
 
             <div class="s4-step-item" id="s4_step_3">
               <div class="s4-step-badge">3</div>
               <div>
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #FFFFFF;">Vul de Showroom in Dordrecht</div>
-                <div style="font-size: 15px; color: #fdba74; font-weight: 700; margin-top: 4px;">Zitmetingen &amp; proefzit-afspraken</div>
+                <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #FFFFFF;">Haal de Afspraken Binnen</div>
+                <div style="font-size: 17px; color: #fdba74; font-weight: 700; margin-top: 4px;">Directe zitmetingen &amp; proefzitten</div>
               </div>
             </div>
           </div>
 
-          <div style="padding: 18px 24px; background: rgba(75, 143, 36, 0.35); border: 2px solid #5cb82f; border-radius: 16px; text-align: center;">
-            <span style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #FFFFFF;">
+          <div style="padding: 22px 28px; background: rgba(75, 143, 36, 0.35); border: 2px solid #5cb82f; border-radius: 18px; text-align: center;">
+            <span style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; color: #FFFFFF;">
               114 Betaalde Kliks Binnen • Formule Bewezen! 🚀
             </span>
           </div>
         </div>
 
-        <!-- Showroom Dordrecht Brand Showcase Card (No Pand photo) -->
-        <div class="brand-card" style="padding: 44px 38px; height: 580px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(243, 146, 35, 0.5); background: linear-gradient(180deg, rgba(20, 48, 10, 0.95), rgba(10, 24, 5, 0.98));">
+        <!-- Big Decision / Bottom Line Card (Clean, Bold, High Impact) -->
+        <div class="brand-card" style="padding: 48px 40px; height: 690px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(243, 146, 35, 0.55); background: linear-gradient(180deg, rgba(20, 48, 10, 0.95), rgba(10, 24, 5, 0.98));">
           <div>
-            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-              <img src="../../assistent-stoel-static.svg" width="56" height="56" alt="Logo">
-              <div>
-                <div style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #5cb82f;">
-                  staopstoelen<span style="color: #f39223;">.nl</span>
-                </div>
-                <div style="font-size: 13px; font-weight: 800; color: #8cb878; text-transform: uppercase; letter-spacing: 1px;">
-                  Showroom Dordrecht
-                </div>
+            <div style="font-size: 14px; font-weight: 800; color: #fed857; text-transform: uppercase; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">
+              DE KEUZE IS SIMPEL
+            </div>
+            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; color: #FFFFFF; line-height: 1.2; margin-top: 14px;">
+              Waarom nog wachten?<br>Het werkt nu al!
+            </h2>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="padding: 22px 26px; background: rgba(45, 12, 12, 0.7); border: 1.5px solid rgba(239, 68, 68, 0.5); border-radius: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; color: #f87171;">❌ Oude TPM Banner</span>
+                <span style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #fca5a5;">€ 22,22 / bezoeker</span>
               </div>
+              <div style="font-size: 15px; color: #CBD5E1; font-weight: 600; margin-top: 6px;">Duur &amp; inefficiënt (slechts 8 bezoekers per week)</div>
             </div>
 
-            <div style="background: rgba(0, 0, 0, 0.45); border: 1.5px solid rgba(243, 146, 35, 0.4); border-radius: 20px; padding: 28px; text-align: center; margin-top: 20px;">
-              <div style="font-size: 13px; font-weight: 800; color: #8cb878; text-transform: uppercase; letter-spacing: 1.5px;">
-                BEZOEKADRES
+            <div style="padding: 22px 26px; background: rgba(20, 50, 10, 0.75); border: 1.5px solid #5cb82f; border-radius: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; color: #86efac;">✅ Onze Eigen Motor</span>
+                <span style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #5cb82f;">€ 0,14 / klik</span>
               </div>
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 34px; font-weight: 900; color: #FFFFFF; margin: 8px 0;">
-                Merwedestraat 239
-              </div>
-              <div style="font-size: 18px; font-weight: 800; color: #fed857; text-transform: uppercase; letter-spacing: 1px;">
-                3313 TW Dordrecht
-              </div>
+              <div style="font-size: 15px; color: #CBD5E1; font-weight: 600; margin-top: 6px;">158× goedkoper • Al 114 betaalde kopers bereikt</div>
             </div>
           </div>
 
-          <div style="background: linear-gradient(90deg, #4b8f24, #f39223); padding: 22px 32px; border-radius: 18px; text-align: center; box-shadow: 0 10px 35px rgba(0,0,0,0.6);">
-            <span style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #FFFFFF; letter-spacing: 0.8px;">
-              START VANDAAG 🚀
-            </span>
+          <div style="background: linear-gradient(90deg, #4b8f24, #f39223); padding: 26px 32px; border-radius: 20px; text-align: center; box-shadow: 0 12px 35px rgba(0,0,0,0.6);">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #FFFFFF; letter-spacing: 0.5px;">
+              VOL GAS VOORUIT 🚀
+            </div>
+            <div style="font-size: 15px; font-weight: 800; color: rgba(255,255,255,0.9); margin-top: 4px;">
+              Laat de afspraken maar binnenstromen!
+            </div>
           </div>
         </div>
       </div>
@@ -777,25 +728,13 @@
 
   </div>
 
-  <!-- Status Footer -->
-  <footer class="status-footer">
-    <div style="display: flex; align-items: center; gap: 24px;">
-      <span>● Systeem: <strong>Google Analytics 4 &amp; Marktplaats API</strong></span>
-      <span>● Verkeer: <strong>Bewezen 11.015 Vertoningen</strong></span>
-      <span>● Conversie: <strong>106 Stoelkliks (€ 0,14)</strong></span>
-    </div>
-    <div style="font-weight: 800; color: #5cb82f; font-family: 'Montserrat', sans-serif;">
-      STAOPSTOELEN.NL • DORDRECHT SHOWROOM
-    </div>
-  </footer>
-
   <script>
     // Animation timing control (Total 60.6 seconds - Natural Studio Voiceover)
     const scenes = [
-      { id: 'scene1', start: 0.0, end: 15.0, badge: '1. DE 3 KERNGETALLEN (LIVE BEWIJS)' },
-      { id: 'scene2', start: 15.0, end: 31.0, badge: '2. GA4 VS TPM (158X GOEDKOPER!)' },
-      { id: 'scene3', start: 31.0, end: 48.0, badge: '3. DE FRUITMACHINE & JACKPOT (82X ROI)' },
-      { id: 'scene4', start: 48.0, end: 60.6, badge: '4. DE CONCLUSIE: VUL DE SHOWROOM!' }
+      { id: 'scene1', start: 0.0, end: 15.0, badge: '1. LIVE BEWIJS' },
+      { id: 'scene2', start: 15.0, end: 31.0, badge: '2. GA4 VS TPM' },
+      { id: 'scene3', start: 31.0, end: 48.0, badge: '3. RENDEMENT & MARGE' },
+      { id: 'scene4', start: 48.0, end: 60.6, badge: '4. HET ACTIEPLAN' }
     ];
 
     window.setAnimationProgress = function(progress) {
