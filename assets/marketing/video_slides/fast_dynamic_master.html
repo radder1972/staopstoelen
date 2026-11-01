@@ -2,94 +2,105 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Fast Dynamic Master Presentation - Staopstoelen.nl</title>
+  <title>Staopstoelen.nl - Strategische Video Presentatie voor Geertjan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-forest-darker: #091704;
       --color-forest-bright: #5cb82f;
       --color-forest-sub: #8cb878;
       --color-terracotta: #f39223;
-      --color-gold: #facc15;
+      --color-terracotta-hover: #dc8019;
+      --color-gold: #fed857;
+      --color-cream: #fbf9f5;
+      --color-cream-dark: #f3efe6;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 1920px;
       height: 1080px;
       overflow: hidden;
-      background: #050811;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 30%, #15330a 0%, #0d2206 50%, #071203 100%);
+      font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
       color: #F8FAFC;
       position: relative;
     }
 
-    /* BACKGROUND GRID & GLOWS */
-    .bg-grid {
+    /* WARM ORGANIC AMBIENT BRAND LIGHT */
+    .ambient-glow-brand-1 {
       position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.8;
+      top: -120px;
+      right: 150px;
+      width: 950px;
+      height: 750px;
+      background: radial-gradient(circle, rgba(75, 143, 36, 0.28) 0%, rgba(7, 18, 3, 0) 70%);
       pointer-events: none;
     }
-    .ambient-glow-1 {
-      position: absolute;
-      top: -150px;
-      right: 100px;
-      width: 900px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(92, 184, 47, 0.22) 0%, rgba(5, 8, 17, 0) 70%);
-      pointer-events: none;
-    }
-    .ambient-glow-2 {
+    .ambient-glow-brand-2 {
       position: absolute;
       bottom: -150px;
       left: 100px;
       width: 900px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(243, 146, 35, 0.18) 0%, rgba(5, 8, 17, 0) 70%);
+      height: 750px;
+      background: radial-gradient(circle, rgba(243, 146, 35, 0.18) 0%, rgba(7, 18, 3, 0) 70%);
       pointer-events: none;
     }
 
-    /* TOP HEADER */
+    /* TOP BRAND HEADER */
     .header {
-      height: 90px;
+      height: 96px;
       padding: 0 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1.5px solid rgba(255, 255, 255, 0.08);
-      background: rgba(9, 14, 26, 0.88);
+      border-bottom: 2px solid rgba(75, 143, 36, 0.35);
+      background: rgba(14, 34, 8, 0.92);
       backdrop-filter: blur(16px);
       position: relative;
       z-index: 50;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
-    .brand-logo {
+    .brand-logo-container {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .brand-logo-icon {
+      width: 52px;
+      height: 52px;
+      object-contain: fit;
+    }
+    .brand-logo-text {
       font-family: 'Montserrat', sans-serif;
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 900;
-      color: var(--color-forest-bright);
+      color: #5cb82f;
       letter-spacing: -0.8px;
+      line-height: 1;
     }
-    .brand-logo span { color: var(--color-terracotta); }
-    .brand-sub {
+    .brand-logo-text span {
+      color: #f39223;
+    }
+    .brand-subtext {
       font-size: 11px;
       font-weight: 700;
-      color: var(--color-forest-sub);
+      color: #8cb878;
       text-transform: uppercase;
       letter-spacing: 1.2px;
+      margin-top: 3px;
     }
+
     .header-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 20px;
+      gap: 12px;
+      padding: 9px 24px;
       border-radius: 999px;
-      background: rgba(92, 184, 47, 0.15);
+      background: rgba(75, 143, 36, 0.22);
       border: 1.5px solid var(--color-forest-bright);
       color: #86efac;
       font-family: 'Montserrat', sans-serif;
@@ -97,6 +108,7 @@
       font-size: 13px;
       letter-spacing: 1px;
       text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(75, 143, 36, 0.25);
     }
     .pulse-dot {
       width: 10px;
@@ -106,34 +118,34 @@
       box-shadow: 0 0 12px #5cb82f;
     }
 
-    /* PROGRESS BAR AT TOP */
+    /* BRAND PROGRESS BAR */
     .video-progress-bar {
       position: absolute;
-      top: 88px;
+      top: 94px;
       left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #5cb82f, #f39223, #facc15);
-      box-shadow: 0 0 10px #5cb82f;
+      height: 4px;
+      background: linear-gradient(90deg, #5cb82f, #f39223, #fed857);
+      box-shadow: 0 0 12px #5cb82f;
       z-index: 60;
       width: 0%;
     }
 
-    /* STAGE VIEWPORT (All scenes absolute inside) */
+    /* STAGE VIEWPORT */
     .stage {
       position: relative;
       width: 1920px;
-      height: 990px;
+      height: 984px;
       overflow: hidden;
     }
     .scene {
       position: absolute;
       inset: 0;
-      padding: 40px 70px;
+      padding: 36px 70px 30px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       opacity: 0;
-      transform: scale(0.97);
+      transform: scale(0.98);
       transition: opacity 0.35s ease, transform 0.35s ease;
       pointer-events: none;
     }
@@ -148,39 +160,41 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
     .scene-eyebrow {
+      font-family: 'Montserrat', sans-serif;
       font-size: 13px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: #5cb82f;
+      color: #8cb878;
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .scene-heading {
       font-family: 'Montserrat', sans-serif;
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 900;
-      letter-spacing: -1px;
+      letter-spacing: -0.8px;
       color: #FFFFFF;
       line-height: 1.15;
     }
-    .scene-heading .gradient-text {
-      background: linear-gradient(90deg, #5cb82f, #f39223, #facc15);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .scene-heading .brand-highlight {
+      color: #f39223;
+    }
+    .scene-heading .brand-green {
+      color: #5cb82f;
     }
 
-    /* GLASS CARD BASE */
-    .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      border: 1.5px solid rgba(255, 255, 255, 0.1);
+    /* BRAND GLASS CARD BASE */
+    .brand-card {
+      background: rgba(18, 43, 7, 0.82);
+      border: 1.5px solid rgba(75, 143, 36, 0.35);
       border-radius: 24px;
       backdrop-filter: blur(20px);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       position: relative;
       overflow: hidden;
     }
@@ -188,468 +202,455 @@
     /* SCENE 1 STYLES */
     .s1-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 32px;
-      margin-top: 10px;
+      grid-template-columns: 1fr 1fr 1fr 0.9fr;
+      gap: 24px;
+      margin-top: 8px;
     }
     .s1-card {
-      padding: 36px 32px;
+      padding: 32px 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 520px;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      height: 540px;
     }
-    .s1-card-accent-green { border-color: rgba(92, 184, 47, 0.45); }
-    .s1-card-accent-orange { border-color: rgba(243, 146, 35, 0.5); }
-    .s1-card-accent-cyan { border-color: rgba(56, 189, 248, 0.5); }
-    
+    .s1-card-green {
+      border-color: rgba(92, 184, 47, 0.5);
+      background: linear-gradient(180deg, rgba(24, 58, 10, 0.85), rgba(12, 30, 5, 0.9));
+    }
+    .s1-card-orange {
+      border-color: rgba(243, 146, 35, 0.5);
+      background: linear-gradient(180deg, rgba(45, 30, 8, 0.85), rgba(18, 15, 5, 0.9));
+    }
+    .s1-card-gold {
+      border-color: rgba(254, 216, 87, 0.45);
+      background: linear-gradient(180deg, rgba(35, 38, 10, 0.85), rgba(15, 18, 5, 0.9));
+    }
     .s1-stat-badge {
       align-self: flex-start;
-      padding: 6px 16px;
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
+      font-family: 'Montserrat', sans-serif;
     }
     .s1-big-num {
       font-family: 'Montserrat', sans-serif;
-      font-size: 72px;
+      font-size: 68px;
       font-weight: 900;
       line-height: 1;
-      margin: 18px 0 10px;
+      margin: 16px 0 8px;
       letter-spacing: -2px;
     }
     .s1-stat-label {
-      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19px;
       font-weight: 800;
       color: #FFFFFF;
       margin-bottom: 8px;
     }
     .s1-stat-desc {
-      font-size: 15px;
-      color: #94A3B8;
+      font-size: 14px;
+      color: #CBD5E1;
       line-height: 1.45;
     }
     .s1-proof-pill {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 14px;
-      padding: 14px 18px;
+      border-radius: 12px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-top: 20px;
+      gap: 10px;
+      margin-top: 16px;
+      font-size: 13px;
     }
+
+    .s1-chair-card {
+      padding: 0;
+      height: 540px;
+      display: flex;
+      flex-direction: column;
+      border-color: rgba(75, 143, 36, 0.4);
+      background: #0f2407;
+      overflow: hidden;
+    }
+    .s1-chair-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .s1-chair-caption {
+      padding: 18px 22px;
+      background: rgba(10, 24, 5, 0.95);
+      border-top: 1px solid rgba(75, 143, 36, 0.3);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .s1-bottom-strip {
-      margin-top: 30px;
-      padding: 20px 32px;
+      margin-top: 24px;
+      padding: 18px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-radius: 18px;
-      background: linear-gradient(90deg, rgba(75, 143, 36, 0.25), rgba(243, 146, 35, 0.2));
+      background: linear-gradient(90deg, rgba(75, 143, 36, 0.28), rgba(243, 146, 35, 0.22));
       border: 1.5px solid rgba(92, 184, 47, 0.4);
     }
 
-    /* SCENE 2 STYLES (TPM vs MOTOR & GA4) */
+    /* SCENE 2 STYLES (TPM VS ONZE MOTOR) */
     .s2-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      height: 600px;
-      margin-top: 10px;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      height: 590px;
+      margin-top: 8px;
     }
     .s2-tpm-card {
-      padding: 36px;
-      background: rgba(30, 15, 20, 0.65);
-      border: 2px solid rgba(239, 68, 68, 0.5);
+      padding: 34px;
+      background: linear-gradient(180deg, rgba(45, 12, 12, 0.75), rgba(20, 5, 5, 0.85));
+      border: 2px solid rgba(239, 68, 68, 0.55);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     .s2-motor-card {
-      padding: 36px;
-      background: rgba(10, 30, 20, 0.65);
+      padding: 34px;
+      background: linear-gradient(180deg, rgba(20, 50, 10, 0.8), rgba(9, 24, 5, 0.9));
       border: 2px solid rgba(92, 184, 47, 0.6);
-      box-shadow: 0 0 40px rgba(92, 184, 47, 0.2);
+      box-shadow: 0 0 40px rgba(75, 143, 36, 0.2);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .s2-vs-badge {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: #0F172A;
-      border: 2px solid #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 20px;
-      color: #FFFFFF;
-      z-index: 10;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-    }
-    .ga4-metric-row {
+    .ga4-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 20px;
-      background: rgba(255, 255, 255, 0.04);
+      padding: 13px 18px;
+      background: rgba(0, 0, 0, 0.35);
       border-radius: 12px;
       margin-bottom: 10px;
       border-left: 4px solid var(--color-forest-bright);
     }
 
-    /* SCENE 3 STYLES (FRUITMACHINE / JACKPOT) */
-    .s3-wrapper {
+    /* SCENE 3 STYLES (FOTOREALISTISCHE FRUITMACHINE) */
+    .s3-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
       align-items: center;
-      height: 640px;
+      height: 610px;
     }
-    .slot-cabinet {
-      background: linear-gradient(145deg, #1e293b, #0f172a);
-      border: 4px solid #facc15;
-      border-radius: 32px;
-      padding: 30px;
-      box-shadow: 0 0 60px rgba(250, 204, 21, 0.35);
+    .s3-photo-frame {
       position: relative;
-    }
-    .slot-marquee {
-      background: #000000;
-      border: 2px solid #facc15;
-      border-radius: 16px;
-      padding: 14px;
-      text-align: center;
-      margin-bottom: 24px;
-      box-shadow: inset 0 0 20px rgba(250, 204, 21, 0.3);
-    }
-    .slot-reels-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
-      background: #020617;
-      padding: 24px;
-      border-radius: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.15);
-      position: relative;
+      height: 580px;
+      border-radius: 24px;
       overflow: hidden;
-      height: 280px;
+      border: 3px solid #fed857;
+      box-shadow: 0 0 50px rgba(254, 216, 87, 0.28), 0 25px 50px rgba(0,0,0,0.6);
+      background: #000;
     }
-    .reel-window {
-      background: #0B1120;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      text-align: center;
-      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
-      position: relative;
+    .s3-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
-    .reel-window.locked {
-      border-color: #facc15;
-      background: linear-gradient(180deg, rgba(250, 204, 21, 0.15), rgba(11, 17, 32, 0.9));
-      box-shadow: 0 0 30px rgba(250, 204, 21, 0.5), inset 0 0 20px rgba(250, 204, 21, 0.2);
-    }
-    .reel-icon { font-size: 54px; margin-bottom: 8px; }
-    .reel-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 32px;
-      font-weight: 900;
-      color: #FFFFFF;
-      letter-spacing: -0.5px;
-    }
-    .reel-label {
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #94A3B8;
-      margin-top: 4px;
-    }
-    .jackpot-banner {
+    .s3-overlay-badge {
       position: absolute;
-      bottom: -20px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(90deg, #facc15, #f59e0b);
-      color: #000;
+      background: linear-gradient(90deg, #f39223, #fed857);
+      color: #122b07;
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
-      padding: 8px 36px;
+      padding: 10px 32px;
       border-radius: 999px;
-      box-shadow: 0 10px 30px rgba(250, 204, 21, 0.6);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
       text-transform: uppercase;
       letter-spacing: 1px;
       white-space: nowrap;
-      opacity: 0;
-      transform: translate(-50%, 20px) scale(0.8);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .jackpot-banner.active {
-      opacity: 1;
-      transform: translate(-50%, 0) scale(1);
     }
 
-    /* SCENE 4 STYLES (CONCLUSIE & ACTIE) */
+    /* SCENE 4 STYLES (CONCLUSIE & DORDRECHT SHOWROOM) */
     .s4-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
       align-items: center;
-      height: 620px;
+      height: 600px;
     }
     .s4-steps-card {
-      padding: 36px;
+      padding: 34px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
     .s4-step-item {
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 18px 24px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      gap: 18px;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1.5px solid rgba(75, 143, 36, 0.25);
       transition: all 0.3s ease;
     }
     .s4-step-item.highlight {
-      border-color: #5cb82f;
-      background: rgba(92, 184, 47, 0.15);
-      box-shadow: 0 0 25px rgba(92, 184, 47, 0.25);
+      border-color: #f39223;
+      background: rgba(243, 146, 35, 0.16);
+      box-shadow: 0 0 25px rgba(243, 146, 35, 0.25);
     }
     .s4-step-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 900;
-      background: rgba(255, 255, 255, 0.1);
-      color: #FFFFFF;
+      background: rgba(75, 143, 36, 0.3);
+      color: #86efac;
     }
     .s4-step-item.highlight .s4-step-badge {
-      background: #5cb82f;
-      color: #000000;
+      background: #f39223;
+      color: #FFFFFF;
     }
-    .s4-hero-cta {
-      padding: 44px;
-      text-align: center;
-      background: linear-gradient(145deg, rgba(16, 40, 24, 0.9), rgba(10, 20, 35, 0.95));
-      border: 2px solid rgba(92, 184, 47, 0.6);
-      box-shadow: 0 0 50px rgba(92, 184, 47, 0.3);
+
+    .s4-showroom-card {
+      height: 570px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      border-color: rgba(243, 146, 35, 0.45);
+      overflow: hidden;
+      position: relative;
+    }
+    .s4-showroom-img-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 330px;
+      gap: 2px;
+      background: #000;
+    }
+    .s4-showroom-img-row img {
+      width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+    .s4-showroom-info {
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(18, 43, 7, 0.95), rgba(10, 24, 5, 0.98));
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 2px solid rgba(243, 146, 35, 0.35);
     }
 
     /* FOOTER STATUS BAR */
     .status-footer {
-      height: 70px;
+      height: 68px;
       padding: 0 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(6, 10, 19, 0.95);
+      border-top: 1.5px solid rgba(75, 143, 36, 0.25);
+      background: rgba(9, 23, 5, 0.95);
       position: relative;
       z-index: 50;
-      font-size: 14px;
-      color: #64748B;
+      font-size: 13px;
+      color: #8cb878;
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-grid"></div>
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+  <div class="ambient-glow-brand-1"></div>
+  <div class="ambient-glow-brand-2"></div>
 
-  <!-- Top Header -->
+  <!-- Top Brand Header -->
   <header class="header">
-    <div style="display: flex; align-items: center; gap: 18px;">
-      <img src="../../assistent-stoel-static.svg" width="46" height="46" alt="Logo">
+    <div class="brand-logo-container">
+      <img src="../../assistent-stoel-static.svg" class="brand-logo-icon" alt="Staopstoelen Logo">
       <div>
-        <div class="brand-logo">staopstoelen<span>.nl</span></div>
-        <div class="brand-sub">Specialist in Ergonomisch Zitcomfort • Dordrecht</div>
+        <div class="brand-logo-text">staopstoelen<span>.nl</span></div>
+        <div class="brand-subtext">Specialist in Ergonomisch Zitcomfort • Showroom Dordrecht</div>
       </div>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 20px;">
+    <div style="display: flex; align-items: center; gap: 24px;">
       <div id="sceneBadge" class="header-badge">
         <span class="pulse-dot"></span>
-        <span id="sceneBadgeText">1. DE 3 KERNGETALLEN</span>
+        <span id="sceneBadgeText">1. DE 3 KERNGETALLEN (LIVE BEWIJS)</span>
       </div>
-      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; color: #94A3B8;">
-        INTERNAL STRATEGY • GEERTJAN
+      <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; color: #fed857; letter-spacing: 0.5px;">
+        VOOR GEERTJAN • INTERN OVERLEG
       </div>
     </div>
   </header>
 
-  <!-- Video Progress Bar -->
+  <!-- Brand Progress Bar -->
   <div id="videoProgressBar" class="video-progress-bar"></div>
 
   <!-- Stage Viewport -->
   <div class="stage">
 
-    <!-- SCENE 1: DE 3 KERNGETALLEN (0.0s - 10.6s) -->
+    <!-- SCENE 1: DE 3 KERNGETALLEN (0.0s - 15.0s) -->
     <div id="scene1" class="scene active">
       <div class="scene-title-bar">
         <div>
           <div class="scene-eyebrow"><span>●</span> LIVE RESULTATEN AFGELOPEN DAGEN</div>
-          <h1 class="scene-heading">Geertjan, kijk naar dit <span class="gradient-text">keiharde bewijs!</span></h1>
+          <h1 class="scene-heading">Geertjan, kijk naar dit <span class="brand-highlight">live bewijs!</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 13px; color: #94A3B8; font-weight: 700; text-transform: uppercase;">COMBINED REACH</div>
+          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">TOTAAL BEREIK IN DE REGIO</div>
           <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #5cb82f;">11.015 VERTONINGEN</div>
         </div>
       </div>
 
       <div class="s1-grid">
-        <!-- Card 1 -->
-        <div class="glass-card s1-card s1-card-accent-green" id="s1c1">
+        <!-- Card 1: Vertoningen -->
+        <div class="brand-card s1-card s1-card-green">
           <div>
-            <div class="s1-stat-badge" style="background: rgba(92, 184, 47, 0.2); color: #86efac; border: 1px solid rgba(92, 184, 47, 0.4);">
+            <div class="s1-stat-badge" style="background: rgba(75, 143, 36, 0.3); color: #86efac; border: 1px solid #5cb82f;">
               1. BEREIK VÓÓR DE KLIK
             </div>
             <div class="s1-big-num" style="color: #5cb82f;" id="s1_num_views">10.387</div>
             <div class="s1-stat-label">Marktplaats Vertoningen</div>
-            <div class="s1-stat-desc">Ruim 10.300 actieve senioren en mantelzorgers in de regio zagen jouw advertenties voorbijkomen.</div>
+            <div class="s1-stat-desc">Ruim tienduizend actieve senioren en mantelzorgers in de regio zagen jouw advertenties.</div>
           </div>
           <div class="s1-proof-pill">
-            <span style="font-size: 20px;">🔍</span>
-            <div style="font-size: 13px; color: #CBD5E1;">+ <strong>628 Vertoningen</strong> via Google Ads Search</div>
+            <span style="font-size: 18px;">🔍</span>
+            <div style="color: #CBD5E1;">+ <strong>628 Vertoningen</strong> via Google Ads Search</div>
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="glass-card s1-card s1-card-accent-orange" id="s1c2">
+        <!-- Card 2: Kliks -->
+        <div class="brand-card s1-card s1-card-orange">
           <div>
-            <div class="s1-stat-badge" style="background: rgba(243, 146, 35, 0.2); color: #fdba74; border: 1px solid rgba(243, 146, 35, 0.4);">
-              2. DE ADVERTENTIE KLIKS
+            <div class="s1-stat-badge" style="background: rgba(243, 146, 35, 0.25); color: #fdba74; border: 1px solid #f39223;">
+              2. GERIECHTE KLIKS
             </div>
             <div class="s1-big-num" style="color: #f39223;" id="s1_num_clicks">106</div>
-            <div class="s1-stat-label">Gerichte Kliks (€ 0,14 CPC)</div>
+            <div class="s1-stat-label">Stoelkliks (€ 0,14 CPC)</div>
             <div class="s1-stat-desc">106 serieuze mensen openden jouw advertenties om de stoelen en showroom te bekijken.</div>
           </div>
           <div class="s1-proof-pill">
-            <span style="font-size: 20px;">💶</span>
-            <div style="font-size: 13px; color: #CBD5E1;">Totale Marktplaats spend: <strong>slechts € 14,38</strong></div>
+            <span style="font-size: 18px;">💶</span>
+            <div style="color: #CBD5E1;">Totale Marktplaats spend: <strong>slechts € 14,38</strong></div>
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="glass-card s1-card s1-card-accent-cyan" id="s1c3">
+        <!-- Card 3: Websitezoekers -->
+        <div class="brand-card s1-card s1-card-gold">
           <div>
-            <div class="s1-stat-badge" style="background: rgba(56, 189, 248, 0.2); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4);">
+            <div class="s1-stat-badge" style="background: rgba(254, 216, 87, 0.25); color: #fed857; border: 1px solid #fed857;">
               3. WEBSITE BEZOEKERS
             </div>
-            <div class="s1-big-num" style="color: #38bdf8;" id="s1_num_web">5</div>
+            <div class="s1-big-num" style="color: #fed857;" id="s1_num_web">5</div>
             <div class="s1-stat-label">Directe Websitekliks ⭐</div>
-            <div class="s1-stat-desc">5 serieuze kopers klikten vanuit de advertentie direct door naar <em>Staopstoelen.nl</em> voor de showroom!</div>
+            <div class="s1-stat-desc">5 serieuze kopers klikten direct door naar <em>Staopstoelen.nl</em> voor de showroom in Dordrecht!</div>
           </div>
           <div class="s1-proof-pill">
-            <span style="font-size: 20px;">🚀</span>
-            <div style="font-size: 13px; color: #CBD5E1;">Kans op showroomverkoop: <strong>zeer groot</strong></div>
+            <span style="font-size: 18px;">🎯</span>
+            <div style="color: #CBD5E1;">Kans op showroomverkoop: <strong>zeer groot</strong></div>
+          </div>
+        </div>
+
+        <!-- Card 4: Fitform Stoel Showroom Dordrecht -->
+        <div class="brand-card s1-chair-card">
+          <img src="../../DEMO_Sta_op_stoel_Fitform_570_Vario_ILP_main.jpeg" class="s1-chair-img" alt="Fitform 570 Vario">
+          <div class="s1-chair-caption">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: #FFFFFF;">Fitform 570 Vario</div>
+            <div style="font-size: 12px; color: #8cb878; margin-top: 2px;">Gereconditioneerd met 1 jaar garantie</div>
+            <div style="font-size: 13px; font-weight: 800; color: #fed857; margin-top: 6px;">Showroom Dordrecht</div>
           </div>
         </div>
       </div>
 
       <div class="s1-bottom-strip">
         <div style="display: flex; align-items: center; gap: 14px;">
-          <span style="font-size: 24px;">💡</span>
-          <span style="font-size: 16px; font-weight: 700; color: #FFFFFF;">
-            "We doen iets heel bijzonders: <u>WE GENEREREN ÉCHT VERKEER!</u>"
+          <span style="font-size: 24px;">✨</span>
+          <span style="font-size: 16px; font-weight: 800; color: #FFFFFF; font-family: 'Montserrat', sans-serif;">
+            "We doen iets heel bijzonders: <span style="color: #f39223;">WE GENEREREN ÉCHT VERKEER!</span>"
           </span>
         </div>
-        <div style="font-size: 14px; font-weight: 800; color: #86efac; text-transform: uppercase; letter-spacing: 0.8px;">
-          Zwart-op-wit geverifieerd in Marktplaats &amp; Google Ads
+        <div style="font-size: 13px; font-weight: 800; color: #86efac; text-transform: uppercase; letter-spacing: 0.8px;">
+          ✓ Zwart-op-wit geverifieerd in Marktplaats Zakelijk &amp; Google Ads
         </div>
       </div>
     </div>
 
-    <!-- SCENE 2: HET BEWIJS IN GOOGLE ANALYTICS (10.6s - 21.8s) -->
+    <!-- SCENE 2: HET BEWIJS IN GOOGLE ANALYTICS (15.0s - 31.0s) -->
     <div id="scene2" class="scene">
       <div class="scene-title-bar">
         <div>
-          <div class="scene-eyebrow" style="color: #ef4444;"><span>●</span> HET VERGELIJKINGSONDERZOEK</div>
-          <h1 class="scene-heading">TPM Banner vs <span class="gradient-text">Onze Online Motor</span></h1>
+          <div class="scene-eyebrow" style="color: #fca5a5;"><span>●</span> HET VERGELIJKINGSONDERZOEK</div>
+          <h1 class="scene-heading">TPM Banner vs <span class="brand-green">Onze Eigen Motor</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 13px; color: #94A3B8; font-weight: 700; text-transform: uppercase;">VERHOUDING</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #facc15;">158× GOEDKOPER!</div>
+          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">HET RESULTAAT</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #fed857;">158× GOEDKOPER DAN TPM!</div>
         </div>
       </div>
 
-      <div class="s2-grid" style="position: relative;">
-        <div class="s2-vs-badge">VS</div>
-
+      <div class="s2-grid">
         <!-- TPM Left Column -->
-        <div class="glass-card s2-tpm-card">
+        <div class="brand-card s2-tpm-card">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-              <span style="font-size: 13px; font-weight: 800; color: #f87171; letter-spacing: 1px;">OUDE SITUATIE</span>
-              <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 800;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <span style="font-size: 12px; font-weight: 800; color: #f87171; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;">OUDE BANNER KANAAL</span>
+              <span style="background: rgba(239, 68, 68, 0.25); color: #fca5a5; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 800; border: 1px solid rgba(239,68,68,0.5);">
                 ❌ VERLIESGEVEND
               </span>
             </div>
-            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #FFFFFF; margin-bottom: 8px;">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 900; color: #FFFFFF; margin-bottom: 6px;">
               TPM Banner Advertentie
             </h2>
-            <div style="font-size: 15px; color: #94A3B8; margin-bottom: 24px;">Vaste kosten: € 400,- per maand</div>
+            <div style="font-size: 15px; color: #fca5a5; margin-bottom: 22px;">Vaste kosten voor Geertjan: <strong>€ 400,- per maand</strong></div>
 
-            <div style="background: rgba(0, 0, 0, 0.4); border-radius: 16px; padding: 24px; border: 1px solid rgba(239, 68, 68, 0.3);">
-              <div style="font-size: 14px; color: #94A3B8; margin-bottom: 4px;">Gemeten sessies in GA4 (7 dagen):</div>
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900; color: #f87171;">
+            <div style="background: rgba(0, 0, 0, 0.45); border-radius: 16px; padding: 22px; border: 1px solid rgba(239, 68, 68, 0.35);">
+              <div style="font-size: 13px; color: #CBD5E1; margin-bottom: 4px;">Gemeten sessies in Google Analytics 4 (7 dagen):</div>
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 44px; font-weight: 900; color: #f87171;">
                 Slechts 8 sessies
               </div>
-              <div style="margin-top: 14px; font-size: 16px; color: #fca5a5; font-weight: 700;">
-                Kosten per bezoeker: <span style="font-size: 26px; font-weight: 900; color: #ffffff;">€ 22,22</span>
+              <div style="margin-top: 14px; font-size: 16px; color: #CBD5E1; font-weight: 700;">
+                Kosten per bezoeker: <span style="font-size: 28px; font-weight: 900; color: #ffffff;">€ 22,22</span>
               </div>
             </div>
           </div>
 
-          <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 14px; padding: 16px; text-align: center;">
-            <div style="font-weight: 800; color: #f87171; font-size: 15px;">Dringend advies: ZEG DEZE BANNER PER DIRECT OP!</div>
-            <div style="font-size: 13px; color: #fca5a5; margin-top: 4px;">Het levert vrijwel niets op voor € 400,- per maand.</div>
+          <div style="background: rgba(239, 68, 68, 0.18); border: 1px solid rgba(239, 68, 68, 0.45); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-weight: 800; color: #fca5a5; font-size: 15px;">Dringend intern advies: ZEG DEZE BANNER PER DIRECT OP!</div>
+            <div style="font-size: 12px; color: #CBD5E1; margin-top: 4px;">Het levert vrijwel niets op voor € 400,- per maand.</div>
           </div>
         </div>
 
         <!-- Onze Online Motor Right Column -->
-        <div class="glass-card s2-motor-card">
+        <div class="brand-card s2-motor-card">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-              <span style="font-size: 13px; font-weight: 800; color: #86efac; letter-spacing: 1px;">ONZE MACHINE</span>
-              <span style="background: rgba(92, 184, 47, 0.2); color: #86efac; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 800;">
-                ✅ GEVALIDEERDE GROEI
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <span style="font-size: 12px; font-weight: 800; color: #86efac; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;">STAOPSTOELEN.NL MOTOR</span>
+              <span style="background: rgba(75, 143, 36, 0.3); color: #86efac; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 800; border: 1px solid #5cb82f;">
+                ✅ BEWEZEN GROEI
               </span>
             </div>
-            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #FFFFFF; margin-bottom: 8px;">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 900; color: #FFFFFF; margin-bottom: 6px;">
               Google Analytics (GA4)
             </h2>
-            <div style="font-size: 15px; color: #86efac; margin-bottom: 24px;">Totale sessies afgelopen week: <strong>237 sessies</strong></div>
+            <div style="font-size: 15px; color: #86efac; margin-bottom: 22px;">Totale sessies afgelopen week: <strong>237 sessies</strong></div>
 
-            <div class="ga4-metric-row">
+            <div class="ga4-row">
               <span style="font-weight: 700; color: #E2E8F0;">(direct) / (none) — Kopersverkeer</span>
               <div style="text-align: right;">
                 <span style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #5cb82f;">174 sessies</span>
@@ -657,7 +658,7 @@
               </div>
             </div>
 
-            <div class="ga4-metric-row">
+            <div class="ga4-row">
               <span style="font-weight: 700; color: #E2E8F0;">google / organic — Zoekers Dordrecht</span>
               <div style="text-align: right;">
                 <span style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #5cb82f;">36 sessies</span>
@@ -665,7 +666,7 @@
               </div>
             </div>
 
-            <div class="ga4-metric-row">
+            <div class="ga4-row">
               <span style="font-weight: 700; color: #E2E8F0;">Marktplaats Zakelijk Advertenties</span>
               <div style="text-align: right;">
                 <span style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #f39223;">106 kliks</span>
@@ -674,9 +675,9 @@
             </div>
           </div>
 
-          <div style="background: rgba(92, 184, 47, 0.2); border: 1.5px solid #5cb82f; border-radius: 14px; padding: 16px; text-align: center;">
-            <div style="font-weight: 900; color: #FFFFFF; font-size: 18px;">
-              Marktplaats is <u>158x goedkoper</u> dan TPM!
+          <div style="background: rgba(75, 143, 36, 0.28); border: 2px solid #5cb82f; border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #FFFFFF; font-size: 19px;">
+              Marktplaats is <span style="color: #fed857;">158× goedkoper</span> dan TPM!
             </div>
             <div style="font-size: 13px; color: #86efac; margin-top: 4px;">
               Voor € 14,38 kochten we 106 gerichte proefzitters i.p.v. € 22,22 per bezoeker.
@@ -686,154 +687,143 @@
       </div>
     </div>
 
-    <!-- SCENE 3: DE MARKETING FRUITMACHINE (21.8s - 31.6s) -->
+    <!-- SCENE 3: DE FOTOREALISTISCHE FRUITMACHINE (31.0s - 48.0s) -->
     <div id="scene3" class="scene">
       <div class="scene-title-bar">
         <div>
-          <div class="scene-eyebrow" style="color: #facc15;"><span>●</span> GEEN GOKKAST MAAR EEN MOTOR</div>
-          <h1 class="scene-heading">Trek aan de hendel: <span class="gradient-text">JACKPOT OP WINST!</span></h1>
+          <div class="scene-eyebrow" style="color: #fed857;"><span>●</span> GEEN GOKKAST MAAR EEN RENDEMENT MOTOR</div>
+          <h1 class="scene-heading">Trek aan de hendel: <span class="brand-highlight">JACKPOT OP WINST!</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 13px; color: #94A3B8; font-weight: 700; text-transform: uppercase;">RETURN ON INVESTMENT</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #facc15;">82× JE INLEG!</div>
+          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">RETURN ON INVESTMENT</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: #fed857;">82× JE INLEG!</div>
         </div>
       </div>
 
-      <div class="s3-wrapper">
-        <!-- Interactive Slot Machine Frame -->
-        <div class="slot-cabinet">
-          <div class="slot-marquee">
-            <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: #facc15; letter-spacing: 2px;">
-              ★ STAOPSTOELEN CASINO JACKPOT ENGINE ★
-            </span>
-          </div>
-
-          <div class="slot-reels-row">
-            <!-- Reel 1 -->
-            <div class="reel-window" id="reel1">
-              <div class="reel-icon">👀</div>
-              <div class="reel-num" id="s3_r1_val">10.387</div>
-              <div class="reel-label">VERTONINGEN</div>
-            </div>
-
-            <!-- Reel 2 -->
-            <div class="reel-window" id="reel2">
-              <div class="reel-icon">🎯</div>
-              <div class="reel-num" id="s3_r2_val">106</div>
-              <div class="reel-label">KLIKS (€ 0,14)</div>
-            </div>
-
-            <!-- Reel 3 -->
-            <div class="reel-window" id="reel3">
-              <div class="reel-icon">💰</div>
-              <div class="reel-num" id="s3_r3_val">€ 1.200</div>
-              <div class="reel-label">MARGE OP 1 STOEL</div>
-            </div>
-
-            <div class="jackpot-banner" id="jackpotBanner">
-              ★ JACKPOT GEWONNEN: 82× RETURN ON INVESTMENT! ★
-            </div>
-          </div>
-
-          <div style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center; color: #94A3B8; font-size: 14px;">
-            <span>INWORP: <strong>€ 14,38</strong> (106 kliks)</span>
-            <span>RESULTAAT OP 1 VERKOOP: <strong style="color: #facc15; font-size: 16px;">€ 1.200,- NETTO WINST</strong></span>
+      <div class="s3-grid">
+        <!-- The Real Photorealistic Slot Machine Frame -->
+        <div class="s3-photo-frame">
+          <img src="../fruitmachine_fotorealistisch.jpg?v=10387" alt="Staopstoelen Fruitmachine">
+          <div class="s3-overlay-badge" id="s3JackpotBadge">
+            ★ 10.387 VERTONINGEN • 106 KLIKS • € 1.200 MARGE ★
           </div>
         </div>
 
-        <!-- Explanation card on the right -->
-        <div class="glass-card" style="padding: 40px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(250, 204, 21, 0.4);">
+        <!-- Business Case Breakdown -->
+        <div class="brand-card" style="padding: 36px; height: 580px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(254, 216, 87, 0.45); background: linear-gradient(180deg, rgba(20, 48, 10, 0.9), rgba(10, 24, 5, 0.95));">
           <div>
-            <div style="font-size: 13px; font-weight: 800; color: #facc15; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+            <div style="font-size: 12px; font-weight: 800; color: #fed857; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; font-family: 'Montserrat', sans-serif;">
               DE BUSINESSCASE VAN 1 STOEL
             </div>
-            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #FFFFFF; line-height: 1.25; margin-bottom: 16px;">
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #FFFFFF; line-height: 1.25; margin-bottom: 14px;">
               Je hoeft geen 10 stoelen te verkopen om quitte te spelen...
             </h3>
-            <p style="font-size: 16px; color: #CBD5E1; line-height: 1.5; margin-bottom: 24px;">
-              Als er uit die <strong>106 geïnteresseerde kliks</strong> en <strong>5 websitebezoekers</strong> binnenkort slechts <strong style="color: #5cb82f;">één enkele senior</strong> naar Dordrecht komt en een stoel koopt:
+            <p style="font-size: 15px; color: #CBD5E1; line-height: 1.5; margin-bottom: 22px;">
+              Als er uit die <strong>106 geïnteresseerde kliks</strong> en <strong>5 directe websitebezoekers</strong> binnenkort slechts <strong style="color: #5cb82f;">één enkele senior</strong> naar de showroom in Dordrecht komt:
             </p>
 
-            <div style="background: rgba(0, 0, 0, 0.4); border-radius: 16px; padding: 20px; border-left: 4px solid #facc15;">
+            <div style="background: rgba(0, 0, 0, 0.45); border-radius: 16px; padding: 22px; border-left: 4px solid #fed857;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94A3B8;">Totale advertentiekosten:</span>
+                <span style="color: #CBD5E1;">Totale Marktplaats advertentiekosten:</span>
                 <span style="font-weight: 800; color: #FFFFFF;">€ 14,38</span>
               </div>
               <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="color: #94A3B8;">Marge op 1 stoel:</span>
+                <span style="color: #CBD5E1;">Marge op 1 verkochte stoel:</span>
                 <span style="font-weight: 800; color: #5cb82f;">+ € 1.200,00</span>
               </div>
-              <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 8px;">
-                <span style="font-weight: 800; color: #facc15;">Netto winstmultiplier:</span>
-                <span style="font-weight: 900; color: #facc15; font-size: 18px;">82× TERUGVERDIEND</span>
+              <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 10px; margin-top: 6px;">
+                <span style="font-weight: 800; color: #fed857;">Netto winstmultiplier:</span>
+                <span style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #fed857; font-size: 22px;">82× TERUGVERDIEND</span>
               </div>
             </div>
           </div>
 
-          <div style="font-size: 14px; color: #86efac; font-weight: 700; text-align: center;">
-            🎯 Dit is wiskundig de beste investering voor de winkel!
+          <div style="background: rgba(75, 143, 36, 0.25); border: 1.5px solid #5cb82f; border-radius: 14px; padding: 14px; text-align: center;">
+            <div style="font-size: 14px; color: #86efac; font-weight: 800; font-family: 'Montserrat', sans-serif;">
+              🎯 Dít is wiskundig de beste investering voor de winkel in Dordrecht!
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCENE 4: CONCLUSIE & ACTIEPLAN (31.6s - 43.8s) -->
+    <!-- SCENE 4: CONCLUSIE & ACTIEPLAN DORDRECHT (48.0s - 60.6s) -->
     <div id="scene4" class="scene">
       <div class="scene-title-bar">
         <div>
-          <div class="scene-eyebrow" style="color: #5cb82f;"><span>●</span> CONCLUSIE &amp; SAMENWERKING</div>
-          <h1 class="scene-heading">De eerste afspraak staat <span class="gradient-text">voor de deur!</span></h1>
+          <div class="scene-eyebrow" style="color: #5cb82f;"><span>●</span> CONCLUSIE &amp; VOLGENDE STAP</div>
+          <h1 class="scene-heading">De eerste afspraak staat <span class="brand-highlight">voor de deur!</span></h1>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 13px; color: #94A3B8; font-weight: 700; text-transform: uppercase;">VERKOOPLOCATIE</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: #FFFFFF;">MERWEDESTRAAT 239, DORDRECHT</div>
+          <div style="font-size: 12px; color: #8cb878; font-weight: 700; text-transform: uppercase;">SHOWROOM LOCATIE</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; color: #FFFFFF;">MERWEDESTRAAT 239, DORDRECHT</div>
         </div>
       </div>
 
       <div class="s4-grid">
         <!-- 3 Power Steps -->
-        <div class="glass-card s4-steps-card">
-          <div style="font-size: 13px; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 1px;">
+        <div class="brand-card s4-steps-card">
+          <div style="font-size: 12px; font-weight: 800; color: #8cb878; text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;">
             ONZE 3-STAPPEN FORMULE VOOR GEERTJAN
           </div>
 
           <div class="s4-step-item" id="s4_step_1">
             <div class="s4-step-badge">1</div>
             <div>
-              <div style="font-size: 17px; font-weight: 800; color: #FFFFFF;">Stop TPM Banner Per Direct</div>
-              <div style="font-size: 13px; color: #94A3B8;">Bespaar direct € 400,- per maand aan ineffectieve advertenties.</div>
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 800; color: #FFFFFF;">Stop TPM Banner Per Direct</div>
+              <div style="font-size: 13px; color: #CBD5E1;">Bespaar direct € 400,- per maand aan ineffectieve advertenties.</div>
             </div>
           </div>
 
           <div class="s4-step-item" id="s4_step_2">
             <div class="s4-step-badge">2</div>
             <div>
-              <div style="font-size: 17px; font-weight: 800; color: #FFFFFF;">Zet Onze Online Motor Vol Aan</div>
-              <div style="font-size: 13px; color: #94A3B8;">Voor € 0,14 per klik kopen we honderden gerichte kopers in de regio.</div>
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 800; color: #FFFFFF;">Zet Onze Online Motor Vol Aan</div>
+              <div style="font-size: 13px; color: #CBD5E1;">Voor € 0,14 per klik bereiken we honderden gerichte kopers in de regio.</div>
             </div>
           </div>
 
           <div class="s4-step-item" id="s4_step_3">
             <div class="s4-step-badge">3</div>
             <div>
-              <div style="font-size: 17px; font-weight: 800; color: #FFFFFF;">Vul de Showroom in Dordrecht</div>
-              <div style="font-size: 13px; color: #94A3B8;">Leid elke bezoeker naar een zitmeting en proefzit-afspraak bij Geertjan.</div>
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 800; color: #FFFFFF;">Vul de Showroom in Dordrecht</div>
+              <div style="font-size: 13px; color: #CBD5E1;">Leid elke bezoeker naar een zitmeting en proefzit-afspraak bij Geertjan.</div>
             </div>
+          </div>
+
+          <div style="padding: 14px 20px; background: rgba(75, 143, 36, 0.25); border: 1.5px solid #5cb82f; border-radius: 14px; text-align: center; margin-top: 6px;">
+            <span style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; color: #FFFFFF;">
+              114 Betaalde Kliks Binnen • Formule Bewezen! 🚀
+            </span>
           </div>
         </div>
 
-        <!-- Big Hero CTA Card -->
-        <div class="glass-card s4-hero-cta">
-          <div style="font-size: 60px; margin-bottom: 12px;">🏆</div>
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; color: #FFFFFF; line-height: 1.15; margin-bottom: 12px;">
-            114 Betaalde Kliks Binnen!
+        <!-- Showroom & Geertjan Photo Card -->
+        <div class="brand-card s4-showroom-card">
+          <div class="s4-showroom-img-row">
+            <img src="../../geertjan_advies_showroom.jpg" alt="Geertjan Advies Showroom">
+            <img src="../../pand_merwedestraat_239_open_gevel.jpg" alt="Showroom Dordrecht Gevel">
           </div>
-          <p style="font-size: 16px; color: #CBD5E1; max-width: 480px; line-height: 1.5; margin-bottom: 24px;">
-            De cijfers liegen niet. We hebben de formule gekraakt. Nu is het moment om door te pakken en Geertjan's agenda te vullen.
-          </p>
+          <div class="s4-showroom-info">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: #FFFFFF;">
+                  Showroom Dordrecht
+                </span>
+                <span style="background: rgba(243, 146, 35, 0.25); border: 1px solid #f39223; color: #fdba74; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px;">
+                  MERWEDESTRAAT 239
+                </span>
+              </div>
+              <div style="font-size: 13px; color: #CBD5E1; line-height: 1.45;">
+                Persoonlijk zitadvies, op maat gemeten ergonomie en 1 jaar garantie aan huis door Geertjan Schipper.
+              </div>
+            </div>
 
-          <div style="background: rgba(92, 184, 47, 0.25); border: 2px solid #5cb82f; padding: 14px 32px; border-radius: 999px; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: #FFFFFF; letter-spacing: 0.5px; box-shadow: 0 0 30px rgba(92, 184, 47, 0.4);">
-            ZULLEN WE VANDAAG VAN START GAAN? 🚀
+            <div style="background: linear-gradient(90deg, #4b8f24, #f39223); padding: 12px 24px; border-radius: 12px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4); margin-top: 12px;">
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: #FFFFFF; letter-spacing: 0.5px;">
+                ZULLEN WE VANDAAG VAN START GAAN? 🚀
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -848,18 +838,13 @@
       <span>● Verkeer: <strong>Bewezen 11.015 Vertoningen</strong></span>
       <span>● Conversie: <strong>106 Stoelkliks (€ 0,14)</strong></span>
     </div>
-    <div style="font-weight: 800; color: #5cb82f;">
+    <div style="font-weight: 800; color: #5cb82f; font-family: 'Montserrat', sans-serif;">
       STAOPSTOELEN.NL • DORDRECHT SHOWROOM
     </div>
   </footer>
 
   <script>
     // Animation timing control (Total 60.6 seconds - Natural Studio Voiceover)
-    // Scene 1: 0.0s - 15.0s (Live Resultaten & Kerngetallen)
-    // Scene 2: 15.0s - 31.0s (GA4 vs TPM Bewijs)
-    // Scene 3: 31.0s - 48.0s (Fruitmachine & Jackpot)
-    // Scene 4: 48.0s - 60.6s (Conclusie & Dordrecht Showroom)
-
     const scenes = [
       { id: 'scene1', start: 0.0, end: 15.0, badge: '1. DE 3 KERNGETALLEN (LIVE BEWIJS)' },
       { id: 'scene2', start: 15.0, end: 31.0, badge: '2. GA4 VS TPM (158X GOEDKOPER!)' },
@@ -915,43 +900,15 @@
         document.getElementById('s1_num_web').innerText = val3;
       }
 
-      // SCENE 3 ANIMATIONS: FRUITMACHINE (31.0s - 48.0s)
+      // SCENE 3 ANIMATIONS (31.0s - 48.0s)
       if (t >= 30.0 && t <= 49.0) {
-        const r1 = document.getElementById('reel1');
-        const r2 = document.getElementById('reel2');
-        const r3 = document.getElementById('reel3');
-        const jackpot = document.getElementById('jackpotBanner');
-
-        // Reel 1 locks at 35.5s
-        if (t >= 35.5) {
-          r1.classList.add('locked');
-          document.getElementById('s3_r1_val').innerText = '10.387';
+        const badge = document.getElementById('s3JackpotBadge');
+        if (t >= 40.0) {
+          badge.style.transform = 'translateX(-50%) scale(1.06)';
+          badge.style.boxShadow = '0 0 40px rgba(254, 216, 87, 0.6)';
         } else {
-          r1.classList.remove('locked');
-          const dummy = Math.round(Math.random() * 9000 + 1000);
-          document.getElementById('s3_r1_val').innerText = dummy.toLocaleString('nl-NL');
-        }
-
-        // Reel 2 locks at 38.5s
-        if (t >= 38.5) {
-          r2.classList.add('locked');
-          document.getElementById('s3_r2_val').innerText = '106';
-        } else {
-          r2.classList.remove('locked');
-          const dummy = Math.round(Math.random() * 90 + 10);
-          document.getElementById('s3_r2_val').innerText = dummy;
-        }
-
-        // Reel 3 locks at 41.5s
-        if (t >= 41.5) {
-          r3.classList.add('locked');
-          document.getElementById('s3_r3_val').innerText = '€ 1.200';
-          jackpot.classList.add('active');
-        } else {
-          r3.classList.remove('locked');
-          jackpot.classList.remove('active');
-          const dummy = Math.round(Math.random() * 900 + 200);
-          document.getElementById('s3_r3_val').innerText = '€ ' + dummy;
+          badge.style.transform = 'translateX(-50%) scale(1.0)';
+          badge.style.boxShadow = '0 10px 30px rgba(0,0,0,0.7)';
         }
       }
 
