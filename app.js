@@ -2839,9 +2839,10 @@ function initFloatingMenu() {
     const st = document.createElement("style");
     st.id = "da-inline-styles";
     st.textContent = `
-      .nav-text-logo.has-chair-logo { display: inline-flex !important; align-items: center !important; gap: 11px !important; top: 4px !important; }
-      .nav-chair-logo-icon { width: 56px !important; height: 56px !important; max-width: 56px !important; max-height: 56px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; transform-origin: 50% 80%; filter: drop-shadow(0 4px 8px rgba(18,43,7,0.16)); cursor: pointer; animation: none !important; }
-      .nav-logo-text-group { display: flex !important; flex-direction: column !important; color: var(--color-forest, #4b8f24) !important; }
+      .nav-text-logo.has-chair-logo { display: inline-flex !important; align-items: center !important; gap: 10px !important; top: 6px !important; white-space: nowrap !important; word-break: keep-all !important; }
+      .nav-chair-logo-icon { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; transform-origin: 50% 80%; filter: drop-shadow(0 4px 8px rgba(18,43,7,0.16)); cursor: pointer; animation: none !important; }
+      .nav-logo-text-group { display: flex !important; flex-direction: column !important; color: var(--color-forest, #4b8f24) !important; white-space: nowrap !important; word-break: keep-all !important; }
+      .nav-logo-main { white-space: nowrap !important; word-break: keep-all !important; display: inline-flex !important; align-items: baseline !important; }
       .nav-logo-text-group span, .nav-text-logo span, .footer-col h3 span { color: #f39223 !important; }
       .floating-contact-wrapper { position: fixed !important; bottom: 28px !important; right: 28px !important; z-index: 99999 !important; display: flex !important; flex-direction: column !important; align-items: flex-end !important; gap: 12px !important; pointer-events: auto !important; }
       .floating-btn-main.assistant-chair-fab { position: relative !important; width: 76px !important; height: 76px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 3px solid #4b8f24 !important; box-shadow: 0 12px 32px rgba(18,43,7,0.28), 0 0 0 5px rgba(75,143,36,0.16) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; cursor: pointer !important; animation: assistantPulseGlow 3.5s ease-in-out infinite !important; overflow: visible !important; }
@@ -2898,8 +2899,10 @@ function initFloatingMenu() {
       .da-sub-btn:hover { background: #e2ede0 !important; border-color: #a8c49e !important; color: #17300c !important; transform: translateY(-1px) !important; }
       .da-sub-btn svg { flex-shrink: 0 !important; opacity: 0.9 !important; }
       @media (max-width: 768px) {
-        .nav-text-logo.has-chair-logo { top: 6px !important; gap: 8px !important; }
-        .nav-chair-logo-icon { width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; }
+        .nav-text-logo.has-chair-logo { top: 10px !important; gap: 7px !important; white-space: nowrap !important; word-break: keep-all !important; }
+        .nav-chair-logo-icon { width: 36px !important; height: 36px !important; max-width: 36px !important; max-height: 36px !important; }
+        .nav-text-logo { font-size: clamp(1.15rem, 4.4vw, 1.45rem) !important; }
+        .nav-logo-strapline { font-size: 0.62rem !important; }
         .floating-contact-wrapper { bottom: 20px !important; right: 14px !important; }
         .floating-btn-main.assistant-chair-fab { width: 66px !important; height: 66px !important; }
         .assistant-chair-img { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; }
@@ -2918,11 +2921,15 @@ function initFloatingMenu() {
   let navChairImg = null;
   if (navLogo && !navLogo.querySelector(".nav-chair-logo-icon")) {
     const existingInner = navLogo.innerHTML;
+    let safeInner = existingInner.trim();
+    if (!safeInner.includes("nav-logo-main")) {
+      safeInner = `<div class="nav-logo-main" style="white-space:nowrap !important;word-break:keep-all !important;display:inline-flex !important;align-items:baseline !important;">${safeInner}</div><div class="nav-logo-strapline" style="white-space:nowrap !important;word-break:keep-all !important;">Specialist in ergonomisch zitcomfort</div>`;
+    }
     navLogo.classList.add("has-chair-logo");
-    navLogo.style.cssText += ";display:inline-flex !important;align-items:center !important;gap:11px !important;";
+    navLogo.style.cssText += ";display:inline-flex !important;align-items:center !important;gap:10px !important;white-space:nowrap !important;word-break:keep-all !important;";
     navLogo.innerHTML = `
-      <img src="${logoChairSrc}" width="56" height="56" style="width:56px;height:56px;max-width:56px;max-height:56px;flex-shrink:0;display:block;object-fit:contain;" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg">
-      <div class="nav-logo-text-group" style="display:flex;flex-direction:column;">${existingInner}</div>
+      <img src="${logoChairSrc}" width="50" height="50" style="width:50px;height:50px;max-width:50px;max-height:50px;flex-shrink:0;display:block;object-fit:contain;" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg">
+      <div class="nav-logo-text-group" style="display:flex;flex-direction:column;white-space:nowrap !important;word-break:keep-all !important;">${safeInner}</div>
     `;
     navChairImg = document.getElementById("navChairLogoImg");
   }
