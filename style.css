@@ -475,18 +475,17 @@ section[id], section {
   }
 
   /* Row 1, Left: staopstoelen.nl letterlogo in natural document flow above the contact bar */
-  .nav-text-logo,
-  .nav-text-logo.has-chair-logo {
+  .nav-text-logo {
     position: relative !important;
     left: auto !important;
     top: auto !important;
     right: auto !important;
     margin: 0 !important;
-    padding: 12px 16px 8px 16px !important;
+    padding: 11px 16px 7px 16px !important;
     width: 100% !important;
     max-width: calc(100% - 56px) !important;
     box-sizing: border-box !important;
-    font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important;
+    font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important;
     font-weight: 900 !important;
     letter-spacing: -0.5px !important;
     line-height: 1 !important;
@@ -501,8 +500,23 @@ section[id], section {
     text-decoration: none !important;
   }
 
+  .nav-text-logo.has-chair-logo {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 9px !important;
+  }
+
+  .nav-logo-text-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+  }
+
   .nav-logo-main {
-    font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important;
+    font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important;
     font-weight: 900 !important;
     line-height: 1 !important;
     color: var(--color-forest) !important;
@@ -513,9 +527,9 @@ section[id], section {
   }
 
   .nav-logo-strapline {
-    font-size: 0.65rem !important;
+    font-size: 0.62rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.25px !important;
+    letter-spacing: 0.2px !important;
     text-transform: uppercase !important;
     color: #475569 !important;
     margin-top: 3px !important;
@@ -524,9 +538,23 @@ section[id], section {
     line-height: 1 !important;
   }
 
-  /* Op mobiel kiezen voor het krachtige letterlogo boven het icoon */
+  /* 3D Stoel logo icoon op mobiel: tonen wanneer er ruimte is (>= 360px), subtiel 38px formaat */
   .nav-chair-logo-icon {
-    display: none !important;
+    display: block !important;
+    width: 38px !important;
+    height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+    filter: drop-shadow(0 2px 5px rgba(18, 43, 7, 0.18)) !important;
+  }
+
+  /* Op extreem smalle schermen (< 360px) icoon subtiel verbergen zodat het letterlogo alle ruimte behoudt */
+  @media (max-width: 359px) {
+    .nav-chair-logo-icon {
+      display: none !important;
+    }
   }
 
   /* Remove swooshes/waves completely on mobile */
