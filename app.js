@@ -61,17 +61,37 @@ function logCustomVisitEvent(eventName = 'pageview', extraData = {}) {
     }
 
     const params = new URLSearchParams(window.location.search);
+    
+    // Auto-detect Google Ads and Marktplaats visits even if explicit UTM params are absent
+    const isGoogleAds = params.has('gclid') || params.has('gad_source') || params.has('gbraid') || params.has('wbraid');
+    const isMarktplaats = (document.referrer && document.referrer.includes('marktplaats.nl')) || params.get('utm_source') === 'marktplaats';
+    
+    let utmSource = (extraData && extraData.utm_source) || params.get('utm_source') || '';
+    if (!utmSource && isGoogleAds) utmSource = 'google_ads';
+    if (!utmSource && isMarktplaats) utmSource = 'marktplaats';
+    
+    let utmMedium = (extraData && extraData.utm_medium) || params.get('utm_medium') || '';
+    if (!utmMedium && isGoogleAds) utmMedium = 'cpc';
+    if (!utmMedium && isMarktplaats) utmMedium = 'referral';
+
+    let utmCampaign = (extraData && (extraData.utm_campaign || extraData.topic)) || params.get('utm_campaign') || '';
+    if (!utmCampaign && isGoogleAds) utmCampaign = 'sta-op-stoelen-search';
+    if (!utmCampaign && isMarktplaats) utmCampaign = 'marktplaats-pro';
+
     const logData = {
       page_url: (extraData && extraData.page_url) || (window.location.pathname + window.location.hash),
       referrer_url: document.referrer || '',
-      utm_source: (extraData && extraData.utm_source) || params.get('utm_source') || '',
-      utm_medium: (extraData && extraData.utm_medium) || params.get('utm_medium') || '',
-      utm_campaign: (extraData && (extraData.utm_campaign || extraData.topic)) || params.get('utm_campaign') || '',
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign,
       device_type: window.innerWidth < 768 ? 'mobile' : (window.innerWidth < 1024 ? 'tablet' : 'desktop'),
       event_name: eventName
     };
     
-    fetch('api/log_visit.php', {
+    // Always use absolute origin path so visits on /stoelen/*.html never fail via relative path
+    const apiEndpoint = window.location.origin + '/api/log_visit.php';
+    
+    fetch(apiEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(logData)
