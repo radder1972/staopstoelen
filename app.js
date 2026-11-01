@@ -2900,9 +2900,9 @@ function initFloatingMenu() {
       .da-sub-btn svg { flex-shrink: 0 !important; opacity: 0.9 !important; }
       @media (max-width: 768px) {
         .nav-chair-logo-icon { display: block !important; width: 38px !important; height: 38px !important; max-width: 38px !important; max-height: 38px !important; object-fit: contain !important; flex-shrink: 0 !important; filter: drop-shadow(0 2px 5px rgba(18, 43, 7, 0.18)) !important; }
-        .nav-text-logo.has-chair-logo { position: relative !important; top: auto !important; left: auto !important; margin: 0 !important; display: inline-flex !important; flex-direction: row !important; align-items: center !important; gap: 9px !important; white-space: nowrap !important; word-break: keep-all !important; }
-        .nav-text-logo { position: relative !important; top: auto !important; left: auto !important; margin: 0 !important; font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important; display: flex !important; }
-        .nav-logo-text-group { display: flex !important; flex-direction: column !important; align-items: flex-start !important; }
+        .nav-text-logo.has-chair-logo { position: relative !important; top: auto !important; left: 0 !important; margin: 0 !important; margin-right: auto !important; align-self: flex-start !important; display: inline-flex !important; flex-direction: row !important; align-items: center !important; justify-content: flex-start !important; gap: 9px !important; white-space: nowrap !important; word-break: keep-all !important; }
+        .nav-text-logo { position: relative !important; top: auto !important; left: 0 !important; margin: 0 !important; margin-right: auto !important; align-self: flex-start !important; font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important; display: inline-flex !important; align-items: center !important; justify-content: flex-start !important; text-align: left !important; }
+        .nav-logo-text-group { display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; }
         .nav-logo-main { font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important; line-height: 1 !important; display: inline-flex !important; align-items: baseline !important; }
         .nav-logo-strapline { font-size: 0.62rem !important; margin-top: 3px !important; display: block !important; line-height: 1 !important; }
         @media (max-width: 359px) {

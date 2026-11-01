@@ -477,18 +477,22 @@ section[id], section {
     width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
+    align-items: flex-start !important;
     box-sizing: border-box !important;
   }
 
-  /* Row 1, Left: staopstoelen.nl letterlogo in natural document flow above the contact bar */
-  .nav-text-logo {
+  /* Row 1, Left: staopstoelen.nl letterlogo strak links uitgelijnd boven de contactbalk */
+  .nav-text-logo,
+  .nav-text-logo.has-chair-logo {
     position: relative !important;
-    left: auto !important;
+    left: 0 !important;
     top: auto !important;
     right: auto !important;
     margin: 0 !important;
+    margin-right: auto !important;
     padding: 11px 16px 7px 16px !important;
-    width: 100% !important;
+    align-self: flex-start !important;
+    width: auto !important;
     max-width: calc(100% - 56px) !important;
     box-sizing: border-box !important;
     font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important;
@@ -497,20 +501,15 @@ section[id], section {
     line-height: 1 !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0 !important;
-    z-index: 10 !important;
-    color: var(--color-forest) !important;
-    text-decoration: none !important;
-  }
-
-  .nav-text-logo.has-chair-logo {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
     gap: 9px !important;
+    z-index: 10 !important;
+    color: var(--color-forest) !important;
+    text-decoration: none !important;
   }
 
   .nav-logo-text-group {
@@ -5041,14 +5040,109 @@ input[type="checkbox"] {
     -webkit-backdrop-filter: blur(16px);
     border: 1.5px solid #e2ebe0;
     border-radius: 16px;
-    padding: 10px 12px;
+    padding: 6px 8px !important;
     margin-bottom: 20px;
     box-shadow: 0 4px 22px rgba(18, 43, 7, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
     position: sticky;
     top: 60px;
     z-index: 95;
-    box-sizing: border-box;
-    width: 100%;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .clean-toolbar-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 48px !important;
+  }
+
+  .clean-toolbar-count {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 2px 4px 2px 0 !important;
+    cursor: pointer !important;
+    color: #374151 !important;
+    font-family: var(--font-heading, 'Montserrat', sans-serif) !important;
+    flex-shrink: 0 !important;
+    min-width: auto !important;
+  }
+
+  .clean-count-num {
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+  }
+
+  .clean-count-sub {
+    font-size: 0.65rem !important;
+    margin-top: 1px !important;
+  }
+
+  .clean-count-chevron {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .clean-toolbar-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 3px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .clean-toolbar-actions::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .clean-icon-btn {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    padding: 4px 2px !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 66px !important;
+    height: 50px !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .clean-icon-box {
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .clean-icon-box svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .clean-icon-label {
+    font-size: 0.65rem !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    text-align: center !important;
   }
 
   /* Meta header: live aantal stoelen + snel wissen */
@@ -9485,18 +9579,6 @@ input[type="checkbox"] {
 
 .nav-logo-text-group span {
   color: var(--color-terracotta, #f39223) !important;
-}
-
-@media (max-width: 768px) {
-  .nav-text-logo.has-chair-logo {
-    top: 14px !important;
-    gap: 0 !important;
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-  }
-  .nav-chair-logo-icon {
-    display: none !important;
-  }
 }
 
 /* Dans-animatie van de 3D Sta-op Stoel (zonder 360-graden spin) */

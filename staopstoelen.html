@@ -15,15 +15,15 @@
   <meta property="og:url" content="https://staopstoelen.nl/staopstoelen.html">
   <meta property="og:image" content="https://staopstoelen.nl/assets/stoelen/chair_fitform_570_reco_cozy.avif">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=10.295">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=10.295">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=10.295">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=10.295">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=10.300">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=10.300">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=10.300">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=10.300">
   <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.295">
+  <link rel="stylesheet" href="style.css?v=10.300">
   <style>
 
     @media (max-width: 991px) {
@@ -742,7 +742,7 @@
                       <path d="M6 18V4"/>
                     </svg>
                   </span>
-                  <span class="clean-icon-label" id="mobileSortBtnLabel">Laagste prijs</span>
+                  <span class="clean-icon-label" id="mobileSortBtnLabel">Sorteren</span>
                 </button>
 
                 <!-- 2. Aanpassen / Filters (met ronde oranje teller-badge op het icoon) -->
@@ -755,7 +755,7 @@
                     </svg>
                     <span class="clean-icon-badge" id="mobileFilterBadge" style="display: none;">0</span>
                   </span>
-                  <span class="clean-icon-label" id="mobileFilterSubtitle">Aanpassen</span>
+                  <span class="clean-icon-label" id="mobileFilterSubtitle">Filters</span>
                 </button>
 
                 <!-- 3. Occasions (1-klik snelkeuze) -->
@@ -766,7 +766,7 @@
                       <polyline points="9 12 11 14 15 10"/>
                     </svg>
                   </span>
-                  <span class="clean-icon-label">Occasions</span>
+                  <span class="clean-icon-label">Occasion</span>
                 </button>
 
                 <!-- 4. Nieuw (1-klik snelkeuze) -->
@@ -818,7 +818,7 @@
             <div class="catalog-callout-card">
               <div class="catalog-callout-header">
                 <div onclick="openCertifiedVideoModal('revisie')" class="catalog-callout-thumb" title="Klik om de werkplaatsvideo te bekijken" role="button" tabindex="0">
-                  <img src="assets/video/revisie_poster.jpg?v=10.295" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
+                  <img src="assets/video/revisie_poster.jpg?v=10.300" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
                   <div class="catalog-callout-play-overlay">
                     <span class="catalog-callout-play-icon">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
@@ -1224,9 +1224,9 @@
             controls 
             playsinline 
             preload="metadata" 
-            poster="assets/video/zitmeting_poster.jpg?v=10.295"
+            poster="assets/video/zitmeting_poster.jpg?v=10.300"
             class="appointment-modal-video">
-            <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.295" type="video/mp4">
+            <source src="assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.300" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -1487,7 +1487,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.295"></script>
+  <script src="app.js?v=10.300"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
@@ -2174,11 +2174,11 @@
     let currentSortValue = "price-asc";
 
     const sortDisplayLabels = {
-      "price-asc": "Laagste prijs",
-      "price-desc": "Hoogste prijs",
-      "recommended": "Aanbevolen",
-      "brand-asc": "Merk: A - Z",
-      "newest": "Nieuwste"
+      "price-asc": "Prijs ↑",
+      "price-desc": "Prijs ↓",
+      "recommended": "Advies",
+      "brand-asc": "Merk",
+      "newest": "Nieuw"
     };
 
     function openMobileSort() {
@@ -2472,7 +2472,7 @@
       }
       const filterSubtitle = document.getElementById("mobileFilterSubtitle");
       if (filterSubtitle) {
-        filterSubtitle.textContent = "Aanpassen";
+        filterSubtitle.textContent = "Filters";
       }
       const mobileFilterBtn = document.getElementById("btnOpenMobileFilters");
       if (mobileFilterBtn) {
