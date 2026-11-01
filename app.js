@@ -225,10 +225,14 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Log pageview on DOMContentLoaded
-window.addEventListener('DOMContentLoaded', () => {
+// Log pageview
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', () => {
+    logCustomVisitEvent('pageview');
+  });
+} else {
   logCustomVisitEvent('pageview');
-});
+}
 
 // Database of available lift chairs (revised premium models)
 const CHAIR_DATABASE = [
