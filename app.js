@@ -3267,11 +3267,19 @@ function initFloatingMenu() {
       };
     }
 
-    if (q === "proefzitten" || q.includes("proefzit") || q.includes("thuis") || q.includes("showroom") || q.includes("dordrecht") || q.includes("adres") || q.includes("parkeren") || q.includes("afspraak")) {
+    if (q.includes("thuis proefzitten") || q.includes("thuis proberen") || q.includes("thuis uitproberen") || q.includes("thuispassen") || q.includes("aan huis proefzitten") || q.includes("aan huis passen")) {
       return {
-        question: q === "proefzitten" ? "Hoe werkt proefzitten of passing aan huis?" : topicOrQuery,
-        html: `U bent van harte welkom in onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> (gratis parkeren voor de deur, gelijkvloers).<br><br>Bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> doet een vrijblijvende zitmeting en stelt meerdere stoelen op uw maat in. Woont u in de <strong>regio Dordrecht (Drechtsteden)</strong> en lukt langskomen niet? Dan komt Geertjan kosteloos bij u thuis proefpassen!`,
-        ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'afspraak'});openAppointmentModal(event)">Plan Proefzit-Afspraak &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'video_zitmeting'});if(window.openCertifiedVideoModal)openCertifiedVideoModal('zitmeting')">Bekijk Video (38 sec)</button></div>`
+        question: topicOrQuery,
+        html: `Wij verzorgen <strong>geen proefzitten aan huis</strong>. Een ergonomische sta-op stoel moet namelijk op meerdere punten exact worden opgemeten en vergeleken. In onze ruime showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> hebben wij ruim 30 modellen klaarstaan, een officiële Fitform meetstoel én gratis parkeren direct voor de deur.<br><br>Heeft u uw ideale stoel gekozen? Dan bezorgen wij deze uiteraard wél <strong>geheel gratis bij u thuis</strong> en stellen we hem direct ter plekke voor u af!`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'afspraak'});openAppointmentModal(event)">Plan Showroombezoek &rarr;</a><a href="tel:+31786314858" class="da-inline-btn da-inline-btn-sec">Bel Geertjan: 078-6314858</a></div>`
+      };
+    }
+
+    if (q === "proefzitten" || q.includes("proefzit") || q.includes("showroom") || q.includes("dordrecht") || q.includes("adres") || q.includes("parkeren") || q.includes("afspraak")) {
+      return {
+        question: q === "proefzitten" ? "Hoe werkt proefzitten in de showroom?" : topicOrQuery,
+        html: `U bent van harte welkom in onze showroom aan de <strong>Merwedestraat 239 in Dordrecht</strong> (gratis parkeren direct voor de deur, gelijkvloers en rolstoeltoegankelijk).<br><br>Bewegingstechnoloog <strong>Geertjan Klein Haneveld</strong> doet een vrijblijvende ergonomische zitmeting en stelt meerdere stoelen exact op uw lichaamsmaat in, zodat u in alle rust kunt proefzitten en vergelijken!`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}afspraak.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'afspraak'});openAppointmentModal(event)">Plan Showroombezoek &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'video_zitmeting'});if(window.openCertifiedVideoModal)openCertifiedVideoModal('zitmeting')">Bekijk Video (38 sec)</button></div>`
       };
     }
 
@@ -3360,7 +3368,7 @@ function initFloatingMenu() {
     const chipLabels = {
       maat: "Welke stoel past bij mijn lengte & klachten?",
       prijs: "Wat kost een (Certified Fitform) stoel?",
-      proefzitten: "Hoe werkt proefzitten of passing aan huis?",
+      proefzitten: "Hoe werkt proefzitten in de showroom?",
       vergoeding: "Wordt een sta-op stoel vergoed?"
     };
     const userText = chipLabels[topicOrQuery] || topicOrQuery;

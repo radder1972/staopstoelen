@@ -238,7 +238,7 @@ function sync_static_chair_pages($chairs = null) {
                 <span style="color: #256616; font-weight: bold;">✓</span> 10 Jaar Fitform Garantie
               </div>
               <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #ea580c; font-weight: bold;">✓</span> Gratis proefzitten aan huis
+                <span style="color: #ea580c; font-weight: bold;">✓</span> Gratis bezorging &amp; plaatsing
               </div>
             </div>
           </div>';
@@ -331,7 +331,7 @@ function sync_static_chair_pages($chairs = null) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>' . $chair_name . ' | ' . $brand . ' ' . $condition_label . ' | Staopstoelen.nl</title>
-  <meta name="description" content="Bekijk de ' . $chair_name . ' van ' . $brand . '. Uitstekend zitcomfort, ergonomisch op maat ingesteld en inclusief garantie en gratis thuisadvies door heel Nederland.">
+  <meta name="description" content="Bekijk de ' . $chair_name . ' van ' . $brand . '. Uitstekend zitcomfort, ergonomisch op maat ingesteld en inclusief garantie en gratis bezorging in de regio.">
   <link rel="canonical" href="https://staopstoelen.nl/stoelen/' . $chair_id . '.html">
   
   <!-- OpenGraph / Social Meta -->
@@ -535,7 +535,7 @@ function sync_static_chair_pages($chairs = null) {
           </div>
           <div class="trust-bullet">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <span><strong>Gratis thuisproefzitten:</strong> Wij komen vrijblijvend met deze stoel bij u aan huis.</span>
+            <span><strong>Gratis bezorging &amp; plaatsing:</strong> Wij bezorgen en installeren de stoel vakkundig bij u thuis.</span>
           </div>
           <div class="trust-bullet">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -630,7 +630,7 @@ function sync_static_chair_pages($chairs = null) {
           Persoonlijk & Vrijblijvend
         </span>
         <h2 style="color: white; font-family: var(--font-heading); font-size: 1.7rem; margin-bottom: 10px;">
-          Wilt u deze stoel rustig proberen in onze showroom of bij u thuis?
+          Wilt u deze stoel rustig uitproberen in onze showroom in Dordrecht?
         </h2>
         <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; margin: 0; line-height: 1.5;">
           Onze zitspecialisten stellen de stoel direct exact af op uw lichaamslengte en zithouding. Geheel kosteloos en zonder verplichtingen.
