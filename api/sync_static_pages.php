@@ -347,7 +347,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.285">
+  <link rel="stylesheet" href="../style.css?v=10.290">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -386,11 +386,42 @@ function sync_static_chair_pages($chairs = null) {
       grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
       gap: 40px;
       align-items: start;
+      width: 100%;
+      box-sizing: border-box;
     }
     @media (max-width: 900px) {
       .product-grid-layout {
-        grid-template-columns: 1fr;
-        gap: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+      }
+      .product-gallery-section,
+      .product-info-column {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+    }
+    @media (max-width: 768px) {
+      .product-page-container {
+        padding: 0 16px !important;
+        margin: 14px auto 40px auto !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
+      .main-image-frame {
+        padding: 16px !important;
+        min-height: 240px !important;
+        max-height: 380px !important;
+      }
+      .main-image-frame img,
+      .main-image-frame img.has-photo-bg {
+        max-height: 300px !important;
+      }
+      .product-info-column h1 {
+        font-size: clamp(1.35rem, 5.5vw, 1.85rem) !important;
       }
     }
     .main-image-frame {
@@ -539,7 +570,7 @@ function sync_static_chair_pages($chairs = null) {
   <main class="product-page-container">
     
     <!-- Breadcrumb -->
-    <nav class="breadcrumb" aria-label="Kruimelpad" style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--color-gray); margin-bottom: 24px;">
+    <nav class="breadcrumb" aria-label="Kruimelpad" style="display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; font-size: 0.88rem; color: var(--color-gray); margin-bottom: 20px; max-width: 100%; word-break: break-word;">
       <a href="../index.html" style="color: var(--color-forest); text-decoration: none; font-weight: 600;">Home</a>
       <span>›</span>
       <a href="../' . $catalog_page . '" style="color: var(--color-forest); text-decoration: none; font-weight: 600;">' . $catalog_name . '</a>
