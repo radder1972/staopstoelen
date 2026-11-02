@@ -39,3 +39,4 @@ jobs:
             **/.env*
             package*.json
             database.json
+            oude_site/**
