@@ -2979,9 +2979,11 @@ function initFloatingMenu() {
         .assistant-chair-img { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; }
         .floating-contact-wrapper.panel-open { bottom: 12px !important; right: 12px !important; left: 12px !important; align-items: stretch !important; }
         .floating-contact-wrapper.panel-open .digital-assistant-panel { width: 100% !important; max-width: 100% !important; max-height: calc(100vh - 24px) !important; }
-        .assistant-teaser-pill { padding: 3px 8px !important; gap: 5px !important; }
-        .assistant-teaser-text { display: none !important; }
-        .assistant-teaser-cta { font-size: 0.68rem !important; }
+        .assistant-teaser-pill { padding: 6px 12px 6px 10px !important; gap: 7px !important; background: #ffffff !important; border: 1.5px solid #4b8f24 !important; box-shadow: 0 4px 18px rgba(18, 43, 7, 0.2) !important; border-radius: 999px !important; }
+        .assistant-teaser-badge { display: none !important; }
+        .assistant-teaser-text { display: inline-block !important; font-size: 0.80rem !important; font-weight: 700 !important; color: #122b07 !important; white-space: nowrap !important; }
+        .assistant-teaser-cta { display: inline-flex !important; align-items: center !important; gap: 3px !important; font-size: 0.74rem !important; font-weight: 800 !important; color: #ffffff !important; background: #f39223 !important; padding: 3px 9px !important; border-radius: 999px !important; box-shadow: 0 2px 6px rgba(243, 146, 35, 0.3) !important; }
+        .assistant-teaser-cta svg { stroke: #ffffff !important; }
       }
     `;
     document.head.appendChild(st);
@@ -3033,9 +3035,9 @@ function initFloatingMenu() {
         <span class="assistant-teaser-pulse-dot" aria-hidden="true"></span>
         <span class="assistant-teaser-badge">Zitassistent</span>
       </span>
-      <span class="assistant-teaser-text">Vraag over stoel of maat?</span>
+      <span class="assistant-teaser-text">Hulp nodig bij kiezen?</span>
       <span class="assistant-teaser-cta">
-        <span>Stel vraag</span>
+        <span>Stel uw vraag</span>
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </span>
     </button>

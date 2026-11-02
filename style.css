@@ -9650,14 +9650,37 @@ input[type="checkbox"] {
     max-height: 50px !important;
   }
   .assistant-teaser-pill {
-    padding: 3px 8px !important;
-    gap: 5px !important;
+    padding: 6px 12px 6px 10px !important;
+    gap: 7px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #4b8f24 !important;
+    box-shadow: 0 4px 18px rgba(18, 43, 7, 0.2) !important;
+    border-radius: 999px !important;
   }
-  .assistant-teaser-text {
+  .assistant-teaser-badge {
     display: none !important;
   }
+  .assistant-teaser-text {
+    display: inline-block !important;
+    font-size: 0.80rem !important;
+    font-weight: 700 !important;
+    color: #122b07 !important;
+    white-space: nowrap !important;
+  }
   .assistant-teaser-cta {
-    font-size: 0.68rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    background: #f39223 !important;
+    padding: 3px 9px !important;
+    border-radius: 999px !important;
+    box-shadow: 0 2px 6px rgba(243, 146, 35, 0.3) !important;
+  }
+  .assistant-teaser-cta svg {
+    stroke: #ffffff !important;
   }
 }
 
