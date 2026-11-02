@@ -1887,15 +1887,32 @@ window.handleQuickAppointmentSubmit = function(e) {
     timestamp: new Date().toISOString()
   };
 
-  // 1. Post to Webhook (Google Apps Script / Email / Calendar notification)
-  if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
-    fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(payload)
+  // 1. Post to Internal PHP Backend API (Direct Database & Email)
+  fetch("api/book_appointment.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      notes: chair 
+        ? `Snelafspraak: Klant wil gebeld worden door Geertjan voor proefzitten. Gekozen stoel: ${chair}` 
+        : (isFromMp ? "Marktplaats lead: bezoeker wil z.s.m. door Geertjan gebeld worden over stoelen / proefzitten." : "Snelafspraak via overlay: Klant wil gebeld worden door Geertjan om een proefzit-afspraak in te plannen."),
+      source: isFromMp ? "Marktplaats Zakelijk Lead (1-klik Terugbelverzoek)" : "Afspraak-Overlay Snelformulier"
     })
-    .then(res => console.log("Quick appointment webhook response:", res))
-    .catch(err => console.warn("Quick appointment webhook error:", err));
+  }).catch(err => console.warn("Quick booking PHP API error:", err));
+
+  // 1b. Post to Webhook (Google Apps Script / Email / Calendar notification if available)
+  if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
+    try {
+      fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
+        mode: "no-cors"
+      })
+      .then(res => console.log("Quick appointment webhook response:", res))
+      .catch(err => console.warn("Quick appointment webhook error:", err));
+    } catch (e) {}
   }
 
   // 2. Analytics & Conversion Tracking
@@ -2552,28 +2569,80 @@ function initCalendar() {
       window.location.href = "bedankt.html";
     };
 
-    if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
-      fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain"
-        },
-        body: JSON.stringify(bookingPayload)
+    // 1. Post to Internal PHP Backend API (Direct Database & Email)
+    fetch("api/book_appointment.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        email: email,
+        date: state.selectedDate ? state.selectedDate.toLocaleDateString("nl-NL") : "",
+        timeSlot: state.selectedTimeSlot,
+        appointmentType: state.appointmentType,
+        address: state.appointmentType === "home" ? address : "Merwedestraat 239, Dordrecht (Showroom)",
+        notes: notes,
+        source: "Website afspraakformulier (Kalender)"
       })
-      .then(response => {
-        console.log("Google Calendar Webhook success:", response);
-        transitionToSuccess();
-      })
-      .catch(error => {
-        console.error("Google Calendar Webhook failure:", error);
-        transitionToSuccess();
-      });
-    } else {
-      // Fallback: wait a brief moment to simulate processing
-      setTimeout(transitionToSuccess, 1000);
-    }
+    })
+    .then(res => res.json())
+    .catch(err => console.warn("PHP booking save:", err))
+    .finally(() => {
+      // 2. Also attempt Google Calendar webhook in background (non-blocking)
+      if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
+        try {
+          fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(bookingPayload),
+            mode: "no-cors"
+          }).catch(() => {});
+        } catch (e) {}
+      }
+      transitionToSuccess();
+    });
   });
 }
+
+  // 1-Klik Snelle Terugbelknop op Afspraakpagina (voor wie direct contact wil zonder kalender)
+  const quickPhoneInput = document.getElementById("quickCallbackPhone");
+  const btnQuickCallback = document.getElementById("btnQuickCallbackSubmit");
+  if (btnQuickCallback && quickPhoneInput) {
+    btnQuickCallback.addEventListener("click", () => {
+      const raw = quickPhoneInput.value.trim();
+      const digits = raw.replace(/\D/g, "");
+      if (digits.length < 8) {
+        alert("Vul alstublieft een geldig telefoonnummer in (bijv. 06 12345678 of 078 6314858).");
+        quickPhoneInput.focus();
+        return;
+      }
+      btnQuickCallback.disabled = true;
+      btnQuickCallback.textContent = "Bezig met verzenden...";
+
+      fetch("api/book_appointment.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Snelle terugbel-aanvraag",
+          phone: raw,
+          notes: "Klant wil z.s.m. door Geertjan gebeld worden voor een afspraak / zitadvies.",
+          source: "Afspraakpagina 1-klik Terugbelbalk"
+        })
+      })
+      .then(() => {
+        if (typeof logCustomVisitEvent === "function") {
+          logCustomVisitEvent("booking_conversion", { type: "quick_callback", phone: raw });
+        }
+        if (typeof trackGoogleAdsConversion === "function") {
+          trackGoogleAdsConversion("appointment", { phone: raw });
+        }
+        window.location.href = "bedankt.html";
+      })
+      .catch(() => {
+        window.location.href = "bedankt.html";
+      });
+    });
+  }
   
   // Render Initial View
   renderCalendar();
@@ -2622,9 +2691,11 @@ function renderCalendar() {
   
   // Calculate today at 00:00:00
   const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  // Calculate minimum allowed booking date (today + 2 days)
+  // Minimum allowed booking date: today (or tomorrow if past 16:00)
   const minAllowedDate = new Date(todayStart.getTime());
-  minAllowedDate.setDate(minAllowedDate.getDate() + 2);
+  if (today.getHours() >= 16) {
+    minAllowedDate.setDate(minAllowedDate.getDate() + 1);
+  }
   
   for (let day = 1; day <= totalDays; day++) {
     const dateCell = document.createElement("button");
@@ -2634,14 +2705,13 @@ function renderCalendar() {
     
     const thisDate = new Date(year, month, day);
     
-    // Disable past dates and dates less than 2 days in advance (today and tomorrow)
-    const isPastOrTooSoon = thisDate < minAllowedDate;
+    // Disable past dates
+    const isPast = thisDate < minAllowedDate;
     
-    // Disable Sundays and Mondays (closed)
+    // Only Sundays are closed (Mondays open by appointment!)
     const isSunday = thisDate.getDay() === 0;
-    const isMonday = thisDate.getDay() === 1;
     
-    if (isPastOrTooSoon || isSunday || isMonday) {
+    if (isPast || isSunday) {
       dateCell.disabled = true;
     }
     
