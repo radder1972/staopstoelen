@@ -58,15 +58,40 @@ $current_site_whitelist = [
     $target_folder_name, 'error_log', '.ftpquota'
 ];
 
+// Whitelist van bestanden en mappen die ALTIJD in de root moeten blijven
+$protected_system_items = [
+    '.ftp-deploy-sync-state.json',
+    '.well-known',
+    '.procmail',
+    'awstats',
+    'cgi-bin',
+    'stats',
+    'usage',
+    'logs',
+    'tmp'
+];
+
 $entries = scandir($root_dir);
 $scan_results = [
     'root_dir' => $root_dir,
     'current_kept' => [],
+    'system_kept' => [],
     'old_candidates' => []
 ];
 
 foreach ($entries as $item) {
     if ($item === '.' || $item === '..') {
+        continue;
+    }
+
+    // Google verification files behouden
+    if (strpos($item, 'google') === 0 && substr($item, -5) === '.html') {
+        $scan_results['system_kept'][] = $item;
+        continue;
+    }
+
+    if (in_array($item, $protected_system_items)) {
+        $scan_results['system_kept'][] = $item;
         continue;
     }
 
@@ -79,7 +104,8 @@ foreach ($entries as $item) {
         $scan_results['old_candidates'][] = [
             'name' => $item,
             'type' => $is_dir ? 'directory' : 'file',
-            'size' => $size
+            'size' => $size,
+            'size_formatted' => $size !== null ? round($size / 1048576, 2) . ' MB' : null
         ];
     }
 }
