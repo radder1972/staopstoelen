@@ -96,22 +96,31 @@ try {
     error_log("File backup error: " . $fileErr->getMessage());
 }
 
-// 3. E-mail notificatie direct naar Geertjan en Matthias
+// 3. E-mail notificatie direct naar Geertjan en Matthias met herkenbare agenda/telefoon iconen
 $to = "info@staopstoelen.nl, schipperwonen@gmail.com";
-$subject = "🚨 NIEUWE AANVRAAG: $name ($phone) - Staopstoelen.nl";
 
-$msg = "Er is zojuist een nieuwe afspraak/terugbelverzoek binnengekomen via staopstoelen.nl:\n\n";
-$msg .= "Naam: $name\n";
-$msg .= "Telefoon: $phone\n";
-$msg .= "E-mail: " . ($email ?: 'Niet opgegeven') . "\n";
-$msg .= "Type: " . ($appointmentType === 'home' ? 'Passing aan Huis' : 'Showroombezoek Dordrecht') . "\n";
-if ($date) $msg .= "Voorkeursdatum: $date\n";
-if ($timeSlot) $msg .= "Tijdslot: $timeSlot\n";
-if ($address) $msg .= "Adres: $address\n";
-if ($notes) $msg .= "Opmerkingen: $notes\n";
-$msg .= "Bron: $source\n";
-$msg .= "Tijdstip: " . date('d-m-Y H:i:s') . "\n\n";
-$msg .= "Graag z.s.m. bellen om de afspraak te bevestigen!\n";
+if (!empty($date) || !empty($timeSlot)) {
+    $timeLabel = trim("$date $timeSlot");
+    $subject = "📅 NIEUWE AFSPRAAK: $name ($phone)" . ($timeLabel ? " - $timeLabel" : "") . " - Staopstoelen.nl";
+} else {
+    $subject = "📞 TERUGBELVERZOEK: $name ($phone) - Staopstoelen.nl";
+}
+
+$msg = (!empty($date) || !empty($timeSlot))
+    ? "📅 NIEUWE SHOWROOM-AFSPRAAK VIA STAOPSTOELEN.NL\n===================================================\n\n"
+    : "📞 NIEUW TERUGBELVERZOEK VIA STAOPSTOELEN.NL\n===================================================\n\n";
+
+$msg .= "👤 Naam: $name\n";
+$msg .= "📞 Telefoonnummer: $phone\n";
+$msg .= "✉️ E-mail: " . ($email ?: 'Niet opgegeven') . "\n";
+$msg .= "📍 Type bezoek: " . ($appointmentType === 'home' ? 'Passing aan Huis' : 'Showroom Dordrecht (Merwedestraat 239)') . "\n";
+if ($date) $msg .= "🗓️ Voorkeursdatum: $date\n";
+if ($timeSlot) $msg .= "⏰ Tijdslot: $timeSlot\n";
+if ($address) $msg .= "🏠 Adres: $address\n";
+if ($notes) $msg .= "📝 Opmerkingen / Stoel: $notes\n";
+$msg .= "🌐 Bron: $source\n";
+$msg .= "⏱️ Tijdstip aanvraag: " . date('d-m-Y H:i:s') . "\n\n";
+$msg .= "👉 ACTIE: Graag z.s.m. bellen op $phone om de afspraak te bevestigen!\n";
 
 $headers = "From: staopstoelen.nl <info@staopstoelen.nl>\r\n";
 $headers .= "Reply-To: " . ($email ?: 'info@staopstoelen.nl') . "\r\n";
