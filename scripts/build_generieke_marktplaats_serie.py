@@ -396,7 +396,7 @@ SLIDES = [
     },
     {
         "filename": "5_VRIJBLIJVEND_PROEFZITTEN_SHOWROOM.jpg",
-        "bg": WORKSPACE / "assets/pand_merwedestraat_239_open_gevel.jpg.webp",
+        "bg": WORKSPACE / "assets/showroom.jpg",
         "category": "SHOWROOM DORDRECHT",
         "title": "Kom Vrijblijvend Proefzitten <span>in Dordrecht</span>",
         "subtitle": "Ervaar zelf het comfort. Wij nemen alle tijd voor u met een vers kopje koffie of thee.",
