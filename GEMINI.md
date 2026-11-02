@@ -16,4 +16,4 @@ Voor **ELKE** stoel of advertentiereeks die wordt voorbereid voor Marktplaats (o
 ### Merkidentiteit & Typografie:
 - **Logo:** Gebruik altijd het originele zware/vette logo (`assets/staopstoelen_logo_alleen_letters.png`).
 - **Certified Fitform:** Duidelijk zichtbare officiële kwaliteitszegel (`assets/sticker_certified_fitform.svg`).
-- **Footer/Contact:** Geen overbodige emoji's; rustige typografie met terracotta bullet dots (`•`) en de oranje bel-knop met **085 060 2600**.
+- **Footer/Contact:** Geen overbodige emoji's; rustige typografie met terracotta bullet dots (`•`) en de oranje bel-knop met **078 - 631 4858** (Showroom: Merwedestraat 239, Dordrecht).
