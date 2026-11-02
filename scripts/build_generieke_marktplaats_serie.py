@@ -333,7 +333,7 @@ SLIDES = [
         "usps": [
             "Gratis 5-Punts Zitmeting",
             "1 Jaar Volledige Garantie aan Huis",
-            "Gratis Bezorgd & Ingesteld",
+            "Bezorging aan Huis (Regio Gratis)",
             "Inruil Oude Stoel Mogelijk"
         ]
     },
@@ -412,14 +412,14 @@ SLIDES = [
         "filename": "6_GRATIS_THUISBEZORGING_EN_PLAATSING.jpg",
         "bg": WORKSPACE / "assets/Sta-op-stoel-DORDRECHT-interior.png",
         "category": "EIGEN BEZORGSERVICE",
-        "title": "Gratis Thuisbezorgd & <span>in Uw Huiskamer Geplaatst</span>",
-        "subtitle": "Wij bezorgen door heel Nederland & Vlaanderen en stellen de stoel direct perfect af.",
+        "title": "Thuisbezorgd & <span>in Uw Huiskamer Geplaatst</span>",
+        "subtitle": "Wij bezorgen in heel Nederland en gratis in de regio Drechtsteden!",
         "content_type": "usp_grid",
         "usps": [
-            "Bezorging op Afspraak",
+            "Gratis in Regio Drechtsteden",
+            "Bezorging door Heel Nederland",
             "Netjes Binnen Geplaatst & Uitgepakt",
-            "Persoonlijke Uitleg Handbediening",
-            "Oude Stoel Desgewenst Meegenomen"
+            "Op Maat Afgesteld op Uw Lichaam"
         ]
     }
 ]
