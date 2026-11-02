@@ -2913,18 +2913,21 @@ function initFloatingMenu() {
       @keyframes assistantPulseGlow { 0%, 100% { box-shadow: 0 12px 32px rgba(18, 43, 7, 0.28), 0 0 0 4px rgba(75, 143, 36, 0.16); } 50% { box-shadow: 0 16px 42px rgba(18, 43, 7, 0.36), 0 0 0 9px rgba(75, 143, 36, 0.28); } }
       .assistant-chair-img { width: 60px !important; height: 60px !important; max-width: 60px !important; max-height: 60px !important; object-fit: contain !important; display: block !important; pointer-events: none !important; transform-origin: 50% 80% !important; filter: drop-shadow(0 4px 8px rgba(18, 43, 7, 0.22)) !important; }
       .assistant-online-dot { position: absolute !important; top: 3px !important; right: 3px !important; width: 17px !important; height: 17px !important; border-radius: 50% !important; background: #10b981 !important; border: 3px solid #ffffff !important; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important; }
-      .assistant-teaser-pill { display: flex !important; align-items: center !important; background: #ffffff !important; border: 1.5px solid #4b8f24 !important; border-radius: 999px !important; padding: 4px 11px 4px 8px !important; box-shadow: 0 4px 16px rgba(18, 43, 7, 0.14) !important; cursor: pointer !important; user-select: none !important; transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, border-color 0.2s ease !important; animation: slideInUp 0.35s ease-out !important; }
-      .assistant-teaser-pill:hover { transform: translateY(-1px) scale(1.01) !important; border-color: #f39223 !important; box-shadow: 0 6px 20px rgba(18, 43, 7, 0.2) !important; }
+      .assistant-teaser-pill { position: relative !important; display: flex !important; flex-direction: column !important; background: #ffffff !important; border: 2px solid #4b8f24 !important; border-radius: 18px 18px 4px 18px !important; padding: 12px 14px 11px 14px !important; box-shadow: 0 10px 28px rgba(18, 43, 7, 0.18), 0 2px 6px rgba(0, 0, 0, 0.04) !important; width: 250px !important; max-width: min(280px, calc(100vw - 36px)) !important; cursor: pointer !important; user-select: none !important; text-align: left !important; transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, border-color 0.2s ease !important; animation: slideInUp 0.35s ease-out !important; }
+      .assistant-teaser-pill:hover { transform: translateY(-2px) scale(1.02) !important; border-color: #f39223 !important; box-shadow: 0 14px 34px rgba(18, 43, 7, 0.24) !important; }
       .assistant-teaser-pill.hidden { display: none !important; }
-      .assistant-teaser-open { background: none !important; border: 0 !important; padding: 0 !important; display: flex !important; align-items: center !important; gap: 7px !important; cursor: pointer !important; text-align: left !important; font-family: inherit !important; color: inherit !important; }
-      .assistant-teaser-live { display: inline-flex !important; align-items: center !important; gap: 5px !important; }
-      .assistant-teaser-pulse-dot { width: 6px !important; height: 6px !important; border-radius: 50% !important; background: #10b981 !important; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7) !important; animation: pulseTeaserDot 2s infinite !important; flex-shrink: 0 !important; }
+      .teaser-dismiss-btn { position: absolute !important; top: 6px !important; right: 6px !important; width: 22px !important; height: 22px !important; border-radius: 50% !important; border: none !important; background: #f1f5f9 !important; color: #64748b !important; font-size: 15px !important; line-height: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; transition: background 0.15s ease, color 0.15s ease !important; padding: 0 !important; z-index: 2 !important; }
+      .teaser-dismiss-btn:hover { background: #f39223 !important; color: #ffffff !important; }
+      .teaser-bubble-header { display: flex !important; align-items: center !important; gap: 6px !important; margin-bottom: 5px !important; padding-right: 18px !important; }
+      .teaser-pulse-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #10b981 !important; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7) !important; animation: pulseTeaserDot 2s infinite !important; flex-shrink: 0 !important; }
       @keyframes pulseTeaserDot { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-      .assistant-teaser-badge { background: linear-gradient(135deg, #5cb82f, #3d751d) !important; color: #ffffff !important; font-size: 0.65rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.04em !important; padding: 2px 7px !important; border-radius: 999px !important; white-space: nowrap !important; box-shadow: 0 1px 3px rgba(18, 43, 7, 0.12) !important; }
-      .assistant-teaser-text { font-size: 0.78rem !important; font-weight: 600 !important; color: #1e293b !important; white-space: nowrap !important; }
-      .assistant-teaser-cta { display: inline-flex !important; align-items: center !important; gap: 3px !important; font-size: 0.72rem !important; font-weight: 700 !important; color: #f39223 !important; white-space: nowrap !important; margin-left: 2px !important; }
-      .assistant-teaser-cta svg { width: 11px !important; height: 11px !important; transition: transform 0.2s ease !important; }
-      .assistant-teaser-pill:hover .assistant-teaser-cta svg { transform: translateX(2px) !important; }
+      .teaser-author-label { font-size: 0.70rem !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 0.04em !important; color: #4b8f24 !important; line-height: 1 !important; }
+      .teaser-bubble-text { font-size: 0.86rem !important; font-weight: 700 !important; color: #122b07 !important; line-height: 1.35 !important; margin-bottom: 8px !important; }
+      .teaser-bubble-footer { display: flex !important; align-items: center !important; justify-content: flex-start !important; }
+      .teaser-cta-badge { display: inline-flex !important; align-items: center !important; gap: 5px !important; background: #f39223 !important; color: #ffffff !important; font-size: 0.76rem !important; font-weight: 800 !important; padding: 4px 11px !important; border-radius: 999px !important; box-shadow: 0 2px 6px rgba(243, 146, 35, 0.35) !important; transition: background 0.15s ease, transform 0.15s ease !important; }
+      .assistant-teaser-pill:hover .teaser-cta-badge { background: #dc8019 !important; transform: translateX(2px) !important; }
+      .teaser-bubble-tail { position: absolute !important; bottom: -9px !important; right: 24px !important; width: 14px !important; height: 14px !important; background: #ffffff !important; border-right: 2px solid #4b8f24 !important; border-bottom: 2px solid #4b8f24 !important; transform: rotate(45deg) !important; border-bottom-right-radius: 2px !important; }
+      .assistant-teaser-pill:hover .teaser-bubble-tail { border-color: #f39223 !important; }
       .da-avatar-img { width: 32px !important; height: 32px !important; max-width: 32px !important; max-height: 32px !important; object-fit: contain !important; transform-origin: 50% 80%; }
       .digital-assistant-panel { display: none; flex-direction: column !important; width: 380px !important; max-width: calc(100vw - 28px) !important; height: 560px !important; max-height: min(600px, calc(100vh - 90px)) !important; background: #ffffff !important; border-radius: 20px !important; border: 1.5px solid rgba(75, 143, 36, 0.28) !important; box-shadow: 0 20px 50px rgba(18, 43, 7, 0.24) !important; overflow: hidden !important; }
       .digital-assistant-panel.active { display: flex !important; }
@@ -2979,11 +2982,10 @@ function initFloatingMenu() {
         .assistant-chair-img { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; }
         .floating-contact-wrapper.panel-open { bottom: 12px !important; right: 12px !important; left: 12px !important; align-items: stretch !important; }
         .floating-contact-wrapper.panel-open .digital-assistant-panel { width: 100% !important; max-width: 100% !important; max-height: calc(100vh - 24px) !important; }
-        .assistant-teaser-pill { padding: 6px 12px 6px 10px !important; gap: 7px !important; background: #ffffff !important; border: 1.5px solid #4b8f24 !important; box-shadow: 0 4px 18px rgba(18, 43, 7, 0.2) !important; border-radius: 999px !important; }
-        .assistant-teaser-badge { display: none !important; }
-        .assistant-teaser-text { display: inline-block !important; font-size: 0.80rem !important; font-weight: 700 !important; color: #122b07 !important; white-space: nowrap !important; }
-        .assistant-teaser-cta { display: inline-flex !important; align-items: center !important; gap: 3px !important; font-size: 0.74rem !important; font-weight: 800 !important; color: #ffffff !important; background: #f39223 !important; padding: 3px 9px !important; border-radius: 999px !important; box-shadow: 0 2px 6px rgba(243, 146, 35, 0.3) !important; }
-        .assistant-teaser-cta svg { stroke: #ffffff !important; }
+        .assistant-teaser-pill { padding: 11px 13px 10px 13px !important; width: 240px !important; max-width: min(260px, calc(100vw - 36px)) !important; border-radius: 16px 16px 4px 16px !important; }
+        .teaser-bubble-text { font-size: 0.82rem !important; line-height: 1.3 !important; margin-bottom: 7px !important; }
+        .teaser-cta-badge { font-size: 0.74rem !important; padding: 3px 10px !important; }
+        .teaser-bubble-tail { right: 20px !important; }
       }
     `;
     document.head.appendChild(st);
@@ -3022,7 +3024,7 @@ function initFloatingMenu() {
     <span class="assistant-online-dot" aria-hidden="true"></span>
   `;
 
-  // Voeg welkomst-badge toe naast de zwevende stoel-knop - Altijd subtiel en elegant in beeld
+  // Voeg vriendelijk praatwolkje toe boven de zwevende stoel-knop (DIZA Zitassistent)
   const teaser = document.createElement("div");
   teaser.className = "assistant-teaser-pill";
   teaser.id = "assistantTeaserPill";
@@ -3030,17 +3032,19 @@ function initFloatingMenu() {
   teaser.setAttribute("tabindex", "0");
   teaser.setAttribute("title", "Digitale Zit-Assistent • Klik voor direct advies over maatwerk en ergonomie");
   teaser.innerHTML = `
-    <button type="button" class="assistant-teaser-open" id="assistantTeaserOpen">
-      <span class="assistant-teaser-live">
-        <span class="assistant-teaser-pulse-dot" aria-hidden="true"></span>
-        <span class="assistant-teaser-badge">Zitassistent</span>
-      </span>
-      <span class="assistant-teaser-text">Hulp nodig bij kiezen?</span>
-      <span class="assistant-teaser-cta">
+    <button type="button" class="teaser-dismiss-btn" id="assistantTeaserDismiss" title="Melding sluiten" aria-label="Sluit melding">&times;</button>
+    <div class="teaser-bubble-header">
+      <span class="teaser-pulse-dot" aria-hidden="true"></span>
+      <span class="teaser-author-label">DIZA &bull; Zitadvies</span>
+    </div>
+    <div class="teaser-bubble-text">Hulp nodig bij de juiste maat of stoelkeuze?</div>
+    <div class="teaser-bubble-footer">
+      <span class="teaser-cta-badge">
         <span>Stel uw vraag</span>
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </span>
-    </button>
+    </div>
+    <div class="teaser-bubble-tail" aria-hidden="true"></div>
   `;
 
   // Bouw het interactieve Digitale Assistent venster
@@ -3331,6 +3335,22 @@ function initFloatingMenu() {
     triggerChairDance(fabImg, false);
   });
   document.getElementById("daCloseBtn")?.addEventListener("click", closeAssistant);
+  
+  // Sluitknop op het praatwolkje zelf
+  const dismissBtn = teaser.querySelector("#assistantTeaserDismiss");
+  dismissBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    teaser.classList.add("hidden");
+    try { sessionStorage.setItem("staopstoelen_teaser_dismissed", "1"); } catch {}
+  });
+
+  // Controleer of de bezoeker het wolkje deze sessie al handmatig heeft weggeklikt
+  try {
+    if (sessionStorage.getItem("staopstoelen_teaser_dismissed") === "1") {
+      teaser.classList.add("hidden");
+    }
+  } catch {}
+
   teaser.addEventListener("click", (e) => {
     e.stopPropagation();
     openAssistant();
@@ -3341,11 +3361,6 @@ function initFloatingMenu() {
       openAssistant();
     }
   });
-
-  // Zorg dat de assistent nooit onderdrukt blijft in de sessie: altijd prominent in beeld
-  try {
-    sessionStorage.removeItem("da_teaser_dismissed");
-  } catch {}
 
   // Antwoord-kennisbank van de Digitale Zit-Assistent
   function getAssistantResponse(topicOrQuery) {
