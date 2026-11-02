@@ -251,13 +251,16 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Log pageview
-if (document.readyState === 'loading') {
-  window.addEventListener('DOMContentLoaded', () => {
+// Log pageview (strictly once per page load)
+if (!window._pageviewLogged) {
+  window._pageviewLogged = true;
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', () => {
+      logCustomVisitEvent('pageview');
+    });
+  } else {
     logCustomVisitEvent('pageview');
-  });
-} else {
-  logCustomVisitEvent('pageview');
+  }
 }
 
 // Database of available lift chairs (revised premium models)
