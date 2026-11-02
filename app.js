@@ -230,6 +230,9 @@ document.addEventListener('click', (e) => {
   
   // Telefoonklik (078 - 631 4858)
   if (href.startsWith('tel:')) {
+    if (typeof logCustomVisitEvent === 'function') {
+      logCustomVisitEvent('phone_call', { phone: href.replace('tel:', '') });
+    }
     trackGoogleAdsConversion('phone', {
       event_category: 'Contact',
       event_label: 'Bellen: ' + href.replace('tel:', '')
@@ -238,6 +241,9 @@ document.addEventListener('click', (e) => {
   
   // WhatsApp klik
   if (href.includes('wa.me') || href.includes('whatsapp.com')) {
+    if (typeof logCustomVisitEvent === 'function') {
+      logCustomVisitEvent('whatsapp_click');
+    }
     trackGoogleAdsConversion('whatsapp', {
       event_category: 'Contact',
       event_label: 'WhatsApp Chat'
@@ -2291,28 +2297,15 @@ function initCalendar() {
       return;
     }
     
-    const cleanPhone = phone.replace(/\s+/g, "");
-    const startsWithPlus31 = cleanPhone.startsWith("+31");
-    let isPhoneValid = false;
-    
-    if (startsWithPlus31) {
-      isPhoneValid = /^\+31\d{9}$/.test(cleanPhone);
-    } else {
-      isPhoneValid = /^\d{10}$/.test(cleanPhone);
-    }
-    
-    if (!isPhoneValid) {
-      alert("Vul a.u.b. een geldig telefoonnummer in (10 cijfers, of 12 tekens beginnend met +31).");
+    const cleanPhoneDigits = phone.replace(/\D/g, "");
+    if (cleanPhoneDigits.length < 9) {
+      alert("Vul a.u.b. een geldig telefoonnummer in (minimaal 9 cijfers, bijv. 06 12345678 of 078 6314858).");
       return;
     }
     
-    // E-mailadres validatie
-    if (!email) {
-      alert("Vul a.u.b. uw e-mailadres in.");
-      return;
-    }
-    if (!email.includes("@")) {
-      alert("Vul a.u.b. een geldig e-mailadres in.");
+    // E-mailadres validatie (optioneel, maar als ingevuld moet het geldig zijn)
+    if (email && (!email.includes("@") || !email.includes("."))) {
+      alert("Vul a.u.b. een geldig e-mailadres in of laat het veld leeg.");
       return;
     }
     
