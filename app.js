@@ -1468,7 +1468,12 @@ window.getAppointmentModalHtml = function() {
             </div>
 
             <button type="submit" id="btnQuickSubmit" class="btn appointment-quick-submit-btn">
-              <span class="btn-text">📞 Bel mij vrijblijvend terug</span>
+              <span class="btn-text" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Bel mij vrijblijvend terug</span>
+              </span>
               <span class="btn-spinner" style="display: none;">
                 <svg class="spinner-icon" viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"></circle></svg>
                 Even geduld...
@@ -1489,7 +1494,13 @@ window.getAppointmentModalHtml = function() {
       <!-- Secundaire links onderaan -->
       <div class="appointment-secondary-links">
         <a href="${base}afspraak.html#bookingCard" class="appointment-agenda-link" onclick="goToOnlineAgenda(event)">
-          📅 Wilt u zelf een specifieke dag en tijd kiezen? <strong>Open showroomagenda &rarr;</strong>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: -1px;">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Wilt u zelf een specifieke dag en tijd kiezen? <strong>Open showroomagenda &rarr;</strong></span>
         </a>
         <button type="button" class="appointment-video-link-btn" onclick="openCertifiedVideoModal('zitmeting')">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
@@ -3364,12 +3375,12 @@ function initFloatingMenu() {
         primary: true
       },
       bellen: {
-        label: "📞 Bel 078 - 631 4858",
+        label: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Bel 078 - 631 4858`,
         href: "tel:+31786314858",
         primary: false
       },
       whatsapp: {
-        label: "💬 WhatsApp met Geertjan",
+        label: `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp met Geertjan`,
         href: "https://wa.me/31622232964",
         target: "_blank",
         primary: false
@@ -3741,8 +3752,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.377" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.377" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.378" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.378" 
             controls 
             playsinline 
             preload="auto"
@@ -3773,8 +3784,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.377";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.377";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.378";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.378";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3787,7 +3798,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.377`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.378`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3796,8 +3807,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.377";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.377";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.378";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.378";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3810,7 +3821,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.377`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.378`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
