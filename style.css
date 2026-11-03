@@ -10171,7 +10171,8 @@ nav.breadcrumb a {
   }
 }
 
-.btn-mobile-text {
+.btn-mobile-text,
+.expert-mobile-name {
   display: none;
 }
 
@@ -10179,10 +10180,12 @@ nav.breadcrumb a {
    Mobile Hero Perfection: Knoppen en Foto passen 100% op het scherm
    ============================================================== */
 @media (max-width: 768px) {
-  .btn-desktop-text {
+  .btn-desktop-text,
+  .expert-desktop-name {
     display: none !important;
   }
-  .btn-mobile-text {
+  .btn-mobile-text,
+  .expert-mobile-name {
     display: inline !important;
   }
   .pill-desktop-role {
@@ -10271,9 +10274,35 @@ nav.breadcrumb a {
   .hero-expert-trust-pill {
     top: 6px !important;
     right: 6px !important;
-    padding: 3px 6px !important;
-    max-width: 160px !important;
-    gap: 5px !important;
+    padding: 3px 10px 3px 4px !important;
+    max-width: calc(100% - 12px) !important;
+    width: auto !important;
+    gap: 6px !important;
+  }
+  .hero-expert-trust-avatar {
+    width: 28px !important;
+    height: 28px !important;
+    flex-shrink: 0 !important;
+  }
+  .hero-expert-trust-avatar img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .hero-expert-trust-info {
+    flex-shrink: 0 !important;
+  }
+  .hero-expert-trust-name {
+    font-size: 0.70rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+  .hero-expert-trust-role {
+    font-size: 0.58rem !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
   }
   .slide-caption {
     padding: 6px 10px !important;
