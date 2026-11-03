@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Showroom Dordrecht | Sfeerimpressie & Proefzitten | staopstoelen.nl</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Showroom Dordrecht | Interne Presentatie | staopstoelen.nl</title>
   <meta name="description" content="Kom proefzitten in onze sfeervolle showroom aan de Merwedestraat 239 in Dordrecht. Persoonlijk zitadvies van Geertjan, gratis parkeren voor de deur.">
   <link rel="canonical" href="https://staopstoelen.nl/winkel.html">
   <!-- Open Graph / Social Media Meta Tags -->
@@ -114,6 +115,109 @@
       font-weight: 800;
       font-size: 1.1rem;
     }
+
+    /* Interne Inlog Beveiliging */
+    #protectedContent {
+      display: none;
+    }
+    #loginOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1e3a1f 0%, #0d1e11 100%);
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      font-family: var(--font-body);
+    }
+    .login-box {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px 32px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border-top: 6px solid var(--color-terracotta);
+      box-sizing: border-box;
+    }
+    .login-lock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-sage-light);
+      color: var(--color-forest-dark);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .login-title {
+      color: var(--color-forest-dark);
+      font-size: 1.5rem;
+      font-family: var(--font-heading);
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+    .login-subtitle {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0 0 24px 0;
+    }
+    .login-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+    .login-input:focus {
+      border-color: var(--color-forest);
+      box-shadow: 0 0 0 3px rgba(75, 143, 36, 0.15);
+    }
+    .login-btn {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px;
+      background: var(--color-terracotta);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+    .login-btn:hover {
+      background: #df7e12;
+    }
+    .login-btn:active {
+      transform: scale(0.99);
+    }
+    .login-error {
+      display: none;
+      background: #fef2f2;
+      color: #b91c1c;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 14px;
+      border: 1px solid #fecaca;
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KQF1CELDD"></script>
@@ -128,6 +232,31 @@
   </script>
 </head>
 <body>
+
+  <!-- Interne Inlog Overlay -->
+  <div id="loginOverlay">
+    <div class="login-box">
+      <div style="margin-bottom: 16px;">
+        <span class="login-lock-badge">
+          <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Afgeschermde Pagina
+        </span>
+        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--color-forest-dark);">staopstoelen<span style="color: var(--color-terracotta);">.nl</span></div>
+      </div>
+      <h2 class="login-title">Interne Showroom Plannen</h2>
+      <p class="login-subtitle">
+        Deze pagina is uitsluitend bestemd voor intern overleg tussen Geertjan en Matthias. Voer het wachtwoord in om door te gaan.
+      </p>
+      <form id="loginForm" onsubmit="handleShowroomLogin(event)">
+        <input type="password" id="loginPassword" class="login-input" placeholder="Wachtwoord invoeren..." autocomplete="current-password" required>
+        <button type="submit" class="login-btn">Ontgrendel Toegang →</button>
+        <div id="loginError" class="login-error">Onjuist wachtwoord. Probeer het opnieuw.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Beveiligde Showroom Content -->
+  <div id="protectedContent">
 
   <!-- Floating Contact Menu -->
   <div class="floating-contact-wrapper" id="floatingContactWrapper">
@@ -223,7 +352,10 @@
   <!-- Page Content -->
   <section class="subpage-section">
     <div class="container">
-      <a href="info.html" class="back-link">← Terug naar Over Ons</a>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <a href="info.html" class="back-link" style="margin-bottom: 0;">← Terug naar Over Ons</a>
+        <button onclick="handleShowroomLogout()" style="background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">🔒 Sessie Vergrendelen / Uitloggen</button>
+      </div>
       
       <div class="sfeer-header-card">
         <h2 style="color: var(--color-forest-dark); margin-top: 0; margin-bottom: 16px; font-family: var(--font-heading); font-size: 1.75rem;">Een warme ontvangst in Dordrecht</h2>
@@ -577,7 +709,7 @@
         <div class="gallery-item">
           <div class="gallery-img-container" style="position: relative;">
             <span style="position: absolute; top: 12px; left: 12px; background: rgba(15,23,42,0.85); color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; z-index: 2; text-transform: uppercase;">Exterieur</span>
-            <img src="assets/pand.jpg?v=10.380" alt="Het vertrouwde winkelpand aan de Merwedestraat 239" class="gallery-img">
+            <img src="assets/pand.jpg?v=10.381" alt="Het vertrouwde winkelpand aan de Merwedestraat 239" class="gallery-img">
           </div>
           <div class="gallery-caption">
             <strong>Ons winkelpand in Dordrecht:</strong> Het vertrouwde pand van Schipper Compact Wonen aan de Merwedestraat 239 met gratis parkeren direct voor de deur.
@@ -677,5 +809,56 @@
   </footer>
 
   <script src="app.js?v=10.378"></script>
+
+  </div><!-- /#protectedContent -->
+
+  <!-- Authenticatie Script voor Interne Pagina -->
+  <script>
+    function checkShowroomAuth() {
+      if (sessionStorage.getItem('showroom_auth') === 'granted') {
+        const overlay = document.getElementById('loginOverlay');
+        const content = document.getElementById('protectedContent');
+        if (overlay) overlay.style.display = 'none';
+        if (content) content.style.display = 'block';
+      } else {
+        const overlay = document.getElementById('loginOverlay');
+        const content = document.getElementById('protectedContent');
+        if (overlay) overlay.style.display = 'flex';
+        if (content) content.style.display = 'none';
+        const pw = document.getElementById('loginPassword');
+        if (pw) setTimeout(() => pw.focus(), 150);
+      }
+    }
+
+    function handleShowroomLogin(e) {
+      e.preventDefault();
+      const val = (document.getElementById('loginPassword').value || '').trim().toLowerCase();
+      // Toegestane wachtwoorden:
+      const allowed = ['dordrecht', 'geertjan', 'schipper', 'staop2026', 'staopstoelen'];
+      if (allowed.includes(val)) {
+        sessionStorage.setItem('showroom_auth', 'granted');
+        const overlay = document.getElementById('loginOverlay');
+        const content = document.getElementById('protectedContent');
+        if (overlay) overlay.style.display = 'none';
+        if (content) content.style.display = 'block';
+      } else {
+        const err = document.getElementById('loginError');
+        if (err) err.style.display = 'block';
+        const pw = document.getElementById('loginPassword');
+        if (pw) {
+          pw.value = '';
+          pw.focus();
+        }
+      }
+    }
+
+    function handleShowroomLogout() {
+      sessionStorage.removeItem('showroom_auth');
+      location.reload();
+    }
+
+    // Direct uitvoeren bij laden
+    checkShowroomAuth();
+  </script>
 </body>
 </html>
