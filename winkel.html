@@ -905,7 +905,11 @@
   <!-- Authenticatie Script voor Interne Pagina -->
   <script>
     function checkShowroomAuth() {
-      if (sessionStorage.getItem('showroom_auth') === 'granted') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const authParam = (urlParams.get('auth') || '').toLowerCase();
+      const allowed = ['dordrecht', 'geertjan', 'schipper', 'staop2026', 'staopstoelen'];
+      if (allowed.includes(authParam) || sessionStorage.getItem('showroom_auth') === 'granted') {
+        sessionStorage.setItem('showroom_auth', 'granted');
         const overlay = document.getElementById('loginOverlay');
         const content = document.getElementById('protectedContent');
         if (overlay) overlay.style.display = 'none';
