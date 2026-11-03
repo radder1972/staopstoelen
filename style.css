@@ -1218,9 +1218,15 @@ section[id], section {
   }
   .hero-btn-occasions,
   .hero-btn-nieuw {
-    font-size: 0.90rem !important;
-    padding: 11px 16px !important;
-    min-width: 140px !important;
+    font-size: 0.82rem !important;
+    padding: 8px 4px !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex: 1 1 0 !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -10162,6 +10168,126 @@ nav.breadcrumb a {
     width: 100% !important;
     justify-content: center !important;
     box-sizing: border-box !important;
+  }
+}
+
+.btn-mobile-text {
+  display: none;
+}
+
+/* ==============================================================
+   Mobile Hero Perfection: Knoppen en Foto passen 100% op het scherm
+   ============================================================== */
+@media (max-width: 768px) {
+  .btn-desktop-text {
+    display: none !important;
+  }
+  .btn-mobile-text {
+    display: inline !important;
+  }
+  .pill-desktop-role {
+    display: none !important;
+  }
+  .hero {
+    padding: 10px 0 18px 0 !important;
+  }
+  .hero-grid {
+    gap: 14px !important;
+  }
+  .hero-title {
+    font-size: clamp(1.5rem, 5vw, 1.85rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-description {
+    margin-bottom: 12px !important;
+  }
+  .hero-usp-list {
+    gap: 6px !important;
+  }
+  .hero-usp-list li {
+    font-size: 0.84rem !important;
+    line-height: 1.35 !important;
+    gap: 8px !important;
+  }
+  .hero-usp-icon {
+    width: 18px !important;
+    height: 18px !important;
+    margin-top: 1px !important;
+  }
+  .hero-usp-icon svg {
+    width: 11px !important;
+    height: 11px !important;
+  }
+  .hero-content .hero-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 10px 0 4px 0 !important;
+    box-sizing: border-box !important;
+  }
+  .hero-btn-occasions,
+  .hero-btn-nieuw,
+  .hero-content .hero-buttons .btn {
+    flex: 1 1 0 !important;
+    width: 50% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 0 4px !important;
+    font-size: 0.80rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.2px !important;
+    white-space: nowrap !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+  .hero-content .hero-buttons .hero-btn-badge {
+    display: none !important;
+  }
+  .hero-sublink-wrapper {
+    display: none !important;
+  }
+  .hero-image-wrapper {
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+  }
+  .hero-image-container {
+    width: 100% !important;
+    max-width: 340px !important;
+    aspect-ratio: 16 / 11 !important;
+    max-height: 220px !important;
+    margin: 0 auto !important;
+    border-radius: 14px !important;
+  }
+  .hero-image-container img {
+    object-position: center 30% !important;
+  }
+  .hero-expert-trust-pill {
+    top: 6px !important;
+    right: 6px !important;
+    padding: 3px 6px !important;
+    max-width: 160px !important;
+    gap: 5px !important;
+  }
+  .slide-caption {
+    padding: 6px 10px !important;
+    bottom: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    border-radius: 10px !important;
+  }
+  .slide-caption-name {
+    font-size: 0.80rem !important;
+  }
+  .slide-caption-price {
+    font-size: 0.78rem !important;
+    padding: 3px 8px !important;
   }
 }
 
