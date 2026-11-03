@@ -185,11 +185,11 @@ def draw_outro_card(progress):
 
 def main():
     output_path = 'assets/showroom_rondleiding_merwedestraat.mp4'
-    print(f"🎬 Start generatie van cinematische video: {output_path}")
+    print(f"🎬 Start generatie van vernieuwde cinematische video: {output_path}")
     
-    # Laad bronafbeeldingen
-    img_pand = Image.open('assets/pand.jpg').convert("RGB")
-    img_bus = Image.open('assets/bezorging.png').convert("RGB")
+    # Laad alle bronafbeeldingen
+    img_pand_orig = Image.open('assets/pand.jpg').convert("RGB")
+    img_pand_new = Image.open('assets/pand_makeover_huisstijl_merwedestraat.jpg').convert("RGB")
     img_orig_et = Image.open('assets/showroom_origineel_etalage.webp').convert("RGB")
     img_rend_et = Image.open('assets/showroom_render_etalage_merwedestraat.jpg').convert("RGB")
     img_orig_st = Image.open('assets/showroom_origineel_stoelen.webp').convert("RGB")
@@ -197,57 +197,58 @@ def main():
     
     writer = imageio.get_writer(output_path, fps=FPS, codec='libx264', quality=8, pixelformat='yuv420p')
     
-    total_frames = 570
+    total_frames = 630  # 21.0 seconden @ 30 fps
     frame_idx = 0
     
     # -------------------------------------------------------------
-    # SCENE 1: AANKOMST PAND & GRIJZE BUS (0 - 135 frames = 4.5s)
+    # SCENE 1: PUI & GEVEL MAKE-OVER (0 - 165 frames = 5.5s)
+    # Grijze pui blijft behouden, borden & vlaggen naar huisstijl
     # -------------------------------------------------------------
-    print("  ► Renderen Scene 1: Exterieur & Bezorgbus...")
-    for f in range(135):
-        t = f / 135.0
-        if f < 65:
-            # Pand push-in
-            st = f / 65.0
-            zoom = 1.0 + 0.08 * ease_in_out(st)
-            frame = get_cam_frame(img_pand, zoom=zoom, pan_x=0.0, pan_y=0.05 * ease_in_out(st))
-            frame = draw_lower_third(frame, "Schipper Compact Wonen", "Het vertrouwde winkelpand aan de Merwedestraat 239", "MERWEDESTRAAT 239 • DORDRECHT", (30, 80, 40))
-        elif f < 80:
-            # Cross-dissolve van pand naar bus
-            dt = (f - 65) / 15.0
-            f1 = get_cam_frame(img_pand, zoom=1.08, pan_x=0.0, pan_y=0.05)
-            f2 = get_cam_frame(img_bus, zoom=1.02, pan_x=0.0, pan_y=-0.02)
-            frame = Image.blend(f1, f2, dt)
-            frame = draw_lower_third(frame, "Gratis Bezorging & Afstelling", "Vakkundig bij u thuis bezorgd met onze bezorgbus", "SERVICE AAN HUIS", (220, 120, 30))
+    print("  ► Renderen Scene 1: Gevel Make-Over (Grijze pui, nieuwe borden & vlaggen)...")
+    for f in range(165):
+        t = f / 165.0
+        zoom_orig = 1.0 + 0.06 * ease_in_out(t)
+        zoom_new = 1.04 + 0.08 * ease_in_out(t)
+        
+        f_orig = get_cam_frame(img_pand_orig, zoom=zoom_orig, pan_x=0.0, pan_y=0.04 * ease_in_out(t))
+        f_new = get_cam_frame(img_pand_new, zoom=zoom_new, pan_x=-0.01 * ease_in_out(t), pan_y=0.01)
+        
+        if f < 45:
+            # Bestaande gevel
+            frame = f_orig
+            frame = draw_lower_third(frame, "Winkelpand Merwedestraat 239", "Het vertrouwde pand van Schipper Compact Wonen in Dordrecht", "HUIDIGE GEVEL POV", (15, 23, 42))
+        elif f < 115:
+            # Magische transformatie swipe
+            st = (f - 45) / 70.0
+            frame = draw_transition_wipe(f_orig, f_new, st)
+            frame = draw_lower_third(frame, "Gevel Make-Over in Onze Huisstijl", "Grijze pui behouden • Nieuwe Staopstoelen gevelborden & vlaggen", "GEVEL MAKE-OVER ✦", (220, 120, 30))
         else:
-            # Grijze bus push-in
-            st = (f - 80) / 55.0
-            zoom = 1.02 + 0.08 * ease_in_out(st)
-            frame = get_cam_frame(img_bus, zoom=zoom, pan_x=-0.03 * ease_in_out(st), pan_y=-0.02)
-            frame = draw_lower_third(frame, "Gratis Bezorging & Afstelling", "Inclusief persoonlijke maatwerkafstelling in uw woonkamer", "EIGEN BEZORGBUS", (220, 120, 30))
+            # Vernieuwde gevel met grijze bezorgbus
+            frame = f_new
+            frame = draw_lower_third(frame, "Grijze Pui met Staopstoelen Huisstijl", "Inclusief Certified Fitform borden, vlaggen en onze grijze bezorgbus", "NIEUWE GEVEL ✦", (35, 95, 45))
             
         writer.append_data(np.array(frame))
         frame_idx += 1
         
     # -------------------------------------------------------------
-    # SCENE 2: ETALAGE TRANSFORMATIE (135 - 300 frames = 5.5s)
+    # SCENE 2: ETALAGE TRANSFORMATIE (165 - 325 frames = 5.3s)
     # -------------------------------------------------------------
     print("  ► Renderen Scene 2: Etalage Transformatie (Origineel naar Nieuw)...")
-    for f in range(165):
-        t = f / 165.0
+    for f in range(160):
+        t = f / 160.0
         zoom_orig = 1.0 + 0.06 * ease_in_out(t)
         zoom_rend = 1.06 + 0.08 * ease_in_out(t)
         
         f_orig = get_cam_frame(img_orig_et, zoom=zoom_orig, pan_x=0.02 * ease_in_out(t), pan_y=-0.02)
         f_rend = get_cam_frame(img_rend_et, zoom=zoom_rend, pan_x=-0.02 * ease_in_out(t), pan_y=-0.01)
         
-        if f < 50:
+        if f < 45:
             # Puur origineel
             frame = f_orig
-            frame = draw_lower_third(frame, "Bestaande Situatie Etalage", "Brede raampartij aan de straat met authentieke entree", "ORIGINELE ETALAGE POV", (15, 23, 42))
-        elif f < 115:
+            frame = draw_lower_third(frame, "Bestaande Situatie Etalage", "Brede glazen pui aan de straat met authentieke entreedeur", "ORIGINELE ETALAGE POV", (15, 23, 42))
+        elif f < 110:
             # Magische swipe overgang
-            st = (f - 50) / 65.0
+            st = (f - 45) / 65.0
             frame = draw_transition_wipe(f_orig, f_rend, st)
             frame = draw_lower_third(frame, "Transformatie naar Rust & Eiken Podium", "Vervangt rollators in het venster door een design blikvanger", "GERESTYLEDE ETALAGE", (220, 120, 30))
         else:
@@ -259,24 +260,24 @@ def main():
         frame_idx += 1
 
     # -------------------------------------------------------------
-    # SCENE 3: STOELEN & SALIEGROENE WAND (300 - 465 frames = 5.5s)
+    # SCENE 3: STOELEN & SALIEGROENE WAND (325 - 485 frames = 5.3s)
     # -------------------------------------------------------------
     print("  ► Renderen Scene 3: Stoelenopstelling & Saliegroene Wand...")
-    for f in range(165):
-        t = f / 165.0
+    for f in range(160):
+        t = f / 160.0
         zoom_orig = 1.0 + 0.06 * ease_in_out(t)
         zoom_rend = 1.06 + 0.08 * ease_in_out(t)
         
         f_orig = get_cam_frame(img_orig_st, zoom=zoom_orig, pan_x=0.04 * ease_in_out(t), pan_y=0.0)
         f_rend = get_cam_frame(img_rend_st, zoom=zoom_rend, pan_x=0.02 * ease_in_out(t), pan_y=0.02 * ease_in_out(t))
         
-        if f < 50:
+        if f < 45:
             # Puur origineel
             frame = f_orig
             frame = draw_lower_third(frame, "Bestaande Stoelenopstelling", "Ruime opstelling van sta-op stoelen op laminaatvloer", "HUIDIGE SHOWROOM POV", (15, 23, 42))
-        elif f < 115:
+        elif f < 110:
             # Magische swipe overgang
-            st = (f - 50) / 65.0
+            st = (f - 45) / 65.0
             frame = draw_transition_wipe(f_orig, f_rend, st)
             frame = draw_lower_third(frame, "Warme Saliegroene Wanden & Sfeerverlichting", "Maakt van de ruimte direct een gezellige, warme huiskamer", "TRANSFORMATIE ✦", (220, 120, 30))
         else:
@@ -288,11 +289,11 @@ def main():
         frame_idx += 1
 
     # -------------------------------------------------------------
-    # SCENE 4: CHIQUE EINDKAART (465 - 570 frames = 3.5s)
+    # SCENE 4: CHIQUE EINDKAART (485 - 630 frames = 4.8s)
     # -------------------------------------------------------------
     print("  ► Renderen Scene 4: Slotkaart & Uitnodiging...")
-    for f in range(105):
-        t = f / 105.0
+    for f in range(145):
+        t = f / 145.0
         frame = draw_outro_card(t)
         writer.append_data(np.array(frame))
         frame_idx += 1
