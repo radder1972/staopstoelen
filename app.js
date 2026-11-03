@@ -1389,9 +1389,9 @@ window.getAppointmentModalHtml = function() {
             controls 
             playsinline 
             preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.260"
+            poster="${base}assets/video/zitmeting_poster.jpg?v=10.375"
             class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.260" type="video/mp4">
+            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.375" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
         </div>
@@ -3835,8 +3835,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.260" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.260" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.375" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.375" 
             controls 
             playsinline 
             preload="auto"
@@ -3867,8 +3867,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.260";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.260";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.375";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.375";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3881,7 +3881,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.260`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.375`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3890,8 +3890,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.260";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.260";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.375";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.375";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3904,7 +3904,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.260`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.375`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";

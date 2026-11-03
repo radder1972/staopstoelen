@@ -5807,10 +5807,128 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 768px) {
+  .modal-overlay {
+    padding: 12px 10px !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .modal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 92vh !important;
+    border-radius: 16px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+  }
+  .modal-close {
+    top: 10px !important;
+    right: 10px !important;
+    width: 38px !important;
+    height: 38px !important;
+    background: #ffffff !important;
+    border-radius: 50% !important;
+    border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.6rem !important;
+    line-height: 1 !important;
+    color: #2b3329 !important;
+    z-index: 100 !important;
+    padding: 0 !important;
+  }
+  .modal-close:hover {
+    background: #f7fee7 !important;
+    color: var(--color-forest) !important;
+  }
   .modal-content-grid {
-    grid-template-columns: 1fr;
-    padding: 30px 20px;
-    gap: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px 14px 24px 14px !important;
+    gap: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  .modal-image-section,
+  .modal-info-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  .modal-image-wrapper {
+    height: 220px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+  }
+  .modal-gallery-thumbnails {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+    margin-top: 10px !important;
+    padding: 4px 2px !important;
+    justify-content: flex-start !important;
+  }
+  .modal-price-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 14px !important;
+    margin-bottom: 10px !important;
+    padding: 10px 14px !important;
+  }
+  .modal-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .btn-watch-video-pill {
+    white-space: normal !important;
+    text-align: center !important;
+    font-size: 0.84rem !important;
+    padding: 10px 14px !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .btn-watch-video-pill .btn-watch-video-play-circle {
+    flex-shrink: 0 !important;
+  }
+  .modal-actions .btn {
+    white-space: normal !important;
+    text-align: center !important;
+    font-size: 0.92rem !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .advisor-trust-bubble {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .advisor-trust-bubble > div:last-child {
+    min-width: 0 !important;
+    flex: 1 !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
+  }
+  .modal-title {
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
   }
 }
 
@@ -7087,7 +7205,9 @@ input[type="checkbox"] {
   text-decoration: none !important;
   box-shadow: 0 4px 14px rgba(75, 143, 36, 0.28), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
