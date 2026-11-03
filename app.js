@@ -2985,7 +2985,7 @@ function initFloatingMenu() {
         .assistant-chair-img { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; }
         .floating-contact-wrapper.panel-open { bottom: 12px !important; right: 12px !important; left: 12px !important; align-items: stretch !important; }
         .floating-contact-wrapper.panel-open .digital-assistant-panel { width: 100% !important; max-width: 100% !important; max-height: calc(100vh - 24px) !important; }
-        .assistant-teaser-pill { padding: 11px 13px 10px 13px !important; width: 240px !important; max-width: min(260px, calc(100vw - 36px)) !important; border-radius: 16px 16px 4px 16px !important; }
+        .assistant-teaser-pill { display: none !important; }
         .teaser-bubble-text { font-size: 0.82rem !important; line-height: 1.3 !important; margin-bottom: 7px !important; }
         .teaser-cta-badge { font-size: 0.74rem !important; padding: 3px 10px !important; }
         .teaser-bubble-tail { right: 20px !important; }
@@ -3134,7 +3134,9 @@ function initFloatingMenu() {
   `;
 
   wrapper.insertBefore(panel, mainBtn);
-  wrapper.insertBefore(teaser, mainBtn);
+  if (window.innerWidth > 768) {
+    wrapper.insertBefore(teaser, mainBtn);
+  }
 
   const fabImg = document.getElementById("assistantFabImg");
   const headerImg = document.getElementById("daHeaderChairImg");

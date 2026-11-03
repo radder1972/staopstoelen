@@ -935,26 +935,33 @@ section[id], section {
   font-weight: 600;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .hero-expert-trust-pill {
-    top: 12px;
-    right: 12px;
-    padding: 5px 12px 5px 5px;
-    gap: 8px;
+    top: 8px !important;
+    right: 8px !important;
+    padding: 3px 6px 3px 3px !important;
+    gap: 5px !important;
+    max-width: 175px !important;
   }
   .hero-expert-trust-avatar {
-    width: 36px;
-    height: 36px;
+    width: 26px !important;
+    height: 26px !important;
   }
   .hero-expert-trust-avatar img {
-    width: 36px;
-    height: 36px;
+    width: 26px !important;
+    height: 26px !important;
   }
   .hero-expert-trust-name {
-    font-size: 0.78rem;
+    font-size: 0.66rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   .hero-expert-trust-role {
-    font-size: 0.68rem;
+    font-size: 0.56rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 }
 
@@ -1152,22 +1159,45 @@ section[id], section {
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 12px 0 24px 0 !important;
+  }
+  .hero-grid {
+    gap: 18px !important;
+  }
+  .hero-title {
+    margin-bottom: 12px !important;
+  }
+  .hero-description {
+    margin-bottom: 14px !important;
+  }
   .hero-content .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    width: 100% !important;
   }
   .hero-content .hero-buttons .btn {
-    width: 100%;
-    min-height: 50px;
-    justify-content: center;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    min-height: 44px !important;
+    padding: 8px 1px !important;
+    font-size: 0.74rem !important;
+    letter-spacing: -0.2px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .hero-content .hero-buttons .hero-btn-badge {
+    display: none !important;
   }
   .hero-sublink-wrapper {
-    text-align: center;
-    margin: 10px 0 16px 0;
+    display: none !important;
   }
   .hero-content .hero-dealer-trust-wrapper {
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 }
 
@@ -4467,8 +4497,8 @@ input[type="checkbox"] {
 @media (max-width: 768px) {
   .occasions-header {
     height: auto;
-    min-height: 220px;
-    padding: 24px 0 32px 0;
+    min-height: auto !important;
+    padding: 22px 0 24px 0 !important;
   }
   .banner-flex-container {
     flex-wrap: wrap;
@@ -4671,8 +4701,8 @@ input[type="checkbox"] {
 @media (max-width: 768px) {
   .occasions-header {
     height: auto;
-    min-height: 240px;
-    padding: 30px 0;
+    min-height: auto !important;
+    padding: 22px 0 24px 0 !important;
   }
 
   /* Heading adjustments for tablet viewports */
@@ -9011,6 +9041,12 @@ input[type="checkbox"] {
   display: none !important;
 }
 
+@media (max-width: 768px) {
+  .assistant-teaser-pill {
+    display: none !important;
+  }
+}
+
 .teaser-dismiss-btn {
   position: absolute !important;
   top: 6px !important;
@@ -9677,20 +9713,17 @@ input[type="checkbox"] {
     max-height: calc(100vh - 24px) !important;
   }
   .floating-btn-main.assistant-chair-fab {
-    width: 66px !important;
-    height: 66px !important;
+    width: 54px !important;
+    height: 54px !important;
   }
   .assistant-chair-img {
-    width: 50px !important;
-    height: 50px !important;
-    max-width: 50px !important;
-    max-height: 50px !important;
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
   }
   .assistant-teaser-pill {
-    padding: 11px 13px 10px 13px !important;
-    width: 240px !important;
-    max-width: min(260px, calc(100vw - 36px)) !important;
-    border-radius: 16px 16px 4px 16px !important;
+    display: none !important;
   }
   .teaser-bubble-text {
     font-size: 0.82rem !important;
