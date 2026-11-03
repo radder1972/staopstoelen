@@ -120,7 +120,7 @@
     "image": [
       "https://staopstoelen.nl/assets/showroom.jpg",
       "https://staopstoelen.nl/assets/geert_avatar.png",
-      "https://staopstoelen.nl/assets/pand_tekstbox.png"
+      "https://staopstoelen.nl/assets/pand.jpg"
     ],
     "telephone": "+31786314858",
     "email": "info@staopstoelen.nl",
@@ -930,14 +930,32 @@
 
 
   <!-- Showroom Info Section -->
-  <section id="showroom-info" class="bg-alt" style="border-top: 1px solid var(--color-gray-light); border-bottom: 1px solid var(--color-gray-light);">
+  <section id="showroom-info" class="bg-alt" style="border-top: 1px solid var(--color-gray-light); border-bottom: 1px solid var(--color-gray-light); padding: 50px 0;">
     <div class="container">
-      <div class="text-center" style="max-width: 800px; margin: 0 auto;">
-        <span class="section-tag">Zitadvies & Showroom</span>
-        <h2 class="section-title">Probeer een sta-op stoel in de regio Dordrecht & Rotterdam</h2>
+      <div class="text-center" style="max-width: 800px; margin: 0 auto 36px auto;">
+        <span class="section-tag">Zitadvies &amp; Showroom</span>
+        <h2 class="section-title">Probeer een sta-op stoel in de regio Dordrecht &amp; Rotterdam</h2>
         <p class="section-subtitle" style="margin-bottom: 0;">
           U bent van harte welkom in onze overzichtelijke showroom aan de Merwedestraat 239 in Dordrecht voor deskundig zitadvies en het testen van onze sta-op stoelen. Gratis voor de deur parkeren. Gekozen stoel gratis thuisbezorgd en direct op maat afgesteld!
         </p>
+      </div>
+
+      <!-- Showroom Pand Showcase Card -->
+      <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 28px 32px; border-radius: var(--radius-lg); max-width: 900px; margin: 0 auto; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid var(--color-gray-light);">
+        <a href="winkel.html" style="display: block; flex-shrink: 0;" title="Bekijk onze showroom aan de Merwedestraat 239">
+          <img src="assets/pand.jpg?v=10.380" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: var(--radius-md); border: 3px solid var(--color-light); box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: block;">
+        </a>
+        <div style="flex: 1; min-width: 280px;">
+          <span style="color: var(--color-terracotta); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Merwedestraat 239 &bull; Dordrecht</span>
+          <h3 style="color: var(--color-forest-dark); font-size: 1.35rem; margin: 0 0 8px 0; font-family: var(--font-heading);">Schipper Compact Wonen</h3>
+          <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-dark); margin-bottom: 16px;">
+            Al vele jaren het vertrouwde adres voor ergonomisch zitcomfort en sta-op stoelen in de Drechtsteden. Ruime showroom, rolstoelvriendelijk en gratis parkeren direct voor de deur.
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="winkel.html" class="btn btn-secondary" style="font-size: 0.9rem; padding: 10px 18px;">Kijkje in de Winkel &rarr;</a>
+            <a href="afspraak.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 10px 18px;" onclick="openAppointmentModal(event)">Plan Proefzitten</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
