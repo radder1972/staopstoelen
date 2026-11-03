@@ -195,9 +195,23 @@ def main():
     img_orig_st = Image.open('assets/showroom_origineel_stoelen.webp').convert("RGB")
     img_rend_st = Image.open('assets/showroom_render_stoelen_merwedestraat.jpg').convert("RGB")
     
-    writer = imageio.get_writer(output_path, fps=FPS, codec='libx264', quality=8, pixelformat='yuv420p')
+    # Broadcast-kwaliteit slotkaart
+    outro_path = 'assets/outro_card_broadcast.png'
+    if not os.path.exists(outro_path):
+        import subprocess
+        subprocess.run(['python3', 'scripts/render_outro_card.py'], check=True)
+    img_outro = Image.open(outro_path).convert("RGB")
     
-    total_frames = 630  # 21.0 seconden @ 30 fps
+    writer = imageio.get_writer(
+        output_path,
+        fps=FPS,
+        codec='libx264',
+        quality=8,
+        pixelformat='yuv420p',
+        ffmpeg_params=['-movflags', '+faststart']
+    )
+    
+    total_frames = 640  # ~21.3 seconden @ 30 fps
     frame_idx = 0
     
     # -------------------------------------------------------------
@@ -288,19 +302,43 @@ def main():
         writer.append_data(np.array(frame))
         frame_idx += 1
 
+    last_scene_frame = frame.copy()
+
     # -------------------------------------------------------------
-    # SCENE 4: CHIQUE EINDKAART (485 - 630 frames = 4.8s)
+    # SCENE 4: BROADCAST KWALITEIT SLOTKAART (155 frames = 5.2s)
+    # Bevat officieel logo, Certified Fitform zegel, 5-punts zitmeting,
+    # 4 garanties, adres Dordrecht en directe telefoon & WhatsApp CTA.
     # -------------------------------------------------------------
-    print("  ► Renderen Scene 4: Slotkaart & Uitnodiging...")
-    for f in range(145):
-        t = f / 145.0
-        frame = draw_outro_card(t)
+    print("  ► Renderen Scene 4: Broadcast Slotkaart (Huisstijl & Garanties)...")
+    fade_frames = 15
+    total_outro_frames = 155
+    for f in range(total_outro_frames):
+        t = f / float(total_outro_frames)
+        # Zeer subtiele, filmische slow-push zoom
+        zoom = 1.0 + 0.015 * ease_in_out(t)
+        base_outro = get_cam_frame(img_outro, zoom=zoom, pan_x=0.0, pan_y=0.0)
+        
+        if f < fade_frames:
+            # Vloeiende cross-dissolve overgang vanaf Scene 3
+            blend_alpha = f / float(fade_frames)
+            frame = Image.blend(last_scene_frame, base_outro, blend_alpha)
+        else:
+            frame = base_outro
+            
         writer.append_data(np.array(frame))
         frame_idx += 1
         
     writer.close()
+    
+    # Genereer tevens een haarscherpe poster afbeelding van de gevel make-over
+    poster_frame = get_cam_frame(img_pand_new, zoom=1.04, pan_x=-0.01, pan_y=0.01)
+    poster_frame = draw_lower_third(poster_frame, "Showroom Dordrecht • Merwedestraat 239", "Grijze pui behouden • Nieuwe Staopstoelen huisstijl & bezorgbus", "BEKIJK RONDLEIDING ▶", (220, 120, 30))
+    poster_frame.save('assets/showroom_video_poster.jpg', quality=95)
+    poster_frame.save('assets/gevel_video_new_preview.jpg', quality=95)
+    print("📸 Posters opgeslagen: assets/showroom_video_poster.jpg en assets/gevel_video_new_preview.jpg")
+    
     file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
-    print(f"✅ Video succesvol gegenereerd: {output_path} ({file_size_mb:.2f} MB, {total_frames} frames, {total_frames/FPS:.1f} seconden)")
+    print(f"✅ Video succesvol gegenereerd: {output_path} ({file_size_mb:.2f} MB, {frame_idx} frames, {frame_idx/FPS:.1f} seconden)")
 
 if __name__ == '__main__':
     main()
