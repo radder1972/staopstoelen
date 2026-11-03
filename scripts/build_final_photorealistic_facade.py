@@ -140,9 +140,67 @@ def main():
     draw_board.text((tx, ty3), 'Certified Fitform Partner • Showroom Dordrecht', fill=(82, 102, 92), font=font_small)
     
     # -------------------------------------------------------------
-    # 3. RECHTER VLAG (Sta op stoelen in groen, .nl in oranje + officiële zegel)
+    # 3. RECHTER HOOFDBORD OP DE PUI (Het officiële zware Staopstoelen.nl logo!)
     # -------------------------------------------------------------
-    print("  ► 3. Rechter vlag: doekkleuren & officiële zegel in perspectief...")
+    print("  ► 3. Rechter hoofdbord: officieel zwaar beeldmerk & compacte ondertitel...")
+    arr = np.array(img)
+    r_board_mask = (xx >= 595) & (xx <= 1145) & (yy >= 214) & (yy <= 296)
+    
+    is_content = ((arr[:,:,0] < 202) | (arr[:,:,1] < 202) | (arr[:,:,2] < 185)) & r_board_mask
+    mask_r_dil = ndimage.binary_dilation(is_content, iterations=3)
+    
+    source_r = r_board_mask & (~mask_r_dil)
+    dist_r, (idx_ry, idx_rx) = ndimage.distance_transform_edt(~source_r, return_indices=True)
+    
+    arr[mask_r_dil, :3] = arr[idx_ry[mask_r_dil], idx_rx[mask_r_dil], :3]
+    smooth_r = ndimage.gaussian_filter(arr[:,:,:3].astype(np.float32), sigma=(0.8, 0.8, 0))
+    arr[mask_r_dil, :3] = smooth_r[mask_r_dil, :].astype(np.uint8)
+    
+    img = Image.fromarray(arr, 'RGBA')
+    
+    # Plaats het authentieke zware beeldmerk (staopstoelen_logo_cropped_transparent.png)
+    logo = Image.open(f'{WORKSPACE}/assets/staopstoelen_logo_cropped_transparent.png').convert('RGBA')
+    logo_h = 51
+    logo_w = int(logo.width * (logo_h / float(logo.height)))
+    logo_res = logo.resize((logo_w, logo_h), Image.Resampling.LANCZOS)
+    
+    lx = 870 - logo_w // 2
+    ly = 217
+    
+    l_arr = np.array(logo_res).astype(np.float32)
+    l_arr[:, :, 0] *= (208.0 / 255.0)
+    l_arr[:, :, 1] *= (212.0 / 255.0)
+    l_arr[:, :, 2] *= (216.0 / 255.0)
+    logo_adj = Image.fromarray(np.clip(l_arr, 0, 255).astype(np.uint8), 'RGBA')
+    
+    img.paste(logo_adj, (lx, ly), logo_adj)
+    
+    # Ondertitel strak en harmonieus onder het officiële logo
+    draw_r = ImageDraw.Draw(img)
+    font_sub = ImageFont.truetype('/System/Library/Fonts/HelveticaNeue.ttc', 13.5, index=1)
+    sub1 = 'Schipper Compact Wonen'
+    dot = ' • '
+    sub2 = 'Specialist in ergonomisch zitcomfort'
+    
+    bb1 = draw_r.textbbox((0, 0), sub1, font=font_sub)
+    bbd = draw_r.textbbox((0, 0), dot, font=font_sub)
+    bb2 = draw_r.textbbox((0, 0), sub2, font=font_sub)
+    w1 = bb1[2] - bb1[0]
+    wd = bbd[2] - bbd[0]
+    w2 = bb2[2] - bb2[0]
+    tot_w = w1 + wd + w2
+    
+    sx = 870 - tot_w // 2
+    sy = ly + logo_h + 3  # Slechts 3px tussenruimte
+    
+    draw_r.text((sx, sy), sub1, fill=(28, 55, 33), font=font_sub)
+    draw_r.text((sx + w1, sy), dot, fill=(234, 88, 12), font=font_sub)
+    draw_r.text((sx + w1 + wd, sy), sub2, fill=(45, 75, 52), font=font_sub)
+    
+    # -------------------------------------------------------------
+    # 4. RECHTER VLAG (Sta op stoelen in groen, .nl in oranje + officiële zegel)
+    # -------------------------------------------------------------
+    print("  ► 4. Rechter vlag: doekkleuren & officiële zegel in perspectief...")
     arr = np.array(img)
     
     flag_poly = [(1174, 82), (1324, 230), (1270, 286), (1222, 238), (1156, 174)]
