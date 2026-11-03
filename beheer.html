@@ -2519,6 +2519,33 @@
             </div>
           </div>
         </div>
+
+        <!-- Digitale Zitassistent Chatlogboek Card -->
+        <div style="background: white; border: 1.5px solid #e1bee7; border-radius: var(--radius-sm); padding: 24px; box-shadow: 0 4px 14px rgba(106, 27, 154, 0.04); margin-top: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid #f3e5f5; padding-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: #f3e5f5; color: #6a1b9a; flex-shrink: 0; box-shadow: 0 2px 6px rgba(106,27,154,0.12);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </span>
+              <div>
+                <h3 style="margin: 0; color: #4a148c; font-size: 1.18rem; font-weight: 800; font-family: var(--font-heading);">
+                  Digitale Zitassistent &bull; Gestelde Vragen &amp; Gesprekken
+                </h3>
+                <p style="margin: 3px 0 0 0; color: #666; font-size: 0.86rem;">
+                  Live overzicht van alle vragen die bezoekers aan de chatbot stellen, inclusief het gegeven antwoord en geactiveerde acties.
+                </p>
+              </div>
+            </div>
+            <button type="button" onclick="loadChatLogs()" class="btn btn-outline" style="border-color: #ba68c8; color: #6a1b9a; background: #fbf6fd; padding: 8px 16px; font-size: 0.84rem; font-weight: 700; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              <span>Vragen Verversen</span>
+            </button>
+          </div>
+
+          <div id="chatLogsContainer" style="max-height: 520px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding: 4px;">
+            <div style="color: var(--color-gray); font-style: italic; font-size: 0.9rem; padding: 14px 0;">Vragen worden geladen...</div>
+          </div>
+        </div>
       </div> <!-- End #statsSection -->
 
       <!-- ======================================================================
@@ -6370,7 +6397,69 @@
     document.cookie = "staopstoelen_ignore_analytics=true; path=/; max-age=31536000; SameSite=Lax";
     updateExclusionUI();
 
+    function escapeChatHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function loadChatLogs() {
+      const container = document.getElementById("chatLogsContainer");
+      if (!container) return;
+      container.innerHTML = '<div style="color: #6a1b9a; font-size: 0.88rem; padding: 12px 0; display: flex; align-items: center; gap: 8px;"><span>⏳</span><span>Gesprekken ophalen...</span></div>';
+
+      fetch('api/get_chat_logs.php')
+        .then(r => r.json())
+        .then(data => {
+          if (!data || !data.logs || data.logs.length === 0) {
+            container.innerHTML = `
+              <div style="background: #faf5fc; border: 1px dashed #d1c4e9; border-radius: 8px; padding: 24px; text-align: center; color: #5e35b1;">
+                <div style="font-size: 1.6rem; margin-bottom: 6px;">💬</div>
+                <div style="font-weight: 700; font-size: 0.95rem;">Nog geen recente vragen in het logboek</div>
+                <div style="font-size: 0.84rem; color: #7e57c2; margin-top: 4px;">
+                  Zodra een bezoeker een vraag typt aan de Digitale Zitassistent, verschijnt het volledige gesprek hier live met datum, tijdstip en AI-antwoord.
+                </div>
+              </div>
+            `;
+            return;
+          }
+
+          let html = '';
+          data.logs.forEach(log => {
+            const dateStr = log.timestamp || 'Recent';
+            const question = escapeChatHtml(log.question || '');
+            const reply = escapeChatHtml(log.reply || '');
+            const actions = Array.isArray(log.actions) ? log.actions : [];
+            const actionBadges = actions.map(act => `<span style="background: #e1bee7; color: #4a148c; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">[${escapeChatHtml(act)}]</span>`).join(' ');
+
+            html += `
+              <div style="background: #ffffff; border: 1px solid #e1bee7; border-radius: 10px; padding: 16px; box-shadow: 0 2px 6px rgba(106, 27, 154, 0.03); display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #f3e5f5; padding-bottom: 8px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #6a1b9a; color: white; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">?</span>
+                    <span style="font-weight: 800; color: #122b07; font-size: 0.95rem;">${question}</span>
+                  </div>
+                  <span style="font-size: 0.78rem; color: #7e57c2; font-weight: 600;">🕒 ${escapeChatHtml(dateStr)}</span>
+                </div>
+                <div style="font-size: 0.88rem; color: #374151; line-height: 1.6; background: #faf5fc; padding: 12px; border-radius: 6px; border-left: 3px solid #ab47bc; white-space: pre-wrap;">${reply}</div>
+                ${actionBadges ? `<div style="display: flex; gap: 6px; align-items: center; margin-top: 2px;"><span style="font-size: 0.75rem; color: #7e57c2; font-weight: 600;">Actieknoppen:</span> ${actionBadges}</div>` : ''}
+              </div>
+            `;
+          });
+          container.innerHTML = html;
+        })
+        .catch(err => {
+          container.innerHTML = `<div style="color: #c62828; font-size: 0.85rem; padding: 8px 0;">Kon vragen niet laden: ${escapeChatHtml(err.message || String(err))}</div>`;
+        });
+    }
+    window.loadChatLogs = loadChatLogs;
+
     function renderStatsDashboard() {
+      loadChatLogs();
       // Fetch visit stats asynchronously
       fetch('api/get_visit_stats.php')
         .then(response => response.json())

@@ -222,6 +222,20 @@ $curlErr = curl_error($ch);
 curl_close($ch);
 
 if ($response === false || $httpCode !== 200) {
+    try {
+        $chatLogFile = __DIR__ . '/chat_logs.json';
+        $existingLogs = file_exists($chatLogFile) ? (json_decode(@file_get_contents($chatLogFile), true) ?: []) : [];
+        array_unshift($existingLogs, [
+            'timestamp' => date('Y-m-d H:i:s'),
+            'question' => $userMessage,
+            'reply' => '(Lokale fallback geactiveerd - HTTP ' . $httpCode . ')',
+            'actions' => [],
+            'ip_hash' => $ipHash,
+            'status' => 'fallback'
+        ]);
+        @file_put_contents($chatLogFile, json_encode(array_slice($existingLogs, 0, 300), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    } catch (Throwable $e) {}
+
     echo json_encode([
         "status" => "fallback",
         "http_code" => $httpCode,
@@ -247,6 +261,55 @@ $actions = [];
 if (preg_match_all('/\[(afspraak|keuzehulp|collectie|bellen|whatsapp)\]/i', $replyText, $matches)) {
     $actions = array_unique(array_map('strtolower', $matches[1]));
     $replyText = trim(preg_replace('/\[(afspraak|keuzehulp|collectie|bellen|whatsapp)\]/i', '', $replyText));
+}
+
+// 8. Automatisch loggen in JSON backup en MySQL database (voor live beheeroverzicht)
+try {
+    $nowStr = date('Y-m-d H:i:s');
+    $logEntry = [
+        'timestamp' => $nowStr,
+        'question' => $userMessage,
+        'reply' => $replyText,
+        'actions' => array_values($actions),
+        'ip_hash' => $ipHash,
+        'status' => 'success'
+    ];
+
+    // a. JSON log (directe backup die altijd werkt)
+    $chatLogFile = __DIR__ . '/chat_logs.json';
+    $existingLogs = [];
+    if (file_exists($chatLogFile)) {
+        $rawLogs = @file_get_contents($chatLogFile);
+        $existingLogs = json_decode($rawLogs, true) ?: [];
+    }
+    array_unshift($existingLogs, $logEntry);
+    if (count($existingLogs) > 300) {
+        $existingLogs = array_slice($existingLogs, 0, 300);
+    }
+    @file_put_contents($chatLogFile, json_encode($existingLogs, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+    // b. MySQL database tabel bijwerken indien verbonden
+    if (isset($pdo) && $pdo instanceof PDO) {
+        $pdo->exec("CREATE TABLE IF NOT EXISTS chat_logs (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            ip_hash VARCHAR(64) NULL,
+            question TEXT NOT NULL,
+            reply TEXT NULL,
+            actions VARCHAR(255) NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_chat_created (created_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+
+        $cStmt = $pdo->prepare("INSERT INTO chat_logs (ip_hash, question, reply, actions) VALUES (:ip_hash, :question, :reply, :actions)");
+        $cStmt->execute([
+            ':ip_hash' => $ipHash,
+            ':question' => $userMessage,
+            ':reply' => $replyText,
+            ':actions' => implode(',', $actions)
+        ]);
+    }
+} catch (Throwable $logErr) {
+    // Fout bij loggen mag het chatantwoord naar de klant nooit breken
 }
 
 echo json_encode([
