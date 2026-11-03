@@ -1376,74 +1376,44 @@ window.getAppointmentModalHtml = function() {
           </span>
         </div>
         <div class="appointment-quick-title-group">
-          <h3 id="appointmentModalTitle" class="appointment-quick-title">Plan uw proefzit-afspraak</h3>
+          <h3 id="appointmentModalTitle" class="appointment-quick-title">Zitadvies &amp; Proefzitten</h3>
           <p class="appointment-quick-subtitle">Showroom Dordrecht &bull; Persoonlijk advies door Geertjan</p>
         </div>
       </div>
 
-      <!-- Video: Zitmeting & Proefzitten in Dordrecht (In 38 seconden) -->
-      <div class="appointment-modal-video-card">
-        <div class="appointment-modal-video-wrap">
-          <video 
-            id="modalZitmetingVideo" 
-            controls 
-            playsinline 
-            preload="metadata" 
-            poster="${base}assets/video/zitmeting_poster.jpg?v=10.375"
-            class="appointment-modal-video">
-            <source src="${base}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.375" type="video/mp4">
-            Uw browser ondersteunt geen video.
-          </video>
-        </div>
-        <div class="appointment-modal-video-caption">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
-          <span>Bekijk in 45 sec hoe een persoonlijke zitmeting bij Geertjan verloopt</span>
-        </div>
-      </div>
-
-      <!-- Keuze Intro & 2 Knoppen: Linksaf (Bel mij) of Rechtsaf (Agenda) -->
-      <div class="appointment-choice-intro">Hoe wilt u uw afspraak inplannen?</div>
-      <div class="appointment-choice-selector" role="tablist" aria-label="Kies afspraakmethode">
-        <!-- Keuze 1: Bel mij terug (Linksaf) -->
-        <button type="button" class="appointment-choice-btn active" id="btnChoiceCallback" role="tab" aria-selected="true" onclick="switchAppointmentMode('callback')">
-          <div class="choice-btn-icon-wrap">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+      <!-- DIRECTE CONTACTOPTIES BOVENAAN: Snel, senior-vriendelijk en 1-klik -->
+      <div class="appointment-direct-grid" style="margin-bottom: 14px;">
+        <a href="tel:0786314858" class="appointment-direct-card-btn appointment-btn-phone" title="Bel direct naar de showroom">
+          <span class="direct-card-icon-wrap phone-icon-wrap">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
-          </div>
-          <div class="choice-btn-text">
-            <strong class="choice-btn-title">Bel mij terug</strong>
-            <span class="choice-btn-sub">Geertjan stemt af</span>
-          </div>
-        </button>
+          </span>
+          <span class="direct-card-text">
+            <span class="direct-card-sublabel">Direct bellen &bull; Showroom</span>
+            <strong class="direct-card-value">078 &ndash; 631 4858</strong>
+          </span>
+        </a>
 
-        <!-- Keuze 2: Zelf tijd kiezen in agenda (Rechtsaf) -->
-        <button type="button" class="appointment-choice-btn" id="btnChoiceAgenda" role="tab" aria-selected="false" onclick="switchAppointmentMode('agenda')">
-          <div class="choice-btn-icon-wrap">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
+        <a href="https://wa.me/31622232964?text=Hallo%20Geertjan,%20ik%20heb%20een%20vraag%20over%20een%20sta-op%20stoel" target="_blank" rel="noopener noreferrer" class="appointment-direct-card-btn appointment-btn-whatsapp" title="Stuur Geertjan direct een WhatsApp bericht">
+          <span class="direct-card-icon-wrap wa-icon-wrap">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
             </svg>
-          </div>
-          <div class="choice-btn-text">
-            <strong class="choice-btn-title">Zelf tijd kiezen</strong>
-            <span class="choice-btn-sub">Direct in de agenda</span>
-          </div>
-        </button>
+          </span>
+          <span class="direct-card-text">
+            <span class="direct-card-sublabel">WhatsApp &bull; Geertjan</span>
+            <strong class="direct-card-value">06 &ndash; 2223 2964</strong>
+          </span>
+        </a>
       </div>
 
-      <!-- Merwedestraat netjes als tekst met icoon onder de opties (geen lompe box) -->
-      <div class="appointment-location-line">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="location-line-icon">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-          <circle cx="12" cy="10" r="3"></circle>
-        </svg>
-        <span>Merwedestraat 239, Dordrecht &bull; Gratis parkeren voor de deur</span>
+      <!-- Scheidingslijn: OF laat Geertjan u vandaag terugbellen -->
+      <div class="appointment-or-divider">
+        <span>of laat Geertjan u vandaag terugbellen</span>
       </div>
 
-      <!-- PANEEL 1: BEL MIJ TERUG (Zelfde box styling als Agenda) -->
+      <!-- PANEEL: 1-KLIK TERUGBELVERZOEK -->
       <div id="appointmentPanelCallback" class="appointment-panel active">
         <form id="quickAppointmentForm" class="appointment-choice-card" onsubmit="return handleQuickAppointmentSubmit(event)" novalidate>
           <input type="hidden" id="quickChairNotes" name="chair_notes" value="">
@@ -1452,7 +1422,7 @@ window.getAppointmentModalHtml = function() {
             <!-- Stoel Context Badge (indien geklikt vanuit specifieke stoel) -->
             <div id="quickChairBadge" class="appointment-chair-tag" style="display: none;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Gekozen stoel: <strong id="quickChairBadgeName"></strong></span>
+              <span>Gekozen model: <strong id="quickChairBadgeName"></strong></span>
             </div>
 
             <div class="appointment-field-group">
@@ -1498,7 +1468,7 @@ window.getAppointmentModalHtml = function() {
             </div>
 
             <button type="submit" id="btnQuickSubmit" class="btn appointment-quick-submit-btn">
-              <span class="btn-text">Bel mij voor een afspraak</span>
+              <span class="btn-text">📞 Bel mij vrijblijvend terug</span>
               <span class="btn-spinner" style="display: none;">
                 <svg class="spinner-icon" viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"></circle></svg>
                 Even geduld...
@@ -1510,87 +1480,21 @@ window.getAppointmentModalHtml = function() {
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
-              <span>Uw gegevens zijn veilig en worden alleen gebruikt voor deze afspraak.</span>
+              <span>Showroom: Merwedestraat 239, Dordrecht &bull; Gratis parkeren voor de deur</span>
             </div>
           </div>
         </form>
       </div>
 
-      <!-- PANEEL 2: ZELF INPLANNEN IN DE AGENDA (Exact zelfde box styling) -->
-      <div id="appointmentPanelAgenda" class="appointment-panel" style="display: none;">
-        <div class="appointment-choice-card">
-          <div class="agenda-content-top">
-            <h4 class="agenda-title-new">Zelf een moment kiezen in de showroom</h4>
-            <p class="agenda-desc-new">
-              Kies direct een dag en tijdstip dat u uitkomt. Geertjan reserveert de showroom voor u en zorgt dat de koffie klaarstaat.
-            </p>
-
-            <ul class="agenda-features-new">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Direct inzicht in alle beschikbare dagen &amp; tijden</span>
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Rustig 30+ modellen proefzitten met deskundig zitadvies</span>
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#256616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Persoonlijk 1-op-1 advies van Bewegingstechnoloog Geertjan</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="card-content-bottom">
-            <a href="afspraak.html#bookingCard" class="btn btn-primary appointment-agenda-cta-btn" onclick="goToOnlineAgenda(event)">
-              <span>Zelf datum &amp; tijd kiezen in agenda</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-
-            <div class="appointment-trust-microcopy">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Geen account nodig &bull; Directe bevestiging in uw mailbox</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dedicated Direct Contact Card: Gedeeld tussen beide opties (Beweegt NOOIT!) -->
-      <div class="appointment-direct-box">
-        <div class="appointment-direct-head">
-          <span class="appointment-direct-badge">
-            <span class="direct-pulse-dot"></span>
-            Direct contact
-          </span>
-          <span class="appointment-direct-title">Liever meteen persoonlijk contact?</span>
-        </div>
-        <div class="appointment-direct-grid">
-          <a href="tel:0786314858" class="appointment-direct-card-btn appointment-btn-phone" title="Bel direct naar de showroom">
-            <span class="direct-card-icon-wrap phone-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-            </span>
-            <span class="direct-card-text">
-              <span class="direct-card-sublabel">Bellen &bull; Showroom</span>
-              <strong class="direct-card-value">078 &ndash; 631 4858</strong>
-            </span>
-          </a>
-
-          <a href="https://wa.me/31622232964?text=Hallo%20Geertjan,%20ik%20heb%20een%20vraag%20over%20een%20sta-op%20stoel" target="_blank" rel="noopener noreferrer" class="appointment-direct-card-btn appointment-btn-whatsapp" title="Stuur Geertjan direct een WhatsApp bericht">
-            <span class="direct-card-icon-wrap wa-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-              </svg>
-            </span>
-            <span class="direct-card-text">
-              <span class="direct-card-sublabel">WhatsApp &bull; Geertjan</span>
-              <strong class="direct-card-value">06 &ndash; 2223 2964</strong>
-            </span>
-          </a>
-        </div>
+      <!-- Secundaire links onderaan -->
+      <div class="appointment-secondary-links">
+        <a href="${base}afspraak.html#bookingCard" class="appointment-agenda-link" onclick="goToOnlineAgenda(event)">
+          📅 Wilt u zelf een specifieke dag en tijd kiezen? <strong>Open showroomagenda &rarr;</strong>
+        </a>
+        <button type="button" class="appointment-video-link-btn" onclick="openCertifiedVideoModal('zitmeting')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
+          <span>Bekijk in 38 sec hoe een zitmeting bij Geertjan verloopt</span>
+        </button>
       </div>
 
       <!-- Instant Bevestiging Na Verzending -->
@@ -1602,7 +1506,7 @@ window.getAppointmentModalHtml = function() {
         </div>
         <h3 class="appointment-success-title">Bedankt, <span id="quickSuccessName"></span>!</h3>
         <p class="appointment-success-desc">
-          Geertjan belt u zo snel mogelijk om de proefzit-afspraak af te stemmen.
+          Geertjan belt u zo snel mogelijk om uw wensen of een proefzit-afspraak af te stemmen.
         </p>
         <div class="appointment-success-note">
           <span id="quickAutoCloseNote">Dit venster sluit automatisch over <span id="quickAutoCloseSeconds">4</span> seconden...</span>
@@ -2608,11 +2512,13 @@ function initCalendar() {
 }
 
   // 1-Klik Snelle Terugbelknop op Afspraakpagina (voor wie direct contact wil zonder kalender)
+  const quickNameInput = document.getElementById("quickCallbackName");
   const quickPhoneInput = document.getElementById("quickCallbackPhone");
   const btnQuickCallback = document.getElementById("btnQuickCallbackSubmit");
   if (btnQuickCallback && quickPhoneInput) {
     btnQuickCallback.addEventListener("click", () => {
       const raw = quickPhoneInput.value.trim();
+      const name = quickNameInput ? quickNameInput.value.trim() : "Snelle terugbel-aanvraag";
       const digits = raw.replace(/\D/g, "");
       if (digits.length < 8) {
         alert("Vul alstublieft een geldig telefoonnummer in (bijv. 06 12345678 of 078 6314858).");
@@ -2626,7 +2532,7 @@ function initCalendar() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: "Snelle terugbel-aanvraag",
+          name: name || "Snelle terugbel-aanvraag",
           phone: raw,
           notes: "Klant wil z.s.m. door Geertjan gebeld worden voor een afspraak / zitadvies.",
           source: "Afspraakpagina 1-klik Terugbelbalk"
@@ -2634,7 +2540,7 @@ function initCalendar() {
       })
       .then(() => {
         if (typeof logCustomVisitEvent === "function") {
-          logCustomVisitEvent("booking_conversion", { type: "quick_callback", phone: raw });
+          logCustomVisitEvent("booking_conversion", { type: "quick_callback", name: name, phone: raw });
         }
         if (typeof trackGoogleAdsConversion === "function") {
           trackGoogleAdsConversion("appointment", { phone: raw });
@@ -3835,8 +3741,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.375" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.375" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.377" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.377" 
             controls 
             playsinline 
             preload="auto"
@@ -3867,8 +3773,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.375";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.375";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.377";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.377";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3881,7 +3787,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.375`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.377`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3890,8 +3796,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.375";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.375";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.377";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.377";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3904,7 +3810,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.375`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.377`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
