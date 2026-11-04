@@ -1374,6 +1374,7 @@ section[id], section {
 }
 .hero-image-container img {
   object-fit: cover;
+  border-radius: var(--radius-lg) !important;
 }
 
 /* Hero Slideshow Styles */
@@ -2668,12 +2669,12 @@ section[id], section {
 .offers-top3-grid .product-image img:not(.quality-stamp),
 .results-container .product-image img:not(.quality-stamp),
 .model-card-img {
-  width: 100% !important;
-  height: 100% !important;
+  width: auto !important;
+  height: auto !important;
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: contain !important;
-  border-radius: 12px !important;
+  border-radius: 14px !important;
   padding: 0 !important;
   box-shadow: none !important;
   border: none !important;
@@ -2688,9 +2689,10 @@ section[id], section {
 .modal-image-wrapper img.has-photo-bg,
 #detailMainImg,
 #modalProductImage {
-  width: auto;
-  height: auto;
-  max-width: 100%;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   border-radius: 14px !important;
   box-shadow: none !important;
   border: none !important;
