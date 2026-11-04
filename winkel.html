@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.388">
+  <link rel="stylesheet" href="style.css?v=10.403">
   <style>
     .gallery-grid {
       display: grid;
@@ -45,16 +45,16 @@
     }
     .gallery-item {
       background-color: var(--color-light);
-      border-radius: var(--radius-md);
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      border: 3px solid var(--color-light);
+      box-shadow: none;
+      border: 1px solid var(--color-gray-light);
       transition: var(--transition-smooth);
       cursor: pointer;
     }
     .gallery-item:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      box-shadow: none;
       border-color: var(--color-sage);
     }
     .gallery-img-container {
@@ -366,7 +366,7 @@
 
       <!-- Pand & Bezorgbus Showcase bij Onze Winkel -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 40px;">
-        <div style="background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06); border: 2px solid var(--color-sage-light);">
+        <div style="background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: none; border: 1px solid var(--color-sage-light);">
           <div style="position: relative;">
             <span style="position: absolute; top: 12px; left: 12px; background: rgba(15,23,42,0.85); color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; z-index: 2; text-transform: uppercase;">Winkelpand Dordrecht</span>
             <img src="assets/pand.jpg?v=10.388" alt="Het vertrouwde winkelpand aan de Merwedestraat 239" style="width: 100%; height: 250px; object-fit: cover; display: block;">
@@ -379,7 +379,7 @@
           </div>
         </div>
 
-        <div style="background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06); border: 2px solid var(--color-sage-light);">
+        <div style="background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: none; border: 1px solid var(--color-sage-light);">
           <div style="position: relative;">
             <span style="position: absolute; top: 12px; left: 12px; background: var(--color-forest); color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; z-index: 2; text-transform: uppercase;">Bezorging &amp; Service</span>
             <img src="assets/bezorging.png?v=2.0.1" alt="Grijze bezorgbus voor het pand aan de Merwedestraat 239" style="width: 100%; height: 250px; object-fit: cover; display: block;">
@@ -394,7 +394,7 @@
       </div>
 
       <!-- Showroom Video Rondleiding Card -->
-      <div style="background: linear-gradient(135deg, #1e3a24 0%, #0f2014 100%); border-radius: 16px; padding: 24px; color: #ffffff; margin-bottom: 44px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); border: 2px solid var(--color-forest);">
+      <div style="background: linear-gradient(135deg, #1e3a24 0%, #0f2014 100%); border-radius: 16px; padding: 24px; color: #ffffff; margin-bottom: 44px; box-shadow: none; border: 1px solid var(--color-forest);">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
           <div>
             <span style="background: var(--color-terracotta); color: #ffffff; font-weight: 700; font-size: 0.78rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">Cinematische Video • Voiceover &amp; Muziek</span>
@@ -407,7 +407,7 @@
             <span style="color: #4ade80;">●</span> 720p HD &bull; 47 sec &bull; Audio
           </div>
         </div>
-        <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 520px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+        <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 520px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: none; border: 1px solid rgba(255,255,255,0.15);">
           <video id="showroomVideoPlayer" controls playsinline preload="auto" poster="assets/gevel_video_new_preview.jpg?v=10.402" style="width: 100%; height: 100%; object-fit: contain; display: block; background: #000;">
             <source src="assets/showroom_rondleiding_merwedestraat.mp4?v=10.402" type="video/mp4">
             Uw browser ondersteunt de videotag niet.

@@ -2485,8 +2485,9 @@ section[id], section {
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .match-score-badge {
@@ -2661,6 +2662,7 @@ section[id], section {
   overflow: hidden !important;
 }
 
+/* Productkaarten / Stoelfoto's: GEEN rand of schaduw om de foto */
 .product-image img:not(.quality-stamp),
 #offersGrid .product-image img:not(.quality-stamp),
 .offers-top3-grid .product-image img:not(.quality-stamp),
@@ -2671,14 +2673,15 @@ section[id], section {
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: contain !important;
-  border-radius: 16px !important;
+  border-radius: 0 !important;
   padding: 0 !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: none !important;
+  border: none !important;
   flex-shrink: 1 !important;
   min-width: 0 !important;
 }
 
-/* Stoelfoto's op productpagina's en modal altijd met afgeronde hoeken (ook .png foto's) */
+/* Stoelfoto's op productpagina's en modal */
 .main-image-frame img,
 .main-image-frame img.has-photo-bg,
 .modal-image-wrapper img:not(.quality-stamp),
@@ -2688,8 +2691,41 @@ section[id], section {
   width: auto;
   height: auto;
   max-width: 100%;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Alleen winkelfoto's / showroomfoto's: afgeronde rand, GEEN schaduw */
+.winkelfoto,
+.showroom-foto,
+.showroom-img,
+.gallery-item,
+.gallery-img-container,
+.gallery-img,
+.showroom-link-container,
+.showroom-link-img,
+img.winkelfoto,
+img[src*="pand.jpg"],
+img[src*="showroom_"],
+img[src*="bezorging.png"],
+img[alt*="winkelpand" i],
+img[alt*="showroom" i] {
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+
+.gallery-item,
+.showroom-link-container {
+  border: 1px solid var(--color-gray-light, #cbd5e1) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+
+.gallery-item:hover,
+.showroom-link-container:hover {
+  box-shadow: none !important;
+  border-color: var(--color-sage, #86a789) !important;
 }
 
 .gallery-thumbnail {
@@ -5967,8 +6003,9 @@ input[type="checkbox"] {
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
   transition: opacity 0.2s ease;
 }
 
@@ -6361,9 +6398,9 @@ input[type="checkbox"] {
 .showroom-link-container {
   display: block;
   overflow: hidden;
-  border-radius: var(--radius-md);
-  border: 3px solid var(--color-light);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 14px !important;
+  border: 1px solid var(--color-gray-light) !important;
+  box-shadow: none !important;
   transition: var(--transition-smooth);
   width: 240px;
   height: 180px;
@@ -6372,8 +6409,8 @@ input[type="checkbox"] {
 
 .showroom-link-container:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  border-color: var(--color-sage);
+  box-shadow: none !important;
+  border-color: var(--color-sage) !important;
 }
 
 .showroom-link-img {

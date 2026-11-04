@@ -443,8 +443,9 @@ function sync_static_chair_pages($chairs = null) {
       max-width: 100%;
       max-height: 440px;
       object-fit: contain;
-      border-radius: 16px !important;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
       transition: opacity 0.25s ease;
     }
     .gallery-thumbnail {
