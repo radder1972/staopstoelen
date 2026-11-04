@@ -2485,7 +2485,7 @@ section[id], section {
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 0 !important;
+  border-radius: 12px !important;
   box-shadow: none !important;
   border: none !important;
 }
@@ -2662,7 +2662,7 @@ section[id], section {
   overflow: hidden !important;
 }
 
-/* Productkaarten / Stoelfoto's: GEEN rand of schaduw om de foto */
+/* Productkaarten / Stoelfoto's: GEEN rand of schaduw om de foto, wel zacht afgeronde hoekjes */
 .product-image img:not(.quality-stamp),
 #offersGrid .product-image img:not(.quality-stamp),
 .offers-top3-grid .product-image img:not(.quality-stamp),
@@ -2673,7 +2673,7 @@ section[id], section {
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: contain !important;
-  border-radius: 0 !important;
+  border-radius: 12px !important;
   padding: 0 !important;
   box-shadow: none !important;
   border: none !important;
@@ -2691,7 +2691,7 @@ section[id], section {
   width: auto;
   height: auto;
   max-width: 100%;
-  border-radius: 0 !important;
+  border-radius: 14px !important;
   box-shadow: none !important;
   border: none !important;
 }
@@ -6003,7 +6003,7 @@ input[type="checkbox"] {
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 0 !important;
+  border-radius: 14px !important;
   box-shadow: none !important;
   border: none !important;
   transition: opacity 0.2s ease;
