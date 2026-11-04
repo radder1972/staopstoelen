@@ -804,7 +804,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.386
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.404
       </div>
     </div>
   </footer>
