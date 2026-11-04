@@ -929,17 +929,31 @@
       </div>
 
       <!-- Directe Vergelijking: Origineel vs. Opgepompt -->
-      <h4 style="color: var(--color-forest-dark); font-size: 1.35rem; margin-bottom: 8px;">Directe Sfeerimpressies: Origineel vs. Opgepompt</h4>
-      <p style="color: var(--color-gray); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
-        Geen verbouwing of fantasiepand, maar de <strong>echte Dordtse winkel</strong> aan de Merwedestraat 239: verrijkt met warme saliegroene wanden, monumentengroene accenten, 2700K sfeerverlichting en officiële Certified Fitform &amp; 5-Punts Zitmeting wanddecoratie.
-      </p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+        <div>
+          <h4 style="color: var(--color-forest-dark); font-size: 1.35rem; margin-bottom: 6px;">Directe Sfeerimpressies: Origineel vs. 3D Render</h4>
+          <p style="color: var(--color-gray); font-size: 1.02rem; line-height: 1.5; margin: 0;">
+            Kies hieronder het afwerkingsniveau: de snelle quick win (behoud vloer) óf de extra luxe stap met een warm eiken visgraat PVC vloertje.
+          </p>
+        </div>
+        <!-- Interactieve Vloer Toggle -->
+        <div style="display: inline-flex; background: #e2e8f0; padding: 4px; border-radius: 30px; gap: 4px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);">
+          <button id="btnVloerBasis" onclick="switchVloerRender('basis')" style="border: none; background: #ffffff; color: var(--color-forest-dark); font-weight: 700; font-size: 0.88rem; padding: 8px 18px; border-radius: 24px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.08); transition: all 0.2s ease;">
+            🌿 Stap 1: Behoud Vloer
+          </button>
+          <button id="btnVloerVisgraat" onclick="switchVloerRender('visgraat')" style="border: none; background: transparent; color: #64748b; font-weight: 700; font-size: 0.88rem; padding: 8px 18px; border-radius: 24px; cursor: pointer; transition: all 0.2s ease;">
+            ✨ Extra Stap: Mét Visgraat PVC
+          </button>
+        </div>
+      </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 48px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px;">
         
         <!-- Paar 1: Stoelen & Wand -->
         <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--color-gray-light);">
-          <div style="padding: 16px 20px; background: var(--color-cream-dark); border-bottom: 1px solid var(--color-gray-light); font-weight: 700; color: var(--color-forest-dark);">
-            1. Binnenruimte: Stoelenopstelling &amp; Achterwand
+          <div style="padding: 16px 20px; background: var(--color-cream-dark); border-bottom: 1px solid var(--color-gray-light); font-weight: 700; color: var(--color-forest-dark); display: flex; justify-content: space-between; align-items: center;">
+            <span>1. Binnenruimte: Stoelen &amp; Achterwand</span>
+            <span id="headerVloerBadge1" style="font-size: 0.75rem; background: var(--color-sage-light); color: var(--color-forest); padding: 3px 8px; border-radius: 12px; font-weight: 600;">Stap 1: Bestaande Vloer</span>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px;">
             <div style="position: relative;">
@@ -947,19 +961,20 @@
               <img src="assets/showroom_origineel_stoelen.webp" alt="Originele stoelenopstelling Merwedestraat" style="width: 100%; height: 210px; object-fit: cover; border-radius: 8px;">
             </div>
             <div style="position: relative;">
-              <span style="position: absolute; top: 8px; left: 8px; background: var(--color-forest); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; z-index: 2;">3D RENDER</span>
-              <img src="assets/showroom_render_stoelen_merwedestraat.jpg?v=10.388" alt="Fotorealistische render van de showroom met saliegroene wand en Fitform zegels" style="width: 100%; height: 210px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-sage);">
+              <span id="renderStoelenBadge" style="position: absolute; top: 8px; left: 8px; background: var(--color-forest); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; z-index: 2; transition: all 0.3s ease;">3D RENDER</span>
+              <img id="renderStoelenImg" src="assets/showroom_render_stoelen_merwedestraat.jpg?v=10.390" alt="Fotorealistische render van de showroom met saliegroene wand en Fitform zegels" style="width: 100%; height: 210px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-sage); transition: opacity 0.25s ease;">
             </div>
           </div>
-          <div style="padding: 12px 20px 18px; font-size: 0.92rem; color: var(--color-gray); line-height: 1.5;">
-            <strong>Verfijningen:</strong> Warme saliegroene wandafwerking met behoud van alle schaduwen en dieptewerking, officiële Certified Fitform Partner plaque en 5-punts zitmeting poster in de bestaande wissellijsten, plus warme 2700K sfeerverlichting op de stoelen.
+          <div id="renderStoelenDesc" style="padding: 12px 20px 18px; font-size: 0.92rem; color: var(--color-gray); line-height: 1.5; min-height: 80px;">
+            <strong>Verfijningen:</strong> Warme saliegroene wandafwerking met behoud van de bestaande vloer, officiële Certified Fitform Partner plaque en 5-punts zitmeting poster in de wissellijsten, plus warme 2700K sfeerverlichting op de stoelen.
           </div>
         </div>
 
         <!-- Paar 2: Etalage & Pui -->
         <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--color-gray-light);">
-          <div style="padding: 16px 20px; background: var(--color-cream-dark); border-bottom: 1px solid var(--color-gray-light); font-weight: 700; color: var(--color-forest-dark);">
-            2. Etalage &amp; Zicht op de Merwedestraat
+          <div style="padding: 16px 20px; background: var(--color-cream-dark); border-bottom: 1px solid var(--color-gray-light); font-weight: 700; color: var(--color-forest-dark); display: flex; justify-content: space-between; align-items: center;">
+            <span>2. Etalage &amp; Zicht op Merwedestraat</span>
+            <span id="headerVloerBadge2" style="font-size: 0.75rem; background: var(--color-sage-light); color: var(--color-forest); padding: 3px 8px; border-radius: 12px; font-weight: 600;">Stap 1: Bestaande Vloer</span>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px;">
             <div style="position: relative;">
@@ -967,16 +982,166 @@
               <img src="assets/showroom_origineel_etalage.webp" alt="Origineel zicht op de etalage Merwedestraat" style="width: 100%; height: 210px; object-fit: cover; border-radius: 8px;">
             </div>
             <div style="position: relative;">
-              <span style="position: absolute; top: 8px; left: 8px; background: var(--color-forest); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; z-index: 2;">3D RENDER</span>
-              <img src="assets/showroom_render_etalage_merwedestraat.jpg?v=10.388" alt="Fotorealistische render van de etalage met monumentengroen en warme verlichting" style="width: 100%; height: 210px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-sage);">
+              <span id="renderEtalageBadge" style="position: absolute; top: 8px; left: 8px; background: var(--color-forest); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; z-index: 2; transition: all 0.3s ease;">3D RENDER</span>
+              <img id="renderEtalageImg" src="assets/showroom_render_etalage_merwedestraat.jpg?v=10.390" alt="Fotorealistische render van de etalage met monumentengroen en warme verlichting" style="width: 100%; height: 210px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-sage); transition: opacity 0.25s ease;">
             </div>
           </div>
-          <div style="padding: 12px 20px 18px; font-size: 0.92rem; color: var(--color-gray); line-height: 1.5;">
-            <strong>Verfijningen:</strong> Uitgelichte en warme winkelruimte met saliegroene accentwand, ingelijst Certified Fitform keurmerk, monumentengroene kozijnen en 100% behoud van het authentieke Merwedestraat straatbeeld door de ramen.
+          <div id="renderEtalageDesc" style="padding: 12px 20px 18px; font-size: 0.92rem; color: var(--color-gray); line-height: 1.5; min-height: 80px;">
+            <strong>Verfijningen:</strong> Uitgelichte winkelruimte met behoud van de vloer, saliegroene accentwand, ingelijst Certified Fitform keurmerk, monumentengroene kozijnen en 100% behoud van het authentieke Merwedestraat straatbeeld door de ramen.
           </div>
         </div>
 
       </div>
+
+      <!-- Extra Spotlight Card: Vloertransformatie Uitgelicht -->
+      <div style="background: linear-gradient(135deg, #fffbf5 0%, #fef3c7 100%); border: 2px solid #fcd34d; border-radius: 16px; padding: 24px 28px; margin-bottom: 48px; box-shadow: 0 8px 24px rgba(217,119,6,0.08);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.6rem;">✨</span>
+            <h4 style="color: #92400e; margin: 0; font-size: 1.25rem; font-family: var(--font-heading);">Extra Stap: Het effect van een Visgraat PVC Vloertje</h4>
+          </div>
+          <span style="background: #f59e0b; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">Boutique Upgrade</span>
+        </div>
+        <p style="color: #78350f; font-size: 0.98rem; line-height: 1.6; margin-bottom: 20px;">
+          Waar <strong>Stap 1</strong> zich richt op een snelle, budgetvriendelijke verfrissing met verf en styling (behoud bestaande vloer), laat deze <strong>Extra Stap</strong> zien wat er gebeurt als er een warm eiken visgraat PVC vloertje met v-groef over de vloer wordt gelegd. De akoestiek wordt direct warmer, de stoelen komen fabelachtig tot hun recht en de winkel transformeert van zorgruimte naar een luxe ergonomische designstudio.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div style="background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #fde68a;">
+            <div style="position: relative;">
+              <span style="position: absolute; top: 8px; left: 8px; background: #b45309; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px;">VISGRAAT PVC • ZITHOEK</span>
+              <img src="assets/showroom_render_stoelen_visgraat_pvc.jpg?v=10.390" alt="Zithoek met warm eiken visgraat PVC vloer" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+            </div>
+            <div style="padding: 10px 14px; font-size: 0.85rem; color: #451a03; line-height: 1.4;">
+              <strong>Stoelenopstelling:</strong> Warm eiken visgraatpatroon vloeit naadloos door onder de fauteuils en adviestafel.
+            </div>
+          </div>
+          <div style="background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #fde68a;">
+            <div style="position: relative;">
+              <span style="position: absolute; top: 8px; left: 8px; background: #b45309; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px;">VISGRAAT PVC • ETALAGE</span>
+              <img src="assets/showroom_render_etalage_visgraat_pvc.jpg?v=10.390" alt="Etalage met warm eiken visgraat PVC vloer" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+            </div>
+            <div style="padding: 10px 14px; font-size: 0.85rem; color: #451a03; line-height: 1.4;">
+              <strong>Pui &amp; Entree:</strong> Doorkijk vanaf de entree richting de Merwedestraat met hoogwaardige pvc visgraatstroken.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function switchVloerRender(mode) {
+          const btnBasis = document.getElementById('btnVloerBasis');
+          const btnVisgraat = document.getElementById('btnVloerVisgraat');
+          const imgStoelen = document.getElementById('renderStoelenImg');
+          const badgeStoelen = document.getElementById('renderStoelenBadge');
+          const descStoelen = document.getElementById('renderStoelenDesc');
+          const headerBadge1 = document.getElementById('headerVloerBadge1');
+          
+          const imgEtalage = document.getElementById('renderEtalageImg');
+          const badgeEtalage = document.getElementById('renderEtalageBadge');
+          const descEtalage = document.getElementById('renderEtalageDesc');
+          const headerBadge2 = document.getElementById('headerVloerBadge2');
+
+          if (mode === 'visgraat') {
+            btnBasis.style.background = 'transparent';
+            btnBasis.style.color = '#64748b';
+            btnBasis.style.boxShadow = 'none';
+
+            btnVisgraat.style.background = '#f39223';
+            btnVisgraat.style.color = '#ffffff';
+            btnVisgraat.style.boxShadow = '0 2px 8px rgba(243,146,35,0.3)';
+
+            if (headerBadge1) {
+              headerBadge1.innerText = 'Extra Stap: Visgraat PVC';
+              headerBadge1.style.background = '#fef3c7';
+              headerBadge1.style.color = '#b45309';
+            }
+            if (headerBadge2) {
+              headerBadge2.innerText = 'Extra Stap: Visgraat PVC';
+              headerBadge2.style.background = '#fef3c7';
+              headerBadge2.style.color = '#b45309';
+            }
+
+            if (imgStoelen) {
+              imgStoelen.style.opacity = '0.4';
+              setTimeout(() => {
+                imgStoelen.src = 'assets/showroom_render_stoelen_visgraat_pvc.jpg?v=10.390';
+                imgStoelen.style.opacity = '1';
+              }, 120);
+            }
+            if (badgeStoelen) {
+              badgeStoelen.innerText = 'EXTRA STAP: VISGRAAT PVC';
+              badgeStoelen.style.background = '#d97706';
+            }
+            if (descStoelen) {
+              descStoelen.innerHTML = '<strong>Extra Stap (Luxe Visgraat PVC):</strong> Naast de saliegroene wand en Fitform plaquettes is de vloer voorzien van een warm eiken visgraat PVC vloertje met subtiele v-groef. De showroom krijgt hierdoor direct de exclusieve, warme uitstraling van een luxe woonboetiek.';
+            }
+
+            if (imgEtalage) {
+              imgEtalage.style.opacity = '0.4';
+              setTimeout(() => {
+                imgEtalage.src = 'assets/showroom_render_etalage_visgraat_pvc.jpg?v=10.390';
+                imgEtalage.style.opacity = '1';
+              }, 120);
+            }
+            if (badgeEtalage) {
+              badgeEtalage.innerText = 'EXTRA STAP: VISGRAAT PVC';
+              badgeEtalage.style.background = '#d97706';
+            }
+            if (descEtalage) {
+              descEtalage.innerHTML = '<strong>Extra Stap (Luxe Visgraat PVC):</strong> De visgraatvloer loopt drempelloos door tot aan de pui en entree, omlijst door de monumentengroene kozijnen en met helder zicht op de Merwedestraat. Rust, warmte en een hoogwaardig zitspecialist-gevoel.';
+            }
+          } else {
+            btnVisgraat.style.background = 'transparent';
+            btnVisgraat.style.color = '#64748b';
+            btnVisgraat.style.boxShadow = 'none';
+
+            btnBasis.style.background = '#ffffff';
+            btnBasis.style.color = 'var(--color-forest-dark)';
+            btnBasis.style.boxShadow = '0 2px 6px rgba(0,0,0,0.08)';
+
+            if (headerBadge1) {
+              headerBadge1.innerText = 'Stap 1: Bestaande Vloer';
+              headerBadge1.style.background = 'var(--color-sage-light)';
+              headerBadge1.style.color = 'var(--color-forest)';
+            }
+            if (headerBadge2) {
+              headerBadge2.innerText = 'Stap 1: Bestaande Vloer';
+              headerBadge2.style.background = 'var(--color-sage-light)';
+              headerBadge2.style.color = 'var(--color-forest)';
+            }
+
+            if (imgStoelen) {
+              imgStoelen.style.opacity = '0.4';
+              setTimeout(() => {
+                imgStoelen.src = 'assets/showroom_render_stoelen_merwedestraat.jpg?v=10.390';
+                imgStoelen.style.opacity = '1';
+              }, 120);
+            }
+            if (badgeStoelen) {
+              badgeStoelen.innerText = '3D RENDER (BASIS VLOER)';
+              badgeStoelen.style.background = 'var(--color-forest)';
+            }
+            if (descStoelen) {
+              descStoelen.innerHTML = '<strong>Stap 1 (Behoud Vloer):</strong> Warme saliegroene wandafwerking met behoud van de bestaande vloer, officiële Certified Fitform Partner plaque en 5-punts zitmeting poster in de wissellijsten, plus warme 2700K sfeerverlichting op de stoelen.';
+            }
+
+            if (imgEtalage) {
+              imgEtalage.style.opacity = '0.4';
+              setTimeout(() => {
+                imgEtalage.src = 'assets/showroom_render_etalage_merwedestraat.jpg?v=10.390';
+                imgEtalage.style.opacity = '1';
+              }, 120);
+            }
+            if (badgeEtalage) {
+              badgeEtalage.innerText = '3D RENDER (BASIS VLOER)';
+              badgeEtalage.style.background = 'var(--color-forest)';
+            }
+            if (descEtalage) {
+              descEtalage.innerHTML = '<strong>Stap 1 (Behoud Vloer):</strong> Uitgelichte en warme winkelruimte met behoud van de vloer, saliegroene accentwand, ingelijst Certified Fitform keurmerk, monumentengroene kozijnen en 100% behoud van het authentieke Merwedestraat straatbeeld door de ramen.';
+            }
+          }
+        }
+      </script>
 
       <!-- Sfeerimpressies Gallery: Styling details -->
       <h4 style="color: var(--color-forest-dark); font-size: 1.3rem; margin-bottom: 16px;">Aanvullende Stylingdetails &amp; Donkergroene Voordeur</h4>
