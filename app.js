@@ -2822,8 +2822,8 @@ function initFloatingMenu() {
     const st = document.createElement("style");
     st.id = "da-inline-styles";
     st.textContent = `
-      .nav-text-logo.has-chair-logo { display: inline-flex !important; align-items: center !important; gap: 10px !important; top: 6px !important; white-space: nowrap !important; word-break: keep-all !important; }
-      .nav-chair-logo-icon { width: 50px !important; height: 50px !important; max-width: 50px !important; max-height: 50px !important; object-fit: contain !important; flex-shrink: 0 !important; display: block !important; transform-origin: 50% 80%; filter: drop-shadow(0 4px 8px rgba(18,43,7,0.16)); cursor: pointer; animation: none !important; }
+      .nav-text-logo { display: inline-flex !important; flex-direction: column !important; align-items: flex-start !important; white-space: nowrap !important; word-break: keep-all !important; }
+      .nav-chair-logo-icon { display: none !important; }
       .nav-logo-text-group { display: flex !important; flex-direction: column !important; color: var(--color-forest, #4b8f24) !important; white-space: nowrap !important; word-break: keep-all !important; }
       .nav-logo-main { white-space: nowrap !important; word-break: keep-all !important; display: inline-flex !important; align-items: baseline !important; }
       .nav-logo-text-group span, .nav-text-logo span, .footer-col h3 span { color: #f39223 !important; }
@@ -2888,9 +2888,8 @@ function initFloatingMenu() {
         .navbar { width: 100% !important; max-width: 100% !important; left: 0 !important; right: 0 !important; margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
         .navbar .container, .container.navbar-container, .navbar-container { width: 100% !important; max-width: 100% !important; padding: 0 !important; margin: 0 !important; box-sizing: border-box !important; }
         .navbar-top-right { width: 100% !important; max-width: 100% !important; left: 0 !important; right: 0 !important; margin: 0 !important; box-sizing: border-box !important; }
-        .nav-chair-logo-icon { display: block !important; width: 38px !important; height: 38px !important; max-width: 38px !important; max-height: 38px !important; object-fit: contain !important; flex-shrink: 0 !important; filter: drop-shadow(0 2px 5px rgba(18, 43, 7, 0.18)) !important; }
-        .nav-text-logo.has-chair-logo { position: relative !important; top: auto !important; left: 0 !important; margin: 0 !important; margin-right: auto !important; align-self: flex-start !important; display: inline-flex !important; flex-direction: row !important; align-items: center !important; justify-content: flex-start !important; gap: 9px !important; white-space: nowrap !important; word-break: keep-all !important; }
-        .nav-text-logo { position: relative !important; top: auto !important; left: 0 !important; margin: 0 !important; margin-right: auto !important; align-self: flex-start !important; font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important; display: inline-flex !important; align-items: center !important; justify-content: flex-start !important; text-align: left !important; }
+        .nav-chair-logo-icon { display: none !important; }
+        .nav-text-logo { position: relative !important; top: auto !important; left: 0 !important; margin: 0 !important; margin-right: auto !important; align-self: flex-start !important; font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important; display: inline-flex !important; flex-direction: column !important; align-items: flex-start !important; justify-content: flex-start !important; text-align: left !important; }
         .nav-logo-text-group { display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; }
         .nav-logo-main { font-size: clamp(1.22rem, 4.6vw, 1.55rem) !important; line-height: 1 !important; display: inline-flex !important; align-items: baseline !important; }
         .nav-logo-strapline { font-size: 0.62rem !important; margin-top: 3px !important; display: block !important; line-height: 1 !important; }
@@ -2911,22 +2910,10 @@ function initFloatingMenu() {
     document.head.appendChild(st);
   }
 
-  // Plaats het 3D Sta-op Stoel logo direct naast "staopstoelen.nl" in de navigatiebalk
-  const navLogo = document.getElementById("navTextLogo") || document.querySelector(".nav-text-logo");
-  let navChairImg = null;
-  if (navLogo && !navLogo.querySelector(".nav-chair-logo-icon")) {
-    const existingInner = navLogo.innerHTML;
-    let safeInner = existingInner.trim();
-    if (!safeInner.includes("nav-logo-main")) {
-      safeInner = `<div class="nav-logo-main" style="white-space:nowrap !important;word-break:keep-all !important;display:inline-flex !important;align-items:baseline !important;">${safeInner}</div><div class="nav-logo-strapline" style="white-space:nowrap !important;word-break:keep-all !important;">Specialist in ergonomisch zitcomfort</div>`;
-    }
-    navLogo.classList.add("has-chair-logo");
-    navLogo.style.cssText += ";display:inline-flex !important;align-items:center !important;gap:10px !important;white-space:nowrap !important;word-break:keep-all !important;";
-    navLogo.innerHTML = `
-      <img src="${logoChairSrc}" width="50" height="50" style="width:50px;height:50px;max-width:50px;max-height:50px;flex-shrink:0;display:block;object-fit:contain;" alt="Staopstoelen.nl 3D Sta-op Stoel Logo" class="nav-chair-logo-icon" id="navChairLogoImg">
-      <div class="nav-logo-text-group" style="display:flex;flex-direction:column;white-space:nowrap !important;word-break:keep-all !important;">${safeInner}</div>
-    `;
-    navChairImg = document.getElementById("navChairLogoImg");
+  // Zorg dat de navigatiebalk uitsluitend het zuivere tekstlogo toont (geen stoel-icoon)
+  const navChair = document.querySelector(".nav-chair-logo-icon");
+  if (navChair && navChair.closest(".navbar, .nav-text-logo, header")) {
+    navChair.remove();
   }
 
   // Verberg het oude losse 3-knoppen menu (deze zitten nu geïntegreerd onderin de Digitale Assistent)
@@ -3164,10 +3151,8 @@ function initFloatingMenu() {
   }
 
   function triggerChairDance(imgEl, withMusic = false) {
-    // Stoeltje in het logo animeert nooit; alle andere stoelen (zoals de zwevende assistent en panel avatar) wel
     const targets = imgEl ? [imgEl] : [fabImg, headerImg].filter(Boolean);
     targets.forEach((img) => {
-      if (img === navChairImg) return;
       img.classList.remove("chair-dancing");
       void img.offsetWidth;
       img.src = danceChairSrc;
@@ -3184,11 +3169,6 @@ function initFloatingMenu() {
     if (withMusic) {
       playChairDanceTune();
     }
-  }
-
-  // Het logo in de navigatiebalk is puur een rustige, statische link naar de homepage (geen dans)
-  if (navLogo && navChairImg) {
-    navChairImg.style.pointerEvents = "auto";
   }
 
   window.triggerAssistantChairDance = () => triggerChairDance(null, true);
