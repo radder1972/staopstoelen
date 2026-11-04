@@ -2,7 +2,7 @@
 """
 scripts/generate_showroom_video.py
 Genereert een vloeiende, cinematische 720p 30fps video rondleiding van de nieuwe showroom,
-met transformaties van de oorspronkelijke POV foto's naar:
+inclusief voice-over (Alexander van ElevenLabs) en warme achtergrondmuziek:
 1) Gevel Make-Over (investering ca. € 1.750 - € 2.850)
 2) Etalage: Stap 1 Saliegroen & Rust (investering ca. € 1.100 - € 2.200) -> Extra Stap: Visgraat PVC
 3) Stoelenopstelling: 25 stoelen capaciteit (terugverdientijd: 2 à 3 stoelen!)
@@ -12,14 +12,16 @@ met transformaties van de oorspronkelijke POV foto's naar:
 
 import os
 import math
+import subprocess
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 import imageio
 
 WIDTH = 1280
 HEIGHT = 720
 FPS = 30
 FONT_PATH = '/System/Library/Fonts/HelveticaNeue.ttc'
+FFMPEG = '/Users/matthiasradder/.local/bin/ffmpeg'
 
 def load_font(size, bold=False):
     index = 1 if bold else 0
@@ -232,8 +234,11 @@ def render_investment_card():
     return img
 
 def main():
-    output_path = 'assets/showroom_rondleiding_merwedestraat.mp4'
-    print(f"🎬 Start generatie van complete video mét Investerings- & Rendementsraming: {output_path}")
+    final_video_path = 'assets/showroom_rondleiding_merwedestraat.mp4'
+    temp_raw_video = '/tmp/showroom_video_raw.mp4'
+    master_audio = 'assets/audio/showroom_video/master_soundtrack.m4a'
+    
+    print(f"🎬 Start generatie van complete video mét Voiceover & Muziek: {final_video_path}")
     
     img_pand_orig = Image.open('assets/pand.jpg').convert("RGB")
     img_pand_new = Image.open('assets/pand_makeover_huisstijl_merwedestraat.jpg').convert("RGB")
@@ -250,38 +255,37 @@ def main():
     
     outro_path = 'assets/outro_card_broadcast.png'
     if not os.path.exists(outro_path):
-        import subprocess
         subprocess.run(['python3', 'scripts/render_outro_card.py'], check=True)
     img_outro = Image.open(outro_path).convert("RGB")
     
     writer = imageio.get_writer(
-        output_path,
+        temp_raw_video,
         fps=FPS,
         codec='libx264',
         quality=8,
-        pixelformat='yuv420p',
-        ffmpeg_params=['-movflags', '+faststart']
+        pixelformat='yuv420p'
     )
     
     frame_idx = 0
     
     # -------------------------------------------------------------
-    # SCENE 1: PUI & GEVEL MAKE-OVER (0 - 165 frames = 5.5s)
+    # SCENE 1: PUI & GEVEL MAKE-OVER (320 frames = 10.67s)
+    # Voiceover scene1: 9.69s (starts @ 0.4s, ends @ 10.1s)
     # -------------------------------------------------------------
-    print("  ► Renderen Scene 1: Gevel Make-Over & Investering...")
-    for f in range(165):
-        t = f / 165.0
-        zoom_orig = 1.0 + 0.06 * ease_in_out(t)
-        zoom_new = 1.04 + 0.08 * ease_in_out(t)
+    print("  ► Renderen Scene 1: Gevel Make-Over & Voiceover (320 frames)...")
+    for f in range(320):
+        t = f / 320.0
+        zoom_orig = 1.0 + 0.05 * ease_in_out(t)
+        zoom_new = 1.04 + 0.07 * ease_in_out(t)
         
-        f_orig = get_cam_frame(img_pand_orig, zoom=zoom_orig, pan_x=0.0, pan_y=0.04 * ease_in_out(t))
+        f_orig = get_cam_frame(img_pand_orig, zoom=zoom_orig, pan_x=0.0, pan_y=0.03 * ease_in_out(t))
         f_new = get_cam_frame(img_pand_new, zoom=zoom_new, pan_x=-0.01 * ease_in_out(t), pan_y=0.01)
         
-        if f < 45:
+        if f < 75:
             frame = f_orig
             frame = draw_lower_third(frame, "Winkelpand Merwedestraat 239", "Het vertrouwde adres van Schipper Compact Wonen in Dordrecht", "HUIDIGE GEVEL POV", (15, 23, 42))
-        elif f < 115:
-            st = (f - 45) / 70.0
+        elif f < 195:
+            st = (f - 75) / 120.0
             frame = draw_transition_wipe(f_orig, f_new, st, direction='ltr', label_base="ORIGINEEL", label_overlay="NIEUWE HUISSTIJL ✦", line_color=(245, 140, 45, 240), overlay_tag_bg=(35, 95, 45, 225))
             frame = draw_lower_third(frame, "Gevel Make-Over: ca. € 1.750 - € 2.850", "Grijze pui behouden • Nieuwe Dibond panelen, 45° vlaggen & oranje stoel", "GEVEL MAKE-OVER ✦", (220, 120, 30))
         else:
@@ -292,11 +296,12 @@ def main():
         frame_idx += 1
         
     # -------------------------------------------------------------
-    # SCENE 2: ETALAGE TRANSFORMATIE (240 frames = 8.0s)
+    # SCENE 2: ETALAGE TRANSFORMATIE (300 frames = 10.0s)
+    # Voiceover scene2: 8.54s (starts @ 10.97s, ends @ 19.51s)
     # -------------------------------------------------------------
-    print("  ► Renderen Scene 2: Etalage Transformatie...")
-    for f in range(240):
-        t = f / 240.0
+    print("  ► Renderen Scene 2: Etalage Transformatie (300 frames)...")
+    for f in range(300):
+        t = f / 300.0
         zoom_orig = 1.0 + 0.05 * ease_in_out(t)
         zoom_rend = 1.04 + 0.06 * ease_in_out(t)
         zoom_vis = 1.06 + 0.07 * ease_in_out(t)
@@ -308,15 +313,15 @@ def main():
         if f < 45:
             frame = f_orig
             frame = draw_lower_third(frame, "Bestaande Situatie Etalage", "Brede glazen pui aan de straat met authentieke entreedeur", "ORIGINELE ETALAGE POV", (15, 23, 42))
-        elif f < 105:
-            st = (f - 45) / 60.0
+        elif f < 135:
+            st = (f - 45) / 90.0
             frame = draw_transition_wipe(f_orig, f_rend, st, direction='ltr', label_base="ORIGINEEL", label_overlay="SALIEGROEN ✦", line_color=(245, 140, 45, 240), overlay_tag_bg=(35, 95, 45, 225))
             frame = draw_lower_third(frame, "Stap 1: Saliegroene Wanden & Rust in Etalage", "Investering styling & wanden ca. € 1.100 - € 2.200 • Oranje stoel in raam", "STAP 1: STYLING ✦", (220, 120, 30))
-        elif f < 135:
+        elif f < 165:
             frame = f_rend
             frame = draw_lower_third(frame, "Styling & Wanden: ca. € 1.100 - € 2.200", "Saliegroen, akoestische zuil, etalagepodium en Fitform borden", "STAP 1: STYLING ✦", (35, 95, 45))
-        elif f < 195:
-            st = (f - 135) / 60.0
+        elif f < 255:
+            st = (f - 165) / 90.0
             frame = draw_transition_wipe(f_rend, f_vis, st, direction='rtl', label_base="SALIEGROEN", label_overlay="VISGRAAT PVC ★", line_color=(245, 170, 30, 245), overlay_tag_bg=(217, 119, 6, 230))
             frame = draw_lower_third(frame, "Extra Stap: Warm Eiken Visgraat PVC Vloertje", "Oranje Fitform trots in het raam • Optionele boutique upgrade", "EXTRA STAP: VISGRAAT PVC ✨", (217, 119, 6))
         else:
@@ -327,11 +332,12 @@ def main():
         frame_idx += 1
 
     # -------------------------------------------------------------
-    # SCENE 3: STOELEN & ACHTERWAND (240 frames = 8.0s)
+    # SCENE 3: STOELEN & ACHTERWAND (270 frames = 9.0s)
+    # Voiceover scene3: 7.76s (starts @ 20.97s, ends @ 28.73s)
     # -------------------------------------------------------------
-    print("  ► Renderen Scene 3: Stoelenopstelling & 25 Stoelen Capaciteit...")
-    for f in range(240):
-        t = f / 240.0
+    print("  ► Renderen Scene 3: Stoelenopstelling & 25 Stoelen (270 frames)...")
+    for f in range(270):
+        t = f / 270.0
         zoom_orig = 1.0 + 0.05 * ease_in_out(t)
         zoom_rend = 1.04 + 0.06 * ease_in_out(t)
         zoom_vis = 1.06 + 0.07 * ease_in_out(t)
@@ -343,15 +349,15 @@ def main():
         if f < 45:
             frame = f_orig
             frame = draw_lower_third(frame, "Bestaande Stoelenopstelling", "Ruime opstelling van sta-op stoelen op laminaatvloer", "HUIDIGE SHOWROOM POV", (15, 23, 42))
-        elif f < 105:
-            st = (f - 45) / 60.0
+        elif f < 125:
+            st = (f - 45) / 80.0
             frame = draw_transition_wipe(f_orig, f_rend, st, direction='ltr', label_base="ORIGINEEL", label_overlay="SALIEGROEN ✦", line_color=(245, 140, 45, 240), overlay_tag_bg=(35, 95, 45, 225))
             frame = draw_lower_third(frame, "Capaciteit voor 25 Fauteuils (was Slaapzone)", "Slaapzone vervangen door Occasion Galerij • Direct meer keuze", "25 STOELEN CAPACITEIT ✦", (220, 120, 30))
-        elif f < 135:
+        elif f < 155:
             frame = f_rend
             frame = draw_lower_third(frame, "Certified Fitform Plaque & Meetstation", "Geertjan's 5-punts zitmeting spotlight en zorgbedden op de achtergrond", "STAP 1: SALIEGROEN ✦", (35, 95, 45))
-        elif f < 195:
-            st = (f - 135) / 60.0
+        elif f < 235:
+            st = (f - 155) / 80.0
             frame = draw_transition_wipe(f_rend, f_vis, st, direction='rtl', label_base="SALIEGROEN", label_overlay="VISGRAAT PVC ★", line_color=(245, 170, 30, 245), overlay_tag_bg=(217, 119, 6, 230))
             frame = draw_lower_third(frame, "Terugverdientijd: Slechts 2 à 3 Stoelen!", "Quick Win make-over al terugverdiend met 2 à 3 verkopen", "BUSINESS CASE ★", (217, 119, 6))
         else:
@@ -364,14 +370,13 @@ def main():
     last_scene_frame = frame.copy()
 
     # -------------------------------------------------------------
-    # SCENE 4: INVESTERINGS- & RENDEMENTSKAART (160 frames = 5.3s)
-    # Volledig overzicht van de kosten en de business case!
+    # SCENE 4: INVESTERINGS- & RENDEMENTSKAART (315 frames = 10.5s)
+    # Voiceover scene4: 9.61s (starts @ 29.97s, ends @ 39.58s)
     # -------------------------------------------------------------
-    print("  ► Renderen Scene 4: Investerings- & Terugverdienoverzicht (Business Case)...")
+    print("  ► Renderen Scene 4: Investerings- & Business Case Kaart (315 frames)...")
     fade_frames = 15
-    total_invest_frames = 160
-    for f in range(total_invest_frames):
-        t = f / float(total_invest_frames)
+    for f in range(315):
+        t = f / 315.0
         zoom = 1.0 + 0.015 * ease_in_out(t)
         base_invest = get_cam_frame(img_invest, zoom=zoom, pan_x=0.0, pan_y=0.0)
         
@@ -387,18 +392,23 @@ def main():
     last_invest_frame = frame.copy()
 
     # -------------------------------------------------------------
-    # SCENE 5: BROADCAST KWALITEIT SLOTKAART (140 frames = 4.7s)
+    # SCENE 5: BROADCAST KWALITEIT SLOTKAART (210 frames = 7.0s)
+    # Voiceover scene5: 5.56s (starts @ 40.47s, ends @ 46.03s)
     # -------------------------------------------------------------
-    print("  ► Renderen Scene 5: Broadcast Slotkaart (Huisstijl, Adres & Contact)...")
-    total_outro_frames = 140
-    for f in range(total_outro_frames):
-        t = f / float(total_outro_frames)
+    print("  ► Renderen Scene 5: Broadcast Slotkaart (210 frames)...")
+    for f in range(210):
+        t = f / 210.0
         zoom = 1.0 + 0.012 * ease_in_out(t)
         base_outro = get_cam_frame(img_outro, zoom=zoom, pan_x=0.0, pan_y=0.0)
         
         if f < fade_frames:
             blend_alpha = f / float(fade_frames)
             frame = Image.blend(last_invest_frame, base_outro, blend_alpha)
+        elif f > 195:
+            # Subtiele fade-out aan het allerlaatste einde
+            fade_out = (210 - f) / 15.0
+            black = Image.new('RGB', (WIDTH, HEIGHT), (0, 0, 0))
+            frame = Image.blend(black, base_outro, fade_out)
         else:
             frame = base_outro
             
@@ -407,13 +417,32 @@ def main():
         
     writer.close()
     
+    print(f"🎬 Raw video klaar: {temp_raw_video} ({frame_idx} frames, {frame_idx/FPS:.2f}s)")
+    print("🎵 Muxen met Master Soundtrack (Voiceover + Muziek)...")
+    
+    # Mux met FFMPEG
+    cmd = [
+        FFMPEG, '-y',
+        '-i', temp_raw_video,
+        '-i', master_audio,
+        '-c:v', 'copy',
+        '-c:a', 'aac',
+        '-b:a', '192k',
+        '-movflags', '+faststart',
+        final_video_path
+    ]
+    res = subprocess.run(cmd, capture_output=True, text=True)
+    if res.returncode == 0:
+        file_size_mb = os.path.getsize(final_video_path) / (1024 * 1024)
+        print(f"✅ Definitieve video met Voiceover & Muziek succesvol gereed: {final_video_path} ({file_size_mb:.2f} MB)")
+    else:
+        print("❌ Fout bij muxen:", res.stderr)
+        
+    # Poster afbeelding updaten
     poster_frame = get_cam_frame(img_pand_new, zoom=1.04, pan_x=-0.01, pan_y=0.01)
     poster_frame = draw_lower_third(poster_frame, "Showroom Dordrecht • Merwedestraat 239", "Grijze pui behouden • Nieuwe Staopstoelen huisstijl & bezorgbus", "BEKIJK RONDLEIDING ▶", (220, 120, 30))
     poster_frame.save('assets/showroom_video_poster.jpg', quality=95)
     poster_frame.save('assets/gevel_video_new_preview.jpg', quality=95)
-    
-    file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
-    print(f"✅ Complete video succesvol gegenereerd: {output_path} ({file_size_mb:.2f} MB, {frame_idx} frames, {frame_idx/FPS:.1f} seconden)")
 
 if __name__ == '__main__':
     main()
