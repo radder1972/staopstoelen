@@ -967,8 +967,8 @@ section[id], section {
 .hero-btn-occasions,
 .hero-btn-nieuw {
   display: inline-flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
+  flex-direction: row !important;
+  align-items: center !important;
   justify-content: center !important;
   height: 52px !important;
   min-height: 52px !important;
@@ -9353,8 +9353,7 @@ input[type="checkbox"] {
 
 .teaser-cta-badge {
   display: inline-flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
+  align-items: center !important;
   gap: 5px !important;
   background: #f39223 !important;
   color: #ffffff !important;
