@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factuur | Schipper Compact Wonen &amp; staopstoelen.nl</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=10.370">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-forest: #4b8f24;
+      --color-forest-dark: #122b07;
+      --color-sage: #6ab13c;
+      --color-sage-light: #eef7eb;
+      --color-terracotta: #f39223;
+      --color-terracotta-dark: #d27712;
+      --color-cream: #fbf9f5;
+      --color-cream-dark: #f3efe6;
+      --color-dark: #1d2024;
+      --color-gray: #555c63;
+      --color-gray-light: #cfd5dc;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background-color: #e9eef2;
+      padding: 24px 10px;
+      line-height: 1.35;
+      font-size: 12.5px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    input, textarea, select, button {
+      font-family: var(--font-body);
+    }
+
+    /* Screen Toolbar in Portal Huisstijl */
+    .no-print-bar {
+      background: #ffffff;
+      border-bottom: 2.5px solid var(--color-forest);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      margin: -24px -10px 24px -10px;
+      padding: 12px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .toolbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toolbar-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-back {
+      color: var(--color-forest);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.22);
+      transition: all 0.2s ease;
+    }
+
+    .btn-back:hover {
+      background: rgba(75, 143, 36, 0.16);
+      color: #122b07;
+      transform: translateY(-1px);
+    }
+
+    .toolbar-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--color-forest-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-badge {
+      background: var(--color-sage-light);
+      color: var(--color-forest);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2.5px 9px;
+      border-radius: 9999px;
+      border: 1px solid rgba(75, 143, 36, 0.25);
+    }
+
+    .toolbar-right-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-switcher {
+      display: inline-flex;
+      background: #edf2f7;
+      border: 1px solid #cbd5e1;
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .brand-switch-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .brand-switch-btn:hover {
+      color: var(--color-dark);
+    }
+
+    .brand-switch-btn.active#btnBrandSchipper {
+      background: #1e293b;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+    }
+
+    .brand-switch-btn.active#btnBrandStaop {
+      background: var(--color-forest);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(75, 143, 36, 0.25);
+    }
+
+    .toolbar-row-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 10px;
+      border-top: 1px solid #edf2e8;
+    }
+
+    .toolbar-info-hint {
+      font-size: 11.5px;
+      color: var(--color-gray);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background: #ffffff;
+      color: var(--color-gray);
+      border: 1px solid var(--color-gray-light);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: #f8fafc;
+      color: var(--color-dark);
+      border-color: #94a3b8;
+      transform: translateY(-1px);
+    }
+
+    .btn-print {
+      background: var(--color-forest);
+      color: #ffffff;
+      border: none;
+      padding: 8.5px 20px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 12.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(75, 143, 36, 0.28);
+    }
+
+    .btn-print:hover {
+      background: #3d751d;
+      transform: translateY(-1px);
+    }
+
+    /* A4 Sheet Canvas */
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 10mm 14mm 8mm 14mm;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      margin-bottom: 9px;
+      border-bottom: 2.5px solid var(--color-forest);
+    }
+
+    .header-invoice-badge {
+      display: inline-block;
+      background: var(--color-forest);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      padding: 4px 18px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .brand-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 900;
+      white-space: nowrap;
+      color: var(--color-forest-dark);
+      letter-spacing: -0.4px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .brand-name span {
+      color: var(--color-terracotta);
+    }
+
+    .brand-name.brand-staop {
+      text-transform: none;
+      font-size: 24px;
+      letter-spacing: -0.5px;
+      color: var(--color-forest) !important;
+    }
+
+    .brand-subline {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 10px;
+      color: var(--color-gray);
+      line-height: 1.45;
+    }
+
+    .header-right strong {
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+
+    /* Section Styles */
+    .section-wrap {
+      margin-bottom: 6px;
+      border: 1px solid var(--color-gray-light);
+      border-radius: 7px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .section-head {
+      background: linear-gradient(90deg, var(--color-forest) 0%, var(--color-sage) 100%);
+      color: #ffffff;
+      padding: 4px 12px;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-head.orange {
+      background: linear-gradient(90deg, var(--color-terracotta) 0%, #f6a644 100%);
+    }
+
+    .section-head.dark {
+      background: linear-gradient(90deg, #2b3328 0%, #465442 100%);
+    }
+
+    .section-head.delivery-head {
+      background: #394833;
+    }
+
+    .section-body {
+      padding: 8px 12px;
+    }
+
+    /* 2-koloms Factuur & Klant header grid */
+    .invoice-top-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      margin-bottom: 6px;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 6px;
+    }
+
+    .form-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5.5px;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      min-height: 22px;
+    }
+
+    .form-lbl {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+      white-space: nowrap;
+      width: 105px;
+      min-width: 105px;
+      flex: 0 0 105px;
+    }
+
+    .form-fill {
+      flex: 1;
+      border-bottom: 1px dotted #8c939c;
+      min-height: 20px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .form-input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--color-dark);
+      padding: 0 2px 1px 2px;
+      outline: none;
+      line-height: 1.2;
+    }
+
+    /* Datum Selector Styling */
+    .date-picker-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .date-picker-wrap input.form-input,
+    .date-picker-wrap input.sign-line-input {
+      width: 100%;
+      padding-right: 22px;
+    }
+
+    .date-picker-btn {
+      position: absolute;
+      right: 1px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(75, 143, 36, 0.08);
+      border: 1px solid rgba(75, 143, 36, 0.25);
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 2px 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-forest);
+      transition: all 0.15s ease;
+      line-height: 1;
+    }
+
+    .date-picker-btn:hover {
+      background: var(--color-forest);
+      color: #ffffff;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .sheet.brand-mode-schipper .date-picker-btn {
+      background: rgba(30, 41, 59, 0.08);
+      border-color: rgba(30, 41, 59, 0.25);
+      color: #1e293b;
+    }
+
+    .sheet.brand-mode-schipper .date-picker-btn:hover {
+      background: #1e293b;
+      color: #ffffff;
+    }
+
+    .hidden-date-native {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .form-input::placeholder {
+      color: #b0b7be;
+      font-size: 11px;
+      font-style: italic;
+    }
+
+    /* Factuurtabel met artikelen & specificaties */
+    .invoice-table-wrap {
+      border: 1px solid var(--color-gray-light);
+      border-radius: 7px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+
+    .invoice-table th {
+      background: #edf3e9;
+      color: var(--color-forest-dark);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 5px 8px;
+      text-align: left;
+      border-bottom: 1.5px solid #cbd5e1;
+    }
+
+    .invoice-table th.tar, .invoice-table td.tar {
+      text-align: right;
+    }
+
+    .invoice-table th.tac, .invoice-table td.tac {
+      text-align: center;
+    }
+
+    .invoice-table td {
+      padding: 3.5px 8px;
+      border-bottom: 1px dotted #d1d7de;
+      vertical-align: middle;
+    }
+
+    .table-input-clean {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-dark);
+      outline: none;
+      padding: 2px 2px;
+      font-family: var(--font-body);
+    }
+
+    .table-input-clean.tar {
+      text-align: right;
+    }
+
+    .table-input-clean.tac {
+      text-align: center;
+    }
+
+    /* BTW selectie per regel */
+    .btw-select {
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      background: #ffffff;
+      font-size: 10.5px;
+      padding: 1px 3px;
+      color: var(--color-dark);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Totalen & Betaling split sectie */
+    .bottom-split-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      column-gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    /* Betalingsinstructie Card (Links) */
+    .payment-card {
+      border: 1px solid var(--color-gray-light);
+      border-radius: 7px;
+      background: #ffffff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payment-body {
+      padding: 8px 12px;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .iban-highlight-box {
+      background: #f4f8f1;
+      border: 1px solid #b7d5ae;
+      border-radius: 6px;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .iban-code {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 12.5px;
+      letter-spacing: 0.6px;
+      color: var(--color-forest-dark);
+    }
+
+    .payment-statuses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      font-size: 10.5px;
+      padding-top: 4px;
+      border-top: 1px dotted #cbd5e1;
+    }
+
+    .custom-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 4.5px;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .custom-check input[type="checkbox"],
+    .custom-check input[type="radio"] {
+      width: 13px;
+      height: 13px;
+      accent-color: var(--color-forest);
+      cursor: pointer;
+    }
+
+    /* Totalen Card (Rechts) */
+    .totals-card {
+      border: 1px solid var(--color-gray-light);
+      border-radius: 7px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .totals-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+
+    .totals-table td {
+      padding: 4px 10px;
+      border-bottom: 1px dotted #e2e8f0;
+    }
+
+    .totals-lbl {
+      color: var(--color-gray);
+      font-weight: 600;
+    }
+
+    .totals-val {
+      text-align: right;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-dark);
+      white-space: nowrap;
+    }
+
+    .totals-val input {
+      border: none;
+      background: transparent;
+      text-align: right;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--color-dark);
+      width: 85px;
+      outline: none;
+    }
+
+    .totals-grand-row {
+      background: #edf3e9;
+      border-top: 1.5px solid var(--color-forest);
+      border-bottom: 1.5px solid var(--color-forest) !important;
+    }
+
+    .totals-grand-row .totals-lbl {
+      color: var(--color-forest-dark);
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .totals-grand-row .totals-val {
+      color: var(--color-forest-dark);
+      font-size: 14.5px;
+      font-weight: 900;
+    }
+
+    .totals-grand-row .totals-val input {
+      font-size: 14.5px;
+      font-weight: 900;
+      color: var(--color-forest-dark);
+      width: 100px;
+    }
+
+    .totals-due-row {
+      background: #fff8f0;
+      border-bottom: none !important;
+    }
+
+    .totals-due-row .totals-lbl {
+      color: var(--color-terracotta-dark);
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .totals-due-row .totals-val {
+      color: var(--color-terracotta-dark);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .totals-due-row .totals-val input {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--color-terracotta-dark);
+      width: 100px;
+    }
+
+    /* BTW Tarief selector toggle */
+    .btw-mode-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3px 10px;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 10px;
+      color: #64748b;
+    }
+
+    .btw-mode-bar select {
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      background: #ffffff;
+      font-size: 10px;
+      padding: 1px 4px;
+      outline: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Handtekening & Akkoord strook */
+    .sign-meta-wrap {
+      border: 1px solid var(--color-gray-light);
+      border-radius: 7px;
+      background: #ffffff;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .signatures-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      padding: 6px 12px 7px 12px;
+      background: #ffffff;
+    }
+
+    .sign-box-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sign-head-block {
+      margin-bottom: 2px;
+    }
+
+    .sign-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      color: var(--color-forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sign-subtitle {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--color-gray);
+    }
+
+    .sign-field {
+      height: 40px;
+      border-bottom: 1.5px solid #8c939c;
+      background: transparent;
+      margin-bottom: 5px;
+      position: relative;
+    }
+
+    .sign-field-hint {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      font-size: 9px;
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    .sign-details {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 10.5px;
+      color: var(--color-gray);
+      align-items: center;
+    }
+
+    .sign-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--color-forest-dark);
+    }
+
+    .sign-line-input {
+      border: none;
+      border-bottom: 1px dotted #8c939c;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--color-dark);
+      outline: none;
+      padding: 0 2px;
+      width: 100%;
+    }
+
+    /* Footer */
+    .sheet-footer {
+      margin-top: auto;
+      padding-top: 6px;
+      border-top: 1.5px solid #d8e2d2;
+    }
+
+    .terms-bullets {
+      list-style: none;
+      padding: 0 4px;
+      margin: 0 0 6px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5px;
+    }
+
+    .terms-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-size: 9.5px;
+      color: #374151;
+      line-height: 1.35;
+    }
+
+    .terms-dot {
+      color: var(--color-forest);
+      font-size: 11px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .footer-pill {
+      background: #f4f8f1;
+      border: 1px solid #b7d5ae;
+      border-radius: 9999px;
+      padding: 4px 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--color-forest-dark);
+    }
+
+    .footer-pill span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-dot {
+      color: var(--color-terracotta);
+      font-size: 12px;
+    }
+
+    /* Handschrift Geertjan Modus */
+    .sheet.handwriting-mode .form-input,
+    .sheet.handwriting-mode .table-input-clean,
+    .sheet.handwriting-mode .sign-line-input,
+    .sheet.handwriting-mode .totals-val input {
+      font-family: 'Caveat', 'Kalam', cursive !important;
+      font-weight: 600 !important;
+      color: #1a3a60 !important; /* Diep balpenblauw van Geertjan */
+      letter-spacing: 0.2px;
+    }
+
+    .sheet.handwriting-mode .form-input {
+      font-size: 15.5px !important;
+      line-height: 1.1;
+    }
+
+    .sheet.handwriting-mode .table-input-clean {
+      font-size: 15.5px !important;
+      line-height: 1.1;
+    }
+
+    .sheet.handwriting-mode .totals-val input {
+      font-size: 17px !important;
+      font-weight: 700 !important;
+    }
+
+    /* =========================================================
+       SCHIPPER COMPACT WONEN: MONOCHROOM THEMA
+       ========================================================= */
+    .sheet.brand-mode-schipper {
+      --color-forest: #1e293b;
+      --color-forest-dark: #0f172a;
+      --color-sage: #475569;
+      --color-sage-light: #f1f5f9;
+      --color-terracotta: #334155;
+      --color-terracotta-dark: #1e293b;
+    }
+
+    .sheet.brand-mode-schipper .sheet-header {
+      border-bottom: 2.5px solid #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .brand-name {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .brand-name span {
+      color: #475569;
+    }
+
+    .sheet.brand-mode-schipper .brand-subline {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .header-invoice-badge {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .sheet.brand-mode-schipper .section-head {
+      background: linear-gradient(90deg, #1e293b 0%, #334155 100%);
+      color: #ffffff;
+    }
+
+    .sheet.brand-mode-schipper .section-head.orange {
+      background: linear-gradient(90deg, #334155 0%, #475569 100%);
+    }
+
+    .sheet.brand-mode-schipper .section-head.delivery-head {
+      background: linear-gradient(90deg, #1e293b 0%, #334155 100%) !important;
+    }
+
+    .sheet.brand-mode-schipper .form-lbl,
+    .sheet.brand-mode-schipper .sign-title,
+    .sheet.brand-mode-schipper .sign-detail-item {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .invoice-table th {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-bottom: 1.5px solid #cbd5e1;
+    }
+
+    .sheet.brand-mode-schipper .iban-highlight-box {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    .sheet.brand-mode-schipper .iban-code {
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .totals-grand-row {
+      background: #f1f5f9;
+      border-top: 1.5px solid #0f172a;
+      border-bottom: 1.5px solid #0f172a !important;
+    }
+
+    .sheet.brand-mode-schipper .totals-grand-row .totals-lbl,
+    .sheet.brand-mode-schipper .totals-grand-row .totals-val,
+    .sheet.brand-mode-schipper .totals-grand-row .totals-val input {
+      color: #0f172a !important;
+    }
+
+    .sheet.brand-mode-schipper .totals-due-row {
+      background: #f8fafc;
+    }
+
+    .sheet.brand-mode-schipper .totals-due-row .totals-lbl,
+    .sheet.brand-mode-schipper .totals-due-row .totals-val,
+    .sheet.brand-mode-schipper .totals-due-row .totals-val input {
+      color: #0f172a !important;
+    }
+
+    .sheet.brand-mode-schipper .custom-check input[type="checkbox"],
+    .sheet.brand-mode-schipper .custom-check input[type="radio"] {
+      accent-color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .sheet-footer {
+      border-top: 1.5px solid #cbd5e1;
+    }
+
+    .sheet.brand-mode-schipper .terms-dot {
+      color: #475569;
+    }
+
+    .sheet.brand-mode-schipper .footer-pill {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+    }
+
+    .sheet.brand-mode-schipper .footer-dot {
+      color: #94a3b8;
+    }
+
+    /* Print Styling */
+    @media print {
+      *,
+      *::before,
+      *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .no-print-bar {
+        display: none !important;
+      }
+
+      .sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        padding: 8mm 12mm 6mm 12mm !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      input::placeholder, textarea::placeholder {
+        color: transparent !important;
+      }
+
+      .footer-pill, .iban-highlight-box, .section-head, .totals-grand-row, .totals-due-row {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .btw-mode-bar,
+      .date-picker-btn {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar in Portal Huisstijl -->
+  <header class="no-print-bar">
+    <div class="toolbar-container">
+      
+      <!-- Bovenste menubalk: Navigatie & Merkkeuze -->
+      <div class="toolbar-row-top">
+        <div class="toolbar-left">
+          <a href="beheer.html#huisstijl" class="btn-back">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <span>Terug naar Huisstijl &amp; Drukwerk</span>
+          </a>
+          <a href="orderbon.html" class="btn-back" style="background: rgba(15, 23, 42, 0.06); border-color: rgba(15, 23, 42, 0.18); color: #1e293b;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span>Naar Orderbon</span>
+          </a>
+          <div class="toolbar-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+            <span>Verkoopfactuur</span>
+            <span class="toolbar-badge">A4 Drukwerk &amp; PDF</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.406</span>
+          </div>
+        </div>
+
+        <div class="toolbar-right-brand">
+          <span style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px;">Huisstijl / Merk:</span>
+          <div class="brand-switcher" id="brandSwitcher">
+            <button type="button" class="brand-switch-btn active" id="btnBrandSchipper" onclick="switchBrand('schipper')">
+              Schipper Compact Wonen
+            </button>
+            <button type="button" class="brand-switch-btn" id="btnBrandStaop" onclick="switchBrand('staopstoelen')">
+              staopstoelen.nl
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tweede menubalk: Actieknoppen -->
+      <div class="toolbar-row-bottom">
+        <div class="toolbar-info-hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span>A4 enkelzijdig • Direct printen naar PDF of papier • Automatische berekening van btw en totalen</span>
+        </div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-action" id="btnTodayDate" onclick="setAllDatesToToday()" title="Zet factuurdatum op vandaag en vervaldatum op +14 dagen">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>📅 Vandaag</span>
+          </button>
+          <button type="button" class="btn-action" id="btnToggleFont" onclick="toggleHandwritingFont()" title="Wissel tussen Handschrift Geertjan en Drukletter" style="background: rgba(75, 143, 36, 0.08); font-weight: 600;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
+            <span id="btnToggleFontText">✍️ Handschrift Geert</span>
+          </button>
+          <button type="button" class="btn-action active-bon" id="btnFillFactuur1" onclick="fillFactuur1Dekker()" title="Laad factuur 1 in van Mw. Dekker-Miedema (Ridderkerk)" style="background: rgba(75, 143, 36, 0.12); font-weight: 700; color: var(--color-forest-dark);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Factuur 1: Mw. Dekker
+          </button>
+          <button type="button" class="btn-action" id="btnFillFactuur2" onclick="fillFactuur2VanPelt()" title="Laad factuur 2 in van Dhr. van Pelt (Zwijndrecht)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Factuur 2: Dhr. van Pelt
+          </button>
+          <button type="button" class="btn-action" id="btnClearForm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            Wissen / Blanco
+          </button>
+          <button type="button" class="btn-action" id="btnPrintFilled" onclick="window.print()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Ingevuld Printen
+          </button>
+          <button type="button" class="btn-print" id="btnPrintBlank" onclick="printBlankFactuur()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Blanco Formulier Printen
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- A4 Sheet Canvas -->
+  <div class="sheet brand-mode-schipper handwriting-mode" id="sheetCanvas">
+
+    <!-- 1. Header -->
+    <header class="sheet-header">
+      <div class="brand-left">
+        <div class="brand-name" id="brandTitle">Schipper <span>compact wonen</span></div>
+        <div class="brand-subline" id="brandSubline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
+      </div>
+      <div class="header-right">
+        <div class="header-invoice-badge">FACTUUR</div>
+        <div style="font-size: 10px; line-height: 1.45; margin-top: 4px;">
+          <strong>Showroom:</strong> Merwedestraat 239, 3313 GT Dordrecht &bull; <strong>Tel:</strong> 078 – 631 4858<br>
+          <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656 &bull; <strong>Btw-id:</strong> NL819234567B01<br>
+          <strong>E-mail:</strong> <span id="headerEmail">info@schippercompactwonen.nl</span> &bull; <strong>Web:</strong> <span id="headerWeb">schippercompactwonen.nl</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. Factuur- & Debiteurgegevens (2 kolommen strak verdeeld) -->
+    <div class="invoice-top-grid">
+      
+      <!-- Factuurgegevens Links -->
+      <div class="section-wrap">
+        <div class="section-head">
+          <span>Factuurgegevens</span>
+          <span style="font-size: 9px; opacity: 0.95;">Administratie</span>
+        </div>
+        <div class="section-body">
+          <div class="form-col">
+            <div class="form-row">
+              <span class="form-lbl">Factuurnummer:</span>
+              <div class="form-fill"><input type="text" id="factuurNummer" class="form-input" value="2026-1048" style="font-weight: 700;"></div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Factuurdatum:</span>
+              <div class="form-fill">
+                <div class="date-picker-wrap">
+                  <input type="text" id="factuurDatum" class="form-input" value="05-11-2026">
+                  <button type="button" class="date-picker-btn" onclick="openDatePicker('factuurDatum', 'nativeFactuurDatum')" title="Kies factuurdatum uit kalender">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  </button>
+                  <input type="date" id="nativeFactuurDatum" class="hidden-date-native" onchange="handleDateSelected(this, 'factuurDatum', true)">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Vervaldatum:</span>
+              <div class="form-fill">
+                <div class="date-picker-wrap">
+                  <input type="text" id="vervalDatum" class="form-input" value="19-11-2026" style="font-weight: 600;">
+                  <button type="button" class="date-picker-btn" onclick="openDatePicker('vervalDatum', 'nativeVervalDatum')" title="Kies vervaldatum uit kalender">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  </button>
+                  <input type="date" id="nativeVervalDatum" class="hidden-date-native" onchange="handleDateSelected(this, 'vervalDatum', false)">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Orderreferentie:</span>
+              <div class="form-fill"><input type="text" id="orderRef" class="form-input" value="Orderbon 28-10-2026"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Debiteur / Factuur t.a.v. Rechts -->
+      <div class="section-wrap">
+        <div class="section-head orange">
+          <span>Factuur t.a.v. (Debiteur)</span>
+          <span style="font-size: 9px; opacity: 0.95;">Cliënt / Instelling</span>
+        </div>
+        <div class="section-body">
+          <div class="form-col">
+            <div class="form-row">
+              <span class="form-lbl">Naam:</span>
+              <div class="form-fill"><input type="text" id="klantNaam" class="form-input" value="Mw. Dekker - Miedema"></div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Adres:</span>
+              <div class="form-fill"><input type="text" id="klantAdres" class="form-input" value="Jasmijnstraat 4 k.20"></div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Postcode &amp; Plaats:</span>
+              <div class="form-fill">
+                <input type="text" id="klantPostcode" class="form-input" style="width: 70px; flex: none;" value="2982 CK">
+                <span style="color: var(--color-gray); padding: 0 4px;">-</span>
+                <input type="text" id="klantPlaats" class="form-input" value="Ridderkerk">
+              </div>
+            </div>
+            <div class="form-row">
+              <span class="form-lbl">Telefoon / Contact:</span>
+              <div class="form-fill"><input type="text" id="klantTelefoon" class="form-input" value="06 - 53 36 19 83"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. Factuurtabel met artikelen, aantallen, btw en bedragen -->
+    <div class="invoice-table-wrap">
+      <div class="section-head dark" style="border-radius: 0;">
+        <span>Geleverde Artikelen, Meubelen &amp; Diensten</span>
+        <span style="font-size: 9px; opacity: 0.95;">Specificatie</span>
+      </div>
+
+      <table class="invoice-table" id="invoiceTable">
+        <thead>
+          <tr>
+            <th style="width: 32px;" class="tac">Nr</th>
+            <th>Omschrijving &amp; Specificatie</th>
+            <th style="width: 50px;" class="tac">Aantal</th>
+            <th style="width: 100px;" class="tar">Prijs (incl. btw)</th>
+            <th style="width: 85px;" class="tac">Btw %</th>
+            <th style="width: 110px;" class="tar">Totaal (€)</th>
+          </tr>
+        </thead>
+        <tbody id="invoiceTableBody">
+          <!-- Rij 1 -->
+          <tr>
+            <td class="tac" style="color: #64748b; font-weight: 700;">1</td>
+            <td><input type="text" class="table-input-clean row-desc" value="Farstrup PLUS (5920) seniorenfauteuil op maat (Capture 4902 blue / teak)"></td>
+            <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="1" oninput="calculateTotals()"></td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-price" value="1.745,00" oninput="calculateTotals()"></td>
+            <td class="tac">
+              <select class="btw-select row-vat" onchange="calculateTotals()">
+                <option value="21" selected>21%</option>
+                <option value="9">9%</option>
+                <option value="0">0%</option>
+                <option value="marge">Marge</option>
+              </select>
+            </td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-total" value="1.745,00" readonly></td>
+          </tr>
+          <!-- Rij 2 -->
+          <tr>
+            <td class="tac" style="color: #64748b; font-weight: 700;">2</td>
+            <td><input type="text" class="table-input-clean row-desc" value="Bijpassend ergonomisch voetenbankje 5990 in stof Capture 4902 blue"></td>
+            <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="1" oninput="calculateTotals()"></td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-price" value="395,00" oninput="calculateTotals()"></td>
+            <td class="tac">
+              <select class="btw-select row-vat" onchange="calculateTotals()">
+                <option value="21" selected>21%</option>
+                <option value="9">9%</option>
+                <option value="0">0%</option>
+                <option value="marge">Marge</option>
+              </select>
+            </td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-total" value="395,00" readonly></td>
+          </tr>
+          <!-- Rij 3 -->
+          <tr>
+            <td class="tac" style="color: #64748b; font-weight: 700;">3</td>
+            <td><input type="text" class="table-input-clean row-desc" value="Ergonomisch nekkussen 773 met contragewicht (inclusief zithoogte 45 cm afstelling)"></td>
+            <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="1" oninput="calculateTotals()"></td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-price" value="90,00" oninput="calculateTotals()"></td>
+            <td class="tac">
+              <select class="btw-select row-vat" onchange="calculateTotals()">
+                <option value="21" selected>21%</option>
+                <option value="9">9%</option>
+                <option value="0">0%</option>
+                <option value="marge">Marge</option>
+              </select>
+            </td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-total" value="90,00" readonly></td>
+          </tr>
+          <!-- Rij 4 -->
+          <tr>
+            <td class="tac" style="color: #64748b; font-weight: 700;">4</td>
+            <td><input type="text" class="table-input-clean row-desc" value="Eigen Bezorging, vakkundige installatie aan huis &amp; afvoeren oude stoel"></td>
+            <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="1" oninput="calculateTotals()"></td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-price" value="0,00" oninput="calculateTotals()"></td>
+            <td class="tac">
+              <select class="btw-select row-vat" onchange="calculateTotals()">
+                <option value="21" selected>21%</option>
+                <option value="9">9%</option>
+                <option value="0">0%</option>
+                <option value="marge">Marge</option>
+              </select>
+            </td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-total" value="0,00" readonly></td>
+          </tr>
+          <!-- Rij 5 (Optioneel / Extra regel) -->
+          <tr>
+            <td class="tac" style="color: #64748b; font-weight: 700;">5</td>
+            <td><input type="text" class="table-input-clean row-desc" value="" placeholder="Optionele extra regel of specificatie..."></td>
+            <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="" oninput="calculateTotals()"></td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-price" value="" oninput="calculateTotals()"></td>
+            <td class="tac">
+              <select class="btw-select row-vat" onchange="calculateTotals()">
+                <option value="21" selected>21%</option>
+                <option value="9">9%</option>
+                <option value="0">0%</option>
+                <option value="marge">Marge</option>
+              </select>
+            </td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-total" value="" readonly></td>
+          </tr>
+          <!-- Rij 6 (Optioneel / Textielbescherming) -->
+          <tr>
+            <td class="tac" style="color: #64748b; font-weight: 700;">6</td>
+            <td><input type="text" class="table-input-clean row-desc" value="" placeholder="Optionele extra regel..."></td>
+            <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="" oninput="calculateTotals()"></td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-price" value="" oninput="calculateTotals()"></td>
+            <td class="tac">
+              <select class="btw-select row-vat" onchange="calculateTotals()">
+                <option value="21" selected>21%</option>
+                <option value="9">9%</option>
+                <option value="0">0%</option>
+                <option value="marge">Marge</option>
+              </select>
+            </td>
+            <td class="tar"><input type="text" class="table-input-clean tar row-total" value="" readonly></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. Totalen & Betaling Split (Links: Betaalinstructie & Rekening, Rechts: Btw & Totalen) -->
+    <div class="bottom-split-grid">
+      
+      <!-- Betalingsinstructie Kaart Links -->
+      <div class="payment-card">
+        <div class="section-head delivery-head">
+          <span>Betalingsinstructie &amp; Rekening</span>
+          <span style="font-size: 9px; opacity: 0.95;">Veilig betalen</span>
+        </div>
+        <div class="payment-body">
+          <div style="line-height: 1.4;">
+            Gelieve het openstaande factuurbedrag binnen <strong>14 dagen</strong> (uiterlijk <span id="vervalDatumDisplay" style="font-weight: 700;">19-11-2026</span>) over te maken onder vermelding van factuurnummer <strong id="factuurNummerDisplay">2026-1048</strong>:
+          </div>
+          
+          <div class="iban-highlight-box">
+            <span style="font-size: 9.5px; font-weight: 700; color: #64748b; text-transform: uppercase;">Bankrekening (IBAN):</span>
+            <span class="iban-code" id="displayIban">NL09 RABO 0117 0475 62</span>
+            <span style="font-size: 10px; color: var(--color-gray);">t.n.v. <strong id="displayIbanName">Schipper Compact Wonen</strong> te Dordrecht</span>
+          </div>
+
+          <!-- Status Vinkjes -->
+          <div class="payment-statuses">
+            <label class="custom-check">
+              <input type="radio" name="payStatus" id="statusOpen" checked> Openstaand (binnen 14 dagen)
+            </label>
+            <label class="custom-check">
+              <input type="radio" name="payStatus" id="statusPin"> Voldaan per PIN bij aflevering
+            </label>
+            <label class="custom-check">
+              <input type="radio" name="payStatus" id="statusOvergemaakt"> Voldaan per bank
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Totalen Kaart Rechts -->
+      <div class="totals-card">
+        <div class="section-head orange">
+          <span>Factuurtotalen</span>
+          <span style="font-size: 9px; opacity: 0.95;">EUR (€)</span>
+        </div>
+        
+        <table class="totals-table">
+          <tr>
+            <td class="totals-lbl">Subtotaal excl. btw:</td>
+            <td class="totals-val"><span class="euro-sign">€</span> <input type="text" id="subtotalExcl" value="1.842,98" readonly></td>
+          </tr>
+          <tr id="vat21Row">
+            <td class="totals-lbl">Btw 21%:</td>
+            <td class="totals-val"><span class="euro-sign">€</span> <input type="text" id="vat21Amount" value="387,02" readonly></td>
+          </tr>
+          <tr id="vatMargeRow" style="display: none;">
+            <td class="totals-lbl" style="font-size: 10px; color: #166534;">Margeregeling (geen btw):</td>
+            <td class="totals-val"><span class="euro-sign">€</span> 0,00</td>
+          </tr>
+          <tr class="totals-grand-row">
+            <td class="totals-lbl">Totaal incl. btw:</td>
+            <td class="totals-val"><span class="euro-sign">€</span> <input type="text" id="totalIncl" value="2.230,00" readonly></td>
+          </tr>
+          <tr>
+            <td class="totals-lbl" style="font-size: 11px;">Reeds voldaan / Aanbetaling:</td>
+            <td class="totals-val"><span class="euro-sign">€</span> <input type="text" id="paidAmount" value="0,00" oninput="calculateTotals()" style="color: #64748b;"></td>
+          </tr>
+          <tr class="totals-due-row">
+            <td class="totals-lbl">Nog te voldoen:</td>
+            <td class="totals-val"><span class="euro-sign">€</span> <input type="text" id="dueAmount" value="2.230,00" readonly></td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- 5. Akkoord & Adviseur Strook (Symmetrisch zoals op de orderbon) -->
+    <div class="sign-meta-wrap">
+      <div class="signatures-grid">
+        
+        <!-- Adviseur Handtekening / Akkoord -->
+        <div class="sign-box-wrap">
+          <div class="sign-head-block">
+            <div class="sign-title">Opgesteld door Adviseur</div>
+            <div class="sign-subtitle" id="signAdviseurSubtitle">Schipper Compact Wonen</div>
+          </div>
+          <div class="sign-field">
+            <span class="sign-field-hint" id="signFieldHint">Handtekening Schipper Compact Wonen</span>
+          </div>
+          <div class="sign-details">
+            <div class="sign-detail-item">
+              <span>Adviseur:</span>
+              <input type="text" id="signAdviseur" class="sign-line-input" value="Geertjan Klein Haneveld">
+            </div>
+            <div class="sign-detail-item" style="flex: none; width: 105px;">
+              <span>Plaats:</span>
+              <input type="text" id="signPlaats" class="sign-line-input" value="Dordrecht">
+            </div>
+          </div>
+        </div>
+
+        <!-- Klant Ontvangst & Akkoord -->
+        <div class="sign-box-wrap">
+          <div class="sign-head-block">
+            <div class="sign-title">Voor ontvangst &amp; akkoord cliënt</div>
+            <div class="sign-subtitle">Akkoord levering en betalingsvoorwaarden</div>
+          </div>
+          <div class="sign-field">
+            <span class="sign-field-hint">Handtekening cliënt / gemachtigde</span>
+          </div>
+          <div class="sign-details">
+            <div class="sign-detail-item">
+              <span>Naam:</span>
+              <input type="text" id="signKlantNaam" class="sign-line-input" value="Mw. Dekker - Miedema">
+            </div>
+            <div class="sign-detail-item" style="flex: none; width: 125px;">
+              <span>Datum:</span>
+              <div class="date-picker-wrap">
+                <input type="text" id="signKlantDatum" class="sign-line-input" value="05-11-2026">
+                <button type="button" class="date-picker-btn" onclick="openDatePicker('signKlantDatum', 'nativeSignKlantDatum')" title="Kies datum uit kalender">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </button>
+                <input type="date" id="nativeSignKlantDatum" class="hidden-date-native" onchange="handleDateSelected(this, 'signKlantDatum', false)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 6. Footer & Voorwaarden -->
+    <footer class="sheet-footer">
+      <ul class="terms-bullets">
+        <li class="terms-item">
+          <span class="terms-dot">&bull;</span>
+          <span><strong>1 Jaar Volledige Garantie &amp; Service aan Huis:</strong> Inclusief periodieke controle, service op motoren en mechaniek door eigen technici uit Dordrecht.</span>
+        </li>
+        <li class="terms-item">
+          <span class="terms-dot">&bull;</span>
+          <span><strong>Betalingstermijn:</strong> Betaling binnen 14 dagen na factuurdatum per bankoverschrijving op ons Rabobank rekeningnummer, tenzij contant of per PIN bij aflevering voldaan.</span>
+        </li>
+      </ul>
+      <div class="footer-pill">
+        <span id="footerPillDomain"><strong>schippercompactwonen.nl</strong></span>
+        <span class="footer-dot">&bull;</span>
+        <span>Merwedestraat 239, 3313 GT Dordrecht &bull; Tel: 078 – 631 4858 &bull; KvK: 23060656</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 3px; padding: 0 4px; font-size: 8.5px; color: #94a3b8;">
+        <span>Document: Officiële Verkoopfactuur Dordrecht &bull; Voldoet aan wettelijke factuurvereisten</span>
+        <span>Gerealiseerd door BewegingsTechnologen.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Datum Selector Logica (Nederlands formaat DD-MM-YYYY)
+    function openDatePicker(inputId, nativePickerId) {
+      const nativePicker = document.getElementById(nativePickerId);
+      const textInput = document.getElementById(inputId);
+      if (!nativePicker || !textInput) return;
+
+      // Synchroniseer huidige DD-MM-YYYY waarde naar native YYYY-MM-DD
+      if (textInput.value) {
+        const parts = textInput.value.trim().split('-');
+        if (parts.length === 3 && parts[0].length <= 2 && parts[2].length === 4) {
+          const dd = String(parts[0]).padStart(2, '0');
+          const mm = String(parts[1]).padStart(2, '0');
+          const yyyy = parts[2];
+          nativePicker.value = `${yyyy}-${mm}-${dd}`;
+        }
+      }
+
+      // Open kalender popup
+      if (typeof nativePicker.showPicker === 'function') {
+        try {
+          nativePicker.showPicker();
+          return;
+        } catch (e) {}
+      }
+      nativePicker.click();
+    }
+
+    function handleDateSelected(nativePicker, textInputId, autoDue) {
+      if (!nativePicker || !nativePicker.value) return;
+      const val = nativePicker.value; // YYYY-MM-DD
+      const parts = val.split('-');
+      if (parts.length === 3) {
+        const dd = parts[2];
+        const mm = parts[1];
+        const yyyy = parts[0];
+        const formatted = `${dd}-${mm}-${yyyy}`;
+        const textInput = document.getElementById(textInputId);
+        if (textInput) {
+          textInput.value = formatted;
+          textInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+
+        // Als factuurdatum verandert, werk ook vervaldatum (+14 dagen) bij
+        if (autoDue && textInputId === 'factuurDatum') {
+          const d = new Date(val);
+          if (!isNaN(d.getTime())) {
+            d.setDate(d.getDate() + 14);
+            const dueDay = String(d.getDate()).padStart(2, '0');
+            const dueMonth = String(d.getMonth() + 1).padStart(2, '0');
+            const dueYear = d.getFullYear();
+            const dueFormatted = `${dueDay}-${dueMonth}-${dueYear}`;
+            const dueInput = document.getElementById('vervalDatum');
+            if (dueInput) {
+              dueInput.value = dueFormatted;
+              dueInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+          }
+        }
+      }
+      syncDisplayFields();
+      saveToStorage();
+    }
+
+    function setAllDatesToToday() {
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const yyyy = today.getFullYear();
+      const todayStr = `${dd}-${mm}-${yyyy}`;
+
+      const fDate = document.getElementById('factuurDatum');
+      if (fDate) {
+        fDate.value = todayStr;
+        fDate.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+
+      const kDate = document.getElementById('signKlantDatum');
+      if (kDate) {
+        kDate.value = todayStr;
+        kDate.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+
+      // Vervaldatum +14 dagen
+      const dueDate = new Date();
+      dueDate.setDate(dueDate.getDate() + 14);
+      const dueDd = String(dueDate.getDate()).padStart(2, '0');
+      const dueMm = String(dueDate.getMonth() + 1).padStart(2, '0');
+      const dueYyyy = dueDate.getFullYear();
+      const vDate = document.getElementById('vervalDatum');
+      if (vDate) {
+        vDate.value = `${dueDd}-${dueMm}-${dueYyyy}`;
+        vDate.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+
+      syncDisplayFields();
+      saveToStorage();
+    }
+
+    // Euro formattering helpers
+    function parseEuro(val) {
+      if (!val) return 0;
+      let clean = String(val).replace('€', '').replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
+      let num = parseFloat(clean);
+      return isNaN(num) ? 0 : num;
+    }
+
+    function formatEuro(num) {
+      if (isNaN(num)) num = 0;
+      return num.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // Automatische berekening van tabelregels en factuurtotalen
+    function calculateTotals() {
+      const rows = document.querySelectorAll('#invoiceTableBody tr');
+      let grandTotalIncl = 0;
+      let totalVat21 = 0;
+      let totalVat9 = 0;
+      let hasMarge = false;
+
+      rows.forEach(row => {
+        const qtyInput = row.querySelector('.row-qty');
+        const priceInput = row.querySelector('.row-price');
+        const vatSelect = row.querySelector('.row-vat');
+        const totalInput = row.querySelector('.row-total');
+
+        if (!qtyInput || !priceInput || !totalInput) return;
+
+        let qty = parseFloat(qtyInput.value.replace(',', '.'));
+        let priceIncl = parseEuro(priceInput.value);
+
+        if (isNaN(qty) || qty <= 0 || priceIncl <= 0) {
+          if (qtyInput.value.trim() === '' && priceInput.value.trim() === '') {
+            totalInput.value = '';
+          } else {
+            totalInput.value = '0,00';
+          }
+          return;
+        }
+
+        let lineTotal = qty * priceIncl;
+        totalInput.value = formatEuro(lineTotal);
+        grandTotalIncl += lineTotal;
+
+        let vatType = vatSelect ? vatSelect.value : '21';
+        if (vatType === '21') {
+          // Btw uit incl. bedrag: lineTotal - (lineTotal / 1.21)
+          let vatAmount = lineTotal - (lineTotal / 1.21);
+          totalVat21 += vatAmount;
+        } else if (vatType === '9') {
+          let vatAmount = lineTotal - (lineTotal / 1.09);
+          totalVat9 += vatAmount;
+        } else if (vatType === 'marge') {
+          hasMarge = true;
+        }
+      });
+
+      let subtotalExcl = grandTotalIncl - totalVat21 - totalVat9;
+
+      const subtotalEl = document.getElementById('subtotalExcl');
+      const vat21El = document.getElementById('vat21Amount');
+      const totalInclEl = document.getElementById('totalIncl');
+      const paidEl = document.getElementById('paidAmount');
+      const dueEl = document.getElementById('dueAmount');
+      const euroSigns = document.querySelectorAll('.totals-val .euro-sign');
+
+      if (grandTotalIncl <= 0) {
+        if (subtotalEl) subtotalEl.value = '';
+        if (vat21El) vat21El.value = '';
+        if (totalInclEl) totalInclEl.value = '';
+        if (dueEl) dueEl.value = '';
+        if (paidEl && parseEuro(paidEl.value) <= 0) paidEl.value = '';
+        euroSigns.forEach(s => s.style.visibility = 'hidden');
+      } else {
+        if (subtotalEl) subtotalEl.value = formatEuro(subtotalExcl);
+        if (vat21El) vat21El.value = formatEuro(totalVat21 + totalVat9);
+        if (totalInclEl) totalInclEl.value = formatEuro(grandTotalIncl);
+
+        let paid = paidEl ? parseEuro(paidEl.value) : 0;
+        let due = Math.max(0, grandTotalIncl - paid);
+        if (dueEl) dueEl.value = formatEuro(due);
+        euroSigns.forEach(s => s.style.visibility = 'visible');
+      }
+
+      const margeRow = document.getElementById('vatMargeRow');
+      if (margeRow) {
+        margeRow.style.display = (hasMarge && grandTotalIncl > 0) ? 'table-row' : 'none';
+      }
+
+      saveToStorage();
+    }
+
+    // Synchroniseer velden zoals Factuurnummer & Vervaldatum met tekst in betaalkaart
+    function syncDisplayFields() {
+      const nr = document.getElementById('factuurNummer');
+      const nrDisp = document.getElementById('factuurNummerDisplay');
+      if (nr && nrDisp) nrDisp.textContent = nr.value ? nr.value : '.......';
+
+      const vDate = document.getElementById('vervalDatum');
+      const vDateDisp = document.getElementById('vervalDatumDisplay');
+      if (vDate && vDateDisp) vDateDisp.textContent = vDate.value ? vDate.value : 'binnen 14 dagen';
+    }
+
+    // Merk Wisselaar (Schipper vs staopstoelen.nl)
+    const BRANDS = {
+      schipper: {
+        nameHtml: 'Schipper <span>compact wonen</span>',
+        isLowercase: false,
+        subline: 'Dé specialist in seniorenmeubelen & zorghulpmiddelen',
+        email: 'info@schippercompactwonen.nl',
+        web: 'schippercompactwonen.nl',
+        signSubtitle: 'Schipper Compact Wonen',
+        signHint: 'Handtekening Schipper Compact Wonen',
+        footerDomain: 'schippercompactwonen.nl',
+        ibanName: 'Schipper Compact Wonen',
+        pageTitle: 'Factuur | Schipper Compact Wonen'
+      },
+      staopstoelen: {
+        nameHtml: 'staopstoelen<span>.nl</span>',
+        isLowercase: true,
+        subline: 'Specialist in ergonomisch zitcomfort',
+        email: 'info@staopstoelen.nl',
+        web: 'staopstoelen.nl',
+        signSubtitle: 'staopstoelen.nl',
+        signHint: 'Handtekening staopstoelen.nl',
+        footerDomain: 'staopstoelen.nl',
+        ibanName: 'staopstoelen.nl',
+        pageTitle: 'Factuur | staopstoelen.nl'
+      }
+    };
+
+    let activeBrand = 'schipper';
+
+    function switchBrand(brandKey) {
+      if (!BRANDS[brandKey]) brandKey = 'schipper';
+      activeBrand = brandKey;
+      const b = BRANDS[brandKey];
+
+      const sheetCanvas = document.getElementById('sheetCanvas');
+      if (sheetCanvas) {
+        if (brandKey === 'schipper') {
+          sheetCanvas.classList.add('brand-mode-schipper');
+          sheetCanvas.classList.remove('brand-mode-staop');
+        } else {
+          sheetCanvas.classList.add('brand-mode-staop');
+          sheetCanvas.classList.remove('brand-mode-schipper');
+        }
+      }
+
+      const brandTitleEl = document.getElementById('brandTitle');
+      if (brandTitleEl) {
+        brandTitleEl.innerHTML = b.nameHtml;
+        if (b.isLowercase) {
+          brandTitleEl.classList.add('brand-staop');
+        } else {
+          brandTitleEl.classList.remove('brand-staop');
+        }
+      }
+
+      const sublineEl = document.getElementById('brandSubline');
+      if (sublineEl) sublineEl.textContent = b.subline;
+
+      const emailEl = document.getElementById('headerEmail');
+      if (emailEl) emailEl.textContent = b.email;
+
+      const webEl = document.getElementById('headerWeb');
+      if (webEl) webEl.textContent = b.web;
+
+      const ibanNameEl = document.getElementById('displayIbanName');
+      if (ibanNameEl) ibanNameEl.textContent = b.ibanName;
+
+      const signSubEl = document.getElementById('signAdviseurSubtitle');
+      if (signSubEl) signSubEl.textContent = b.signSubtitle;
+
+      const signHintEl = document.getElementById('signFieldHint');
+      if (signHintEl) signHintEl.textContent = b.signHint;
+
+      const footerDomainEl = document.getElementById('footerPillDomain');
+      if (footerDomainEl) footerDomainEl.innerHTML = '<strong>' + b.footerDomain + '</strong>';
+
+      document.title = b.pageTitle;
+
+      const btnSchipper = document.getElementById('btnBrandSchipper');
+      if (btnSchipper) btnSchipper.classList.toggle('active', brandKey === 'schipper');
+
+      const btnStaop = document.getElementById('btnBrandStaop');
+      if (btnStaop) btnStaop.classList.toggle('active', brandKey === 'staopstoelen');
+
+      try {
+        const url = new URL(window.location);
+        url.searchParams.set('brand', brandKey);
+        window.history.replaceState({}, '', url);
+      } catch (e) {}
+
+      localStorage.setItem('scw_factuur_brand', brandKey);
+    }
+
+    // Toggle Handschrift
+    function toggleHandwritingFont() {
+      const sheet = document.getElementById('sheetCanvas');
+      const btn = document.getElementById('btnToggleFont');
+      const txt = document.getElementById('btnToggleFontText');
+      if (!sheet) return;
+      sheet.classList.toggle('handwriting-mode');
+      const isHand = sheet.classList.contains('handwriting-mode');
+      if (txt) txt.textContent = isHand ? '✍️ Handschrift Geert' : '🔤 Drukletters';
+      if (btn) btn.style.background = isHand ? 'rgba(75, 143, 36, 0.08)' : '';
+    }
+
+    // Factuur 1 Inladen: Mw. Dekker-Miedema (Ridderkerk)
+    function fillFactuur1Dekker() {
+      document.getElementById('factuurNummer').value = '2026-1048';
+      document.getElementById('factuurDatum').value = '05-11-2026';
+      document.getElementById('vervalDatum').value = '19-11-2026';
+      document.getElementById('orderRef').value = 'Orderbon 28-10-2026';
+
+      document.getElementById('klantNaam').value = 'Mw. Dekker - Miedema';
+      document.getElementById('klantAdres').value = 'Jasmijnstraat 4 k.20';
+      document.getElementById('klantPostcode').value = '2982 CK';
+      document.getElementById('klantPlaats').value = 'Ridderkerk';
+      document.getElementById('klantTelefoon').value = '06 - 53 36 19 83';
+
+      const rows = document.querySelectorAll('#invoiceTableBody tr');
+      // Regel 1: Stoel
+      rows[0].querySelector('.row-desc').value = 'Farstrup PLUS (5920) seniorenfauteuil op maat (Capture 4902 blue / teak)';
+      rows[0].querySelector('.row-qty').value = '1';
+      rows[0].querySelector('.row-price').value = '1.745,00';
+      rows[0].querySelector('.row-vat').value = '21';
+
+      // Regel 2: Voetenbank
+      rows[1].querySelector('.row-desc').value = 'Bijpassend ergonomisch voetenbankje 5990 in stof Capture 4902 blue';
+      rows[1].querySelector('.row-qty').value = '1';
+      rows[1].querySelector('.row-price').value = '395,00';
+      rows[1].querySelector('.row-vat').value = '21';
+
+      // Regel 3: Nekkussen
+      rows[2].querySelector('.row-desc').value = 'Ergonomisch nekkussen 773 met contragewicht (inclusief zithoogte 45 cm)';
+      rows[2].querySelector('.row-qty').value = '1';
+      rows[2].querySelector('.row-price').value = '90,00';
+      rows[2].querySelector('.row-vat').value = '21';
+
+      // Regel 4: Bezorging
+      rows[3].querySelector('.row-desc').value = 'Eigen Bezorging, vakkundige installatie aan huis & afvoeren oude stoel';
+      rows[3].querySelector('.row-qty').value = '1';
+      rows[3].querySelector('.row-price').value = '0,00';
+      rows[3].querySelector('.row-vat').value = '21';
+
+      // Leegmaken regels 5 & 6
+      rows[4].querySelector('.row-desc').value = '';
+      rows[4].querySelector('.row-qty').value = '';
+      rows[4].querySelector('.row-price').value = '';
+
+      rows[5].querySelector('.row-desc').value = '';
+      rows[5].querySelector('.row-qty').value = '';
+      rows[5].querySelector('.row-price').value = '';
+
+      document.getElementById('paidAmount').value = '0,00';
+      document.getElementById('signKlantNaam').value = 'Mw. Dekker - Miedema';
+      document.getElementById('signKlantDatum').value = '05-11-2026';
+      document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
+
+      calculateTotals();
+      syncDisplayFields();
+
+      const btn1 = document.getElementById('btnFillFactuur1');
+      const btn2 = document.getElementById('btnFillFactuur2');
+      if (btn1) { btn1.style.background = 'rgba(75, 143, 36, 0.12)'; btn1.style.fontWeight = '700'; }
+      if (btn2) { btn2.style.background = ''; btn2.style.fontWeight = '500'; }
+    }
+
+    // Factuur 2 Inladen: Dhr. C.J. van Pelt (Zwijndrecht)
+    function fillFactuur2VanPelt() {
+      document.getElementById('factuurNummer').value = '2026-1049';
+      document.getElementById('factuurDatum').value = '05-11-2026';
+      document.getElementById('vervalDatum').value = '19-11-2026';
+      document.getElementById('orderRef').value = 'Orderbon 28-10-2026';
+
+      document.getElementById('klantNaam').value = 'Dhr. van Pelt C.J.';
+      document.getElementById('klantAdres').value = 'Bootjessteeg 28';
+      document.getElementById('klantPostcode').value = '3331 HB';
+      document.getElementById('klantPlaats').value = 'Zwijndrecht';
+      document.getElementById('klantTelefoon').value = '06 - 30 35 10 38';
+
+      const rows = document.querySelectorAll('#invoiceTableBody tr');
+      // Regel 1: Stoel René
+      rows[0].querySelector('.row-desc').value = 'Sta-op / relaxfauteuil RENE (Maat Medium, Paola 16 caramel, bediening rechts)';
+      rows[0].querySelector('.row-qty').value = '1';
+      rows[0].querySelector('.row-price').value = '2.500,00';
+      rows[0].querySelector('.row-vat').value = '21';
+
+      // Regel 2: Bezorging
+      rows[1].querySelector('.row-desc').value = 'Eigen Bezorging, installatie & instelling op maat aan huis te Zwijndrecht';
+      rows[1].querySelector('.row-qty').value = '1';
+      rows[1].querySelector('.row-price').value = '0,00';
+      rows[1].querySelector('.row-vat').value = '21';
+
+      // Regel 3 t/m 6 leeg
+      for (let i = 2; i < rows.length; i++) {
+        rows[i].querySelector('.row-desc').value = '';
+        rows[i].querySelector('.row-qty').value = '';
+        rows[i].querySelector('.row-price').value = '';
+      }
+
+      document.getElementById('paidAmount').value = '0,00';
+      document.getElementById('signKlantNaam').value = 'Dhr. van Pelt C.J.';
+      document.getElementById('signKlantDatum').value = '05-11-2026';
+      document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
+
+      calculateTotals();
+      syncDisplayFields();
+
+      const btn1 = document.getElementById('btnFillFactuur1');
+      const btn2 = document.getElementById('btnFillFactuur2');
+      if (btn1) { btn1.style.background = ''; btn1.style.fontWeight = '500'; }
+      if (btn2) { btn2.style.background = 'rgba(75, 143, 36, 0.12)'; btn2.style.fontWeight = '700'; }
+    }
+
+    // Alles leegmaken voor blanco factuur
+    function clearAllFields() {
+      document.querySelectorAll('.sheet input[type="text"]').forEach(i => i.value = '');
+      
+      const rows = document.querySelectorAll('#invoiceTableBody tr');
+      rows.forEach(r => {
+        const qty = r.querySelector('.row-qty');
+        const price = r.querySelector('.row-price');
+        const tot = r.querySelector('.row-total');
+        if (qty) qty.value = '';
+        if (price) price.value = '';
+        if (tot) tot.value = '';
+      });
+
+      document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
+      document.getElementById('signPlaats').value = 'Dordrecht';
+
+      // Maak ook alle totalen en subtotalen 100% leeg (geen 0,00)
+      const subtotalEl = document.getElementById('subtotalExcl');
+      const vat21El = document.getElementById('vat21Amount');
+      const totalInclEl = document.getElementById('totalIncl');
+      const paidEl = document.getElementById('paidAmount');
+      const dueEl = document.getElementById('dueAmount');
+      if (subtotalEl) subtotalEl.value = '';
+      if (vat21El) vat21El.value = '';
+      if (totalInclEl) totalInclEl.value = '';
+      if (paidEl) paidEl.value = '';
+      if (dueEl) dueEl.value = '';
+
+      const euroSigns = document.querySelectorAll('.totals-val .euro-sign');
+      euroSigns.forEach(s => s.style.visibility = 'hidden');
+
+      const margeRow = document.getElementById('vatMargeRow');
+      if (margeRow) margeRow.style.display = 'none';
+
+      // Betaalstatus vinkjes uit
+      document.querySelectorAll('input[name="payStatus"]').forEach(r => r.checked = false);
+
+      syncDisplayFields();
+
+      const btn1 = document.getElementById('btnFillFactuur1');
+      const btn2 = document.getElementById('btnFillFactuur2');
+      if (btn1) { btn1.style.background = ''; btn1.style.fontWeight = '500'; }
+      if (btn2) { btn2.style.background = ''; btn2.style.fontWeight = '500'; }
+
+      localStorage.removeItem('scw_factuur_data');
+    }
+
+    function printBlankFactuur() {
+      clearAllFields();
+      window.print();
+    }
+
+    // Auto-save naar LocalStorage
+    const STORAGE_KEY = 'scw_factuur_data';
+
+    function saveToStorage() {
+      const data = {};
+      document.querySelectorAll('.sheet input, .sheet select').forEach((el, idx) => {
+        if (el.id) {
+          data[el.id] = (el.type === 'radio' || el.type === 'checkbox') ? el.checked : el.value;
+        } else {
+          data['idx_' + idx] = el.value;
+        }
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadFromStorage() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return false;
+      try {
+        const data = JSON.parse(saved);
+        document.querySelectorAll('.sheet input, .sheet select').forEach((el, idx) => {
+          if (el.id && data[el.id] !== undefined) {
+            if (el.type === 'radio' || el.type === 'checkbox') {
+              el.checked = data[el.id];
+            } else {
+              el.value = data[el.id];
+            }
+          } else if (data['idx_' + idx] !== undefined) {
+            el.value = data['idx_' + idx];
+          }
+        });
+        calculateTotals();
+        syncDisplayFields();
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // URL parameters uitlezen
+      const urlParams = new URLSearchParams(window.location.search);
+      const factuurParam = urlParams.get('factuur') || urlParams.get('bon');
+
+      if (factuurParam === '2' || factuurParam === 'vanpelt' || factuurParam === 'pelt') {
+        fillFactuur2VanPelt();
+      } else if (factuurParam === 'blanco' || factuurParam === 'blank' || factuurParam === 'leeg') {
+        clearAllFields();
+      } else {
+        const loaded = loadFromStorage();
+        if (!loaded) fillFactuur1Dekker();
+      }
+
+      const brandParam = urlParams.get('brand');
+      if (brandParam === 'staopstoelen' || brandParam === 'staop') {
+        switchBrand('staopstoelen');
+      } else if (brandParam === 'schipper') {
+        switchBrand('schipper');
+      } else {
+        const savedBrand = localStorage.getItem('scw_factuur_brand');
+        if (savedBrand === 'staopstoelen') {
+          switchBrand('staopstoelen');
+        } else {
+          switchBrand('schipper');
+        }
+      }
+
+      // Input listeners
+      document.querySelectorAll('.sheet input').forEach(input => {
+        input.addEventListener('input', () => {
+          syncDisplayFields();
+          saveToStorage();
+        });
+      });
+
+      document.getElementById('btnClearForm').addEventListener('click', clearAllFields);
+    });
+  </script>
+</body>
+</html>

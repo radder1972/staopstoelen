@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.405">
+  <link rel="stylesheet" href="style.css?v=10.406">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1533,7 +1533,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.405</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.406</span></div>
     </div>
   </div>
 
@@ -1543,7 +1543,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.405</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.406</span>
       </div>
 
       <div class="admin-header-right">
@@ -1565,6 +1565,10 @@
             <a href="orderbon.html" class="dropdown-item" target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
               <span>Orderbon (A4 Drukwerk)</span>
+            </a>
+            <a href="factuur.html" class="dropdown-item" target="_blank">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+              <span>Verkoopfactuur (A4 Drukwerk)</span>
             </a>
             <a href="badge-a6-stoel.html" class="dropdown-item" target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"></rect><circle cx="12" cy="7" r="1.5"></circle><path d="M9 13h6M9 17h4"></path></svg>
@@ -3433,6 +3437,58 @@
             </div>
           </article>
 
+          <!-- Officiële Verkoopfactuur -->
+          <article class="huisstijl-material-card">
+            <div class="huisstijl-card-preview-banner">
+              <div class="mini-flyer-mock" style="width: 140px; height: 198px;">
+                <div class="mock-header" style="margin-bottom: 4px;">
+                  <div class="mock-logo" style="font-size: 0.58rem;">Schipper <span>Compact</span></div>
+                  <span style="font-size: 0.42rem; font-weight: 800; color: #ffffff; background: #0f172a; border-radius: 2px; padding: 1px 3px;">FACTUUR</span>
+                </div>
+                <div style="font-size: 0.50rem; font-weight: 800; color: var(--color-forest-dark); line-height: 1.2; margin: 3px 0;">
+                  Officiële Verkoopfactuur
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 2.5px; margin: 3px 0;">
+                  <div style="font-size: 0.40rem; color: #444; border-bottom: 0.5px dotted #ccc; padding-bottom: 1px;">
+                    Factuurnummer, datum &amp; debiteur
+                  </div>
+                  <div style="font-size: 0.40rem; color: #444; border-bottom: 0.5px dotted #ccc; padding-bottom: 1px;">
+                    Artikeltabel, btw-splitsing (21%/marge)
+                  </div>
+                  <div style="font-size: 0.40rem; color: #444; border-bottom: 0.5px dotted #ccc; padding-bottom: 1px;">
+                    IBAN betaalinstructie &amp; 14 dgn termijn
+                  </div>
+                </div>
+                <div style="font-size: 0.40rem; color: #0f172a; font-weight: 700; border-top: 0.5px solid #eee; padding-top: 3px;">
+                  Voldoet aan alle factuureisen
+                </div>
+              </div>
+            </div>
+            <div class="huisstijl-card-body">
+              <div class="huisstijl-card-badge-row">
+                <span class="huisstijl-badge-pill green">A4 Formaat</span>
+                <span class="huisstijl-badge-pill orange">Administratie &amp; Boekhouding</span>
+              </div>
+              <h3 class="huisstijl-card-title">Officiële Verkoopfactuur (A4)</h3>
+              <p class="huisstijl-card-desc">
+                Professionele factuur die naadloos aansluit op de orderbon. Schakelt direct tussen <strong>Schipper Compact Wonen</strong> en <strong>staopstoelen.nl</strong>. Inclusief automatische btw- en totaalberekening, IBAN-instructie en printondersteuning.
+              </p>
+              <ul class="huisstijl-card-meta-list">
+                <li class="huisstijl-card-meta-item"><span class="huisstijl-meta-check">✓</span> 1-Klik merkwisselaar: Schipper of staopstoelen.nl</li>
+                <li class="huisstijl-card-meta-item"><span class="huisstijl-meta-check">✓</span> Automatische btw-berekening (21%, 9%, 0% of margeregeling)</li>
+                <li class="huisstijl-card-meta-item"><span class="huisstijl-meta-check">✓</span> Snelknoppen voor voorbeeldbonnen (Mw. Dekker &amp; Dhr. van Pelt)</li>
+              </ul>
+            </div>
+            <div class="huisstijl-card-actions">
+              <a href="factuur.html?brand=schipper" target="_blank" class="huisstijl-btn-primary">
+                Open Schipper Factuur
+              </a>
+              <a href="factuur.html?brand=staopstoelen" target="_blank" class="huisstijl-btn-secondary">
+                Open staopstoelen.nl Factuur
+              </a>
+            </div>
+          </article>
+
           </div>
         </details>
 
@@ -4025,7 +4081,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.405</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.406</span>
     </div>
   </footer>
 
