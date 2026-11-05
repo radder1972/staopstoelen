@@ -3732,8 +3732,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.414" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.414" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.415" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.415" 
             controls 
             playsinline 
             preload="auto"
@@ -3764,8 +3764,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.414";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.414";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.415";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.415";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3778,7 +3778,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.414`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.415`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3787,8 +3787,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.414";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.414";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.415";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.415";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3801,7 +3801,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.414`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.415`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -4027,7 +4027,7 @@ if (document.readyState === "loading") {
     if (!logo || logo.classList.contains('has-brand-chair')) return;
 
     const base = (typeof window.getBasePath === 'function') ? window.getBasePath() : '';
-    const ver = '10.414';
+    const ver = '10.415';
 
     // Tekst (staopstoelen.nl + strapline) samen in één kolom
     let textGroup = logo.querySelector('.nav-logo-text-group');
