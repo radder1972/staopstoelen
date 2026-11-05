@@ -270,18 +270,18 @@
       border-bottom: 2.5px solid var(--color-forest);
     }
 
-    .header-order-badge {
+    .header-doc-badge {
       display: inline-block;
       background: var(--color-forest);
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 900;
-      font-size: 13.5px;
-      letter-spacing: 1.2px;
-      padding: 4.5px 16px;
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      padding: 4px 18px;
       border-radius: 6px;
       text-transform: uppercase;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .brand-left {
@@ -292,7 +292,7 @@
 
     .brand-name {
       font-family: var(--font-heading);
-      font-size: 19.5px;
+      font-size: 20px;
       font-weight: 900;
       white-space: nowrap;
       color: var(--color-forest-dark);
@@ -1304,7 +1304,7 @@
     }
 
     .sheet.brand-mode-schipper .header-right .web-pill,
-    .sheet.brand-mode-schipper .header-order-badge {
+    .sheet.brand-mode-schipper .header-doc-badge {
       background: #0f172a;
       color: #ffffff;
     }
@@ -1582,10 +1582,11 @@
         <div class="brand-subline" id="brandSubline">Dé specialist in seniorenmeubelen &amp; zorghulpmiddelen</div>
       </div>
       <div class="header-right">
-        <div class="header-order-badge">ORDERBON</div>
-        <div style="font-size: 10.5px; line-height: 1.45; margin-top: 5px;">
+        <div class="header-doc-badge">ORDERBON</div>
+        <div style="font-size: 10px; line-height: 1.45; margin-top: 4px;">
           <strong>Showroom:</strong> Merwedestraat 239, 3313 GT Dordrecht &bull; <strong>Tel:</strong> 078 – 631 4858<br>
-          <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656 &bull; <strong>E-mail:</strong> <span id="headerEmail">info@schippercompactwonen.nl</span>
+          <strong>IBAN:</strong> NL09 RABO 0117 0475 62 &bull; <strong>KvK:</strong> 23060656 &bull; <strong>Btw-id:</strong> NL819234567B01<br>
+          <strong>E-mail:</strong> <span id="headerEmail">info@schippercompactwonen.nl</span> &bull; <strong>Web:</strong> <span id="headerWeb">schippercompactwonen.nl</span>
         </div>
       </div>
     </header>
@@ -2151,6 +2152,9 @@
 
       const emailEl = document.getElementById('headerEmail');
       if (emailEl) emailEl.textContent = b.email;
+
+      const webEl = document.getElementById('headerWeb');
+      if (webEl) webEl.textContent = b.footerDomain;
 
       const signSubEl = document.getElementById('signAdviseurSubtitle');
       if (signSubEl) signSubEl.textContent = b.signSubtitle;
