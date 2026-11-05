@@ -564,6 +564,20 @@
       color: var(--color-dark);
       outline: none;
       cursor: pointer;
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+    }
+
+    .btw-select.hidden-box {
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* Toon als de rij gefocust is */
+    tr:focus-within .btw-select.hidden-box {
+      visibility: visible !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
     }
 
     /* Totalen & Betaling split sectie */
@@ -1099,6 +1113,30 @@
       .date-picker-btn {
         display: none !important;
       }
+
+      .btw-select {
+        border: none !important;
+        background: transparent !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+        padding: 0 !important;
+        font-size: 11px !important;
+        font-family: var(--font-body) !important;
+        color: var(--color-dark) !important;
+        text-align: center !important;
+        text-align-last: center !important;
+        cursor: default !important;
+      }
+
+      .btw-select::-ms-expand {
+        display: none !important;
+      }
+
+      .btw-select.hidden-box {
+        display: none !important;
+        visibility: hidden !important;
+      }
     }
   </style>
 </head>
@@ -1123,7 +1161,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
             <span>Factuur</span>
             <span class="toolbar-badge">A4 Drukwerk</span>
-            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.406</span>
+            <span class="toolbar-badge" style="background: rgba(75, 143, 36, 0.12); color: var(--color-forest-dark);">Versie 10.407</span>
           </div>
         </div>
 
@@ -1371,7 +1409,7 @@
             <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="" oninput="calculateTotals()"></td>
             <td class="tar"><input type="text" class="table-input-clean tar row-price" value="" oninput="calculateTotals()"></td>
             <td class="tac">
-              <select class="btw-select row-vat" onchange="calculateTotals()">
+              <select class="btw-select row-vat hidden-box" onchange="calculateTotals()">
                 <option value="21" selected>21%</option>
                 <option value="9">9%</option>
                 <option value="0">0%</option>
@@ -1387,7 +1425,7 @@
             <td class="tac"><input type="text" class="table-input-clean tac row-qty" value="" oninput="calculateTotals()"></td>
             <td class="tar"><input type="text" class="table-input-clean tar row-price" value="" oninput="calculateTotals()"></td>
             <td class="tac">
-              <select class="btw-select row-vat" onchange="calculateTotals()">
+              <select class="btw-select row-vat hidden-box" onchange="calculateTotals()">
                 <option value="21" selected>21%</option>
                 <option value="9">9%</option>
                 <option value="0">0%</option>
@@ -1443,7 +1481,7 @@
         </div>
         
         <table class="totals-table">
-          <tr>
+          <tr id="subtotalRow">
             <td class="totals-lbl">Subtotaal excl. btw:</td>
             <td class="totals-val"><span class="euro-sign">€</span> <input type="text" id="subtotalExcl" value="1.842,98" readonly></td>
           </tr>
@@ -1717,6 +1755,8 @@
       const paidEl = document.getElementById('paidAmount');
       const dueEl = document.getElementById('dueAmount');
       const euroSigns = document.querySelectorAll('.totals-val .euro-sign');
+      const subtotalRow = document.getElementById('subtotalRow');
+      const vat21Row = document.getElementById('vat21Row');
 
       if (grandTotalIncl <= 0) {
         if (subtotalEl) subtotalEl.value = '';
@@ -1725,6 +1765,8 @@
         if (dueEl) dueEl.value = '';
         if (paidEl && parseEuro(paidEl.value) <= 0) paidEl.value = '';
         euroSigns.forEach(s => s.style.visibility = 'hidden');
+        if (subtotalRow) subtotalRow.style.display = 'none';
+        if (vat21Row) vat21Row.style.display = 'none';
       } else {
         if (subtotalEl) subtotalEl.value = formatEuro(subtotalExcl);
         if (vat21El) vat21El.value = formatEuro(totalVat21 + totalVat9);
@@ -1734,6 +1776,8 @@
         let due = Math.max(0, grandTotalIncl - paid);
         if (dueEl) dueEl.value = formatEuro(due);
         euroSigns.forEach(s => s.style.visibility = 'visible');
+        if (subtotalRow) subtotalRow.style.display = 'table-row';
+        if (vat21Row) vat21Row.style.display = (totalVat21 > 0 || totalVat9 > 0) ? 'table-row' : 'none';
       }
 
       const margeRow = document.getElementById('vatMargeRow');
@@ -1741,6 +1785,7 @@
         margeRow.style.display = (hasMarge && grandTotalIncl > 0) ? 'table-row' : 'none';
       }
 
+      updateVatBoxVisibility();
       saveToStorage();
     }
 
@@ -1969,6 +2014,25 @@
       if (btn2) { btn2.style.background = 'rgba(75, 143, 36, 0.12)'; btn2.style.fontWeight = '700'; }
     }
 
+    // BTW selectieboxen verbergen op lege regels of blanco bon
+    function updateVatBoxVisibility() {
+      const rows = document.querySelectorAll('#invoiceTableBody tr');
+      rows.forEach(row => {
+        const desc = (row.querySelector('.row-desc')?.value || '').trim();
+        const qty = (row.querySelector('.row-qty')?.value || '').trim();
+        const price = (row.querySelector('.row-price')?.value || '').trim();
+        const vatSelect = row.querySelector('.row-vat');
+        if (!vatSelect) return;
+
+        const isRowEmpty = (desc === '' && qty === '' && price === '');
+        if (isRowEmpty) {
+          vatSelect.classList.add('hidden-box');
+        } else {
+          vatSelect.classList.remove('hidden-box');
+        }
+      });
+    }
+
     // Alles leegmaken voor blanco factuur
     function clearAllFields() {
       document.querySelectorAll('.sheet input[type="text"]').forEach(i => i.value = '');
@@ -1978,15 +2042,17 @@
         const qty = r.querySelector('.row-qty');
         const price = r.querySelector('.row-price');
         const tot = r.querySelector('.row-total');
+        const vat = r.querySelector('.row-vat');
         if (qty) qty.value = '';
         if (price) price.value = '';
         if (tot) tot.value = '';
+        if (vat) vat.classList.add('hidden-box');
       });
 
       document.getElementById('signAdviseur').value = 'Geertjan Klein Haneveld';
       document.getElementById('signPlaats').value = 'Dordrecht';
 
-      // Maak ook alle totalen en subtotalen 100% leeg (geen 0,00)
+      // Maak ook alle totalen en subtotalen 100% leeg (geen 0,00) en verberg btw rijen
       const subtotalEl = document.getElementById('subtotalExcl');
       const vat21El = document.getElementById('vat21Amount');
       const totalInclEl = document.getElementById('totalIncl');
@@ -2000,6 +2066,12 @@
 
       const euroSigns = document.querySelectorAll('.totals-val .euro-sign');
       euroSigns.forEach(s => s.style.visibility = 'hidden');
+
+      const subtotalRow = document.getElementById('subtotalRow');
+      if (subtotalRow) subtotalRow.style.display = 'none';
+
+      const vat21Row = document.getElementById('vat21Row');
+      if (vat21Row) vat21Row.style.display = 'none';
 
       const margeRow = document.getElementById('vatMargeRow');
       if (margeRow) margeRow.style.display = 'none';
@@ -2092,12 +2164,15 @@
       // Input listeners
       document.querySelectorAll('.sheet input').forEach(input => {
         input.addEventListener('input', () => {
+          updateVatBoxVisibility();
           syncDisplayFields();
           saveToStorage();
         });
       });
 
       document.getElementById('btnClearForm').addEventListener('click', clearAllFields);
+
+      updateVatBoxVisibility();
     });
   </script>
 </body>
