@@ -3732,8 +3732,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.411" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.411" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.412" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.412" 
             controls 
             playsinline 
             preload="auto"
@@ -3764,8 +3764,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.411";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.411";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.412";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.412";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3778,7 +3778,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.411`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.412`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3787,8 +3787,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.411";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.411";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.412";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.412";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3801,7 +3801,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.411`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.412`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -4019,7 +4019,7 @@ if (document.readyState === "loading") {
 
 // =========================================================
 // Groene sta-op stoel (zonder achtergrond) naast het tekstlogo in de header
-// Bij mouseover klapt de stoel open (dicht -> half open -> relaxstand)
+// Bij mouseover: openklappen naar relaxstand, daarna omhoog in de sta-op stand
 // =========================================================
 (function initHeaderChairLogo() {
   function run() {
@@ -4027,7 +4027,7 @@ if (document.readyState === "loading") {
     if (!logo || logo.classList.contains('has-brand-chair')) return;
 
     const base = (typeof window.getBasePath === 'function') ? window.getBasePath() : '';
-    const ver = '10.411';
+    const ver = '10.412';
 
     // Tekst (staopstoelen.nl + strapline) samen in één kolom
     let textGroup = logo.querySelector('.nav-logo-text-group');
@@ -4038,17 +4038,21 @@ if (document.readyState === "loading") {
       logo.appendChild(textGroup);
     }
 
+    // Standen op één lijn: sta-op (vol) .. sta-op (half) .. zitten .. relax (half) .. relax (vol)
+    const keys = ['s2', 's1', '0', '1', '2'];
+    const SIT = 2, RELAX = 4, STAOP = 0;
+
     const wrap = document.createElement('span');
     wrap.className = 'nav-brand-chair';
     wrap.setAttribute('aria-hidden', 'true');
-    const frames = [0, 1, 2].map((n) => {
+    const frames = keys.map((k, i) => {
       const img = document.createElement('img');
-      img.src = `${base}assets/icons/stoel_logo_header_${n}.png?v=${ver}`;
+      img.src = `${base}assets/icons/stoel_logo_header_${k}.png?v=${ver}`;
       img.alt = '';
-      img.width = 222;
-      img.height = 192;
+      img.width = 245;
+      img.height = 240;
       img.decoding = 'async';
-      img.className = 'nav-brand-chair-frame' + (n === 0 ? ' is-active' : '');
+      img.className = 'nav-brand-chair-frame' + (i === SIT ? ' is-active' : '');
       wrap.appendChild(img);
       return img;
     });
@@ -4056,33 +4060,62 @@ if (document.readyState === "loading") {
     logo.classList.add('has-brand-chair');
 
     // Frame-stapper: loopt stap voor stap naar de doelstand
-    let current = 0;
-    let target = 0;
+    const STEP_MS = 190;
+    const HOLD_MS = 900;
+    let current = SIT;
+    let target = SIT;
     let timer = null;
-    const STEP_MS = 170;
+    let holdTimer = null;
+    let hovering = false;
+    let onArrive = null;
+
     function show(idx) {
       frames.forEach((f, i) => f.classList.toggle('is-active', i === idx));
       current = idx;
     }
     function step() {
       timer = null;
-      if (current === target) return;
-      show(current + (target > current ? 1 : -1));
-      if (current !== target) timer = setTimeout(step, STEP_MS);
+      if (current !== target) show(current + (target > current ? 1 : -1));
+      if (current !== target) {
+        timer = setTimeout(step, STEP_MS);
+      } else if (onArrive) {
+        const cb = onArrive;
+        onArrive = null;
+        cb();
+      }
     }
-    function goTo(t) {
+    function goTo(t, cb) {
       target = t;
-      if (!timer) step();
+      onArrive = cb || null;
+      if (!timer) timer = setTimeout(step, current === t ? 0 : 10);
     }
-    logo.addEventListener('mouseenter', () => goTo(2));
-    logo.addEventListener('mouseleave', () => goTo(0));
-    logo.addEventListener('focus', () => goTo(2));
-    logo.addEventListener('blur', () => goTo(0));
+    // Rondje tijdens hover: relax -> (pauze) -> sta-op -> (pauze) -> relax ...
+    function cycle(next) {
+      if (!hovering) return;
+      goTo(next, () => {
+        holdTimer = setTimeout(() => cycle(next === RELAX ? STAOP : RELAX), HOLD_MS);
+      });
+    }
+    function start() {
+      if (hovering) return;
+      hovering = true;
+      clearTimeout(holdTimer);
+      cycle(RELAX);
+    }
+    function stop() {
+      hovering = false;
+      clearTimeout(holdTimer);
+      goTo(SIT);
+    }
+    logo.addEventListener('mouseenter', start);
+    logo.addEventListener('mouseleave', stop);
+    logo.addEventListener('focus', start);
+    logo.addEventListener('blur', stop);
 
     if (!document.getElementById('nav-brand-chair-styles')) {
       const st = document.createElement('style');
       st.id = 'nav-brand-chair-styles';
-      // Afbeeldingen zijn 862x747 (verhouding); dichte stoel beslaat x 129..713
+      // Factoren t.o.v. de hoogte van de zittende stoel (uit de uitgesneden frames berekend)
       st.textContent = `
         .navbar .nav-text-logo.has-brand-chair,
         header .nav-text-logo.has-brand-chair {
@@ -4096,19 +4129,19 @@ if (document.readyState === "loading") {
           display: block !important;
           flex: 0 0 auto !important;
           height: var(--chair-h) !important;
-          width: calc(var(--chair-h) * 0.7818) !important;
+          width: calc(var(--chair-h) * 0.7903) !important;
           overflow: visible !important;
           z-index: 2;
         }
         .nav-text-logo.has-brand-chair .nav-brand-chair-frame {
           position: absolute !important;
-          top: 0 !important;
-          left: calc(var(--chair-h) * -0.1727) !important;
-          height: var(--chair-h) !important;
+          top: calc(var(--chair-h) * -0.1353) !important;
+          left: calc(var(--chair-h) * -0.1746) !important;
+          height: calc(var(--chair-h) * 1.1407) !important;
           width: auto !important;
           max-width: none !important;
           opacity: 0;
-          transition: opacity 0.16s ease-out;
+          transition: opacity 0.17s ease-out;
           filter: drop-shadow(0 3px 5px rgba(18, 43, 7, 0.18));
           pointer-events: none;
         }
@@ -4118,7 +4151,7 @@ if (document.readyState === "loading") {
         .nav-text-logo.has-brand-chair:hover { opacity: 1 !important; }
         @media (max-width: 768px) {
           .navbar .nav-text-logo.has-brand-chair,
-          header .nav-text-logo.has-brand-chair { gap: 8px !important; }
+          header .nav-text-logo.has-brand-chair { gap: 9px !important; }
           .nav-text-logo.has-brand-chair .nav-brand-chair { --chair-h: 40px; }
         }
         @media (max-width: 359px) {
