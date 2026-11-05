@@ -2813,7 +2813,7 @@ function initFloatingMenu() {
     const fav = document.createElement("link");
     fav.rel = "icon";
     fav.type = "image/svg+xml";
-    fav.href = `${base}favicon.svg?v=10.409`;
+    fav.href = `${base}favicon.svg?v=10.410`;
     document.head.appendChild(fav);
   }
 
@@ -3732,8 +3732,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.409" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.409" 
+            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.410" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.410" 
             controls 
             playsinline 
             preload="auto"
@@ -3764,8 +3764,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.409";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.409";
+      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.410";
+      player.poster = "assets/video/zitmeting_poster.jpg?v=10.410";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3778,7 +3778,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.409`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.410`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3787,8 +3787,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.409";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.409";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.410";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.410";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3801,7 +3801,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.409`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.410`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -4016,3 +4016,76 @@ if (document.readyState === "loading") {
 
 
 
+
+// =========================================================
+// Groene sta-op stoel (zonder achtergrond) naast het tekstlogo in de header
+// =========================================================
+(function initHeaderChairLogo() {
+  function run() {
+    const logo = document.querySelector('.navbar .nav-text-logo, header .nav-text-logo');
+    if (!logo || logo.classList.contains('has-brand-chair')) return;
+
+    const base = (typeof window.getBasePath === 'function') ? window.getBasePath() : '';
+
+    // Tekst (staopstoelen.nl + strapline) samen in één kolom
+    let textGroup = logo.querySelector('.nav-logo-text-group');
+    if (!textGroup) {
+      textGroup = document.createElement('div');
+      textGroup.className = 'nav-logo-text-group';
+      while (logo.firstChild) textGroup.appendChild(logo.firstChild);
+      logo.appendChild(textGroup);
+    }
+
+    const img = document.createElement('img');
+    img.src = `${base}assets/icons/stoel_logo_header.png?v=10.410`;
+    img.alt = '';
+    img.setAttribute('aria-hidden', 'true');
+    img.width = 152;
+    img.height = 192;
+    img.className = 'nav-brand-chair';
+    img.decoding = 'async';
+    logo.insertBefore(img, textGroup);
+    logo.classList.add('has-brand-chair');
+
+    if (!document.getElementById('nav-brand-chair-styles')) {
+      const st = document.createElement('style');
+      st.id = 'nav-brand-chair-styles';
+      st.textContent = `
+        .navbar .nav-text-logo.has-brand-chair,
+        header .nav-text-logo.has-brand-chair {
+          flex-direction: row !important;
+          align-items: center !important;
+          gap: 10px !important;
+        }
+        .nav-text-logo.has-brand-chair .nav-brand-chair {
+          display: block !important;
+          height: 62px !important;
+          width: auto !important;
+          max-width: none !important;
+          flex: 0 0 auto !important;
+          object-fit: contain !important;
+          filter: drop-shadow(0 3px 5px rgba(18, 43, 7, 0.18));
+        }
+        .nav-text-logo.has-brand-chair .nav-logo-text-group {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+        }
+        @media (max-width: 768px) {
+          .navbar .nav-text-logo.has-brand-chair,
+          header .nav-text-logo.has-brand-chair { gap: 7px !important; }
+          .nav-text-logo.has-brand-chair .nav-brand-chair { height: 40px !important; }
+        }
+        @media (max-width: 359px) {
+          .nav-text-logo.has-brand-chair .nav-brand-chair { height: 32px !important; }
+        }
+      `;
+      document.head.appendChild(st);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
