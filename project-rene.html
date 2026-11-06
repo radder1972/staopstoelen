@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Project René — Campagne, Video, Marktplaats &amp; Showroom Pakket | Staopstoelen.nl</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=10.420">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #2f5f15;
+      --forest-light: #4b8f24;
+      --terracotta: #f39223;
+      --cream: #fbf9f5;
+      --dark: #1d2024;
+      --muted: #52606d;
+      --border: #d9e6d3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.55;
+      padding-bottom: 80px;
+    }
+    .topbar {
+      background: #ffffff;
+      border-bottom: 3px solid var(--forest-light);
+      padding: 16px 28px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(18,43,7,0.08);
+    }
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .brand-row img.chair-icon {
+      height: 46px;
+      width: auto;
+    }
+    .brand-row img.wordmark {
+      height: 32px;
+      width: auto;
+    }
+    .project-pill {
+      background: #eef7eb;
+      color: var(--forest);
+      border: 1.5px solid #b8d8ae;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 5px 14px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-green { background: var(--forest-light); color: #fff; box-shadow: 0 4px 12px rgba(75,143,36,0.28); }
+    .btn-green:hover { background: var(--forest); }
+    .btn-orange { background: var(--terracotta); color: #fff; box-shadow: 0 4px 12px rgba(243,146,35,0.3); }
+    .btn-orange:hover { background: #dc8019; }
+    .btn-outline { background: #fff; color: var(--forest); border: 1.5px solid #b8d8ae; }
+    .btn-outline:hover { background: #f2f8ef; }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 32px 24px 0;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #21470e 0%, #2f5f15 60%, #3d7a1c 100%);
+      color: #fff;
+      border-radius: 26px;
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 32px;
+      align-items: center;
+      box-shadow: 0 18px 44px rgba(18,43,7,0.18);
+      margin-bottom: 36px;
+    }
+    @media (max-width: 900px) {
+      .hero-card { grid-template-columns: 1fr; padding: 28px 24px; }
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .hero-card h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.55rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-card p {
+      font-size: 1.05rem;
+      color: #e2f1dc;
+      max-width: 680px;
+      margin-bottom: 22px;
+    }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    .kpi-box {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    .kpi-box .lbl { font-size: 0.76rem; color: #c7e3bc; text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em; }
+    .kpi-box .val { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 900; color: #fff; line-height: 1.2; margin-top: 2px; }
+    .kpi-box .val s { font-size: 0.9rem; color: #fca5a5; font-weight: 600; margin-right: 6px; }
+    .hero-preview-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 18px;
+      text-align: center;
+      color: var(--dark);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+    }
+    .hero-preview-box img {
+      width: 100%;
+      max-height: 230px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    /* Section cards */
+    .section-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 28px rgba(18,43,7,0.05);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1.5px solid #edf4ea;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--forest);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-step {
+      background: var(--forest-light);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* Video & Story Cards Grid */
+    .video-campaign-grid {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .video-campaign-grid { grid-template-columns: 1fr; }
+    }
+    .video-player-frame {
+      background: #111827;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 3px solid var(--forest-light);
+      box-shadow: 0 14px 34px rgba(18,43,7,0.18);
+      aspect-ratio: 9 / 16;
+      max-width: 310px;
+      margin: 0 auto;
+    }
+    .video-player-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .story-slides-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    @media (max-width: 640px) {
+      .story-slides-row { grid-template-columns: 1fr; }
+    }
+    .story-slide-item {
+      border: 1.5px solid #dce8d6;
+      border-radius: 16px;
+      padding: 10px;
+      background: #f9fbf8;
+      text-align: center;
+    }
+    .story-slide-item img {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+    .story-slide-item span {
+      display: block;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+
+    /* Marktplaats Photo Grid */
+    .mp-photos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+    @media (max-width: 900px) {
+      .mp-photos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .mp-photo-card {
+      border: 1.5px solid #dce8d6;
+      border-radius: 16px;
+      padding: 12px;
+      background: #f9fbf8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .mp-photo-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #e5efe0;
+    }
+    .mp-photo-card .mp-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--forest);
+    }
+    .mp-photo-card a {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--forest-light);
+      text-decoration: none;
+    }
+    .mp-photo-card a:hover { text-decoration: underline; }
+
+    /* Copy boxes */
+    .copy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 860px) {
+      .copy-grid { grid-template-columns: 1fr; }
+    }
+    .copy-box {
+      background: #f8fbf6;
+      border: 1.5px solid #d2e4ca;
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .copy-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .copy-box-header strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      color: var(--forest);
+    }
+    .copy-textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: var(--dark);
+      background: #fff;
+      resize: vertical;
+    }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--forest);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 24px;
+      border-radius: 999px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+      transition: transform 0.25s ease;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+        <a href="index.html" class="brand-row">
+          <img src="assets/icons/stoel_logo_header_1.png" alt="3D Stoel René" class="chair-icon">
+          <img src="assets/marketing/logo_letters_bijgesneden.png" alt="Staopstoelen.nl" class="wordmark">
+        </a>
+        <span class="project-pill">Project René &bull; Campagne &amp; Verkoop</span>
+      </div>
+      <nav class="top-nav">
+        <a href="stoelen/sta-op-stoel-rene.html" class="btn btn-outline">🌐 Bekijk Productpagina</a>
+        <a href="badge-a6-rene.html" class="btn btn-outline">🖨️ Showroom Prijskaart (A6)</a>
+        <a href="index.html" class="btn btn-green">🏠 Naar Homepage</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Overzicht -->
+    <section class="hero-card">
+      <div>
+        <span class="hero-badge">Actie van de Maand &bull; € 350,- Korting</span>
+        <h1>Project René: Design Sta-op stoel op Accu</h1>
+        <p>
+          Alles voor de promotie en verkoop van <strong>Sta-op stoel René (DFM)</strong> op één plek: de emotionele 9:16 social-video, de 8-delige Marktplaats-fotoreeks, kant-en-klare advertentieteksten en de printbare A6 showroom-prijskaart.
+        </p>
+        <div class="kpi-row">
+          <div class="kpi-box">
+            <div class="lbl">Actieprijs</div>
+            <div class="val"><s>€ 2.695,-</s>€ 2.345,-</div>
+          </div>
+          <div class="kpi-box">
+            <div class="lbl">Direct Voordeel</div>
+            <div class="val" style="color: #fde68a;">€ 350,- Korting</div>
+          </div>
+          <div class="kpi-box">
+            <div class="lbl">Uitvoering</div>
+            <div class="val">2 Motoren + Accu</div>
+          </div>
+          <div class="kpi-box">
+            <div class="lbl">Maatwerk</div>
+            <div class="val">7 Maten (XS–XL)</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-preview-box">
+        <img src="assets/stoelen/Sta-op-stoel-RENE-2.jpeg" alt="Sta-op stoel René">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--forest); margin-top: 8px;">
+          DFM Design &bull; Stof &amp; Echt Leder
+        </div>
+        <div style="font-size: 0.85rem; color: var(--muted);">
+          Verstelbare hoofdsteun &bull; Automatische draaiblokkering
+        </div>
+      </div>
+    </section>
+
+    <!-- STAP 1: Video & Story Materiaal -->
+    <section class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-step">1</span>
+          <span>Emotionele Campagnevideo (Tearjerker 9:16 — 49 sec)</span>
+        </h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="assets/video/staopstoelen_rene_aanbieding_staand.mp4" download="Staopstoelen_Rene_Aanbieding_1080x1920_Master.mp4" class="btn btn-orange">
+            📥 Download 1080×1920 Master (Reels / TikTok / Ads)
+          </a>
+          <a href="assets/video/staopstoelen_rene_aanbieding_web.mp4" download="Staopstoelen_Rene_Aanbieding_720x1280_Web.mp4" class="btn btn-outline">
+            📥 Download Webversie (5,8 MB)
+          </a>
+        </div>
+      </div>
+
+      <div class="video-campaign-grid">
+        <div class="video-player-frame">
+          <video controls playsinline preload="metadata" poster="assets/stoelen/rene_video_poster.jpg">
+            <source src="assets/video/staopstoelen_rene_aanbieding_web.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div>
+          <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.15rem; color: var(--forest); margin-bottom: 8px;">
+            Verhaallijn: “Geen lompe ziekenhuisstoel in mijn kamer!”
+          </h3>
+          <p style="color: var(--muted); margin-bottom: 16px;">
+            Deze staande 9:16 video neemt de kijker mee in het herkenbare bezwaar van veel senioren (<em>“Ik wil geen medische stoel in mijn mooie woonkamer”</em>) en laat zien hoe dochter en moeder de stijlvolle, snoerloze <strong>René</strong> ontdekken en bij Geertjan in Dordrecht proefzitten.
+          </p>
+
+          <div class="story-slides-row">
+            <div class="story-slide-item">
+              <img src="assets/marketing/video_rene/slide_rene_aanbieding.png" alt="Aanbiedingskaart René">
+              <span>Story / Status: Aanbiedingskaart</span>
+              <a href="assets/marketing/video_rene/slide_rene_aanbieding.png" download="Rene_Story_Aanbiedingskaart.png" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.78rem;">📥 Download PNG</a>
+            </div>
+            <div class="story-slide-item">
+              <img src="assets/marketing/video_rene/rene_scene4_trots_in_rene.jpg" alt="Trots in de René">
+              <span>Sfeerbeeld: Trots in de René</span>
+              <a href="assets/marketing/video_rene/rene_scene4_trots_in_rene.jpg" download="Rene_Sfeerbeeld_Showroom.jpg" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.78rem;">📥 Download JPG</a>
+            </div>
+            <div class="story-slide-item">
+              <img src="assets/marketing/video_rene/slide_rene_eindkaart.png" alt="Eindkaart René">
+              <span>Story / Status: Eindkaart</span>
+              <a href="assets/marketing/video_rene/slide_rene_eindkaart.png" download="Rene_Story_Eindkaart.png" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.78rem;">📥 Download PNG</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAP 2: Marktplaats Pakket -->
+    <section class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-step">2</span>
+          <span>Marktplaats Pakket (Vaste 8-delige Fotoreeks + Advertentietekst)</span>
+        </h2>
+        <button type="button" class="btn btn-green" onclick="downloadAllMpPhotos()">
+          📥 Download Alle 8 Marktplaats Foto's
+        </button>
+      </div>
+
+      <div class="mp-photos-grid">
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 1 (Hoofdfoto met Actie)</span>
+          <img src="assets/marketing/marktplaats_rene/0_RENE_HERO_ACTIE.jpg" alt="0_RENE_HERO_ACTIE">
+          <a href="assets/marketing/marktplaats_rene/0_RENE_HERO_ACTIE.jpg" download="0_RENE_HERO_ACTIE.jpg">📥 Download Foto 1</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 2 (Neutraal &amp; Draaibaar)</span>
+          <img src="assets/marketing/marktplaats_rene/1_RENE_NEUTRAAL_DRAAIBAAR.jpg" alt="1_RENE_NEUTRAAL_DRAAIBAAR">
+          <a href="assets/marketing/marktplaats_rene/1_RENE_NEUTRAAL_DRAAIBAAR.jpg" download="1_RENE_NEUTRAAL_DRAAIBAAR.jpg">📥 Download Foto 2</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 3 (Verstelbare Hoofdsteun)</span>
+          <img src="assets/marketing/marktplaats_rene/2_RENE_VERSTELBARE_RUG_EN_HOOFDSTEUN.jpg" alt="2_RENE_VERSTELBARE_RUG_EN_HOOFDSTEUN">
+          <a href="assets/marketing/marktplaats_rene/2_RENE_VERSTELBARE_RUG_EN_HOOFDSTEUN.jpg" download="2_RENE_VERSTELBARE_RUG_EN_HOOFDSTEUN.jpg">📥 Download Foto 3</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 4 (Volledige Relaxstand)</span>
+          <img src="assets/marketing/marktplaats_rene/3_RENE_VOLLEDIGE_RELAXSTAND.jpg" alt="3_RENE_VOLLEDIGE_RELAXSTAND">
+          <a href="assets/marketing/marktplaats_rene/3_RENE_VOLLEDIGE_RELAXSTAND.jpg" download="3_RENE_VOLLEDIGE_RELAXSTAND.jpg">📥 Download Foto 4</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 5 (Olijfgroene Uitvoering)</span>
+          <img src="assets/marketing/marktplaats_rene/4_RENE_OLIJFGROEN_UITVOERING.jpg" alt="4_RENE_OLIJFGROEN_UITVOERING">
+          <a href="assets/marketing/marktplaats_rene/4_RENE_OLIJFGROEN_UITVOERING.jpg" download="4_RENE_OLIJFGROEN_UITVOERING.jpg">📥 Download Foto 5</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 6 (3 Standen Overzicht)</span>
+          <img src="assets/marketing/marktplaats_rene/5_RENE_3_STANDEN_OVERZICHT.jpg" alt="5_RENE_3_STANDEN_OVERZICHT">
+          <a href="assets/marketing/marktplaats_rene/5_RENE_3_STANDEN_OVERZICHT.jpg" download="5_RENE_3_STANDEN_OVERZICHT.jpg">📥 Download Foto 6</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 7 (Cozy Shot Woonkamer)</span>
+          <img src="assets/marketing/marktplaats_rene/6_RENE_COZY_SHOT_WOONKAMER.jpg" alt="6_RENE_COZY_SHOT_WOONKAMER">
+          <a href="assets/marketing/marktplaats_rene/6_RENE_COZY_SHOT_WOONKAMER.jpg" download="6_RENE_COZY_SHOT_WOONKAMER.jpg">📥 Download Foto 7</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">Foto 8 (Vaste Bedrijfsinfo Banner)</span>
+          <img src="assets/marketing/marktplaats_rene/7_BEDRIJFSINFO_SHOWROOM_EN_SERVICE.jpg" alt="7_BEDRIJFSINFO_SHOWROOM_EN_SERVICE">
+          <a href="assets/marketing/marktplaats_rene/7_BEDRIJFSINFO_SHOWROOM_EN_SERVICE.jpg" download="7_BEDRIJFSINFO_SHOWROOM_EN_SERVICE.jpg">📥 Download Foto 8</a>
+        </div>
+      </div>
+
+      <div class="copy-grid">
+        <div class="copy-box">
+          <div class="copy-box-header">
+            <strong>Marktplaats Titel (max. 60 tekens)</strong>
+            <button type="button" class="btn btn-green" style="padding: 6px 14px; font-size: 0.78rem;" onclick="copyText('mpTitle')">📋 Kopieer Titel</button>
+          </div>
+          <input id="mpTitle" class="copy-textarea" readonly value="Nieuw! Design Sta-op stoel René op Accu | -€350 Actie (XS-XL)">
+
+          <div class="copy-box-header" style="margin-top: 8px;">
+            <strong>Marktplaats Vraagprijs</strong>
+            <button type="button" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.78rem;" onclick="copyText('mpPrice')">📋 Kopieer Prijs</button>
+          </div>
+          <input id="mpPrice" class="copy-textarea" readonly value="2345">
+
+          <div class="copy-box-header" style="margin-top: 8px;">
+            <strong>Website-URL voor onderaan Marktplaats</strong>
+            <button type="button" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.78rem;" onclick="copyText('mpUrl')">📋 Kopieer URL</button>
+          </div>
+          <input id="mpUrl" class="copy-textarea" readonly value="https://staopstoelen.nl/stoelen/sta-op-stoel-rene.html">
+        </div>
+
+        <div class="copy-box">
+          <div class="copy-box-header">
+            <strong>Volledige Marktplaats Advertentietekst</strong>
+            <button type="button" class="btn btn-green" style="padding: 6px 14px; font-size: 0.78rem;" onclick="copyText('mpBody')">📋 Kopieer Advertentietekst</button>
+          </div>
+          <textarea id="mpBody" class="copy-textarea" rows="12" readonly>Wilt u wél veilig, pijnvrij en zonder moeite kunnen opstaan, maar absoluut géén lompe of medisch ogende stoel in uw woonkamer? Maak kennis met de nieuwe Design Sta-op stoel René van DFM bij Staopstoelen.nl in Dordrecht!
+
+TIJDELIJKE SHOWROOM-AANBIEDING:
+• Adviesprijs: € 2.695,-
+• Actieprijs: € 2.345,- (Uw directe voordeel: € 350,- korting!)
+• Inclusief standaard ingebouwde accu (volledig snoerloos in de kamer te plaatsen)
+
+WAAROM KIEZEN VOOR STA-OP STOEL RENÉ?
+• Stijlvol design: oogt als een elegante draaifauteuil, niet als een hulpmiddel.
+• Standaard met onzichtbaar weggewerkte accu: geen losse snoeren over de vloer.
+• Verstelbare hoofdsteun (in hoogte én hoek): optimale ondersteuning bij lezen of tv-kijken (optioneel elektrisch).
+• 2 onafhankelijke motoren: bedien rugleuning en voetensteun los van elkaar via de subtiele 4-knops bediening in de armleuning.
+• Automatische draaiblokkering: zodra de sta-op functie start, blokkeert de draaivoet automatisch zodat u 100% stabiel opstaat.
+• Maatwerk in 7 maten (XS / S / SM / M / ML / L / XL): ruime keuze uit stof en echt leder in vele kleuren.
+
+PERSOONLIJKE 5-PUNTS ZITMETING DOOR GEERTJAN:
+In onze showroom in Dordrecht wordt u geholpen door Geertjan (bewegingstechnoloog). Met zijn persoonlijke 5-punts zitmeting bepalen we exact welke maat (XS t/m XL) het beste bij uw lichaam past.
+
+BEZORGING &amp; SERVICE:
+• Gratis bezorging &amp; installatie in de regio Drechtsteden (Dordrecht, Zwijndrecht, Papendrecht, Sliedrecht, Hendrik-Ido-Ambacht en Alblasserdam).
+• Landelijke bezorging door heel Nederland met eigen bezorgdienst en installatie (wij bezorgen uitsluitend in Nederland).
+• 3 jaar fabrieksgarantie.
+
+KOM VRIJBLIJVEND PROEFZITTEN (DE KOFFIE STAAT KLAAR):
+Staopstoelen.nl — Showroom Dordrecht
+Adres: Merwedestraat 239, 3313 CS Dordrecht (gratis parkeren voor de deur)
+Openingstijden: Dinsdag t/m vrijdag van 10:00 tot 16:00 uur (maandag &amp; zaterdag op afspraak)
+
+Telefoon showroom: 078 - 631 4858
+Direct mobiel / WhatsApp Geertjan: 06 - 22 23 29 64
+Website: www.staopstoelen.nl</textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAP 3: Social Media, WhatsApp & Google Ads Teksten -->
+    <section class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-step">3</span>
+          <span>Social Media, WhatsApp &amp; Google Ads Teksten</span>
+        </h2>
+      </div>
+
+      <div class="copy-grid">
+        <div class="copy-box">
+          <div class="copy-box-header">
+            <strong>Facebook / Instagram Reel &amp; Post Tekst</strong>
+            <button type="button" class="btn btn-green" style="padding: 6px 14px; font-size: 0.78rem;" onclick="copyText('socialCaption')">📋 Kopieer Post</button>
+          </div>
+          <textarea id="socialCaption" class="copy-textarea" rows="9" readonly>“Geen lompe ziekenhuisstoel in mijn woonkamer…” 💬
+Herkenbaar? U wilt wél zonder pijn of moeite kunnen opstaan, maar u wilt óók een stoel waar u trots op bent in uw interieur.
+
+Maak kennis met Design Sta-op stoel René:
+✓ Standaard op accu (volledig snoerloos vrij in de kamer)
+✓ Verstelbare hoofdsteun in hoogte én hoek
+✓ 2 motoren &amp; automatische draaiblokkering bij het opstaan
+✓ Op uw lichaam aangemeten in 7 maten (XS t/m XL) in stof of leer
+
+🎁 TIJDELIJKE SHOWROOM-ACTIE:
+Van € 2.695,- voor € 2.345,- (€ 350,- korting!)
+
+Kom de René vrijblijvend uitproberen onder het genot van een kopje koffie bij Geertjan in Dordrecht:
+📍 Merwedestraat 239, Dordrecht (gratis parkeren voor de deur)
+📞 Bel: 078 - 631 4858 | WhatsApp: 06 - 22 23 29 64
+👉 Bekijk de René op: https://staopstoelen.nl/stoelen/sta-op-stoel-rene.html</textarea>
+        </div>
+
+        <div class="copy-box">
+          <div class="copy-box-header">
+            <strong>Direct WhatsApp-bericht naar Klant / Familie</strong>
+            <button type="button" class="btn btn-green" style="padding: 6px 14px; font-size: 0.78rem;" onclick="copyText('waText')">📋 Kopieer WhatsApp</button>
+          </div>
+          <textarea id="waText" class="copy-textarea" rows="9" readonly>Beste, hierbij zoals beloofd de informatie en het korte filmpje van onze Design Sta-op stoel René! 
+
+De René heeft een onzichtbaar weggewerkte accu (dus geen snoeren over de vloer), 2 onafhankelijke motoren, een verstelbare hoofdsteun en blokkeert automatisch met draaien zodra u opstaat. Hij is leverbaar in 7 maten (XS t/m XL) in zowel stof als leer.
+
+Tijdelijk hebben wij op de René € 350,- korting: van € 2.695,- voor € 2.345,- (compleet met accu).
+
+Bekijk hier alle foto's en de video (49 sec):
+https://staopstoelen.nl/stoelen/sta-op-stoel-rene.html
+
+De koffie staat klaar aan de Merwedestraat 239 in Dordrecht!
+Hartelijke groet,
+Geertjan — Staopstoelen.nl (078 - 631 4858)</textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAP 4: Showroom Prijskaart & 3D René Iconen -->
+    <section class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-step">4</span>
+          <span>Showroom Prijskaart (A6) &amp; Nieuwe 3D René Merk-Iconen</span>
+        </h2>
+        <a href="badge-a6-rene.html" class="btn btn-orange">🖨️ Open &amp; Print A6 Stoel-Prijskaart</a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+        <div class="mp-photo-card">
+          <span class="mp-num">3D René: Zitstand</span>
+          <img src="assets/icons/stoel_icon_rene_zitten.jpg" alt="3D René Zitten">
+          <a href="assets/icons/stoel_icon_rene_zitten.jpg" download="stoel_icon_rene_zitten.jpg">📥 Download JPG</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">3D René: Half-open</span>
+          <img src="assets/icons/stoel_icon_rene_halfopen.jpg" alt="3D René Halfopen">
+          <a href="assets/icons/stoel_icon_rene_halfopen.jpg" download="stoel_icon_rene_halfopen.jpg">📥 Download JPG</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">3D René: Relaxstand</span>
+          <img src="assets/icons/stoel_icon_rene_relax.jpg" alt="3D René Relax">
+          <a href="assets/icons/stoel_icon_rene_relax.jpg" download="stoel_icon_rene_relax.jpg">📥 Download JPG</a>
+        </div>
+        <div class="mp-photo-card">
+          <span class="mp-num">3D René: App Badge</span>
+          <img src="assets/icons/stoel_icon_rene_badge.jpg" alt="3D René Badge">
+          <a href="assets/icons/stoel_icon_rene_badge.jpg" download="stoel_icon_rene_badge.jpg">📥 Download JPG</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="copyToast">✓ Gekopieerd naar klembord!</div>
+
+  <script>
+    function copyText(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      navigator.clipboard.writeText(el.value).then(() => {
+        const t = document.getElementById('copyToast');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2200);
+      });
+    }
+
+    function downloadAllMpPhotos() {
+      const files = [
+        '0_RENE_HERO_ACTIE.jpg',
+        '1_RENE_NEUTRAAL_DRAAIBAAR.jpg',
+        '2_RENE_VERSTELBARE_RUG_EN_HOOFDSTEUN.jpg',
+        '3_RENE_VOLLEDIGE_RELAXSTAND.jpg',
+        '4_RENE_OLIJFGROEN_UITVOERING.jpg',
+        '5_RENE_3_STANDEN_OVERZICHT.jpg',
+        '6_RENE_COZY_SHOT_WOONKAMER.jpg',
+        '7_BEDRIJFSINFO_SHOWROOM_EN_SERVICE.jpg'
+      ];
+      files.forEach((f, idx) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = 'assets/marketing/marktplaats_rene/' + f;
+          a.download = f;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        }, idx * 280);
+      });
+    }
+  </script>
+</body>
+</html>

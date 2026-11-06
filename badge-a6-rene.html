@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showroom Prijskaart A6 — Design Sta-op stoel René | Staopstoelen.nl</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=10.420">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #2f5f15;
+      --forest-light: #4b8f24;
+      --terracotta: #f39223;
+      --cream: #fbf9f5;
+      --dark: #1d2024;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #e9efe6;
+      color: var(--dark);
+      padding: 28px 16px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .toolbar {
+      background: #fff;
+      padding: 14px 22px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(18,43,7,0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border: 1.5px solid #cfe0c8;
+    }
+    .toolbar a, .toolbar button {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-print { background: var(--forest-light); color: #fff; }
+    .btn-print:hover { background: var(--forest); }
+    .btn-back { background: #f1f5ef; color: var(--forest); border: 1px solid #c6dabf !important; }
+
+    /* A6 Kaart: 105mm x 148mm */
+    .a6-card {
+      width: 105mm;
+      height: 148mm;
+      background: #ffffff;
+      border-radius: 5mm;
+      border: 0.6mm solid #b8d4ad;
+      box-shadow: 0 14px 36px rgba(18,43,7,0.16);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    /* Ponsgat-markering bovenaan voor stoelhanger */
+    .punch-hole {
+      width: 5mm;
+      height: 5mm;
+      border-radius: 50%;
+      border: 0.4mm dashed #cbd5e1;
+      margin: 2.5mm auto 0;
+    }
+    .card-header {
+      padding: 2mm 6mm 3mm;
+      text-align: center;
+      border-bottom: 1.2mm solid var(--forest-light);
+    }
+    .card-header img {
+      height: 8.5mm;
+      width: auto;
+    }
+    .actie-banner {
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 9.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+      padding: 1.8mm 4mm;
+    }
+    .card-body {
+      padding: 3.5mm 6mm;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .chair-hero-row {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+    }
+    .chair-hero-row img {
+      width: 34mm;
+      height: 36mm;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .chair-title-box h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14pt;
+      font-weight: 900;
+      color: var(--forest);
+      line-height: 1.1;
+    }
+    .chair-title-box .brand-sub {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-top: 1mm;
+    }
+    .price-block {
+      margin-top: 2.5mm;
+      background: #f4f9f1;
+      border: 0.5mm solid #bdd8b3;
+      border-radius: 3mm;
+      padding: 2mm 3mm;
+      text-align: center;
+    }
+    .price-block .van {
+      font-size: 8.5pt;
+      color: #dc2626;
+      text-decoration: line-through;
+      font-weight: 700;
+    }
+    .price-block .voor {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19pt;
+      font-weight: 900;
+      color: var(--forest);
+      line-height: 1.05;
+    }
+    .price-block .voordeel {
+      display: inline-block;
+      margin-top: 0.8mm;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 800;
+      padding: 0.6mm 2.5mm;
+      border-radius: 99px;
+    }
+    .usp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8mm;
+      margin: 2.5mm 0;
+    }
+    .usp-list li {
+      font-size: 8.8pt;
+      line-height: 1.25;
+      padding-left: 4.5mm;
+      position: relative;
+      font-weight: 500;
+    }
+    .usp-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--forest-light);
+      font-weight: 900;
+    }
+    .specs-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5mm;
+      background: #f8faf7;
+      border: 0.3mm solid #dce8d6;
+      border-radius: 2.5mm;
+      padding: 2mm;
+      text-align: center;
+    }
+    .specs-strip div strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8pt;
+      color: var(--forest);
+    }
+    .specs-strip div span {
+      font-size: 7pt;
+      color: #64748b;
+    }
+    .card-footer {
+      background: var(--forest);
+      color: #fff;
+      padding: 2.5mm 5mm;
+      text-align: center;
+      font-size: 7.8pt;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .card-footer span {
+      color: #fde68a;
+      font-weight: 800;
+    }
+    @media print {
+      @page { size: A6 portrait; margin: 0; }
+      body { background: #fff; padding: 0; }
+      .toolbar { display: none !important; }
+      .a6-card {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        width: 105mm;
+        height: 148mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a href="project-rene.html" class="btn-back">&larr; Terug naar Project René</a>
+    <button type="button" class="btn-print" onclick="window.print()">🖨️ Print Showroom Prijskaart (A6)</button>
+  </div>
+
+  <div class="a6-card">
+    <div>
+      <div class="punch-hole" title="Ponsgat voor stoelkoordje"></div>
+      <div class="card-header">
+        <img src="assets/marketing/logo_letters_bijgesneden.png" alt="Staopstoelen.nl">
+      </div>
+      <div class="actie-banner">
+        Tijdelijke Actie &bull; € 350,- Korting
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="chair-hero-row">
+        <img src="assets/stoelen/Sta-op-stoel-RENE-2.jpeg" alt="Sta-op stoel René">
+        <div class="chair-title-box">
+          <div class="brand-sub">DFM Design &bull; Nieuw</div>
+          <h1>Sta-op stoel René</h1>
+          <div class="price-block">
+            <div class="van">Adviesprijs € 2.695,-</div>
+            <div class="voor">€ 2.345,-</div>
+            <div class="voordeel">Uw voordeel: € 350,-</div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="usp-list">
+        <li><strong>Standaard met accu:</strong> volledig snoerloos vrij in de kamer te plaatsen</li>
+        <li><strong>Verstelbare hoofdsteun:</strong> eenvoudig in hoogte én hoek verstelbaar voor uw nek</li>
+        <li><strong>2 motoren &amp; draaiblokkering:</strong> veilig en stabiel opstaan met 1 druk op de knop</li>
+        <li><strong>7 pasmaten (XS t/m XL):</strong> in talloze soorten en kleuren stof en leder</li>
+      </ul>
+
+      <div class="specs-strip">
+        <div>
+          <strong>7 Maten</strong>
+          <span>XS t/m XL</span>
+        </div>
+        <div>
+          <strong>Op Accu</strong>
+          <span>Snoerloos</span>
+        </div>
+        <div>
+          <strong>3 Jaar</strong>
+          <span>Garantie</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      Inclusief gratis <span>5-punts zitmeting</span> &amp; gratis bezorging in de Drechtsteden
+    </div>
+  </div>
+</body>
+</html>
