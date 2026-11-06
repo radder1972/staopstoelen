@@ -745,6 +745,15 @@ function updateWizardAnswersFromForm() {
   state.wizardAnswers.modern = formData.get("modern") === "true";
   state.wizardAnswers.wireless = formData.get("wireless") === "true";
   
+  // Pas automatisch de video-variant (man/vrouw) aan op basis van gekozen lichaamslengte
+  if (typeof window.setReneVisitorVariant === "function") {
+    if (state.wizardAnswers.height === "small") {
+      window.setReneVisitorVariant("vrouw");
+    } else if (state.wizardAnswers.height === "large") {
+      window.setReneVisitorVariant("man");
+    }
+  }
+
   // Get all checked complaints
   state.wizardAnswers.complaints = [];
   document.querySelectorAll('input[name="complaints"]:checked').forEach(cb => {
@@ -3780,8 +3789,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.418" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.418" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.419" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.419" 
             controls 
             playsinline 
             preload="auto"
@@ -3807,6 +3816,14 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   const card = document.getElementById("videoLightboxCard") || overlay.querySelector(".video-lightbox-card");
   const frameWrap = document.getElementById("videoLightboxFrameWrap") || overlay.querySelector(".video-lightbox-frame-wrap");
   const ctaBtn = document.getElementById("videoLightboxCtaBtn") || overlay.querySelector(".video-lightbox-cta-btn");
+
+  // Automatische video-resolutie op basis van bezoeker voor Stoel René
+  if (mode === "rene" || mode === "rene-man" || mode === "rene-auto") {
+    const visitorVar = (typeof window.getReneVisitorVariant === "function")
+      ? window.getReneVisitorVariant()
+      : "man";
+    mode = (visitorVar === "vrouw") ? "rene" : "rene-man";
+  }
 
   const isVertical = (mode === "rene" || mode === "rene-man" || mode === "ravi");
   if (card) {
@@ -3835,8 +3852,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.420`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.420`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.419`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3848,8 +3865,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.420`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.420`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.419`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3874,8 +3891,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.418`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.418`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.419`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3888,7 +3905,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.418`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.419`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3897,8 +3914,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.418";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.418";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.419";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.419";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3911,7 +3928,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.418`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.419`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -3920,8 +3937,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.418";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.418";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.419";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.419";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));
@@ -4276,5 +4293,113 @@ if (document.readyState === "loading") {
     document.addEventListener('DOMContentLoaded', run);
   } else {
     run();
+  }
+})();
+
+// =========================================================================
+// Automatische Bezoeker-Personalisatie voor Video Stoel René (Zonder 'Voor Hem / Voor Haar' tabs)
+// =========================================================================
+(function initReneVisitorPersonalization() {
+  const STORAGE_KEY = "staop_rene_visitor_variant";
+
+  window.getReneVisitorVariant = function() {
+    try {
+      // 1. Check URL / Campagne / UTM parameters
+      const searchStr = ((window.location.search || "") + " " + (window.location.hash || "")).toLowerCase();
+      if (/(vrouw|dame|haar|moeder|oma|boucle|beige|mevr)/i.test(searchStr)) {
+        localStorage.setItem(STORAGE_KEY, "vrouw");
+        return "vrouw";
+      }
+      if (/(man|heer|hem|vader|opa|groen|leder|dhr|meneer)/i.test(searchStr)) {
+        localStorage.setItem(STORAGE_KEY, "man");
+        return "man";
+      }
+
+      // 2. Check Maatwijzer lengte indien al gekozen in deze sessie
+      if (typeof state !== "undefined" && state && state.wizardAnswers) {
+        if (state.wizardAnswers.height === "small") {
+          localStorage.setItem(STORAGE_KEY, "vrouw");
+          return "vrouw";
+        }
+        if (state.wizardAnswers.height === "large") {
+          localStorage.setItem(STORAGE_KEY, "man");
+          return "man";
+        }
+      }
+
+      // 3. Check eerder opgeslagen profiel van deze bezoeker
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "man" || saved === "vrouw") {
+        return saved;
+      }
+
+      // 4. Wijs eenmalig een vaste variant toe per unieke bezoeker zodat het overal op de site consistent is
+      const assigned = Math.random() < 0.5 ? "man" : "vrouw";
+      localStorage.setItem(STORAGE_KEY, assigned);
+      return assigned;
+    } catch (e) {
+      return "man";
+    }
+  };
+
+  window.setReneVisitorVariant = function(variant) {
+    if (variant !== "man" && variant !== "vrouw") return;
+    try {
+      localStorage.setItem(STORAGE_KEY, variant);
+    } catch (e) {}
+    window.syncReneVisitorVideoElements(variant);
+  };
+
+  window.syncReneVisitorVideoElements = function(forcedVariant) {
+    const variant = forcedVariant || window.getReneVisitorVariant();
+    const isSubdir = window.location.pathname.includes("/stoelen/");
+    const pfx = isSubdir ? "../" : "";
+
+    const videoSrc = variant === "vrouw"
+      ? `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4`
+      : `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4`;
+    const posterSrc = variant === "vrouw"
+      ? `${pfx}assets/rene_video_poster.jpg`
+      : `${pfx}assets/rene_man_video_poster.jpg`;
+    const durationSec = variant === "vrouw" ? "49 sec" : "53 sec";
+
+    // 1. Homepage Spotlight Video (#renePromoVideo)
+    const homeVid = document.getElementById("renePromoVideo");
+    const homeLbl = document.getElementById("renePromoOverlayLabel");
+    if (homeVid && homeVid.paused) {
+      if (homeVid.getAttribute("src") !== videoSrc) {
+        homeVid.src = videoSrc;
+      }
+      homeVid.poster = posterSrc;
+      if (homeLbl) {
+        homeLbl.textContent = `▶ Bekijk video (${durationSec})`;
+      }
+    }
+
+    // 2. Detailpagina Stoel René (#reneDetailVideo)
+    const detailVid = document.getElementById("reneDetailVideo");
+    if (detailVid && detailVid.paused) {
+      if (detailVid.getAttribute("src") !== videoSrc) {
+        detailVid.src = videoSrc;
+      }
+      detailVid.poster = posterSrc;
+    }
+  };
+
+  // Luister ook subtiel naar invoer in formulieren of de assistent (bijv. "Mevr.", "moeder", "Dhr.", "vader")
+  document.addEventListener("input", function(e) {
+    const val = (e.target && e.target.value ? String(e.target.value) : "").toLowerCase();
+    if (val.length < 3) return;
+    if (/\b(mevr|mevrouw|moeder|oma|haar)\b/.test(val)) {
+      window.setReneVisitorVariant("vrouw");
+    } else if (/\b(dhr|meneer|vader|opa|hem)\b/.test(val)) {
+      window.setReneVisitorVariant("man");
+    }
+  }, { passive: true });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => window.syncReneVisitorVideoElements());
+  } else {
+    window.syncReneVisitorVideoElements();
   }
 })();

@@ -1533,7 +1533,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.418</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.419</span></div>
     </div>
   </div>
 
@@ -1543,7 +1543,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.418</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.419</span>
       </div>
 
       <div class="admin-header-right">
@@ -3930,7 +3930,7 @@
                       Vink aan: <strong>Verzending</strong> &bull; Schakel <strong>Gratis verzending</strong> in
                     </div>
                     <div style="font-size: 0.74rem; color: #166534; margin-top: 2px;">
-                      Verzendtijd: <strong>2-5 dagen</strong> (gratis thuisbezorgd &amp; geplaatst in ZH)
+                      Verzendtijd: <strong>2-5 dagen</strong> (gratis in regio Drechtsteden &bull; bezorging door heel NL)
                     </div>
                   </div>
                 </div>
@@ -4085,7 +4085,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.418</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.419</span>
     </div>
   </footer>
 
@@ -7715,10 +7715,21 @@
       const p = chair.price;
       const op = chair.old_price;
 
+      if ((chair.id || "") === "sta-op-stoel-rene") {
+        return {
+          garantie: "Nieuw! Design Sta-op stoel René op Accu • 3 Jr Gar.",
+          opmaat: "DFM René Draaibare Sta-op stoel op Accu • 7 Maten",
+          voordeel: "Nieuw! Sta-op stoel René op Accu • Van €2695 Nu €2345",
+          lokaal: "Design Sta-op stoel René op Accu • Showroom Dordrecht"
+        };
+      }
+
+      const garLabel = isOccasion ? "1 Jr Gar." : "3 Jr Gar.";
+
       // 1. Zekerheid & Garantie
-      let t1 = `${brand} ${model} Sta-opstoel • ${isOccasion ? "z.g.a.n. • " : ""}1 Jr Gar.`.replace(/\s+/g, " ").trim();
-      if (t1.length > 60) t1 = `${brand} ${model} • ${isOccasion ? "z.g.a.n. • " : ""}1 Jr Gar.`.replace(/\s+/g, " ").trim();
-      if (t1.length > 60) t1 = `${brand} ${model} Sta-opstoel • 1 Jr Gar.`.replace(/\s+/g, " ").trim();
+      let t1 = `${brand} ${model} Sta-opstoel • ${isOccasion ? "z.g.a.n. • " : "Nieuw • "}${garLabel}`.replace(/\s+/g, " ").trim();
+      if (t1.length > 60) t1 = `${brand} ${model} • ${isOccasion ? "z.g.a.n. • " : "Nieuw • "}${garLabel}`.replace(/\s+/g, " ").trim();
+      if (t1.length > 60) t1 = `${brand} ${model} Sta-opstoel • ${garLabel}`.replace(/\s+/g, " ").trim();
       if (t1.length > 60) t1 = t1.substring(0, 60).trim();
 
       // 2. Ergonomie & Op Maat
@@ -7730,11 +7741,11 @@
       // 3. Voordeel & Prijs
       let t3 = "";
       if (op && p && op > p) {
-        t3 = `${brand} ${model} (Nieuw €${op}) Nu €${p} • Gar.`.replace(/\s+/g, " ").trim();
-        if (t3.length > 60) t3 = `${brand} ${model} Nu €${p} (Nieuw €${op})`.replace(/\s+/g, " ").trim();
+        t3 = `${brand} ${model} (Advies €${op}) Nu €${p} • Gar.`.replace(/\s+/g, " ").trim();
+        if (t3.length > 60) t3 = `${brand} ${model} Nu €${p} (Was €${op})`.replace(/\s+/g, " ").trim();
       } else {
-        t3 = `${brand} ${model} Sta-opstoel • Top Occasion • Gar.`.replace(/\s+/g, " ").trim();
-        if (t3.length > 60) t3 = `${brand} ${model} Occasion • Garantie`.replace(/\s+/g, " ").trim();
+        t3 = `${brand} ${model} Sta-opstoel • ${isOccasion ? "Top Occasion" : "Direct Leverbaar"} • Gar.`.replace(/\s+/g, " ").trim();
+        if (t3.length > 60) t3 = `${brand} ${model} ${isOccasion ? "Occasion" : "Nieuw"} • Garantie`.replace(/\s+/g, " ").trim();
       }
       if (t3.length > 60) t3 = t3.substring(0, 60).trim();
 
@@ -7763,148 +7774,151 @@
       const fullName = `${brand} ${model}`;
       const isOccasion = (chair.condition || "").toLowerCase().includes("occasion") || (chair.condition || "").toLowerCase().includes("reco");
       const price = chair.price ? `€ ${chair.price.toLocaleString("nl-NL")},-` : "Vraagprijs op aanvraag";
-      const material = chair.material === "leer" ? "Hoogwaardig leder" : (chair.material === "stof" ? "Kwaliteitsstof" : "Comfortabele bekleding");
+      const material = chair.material === "leer" ? "Hoogwaardig echt leder" : (chair.material === "stof" ? "Slijtvaste kwaliteitsstof" : (chair.material || "Keuze uit stof en echt leder"));
 
       const specs = chair.specifications || {};
-      const motoren = specs["Aantal motoren"] || (chair.features && chair.features.find(f => f.toLowerCase().includes("motor"))) || "Elektrisch verstelbaar (onafhankelijk)";
+      const motoren = specs["Aantal motoren"] || specs["Uitvoeringen"] || (chair.features && chair.features.find(f => f.toLowerCase().includes("motor"))) || "Elektrisch verstelbaar (onafhankelijk)";
       const maat = specs["Maatwerk"] || "Individueel op maat instelbaar";
-      const garantie = isOccasion ? "1 Jaar volledige garantie (inclusief keuringscertificaat)" : (specs["Garantie"] || "Volledige fabrieksgarantie");
-
-      const useUtm = document.getElementById("mpUtmToggle") ? document.getElementById("mpUtmToggle").checked : true;
-      const targetCatalog = document.getElementById("mpUrlTargetCatalog")?.checked;
-      const targetHome = document.getElementById("mpUrlTargetHome")?.checked;
-      const chairSlug = (chair.id || "occasions").replace(/[^a-z0-9_-]+/gi, "-").toLowerCase();
-
-      let directUrl = getChairWebsiteUrl(chair, useUtm);
-      if (targetCatalog) {
-        directUrl = useUtm 
-          ? `https://staopstoelen.nl/staopstoelen.html?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${chairSlug}_catalogus`
-          : "https://staopstoelen.nl/staopstoelen.html";
-      } else if (targetHome) {
-        directUrl = useUtm
-          ? `https://staopstoelen.nl/?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=${chairSlug}_home`
-          : "https://staopstoelen.nl/";
-      }
-
-      const catalogUrl = useUtm
-        ? "https://staopstoelen.nl/staopstoelen.html?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=voorraad_30plus"
-        : "https://staopstoelen.nl/staopstoelen.html";
+      const garantie = isOccasion ? "1 jaar volledige garantie aan huis (inclusief keuringscertificaat)" : (specs["Garantie"] || "3 jaar volledige fabrieksgarantie");
 
       let priceComparison = "";
       if (chair.old_price && chair.price && chair.old_price > chair.price) {
         const diff = chair.old_price - chair.price;
         const pct = Math.round((diff / chair.old_price) * 100);
-        priceComparison = `\n• Vaste Occasionprijs: ${price} (Nieuwprijs was € ${chair.old_price.toLocaleString("nl-NL")},- • Uw voordeel: € ${diff.toLocaleString("nl-NL")},- / ${pct}% besparing)`;
+        if (isOccasion) {
+          priceComparison = `• Vaste Occasionprijs: ${price} (Nieuwprijs was € ${chair.old_price.toLocaleString("nl-NL")},- • Uw voordeel: € ${diff.toLocaleString("nl-NL")},- / ${pct}% besparing)`;
+        } else {
+          priceComparison = `• Tijdelijke Actieprijs: ${price} (Adviesprijs: € ${chair.old_price.toLocaleString("nl-NL")},- • Uw directe voordeel: € ${diff.toLocaleString("nl-NL")},- korting!)`;
+        }
       } else {
-        priceComparison = `\n• Vaste Occasionprijs: ${price} (Eerlijke, transparante prijs zónder verborgen kosten)`;
+        priceComparison = `• Vaste Prijs: ${price} (Eerlijke, transparante prijs zonder verborgen kosten)`;
       }
 
       let featuresList = "";
       if (chair.features && Array.isArray(chair.features) && chair.features.length > 0) {
-        featuresList = chair.features.slice(0, 4).map(f => `• ${f}`).join("\n");
+        featuresList = chair.features.slice(0, 5).map(f => `• ${f}`).join("\n");
       } else {
-        featuresList = "• Elektrische sta-op ondersteuning (veilig en soepel opstaan)\n• Onafhankelijke kantel- en relaxstand voor optimale ontspanning\n• Eenvoudige, overzichtelijke handbediening met grote knoppen";
+        featuresList = "• Elektrische sta-op ondersteuning (veilig en soepel opstaan)\n• Onafhankelijke kantel- en relaxstand voor optimale ontspanning\n• Eenvoudige, overzichtelijke bediening";
       }
 
-      const bottomShowroomBlock = `────────────────────────────────────────────────
-BEKIJK DEZE EN AL ONZE 30+ OCCASIONS OP ONZE WEBSITE:
-🔵 Klik direct op de blauwe knop 'Bekijk website' in deze advertentie
-🌐 Of open direct: ${directUrl}
-🌐 Complete collectie (30+ Certified stoelen): ${catalogUrl}
+      const bottomShowroomBlock = `BEZORGING & SERVICE DOOR HEEL NEDERLAND:
+• Gratis bezorging & installatie in de regio Drechtsteden (Dordrecht, Zwijndrecht, Papendrecht, Sliedrecht, Hendrik-Ido-Ambacht en Alblasserdam).
+• Landelijke bezorging: buiten de Drechtsteden bezorgen en installeren wij door heel Nederland met onze eigen bezorgdienst (wij bezorgen uitsluitend in Nederland).
+• Onze eigen bezorger zet de stoel op de juiste plek in uw woonkamer, stelt hem exact op uw lichaam af en geeft rustige uitleg.
 
-SHOWROOM DORDRECHT & VRIJBLIJVEND PROEFZITTEN:
-Merwedestraat 239, 3313 GT Dordrecht
-(In het pand van Schipper Compact Wonen - gratis eigen parkeerterrein voor de deur, drempelvrij & rolstoeltoegankelijk)
+KOM VRIJBLIJVEND PROEFZITTEN IN DORDRECHT (DE KOFFIE STAAT KLAAR):
+Staopstoelen.nl — Showroom Dordrecht
+Merwedestraat 239, 3313 CS Dordrecht
+(In het pand van Schipper Compact Wonen — gratis eigen parkeerterrein direct voor de deur, volledig drempelvrij & rolstoeltoegankelijk)
 
-Openingstijden:
-• Dinsdag t/m vrijdag: 10:00 - 16:00 uur
-• Maandag en zaterdag: Op afspraak geopend voor rustig proefzitten en persoonlijk ergonomisch maatwerkadvies
+Openingstijden showroom:
+• Dinsdag t/m vrijdag: 10:00 - 16:00 uur (vrije inloop)
+• Maandag en zaterdag: Op afspraak geopend voor rustig proefzitten en persoonlijk maatwerkadvies
 
-LIEVER DIRECT PERSOONLIJK CONTACT OF ADVIES?
-Wilt u weten of deze stoel geschikt is voor uw situatie of die van uw ouder(s)?
-📞 Direct bellen: 078 - 631 4858
-📱 WhatsApp: 06 - 2223 2964
-💬 Of stuur ons een bericht via Marktplaats. Wij reageren snel en denken graag met u mee!`;
+DIRECT PERSOONLIJK CONTACT OF ADVIES VAN GEERTJAN?
+• Telefoon showroom: 078 - 631 4858
+• Direct mobiel / WhatsApp Geertjan: 06 - 22 23 29 64
+• Website: www.staopstoelen.nl (klik op de blauwe knop 'Bekijk website' in deze advertentie voor alle foto's & de 1-minuut Maatwijzer)`;
+
+      // Specifieke geoptimaliseerde tekst voor Design Sta-op stoel René (Nieuw op Accu)
+      if ((chair.id || "") === "sta-op-stoel-rene" && style !== "krachtig") {
+        return `Wilt u wel veilig, pijnvrij en zonder moeite kunnen opstaan, maar absoluut geen lompe of medisch ogende stoel in uw woonkamer? Maak kennis met de nieuwe Design Sta-op stoel René van DFM bij Staopstoelen.nl in Dordrecht!
+
+TIJDELIJKE SHOWROOM-AANBIEDING:
+• Adviesprijs: € 2.695,-
+• Actieprijs: € 2.345,- (Uw directe voordeel: € 350,- korting!)
+• Inclusief standaard onzichtbaar ingebouwde accu (volledig snoerloos vrij in de kamer te plaatsen)
+• Inclusief 3 jaar volledige garantie
+
+WAAROM KIEZEN VOOR STA-OP STOEL RENÉ?
+• Stijlvol Europees design: oogt als een elegante draaifauteuil, niet als een zorgstoel of hulpmiddel.
+• Standaard met onzichtbaar weggewerkte accu & LED-indicator: geen losse snoeren over de vloer waar u over kunt struikelen.
+• Ergonomische hartbalans-ligstand: met 2 onafhankelijke motoren verstelt u rugleuning en voetensteun traploos tot de positie waarbij uw voeten op harthoogte rusten.
+• Automatische draaiblokkering: zodra u de sta-op functie gebruikt, blokkeert de draaivoet automatisch zodat u 100% veilig en stabiel opstaat.
+• Verstelbare hoofdsteun (in hoogte en kantelhoek): optimale neksteun bij lezen of tv-kijken (optioneel ook elektrisch).
+• Keuze uit 7 maten (XS t/m XL) en unieke Duo-stoffering: leverbaar in stof, echt leder of een combinatie van stof en leder.
+
+PERSOONLIJKE 5-PUNTS ZITMETING DOOR BEWEGINGSTECHNOLOOG GEERTJAN:
+In onze showroom in Dordrecht wordt u geholpen door Geertjan Klein Haneveld (bewegingstechnoloog). Met zijn 5-punts ergonomische zitmeting bepalen we kosteloos de exacte maat, zithoogte en zitdiepte voor uw lichaam.
+
+MEER FOTO'S, VIDEO & DE 1-MINUUT MAATWIJZER?
+Klik op de blauwe knop 'Bekijk website' in deze advertentie of kijk op www.staopstoelen.nl voor alle uitvoeringen en onze ruime showroomcollectie van 30+ sta-op stoelen.
+
+${bottomShowroomBlock}`;
+      }
 
       // VARIANT 1: MANTELZORGERS & ZEKERHEID (Empathisch, focus op veiligheid vader/moeder & ontzorging)
       if (style === "mantelzorger") {
-        return `🔵 TIP: KLIK OP DE BLAUWE KNOP 'BEKIJK WEBSITE' VOOR 15+ DETAILFOTO'S & DE MAATWIJZER!
-👉 Directe link naar deze stoel: ${directUrl}
+        const uspHeader = isOccasion
+          ? `DE BELANGRIJKSTE ZEKERHEDEN OP EEN RIJ:
+• 1 jaar volledige garantie aan huis (technisch 100% gekeurd op 15 punten)
+• Gratis op maat afgesteld op uw lichaamsmaten door Bewegingstechnoloog Geertjan
+• Gratis thuisbezorgd & geplaatst in de regio Drechtsteden (daarbuiten bezorging door heel Nederland)
+• Ruime showroom in Dordrecht met 30+ direct leverbare sta-op stoelen`
+          : `DE BELANGRIJKSTE ZEKERHEDEN OP EEN RIJ:
+• ${garantie}
+• Gratis op maat aangemeten (5-punts zitmeting) door Bewegingstechnoloog Geertjan
+• Gratis thuisbezorgd & geïnstalleerd in de regio Drechtsteden (daarbuiten bezorging door heel Nederland)
+• Ruime showroom in Dordrecht met 30+ modellen om rustig vrijblijvend te proefzitten`;
 
-✓ 1 JAAR VOLLEDIGE GARANTIE AAN HUIS (technisch 100% gekeurd)
-✓ GRATIS OP MAAT AFGESTELD op uw lichaamsmaten door Bewegingstechnoloog Geertjan
-✓ GRATIS THUISBEZORGD & GEPLAATST in regio Dordrecht, Drechtsteden & Zuid-Holland
-✓ BENIEUWD OF DEZE MAAT PAST? Doe de 1-minuut Maatwijzer op: ${directUrl}
-✓ BEKIJK ONZE ACTUELE VOORRAAD VAN 30+ OCCASIONS OP: ${catalogUrl}
+        const introStory = isOccasion
+          ? `Zoekt u voor uzelf of voor uw vader of moeder een veilige, comfortabele sta-op stoel van absolute topkwaliteit, maar wilt u niet de hoge nieuwprijs van € 3.500,- tot € 4.500,- betalen?
 
-────────────────────────────────────────────────
+Een sta-op stoel particulier op Marktplaats kopen brengt vaak veel onzekerheid met zich mee: motoren die versleten kunnen zijn, geen garantie, een verkeerde maatvoering en een loodzware stoel om zelf te vervoeren.`
+          : `Zoekt u voor uzelf of voor uw vader of moeder een veilige, stijlvolle sta-op stoel die echt op uw lichaam is afgestemd en jarenlang zorgeloos zitcomfort biedt?`;
 
-Zoekt u voor uzelf of voor uw vader of moeder een veilige, comfortabele sta-opstoel van absolute topkwaliteit, maar wilt u niet de torenhoge nieuwprijs van € 3.500,- tot € 4.500,- betalen?
+        return `${uspHeader}
 
-Een sta-opstoel particulier op Marktplaats kopen brengt vaak veel onzekerheid met zich mee: motoren die versleten kunnen zijn, geen garantie, en de stoel is loodzwaar om zelf te vervoeren en naar binnen te tillen.
+${introStory}
 
 BIJ STAOPSTOELEN.NL KIEST U VOOR 100% ZEKERHEID & ONTZORGING:
-1. 🛡️ 1 JAAR VOLLEDIGE GARANTIE: Technisch 100% gekeurd (motoren, bedrading, hefmechaniek en frame zijn grondig getest en gereviseerd).
-2. 📐 OP MAAT AFGESTELD VOOR UW LICHAAM: Onze gediplomeerd Bewegingstechnoloog Geertjan stelt de stoel (zithoogte, zitdiepte en armleuninghoogte) gratis exact af op uw lichaamsmaten. Dit voorkomt afknelling van de benen en zadelpijn.
-3. 🚚 GRATIS BEZORGD & GEPLAATST: Wij bezorgen de stoel netjes bij u thuis in de regio, zetten hem op de juiste plek in de woonkamer, sluiten alles veilig aan en leggen de bediening rustig en duidelijk uit.
-4. ☕ RUSTIG PROEFZITTEN IN ONZE SHOWROOM: Kom gezellig samen proefzitten in Dordrecht. Volledig drempelvrij, rolstoelvriendelijk en gratis parkeren direct voor de deur. De koffie staat klaar!
-
-────────────────────────────────────────────────
-👉 MEER FOTO'S, MAATVOERING & BESTELLEN?
-Klik op de blauwe knop 'Bekijk website' in deze advertentie of ga direct naar:
-${directUrl}
-────────────────────────────────────────────────
+1. VOLLEDIGE GARANTIE AAN HUIS: ${isOccasion ? "Elke stoel is technisch 100% gekeurd op 15 punten (motoren, bedrading, hefmechaniek en frame zijn grondig getest) en wordt geleverd met 1 jaar volledige garantie aan huis." : `U profiteert van ${garantie.toLowerCase()} en onze eigen snelle servicedienst aan huis.`}
+2. PERSOONLIJKE 5-PUNTS ZITMETING: Onze gediplomeerd Bewegingstechnoloog Geertjan stelt de stoel (zithoogte, zitdiepte, armleuninghoogte en lendensteun) gratis exact af op uw lichaamsmaten. Dit voorkomt onderuitzakken, rugklachten en afknelling van de benen.
+3. EIGEN BEZORG- & INSTALLATIESERVICE: Gratis bezorgd en geplaatst in de regio Drechtsteden, en daarbuiten door heel Nederland. Wij zetten de stoel op de juiste plek, sluiten alles veilig aan en leggen de bediening rustig uit.
+4. VRIJBLIJVEND PROEFZITTEN IN DORDRECHT: Kom samen proefzitten in onze showroom. Volledig drempelvrij, rolstoeltoegankelijk en gratis parkeren direct voor de deur.
 
 SPECIFICATIES VAN DEZE STOEL:
 • Merk: ${brand}
 • Model: ${model}
-• Bekleding: ${material} (professioneel hygiënisch gereinigd en in topstaat)
-• Aantal motoren: ${motoren}
+• Bekleding: ${material}${isOccasion ? " (professioneel hygiënisch gereinigd en in topstaat)" : ""}
+• Motoren & verstelling: ${motoren}
 • Maatvoering: ${maat}
-• Conditie: ${isOccasion ? "Gereviseerde top-occasion (technisch & optisch z.g.a.n.)" : "Nieuw"}
+• Conditie: ${isOccasion ? "Certified Top-Occasion (technisch & optisch zo goed als nieuw)" : "Nieuw"}
 • Garantie: ${garantie}
 ${priceComparison}
 ${featuresList}
+
+MEER DETAILFOTO'S & DE 1-MINUUT MAATWIJZER?
+Klik op de blauwe knop 'Bekijk website' in deze advertentie of ga naar www.staopstoelen.nl om direct te zien of deze stoel bij uw lichaamslengte past.
 
 ${bottomShowroomBlock}`;
       }
 
       // VARIANT 2: CERTIFIED KEURMERK (Technisch, 15-punts revisie & bewegingstechnologie)
       if (style === "certified") {
-        return `🛡️ CERTIFIED OCCASION • 15-PUNTS GEKEURD MET 1 JAAR GARANTIE
-🔵 TIP: KLIK OP 'BEKIJK WEBSITE' VOOR HET COMPLETE INSPECTIERAPPORT & 15+ DETAILFOTO'S!
-👉 Directe link naar deze stoel: ${directUrl}
+        return `CERTIFIED STA-OP STOEL • ERGONOMISCH OP MAAT MET VOLLEDIGE GARANTIE
 
-✓ 1 JAAR GARANTIE AAN HUIS (inclusief officieel keuringscertificaat)
-✓ GRATIS MAATWERK AFSTELLING door Bewegingstechnoloog Geertjan
-✓ GRATIS BEZORGING & AANSLUITING in regio Dordrecht, Drechtsteden & Zuid-Holland
-✓ CHECK UW MAAT: Doe de 1-minuut Maatwijzer online op: ${directUrl}
-✓ BEKIJK 30+ CERTIFIED FITFORM MODELLEN OP: ${catalogUrl}
+• ${garantie}
+• Gratis 5-punts ergonomische zitmeting door Bewegingstechnoloog Geertjan Klein Haneveld
+• Gratis bezorging & installatie in de regio Drechtsteden (en eigen bezorgdienst door heel Nederland)
+• Ruim 30 sta-op stoelen direct te testen in onze showroom in Dordrecht
 
-────────────────────────────────────────────────
+Op zoek naar een ergonomische sta-op stoel van de hoogste kwaliteitsklasse met de zekerheid van een gespecialiseerd keurmerk? Deze ${fullName} verkeert in uitstekende staat en wordt volledig afgestemd op uw lichaamsmaten.
 
-Op zoek naar een ergonomische sta-op stoel van de absolute topklasse, maar met de zekerheid van een specialistisch keurmerk? Deze ${fullName} maakt deel uit van onze Certified Occasion collectie en is technisch in absolute nieuwstaat.
-
-HET STAOPSTOELEN.NL CERTIFIED 15-PUNTS REVISIEPROTOCOL:
-In tegenstelling tot particuliere Marktplaats-aanbieders wordt elke stoel bij ons door gediplomeerde vakmensen onderworpen aan het officiële 15-punts revisieprotocol:
-✓ Linak motoren, hefmechaniek en elektronica 100% doorgemeten en getest onder belasting
-✓ Stalen frame, schaarlagers en lasnaden gecontroleerd op speling en PTFE-gesmeerd
-✓ Rugleuning, topswing en pneumatische lendensteun 100% luchtdicht en functioneel getest
-✓ HR koudschuim zitting getest op densiteit en veerkracht (volledig vrij van kuilvorming)
-✓ Bekleding en kussens diepgaand gereinigd en antibacterieel met stoom gedesinfecteerd
-✓ Geleverd met officieel 15-Punts Keuringsrapport & 1 Jaar Volledige Garantie aan Huis
-✓ Kosteloze ergonomische maatwerkinstelling door Bewegingstechnoloog Geertjan Klein Haneveld
-
-────────────────────────────────────────────────
-👉 HET COMPLETE INSPECTIERAPPORT & 15+ FOTO'S BEKIJKEN?
-Klik op de blauwe knop 'Bekijk website' in deze advertentie of ga direct naar:
-${directUrl}
-────────────────────────────────────────────────
+${isOccasion ? `HET STAOPSTOELEN.NL CERTIFIED 15-PUNTS KEURINGSPROTOCOL:
+In tegenstelling tot particuliere aanbieders wordt elke occasion bij ons in eigen werkplaats onderworpen aan ons 15-punts keuringsprotocol:
+• Motoren, hefmechaniek en elektronica 100% doorgemeten en getest onder belasting
+• Stalen frame, schaarlagers en draaipunten gecontroleerd op speling en gesmeerd
+• Rugleuning, kantelmechaniek en lendensteun volledig functioneel getest
+• Koudschuim zitting gecontroleerd op optimale veerkracht en ondersteuning
+• Bekleding diepgaand gereinigd en hygiënisch met stoom gedesinfecteerd
+• Geleverd met officieel keuringscertificaat en 1 jaar volledige garantie aan huis` : `PERSOONLIJKE 5-PUNTS ZITMETING DOOR GEERTJAN:
+Een sta-op stoel zit pas echt goed als alle maten kloppen. Bewegingstechnoloog Geertjan stelt deze ${fullName} nauwkeurig voor u in op 5 ergonomische punten: zithoogte, zitdiepte, armleuninghoogte, lendensteun en zithoek.`}
 
 TECHNISCHE SPECIFICATIES:
 • Merk: ${brand}
-• Type: ${model}
-• Aantal motoren: ${motoren}
+• Model: ${model}
+• Motoren & verstelling: ${motoren}
 • Bekleding: ${material}
 • Maatvoering: ${maat}
 • Conditie: ${isOccasion ? "Certified Top-Occasion (technisch & optisch 100%)" : "Nieuw"}
@@ -7912,38 +7926,33 @@ TECHNISCHE SPECIFICATIES:
 ${priceComparison}
 ${featuresList}
 
+ALLE 15+ DETAILFOTO'S & DE MAATWIJZER BEKIJKEN?
+Klik op de blauwe knop 'Bekijk website' in deze advertentie of kijk op www.staopstoelen.nl.
+
 ${bottomShowroomBlock}`;
       }
 
       // VARIANT 3: KORT & KRACHTIG (Snelle scanners, direct to the point)
-      return `⚡ TE KOOP: ${fullName} (IN ABSOLUTE TOPSTAAT)
-🔵 TIP: KLIK OP 'BEKIJK WEBSITE' VOOR 15+ DETAILFOTO'S & DE MAATWIJZER!
-👉 Directe link naar deze stoel: ${directUrl}
+      return `TE KOOP: ${fullName.toUpperCase()} (${isOccasion ? "IN TOPSTAAT MET 1 JAAR GARANTIE" : "NIEUW MET ACTIEVOORDEEL"})
 
-${priceComparison.trim()}
+${priceComparison}
 
-BELANGRIJKSTE VOORDELEN:
-✓ 1 Jaar Volledige Garantie aan Huis (geen particulier Marktplaats-risico)
-✓ Gratis op uw persoonlijke lichaamsmaten afgesteld door Bewegingstechnoloog
-✓ Gratis thuisbezorgd, geplaatst en uitgelegd in regio Dordrecht, Drechtsteden & Zuid-Holland
-✓ Doe de 1-minuut Maatwijzer online om direct te zien of deze stoel past
-✓ Vrijblijvend proefzitten in onze ruime showroom in Dordrecht
-✓ Bekijk onze actuele voorraad van 30+ occasions op: ${catalogUrl}
-
-────────────────────────────────────────────────
-👉 MEER FOTO'S, MAATVOERING & VOORRAAD BEKIJKEN?
-Klik op de blauwe knop 'Bekijk website' in deze advertentie of ga direct naar:
-${directUrl}
-────────────────────────────────────────────────
+BELANGRIJKSTE VOORDELEN BIJ STAOPSTOELEN.NL:
+• ${garantie}
+• Gratis op uw persoonlijke lichaamsmaten afgesteld door Bewegingstechnoloog Geertjan
+• Gratis thuisbezorgd en geplaatst in regio Drechtsteden (daarbuiten bezorging door heel Nederland)
+• Vrijblijvend proefzitten in onze showroom in Dordrecht (30+ stoelen op voorraad)
+• Bekijk alle detailfoto's en doe de 1-minuut Maatwijzer via de blauwe knop 'Bekijk website' of op www.staopstoelen.nl
 
 SPECIFICATIES:
 • Merk: ${brand}
 • Model: ${model}
 • Bekleding: ${material}
-• Aantal motoren: ${motoren}
+• Motoren & verstelling: ${motoren}
 • Maatvoering: ${maat}
-• Conditie: ${isOccasion ? "Gereviseerde top-occasion (technisch & optisch als nieuw)" : "Nieuw"}
+• Conditie: ${isOccasion ? "Certified Top-Occasion (technisch & optisch als nieuw)" : "Nieuw"}
 • Garantie: ${garantie}
+${featuresList}
 
 ${bottomShowroomBlock}`;
     }
@@ -8174,17 +8183,19 @@ ${bottomShowroomBlock}`;
       if (kenmerkenGrid) {
         const brand = (chair.brand || "Fitform").replace(/\s*\(by Wellco\)/i, "").trim();
         const model = cleanModelName(chair);
-        const mat = chair.material === "leer" ? "Hoogwaardig leer" : (chair.material === "stof" ? "Kwaliteitsstof" : "Comfortabele bekleding");
+        const isOccasion = (chair.condition || "").toLowerCase().includes("occasion") || (chair.condition || "").toLowerCase().includes("reco");
+        const conditieLabel = isOccasion ? "Zo goed als nieuw" : "Nieuw";
+        const mat = chair.material === "leer" ? "Hoogwaardig leer" : (chair.material === "stof" ? "Kwaliteitsstof" : (chair.material || "Stof / Echt leder"));
         const specs = chair.specifications || {};
-        const motoren = specs["Aantal motoren"] || (chair.features && chair.features.find(f => f.toLowerCase().includes("motor"))) || "Elektrisch (onafhankelijk)";
+        const motoren = specs["Aantal motoren"] || specs["Uitvoeringen"] || (chair.features && chair.features.find(f => f.toLowerCase().includes("motor"))) || "Elektrisch (onafhankelijk)";
 
         kenmerkenGrid.innerHTML = `
           <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
             <div>
               <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Conditie</span>
-              <strong style="font-size: 0.85rem; color: #0f172a;">Zo goed als nieuw</strong>
+              <strong style="font-size: 0.85rem; color: #0f172a;">${conditieLabel}</strong>
             </div>
-            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('Zo goed als nieuw', 'Conditie gekopieerd!')">📋</button>
+            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('${conditieLabel}', 'Conditie gekopieerd!')">📋</button>
           </div>
           <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
             <div>
@@ -8204,9 +8215,9 @@ ${bottomShowroomBlock}`;
           <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
             <div>
               <span style="font-size: 0.70rem; color: #64748b; font-weight: 700; display: block;">Postcode</span>
-              <strong style="font-size: 0.85rem; color: #0f172a;">3313 GT</strong>
+              <strong style="font-size: 0.85rem; color: #0f172a;">3313 CS</strong>
             </div>
-            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('3313GT', 'Postcode gekopieerd!')">📋</button>
+            <button type="button" class="btn btn-outline" style="padding: 2px 7px; font-size: 0.70rem;" onclick="copyToClipboard('3313CS', 'Postcode gekopieerd!')">📋</button>
           </div>
           <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
             <div>
@@ -8225,7 +8236,7 @@ ${bottomShowroomBlock}`;
       if (utmToggle) utmToggle.checked = true;
       updateMpUrl();
 
-      // 6. Foto's & Downloads
+      // 6. Foto's & Downloads (Altijd afsluiten met vaste Bedrijfsinfo & Service Banner conform standaard)
       const photos = [];
       if (chair.image) photos.push(chair.image);
       if (chair.imageUp && !photos.includes(chair.imageUp)) photos.push(chair.imageUp);
@@ -8234,6 +8245,10 @@ ${bottomShowroomBlock}`;
         chair.gallery.forEach(img => {
           if (img && !photos.includes(img)) photos.push(img);
         });
+      }
+      const companyBannerPath = "assets/marketing/bedrijfsinfo_banner_staopstoelen.jpg";
+      if (!photos.includes(companyBannerPath)) {
+        photos.push(companyBannerPath);
       }
 
       if (photoCount) photoCount.textContent = `${photos.length} foto${photos.length === 1 ? '' : "'s"}`;
@@ -8247,12 +8262,12 @@ ${bottomShowroomBlock}`;
         const isAccu = chairStr.includes("accu");
         const isMaat = chairStr.includes("maat") || (chair.name && /s\/m\/l/i.test(chair.name));
 
-        if (isWiel) {
+        if (isAccu) {
+          badgeSelect.value = "accu";
+        } else if (isWiel) {
           badgeSelect.value = "verrijdbaar";
         } else if (isLeer) {
           badgeSelect.value = "leder";
-        } else if (isAccu) {
-          badgeSelect.value = "accu";
         } else if (isMaat) {
           badgeSelect.value = "maatwijzer";
         } else if (chair.brand === "Fitform") {
@@ -8273,12 +8288,15 @@ ${bottomShowroomBlock}`;
         } else {
           thumbsContainer.innerHTML = otherPhotos.map((p, i) => {
             const photoNum = photos.length > 1 ? (i + 2) : 1;
-            const cleanName = `${(chair.brand || 'stoel').toLowerCase()}-${cleanModelName(chair).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-foto${photoNum}.jpg`;
+            const isBanner = p.includes("bedrijfsinfo_banner_staopstoelen");
+            const cleanName = isBanner
+              ? `7_BEDRIJFSINFO_SHOWROOM_EN_SERVICE.jpg`
+              : `${(chair.brand || 'stoel').toLowerCase()}-${cleanModelName(chair).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-foto${photoNum}.jpg`;
             return `
               <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.06);">
                 <div style="height: 105px; background: #f8fafc; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
                   <img src="${p}" style="max-width: 100%; max-height: 100%; object-fit: contain; padding: 4px;">
-                  <span style="position: absolute; top: 4px; left: 4px; font-size: 0.65rem; background: rgba(18, 43, 7, 0.85); color: #fff; padding: 1px 6px; border-radius: 4px; font-weight: 800;">Foto ${photoNum}</span>
+                  <span style="position: absolute; top: 4px; left: 4px; font-size: 0.65rem; background: rgba(18, 43, 7, 0.85); color: #fff; padding: 1px 6px; border-radius: 4px; font-weight: 800;">${isBanner ? "Laatste: Bedrijfsinfo" : `Foto ${photoNum}`}</span>
                 </div>
                 <div style="padding: 6px; display: flex; flex-direction: column; gap: 4px; background: #ffffff;">
                   <button type="button" class="btn btn-primary" style="width: 100%; padding: 6px 6px; font-size: 0.74rem; font-weight: 800; background: #4b8f24; border-color: #3e7b1d; color: #ffffff; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px;" onclick="downloadOptimizedPhoto('${p}', '${cleanName}', () => showToast('Foto ${photoNum} opgeslagen!'))" title="Download lichte JPG (~200KB)">
@@ -8304,36 +8322,47 @@ ${bottomShowroomBlock}`;
       if (!chair) return "https://staopstoelen.nl/staopstoelen.html?utm_source=marktplaats&utm_medium=vermelding&utm_campaign=voorraad_30plus";
       const chairSlug = (chair.id || "").trim();
       const knownChairPages = [
-        "sta-op-stoel-dordrecht",
-        "sta-op-stoel-fitform-570-vario",
-        "sta-op-stoel-barendrecht",
-        "occasion-sta-op-stoel-fitform-570-vario-zand",
+        "demo-sta-op-stoel-fitform-570-ilp",
         "occasion-sta-op-stoel-fitform-570-vario-ilp-rug",
         "occasion-sta-op-stoel-fitform-570-vario-xl",
+        "occasion-sta-op-stoel-fitform-570-vario-zand",
         "occasion-sta-op-stoel-fitform-571-vario-kuiprugleuning",
-        "demo-sta-op-stoel-fitform-570-ilp",
+        "occasion-sta-op-stoel-refitto",
         "reco-sta-op-stoel-fitform-571-vario-iii-mini-ilp",
-        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco",
-        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco-smal",
-        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco-smal-board",
-        "voorraad-sta-op-stoel-fitform-570-vario-iii-xl-reco",
-        "sta-op-stoel-fitform-574-vario",
-        "sta-op-stoel-fitform-580-elevo",
-        "sta-op-stoel-fitform-633-wellness",
-        "sta-op-stoel-fitform-247-wellness",
         "senioren-sta-op-stoel-hk-dordt",
         "senioren-sta-op-stoel-mecam-athena",
+        "seniorenstoel-dylan",
         "seniorenstoel-farstrup-applaus",
         "seniorenstoel-farstrup-cantate",
         "seniorenstoel-farstrup-casa",
         "seniorenstoel-farstrup-plus",
-        "sta-op-stoel-doge-bellino",
-        "sta-op-stoel-doge-modulair",
+        "seniorenstoel-hk-zwolle",
+        "sta-op-stoel-alfred",
+        "sta-op-stoel-barendrecht",
         "sta-op-stoel-dfm-bentley-dicht",
         "sta-op-stoel-dfm-bentley-open",
+        "sta-op-stoel-doge-bellino",
+        "sta-op-stoel-doge-modulair",
+        "sta-op-stoel-dordrecht",
+        "sta-op-stoel-draaibaar-sliedrecht",
+        "sta-op-stoel-draaibaar-zwijndrecht",
+        "sta-op-stoel-fitform-247-wellness",
+        "sta-op-stoel-fitform-570-vario",
+        "sta-op-stoel-fitform-570-vario-reco",
+        "sta-op-stoel-fitform-574-vario",
+        "sta-op-stoel-fitform-580-elevo",
+        "sta-op-stoel-fitform-633-wellness",
+        "sta-op-stoel-industro",
         "sta-op-stoel-mecam-degas",
+        "sta-op-stoel-ravi",
         "sta-op-stoel-refitto",
-        "occasion-sta-op-stoel-refitto"
+        "sta-op-stoel-rene",
+        "sta-op-stoel-ridderkerk",
+        "sta-op-stoel-rotterdam",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco-smal",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-reco-smal-board",
+        "voorraad-sta-op-stoel-fitform-570-vario-iii-xl-reco"
       ];
 
       let base = "https://staopstoelen.nl/staopstoelen.html";
@@ -8745,6 +8774,10 @@ ${bottomShowroomBlock}`;
           if (img && !photos.includes(img)) photos.push(img);
         });
       }
+      const companyBannerPath = "assets/marketing/bedrijfsinfo_banner_staopstoelen.jpg";
+      if (!photos.includes(companyBannerPath)) {
+        photos.push(companyBannerPath);
+      }
       if (photos.length === 0) {
         showToast("Geen foto's gevonden om te downloaden.", true);
         return;
@@ -8769,7 +8802,10 @@ ${bottomShowroomBlock}`;
         }
         const p = photos[idx];
         const currentNum = idx + 1;
-        const filename = `${cleanName}-marktplaats-foto${currentNum}.jpg`;
+        const isBanner = p.includes("bedrijfsinfo_banner_staopstoelen");
+        const filename = isBanner
+          ? `${cleanName}-marktplaats-foto${currentNum}-bedrijfsinfo-banner.jpg`
+          : `${cleanName}-marktplaats-foto${currentNum}.jpg`;
         idx++;
         downloadOptimizedPhoto(p, filename, () => {
           setTimeout(processNext, 400); // 400ms rust voor browser downloads

@@ -1073,12 +1073,8 @@
         </style>
 
         <div class="rene-spotlight-grid">
-          <!-- Linkerkolom: Staande Video (9:16) met Voor Hem / Voor Haar keuze -->
+          <!-- Linkerkolom: Staande Video (9:16), dynamisch afgestemd op de bezoeker -->
           <div class="rene-video-col">
-            <div class="rene-video-tabs" role="tablist" aria-label="Kies video van Stoel René">
-              <button type="button" class="rene-video-tab active" id="tabReneMan" onclick="switchReneHomeVideo('man')">Voor Hem (53s)</button>
-              <button type="button" class="rene-video-tab" id="tabReneVrouw" onclick="switchReneHomeVideo('vrouw')">Voor Haar (49s)</button>
-            </div>
             <div class="rene-video-wrap">
               <video
                 id="renePromoVideo"
@@ -1095,7 +1091,7 @@
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 3px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
                 </div>
                 <span id="renePromoOverlayLabel" style="margin-top: 12px; background: rgba(29,32,36,0.85); color: #fff; font-weight: 700; font-size: 0.8rem; padding: 6px 14px; border-radius: 999px; letter-spacing: 0.2px;">
-                  ▶ Bekijk video (53 sec)
+                  ▶ Bekijk video
                 </span>
               </div>
             </div>
@@ -1193,22 +1189,16 @@
             const vid = document.getElementById("renePromoVideo");
             const ov = document.getElementById("renePromoOverlay");
             const lbl = document.getElementById("renePromoOverlayLabel");
-            const tabMan = document.getElementById("tabReneMan");
-            const tabVrouw = document.getElementById("tabReneVrouw");
             if (!vid) return;
             vid.pause();
             if (which === "man") {
               vid.src = "assets/video/staopstoelen_rene_man_aanbieding_web.mp4";
               vid.poster = "assets/rene_man_video_poster.jpg";
               if (lbl) lbl.textContent = "▶ Bekijk video (53 sec)";
-              if (tabMan) tabMan.classList.add("active");
-              if (tabVrouw) tabVrouw.classList.remove("active");
             } else {
               vid.src = "assets/video/staopstoelen_rene_aanbieding_web.mp4";
               vid.poster = "assets/rene_video_poster.jpg";
               if (lbl) lbl.textContent = "▶ Bekijk video (49 sec)";
-              if (tabVrouw) tabVrouw.classList.add("active");
-              if (tabMan) tabMan.classList.remove("active");
             }
             if (ov) ov.style.display = "flex";
           }
@@ -1256,9 +1246,9 @@
             controls 
             playsinline 
             preload="metadata"
-            poster="assets/video/video_poster_scene2.jpg?v=10.418" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.419" 
             style="width: 100%; height: 100%; object-fit: cover; display: block;">
-            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.418" type="video/mp4">
+            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.419" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
           
@@ -1304,7 +1294,7 @@
       <!-- Showroom Pand Showcase Card -->
       <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 28px 32px; border-radius: var(--radius-lg); max-width: 900px; margin: 0 auto; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid var(--color-gray-light);">
         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" rel="noopener noreferrer" style="display: block; flex-shrink: 0;" title="Route naar Showroom Dordrecht (Merwedestraat 239)">
-          <img src="assets/pand.jpg?v=10.418" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
+          <img src="assets/pand.jpg?v=10.419" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
         </a>
         <div style="flex: 1; min-width: 280px;">
           <span style="color: var(--color-terracotta); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Merwedestraat 239 &bull; Dordrecht</span>
@@ -1586,7 +1576,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.418
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.419
       </div>
     </div>
   </footer>

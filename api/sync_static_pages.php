@@ -329,8 +329,8 @@ function sync_static_chair_pages($chairs = null) {
         $brand_lower = strtolower($chair['brand'] ?? '');
         $name_lower = strtolower($chair['name'] ?? '');
         if (strpos($id_lower, 'rene') !== false || strpos($name_lower, 'rené') !== false || strpos($name_lower, 'rene') !== false) {
-            $video_mode = 'rene';
-            $video_btn_label = 'Bekijk Video: Design Stoel René (46 sec)';
+            $video_mode = 'rene-auto';
+            $video_btn_label = 'Bekijk Video van Stoel René';
         } elseif (strpos($id_lower, 'ravi') !== false || strpos($name_lower, 'ravi') !== false) {
             $video_mode = 'ravi';
             $video_btn_label = 'Bekijk Video: Design Stoel Ravi (43 sec)';
@@ -378,7 +378,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.418">
+  <link rel="stylesheet" href="../style.css?v=10.419">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -831,7 +831,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.418
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.419
       </div>
     </div>
   </footer>
