@@ -855,37 +855,29 @@
             }
           </style>
           <div id="catalogReneFeatureBanner" class="rene-catalog-hero-card">
-            <!-- Links: Sfeervolle dubbele fotopresentatie met videoknop -->
-            <div style="position: relative; border-radius: 14px; overflow: hidden; background: #f4f7f2; border: 1px solid #e2eadc; aspect-ratio: 4 / 3; min-height: 168px; display: flex; align-items: center; justify-content: center;">
-              <a href="stoelen/sta-op-stoel-rene.html" style="display: block; width: 100%; height: 100%;">
-                <img id="catalogRenePreviewImg" src="assets/stoelen/chair_rene_groen_cozy.jpg" alt="Design Sta-op stoel René in olijfgroen" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease;">
-              </a>
-              <!-- Zwevende studio-miniaturen rechtsonder om direct olijfgroen & bouclé te tonen -->
-              <div style="position: absolute; bottom: 8px; left: 8px; right: 8px; display: flex; align-items: center; justify-content: space-between; gap: 6px; pointer-events: none;">
-                <button type="button" onclick="openCertifiedVideoModal('rene-man')" style="pointer-events: auto; background: rgba(18, 43, 7, 0.88); backdrop-filter: blur(6px); color: #ffffff; border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; padding: 5px 11px; font-size: 0.74rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.22); white-space: nowrap;">
-                  <span style="color: #ff8533;">&#9654;</span> Video (53s)
-                </button>
-                <div style="display: flex; gap: 5px; pointer-events: auto;">
-                  <button type="button" onclick="document.getElementById('catalogRenePreviewImg').src='assets/stoelen/chair_rene_groen_cozy.jpg'; document.getElementById('catalogRenePreviewImg').style.objectFit='cover';" title="Bekijk in woonkamer (olijfgroen)" style="width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid #ffffff; background: #ffffff; padding: 2px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.18); overflow: hidden;">
-                    <img src="assets/stoelen/Sta-op-stoel-RENE.jpg" alt="Olijfgroen" style="width: 100%; height: 100%; object-fit: contain; display: block;">
-                  </button>
-                  <button type="button" onclick="document.getElementById('catalogRenePreviewImg').src='assets/stoelen/Sta-op-stoel-RENE-2.jpeg'; document.getElementById('catalogRenePreviewImg').style.objectFit='contain';" title="Bekijk bouclé uitvoering" style="width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid #ffffff; background: #ffffff; padding: 2px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.18); overflow: hidden;">
-                    <img src="assets/stoelen/Sta-op-stoel-RENE-2.jpeg" alt="Bouclé" style="width: 100%; height: 100%; object-fit: contain; display: block;">
-                  </button>
-                </div>
+            <!-- Links: Duidelijke, klikbare Video-Sfeerfoto (1 klik opent direct de video) -->
+            <div onclick="openCertifiedVideoModal('rene-man')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertifiedVideoModal('rene-man');}" title="Klik om de video van Sta-op stoel René (53 sec) af te spelen" style="position: relative; border-radius: 14px; overflow: hidden; background: #1d2024; border: 1px solid #d8e5d0; aspect-ratio: 4 / 3; min-height: 168px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+              <img id="catalogRenePreviewImg" src="assets/stoelen/chair_rene_groen_cozy.jpg" alt="Bekijk video van Design Sta-op stoel René in olijfgroen" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease;">
+              <!-- Centrale Play-knop zodat het 100% logisch is dat je op de video klikt -->
+              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.45) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+                <span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(37, 102, 22, 0.95); border: 2.5px solid #ffffff; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
+                </span>
+                <span style="background: rgba(18, 43, 7, 0.88); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 4px 11px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap;">
+                  &#9654; Bekijk video (53 sec)
+                </span>
               </div>
             </div>
 
-            <!-- Midden: Heldere typografie, 1-regel badges & 4 sterke USP's -->
+            <!-- Midden: Heldere typografie, 1-regel badge & 4 sterke USP's -->
             <div style="min-width: 0;">
               <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span style="background: #e6f2e0; color: var(--color-forest-dark); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; border: 1px solid #b8dcab; white-space: nowrap;">Uitgelicht Showroommodel</span>
-                <span style="background: #fff3eb; color: #b84318; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; padding: 4px 10px; border-radius: 999px; border: 1px solid #f5cdb6; white-space: nowrap;">Tijdelijk € 350,- Voordeel</span>
+                <span style="background: #e6f2e0; color: var(--color-forest-dark); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; border: 1px solid #b8dcab; white-space: nowrap;">Tijdelijke Actie &bull; € 350,- Voordeel</span>
                 <span style="font-size: 0.78rem; color: #5b6457; font-weight: 700; white-space: nowrap;">DFM Design &bull; Standaard op Accu</span>
               </div>
 
               <a href="stoelen/sta-op-stoel-rene.html" style="text-decoration: none; color: inherit;">
-                <h3 style="font-family: var(--font-heading); font-size: 1.28rem; font-weight: 800; color: var(--color-forest-dark); margin: 0 0 6px 0; line-height: 1.25;">
+                <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-forest-dark); margin: 0 0 6px 0; line-height: 1.25;">
                   Design Sta-op stoel René &mdash; Snoerloos op Accu &amp; Volledige Ligstand
                 </h3>
               </a>
@@ -914,7 +906,7 @@
               </div>
             </div>
 
-            <!-- Rechts: Rustige, overzichtelijke prijs- & actiekolom -->
+            <!-- Rechts: Rustige prijs- & actiekolom (zonder dubbele videoknop) -->
             <div class="rene-catalog-price-col" style="background: #f8faf6; border: 1px solid #dfead8; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 12px; text-align: center;">
               <div>
                 <div style="font-size: 0.76rem; color: #6b7280; font-weight: 700; margin-bottom: 2px;">
@@ -927,15 +919,10 @@
                   Incl. accu &amp; gratis thuisbezorgd
                 </div>
               </div>
-              <div style="display: flex; flex-direction: column; gap: 7px;">
-                <a href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 10px 16px; font-size: 0.86rem; font-weight: 800; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;">
-                  <span>Bekijk Stoel René</span>
-                  <span>&rarr;</span>
-                </a>
-                <button type="button" onclick="openCertifiedVideoModal('rene-man')" style="background: #ffffff; color: var(--color-forest-dark); border: 1px solid #c5d9bc; border-radius: 999px; padding: 7px 12px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;">
-                  <span style="color: var(--color-terracotta);">&#9654;</span> Bekijk Video (53 sec)
-                </button>
-              </div>
+              <a href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 10px 16px; font-size: 0.86rem; font-weight: 800; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;">
+                <span>Bekijk Stoel René</span>
+                <span>&rarr;</span>
+              </a>
             </div>
           </div>
 
