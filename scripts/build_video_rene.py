@@ -7,7 +7,7 @@ Aanbieding: Van € 2.500,- (prijs Schipper Compact Wonen) voor € 2.150,- (€
 
 Output: assets/video/staopstoelen_rene_aanbieding_staand.mp4
 """
-import json, os, ssl, subprocess, urllib.request
+import json, os, shutil, ssl, subprocess, urllib.request
 from pathlib import Path
 
 WS = Path('/Users/matthiasradder/AntiGravity Projecten/Staopstoelen.nl')
@@ -172,12 +172,12 @@ def caption_png(text, out):
 SCENES = [
     dict(id=1, img=D/'rene_scene1_schaamte.jpg', min=6.0,
          caption='“Geen lompe ziekenhuisstoel in mijn kamer…”',
-         text='Elke avond die pijn bij het opstaan. Maar een lompe, medische stoel in haar mooie woonkamer? Dat wilde mam absoluut niet.'),
+         text='Elke avond die pijn bij het opstaan. Maar een lompe, mee-diese stoel in haar mooie woonkamer? Dat wilde mam absoluut niet.'),
     dict(id=2, img=D/'rene_scene2_telefoon_ontdekking.jpg', min=4.8,
          caption='“Mam, kijk eens… dit is de René.”',
          text='Tot ik haar de René liet zien op Staopstoelen punt nl. Een moderne draaifauteuil op accu, met verstelbare hoofdsteun én onzichtbare sta-op hulp.'),
     dict(id=3, img=D/'slide_rene_aanbieding.png', min=5.0, caption='', zoom=False,
-         text='De Sta-op stoel René. Nu tijdelijk met driehonderdvijftig euro korting: van zesentwintighonderdvijfennegentig, voor drieëntwintighonderdvijfenveertig euro.'),
+         text='De Sta-op stoel René. Nu tijdelijk met driehonderd vijftig euro korting: van tweeduizend zeshonderd vijfennegentig euro, nu voor tweeduizend driehonderd vijfenveertig euro.'),
     dict(id=4, img=D_OPA/'scene3_geertjan_welkom.jpg', min=3.8,
          caption='Rustig uitproberen met een kopje koffie.',
          text='Bij Geertjan in Dordrecht stond de koffie al voor ons klaar.'),
@@ -260,6 +260,8 @@ def build():
          "[duck][vm]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5[a]",
          '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-ar', '48000', '-b:a', '192k', '-shortest',
          '-movflags', '+faststart', str(out)])
+    web_out = WS / 'assets/video/staopstoelen_rene_aanbieding_web.mp4'
+    shutil.copy2(out, web_out)
     print(f'Klaar: {out} ({total:.1f} s)')
 
 if __name__ == '__main__':
