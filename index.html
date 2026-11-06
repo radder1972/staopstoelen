@@ -2083,6 +2083,48 @@
       } else {
         modalPrice.innerHTML = `<span class="price-value" style="font-size: 1.75rem; font-weight: bold; color: var(--color-forest);">€ ${item.price.toLocaleString("nl-NL")},-</span>`;
       }
+
+      const isFitformItem = (item.brand && item.brand.toLowerCase().includes("fitform")) || (item.name && item.name.toLowerCase().includes("fitform"));
+      const isReneItem = (item.id && item.id.toLowerCase() === "sta-op-stoel-rene") || (item.name && item.name.toLowerCase().includes("rené"));
+      const isRecoOrOccasion = (item.condition === "occasion") || (item.name && item.name.toLowerCase().includes("reco")) || (item.id && item.id.toLowerCase().includes("reco"));
+
+      if (isFitformItem && item.condition === "nieuw") {
+        modalPrice.innerHTML += `
+          <div style="margin-top: 14px; background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; width: 100%; box-sizing: border-box;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <img src="assets/revisie_stempel_clean.svg?v=2.0" width="34" height="34" alt="Occasion" style="flex-shrink: 0;">
+              <div style="text-align: left;">
+                <div style="font-size: 0.72rem; font-weight: 800; color: var(--color-forest); text-transform: uppercase; letter-spacing: 0.4px;">Fitform Route &bull; Slim Alternatief</div>
+                <div style="font-size: 0.84rem; font-weight: 700; color: #122b07;">Ook leverbaar als <strong>Certified Fitform occasion</strong> v.a. € 1.050,-</div>
+              </div>
+            </div>
+            <a href="staopstoelen.html?condition=occasion#catalogGrid" style="background: var(--color-forest); color: #fff; font-size: 0.78rem; font-weight: 800; padding: 6px 14px; border-radius: 999px; text-decoration: none; white-space: nowrap;">
+              Bekijk Occasions &rarr;
+            </a>
+          </div>
+        `;
+      } else if (isFitformItem && isRecoOrOccasion) {
+        modalPrice.innerHTML += `
+          <div style="margin-top: 12px; background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 10px; padding: 8px 12px; font-size: 0.82rem; color: #334155; text-align: center; width: 100%; box-sizing: border-box;">
+            <strong style="color: var(--color-forest);">✓ Certified Fitform Garantie</strong> &bull; 15-punts gekeurd in Dordrecht
+          </div>
+        `;
+      } else if (!isFitformItem && !isReneItem) {
+        modalPrice.innerHTML += `
+          <div style="margin-top: 14px; background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; width: 100%; box-sizing: border-box;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <img src="assets/stoelen/Sta-op-stoel-RENE.jpg" width="40" height="40" alt="Sta-op stoel René" style="width: 40px; height: 40px; object-fit: contain; border-radius: 8px; border: 1px solid var(--color-gray-light); padding: 2px; flex-shrink: 0;">
+              <div style="text-align: left;">
+                <div style="font-size: 0.72rem; font-weight: 800; color: var(--color-forest); text-transform: uppercase; letter-spacing: 0.4px;">Actietip &bull; € 350,- Korting</div>
+                <div style="font-size: 0.84rem; font-weight: 700; color: #122b07;">Bekijk ook ons actiemodel <strong>Sta-op stoel René</strong> op accu (nu € 2.345,-)</div>
+              </div>
+            </div>
+            <a href="stoelen/sta-op-stoel-rene.html" style="background: var(--color-forest); color: #fff; font-size: 0.78rem; font-weight: 800; padding: 6px 14px; border-radius: 999px; text-decoration: none; white-space: nowrap;">
+              Bekijk René &rarr;
+            </a>
+          </div>
+        `;
+      }
       
       const highlightsBox = document.getElementById("modalHighlightsBox");
       const highlightsList = document.getElementById("modalHighlightsList");
@@ -2260,24 +2302,21 @@
         prefillBooking(item.name);
       });
 
-      // Configure model-specific video button in modal
+      // Configure model-specific video button in modal: Fitform route vs. René route
       const modalVideoBtn = document.getElementById("modalVideoBtn");
       const modalVideoBtnText = document.getElementById("modalVideoBtnText");
       if (modalVideoBtn && modalVideoBtnText) {
         const cid = (item.id || "").toLowerCase();
         const cbrand = ((item.brand || "") + " " + (item.name || "")).toLowerCase();
-        if (cid === "sta-op-stoel-rene" || cbrand.includes("rené") || cbrand.includes("rene")) {
-          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel René (46 sec)";
-          modalVideoBtn.onclick = () => openCertifiedVideoModal("rene");
-        } else if (cid === "sta-op-stoel-ravi" || cbrand.includes("ravi")) {
-          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel Ravi (43 sec)";
-          modalVideoBtn.onclick = () => openCertifiedVideoModal("ravi");
-        } else if (cbrand.includes("fitform") || (item.condition || "").toLowerCase() === "occasion") {
+        if (cbrand.includes("fitform")) {
           modalVideoBtnText.textContent = "Bekijk Video: Waarom Certified Fitform?";
           modalVideoBtn.onclick = () => openCertifiedVideoModal("consumer");
+        } else if (cid === "sta-op-stoel-ravi" || cbrand.includes("ravi")) {
+          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel Ravi (46 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("ravi");
         } else {
-          modalVideoBtnText.textContent = "Bekijk Video: Zitmeting & Proefzitten (38 sec)";
-          modalVideoBtn.onclick = () => openCertifiedVideoModal("zitmeting");
+          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel René (53 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("rene-man");
         }
       }
 

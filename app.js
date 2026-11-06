@@ -1120,6 +1120,12 @@ function renderWizardResults() {
       if (wirelessWanted && (descLower.includes("accu") || descLower.includes("batterij") || descLower.includes("draadloos") || isManual)) {
         score += 3;
       }
+      // René-route: geef actiemodel Sta-op stoel René voorrang bij design/accu of algemene zoekopdrachten zonder zware medische Fitform-indicatie
+      const isRene = (chair.id || "").toLowerCase().includes("rene") || nameLower.includes("rené") || nameLower.includes("rene");
+      const hasHeavyMedical = complaints.includes("edema") || complaints.includes("decubitus");
+      if (isRene && !hasHeavyMedical) {
+        score += (modernWanted || wirelessWanted) ? 5 : 3;
+      }
       
       // 4. Check clinical complaint alignment (Indicatiewijzer criteria)
       if (complaints.includes("standing") && (chair.type === "staop" || descLower.includes("sta-op") || nameLower.includes("sta-op") || brandLower.includes("fitform") || brandLower.includes("doge"))) {
@@ -2954,7 +2960,13 @@ function initFloatingMenu() {
     <div class="teaser-bubble-tail" aria-hidden="true"></div>
   `;
 
-  // Bouw het interactieve Digitale Assistent venster
+  // Bouw het interactieve Digitale Assistent venster (scheidt Fitform-route en René-route)
+  const isPageFitformRoute =
+    (window.location.pathname || "").toLowerCase().includes("fitform") ||
+    (window.location.pathname || "").toLowerCase().includes("revisie") ||
+    (window.location.search || "").toLowerCase().includes("fitform") ||
+    (window.location.search || "").toLowerCase().includes("occasion") ||
+    (window.location.hash || "").toLowerCase().includes("occasion");
   const panel = document.createElement("div");
   panel.className = "digital-assistant-panel";
   panel.id = "digitalAssistantPanel";
@@ -2987,13 +2999,18 @@ function initFloatingMenu() {
         </div>
       </div>
       <div class="da-quick-chips" id="daQuickChips">
+        ${isPageFitformRoute ? `
+        <button type="button" class="da-chip" data-topic="prijs">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          <span>Certified Fitform Prijzen</span>
+        </button>` : `
+        <button type="button" class="da-chip" data-topic="rene">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Actiemodel René (&euro; 2.345,-)</span>
+        </button>`}
         <button type="button" class="da-chip" data-topic="maat">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-4 3h2m-5-9a5 5 0 1 1 8 0c0 2-2 3-2 4H10c0-1-2-2-2-4z"/></svg>
           <span>Welke maat past bij mij?</span>
-        </button>
-        <button type="button" class="da-chip" data-topic="prijs">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          <span>Wat kost een stoel?</span>
         </button>
         <button type="button" class="da-chip" data-topic="proefzitten">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -3264,23 +3281,52 @@ function initFloatingMenu() {
     }
   });
 
-  // Antwoord-kennisbank van de Digitale Zit-Assistent
+  // Antwoord-kennisbank van de Digitale Zit-Assistent (scheidt Fitform-route en René-route)
   function getAssistantResponse(topicOrQuery) {
     const q = String(topicOrQuery || "").toLowerCase();
+    const pathLower = (window.location.pathname || "").toLowerCase();
+    const searchLower = (window.location.search || "").toLowerCase();
+    const hasFitformScent =
+      pathLower.includes("fitform") ||
+      pathLower.includes("revisie") ||
+      searchLower.includes("fitform") ||
+      searchLower.includes("occasion") ||
+      q.includes("fitform") ||
+      q.includes("elevo") ||
+      q.includes("vario") ||
+      q.includes("570") ||
+      q.includes("580") ||
+      q.includes("612");
+
+    if (q.includes("rene") || q.includes("rené") || q.includes("actie") || q.includes("aanbieding") || q.includes("korting") || q.includes("draaistoel") || q.includes("accu")) {
+      return {
+        question: topicOrQuery,
+        html: `Ons uitgelichte actiemodel is de <strong>Design Sta-op stoel René (op accu)</strong>:<br>• Volledig draadloos midden in de kamer te plaatsen (360° draaivoet met blokkering).<br>• Inclusief <strong>volledige ligstand (voeten op harthoogte)</strong> en sta-op hulp.<br>• Leverbaar in maten S, M en L in talloze kleuren stof en leer.<br>• <strong>Tijdelijke actieprijs:</strong> van <span style="text-decoration:line-through;">&euro; 2.695,-</span> voor <strong>&euro; 2.345,-</strong> (&euro; 350,- korting).`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}stoelen/sta-op-stoel-rene.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'rene_page'})">Bekijk Stoel René &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'video_rene_man'});if(window.openCertifiedVideoModal)openCertifiedVideoModal('rene-man')">Bekijk Video (53 sec)</button></div>`
+      };
+    }
 
     if (q === "maat" || q.includes("lengte") || q.includes("maat") || q.includes("rug") || q.includes("klacht") || q.includes("welke stoel")) {
       return {
         question: q === "maat" ? "Welke stoel past bij mijn lengte & klachten?" : topicOrQuery,
-        html: `Een goede sta-op stoel wordt altijd op <strong>5 lichaamsmaten</strong> afgesteld: zithoogte, zitdiepte, zitbreedte, armleggerhoogte en lendensteun.<br><br>Met onze <strong>Online Keuzehulp</strong> ziet u in 3 stappen welk Fitform of seniorenmodel bij uw lengte en klachten past:`,
-        ctaHtml: `<div class="da-inline-ctas"><a href="${base}keuzehulp.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'keuzehulp'})">Start Online Keuzehulp &rarr;</a><a href="${base}stoel-anatomie.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'anatomie'})">Bekijk 5 Maatwerkcriteria</a></div>`
+        html: hasFitformScent
+          ? `Een goede Fitform sta-op stoel wordt altijd op <strong>5 lichaamsmaten</strong> afgesteld: zithoogte, zitdiepte, zitbreedte, armleggerhoogte en lendensteun.<br><br>Met onze <strong>Online Keuzehulp</strong> ziet u in 3 stappen welk Certified Fitform model bij uw lengte en klachten past:`
+          : `Een goede sta-op stoel moet exact passen bij uw lichaamsbouw: van ons populaire designmodel <strong>Sta-op stoel René (in maat S, M of L op accu)</strong> tot een 100% op 5 lichaamsmaten afgestelde ergonomische stoel.<br><br>Met onze <strong>Online Keuzehulp</strong> ziet u in 3 stappen welk model bij uw lengte en wensen past:`,
+        ctaHtml: hasFitformScent
+          ? `<div class="da-inline-ctas"><a href="${base}keuzehulp.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'keuzehulp'})">Start Online Keuzehulp &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.openCertifiedVideoModal)openCertifiedVideoModal('consumer')">Video: Waarom Fitform?</button></div>`
+          : `<div class="da-inline-ctas"><a href="${base}keuzehulp.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'keuzehulp'})">Start Online Keuzehulp &rarr;</a><a href="${base}stoelen/sta-op-stoel-rene.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'rene_maat'})">Bekijk Actiemodel René</a></div>`
       };
     }
 
     if (q === "prijs" || q.includes("kost") || q.includes("prijs") || q.includes("prijzen") || q.includes("occasion") || q.includes("tweedehands") || q.includes("goedkoop")) {
       return {
-        question: q === "prijs" ? "Wat kost een (Certified Fitform) stoel?" : topicOrQuery,
-        html: `Bij ons heeft u keuze uit twee categorieën:<br>• <strong>Certified Fitform (Jong gebruikt &amp; gereviseerd):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong> (volledig 15-punts gekeurd incl. garantie).<br>• <strong>Nieuw op maat:</strong> volledig naar wens samengesteld.<br><br>Alle actuele voorraadmodellen staan direct met prijs online:`,
-        ctaHtml: `<div class="da-inline-ctas"><a href="${base}staopstoelen.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'collectie'})">Bekijk Collectie &amp; Prijzen &rarr;</a><a href="${base}wat-kost-een-sta-op-stoel.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'prijzen'})">Prijsuitleg lezen</a></div>`
+        question: q === "prijs" ? (hasFitformScent ? "Wat kost een Certified Fitform stoel?" : "Wat kost een sta-op stoel?") : topicOrQuery,
+        html: hasFitformScent
+          ? `Voor <strong>Fitform</strong> heeft u bij ons keuze uit twee routes:<br>• <strong>Certified Fitform (Jong gebruikt &amp; gereviseerd):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong> (volledig 15-punts gekeurd incl. garantie).<br>• <strong>Nieuw Fitform maatwerk:</strong> v.a. &euro; 2.545,- volledig op maat samengesteld.`
+          : `Bij ons heeft u een heldere keuze:<br>• <strong>Actiemodel Design Sta-op stoel René (Nieuw op accu):</strong> tijdelijk van &euro; 2.695,- voor <strong>&euro; 2.345,-</strong> (&euro; 350,- korting).<br>• <strong>Certified Fitform (Gereviseerd op maat):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong>.`,
+        ctaHtml: hasFitformScent
+          ? `<div class="da-inline-ctas"><a href="${base}staopstoelen.html#occasions" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'collectie'})">Bekijk Fitform Collectie &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.openCertifiedVideoModal)openCertifiedVideoModal('consumer')">Bekijk Fitform Video</button></div>`
+          : `<div class="da-inline-ctas"><a href="${base}stoelen/sta-op-stoel-rene.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'rene_prijs'})">Bekijk Actiemodel René (&euro; 2.345,-) &rarr;</a><a href="${base}staopstoelen.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'collectie'})">Volledige Collectie</a></div>`
       };
     }
 
