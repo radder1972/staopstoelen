@@ -334,7 +334,7 @@ def main():
             st = (f - 75) / 120.0
             frame = draw_transition_wipe(f_orig, f_new, st, direction='ltr', label_base="VOOR • ORIGINEEL", label_overlay="NA • NIEUWE HUISSTIJL", line_color=(243, 146, 35, 250), overlay_tag_bg=(35, 95, 45, 235))
             frame = draw_top_brand_pill(frame)
-            frame = draw_lower_third(frame, "Gevel Make-Over: ca. € 1.750 - € 2.850", "Bestaande kozijnen behouden • 2 blauwe Dibond borden & uitgeklapte Fitform", "GEVEL MAKE-OVER", (220, 110, 25), prog)
+            frame = draw_lower_third(frame, "Gevel Make-Over: ca. € 1.750 - € 2.850", "Bestaande kozijnen behouden • 2 blauwe Dibond borden & oranje René in etalage", "GEVEL MAKE-OVER", (220, 110, 25), prog)
         else:
             frame = draw_top_brand_pill(f_new)
             frame = draw_lower_third(frame, "Nieuwe Gevel: ca. € 1.750 - € 2.850", "Geen schilderwerk nodig • 2 Dibond borden in kozijnblauw met doorlopende lijn", "INVESTERING GEVEL", (46, 104, 25), prog)
@@ -366,7 +366,7 @@ def main():
             st = (f - 45) / 90.0
             frame = draw_transition_wipe(f_orig, f_rend, st, direction='ltr', label_base="VOOR • ORIGINEEL", label_overlay="STAP 1 • SALIEGROEN", line_color=(243, 146, 35, 250), overlay_tag_bg=(35, 95, 45, 235))
             frame = draw_top_brand_pill(frame)
-            frame = draw_lower_third(frame, "Stap 1: Saliegroene Wanden & Rust in Etalage", "Investering styling & wanden ca. € 1.100 - € 2.200 • Oranje stoel in raam", "STAP 1: STYLING", (220, 110, 25), prog)
+            frame = draw_lower_third(frame, "Stap 1: Saliegroene Wanden & Rust in Etalage", "Investering styling & wanden ca. € 1.100 - € 2.200 • Oranje René in het raam", "STAP 1: STYLING", (220, 110, 25), prog)
         elif f < 165:
             frame = draw_top_brand_pill(f_rend)
             frame = draw_lower_third(frame, "Styling & Wanden: ca. € 1.100 - € 2.200", "Saliegroen, akoestische zuil, etalagepodium en Fitform keurmerkborden", "STAP 1: STYLING", (46, 104, 25), prog)
@@ -374,7 +374,7 @@ def main():
             st = (f - 165) / 90.0
             frame = draw_transition_wipe(f_rend, f_vis, st, direction='rtl', label_base="STAP 1 • SALIEGROEN", label_overlay="EXTRA • VISGRAAT PVC", line_color=(245, 165, 25, 250), overlay_tag_bg=(194, 65, 12, 235))
             frame = draw_top_brand_pill(frame)
-            frame = draw_lower_third(frame, "Extra Stap: Warm Eiken Visgraat PVC Vloertje", "Oranje Fitform trots in het raam • Optionele boutique vloer-upgrade", "EXTRA STAP: VISGRAAT PVC", (217, 119, 6), prog)
+            frame = draw_lower_third(frame, "Extra Stap: Warm Eiken Visgraat PVC Vloertje", "Oranje Sta-op stoel René trots in het raam • Optionele boutique vloer-upgrade", "EXTRA STAP: VISGRAAT PVC", (217, 119, 6), prog)
         else:
             frame = draw_top_brand_pill(f_vis)
             frame = draw_lower_third(frame, "Etalage met Eiken Visgraat & Hero Stoel", "Boutique uitstraling met 100% behoud van het Dordtse straatbeeld", "LUXE BOUTIQUE SFEER", (180, 83, 9), prog)
