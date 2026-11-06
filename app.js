@@ -3762,7 +3762,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   const frameWrap = document.getElementById("videoLightboxFrameWrap") || overlay.querySelector(".video-lightbox-frame-wrap");
   const ctaBtn = document.getElementById("videoLightboxCtaBtn") || overlay.querySelector(".video-lightbox-cta-btn");
 
-  const isVertical = (mode === "rene" || mode === "ravi");
+  const isVertical = (mode === "rene" || mode === "rene-man" || mode === "ravi");
   if (card) {
     card.style.maxWidth = isVertical ? "440px" : "";
     card.style.maxHeight = isVertical ? "min(790px, calc(100vh - 28px))" : "";
@@ -3771,22 +3771,35 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     frameWrap.style.height = isVertical ? "min(710px, calc(92vh - 68px))" : "";
   }
   if (ctaBtn) {
-    ctaBtn.href = mode === "rene"
+    ctaBtn.href = (mode === "rene" || mode === "rene-man")
       ? `${pfx}afspraak.html?stoel=sta-op-stoel-rene`
       : mode === "ravi"
       ? `${pfx}afspraak.html?stoel=sta-op-stoel-ravi`
       : `${pfx}afspraak.html`;
   }
 
-  if (mode === "rene") {
-    if (heading) heading.textContent = "Stoel René • Tijdelijk € 2.150,-";
+  if (mode === "rene-man") {
+    if (heading) heading.textContent = "Stoel René (Voor Hem) • Tijdelijk € 2.345,-";
     if (iframe) {
       iframe.src = "";
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.419`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.419`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.420`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.420`;
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(() => {});
+    }
+  } else if (mode === "rene") {
+    if (heading) heading.textContent = "Stoel René • Tijdelijk € 2.345,-";
+    if (iframe) {
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.420`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.420`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});

@@ -361,12 +361,20 @@
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             <span>Vrijblijvend Proefzitten of Reserveren &rarr;</span>
           </a>
-          <button type="button" onclick="openCertifiedVideoModal('rene')" class="btn-watch-video-pill" style="width: 100%; justify-content: center; cursor: pointer;">
-            <span class="play-dot">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-            </span>
-            <span>Bekijk Video: Design Stoel René (46 sec)</span>
-          </button>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%;">
+            <button type="button" onclick="openCertifiedVideoModal('rene-man')" class="btn-watch-video-pill" style="width: 100%; justify-content: center; cursor: pointer; padding: 10px 12px; font-size: 0.86rem;">
+              <span class="play-dot">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </span>
+              <span>Video: Voor Hem (53s)</span>
+            </button>
+            <button type="button" onclick="openCertifiedVideoModal('rene')" class="btn-watch-video-pill" style="width: 100%; justify-content: center; cursor: pointer; padding: 10px 12px; font-size: 0.86rem;">
+              <span class="play-dot">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </span>
+              <span>Video: Voor Haar (49s)</span>
+            </button>
+          </div>
                                   <!-- Subtiele Geertjan Micro-Conversie (Tekst rechts, grotere avatar, niet onderstreept) -->
             <a href="tel:+31786314858" class="advisor-trust-bubble" style="display: flex !important; align-items: center !important; gap: 12px !important; margin-top: 12px !important; text-decoration: none !important; color: inherit !important; box-sizing: border-box !important; width: 100% !important; background: transparent !important; border: none !important; padding: 0 !important; transition: all 0.2s ease !important;" title="Bel direct met Geertjan voor advies over dit model">
               <!-- Geertjan Pasfoto (Groter: 54px) -->
@@ -442,17 +450,30 @@
           </div>
         </div>
 
-        <!-- Description -->
-        <div style="background: linear-gradient(135deg, #ffffff 0%, #f6fbf3 100%); border: 1.5px solid #c8e2bc; border-radius: 14px; padding: 20px 22px; margin-bottom: 22px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-          <div style="position: relative; width: 140px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; flex-shrink: 0; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15);">
-            <video id="reneDetailVideo" controls playsinline preload="metadata" poster="../assets/rene_video_poster.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-              <source src="../assets/video/staopstoelen_rene_aanbieding_web.mp4" type="video/mp4">
-            </video>
+        <!-- Video Section: Voor Hem & Voor Haar -->
+        <div style="background: linear-gradient(135deg, #ffffff 0%, #f6fbf3 100%); border: 1.5px solid #c8e2bc; border-radius: 14px; padding: 20px 22px; margin-bottom: 22px;">
+          <div style="margin-bottom: 14px;">
+            <span style="display: inline-block; background: #f39223; color: #fff; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;">Video’s: Voor Hem &amp; Voor Haar</span>
+            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--color-forest-dark); margin: 0 0 4px 0;">“Geen lompe ziekenhuisstoel in mijn kamer!”</h4>
+            <p style="font-size: 0.86rem; color: #374151; line-height: 1.45; margin: 0;">Bekijk hoe de stoere én elegante <strong>Sta-op stoel René</strong> op accu zorgt dat u weer pijnvrij en met trots opstaat:</p>
           </div>
-          <div style="flex: 1; min-width: 210px;">
-            <span style="display: inline-block; background: #f39223; color: #fff; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;">Video (49 sec)</span>
-            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--color-forest-dark); margin: 0 0 6px 0;">“Geen lompe ziekenhuisstoel in mijn kamer!”</h4>
-            <p style="font-size: 0.88rem; color: #374151; line-height: 1.5; margin: 0;">Bekijk in dit korte filmpje hoe de stijlvolle <strong>Sta-op stoel René</strong> op accu zorgt dat u weer pijnvrij én met trots opstaat.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="position: relative; width: 100%; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15);">
+                <video id="reneManDetailVideo" controls playsinline preload="metadata" poster="../assets/rene_man_video_poster.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  <source src="../assets/video/staopstoelen_rene_man_aanbieding_web.mp4" type="video/mp4">
+                </video>
+              </div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-forest-dark); text-align: center;">🎬 Voor Hem (Groene René • 53s)</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="position: relative; width: 100%; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15);">
+                <video id="reneDetailVideo" controls playsinline preload="metadata" poster="../assets/rene_video_poster.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  <source src="../assets/video/staopstoelen_rene_aanbieding_web.mp4" type="video/mp4">
+                </video>
+              </div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-forest-dark); text-align: center;">🎬 Voor Haar (Bouclé René • 49s)</span>
+            </div>
           </div>
         </div>
 
