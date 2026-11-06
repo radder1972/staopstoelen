@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.421">
+  <link rel="stylesheet" href="style.css?v=10.422">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1533,7 +1533,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.421</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.422</span></div>
     </div>
   </div>
 
@@ -1543,7 +1543,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.421</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.422</span>
       </div>
 
       <div class="admin-header-right">
@@ -4085,7 +4085,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.421</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.422</span>
     </div>
   </footer>
 
@@ -7724,6 +7724,15 @@
         };
       }
 
+      if ((chair.id || "") === "sta-op-stoel-ravi") {
+        return {
+          garantie: "Nieuw! Design Sta-op stoel Ravi • Draaibaar • 3 Jr Gar.",
+          opmaat: "DFM Ravi Design Sta-op stoel • 3 Maten (S/M/L) • Leer/Stof",
+          voordeel: "Nieuw! Design Sta-op stoel Ravi • Van €2295 Nu €1945",
+          lokaal: "Design Sta-op stoel Ravi • Proefzitten Showroom Dordrecht"
+        };
+      }
+
       const garLabel = isOccasion ? "1 Jr Gar." : "3 Jr Gar.";
 
       // 1. Zekerheid & Garantie
@@ -7843,6 +7852,32 @@ In onze showroom in Dordrecht wordt u geholpen door Geertjan Klein Haneveld (bew
 
 MEER FOTO'S, VIDEO & DE 1-MINUUT MAATWIJZER?
 Klik op de blauwe knop 'Bekijk website' in deze advertentie of kijk op www.staopstoelen.nl voor alle uitvoeringen en onze ruime showroomcollectie van 30+ sta-op stoelen.
+
+${bottomShowroomBlock}`;
+      }
+
+      // Specifieke geoptimaliseerde tekst voor Design Sta-op stoel Ravi (Nieuw Designmodel)
+      if ((chair.id || "") === "sta-op-stoel-ravi" && style !== "krachtig") {
+        return `Wilt u wel veilig en zonder moeite kunnen opstaan, maar absoluut geen lompe of medisch ogende stoel in uw mooie woonkamer? Maak kennis met de elegante Design Sta-op stoel Ravi van DFM bij Staopstoelen.nl in Dordrecht!
+
+TIJDELIJKE SHOWROOM-AANBIEDING:
+• Adviesprijs: € 2.295,-
+• Actieprijs: € 1.945,- (Uw directe voordeel: € 350,- korting!)
+• Onzichtbaar weggewerkt sta-op mechanisme met veilige draaiblokkering
+• Inclusief 3 jaar volledige garantie
+
+WAAROM KIEZEN VOOR STA-OP STOEL RAVI?
+• Zo stijlvol dat niemand ziet dat het een sta-op stoel is: een slanke, moderne draaifauteuil met een onzichtbaar weggewerkte sta-op hulp onder de kuip.
+• 2 onafhankelijke motoren: de uitklapbare voetensteun en de verstelbare rugleuning zijn volledig onafhankelijk van elkaar traploos te bedienen.
+• Slimme draaiblokkering: geniet van het gemak van een draaibare fauteuil, met automatische blokkering zodra de sta-op functie wordt geactiveerd voor 100% veilig opstaan.
+• Geïntegreerde 4-knops bediening in de armleuning + instelbare lendensteun voor optimale ondersteuning van de onderrug.
+• Leverbaar in 3 maten (Small, Medium en Large): keuze uit vele soorten stof, echt leder of een stijlvolle Duo-stoffering (binnenzijde leder, buitenzijde warme structuurstof).
+
+PERSOONLIJKE 5-PUNTS ZITMETING DOOR BEWEGINGSTECHNOLOOG GEERTJAN:
+In onze showroom in Dordrecht wordt u persoonlijk geholpen door Geertjan Klein Haneveld (bewegingstechnoloog). Met zijn 5-punts ergonomische zitmeting bepalen we kosteloos welke maat (S, M of L), zithoogte en lendensteun-instelling exact bij uw lichaam past.
+
+MEER FOTO'S, VIDEO & DE 1-MINUUT MAATWIJZER?
+Klik op de blauwe knop 'Bekijk website' in deze advertentie of kijk op www.staopstoelen.nl voor alle detailfoto's, de productvideo en onze ruime showroomcollectie van 30+ sta-op stoelen.
 
 ${bottomShowroomBlock}`;
       }
