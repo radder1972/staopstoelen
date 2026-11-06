@@ -6975,13 +6975,16 @@ input[type="checkbox"] {
 }
 .video-lightbox-title {
   font-family: var(--font-heading, 'Montserrat', sans-serif);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .video-lightbox-dot {
   width: 9px;
@@ -6994,19 +6997,22 @@ input[type="checkbox"] {
 .video-lightbox-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 .video-lightbox-cta-btn {
   background: var(--color-terracotta, #f39223);
   color: #ffffff;
-  padding: 7px 16px;
+  padding: 6px 14px;
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(243, 146, 35, 0.35);
 }

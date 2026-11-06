@@ -3776,10 +3776,14 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       : mode === "ravi"
       ? `${pfx}afspraak.html?stoel=sta-op-stoel-ravi`
       : `${pfx}afspraak.html`;
+    const ctaSpan = ctaBtn.querySelector("span");
+    if (ctaSpan) {
+      ctaSpan.textContent = isVertical ? "Proefzitten" : "Afspraak Inplannen";
+    }
   }
 
   if (mode === "rene-man") {
-    if (heading) heading.textContent = "Stoel René (Voor Hem) • Tijdelijk € 2.345,-";
+    if (heading) heading.textContent = "Stoel René • € 2.345,-";
     if (iframe) {
       iframe.src = "";
       iframe.style.display = "none";
@@ -3792,7 +3796,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       player.play().catch(() => {});
     }
   } else if (mode === "rene") {
-    if (heading) heading.textContent = "Stoel René • Tijdelijk € 2.345,-";
+    if (heading) heading.textContent = "Stoel René • € 2.345,-";
     if (iframe) {
       iframe.src = "";
       iframe.style.display = "none";
@@ -3805,7 +3809,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       player.play().catch(() => {});
     }
   } else if (mode === "ravi") {
-    if (heading) heading.textContent = "Stoel Ravi • Design Sta-op Stoel";
+    if (heading) heading.textContent = "Stoel Ravi • € 1.945,-";
     if (iframe) {
       iframe.src = "";
       iframe.style.display = "none";
