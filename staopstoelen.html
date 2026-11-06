@@ -1146,11 +1146,11 @@
             <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%; font-weight: 700; padding: 13px 20px; font-size: 1.02rem;">
               Vrijblijvend Proefzitten of Reserveren &rarr;
             </button>
-            <button type="button" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill" style="width: 100%; margin-top: 2px;">
+            <button type="button" id="modalVideoBtn" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill" style="width: 100%; margin-top: 2px;">
               <span class="btn-watch-video-play-circle">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
               </span>
-              <span>Bekijk Video: Waarom Certified Fitform?</span>
+              <span id="modalVideoBtnText">Bekijk Video: Waarom Certified Fitform?</span>
             </button>
                                     <!-- Subtiele Geertjan Micro-Conversie (Tekst rechts, grotere avatar, niet onderstreept) -->
             <a href="tel:+31786314858" class="advisor-trust-bubble" style="display: flex !important; align-items: center !important; gap: 12px !important; margin-top: 12px !important; text-decoration: none !important; color: inherit !important; box-sizing: border-box !important; width: 100% !important; background: transparent !important; border: none !important; padding: 0 !important; transition: all 0.2s ease !important;" title="Bel direct met Geertjan voor advies over dit model">
@@ -1406,6 +1406,47 @@
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
     let GOEDKOPE_STAOPSTOELEN_DATA = (storedStaopData && storedStaopData.length > 0) ? storedStaopData : [
+  {
+    "id": "sta-op-stoel-rene",
+    "name": "Sta-op stoel René",
+    "image": "assets/stoelen/Sta-op-stoel-RENE-2.jpeg",
+    "imageUp": "assets/stoelen/Sta-op-stoel-RENE-3.jpeg",
+    "imageLie": "assets/stoelen/Sta-op-stoel-RENE-4.jpeg",
+    "ambientImage": "assets/chair_rene_cozy.png",
+    "gallery": [
+      "assets/stoelen/Sta-op-stoel-RENE-2.jpeg",
+      "assets/stoelen/Sta-op-stoel-RENE-3.jpeg",
+      "assets/stoelen/Sta-op-stoel-RENE-4.jpeg",
+      "assets/chair_rene_cozy.png",
+      "assets/stoelen/Sta-op-stoel-RENE.jpg"
+    ],
+    "price": 2150,
+    "old_price": 2500,
+    "is_offer": true,
+    "brand": "DFM",
+    "description": "<p>Sta-op stoel René is een prachtige fauteuil in uw kamer die u helpt veilig en heerlijk ontspannen te zitten. Met de sta-op functie tilt deze stoel u voorzichtig omhoog naar een staande positie, zonder dat u veel kracht hoeft te zetten. Ongemerkt blokkeert de draaifunctie zodat u ook geen risico loopt op onhandige valpartijen.<br>Sta-op stoel René beschikt over een 2-motorig systeem met motoren die onafhankelijk van elkaar te bedienen zijn. De accu welke standaard is, is mooi weggewerkt, waardoor deze niet zichtbaar is. Enkel het oplaadpunt is zichtbaar aan de achterzijde.</p><p>Eén van de meest opvallende kenmerken van sta-op stoel René is de verstelbare hoofdsteun, deze biedt in de eerste plaats comfort. Of u nu wilt ontspannen met een goed boek, televisie wilt kijken, of gewoon een dutje wilt doen, hij zorgt voor de perfecte ondersteuning van uw hoofd en nek.<br>De hoofdsteun is namelijk zeer eenvoudig in hoogte en in hoek te verstellen. Hierdoor kunt u de stoel volledig aanpassen aan uw lichaam en voorkeuren. Of u nu wat langer bent of juist wat kleiner, met de verstelbare hoofdsteun vindt u altijd de perfecte positie voor optimaal comfort. Optioneel kunt u dit zelfs elektrisch doen!</p><p>Bij Sta-op stoel René heeft u een ruime keuze uit verschillende soorten leer en stof. Ook kunt u kiezen uit een breed assortiment aan kleuren.</p>",
+    "badge": "Tijdelijke Actie",
+    "badgeType": "new",
+    "condition": "nieuw",
+    "type": "staop",
+    "material": "stof",
+    "model": "René",
+    "status": "beschikbaar",
+    "features": [
+      "Verstelbare hoofdsteun (in hoogte én hoek, optioneel elektrisch)",
+      "Standaard met onzichtbaar weggewerkte accu (snoerloos in de kamer)",
+      "2 onafhankelijke motoren & automatische draaiblokkering bij het opstaan"
+    ],
+    "specifications": {
+      "Aantal motoren": "2 motoren / 3 motoren",
+      "Bediening": "Bediening ingebouwd 4-knops",
+      "Bekleding": "Stof / Leer, zeer veel mogelijkheden",
+      "Garantie": "3 jaar garantie",
+      "Maatwerk": "7 maten (XS / S / SM / M / ML / L / XL)",
+      "Maximaal gebruikersgewicht": "120 kg",
+      "Opties": "Zeer uitgebreide optie lijst"
+    }
+  },
   {
     "id": "sta-op-stoel-dordrecht",
     "name": "Sta-op stoel Dordrecht",
@@ -2943,6 +2984,27 @@
         closeProductModal();
         prefillBooking(item.name);
       });
+
+      // Configure model-specific video button in modal
+      const modalVideoBtn = document.getElementById("modalVideoBtn");
+      const modalVideoBtnText = document.getElementById("modalVideoBtnText");
+      if (modalVideoBtn && modalVideoBtnText) {
+        const cid = (item.id || "").toLowerCase();
+        const cbrand = ((item.brand || "") + " " + (item.name || "")).toLowerCase();
+        if (cid === "sta-op-stoel-rene" || cbrand.includes("rené") || cbrand.includes("rene")) {
+          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel René (46 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("rene");
+        } else if (cid === "sta-op-stoel-ravi" || cbrand.includes("ravi")) {
+          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel Ravi (43 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("ravi");
+        } else if (cbrand.includes("fitform") || (item.condition || "").toLowerCase() === "occasion") {
+          modalVideoBtnText.textContent = "Bekijk Video: Waarom Certified Fitform?";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("consumer");
+        } else {
+          modalVideoBtnText.textContent = "Bekijk Video: Zitmeting & Proefzitten (38 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("zitmeting");
+        }
+      }
 
       // Show modal
       modal.classList.add("active");

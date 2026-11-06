@@ -2813,7 +2813,7 @@ function initFloatingMenu() {
     const fav = document.createElement("link");
     fav.rel = "icon";
     fav.type = "image/svg+xml";
-    fav.href = `${base}favicon.svg?v=10.410`;
+    fav.href = `${base}favicon.svg?v=10.419`;
     document.head.appendChild(fav);
   }
 
@@ -3707,20 +3707,22 @@ function handleLeadMagnetSubmit(event) {
    GLOBAL INTERACTIVE VIDEO LIGHTBOX (Certified Fitform & Proefzitten)
    ========================================================================== */
 window.openCertifiedVideoModal = function(mode = "consumer") {
+  const isSubdir = window.location.pathname.includes("/stoelen/");
+  const pfx = isSubdir ? "../" : "";
   let overlay = document.getElementById("certifiedVideoLightbox");
   if (!overlay) {
     overlay = document.createElement("div");
     overlay.id = "certifiedVideoLightbox";
     overlay.className = "video-lightbox-overlay";
     overlay.innerHTML = `
-      <div class="video-lightbox-card" onclick="event.stopPropagation()">
+      <div class="video-lightbox-card" id="videoLightboxCard" onclick="event.stopPropagation()">
         <div class="video-lightbox-header">
           <div class="video-lightbox-title">
             <span class="video-lightbox-dot"></span>
             <span id="videoLightboxHeading">Waarom Certified Fitform</span>
           </div>
           <div class="video-lightbox-actions">
-            <a href="afspraak.html" class="video-lightbox-cta-btn" onclick="closeCertifiedVideoModal()">
+            <a href="${pfx}afspraak.html" id="videoLightboxCtaBtn" class="video-lightbox-cta-btn" onclick="closeCertifiedVideoModal()">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
               <span>Afspraak Inplannen</span>
             </a>
@@ -3729,11 +3731,11 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
             </button>
           </div>
         </div>
-        <div class="video-lightbox-frame-wrap">
+        <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.418" 
-            poster="assets/video/video_poster_scene2.jpg?v=10.418" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.418" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.418" 
             controls 
             playsinline 
             preload="auto"
@@ -3756,16 +3758,61 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   const heading = document.getElementById("videoLightboxHeading");
   const player = document.getElementById("videoLightboxPlayer");
   const iframe = document.getElementById("videoLightboxIframe");
+  const card = document.getElementById("videoLightboxCard") || overlay.querySelector(".video-lightbox-card");
+  const frameWrap = document.getElementById("videoLightboxFrameWrap") || overlay.querySelector(".video-lightbox-frame-wrap");
+  const ctaBtn = document.getElementById("videoLightboxCtaBtn") || overlay.querySelector(".video-lightbox-cta-btn");
 
-  if (mode === "afspraak" || mode === "zitmeting" || mode === "proefzitten") {
+  const isVertical = (mode === "rene" || mode === "ravi");
+  if (card) {
+    card.style.maxWidth = isVertical ? "440px" : "";
+    card.style.maxHeight = isVertical ? "min(790px, calc(100vh - 28px))" : "";
+  }
+  if (frameWrap) {
+    frameWrap.style.height = isVertical ? "min(710px, calc(92vh - 68px))" : "";
+  }
+  if (ctaBtn) {
+    ctaBtn.href = mode === "rene"
+      ? `${pfx}afspraak.html?stoel=sta-op-stoel-rene`
+      : mode === "ravi"
+      ? `${pfx}afspraak.html?stoel=sta-op-stoel-ravi`
+      : `${pfx}afspraak.html`;
+  }
+
+  if (mode === "rene") {
+    if (heading) heading.textContent = "Stoel René • Tijdelijk € 2.150,-";
+    if (iframe) {
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.419`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.419`;
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(() => {});
+    }
+  } else if (mode === "ravi") {
+    if (heading) heading.textContent = "Stoel Ravi • Design Sta-op Stoel";
+    if (iframe) {
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.419`;
+      player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(() => {});
+    }
+  } else if (mode === "afspraak" || mode === "zitmeting" || mode === "proefzitten") {
     if (heading) heading.textContent = "Persoonlijke Zitmeting & Proefzitten Dordrecht";
     if (iframe) {
       iframe.src = "";
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.418";
-      player.poster = "assets/video/zitmeting_poster.jpg?v=10.418";
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.418`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.418`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3810,6 +3857,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.418";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.418";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));
@@ -4027,7 +4076,7 @@ if (document.readyState === "loading") {
     if (!logo || logo.classList.contains('has-brand-chair')) return;
 
     const base = (typeof window.getBasePath === 'function') ? window.getBasePath() : '';
-    const ver = '10.416';
+    const ver = '10.419';
 
     // Tekst (staopstoelen.nl + strapline) samen in één kolom
     let textGroup = logo.querySelector('.nav-logo-text-group');

@@ -868,6 +868,170 @@
       <div class="text-center" style="text-align: center;">
         <a href="staopstoelen.html" class="btn btn-primary">Bekijk Alle Stoelen</a>
       </div>
+
+      <!-- Actie van de Maand: Design Sta-op stoel René + Video Spotlight -->
+      <div id="actie-rene-spotlight" style="margin-top: 44px; background: linear-gradient(135deg, #ffffff 0%, #f6fbf3 100%); border: 2px solid #c8e2bc; border-radius: 22px; padding: 32px; box-shadow: 0 12px 34px rgba(37, 102, 22, 0.08); position: relative; overflow: hidden;">
+        <style>
+          .rene-spotlight-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 36px;
+            align-items: center;
+          }
+          @media (max-width: 860px) {
+            .rene-spotlight-grid {
+              grid-template-columns: 1fr;
+              gap: 24px;
+            }
+            .rene-video-wrap {
+              max-width: 300px;
+              margin: 0 auto;
+            }
+          }
+          .rene-video-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #1d2024;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+            border: 3px solid #ffffff;
+          }
+          .rene-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+          }
+          .rene-video-overlay:hover {
+            background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.45) 100%);
+          }
+          .rene-play-btn {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: #f39223;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(243, 146, 35, 0.55);
+            transition: transform 0.2s ease;
+          }
+          .rene-video-overlay:hover .rene-play-btn {
+            transform: scale(1.08);
+          }
+          .rene-usp-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 18px;
+            margin: 18px 0 22px 0;
+          }
+          @media (max-width: 560px) {
+            .rene-usp-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+        </style>
+
+        <div class="rene-spotlight-grid">
+          <!-- Linkerkolom: Staande Tearjerker Video (9:16) -->
+          <div class="rene-video-wrap">
+            <video
+              id="renePromoVideo"
+              controls
+              playsinline
+              preload="metadata"
+              poster="assets/rene_video_poster.jpg"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <source src="assets/video/staopstoelen_rene_aanbieding_web.mp4" type="video/mp4">
+              Uw browser ondersteunt geen video.
+            </video>
+            <div class="rene-video-overlay" id="renePromoOverlay" onclick="playRenePromoVideo()" role="button" tabindex="0" title="Speel video af: Design Sta-op stoel René">
+              <div class="rene-play-btn">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 3px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
+              </div>
+              <span style="margin-top: 12px; background: rgba(29,32,36,0.82); color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 14px; border-radius: 999px; letter-spacing: 0.2px;">
+                ▶ Bekijk video (46 sec)
+              </span>
+            </div>
+          </div>
+
+          <!-- Rechterkolom: Verhaal, USP's, Actieprijs & Knoppen -->
+          <div style="text-align: left;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+              <span style="background: #f39223; color: #fff; font-weight: 800; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 999px;">
+                Actie van de Maand &bull; € 350,- Korting
+              </span>
+              <span style="background: #eaf4e5; color: #256616; font-weight: 700; font-size: 0.8rem; padding: 5px 12px; border-radius: 999px; border: 1px solid #b8dcab;">
+                DFM Design &bull; Standaard met Accu
+              </span>
+            </div>
+
+            <h3 style="font-family: var(--font-heading); font-size: clamp(1.45rem, 2.6vw, 2rem); font-weight: 800; color: var(--color-forest-dark); line-height: 1.2; margin: 0 0 10px 0;">
+              “Geen lompe ziekenhuisstoel in mijn kamer!” &mdash; Ontdek de stijlvolle René
+            </h3>
+
+            <p style="font-size: 0.98rem; color: #374151; line-height: 1.6; margin: 0;">
+              Wilt u wél zonder pijn of moeite opstaan, maar absoluut geen medisch ogende stoel in uw interieur? De <strong>Sta-op stoel René</strong> is een slanke, draaibare designfauteuil waarin de sta-op hulp én de accu volledig onzichtbaar zijn weggewerkt.
+            </p>
+
+            <div class="rene-usp-grid">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 0.92rem; color: #1f2937; font-weight: 600;">
+                <span style="color: #4b8f24; font-weight: 900;">✓</span> Snoerloos dankzij ingebouwde accu
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 0.92rem; color: #1f2937; font-weight: 600;">
+                <span style="color: #4b8f24; font-weight: 900;">✓</span> Verstelbare hoofdsteun (hoogte &amp; hoek)
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 0.92rem; color: #1f2937; font-weight: 600;">
+                <span style="color: #4b8f24; font-weight: 900;">✓</span> 2 motoren &amp; veilige draaiblokkering
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 0.92rem; color: #1f2937; font-weight: 600;">
+                <span style="color: #4b8f24; font-weight: 900;">✓</span> Leverbaar in 7 maten (XS t/m XL)
+              </div>
+            </div>
+
+            <!-- Prijs + CTA balk -->
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; background: #ffffff; border: 1.5px solid #dbe8d4; border-radius: 16px; padding: 16px 22px;">
+              <div>
+                <div style="font-size: 0.85rem; color: #6b7280; font-weight: 600;">
+                  Adviesprijs <span style="text-decoration: line-through; color: #dc2626;">€ 2.500,-</span>
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 10px;">
+                  <span style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--color-forest); line-height: 1.05;">€ 2.150,-</span>
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #ea580c;">Compleet op maat</span>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 12px 22px; font-size: 0.95rem;">
+                  Bekijk Stoel René &rarr;
+                </a>
+                <a href="afspraak.html?stoel=sta-op-stoel-rene" onclick="openAppointmentModal(event)" class="btn btn-secondary" style="padding: 12px 20px; font-size: 0.95rem;">
+                  Kom Proefzitten
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function playRenePromoVideo() {
+            const ov = document.getElementById("renePromoOverlay");
+            const vid = document.getElementById("renePromoVideo");
+            if (ov) ov.style.display = "none";
+            if (vid) {
+              vid.play().catch(e => console.log("Video play:", e));
+            }
+          }
+        </script>
+      </div>
     </div>
   </section>
 
@@ -1266,11 +1430,11 @@
             <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%; font-weight: 700; padding: 13px 20px; font-size: 1.02rem;">
               Vrijblijvend Proefzitten of Reserveren &rarr;
             </button>
-            <button type="button" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill" style="width: 100%; margin-top: 2px;">
+            <button type="button" id="modalVideoBtn" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill" style="width: 100%; margin-top: 2px;">
               <span class="btn-watch-video-play-circle">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
               </span>
-              <span>Bekijk Video: Waarom Certified Fitform?</span>
+              <span id="modalVideoBtnText">Bekijk Video: Waarom Certified Fitform?</span>
             </button>
                                     <!-- Subtiele Geertjan Micro-Conversie (Tekst rechts, grotere avatar, niet onderstreept) -->
             <a href="tel:+31786314858" class="advisor-trust-bubble" style="display: flex !important; align-items: center !important; gap: 12px !important; margin-top: 12px !important; text-decoration: none !important; color: inherit !important; box-sizing: border-box !important; width: 100% !important; background: transparent !important; border: none !important; padding: 0 !important; transition: all 0.2s ease !important;" title="Bel direct met Geertjan voor advies over dit model">
@@ -1905,6 +2069,27 @@
         prefillBooking(item.name);
       });
 
+      // Configure model-specific video button in modal
+      const modalVideoBtn = document.getElementById("modalVideoBtn");
+      const modalVideoBtnText = document.getElementById("modalVideoBtnText");
+      if (modalVideoBtn && modalVideoBtnText) {
+        const cid = (item.id || "").toLowerCase();
+        const cbrand = ((item.brand || "") + " " + (item.name || "")).toLowerCase();
+        if (cid === "sta-op-stoel-rene" || cbrand.includes("rené") || cbrand.includes("rene")) {
+          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel René (46 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("rene");
+        } else if (cid === "sta-op-stoel-ravi" || cbrand.includes("ravi")) {
+          modalVideoBtnText.textContent = "Bekijk Video: Design Stoel Ravi (43 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("ravi");
+        } else if (cbrand.includes("fitform") || (item.condition || "").toLowerCase() === "occasion") {
+          modalVideoBtnText.textContent = "Bekijk Video: Waarom Certified Fitform?";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("consumer");
+        } else {
+          modalVideoBtnText.textContent = "Bekijk Video: Zitmeting & Proefzitten (38 sec)";
+          modalVideoBtn.onclick = () => openCertifiedVideoModal("zitmeting");
+        }
+      }
+
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
       modal.focus();
@@ -2082,8 +2267,12 @@
               return match;
             }
 
-            // Selecteer 1 nieuwe stoel en 2 occasions voor de Top 3 Aanbiedingen sectie
-            const nieuwChair = findBestChair("nieuw", "staop") || findBestChair("nieuw", null);
+            // Selecteer 1 nieuwe stoel (voorkeur: actie-model Sta-op stoel René) en 2 occasions voor de Top 3 Aanbiedingen sectie
+            const reneOffer = allChairs.find(c => c.id === "sta-op-stoel-rene" && c.status === "beschikbaar");
+            if (reneOffer) {
+              addedIds.add(reneOffer.id);
+            }
+            const nieuwChair = reneOffer || findBestChair("nieuw", "staop") || findBestChair("nieuw", null);
             if (nieuwChair) offers.push(nieuwChair);
 
             for (let i = offers.length; i < 3; i++) {

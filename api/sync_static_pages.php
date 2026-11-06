@@ -325,6 +325,37 @@ function sync_static_chair_pages($chairs = null) {
         $chair_active_staop = ($catalog_page === 'staopstoelen.html') ? 'active' : '';
         $chair_active_relax = ($catalog_page === 'seniorenstoelen.html') ? 'active' : '';
 
+        $id_lower = strtolower($chair_id);
+        $brand_lower = strtolower($chair['brand'] ?? '');
+        $name_lower = strtolower($chair['name'] ?? '');
+        if (strpos($id_lower, 'rene') !== false || strpos($name_lower, 'rené') !== false || strpos($name_lower, 'rene') !== false) {
+            $video_mode = 'rene';
+            $video_btn_label = 'Bekijk Video: Design Stoel René (46 sec)';
+        } elseif (strpos($id_lower, 'ravi') !== false || strpos($name_lower, 'ravi') !== false) {
+            $video_mode = 'ravi';
+            $video_btn_label = 'Bekijk Video: Design Stoel Ravi (43 sec)';
+        } elseif (strpos($brand_lower, 'fitform') !== false || $is_occasion) {
+            $video_mode = 'consumer';
+            $video_btn_label = 'Bekijk Video: Waarom Certified Fitform?';
+        } else {
+            $video_mode = 'zitmeting';
+            $video_btn_label = 'Bekijk Video: Zitmeting & Proefzitten (38 sec)';
+        }
+
+        // Action CTA Buttons
+        $html_content_cta = '
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+          <a href="../afspraak.html?stoel=' . urlencode($chair_id) . '" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; font-size: 1.05rem; font-weight: 700; border-radius: var(--radius-sm); text-decoration: none;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Vrijblijvend Proefzitten of Reserveren &rarr;</span>
+          </a>
+          <button type="button" onclick="openCertifiedVideoModal(\'' . $video_mode . '\')" class="btn-watch-video-pill" style="width: 100%; justify-content: center; cursor: pointer;">
+            <span class="play-dot">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </span>
+            <span>' . htmlspecialchars($video_btn_label, ENT_QUOTES, 'UTF-8') . '</span>
+          </button>';
+
         $html_content = '<!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -636,11 +667,7 @@ function sync_static_chair_pages($chairs = null) {
         ' . $price_box_html . '
 
         <!-- Action CTA Buttons -->
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
-          <a href="../afspraak.html?stoel=' . urlencode($chair_id) . '" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; font-size: 1.05rem; font-weight: 700; border-radius: var(--radius-sm); text-decoration: none;">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span>Afspraak maken</span>
-          </a>
+        ' . $html_content_cta . '
                                   <!-- Subtiele Geertjan Micro-Conversie (Tekst rechts, grotere avatar, niet onderstreept) -->
             <a href="tel:+31786314858" class="advisor-trust-bubble" style="display: flex !important; align-items: center !important; gap: 12px !important; margin-top: 12px !important; text-decoration: none !important; color: inherit !important; box-sizing: border-box !important; width: 100% !important; background: transparent !important; border: none !important; padding: 0 !important; transition: all 0.2s ease !important;" title="Bel direct met Geertjan voor advies over dit model">
               <!-- Geertjan Pasfoto (Groter: 54px) -->
@@ -697,7 +724,7 @@ function sync_static_chair_pages($chairs = null) {
           <h3 style="font-size: 1.05rem; color: var(--color-forest-dark); margin-bottom: 12px; font-family: var(--font-heading);">
             Over de ' . $chair_name . '
           </h3>
-          <div>' . nl2br(htmlspecialchars($desc, ENT_QUOTES, 'UTF-8')) . '</div>
+          <div>' . (strpos($desc, '<p>') !== false ? $desc : nl2br(htmlspecialchars($desc, ENT_QUOTES, 'UTF-8'))) . '</div>
         </div>
 
       </div>
@@ -825,6 +852,7 @@ function sync_static_chair_pages($chairs = null) {
     }
   </script>
 
+  <script src="../app.js?v=10.419" defer></script>
 </body>
 </html>';
 
