@@ -50,7 +50,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.437">
+  <link rel="stylesheet" href="style.css?v=10.438">
   <style>
     .slide-caption {
       position: absolute !important;
@@ -542,31 +542,31 @@
               </a>
             </div>
 
-            <!-- Smaakvolle, mobielvriendelijke Hero-Video-kaart voor Sta-op stoel René -->
-            <div class="hero-rene-feature-card" onclick="openCertifiedVideoModal('rene-man')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertifiedVideoModal('rene-man');}" title="Klik om de video van Sta-op stoel René (53 sec) te bekijken" style="margin-top: 14px; background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04); text-align: left; cursor: pointer; transition: border-color 0.2s ease, transform 0.2s ease;">
+            <!-- Smaakvolle, mobielvriendelijke Hero-Video-kaart (Wisselt automatisch mee tussen Sta-op stoel René en Sta-op stoel Ravi) -->
+            <div id="heroPromoFeatureCard" class="hero-rene-feature-card" onclick="openCertifiedVideoModal(window._activeDesignChair === 'ravi' ? 'ravi-showcase' : 'rene-showcase')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertifiedVideoModal(window._activeDesignChair === 'ravi' ? 'ravi-showcase' : 'rene-showcase');}" title="Klik om de video van ons actiemodel te bekijken" style="margin-top: 14px; background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04); text-align: left; cursor: pointer; transition: border-color 0.2s ease, transform 0.2s ease;">
               <!-- Duidelijke sfeerfoto-videothumbnail met Play-knop -->
               <div style="position: relative; width: 78px; height: 78px; min-width: 78px; border-radius: 12px; overflow: hidden; border: 1px solid #d8e5d0; flex-shrink: 0; background: #1d2024;">
-                <img src="assets/stoelen/chair_rene_groen_cozy.jpg" alt="Bekijk video van Sta-op stoel René in olijfgroen" width="78" height="78" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <img id="heroPromoCardImg" src="assets/stoelen/chair_rene_groen_cozy.jpg" alt="Bekijk video van Sta-op stoel René" width="78" height="78" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 <div style="position: absolute; inset: 0; background: rgba(18, 43, 7, 0.28); display: flex; align-items: center; justify-content: center;">
                   <span style="width: 34px; height: 34px; border-radius: 50%; background: rgba(37, 102, 22, 0.94); border: 2px solid #ffffff; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.32);">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
                   </span>
                 </div>
-                <span style="position: absolute; bottom: 4px; right: 4px; background: rgba(18, 43, 7, 0.88); color: #ffffff; font-size: 0.62rem; font-weight: 800; padding: 1px 5px; border-radius: 6px; line-height: 1.2;">53s</span>
+                <span id="heroPromoCardDur" style="position: absolute; bottom: 4px; right: 4px; background: rgba(18, 43, 7, 0.88); color: #ffffff; font-size: 0.62rem; font-weight: 800; padding: 1px 5px; border-radius: 6px; line-height: 1.2;">1:34</span>
               </div>
 
               <!-- Ruime tekstkolom zonder afknellende dubbele knoppen rechts -->
               <div style="flex: 1; min-width: 0;">
-                <div style="margin-bottom: 4px;">
+                <div style="margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; gap: 6px;">
                   <span style="display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-forest-dark); background: #e6f2e0; border: 1px solid #b8dcab; padding: 2px 9px; border-radius: 999px; white-space: nowrap;">Tijdelijke Actie &bull; € 350,- Voordeel</span>
                 </div>
-                <div style="font-family: var(--font-heading); font-size: 1.02rem; font-weight: 800; color: var(--color-forest-dark); line-height: 1.22; margin-bottom: 3px;">
+                <div id="heroPromoCardTitle" style="font-family: var(--font-heading); font-size: 1.02rem; font-weight: 800; color: var(--color-forest-dark); line-height: 1.22; margin-bottom: 3px;">
                   Design Sta-op stoel René <span style="font-weight: 600; font-size: 0.84rem; color: #5b6457;">(op accu)</span>
                 </div>
                 <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; font-size: 0.88rem; line-height: 1.25;">
-                  <span><s style="color: #8a9486; font-weight: 600; font-size: 0.82rem;">€ 2.695,-</s> <strong style="color: var(--color-forest-dark); font-weight: 900;">€ 2.345,-</strong></span>
+                  <span id="heroPromoCardPrice"><s style="color: #8a9486; font-weight: 600; font-size: 0.82rem;">€ 2.695,-</s> <strong style="color: var(--color-forest-dark); font-weight: 900;">€ 2.345,-</strong></span>
                   <span style="color: var(--color-terracotta); font-weight: 800; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
-                    <span>&#9654; Bekijk video</span>
+                    <span id="heroPromoCardCta">&#9654; Bekijk video</span>
                   </span>
                 </div>
               </div>
@@ -780,12 +780,21 @@
                   <span class="slide-caption-price">€ 1.925,-</span>
                 </div>
               </div>
-              <!-- 14. Sta-op Stoel Ravi -->
-              <div class="hero-slide" data-chair-id="sta-op-stoel-ravi" data-url="staopstoelen.html#sta-op-stoel-ravi" style="cursor: pointer;">
-                <img src="assets/chair_ravi_cozy.png" alt="Sfeervol interieur met de Sta-op Stoel Ravi" width="450" height="450" loading="lazy" decoding="async">
+              <!-- 14. Sta-op Stoel Ravi (Tijdelijke Actie - Wisselt af met René als openings-slide) -->
+              <div class="hero-slide" id="heroSlideRaviMain" data-chair-id="sta-op-stoel-ravi" data-url="stoelen/sta-op-stoel-ravi.html" style="cursor: pointer;">
+                <img src="assets/chair_ravi_cozy.png" alt="Design Sta-op Stoel Ravi in sfeervolle woonkamer" width="450" height="450" loading="lazy" decoding="async">
+                <div style="position: absolute; top: 14px; left: 14px; z-index: 6; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;">
+                  <span style="background: rgba(255,255,255,0.95); color: var(--color-forest-dark); border: 1.5px solid #c5deba; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.02em; padding: 5px 11px; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,0.16); display: inline-flex; align-items: center; gap: 6px;">
+                    <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--color-terracotta); display: inline-block;"></span>
+                    Actie &bull; &minus;€ 350,-
+                  </span>
+                  <button type="button" onclick="event.stopPropagation(); openCertifiedVideoModal('ravi-showcase');" style="background: rgba(18,43,7,0.88); color: #fff; border: 1.5px solid rgba(255,255,255,0.65); font-weight: 700; font-size: 0.74rem; padding: 5px 11px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.24);">
+                    <span style="color: #f39223;">&#9654;</span> Video (1:34)
+                  </button>
+                </div>
                 <div class="slide-caption">
-                  <span class="slide-caption-name">Sta-op Stoel Ravi</span>
-                  <span class="slide-caption-price">€ 1.945,-</span>
+                  <span class="slide-caption-name">Design Sta-op Stoel Ravi</span>
+                  <span class="slide-caption-price"><s style="font-size: 0.76rem; color: rgba(255,255,255,0.85); margin-right: 6px; font-weight: 600;">€ 2.295,-</s>€ 1.945,-</span>
                 </div>
               </div>
               <!-- 15. DFM Bentley (dicht) -->
@@ -1072,8 +1081,24 @@
           }
         </style>
 
+        <!-- Subtiele Wissel-balk bovenaan: Wissel tussen Actiemodel René (€ 2.345,-) en Actiemodel Ravi (€ 1.945,-) -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #eef2ec;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; font-weight: 700; color: var(--color-forest-dark);">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-terracotta); display: inline-block;"></span>
+            <span>Onze 2 populairste nieuwe design-sta-op stoelen met <strong>€ 350,- korting</strong>:</span>
+          </div>
+          <div style="display: inline-flex; background: #f2f6ef; padding: 4px; border-radius: 999px; border: 1px solid #d5e4ce; gap: 4px;">
+            <button type="button" id="switchModelBtnRene" onclick="window.setFeaturedDesignChair('rene', true)" style="border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.78rem; font-weight: 800; cursor: pointer; background: var(--color-forest); color: #ffffff; transition: all 0.2s ease;">
+              Stoel René &bull; € 2.345,-
+            </button>
+            <button type="button" id="switchModelBtnRavi" onclick="window.setFeaturedDesignChair('ravi', true)" style="border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.78rem; font-weight: 800; cursor: pointer; background: transparent; color: var(--color-forest-dark); transition: all 0.2s ease;">
+              Stoel Ravi &bull; € 1.945,-
+            </button>
+          </div>
+        </div>
+
         <div class="rene-spotlight-grid">
-          <!-- Linkerkolom: Staande Video (9:16), met keuze tussen Showcase (alle kleuren/standen/ronde voet) en Klantverhaal -->
+          <!-- Linkerkolom: Staande Video (9:16), met keuze tussen Showcase (alle kleuren/standen) en Klantverhaal -->
           <div class="rene-video-col">
             <div class="rene-video-wrap">
               <video
@@ -1087,7 +1112,7 @@
                 <source id="renePromoSource" src="assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4" type="video/mp4">
                 Uw browser ondersteunt geen video.
               </video>
-              <div class="rene-video-overlay" id="renePromoOverlay" onclick="playRenePromoVideo()" role="button" tabindex="0" title="Speel video af: Design Sta-op stoel René">
+              <div class="rene-video-overlay" id="renePromoOverlay" onclick="playRenePromoVideo()" role="button" tabindex="0" title="Speel video af">
                 <div class="rene-play-btn">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 3px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
                 </div>
@@ -1098,7 +1123,7 @@
             </div>
             <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 4px;">
               <button type="button" id="reneHomeTabShowcase" onclick="switchReneHomeVideo('showcase')" style="background: #2f5f15; color: #fff; border: 1.5px solid #2f5f15; font-weight: 800; font-size: 0.72rem; padding: 5px 10px; border-radius: 999px; cursor: pointer;">
-                ✨ Kleuren &amp; ronde voet
+                ✨ Alle kleuren &amp; standen
               </button>
               <button type="button" id="reneHomeTabStory" onclick="switchReneHomeVideo('story')" style="background: #f5f7f4; color: #2f5f15; border: 1.5px solid #c9dcb9; font-weight: 700; font-size: 0.72rem; padding: 5px 10px; border-radius: 999px; cursor: pointer;">
                 🎬 Verhaal
@@ -1113,20 +1138,20 @@
                 <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--color-terracotta); display: inline-block;"></span>
                 Uitgelicht Showroommodel &bull; € 350,- Voordeel
               </span>
-              <span style="color: #4b5563; font-weight: 600; font-size: 0.82rem;">
+              <span id="spotlightSubMeta" style="color: #4b5563; font-weight: 600; font-size: 0.82rem;">
                 DFM Design &bull; Standaard op Accu &bull; Stervoet óf Ronde Voet
               </span>
             </div>
 
-            <h3 style="font-family: var(--font-heading); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--color-forest-dark); line-height: 1.22; margin: 0 0 10px 0;">
+            <h3 id="spotlightHeading" style="font-family: var(--font-heading); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--color-forest-dark); line-height: 1.22; margin: 0 0 10px 0;">
               Wel het gemak van veilig opstaan, maar géén medische stoel in uw kamer
             </h3>
 
-            <p style="font-size: 0.96rem; color: #374151; line-height: 1.6; margin: 0;">
+            <p id="spotlightDesc" style="font-size: 0.96rem; color: #374151; line-height: 1.6; margin: 0;">
               De nieuwe <strong>Sta-op stoel René</strong> oogt als een moderne, slanke draaifauteuil (met keuze uit een stervoet of een elegante <strong>ronde schotelvoet</strong> in RVS of zwart), maar biedt onderhuids een krachtige sta-op hulp, een ontspannende <em>hartbalans-ligstand</em> én een volledig onzichtbaar weggewerkte accu.
             </p>
 
-            <div class="rene-usp-grid">
+            <div class="rene-usp-grid" id="spotlightUspGrid">
               <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
                 <span style="color: #4b8f24; font-weight: 900;">✓</span> Snoerloos vrij in de kamer (op accu)
               </div>
@@ -1142,7 +1167,7 @@
             </div>
 
             <!-- Subtiele visuele weergave van de DFM standen & uitvoeringen -->
-            <div class="rene-mini-poses">
+            <div class="rene-mini-poses" id="spotlightMiniPoses">
               <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Duo Cognac &amp; Bouclé op Ronde RVS Voet">
                 <img src="assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg" alt="René op ronde RVS schotelvoet" loading="lazy" style="object-fit: cover;">
                 <span>Ronde Voet &amp; Duo</span>
@@ -1165,19 +1190,19 @@
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; background: var(--color-bg-alt, #f9f8f6); border: 1px solid var(--color-gray-light); border-radius: 14px; padding: 16px 22px;">
               <div>
                 <div style="font-size: 0.84rem; color: #6b7280; font-weight: 600;">
-                  Adviesprijs <span style="text-decoration: line-through; color: #8a9486;">€ 2.695,-</span> &bull; <span style="color: var(--color-forest); font-weight: 700;">Uw voordeel: € 350,-</span>
+                  Adviesprijs <span id="spotlightOldPrice" style="text-decoration: line-through; color: #8a9486;">€ 2.695,-</span> &bull; <span style="color: var(--color-forest); font-weight: 700;">Uw voordeel: € 350,-</span>
                 </div>
                 <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 2px;">
-                  <span style="font-family: var(--font-heading); font-size: 1.95rem; font-weight: 900; color: var(--color-forest-dark); line-height: 1.05;">€ 2.345,-</span>
-                  <span style="font-size: 0.82rem; font-weight: 700; color: #4b5563;">Compleet met accu &amp; op maat</span>
+                  <span id="spotlightNewPrice" style="font-family: var(--font-heading); font-size: 1.95rem; font-weight: 900; color: var(--color-forest-dark); line-height: 1.05;">€ 2.345,-</span>
+                  <span id="spotlightPriceSub" style="font-size: 0.82rem; font-weight: 700; color: #4b5563;">Compleet met accu &amp; op maat</span>
                 </div>
               </div>
 
               <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <a href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 12px 22px; font-size: 0.95rem;">
+                <a id="spotlightPrimaryBtn" href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 12px 22px; font-size: 0.95rem;">
                   Bekijk Stoel René &rarr;
                 </a>
-                <a href="afspraak.html?stoel=sta-op-stoel-rene" onclick="openAppointmentModal(event)" class="btn btn-secondary" style="padding: 12px 20px; font-size: 0.95rem;">
+                <a id="spotlightSecondaryBtn" href="afspraak.html?stoel=sta-op-stoel-rene" onclick="openAppointmentModal(event)" class="btn btn-secondary" style="padding: 12px 20px; font-size: 0.95rem;">
                   Vrijblijvend Proefzitten
                 </a>
               </div>
@@ -1186,6 +1211,8 @@
         </div>
 
         <script>
+          window._activeDesignChair = "rene";
+
           function playRenePromoVideo() {
             const ov = document.getElementById("renePromoOverlay");
             const vid = document.getElementById("renePromoVideo");
@@ -1194,41 +1221,250 @@
               vid.play().catch(e => console.log("Video play:", e));
             }
           }
-          function switchReneHomeVideo(which) {
+
+          function switchReneHomeVideo(which, autoPlay = true) {
             const vid = document.getElementById("renePromoVideo");
             const ov = document.getElementById("renePromoOverlay");
             const lbl = document.getElementById("renePromoOverlayLabel");
             const btnS = document.getElementById("reneHomeTabShowcase");
             const btnK = document.getElementById("reneHomeTabStory");
+            const model = window._activeDesignChair || "rene";
             if (!vid) return;
             vid.pause();
             if (which === "showcase") {
               vid.dataset.videoType = "showcase";
-              vid.src = "assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4";
-              vid.poster = "assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg";
-              if (lbl) lbl.textContent = "▶ Alle kleuren & standen";
+              if (model === "ravi") {
+                vid.src = "assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4";
+                vid.poster = "assets/chair_ravi_cozy.png";
+                if (lbl) lbl.textContent = "▶ Alle kleuren & standen Ravi";
+              } else {
+                vid.src = "assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4";
+                vid.poster = "assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg";
+                if (lbl) lbl.textContent = "▶ Alle kleuren & standen René";
+              }
               if (btnS) { btnS.style.background = "#2f5f15"; btnS.style.color = "#fff"; }
               if (btnK) { btnK.style.background = "#f5f7f4"; btnK.style.color = "#2f5f15"; }
             } else {
               vid.dataset.videoType = "story";
-              const v = (typeof window.getReneVisitorVariant === "function") ? window.getReneVisitorVariant() : "man";
-              if (v === "vrouw") {
-                vid.src = "assets/video/staopstoelen_rene_aanbieding_web.mp4";
-                vid.poster = "assets/rene_video_poster.jpg";
-                if (lbl) lbl.textContent = "▶ Bekijk verhaal (49 sec)";
+              if (model === "ravi") {
+                vid.src = "assets/video/staopstoelen_ravi_aanbieding_staand.mp4";
+                vid.poster = "assets/chair_ravi_cozy.png";
+                if (lbl) lbl.textContent = "▶ Bekijk verhaal Ravi (46 sec)";
               } else {
-                vid.src = "assets/video/staopstoelen_rene_man_aanbieding_web.mp4";
-                vid.poster = "assets/rene_man_video_poster.jpg";
-                if (lbl) lbl.textContent = "▶ Bekijk verhaal (53 sec)";
+                const v = (typeof window.getReneVisitorVariant === "function") ? window.getReneVisitorVariant() : "man";
+                if (v === "vrouw") {
+                  vid.src = "assets/video/staopstoelen_rene_aanbieding_web.mp4";
+                  vid.poster = "assets/rene_video_poster.jpg";
+                  if (lbl) lbl.textContent = "▶ Bekijk verhaal René (49 sec)";
+                } else {
+                  vid.src = "assets/video/staopstoelen_rene_man_aanbieding_web.mp4";
+                  vid.poster = "assets/rene_man_video_poster.jpg";
+                  if (lbl) lbl.textContent = "▶ Bekijk verhaal René (53 sec)";
+                }
               }
               if (btnK) { btnK.style.background = "#2f5f15"; btnK.style.color = "#fff"; }
               if (btnS) { btnS.style.background = "#f5f7f4"; btnS.style.color = "#2f5f15"; }
             }
-            if (ov) ov.style.display = "none";
-            vid.play().catch(e => {
+            if (autoPlay) {
+              if (ov) ov.style.display = "none";
+              vid.play().catch(e => {
+                if (ov) ov.style.display = "flex";
+              });
+            } else {
               if (ov) ov.style.display = "flex";
-            });
+            }
           }
+
+          window.setFeaturedDesignChair = function(model, isManualClick = false) {
+            model = (model === "ravi") ? "ravi" : "rene";
+            window._activeDesignChair = model;
+            try {
+              localStorage.setItem("staop_last_featured_chair", model);
+            } catch (e) {}
+
+            // 1. Update Switcher Pills
+            const btnRene = document.getElementById("switchModelBtnRene");
+            const btnRavi = document.getElementById("switchModelBtnRavi");
+            if (btnRene && btnRavi) {
+              if (model === "ravi") {
+                btnRavi.style.background = "var(--color-forest)";
+                btnRavi.style.color = "#ffffff";
+                btnRene.style.background = "transparent";
+                btnRene.style.color = "var(--color-forest-dark)";
+              } else {
+                btnRene.style.background = "var(--color-forest)";
+                btnRene.style.color = "#ffffff";
+                btnRavi.style.background = "transparent";
+                btnRavi.style.color = "var(--color-forest-dark)";
+              }
+            }
+
+            // 2. Update Left Hero Video Feature Card
+            const hcImg = document.getElementById("heroPromoCardImg");
+            const hcTitle = document.getElementById("heroPromoCardTitle");
+            const hcPrice = document.getElementById("heroPromoCardPrice");
+            if (model === "ravi") {
+              if (hcImg) {
+                hcImg.src = "assets/chair_ravi_cozy.png";
+                hcImg.alt = "Bekijk video van Sta-op stoel Ravi";
+              }
+              if (hcTitle) {
+                hcTitle.innerHTML = 'Design Sta-op stoel Ravi <span style="font-weight: 600; font-size: 0.84rem; color: #5b6457;">(S / M / L)</span>';
+              }
+              if (hcPrice) {
+                hcPrice.innerHTML = '<s style="color: #8a9486; font-weight: 600; font-size: 0.82rem;">€ 2.295,-</s> <strong style="color: var(--color-forest-dark); font-weight: 900;">€ 1.945,-</strong>';
+              }
+            } else {
+              if (hcImg) {
+                hcImg.src = "assets/stoelen/chair_rene_groen_cozy.jpg";
+                hcImg.alt = "Bekijk video van Sta-op stoel René";
+              }
+              if (hcTitle) {
+                hcTitle.innerHTML = 'Design Sta-op stoel René <span style="font-weight: 600; font-size: 0.84rem; color: #5b6457;">(op accu)</span>';
+              }
+              if (hcPrice) {
+                hcPrice.innerHTML = '<s style="color: #8a9486; font-weight: 600; font-size: 0.82rem;">€ 2.695,-</s> <strong style="color: var(--color-forest-dark); font-weight: 900;">€ 2.345,-</strong>';
+              }
+            }
+
+            // 3. Update Spotlight Section Copy, USPs, Mini-Poses, Pricing & Video
+            const subMeta = document.getElementById("spotlightSubMeta");
+            const desc = document.getElementById("spotlightDesc");
+            const uspGrid = document.getElementById("spotlightUspGrid");
+            const miniPoses = document.getElementById("spotlightMiniPoses");
+            const oldP = document.getElementById("spotlightOldPrice");
+            const newP = document.getElementById("spotlightNewPrice");
+            const pSub = document.getElementById("spotlightPriceSub");
+            const pBtn = document.getElementById("spotlightPrimaryBtn");
+            const sBtn = document.getElementById("spotlightSecondaryBtn");
+
+            if (model === "ravi") {
+              if (subMeta) subMeta.innerHTML = "DFM Design &bull; Onzichtbare Sta-op Hulp &bull; Small, Medium &amp; Large";
+              if (desc) desc.innerHTML = "De prachtige <strong>Sta-op stoel Ravi</strong> oogt als een slanke, moderne 360° draaifauteuil uit één doorlopende kuip (zonder oren), maar biedt onderhuids een volwaardige sta-op hulp met automatische draaiblokkering, twee onafhankelijke motoren én een oppompbare lendensteun.";
+              if (uspGrid) uspGrid.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> Onzichtbaar weggewerkt sta-op mechanisme
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> 2 motoren: rug &amp; voetensteun los verstelbaar
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> 4-knops bediening + oppompbare lendensteun
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> Op maat in S, M &amp; L (stof, leer of duo)
+                </div>
+              `;
+              if (miniPoses) miniPoses.innerHTML = `
+                <a href="stoelen/sta-op-stoel-ravi.html" class="rene-mini-pose" title="Slank kuipdesign zonder oren">
+                  <img src="assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Ravi schuin vooraanzicht" loading="lazy" style="object-fit: cover;">
+                  <span>Slank Kuipdesign</span>
+                </a>
+                <a href="stoelen/sta-op-stoel-ravi.html" class="rene-mini-pose" title="Duo-stoffering van echt leer en rijke weefstof">
+                  <img src="assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg" alt="Ravi duo-stoffering detail" loading="lazy" style="object-fit: cover;">
+                  <span>Duo Leer &amp; Stof</span>
+                </a>
+                <a href="stoelen/sta-op-stoel-ravi.html" class="rene-mini-pose" title="Sta-op hulp met automatische draaiblokkering">
+                  <img src="assets/stoelen/Sta-op-stoel-RAVI-4-rotated.jpg" alt="Ravi in sta-op stand" loading="lazy" style="object-fit: cover;">
+                  <span>Veilige Sta-op Hulp</span>
+                </a>
+                <a href="stoelen/sta-op-stoel-ravi.html" class="rene-mini-pose" title="Volledige relax- en ruststand">
+                  <img src="assets/stoelen/Sta-op-stoel-RAVI-3-rotated.jpg" alt="Ravi in relaxstand" loading="lazy" style="object-fit: cover;">
+                  <span>Volledige Relaxstand</span>
+                </a>
+              `;
+              if (oldP) oldP.textContent = "€ 2.295,-";
+              if (newP) newP.textContent = "€ 1.945,-";
+              if (pSub) pSub.innerHTML = "Op maat in S, M &amp; L";
+              if (pBtn) {
+                pBtn.href = "stoelen/sta-op-stoel-ravi.html";
+                pBtn.innerHTML = "Bekijk Stoel Ravi &rarr;";
+              }
+              if (sBtn) {
+                sBtn.href = "afspraak.html?stoel=sta-op-stoel-ravi";
+              }
+            } else {
+              if (subMeta) subMeta.innerHTML = "DFM Design &bull; Standaard op Accu &bull; Stervoet óf Ronde Voet";
+              if (desc) desc.innerHTML = "De nieuwe <strong>Sta-op stoel René</strong> oogt als een moderne, slanke draaifauteuil (met keuze uit een stervoet of een elegante <strong>ronde schotelvoet</strong> in RVS of zwart), maar biedt onderhuids een krachtige sta-op hulp, een ontspannende <em>hartbalans-ligstand</em> én een volledig onzichtbaar weggewerkte accu.";
+              if (uspGrid) uspGrid.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> Snoerloos vrij in de kamer (op accu)
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> Stervoet óf ronde RVS/zwarte schotelvoet
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> Volledige ligstand &amp; draaiblokkering
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
+                  <span style="color: #4b8f24; font-weight: 900;">✓</span> Op maat in 7 maten (XS t/m XL)
+                </div>
+              `;
+              if (miniPoses) miniPoses.innerHTML = `
+                <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Duo Cognac &amp; Bouclé op Ronde RVS Voet">
+                  <img src="assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg" alt="René op ronde RVS schotelvoet" loading="lazy" style="object-fit: cover;">
+                  <span>Ronde Voet &amp; Duo</span>
+                </a>
+                <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Olijfgroene uitvoering">
+                  <img src="assets/stoelen/Sta-op-stoel-RENE.jpg" alt="René in olijfgroen" loading="lazy">
+                  <span>Olijfgroen &amp; Leer</span>
+                </a>
+                <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Sta-op hulp met draaiblokkering">
+                  <img src="assets/stoelen/rene_dfm_staop_stand.jpg" alt="René in sta-op stand" loading="lazy">
+                  <span>Veilige Sta-op Hulp</span>
+                </a>
+                <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Volledige hartbalans-ligstand">
+                  <img src="assets/stoelen/rene_dfm_herzwaage.jpg" alt="René in volledige ligstand" loading="lazy">
+                  <span>Volledige Ligstand</span>
+                </a>
+              `;
+              if (oldP) oldP.textContent = "€ 2.695,-";
+              if (newP) newP.textContent = "€ 2.345,-";
+              if (pSub) pSub.innerHTML = "Compleet met accu &amp; op maat";
+              if (pBtn) {
+                pBtn.href = "stoelen/sta-op-stoel-rene.html";
+                pBtn.innerHTML = "Bekijk Stoel René &rarr;";
+              }
+              if (sBtn) {
+                sBtn.href = "afspraak.html?stoel=sta-op-stoel-rene";
+              }
+            }
+
+            switchReneHomeVideo("showcase", false);
+
+            // 4. Sync Hero Slideshow opening slide if Ravi is selected
+            const slideshow = document.getElementById("heroSlideshow");
+            const raviSlide = document.getElementById("heroSlideRaviMain");
+            if (slideshow && raviSlide) {
+              const allSlides = Array.from(slideshow.querySelectorAll(".hero-slide"));
+              allSlides.forEach(s => s.classList.remove("active"));
+              if (model === "ravi") {
+                raviSlide.classList.add("active");
+              } else if (allSlides[0]) {
+                allSlides[0].classList.add("active");
+              }
+            }
+          };
+
+          // Automatische afwisseling bij paginalading (50/50 rotatie tussen René en Ravi, of via ?actie=ravi / ?actie=rene)
+          (function initFeaturedDesignChairRotation() {
+            let chosen = "rene";
+            try {
+              const params = new URLSearchParams(window.location.search);
+              const q = (params.get("actie") || params.get("stoel") || "").toLowerCase();
+              if (q.includes("ravi")) {
+                chosen = "ravi";
+              } else if (q.includes("rene")) {
+                chosen = "rene";
+              } else {
+                const prev = localStorage.getItem("staop_last_featured_chair");
+                chosen = (prev === "rene") ? "ravi" : "rene";
+              }
+            } catch (e) {
+              chosen = (Math.random() < 0.5) ? "ravi" : "rene";
+            }
+            window.setFeaturedDesignChair(chosen, false);
+          })();
         </script>
       </div>
 
@@ -1273,9 +1509,9 @@
             controls 
             playsinline 
             preload="metadata"
-            poster="assets/video/video_poster_scene2.jpg?v=10.437" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.438" 
             style="width: 100%; height: 100%; object-fit: cover; display: block;">
-            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.437" type="video/mp4">
+            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.438" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
           
@@ -1321,7 +1557,7 @@
       <!-- Showroom Pand Showcase Card -->
       <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 28px 32px; border-radius: var(--radius-lg); max-width: 900px; margin: 0 auto; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid var(--color-gray-light);">
         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" rel="noopener noreferrer" style="display: block; flex-shrink: 0;" title="Route naar Showroom Dordrecht (Merwedestraat 239)">
-          <img src="assets/pand.jpg?v=10.437" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
+          <img src="assets/pand.jpg?v=10.438" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
         </a>
         <div style="flex: 1; min-width: 280px;">
           <span style="color: var(--color-terracotta); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Merwedestraat 239 &bull; Dordrecht</span>
@@ -1603,7 +1839,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.437
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.438
       </div>
     </div>
   </footer>
@@ -1868,7 +2104,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=10.437" defer></script>
+  <script src="app.js?v=10.438" defer></script>
   <script>
     // Load and render top 5 offers on home page
     function getGridDescriptionPreview(htmlStr) {
@@ -2523,12 +2759,14 @@
               return match;
             }
 
-            // Selecteer 1 nieuwe stoel (voorkeur: actie-model Sta-op stoel René) en 2 occasions voor de Top 3 Aanbiedingen sectie
-            const reneOffer = allChairs.find(c => c.id === "sta-op-stoel-rene" && c.status === "beschikbaar");
-            if (reneOffer) {
-              addedIds.add(reneOffer.id);
+            // Selecteer 1 nieuwe stoel (afwisselend actie-model Sta-op stoel René of Sta-op stoel Ravi) en 2 occasions voor de Top 3 Aanbiedingen sectie
+            const preferredNewId = (window._activeDesignChair === "ravi") ? "sta-op-stoel-ravi" : "sta-op-stoel-rene";
+            const featuredNewOffer = allChairs.find(c => c.id === preferredNewId && c.status === "beschikbaar")
+              || allChairs.find(c => c.id === "sta-op-stoel-rene" && c.status === "beschikbaar");
+            if (featuredNewOffer) {
+              addedIds.add(featuredNewOffer.id);
             }
-            const nieuwChair = reneOffer || findBestChair("nieuw", "staop") || findBestChair("nieuw", null);
+            const nieuwChair = featuredNewOffer || findBestChair("nieuw", "staop") || findBestChair("nieuw", null);
             if (nieuwChair) offers.push(nieuwChair);
 
             for (let i = offers.length; i < 3; i++) {
