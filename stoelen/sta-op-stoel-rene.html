@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.434">
+  <link rel="stylesheet" href="../style.css?v=10.435">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -78,6 +78,34 @@
         box-sizing: border-box;
       }
     }
+    .main-image-frame {
+      background: white;
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 24px 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      height: 440px;
+      min-height: 440px;
+      max-height: 440px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .main-image-frame img,
+    .main-image-frame img.has-photo-bg,
+    #detailMainImg {
+      width: auto !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: 380px !important;
+      object-fit: contain !important;
+      border-radius: 16px !important;
+      box-shadow: none !important;
+      transition: opacity 0.25s ease;
+    }
     @media (max-width: 768px) {
       .product-page-container {
         padding: 0 16px !important;
@@ -86,40 +114,24 @@
         overflow-x: hidden !important;
       }
       .main-image-frame {
-        padding: 16px !important;
-        min-height: 240px !important;
-        max-height: 380px !important;
+        padding: 16px 46px !important;
+        height: 320px !important;
+        min-height: 320px !important;
+        max-height: 320px !important;
+        overflow: hidden !important;
       }
       .main-image-frame img,
-      .main-image-frame img.has-photo-bg {
-        max-height: 300px !important;
+      .main-image-frame img.has-photo-bg,
+      #detailMainImg {
+        max-height: 275px !important;
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
       }
       .product-info-column h1 {
         font-size: clamp(1.35rem, 5.5vw, 1.85rem) !important;
       }
-    }
-    .main-image-frame {
-      background: white;
-      border: 1px solid var(--color-gray-light);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      min-height: 420px;
-    }
-    .main-image-frame img,
-    .main-image-frame img.has-photo-bg {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 440px;
-      object-fit: contain;
-      border-radius: 16px !important;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-      transition: opacity 0.25s ease;
     }
     .gallery-thumbnail {
       border-radius: 10px !important;
@@ -257,48 +269,50 @@
       <!-- Left Column: Gallery & USPs -->
       <div class="product-gallery-section">
         <div class="main-image-frame">
-          <span class="badge badge-new" style="position: absolute; top: 16px; left: 16px; z-index: 2;">
+          <span class="badge badge-new" style="position: absolute; top: 16px; left: 16px; z-index: 5;">
             Tijdelijke Actie
           </span>
+          <button type="button" class="modal-gallery-arrow prev-arrow" id="detailPrevBtn" onclick="stepDetailPhoto(-1)" aria-label="Vorige foto" style="display: flex;">&#10094;</button>
           <img id="detailMainImg" class="has-photo-bg" src="../assets/stoelen/rene_dfm_boucle_studio.jpg" alt="Sta-op stoel René">
+          <button type="button" class="modal-gallery-arrow next-arrow" id="detailNextBtn" onclick="stepDetailPhoto(1)" aria-label="Volgende foto" style="display: flex;">&#10095;</button>
         </div>
         
         
-          <div class="modal-gallery-thumbnails" style="justify-content: flex-start; margin-top: 14px; padding: 4px 2px; flex-wrap: wrap; gap: 8px;">
-              <div class="gallery-thumbnail active" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_boucle_studio.jpg', this)" title="Bouclé Studio-opname">
+          <div class="modal-gallery-thumbnails" style="justify-content: center; margin-top: 14px; padding: 4px 2px; flex-wrap: wrap; gap: 8px;">
+              <div class="gallery-thumbnail active" data-photo="../assets/stoelen/rene_dfm_boucle_studio.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_boucle_studio.jpg', this)" title="Bouclé Studio-opname">
                 <img src="../assets/stoelen/rene_dfm_boucle_studio.jpg" alt="Sta-op stoel René Bouclé" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg', this)" title="Duo Cognac &amp; Crème Bouclé op Ronde RVS Voet">
-                <img src="../assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg" alt="Sta-op stoel René Cognac &amp; Crème Bouclé op Ronde RVS Schotelvoet" style="width: 100%; height: 100%; object-fit: cover;">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_rond_cognac_rvs_gallery.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_rond_cognac_rvs_gallery.jpg', this)" title="Duo Cognac &amp; Crème Bouclé op Ronde RVS Voet">
+                <img src="../assets/stoelen/rene_rond_cognac_rvs_gallery.jpg" alt="Sta-op stoel René Cognac &amp; Crème Bouclé op Ronde RVS Schotelvoet" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_showcase_duo_ronde_zwarte_voet.jpg', this)" title="Olijfgroen Leer in Ligstand op Ronde Zwarte Voet">
-                <img src="../assets/stoelen/rene_showcase_duo_ronde_zwarte_voet.jpg" alt="Sta-op stoel René Olijfgroen op Ronde Zwarte Schotelvoet" style="width: 100%; height: 100%; object-fit: cover;">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_rond_duo_zwart_gallery.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_rond_duo_zwart_gallery.jpg', this)" title="Olijfgroen Leer in Ligstand op Ronde Zwarte Voet">
+                <img src="../assets/stoelen/rene_rond_duo_zwart_gallery.jpg" alt="Sta-op stoel René Olijfgroen op Ronde Zwarte Schotelvoet" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_staop_stand.jpg', this)" title="Sta-op Stand">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_dfm_staop_stand.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_staop_stand.jpg', this)" title="Sta-op Stand">
                 <img src="../assets/stoelen/rene_dfm_staop_stand.jpg" alt="Sta-op stoel René in Sta-op stand" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_herzwaage.jpg', this)" title="Volledige Ligstand (Hartbalans)">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_dfm_herzwaage.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_herzwaage.jpg', this)" title="Volledige Ligstand (Hartbalans)">
                 <img src="../assets/stoelen/rene_dfm_herzwaage.jpg" alt="Sta-op stoel René in volledige ligstand" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/chair_rene_groen_cozy.jpg', this)" title="Olijfgroen in Woonkamer">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/chair_rene_groen_cozy.jpg" onclick="switchDetailPhoto('../assets/stoelen/chair_rene_groen_cozy.jpg', this)" title="Olijfgroen in Woonkamer">
                 <img src="../assets/stoelen/chair_rene_groen_cozy.jpg" alt="Sta-op stoel René Olijfgroen in Woonkamer" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_duo_stof_leer.jpg', this)" title="Duo-stoffering Stof & Leer">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_dfm_duo_stof_leer.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_duo_stof_leer.jpg', this)" title="Duo-stoffering Stof &amp; Leer">
                 <img src="../assets/stoelen/rene_dfm_duo_stof_leer.jpg" alt="Sta-op stoel René Duo-stoffering" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_onderstellen.jpg', this)" title="6 Onderstellen: Stervoet &amp; Ronde Schotelvoet">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_dfm_onderstellen.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_onderstellen.jpg', this)" title="6 Onderstellen: Stervoet &amp; Ronde Schotelvoet">
                 <img src="../assets/stoelen/rene_dfm_onderstellen.jpg" alt="Sta-op stoel René Onderstellen Stervoet en Ronde Schotelvoet" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_hoofdsteun_detail.jpg', this)" title="Verstelbare Hoofdsteun">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_dfm_hoofdsteun_detail.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_hoofdsteun_detail.jpg', this)" title="Verstelbare Hoofdsteun">
                 <img src="../assets/stoelen/rene_dfm_hoofdsteun_detail.jpg" alt="Sta-op stoel René Verstelbare Hoofdsteun" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_achterkant_accu.jpg', this)" title="Achterzijde met Accu-oplaadpunt">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/rene_dfm_achterkant_accu.jpg" onclick="switchDetailPhoto('../assets/stoelen/rene_dfm_achterkant_accu.jpg', this)" title="Achterzijde met Accu-oplaadpunt">
                 <img src="../assets/stoelen/rene_dfm_achterkant_accu.jpg" alt="Sta-op stoel René Achterkant met Accu-oplaadpunt" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RENE.jpg', this)" title="Olijfgroene Uitvoering">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/Sta-op-stoel-RENE.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RENE.jpg', this)" title="Olijfgroene Uitvoering">
                 <img src="../assets/stoelen/Sta-op-stoel-RENE.jpg" alt="Sta-op stoel René Olijfgroen" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/chair_rene_cozy.jpg', this)" title="Beige Bouclé in Woonkamer">
+              <div class="gallery-thumbnail" data-photo="../assets/stoelen/chair_rene_cozy.jpg" onclick="switchDetailPhoto('../assets/stoelen/chair_rene_cozy.jpg', this)" title="Beige Bouclé in Woonkamer">
                 <img src="../assets/stoelen/chair_rene_cozy.jpg" alt="Sta-op stoel René Beige in Woonkamer" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
           </div>
@@ -622,7 +636,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.434
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.435
       </div>
     </div>
   </footer>
@@ -653,8 +667,30 @@
         }
       }
     }
+
+    function stepDetailPhoto(delta) {
+      const thumbs = Array.from(document.querySelectorAll('.modal-gallery-thumbnails .gallery-thumbnail'));
+      if (!thumbs.length) return;
+      let idx = thumbs.findIndex(t => t.classList.contains('active'));
+      if (idx === -1) idx = 0;
+      const nextIdx = (idx + delta + thumbs.length) % thumbs.length;
+      const nextThumb = thumbs[nextIdx];
+      const photoUrl = nextThumb.getAttribute('data-photo') || (nextThumb.querySelector('img') && nextThumb.querySelector('img').getAttribute('src'));
+      if (photoUrl) {
+        switchDetailPhoto(photoUrl, nextThumb);
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if (e.key === 'ArrowLeft') {
+        stepDetailPhoto(-1);
+      } else if (e.key === 'ArrowRight') {
+        stepDetailPhoto(1);
+      }
+    });
   </script>
 
-  <script src="../app.js?v=10.434" defer></script>
+  <script src="../app.js?v=10.435" defer></script>
 </body>
 </html>

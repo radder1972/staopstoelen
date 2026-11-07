@@ -190,12 +190,12 @@ function sync_static_chair_pages($chairs = null) {
                 $t_url = (strpos($t_img, 'http') !== 0) ? "../$t_img" : $t_img;
                 $active_class = ($idx === 0) ? ' active' : '';
                 $thumbs_html .= '
-              <div class="gallery-thumbnail' . $active_class . '" onclick="switchDetailPhoto(\'' . htmlspecialchars($t_url, ENT_QUOTES) . '\', this)" title="Bekijk foto ' . ($idx + 1) . '">
+              <div class="gallery-thumbnail' . $active_class . '" data-photo="' . htmlspecialchars($t_url, ENT_QUOTES) . '" onclick="switchDetailPhoto(\'' . htmlspecialchars($t_url, ENT_QUOTES) . '\', this)" title="Bekijk foto ' . ($idx + 1) . '">
                 <img src="' . htmlspecialchars($t_url, ENT_QUOTES) . '" alt="Foto ' . ($idx + 1) . ' ' . $chair_name . '" style="width: 100%; height: 100%; object-fit: contain;">
               </div>';
             }
             $gallery_html = '
-          <div class="modal-gallery-thumbnails" style="justify-content: flex-start; margin-top: 14px; padding: 4px 2px;">
+          <div class="modal-gallery-thumbnails" style="justify-content: center; margin-top: 14px; padding: 4px 2px; flex-wrap: wrap; gap: 8px;">
             ' . $thumbs_html . '
           </div>';
         }
@@ -378,7 +378,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.432">
+  <link rel="stylesheet" href="../style.css?v=10.435">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -435,6 +435,35 @@ function sync_static_chair_pages($chairs = null) {
         box-sizing: border-box;
       }
     }
+    .main-image-frame {
+      background: white;
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-lg);
+      padding: 24px 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      height: 440px;
+      min-height: 440px;
+      max-height: 440px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .main-image-frame img,
+    .main-image-frame img.has-photo-bg,
+    #detailMainImg {
+      width: auto !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: 380px !important;
+      object-fit: contain !important;
+      border-radius: 14px !important;
+      box-shadow: none !important;
+      border: none !important;
+      transition: opacity 0.25s ease;
+    }
     @media (max-width: 768px) {
       .product-page-container {
         padding: 0 16px !important;
@@ -443,41 +472,24 @@ function sync_static_chair_pages($chairs = null) {
         overflow-x: hidden !important;
       }
       .main-image-frame {
-        padding: 16px !important;
-        min-height: 240px !important;
-        max-height: 380px !important;
+        padding: 16px 46px !important;
+        height: 320px !important;
+        min-height: 320px !important;
+        max-height: 320px !important;
+        overflow: hidden !important;
       }
       .main-image-frame img,
-      .main-image-frame img.has-photo-bg {
-        max-height: 300px !important;
+      .main-image-frame img.has-photo-bg,
+      #detailMainImg {
+        max-height: 275px !important;
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
       }
       .product-info-column h1 {
         font-size: clamp(1.35rem, 5.5vw, 1.85rem) !important;
       }
-    }
-    .main-image-frame {
-      background: white;
-      border: 1px solid var(--color-gray-light);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      min-height: 420px;
-    }
-    .main-image-frame img,
-    .main-image-frame img.has-photo-bg {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 440px;
-      object-fit: contain;
-      border-radius: 14px !important;
-      box-shadow: none !important;
-      border: none !important;
-      transition: opacity 0.25s ease;
     }
     .gallery-thumbnail {
       border-radius: 10px !important;
@@ -615,10 +627,12 @@ function sync_static_chair_pages($chairs = null) {
       <!-- Left Column: Gallery & USPs -->
       <div class="product-gallery-section">
         <div class="main-image-frame">
-          <span class="badge ' . $condition_badge_class . '" style="position: absolute; top: 16px; left: 16px; z-index: 2;">
+          <span class="badge ' . $condition_badge_class . '" style="position: absolute; top: 16px; left: 16px; z-index: 5;">
             ' . $condition_label . '
           </span>
+          ' . (count($gallery_imgs) > 1 ? '<button type="button" class="modal-gallery-arrow prev-arrow" id="detailPrevBtn" onclick="stepDetailPhoto(-1)" aria-label="Vorige foto" style="display: flex;">&#10094;</button>' : '') . '
           <img id="detailMainImg" class="has-photo-bg" src="' . htmlspecialchars($main_image_url, ENT_QUOTES) . '" alt="' . $chair_name . '">
+          ' . (count($gallery_imgs) > 1 ? '<button type="button" class="modal-gallery-arrow next-arrow" id="detailNextBtn" onclick="stepDetailPhoto(1)" aria-label="Volgende foto" style="display: flex;">&#10095;</button>' : '') . '
         </div>
         
         ' . $gallery_html . '
@@ -831,7 +845,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.432
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.435
       </div>
     </div>
   </footer>
@@ -850,9 +864,31 @@ function sync_static_chair_pages($chairs = null) {
       document.querySelectorAll(".gallery-thumbnail").forEach(t => t.classList.remove("active"));
       if (element) element.classList.add("active");
     }
+
+    function stepDetailPhoto(delta) {
+      const thumbs = Array.from(document.querySelectorAll(".modal-gallery-thumbnails .gallery-thumbnail"));
+      if (!thumbs.length) return;
+      let idx = thumbs.findIndex(t => t.classList.contains("active"));
+      if (idx === -1) idx = 0;
+      const nextIdx = (idx + delta + thumbs.length) % thumbs.length;
+      const nextThumb = thumbs[nextIdx];
+      const photoUrl = nextThumb.getAttribute("data-photo") || (nextThumb.querySelector("img") && nextThumb.querySelector("img").getAttribute("src"));
+      if (photoUrl) {
+        switchDetailPhoto(photoUrl, nextThumb);
+      }
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+      if (e.key === "ArrowLeft") {
+        stepDetailPhoto(-1);
+      } else if (e.key === "ArrowRight") {
+        stepDetailPhoto(1);
+      }
+    });
   </script>
 
-  <script src="../app.js?v=10.432" defer></script>
+  <script src="../app.js?v=10.435" defer></script>
 </body>
 </html>';
 

@@ -2683,16 +2683,34 @@ section[id], section {
 }
 
 /* Stoelfoto's op productpagina's en modal */
+.main-image-frame {
+  height: 440px;
+  max-height: 440px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
 .main-image-frame img,
 .main-image-frame img.has-photo-bg,
+#detailMainImg {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 380px !important;
+  object-fit: contain !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 .modal-image-wrapper img:not(.quality-stamp),
 .modal-image-wrapper img.has-photo-bg,
-#detailMainImg,
 #modalProductImage {
   width: auto !important;
   height: auto !important;
   max-width: 100% !important;
   max-height: 100% !important;
+  object-fit: contain !important;
   border-radius: 14px !important;
   box-shadow: none !important;
   border: none !important;
@@ -5914,10 +5932,12 @@ input[type="checkbox"] {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    overflow-x: auto !important;
+    flex-wrap: wrap !important;
+    overflow-x: hidden !important;
     margin-top: 10px !important;
     padding: 4px 2px !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
+    gap: 6px !important;
   }
   .modal-price-box {
     width: 100% !important;
@@ -5978,11 +5998,17 @@ input[type="checkbox"] {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .modal-image-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
   height: 320px;
   display: flex;
   align-items: center;
@@ -5991,6 +6017,8 @@ input[type="checkbox"] {
   border-radius: var(--radius-md);
   padding: 15px;
   border: 1px solid var(--color-gray-light);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -6049,15 +6077,15 @@ input[type="checkbox"] {
 
 .modal-gallery-thumbnails {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-top: 24px;
-  overflow-x: auto;
-  padding: 8px 4px;
+  margin-top: 16px;
+  overflow-x: hidden;
+  padding: 6px 4px;
   width: 100%;
+  max-width: 100%;
   justify-content: center;
   box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(37, 102, 22, 0.3) transparent;
 }
 
 .modal-gallery-thumbnails::-webkit-scrollbar {
@@ -10319,35 +10347,40 @@ nav.breadcrumb a {
 
   .main-image-frame {
     padding: 16px !important;
-    min-height: 240px !important;
-    max-height: 380px !important;
+    height: 320px !important;
+    min-height: 320px !important;
+    max-height: 320px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .main-image-frame img,
-  .main-image-frame img.has-photo-bg {
-    max-height: 300px !important;
-    width: 100% !important;
+  .main-image-frame img.has-photo-bg,
+  #detailMainImg {
+    max-height: 275px !important;
+    max-width: 100% !important;
+    width: auto !important;
     height: auto !important;
     object-fit: contain !important;
   }
 
   .modal-gallery-thumbnails {
     display: flex !important;
-    gap: 8px !important;
-    overflow-x: auto !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    overflow-x: hidden !important;
     max-width: 100% !important;
     width: 100% !important;
     box-sizing: border-box !important;
     padding: 6px 2px !important;
-    -webkit-overflow-scrolling: touch !important;
   }
 
   .gallery-thumbnail {
     flex-shrink: 0 !important;
-    width: 52px !important;
-    height: 52px !important;
+    width: 50px !important;
+    height: 50px !important;
   }
 
   .modal-highlights-box,

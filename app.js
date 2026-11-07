@@ -3789,8 +3789,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.432" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.432" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.435" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.435" 
             controls 
             playsinline 
             preload="auto"
@@ -3852,8 +3852,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.434`;
-      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.434`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.435`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.435`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3865,8 +3865,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.432`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.432`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.435`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.435`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3878,8 +3878,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.432`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.432`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.435`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.435`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3891,7 +3891,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.432`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.435`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3904,8 +3904,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.432`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.432`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.435`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.435`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3927,8 +3927,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.432";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.432";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.435";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.435";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3950,8 +3950,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.432";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.432";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.435";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.435";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));
