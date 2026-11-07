@@ -50,7 +50,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.432">
+  <link rel="stylesheet" href="style.css?v=10.434">
   <style>
     .slide-caption {
       position: absolute !important;
@@ -1073,27 +1073,36 @@
         </style>
 
         <div class="rene-spotlight-grid">
-          <!-- Linkerkolom: Staande Video (9:16), dynamisch afgestemd op de bezoeker -->
+          <!-- Linkerkolom: Staande Video (9:16), met keuze tussen Showcase (alle kleuren/standen/ronde voet) en Klantverhaal -->
           <div class="rene-video-col">
             <div class="rene-video-wrap">
               <video
                 id="renePromoVideo"
+                data-video-type="showcase"
                 controls
                 playsinline
                 preload="metadata"
-                poster="assets/rene_man_video_poster.jpg"
+                poster="assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg"
                 style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                <source id="renePromoSource" src="assets/video/staopstoelen_rene_man_aanbieding_web.mp4" type="video/mp4">
+                <source id="renePromoSource" src="assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4" type="video/mp4">
                 Uw browser ondersteunt geen video.
               </video>
               <div class="rene-video-overlay" id="renePromoOverlay" onclick="playRenePromoVideo()" role="button" tabindex="0" title="Speel video af: Design Sta-op stoel René">
                 <div class="rene-play-btn">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 3px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
                 </div>
-                <span id="renePromoOverlayLabel" style="margin-top: 12px; background: rgba(29,32,36,0.85); color: #fff; font-weight: 700; font-size: 0.8rem; padding: 6px 14px; border-radius: 999px; letter-spacing: 0.2px;">
-                  ▶ Bekijk video
+                <span id="renePromoOverlayLabel" style="margin-top: 12px; background: rgba(29,32,36,0.85); color: #fff; font-weight: 700; font-size: 0.78rem; padding: 6px 14px; border-radius: 999px; letter-spacing: 0.2px;">
+                  ▶ Alle kleuren &amp; standen
                 </span>
               </div>
+            </div>
+            <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 4px;">
+              <button type="button" id="reneHomeTabShowcase" onclick="switchReneHomeVideo('showcase')" style="background: #2f5f15; color: #fff; border: 1.5px solid #2f5f15; font-weight: 800; font-size: 0.72rem; padding: 5px 10px; border-radius: 999px; cursor: pointer;">
+                ✨ Kleuren &amp; ronde voet
+              </button>
+              <button type="button" id="reneHomeTabStory" onclick="switchReneHomeVideo('story')" style="background: #f5f7f4; color: #2f5f15; border: 1.5px solid #c9dcb9; font-weight: 700; font-size: 0.72rem; padding: 5px 10px; border-radius: 999px; cursor: pointer;">
+                🎬 Verhaal
+              </button>
             </div>
           </div>
 
@@ -1105,7 +1114,7 @@
                 Uitgelicht Showroommodel &bull; € 350,- Voordeel
               </span>
               <span style="color: #4b5563; font-weight: 600; font-size: 0.82rem;">
-                DFM Design &bull; Standaard op Accu &bull; Stof, Leer &amp; Duo-stoffering
+                DFM Design &bull; Standaard op Accu &bull; Stervoet óf Ronde Voet
               </span>
             </div>
 
@@ -1114,7 +1123,7 @@
             </h3>
 
             <p style="font-size: 0.96rem; color: #374151; line-height: 1.6; margin: 0;">
-              De nieuwe <strong>Sta-op stoel René</strong> oogt als een moderne, slanke draaifauteuil, maar biedt onderhuids een krachtige sta-op hulp, een ontspannende <em>hartbalans-ligstand</em> (voeten op harthoogte) én een volledig onzichtbaar weggewerkte accu (zonder snoeren over de vloer).
+              De nieuwe <strong>Sta-op stoel René</strong> oogt als een moderne, slanke draaifauteuil (met keuze uit een stervoet of een elegante <strong>ronde schotelvoet</strong> in RVS of zwart), maar biedt onderhuids een krachtige sta-op hulp, een ontspannende <em>hartbalans-ligstand</em> én een volledig onzichtbaar weggewerkte accu.
             </p>
 
             <div class="rene-usp-grid">
@@ -1122,7 +1131,7 @@
                 <span style="color: #4b8f24; font-weight: 900;">✓</span> Snoerloos vrij in de kamer (op accu)
               </div>
               <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
-                <span style="color: #4b8f24; font-weight: 900;">✓</span> Verstelbare hoofdsteun (hoogte &amp; hoek)
+                <span style="color: #4b8f24; font-weight: 900;">✓</span> Stervoet óf ronde RVS/zwarte schotelvoet
               </div>
               <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1f2937; font-weight: 600;">
                 <span style="color: #4b8f24; font-weight: 900;">✓</span> Volledige ligstand &amp; draaiblokkering
@@ -1134,9 +1143,13 @@
 
             <!-- Subtiele visuele weergave van de DFM standen & uitvoeringen -->
             <div class="rene-mini-poses">
+              <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Duo Cognac &amp; Bouclé op Ronde RVS Voet">
+                <img src="assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg" alt="René op ronde RVS schotelvoet" loading="lazy" style="object-fit: cover;">
+                <span>Ronde Voet &amp; Duo</span>
+              </a>
               <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Olijfgroene uitvoering">
                 <img src="assets/stoelen/Sta-op-stoel-RENE.jpg" alt="René in olijfgroen" loading="lazy">
-                <span>Olijfgroen &amp; Bouclé</span>
+                <span>Olijfgroen &amp; Leer</span>
               </a>
               <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Sta-op hulp met draaiblokkering">
                 <img src="assets/stoelen/rene_dfm_staop_stand.jpg" alt="René in sta-op stand" loading="lazy">
@@ -1145,10 +1158,6 @@
               <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Volledige hartbalans-ligstand">
                 <img src="assets/stoelen/rene_dfm_herzwaage.jpg" alt="René in volledige ligstand" loading="lazy">
                 <span>Volledige Ligstand</span>
-              </a>
-              <a href="stoelen/sta-op-stoel-rene.html" class="rene-mini-pose" title="Duo-stoffering stof en leer">
-                <img src="assets/stoelen/rene_dfm_duo_stof_leer.jpg" alt="René in duo-stoffering stof en leer" loading="lazy">
-                <span>Duo: Stof &amp; Leer</span>
               </a>
             </div>
 
@@ -1189,18 +1198,36 @@
             const vid = document.getElementById("renePromoVideo");
             const ov = document.getElementById("renePromoOverlay");
             const lbl = document.getElementById("renePromoOverlayLabel");
+            const btnS = document.getElementById("reneHomeTabShowcase");
+            const btnK = document.getElementById("reneHomeTabStory");
             if (!vid) return;
             vid.pause();
-            if (which === "man") {
-              vid.src = "assets/video/staopstoelen_rene_man_aanbieding_web.mp4";
-              vid.poster = "assets/rene_man_video_poster.jpg";
-              if (lbl) lbl.textContent = "▶ Bekijk video (53 sec)";
+            if (which === "showcase") {
+              vid.dataset.videoType = "showcase";
+              vid.src = "assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4";
+              vid.poster = "assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg";
+              if (lbl) lbl.textContent = "▶ Alle kleuren & standen";
+              if (btnS) { btnS.style.background = "#2f5f15"; btnS.style.color = "#fff"; }
+              if (btnK) { btnK.style.background = "#f5f7f4"; btnK.style.color = "#2f5f15"; }
             } else {
-              vid.src = "assets/video/staopstoelen_rene_aanbieding_web.mp4";
-              vid.poster = "assets/rene_video_poster.jpg";
-              if (lbl) lbl.textContent = "▶ Bekijk video (49 sec)";
+              vid.dataset.videoType = "story";
+              const v = (typeof window.getReneVisitorVariant === "function") ? window.getReneVisitorVariant() : "man";
+              if (v === "vrouw") {
+                vid.src = "assets/video/staopstoelen_rene_aanbieding_web.mp4";
+                vid.poster = "assets/rene_video_poster.jpg";
+                if (lbl) lbl.textContent = "▶ Bekijk verhaal (49 sec)";
+              } else {
+                vid.src = "assets/video/staopstoelen_rene_man_aanbieding_web.mp4";
+                vid.poster = "assets/rene_man_video_poster.jpg";
+                if (lbl) lbl.textContent = "▶ Bekijk verhaal (53 sec)";
+              }
+              if (btnK) { btnK.style.background = "#2f5f15"; btnK.style.color = "#fff"; }
+              if (btnS) { btnS.style.background = "#f5f7f4"; btnS.style.color = "#2f5f15"; }
             }
-            if (ov) ov.style.display = "flex";
+            if (ov) ov.style.display = "none";
+            vid.play().catch(e => {
+              if (ov) ov.style.display = "flex";
+            });
           }
         </script>
       </div>
@@ -1246,9 +1273,9 @@
             controls 
             playsinline 
             preload="metadata"
-            poster="assets/video/video_poster_scene2.jpg?v=10.432" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.434" 
             style="width: 100%; height: 100%; object-fit: cover; display: block;">
-            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.432" type="video/mp4">
+            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.434" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
           
@@ -1294,7 +1321,7 @@
       <!-- Showroom Pand Showcase Card -->
       <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 28px 32px; border-radius: var(--radius-lg); max-width: 900px; margin: 0 auto; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid var(--color-gray-light);">
         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" rel="noopener noreferrer" style="display: block; flex-shrink: 0;" title="Route naar Showroom Dordrecht (Merwedestraat 239)">
-          <img src="assets/pand.jpg?v=10.432" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
+          <img src="assets/pand.jpg?v=10.434" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
         </a>
         <div style="flex: 1; min-width: 280px;">
           <span style="color: var(--color-terracotta); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Merwedestraat 239 &bull; Dordrecht</span>
@@ -1576,7 +1603,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.432
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.434
       </div>
     </div>
   </footer>
@@ -1841,7 +1868,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=10.432" defer></script>
+  <script src="app.js?v=10.434" defer></script>
   <script>
     // Load and render top 5 offers on home page
     function getGridDescriptionPreview(htmlStr) {

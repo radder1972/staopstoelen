@@ -3825,7 +3825,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     mode = (visitorVar === "vrouw") ? "rene" : "rene-man";
   }
 
-  const isVertical = (mode === "rene" || mode === "rene-man" || mode === "ravi");
+  const isVertical = (mode === "rene" || mode === "rene-man" || mode === "rene-showcase" || mode === "ravi");
   if (card) {
     card.style.maxWidth = isVertical ? "440px" : "";
     card.style.maxHeight = isVertical ? "min(790px, calc(100vh - 28px))" : "";
@@ -3834,7 +3834,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     frameWrap.style.height = isVertical ? "min(710px, calc(92vh - 68px))" : "";
   }
   if (ctaBtn) {
-    ctaBtn.href = (mode === "rene" || mode === "rene-man")
+    ctaBtn.href = (mode === "rene" || mode === "rene-man" || mode === "rene-showcase")
       ? `${pfx}afspraak.html?stoel=sta-op-stoel-rene`
       : mode === "ravi"
       ? `${pfx}afspraak.html?stoel=sta-op-stoel-ravi`
@@ -3845,7 +3845,20 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
   }
 
-  if (mode === "rene-man") {
+  if (mode === "rene-showcase") {
+    if (heading) heading.textContent = "Stoel René • Alle kleuren, standen & ronde voet";
+    if (iframe) {
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.434`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.434`;
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(() => {});
+    }
+  } else if (mode === "rene-man") {
     if (heading) heading.textContent = "Stoel René • € 2.345,-";
     if (iframe) {
       iframe.src = "";
@@ -4363,22 +4376,22 @@ if (document.readyState === "loading") {
       : `${pfx}assets/rene_man_video_poster.jpg`;
     const durationSec = variant === "vrouw" ? "49 sec" : "53 sec";
 
-    // 1. Homepage Spotlight Video (#renePromoVideo)
+    // 1. Homepage Spotlight Video (#renePromoVideo) - alleen als op 'story' modus gezet
     const homeVid = document.getElementById("renePromoVideo");
     const homeLbl = document.getElementById("renePromoOverlayLabel");
-    if (homeVid && homeVid.paused) {
+    if (homeVid && homeVid.dataset.videoType === "story" && homeVid.paused) {
       if (homeVid.getAttribute("src") !== videoSrc) {
         homeVid.src = videoSrc;
       }
       homeVid.poster = posterSrc;
       if (homeLbl) {
-        homeLbl.textContent = `▶ Bekijk video (${durationSec})`;
+        homeLbl.textContent = `▶ Bekijk verhaal (${durationSec})`;
       }
     }
 
-    // 2. Detailpagina Stoel René (#reneDetailVideo)
+    // 2. Detailpagina Stoel René (#reneDetailVideo) - alleen als op 'story' modus gezet
     const detailVid = document.getElementById("reneDetailVideo");
-    if (detailVid && detailVid.paused) {
+    if (detailVid && detailVid.dataset.videoType === "story" && detailVid.paused) {
       if (detailVid.getAttribute("src") !== videoSrc) {
         detailVid.src = videoSrc;
       }
