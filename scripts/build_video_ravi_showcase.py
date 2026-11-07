@@ -2,25 +2,24 @@
 """
 scripts/build_video_ravi_showcase.py
 Luxe 9:16 Showcase & Aanbiedingsvideo (1080x1920) voor de DFM Design Sta-op stoel Ravi:
-Laat de Ravi schitteren in ALLE kleuren/stofferingen (Cognac & Weefstof duo, Olijfgroen & Taupe Bouclé duo,
-Zand-Taupe & Crème Bouclé duo), in 3 maten (Small, Medium & Large), én in ALLE standen
-(Actieve zitstand, Uitgeklapte voetensteun, Volledige relaxstand, Veilige sta-op hulp met automatische draaiblokkering,
+Gebruikt UITSLUITEND de 100% echte, authentieke foto's van de oorloze DFM Ravi
+(Sta-op-stoel-RAVI-1 t/m 8 + chair_ravi_cozy.png), zodat de stoelvorm nergens afwijkt!
+Laat alle echte hoeken, de duo-stoffering (binnenkuip leer + buitenschaal structuurstof),
+de 3 maten (Small, Medium & Large), de kleurstalen én alle 4 de echte standen zien
+(1. Actief zitten, 2. Voetensteun uit, 3. Relaxstand, 4. Veilige sta-op hulp met automatische draaiblokkering,
 4-knops bediening in de armleuning en oppompbare lendensteun).
 Aanbieding: € 350,- korting (van € 2.295,- voor € 1.945,-).
 """
 import json, math, os, shutil, ssl, struct, subprocess, urllib.request, wave
 from pathlib import Path
-from PIL import Image
 
 WS = Path("/Users/matthiasradder/AntiGravity Projecten/Staopstoelen.nl")
 FFMPEG = "/Users/matthiasradder/.local/bin/ffmpeg"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 VOICE_ID = "g5MYumTmZlFU9tYSmTp9"  # Alexander
 
-CUR_BRAIN = Path("/Users/matthiasradder/.gemini/antigravity/brain/5a71c862-1402-4ffc-8876-2c899186c109")
 D_OPA = WS / "assets/marketing/video_opa"
 D_MAN = WS / "assets/marketing/video_rene_man"
-D_RAVI = WS / "assets/marketing/video_ravi"
 S_DIR = WS / "assets/stoelen"
 WORK = WS / "assets/marketing/video_ravi_showcase"
 A = WORK / "audio"
@@ -30,21 +29,15 @@ OUT_DIR = Path.home() / "Downloads/Staopstoelen_YouTube_Videos"
 for p in (WORK, A, P, OUT_DIR, WS / "assets/video"):
     p.mkdir(parents=True, exist_ok=True)
 
-# Copy the newly generated Ravi showcase images into assets/stoelen/ and create 4:5 gallery crops
-img_olijfgroen = S_DIR / "ravi_showcase_olijfgroen_duo.jpg"
-img_zand_boucle = S_DIR / "ravi_showcase_zand_boucle_duo.jpg"
-shutil.copy2(CUR_BRAIN / "ravi_showcase_olijfgroen_duo_jpg_1794056158337.jpg", img_olijfgroen)
-shutil.copy2(CUR_BRAIN / "ravi_showcase_zand_boucle_duo_jpg_1794056185988.jpg", img_zand_boucle)
-
-# Also create 4:5 gallery crops (960x1200) for website gallery & modal
-for src_p, dst_name in [
-    (img_olijfgroen, "ravi_kleur_olijfgroen_duo_gallery.jpg"),
-    (img_zand_boucle, "ravi_kleur_zand_boucle_duo_gallery.jpg"),
-]:
-    im = Image.open(src_p).convert("RGB")
-    # Crop vertical 960x1440 centered on the chair (y=240..1440) -> 960x1200 (4:5)
-    cropped = im.crop((0, 260, im.width, min(im.height, 260 + int(im.width * 1.25))))
-    cropped.save(S_DIR / dst_name, quality=92)
+# Clean up any old AI-generated ear-chair files if present
+for old_f in (
+    S_DIR / "ravi_showcase_olijfgroen_duo.jpg",
+    S_DIR / "ravi_showcase_zand_boucle_duo.jpg",
+    S_DIR / "ravi_kleur_olijfgroen_duo_gallery.jpg",
+    S_DIR / "ravi_kleur_zand_boucle_duo_gallery.jpg",
+):
+    if old_f.exists():
+        old_f.unlink()
 
 W, H, FPS = 1080, 1920, 30
 ctx = ssl._create_unverified_context()
@@ -100,9 +93,6 @@ def render_html(html, out, transparent=False):
 def build_showcase_slides():
     logo_uri = (WS / "assets/marketing/logo_letters_bijgesneden.png").as_uri()
     cognac_cozy = (WS / "assets/chair_ravi_cozy.png").as_uri()
-    olijfgroen_duo = img_olijfgroen.as_uri()
-    zand_boucle_duo = img_zand_boucle.as_uri()
-    ravi_trots = (D_RAVI / "ravi_scene4_trots_in_ravi.jpg").as_uri()
     ravi_1 = (S_DIR / "Sta-op-stoel-RAVI-1-kopie.jpg").as_uri()
     ravi_2_been = (S_DIR / "Sta-op-stoel-RAVI-2-rotated.jpg").as_uri()
     ravi_3_relax = (S_DIR / "Sta-op-stoel-RAVI-3-rotated.jpg").as_uri()
@@ -112,56 +102,76 @@ def build_showcase_slides():
     ravi_7_knoppen = (S_DIR / "Sta-op-stoel-RAVI-7-rotated.jpg").as_uri()
     ravi_8_stof = (S_DIR / "Sta-op-stoel-RAVI-8-rotated.jpg").as_uri()
 
-    # Slide A: Alle Kleuren, Leer, Bouclé & Duo-Stoffering + Maten S / M / L Bento Grid
+    # Slide A: 100% Echte Ravi Foto's (Kuipdesign zonder oren, Duo-Stoffering, Leer & Weefstof) + Kleurstalenbalk
     render_html(f"""<html><head>{FONT}<style>{BASE}
-      body{{background:#fbf9f5;font-family:'Outfit',sans-serif;color:#1d2024;display:flex;flex-direction:column;padding:42px}}
-      .hdr{{text-align:center;margin-bottom:26px}}
+      body{{background:#fbf9f5;font-family:'Outfit',sans-serif;color:#1d2024;display:flex;flex-direction:column;padding:40px}}
+      .hdr{{text-align:center;margin-bottom:22px}}
       .hdr .pill{{display:inline-block;background:#eef7eb;color:#2f5f15;font-family:'Montserrat';font-weight:800;
                   font-size:24px;padding:10px 28px;border-radius:40px;letter-spacing:1px;text-transform:uppercase}}
-      .hdr h1{{font-family:'Montserrat';font-weight:900;font-size:52px;color:#1d2024;line-height:1.12;margin-top:14px}}
-      .hdr p{{font-size:31px;color:#4a5568;font-weight:500;margin-top:8px}}
-      .grid{{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:510px 510px 490px;gap:24px;flex:1}}
-      .card{{background:#fff;border-radius:28px;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,.08);border:2px solid #ece7df}}
+      .hdr h1{{font-family:'Montserrat';font-weight:900;font-size:50px;color:#1d2024;line-height:1.12;margin-top:12px}}
+      .hdr p{{font-size:30px;color:#4a5568;font-weight:500;margin-top:6px}}
+      .grid{{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:455px 455px 440px;gap:20px}}
+      .card{{background:#fff;border-radius:26px;overflow:hidden;position:relative;box-shadow:0 12px 28px rgba(0,0,0,.08);border:2px solid #ece7df}}
       .card img{{width:100%;height:100%;object-fit:cover}}
-      .lbl{{position:absolute;left:18px;bottom:18px;right:18px;background:rgba(29,32,36,.88);color:#fff;
-            padding:14px 20px;border-radius:18px;font-family:'Montserrat';font-weight:700;font-size:24px;
+      .lbl{{position:absolute;left:16px;bottom:16px;right:16px;background:rgba(29,32,36,.88);color:#fff;
+            padding:13px 18px;border-radius:16px;font-family:'Montserrat';font-weight:700;font-size:23px;
             display:flex;align-items:center;justify-content:space-between}}
-      .lbl span.dot{{width:22px;height:22px;border-radius:50%;display:inline-block;border:2px solid #fff;flex-shrink:0}}
+      .lbl span.dot{{width:20px;height:20px;border-radius:50%;display:inline-block;border:2px solid #fff;flex-shrink:0}}
+      .swatch-bar{{margin-top:20px;background:#fff;border-radius:24px;padding:20px 28px;border:2px solid #e5dfd5;
+                   display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 24px rgba(0,0,0,.06);flex:1}}
+      .swatch-txt{{font-family:'Montserrat';font-weight:800;font-size:25px;color:#2f5f15;line-height:1.25}}
+      .swatch-txt span{{display:block;font-family:'Outfit';font-weight:600;font-size:22px;color:#4a5568;margin-top:3px}}
+      .swatches{{display:flex;align-items:center;gap:14px}}
+      .sw{{width:54px;height:54px;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.18)}}
     </style></head><body>
       <div class='hdr'>
         <div class='pill'>Small • Medium • Large &nbsp;|&nbsp; Stof, Leer &amp; Duo</div>
-        <h1>In élke kleur &amp; combinatie</h1>
-        <p>Stel de DFM Ravi helemaal naar wens samen</p>
+        <h1>Slank kuipdesign op jouw maat</h1>
+        <p>Eén kleur stof of leer, óf luxe duo-stoffering</p>
       </div>
       <div class='grid'>
         <div class='card'>
           <img src='{cognac_cozy}'>
-          <div class='lbl'><span>Duo Cognac Leer &amp; Weefstof</span><span class='dot' style='background:#b67c49'></span></div>
+          <div class='lbl'><span>Sfeervol in de Woonkamer</span><span class='dot' style='background:#b67c49'></span></div>
         </div>
         <div class='card'>
-          <img src='{olijfgroen_duo}'>
-          <div class='lbl'><span>Duo Olijfgroen &amp; Taupe</span><span class='dot' style='background:#5d6643'></span></div>
-        </div>
-        <div class='card'>
-          <img src='{zand_boucle_duo}'>
-          <div class='lbl'><span>Duo Zand-Taupe &amp; Bouclé</span><span class='dot' style='background:#c6b39e'></span></div>
+          <img src='{ravi_1}'>
+          <div class='lbl'><span>Strak Kuipdesign zonder Oren</span><span class='dot' style='background:#a67446'></span></div>
         </div>
         <div class='card'>
           <img src='{ravi_8_stof}'>
-          <div class='lbl'><span>Vakmanschap: Leer &amp; Bouclé</span><span class='dot' style='background:#8c6c49'></span></div>
+          <div class='lbl'><span>Duo: Leer &amp; Rijke Weefstof</span><span class='dot' style='background:#8c6c49'></span></div>
         </div>
         <div class='card'>
           <img src='{ravi_6_zij}'>
-          <div class='lbl'><span>Slanke Doorlopende Kuip</span><span class='dot' style='background:#7a5c3e'></span></div>
+          <div class='lbl'><span>Buitenschaal in Structuurstof</span><span class='dot' style='background:#7a5c3e'></span></div>
         </div>
         <div class='card'>
-          <img src='{ravi_trots}'>
-          <div class='lbl'><span>Op Maat in S, M &amp; L</span><span class='dot' style='background:#2f5f15'></span></div>
+          <img src='{ravi_5_voor}'>
+          <div class='lbl'><span>Leverbaar in Small, M &amp; L</span><span class='dot' style='background:#9e7147'></span></div>
+        </div>
+        <div class='card'>
+          <img src='{ravi_7_knoppen}'>
+          <div class='lbl'><span>4-Knops Paneel + Lendensteun</span><span class='dot' style='background:#2f5f15'></span></div>
+        </div>
+      </div>
+      <div class='swatch-bar'>
+        <div class='swatch-txt'>
+          In tientallen kleuren leer &amp; stof te bestellen
+          <span>Geheel stof • Geheel leer • Duo-combinatie</span>
+        </div>
+        <div class='swatches'>
+          <div class='sw' style='background:#b67c49'></div>
+          <div class='sw' style='background:#5d6643'></div>
+          <div class='sw' style='background:#c6b39e'></div>
+          <div class='sw' style='background:#4a4d52'></div>
+          <div class='sw' style='background:#7c421c'></div>
+          <div class='sw' style='background:#e9e4da'></div>
         </div>
       </div>
     </body></html>""", WORK / "slide_ravi_kleuren_grid.png")
 
-    # Slide B: Alle 4 Standen + 4-Knops Bediening & Oppompbare Lendensteun
+    # Slide B: Alle 4 Standen (100% Echte Ravi Foto's) + 4-Knops Bediening & Oppompbare Lendensteun
     render_html(f"""<html><head>{FONT}<style>{BASE}
       body{{background:#fbf9f5;font-family:'Outfit',sans-serif;color:#1d2024;display:flex;flex-direction:column;padding:42px}}
       .hdr{{text-align:center;margin-bottom:22px}}
@@ -231,7 +241,7 @@ def build_showcase_slides():
       </div>
     </body></html>""", WORK / "slide_ravi_alle_standen.png")
 
-    # Slide C: Aanbiedingskaart Sta-op stoel Ravi (vernieuwd & haarscherp)
+    # Slide C: Aanbiedingskaart Sta-op stoel Ravi
     render_html(f"""<html><head>{FONT}<style>{BASE}
       body{{background:#fbf9f5;font-family:'Outfit',sans-serif;color:#1d2024;display:flex;flex-direction:column}}
       .top{{padding:48px 50px 28px;text-align:center;border-bottom:8px solid #4b8f24;background:#fff}}
@@ -307,7 +317,7 @@ def build_showcase_slides():
       <img class='logo' src='{logo_uri}'>
       <h2>De Ravi zelf uitproberen?<br>De koffie staat klaar!</h2>
       <div class='card'>
-        <img src='{cognac_cozy}'>
+        <img src='{ravi_1}'>
         <div class='t'>
           <h3>DFM Sta-op stoel Ravi</h3>
           <div class='van'>Adviesprijs € 2.295,-</div>
@@ -334,13 +344,13 @@ SCENES = [
     dict(id=1, img=WS/"assets/chair_ravi_cozy.png", min=6.0, zoom=True,
          caption="De Design Sta-op stoel Ravi: nu € 350,- korting!",
          text="Zoek je het gemak van een sta-op stoel, maar dan in het jasje van een slanke, moderne design-fauteuil? Maak kennis met onze tijdelijke aanbieding: de Sta-op stoel Ravi."),
-    dict(id=2, img=img_olijfgroen, min=6.0, zoom=True,
+    dict(id=2, img=S_DIR/"Sta-op-stoel-RAVI-1-kopie.jpg", min=6.0, zoom=True,
          caption="Stof, leer of duo-stoffering • Small, Medium & Large",
          text="Stel de Ravi helemaal samen in jouw eigen smaak. Kies voor één kleur leer of stof, of ga voor deze prachtige duo-stof-feering met zacht kwaliteitsleer aan de binnenkant en een rijke weefstof aan de buitenschaal."),
     dict(id=3, img=WORK/"slide_ravi_kleuren_grid.png", min=6.0, zoom=False,
          caption="",
          text="Van warm cognac en zand-taupe met crème bouclé, tot stijlvol olijfgroen: elke Ravi is leverbaar in Small, Medium en Large, volledig afgestemd op jouw woonkamer én postuur."),
-    dict(id=4, img=img_zand_boucle, min=5.5, zoom=True,
+    dict(id=4, img=S_DIR/"Sta-op-stoel-RAVI-5-rotated.jpg", min=5.5, zoom=True,
          caption="Onzichtbare sta-op hulp • Veilige 360° draaivoet",
          text="Het mooiste? Aan de buitenkant ziet helemaal niemand dat er onder deze elegante draaifauteuil een volwaardige sta-op hulp verborgen zit."),
     dict(id=5, img=WORK/"slide_ravi_alle_standen.png", min=6.5, zoom=False,
@@ -357,7 +367,6 @@ SCENES = [
          text="Kom vrijblijvend langs aan de Merwedestraat tweehonderd negenendertig in Dordrecht. Of bel nul zeven acht, zes drie één, achtenveertig, achtenvijftig."),
 ]
 
-# Reuse verified address voiceover for Scene 8
 reuse_map = {
     8: D_MAN / "audio/vo_6.mp3",
 }
@@ -445,7 +454,6 @@ with wave.open(str(voice_wav), "wb") as wout:
     wout.setframerate(sr)
     wout.writeframes(struct.pack(f"<{len(voice_buf)}h", *voice_buf))
 
-# Warm, uplifting background music (looped heartwarming track)
 music_wav = A / "music.wav"
 run([FFMPEG, "-y", "-stream_loop", "-1", "-i", str(D_OPA / "audio/heartwarming.mp3"),
      "-filter_complex",
