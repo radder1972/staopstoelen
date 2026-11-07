@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.435">
+  <link rel="stylesheet" href="../style.css?v=10.436">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -87,12 +87,13 @@
       }
       .main-image-frame {
         padding: 16px !important;
-        min-height: 240px !important;
-        max-height: 380px !important;
+        height: 320px !important;
+        min-height: 280px !important;
+        max-height: 320px !important;
       }
       .main-image-frame img,
       .main-image-frame img.has-photo-bg {
-        max-height: 300px !important;
+        max-height: 275px !important;
       }
       .product-info-column h1 {
         font-size: clamp(1.35rem, 5.5vw, 1.85rem) !important;
@@ -102,20 +103,23 @@
       background: white;
       border: 1px solid var(--color-gray-light);
       border-radius: var(--radius-lg);
-      padding: 30px;
+      padding: 24px 30px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      min-height: 420px;
+      height: 440px;
+      min-height: 400px;
+      max-height: 460px;
+      overflow: hidden;
     }
     .main-image-frame img,
     .main-image-frame img.has-photo-bg {
       width: auto;
       height: auto;
       max-width: 100%;
-      max-height: 440px;
+      max-height: 380px !important;
       object-fit: contain;
       border-radius: 16px !important;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
@@ -260,35 +264,43 @@
           <span class="badge badge-new" style="position: absolute; top: 16px; left: 16px; z-index: 2;">
             Nieuw
           </span>
+          <button type="button" class="modal-nav-btn prev" onclick="stepDetailPhoto(-1)" aria-label="Vorige foto" title="Vorige foto">‹</button>
           <img id="detailMainImg" class="has-photo-bg" src="../assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Sta-op stoel Ravi">
+          <button type="button" class="modal-nav-btn next" onclick="stepDetailPhoto(1)" aria-label="Volgende foto" title="Volgende foto">›</button>
         </div>
         
         
-          <div class="modal-gallery-thumbnails" style="justify-content: flex-start; margin-top: 14px; padding: 4px 2px;">
+          <div class="modal-gallery-thumbnails" style="justify-content: center; flex-wrap: wrap; margin-top: 14px; padding: 4px 2px;">
             
-              <div class="gallery-thumbnail active" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg', this)" title="Bekijk foto 1: Schuine voorzijde">
-                <img src="../assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Foto 1 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="gallery-thumbnail active" data-full="../assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg', this)" title="Bekijk foto 1: Schuine voorzijde">
+                <img src="../assets/stoelen/Sta-op-stoel-RAVI-1-kopie.jpg" alt="Foto 1 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-5-rotated.jpg', this)" title="Bekijk foto 2: Vooraanzicht neutraal">
-                <img src="../assets/stoelen/Sta-op-stoel-RAVI-5-rotated.jpg" alt="Foto 2 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/ravi_kleur_olijfgroen_duo_gallery.jpg" onclick="switchDetailPhoto('../assets/stoelen/ravi_kleur_olijfgroen_duo_gallery.jpg', this)" title="Bekijk foto 2: Duo Olijfgroen Leer &amp; Taupe Bouclé">
+                <img src="../assets/stoelen/ravi_kleur_olijfgroen_duo_gallery.jpg" alt="Foto 2 Sta-op stoel Ravi Olijfgroen Duo" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-4-rotated.jpg', this)" title="Bekijk foto 3: Sta-op stand">
-                <img src="../assets/stoelen/Sta-op-stoel-RAVI-4-rotated.jpg" alt="Foto 3 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/ravi_kleur_zand_boucle_duo_gallery.jpg" onclick="switchDetailPhoto('../assets/stoelen/ravi_kleur_zand_boucle_duo_gallery.jpg', this)" title="Bekijk foto 3: Duo Zand-Taupe Leer &amp; Crème Bouclé">
+                <img src="../assets/stoelen/ravi_kleur_zand_boucle_duo_gallery.jpg" alt="Foto 3 Sta-op stoel Ravi Zand-Taupe &amp; Bouclé" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-2-rotated.jpg', this)" title="Bekijk foto 4: Uitgeklapte beensteun">
-                <img src="../assets/stoelen/Sta-op-stoel-RAVI-2-rotated.jpg" alt="Foto 4 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/Sta-op-stoel-RAVI-5-rotated.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-5-rotated.jpg', this)" title="Bekijk foto 4: Vooraanzicht neutraal">
+                <img src="../assets/stoelen/Sta-op-stoel-RAVI-5-rotated.jpg" alt="Foto 4 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-3-rotated.jpg', this)" title="Bekijk foto 5: Relax- en kantelstand">
-                <img src="../assets/stoelen/Sta-op-stoel-RAVI-3-rotated.jpg" alt="Foto 5 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/Sta-op-stoel-RAVI-4-rotated.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-4-rotated.jpg', this)" title="Bekijk foto 5: Sta-op stand met draaiblokkering">
+                <img src="../assets/stoelen/Sta-op-stoel-RAVI-4-rotated.jpg" alt="Foto 5 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-7-rotated.jpg', this)" title="Bekijk foto 6: 4-knops bediening &amp; lendensteun">
-                <img src="../assets/stoelen/Sta-op-stoel-RAVI-7-rotated.jpg" alt="Foto 6 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/Sta-op-stoel-RAVI-2-rotated.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-2-rotated.jpg', this)" title="Bekijk foto 6: Uitgeklapte beensteun">
+                <img src="../assets/stoelen/Sta-op-stoel-RAVI-2-rotated.jpg" alt="Foto 6 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg', this)" title="Bekijk foto 7: Detail Duo-stoffering (Leer &amp; Stof)">
-                <img src="../assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg" alt="Foto 7 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/Sta-op-stoel-RAVI-3-rotated.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-3-rotated.jpg', this)" title="Bekijk foto 7: Relax- en kantelstand">
+                <img src="../assets/stoelen/Sta-op-stoel-RAVI-3-rotated.jpg" alt="Foto 7 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="gallery-thumbnail" onclick="switchDetailPhoto('../assets/chair_ravi_cozy.png', this)" title="Bekijk foto 8: Sfeervolle woonkamer">
-                <img src="../assets/chair_ravi_cozy.png" alt="Foto 8 Sta-op stoel Ravi in woonkamer" style="width: 100%; height: 100%; object-fit: cover;">
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/Sta-op-stoel-RAVI-7-rotated.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-7-rotated.jpg', this)" title="Bekijk foto 8: 4-knops bediening &amp; lendensteun">
+                <img src="../assets/stoelen/Sta-op-stoel-RAVI-7-rotated.jpg" alt="Foto 8 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="gallery-thumbnail" data-full="../assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg" onclick="switchDetailPhoto('../assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg', this)" title="Bekijk foto 9: Detail Duo-stoffering (Leer &amp; Stof)">
+                <img src="../assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg" alt="Foto 9 Sta-op stoel Ravi" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="gallery-thumbnail" data-full="../assets/chair_ravi_cozy.png" onclick="switchDetailPhoto('../assets/chair_ravi_cozy.png', this)" title="Bekijk foto 10: Sfeervolle woonkamer">
+                <img src="../assets/chair_ravi_cozy.png" alt="Foto 10 Sta-op stoel Ravi in woonkamer" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
           </div>
 
@@ -372,11 +384,11 @@
             <span>Afspraak maken</span>
           </a>
           <!-- ROUTE_VIDEO_BTN_START -->
-          <button type="button" onclick="openCertifiedVideoModal('ravi')" class="btn-watch-video-pill" style="width: 100%; justify-content: center; cursor: pointer;">
+          <button type="button" onclick="openCertifiedVideoModal('ravi-showcase')" class="btn-watch-video-pill" style="width: 100%; justify-content: center; cursor: pointer;">
             <span class="play-dot">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
             </span>
-            <span>Bekijk Video: Design Stoel Ravi (46 sec)</span>
+            <span>Bekijk Video: Alle Kleuren &amp; Standen Ravi</span>
           </button>
           <!-- ROUTE_VIDEO_BTN_END -->
                                   <!-- Subtiele Geertjan Micro-Conversie (Tekst rechts, grotere avatar, niet onderstreept) -->
@@ -571,7 +583,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.435
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.436
       </div>
     </div>
   </footer>
@@ -589,13 +601,31 @@
             mainImg.classList.add('has-photo-bg');
           }
           mainImg.style.opacity = '1';
-        }, 150);
+        }, 120);
       }
       document.querySelectorAll('.gallery-thumbnail').forEach(t => t.classList.remove('active'));
       if (element) element.classList.add('active');
     }
+
+    function stepDetailPhoto(direction) {
+      const thumbs = Array.from(document.querySelectorAll('.gallery-thumbnail'));
+      if (!thumbs.length) return;
+      let currentIdx = thumbs.findIndex(t => t.classList.contains('active'));
+      if (currentIdx === -1) currentIdx = 0;
+      const nextIdx = (currentIdx + direction + thumbs.length) % thumbs.length;
+      const nextThumb = thumbs[nextIdx];
+      const nextUrl = nextThumb.getAttribute('data-full') || (nextThumb.querySelector('img') && nextThumb.querySelector('img').getAttribute('src'));
+      if (nextUrl) {
+        switchDetailPhoto(nextUrl, nextThumb);
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') stepDetailPhoto(-1);
+      else if (e.key === 'ArrowRight') stepDetailPhoto(1);
+    });
   </script>
 
-  <script src="../app.js?v=10.435" defer></script>
+  <script src="../app.js?v=10.436" defer></script>
 </body>
 </html>

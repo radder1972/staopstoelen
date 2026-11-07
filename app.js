@@ -3789,8 +3789,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.435" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.435" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.436" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.436" 
             controls 
             playsinline 
             preload="auto"
@@ -3825,7 +3825,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     mode = (visitorVar === "vrouw") ? "rene" : "rene-man";
   }
 
-  const isVertical = (mode === "rene" || mode === "rene-man" || mode === "rene-showcase" || mode === "ravi");
+  const isVertical = (mode === "rene" || mode === "rene-man" || mode === "rene-showcase" || mode === "ravi" || mode === "ravi-showcase");
   if (card) {
     card.style.maxWidth = isVertical ? "440px" : "";
     card.style.maxHeight = isVertical ? "min(790px, calc(100vh - 28px))" : "";
@@ -3836,7 +3836,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   if (ctaBtn) {
     ctaBtn.href = (mode === "rene" || mode === "rene-man" || mode === "rene-showcase")
       ? `${pfx}afspraak.html?stoel=sta-op-stoel-rene`
-      : mode === "ravi"
+      : (mode === "ravi" || mode === "ravi-showcase")
       ? `${pfx}afspraak.html?stoel=sta-op-stoel-ravi`
       : `${pfx}afspraak.html`;
     const ctaSpan = ctaBtn.querySelector("span");
@@ -3852,8 +3852,21 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.435`;
-      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.435`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.436`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.436`;
+      player.style.display = "block";
+      player.currentTime = 0;
+      player.play().catch(() => {});
+    }
+  } else if (mode === "ravi-showcase" || mode === "ravi") {
+    if (heading) heading.textContent = "Stoel Ravi • Alle kleuren, standen & maten";
+    if (iframe) {
+      iframe.src = "";
+      iframe.style.display = "none";
+    }
+    if (player) {
+      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.436`;
+      player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.436`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3865,8 +3878,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.435`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.435`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.436`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.436`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3878,8 +3891,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.435`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.435`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.436`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.436`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3891,7 +3904,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.435`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.436`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3904,8 +3917,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.435`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.435`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.436`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.436`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3927,8 +3940,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.435";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.435";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.436";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.436";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3950,8 +3963,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.435";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.435";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.436";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.436";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));
