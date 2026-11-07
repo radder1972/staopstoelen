@@ -139,8 +139,9 @@
     }
     .cover-photo .caption span { display: block; font-family: var(--font-body); font-weight: 400; color: var(--gray); font-size: 6.2pt; }
 
-    .cover-usps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-top: 8mm; }
+    .cover-usps { display: flex; justify-content: space-between; align-items: center; margin-top: auto; margin-bottom: auto; width: 100%; }
     .cover-usp { display: flex; align-items: center; gap: 2.4mm; }
+    .cover-usp + .page-foot, .cover-usps + .page-foot { margin-top: 0; }
     .cover-usp .icon { width: 8.5mm; height: 8.5mm; }
     .cover-usp .icon svg { width: 4.4mm; height: 4.4mm; }
     .cover-usp div:last-child { font-family: var(--font-heading); font-size: 6.6pt; font-weight: 800; color: var(--dark); line-height: 1.2; }
@@ -224,7 +225,7 @@
     .expert blockquote { font-size: 8pt; color: var(--gray); line-height: 1.45; font-style: italic;
                          border-left: .6mm solid var(--terracotta); padding-left: 2.4mm; }
 
-    .guarantees { display: grid; grid-template-columns: 1fr 1fr; gap: 5.4mm 4mm; margin-top: 7mm; }
+    .guarantees { display: grid; grid-template-columns: 1fr 1fr; gap: 5.4mm 4mm; margin-top: auto; margin-bottom: auto; }
     .g-item { display: flex; gap: 2.6mm; align-items: flex-start; }
     .g-item .icon { width: 8.5mm; height: 8.5mm; }
     .g-item .icon svg { width: 4.4mm; height: 4.4mm; }
@@ -232,7 +233,7 @@
     .g-item p { font-size: 7.4pt; color: var(--gray); line-height: 1.4; }
 
     .contact {
-      margin-top: auto; background: var(--forest-dark); border-radius: 3.2mm; padding: 4.6mm 4.6mm 4.4mm; color: #fff;
+      margin-top: 0; background: var(--forest-dark); border-radius: 3.2mm; padding: 4.6mm 4.6mm 4.4mm; color: #fff;
       display: flex; gap: 4mm; align-items: stretch;
     }
     .contact-main { flex: 1; display: flex; flex-direction: column; }
