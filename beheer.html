@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.440">
+  <link rel="stylesheet" href="style.css?v=10.441">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1533,7 +1533,7 @@
       <input type="password" class="login-input" id="passwordInput" placeholder="Wachtwoord" autofocus>
       <div class="login-error" id="loginError">Onjuist wachtwoord. Probeer het opnieuw.</div>
       <button class="btn btn-primary" style="width: 100%;" id="loginBtn">Inloggen</button>
-      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.440</span></div>
+      <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 14px; text-align: center; letter-spacing: 0.3px;">staopstoelen.nl beheer • <span>Versie 10.441</span></div>
     </div>
   </div>
 
@@ -1543,7 +1543,7 @@
       <div class="admin-logo-wrapper">
         <a href="index.html" class="admin-logo">staopstoelen<span>.nl</span></a>
         <span class="admin-badge-pill">Beheer</span>
-        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.440</span>
+        <span class="admin-version-pill" title="Actieve versie van Staopstoelen.nl">v10.441</span>
       </div>
 
       <div class="admin-header-right">
@@ -4085,7 +4085,7 @@
 
   <footer style="background-color: var(--color-forest-dark); color: var(--color-light); padding: 24px 0; text-align: center; margin-top: auto;">
     <div class="container" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.440</span>
+      &copy; 2026 staopstoelen.nl Beheersysteem. Beveiligde beheerdersomgeving. | <span>Versie 10.441</span>
     </div>
   </footer>
 
@@ -7833,10 +7833,14 @@ DIRECT PERSOONLIJK CONTACT OF ADVIES VAN GEERTJAN?
       if ((chair.id || "") === "sta-op-stoel-rene" && style !== "krachtig") {
         return `Wilt u wel veilig, pijnvrij en zonder moeite kunnen opstaan, maar absoluut geen lompe of medisch ogende stoel in uw woonkamer? Maak kennis met de nieuwe Design Sta-op stoel René van DFM bij Staopstoelen.nl in Dordrecht!
 
+BEKIJK DE VIDEO VAN DEZE STOEL OP ONZE WEBSITE:
+Klik op de blauwe knop 'Bekijk website' in deze advertentie (of kijk op www.staopstoelen.nl) en bekijk direct de video waarin Stoel René in alle kleuren, op stervoet én ronde schotelvoet, en in alle standen beweegt!
+
 TIJDELIJKE SHOWROOM-AANBIEDING:
 • Adviesprijs: € 2.695,-
 • Actieprijs: € 2.345,- (Uw directe voordeel: € 350,- korting!)
 • Inclusief standaard onzichtbaar ingebouwde accu (volledig snoerloos vrij in de kamer te plaatsen)
+• Keuze uit zwarte stervoet óf elegante ronde schotelvoet (RVS of zwart)
 • Inclusief 3 jaar volledige garantie
 
 WAAROM KIEZEN VOOR STA-OP STOEL RENÉ?
@@ -7851,7 +7855,7 @@ PERSOONLIJKE 5-PUNTS ZITMETING DOOR BEWEGINGSTECHNOLOOG GEERTJAN:
 In onze showroom in Dordrecht wordt u geholpen door Geertjan Klein Haneveld (bewegingstechnoloog). Met zijn 5-punts ergonomische zitmeting bepalen we kosteloos de exacte maat, zithoogte en zitdiepte voor uw lichaam.
 
 MEER FOTO'S, VIDEO & DE 1-MINUUT MAATWIJZER?
-Klik op de blauwe knop 'Bekijk website' in deze advertentie of kijk op www.staopstoelen.nl voor alle uitvoeringen en onze ruime showroomcollectie van 30+ sta-op stoelen.
+Klik op de blauwe knop 'Bekijk website' in deze advertentie of kijk op www.staopstoelen.nl voor de video, alle uitvoeringen en onze ruime showroomcollectie van 30+ sta-op stoelen.
 
 ${bottomShowroomBlock}`;
       }
@@ -7859,6 +7863,9 @@ ${bottomShowroomBlock}`;
       // Specifieke geoptimaliseerde tekst voor Design Sta-op stoel Ravi (Nieuw Designmodel)
       if ((chair.id || "") === "sta-op-stoel-ravi" && style !== "krachtig") {
         return `Wilt u wel veilig en zonder moeite kunnen opstaan, maar absoluut geen lompe of medisch ogende stoel in uw mooie woonkamer? Maak kennis met de elegante Design Sta-op stoel Ravi van DFM bij Staopstoelen.nl in Dordrecht!
+
+BEKIJK DE VIDEO VAN DEZE STOEL OP ONZE WEBSITE:
+Klik op de blauwe knop 'Bekijk website' in deze advertentie (of kijk op www.staopstoelen.nl) en bekijk direct de video waarin Stoel Ravi in alle kleuren, stoffen én in alle 4 de standen (voetensteun, relaxstand en sta-op hulp) beweegt!
 
 TIJDELIJKE SHOWROOM-AANBIEDING:
 • Adviesprijs: € 2.295,-
@@ -7886,15 +7893,15 @@ ${bottomShowroomBlock}`;
       if (style === "mantelzorger") {
         const uspHeader = isOccasion
           ? `DE BELANGRIJKSTE ZEKERHEDEN OP EEN RIJ:
+• VIDEO & ALLE 30+ STOELEN BEKIJKEN? Klik op 'Bekijk website' of ga naar www.staopstoelen.nl voor bewegende video's, alle detailfoto's & de 1-minuut Maatwijzer
 • 1 jaar volledige garantie aan huis (technisch 100% gekeurd op 15 punten)
 • Gratis op maat afgesteld op uw lichaamsmaten door Bewegingstechnoloog Geertjan
-• Gratis thuisbezorgd & geplaatst in de regio Drechtsteden (daarbuiten bezorging door heel Nederland)
-• Ruime showroom in Dordrecht met 30+ direct leverbare sta-op stoelen`
+• Gratis thuisbezorgd & geplaatst in de regio Drechtsteden (daarbuiten bezorging door heel Nederland)`
           : `DE BELANGRIJKSTE ZEKERHEDEN OP EEN RIJ:
+• VIDEO & ALLE 30+ STOELEN BEKIJKEN? Klik op 'Bekijk website' of ga naar www.staopstoelen.nl voor bewegende video's, alle standen & onze 1-minuut Maatwijzer
 • ${garantie}
 • Gratis op maat aangemeten (5-punts zitmeting) door Bewegingstechnoloog Geertjan
-• Gratis thuisbezorgd & geïnstalleerd in de regio Drechtsteden (daarbuiten bezorging door heel Nederland)
-• Ruime showroom in Dordrecht met 30+ modellen om rustig vrijblijvend te proefzitten`;
+• Gratis thuisbezorgd & geïnstalleerd in de regio Drechtsteden (daarbuiten bezorging door heel Nederland)`;
 
         const introStory = isOccasion
           ? `Zoekt u voor uzelf of voor uw vader of moeder een veilige, comfortabele sta-op stoel van absolute topkwaliteit, maar wilt u niet de hoge nieuwprijs van € 3.500,- tot € 4.500,- betalen?
@@ -7923,8 +7930,8 @@ SPECIFICATIES VAN DEZE STOEL:
 ${priceComparison}
 ${featuresList}
 
-MEER DETAILFOTO'S & DE 1-MINUUT MAATWIJZER?
-Klik op de blauwe knop 'Bekijk website' in deze advertentie of ga naar www.staopstoelen.nl om direct te zien of deze stoel bij uw lichaamslengte past.
+MEER DETAILFOTO'S, VIDEO & DE 1-MINUUT MAATWIJZER?
+Klik op de blauwe knop 'Bekijk website' in deze advertentie of ga naar www.staopstoelen.nl om direct de video te bekijken en te zien of deze stoel bij uw lichaamslengte past.
 
 ${bottomShowroomBlock}`;
       }
@@ -7933,6 +7940,7 @@ ${bottomShowroomBlock}`;
       if (style === "certified") {
         return `CERTIFIED STA-OP STOEL • ERGONOMISCH OP MAAT MET VOLLEDIGE GARANTIE
 
+• VIDEO, ALLE FOTO'S & 1-MINUUT MAATWIJZER: Klik op 'Bekijk website' of kijk op www.staopstoelen.nl
 • ${garantie}
 • Gratis 5-punts ergonomische zitmeting door Bewegingstechnoloog Geertjan Klein Haneveld
 • Gratis bezorging & installatie in de regio Drechtsteden (en eigen bezorgdienst door heel Nederland)
@@ -7961,7 +7969,7 @@ TECHNISCHE SPECIFICATIES:
 ${priceComparison}
 ${featuresList}
 
-ALLE 15+ DETAILFOTO'S & DE MAATWIJZER BEKIJKEN?
+ALLE 15+ DETAILFOTO'S, VIDEO & DE MAATWIJZER BEKIJKEN?
 Klik op de blauwe knop 'Bekijk website' in deze advertentie of kijk op www.staopstoelen.nl.
 
 ${bottomShowroomBlock}`;
@@ -7970,6 +7978,8 @@ ${bottomShowroomBlock}`;
       // VARIANT 3: KORT & KRACHTIG (Snelle scanners, direct to the point)
       return `TE KOOP: ${fullName.toUpperCase()} (${isOccasion ? "IN TOPSTAAT MET 1 JAAR GARANTIE" : "NIEUW MET ACTIEVOORDEEL"})
 
+• VIDEO & ALLE 30+ VOORRAADSTOELEN BEKIJKEN: Klik op de blauwe knop 'Bekijk website' of ga naar www.staopstoelen.nl
+
 ${priceComparison}
 
 BELANGRIJKSTE VOORDELEN BIJ STAOPSTOELEN.NL:
@@ -7977,7 +7987,7 @@ BELANGRIJKSTE VOORDELEN BIJ STAOPSTOELEN.NL:
 • Gratis op uw persoonlijke lichaamsmaten afgesteld door Bewegingstechnoloog Geertjan
 • Gratis thuisbezorgd en geplaatst in regio Drechtsteden (daarbuiten bezorging door heel Nederland)
 • Vrijblijvend proefzitten in onze showroom in Dordrecht (30+ stoelen op voorraad)
-• Bekijk alle detailfoto's en doe de 1-minuut Maatwijzer via de blauwe knop 'Bekijk website' of op www.staopstoelen.nl
+• Bekijk de video, alle detailfoto's en doe de 1-minuut Maatwijzer via 'Bekijk website' of op www.staopstoelen.nl
 
 SPECIFICATIES:
 • Merk: ${brand}

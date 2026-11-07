@@ -34,10 +34,10 @@ def sync_banner_to_folder(folder_path: Path):
     if not folder_path.is_dir():
         return False
     
-    # Skip profiel fotomap voor advertentietekst
+    # Plaats algemene advertentietekst alleen in de generieke showroom-map (of als er nog geen tekstbestand in staat)
     if "Profiel" not in folder_path.name:
-        if TEXT_SOURCE.exists():
-            dest_txt = folder_path / TEXT_FILENAME
+        dest_txt = folder_path / TEXT_FILENAME
+        if ("Generiek" in folder_path.name or not dest_txt.exists()) and TEXT_SOURCE.exists():
             shutil.copy2(TEXT_SOURCE, dest_txt)
             print(f"📝 Advertentietekst (met 06-nummer) geplaatst in: {folder_path.name}")
 
