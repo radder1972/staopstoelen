@@ -25,6 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $chair['is_offer'] = (bool)$chair['is_offer'];
             $chair['price'] = intval($chair['price']);
             $chair['old_price'] = $chair['old_price'] !== null ? intval($chair['old_price']) : null;
+            if (($chair['id'] ?? '') === 'sta-op-stoel-rene') {
+                $chair['image'] = 'assets/stoelen/Sta-op-stoel-RENE.jpg';
+                if (is_array($chair['gallery'])) {
+                    $chair['gallery'] = array_values(array_unique(array_merge(
+                        ['assets/stoelen/Sta-op-stoel-RENE.jpg'],
+                        $chair['gallery']
+                    )));
+                }
+            }
         }
         
         echo json_encode(["staopstoelen" => $chairs]);
