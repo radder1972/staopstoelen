@@ -10,10 +10,10 @@
   --color-gold: #fed857; /* Chair cushions yellow/gold */
   --color-cream: #fbf9f5;
   --color-cream-dark: #f3efe6;
-  --color-dark: #1d2024;
+  --color-dark: #16191d;
   --color-light: #ffffff;
-  --color-gray: #5e6368;
-  --color-gray-light: #e2e4e6;
+  --color-gray: #2f353b;
+  --color-gray-light: #dcd8ce;
   --color-shadow: rgba(0, 0, 0, 0.06);
   --color-shadow-hover: rgba(0, 0, 0, 0.12);
   
@@ -72,7 +72,8 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-cream);
   color: var(--color-dark);
-  line-height: 1.6;
+  font-size: 1.03rem;
+  line-height: 1.68;
   overflow-x: clip;
   position: relative;
   width: 100%;
@@ -427,7 +428,7 @@ section[id], section {
   align-items: flex-start !important;
   white-space: nowrap !important;
   word-break: keep-all !important;
-  color: var(--color-forest);
+  color: #4b8f24;
   text-decoration: none;
   letter-spacing: -0.8px;
   z-index: 10;
@@ -439,12 +440,13 @@ section[id], section {
   align-items: baseline !important;
   white-space: nowrap !important;
   word-break: keep-all !important;
+  color: #4b8f24;
 }
 
 .nav-text-logo span,
 .nav-logo-main span,
 .footer-col h3 span {
-  color: var(--color-terracotta, #f39223) !important; /* Make .nl terracotta orange */
+  color: #f39223 !important; /* Original brand orange for .nl in logo */
   display: inline !important;
   white-space: nowrap !important;
   word-break: keep-all !important;
@@ -1111,8 +1113,9 @@ section[id], section {
   display: flex;
   align-items: flex-start;
   gap: 11px;
-  line-height: 1.45;
-  font-size: 1rem;
+  line-height: 1.52;
+  font-size: 1.04rem;
+  color: #1f2428;
 }
 
 .hero-usp-icon {
