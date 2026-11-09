@@ -378,7 +378,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.445">
+  <link rel="stylesheet" href="../style.css?v=10.446">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -845,7 +845,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.445
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.446
       </div>
     </div>
   </footer>
@@ -888,7 +888,7 @@ function sync_static_chair_pages($chairs = null) {
     });
   </script>
 
-  <script src="../app.js?v=10.445" defer></script>
+  <script src="../app.js?v=10.446" defer></script>
 </body>
 </html>';
 
