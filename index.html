@@ -50,7 +50,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=10.447">
+  <link rel="stylesheet" href="style.css?v=10.448">
   <style>
     .slide-caption {
       position: absolute !important;
@@ -471,7 +471,7 @@
           <svg style="width: 15px; height: 15px; stroke: var(--color-terracotta); fill: none;" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           info@staopstoelen.nl
         </a>
-        <a href="afspraak.html" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment" onclick="openAppointmentModal(event)">Afspraak Maken</a>
+        <a href="afspraak.html" class="btn btn-primary btn-nav-appointment" id="btnNavAppointment" onclick="openAppointmentModal(event)">Advies &amp; Proefzitten</a>
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
         <span></span>
@@ -486,7 +486,7 @@
           <a href="ervaringen.html" id="linkKlantverhalen">Ervaringen</a>
           <a href="faq.html" id="linkFaq">FAQ</a>
           <a href="info.html" id="linkOverOns">Over Ons</a>
-          <a href="afspraak.html" class="nav-desktop-hide" id="linkAfspraak" onclick="openAppointmentModal(event)">Afspraak Maken</a>
+          <a href="afspraak.html" class="nav-desktop-hide" id="linkAfspraak" onclick="openAppointmentModal(event)">Advies &amp; Proefzitten</a>
         </nav>
         
       </div>
@@ -1154,8 +1154,8 @@
                 <a id="spotlightPrimaryBtn" href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 12px 22px; font-size: 0.95rem;">
                   Bekijk Stoel René &rarr;
                 </a>
-                <a id="spotlightSecondaryBtn" href="afspraak.html?stoel=sta-op-stoel-rene" onclick="openAppointmentModal(event)" class="btn btn-secondary" style="padding: 12px 20px; font-size: 0.95rem;">
-                  Vrijblijvend Proefzitten
+                <a id="spotlightSecondaryBtn" href="afspraak.html?stoel=sta-op-stoel-rene" onclick="openAppointmentModal(event, window._activeDesignChair === 'ravi' ? 'Sta-op stoel Ravi' : 'Sta-op stoel René')" class="btn btn-secondary" style="padding: 12px 20px; font-size: 0.95rem; white-space: nowrap;">
+                  Stel een vraag / Proefzitten
                 </a>
               </div>
             </div>
@@ -1451,9 +1451,9 @@
             controls 
             playsinline 
             preload="metadata"
-            poster="assets/video/video_poster_scene2.jpg?v=10.447" 
+            poster="assets/video/video_poster_scene2.jpg?v=10.448" 
             style="width: 100%; height: 100%; object-fit: cover; display: block;">
-            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.447" type="video/mp4">
+            <source src="assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.448" type="video/mp4">
             Uw browser ondersteunt geen video.
           </video>
           
@@ -1499,7 +1499,7 @@
       <!-- Showroom Pand Showcase Card -->
       <div style="display: flex; gap: 32px; align-items: center; background-color: var(--color-cream-dark); padding: 28px 32px; border-radius: var(--radius-lg); max-width: 900px; margin: 0 auto; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid var(--color-gray-light);">
         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" rel="noopener noreferrer" style="display: block; flex-shrink: 0;" title="Route naar Showroom Dordrecht (Merwedestraat 239)">
-          <img src="assets/pand.jpg?v=10.447" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
+          <img src="assets/pand.jpg?v=10.448" alt="Winkelpand Schipper Compact Wonen / Staopstoelen.nl aan de Merwedestraat 239 in Dordrecht" class="winkelfoto" style="width: 100%; max-width: 320px; height: 215px; object-fit: cover; border-radius: 14px; border: 1px solid var(--color-gray-light); box-shadow: none; display: block;">
         </a>
         <div style="flex: 1; min-width: 280px;">
           <span style="color: var(--color-terracotta); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Merwedestraat 239 &bull; Dordrecht</span>
@@ -1508,7 +1508,7 @@
             Al vele jaren het vertrouwde adres voor ergonomisch zitcomfort en sta-op stoelen in de Drechtsteden. Ruime showroom, rolstoelvriendelijk en gratis parkeren direct voor de deur.
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="afspraak.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 10px 18px;" onclick="openAppointmentModal(event)">Plan Proefzitten</a>
+            <a href="afspraak.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 10px 18px; white-space: nowrap;" onclick="openAppointmentModal(event)">Vraag of Proefzitten</a>
           </div>
         </div>
       </div>
@@ -1669,10 +1669,10 @@
   <section id="afspraak-planner" class="bg-light" style="border-top: 1px solid var(--color-gray-light);">
     <div class="container">
       <div class="text-center" style="max-width: 750px; margin: 0 auto;">
-        <span class="section-tag">Direct Boeken</span>
-        <h2 class="section-title">Plan een Adviesgesprek</h2>
-        <p class="section-subtitle" style="margin-bottom: 32px;">Breng een bezoek aan onze ruime, gelijkvloerse showroom in Dordrecht voor deskundig advies, een persoonlijke zitmeting en alle tijd om rustig te proefzitten.</p>
-        <a href="afspraak.html" class="btn btn-primary" onclick="openAppointmentModal(event)">Maak een Afspraak</a>
+        <span class="section-tag">Persoonlijk &amp; Laagdrempelig</span>
+        <h2 class="section-title">Vraag Advies of Kom Proefzitten</h2>
+        <p class="section-subtitle" style="margin-bottom: 32px;">Heeft u een vraag over een stoel of wilt u rustig proefzitten in onze gelijkvloerse showroom in Dordrecht? Laat Geertjan u terugbellen of stel direct uw vraag.</p>
+        <a href="afspraak.html" class="btn btn-primary" style="white-space: nowrap;" onclick="openAppointmentModal(event)">Stel een vraag / Proefzitten</a>
       </div>
     </div>
   </section>
@@ -1781,7 +1781,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.447
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.448
       </div>
     </div>
   </footer>
@@ -1819,8 +1819,8 @@
           </div>
           
           <div class="modal-actions" style="width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
-            <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%; font-weight: 700; padding: 13px 20px; font-size: 1.02rem;">
-              Vrijblijvend Proefzitten of Reserveren &rarr;
+            <button type="button" class="btn btn-primary" id="modalBookBtn" style="width: 100%; font-weight: 700; padding: 13px 20px; font-size: 0.98rem; white-space: nowrap;">
+              Stel een vraag / Proefzitten &rarr;
             </button>
             <button type="button" id="modalVideoBtn" onclick="openCertifiedVideoModal('consumer')" class="btn-watch-video-pill" style="width: 100%; margin-top: 2px;">
               <span class="btn-watch-video-play-circle">
@@ -2046,7 +2046,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=10.447" defer></script>
+  <script src="app.js?v=10.448" defer></script>
   <script>
     // Load and render top 5 offers on home page
     function getGridDescriptionPreview(htmlStr) {
@@ -2663,9 +2663,9 @@
             const allChairs = dbData.staopstoelen || [];
             allChairs.forEach(c => {
               if (c.id === "sta-op-stoel-rene") {
-                c.image = "assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.447";
+                c.image = "assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.448";
                 if (Array.isArray(c.gallery)) {
-                  c.gallery = ["assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.447", ...c.gallery.filter(g => !g.includes("Sta-op-stoel-RENE.jpg"))];
+                  c.gallery = ["assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.448", ...c.gallery.filter(g => !g.includes("Sta-op-stoel-RENE.jpg"))];
                 }
               }
             });

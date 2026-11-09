@@ -5956,19 +5956,21 @@ input[type="checkbox"] {
     gap: 8px !important;
   }
   .btn-watch-video-pill {
-    white-space: normal !important;
+    white-space: nowrap !important;
     text-align: center !important;
     font-size: 0.84rem !important;
     padding: 10px 14px !important;
     line-height: 1.35 !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   .btn-watch-video-pill .btn-watch-video-play-circle {
     flex-shrink: 0 !important;
   }
   .modal-actions .btn {
-    white-space: normal !important;
+    white-space: nowrap !important;
     text-align: center !important;
     font-size: 0.92rem !important;
     padding: 12px 14px !important;
@@ -7281,10 +7283,17 @@ input[type="checkbox"] {
   text-decoration: none !important;
   box-shadow: 0 4px 14px rgba(75, 143, 36, 0.28), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: normal;
+  white-space: nowrap !important;
   text-align: center;
   max-width: 100%;
   box-sizing: border-box;
+}
+
+.btn,
+.btn span,
+.btn-watch-video-pill,
+.btn-watch-video-pill span {
+  white-space: nowrap !important;
 }
 
 .btn-watch-video-pill:hover {

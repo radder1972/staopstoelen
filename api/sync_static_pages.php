@@ -343,11 +343,12 @@ function sync_static_chair_pages($chairs = null) {
         }
 
         // Action CTA Buttons
+        $chair_js_name = htmlspecialchars(addslashes($chair['name'] ?? 'deze stoel'), ENT_QUOTES, 'UTF-8');
         $html_content_cta = '
         <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
-          <a href="../afspraak.html?stoel=' . urlencode($chair_id) . '" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; font-size: 1.05rem; font-weight: 700; border-radius: var(--radius-sm); text-decoration: none;">
+          <a href="../afspraak.html?stoel=' . urlencode($chair_id) . '" onclick="openAppointmentModal(event, \'' . $chair_js_name . '\')" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 20px; font-size: 0.98rem; font-weight: 700; border-radius: var(--radius-sm); text-decoration: none; white-space: nowrap;">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span>Vrijblijvend Proefzitten of Reserveren &rarr;</span>
+            <span>Stel een vraag / Proefzitten &rarr;</span>
           </a>
           <button type="button" onclick="openCertifiedVideoModal(\'' . $video_mode . '\')" class="btn-watch-video-pill" style="width: 100%; justify-content: center; cursor: pointer;">
             <span class="play-dot">
@@ -378,7 +379,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.447">
+  <link rel="stylesheet" href="../style.css?v=10.448">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -589,7 +590,7 @@ function sync_static_chair_pages($chairs = null) {
           </span>
           info@staopstoelen.nl
         </a>
-        <a href="../afspraak.html" class="btn btn-primary btn-nav-appointment">Maak een afspraak</a>
+        <a href="../afspraak.html" class="btn btn-primary btn-nav-appointment" onclick="openAppointmentModal(event)">Advies &amp; Proefzitten</a>
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" onclick="document.getElementById(\'navLinks\').classList.toggle(\'active\')">
         <span></span>
@@ -604,7 +605,7 @@ function sync_static_chair_pages($chairs = null) {
           <a href="../ervaringen.html">Ervaringen</a>
           <a href="../faq.html">FAQ</a>
           <a href="../info.html">Over Ons</a>
-          <a href="../afspraak.html" class="nav-desktop-hide">Afspraak Maken</a>
+          <a href="../afspraak.html" class="nav-desktop-hide" onclick="openAppointmentModal(event)">Advies &amp; Proefzitten</a>
         </nav>
       </div>
     </div>
@@ -758,8 +759,8 @@ function sync_static_chair_pages($chairs = null) {
         </p>
       </div>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="../afspraak.html" class="btn btn-primary" style="padding: 14px 24px; font-weight: 700; text-decoration: none;">
-          Plan een Afspraak
+        <a href="../afspraak.html" onclick="openAppointmentModal(event, \'' . $chair_js_name . '\')" class="btn btn-primary" style="padding: 14px 24px; font-weight: 700; text-decoration: none; white-space: nowrap;">
+          Stel een vraag / Proefzitten
         </a>
         <a href="tel:+31786314858" class="showroom-phone-cta-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; font-weight: 700; text-decoration: none; border: 2px solid #f39223; background: #f39223; color: #ffffff; border-radius: var(--radius-sm); font-size: 1rem; box-shadow: 0 4px 14px rgba(243, 146, 35, 0.35); transition: all 0.2s ease;">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -845,7 +846,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.447
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.448
       </div>
     </div>
   </footer>
@@ -888,7 +889,7 @@ function sync_static_chair_pages($chairs = null) {
     });
   </script>
 
-  <script src="../app.js?v=10.447" defer></script>
+  <script src="../app.js?v=10.448" defer></script>
 </body>
 </html>';
 
