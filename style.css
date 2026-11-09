@@ -1,12 +1,12 @@
 :root {
-  --color-forest: #4b8f24; /* Brand Green from logo, optimized for legibility */
-  --color-forest-rgb: 75, 143, 36;
-  --color-forest-dark: #122b07; /* Very dark green for main navigation text */
-  --color-sage: #6ab13c; /* Brand Green accent */
-  --color-sage-light: #e3f4f9; /* Light blue sky accent from new logo cushions */
-  --color-sky: #bce4f2; /* Sky Blue from new logo */
-  --color-terracotta: #f39223; /* Brand Orange from logo */
-  --color-terracotta-hover: #dc8019;
+  --color-forest: #3a721c; /* Warmer, calmer botanical olive/forest green */
+  --color-forest-rgb: 58, 114, 28;
+  --color-forest-dark: #162d0d; /* Deep calm forest green for headings & navigation */
+  --color-sage: #528c30; /* Soft warm green accent */
+  --color-sage-light: #eef3ea; /* Warm sage-sand tint instead of cold ice-blue */
+  --color-sky: #dcebe0; /* Soft botanical mist */
+  --color-terracotta: #df7e18; /* Warmer, richer terracotta/amber instead of neon orange */
+  --color-terracotta-hover: #c66c0f;
   --color-gold: #fed857; /* Chair cushions yellow/gold */
   --color-cream: #fbf9f5;
   --color-cream-dark: #f3efe6;
@@ -83,7 +83,7 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  color: var(--color-forest);
+  color: var(--color-forest-dark);
   font-weight: 700;
   line-height: 1.25;
 }
@@ -1234,10 +1234,11 @@ section[id], section {
   line-height: 1.15;
   margin-bottom: 24px;
   word-break: break-word;
+  color: var(--color-forest-dark);
 }
 
 .hero-title span {
-  color: var(--color-terracotta);
+  color: var(--color-forest);
   font-weight: 800;
   position: relative;
 }
