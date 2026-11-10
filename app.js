@@ -2946,18 +2946,18 @@ function initFloatingMenu() {
     <span class="assistant-online-dot" aria-hidden="true"></span>
   `;
 
-  // Voeg vriendelijk praatwolkje toe boven de zwevende stoel-knop (DIZA Zitassistent)
+  // Voeg vriendelijk praatwolkje toe boven de zwevende stoel-knop (Zitcoach)
   const teaser = document.createElement("div");
   teaser.className = "assistant-teaser-pill";
   teaser.id = "assistantTeaserPill";
   teaser.setAttribute("role", "button");
   teaser.setAttribute("tabindex", "0");
-  teaser.setAttribute("title", "Digitale Zit-Assistent • Klik voor direct advies over maatwerk en ergonomie");
+  teaser.setAttribute("title", "Zitcoach • Klik voor direct advies over maatwerk en ergonomie");
   teaser.innerHTML = `
     <button type="button" class="teaser-dismiss-btn" id="assistantTeaserDismiss" title="Melding sluiten" aria-label="Sluit melding">&times;</button>
     <div class="teaser-bubble-header">
       <span class="teaser-pulse-dot" aria-hidden="true"></span>
-      <span class="teaser-author-label">DIZA &bull; Zitadvies</span>
+      <span class="teaser-author-label">Zitcoach &bull; Zitadvies</span>
     </div>
     <div class="teaser-bubble-text">Hulp nodig bij de juiste maat of stoelkeuze?</div>
     <div class="teaser-bubble-footer">
@@ -2980,11 +2980,11 @@ function initFloatingMenu() {
   panel.className = "digital-assistant-panel";
   panel.id = "digitalAssistantPanel";
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "Digitale Zit-Assistent van Staopstoelen.nl");
+  panel.setAttribute("aria-label", "Zitcoach van Staopstoelen.nl");
   panel.innerHTML = `
     <div class="da-header">
-      <div class="da-avatar-wrap" id="daHeaderAvatarWrap" title="Digitale Zitassistent">
-        <img src="${normalChairSrc}" alt="Digitale Zitassistent" class="da-avatar-img" id="daHeaderChairImg">
+      <div class="da-avatar-wrap" id="daHeaderAvatarWrap" title="Zitcoach">
+        <img src="${normalChairSrc}" alt="Zitcoach" class="da-avatar-img" id="daHeaderChairImg">
         <span class="da-avatar-status"></span>
       </div>
       <div class="da-header-info">
@@ -2992,7 +2992,7 @@ function initFloatingMenu() {
           <span class="da-status-dot"></span>
           <span>Online</span>
         </div>
-        <strong class="da-title">Digitale Zitassistent</strong>
+        <strong class="da-title">Uw Zitcoach</strong>
       </div>
       <div class="da-header-actions">
         <button type="button" class="da-close-btn" id="daCloseBtn" aria-label="Sluit assistent"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
@@ -3003,7 +3003,7 @@ function initFloatingMenu() {
       <div class="da-msg da-msg-bot">
         <div class="da-msg-bubble">
           <strong>Welkom bij Staopstoelen.nl!</strong><br>
-          Ik ben uw digitale zitassistent. U kunt mij <strong>vrij elke vraag stellen</strong> over zitmaten, lichamelijke klachten, onze voorraad of proefzitten.<br><br>
+          Ik ben uw digitale <strong>Zitcoach</strong>. U kunt mij <strong>vrij elke vraag stellen</strong> over zitmaten, lichamelijke klachten, onze voorraad of proefzitten.<br><br>
           <em>Typ gerust uw vraag hieronder in het chatveld!</em>
         </div>
       </div>
@@ -3461,7 +3461,7 @@ function initFloatingMenu() {
     typingMsg.className = "da-msg da-msg-bot da-msg-typing";
     typingMsg.innerHTML = `
       <div class="da-msg-bubble">
-        <span>Zit-assistent denkt na</span>
+        <span>Zitcoach denkt na</span>
         <div class="da-typing-dots">
           <span></span><span></span><span></span>
         </div>
@@ -3789,8 +3789,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.451" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.451" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.452" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.452" 
             controls 
             playsinline 
             preload="auto"
@@ -3852,8 +3852,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.451`;
-      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.451`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.452`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.452`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3865,7 +3865,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.451`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.452`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.438`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3878,8 +3878,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.451`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.451`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.452`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.452`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3891,8 +3891,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.451`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.451`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.452`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.452`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3904,7 +3904,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.451`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.452`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3917,8 +3917,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.451`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.451`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.452`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.452`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3931,7 +3931,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.451`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.452`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3940,8 +3940,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.451";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.451";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.452";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.452";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3954,7 +3954,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.451`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.452`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -3963,8 +3963,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.451";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.451";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.452";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.452";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));
