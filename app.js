@@ -2815,9 +2815,9 @@ function initFloatingMenu() {
 
   const isSubdir = window.location.pathname.includes("/stoelen/");
   const base = isSubdir ? "../" : "";
-  const normalChairSrc = `${base}assets/geert_chatbot_avatar.png?v=10.457`;
-  const logoChairSrc = `${base}assets/geert_chatbot_avatar.png?v=10.457`;
-  const danceChairSrc = `${base}assets/geert_chatbot_avatar.png?v=10.457`;
+  const normalChairSrc = `${base}assets/geert_chatbot_avatar.png?v=10.458`;
+  const logoChairSrc = `${base}assets/geert_chatbot_avatar.png?v=10.458`;
+  const danceChairSrc = `${base}assets/geert_chatbot_avatar_laugh.png?v=10.458`;
 
   // Preload de dansende SVG zodat hij bij de allereerste klik/dubbelklik zonder enige vertraging start
   const preloadDance = new Image();
@@ -2843,9 +2843,8 @@ function initFloatingMenu() {
       .nav-logo-main { white-space: nowrap !important; word-break: keep-all !important; display: inline-flex !important; align-items: baseline !important; }
       .nav-logo-text-group span, .nav-text-logo span, .footer-col h3 span { color: #f39223 !important; }
       .floating-contact-wrapper { position: fixed !important; bottom: 28px !important; right: 28px !important; z-index: 99999 !important; display: flex !important; flex-direction: column !important; align-items: flex-end !important; gap: 12px !important; pointer-events: auto !important; }
-      .floating-btn-main.assistant-chair-fab { position: relative !important; width: 76px !important; height: 76px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 3px solid #4b8f24 !important; box-shadow: 0 12px 32px rgba(18,43,7,0.28), 0 0 0 5px rgba(75,143,36,0.16) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; cursor: pointer !important; animation: assistantPulseGlow 3.5s ease-in-out infinite !important; overflow: visible !important; }
-      .floating-btn-main.assistant-chair-fab:hover { transform: scale(1.04) !important; border-color: #f39223 !important; box-shadow: 0 16px 40px rgba(18, 43, 7, 0.35), 0 0 0 6px rgba(243, 146, 35, 0.25) !important; }
-      @keyframes assistantPulseGlow { 0%, 100% { box-shadow: 0 12px 32px rgba(18, 43, 7, 0.28), 0 0 0 4px rgba(75, 143, 36, 0.16); } 50% { box-shadow: 0 16px 42px rgba(18, 43, 7, 0.36), 0 0 0 9px rgba(75, 143, 36, 0.28); } }
+      .floating-btn-main.assistant-chair-fab { position: relative !important; width: 76px !important; height: 76px !important; border-radius: 50% !important; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ef 65%, #e5f1db 100%) !important; border: 3px solid #4b8f24 !important; box-shadow: 0 10px 26px rgba(18,43,7,0.22) !important; padding: 6px !important; display: flex !important; align-items: center !important; justify-content: center !important; transform: none !important; cursor: pointer !important; overflow: visible !important; transition: transform 0.2s ease, border-color 0.2s ease !important; }
+      .floating-btn-main.assistant-chair-fab:hover { transform: scale(1.04) !important; border-color: #f39223 !important; box-shadow: 0 14px 34px rgba(18, 43, 7, 0.28) !important; }
       .assistant-chair-img { width: 64px !important; height: 64px !important; max-width: 64px !important; max-height: 64px !important; object-fit: contain !important; display: block !important; pointer-events: none !important; transform-origin: 50% 80% !important; filter: drop-shadow(0 4px 8px rgba(18, 43, 7, 0.22)) !important; }
       .assistant-online-dot { position: absolute !important; top: 3px !important; right: 3px !important; width: 17px !important; height: 17px !important; border-radius: 50% !important; background: #10b981 !important; border: 3px solid #ffffff !important; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important; }
       .assistant-teaser-pill { position: relative !important; display: flex !important; flex-direction: column !important; background: #ffffff !important; border: 2px solid #4b8f24 !important; border-radius: 18px 18px 4px 18px !important; padding: 12px 14px 11px 14px !important; box-shadow: 0 10px 28px rgba(18, 43, 7, 0.18), 0 2px 6px rgba(0, 0, 0, 0.04) !important; width: 250px !important; max-width: min(280px, calc(100vw - 36px)) !important; cursor: pointer !important; user-select: none !important; text-align: left !important; transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, border-color 0.2s ease !important; animation: slideInUp 0.35s ease-out !important; }
@@ -3789,8 +3788,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.457" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.457" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.458" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.458" 
             controls 
             playsinline 
             preload="auto"
@@ -3852,8 +3851,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.457`;
-      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.457`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.458`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.458`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3865,7 +3864,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.457`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.458`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.438`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3878,8 +3877,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.457`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.457`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.458`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.458`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3891,8 +3890,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.457`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.457`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.458`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.458`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3904,7 +3903,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.457`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.458`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3917,8 +3916,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.457`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.457`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.458`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.458`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3931,7 +3930,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.457`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.458`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3940,8 +3939,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.457";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.457";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.458";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.458";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3954,7 +3953,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.457`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.458`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -3963,8 +3962,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.457";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.457";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.458";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.458";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));

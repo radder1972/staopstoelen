@@ -9981,23 +9981,19 @@ input[type="checkbox"] {
   color: var(--color-terracotta, #f39223) !important;
 }
 
-/* Dans-animatie van de 3D Sta-op Stoel (zonder 360-graden spin) */
+/* Subtiele, vriendelijke lach-reactie van Geert ipv springen */
 .chair-dancing {
-  animation: chairBoogie 3.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
-  filter: drop-shadow(0 8px 14px rgba(75, 143, 36, 0.52)) drop-shadow(0 0 10px rgba(243, 146, 35, 0.45)) !important;
+  animation: geertLaugh 1.6s ease-in-out both !important;
+  filter: drop-shadow(0 6px 16px rgba(75, 143, 36, 0.4)) !important;
 }
 
-@keyframes chairBoogie {
-  0%, 100% { transform: translate(0, 0) scale(1, 1); }
-  10% { transform: translate(-4px, -5px) rotate(-6deg) scale(1.06, 0.95); }
-  18% { transform: translate(0, 3px) rotate(0deg) scale(1.08, 0.92); }
-  28% { transform: translate(4px, -5px) rotate(6deg) scale(1.06, 0.95); }
-  36% { transform: translate(0, 3px) rotate(0deg) scale(1.08, 0.92); }
-  48% { transform: translate(-4px, -9px) rotate(-5deg) scale(0.96, 1.08); }
-  56% { transform: translate(0, 3px) rotate(0deg) scale(1.1, 0.9); }
-  68% { transform: translate(4px, -9px) rotate(5deg) scale(0.96, 1.08); }
-  78% { transform: translate(0, 3px) rotate(0deg) scale(1.1, 0.9); }
-  88% { transform: translate(0, -7px) rotate(0deg) scale(1.05, 1.05); }
+@keyframes geertLaugh {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  15% { transform: scale(1.08) rotate(-3deg); }
+  30% { transform: scale(1.05) rotate(2deg); }
+  45% { transform: scale(1.09) rotate(-2deg); }
+  60% { transform: scale(1.06) rotate(1deg); }
+  75% { transform: scale(1.03) rotate(0deg); }
 }
 
 @media (max-width: 768px) {
