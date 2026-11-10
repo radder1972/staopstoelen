@@ -22,11 +22,11 @@
     @page { size: A4 landscape; margin: 0; }
 
     :root {
-      --forest: #245112;
+      --forest: #245813;
       --forest-mid: #3a721c;
-      --forest-dark: #162d0d;
-      --terracotta: #df7e18;
-      --terracotta-dark: #b86209;
+      --forest-dark: #1b430e;
+      --terracotta: #d97714;
+      --terracotta-dark: #bf650b;
       --cream: #fbf9f5;
       --sage-light: #eef3ea;
       --sage-border: #c5dbc0;
@@ -90,9 +90,10 @@
     }
     .kicker::before { content: ''; width: 6mm; height: .6mm; background: var(--terracotta); border-radius: 1mm; }
 
-    h2 { font-family: var(--font-heading); font-weight: 900; color: var(--forest-dark); font-size: 15.5pt;
+    h2 { font-family: var(--font-heading); font-weight: 900; color: var(--forest); font-size: 15.5pt;
          line-height: 1.12; letter-spacing: -.01em; margin: 2mm 0 2.6mm; }
-    p.intro { font-size: 9.1pt; color: var(--gray); line-height: 1.5; }
+    h2 em { font-style: normal; color: var(--terracotta); }
+    p.intro { font-size: 9.1pt; color: var(--dark); line-height: 1.5; }
 
     .icon {
       flex: 0 0 auto; width: 9.5mm; height: 9.5mm; border-radius: 50%; display: grid; place-items: center;
@@ -123,11 +124,11 @@
 
     .cover-title { margin-top: 11mm; }
     .cover-title h1 {
-      font-family: var(--font-heading); font-weight: 900; color: var(--forest-dark); font-size: 22pt; line-height: 1.06;
+      font-family: var(--font-heading); font-weight: 900; color: var(--forest); font-size: 22pt; line-height: 1.06;
       letter-spacing: -.015em; margin: 2.6mm 0 3.4mm;
     }
-    .cover-title h1 em { font-style: normal; color: var(--terracotta-dark); }
-    .cover-title p { font-size: 9.4pt; color: var(--gray); line-height: 1.5; max-width: 118mm; }
+    .cover-title h1 em { font-style: normal; color: var(--terracotta); }
+    .cover-title p { font-size: 9.4pt; color: var(--dark); line-height: 1.5; max-width: 118mm; }
 
     .cover-photo { position: relative; margin-top: 8mm; height: 84mm; }
     .cover-photo .frame { position: absolute; inset: 0; border-radius: 3.5mm; overflow: hidden; }
@@ -158,15 +159,15 @@
     .ind-head { display: flex; align-items: center; gap: 2.6mm; margin-bottom: 1.8mm; }
     .ind-head .icon { width: 8.5mm; height: 8.5mm; }
     .ind-head .icon svg { width: 4.5mm; height: 4.5mm; }
-    .ind h3 { font-family: var(--font-heading); font-size: 8pt; font-weight: 800; color: var(--forest-dark); line-height: 1.2; }
-    .ind p { font-size: 7.8pt; color: var(--gray); line-height: 1.45; }
+    .ind h3 { font-family: var(--font-heading); font-size: 8pt; font-weight: 800; color: var(--forest); line-height: 1.2; }
+    .ind p { font-size: 7.8pt; color: var(--dark); line-height: 1.45; }
 
     .consult {
       margin-top: 0; background: var(--sage-light); border: .3mm solid var(--sage-border); border-radius: 2.6mm;
       padding: 3.4mm 4mm; display: flex; align-items: center; gap: 3.4mm;
     }
     .consult p { font-size: 8pt; color: var(--dark); line-height: 1.45; }
-    .consult strong { font-family: var(--font-heading); color: var(--forest-dark); font-weight: 800; }
+    .consult strong { font-family: var(--font-heading); color: var(--forest); font-weight: 800; }
 
     /* ==========================================================
        PAGINA 3 – WERKWIJZE
@@ -180,14 +181,14 @@
     .step .icon { position: relative; z-index: 1; }
     .step-num { font-family: var(--font-heading); font-size: 6pt; font-weight: 800; color: var(--terracotta-dark);
                 letter-spacing: .1em; text-transform: uppercase; }
-    .step h3 { font-family: var(--font-heading); font-size: 8.6pt; font-weight: 800; color: var(--forest-dark); margin: .3mm 0 .8mm; }
-    .step p { font-size: 7.9pt; color: var(--gray); line-height: 1.45; min-height: 2.9em; }
+    .step h3 { font-family: var(--font-heading); font-size: 8.6pt; font-weight: 800; color: var(--forest); margin: .3mm 0 .8mm; }
+    .step p { font-size: 7.9pt; color: var(--dark); line-height: 1.45; min-height: 2.9em; }
 
     .meting {
       flex: 0 0 auto; margin-top: 0 !important; margin-bottom: 5.5mm !important; border: .3mm solid var(--line); border-radius: 2.8mm; padding: 3.4mm 3.6mm 3.6mm; background: var(--cream);
     }
     .meting-title { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2.6mm; }
-    .meting-title h3 { font-family: var(--font-heading); font-size: 8pt; font-weight: 900; color: var(--forest-dark); }
+    .meting-title h3 { font-family: var(--font-heading); font-size: 8pt; font-weight: 900; color: var(--forest); }
     .meting-title span { font-size: 6.4pt; color: var(--gray-light); }
     .meting-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; }
     .meting-item { text-align: center; }
@@ -221,17 +222,17 @@
       border-radius: 3mm; background: #fff;
     }
     .expert img { width: 29mm; height: 29mm; border-radius: 50%; object-fit: cover; border: .8mm solid var(--sage-light); flex: 0 0 auto; }
-    .expert h3 { font-family: var(--font-heading); font-size: 9.4pt; font-weight: 900; color: var(--forest-dark); }
+    .expert h3 { font-family: var(--font-heading); font-size: 9.4pt; font-weight: 900; color: var(--forest); }
     .expert .role { font-family: var(--font-heading); font-size: 6.4pt; font-weight: 700; color: var(--terracotta-dark); margin: .4mm 0 1.6mm; }
-    .expert blockquote { font-size: 8pt; color: var(--gray); line-height: 1.45; font-style: italic;
+    .expert blockquote { font-size: 8pt; color: var(--dark); line-height: 1.45; font-style: italic;
                          border-left: .6mm solid var(--terracotta); padding-left: 2.4mm; }
 
     .guarantees { display: grid; grid-template-columns: 1fr 1fr; gap: 5.4mm 4mm; margin-top: auto; margin-bottom: auto; }
     .g-item { display: flex; gap: 2.6mm; align-items: flex-start; }
     .g-item .icon { width: 8.5mm; height: 8.5mm; }
     .g-item .icon svg { width: 4.4mm; height: 4.4mm; }
-    .g-item h4 { font-family: var(--font-heading); font-size: 7.8pt; font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: .6mm; }
-    .g-item p { font-size: 7.4pt; color: var(--gray); line-height: 1.4; }
+    .g-item h4 { font-family: var(--font-heading); font-size: 7.8pt; font-weight: 800; color: var(--forest); line-height: 1.2; margin-bottom: .6mm; }
+    .g-item p { font-size: 7.4pt; color: var(--dark); line-height: 1.4; }
 
     .contact {
       margin-top: 0; background: var(--forest-dark); border-radius: 3.2mm; padding: 4.6mm 4.6mm 4.4mm; color: #fff;
@@ -335,7 +336,7 @@
       <!-- PAGINA 4 – ACHTERKANT -->
       <div class="panel left">
         <div class="kicker">Samenwerken</div>
-        <h2>Eén vast aanspreekpunt voor u én uw cliënt</h2>
+        <h2>Eén vast aanspreekpunt voor <em>u én uw cliënt</em></h2>
         <p class="intro">Wij begrijpen dat u als ergotherapeut een zorgvuldige, onderbouwde oplossing zoekt. Daarom houden wij de lijnen kort: u heeft rechtstreeks contact met de specialist die de meting uitvoert en de stoel aflevert.</p>
 
         <div class="expert">
@@ -440,7 +441,7 @@
       <!-- PAGINA 2 – AANDACHTSPUNTEN -->
       <div class="panel left">
         <div class="kicker">Ergonomische aandachtspunten</div>
-        <h2>Waar wij in de zitoplossing rekening mee houden</h2>
+        <h2>Waar wij in de <em>zitoplossing</em> rekening mee houden</h2>
         <p class="intro">Iedere cliënt heeft een eigen ziektebeeld, lichaamsbouw en dagritme. Een confectiestoel schiet dan al snel tekort. Fitform sta-op stoelen zijn modulair opgebouwd, waardoor wij de stoel kunnen afstemmen op de specifieke beperkingen en het behandeldoel dat u heeft geformuleerd.</p>
 
         <div class="grid-ind">
@@ -484,7 +485,7 @@
       <!-- PAGINA 3 – WERKWIJZE -->
       <div class="panel right">
         <div class="kicker">Onze werkwijze</div>
-        <h2>Zorgvuldig van hulpvraag tot nazorg</h2>
+        <h2>Zorgvuldig van <em>hulpvraag tot nazorg</em></h2>
         <p class="intro">Wij werken volgens een vaste, transparante werkwijze. Zo weet u precies wat uw cliënt kan verwachten en blijft u als behandelaar betrokken bij iedere stap.</p>
 
         <div class="steps">
