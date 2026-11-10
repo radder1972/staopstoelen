@@ -50,6 +50,16 @@ try {
         'unique_users' => 0
     ];
 
+    // Haal het exacte aantal gestelde vragen rechtstreeks uit de MySQL chat_logs tabel
+    try {
+        $chatCountStmt = $pdo->query("SELECT COUNT(*) FROM chat_logs");
+        if ($chatCountStmt !== false) {
+            $assistant['total_queries'] = (int)$chatCountStmt->fetchColumn();
+        }
+    } catch (Throwable $chatErr) {
+        // Fallback naar visits.assistant_query als chat_logs tabel nog niet bestaat
+    }
+
     // Assistant top topics / questions
     $stmt = $pdo->prepare("SELECT utm_campaign as topic, COUNT(*) as count 
                            FROM visits 
