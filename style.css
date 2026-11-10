@@ -428,7 +428,7 @@ section[id], section {
   align-items: flex-start !important;
   white-space: nowrap !important;
   word-break: keep-all !important;
-  color: #4b8f24;
+  color: var(--color-forest);
   text-decoration: none;
   letter-spacing: -0.8px;
   z-index: 10;
@@ -440,13 +440,13 @@ section[id], section {
   align-items: baseline !important;
   white-space: nowrap !important;
   word-break: keep-all !important;
-  color: #4b8f24;
+  color: var(--color-forest);
 }
 
 .nav-text-logo span,
 .nav-logo-main span,
 .footer-col h3 span {
-  color: #f39223 !important; /* Original brand orange for .nl in logo */
+  color: var(--color-terracotta) !important; /* Warmer terracotta orange for .nl in logo */
   display: inline !important;
   white-space: nowrap !important;
   word-break: keep-all !important;
