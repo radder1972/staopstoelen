@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.459">
+  <link rel="stylesheet" href="style.css?v=10.460">
   <style>
 
     @media (max-width: 991px) {
@@ -808,121 +808,281 @@
             </button>
           </div>
 
-          <!-- Smaakvolle, aantrekkelijke Uitgelichte Actie-kaart voor Design Sta-op stoel René -->
+          <!-- Uitgelichte Actie-kaart voor Design Sta-op stoel René (rustige 2-koloms indeling op volle hoogte) -->
           <style>
             .rene-catalog-hero-card {
-              background: #ffffff;
+              background: var(--color-light);
               border: 1px solid var(--color-gray-light);
-              border-radius: 16px;
-              padding: 20px 22px;
-              margin-bottom: 26px;
+              border-radius: var(--radius-md);
+              overflow: hidden;
+              margin-bottom: 28px;
               display: grid;
-              grid-template-columns: 230px 1fr 235px;
-              gap: 24px;
-              align-items: center;
-              box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+              grid-template-columns: 300px minmax(0, 1fr);
+              align-items: stretch;
+              box-shadow: 0 4px 20px var(--color-shadow);
+              transition: box-shadow 0.25s ease, transform 0.25s ease;
             }
-            @media (max-width: 1024px) {
+            .rene-catalog-hero-card:hover {
+              box-shadow: 0 10px 28px var(--color-shadow-hover);
+            }
+            .rene-hero-media {
+              position: relative;
+              min-height: 250px;
+              background: var(--color-cream-dark);
+              overflow: hidden;
+            }
+            .rene-hero-img-link {
+              display: block;
+              width: 100%;
+              height: 100%;
+            }
+            .rene-hero-img-link img {
+              width: 100% !important;
+              height: 100% !important;
+              max-width: none !important;
+              max-height: none !important;
+              object-fit: cover;
+              object-position: center 62%;
+              display: block;
+              transition: transform 0.45s ease;
+            }
+            .rene-catalog-hero-card:hover .rene-hero-img-link img {
+              transform: scale(1.03);
+            }
+            .rene-hero-badge {
+              position: absolute;
+              top: 12px;
+              left: 12px;
+              background: var(--color-forest);
+              color: #ffffff;
+              font-size: 0.75rem;
+              font-weight: 700;
+              padding: 5px 12px;
+              border-radius: 999px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+              pointer-events: none;
+              z-index: 2;
+            }
+            .rene-hero-video-chip {
+              position: absolute;
+              bottom: 12px;
+              left: 12px;
+              background: rgba(22, 45, 13, 0.86);
+              backdrop-filter: blur(6px);
+              -webkit-backdrop-filter: blur(6px);
+              color: #ffffff;
+              border: 1px solid rgba(255, 255, 255, 0.24);
+              border-radius: 999px;
+              padding: 5px 12px 5px 7px;
+              font-family: var(--font-body);
+              font-size: 0.76rem;
+              font-weight: 700;
+              cursor: pointer;
+              display: inline-flex;
+              align-items: center;
+              gap: 7px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+              transition: background 0.2s ease, transform 0.2s ease;
+              z-index: 2;
+            }
+            .rene-hero-video-chip:hover {
+              background: rgba(22, 45, 13, 0.96);
+              transform: translateY(-1px);
+            }
+            .rene-hero-video-dot {
+              width: 22px;
+              height: 22px;
+              border-radius: 50%;
+              background: var(--color-terracotta);
+              color: #ffffff;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+            }
+            .rene-hero-body {
+              padding: 22px 26px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              min-width: 0;
+            }
+            .rene-hero-eyebrow {
+              display: flex;
+              align-items: center;
+              column-gap: 8px;
+              row-gap: 3px;
+              flex-wrap: wrap;
+              font-size: 0.76rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+              color: #5b6457;
+              margin-bottom: 5px;
+            }
+            .rene-hero-eyebrow strong {
+              color: var(--color-terracotta);
+              font-weight: 800;
+            }
+            .rene-hero-eyebrow-sep {
+              color: #b5b0a4;
+            }
+            .rene-hero-title {
+              font-family: var(--font-heading);
+              font-size: 1.32rem;
+              font-weight: 800;
+              color: var(--color-forest-dark);
+              margin: 0 0 7px 0;
+              line-height: 1.25;
+            }
+            .rene-hero-title a {
+              color: inherit;
+              text-decoration: none;
+            }
+            .rene-hero-title a:hover {
+              color: var(--color-forest);
+            }
+            .rene-hero-desc {
+              font-size: 0.89rem;
+              color: var(--color-gray);
+              margin: 0;
+              line-height: 1.55;
+            }
+            .rene-catalog-usp-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 6px 18px;
+              margin-top: 13px;
+            }
+            .rene-catalog-usp-item {
+              display: flex;
+              align-items: center;
+              gap: 7px;
+              font-size: 0.83rem;
+              font-weight: 600;
+              color: var(--color-dark);
+              line-height: 1.35;
+            }
+            .rene-catalog-usp-check {
+              color: var(--color-forest);
+              font-weight: 900;
+              flex-shrink: 0;
+            }
+            .rene-hero-footer {
+              margin-top: 16px;
+              padding-top: 14px;
+              border-top: 1px solid #ebe7de;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 16px;
+              flex-wrap: wrap;
+            }
+            @media (max-width: 960px) {
               .rene-catalog-hero-card {
-                grid-template-columns: 200px 1fr;
+                grid-template-columns: 240px minmax(0, 1fr);
               }
-              .rene-catalog-price-col {
-                grid-column: 1 / -1;
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                flex-wrap: wrap;
+              .rene-hero-body {
+                padding: 18px 20px;
               }
             }
             @media (max-width: 680px) {
               .rene-catalog-hero-card {
                 grid-template-columns: 1fr;
-                padding: 16px;
-                gap: 16px;
               }
-            }
-            .rene-catalog-usp-grid {
-              display: grid;
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-              gap: 7px 14px;
-              margin-top: 12px;
-            }
-            @media (max-width: 560px) {
+              .rene-hero-media {
+                aspect-ratio: 4 / 3;
+                height: auto;
+                min-height: 240px;
+              }
+              .rene-hero-img-link img {
+                object-position: center 68%;
+              }
+              .rene-hero-body {
+                padding: 18px;
+              }
               .rene-catalog-usp-grid {
                 grid-template-columns: 1fr;
               }
             }
+            @media (max-width: 520px) {
+              .rene-hero-eyebrow-sep {
+                display: none;
+              }
+              .rene-hero-footer .btn-primary {
+                width: 100%;
+                justify-content: center;
+              }
+            }
           </style>
           <div id="catalogReneFeatureBanner" class="rene-catalog-hero-card">
-            <!-- Links: Duidelijke, klikbare Video-Sfeerfoto (1 klik opent direct de video) -->
-            <div onclick="openCertifiedVideoModal('rene-man')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertifiedVideoModal('rene-man');}" title="Klik om de video van Sta-op stoel René (53 sec) af te spelen" style="position: relative; border-radius: 14px; overflow: hidden; background: #1d2024; border: 1px solid #d8e5d0; aspect-ratio: 4 / 3; min-height: 168px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-              <img id="catalogRenePreviewImg" src="assets/stoelen/chair_rene_groen_cozy.jpg" alt="Bekijk video van Design Sta-op stoel René in olijfgroen" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease;">
-              <!-- Centrale Play-knop zodat het 100% logisch is dat je op de video klikt -->
-              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.45) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
-                <span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(37, 102, 22, 0.95); border: 2.5px solid #ffffff; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
-                </span>
-                <span style="background: rgba(18, 43, 7, 0.88); color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 4px 11px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap;">
-                  &#9654; Bekijk video (53 sec)
-                </span>
-              </div>
-            </div>
-
-            <!-- Midden: Heldere typografie, 1-regel badge & 4 sterke USP's -->
-            <div style="min-width: 0;">
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span style="background: #e6f2e0; color: var(--color-forest-dark); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; border: 1px solid #b8dcab; white-space: nowrap;">Tijdelijke Actie &bull; € 350,- Voordeel</span>
-                <span style="font-size: 0.78rem; color: #5b6457; font-weight: 700; white-space: nowrap;">DFM Design &bull; Standaard op Accu</span>
-              </div>
-
-              <a href="stoelen/sta-op-stoel-rene.html" style="text-decoration: none; color: inherit;">
-                <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-forest-dark); margin: 0 0 6px 0; line-height: 1.25;">
-                  Design Sta-op stoel René &mdash; Snoerloos op Accu &amp; Volledige Ligstand
-                </h3>
+            <!-- Links: Heldere, onbedekte woonkamerfoto op volle hoogte -->
+            <div class="rene-hero-media">
+              <a href="stoelen/sta-op-stoel-rene.html" class="rene-hero-img-link" aria-label="Bekijk Design Sta-op stoel René">
+                <img id="catalogRenePreviewImg" src="assets/stoelen/chair_rene_groen_cozy.jpg" alt="Design Sta-op stoel René in olijfgroen">
               </a>
-
-              <p style="font-size: 0.88rem; color: #4b5563; margin: 0; line-height: 1.5;">
-                Een elegante 360° draaifauteuil waar u van buiten niet aan ziet dat het een sta-op stoel is. Zonder snoeren over de vloer en op maat leverbaar in stof, leder of <strong>Duo-stoffering (stof + leer)</strong>.
-              </p>
-
-              <div class="rene-catalog-usp-grid">
-                <div style="display: flex; align-items: center; gap: 7px; font-size: 0.82rem; font-weight: 700; color: #2d3728;">
-                  <span style="width: 18px; height: 18px; border-radius: 50%; background: #e6f2e0; color: var(--color-forest); display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0;">&#10003;</span>
-                  <span>Volledig draadloos op accu</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 7px; font-size: 0.82rem; font-weight: 700; color: #2d3728;">
-                  <span style="width: 18px; height: 18px; border-radius: 50%; background: #e6f2e0; color: var(--color-forest); display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0;">&#10003;</span>
-                  <span>Ligstand (voeten op harthoogte)</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 7px; font-size: 0.82rem; font-weight: 700; color: #2d3728;">
-                  <span style="width: 18px; height: 18px; border-radius: 50%; background: #e6f2e0; color: var(--color-forest); display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0;">&#10003;</span>
-                  <span>Topswing hoofdsteun &amp; 3 motoren</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 7px; font-size: 0.82rem; font-weight: 700; color: #2d3728;">
-                  <span style="width: 18px; height: 18px; border-radius: 50%; background: #e6f2e0; color: var(--color-forest); display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0;">&#10003;</span>
-                  <span>7 maatvoeringen (XS t/m XL)</span>
-                </div>
-              </div>
+              <span class="rene-hero-badge">Nieuw Actiemodel</span>
+              <button type="button" class="rene-hero-video-chip" onclick="openCertifiedVideoModal('rene-man')" title="Bekijk de video van Sta-op stoel René (53 sec)">
+                <span class="rene-hero-video-dot">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 1px;"><polygon points="6 4 20 12 6 20"></polygon></svg>
+                </span>
+                <span>Bekijk video (53s)</span>
+              </button>
             </div>
 
-            <!-- Rechts: Rustige prijs- & actiekolom (zonder dubbele videoknop) -->
-            <div class="rene-catalog-price-col" style="background: #f8faf6; border: 1px solid #dfead8; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 12px; text-align: center;">
+            <!-- Rechts: Rustige typografie, korte kenmerken en geïntegreerde prijsregel -->
+            <div class="rene-hero-body">
               <div>
-                <div style="font-size: 0.76rem; color: #6b7280; font-weight: 700; margin-bottom: 2px;">
-                  Adviesprijs <s style="color: #9ca3af;">€ 2.695,-</s>
+                <div class="rene-hero-eyebrow">
+                  <span>DFM Design &bull; Standaard op Accu</span>
+                  <span class="rene-hero-eyebrow-sep">&bull;</span>
+                  <strong>Tijdelijk € 350,- voordeel</strong>
                 </div>
-                <div style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 900; color: var(--color-forest-dark); line-height: 1.05;">
-                  € 2.345,-
-                </div>
-                <div style="font-size: 0.73rem; color: var(--color-forest); font-weight: 700; margin-top: 3px;">
-                  Incl. accu &amp; gratis thuisbezorgd
+
+                <h3 class="rene-hero-title">
+                  <a href="stoelen/sta-op-stoel-rene.html">Design Sta-op stoel René</a>
+                </h3>
+
+                <p class="rene-hero-desc">
+                  Elegante 360° draaifauteuil waar u van buiten niet aan ziet dat het een sta-op stoel is. Zonder snoeren over de vloer en op maat leverbaar in stof, leder of duo-stoffering.
+                </p>
+
+                <div class="rene-catalog-usp-grid">
+                  <div class="rene-catalog-usp-item">
+                    <span class="rene-catalog-usp-check">&#10003;</span>
+                    <span>Volledig snoerloos op accu</span>
+                  </div>
+                  <div class="rene-catalog-usp-item">
+                    <span class="rene-catalog-usp-check">&#10003;</span>
+                    <span>Ligstand (voeten op harthoogte)</span>
+                  </div>
+                  <div class="rene-catalog-usp-item">
+                    <span class="rene-catalog-usp-check">&#10003;</span>
+                    <span>Topswing hoofdsteun &amp; 3 motoren</span>
+                  </div>
+                  <div class="rene-catalog-usp-item">
+                    <span class="rene-catalog-usp-check">&#10003;</span>
+                    <span>Op maat in 7 maten (XS t/m XL)</span>
+                  </div>
                 </div>
               </div>
-              <a href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 10px 16px; font-size: 0.86rem; font-weight: 800; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;">
-                <span>Bekijk Stoel René</span>
-                <span>&rarr;</span>
-              </a>
+
+              <div class="rene-hero-footer">
+                <div>
+                  <div style="font-size: 0.78rem; color: #8a9097; font-weight: 600; line-height: 1.2;">
+                    Adviesprijs <span style="text-decoration: line-through;">€ 2.695,-</span>
+                  </div>
+                  <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 2px;">
+                    <span style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-forest); line-height: 1.1;">€ 2.345,-</span>
+                    <span style="font-size: 0.8rem; color: #5b6457; font-weight: 600;">Incl. accu &amp; gratis thuisbezorgd</span>
+                  </div>
+                </div>
+
+                <a href="stoelen/sta-op-stoel-rene.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.88rem; font-weight: 700; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+                  <span>Bekijk Stoel René</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -936,7 +1096,7 @@
             <div class="catalog-callout-card">
               <div class="catalog-callout-header">
                 <div onclick="openCertifiedVideoModal('revisie')" class="catalog-callout-thumb" title="Klik om de werkplaatsvideo te bekijken" role="button" tabindex="0">
-                  <img src="assets/video/revisie_poster.jpg?v=10.459" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
+                  <img src="assets/video/revisie_poster.jpg?v=10.460" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
                   <div class="catalog-callout-play-overlay">
                     <span class="catalog-callout-play-icon">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
@@ -1222,7 +1382,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.459
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.460
       </div>
     </div>
   </footer>
@@ -1519,7 +1679,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.459"></script>
+  <script src="app.js?v=10.460"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
@@ -2703,6 +2863,16 @@
         }
       }
 
+      // Toon uitgelichte René-kaart alleen wanneer geen tegenstrijdig filter actief is (bijv. Occasion of Onder € 1.500)
+      const reneFeatureBanner = document.getElementById("catalogReneFeatureBanner");
+      if (reneFeatureBanner) {
+        const hidesReneByCondition = checkedConditions.length > 0 && !checkedConditions.includes("nieuw");
+        const hidesReneByPrice = checkedPrices.length > 0 && !checkedPrices.includes("1500-2500");
+        const hidesReneByBrand = checkedBrands.length > 0 && !checkedBrands.some(b => b.toLowerCase().includes("dfm") || b.toLowerCase().includes("rené") || b.toLowerCase().includes("rene"));
+        const hideReneBanner = Boolean(selectedChairMatch || actieActive || hidesReneByCondition || hidesReneByPrice || hidesReneByBrand);
+        reneFeatureBanner.style.display = hideReneBanner ? "none" : "";
+      }
+
       if (filtered.length === 0) {
         grid.innerHTML = `
           <div class="no-results" style="grid-column: 1/-1;">
@@ -3404,9 +3574,9 @@
           if (dbData && dbData.staopstoelen) {
             dbData.staopstoelen.forEach(c => {
               if (c.id === "sta-op-stoel-rene") {
-                c.image = "assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.459";
+                c.image = "assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.460";
                 if (Array.isArray(c.gallery)) {
-                  c.gallery = ["assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.459", ...c.gallery.filter(g => !g.includes("Sta-op-stoel-RENE.jpg"))];
+                  c.gallery = ["assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.460", ...c.gallery.filter(g => !g.includes("Sta-op-stoel-RENE.jpg"))];
                 }
               }
             });
