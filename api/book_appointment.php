@@ -19,6 +19,7 @@ if (!$input) {
     exit;
 }
 
+$action = trim($input['action'] ?? '');
 $name = trim($input['name'] ?? 'Onbekend');
 $phone = trim($input['phone'] ?? '');
 $email = trim($input['email'] ?? '');
@@ -31,10 +32,8 @@ $appointmentType = trim($input['appointmentType'] ?? 'showroom');
 $address = trim($input['address'] ?? '');
 $notes = trim($input['notes'] ?? '');
 $source = trim($input['source'] ?? 'Website afspraakformulier');
-$customEmailSubject = trim($input['emailSubject'] ?? '');
-$customEmailHtml = $input['emailHtml'] ?? '';
 
-// Normaliseer datum naar YYYY-MM-DD voor Google Agenda Apps Script
+// Normaliseer datum naar YYYY-MM-DD voor Google Agenda en Nederlandse datumweergave
 if (empty($dateIso) && !empty($date)) {
     if (preg_match('/^(\d{1,2})[-.\/](\d{1,2})[-.\/](\d{4})$/', $date, $m)) {
         $dateIso = sprintf('%04d-%02d-%02d', (int)$m[3], (int)$m[2], (int)$m[1]);
@@ -47,6 +46,223 @@ if ((empty($startTime) || empty($endTime)) && strpos($timeSlot, ' - ') !== false
     $parts = explode(' - ', $timeSlot, 2);
     if (empty($startTime)) $startTime = trim($parts[0]);
     if (empty($endTime)) $endTime = trim($parts[1]);
+}
+
+function sendCustomerConfirmationMail($name, $phone, $email, $dateRaw, $dateIso, $timeSlot, $startTime, $endTime, $appointmentType, $address, $notes) {
+    $cleanEmail = trim($email);
+    if (empty($cleanEmail) || strtolower($cleanEmail) === 'belmij@staopstoelen.nl' || !filter_var($cleanEmail, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+
+    $isHome = ($appointmentType === 'home' || $appointmentType === 'thuis');
+    $typeLabel = $isHome ? 'Passing aan Huis' : 'Showroombezoek Dordrecht';
+    $locationStr = $isHome
+        ? ($address ?: 'Bij u thuis')
+        : 'Merwedestraat 239, 3313 GT Dordrecht';
+
+    // Formatteer Nederlandse datum (bijv. "woensdag 18 november 2026")
+    $formattedDate = $dateRaw;
+    $gcalUrl = '';
+    if (!empty($dateIso) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateIso)) {
+        try {
+            $tz = new DateTimeZone('Europe/Amsterdam');
+            $dt = new DateTime($dateIso, $tz);
+            $dagen = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
+            $maanden = [1 => 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+            $formattedDate = $dagen[(int)$dt->format('w')] . ' ' . (int)$dt->format('j') . ' ' . $maanden[(int)$dt->format('n')] . ' ' . $dt->format('Y');
+
+            if (!empty($startTime) && !empty($endTime) && preg_match('/^\d{1,2}:\d{2}$/', $startTime) && preg_match('/^\d{1,2}:\d{2}$/', $endTime)) {
+                $utc = new DateTimeZone('UTC');
+                $dtStart = new DateTime("$dateIso $startTime:00", $tz);
+                $dtEnd = new DateTime("$dateIso $endTime:00", $tz);
+                $dtStart->setTimezone($utc);
+                $dtEnd->setTimezone($utc);
+                $gcalDates = $dtStart->format('Ymd\THis\Z') . '/' . $dtEnd->format('Ymd\THis\Z');
+                $gcalTitle = rawurlencode("$typeLabel - Staopstoelen.nl");
+                $gcalDetails = rawurlencode("Afspraak met Bewegingstechnoloog Geertjan Klein Haneveld.\nType: $typeLabel\nLocatie: $locationStr\nContact: 06 - 22 23 29 64 / 078 - 631 4858\nWebsite: https://staopstoelen.nl");
+                $gcalLocation = rawurlencode($locationStr);
+                $gcalUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text={$gcalTitle}&dates={$gcalDates}&details={$gcalDetails}&location={$gcalLocation}";
+            }
+        } catch (Throwable $e) {}
+    }
+
+    $hasSchedule = (!empty($formattedDate) && !empty($timeSlot));
+    if ($hasSchedule) {
+        $timeShort = !empty($startTime) ? $startTime : $timeSlot;
+        $subject = $isHome
+            ? "Bevestiging passing aan huis: $formattedDate om $timeShort uur - Staopstoelen.nl"
+            : "Bevestiging afspraak Showroom Dordrecht: $formattedDate om $timeShort uur - Staopstoelen.nl";
+    } else {
+        $subject = "Bevestiging van uw aanvraag - Staopstoelen.nl";
+    }
+
+    $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+    $safeType = htmlspecialchars($typeLabel, ENT_QUOTES, 'UTF-8');
+    $safeDate = htmlspecialchars($formattedDate, ENT_QUOTES, 'UTF-8');
+    $safeSlot = htmlspecialchars($timeSlot, ENT_QUOTES, 'UTF-8');
+    $safeLoc  = htmlspecialchars($locationStr, ENT_QUOTES, 'UTF-8');
+    $safePhone = htmlspecialchars($phone, ENT_QUOTES, 'UTF-8');
+    $safeNotes = nl2br(htmlspecialchars($notes, ENT_QUOTES, 'UTF-8'));
+
+    $custHtml = '<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>' . htmlspecialchars($subject, ENT_QUOTES, 'UTF-8') . '</title></head>
+<body style="margin:0; padding:20px 12px; background-color:#f4f7f3; font-family:Arial, Helvetica, sans-serif; color:#222222;">
+  <div style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.6; color:#222222; max-width:600px; margin:0 auto; padding:28px 26px; background-color:#ffffff; border-radius:14px; border:1px solid #e2ece0;">
+    <div style="margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid #e8e8e8;">
+      <a href="https://staopstoelen.nl" target="_blank" style="text-decoration:none; display:inline-block;">
+        <img src="https://staopstoelen.nl/assets/logo_email_website.png" alt="staopstoelen.nl - Specialist in Ergonomisch Zitcomfort" width="260" style="display:block; border:0; width:260px; height:auto; max-width:100%;">
+      </a>
+    </div>
+
+    <p style="margin:0 0 16px 0; color:#222222;">Beste ' . $safeName . ',</p>
+    <p style="margin:0 0 20px 0; color:#333333;">
+      Hartelijk dank voor uw aanvraag bij <strong>Staopstoelen.nl</strong>. Uw ' . ($hasSchedule ? 'afspraak staat bij ons genoteerd' : 'aanvraag is goed ontvangen') . ' met de volgende gegevens:
+    </p>
+
+    <table style="width:100%; border-collapse:collapse; margin-bottom:20px; font-size:14px; line-height:1.6;">
+      <tr>
+        <td style="padding:7px 0; color:#666666; width:140px; vertical-align:top;">Type afspraak:</td>
+        <td style="padding:7px 0; color:#111111; font-weight:bold;">' . $safeType . '</td>
+      </tr>' .
+      (!empty($safeDate) ? '
+      <tr>
+        <td style="padding:7px 0; color:#666666; vertical-align:top; border-top:1px solid #f1f5f9;">Datum:</td>
+        <td style="padding:7px 0; color:#111111; font-weight:bold; border-top:1px solid #f1f5f9;">' . $safeDate . '</td>
+      </tr>' : '') .
+      (!empty($safeSlot) ? '
+      <tr>
+        <td style="padding:7px 0; color:#666666; vertical-align:top; border-top:1px solid #f1f5f9;">Tijdstip:</td>
+        <td style="padding:7px 0; color:#111111; font-weight:bold; border-top:1px solid #f1f5f9;">' . $safeSlot . ' uur</td>
+      </tr>' : '') . '
+      <tr>
+        <td style="padding:7px 0; color:#666666; vertical-align:top; border-top:1px solid #f1f5f9;">Adres / Locatie:</td>
+        <td style="padding:7px 0; color:#111111; border-top:1px solid #f1f5f9;">
+          ' . $safeLoc .
+          (!$isHome ? '
+          <div style="margin-top:4px;">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Merwedestraat+239,+Dordrecht" target="_blank" style="color:#4b8f24; font-size:13px; font-weight:700; text-decoration:underline;">
+              Route plannen in Google Maps &rarr;
+            </a>
+          </div>' : '') . '
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0; color:#666666; vertical-align:top; border-top:1px solid #f1f5f9;">Telefoonnummer:</td>
+        <td style="padding:7px 0; color:#111111; border-top:1px solid #f1f5f9;">' . $safePhone . '</td>
+      </tr>' .
+      (!empty($notes) && $notes !== '-' ? '
+      <tr>
+        <td style="padding:7px 0; color:#666666; vertical-align:top; border-top:1px solid #f1f5f9;">Uw opmerkingen:</td>
+        <td style="padding:7px 0; color:#111111; border-top:1px solid #f1f5f9;">' . $safeNotes . '</td>
+      </tr>' : '') . '
+    </table>' .
+    (!empty($gcalUrl) ? '
+    <div style="margin:20px 0 24px 0; padding:14px 18px; background-color:#f7faf5; border:1px solid #d5e5cf; border-radius:8px;">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width:100%; border-collapse:collapse;">
+        <tr>
+          <td style="vertical-align:middle; padding-right:12px;">
+            <div style="font-size:13.5px; color:#2e5714; font-weight:700;">Wilt u deze afspraak direct opslaan?</div>
+            <div style="font-size:12.5px; color:#555555; margin-top:2px;">Voeg de afspraak met één klik toe aan uw Google Agenda.</div>
+          </td>
+          <td style="vertical-align:middle; text-align:right; width:190px;">
+            <a href="' . htmlspecialchars($gcalUrl, ENT_QUOTES, 'UTF-8') . '" target="_blank" style="background-color:#4b8f24; color:#ffffff; padding:9px 15px; border-radius:6px; font-size:13px; font-weight:bold; text-decoration:none; display:inline-block; white-space:nowrap;">+ In Google Agenda</a>
+          </td>
+        </tr>
+      </table>
+    </div>' : '') . '
+
+    <p style="margin:20px 0 6px 0; font-weight:bold; color:#111111;">Hoe nu verder?</p>
+    <p style="margin:0 0 20px 0; color:#333333;">
+      Ik neem telefonisch contact met u op om de afspraak persoonlijk te bevestigen en eventuele wensen alvast door te nemen.
+    </p>' .
+    (!$isHome ? '
+    <p style="margin:20px 0 6px 0; font-weight:bold; color:#111111;">Praktische informatie showroombezoek:</p>
+    <p style="margin:0 0 14px 0; color:#333333;">
+      Adres: <strong>Merwedestraat 239, 3313 GT Dordrecht</strong>.<br>
+      U kunt gratis direct voor de deur parkeren. Onze showroom is gelijkvloers en rolstoeltoegankelijk — de koffie staat voor u klaar!
+    </p>' : '') . '
+
+    <div style="margin-top:28px; padding-top:20px; border-top:1px solid #e8ece6; color:#111111; font-size:14px; line-height:1.6;">
+      <p style="margin:0 0 14px 0;">Met vriendelijke groet,</p>
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; margin:0; padding:0;">
+        <tr>
+          <td style="vertical-align:top; padding-right:18px; width:84px;">
+            <img src="https://staopstoelen.nl/assets/geert_avatar.png" alt="Geertjan Klein Haneveld" width="84" height="84" style="display:block; width:84px; height:84px; border-radius:50%; border:1px solid #d5ded0; object-fit:cover;">
+          </td>
+          <td style="vertical-align:top; font-size:14px; line-height:1.5; color:#111111;">
+            <div style="font-size:16px; font-weight:bold; color:#111111; margin-bottom:2px;">Geertjan Klein Haneveld</div>
+            <div style="font-size:13px; color:#444444; font-weight:600; margin-bottom:8px;">Gediplomeerd bewegingstechnoloog &amp; Certified Fitform Specialist</div>
+            <div style="font-size:13px; line-height:1.6; color:#222222;">
+              078 - 631 4858 &nbsp;&bull;&nbsp; 06 - 22 23 29 64 (ook WhatsApp)<br>
+              <a href="mailto:info@staopstoelen.nl" style="color:#2e5714; text-decoration:none; font-weight:600;">info@staopstoelen.nl</a> &nbsp;&bull;&nbsp; <a href="https://staopstoelen.nl" target="_blank" style="color:#2e5714; text-decoration:none;">www.staopstoelen.nl</a><br>
+              Showroom: Merwedestraat 239, 3313 GT Dordrecht
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>';
+
+    $custHeaders  = "MIME-Version: 1.0\r\n";
+    $custHeaders .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $custHeaders .= "From: Geertjan Klein Haneveld - Staopstoelen.nl <info@staopstoelen.nl>\r\n";
+    $custHeaders .= "Reply-To: info@staopstoelen.nl\r\n";
+    $custHeaders .= "Bcc: info@staopstoelen.nl, schipperwonen@gmail.com\r\n";
+    $custHeaders .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+
+    return @mail($cleanEmail, $subject, $custHtml, $custHeaders);
+}
+
+// Veilige resend-actie voor een reeds geregistreerde afspraak in appointments_log.json
+if ($action === 'resend_confirmation') {
+    $backupFile = __DIR__ . '/appointments_log.json';
+    $matched = null;
+    if (file_exists($backupFile)) {
+        $entries = json_decode(file_get_contents($backupFile), true) ?: [];
+        foreach (array_reverse($entries) as $item) {
+            if (!empty($item['email']) && strtolower(trim($item['email'])) === strtolower($email) &&
+                preg_replace('/\D+/', '', $item['phone'] ?? '') === preg_replace('/\D+/', '', $phone)) {
+                $matched = $item;
+                break;
+            }
+        }
+    }
+    if (!$matched) {
+        http_response_code(404);
+        echo json_encode(["status" => "error", "message" => "Geen overeenkomende afspraak gevonden."]);
+        exit;
+    }
+    $mDate = $matched['date'] ?? $date;
+    $mIso = '';
+    if (preg_match('/^(\d{1,2})[-.\/](\d{1,2})[-.\/](\d{4})$/', $mDate, $mm)) {
+        $mIso = sprintf('%04d-%02d-%02d', (int)$mm[3], (int)$mm[2], (int)$mm[1]);
+    } elseif (preg_match('/^\d{4}-\d{2}-\d{2}$/', $mDate)) {
+        $mIso = $mDate;
+    }
+    $mSlot = $matched['timeSlot'] ?? $timeSlot;
+    $mStart = '';
+    $mEnd = '';
+    if (strpos($mSlot, ' - ') !== false) {
+        [$mStart, $mEnd] = array_map('trim', explode(' - ', $mSlot, 2));
+    }
+    $sent = sendCustomerConfirmationMail(
+        $matched['name'] ?? $name,
+        $matched['phone'] ?? $phone,
+        $matched['email'],
+        $mDate,
+        $mIso,
+        $mSlot,
+        $mStart,
+        $mEnd,
+        $matched['appointmentType'] ?? 'showroom',
+        $matched['address'] ?? '',
+        $matched['notes'] ?? ''
+    );
+    echo json_encode(["status" => $sent ? "success" : "error", "confirmation_sent" => (bool)$sent]);
+    exit;
 }
 
 if (empty($phone)) {
@@ -288,6 +504,21 @@ $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
 @mail($to, $subject, $htmlMsg, $headers);
 
+// 3b. Bevestigingsmail rechtstreeks naar de klant vanaf info@staopstoelen.nl (met Bcc naar ons team)
+$customerConfirmationSent = sendCustomerConfirmationMail(
+    $name,
+    $phone,
+    $email,
+    $date,
+    $dateIso,
+    $timeSlot,
+    $startTime,
+    $endTime,
+    $appointmentType,
+    $address,
+    $notes
+);
+
 // 4. Server-side synchronisatie met Google Agenda (Google Apps Script Web App)
 // Zo raakt een boeking nooit meer kwijt als de browser direct doorstuurt naar bedankt.html of adblockers gebruikt.
 $calendarSynced = false;
@@ -296,30 +527,28 @@ $gcalWebhookUrl = "https://script.google.com/macros/s/AKfycbwyRN-iLM83LFZ4hZ08jz
 if (!empty($gcalWebhookUrl) && function_exists('curl_init')) {
     try {
         $cleanCustomerEmail = (!empty($email) && strtolower($email) !== 'belmij@staopstoelen.nl') ? $email : '';
+        $notesForCalendar = !empty($notes) ? $notes : ($source ? "Bron: $source" : '-');
+        if (!empty($cleanCustomerEmail) && strpos($notesForCalendar, $cleanCustomerEmail) === false) {
+            $notesForCalendar .= "\nE-mail klant: " . $cleanCustomerEmail;
+        }
         $gcalPayload = [
             'brand' => 'staopstoelen',
             'site' => 'staopstoelen.nl',
             'name' => $name,
             'phone' => $phone,
-            'email' => $cleanCustomerEmail,
+            'email' => '', // Klantbevestiging is hierboven al verzonden vanaf info@staopstoelen.nl (voorkomt dubbele mail)
             'date' => $dateIso,
             'timeSlot' => $timeSlot,
             'startTime' => $startTime,
             'endTime' => $endTime,
             'appointmentType' => $appointmentType,
             'address' => !empty($address) ? $address : ($appointmentType === 'home' ? '' : 'Merwedestraat 239, 3313 GT Dordrecht'),
-            'notes' => !empty($notes) ? $notes : ($source ? "Bron: $source" : '-'),
+            'notes' => $notesForCalendar,
             'senderName' => 'Geertjan Klein Haneveld - Staopstoelen.nl',
             'replyTo' => 'info@staopstoelen.nl',
             'notificationEmail' => 'schipperwonen@gmail.com, info@staopstoelen.nl',
             'timestamp' => gmdate('c')
         ];
-        if (!empty($customEmailSubject)) {
-            $gcalPayload['emailSubject'] = $customEmailSubject;
-        }
-        if (!empty($customEmailHtml)) {
-            $gcalPayload['emailHtml'] = $customEmailHtml;
-        }
 
         $ch = curl_init($gcalWebhookUrl);
         curl_setopt_array($ch, [
@@ -348,5 +577,6 @@ if (!empty($gcalWebhookUrl) && function_exists('curl_init')) {
 echo json_encode([
     "status" => "success",
     "calendar_synced" => $calendarSynced,
+    "confirmation_sent" => $customerConfirmationSent,
     "message" => "Afspraak succesvol ontvangen en opgeslagen."
 ]);
