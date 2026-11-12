@@ -1820,10 +1820,12 @@ window.handleQuickAppointmentSubmit = function(e) {
     timestamp: new Date().toISOString()
   };
 
-  // 1. Post to Internal PHP Backend API (Direct Database & Email)
-  fetch("api/book_appointment.php", {
+  // 1. Post to Internal PHP Backend API (Direct Database, Email & Server-Side Google Calendar Sync)
+  const bookApiUrl = (window.location.origin || "") + "/api/book_appointment.php";
+  fetch(bookApiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    keepalive: true,
     body: JSON.stringify({
       name: name,
       phone: phone,
@@ -1832,21 +1834,31 @@ window.handleQuickAppointmentSubmit = function(e) {
         : (isFromMp ? "Marktplaats lead: bezoeker wil z.s.m. door Geertjan gebeld worden over stoelen / proefzitten." : "Snelafspraak via overlay: Klant wil gebeld worden door Geertjan om een proefzit-afspraak in te plannen."),
       source: isFromMp ? "Marktplaats Zakelijk Lead (1-klik Terugbelverzoek)" : "Afspraak-Overlay Snelformulier"
     })
-  }).catch(err => console.warn("Quick booking PHP API error:", err));
-
-  // 1b. Post to Webhook (Google Apps Script / Email / Calendar notification if available)
-  if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
-    try {
+  })
+  .then(res => res.json())
+  .then(data => {
+    // Alleen client-side fallback als de server Google Agenda niet kon bereiken
+    if ((!data || !data.calendar_synced) && typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
       fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload),
-        mode: "no-cors"
-      })
-      .then(res => console.log("Quick appointment webhook response:", res))
-      .catch(err => console.warn("Quick appointment webhook error:", err));
-    } catch (e) {}
-  }
+        mode: "no-cors",
+        keepalive: true
+      }).catch(() => {});
+    }
+  })
+  .catch(() => {
+    if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
+      fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
+        mode: "no-cors",
+        keepalive: true
+      }).catch(() => {});
+    }
+  });
 
   // 2. Analytics & Conversion Tracking
   try {
@@ -2502,34 +2514,56 @@ function initCalendar() {
       window.location.href = "bedankt.html";
     };
 
-    // 1. Post to Internal PHP Backend API (Direct Database & Email)
-    fetch("api/book_appointment.php", {
+    // 1. Post to Internal PHP Backend API (Direct Database, Email & Server-Side Google Calendar Sync)
+    const bookApiUrl = (window.location.origin || "") + "/api/book_appointment.php";
+    fetch(bookApiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      keepalive: true,
       body: JSON.stringify({
         name: name,
         phone: phone,
         email: email,
         date: state.selectedDate ? state.selectedDate.toLocaleDateString("nl-NL") : "",
+        dateIso: bookingPayload.date,
         timeSlot: state.selectedTimeSlot,
+        startTime: startTime,
+        endTime: endTime,
         appointmentType: state.appointmentType,
         address: state.appointmentType === "home" ? address : "Merwedestraat 239, Dordrecht (Showroom)",
         notes: notes,
+        emailSubject: dynamicSubject,
+        emailHtml: customerEmailHtml,
         source: "Website afspraakformulier (Kalender)"
       })
     })
     .then(res => res.json())
-    .catch(err => console.warn("PHP booking save:", err))
-    .finally(() => {
-      // 2. Also attempt Google Calendar webhook in background (non-blocking)
-      if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
+    .then(async (data) => {
+      // Alleen client-side fallback (met await vóór redirect!) als server-side sync niet gelukt is
+      if ((!data || !data.calendar_synced) && typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
         try {
-          fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+          await fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
             method: "POST",
             headers: { "Content-Type": "text/plain" },
             body: JSON.stringify(bookingPayload),
-            mode: "no-cors"
-          }).catch(() => {});
+            mode: "no-cors",
+            keepalive: true
+          });
+        } catch (e) {}
+      }
+      transitionToSuccess();
+    })
+    .catch(async (err) => {
+      console.warn("PHP booking save:", err);
+      if (typeof GOOGLE_CALENDAR_WEBHOOK_URL !== "undefined" && GOOGLE_CALENDAR_WEBHOOK_URL) {
+        try {
+          await fetch(GOOGLE_CALENDAR_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(bookingPayload),
+            mode: "no-cors",
+            keepalive: true
+          });
         } catch (e) {}
       }
       transitionToSuccess();
@@ -2554,9 +2588,10 @@ function initCalendar() {
       btnQuickCallback.disabled = true;
       btnQuickCallback.textContent = "Bezig met verzenden...";
 
-      fetch("api/book_appointment.php", {
+      fetch((window.location.origin || "") + "/api/book_appointment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        keepalive: true,
         body: JSON.stringify({
           name: name || "Snelle terugbel-aanvraag",
           phone: raw,
@@ -3788,8 +3823,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.462" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.462" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.463" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.463" 
             controls 
             playsinline 
             preload="auto"
@@ -3851,8 +3886,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.462`;
-      player.poster = `${pfx}assets/video/geertjan_rene_aanrader_poster.jpg?v=10.462`;
+      player.src = `${pfx}assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.463`;
+      player.poster = `${pfx}assets/video/geertjan_rene_aanrader_poster.jpg?v=10.463`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3864,8 +3899,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.462`;
-      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.462`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.463`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.463`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3877,7 +3912,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.462`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.463`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.438`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3890,8 +3925,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.462`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.462`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.463`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.463`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3903,8 +3938,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.462`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.462`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.463`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.463`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3916,7 +3951,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.462`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.463`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3929,8 +3964,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.462`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.462`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.463`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.463`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3943,7 +3978,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.462`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.463`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -3952,8 +3987,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.462";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.462";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.463";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.463";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3966,7 +4001,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.462`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.463`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -3975,8 +4010,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.462";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.462";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.463";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.463";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));

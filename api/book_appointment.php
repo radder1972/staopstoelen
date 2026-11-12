@@ -23,11 +23,31 @@ $name = trim($input['name'] ?? 'Onbekend');
 $phone = trim($input['phone'] ?? '');
 $email = trim($input['email'] ?? '');
 $date = trim($input['date'] ?? '');
+$dateIso = trim($input['dateIso'] ?? '');
 $timeSlot = trim($input['timeSlot'] ?? '');
+$startTime = trim($input['startTime'] ?? '');
+$endTime = trim($input['endTime'] ?? '');
 $appointmentType = trim($input['appointmentType'] ?? 'showroom');
 $address = trim($input['address'] ?? '');
 $notes = trim($input['notes'] ?? '');
 $source = trim($input['source'] ?? 'Website afspraakformulier');
+$customEmailSubject = trim($input['emailSubject'] ?? '');
+$customEmailHtml = $input['emailHtml'] ?? '';
+
+// Normaliseer datum naar YYYY-MM-DD voor Google Agenda Apps Script
+if (empty($dateIso) && !empty($date)) {
+    if (preg_match('/^(\d{1,2})[-.\/](\d{1,2})[-.\/](\d{4})$/', $date, $m)) {
+        $dateIso = sprintf('%04d-%02d-%02d', (int)$m[3], (int)$m[2], (int)$m[1]);
+    } elseif (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+        $dateIso = $date;
+    }
+}
+
+if ((empty($startTime) || empty($endTime)) && strpos($timeSlot, ' - ') !== false) {
+    $parts = explode(' - ', $timeSlot, 2);
+    if (empty($startTime)) $startTime = trim($parts[0]);
+    if (empty($endTime)) $endTime = trim($parts[1]);
+}
 
 if (empty($phone)) {
     echo json_encode(["status" => "error", "message" => "Telefoonnummer is verplicht"]);
@@ -268,7 +288,65 @@ $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
 @mail($to, $subject, $htmlMsg, $headers);
 
+// 4. Server-side synchronisatie met Google Agenda (Google Apps Script Web App)
+// Zo raakt een boeking nooit meer kwijt als de browser direct doorstuurt naar bedankt.html of adblockers gebruikt.
+$calendarSynced = false;
+$gcalWebhookUrl = "https://script.google.com/macros/s/AKfycbwyRN-iLM83LFZ4hZ08jzwpMdeHI6o5kU5fr0Bz2KpmOuG3XP5y_4zbyE2cO45WCdNN/exec";
+
+if (!empty($gcalWebhookUrl) && function_exists('curl_init')) {
+    try {
+        $cleanCustomerEmail = (!empty($email) && strtolower($email) !== 'belmij@staopstoelen.nl') ? $email : '';
+        $gcalPayload = [
+            'brand' => 'staopstoelen',
+            'site' => 'staopstoelen.nl',
+            'name' => $name,
+            'phone' => $phone,
+            'email' => $cleanCustomerEmail,
+            'date' => $dateIso,
+            'timeSlot' => $timeSlot,
+            'startTime' => $startTime,
+            'endTime' => $endTime,
+            'appointmentType' => $appointmentType,
+            'address' => !empty($address) ? $address : ($appointmentType === 'home' ? '' : 'Merwedestraat 239, 3313 GT Dordrecht'),
+            'notes' => !empty($notes) ? $notes : ($source ? "Bron: $source" : '-'),
+            'senderName' => 'Geertjan Klein Haneveld - Staopstoelen.nl',
+            'replyTo' => 'info@staopstoelen.nl',
+            'notificationEmail' => 'schipperwonen@gmail.com, info@staopstoelen.nl',
+            'timestamp' => gmdate('c')
+        ];
+        if (!empty($customEmailSubject)) {
+            $gcalPayload['emailSubject'] = $customEmailSubject;
+        }
+        if (!empty($customEmailHtml)) {
+            $gcalPayload['emailHtml'] = $customEmailHtml;
+        }
+
+        $ch = curl_init($gcalWebhookUrl);
+        curl_setopt_array($ch, [
+            CURLOPT_POST => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_MAXREDIRS => 5,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => ['Content-Type: text/plain;charset=utf-8'],
+            CURLOPT_POSTFIELDS => json_encode($gcalPayload, JSON_UNESCAPED_UNICODE),
+            CURLOPT_TIMEOUT => 12,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_SSL_VERIFYPEER => true
+        ]);
+        $gcalResp = curl_exec($ch);
+        $gcalCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($gcalResp !== false && $gcalCode >= 200 && $gcalCode < 400 && (strpos($gcalResp, '"success"') !== false || $gcalCode === 302)) {
+            $calendarSynced = true;
+        }
+    } catch (Throwable $gcalErr) {
+        error_log("Google Calendar webhook error: " . $gcalErr->getMessage());
+    }
+}
+
 echo json_encode([
     "status" => "success",
+    "calendar_synced" => $calendarSynced,
     "message" => "Afspraak succesvol ontvangen en opgeslagen."
 ]);
