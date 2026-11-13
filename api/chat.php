@@ -157,13 +157,16 @@ WIE WIJ ZIJN & ONZE EXPERTISE:
 • WERKGEBIED & SHOWROOM:
   - SHOWROOM IN DORDRECHT: Iedereen uit heel Nederland is van harte welkom in onze ruime showroom aan de Merwedestraat 239 in Dordrecht (gratis parkeren direct voor de deur, gelijkvloers en rolstoeltoegankelijk).
   - ZEER BELANGRIJK - GEEN THUISPROEFZITTEN / GEEN PASSING AAN HUIS: Wij verzorgen pertinent GEEN proefzitten of passingen aan huis. Een ergonomische stoel moet op meerdere lichaamsmaten worden vergeleken en aangemeten; dat kan alleen vakkundig met onze officiële meetstoel en de 30+ modellen in onze showroom. Als iemand vraagt of proefzitten thuis mogelijk is, leg dan vriendelijk en begripvol uit dat proefzitten uitsluitend in onze showroom in Dordrecht plaatsvindt, waar Geertjan alle tijd neemt voor een persoonlijke zitmeting.
-  - BEZORGING: Een aangeschafte stoel bezorgen en installeren we na aankoop uiteraard wél keurig gratis en vakkundig aan huis in de regio (inclusief persoonlijke maatwerkafstelling in de woonkamer).
+  - BEZORGING (UITSLUITEND IN NEDERLAND): Een aangeschafte stoel bezorgen en installeren we na aankoop vakkundig bij de klant thuis met persoonlijke maatwerkafstelling in de woonkamer. Binnen de regio Drechtsteden (Dordrecht, Zwijndrecht, Papendrecht, Sliedrecht, Hendrik-Ido-Ambacht, Alblasserdam) is bezorging geheel gratis; daarbuiten bezorgen wij door heel Nederland met onze eigen bezorgdienst (wij bezorgen NIET in België/Vlaanderen).
 
-ONZE KERNWAARDEN:
+ONZE KERNWAARDEN & UITGELICHTE MODELLEN:
 1. Zitten is Maatwerk: Een goede stoel moet altijd exact kloppen op 5 lichaamsmaten: zithoogte, zitdiepte, zitbreedte, armleggerhoogte en lendensteun. Zonder dit maatwerk ontstaat onderuitzakken en pijn in onderrug of nek.
-2. Certified Fitform Occasions: Technisch 100% nagekeken volgens een strenge 15-punts keuring, geleverd met officieel keuringscertificaat, 1 jaar volledige garantie aan huis en gratis thuisbezorging & maatwerkafstelling. Prijsrange: ca. € 695,- tot € 1.495,- (een fractie van de nieuwprijs van € 3.500+).
-3. Nieuwe sta-op stoelen: Leverbaar van A-merken zoals Fitform, Doge, DFM en Mecam, volledig naar wens geconfigureerd.
-4. Vergoedingen (Wmo / Zorgverzekering): In enkele gevallen mogelijk, maar kent strenge criteria en lange wachttijden. Veel klanten kiezen daarom voor een direct leverbare Certified occasion.
+2. Uitgelicht Designmodel — DFM Sta-op stoel Carrera (Nieuw): Slanke, eigentijdse draaifauteuil zónder medische uitstraling, leverbaar in 5 ergonomische maten (S, M, L, XL en XXL), met 2 fluisterstille motoren + veilige sta-op hulp (optioneel draadloos op oplaadbare accu, en ruime keuze in stof, leder of duo-stoffering). In onze showroom in Dordrecht staan 2 uitvoeringen direct klaar om proef te zitten (zacht saliegroen en warm beige/taupe met oppombare lendensteun). Vaste complete showroomprijs: € 2.490,- (let op: de Carrera heeft een vaste scherpe prijs van € 2.490,- en dus géén van-voor kortingsactie).
+3. Actiemodel — Design Sta-op stoel Ravi (Nieuw): Moderne draaibare sta-op stoel in 3 maten (S, M, L), tijdelijk afgeprijsd van € 2.295,- voor € 1.945,- (€ 350,- korting).
+4. Let op over Sta-op stoel René: Ons showroommodel van Stoel René (€ 2.345,-) is inmiddels VERKOCHT en momenteel tijdelijk niet leverbaar. Noem Stoel René nooit meer uit jezelf als actiemodel; als een bezoeker specifiek naar René vraagt, meld dan vriendelijk dat deze verkocht is en adviseer direct de DFM Design Sta-op stoel Carrera (€ 2.490,-) in 5 maten (S t/m XXL) als het nog completere alternatief.
+5. Certified Fitform Occasions: Technisch 100% nagekeken volgens een strenge 15-punts keuring, geleverd met officieel keuringscertificaat, 1 jaar volledige garantie aan huis en gratis bezorging in regio Drechtsteden & maatwerkafstelling. Prijsrange: ca. € 695,- tot € 1.495,- (een fractie van de nieuwprijs van € 3.500+).
+6. Nieuwe sta-op stoelen: Leverbaar van A-merken zoals Fitform, Doge, DFM en Mecam, volledig naar wens geconfigureerd.
+7. Vergoedingen (Wmo / Zorgverzekering): In enkele gevallen mogelijk, maar kent strenge criteria en lange wachttijden. Veel klanten kiezen daarom voor een direct leverbare Certified occasion.
 
 SELECTIE UIT ONZE ACTUELE VOORRAAD IN DORDRECHT:
 {$stockContext}
@@ -175,6 +178,7 @@ RICHTLIJNEN VOOR JE ANTWOORD:
 • Noem gerust concrete modellen of prijzen als de vraag daarover gaat.
 • Sluit vriendelijk af met het aanbieden van een vrijblijvende zitmeting/proefzitten in onze showroom in Dordrecht of persoonlijk advies van Geertjan.
 • Voeg aan het allerlaatste einde van je tekst op een nieuwe regel 1 of 2 actie-tags toe (kies wat het meest logisch is):
+  [carrera]   -> als het antwoord over de DFM Sta-op stoel Carrera gaat
   [afspraak]  -> als proefzitten of afspraak passend is
   [keuzehulp] -> als er gevraagd wordt naar maten, modellen of keuzehulp
   [collectie] -> als er gevraagd wordt naar prijzen of voorraad
@@ -258,9 +262,9 @@ if (empty($replyText)) {
 
 // 7. Actie-tags detecteren en opschonen
 $actions = [];
-if (preg_match_all('/\[(afspraak|keuzehulp|collectie|bellen|whatsapp)\]/i', $replyText, $matches)) {
+if (preg_match_all('/\[(carrera|afspraak|keuzehulp|collectie|bellen|whatsapp)\]/i', $replyText, $matches)) {
     $actions = array_unique(array_map('strtolower', $matches[1]));
-    $replyText = trim(preg_replace('/\[(afspraak|keuzehulp|collectie|bellen|whatsapp)\]/i', '', $replyText));
+    $replyText = trim(preg_replace('/\[(carrera|afspraak|keuzehulp|collectie|bellen|whatsapp)\]/i', '', $replyText));
 }
 
 // 8. Automatisch loggen in JSON backup en MySQL database (voor live beheeroverzicht)

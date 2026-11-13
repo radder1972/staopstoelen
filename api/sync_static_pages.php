@@ -364,13 +364,39 @@ function sync_static_chair_pages($chairs = null) {
         </div>';
         }
 
+        $route_alt_box_html = '';
+        if (!$is_sold && strpos($id_lower, 'carrera') === false) {
+            if (strpos($brand_lower, 'fitform') !== false && !$is_occasion) {
+                $route_alt_box_html = '
+        <div style="margin-top: -4px; margin-bottom: 18px; width: 100%; background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,0.03); box-sizing: border-box;">
+          <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-forest); margin-bottom: 3px;">Bespaartip &bull; Certified Fitform Route</div>
+          <a href="../staopstoelen.html#occasions" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--color-forest-dark); font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+            <span>Dit Fitform model ook als gekeurde occasion bekijken? (v.a. &euro; 695,-)</span>
+            <span style="color: var(--color-terracotta); font-weight: 800; white-space: nowrap;">Bekijk &rarr;</span>
+          </a>
+        </div>';
+            } elseif (strpos($brand_lower, 'fitform') === false && !$is_occasion) {
+                $route_alt_box_html = '
+        <div style="margin-top: -4px; margin-bottom: 18px; width: 100%; background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,0.03); box-sizing: border-box;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 3px;">
+            <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-terracotta);">Showroomtip &bull; 5 Maten (S t/m XXL)</span>
+            <span style="font-size: 0.74rem; font-weight: 700; color: var(--color-forest);">Compleet &euro; 2.490,-</span>
+          </div>
+          <a href="sta-op-stoel-carrera.html" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--color-forest-dark); font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+            <span>Bekijk ook ons uitgelichte designmodel <strong>Sta-op stoel Carrera</strong></span>
+            <span style="color: var(--color-terracotta); font-weight: 800; white-space: nowrap;">Bekijk model &rarr;</span>
+          </a>
+        </div>';
+            }
+        }
+
         $carrera_video_card_html = '';
         if (strpos($id_lower, 'carrera') !== false) {
             $carrera_video_card_html = '
         <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 22px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
           <div style="position: relative; width: 175px; min-width: 155px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15); flex-shrink: 0;">
-            <video controls playsinline preload="metadata" poster="../assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.468" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-              <source src="../assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.468" type="video/mp4">
+            <video controls playsinline preload="metadata" poster="../assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.469" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <source src="../assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.469" type="video/mp4">
               Uw browser ondersteunt geen video.
             </video>
           </div>
@@ -419,7 +445,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.468">
+  <link rel="stylesheet" href="../style.css?v=10.469">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -723,6 +749,8 @@ function sync_static_chair_pages($chairs = null) {
 
         ' . $price_box_html . '
 
+        ' . $route_alt_box_html . '
+
         <!-- Action CTA Buttons -->
         ' . $html_content_cta . '
                                   <!-- Subtiele Geertjan Micro-Conversie (Tekst rechts, grotere avatar, niet onderstreept) -->
@@ -890,7 +918,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.468
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.469
       </div>
     </div>
   </footer>
@@ -933,7 +961,7 @@ function sync_static_chair_pages($chairs = null) {
     });
   </script>
 
-  <script src="../app.js?v=10.468" defer></script>
+  <script src="../app.js?v=10.469" defer></script>
 </body>
 </html>';
 

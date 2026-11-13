@@ -1077,7 +1077,7 @@ function renderWizardResults() {
       const badgeLower = (chair.badge || "").toLowerCase();
       
       // 1. Check height suitability
-      if (brandLower.includes("fitform") || brandLower.includes("doge") || descLower.includes("vario") || descLower.includes("modulair") || descLower.includes("instelbaar") || descLower.includes("s/m/l") || descLower.includes("maatvoeringen")) {
+      if (brandLower.includes("fitform") || brandLower.includes("doge") || descLower.includes("vario") || descLower.includes("modulair") || descLower.includes("instelbaar") || descLower.includes("s/m/l") || descLower.includes("s t/m xxl") || descLower.includes("5 maten") || descLower.includes("vijf maten") || descLower.includes("maatvoeringen")) {
         score += 5; // fully customizable sizing fits everyone
       } else {
         const hasSmall = descLower.includes("maat s") || descLower.includes("small") || nameLower.includes(" s ") || nameLower.endsWith(" s");
@@ -1129,10 +1129,10 @@ function renderWizardResults() {
       if (wirelessWanted && (descLower.includes("accu") || descLower.includes("batterij") || descLower.includes("draadloos") || isManual)) {
         score += 3;
       }
-      // René-route: geef actiemodel Sta-op stoel René voorrang bij design/accu of algemene zoekopdrachten zonder zware medische Fitform-indicatie
-      const isRene = (chair.id || "").toLowerCase().includes("rene") || nameLower.includes("rené") || nameLower.includes("rene");
+      // Carrera-route: geef uitgelicht designmodel DFM Sta-op stoel Carrera voorrang bij design/accu of algemene zoekopdrachten zonder zware medische Fitform-indicatie
+      const isCarrera = (chair.id || "").toLowerCase().includes("carrera") || nameLower.includes("carrera");
       const hasHeavyMedical = complaints.includes("edema") || complaints.includes("decubitus");
-      if (isRene && !hasHeavyMedical) {
+      if (isCarrera && !hasHeavyMedical) {
         score += (modernWanted || wirelessWanted) ? 5 : 3;
       }
       
@@ -3047,9 +3047,9 @@ function initFloatingMenu() {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           <span>Certified Fitform Prijzen</span>
         </button>` : `
-        <button type="button" class="da-chip" data-topic="rene">
+        <button type="button" class="da-chip" data-topic="carrera">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span>Actiemodel René (&euro; 2.345,-)</span>
+          <span>Designmodel Carrera (&euro; 2.490,-)</span>
         </button>`}
         <button type="button" class="da-chip" data-topic="maat">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b8f24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-4 3h2m-5-9a5 5 0 1 1 8 0c0 2-2 3-2 4H10c0-1-2-2-2-4z"/></svg>
@@ -3324,7 +3324,7 @@ function initFloatingMenu() {
     }
   });
 
-  // Antwoord-kennisbank van de Digitale Zit-Assistent (scheidt Fitform-route en René-route)
+  // Antwoord-kennisbank van de Digitale Zit-Assistent (scheidt Fitform-route en Carrera-route)
   function getAssistantResponse(topicOrQuery) {
     const q = String(topicOrQuery || "").toLowerCase();
     const pathLower = (window.location.pathname || "").toLowerCase();
@@ -3341,13 +3341,21 @@ function initFloatingMenu() {
       q.includes("580") ||
       q.includes("612");
 
+    if (q.includes("ravi")) {
+      return {
+        question: topicOrQuery,
+        html: `Ons actuele actiemodel is de <strong>Design Sta-op stoel Ravi</strong>:<br>• Moderne, draaibare sta-op stoel met slanke vormgeving in 3 maten (S, M en L).<br>• Tijdelijk van &euro; 2.295,- voor <strong>&euro; 1.945,-</strong> (<strong>&euro; 350,- korting</strong>).<br>• Zoekt u 5 maatvoeringen (S t/m XXL)? Bekijk dan ook ons uitgelichte <strong>DFM Designmodel Carrera (&euro; 2.490,-)</strong>.`,
+        ctaHtml: `<div class="da-inline-ctas"><a href="${base}stoelen/sta-op-stoel-ravi.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'ravi_page'})">Bekijk Actiemodel Ravi &rarr;</a><a href="${base}stoelen/sta-op-stoel-carrera.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'carrera_page'})">Bekijk Designmodel Carrera</a></div>`
+      };
+    }
+
     if (q.includes("carrera") || q.includes("actie") || q.includes("aanbieding") || q.includes("korting") || q.includes("draaistoel") || q.includes("accu") || q.includes("rene") || q.includes("rené")) {
       const reneSoldNote = (q.includes("rene") || q.includes("rené"))
-        ? `<em>Let op: actiemodel Stoel René is uit de showroom verkocht en momenteel niet leverbaar.</em> Ons actuele uitgelichte designmodel is de `
+        ? `<em>Let op: ons showroommodel van Stoel René is verkocht en momenteel niet leverbaar.</em> Ons actuele uitgelichte designmodel is de `
         : `Ons uitgelichte designmodel in de showroom is de `;
       return {
         question: topicOrQuery,
-        html: `${reneSoldNote}<strong>DFM Design Sta-op stoel Carrera</strong>:<br>• Slanke, stijlvolle draaifauteuil z&oacute;nder medische uitstraling (optioneel oplaadbaar op accu).<br>• Verkrijgbaar in <strong>5 ergonomische maten (S t/m XXL)</strong> en talloze kleuren stof, leer of duo-stoffering.<br>• Inclusief 2 motoren voor onafhankelijk verstelbare rug, voetensteun en sta-op hulp.<br>• <strong>Vaste complete showroomprijs:</strong> <strong>&euro; 2.490,-</strong> (incl. persoonlijk zitadvies &amp; bezorging).`,
+        html: `${reneSoldNote}<strong>DFM Design Sta-op stoel Carrera</strong>:<br>• Slanke, stijlvolle draaifauteuil z&oacute;nder medische uitstraling (optioneel oplaadbaar op accu).<br>• Verkrijgbaar in <strong>5 ergonomische maten (S t/m XXL)</strong>; in onze showroom in Dordrecht staan 2 uitvoeringen (saliegroen &amp; beige/taupe) direct klaar om proef te zitten.<br>• Inclusief 2 motoren voor onafhankelijk verstelbare rug, voetensteun en sta-op hulp.<br>• <strong>Vaste complete showroomprijs:</strong> <strong>&euro; 2.490,-</strong> (incl. persoonlijk zitadvies &amp; gratis bezorging in regio Drechtsteden).`,
         ctaHtml: `<div class="da-inline-ctas"><a href="${base}stoelen/sta-op-stoel-carrera.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'carrera_page'})">Bekijk Stoel Carrera &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'video_carrera_geertjan'});if(window.openCertifiedVideoModal)openCertifiedVideoModal('carrera-geertjan')">Bekijk Video Geertjan</button></div>`
       };
     }
@@ -3446,6 +3454,11 @@ function initFloatingMenu() {
         href: `${base}staopstoelen.html`,
         primary: true
       },
+      carrera: {
+        label: "Bekijk Stoel Carrera (&euro; 2.490,-) &rarr;",
+        href: `${base}stoelen/sta-op-stoel-carrera.html`,
+        primary: true
+      },
       bellen: {
         label: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Bel 078 - 631 4858`,
         href: "tel:+31786314858",
@@ -3475,6 +3488,7 @@ function initFloatingMenu() {
 
   async function appendExchange(topicOrQuery) {
     const chipLabels = {
+      carrera: "Vertel mij meer over designmodel Sta-op stoel Carrera (€ 2.490,-)",
       maat: "Welke stoel past bij mijn lengte & klachten?",
       prijs: "Wat kost een (Certified Fitform) stoel?",
       proefzitten: "Hoe werkt proefzitten in de showroom?",
@@ -3826,8 +3840,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.468" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.468" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.469" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.469" 
             controls 
             playsinline 
             preload="auto"
@@ -3891,8 +3905,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.468`;
-      player.poster = `${pfx}assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.468`;
+      player.src = `${pfx}assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.469`;
+      player.poster = `${pfx}assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.469`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3904,8 +3918,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.468`;
-      player.poster = `${pfx}assets/video/geertjan_rene_aanrader_poster.jpg?v=10.468`;
+      player.src = `${pfx}assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.469`;
+      player.poster = `${pfx}assets/video/geertjan_rene_aanrader_poster.jpg?v=10.469`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3917,8 +3931,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.468`;
-      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.468`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.469`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.469`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3930,7 +3944,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.468`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.469`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.438`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3943,8 +3957,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.468`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.468`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.469`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.469`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3956,8 +3970,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.468`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.468`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.469`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.469`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3969,7 +3983,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.468`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.469`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3982,8 +3996,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.468`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.468`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.469`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.469`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3996,7 +4010,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.468`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.469`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -4005,8 +4019,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.468";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.468";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.469";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.469";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -4019,7 +4033,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.468`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.469`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -4028,8 +4042,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.468";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.468";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.469";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.469";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));
