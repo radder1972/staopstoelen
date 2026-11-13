@@ -369,8 +369,8 @@ function sync_static_chair_pages($chairs = null) {
             $carrera_video_card_html = '
         <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 22px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
           <div style="position: relative; width: 175px; min-width: 155px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15); flex-shrink: 0;">
-            <video controls playsinline preload="metadata" poster="../assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.466" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-              <source src="../assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.466" type="video/mp4">
+            <video controls playsinline preload="metadata" poster="../assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.467" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <source src="../assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.467" type="video/mp4">
               Uw browser ondersteunt geen video.
             </video>
           </div>
@@ -419,7 +419,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.466">
+  <link rel="stylesheet" href="../style.css?v=10.467">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -890,7 +890,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.466
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.467
       </div>
     </div>
   </footer>
@@ -933,7 +933,7 @@ function sync_static_chair_pages($chairs = null) {
     });
   </script>
 
-  <script src="../app.js?v=10.466" defer></script>
+  <script src="../app.js?v=10.467" defer></script>
 </body>
 </html>';
 

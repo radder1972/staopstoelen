@@ -405,13 +405,16 @@
       "badgeType": "new",
       "image": "assets/Sta-op_stoel_Carrera_1.jpg",
       "imageUp": "assets/Sta-op_stoel_Carrera_3.jpg",
-      "imageLie": "assets/Sta-op_stoel_Carrera_2.jpg",
-      "ambientImage": "assets/Sta-op_stoel_Carrera_4.jpg",
+      "imageLie": "assets/Sta-op_stoel_Carrera_5.jpg",
+      "ambientImage": "assets/stoelen/chair_carrera_cozy.jpg",
       "gallery": [
         "assets/Sta-op_stoel_Carrera_1.jpg",
-        "assets/Sta-op_stoel_Carrera_4.jpg",
         "assets/Sta-op_stoel_Carrera_2.jpg",
-        "assets/Sta-op_stoel_Carrera_3.jpg"
+        "assets/Sta-op_stoel_Carrera_4.jpg",
+        "assets/Sta-op_stoel_Carrera_5.jpg",
+        "assets/Sta-op_stoel_Carrera_3.jpg",
+        "assets/stoelen/chair_carrera_cozy.jpg",
+        "assets/Sta-op_stoel_Carrera_Showroom.jpg"
       ],
       "features": [
         "Leverbaar op maat in maar liefst 5 groottes: Small, Medium, Large, XL én XXL",

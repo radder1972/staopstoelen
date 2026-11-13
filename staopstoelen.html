@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@700&family=Kalam:wght@700&display=swap">
-  <link rel="stylesheet" href="style.css?v=10.466">
+  <link rel="stylesheet" href="style.css?v=10.467">
   <style>
 
     @media (max-width: 991px) {
@@ -1019,7 +1019,7 @@
             <!-- Links: Heldere, onbedekte woonkamerfoto op volle hoogte -->
             <div class="rene-hero-media">
               <a href="stoelen/sta-op-stoel-carrera.html" class="rene-hero-img-link" aria-label="Bekijk DFM Design Sta-op stoel Carrera">
-                <img id="catalogRenePreviewImg" src="assets/Sta-op_stoel_Carrera_4.jpg" alt="DFM Design Sta-op stoel Carrera in Dordrecht showroom">
+                <img id="catalogRenePreviewImg" src="assets/stoelen/chair_carrera_cozy.jpg" alt="DFM Design Sta-op stoel Carrera in sfeervolle woonkamer">
               </a>
               <span class="rene-hero-badge">Uitgelicht Designmodel</span>
               <button type="button" class="rene-hero-video-chip" onclick="openCertifiedVideoModal('carrera-geertjan')" title="Geertjan laat DFM Sta-op stoel Carrera zien in Dordrecht (16 sec)">
@@ -1096,7 +1096,7 @@
             <div class="catalog-callout-card">
               <div class="catalog-callout-header">
                 <div onclick="openCertifiedVideoModal('revisie')" class="catalog-callout-thumb" title="Klik om de werkplaatsvideo te bekijken" role="button" tabindex="0">
-                  <img src="assets/video/revisie_poster.jpg?v=10.466" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
+                  <img src="assets/video/revisie_poster.jpg?v=10.467" alt="Revisie Werkplaatsvideo" class="catalog-callout-thumb-img">
                   <div class="catalog-callout-play-overlay">
                     <span class="catalog-callout-play-icon">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"></polygon></svg>
@@ -1382,7 +1382,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.466
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.467
       </div>
     </div>
   </footer>
@@ -1679,7 +1679,7 @@
   <!-- Mobile Drawer Backdrop -->
   <div class="mobile-drawer-backdrop" id="filterDrawerBackdrop" onclick="closeMobileFilters()"></div>
 
-  <script src="app.js?v=10.466"></script>
+  <script src="app.js?v=10.467"></script>
   <script>
     // Scraped cheap lift chairs dataset with ambient images in home environment settings
     let storedStaopData = null; try { storedStaopData = JSON.parse(localStorage.getItem("admin_staopstoelen")); } catch(e){}
@@ -1688,14 +1688,17 @@
     "id": "sta-op-stoel-carrera",
     "name": "Sta-op Stoel CARRERA",
     "image": "assets/Sta-op_stoel_Carrera_1.jpg",
-    "imageUp": "assets/Sta-op_stoel_Carrera_2.jpg",
-    "imageLie": "assets/Sta-op_stoel_Carrera_3.jpg",
+    "imageUp": "assets/Sta-op_stoel_Carrera_3.jpg",
+    "imageLie": "assets/Sta-op_stoel_Carrera_5.jpg",
     "ambientImage": "assets/stoelen/chair_carrera_cozy.jpg",
     "gallery": [
       "assets/Sta-op_stoel_Carrera_1.jpg",
       "assets/Sta-op_stoel_Carrera_2.jpg",
+      "assets/Sta-op_stoel_Carrera_4.jpg",
+      "assets/Sta-op_stoel_Carrera_5.jpg",
       "assets/Sta-op_stoel_Carrera_3.jpg",
-      "assets/Sta-op_stoel_Carrera_4.jpg"
+      "assets/stoelen/chair_carrera_cozy.jpg",
+      "assets/Sta-op_stoel_Carrera_Showroom.jpg"
     ],
     "price": 2490,
     "old_price": null,
@@ -3619,9 +3622,9 @@
           if (dbData && dbData.staopstoelen) {
             dbData.staopstoelen.forEach(c => {
               if (c.id === "sta-op-stoel-rene") {
-                c.image = "assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.466";
+                c.image = "assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.467";
                 if (Array.isArray(c.gallery)) {
-                  c.gallery = ["assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.466", ...c.gallery.filter(g => !g.includes("Sta-op-stoel-RENE.jpg"))];
+                  c.gallery = ["assets/stoelen/Sta-op-stoel-RENE.jpg?v=10.467", ...c.gallery.filter(g => !g.includes("Sta-op-stoel-RENE.jpg"))];
                 }
               }
             });
