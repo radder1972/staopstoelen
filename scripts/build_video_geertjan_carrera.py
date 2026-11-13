@@ -6,9 +6,20 @@ ElevenLabs-stem (al gesynchroniseerd in de inputvideo).
 """
 import argparse
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
+
+
+def probe_duration(path: Path) -> float:
+    """Leest exacte videoduur via ffmpeg -i (ffprobe is niet geïnstalleerd)."""
+    res = subprocess.run([FFMPEG, "-i", str(path)], capture_output=True, text=True)
+    m = re.search(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)", res.stderr)
+    if not m:
+        raise RuntimeError(f"Kon duur niet bepalen voor {path}")
+    h, m_, s = int(m.group(1)), int(m.group(2)), float(m.group(3))
+    return h * 3600 + m_ * 60 + s
 
 ROOT = Path("/Users/matthiasradder/AntiGravity Projecten/Staopstoelen.nl")
 FFMPEG = "/Users/matthiasradder/.local/bin/ffmpeg"
@@ -156,6 +167,8 @@ def main() -> None:
     parser.add_argument("--web", required=True, help="Web 900x1600 compressed MP4")
     parser.add_argument("--poster", required=True, help="Poster JPG")
     parser.add_argument("--desktop", required=True, help="Kopie voor Desktop Google Ads")
+    parser.add_argument("--t1", type=float, default=2.35, help="Wisselmoment naar overlay-kaart 2 (sec)")
+    parser.add_argument("--t2", type=float, default=6.81, help="Wisselmoment naar overlay-kaart 3 (sec)")
     args = parser.parse_args()
 
     SCRATCH_BUILD.mkdir(parents=True, exist_ok=True)
@@ -190,8 +203,8 @@ def main() -> None:
     poster_out.parent.mkdir(parents=True, exist_ok=True)
     desktop_out.parent.mkdir(parents=True, exist_ok=True)
 
-    t1 = 2.15
-    t2 = 6.55
+    t1 = args.t1
+    t2 = args.t2
     end_dur = 4.4
 
     # 1. Overlay PNG cards on synced main clip
@@ -237,7 +250,7 @@ def main() -> None:
     ])
 
     # 4. Mix subtle background music under clean speech
-    total_dur = 11.73 + end_dur
+    total_dur = probe_duration(body_out) + end_dur
     bgm_filter = (
         f"[0:a]aresample=48000,pan=stereo|c0=c0|c1=c0,volume=1.18[voice];"
         f"[1:a]aresample=48000,atrim=0:{total_dur:.2f},asetpts=PTS-STARTPTS,"
