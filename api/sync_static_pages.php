@@ -355,11 +355,11 @@ function sync_static_chair_pages($chairs = null) {
           <div style="font-weight: 800; font-size: 1.02rem; color: #122b07; margin-bottom: 6px;">' . ($is_rene_chair ? 'Ons showroommodel van de René is verkocht' : 'Dit showroommodel is inmiddels verkocht') . '</div>
           <p style="margin: 0 0 12px 0; font-size: 0.9rem; color: #374151; line-height: 1.5;">
             ' . ($is_rene_chair
-                ? 'Dit model is uit onze showroom verkocht en momenteel tijdelijk niet leverbaar. Zoekt u een vergelijkbare slanke DFM design draaifauteuil? Bekijk onze <strong>Design Sta-op stoel Carrera (€ 2.500,-)</strong> in 5 maten (S t/m XXL).'
-                : 'Dit specifieke exemplaar is verkocht. Bekijk ons actuele uitgelichte DFM designmodel <strong>Sta-op stoel Carrera (€ 2.500,-)</strong> of neem contact op met Geertjan voor de nieuwste voorraad.') . '
+                ? 'Dit model is uit onze showroom verkocht en momenteel tijdelijk niet leverbaar. Zoekt u een vergelijkbare slanke DFM design draaifauteuil? Bekijk onze <strong>Design Sta-op stoel Carrera (€ 2.490,-)</strong> in 5 maten (S t/m XXL).'
+                : 'Dit specifieke exemplaar is verkocht. Bekijk ons actuele uitgelichte DFM designmodel <strong>Sta-op stoel Carrera (€ 2.490,-)</strong> of neem contact op met Geertjan voor de nieuwste voorraad.') . '
           </p>
           <a href="sta-op-stoel-carrera.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9rem; font-weight: 700; text-decoration: none; border-radius: 999px;">
-            Bekijk Stoel Carrera (€ 2.500,-) &rarr;
+            Bekijk Stoel Carrera (€ 2.490,-) &rarr;
           </a>
         </div>';
         }
@@ -369,15 +369,15 @@ function sync_static_chair_pages($chairs = null) {
             $carrera_video_card_html = '
         <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 22px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
           <div style="position: relative; width: 175px; min-width: 155px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15); flex-shrink: 0;">
-            <video controls playsinline preload="metadata" poster="../assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.465" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-              <source src="../assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.465" type="video/mp4">
+            <video controls playsinline preload="metadata" poster="../assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.466" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <source src="../assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.466" type="video/mp4">
               Uw browser ondersteunt geen video.
             </video>
           </div>
           <div style="flex: 1; min-width: 210px;">
             <span style="display: inline-block; background: #eaf4e5; color: #256616; font-weight: 800; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; margin-bottom: 8px;">Showroom Video &bull; 15 sec</span>
             <h3 style="font-size: 1.08rem; color: var(--color-forest-dark); margin: 0 0 8px 0; font-family: var(--font-heading);">Geertjan vertelt over de Carrera</h3>
-            <p style="font-size: 0.88rem; color: #4b5563; line-height: 1.55; margin: 0;">Bekijk hoe onze slanke draaifauteuil in vijf maten (S t/m XXL) comfort en design combineert zónder medische uitstraling — compleet voor <strong>&euro; 2.500,-</strong>.</p>
+            <p style="font-size: 0.88rem; color: #4b5563; line-height: 1.55; margin: 0;">Bekijk hoe onze slanke draaifauteuil in vijf maten (S t/m XXL) comfort en design combineert zónder medische uitstraling — compleet voor <strong>&euro; 2.490,-</strong>.</p>
           </div>
         </div>';
         }
@@ -419,7 +419,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.465">
+  <link rel="stylesheet" href="../style.css?v=10.466">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -890,7 +890,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.465
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.466
       </div>
     </div>
   </footer>
@@ -933,7 +933,7 @@ function sync_static_chair_pages($chairs = null) {
     });
   </script>
 
-  <script src="../app.js?v=10.465" defer></script>
+  <script src="../app.js?v=10.466" defer></script>
 </body>
 </html>';
 

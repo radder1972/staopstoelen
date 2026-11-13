@@ -185,7 +185,7 @@ def main() -> None:
         ov2,
     )
     render_overlay_png(
-        '<div class="price-pill">Compleet op maat &bull; &euro; 2.500,-</div>'
+        '<div class="price-pill">Compleet op maat &bull; &euro; 2.490,-</div>'
         '<div class="sub-card">Kom hem vrijblijvend<br><span class="accent">proefzitten in Dordrecht!</span></div>',
         ov3,
     )

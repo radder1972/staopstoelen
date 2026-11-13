@@ -3347,7 +3347,7 @@ function initFloatingMenu() {
         : `Ons uitgelichte designmodel in de showroom is de `;
       return {
         question: topicOrQuery,
-        html: `${reneSoldNote}<strong>DFM Design Sta-op stoel Carrera</strong>:<br>• Slanke, stijlvolle draaifauteuil z&oacute;nder medische uitstraling (optioneel oplaadbaar op accu).<br>• Verkrijgbaar in <strong>5 ergonomische maten (S t/m XXL)</strong> en talloze kleuren stof, leer of duo-stoffering.<br>• Inclusief 2 motoren voor onafhankelijk verstelbare rug, voetensteun en sta-op hulp.<br>• <strong>Vaste complete showroomprijs:</strong> <strong>&euro; 2.500,-</strong> (incl. persoonlijk zitadvies &amp; bezorging).`,
+        html: `${reneSoldNote}<strong>DFM Design Sta-op stoel Carrera</strong>:<br>• Slanke, stijlvolle draaifauteuil z&oacute;nder medische uitstraling (optioneel oplaadbaar op accu).<br>• Verkrijgbaar in <strong>5 ergonomische maten (S t/m XXL)</strong> en talloze kleuren stof, leer of duo-stoffering.<br>• Inclusief 2 motoren voor onafhankelijk verstelbare rug, voetensteun en sta-op hulp.<br>• <strong>Vaste complete showroomprijs:</strong> <strong>&euro; 2.490,-</strong> (incl. persoonlijk zitadvies &amp; bezorging).`,
         ctaHtml: `<div class="da-inline-ctas"><a href="${base}stoelen/sta-op-stoel-carrera.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'carrera_page'})">Bekijk Stoel Carrera &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'video_carrera_geertjan'});if(window.openCertifiedVideoModal)openCertifiedVideoModal('carrera-geertjan')">Bekijk Video Geertjan</button></div>`
       };
     }
@@ -3369,10 +3369,10 @@ function initFloatingMenu() {
         question: q === "prijs" ? (hasFitformScent ? "Wat kost een Certified Fitform stoel?" : "Wat kost een sta-op stoel?") : topicOrQuery,
         html: hasFitformScent
           ? `Voor <strong>Fitform</strong> heeft u bij ons keuze uit twee routes:<br>• <strong>Certified Fitform (Jong gebruikt &amp; gereviseerd):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong> (volledig 15-punts gekeurd incl. garantie).<br>• <strong>Nieuw Fitform maatwerk:</strong> v.a. &euro; 2.545,- volledig op maat samengesteld.`
-          : `Bij ons heeft u een heldere keuze:<br>• <strong>DFM Design Sta-op stoel Carrera (Nieuw op maat in 5 maten):</strong> vaste complete showroomprijs <strong>&euro; 2.500,-</strong>.<br>• <strong>Certified Fitform (Gereviseerd op maat):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong>.`,
+          : `Bij ons heeft u een heldere keuze:<br>• <strong>DFM Design Sta-op stoel Carrera (Nieuw op maat in 5 maten):</strong> vaste complete showroomprijs <strong>&euro; 2.490,-</strong>.<br>• <strong>Certified Fitform (Gereviseerd op maat):</strong> v.a. <strong>&euro; 695,- tot &euro; 1.495,-</strong>.`,
         ctaHtml: hasFitformScent
           ? `<div class="da-inline-ctas"><a href="${base}staopstoelen.html#occasions" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'collectie'})">Bekijk Fitform Collectie &rarr;</a><button type="button" class="da-inline-btn da-inline-btn-sec" onclick="if(window.openCertifiedVideoModal)openCertifiedVideoModal('consumer')">Bekijk Fitform Video</button></div>`
-          : `<div class="da-inline-ctas"><a href="${base}stoelen/sta-op-stoel-carrera.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'carrera_prijs'})">Bekijk Designmodel Carrera (&euro; 2.500,-) &rarr;</a><a href="${base}staopstoelen.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'collectie'})">Volledige Collectie</a></div>`
+          : `<div class="da-inline-ctas"><a href="${base}stoelen/sta-op-stoel-carrera.html" class="da-inline-btn" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'carrera_prijs'})">Bekijk Designmodel Carrera (&euro; 2.490,-) &rarr;</a><a href="${base}staopstoelen.html" class="da-inline-btn da-inline-btn-sec" onclick="if(window.trackAssistantEvent)trackAssistantEvent('cta_click',{cta:'collectie'})">Volledige Collectie</a></div>`
       };
     }
 
@@ -3826,8 +3826,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
         <div class="video-lightbox-frame-wrap" id="videoLightboxFrameWrap">
           <video 
             id="videoLightboxPlayer" 
-            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.465" 
-            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.465" 
+            src="${pfx}assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.466" 
+            poster="${pfx}assets/video/video_poster_scene2.jpg?v=10.466" 
             controls 
             playsinline 
             preload="auto"
@@ -3885,14 +3885,14 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
   }
 
   if (mode === "carrera-geertjan") {
-    if (heading) heading.textContent = "Geertjan toont Stoel Carrera • € 2.500,-";
+    if (heading) heading.textContent = "Geertjan toont Stoel Carrera • € 2.490,-";
     if (iframe) {
       iframe.src = "";
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.465`;
-      player.poster = `${pfx}assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.465`;
+      player.src = `${pfx}assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.466`;
+      player.poster = `${pfx}assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.466`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3904,8 +3904,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.465`;
-      player.poster = `${pfx}assets/video/geertjan_rene_aanrader_poster.jpg?v=10.465`;
+      player.src = `${pfx}assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.466`;
+      player.poster = `${pfx}assets/video/geertjan_rene_aanrader_poster.jpg?v=10.466`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3917,8 +3917,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.465`;
-      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.465`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_showcase_alle_kleuren_standen.mp4?v=10.466`;
+      player.poster = `${pfx}assets/stoelen/rene_showcase_cognac_ronde_rvs_voet.jpg?v=10.466`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3930,7 +3930,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.465`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_showcase_alle_kleuren_standen.mp4?v=10.466`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.438`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3943,8 +3943,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.465`;
-      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.465`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_man_aanbieding_web.mp4?v=10.466`;
+      player.poster = `${pfx}assets/rene_man_video_poster.jpg?v=10.466`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3956,8 +3956,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.465`;
-      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.465`;
+      player.src = `${pfx}assets/video/staopstoelen_rene_aanbieding_web.mp4?v=10.466`;
+      player.poster = `${pfx}assets/rene_video_poster.jpg?v=10.466`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3969,7 +3969,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.465`;
+      player.src = `${pfx}assets/video/staopstoelen_ravi_aanbieding_staand.mp4?v=10.466`;
       player.poster = `${pfx}assets/chair_ravi_cozy.png?v=10.419`;
       player.style.display = "block";
       player.currentTime = 0;
@@ -3982,8 +3982,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.465`;
-      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.465`;
+      player.src = `${pfx}assets/video/zitmeting_proefzitten_dordrecht.mp4?v=10.466`;
+      player.poster = `${pfx}assets/video/zitmeting_poster.jpg?v=10.466`;
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -3996,7 +3996,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.465`;
+      iframe.src = `certified-fitform-video.html?mode=afspraak&embed=1&autoplay=1&v=10.466`;
     }
   } else if (mode === "revisie" || mode === "inspectie") {
     if (heading) heading.textContent = "Het Volledige Revisieproces • Certified Fitform";
@@ -4005,8 +4005,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.465";
-      player.poster = "assets/video/revisie_poster.jpg?v=10.465";
+      player.src = "assets/video/revisie_proces_dordrecht.mp4?v=10.466";
+      player.poster = "assets/video/revisie_poster.jpg?v=10.466";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(() => {});
@@ -4019,7 +4019,7 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
     }
     if (iframe) {
       iframe.style.display = "block";
-      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.465`;
+      iframe.src = `certified-fitform-video.html?mode=consumer&embed=1&autoplay=1&v=10.466`;
     }
   } else {
     if (heading) heading.textContent = "Waarom Certified Fitform";
@@ -4028,8 +4028,8 @@ window.openCertifiedVideoModal = function(mode = "consumer") {
       iframe.style.display = "none";
     }
     if (player) {
-      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.465";
-      player.poster = "assets/video/video_poster_scene2.jpg?v=10.465";
+      player.src = "assets/video/staopstoelen_bedrijfsvideo_dordrecht.mp4?v=10.466";
+      player.poster = "assets/video/video_poster_scene2.jpg?v=10.466";
       player.style.display = "block";
       player.currentTime = 0;
       player.play().catch(err => console.log("Autoplay notice:", err));
