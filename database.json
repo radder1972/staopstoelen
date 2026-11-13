@@ -1,6 +1,60 @@
 {
   "staopstoelen": [
     {
+      "id": "sta-op-stoel-rene",
+      "name": "Sta-op stoel René",
+      "brand": "DFM",
+      "model": "René",
+      "price": 2345,
+      "old_price": 2695,
+      "condition": "nieuw",
+      "status": "verkocht",
+      "type": "staop",
+      "material": "stof / leer (ook duo)",
+      "badge": "Tijdelijk Uitverkocht",
+      "badgeType": "new",
+      "image": "assets/Sta-op-stoel-RENE-2.jpeg",
+      "imageUp": "assets/rene_dfm_staop_stand.jpg",
+      "imageLie": "assets/rene_dfm_herzwaage.jpg",
+      "ambientImage": "assets/chair_rene_groen_cozy.jpg",
+      "gallery": [
+        "assets/Sta-op-stoel-RENE-2.jpeg",
+        "assets/rene_dfm_staop_stand.jpg",
+        "assets/rene_dfm_herzwaage.jpg",
+        "assets/Sta-op-stoel-RENE-4.jpeg",
+        "assets/chair_rene_groen_cozy.jpg",
+        "assets/chair_rene_cozy.jpg",
+        "assets/rene_dfm_boucle_studio.jpg",
+        "assets/rene_dfm_leder_vooraanzicht.jpg",
+        "assets/rene_dfm_duo_stof_leer.jpg",
+        "assets/rene_dfm_hoofdsteun_detail.jpg",
+        "assets/rene_dfm_achterkant_accu.jpg",
+        "assets/Sta-op-stoel-RENE.jpg",
+        "assets/rene_dfm_onderstellen.jpg"
+      ],
+      "features": [
+        "Standaard met onzichtbaar weggewerkte accu & LED-indicator (volledig snoerloos)",
+        "Onafhankelijke motoren met volledige hartbalans-ligstand & automatische draaiblokkering",
+        "Verstelbare hoofdsteun in hoogte én hoek (handmatig of optioneel elektrisch)",
+        "Keuze uit geheel stof, geheel leder of Duo-stoffering (combinatie van 2 materialen/kleuren)"
+      ],
+      "specifications": {
+        "Merk": "DFM Design",
+        "Model": "René (Draaibaar op Accu)",
+        "Uitvoeringen": "2 of 3 motoren + volledige ligstand + sta-op hulp (op accu)",
+        "Maatwerk": "Small / Medium / Large + zithoogte op maat (-3 cm tot +3 cm)",
+        "Bekleding": "Stof, Echt Leder of Duo-stoffering (Variant A8 / A10)",
+        "Opbouw zitting": "Stalen frame, Nosagveren, Sandwich Lastilux + Visco-traagschuim & HR 30 kg/m³",
+        "Bediening": "Ingebouwd paneel (links of rechts, alu of zwart) of handbediening met magneet",
+        "Onderstel": "Stervoet (zwart of geborsteld RVS) of Schotelvoet (zwart of RVS)",
+        "Max. belastbaarheid": "120 kg",
+        "Garantie": "3 jaar garantie"
+      },
+      "is_offer": false,
+      "description": "<p><strong>Sta-op stoel René (DFM Design)</strong> is een elegante, draaibare designfauteuil met een eigentijds karakter die u helpt veilig op te staan én heerlijk ontspannen te zitten. Dankzij de standaard onzichtbaar weggewerkte <strong>accu</strong> staat de stoel volledig snoerloos vrij in uw woonkamer (met slimme LED-accu-indicator in de bedieningstoetsen en een subtiel oplaadpunt onderaan de rug).</p><p><strong>Ergonomische hartbalans-ligstand (voeten op harthoogte) &amp; veilige Sta-op hulp:</strong><br>De René is uitgerust met onafhankelijke motoren waarmee u de rugleuning en voetensteun traploos verstelt tot in de zogenaamde <em>hartbalans-ligstand</em> (waarbij uw voeten op gelijke hoogte met het hart liggen voor optimale ontspanning en bloedsomloop). Activeert u de sta-op functie, dan tilt de stoel u rustig omhoog en blokkeert de draaifunctie automatisch.</p><p><strong>Verstelbare hoofdsteun &amp; unieke Duo-stoffering (Stof / Leder):</strong><br>De hoofdsteun is standaard handmatig in hoogte én kantelhoek (microverstelling) aan te passen aan uw nek, en is optioneel ook elektrisch verstelbaar. U heeft keuze uit geheel stof, geheel echt leder óf een stijlvolle <strong>duo-combinatie (variant A8/A10)</strong> waarbij bijvoorbeeld de binnenkuip in zachte bouclé-stof en de buitenschaal in leder wordt uitgevoerd.</p>",
+      "created_at": "2026-11-06 16:46:40"
+    },
+    {
       "id": "occasion-sta-op-stoel-fitform-570-vario-draaibaar",
       "name": "Occasion Sta-op stoel Fitform 570 Vario draaibaar",
       "brand": "Fitform",
@@ -347,33 +401,36 @@
       "status": "beschikbaar",
       "type": "staop",
       "material": "stof",
-      "badge": "Modern design & Draaibaar",
+      "badge": "Uitgelicht Designmodel",
       "badgeType": "new",
       "image": "assets/Sta-op_stoel_Carrera_1.jpg",
-      "imageUp": null,
-      "imageLie": null,
+      "imageUp": "assets/Sta-op_stoel_Carrera_3.jpg",
+      "imageLie": "assets/Sta-op_stoel_Carrera_2.jpg",
       "ambientImage": "assets/Sta-op_stoel_Carrera_4.jpg",
       "gallery": [
         "assets/Sta-op_stoel_Carrera_1.jpg",
+        "assets/Sta-op_stoel_Carrera_4.jpg",
         "assets/Sta-op_stoel_Carrera_2.jpg",
         "assets/Sta-op_stoel_Carrera_3.jpg"
       ],
       "features": [
-        "100% Ergonomisch zitcomfort",
-        "Geleverd met kwaliteitsgarantie",
-        "Volledig op uw lichaamsmaat afgesteld"
+        "Leverbaar op maat in maar liefst 5 groottes: Small, Medium, Large, XL én XXL",
+        "2 onafhankelijke motoren voor traploze rug-, beensteun- en veilige sta-op verstelling",
+        "Elegante open design-armleuningen met gestoffeerde opdek en 360° stervoet",
+        "Keuze uit stof, echt leder of stijlvolle Duo-stoffering (optioneel snoerloos op accu)"
       ],
       "specifications": {
-        "Aantal motoren": "2 motoren",
-        "Bediening": "Handbediening in armleuning (4 knoppen)",
-        "Bekleding": "Stof / Leer, zeer veel mogelijkheden",
-        "Garantie": "3 jaar",
-        "Maatwerk": "5 maten, Small / Medium / Large / Extra Large / Extra Extra Large",
+        "Merk": "DFM Design",
+        "Model": "Carrera (Draaibaar)",
+        "Maatvoering": "5 maten (Small / Medium / Large / XL / XXL)",
+        "Motoren": "2 onafhankelijke motoren + sta-op hulp",
+        "Bediening": "Subtiel geïntegreerd paneel (4- of 6-knops) in zitting",
+        "Bekleding": "Stof, Echt Leder of Duo-stoffering",
+        "Opties": "Draadloze accu, oppompbare lumbaalsteun, verwarming & massage",
         "Maximaal gebruikersgewicht": "120 kg",
-        "Merk": "DFM",
-        "Opties": "Diverse opties mogelijk"
+        "Garantie": "3 jaar garantie"
       },
-      "is_offer": false,
+      "is_offer": true,
       "description": "<p><span style=\"background-color: rgb(255, 255, 255); color: rgb(78, 78, 85);\">De Carrera is een stijlvolle en comfortabele sta-op stoel die volledig naar uw wensen samen te stellen is. Of u nu kiest voor extra ondersteuning, een lumbaalsteun of luxe opties: met de Carrera geniet u iedere dag van optimaal zitcomfort, zonder zorgen.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(50, 48, 69);\">De Carrera is ontworpen voor iedereen die waarde hecht aan comfort, gemak en uitstraling in huis. Deze veelzijdige relaxfauteuil combineert een moderne vormgeving met uitgebreide instelmogelijkheden, zodat u altijd verzekerd bent van een zitoplossing die perfect bij u past.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(50, 48, 69);\">Dankzij de verschillende maten en uitvoeringen sluit de Carrera naadloos aan op uw lichaam. Of u nu wat kleiner of juist langer bent: u ervaart altijd de juiste ondersteuning in rug, nek en benen. De fauteuil is verkrijgbaar met diverse bedieningsopties, van handmatig tot volledig elektrisch, zodat u eenvoudig uw ideale zit- of ligpositie instelt.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(50, 48, 69);\">Ook luxe uitbreidingen zoals een accu (draadloos gebruik), verwarming of massagefunctie behoren tot de mogelijkheden. Zo maakt u van de Carrera niet alleen een fauteuil, maar uw persoonlijke plek om volledig tot rust te komen.</span></p><p><span style=\"background-color: rgb(255, 255, 255); color: rgb(50, 48, 69);\">Daarnaast heeft u ruime keuze in bekleding en kleuren, zodat de Carrera perfect aansluit bij uw interieur. Van warm stof tot stijlvol leder: u stelt de fauteuil volledig samen naar uw smaak.</span></p><p><br></p>",
       "created_at": "2026-10-09 13:06:13"
     },
@@ -400,7 +457,6 @@
         "assets/stoelen/Sta-op-stoel-RAVI-4-rotated.jpg",
         "assets/stoelen/Sta-op-stoel-RAVI-2-rotated.jpg",
         "assets/stoelen/Sta-op-stoel-RAVI-3-rotated.jpg",
-        "assets/stoelen/Sta-op-stoel-RAVI-6-rotated.jpg",
         "assets/stoelen/Sta-op-stoel-RAVI-7-rotated.jpg",
         "assets/stoelen/Sta-op-stoel-RAVI-8-rotated.jpg",
         "assets/chair_ravi_cozy.png"
@@ -1838,61 +1894,6 @@
       "is_offer": false,
       "description": "<p>Deze Occasion Sta-op stoel Fitform 571 Vario III Mini is er weer helemaal klaar voor, de <strong>bekleding is gewassen en het frame gereviseerd</strong>. De handige sta-op voorziening zorgt er voor dat u zelf makkelijk uit uw fauteuil kunt komen. Daardoor kunt u (langer) zelfstandig blijven wonen en hoeft minder vaak een beroep te doen op familie of professionele hulpverleners. LET OP: dit is een kleine uitvoering</p><p>&nbsp;</p><p>Bovendien wordt een Fitform 570 Vario III op uw maat ingesteld. Zithoogte, zitdiepte, armleggerhoogte en hoogte en dikte van de lendensteun worden daarvoor opgemeten. Dit is de enige manier om op een gezonde en ergonomisch verantwoorde manier te zitten.</p><p>&nbsp;&nbsp;</p><p>Fitform produceert eigentijdse en comfortabele sta-op stoelen met vele verstel- en instelmogelijkheden. Zo maken ze zitoplossingen die voldoen aan de meest actuele, wetenschappelijke inzichten op ergonomisch gebied. Fitform is een ècht Nederlands kwaliteitsproduct.</p>",
       "created_at": "2026-10-05 11:34:17"
-    },
-    {
-      "id": "sta-op-stoel-rene",
-      "name": "Sta-op stoel René",
-      "brand": "DFM",
-      "model": "René",
-      "price": 2345,
-      "old_price": 2695,
-      "condition": "nieuw",
-      "status": "beschikbaar",
-      "type": "staop",
-      "material": "stof / leer (ook duo)",
-      "badge": "Tijdelijke Actie",
-      "badgeType": "new",
-      "image": "assets/Sta-op-stoel-RENE.jpg",
-      "imageUp": "assets/rene_dfm_staop_stand.jpg",
-      "imageLie": "assets/rene_dfm_herzwaage.jpg",
-      "ambientImage": "assets/chair_rene_groen_cozy.jpg",
-      "gallery": [
-        "assets/Sta-op-stoel-RENE.jpg",
-        "assets/rene_rond_cognac_rvs_gallery.jpg",
-        "assets/rene_rond_duo_zwart_gallery.jpg",
-        "assets/rene_dfm_staop_stand.jpg",
-        "assets/rene_dfm_herzwaage.jpg",
-        "assets/Sta-op-stoel-RENE-4.jpeg",
-        "assets/chair_rene_groen_cozy.jpg",
-        "assets/chair_rene_cozy.jpg",
-        "assets/rene_dfm_boucle_studio.jpg",
-        "assets/rene_dfm_duo_stof_leer.jpg",
-        "assets/rene_dfm_onderstellen.jpg",
-        "assets/rene_dfm_hoofdsteun_detail.jpg",
-        "assets/rene_dfm_achterkant_accu.jpg",
-        "assets/Sta-op-stoel-RENE-2.jpeg"
-      ],
-      "features": [
-        "Standaard met onzichtbaar weggewerkte accu & LED-indicator (volledig snoerloos)",
-        "Onafhankelijke motoren met volledige hartbalans-ligstand & automatische draaiblokkering",
-        "Verstelbare hoofdsteun in hoogte én hoek (handmatig of optioneel elektrisch)",
-        "Keuze uit geheel stof, geheel leder of Duo-stoffering (combinatie van 2 materialen/kleuren)"
-      ],
-      "specifications": {
-        "Merk": "DFM Design",
-        "Model": "René (Draaibaar op Accu)",
-        "Uitvoeringen": "2 of 3 motoren + volledige ligstand + sta-op hulp (op accu)",
-        "Maatwerk": "Small / Medium / Large + zithoogte op maat (-3 cm tot +3 cm)",
-        "Bekleding": "Stof, Echt Leder of Duo-stoffering (Variant A8 / A10)",
-        "Opbouw zitting": "Stalen frame, Nosagveren, Sandwich Lastilux + Visco-traagschuim & HR 30 kg/m³",
-        "Bediening": "Ingebouwd paneel (links of rechts, alu of zwart) of handbediening met magneet",
-        "Onderstel": "Stervoet (zwart of geborsteld RVS) of Schotelvoet (zwart of RVS)",
-        "Max. belastbaarheid": "120 kg",
-        "Garantie": "3 jaar garantie"
-      },
-      "is_offer": true,
-      "description": "<p><strong>Sta-op stoel René (DFM Design)</strong> is een elegante, draaibare designfauteuil met een eigentijds karakter die u helpt veilig op te staan én heerlijk ontspannen te zitten. Dankzij de standaard onzichtbaar weggewerkte <strong>accu</strong> staat de stoel volledig snoerloos vrij in uw woonkamer (met slimme LED-accu-indicator in de bedieningstoetsen en een subtiel oplaadpunt onderaan de rug).</p><p><strong>Ergonomische hartbalans-ligstand (voeten op harthoogte) &amp; veilige Sta-op hulp:</strong><br>De René is uitgerust met onafhankelijke motoren waarmee u de rugleuning en voetensteun traploos verstelt tot in de zogenaamde <em>hartbalans-ligstand</em> (waarbij uw voeten op gelijke hoogte met het hart liggen voor optimale ontspanning en bloedsomloop). Activeert u de sta-op functie, dan tilt de stoel u rustig omhoog en blokkeert de draaifunctie automatisch.</p><p><strong>Verstelbare hoofdsteun &amp; unieke Duo-stoffering (Stof / Leder):</strong><br>De hoofdsteun is standaard handmatig in hoogte én kantelhoek (microverstelling) aan te passen aan uw nek, en is optioneel ook elektrisch verstelbaar. U heeft keuze uit geheel stof, geheel echt leder óf een stijlvolle <strong>duo-combinatie (variant A8/A10)</strong> waarbij bijvoorbeeld de binnenkuip in zachte bouclé-stof en de buitenschaal in leder wordt uitgevoerd.</p>",
-      "created_at": "2026-11-06 16:39:46"
     }
   ]
 }

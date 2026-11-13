@@ -325,10 +325,15 @@ function sync_static_chair_pages($chairs = null) {
         $chair_active_staop = ($catalog_page === 'staopstoelen.html') ? 'active' : '';
         $chair_active_relax = ($catalog_page === 'seniorenstoelen.html') ? 'active' : '';
 
+        $is_sold = (($chair['status'] ?? 'beschikbaar') === 'verkocht');
+        $item_availability = $is_sold ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock';
         $id_lower = strtolower($chair_id);
         $brand_lower = strtolower($chair['brand'] ?? '');
         $name_lower = strtolower($chair['name'] ?? '');
-        if (strpos($id_lower, 'rene') !== false || strpos($name_lower, 'rené') !== false || strpos($name_lower, 'rene') !== false) {
+        if (strpos($id_lower, 'carrera') !== false || strpos($name_lower, 'carrera') !== false) {
+            $video_mode = 'carrera-geertjan';
+            $video_btn_label = 'Bekijk Video: Geertjan toont Stoel Carrera (15s)';
+        } elseif (strpos($id_lower, 'rene') !== false || strpos($name_lower, 'rené') !== false || strpos($name_lower, 'rene') !== false) {
             $video_mode = 'rene-auto';
             $video_btn_label = 'Bekijk Video van Stoel René';
         } elseif (strpos($id_lower, 'ravi') !== false || strpos($name_lower, 'ravi') !== false) {
@@ -340,6 +345,41 @@ function sync_static_chair_pages($chairs = null) {
         } else {
             $video_mode = 'zitmeting';
             $video_btn_label = 'Bekijk Video: Zitmeting & Proefzitten (38 sec)';
+        }
+
+        $sold_notice_html = '';
+        if ($is_sold) {
+            $is_rene_chair = (strpos($id_lower, 'rene') !== false || strpos($name_lower, 'rené') !== false);
+            $sold_notice_html = '
+        <div style="background: #f5f9f2; border: 1.5px solid #b8dcab; border-left: 5px solid #2e6819; border-radius: 14px; padding: 18px 20px; margin-bottom: 18px; box-shadow: 0 4px 14px rgba(46,104,25,0.06);">
+          <div style="font-weight: 800; font-size: 1.02rem; color: #122b07; margin-bottom: 6px;">' . ($is_rene_chair ? 'Ons showroommodel van de René is verkocht' : 'Dit showroommodel is inmiddels verkocht') . '</div>
+          <p style="margin: 0 0 12px 0; font-size: 0.9rem; color: #374151; line-height: 1.5;">
+            ' . ($is_rene_chair
+                ? 'Dit model is uit onze showroom verkocht en momenteel tijdelijk niet leverbaar. Zoekt u een vergelijkbare slanke DFM design draaifauteuil? Bekijk onze <strong>Design Sta-op stoel Carrera (€ 2.500,-)</strong> in 5 maten (S t/m XXL).'
+                : 'Dit specifieke exemplaar is verkocht. Bekijk ons actuele uitgelichte DFM designmodel <strong>Sta-op stoel Carrera (€ 2.500,-)</strong> of neem contact op met Geertjan voor de nieuwste voorraad.') . '
+          </p>
+          <a href="sta-op-stoel-carrera.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 0.9rem; font-weight: 700; text-decoration: none; border-radius: 999px;">
+            Bekijk Stoel Carrera (€ 2.500,-) &rarr;
+          </a>
+        </div>';
+        }
+
+        $carrera_video_card_html = '';
+        if (strpos($id_lower, 'carrera') !== false) {
+            $carrera_video_card_html = '
+        <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 22px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
+          <div style="position: relative; width: 175px; min-width: 155px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15); flex-shrink: 0;">
+            <video controls playsinline preload="metadata" poster="../assets/video/geertjan_carrera_aanrader_poster.jpg?v=10.464" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <source src="../assets/video/staopstoelen_geertjan_carrera_aanrader_web.mp4?v=10.464" type="video/mp4">
+              Uw browser ondersteunt geen video.
+            </video>
+          </div>
+          <div style="flex: 1; min-width: 210px;">
+            <span style="display: inline-block; background: #eaf4e5; color: #256616; font-weight: 800; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; margin-bottom: 8px;">Showroom Video &bull; 15 sec</span>
+            <h3 style="font-size: 1.08rem; color: var(--color-forest-dark); margin: 0 0 8px 0; font-family: var(--font-heading);">Geertjan vertelt over de Carrera</h3>
+            <p style="font-size: 0.88rem; color: #4b5563; line-height: 1.55; margin: 0;">Bekijk hoe onze slanke draaifauteuil in vijf maten (S t/m XXL) comfort en design combineert zónder medische uitstraling — compleet voor <strong>&euro; 2.500,-</strong>.</p>
+          </div>
+        </div>';
         }
 
         // Action CTA Buttons
@@ -379,7 +419,7 @@ function sync_static_chair_pages($chairs = null) {
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.463">
+  <link rel="stylesheet" href="../style.css?v=10.464">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -401,7 +441,7 @@ function sync_static_chair_pages($chairs = null) {
       "url": "https://staopstoelen.nl/stoelen/' . $chair_id . '.html",
       "priceCurrency": "EUR",
       "price": "' . $price . '",
-      "availability": "https://schema.org/InStock",
+      "availability": "' . $item_availability . '",
       "itemCondition": "' . $item_condition . '"
     }
   }
@@ -631,9 +671,9 @@ function sync_static_chair_pages($chairs = null) {
           <span class="badge ' . $condition_badge_class . '" style="position: absolute; top: 16px; left: 16px; z-index: 5;">
             ' . $condition_label . '
           </span>
-          ' . (count($gallery_imgs) > 1 ? '<button type="button" class="modal-gallery-arrow prev-arrow" id="detailPrevBtn" onclick="stepDetailPhoto(-1)" aria-label="Vorige foto" style="display: flex;">&#10094;</button>' : '') . '
+          ' . (count($thumbnail_images) > 1 ? '<button type="button" class="modal-gallery-arrow prev-arrow" id="detailPrevBtn" onclick="stepDetailPhoto(-1)" aria-label="Vorige foto" style="display: flex;">&#10094;</button>' : '') . '
           <img id="detailMainImg" class="has-photo-bg" src="' . htmlspecialchars($main_image_url, ENT_QUOTES) . '" alt="' . $chair_name . '">
-          ' . (count($gallery_imgs) > 1 ? '<button type="button" class="modal-gallery-arrow next-arrow" id="detailNextBtn" onclick="stepDetailPhoto(1)" aria-label="Volgende foto" style="display: flex;">&#10095;</button>' : '') . '
+          ' . (count($thumbnail_images) > 1 ? '<button type="button" class="modal-gallery-arrow next-arrow" id="detailNextBtn" onclick="stepDetailPhoto(1)" aria-label="Volgende foto" style="display: flex;">&#10095;</button>' : '') . '
         </div>
         
         ' . $gallery_html . '
@@ -676,6 +716,8 @@ function sync_static_chair_pages($chairs = null) {
         <h1 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--color-forest-dark); line-height: 1.25; margin-bottom: 14px;">
           ' . $chair_name . '
         </h1>
+
+        ' . $sold_notice_html . '
 
         ' . $actie_box_html . '
 
@@ -733,6 +775,8 @@ function sync_static_chair_pages($chairs = null) {
             ' . $specs_items_html . '
           </div>
         </div>
+
+        ' . $carrera_video_card_html . '
 
         <!-- Description -->
         <div style="background: white; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 22px 24px; line-height: 1.6; font-size: 0.92rem; color: #374151;">
@@ -846,7 +890,7 @@ function sync_static_chair_pages($chairs = null) {
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.463
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.464
       </div>
     </div>
   </footer>
@@ -889,7 +933,7 @@ function sync_static_chair_pages($chairs = null) {
     });
   </script>
 
-  <script src="../app.js?v=10.463" defer></script>
+  <script src="../app.js?v=10.464" defer></script>
 </body>
 </html>';
 

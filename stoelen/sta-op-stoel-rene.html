@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=10.410">
   
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="../style.css?v=10.463">
+  <link rel="stylesheet" href="../style.css?v=10.464">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
       "url": "https://staopstoelen.nl/stoelen/sta-op-stoel-rene.html",
       "priceCurrency": "EUR",
       "price": "2345",
-      "availability": "https://schema.org/InStock",
+      "availability": "https://schema.org/OutOfStock",
       "itemCondition": "https://schema.org/NewCondition"
     }
   }
@@ -269,8 +269,8 @@
       <!-- Left Column: Gallery & USPs -->
       <div class="product-gallery-section">
         <div class="main-image-frame">
-          <span class="badge badge-new" style="position: absolute; top: 16px; left: 16px; z-index: 5;">
-            Tijdelijke Actie
+          <span class="badge" style="position: absolute; top: 16px; left: 16px; z-index: 5; background: #9a3412; color: #ffffff; font-weight: 800; padding: 6px 12px; border-radius: 999px; font-size: 0.78rem;">
+            Uitverkocht uit showroom
           </span>
           <button type="button" class="modal-gallery-arrow prev-arrow" id="detailPrevBtn" onclick="stepDetailPhoto(-1)" aria-label="Vorige foto" style="display: flex;">&#10094;</button>
           <img id="detailMainImg" class="has-photo-bg" src="../assets/stoelen/Sta-op-stoel-RENE.jpg" alt="Sta-op stoel René Olijfgroen">
@@ -363,6 +363,19 @@
         <h1 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--color-forest-dark); line-height: 1.25; margin-bottom: 14px;">
           Sta-op stoel René
         </h1>
+
+        <div style="background: #fff7ed; border: 1.5px solid #fdba74; border-left: 5px solid #d96b27; border-radius: 12px; padding: 16px 18px; margin-bottom: 18px;">
+          <div style="font-weight: 800; color: #9a3412; font-size: 0.96rem; margin-bottom: 4px;">
+            Dit showroommodel is verkocht en momenteel niet leverbaar
+          </div>
+          <p style="margin: 0 0 12px 0; font-size: 0.9rem; color: #431407; line-height: 1.5;">
+            Onze showroom-René heeft een nieuwe eigenaar gevonden. Zoekt u een vergelijkbare slanke draaifauteuil met sta-op hulp zónder medische uitstraling? Bekijk dan ons actuele designmodel: de <strong>DFM Sta-op stoel Carrera (€ 2.500,-)</strong> in 5 maten.
+          </p>
+          <a href="sta-op-stoel-carrera.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; font-size: 0.88rem; border-radius: 999px; text-decoration: none;">
+            <span>Bekijk designmodel DFM Carrera (€ 2.500,-)</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
 
         
 
@@ -468,8 +481,8 @@
         <!-- Video Section: Geertjan in de Showroom + Showcase van alle kleuren, standen & ronde voet + Klantverhaal -->
         <div style="background: #ffffff; border: 1px solid var(--color-gray-light); border-radius: 12px; padding: 20px 22px; margin-bottom: 22px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
           <div style="position: relative; width: 175px; min-width: 155px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #1d2024; box-shadow: 0 6px 18px rgba(0,0,0,0.15); flex-shrink: 0;">
-            <video id="reneDetailVideo" data-video-type="geertjan" controls playsinline preload="metadata" poster="../assets/video/geertjan_rene_aanrader_poster.jpg?v=10.463" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-              <source id="reneDetailVideoSource" src="../assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.463" type="video/mp4">
+            <video id="reneDetailVideo" data-video-type="geertjan" controls playsinline preload="metadata" poster="../assets/video/geertjan_rene_aanrader_poster.jpg?v=10.464" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <source id="reneDetailVideoSource" src="../assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.464" type="video/mp4">
               Uw browser ondersteunt geen video.
             </video>
           </div>
@@ -511,8 +524,8 @@
             };
             if (which === 'geertjan') {
               vid.dataset.videoType = 'geertjan';
-              vid.src = '../assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.463';
-              vid.poster = '../assets/video/geertjan_rene_aanrader_poster.jpg?v=10.463';
+              vid.src = '../assets/video/staopstoelen_geertjan_rene_aanrader_web.mp4?v=10.464';
+              vid.poster = '../assets/video/geertjan_rene_aanrader_poster.jpg?v=10.464';
               setActive(btnG);
               if (title) title.textContent = 'Geertjan laat de Sta-op stoel René zien in Dordrecht';
               if (desc) desc.innerHTML = 'Bewegingstechnoloog Geertjan stelt onze <strong>Sta-op stoel René</strong> persoonlijk aan u voor: een stijlvolle draaifauteuil op accu zonder medische uitstraling, nu tijdelijk met € 350,- voordeel.';
@@ -651,7 +664,7 @@
         &copy; 2026 staopstoelen.nl. Alle rechten voorbehouden.
       </div>
       <div style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">
-        Gerealiseerd door BewegingsTechnologen. | Versie 10.463
+        Gerealiseerd door BewegingsTechnologen. | Versie 10.464
       </div>
     </div>
   </footer>
@@ -706,6 +719,6 @@
     });
   </script>
 
-  <script src="../app.js?v=10.463" defer></script>
+  <script src="../app.js?v=10.464" defer></script>
 </body>
 </html>
